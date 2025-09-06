@@ -41,13 +41,13 @@ class EspUart : public BaseUart {
 public:
     // Constructor with full configuration
     explicit EspUart(
-        hf*uart*port*t port = hf*uart*port*t::HF*UART*PORT*1,
-        hf*pin*num*t tx*pin = GPIO*NUM*1,
-        hf*pin*num*t rx*pin = GPIO*NUM*3,
-        hf*uart*baud*t baud*rate = 115200,
-        hf*uart*data*bits*t data*bits = hf*uart*data*bits*t::HF*UART*DATA*BITS*8,
-        hf*uart*parity*t parity = hf*uart*parity*t::HF*UART*PARITY*NONE,
-        hf*uart*stop*bits*t stop*bits = hf*uart*stop*bits*t::HF*UART*STOP*BITS*1
+        hf_uart_port_t port = hf_uart_port_t::HF_UART_PORT_1,
+        hf_pin_num_t tx_pin = GPIO_NUM_1,
+        hf_pin_num_t rx_pin = GPIO_NUM_3,
+        hf_uart_baud_t baud_rate = 115200,
+        hf_uart_data_bits_t data_bits = hf_uart_data_bits_t::HF_UART_DATA_BITS_8,
+        hf_uart_parity_t parity = hf_uart_parity_t::HF_UART_PARITY_NONE,
+        hf_uart_stop_bits_t stop_bits = hf_uart_stop_bits_t::HF_UART_STOP_BITS_1
     ) noexcept;
 
     // Destructor
@@ -60,20 +60,20 @@ public:
     const char* GetDescription() const noexcept override;
 
     // UART operations
-    hf*uart*err*t WriteBytes(const hf*u8*t* data, hf*size*t length) noexcept override;
-    hf*uart*err*t ReadBytes(hf*u8*t* data, hf*size*t length, hf*u32*t timeout*ms = 0) noexcept override;
-    hf*uart*err*t WriteString(const char* str) noexcept override;
-    hf*uart*err*t ReadString(char* str, hf*size*t max*length, hf*u32*t timeout*ms = 0) noexcept override;
-    hf*uart*err*t GetBytesAvailable(hf*size*t* count) const noexcept override;
-    hf*uart*err*t Flush() noexcept override;
+    hf_uart_err_t WriteBytes(const hf_u8_t* data, hf_size_t length) noexcept override;
+    hf_uart_err_t ReadBytes(hf_u8_t* data, hf_size_t length, hf_u32_t timeout_ms = 0) noexcept override;
+    hf_uart_err_t WriteString(const char* str) noexcept override;
+    hf_uart_err_t ReadString(char* str, hf_size_t max_length, hf_u32_t timeout_ms = 0) noexcept override;
+    hf_uart_err_t GetBytesAvailable(hf_size_t* count) const noexcept override;
+    hf_uart_err_t Flush() noexcept override;
 
     // Advanced features
-    hf*uart*err*t SetBaudRate(hf*uart*baud*t baud*rate) noexcept override;
-    hf*uart*err*t GetBaudRate(hf*uart*baud*t* baud*rate) const noexcept override;
-    hf*uart*err*t SetFlowControl(hf*uart*flow*control*t flow*control) noexcept override;
-    hf*uart*err*t GetFlowControl(hf*uart*flow*control*t* flow*control) const noexcept override;
-    hf*uart*err*t SetInterruptCallback(hf*uart*interrupt*callback*t callback, void* user*data) noexcept override;
-    hf*uart*err*t ClearInterruptCallback() noexcept override;
+    hf_uart_err_t SetBaudRate(hf_uart_baud_t baud_rate) noexcept override;
+    hf_uart_err_t GetBaudRate(hf_uart_baud_t* baud_rate) const noexcept override;
+    hf_uart_err_t SetFlowControl(hf_uart_flow_control_t flow_control) noexcept override;
+    hf_uart_err_t GetFlowControl(hf_uart_flow_control_t* flow_control) const noexcept override;
+    hf_uart_err_t SetInterruptCallback(hf_uart_interrupt_callback_t callback, void* user_data) noexcept override;
+    hf_uart_err_t ClearInterruptCallback() noexcept override;
 };
 ```text
 
@@ -85,7 +85,7 @@ public:
 #include "inc/mcu/esp32/EspUart.h"
 
 // Create UART instance
-EspUart uart(HF*UART*PORT*1, GPIO*NUM*1, GPIO*NUM*3, 115200);
+EspUart uart(HF_UART_PORT_1, GPIO_NUM_1, GPIO_NUM_3, 115200);
 
 // Initialize
 if (!uart.Initialize()) {
@@ -95,8 +95,8 @@ if (!uart.Initialize()) {
 
 // Write data
 const char* message = "Hello, UART!\n";
-hf*uart*err*t err = uart.WriteString(message);
-if (err != HF*UART*ERR*OK) {
+hf_uart_err_t err = uart.WriteString(message);
+if (err != HF_UART_ERR_OK) {
     printf("Failed to write string: %d\n", err);
     return;
 }
@@ -104,9 +104,9 @@ if (err != HF*UART*ERR*OK) {
 // Read data
 char buffer[256];
 err = uart.ReadString(buffer, sizeof(buffer), 1000); // 1 second timeout
-if (err == HF*UART*ERR*OK) {
+if (err == HF_UART_ERR_OK) {
     printf("Received: %s\n", buffer);
-} else if (err == HF*UART*ERR*TIMEOUT) {
+} else if (err == HF_UART_ERR_TIMEOUT) {
     printf("Read timeout\n");
 }
 ```text
@@ -115,21 +115,21 @@ if (err == HF*UART*ERR*OK) {
 
 ```cpp
 // Write binary data
-hf*u8*t data[] = {0x01, 0x02, 0x03, 0x04, 0x05};
-hf*uart*err*t err = uart.WriteBytes(data, sizeof(data));
-if (err != HF*UART*ERR*OK) {
+hf_u8_t data[] = {0x01, 0x02, 0x03, 0x04, 0x05};
+hf_uart_err_t err = uart.WriteBytes(data, sizeof(data));
+if (err != HF_UART_ERR_OK) {
     printf("Failed to write bytes: %d\n", err);
     return;
 }
 
 // Read binary data
-hf*u8*t read*buffer[10];
-hf*size*t bytes*read;
-err = uart.ReadBytes(read*buffer, sizeof(read*buffer), 1000);
-if (err == HF*UART*ERR*OK) {
-    printf("Read %zu bytes: ", bytes*read);
-    for (hf*size*t i = 0; i < bytes*read; i++) {
-        printf("%02X ", read*buffer[i]);
+hf_u8_t read_buffer[10];
+hf_size_t bytes_read;
+err = uart.ReadBytes(read_buffer, sizeof(read_buffer), 1000);
+if (err == HF_UART_ERR_OK) {
+    printf("Read %zu bytes: ", bytes_read);
+    for (hf_size_t i = 0; i < bytes_read; i++) {
+        printf("%02X ", read_buffer[i]);
     }
     printf("\n");
 }
@@ -139,22 +139,22 @@ if (err == HF*UART*ERR*OK) {
 
 ```cpp
 // Enable hardware flow control
-hf*uart*err*t err = uart.SetFlowControl(HF*UART*FLOW*CONTROL*HARDWARE);
-if (err != HF*UART*ERR*OK) {
+hf_uart_err_t err = uart.SetFlowControl(HF_UART_FLOW_CONTROL_HARDWARE);
+if (err != HF_UART_ERR_OK) {
     printf("Failed to set flow control: %d\n", err);
     return;
 }
 
 // Check available bytes before reading
-hf*size*t available;
+hf_size_t available;
 err = uart.GetBytesAvailable(&available);
-if (err == HF*UART*ERR*OK) {
+if (err == HF_UART_ERR_OK) {
     printf("Bytes available: %zu\n", available);
     
     if (available > 0) {
         char buffer[256];
         err = uart.ReadString(buffer, sizeof(buffer), 0); // Non-blocking
-        if (err == HF*UART*ERR*OK) {
+        if (err == HF_UART_ERR_OK) {
             printf("Received: %s\n", buffer);
         }
     }
@@ -165,15 +165,15 @@ if (err == HF*UART*ERR*OK) {
 
 ```cpp
 // Interrupt callback function
-void uart*interrupt*callback(hf*uart*event*t event, void* user*data) {
+void uart_interrupt_callback(hf_uart_event_t event, void* user_data) {
     switch (event) {
-        case HF*UART*EVENT*RX*DATA:
+        case HF_UART_EVENT_RX_DATA:
             printf("UART RX data available\n");
             break;
-        case HF*UART*EVENT*TX*DONE:
+        case HF_UART_EVENT_TX_DONE:
             printf("UART TX completed\n");
             break;
-        case HF*UART*EVENT*ERROR:
+        case HF_UART_EVENT_ERROR:
             printf("UART error occurred\n");
             break;
         default:
@@ -182,8 +182,8 @@ void uart*interrupt*callback(hf*uart*event*t event, void* user*data) {
 }
 
 // Set interrupt callback
-hf*uart*err*t err = uart.SetInterruptCallback(uart*interrupt*callback, nullptr);
-if (err != HF*UART*ERR*OK) {
+hf_uart_err_t err = uart.SetInterruptCallback(uart_interrupt_callback, nullptr);
+if (err != HF_UART_ERR_OK) {
     printf("Failed to set interrupt callback: %d\n", err);
     return;
 }
@@ -196,8 +196,8 @@ if (err != HF*UART*ERR*OK) {
 
 ```cpp
 // Create multiple UART instances
-EspUart uart1(HF*UART*PORT*1, GPIO*NUM*1, GPIO*NUM*3, 115200);
-EspUart uart2(HF*UART*PORT*2, GPIO*NUM*17, GPIO*NUM*16, 9600);
+EspUart uart1(HF_UART_PORT_1, GPIO_NUM_1, GPIO_NUM_3, 115200);
+EspUart uart2(HF_UART_PORT_2, GPIO_NUM_17, GPIO_NUM_16, 9600);
 
 // Initialize both
 if (!uart1.Initialize() || !uart2.Initialize()) {
@@ -236,14 +236,14 @@ Configurable interrupt handling for efficient data processing.
 
 The `EspUart` class provides comprehensive error handling with specific error codes:
 
-- `HF*UART*ERR*OK` - Operation successful
-- `HF*UART*ERR*INVALID*ARG` - Invalid parameter
-- `HF*UART*ERR*NOT*INITIALIZED` - UART not initialized
-- `HF*UART*ERR*TIMEOUT` - Operation timeout
-- `HF*UART*ERR*BUFFER*FULL` - Buffer full
-- `HF*UART*ERR*BUFFER*EMPTY` - Buffer empty
-- `HF*UART*ERR*PARITY*ERROR` - Parity error
-- `HF*UART*ERR*FRAMING*ERROR` - Framing error
+- `HF_UART_ERR_OK` - Operation successful
+- `HF_UART_ERR_INVALID_ARG` - Invalid parameter
+- `HF_UART_ERR_NOT_INITIALIZED` - UART not initialized
+- `HF_UART_ERR_TIMEOUT` - Operation timeout
+- `HF_UART_ERR_BUFFER_FULL` - Buffer full
+- `HF_UART_ERR_BUFFER_EMPTY` - Buffer empty
+- `HF_UART_ERR_PARITY_ERROR` - Parity error
+- `HF_UART_ERR_FRAMING_ERROR` - Framing error
 
 ## Performance Considerations
 

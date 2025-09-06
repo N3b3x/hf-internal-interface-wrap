@@ -42,11 +42,11 @@ class EspCan : public BaseCan {
 public:
     // Constructor with full configuration
     explicit EspCan(
-        hf*can*port*t port = hf*can*port*t::HF*CAN*PORT*0,
-        hf*pin*num*t tx*pin = GPIO*NUM*5,
-        hf*pin*num*t rx*pin = GPIO*NUM*4,
-        hf*can*speed*t speed = hf*can*speed*t::HF*CAN*SPEED*500K,
-        hf*can*mode*t mode = hf*can*mode*t::HF*CAN*MODE*NORMAL
+        hf_can_port_t port = hf_can_port_t::HF_CAN_PORT_0,
+        hf_pin_num_t tx_pin = GPIO_NUM_5,
+        hf_pin_num_t rx_pin = GPIO_NUM_4,
+        hf_can_speed_t speed = hf_can_speed_t::HF_CAN_SPEED_500K,
+        hf_can_mode_t mode = hf_can_mode_t::HF_CAN_MODE_NORMAL
     ) noexcept;
 
     // Destructor
@@ -59,16 +59,16 @@ public:
     const char* GetDescription() const noexcept override;
 
     // CAN operations
-    hf*can*err*t SendMessage(const hf*can*message*t& message) noexcept override;
-    hf*can*err*t ReceiveMessage(hf*can*message*t& message, hf*u32*t timeout*ms = 0) noexcept override;
-    hf*can*err*t GetMessageCount(hf*size*t* count) const noexcept override;
+    hf_can_err_t SendMessage(const hf_can_message_t& message) noexcept override;
+    hf_can_err_t ReceiveMessage(hf_can_message_t& message, hf_u32_t timeout_ms = 0) noexcept override;
+    hf_can_err_t GetMessageCount(hf_size_t* count) const noexcept override;
 
     // Advanced features
-    hf*can*err*t SetSpeed(hf*can*speed*t speed) noexcept override;
-    hf*can*err*t GetSpeed(hf*can*speed*t* speed) const noexcept override;
-    hf*can*err*t SetFilter(const hf*can*filter*t& filter) noexcept override;
-    hf*can*err*t ClearFilters() noexcept override;
-    hf*can*err*t GetErrorCounters(hf*can*error*counters*t& counters) noexcept override;
+    hf_can_err_t SetSpeed(hf_can_speed_t speed) noexcept override;
+    hf_can_err_t GetSpeed(hf_can_speed_t* speed) const noexcept override;
+    hf_can_err_t SetFilter(const hf_can_filter_t& filter) noexcept override;
+    hf_can_err_t ClearFilters() noexcept override;
+    hf_can_err_t GetErrorCounters(hf_can_error_counters_t& counters) noexcept override;
 };
 ```text
 
@@ -80,7 +80,7 @@ public:
 #include "inc/mcu/esp32/EspCan.h"
 
 // Create CAN instance
-EspCan can(HF*CAN*PORT*0, GPIO*NUM*5, GPIO*NUM*4, HF*CAN*SPEED*500K);
+EspCan can(HF_CAN_PORT_0, GPIO_NUM_5, GPIO_NUM_4, HF_CAN_SPEED_500K);
 
 // Initialize
 if (!can.Initialize()) {
@@ -89,26 +89,26 @@ if (!can.Initialize()) {
 }
 
 // Send a message
-hf*can*message*t message;
+hf_can_message_t message;
 message.id = 0x123;
-message.flags = HF*CAN*FLAG*STANDARD;
-message.data*length = 8;
+message.flags = HF_CAN_FLAG_STANDARD;
+message.data_length = 8;
 message.data[0] = 0x01;
 message.data[1] = 0x02;
 // ... fill remaining data
 
-hf*can*err*t err = can.SendMessage(message);
-if (err != HF*CAN*ERR*OK) {
+hf_can_err_t err = can.SendMessage(message);
+if (err != HF_CAN_ERR_OK) {
     printf("CAN send failed: %d\n", err);
 }
 
 // Receive a message
-hf*can*message*t received*message;
-err = can.ReceiveMessage(received*message, 1000); // 1 second timeout
-if (err == HF*CAN*ERR*OK) {
-    printf("Received message ID: 0x%X, Data: ", received*message.id);
-    for (int i = 0; i < received*message.data*length; i++) {
-        printf("%02X ", received*message.data[i]);
+hf_can_message_t received_message;
+err = can.ReceiveMessage(received_message, 1000); // 1 second timeout
+if (err == HF_CAN_ERR_OK) {
+    printf("Received message ID: 0x%X, Data: ", received_message.id);
+    for (int i = 0; i < received_message.data_length; i++) {
+        printf("%02X ", received_message.data[i]);
     }
     printf("\n");
 }
@@ -118,13 +118,13 @@ if (err == HF*CAN*ERR*OK) {
 
 ```cpp
 // Set up a filter to only receive messages with specific ID
-hf*can*filter*t filter;
+hf_can_filter_t filter;
 filter.id = 0x123;
 filter.mask = 0x7FF; // Standard 11-bit ID mask
-filter.flags = HF*CAN*FLAG*STANDARD;
+filter.flags = HF_CAN_FLAG_STANDARD;
 
-hf*can*err*t err = can.SetFilter(filter);
-if (err != HF*CAN*ERR*OK) {
+hf_can_err_t err = can.SetFilter(filter);
+if (err != HF_CAN_ERR_OK) {
     printf("Failed to set filter: %d\n", err);
 }
 ```text
@@ -133,14 +133,14 @@ if (err != HF*CAN*ERR*OK) {
 
 ```cpp
 // Get error counters
-hf*can*error*counters*t counters;
-hf*can*err*t err = can.GetErrorCounters(counters);
+hf_can_error_counters_t counters;
+hf_can_err_t err = can.GetErrorCounters(counters);
 
-if (err == HF*CAN*ERR*OK) {
+if (err == HF_CAN_ERR_OK) {
     printf("Error counters:\n");
-    printf("  TX Error Count: %u\n", counters.tx*error*count);
-    printf("  RX Error Count: %u\n", counters.rx*error*count);
-    printf("  Bus Off Count: %u\n", counters.bus*off*count);
+    printf("  TX Error Count: %u\n", counters.tx_error_count);
+    printf("  RX Error Count: %u\n", counters.rx_error_count);
+    printf("  Bus Off Count: %u\n", counters.bus_off_count);
 }
 ```text
 
@@ -164,14 +164,14 @@ High-performance DMA transfers for large message buffers.
 
 The `EspCan` class provides comprehensive error handling with specific error codes:
 
-- `HF*CAN*ERR*OK` - Operation successful
-- `HF*CAN*ERR*INVALID*ARG` - Invalid parameter
-- `HF*CAN*ERR*NOT*INITIALIZED` - CAN not initialized
-- `HF*CAN*ERR*TIMEOUT` - Operation timeout
-- `HF*CAN*ERR*BUS*OFF` - CAN controller in bus-off state
-- `HF*CAN*ERR*TX*FULL` - Transmit buffer full
-- `HF*CAN*ERR*RX*EMPTY` - Receive buffer empty
-- `HF*CAN*ERR*FILTER*FULL` - No more filters available
+- `HF_CAN_ERR_OK` - Operation successful
+- `HF_CAN_ERR_INVALID_ARG` - Invalid parameter
+- `HF_CAN_ERR_NOT_INITIALIZED` - CAN not initialized
+- `HF_CAN_ERR_TIMEOUT` - Operation timeout
+- `HF_CAN_ERR_BUS_OFF` - CAN controller in bus-off state
+- `HF_CAN_ERR_TX_FULL` - Transmit buffer full
+- `HF_CAN_ERR_RX_EMPTY` - Receive buffer empty
+- `HF_CAN_ERR_FILTER_FULL` - No more filters available
 
 ## Performance Considerations
 

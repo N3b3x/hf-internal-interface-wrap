@@ -96,10 +96,10 @@ The test suite covers:
 ### Prerequisites
 ```bash
 ## ESP-IDF v5.5+ installation required
-. $IDF*PATH/export.sh
+. $IDF_PATH/export.sh
 
 ## Set target platform
-export IDF*TARGET=esp32c6
+export IDF_TARGET=esp32c6
 ```text
 
 ### Quick Start
@@ -108,7 +108,7 @@ export IDF*TARGET=esp32c6
 cd examples/esp32
 
 ## Build NVS test
-idf.py build -DEXAMPLE*TYPE=nvs*test -DBUILD*TYPE=Release
+idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Release
 
 ## Flash and monitor
 idf.py -p /dev/ttyUSB0 flash monitor
@@ -122,16 +122,16 @@ idf.py -p /dev/ttyUSB0 flash monitor
 source /path/to/esp-idf/export.sh
 
 ## Build with optimization
-./build*example.sh nvs*test Release
+./build_example.sh nvs_test Release
 
 ## Flash to device
-idf.py -B build*nvs*test*Release flash monitor
+idf.py -B build_nvs_test_Release flash monitor
 ```text
 
 #### Debug Build for Development
 ```bash
 ## Build with debug symbols and verbose output
-idf.py build -DEXAMPLE*TYPE=nvs*test -DBUILD*TYPE=Debug
+idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Debug
 
 ## Run with detailed logging
 idf.py -p /dev/ttyUSB0 flash monitor
@@ -155,9 +155,9 @@ The output will show:
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║ Running: test*nvs*initialization                                            ║
+║ Running: test_nvs_initialization                                            ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
-[SUCCESS] PASSED: test*nvs*initialization (XX.XX ms)
+[SUCCESS] PASSED: test_nvs_initialization (XX.XX ms)
 
 ... (more tests) ...
 
@@ -206,4 +206,4 @@ The test framework in `TestFramework.h` provides:
 - The test suite is designed to be self-contained and requires no external dependencies
 - All tests use the `noexcept` specifier to ensure no exceptions are thrown
 - The code is compatible with C++17 standard
-- Thread safety is enabled by default (HF*THREAD_SAFE=1)
+- Thread safety is enabled by default (HF_THREAD_SAFE=1)

@@ -144,19 +144,19 @@ ESP32-C6 GND    ──► Logic Analyzer Ground
 cd examples/esp32
 
 ## Build UART test
-./scripts/build*example.sh uart*test Release
+./scripts/build_example.sh uart_test Release
 
 ## Flash to device and monitor
-./scripts/flash*example.sh uart*test Release flash*monitor
+./scripts/flash_example.sh uart_test Release flash_monitor
 ```text
 
 ### Direct ESP-IDF Build (Alternative)
 ```bash
 ## Set target
-export IDF*TARGET=esp32c6
+export IDF_TARGET=esp32c6
 
 ## Build UART test
-idf.py build -DEXAMPLE*TYPE=uart*test
+idf.py build -DEXAMPLE_TYPE=uart_test
 
 ## Flash to device
 idf.py flash monitor
@@ -167,48 +167,48 @@ The test is automatically included in the CI pipeline and will run in both Relea
 configurations:
 ```yaml
 matrix:
-  example*type: [..., uart*test, ...]
+  example_type: [..., uart_test, ...]
 ```text
 
 ## Test Categories
 
 ### 1. Constructor/Destructor Tests
-- `test*uart*construction`: Validates proper object initialization and multiple instance support
-- `test*uart*initialization`: Tests manual initialization/deinitialization with state validation
+- `test_uart_construction`: Validates proper object initialization and multiple instance support
+- `test_uart_initialization`: Tests manual initialization/deinitialization with state validation
 
 ### 2. Basic Communication Tests
-- `test*uart*basic*communication`: Basic TX/RX operations with external loopback
-- `test*uart*baud*rate*configuration`: Multi-baud rate testing (9600 to 230400)
-- `test*uart*flow*control`: Hardware RTS/CTS and software XON/XOFF flow control
+- `test_uart_basic_communication`: Basic TX/RX operations with external loopback
+- `test_uart_baud_rate_configuration`: Multi-baud rate testing (9600 to 230400)
+- `test_uart_flow_control`: Hardware RTS/CTS and software XON/XOFF flow control
 
 ### 3. Advanced Features Tests
-- `test*uart*pattern*detection`: Comprehensive pattern detection testing including:
+- `test_uart_pattern_detection`: Comprehensive pattern detection testing including:
   - Line pattern detection (`\n`) with 3/3 patterns detected
   - AT command pattern detection (`+++`) with 2/2 patterns detected
   - Event-driven processing with proper timing optimization
   - Pattern position tracking and data extraction
-- `test*uart*buffer*operations`: ReadUntil, ReadLine, and buffer management
-- `test*uart*advanced*features`: Break signals, loopback mode, signal inversion, wakeup
-- `test*uart*communication*modes`: UART, RS485, and IrDA mode configuration
+- `test_uart_buffer_operations`: ReadUntil, ReadLine, and buffer management
+- `test_uart_advanced_features`: Break signals, loopback mode, signal inversion, wakeup
+- `test_uart_communication_modes`: UART, RS485, and IrDA mode configuration
 
 ### 4. Async Operations Tests
-- `test*uart*async*operations`: Interrupt-driven operation with event queues
-- `test*uart*callbacks`: Event queue access and interrupt configuration
-- `test*uart*callback*verification`: Event-driven callback system validation
+- `test_uart_async_operations`: Interrupt-driven operation with event queues
+- `test_uart_callbacks`: Event queue access and interrupt configuration
+- `test_uart_callback_verification`: Event-driven callback system validation
 
 ### 5. Statistics and Diagnostics Tests
-- `test*uart*statistics*diagnostics`: Comprehensive performance metrics and error reporting
-- `test*uart*printf*support`: Formatted output with variable argument support
-- `test*uart*error*handling`: Error condition testing and graceful failure handling
+- `test_uart_statistics_diagnostics`: Comprehensive performance metrics and error reporting
+- `test_uart_printf_support`: Formatted output with variable argument support
+- `test_uart_error_handling`: Error condition testing and graceful failure handling
 
 ### 6. ESP32-C6 Specific Tests
-- `test*uart*esp32c6*features`: ESP32-C6 specific UART capabilities
-- `test*uart*performance`: Performance testing and timing validation
-- `test*uart*user*event*task`: FreeRTOS task creation for event handling
+- `test_uart_esp32c6_features`: ESP32-C6 specific UART capabilities
+- `test_uart_performance`: Performance testing and timing validation
+- `test_uart_user_event_task`: FreeRTOS task creation for event handling
 
 ### 7. Event-Driven Pattern Detection Tests
-- `test*uart*event*driven*pattern*detection`: Comprehensive event queue monitoring
-- `test*uart*cleanup`: Resource cleanup and memory management
+- `test_uart_event_driven_pattern_detection`: Comprehensive event queue monitoring
+- `test_uart_cleanup`: Resource cleanup and memory management
 
 ## Pattern Detection Specifications
 
@@ -216,19 +216,19 @@ matrix:
 The test suite uses the modern ESP-IDF v5.5 pattern detection API:
 
 ```cpp
-esp*err*t uart*enable*pattern*det*baud*intr(
-    uart*port*t uart*num, 
-    char pattern*chr,           // Character to detect
-    uint8*t chr*num,            // Number of consecutive characters
-    int chr*tout,               // Timeout between characters (baud cycles)
-    int post*idle,              // Idle time after last character
-    int pre*idle                 // Idle time before first character
+esp_err_t uart_enable_pattern_det_baud_intr(
+    uart_port_t uart_num, 
+    char pattern_chr,           // Character to detect
+    uint8_t chr_num,            // Number of consecutive characters
+    int chr_tout,               // Timeout between characters (baud cycles)
+    int post_idle,              // Idle time after last character
+    int pre_idle                 // Idle time before first character
 );
 ```text
 
 ### Pattern Detection Parameters
 
-| Pattern Type | Character | Count | chr*tout | post*idle | pre*idle | Purpose |
+| Pattern Type | Character | Count | chr_tout | post_idle | pre_idle | Purpose |
 
 |--------------|-----------|-------|----------|-----------|----------|---------|
 
@@ -238,9 +238,9 @@ esp*err*t uart*enable*pattern*det*baud*intr(
 
 ### Timing Optimization
 **Relaxed Timing Parameters** for reliable pattern detection:
-- **`chr*tout`**: Reduced from 9 to 5 baud cycles (more permissive)
-- **`post*idle`**: Set to 0 (no idle requirement after pattern)
-- **`pre*idle`**: Set to 0 (no idle requirement before pattern)
+- **`chr_tout`**: Reduced from 9 to 5 baud cycles (more permissive)
+- **`post_idle`**: Set to 0 (no idle requirement after pattern)
+- **`pre_idle`**: Set to 0 (no idle requirement before pattern)
 
 **Why Reduced Timing is Better:**
 - **More Permissive**: Allows for slight timing variations in data transmission
@@ -251,96 +251,96 @@ esp*err*t uart*enable*pattern*det*baud*intr(
 
 ### Successful Test Output
 ```text
-[UART*Test] ╔════════════════════════════════════════════════════════════════════════════════╗
-[UART*Test] ║                   ESP32-C6 UART COMPREHENSIVE TEST SUITE                       ║
-[UART*Test] ║                         HardFOC Internal Interface                             ║
-[UART*Test] ╚════════════════════════════════════════════════════════════════════════════════╝
-[UART*Test] ║ Target: ESP32-C6 DevKit-M-1                                                    ║
-[UART*Test] ║ ESP-IDF: v5.5+                                                                 ║
-[UART*Test] ║ Features: UART, Baud Rate Configuration, Flow Control, Pattern Detection,      ║
-[UART*Test] ║ Buffer Operations, Advanced Features, Communication Modes, Async Operations,   ║
-[UART*Test] ║ Callbacks, Statistics and Diagnostics, printf Support, Error Handling,         ║
-[UART*Test] ║ ESP32-C6 Features, Performance, Callback Verification, User Event Task,        ║
-[UART*Test] ║ Event-Driven Pattern Detection, Cleanup                                        ║
-[UART*Test] ║ Architecture: noexcept (no exception handling)                                 ║
-[UART*Test] ╚════════════════════════════════════════════════════════════════════════════════╝
+[UART_Test] ╔════════════════════════════════════════════════════════════════════════════════╗
+[UART_Test] ║                   ESP32-C6 UART COMPREHENSIVE TEST SUITE                       ║
+[UART_Test] ║                         HardFOC Internal Interface                             ║
+[UART_Test] ╚════════════════════════════════════════════════════════════════════════════════╝
+[UART_Test] ║ Target: ESP32-C6 DevKit-M-1                                                    ║
+[UART_Test] ║ ESP-IDF: v5.5+                                                                 ║
+[UART_Test] ║ Features: UART, Baud Rate Configuration, Flow Control, Pattern Detection,      ║
+[UART_Test] ║ Buffer Operations, Advanced Features, Communication Modes, Async Operations,   ║
+[UART_Test] ║ Callbacks, Statistics and Diagnostics, printf Support, Error Handling,         ║
+[UART_Test] ║ ESP32-C6 Features, Performance, Callback Verification, User Event Task,        ║
+[UART_Test] ║ Event-Driven Pattern Detection, Cleanup                                        ║
+[UART_Test] ║ Architecture: noexcept (no exception handling)                                 ║
+[UART_Test] ╚════════════════════════════════════════════════════════════════════════════════╝
 
-[UART*Test] === CONSTRUCTOR/DESTRUCTOR TESTS ===
-[UART*Test] [SUCCESS] PASSED: test*uart*construction (31.04 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*initialization (65.99 ms)
+[UART_Test] === CONSTRUCTOR/DESTRUCTOR TESTS ===
+[UART_Test] [SUCCESS] PASSED: test_uart_construction (31.04 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_initialization (65.99 ms)
 
-[UART*Test] === BASIC COMMUNICATION TESTS ===
-[UART*Test] [SUCCESS] PASSED: test*uart*basic*communication (74.25 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*baud*rate*configuration (126.07 ms)
+[UART_Test] === BASIC COMMUNICATION TESTS ===
+[UART_Test] [SUCCESS] PASSED: test_uart_basic_communication (74.25 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_baud_rate_configuration (126.07 ms)
 
-[UART*Test] === ADVANCED FEATURES TESTS ===
-[UART*Test] [SUCCESS] PASSED (task): test*uart*pattern*detection (444.76 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*buffer*operations (269.45 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*advanced*features (673.89 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*communication*modes (96.81 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*async*operations (181.19 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*callbacks (94.81 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*statistics*diagnostics (101.05 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*printf*support (75.37 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*error*handling (85.34 ms)
+[UART_Test] === ADVANCED FEATURES TESTS ===
+[UART_Test] [SUCCESS] PASSED (task): test_uart_pattern_detection (444.76 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_buffer_operations (269.45 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_advanced_features (673.89 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_communication_modes (96.81 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_async_operations (181.19 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_callbacks (94.81 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_statistics_diagnostics (101.05 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_printf_support (75.37 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_error_handling (85.34 ms)
 
-[UART*Test] === ESP32-C6 SPECIFIC TESTS ===
-[UART*Test] [SUCCESS] PASSED: test*uart*esp32c6*features (135.87 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*performance (82.07 ms)
-[UART*Test] [SUCCESS] PASSED: test*uart*callback*verification (1404.49 ms)
+[UART_Test] === ESP32-C6 SPECIFIC TESTS ===
+[UART_Test] [SUCCESS] PASSED: test_uart_esp32c6_features (135.87 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_performance (82.07 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_callback_verification (1404.49 ms)
 
-[UART*Test] === USER EVENT TASK TEST ===
-[UART*Test] [SUCCESS] PASSED: test*uart*user*event*task (1483.02 ms)
+[UART_Test] === USER EVENT TASK TEST ===
+[UART_Test] [SUCCESS] PASSED: test_uart_user_event_task (1483.02 ms)
 
-[UART*Test] === COMPREHENSIVE EVENT-DRIVEN PATTERN DETECTION TEST ===
-[UART*Test] [SUCCESS] PASSED: test*uart*event*driven*pattern*detection (419.06 ms)
+[UART_Test] === COMPREHENSIVE EVENT-DRIVEN PATTERN DETECTION TEST ===
+[UART_Test] [SUCCESS] PASSED: test_uart_event_driven_pattern_detection (419.06 ms)
 
-[UART*Test] === CLEANUP TEST ===
-[UART*Test] [SUCCESS] PASSED: test*uart*cleanup (72.50 ms)
+[UART_Test] === CLEANUP TEST ===
+[UART_Test] [SUCCESS] PASSED: test_uart_cleanup (72.50 ms)
 
-[UART*Test] === UART TEST SUMMARY ===
-[UART*Test] Total: 19, Passed: 19, Failed: 0, Success: 100.00%, Time: 5917.04 ms
-[UART*Test] [SUCCESS] ALL UART TESTS PASSED!
+[UART_Test] === UART TEST SUMMARY ===
+[UART_Test] Total: 19, Passed: 19, Failed: 0, Success: 100.00%, Time: 5917.04 ms
+[UART_Test] [SUCCESS] ALL UART TESTS PASSED!
 ```text
 
 ### Pattern Detection Test Results
 **Test 1: Line Pattern Detection (`\n`)**
 ```text
-[UART*Test] === Test 1: Line-oriented pattern detection ('\n') ===
-[UART*Test] Line pattern detection enabled
-[UART*Test] Test data sent: 'Line1\nLine2\nLine3\n' (length: 18)
-[UART*Test] UART*PATTERN*DET event received!
-[UART*Test] Pattern 1 detected at position: 5
-[UART*Test] UART*PATTERN*DET event received!
-[UART*Test] Pattern 2 detected at position: 11
-[UART*Test] UART*PATTERN*DET event received!
-[UART*Test] Pattern 3 detected at position: 17
-[UART*Test] Line pattern detection: 3/3 patterns detected. PASSED
+[UART_Test] === Test 1: Line-oriented pattern detection ('\n') ===
+[UART_Test] Line pattern detection enabled
+[UART_Test] Test data sent: 'Line1\nLine2\nLine3\n' (length: 18)
+[UART_Test] UART_PATTERN_DET event received!
+[UART_Test] Pattern 1 detected at position: 5
+[UART_Test] UART_PATTERN_DET event received!
+[UART_Test] Pattern 2 detected at position: 11
+[UART_Test] UART_PATTERN_DET event received!
+[UART_Test] Pattern 3 detected at position: 17
+[UART_Test] Line pattern detection: 3/3 patterns detected. PASSED
 ```text
 
 **Test 2: AT Pattern Detection (`+++`)**
 ```text
-[UART*Test] === Test 2: AT escape sequence pattern detection ('+++') ===
-[UART*Test] AT escape sequence pattern detection enabled
-[UART*Test] AT test data sent (length: 42)
-[UART*Test] UART*PATTERN*DET event received for +++!
-[UART*Test] AT Pattern 1 detected at position: 9
-[UART*Test] UART*PATTERN*DET event received for +++!
-[UART*Test] AT Pattern 2 detected at position: 30
-[UART*Test] AT pattern detection: 2/2 patterns detected. PASSED
+[UART_Test] === Test 2: AT escape sequence pattern detection ('+++') ===
+[UART_Test] AT escape sequence pattern detection enabled
+[UART_Test] AT test data sent (length: 42)
+[UART_Test] UART_PATTERN_DET event received for +++!
+[UART_Test] AT Pattern 1 detected at position: 9
+[UART_Test] UART_PATTERN_DET event received for +++!
+[UART_Test] AT Pattern 2 detected at position: 30
+[UART_Test] AT pattern detection: 2/2 patterns detected. PASSED
 ```text
 
 ### Event-Driven Pattern Detection Results
 ```text
-[UART*Test] Event-driven pattern detection results:
-[UART*Test]   Total events received: 3
-[UART*Test]   Data events: 0
-[UART*Test]   Pattern events: 3
-[UART*Test]   Other events: 0
-[UART*Test]   Pattern detected: YES
-[UART*Test]   Pattern position: 8
-[UART*Test]   Expected patterns: 3
-[UART*Test] [SUCCESS] Event-driven pattern detection test completed successfully
+[UART_Test] Event-driven pattern detection results:
+[UART_Test]   Total events received: 3
+[UART_Test]   Data events: 0
+[UART_Test]   Pattern events: 3
+[UART_Test]   Other events: 0
+[UART_Test]   Pattern detected: YES
+[UART_Test]   Pattern position: 8
+[UART_Test]   Expected patterns: 3
+[UART_Test] [SUCCESS] Event-driven pattern detection test completed successfully
 ```text
 
 ## Troubleshooting
@@ -355,7 +355,7 @@ esp*err*t uart*enable*pattern*det*baud*intr(
 
 #### Pattern Detection Issues
 - **No Pattern Events**: Check interrupt configuration and timing parameters
-- **Timing Issues**: Verify `chr*tout`, `post*idle`, and `pre*idle` values
+- **Timing Issues**: Verify `chr_tout`, `post_idle`, and `pre_idle` values
 - **Buffer Overflow**: Add delays between data transmission and event processing
 - **Event Queue Issues**: Ensure event queue is properly configured and sized
 
@@ -371,7 +371,7 @@ esp*err*t uart*enable*pattern*det*baud*intr(
 - **Logic Analyzer Sync**: Use GPIO14 as trigger reference
 
 #### UART Configuration Issues
-- **Port Selection**: Use `TEST*UART*PORT*1` for testing (avoid UART0)
+- **Port Selection**: Use `TEST_UART_PORT_1` for testing (avoid UART0)
 - **Pin Configuration**: Verify TX/RX/RTS/CTS pin assignments
 - **Baud Rate**: Ensure consistent baud rate across all operations
 - **Buffer Sizes**: Use appropriate buffer sizes for ESP32-C6 (256+ bytes)
@@ -380,24 +380,24 @@ esp*err*t uart*enable*pattern*det*baud*intr(
 Enable detailed logging by building in Debug mode:
 ```bash
 ## Using build scripts (recommended)
-./scripts/build*example.sh uart*test Debug
+./scripts/build_example.sh uart_test Debug
 
 ## Or direct ESP-IDF build
-idf.py build -DEXAMPLE*TYPE=uart*test -DBUILD*TYPE=Debug
+idf.py build -DEXAMPLE_TYPE=uart_test -DBUILD_TYPE=Debug
 ```text
 
 ### Pattern Detection Debugging
 ```cpp
 // Enable debug logging for pattern detection
-ESP*LOGI(TAG, "Pattern detection enabled: '%c' x%d (chr*tout=%d, post*idle=%d, pre*idle=%d)",
-         pattern*chr, chr*num, chr*tout, post*idle, pre*idle);
+ESP_LOGI(TAG, "Pattern detection enabled: '%c' x%d (chr_tout=%d, post_idle=%d, pre_idle=%d)",
+         pattern_chr, chr_num, chr_tout, post_idle, pre_idle);
 
 // Monitor event queue activity
-ESP*LOGI(TAG, "Event received: type=%d, size=%zu", event.type, event.size);
+ESP_LOGI(TAG, "Event received: type=%d, size=%zu", event.type, event.size);
 
 // Check pattern position
-int pattern*pos = uart->PopPatternPosition();
-ESP*LOGI(TAG, "Pattern detected at position: %d", pattern*pos);
+int pattern_pos = uart->PopPatternPosition();
+ESP_LOGI(TAG, "Pattern detected at position: %d", pattern_pos);
 ```text
 
 ## Performance Metrics
@@ -455,11 +455,11 @@ For production validation:
 Modify the test for different hardware:
 ```cpp
 // UART1 configuration for testing (avoid UART0 - console port)
-static constexpr hf*u8*t TEST*UART*PORT*1 = 1;
-static constexpr hf*u8*t TEST*TX*PIN = 5;   // UART1 TX
-static constexpr hf*u8*t TEST*RX*PIN = 4;   // UART1 RX
-static constexpr hf*u8*t TEST*RTS*PIN = 6;  // UART1 RTS
-static constexpr hf*u8*t TEST*CTS*PIN = 7;  // UART1 CTS
+static constexpr hf_u8_t TEST_UART_PORT_1 = 1;
+static constexpr hf_u8_t TEST_TX_PIN = 5;   // UART1 TX
+static constexpr hf_u8_t TEST_RX_PIN = 4;   // UART1 RX
+static constexpr hf_u8_t TEST_RTS_PIN = 6;  // UART1 RTS
+static constexpr hf_u8_t TEST_CTS_PIN = 7;  // UART1 CTS
 ```text
 
 ### Pattern Detection Configuration
@@ -477,31 +477,31 @@ result = uart->EnablePatternDetection('$', 2, 10, 5, 5);
 ### Event Queue Configuration
 ```cpp
 // Enhanced event queue for comprehensive testing
-config.event*queue*size = 32;  // Larger queue for pattern detection
+config.event_queue_size = 32;  // Larger queue for pattern detection
 
 // Interrupt configuration for pattern detection
 result = uart->ConfigureInterrupts(
-    UART*RXFIFO*FULL*INT*ENA*M | UART*RXFIFO*TOUT*INT*ENA*M, 32, 5);
+    UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 32, 5);
 ```text
 
 ### Test Parameters
 Customize test behavior:
 ```cpp
 // Pattern detection timing optimization
-static constexpr int PATTERN*CHR*TIMEOUT = 5;    // Relaxed timing
-static constexpr int PATTERN*POST*IDLE = 0;      // No idle requirement
-static constexpr int PATTERN*PRE*IDLE = 0;       // No idle requirement
+static constexpr int PATTERN_CHR_TIMEOUT = 5;    // Relaxed timing
+static constexpr int PATTERN_POST_IDLE = 0;      // No idle requirement
+static constexpr int PATTERN_PRE_IDLE = 0;       // No idle requirement
 
 // Test progression configuration
-static constexpr uint32*t TEST*PROGRESS*DELAY*MS = 100; // Progress indicator timing
-static constexpr uint32*t PATTERN*TEST*TIMEOUT*MS = 3000; // Pattern detection timeout
+static constexpr uint32_t TEST_PROGRESS_DELAY_MS = 100; // Progress indicator timing
+static constexpr uint32_t PATTERN_TEST_TIMEOUT_MS = 3000; // Pattern detection timeout
 ```text
 
 ## ESP32-C6 Specific Features
 
 ### UART Peripheral
 - **Ports**: 3 UART ports (UART0, UART1, UART2)
-- **Clock Source**: PLL*F80M (80 MHz) with automatic fallback
+- **Clock Source**: PLL_F80M (80 MHz) with automatic fallback
 - **FIFO Size**: 128 bytes hardware FIFO
 - **Buffer Support**: Configurable ring buffers (256+ bytes recommended)
 - **Interrupt Support**: Comprehensive interrupt configuration
@@ -511,7 +511,7 @@ static constexpr uint32*t PATTERN*TEST*TIMEOUT*MS = 3000; // Pattern detection t
 - **Character Patterns**: Single or multiple consecutive characters
 - **Timing Control**: Configurable character timeout and idle periods
 - **Position Tracking**: Pattern position detection and queue management
-- **Event Generation**: Automatic UART*PATTERN*DET events
+- **Event Generation**: Automatic UART_PATTERN_DET events
 - **Queue Management**: Configurable pattern position queue
 
 ### Testing Advantages
@@ -528,7 +528,7 @@ From the actual test output, several ESP32-C6 specific behaviors were observed:
 
 **Break Signal Handling:**
 ```text
-W (3456) EspUart: uart*write*bytes*with*break failed (ERROR), trying manual break via GPIO
+W (3456) EspUart: uart_write_bytes_with_break failed (ERROR), trying manual break via GPIO
 W (3556) EspUart: Break condition sent via manual GPIO control for 100 ms (ESP32-C6 fallback)
 ```text
 - ESP32-C6 has limited break signal support in ESP-IDF v5.5
@@ -539,7 +539,7 @@ W (3556) EspUart: Break condition sent via manual GPIO control for 100 ms (ESP32
 ```text
 W (4276) EspUart: RS485 advanced features not supported in ESP-IDF v5.5
 W (4286) EspUart: IrDA not supported in ESP-IDF v5.5
-W (4286) UART*Test: IrDA not supported on ESP32-C6 (expected): 4
+W (4286) UART_Test: IrDA not supported on ESP32-C6 (expected): 4
 ```text
 - RS485 mode supported but with limited advanced features
 - IrDA mode not supported (expected limitation)

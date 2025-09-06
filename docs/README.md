@@ -156,12 +156,12 @@ All interfaces follow a consistent inheritance pattern across MCU platforms:
 │  ┌────────────────────────────────────────────────────────────────────────────┐ │
 │  │                    BaseInterface (Pure Virtual)                            │ │
 │  │                                                                            │ │
-│  │  + EnsureInitialized() → error*t                                           │ │
+│  │  + EnsureInitialized() → error_t                                           │ │
 │  │  + IsInitialized() → bool                                                  │ │
-│  │  + GetCapabilities() → capabilities*t                                      │ │
-│  │  + Reset() → error*t                                                       │ │
-│  │  + GetLastError() → error*t                                                │ │
-│  │  + GetStatistics() → statistics*t                                          │ │
+│  │  + GetCapabilities() → capabilities_t                                      │ │
+│  │  + Reset() → error_t                                                       │ │
+│  │  + GetLastError() → error_t                                                │ │
+│  │  + GetStatistics() → statistics_t                                          │ │
 │  └────────────────────────────────────────────────────────────────────────────┘ │
 └─────────────────────────────────────────────────────────────────────────────────┘
                                     │
@@ -194,31 +194,31 @@ multiple MCU platforms:
 
 ```cpp
 // Platform-agnostic integer types for all MCU platforms
-using hf*u8*t = uint8*t;    // 8-bit unsigned
-using hf*u16*t = uint16*t;  // 16-bit unsigned  
-using hf*u32*t = uint32*t;  // 32-bit unsigned
-using hf*u64*t = uint64*t;  // 64-bit unsigned
-using hf*i8*t = int8*t;     // 8-bit signed
-using hf*i16*t = int16*t;   // 16-bit signed
-using hf*i32*t = int32*t;   // 32-bit signed
-using hf*i64*t = int64*t;   // 64-bit signed
+using hf_u8_t = uint8_t;    // 8-bit unsigned
+using hf_u16_t = uint16_t;  // 16-bit unsigned  
+using hf_u32_t = uint32_t;  // 32-bit unsigned
+using hf_u64_t = uint64_t;  // 64-bit unsigned
+using hf_i8_t = int8_t;     // 8-bit signed
+using hf_i16_t = int16_t;   // 16-bit signed
+using hf_i32_t = int32_t;   // 32-bit signed
+using hf_i64_t = int64_t;   // 64-bit signed
 ```text
 
 ### 🏭 **Hardware Abstraction Types**
 
 ```cpp
 // Hardware abstraction types for all MCU platforms
-using hf*pin*num*t = hf*i32*t;          // GPIO pin numbers
-using hf*channel*id*t = hf*u32*t;       // ADC/PWM/DMA channels
-using hf*time*t = hf*u64*t;             // Time values in microseconds
-using hf*frequency*hz*t = hf*u32*t;     // Frequency values in Hz
+using hf_pin_num_t = hf_i32_t;          // GPIO pin numbers
+using hf_channel_id_t = hf_u32_t;       // ADC/PWM/DMA channels
+using hf_time_t = hf_u64_t;             // Time values in microseconds
+using hf_frequency_hz_t = hf_u32_t;     // Frequency values in Hz
 
 // Application-specific semantic types
-using hf*voltage*mv*t = hf*u32*t;       // Voltage in millivolts
-using hf*current*ma*t = hf*u32*t;       // Current in milliamps
-using hf*temperature*c*t = hf*i32*t;    // Temperature in Celsius (scaled by 100)
-using hf*speed*rpm*t = hf*u32*t;        // Motor speed in RPM
-using hf*torque*nm*t = hf*u32*t;        // Torque in Newton-meters (scaled)
+using hf_voltage_mv_t = hf_u32_t;       // Voltage in millivolts
+using hf_current_ma_t = hf_u32_t;       // Current in milliamps
+using hf_temperature_c_t = hf_i32_t;    // Temperature in Celsius (scaled by 100)
+using hf_speed_rpm_t = hf_u32_t;        // Motor speed in RPM
+using hf_torque_nm_t = hf_u32_t;        // Torque in Newton-meters (scaled)
 ```text
 
 📖 **Complete Documentation**: [HardwareTypes API Reference](api/HardwareTypes.md)
@@ -471,10 +471,10 @@ git clone https://github.com/hardfoc/hf-internal-interface-wrap.git
 cd hf-internal-interface-wrap
 
 ## For ESP32 projects, add to your CMakeLists.txt
-idf*component*register(
+idf_component_register(
     SRCS "main.cpp"
-    INCLUDE*DIRS "."
-    REQUIRES hf*internal*interface*wrap
+    INCLUDE_DIRS "."
+    REQUIRES hf_internal_interface_wrap
 )
 
 ## For STM32 projects (future)
@@ -488,32 +488,32 @@ idf*component*register(
 #include "inc/mcu/esp32/EspGpio.h"
 
 // Create output pin for LED control
-EspGpio led*pin(GPIO*NUM*2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
+EspGpio led_pin(GPIO_NUM_2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 
 // Create input pin for button
-EspGpio button*pin(GPIO*NUM*0, hf*gpio*direction*t::HF*GPIO*DIRECTION*INPUT,
-                  hf*gpio*active*state*t::HF*GPIO*ACTIVE*LOW,
-                  hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
-                  hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*UP);
+EspGpio button_pin(GPIO_NUM_0, hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+                  hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW,
+                  hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                  hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP);
 
-void app*main() {
+void app_main() {
     // Initialize pins
-    led*pin.EnsureInitialized();
-    button*pin.EnsureInitialized();
+    led_pin.EnsureInitialized();
+    button_pin.EnsureInitialized();
     
     while (true) {
-        if (button*pin.IsActive()) {
-            led*pin.SetActive();    // Turn on LED when button pressed
+        if (button_pin.IsActive()) {
+            led_pin.SetActive();    // Turn on LED when button pressed
         } else {
-            led*pin.SetInactive();  // Turn off LED when button released
+            led_pin.SetInactive();  // Turn off LED when button released
         }
-        vTaskDelay(pdMS*TO*TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 
 // STM32 Implementation (Future)
 // #include "inc/mcu/stm32/StmGpio.h"
-// StmGpio led*pin(GPIO*PIN*5, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
+// StmGpio led_pin(GPIO_PIN_5, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 // ... same API, different implementation
 ```text
 
@@ -523,8 +523,8 @@ void app*main() {
 // ESP32 Family Implementation (Current)
 #include "inc/mcu/esp32/EspAdc.h"
 
-void read*sensors() {
-    EspAdc adc(ADC*UNIT*1, ADC*ATTEN*DB*11);
+void read_sensors() {
+    EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
     
     // Initialize ADC
     if (!adc.EnsureInitialized()) {
@@ -533,23 +533,23 @@ void read*sensors() {
     }
     
     // Read current sensor (channel 0)
-    float current*voltage;
-    if (adc.ReadChannelV(0, current*voltage) == hf*adc*err*t::ADC*SUCCESS) {
-        float current*amps = (current*voltage - 2.5f) / 0.1f;  // ACS712 conversion
-        printf("Current: %.2f A\n", current*amps);
+    float current_voltage;
+    if (adc.ReadChannelV(0, current_voltage) == hf_adc_err_t::ADC_SUCCESS) {
+        float current_amps = (current_voltage - 2.5f) / 0.1f;  // ACS712 conversion
+        printf("Current: %.2f A\n", current_amps);
     }
     
     // Read position sensor (channel 1)
-    float position*voltage;
-    if (adc.ReadChannelV(1, position*voltage) == hf*adc*err*t::ADC*SUCCESS) {
-        float position*degrees = (position*voltage / 3.3f) * 360.0f;
-        printf("Position: %.1f degrees\n", position*degrees);
+    float position_voltage;
+    if (adc.ReadChannelV(1, position_voltage) == hf_adc_err_t::ADC_SUCCESS) {
+        float position_degrees = (position_voltage / 3.3f) * 360.0f;
+        printf("Position: %.1f degrees\n", position_degrees);
     }
 }
 
 // STM32 Implementation (Future)
 // #include "inc/mcu/stm32/StmAdc.h"
-// StmAdc adc(ADC1, ADC*CHANNEL*0);
+// StmAdc adc(ADC1, ADC_CHANNEL_0);
 // ... same API, different implementation
 ```text
 

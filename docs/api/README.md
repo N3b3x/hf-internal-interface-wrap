@@ -172,16 +172,16 @@ Platform-agnostic type definitions for consistent APIs:
 
 ```cpp
 // Integer types
-using hf*u8*t = uint8*t;
-using hf*u16*t = uint16*t;
-using hf*u32*t = uint32*t;
-using hf*u64*t = uint64*t;
+using hf_u8_t = uint8_t;
+using hf_u16_t = uint16_t;
+using hf_u32_t = uint32_t;
+using hf_u64_t = uint64_t;
 
 // Hardware types
-using hf*pin*num*t = hf*i32*t;
-using hf*channel*id*t = hf*u32*t;
-using hf*frequency*hz*t = hf*u32*t;
-using hf*time*t = hf*u32*t;
+using hf_pin_num_t = hf_i32_t;
+using hf_channel_id_t = hf_u32_t;
+using hf_frequency_hz_t = hf_u32_t;
+using hf_time_t = hf_u32_t;
 ```text
 
 ---
@@ -204,8 +204,8 @@ using hf*time*t = hf*u32*t;
 
 ```cpp
 // Use platform-specific implementations
-EspAdc adc(ADC*UNIT*1, ADC*ATTEN*DB*11);
-EspGpio led*pin(2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
+EspAdc adc(ADC_UNIT_1, ADC_ATTEN_DB_11);
+EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 ```text
 
 ### **3. Initialize and Use**
@@ -213,24 +213,24 @@ EspGpio led*pin(2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
 ```cpp
 // Lazy initialization (automatic on first use)
 adc.EnsureInitialized();
-led*pin.EnsureInitialized();
+led_pin.EnsureInitialized();
 
 // Use the hardware
 float voltage;
-if (adc.ReadChannelV(0, voltage) == hf*adc*err*t::ADC*SUCCESS) {
+if (adc.ReadChannelV(0, voltage) == hf_adc_err_t::ADC_SUCCESS) {
     printf("Voltage: %.3f V\n", voltage);
 }
 
 if (voltage > 3.0f) {
-    led*pin.SetActive();
+    led_pin.SetActive();
 }
 ```text
 
 ### **4. Error Handling**
 
 ```cpp
-hf*adc*err*t result = adc.ReadChannelV(0, voltage);
-if (result != hf*adc*err*t::ADC*SUCCESS) {
+hf_adc_err_t result = adc.ReadChannelV(0, voltage);
+if (result != hf_adc_err_t::ADC_SUCCESS) {
     printf("ADC Error: %s\n", HfAdcErrToString(result));
     // Handle error appropriately
 }
@@ -249,34 +249,34 @@ if (result != hf*adc*err*t::ADC*SUCCESS) {
 
 class MotorController {
 private:
-    EspAdc current*sensor*;
-    EspPwm motor*driver*;
-    EspGpio enable*pin*;
+    EspAdc current_sensor*;
+    EspPwm motor_driver*;
+    EspGpio enable_pin*;
     
 public:
     MotorController() 
-        : current*sensor*(ADC*UNIT*1, ADC*ATTEN*DB*11)
-        , motor*driver*()
-        , enable*pin*(5, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT) {}
+        : current_sensor*(ADC_UNIT_1, ADC_ATTEN_DB_11)
+        , motor_driver*()
+        , enable_pin*(5, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT) {}
     
     bool Initialize() {
-        current*sensor*.EnsureInitialized();
-        motor*driver*.EnsureInitialized();
-        enable*pin*.EnsureInitialized();
+        current_sensor*.EnsureInitialized();
+        motor_driver*.EnsureInitialized();
+        enable_pin*.EnsureInitialized();
         
         // Configure motor driver
-        motor*driver*.EnableChannel(0);
-        motor*driver*.SetFrequency(0, 20000);  // 20kHz PWM
+        motor_driver*.EnableChannel(0);
+        motor_driver*.SetFrequency(0, 20000);  // 20kHz PWM
         return true;
     }
     
-    void SetSpeed(float speed*percent) {
-        motor*driver*.SetDutyCycle(0, speed*percent);
+    void SetSpeed(float speed_percent) {
+        motor_driver*.SetDutyCycle(0, speed_percent);
     }
     
     float GetCurrent() {
         float voltage;
-        current*sensor*.ReadChannelV(0, voltage);
+        current_sensor*.ReadChannelV(0, voltage);
         return (voltage - 2.5f) / 0.1f;  // Convert to current (A)
     }
 };
@@ -290,16 +290,16 @@ public:
 
 class SensorNetwork {
 private:
-    EspI2c i2c*bus*;
-    EspAdc analog*sensors*;
+    EspI2c i2c_bus*;
+    EspAdc analog_sensors*;
     
 public:
     bool ScanSensors() {
-        hf*u8*t addresses[16];
-        hf*u8*t count = i2c*bus*.ScanBus(addresses, 16);
+        hf_u8_t addresses[16];
+        hf_u8_t count = i2c_bus*.ScanBus(addresses, 16);
         
         printf("Found %u I2C devices:\n", count);
-        for (hf*u8*t i = 0; i < count; i++) {
+        for (hf_u8_t i = 0; i < count; i++) {
             printf("  Address: 0x%02X\n", addresses[i]);
         }
         return count > 0;
@@ -307,9 +307,9 @@ public:
     
     float ReadTemperature() {
         // Read from I2C temperature sensor
-        hf*u8*t data[2];
-        if (i2c*bus*.ReadRegisters(0x48, 0x00, data, 2)) {
-            hf*u16*t raw = (data[0] << 8) | data[1];
+        hf_u8_t data[2];
+        if (i2c_bus*.ReadRegisters(0x48, 0x00, data, 2)) {
+            hf_u16_t raw = (data[0] << 8) | data[1];
             return (raw >> 4) * 0.0625f;  // Convert to Celsius
         }
         return -999.0f;  // Error value
@@ -317,7 +317,7 @@ public:
     
     float ReadPressure() {
         float voltage;
-        analog*sensors*.ReadChannelV(1, voltage);
+        analog_sensors*.ReadChannelV(1, voltage);
         return voltage * 100.0f;  // Convert to PSI
     }
 };

@@ -49,9 +49,9 @@ IOMUX optimization, multi-device management, and comprehensive error handling.
 
 |---------|------------------|-------------|
 
-| **SPI Hosts** | SPI2*HOST (GP-SPI2) | General-purpose SPI host |
+| **SPI Hosts** | SPI2_HOST (GP-SPI2) | General-purpose SPI host |
 
-| **Clock Sources** | PLL*F80M, XTAL, RC*FAST | Configurable clock sources for power optimization |
+| **Clock Sources** | PLL_F80M, XTAL, RC_FAST | Configurable clock sources for power optimization |
 
 | **DMA Channels** | 0-3 | Hardware DMA acceleration |
 
@@ -72,8 +72,8 @@ The EspSpi library follows a two-tier architecture:
 │ + Initialize() : bool                                           │
 │ + Deinitialize() : bool                                         │
 │ + CreateDevice(config) : int                                    │
-│ + RemoveDevice(device*id) : bool                                │
-│ + GetDevice(device*id) : BaseSpi*                              │
+│ + RemoveDevice(device_id) : bool                                │
+│ + GetDevice(device_id) : BaseSpi*                              │
 │ + IsInitialized() : bool                                        │
 └─────────────────────────────────────────────────────────────────┘
                                 │
@@ -84,10 +84,10 @@ The EspSpi library follows a two-tier architecture:
 ├─────────────────────────────────────────────────────────────────┤
 │ + Initialize() : bool                                           │
 │ + Deinitialize() : bool                                         │
-│ + Transfer(tx*data, rx*data, length, timeout) : hf*spi*err*t   │
-│ + Transmit(data, length, timeout) : hf*spi*err*t               │
-│ + Receive(data, length, timeout) : hf*spi*err*t                │
-│ + GetDeviceStatus(status) : hf*spi*err*t                       │
+│ + Transfer(tx_data, rx_data, length, timeout) : hf_spi_err_t   │
+│ + Transmit(data, length, timeout) : hf_spi_err_t               │
+│ + Receive(data, length, timeout) : hf_spi_err_t                │
+│ + GetDeviceStatus(status) : hf_spi_err_t                       │
 └─────────────────────────────────────────────────────────────────┘
                                 │
                                 │ implements
@@ -98,7 +98,7 @@ The EspSpi library follows a two-tier architecture:
 ├─────────────────────────────────────────────────────────────────┤
 │ + Initialize() : bool                                           │
 │ + Deinitialize() : bool                                         │
-│ + Transfer() : hf*spi*err*t                                    │
+│ + Transfer() : hf_spi_err_t                                    │
 └─────────────────────────────────────────────────────────────────┘
 ```text
 
@@ -119,16 +119,16 @@ The main SPI bus controller that manages the ESP-IDF SPI host and multiple devic
 
 #### **Constructor**
 ```cpp
-EspSpiBus(const hf*spi*bus*config*t& config) noexcept
+EspSpiBus(const hf_spi_bus_config_t& config) noexcept
 ```text
 
 #### **Key Methods**
 ```cpp
 bool Initialize() noexcept;                    // Initialize ESP-IDF SPI bus
 bool Deinitialize() noexcept;                  // Clean up ESP-IDF resources
-int CreateDevice(const hf*spi*device*config*t& config);  // Create device wrapper
-bool RemoveDevice(int device*id);              // Remove device from bus
-BaseSpi* GetDevice(int device*id);            // Get device by ID
+int CreateDevice(const hf_spi_device_config_t& config);  // Create device wrapper
+bool RemoveDevice(int device_id);              // Remove device from bus
+BaseSpi* GetDevice(int device_id);            // Get device by ID
 bool IsInitialized() const noexcept;          // Check initialization status
 ```text
 
@@ -138,55 +138,55 @@ Represents a single SPI device on the bus, implementing the `BaseSpi` interface.
 
 #### **Constructor**
 ```cpp
-EspSpiDevice(EspSpiBus* parent, const hf*spi*device*config*t& config)
+EspSpiDevice(EspSpiBus* parent, const hf_spi_device_config_t& config)
 ```text
 
 #### **Key Methods**
 ```cpp
 bool Initialize() noexcept override;           // Create ESP-IDF device
 bool Deinitialize() noexcept override;        // Remove ESP-IDF device
-hf*spi*err*t Transfer(const uint8*t* tx*data, uint8*t* rx*data, 
-                      size*t length, uint32*t timeout*ms) override;
-hf*spi*err*t Transmit(const uint8*t* data, size*t length, 
-                      uint32*t timeout*ms) override;
-hf*spi*err*t Receive(uint8*t* data, size*t length, 
-                     uint32*t timeout*ms) override;
+hf_spi_err_t Transfer(const uint8_t* tx_data, uint8_t* rx_data, 
+                      size_t length, uint32_t timeout_ms) override;
+hf_spi_err_t Transmit(const uint8_t* data, size_t length, 
+                      uint32_t timeout_ms) override;
+hf_spi_err_t Receive(uint8_t* data, size_t length, 
+                     uint32_t timeout_ms) override;
 ```text
 
 ---
 
 ## 📋 **Configuration**
 
-### **Bus Configuration (`hf*spi*bus*config*t`)**
+### **Bus Configuration (`hf_spi_bus_config_t`)**
 
 ```cpp
 typedef struct {
-    hf*pin*num*t mosi*pin;           // MOSI pin number
-    hf*pin*num*t miso*pin;           // MISO pin number  
-    hf*pin*num*t sclk*pin;           // SCLK pin number
-    hf*host*id*t host;               // SPI host ID (SPI2*HOST = 1)
-    uint32*t clock*speed*hz;         // Bus clock frequency
-    uint8*t dma*channel;             // DMA channel (0xFF = auto, 0 = disabled)
-    bool use*iomux;                  // Use IOMUX for maximum performance
-    uint32*t timeout*ms;             // Bus timeout in milliseconds
-} hf*spi*bus*config*t;
+    hf_pin_num_t mosi_pin;           // MOSI pin number
+    hf_pin_num_t miso_pin;           // MISO pin number  
+    hf_pin_num_t sclk_pin;           // SCLK pin number
+    hf_host_id_t host;               // SPI host ID (SPI2_HOST = 1)
+    uint32_t clock_speed_hz;         // Bus clock frequency
+    uint8_t dma_channel;             // DMA channel (0xFF = auto, 0 = disabled)
+    bool use_iomux;                  // Use IOMUX for maximum performance
+    uint32_t timeout_ms;             // Bus timeout in milliseconds
+} hf_spi_bus_config_t;
 ```text
 
-### **Device Configuration (`hf*spi*device*config*t`)**
+### **Device Configuration (`hf_spi_device_config_t`)**
 
 ```cpp
 typedef struct {
-    uint32*t clock*speed*hz;         // Device-specific clock frequency
-    hf*spi*mode*t mode;              // SPI mode (0, 1, 2, 3)
-    hf*pin*num*t cs*pin;            // Chip select pin
-    uint8*t queue*size;              // Transaction queue size
-    uint8*t command*bits;            // Command bits (0 = disabled)
-    uint8*t address*bits;            // Address bits (0 = disabled)
-    uint8*t dummy*bits;              // Dummy bits between phases
-    uint32*t cs*ena*pretrans;        // CS setup time (in SPI clock cycles)
-    uint32*t cs*ena*posttrans;       // CS hold time (in SPI clock cycles)
-    hf*spi*clock*source*t clock*source; // Clock source selection
-} hf*spi*device*config*t;
+    uint32_t clock_speed_hz;         // Device-specific clock frequency
+    hf_spi_mode_t mode;              // SPI mode (0, 1, 2, 3)
+    hf_pin_num_t cs_pin;            // Chip select pin
+    uint8_t queue_size;              // Transaction queue size
+    uint8_t command_bits;            // Command bits (0 = disabled)
+    uint8_t address_bits;            // Address bits (0 = disabled)
+    uint8_t dummy_bits;              // Dummy bits between phases
+    uint32_t cs_ena_pretrans;        // CS setup time (in SPI clock cycles)
+    uint32_t cs_ena_posttrans;       // CS hold time (in SPI clock cycles)
+    hf_spi_clock_source_t clock_source; // Clock source selection
+} hf_spi_device_config_t;
 ```text
 
 ### **Clock Sources**
@@ -195,11 +195,11 @@ typedef struct {
 
 |------------|-------------|-----------|----------|
 
-| `PLL*F80M*CLK` | PLL clock | 80 MHz | High-speed operations |
+| `PLL_F80M_CLK` | PLL clock | 80 MHz | High-speed operations |
 
-| `XTAL*CLK` | Crystal oscillator | 40 MHz | Stable, power-efficient |
+| `XTAL_CLK` | Crystal oscillator | 40 MHz | Stable, power-efficient |
 
-| `RC*FAST*CLK` | RC oscillator | ~17.5 MHz | Low-power, approximate |
+| `RC_FAST_CLK` | RC oscillator | ~17.5 MHz | Low-power, approximate |
 
 ### **SPI Modes**
 
@@ -225,51 +225,51 @@ typedef struct {
 #include "mcu/esp32/EspSpi.h"
 
 // 1. Create bus configuration
-hf*spi*bus*config*t bus*config = {};
-bus*config.mosi*pin = 7;           // GPIO7
-bus*config.miso*pin = 2;           // GPIO2  
-bus*config.sclk*pin = 6;           // GPIO6
-bus*config.host = static*cast<hf*host*id*t>(1);  // SPI2*HOST
-bus*config.clock*speed*hz = 10000000;  // 10 MHz
-bus*config.dma*channel = 0;        // Use DMA channel 0
-bus*config.use*iomux = true;       // Maximum performance
+hf_spi_bus_config_t bus_config = {};
+bus_config.mosi_pin = 7;           // GPIO7
+bus_config.miso_pin = 2;           // GPIO2  
+bus_config.sclk_pin = 6;           // GPIO6
+bus_config.host = static_cast<hf_host_id_t>(1);  // SPI2_HOST
+bus_config.clock_speed_hz = 10000000;  // 10 MHz
+bus_config.dma_channel = 0;        // Use DMA channel 0
+bus_config.use_iomux = true;       // Maximum performance
 
 // 2. Create and initialize bus
-auto spi*bus = std::make*unique<EspSpiBus>(bus*config);
-if (!spi*bus->Initialize()) {
-    ESP*LOGE(TAG, "Failed to initialize SPI bus");
+auto spi_bus = std::make_unique<EspSpiBus>(bus_config);
+if (!spi_bus->Initialize()) {
+    ESP_LOGE(TAG, "Failed to initialize SPI bus");
     return;
 }
 
 // 3. Create device configuration
-hf*spi*device*config*t device*config = {};
-device*config.clock*speed*hz = 10000000;  // 10 MHz
-device*config.mode = hf*spi*mode*t::HF*SPI*MODE*0;
-device*config.cs*pin = 21;         // GPIO21
-device*config.queue*size = 7;      // Transaction queue
+hf_spi_device_config_t device_config = {};
+device_config.clock_speed_hz = 10000000;  // 10 MHz
+device_config.mode = hf_spi_mode_t::HF_SPI_MODE_0;
+device_config.cs_pin = 21;         // GPIO21
+device_config.queue_size = 7;      // Transaction queue
 
 // 4. Create and initialize device
-int device*id = spi*bus->CreateDevice(device*config);
-if (device*id < 0) {
-    ESP*LOGE(TAG, "Failed to create SPI device");
+int device_id = spi_bus->CreateDevice(device_config);
+if (device_id < 0) {
+    ESP_LOGE(TAG, "Failed to create SPI device");
     return;
 }
 
-BaseSpi* device = spi*bus->GetDevice(device*id);
+BaseSpi* device = spi_bus->GetDevice(device_id);
 if (!device->Initialize()) {
-    ESP*LOGE(TAG, "Failed to initialize SPI device");
+    ESP_LOGE(TAG, "Failed to initialize SPI device");
     return;
 }
 
 // 5. Perform data transfer
-uint8*t tx*data[] = {0xAA, 0x55, 0x12, 0x34};
-uint8*t rx*data[4] = {0};
+uint8_t tx_data[] = {0xAA, 0x55, 0x12, 0x34};
+uint8_t rx_data[4] = {0};
 
-hf*spi*err*t result = device->Transfer(tx*data, rx*data, 4, 1000);
-if (result == hf*spi*err*t::SPI*SUCCESS) {
-    ESP*LOGI(TAG, "Transfer successful");
+hf_spi_err_t result = device->Transfer(tx_data, rx_data, 4, 1000);
+if (result == hf_spi_err_t::SPI_SUCCESS) {
+    ESP_LOGI(TAG, "Transfer successful");
 } else {
-    ESP*LOGE(TAG, "Transfer failed: %s", HfSpiErrToString(result).data());
+    ESP_LOGE(TAG, "Transfer failed: %s", HfSpiErrToString(result).data());
 }
 ```text
 
@@ -277,45 +277,45 @@ if (result == hf*spi*err*t::SPI*SUCCESS) {
 
 ```cpp
 // Create multiple devices on the same bus
-hf*spi*device*config*t device1*config = {};
-device1*config.clock*speed*hz = 10000000;
-device1*config.mode = hf*spi*mode*t::HF*SPI*MODE*0;
-device1*config.cs*pin = 21;
+hf_spi_device_config_t device1_config = {};
+device1_config.clock_speed_hz = 10000000;
+device1_config.mode = hf_spi_mode_t::HF_SPI_MODE_0;
+device1_config.cs_pin = 21;
 
-hf*spi*device*config*t device2*config = {};
-device2*config.clock*speed*hz = 5000000;
-device2*config.mode = hf*spi*mode*t::HF*SPI*MODE*1;
-device2*config.cs*pin = 22;
+hf_spi_device_config_t device2_config = {};
+device2_config.clock_speed_hz = 5000000;
+device2_config.mode = hf_spi_mode_t::HF_SPI_MODE_1;
+device2_config.cs_pin = 22;
 
-int device1*id = spi*bus->CreateDevice(device1*config);
-int device2*id = spi*bus->CreateDevice(device2*config);
+int device1_id = spi_bus->CreateDevice(device1_config);
+int device2_id = spi_bus->CreateDevice(device2_config);
 
-BaseSpi* device1 = spi*bus->GetDevice(device1*id);
-BaseSpi* device2 = spi*bus->GetDevice(device2*id);
+BaseSpi* device1 = spi_bus->GetDevice(device1_id);
+BaseSpi* device2 = spi_bus->GetDevice(device2_id);
 
 device1->Initialize();
 device2->Initialize();
 
 // Use devices independently
-device1->Transfer(tx*data1, rx*data1, 4, 1000);
-device2->Transfer(tx*data2, rx*data2, 8, 1000);
+device1->Transfer(tx_data1, rx_data1, 4, 1000);
+device2->Transfer(tx_data2, rx_data2, 8, 1000);
 ```text
 
 ### **Advanced Configuration**
 
 ```cpp
 // High-speed device with custom timing
-hf*spi*device*config*t fast*device*config = {};
-fast*device*config.clock*speed*hz = 80000000;  // 80 MHz
-fast*device*config.mode = hf*spi*mode*t::HF*SPI*MODE*0;
-fast*device*config.cs*pin = 21;
-fast*device*config.queue*size = 15;
-fast*device*config.command*bits = 8;           // 8-bit command phase
-fast*device*config.address*bits = 24;          // 24-bit address phase
-fast*device*config.dummy*bits = 8;             // 8 dummy bits
-fast*device*config.cs*ena*pretrans = 2;        // 2 clock cycles setup
-fast*device*config.cs*ena*posttrans = 2;       // 2 clock cycles hold
-fast*device*config.clock*source = hf*spi*clock*source*t::PLL*F80M*CLK;
+hf_spi_device_config_t fast_device_config = {};
+fast_device_config.clock_speed_hz = 80000000;  // 80 MHz
+fast_device_config.mode = hf_spi_mode_t::HF_SPI_MODE_0;
+fast_device_config.cs_pin = 21;
+fast_device_config.queue_size = 15;
+fast_device_config.command_bits = 8;           // 8-bit command phase
+fast_device_config.address_bits = 24;          // 24-bit address phase
+fast_device_config.dummy_bits = 8;             // 8 dummy bits
+fast_device_config.cs_ena_pretrans = 2;        // 2 clock cycles setup
+fast_device_config.cs_ena_posttrans = 2;       // 2 clock cycles hold
+fast_device_config.clock_source = hf_spi_clock_source_t::PLL_F80M_CLK;
 ```text
 
 ---
@@ -324,14 +324,14 @@ fast*device*config.clock*source = hf*spi*clock*source*t::PLL*F80M*CLK;
 
 ### **Performance Optimization**
 
-1. **Use IOMUX Pins**: Enable `use*iomux = true` for maximum performance
+1. **Use IOMUX Pins**: Enable `use_iomux = true` for maximum performance
 2. **DMA Configuration**: Use dedicated DMA channels for large transfers (>64 bytes)
-3. **Clock Source Selection**: Use `PLL*F80M*CLK` for high-speed, `XTAL*CLK` for stability
+3. **Clock Source Selection**: Use `PLL_F80M_CLK` for high-speed, `XTAL_CLK` for stability
 4. **Queue Size**: Set appropriate queue size based on application needs
 
 ### **Memory Management**
 
-1. **RAII Pattern**: Use `std::unique*ptr` for automatic cleanup
+1. **RAII Pattern**: Use `std::unique_ptr` for automatic cleanup
 2. **Device Lifecycle**: Always call `Initialize()` after `CreateDevice()`
 3. **Resource Cleanup**: Let destructors handle cleanup automatically
 
@@ -353,9 +353,9 @@ fast*device*config.clock*source = hf*spi*clock*source*t::PLL*F80M*CLK;
 
 ### **Common Issues**
 
-#### **"invalid host*id" Error**
+#### **"invalid host_id" Error**
 - **Cause**: Incorrect host ID for ESP32-C6
-- **Solution**: Use `static*cast<hf*host*id*t>(1)` for `SPI2*HOST`
+- **Solution**: Use `static_cast<hf_host_id_t>(1)` for `SPI2_HOST`
 
 #### **Large Transfer Failures (>256 bytes)**
 - **Cause**: DMA configuration issues or memory constraints
@@ -380,12 +380,12 @@ fast*device*config.clock*source = hf*spi*clock*source*t::PLL*F80M*CLK;
 
 ```cpp
 // Measure transfer performance
-uint64*t start*time = esp*timer*get*time();
-hf*spi*err*t result = device->Transfer(tx*data, rx*data, length, timeout);
-uint64*t end*time = esp*timer*get*time();
-uint64*t transfer*time = end*time - start*time;
+uint64_t start_time = esp_timer_get_time();
+hf_spi_err_t result = device->Transfer(tx_data, rx_data, length, timeout);
+uint64_t end_time = esp_timer_get_time();
+uint64_t transfer_time = end_time - start_time;
 
-ESP*LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer*time);
+ESP_LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer_time);
 ```text
 
 ---
@@ -404,7 +404,7 @@ ESP*LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer*time);
 - **[BaseSpi API Reference](../api/BaseSpi.md)** - Abstract SPI interface
 - **[Hardware Types](../api/HardwareTypes.md)** - Type definitions
 - **[SPI Comprehensive Tests](../../examples/esp32/docs/README_SPI_TEST.md)** - Complete SPI validation
-- **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi*master.html)** - Official ESP-IDF documentation
+- **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html)** - Official ESP-IDF documentation
 
 ---
 

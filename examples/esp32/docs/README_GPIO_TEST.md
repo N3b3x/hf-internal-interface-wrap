@@ -74,13 +74,13 @@ For complete loopback testing, connect:
 
 ```bash
 ## Build GPIO test suite (Release)
-idf.py build -DEXAMPLE*TYPE=gpio*test -DBUILD*TYPE=Release
+idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Release
 
 ## Build GPIO test suite (Debug)
-idf.py build -DEXAMPLE*TYPE=gpio*test -DBUILD*TYPE=Debug
+idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Debug
 
 ## Flash and monitor
-idf.py flash monitor -DEXAMPLE*TYPE=gpio*test
+idf.py flash monitor -DEXAMPLE_TYPE=gpio_test
 ```text
 
 ### CI Pipeline
@@ -89,12 +89,12 @@ The GPIO test is integrated into the CI pipeline:
 
 ```yaml
 ## In .github/workflows/esp32-component-ci.yml
-example*type: [comprehensive, ascii*art, nimble*test, gpio*test]
+example_type: [comprehensive, ascii_art, nimble_test, gpio_test]
 ```text
 
 Build artifacts are available as:
-- `fw-gpio*test-release-v5.5-Release`
-- `fw-gpio*test-release-v5.5-Debug`
+- `fw-gpio_test-release-v5.5-Release`
+- `fw-gpio_test-release-v5.5-Debug`
 
 ## Test Categories
 
@@ -144,9 +144,9 @@ Build artifacts are available as:
 
 Starting comprehensive GPIO testing...
 
-✅ PASSED: test*basic*gpio*functionality (15.23 ms)
-✅ PASSED: test*gpio*initialization*and*configuration (22.45 ms)
-✅ PASSED: test*gpio*input*output*operations (18.67 ms)
+✅ PASSED: test_basic_gpio_functionality (15.23 ms)
+✅ PASSED: test_gpio_initialization_and_configuration (22.45 ms)
+✅ PASSED: test_gpio_input_output_operations (18.67 ms)
 ...
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
@@ -170,18 +170,18 @@ To add a new test function:
 
 1. **Declare the function:**
    ```cpp
-   bool test*my*new*functionality();
+   bool test_my_new_functionality();
    ```
 
 1. **Implement the test:**
    ```cpp
-   bool test*my*new*functionality() {
-     ESP*LOGI(TAG, "=== Testing My New Functionality ===");
+   bool test_my_new_functionality() {
+     ESP_LOGI(TAG, "=== Testing My New Functionality ===");
      try {
        // Test implementation
        return true;
      } catch (const std::exception& e) {
-       ESP*LOGE(TAG, "Exception: %s", e.what());
+       ESP_LOGE(TAG, "Exception: %s", e.what());
        return false;
      }
    }
@@ -189,7 +189,7 @@ To add a new test function:
 
 1. **Add to test execution:**
    ```cpp
-   RUN*TEST(test*my*new*functionality);
+   RUN_TEST(test_my_new_functionality);
    ```
 
 ### Test Patterns
@@ -208,17 +208,17 @@ For debugging individual tests:
 
 1. **Enable debug build:**
    ```bash
-   idf.py build -DEXAMPLE*TYPE=gpio*test -DBUILD*TYPE=Debug
+   idf.py build -DEXAMPLE_TYPE=gpio_test -DBUILD_TYPE=Debug
    ```
 
 1. **Add debug prints:**
    ```cpp
-   ESP*LOGD(TAG, "Debug info: %d", value);
+   ESP_LOGD(TAG, "Debug info: %d", value);
    ```
 
 1. **Use specific pin for debugging:**
    ```cpp
-   static constexpr hf*pin*num*t DEBUG_PIN = 22;
+   static constexpr hf_pin_num_t DEBUG_PIN = 22;
    ```
 
 ## Integration with Main Project

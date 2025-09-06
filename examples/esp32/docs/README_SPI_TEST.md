@@ -33,10 +33,10 @@ and advanced capabilities with a focus on embedded environments using `noexcept`
 
 ### ESP32-C6 Specific Features
 - **IOMUX Integration**: Direct pin-to-peripheral connections
-- **Clock Sources**: PLL*F80M, XTAL, and RC*FAST clock options
-- **Host Management**: SPI2*HOST (only general-purpose host on ESP32-C6)
+- **Clock Sources**: PLL_F80M, XTAL, and RC_FAST clock options
+- **Host Management**: SPI2_HOST (only general-purpose host on ESP32-C6)
 - **Power Management**: Sleep mode compatibility and wake-up
-- **Hardware Constraints**: PHASE*0 sampling point limitation
+- **Hardware Constraints**: PHASE_0 sampling point limitation
 
 ### Direct API Comparison
 - **ESP-IDF Direct API**: Pure C-based SPI testing for baseline validation
@@ -73,20 +73,20 @@ Safe Test Pins:
 
 ```cpp
 // GPIO pin configuration
-static constexpr hf*pin*num*t TEST*MOSI*PIN = 7;
-static constexpr hf*pin*num*t TEST*MISO*PIN = 2;
-static constexpr hf*pin*num*t TEST*SCLK*PIN = 6;
-static constexpr hf*pin*num*t TEST*CS*PIN = 21;
+static constexpr hf_pin_num_t TEST_MOSI_PIN = 7;
+static constexpr hf_pin_num_t TEST_MISO_PIN = 2;
+static constexpr hf_pin_num_t TEST_SCLK_PIN = 6;
+static constexpr hf_pin_num_t TEST_CS_PIN = 21;
 
 // SPI host configuration
-static constexpr hf*host*id*t SPI*HOST*NUM = static*cast<hf*host*id*t>(1); // SPI2*HOST
+static constexpr hf_host_id_t SPI_HOST_NUM = static_cast<hf_host_id_t>(1); // SPI2_HOST
 
 // Clock configuration
-static constexpr uint32*t SPI*CLOCK*SPEED = 1000000; // 1MHz
-static constexpr hf*spi*clock*source*t CLOCK*SOURCE = hf*spi*clock*source*t::PLL*F80M*CLK;
+static constexpr uint32_t SPI_CLOCK_SPEED = 1000000; // 1MHz
+static constexpr hf_spi_clock_source_t CLOCK_SOURCE = hf_spi_clock_source_t::PLL_F80M_CLK;
 
 // SPI mode configuration
-static constexpr hf*spi*mode*t SPI*MODE = hf*spi*mode*t::MODE*0; // CPOL=0, CPHA=0
+static constexpr hf_spi_mode_t SPI_MODE = hf_spi_mode_t::MODE_0; // CPOL=0, CPHA=0
 ```text
 
 ### Test Section Configuration
@@ -95,15 +95,15 @@ The test suite includes configurable test sections:
 
 ```cpp
 // Core SPI functionality tests
-static constexpr bool ENABLE*CORE*TESTS = true;           // Bus management, device lifecycle
-static constexpr bool ENABLE*TRANSFER*TESTS = true;       // Data transfer operations
-static constexpr bool ENABLE*PERFORMANCE*TESTS = true;    // Clock speeds, performance
-static constexpr bool ENABLE*ADVANCED*TESTS = true;       // ESP-specific features
-static constexpr bool ENABLE*STRESS*TESTS = true;         // Error handling, edge cases
+static constexpr bool ENABLE_CORE_TESTS = true;           // Bus management, device lifecycle
+static constexpr bool ENABLE_TRANSFER_TESTS = true;       // Data transfer operations
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Clock speeds, performance
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // ESP-specific features
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Error handling, edge cases
 
 // Direct API comparison tests
-static constexpr bool ENABLE*ESPIDF*DIRECT*TEST = true;   // Pure ESP-IDF API testing
-static constexpr bool ENABLE*ESPIDF*WRAPPER*REPLICA = true; // C++ wrapper comparison
+static constexpr bool ENABLE_ESPIDF_DIRECT_TEST = true;   // Pure ESP-IDF API testing
+static constexpr bool ENABLE_ESPIDF_WRAPPER_REPLICA = true; // C++ wrapper comparison
 ```text
 
 ## Test Categories
@@ -248,10 +248,10 @@ Based on Nyquist-Shannon theorem and digital signal analysis:
 cd examples/esp32
 
 ## Build the SPI test suite
-./scripts/build*example.sh main Release
+./scripts/build_example.sh main Release
 
 ## Flash and monitor
-./scripts/flash*example.sh main Release flash*monitor
+./scripts/flash_example.sh main Release flash_monitor
 ```text
 
 ### Test Execution
@@ -269,10 +269,10 @@ The test suite runs automatically with the following sequence:
 
 ```bash
 ## Monitor test execution
-./scripts/flash*example.sh main Release monitor
+./scripts/flash_example.sh main Release monitor
 
 ## View detailed logs
-./scripts/flash*example.sh main Release monitor --log
+./scripts/flash_example.sh main Release monitor --log
 ```text
 
 ## Troubleshooting
@@ -323,11 +323,11 @@ The test suite provides comprehensive debug output:
 
 |------------------|----------------------|-----------|
 
-| **PLL*F80M** | 80 MHz | Maximum performance |
+| **PLL_F80M** | 80 MHz | Maximum performance |
 
 | **XTAL** | 40 MHz | Stable, crystal-based |
 
-| **RC*FAST** | ~17.5 MHz | Low-power, approximate |
+| **RC_FAST** | ~17.5 MHz | Low-power, approximate |
 
 ## For Complete Documentation
 

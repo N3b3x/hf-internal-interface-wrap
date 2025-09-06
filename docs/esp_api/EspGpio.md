@@ -41,12 +41,12 @@ class EspGpio : public BaseGpio {
 public:
     // Constructor with full configuration
     explicit EspGpio(
-        hf*pin*num*t pin*num,
-        hf*gpio*direction*t direction = hf*gpio*direction*t::HF*GPIO*DIRECTION*INPUT,
-        hf*gpio*active*state*t active*state = hf*gpio*active*state*t::HF*GPIO*ACTIVE*HIGH,
-        hf*gpio*output*mode*t output*mode = hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
-        hf*gpio*pull*mode*t pull*mode = hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*FLOATING,
-        hf*gpio*drive*cap*t drive*capability = hf*gpio*drive*cap*t::HF*GPIO*DRIVE*CAP*MEDIUM
+        hf_pin_num_t pin_num,
+        hf_gpio_direction_t direction = hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+        hf_gpio_active_state_t active_state = hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+        hf_gpio_output_mode_t output_mode = hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+        hf_gpio_pull_mode_t pull_mode = hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
+        hf_gpio_drive_cap_t drive_capability = hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM
     ) noexcept;
 
     // Destructor
@@ -56,25 +56,25 @@ public:
     bool Initialize() noexcept override;
     bool Deinitialize() noexcept override;
     bool IsPinAvailable() const noexcept override;
-    hf*u8*t GetMaxPins() const noexcept override;
+    hf_u8_t GetMaxPins() const noexcept override;
     const char* GetDescription() const noexcept override;
 
     // Interrupt support
-    hf*gpio*err*t SupportsInterrupts() const noexcept override;
-    hf*gpio*err*t ConfigureInterrupt(hf*gpio*interrupt*trigger*t trigger,
+    hf_gpio_err_t SupportsInterrupts() const noexcept override;
+    hf_gpio_err_t ConfigureInterrupt(hf_gpio_interrupt_trigger_t trigger,
                                     InterruptCallback callback = nullptr,
-                                    void* user*data = nullptr) noexcept override;
-    hf*gpio*err*t EnableInterrupt() noexcept override;
-    hf*gpio*err*t DisableInterrupt() noexcept override;
+                                    void* user_data = nullptr) noexcept override;
+    hf_gpio_err_t EnableInterrupt() noexcept override;
+    hf_gpio_err_t DisableInterrupt() noexcept override;
 
     // ESP32-specific advanced features
-    hf*gpio*err*t SetDriveCapability(hf*gpio*drive*cap*t capability) noexcept;
-    hf*gpio*err*t GetDriveCapability(hf*gpio*drive*cap*t& capability) const noexcept;
-    hf*gpio*err*t SetSlewRate(hf*gpio*slew*rate*t slew*rate) noexcept;
-    hf*gpio*err*t GetSlewRate(hf*gpio*slew*rate*t& slew*rate) const noexcept;
+    hf_gpio_err_t SetDriveCapability(hf_gpio_drive_cap_t capability) noexcept;
+    hf_gpio_err_t GetDriveCapability(hf_gpio_drive_cap_t& capability) const noexcept;
+    hf_gpio_err_t SetSlewRate(hf_gpio_slew_rate_t slew_rate) noexcept;
+    hf_gpio_err_t GetSlewRate(hf_gpio_slew_rate_t& slew_rate) const noexcept;
     
     // GPIO pin mapping
-    gpio*num*t GetEspGpioNum() const noexcept;
+    gpio_num_t GetEspGpioNum() const noexcept;
 };
 ```text
 
@@ -83,20 +83,20 @@ public:
 ### Drive Capability
 
 ```cpp
-enum class hf*gpio*drive*cap*t : hf*u8*t {
-    HF*GPIO*DRIVE*CAP*WEAK = 0,     // ~5mA drive strength
-    HF*GPIO*DRIVE*CAP*MEDIUM = 1,   // ~10mA drive strength (default)
-    HF*GPIO*DRIVE*CAP*STRONG = 2,   // ~20mA drive strength
-    HF*GPIO*DRIVE*CAP*STRONGEST = 3 // ~40mA drive strength
+enum class hf_gpio_drive_cap_t : hf_u8_t {
+    HF_GPIO_DRIVE_CAP_WEAK = 0,     // ~5mA drive strength
+    HF_GPIO_DRIVE_CAP_MEDIUM = 1,   // ~10mA drive strength (default)
+    HF_GPIO_DRIVE_CAP_STRONG = 2,   // ~20mA drive strength
+    HF_GPIO_DRIVE_CAP_STRONGEST = 3 // ~40mA drive strength
 };
 ```text
 
 ### Slew Rate
 
 ```cpp
-enum class hf*gpio*slew*rate*t : hf*u8*t {
-    HF*GPIO*SLEW*RATE*SLOW = 0,     // Slower edge transitions, less EMI
-    HF*GPIO*SLEW*RATE*FAST = 1      // Faster edge transitions, more EMI
+enum class hf_gpio_slew_rate_t : hf_u8_t {
+    HF_GPIO_SLEW_RATE_SLOW = 0,     // Slower edge transitions, less EMI
+    HF_GPIO_SLEW_RATE_FAST = 1      // Faster edge transitions, more EMI
 };
 ```text
 
@@ -104,12 +104,12 @@ enum class hf*gpio*slew*rate*t : hf*u8*t {
 
 ### Basic Parameters
 
-- **`pin*num`** - ESP32-C6 GPIO pin number (0-30, depending on package)
+- **`pin_num`** - ESP32-C6 GPIO pin number (0-30, depending on package)
 - **`direction`** - Initial pin direction (input/output)
-- **`active*state`** - Active polarity (high/low)
-- **`output*mode`** - Push-pull or open-drain output
-- **`pull*mode`** - Pull resistor configuration
-- **`drive*capability`** - Output drive strength
+- **`active_state`** - Active polarity (high/low)
+- **`output_mode`** - Push-pull or open-drain output
+- **`pull_mode`** - Pull resistor configuration
+- **`drive_capability`** - Output drive strength
 
 ## Usage Examples
 
@@ -119,28 +119,28 @@ enum class hf*gpio*slew*rate*t : hf*u8*t {
 #include "inc/mcu/esp32/EspGpio.h"
 
 // Create output pin for LED (active low, strong drive)
-EspGpio led*pin(GPIO*NUM*2, 
-               hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT,
-               hf*gpio*active*state*t::HF*GPIO*ACTIVE*LOW,
-               hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
-               hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*FLOATING,
-               hf*gpio*drive*cap*t::HF*GPIO*DRIVE*CAP*STRONG);
+EspGpio led_pin(GPIO_NUM_2, 
+               hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+               hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW,
+               hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+               hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
+               hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONG);
 
-void setup*led() {
-    if (!led*pin.EnsureInitialized()) {
+void setup_led() {
+    if (!led_pin.EnsureInitialized()) {
         printf("Failed to initialize LED pin\n");
         return;
     }
     
     // LED starts off
-    led*pin.SetInactive();
+    led_pin.SetInactive();
 }
 
-void blink*led() {
-    led*pin.SetActive();    // Turn on
-    vTaskDelay(pdMS*TO*TICKS(500));
-    led*pin.SetInactive();  // Turn off
-    vTaskDelay(pdMS*TO*TICKS(500));
+void blink_led() {
+    led_pin.SetActive();    // Turn on
+    vTaskDelay(pdMS_TO_TICKS(500));
+    led_pin.SetInactive();  // Turn off
+    vTaskDelay(pdMS_TO_TICKS(500));
 }
 ```text
 
@@ -148,51 +148,51 @@ void blink*led() {
 
 ```cpp
 // Global flag for button state
-volatile bool button*pressed = false;
+volatile bool button_pressed = false;
 
 // Interrupt callback function
-void IRAM*ATTR button*isr*handler(BaseGpio* gpio, hf*gpio*interrupt*trigger*t trigger, void*
-user*data) {
-    button*pressed = true;  // Set flag for main loop
+void IRAM_ATTR button_isr_handler(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void*
+user_data) {
+    button_pressed = true;  // Set flag for main loop
 }
 
 // Create input pin for button
-EspGpio button*pin(GPIO*NUM*0,
-                  hf*gpio*direction*t::HF*GPIO*DIRECTION*INPUT,
-                  hf*gpio*active*state*t::HF*GPIO*ACTIVE*LOW,
-                  hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
-                  hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*UP);
+EspGpio button_pin(GPIO_NUM_0,
+                  hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+                  hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW,
+                  hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                  hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP);
 
-void setup*button() {
+void setup_button() {
     // Initialize pin
-    if (!button*pin.EnsureInitialized()) {
+    if (!button_pin.EnsureInitialized()) {
         printf("Failed to initialize button pin\n");
         return;
     }
     
     // Configure interrupt
-    hf*gpio*err*t result = button*pin.ConfigureInterrupt(
-        hf*gpio*interrupt*trigger*t::HF*GPIO*INTERRUPT*TRIGGER*FALLING*EDGE,
-        button*isr*handler,
+    hf_gpio_err_t result = button_pin.ConfigureInterrupt(
+        hf_gpio_interrupt_trigger_t::HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE,
+        button_isr_handler,
         nullptr
     );
     
-    if (result == hf*gpio*err*t::GPIO*SUCCESS) {
-        button*pin.EnableInterrupt();
+    if (result == hf_gpio_err_t::GPIO_SUCCESS) {
+        button_pin.EnableInterrupt();
         printf("Button interrupt configured\n");
     } else {
         printf("Failed to configure button interrupt: %s\n", HfGpioErrToString(result));
     }
 }
 
-void check*button() {
-    if (button*pressed) {
-        button*pressed = false;  // Clear flag
+void check_button() {
+    if (button_pressed) {
+        button_pressed = false;  // Clear flag
         printf("Button was pressed!\n");
         
         // Debouncing - check if still pressed after delay
-        vTaskDelay(pdMS*TO*TICKS(50));
-        if (button*pin.IsActive()) {
+        vTaskDelay(pdMS_TO_TICKS(50));
+        if (button_pin.IsActive()) {
             printf("Button press confirmed\n");
             // Handle button press action
         }
@@ -204,27 +204,27 @@ void check*button() {
 
 ```cpp
 // High-speed digital output for motor control
-EspGpio motor*step*pin(GPIO*NUM*4,
-                      hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT,
-                      hf*gpio*active*state*t::HF*GPIO*ACTIVE*HIGH,
-                      hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
-                      hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*FLOATING,
-                      hf*gpio*drive*cap*t::HF*GPIO*DRIVE*CAP*STRONGEST);
+EspGpio motor_step_pin(GPIO_NUM_4,
+                      hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                      hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+                      hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                      hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
+                      hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST);
 
-void setup*motor*control() {
-    motor*step*pin.EnsureInitialized();
+void setup_motor_control() {
+    motor_step_pin.EnsureInitialized();
     
     // Configure for fastest switching
-    motor*step*pin.SetSlewRate(hf*gpio*slew*rate*t::HF*GPIO*SLEW*RATE*FAST);
-    motor*step*pin.SetDriveCapability(hf*gpio*drive*cap*t::HF*GPIO*DRIVE*CAP*STRONGEST);
+    motor_step_pin.SetSlewRate(hf_gpio_slew_rate_t::HF_GPIO_SLEW_RATE_FAST);
+    motor_step_pin.SetDriveCapability(hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST);
 }
 
-void generate*step*pulses(int num*steps, int delay*us) {
-    for (int i = 0; i < num*steps; i++) {
-        motor*step*pin.SetActive();
-        esp*rom*delay*us(delay*us);
-        motor*step*pin.SetInactive();
-        esp*rom*delay*us(delay*us);
+void generate_step_pulses(int num_steps, int delay_us) {
+    for (int i = 0; i < num_steps; i++) {
+        motor_step_pin.SetActive();
+        esp_rom_delay_us(delay_us);
+        motor_step_pin.SetInactive();
+        esp_rom_delay_us(delay_us);
     }
 }
 ```text
@@ -233,34 +233,34 @@ void generate*step*pulses(int num*steps, int delay*us) {
 
 ```cpp
 // I2C-like open-drain communication
-EspGpio sda*pin(GPIO*NUM*21,
-               hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT,
-               hf*gpio*active*state*t::HF*GPIO*ACTIVE*LOW,
-               hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*OPEN*DRAIN,
-               hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*UP);
+EspGpio sda_pin(GPIO_NUM_21,
+               hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+               hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW,
+               hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN,
+               hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP);
 
-EspGpio scl*pin(GPIO*NUM*22,
-               hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT,
-               hf*gpio*active*state*t::HF*GPIO*ACTIVE*LOW,
-               hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*OPEN*DRAIN,
-               hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*UP);
+EspGpio scl_pin(GPIO_NUM_22,
+               hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+               hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW,
+               hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_OPEN_DRAIN,
+               hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP);
 
-void setup*open*drain*bus() {
-    sda*pin.EnsureInitialized();
-    scl*pin.EnsureInitialized();
+void setup_open_drain_bus() {
+    sda_pin.EnsureInitialized();
+    scl_pin.EnsureInitialized();
     
     // Set both lines high (pulled up externally)
-    sda*pin.SetInactive();  // Release SDA (high via pull-up)
-    scl*pin.SetInactive();  // Release SCL (high via pull-up)
+    sda_pin.SetInactive();  // Release SDA (high via pull-up)
+    scl_pin.SetInactive();  // Release SCL (high via pull-up)
 }
 
-void send*start*condition() {
+void send_start_condition() {
     // I2C start condition: SDA low while SCL high
-    scl*pin.SetInactive();  // Ensure SCL high
-    vTaskDelay(pdMS*TO*TICKS(1));
-    sda*pin.SetActive();    // Pull SDA low
-    vTaskDelay(pdMS*TO*TICKS(1));
-    scl*pin.SetActive();    // Pull SCL low
+    scl_pin.SetInactive();  // Ensure SCL high
+    vTaskDelay(pdMS_TO_TICKS(1));
+    sda_pin.SetActive();    // Pull SDA low
+    vTaskDelay(pdMS_TO_TICKS(1));
+    scl_pin.SetActive();    // Pull SCL low
 }
 ```text
 
@@ -269,67 +269,67 @@ void send*start*condition() {
 ```cpp
 class MotorControlSystem {
 private:
-    EspGpio enable*pin*;
-    EspGpio direction*pin*;
-    EspGpio step*pin*;
-    EspGpio limit*switch*;
+    EspGpio enable_pin*;
+    EspGpio direction_pin*;
+    EspGpio step_pin*;
+    EspGpio limit_switch*;
     
 public:
     MotorControlSystem() 
-        : enable*pin*(GPIO*NUM*2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT)
-        , direction*pin*(GPIO*NUM*3, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT)
-        , step*pin*(GPIO*NUM*4, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT, 
-                   hf*gpio*active*state*t::HF*GPIO*ACTIVE*HIGH,
-                   hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
-                   hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*FLOATING,
-                   hf*gpio*drive*cap*t::HF*GPIO*DRIVE*CAP*STRONGEST)
-        , limit*switch*(GPIO*NUM*5, hf*gpio*direction*t::HF*GPIO*DIRECTION*INPUT,
-                       hf*gpio*active*state*t::HF*GPIO*ACTIVE*LOW,
-                       hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
-                       hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*UP)
+        : enable_pin*(GPIO_NUM_2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT)
+        , direction_pin*(GPIO_NUM_3, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT)
+        , step_pin*(GPIO_NUM_4, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT, 
+                   hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+                   hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                   hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING,
+                   hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_STRONGEST)
+        , limit_switch*(GPIO_NUM_5, hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT,
+                       hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW,
+                       hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                       hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_UP)
     {}
     
     bool initialize() {
         bool success = true;
-        success &= enable*pin*.EnsureInitialized();
-        success &= direction*pin*.EnsureInitialized();
-        success &= step*pin*.EnsureInitialized();
-        success &= limit*switch*.EnsureInitialized();
+        success &= enable_pin*.EnsureInitialized();
+        success &= direction_pin*.EnsureInitialized();
+        success &= step_pin*.EnsureInitialized();
+        success &= limit_switch*.EnsureInitialized();
         
         if (success) {
             // Set safe initial state
-            enable*pin*.SetInactive();    // Motor disabled
-            direction*pin*.SetInactive(); // Direction = forward
-            step*pin*.SetInactive();      // No step
+            enable_pin*.SetInactive();    // Motor disabled
+            direction_pin*.SetInactive(); // Direction = forward
+            step_pin*.SetInactive();      // No step
         }
         
         return success;
     }
     
-    void move*motor(int steps, bool forward, int speed*hz) {
-        if (limit*switch*.IsActive()) {
+    void move_motor(int steps, bool forward, int speed_hz) {
+        if (limit_switch*.IsActive()) {
             printf("Limit switch activated - stopping\n");
             return;
         }
         
-        direction*pin*.SetState(forward ? hf*gpio*state*t::HF*GPIO*STATE*INACTIVE 
-                                       : hf*gpio*state*t::HF*GPIO*STATE*ACTIVE);
-        enable*pin*.SetActive();  // Enable motor
+        direction_pin*.SetState(forward ? hf_gpio_state_t::HF_GPIO_STATE_INACTIVE 
+                                       : hf_gpio_state_t::HF_GPIO_STATE_ACTIVE);
+        enable_pin*.SetActive();  // Enable motor
         
-        int delay*us = 500000 / speed*hz;  // Convert Hz to microseconds
+        int delay_us = 500000 / speed_hz;  // Convert Hz to microseconds
         
-        for (int i = 0; i < steps && !limit*switch*.IsActive(); i++) {
-            step*pin*.SetActive();
-            esp*rom*delay*us(delay*us);
-            step*pin*.SetInactive();
-            esp*rom*delay*us(delay*us);
+        for (int i = 0; i < steps && !limit_switch*.IsActive(); i++) {
+            step_pin*.SetActive();
+            esp_rom_delay_us(delay_us);
+            step_pin*.SetInactive();
+            esp_rom_delay_us(delay_us);
         }
         
-        enable*pin*.SetInactive();  // Disable motor
+        enable_pin*.SetInactive();  // Disable motor
     }
     
-    void emergency*stop() {
-        enable*pin*.SetInactive();  // Immediately disable motor
+    void emergency_stop() {
+        enable_pin*.SetInactive();  // Immediately disable motor
         printf("Emergency stop activated\n");
     }
 };
@@ -345,31 +345,31 @@ public:
 
 | GPIO0 | Boot mode, UART download | Pull-up recommended for normal operation |
 
-| GPIO1 | ADC1*CH0, UART0*TXD | Can be used as GPIO after UART disable |
+| GPIO1 | ADC1_CH0, UART0_TXD | Can be used as GPIO after UART disable |
 
-| GPIO2 | ADC1*CH1, FSPIQ | Available for general GPIO |
+| GPIO2 | ADC1_CH1, FSPIQ | Available for general GPIO |
 
-| GPIO3 | ADC1*CH2, FSPIHD | Available for general GPIO |
+| GPIO3 | ADC1_CH2, FSPIHD | Available for general GPIO |
 
-| GPIO4 | ADC1*CH3, FSPICS0 | Available for general GPIO |
+| GPIO4 | ADC1_CH3, FSPICS0 | Available for general GPIO |
 
-| GPIO5 | ADC1*CH4, FSPIWP | Available for general GPIO |
+| GPIO5 | ADC1_CH4, FSPIWP | Available for general GPIO |
 
-| GPIO6 | ADC1*CH5, FSPICLK | Available for general GPIO |
+| GPIO6 | ADC1_CH5, FSPICLK | Available for general GPIO |
 
-| GPIO7 | ADC1*CH6, FSPID | Available for general GPIO |
+| GPIO7 | ADC1_CH6, FSPID | Available for general GPIO |
 
 | GPIO8-19 | General GPIO | Fully available for GPIO operations |
 
-| GPIO20 | UART0*RXD | Can be used as GPIO after UART disable |
+| GPIO20 | UART0_RXD | Can be used as GPIO after UART disable |
 
-| GPIO21 | UART1*TXD | Available for general GPIO |
+| GPIO21 | UART1_TXD | Available for general GPIO |
 
-| GPIO22 | UART1*RXD | Available for general GPIO |
+| GPIO22 | UART1_RXD | Available for general GPIO |
 
-| GPIO23 | USB*D+ | Reserved for USB functionality |
+| GPIO23 | USB_D+ | Reserved for USB functionality |
 
-| GPIO24 | USB*D- | Reserved for USB functionality |
+| GPIO24 | USB_D- | Reserved for USB functionality |
 
 | GPIO25-30 | General GPIO | Available (package dependent) |
 
@@ -395,32 +395,32 @@ public:
 
 ```cpp
 // Configure pin for deep sleep compatibility
-EspGpio wake*pin(GPIO*NUM*0, hf*gpio*direction*t::HF*GPIO*DIRECTION*INPUT);
-wake*pin.EnsureInitialized();
+EspGpio wake_pin(GPIO_NUM_0, hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT);
+wake_pin.EnsureInitialized();
 
 // Configure as wake source
-esp*sleep*enable*ext0*wakeup(GPIO*NUM*0, 0);  // Wake on low level
+esp_sleep_enable_ext0_wakeup(GPIO_NUM_0, 0);  // Wake on low level
 ```text
 
 ### Performance Optimization
 
 ```cpp
 // For time-critical applications, cache the ESP GPIO number
-gpio*num*t esp*pin = gpio*pin.GetEspGpioNum();
+gpio_num_t esp_pin = gpio_pin.GetEspGpioNum();
 
 // Use direct ESP-IDF calls for maximum speed (if needed)
-gpio*set*level(esp*pin, 1);  // Direct register access
+gpio_set_level(esp_pin, 1);  // Direct register access
 ```text
 
 ## Error Handling
 
-All `EspGpio` methods return appropriate error codes from the `hf*gpio*err*t` enumeration.
+All `EspGpio` methods return appropriate error codes from the `hf_gpio_err_t` enumeration.
 Common ESP32-specific errors include:
 
-- `GPIO*ERR*INVALID*PIN` - Pin number not available on ESP32-C6
-- `GPIO*ERR*PIN*NOT*AVAILABLE` - Pin reserved for special functions
-- `GPIO*ERR*HARDWARE*FAILURE` - ESP-IDF driver error
-- `GPIO*ERR*INTERRUPT*NOT*SUPPORTED` - Interrupt configuration failed
+- `GPIO_ERR_INVALID_PIN` - Pin number not available on ESP32-C6
+- `GPIO_ERR_PIN_NOT_AVAILABLE` - Pin reserved for special functions
+- `GPIO_ERR_HARDWARE_FAILURE` - ESP-IDF driver error
+- `GPIO_ERR_INTERRUPT_NOT_SUPPORTED` - Interrupt configuration failed
 
 ## Thread Safety
 

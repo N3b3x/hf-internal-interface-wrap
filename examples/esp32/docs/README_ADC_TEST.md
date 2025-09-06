@@ -27,9 +27,9 @@ and performance characteristics.
 The test suite exercises 3 ADC channels with specific voltage references:
 
 #### Channel Configuration
-- **GPIO3 (ADC1*CH3)**: Voltage divider reference (~1.65V)
-- **GPIO0 (ADC1*CH0)**: Potentiometer center tap (0-3.3V variable)
-- **GPIO1 (ADC1*CH1)**: Ground reference (~0V)
+- **GPIO3 (ADC1_CH3)**: Voltage divider reference (~1.65V)
+- **GPIO0 (ADC1_CH0)**: Potentiometer center tap (0-3.3V variable)
+- **GPIO1 (ADC1_CH1)**: Ground reference (~0V)
 
 #### Circuit Connections
 
@@ -40,14 +40,14 @@ ESP32-C6 Test Circuit:
    |
    ├── [10kΩ] ──┬── [10kΩ] ── GND    (Voltage Divider for GPIO3)
    │            │
-   │            └── GPIO3 (ADC1*CH3)  (~1.65V reference)
+   │            └── GPIO3 (ADC1_CH3)  (~1.65V reference)
    │
    ├── [Potentiometer 10kΩ]
    │      ├── 3.3V (top terminal)
-   │      ├── GPIO0 (center wiper, ADC1*CH0)  (Variable 0-3.3V)
+   │      ├── GPIO0 (center wiper, ADC1_CH0)  (Variable 0-3.3V)
    │      └── GND (bottom terminal)
    │
-   └── GPIO1 (ADC1*CH1) ── [10kΩ] ── GND  (~0V reference)
+   └── GPIO1 (ADC1_CH1) ── [10kΩ] ── GND  (~0V reference)
 
 Expected Voltages:
 - GPIO3: ~1650mV (1500-1800mV acceptable)
@@ -60,7 +60,7 @@ Expected Voltages:
 The test suite includes 12 comprehensive test categories:
 
 ### 1. Hardware Validation Test
-**Function**: `test*hardware*validation()`
+**Function**: `test_hardware_validation()`
 - Validates physical hardware connections before other tests
 - GPIO3: Expects ~1650mV (voltage divider validation)
 - GPIO1: Expects ~0mV (ground connection validation)
@@ -68,35 +68,35 @@ The test suite includes 12 comprehensive test categories:
 - Provides specific troubleshooting guidance for connection issues
 
 ### 2. ADC Initialization Test
-**Function**: `test*adc*initialization()`
+**Function**: `test_adc_initialization()`
 - Tests basic ADC unit initialization
 - Verifies ESP32-C6 configuration (1 ADC unit, 7 channels)
 - Validates channel availability checking
 - Tests error handling for invalid channels
 
 ### 3. Channel Configuration Test
-**Function**: `test*adc*channel*configuration()`
+**Function**: `test_adc_channel_configuration()`
 - Tests channel configuration with 12dB attenuation
 - Validates channel enable/disable functionality
 - Tests 12-bit width configuration
 - Verifies configuration persistence
 
 ### 4. Basic Conversion Test
-**Function**: `test*adc*basic*conversion()`
+**Function**: `test_adc_basic_conversion()`
 - Tests one-shot ADC readings (raw and voltage)
 - Validates 12-bit ADC output range (0-4095)
 - Tests both `EspAdc` and `BaseAdc` interface methods
 - Verifies voltage readings within expected ranges
 
 ### 5. Calibration Test
-**Function**: `test*adc*calibration()`
+**Function**: `test_adc_calibration()`
 - Tests ADC calibration initialization
 - Validates calibration availability for different attenuations
 - Tests raw-to-voltage conversion using hardware calibration
 - Handles ESP32-C6 specific calibration characteristics
 
 ### 6. Multiple Channels Test
-**Function**: `test*adc*multiple*channels()`
+**Function**: `test_adc_multiple_channels()`
 - Tests simultaneous reading from all configured channels
 - Hardware-specific validation per channel:
   - GPIO3: Expects 1500-1800mV (voltage divider validation)
@@ -105,14 +105,14 @@ The test suite includes 12 comprehensive test categories:
 - Tests bulk reading operations with real hardware verification
 
 ### 7. Averaging Test
-**Function**: `test*adc*averaging()`
+**Function**: `test_adc_averaging()`
 - Tests ADC averaging with different sample counts (1, 4, 8, 16)
 - Validates noise reduction through averaging
 - Tests timing between samples
 - Verifies averaged values within expected bounds
 
 ### 8. Continuous Mode Test
-**Function**: `test*adc*continuous*mode()`
+**Function**: `test_adc_continuous_mode()`
 - Tests continuous (DMA) mode operation with 1kHz sampling
 - Validates callback-based data collection
 - Tests ISR-safe callback implementation
@@ -120,7 +120,7 @@ The test suite includes 12 comprehensive test categories:
 - Verifies proper start/stop functionality
 
 ### 9. Monitor Threshold Test
-**Function**: `test*adc*monitor*thresholds()`
+**Function**: `test_adc_monitor_thresholds()`
 - Interactive threshold testing using potentiometer on GPIO0
 - Automatic threshold calculation based on baseline reading
 - Real-time voltage monitoring with ESP-IDF buffer draining
@@ -131,7 +131,7 @@ The test suite includes 12 comprehensive test categories:
   - Real-time voltage display updates
 
 ### 10. Error Handling Test
-**Function**: `test*adc*error*handling()`
+**Function**: `test_adc_error_handling()`
 - Tests error handling for invalid operations
 - Validates rejection of invalid channel numbers
 - Tests null pointer handling
@@ -139,7 +139,7 @@ The test suite includes 12 comprehensive test categories:
 - Validates configuration requirements
 
 ### 11. Statistics and Diagnostics Test
-**Function**: `test*adc*statistics()`
+**Function**: `test_adc_statistics()`
 - Tests ADC statistics collection
 - Validates conversion timing measurements
 - Tests diagnostic information gathering
@@ -147,7 +147,7 @@ The test suite includes 12 comprehensive test categories:
 - Verifies performance metrics tracking
 
 ### 12. Performance Test
-**Function**: `test*adc*performance()`
+**Function**: `test_adc_performance()`
 - Measures ADC conversion speed over 1000 conversions
 - Tests high-frequency reading capabilities
 - Validates timing characteristics (expects <1ms per conversion)
@@ -168,11 +168,11 @@ The test suite includes 12 comprehensive test categories:
 cd examples/esp32
 
 ## Build ADC test
-./scripts/build*app.sh adc*test Release
+./scripts/build_app.sh adc_test Release
 
 ## Flash and monitor
-./scripts/flash*app.sh adc*test Release flash
-./scripts/flash*app.sh monitor
+./scripts/flash_app.sh adc_test Release flash
+./scripts/flash_app.sh monitor
 ```text
 
 ## Expected Test Results
@@ -180,36 +180,36 @@ cd examples/esp32
 ### Successful Test Run
 
 ```text
-I (270) ADC*Test: ╔══════════════════════════════════════════════════════════════════════════════╗
-I (292) ADC*Test: ║                    ESP32-C6 ADC COMPREHENSIVE TEST SUITE                    ║
-I (301) ADC*Test: ║                         HardFOC Internal Interface                          ║
-I (310) ADC*Test: ║                                                                              ║
-I (319) ADC*Test: ║  Hardware Setup Required (ESP32-C6 DevKit-M-1):                             ║
-I (328) ADC*Test: ║  - GPIO3 (ADC1*CH3): Connect to 3.3V via voltage divider (high reference)  ║
-I (337) ADC*Test: ║  - GPIO0 (ADC1*CH0): Connect to potentiometer center tap (variable 0-3.3V) ║
-I (346) ADC*Test: ║  - GPIO1 (ADC1*CH1): Connect to ground via 10kΩ resistor (low reference)   ║
-I (356) ADC*Test: ║                                                                              ║
-I (365) ADC*Test: ║  Monitor Test: Adjust potentiometer on GPIO0 during monitor test            ║
-I (374) ADC*Test: ╚══════════════════════════════════════════════════════════════════════════════╝
+I (270) ADC_Test: ╔══════════════════════════════════════════════════════════════════════════════╗
+I (292) ADC_Test: ║                    ESP32-C6 ADC COMPREHENSIVE TEST SUITE                    ║
+I (301) ADC_Test: ║                         HardFOC Internal Interface                          ║
+I (310) ADC_Test: ║                                                                              ║
+I (319) ADC_Test: ║  Hardware Setup Required (ESP32-C6 DevKit-M-1):                             ║
+I (328) ADC_Test: ║  - GPIO3 (ADC1_CH3): Connect to 3.3V via voltage divider (high reference)  ║
+I (337) ADC_Test: ║  - GPIO0 (ADC1_CH0): Connect to potentiometer center tap (variable 0-3.3V) ║
+I (346) ADC_Test: ║  - GPIO1 (ADC1_CH1): Connect to ground via 10kΩ resistor (low reference)   ║
+I (356) ADC_Test: ║                                                                              ║
+I (365) ADC_Test: ║  Monitor Test: Adjust potentiometer on GPIO0 during monitor test            ║
+I (374) ADC_Test: ╚══════════════════════════════════════════════════════════════════════════════╝
 
-I (2664) ADC*Test: GPIO3 (HIGH): 1627 mV
-I (2667) ADC*Test: GPIO3: Hardware connection verified
-I (2672) ADC*Test: GPIO1 (LOW): 0 mV
-I (2676) ADC*Test: GPIO1: Hardware connection verified
-I (2680) ADC*Test: GPIO0 (POT): 1965 mV
-I (2684) ADC*Test: GPIO0: Potentiometer reading valid
-I (2689) ADC*Test: [SUCCESS] Hardware validation passed - all connections verified
-
-...
-
-I (12238) ADC*Test: 📈  0/10 sec | Voltage: 1328 mV (1.328V) | High events:  0 | Target: >1873 mV
-I (14238) ADC*Test: 📈  2/10 sec | Voltage: 2050 mV (2.050V) | High events: 947 | Target: >1873 mV
-I (14238) ADC*Test: 🎉 HIGH THRESHOLD TRIGGERED! Event #948 detected
+I (2664) ADC_Test: GPIO3 (HIGH): 1627 mV
+I (2667) ADC_Test: GPIO3: Hardware connection verified
+I (2672) ADC_Test: GPIO1 (LOW): 0 mV
+I (2676) ADC_Test: GPIO1: Hardware connection verified
+I (2680) ADC_Test: GPIO0 (POT): 1965 mV
+I (2684) ADC_Test: GPIO0: Potentiometer reading valid
+I (2689) ADC_Test: [SUCCESS] Hardware validation passed - all connections verified
 
 ...
 
-I (33568) ADC*Test: Total: 12, Passed: 12, Failed: 0, Success: 100.00%, Time: 28902.67 ms
-I (33573) ADC*Test: [SUCCESS] ALL ADC TESTS PASSED!
+I (12238) ADC_Test: 📈  0/10 sec | Voltage: 1328 mV (1.328V) | High events:  0 | Target: >1873 mV
+I (14238) ADC_Test: 📈  2/10 sec | Voltage: 2050 mV (2.050V) | High events: 947 | Target: >1873 mV
+I (14238) ADC_Test: 🎉 HIGH THRESHOLD TRIGGERED! Event #948 detected
+
+...
+
+I (33568) ADC_Test: Total: 12, Passed: 12, Failed: 0, Success: 100.00%, Time: 28902.67 ms
+I (33573) ADC_Test: [SUCCESS] ALL ADC TESTS PASSED!
 ```text
 
 ### Monitor Threshold Test Details

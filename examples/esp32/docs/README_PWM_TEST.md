@@ -39,7 +39,7 @@ and advanced features with a focus on embedded environments using `noexcept` fun
 ### ESP32 Variant-Specific Features
 - **Multi-Variant Support**: ESP32, ESP32-S2/S3, ESP32-C3/C6, ESP32-H2
 - **LEDC Backend Integration**: Full LEDC peripheral feature utilization
-- **Clock Source Selection**: APB (80MHz), XTAL (40MHz), RC*FAST (~17.5MHz)
+- **Clock Source Selection**: APB (80MHz), XTAL (40MHz), RC_FAST (~17.5MHz)
 - **Timer Allocation**: Smart allocation with conflict resolution
 - **Idle Level Control**: Output state configuration during idle periods
 - **Interrupt Integration**: PWM period and fade completion callbacks
@@ -115,10 +115,10 @@ For comprehensive testing and verification, connect logic analyzer probes to:
 ### Prerequisites
 ```bash
 ## ESP-IDF v5.5+ installation required
-. $IDF*PATH/export.sh
+. $IDF_PATH/export.sh
 
 ## Set target platform
-export IDF*TARGET=esp32c6
+export IDF_TARGET=esp32c6
 ```text
 
 ### Quick Start
@@ -127,10 +127,10 @@ export IDF*TARGET=esp32c6
 cd examples/esp32
 
 ## Build PWM test using example scripts (Recommended)
-./scripts/build*example.sh pwm*test Release
+./scripts/build_example.sh pwm_test Release
 
 ## Flash and monitor using example scripts (Recommended)
-./scripts/flash*example.sh pwm*test Release flash*monitor
+./scripts/flash_example.sh pwm_test Release flash_monitor
 ```text
 
 ### Alternative Build Methods
@@ -138,7 +138,7 @@ cd examples/esp32
 #### Using ESP-IDF directly
 ```bash
 ## Build with idf.py
-idf.py build -DEXAMPLE*TYPE=pwm*test -DBUILD*TYPE=Release
+idf.py build -DEXAMPLE_TYPE=pwm_test -DBUILD_TYPE=Release
 
 ## Flash and monitor with idf.py
 idf.py -p /dev/ttyUSB0 flash monitor
@@ -147,32 +147,32 @@ idf.py -p /dev/ttyUSB0 flash monitor
 #### Debug Build for Development
 ```bash
 ## Build debug version using example scripts
-./scripts/build*example.sh pwm*test Debug --clean
+./scripts/build_example.sh pwm_test Debug --clean
 
 ## Flash debug build
-./scripts/flash*example.sh pwm*test Debug flash*monitor
+./scripts/flash_example.sh pwm_test Debug flash_monitor
 ```text
 
 #### Available Example Script Options
 ```bash
 ## List all available examples and build types
-./scripts/build*example.sh list
-./scripts/flash*example.sh list
+./scripts/build_example.sh list
+./scripts/flash_example.sh list
 
 ## Build with additional options
-./scripts/build*example.sh pwm*test Release --clean --no-cache
+./scripts/build_example.sh pwm_test Release --clean --no-cache
 
 ## Flash operations
-./scripts/flash*example.sh pwm*test Release flash      # Flash only
-./scripts/flash*example.sh pwm*test Release monitor   # Monitor only
-./scripts/flash*example.sh pwm*test Release flash*monitor  # Both (default)
+./scripts/flash_example.sh pwm_test Release flash      # Flash only
+./scripts/flash_example.sh pwm_test Release monitor   # Monitor only
+./scripts/flash_example.sh pwm_test Release flash_monitor  # Both (default)
 ```text
 
 ## Test Categories
 
 ### 1. Constructor/Destructor Tests
 
-#### `test*constructor*default()`
+#### `test_constructor_default()`
 - **Purpose**: Validates proper object construction and initialization
 - **Tests**: 
   - Default constructor behavior
@@ -181,7 +181,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 - **Expected Results**: Clean object creation without initialization
 - **Logic Analyzer**: No output expected (no PWM signals generated)
 
-#### `test*destructor*cleanup()`
+#### `test_destructor_cleanup()`
 - **Purpose**: Ensures proper resource cleanup and deinitialization
 - **Tests**:
   - Automatic resource cleanup on object destruction
@@ -194,7 +194,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 2. Lifecycle Management Tests
 
-#### `test*initialization*states()`
+#### `test_initialization_states()`
 - **Purpose**: Validates PWM hardware initialization state management
 - **Tests**:
   - Initial uninitialized state
@@ -204,7 +204,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 - **Expected Results**: State transitions match expected lifecycle
 - **Logic Analyzer**: No output expected (initialization only)
 
-#### `test*lazy*initialization()`
+#### `test_lazy_initialization()`
 - **Purpose**: Tests automatic initialization on first use
 - **Tests**:
   - EnsureInitialized() behavior
@@ -215,7 +215,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 3. Configuration Tests
 
-#### `test*mode*configuration()`
+#### `test_mode_configuration()`
 - **Purpose**: Validates PWM mode configuration capabilities
 - **Tests**:
   - Basic PWM mode setting
@@ -224,19 +224,19 @@ idf.py -p /dev/ttyUSB0 flash monitor
 - **Expected Results**: Modes set correctly without errors
 - **Logic Analyzer**: No output expected (configuration only)
 
-#### `test*clock*source*configuration()`
+#### `test_clock_source_configuration()`
 - **Purpose**: Tests different PWM clock source options
 - **Tests**:
-  - Default clock source (APB*CLK: 80MHz)
+  - Default clock source (APB_CLK: 80MHz)
   - XTAL clock source (40MHz)
-  - RC*FAST clock source (~8MHz)
+  - RC_FAST clock source (~8MHz)
   - APB clock source (80MHz)
 - **Expected Results**: All clock sources configure successfully
 - **Logic Analyzer**: No output expected (configuration only)
 
 ### 4. Channel Management Tests
 
-#### `test*channel*configuration()`
+#### `test_channel_configuration()`
 - **Purpose**: Validates multi-channel PWM configuration
 - **Tests**:
   - Configuration of channels 0-3 on GPIO 2, 4, 5, 6
@@ -245,7 +245,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 - **Expected Results**: All valid channels configure successfully
 - **Logic Analyzer**: No output expected (configuration only)
 
-#### `test*channel*enable*disable()`
+#### `test_channel_enable_disable()`
 - **Purpose**: Tests channel enable/disable functionality
 - **Tests**:
   - Initial disabled state
@@ -259,7 +259,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 5. PWM Control Tests
 
-#### `test*duty*cycle*control()`
+#### `test_duty_cycle_control()`
 - **Purpose**: Validates precise duty cycle control across the full range
 - **Tests**:
   - **Float duty cycles**: 0.0, 0.25, 0.5, 0.75, 1.0 (0% to 100%)
@@ -272,12 +272,12 @@ idf.py -p /dev/ttyUSB0 flash monitor
   - Proper rejection of invalid values
   - Both float and raw value interfaces work correctly
 
-#### `test*frequency*control()`
+#### `test_frequency_control()`
 - **Purpose**: Tests dynamic frequency adjustment and accuracy validation
 - **Tests**:
   - **Frequency range**: 100Hz, 500Hz, 1kHz, 5kHz, 10kHz, 20kHz
   - **Accuracy verification**: Measured vs commanded frequency within ±5% tolerance
-  - **Invalid frequency rejection**: Zero frequency and values exceeding HF*PWM*MAX*FREQUENCY
+  - **Invalid frequency rejection**: Zero frequency and values exceeding HF_PWM_MAX_FREQUENCY
   - **Real-time updates**: Frequency changes while PWM is running
 - **Expected Results**: 
   - Accurate frequency generation across the full range
@@ -285,7 +285,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
   - Stable operation during frequency transitions
   - Expected periods: 10ms, 2ms, 1ms, 200μs, 100μs, 50μs respectively
 
-#### `test*phase*shift*control()`
+#### `test_phase_shift_control()`
 - **Purpose**: Tests phase relationship capabilities between PWM channels
 - **Tests**:
   - **Phase values**: 0°, 90°, 180°, 270° between channels 0, 1, 2
@@ -300,7 +300,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 6. Advanced Features Tests
 
-#### `test*synchronized*operations()`
+#### `test_synchronized_operations()`
 - **Purpose**: Validates coordinated multi-channel operations and timing synchronization
 - **Tests**:
   - **StartAll()**: Simultaneous activation of channels 0-3 (GPIO 2,6,4,5)
@@ -313,7 +313,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
   - Clean transitions with minimal glitching
   - Proper channel isolation (no cross-talk between channels)
 
-#### `test*complementary*outputs()`
+#### `test_complementary_outputs()`
 - **Purpose**: Tests complementary PWM pair generation with deadtime control
 - **Tests**:
   - **Channel pairing**: Primary channel (GPIO 2) paired with complementary (GPIO 6)
@@ -328,7 +328,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 7. ESP32-Specific Features Tests
 
-#### `test*hardware*fade()`
+#### `test_hardware_fade()`
 - **Purpose**: Validates ESP32-C6 LEDC hardware fade functionality and smooth transitions
 - **Tests**:
   - **Fade sequences**: 10%→80% (1000ms), 80%→20% (800ms), 20%→90% (1200ms), 90%→0% (500ms)
@@ -343,7 +343,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
   - StopHardwareFade() immediately halts transition
   - Hardware-controlled operation (no CPU intervention during fade)
 
-#### `test*idle*level*control()`
+#### `test_idle_level_control()`
 - **Purpose**: Tests GPIO output state configuration when PWM channel is idle/disabled
 - **Tests**:
   - **SetIdleLevel(0)**: Configure output to remain LOW when channel disabled
@@ -356,7 +356,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
   - Invalid idle levels are rejected with appropriate error codes
   - Idle level setting persists across enable/disable cycles
 
-#### `test*timer*management()`
+#### `test_timer_management()`
 - **Purpose**: Validates ESP32-C6 timer resource allocation
 - **Tests**:
   - Automatic timer assignment for channels 0-3
@@ -367,7 +367,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 8. Status and Diagnostics Tests
 
-#### `test*status*reporting()`
+#### `test_status_reporting()`
 - **Purpose**: Validates PWM status monitoring and diagnostic capabilities
 - **Tests**:
   - **GetChannelStatus()**: Retrieve channel state (enabled, configured, duty, frequency)
@@ -380,12 +380,12 @@ idf.py -p /dev/ttyUSB0 flash monitor
   - Capabilities structure contains valid hardware limits
   - Error tracking accurately reflects last operation result
 
-#### `test*statistics*and*diagnostics()`
+#### `test_statistics_and_diagnostics()`
 - **Purpose**: Tests operational statistics collection and hardware diagnostics
 - **Tests**:
   - **Operation counting**: 5 duty cycle updates, 5 frequency changes, enable/disable cycles
-  - **GetStatistics()**: Retrieve duty*updates*count, frequency*changes*count, enable/disable counters
-  - **GetDiagnostics()**: Hardware state (initialized, fade*ready, active*channels, active*timers)
+  - **GetStatistics()**: Retrieve duty_updates_count, frequency_changes_count, enable/disable counters
+  - **GetDiagnostics()**: Hardware state (initialized, fade_ready, active_channels, active_timers)
   - **Counter accuracy**: Verify statistics match actual performed operations
 - **Expected Results**: 
   - Statistics accurately reflect operations: 5 duty updates, 5 frequency changes
@@ -395,7 +395,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 9. Callback Tests
 
-#### `test*callbacks()`
+#### `test_callbacks()`
 - **Purpose**: Validates PWM interrupt-driven callback functionality
 - **Tests**:
   - **SetPeriodCallback()**: Register callback for PWM period completion events
@@ -410,11 +410,11 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 10. Edge Cases and Stress Tests
 
-#### `test*edge*cases()`
+#### `test_edge_cases()`
 - **Purpose**: Tests boundary conditions, limits, and error handling
 - **Tests**:
   - **Duty cycle boundaries**: 0.0% (constant LOW) and 100.0% (constant HIGH)
-  - **Frequency boundaries**: HF*PWM*MIN*FREQUENCY and high frequency (20kHz)
+  - **Frequency boundaries**: HF_PWM_MIN_FREQUENCY and high frequency (20kHz)
   - **Invalid channel operations**: Operations on non-existent channels
   - **Parameter validation**: Verify proper rejection of out-of-range values
 - **Expected Results**: 
@@ -423,7 +423,7 @@ idf.py -p /dev/ttyUSB0 flash monitor
   - System remains stable under boundary conditions
   - No undefined behavior or crashes with invalid inputs
 
-#### `test*stress_scenarios()`
+#### `test_stress_scenarios()`
 - **Purpose**: Tests system stability under maximum load and rapid operations
 - **Tests**:
   - **Maximum channels**: All 8 channels (GPIO 2,6,4,5,7,8,9,10) active simultaneously

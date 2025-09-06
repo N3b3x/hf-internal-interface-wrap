@@ -53,10 +53,10 @@ and ESP-IDF Log V2 features with a focus on embedded environments using `noexcep
 ### Prerequisites
 ```bash
 ## ESP-IDF v5.5+ installation required
-. $IDF*PATH/export.sh
+. $IDF_PATH/export.sh
 
 ## Set target platform
-export IDF*TARGET=esp32c6
+export IDF_TARGET=esp32c6
 ```text
 
 ### Quick Start
@@ -65,7 +65,7 @@ export IDF*TARGET=esp32c6
 cd examples/esp32
 
 ## Build Logger test
-idf.py build -DEXAMPLE*TYPE=logger*test -DBUILD*TYPE=Release
+idf.py build -DEXAMPLE_TYPE=logger_test -DBUILD_TYPE=Release
 
 ## Flash and monitor
 idf.py -p /dev/ttyUSB0 flash monitor
@@ -79,16 +79,16 @@ idf.py -p /dev/ttyUSB0 flash monitor
 source /path/to/esp-idf/export.sh
 
 ## Build with optimization
-./build*example.sh logger*test Release
+./build_example.sh logger_test Release
 
 ## Flash to device
-idf.py -B build*logger*test*Release flash monitor
+idf.py -B build_logger_test_Release flash monitor
 ```text
 
 #### Debug Build for Development
 ```bash
 ## Build with debug symbols and verbose output
-idf.py build -DEXAMPLE*TYPE=logger*test -DBUILD*TYPE=Debug
+idf.py build -DEXAMPLE_TYPE=logger_test -DBUILD_TYPE=Debug
 
 ## Run with detailed logging
 idf.py -p /dev/ttyUSB0 flash monitor
@@ -98,8 +98,8 @@ idf.py -p /dev/ttyUSB0 flash monitor
 
 ### 1. Construction and Initialization Tests
 ```cpp
-bool test*logger*construction() noexcept;
-bool test*logger*initialization() noexcept;
+bool test_logger_construction() noexcept;
+bool test_logger_initialization() noexcept;
 ```text
 - **Validates**: Object creation, memory allocation, initial state
 - **Tests**: Default constructor, configuration application, error handling
@@ -107,7 +107,7 @@ bool test*logger*initialization() noexcept;
 
 ### 2. Basic Logging Operations
 ```cpp
-bool test*logger*basic*logging() noexcept;
+bool test_logger_basic_logging() noexcept;
 ```text
 - **Validates**: Core logging functions across all levels
 - **Tests**: Debug, Info, Warning, Error, Verbose message output
@@ -115,7 +115,7 @@ bool test*logger*basic*logging() noexcept;
 
 ### 3. Level Management
 ```cpp
-bool test*logger*level*management() noexcept;
+bool test_logger_level_management() noexcept;
 ```text
 - **Validates**: Dynamic log level configuration
 - **Tests**: Level setting, filtering, runtime changes
@@ -123,7 +123,7 @@ bool test*logger*level*management() noexcept;
 
 ### 4. Formatted Logging
 ```cpp
-bool test*logger*formatted*logging() noexcept;
+bool test_logger_formatted_logging() noexcept;
 ```text
 - **Validates**: Printf-style formatted output
 - **Tests**: Variable arguments, format specifiers, buffer management
@@ -131,7 +131,7 @@ bool test*logger*formatted*logging() noexcept;
 
 ### 5. ESP-IDF Log V2 Features
 ```cpp
-bool test*logger*log*v2*features() noexcept;
+bool test_logger_log_v2_features() noexcept;
 ```text
 - **Validates**: Integration with ESP-IDF native logging
 - **Tests**: ESP-IDF compatibility, performance, feature parity
@@ -139,7 +139,7 @@ bool test*logger*log*v2*features() noexcept;
 
 ### 6. Buffer Logging
 ```cpp
-bool test*logger*buffer*logging() noexcept;
+bool test_logger_buffer_logging() noexcept;
 ```text
 - **Validates**: Circular buffer implementation
 - **Tests**: Buffer storage, retrieval, overflow handling
@@ -147,7 +147,7 @@ bool test*logger*buffer*logging() noexcept;
 
 ### 7. Location Logging
 ```cpp
-bool test*logger*location*logging() noexcept;
+bool test_logger_location_logging() noexcept;
 ```text
 - **Validates**: Source code location tracking
 - **Tests**: File names, line numbers, function names
@@ -155,8 +155,8 @@ bool test*logger*location*logging() noexcept;
 
 ### 8. Statistics and Diagnostics
 ```cpp
-bool test*logger*statistics*diagnostics() noexcept;
-bool test*logger*health*monitoring() noexcept;
+bool test_logger_statistics_diagnostics() noexcept;
+bool test_logger_health_monitoring() noexcept;
 ```text
 - **Validates**: Performance metrics and system health
 - **Tests**: Message counting, error tracking, resource monitoring
@@ -164,7 +164,7 @@ bool test*logger*health*monitoring() noexcept;
 
 ### 9. Error Handling
 ```cpp
-bool test*logger*error*handling() noexcept;
+bool test_logger_error_handling() noexcept;
 ```text
 - **Validates**: Robust error condition handling
 - **Tests**: Invalid parameters, resource exhaustion, recovery
@@ -172,7 +172,7 @@ bool test*logger*error*handling() noexcept;
 
 ### 10. Performance Testing
 ```cpp
-bool test*logger*performance*testing() noexcept;
+bool test_logger_performance_testing() noexcept;
 ```text
 - **Validates**: Logging system performance
 - **Tests**: Throughput, latency, resource usage
@@ -180,7 +180,7 @@ bool test*logger*performance*testing() noexcept;
 
 ### 11. Utility Functions
 ```cpp
-bool test*logger*utility*functions() noexcept;
+bool test_logger_utility_functions() noexcept;
 ```text
 - **Validates**: Supporting functionality
 - **Tests**: Helper functions, configuration utilities, status queries
@@ -188,7 +188,7 @@ bool test*logger*utility*functions() noexcept;
 
 ### 12. Cleanup Operations
 ```cpp
-bool test*logger*cleanup() noexcept;
+bool test_logger_cleanup() noexcept;
 ```text
 - **Validates**: Proper resource deallocation
 - **Tests**: Destructor behavior, memory cleanup, state reset
@@ -198,16 +198,16 @@ bool test*logger*cleanup() noexcept;
 
 ### Logger Configuration Structure
 ```cpp
-hf*logger*config*t create*test*config() noexcept {
-  hf*logger*config*t config = {};
-  config.default*level = hf*log*level*t::LOG*LEVEL*INFO;
-  config.output*destination = hf*log*output*t::LOG*OUTPUT*UART;
-  config.format*options = hf*log*format*t::LOG*FORMAT*DEFAULT;
-  config.max*message*length = 512;
-  config.buffer*size = 1024;
-  config.flush*interval*ms = 100;
-  config.enable*thread*safety = true;
-  config.enable*performance*monitoring = true;
+hf_logger_config_t create_test_config() noexcept {
+  hf_logger_config_t config = {};
+  config.default_level = hf_log_level_t::LOG_LEVEL_INFO;
+  config.output_destination = hf_log_output_t::LOG_OUTPUT_UART;
+  config.format_options = hf_log_format_t::LOG_FORMAT_DEFAULT;
+  config.max_message_length = 512;
+  config.buffer_size = 1024;
+  config.flush_interval_ms = 100;
+  config.enable_thread_safety = true;
+  config.enable_performance_monitoring = true;
   return config;
 }
 ```text
@@ -225,17 +225,17 @@ hf*logger*config*t create*test*config() noexcept {
 
 |-------|-------------|-------|
 
-| `LOG*LEVEL*NONE` | No logging | Production with minimal overhead |
+| `LOG_LEVEL_NONE` | No logging | Production with minimal overhead |
 
-| `LOG*LEVEL*ERROR` | Error messages only | Critical error reporting |
+| `LOG_LEVEL_ERROR` | Error messages only | Critical error reporting |
 
-| `LOG*LEVEL*WARN` | Warnings and errors | Important system events |
+| `LOG_LEVEL_WARN` | Warnings and errors | Important system events |
 
-| `LOG*LEVEL*INFO` | Informational messages | General application flow |
+| `LOG_LEVEL_INFO` | Informational messages | General application flow |
 
-| `LOG*LEVEL*DEBUG` | Debug information | Development and troubleshooting |
+| `LOG_LEVEL_DEBUG` | Debug information | Development and troubleshooting |
 
-| `LOG*LEVEL*VERBOSE` | Detailed tracing | Deep debugging |
+| `LOG_LEVEL_VERBOSE` | Detailed tracing | Deep debugging |
 
 ### Output Destinations
 - **UART**: Serial port output (default)
@@ -253,14 +253,14 @@ hf*logger*config*t create*test*config() noexcept {
 ╚══════════════════════════════════════════════════════════════════════════════╝
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║ Running: test*logger*construction                                           ║
+║ Running: test_logger_construction                                           ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
-[SUCCESS] PASSED: test*logger*construction (0.12 ms)
+[SUCCESS] PASSED: test_logger_construction (0.12 ms)
 
 ╔══════════════════════════════════════════════════════════════════════════════╗
-║ Running: test*logger*initialization                                         ║
+║ Running: test_logger_initialization                                         ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
-[SUCCESS] PASSED: test*logger*initialization (0.85 ms)
+[SUCCESS] PASSED: test_logger_initialization (0.85 ms)
 
 ... (additional tests) ...
 
@@ -290,7 +290,7 @@ Typical performance on ESP32-C6 @ 160MHz:
 #### Build Failures
 ```bash
 ## Missing ESP-IDF environment
-source $IDF*PATH/export.sh
+source $IDF_PATH/export.sh
 
 ## Wrong target platform
 idf.py set-target esp32c6
@@ -322,7 +322,7 @@ idf.py monitor -p /dev/ttyUSB0 -b 115200
 Enable enhanced debugging:
 ```bash
 ## Build with debug configuration
-idf.py build -DEXAMPLE*TYPE=logger*test -DBUILD*TYPE=Debug -DCONFIG*LOG*LEVEL=5
+idf.py build -DEXAMPLE_TYPE=logger_test -DBUILD_TYPE=Debug -DCONFIG_LOG_LEVEL=5
 
 ## Enable verbose ESP-IDF logging
 idf.py menuconfig
@@ -339,14 +339,14 @@ idf.py menuconfig
 EspLogger logger;
 
 // Initialize with configuration
-hf*logger*config*t config = {};
-config.default*level = hf*log*level*t::LOG*LEVEL*INFO;
-config.output*destination = hf*log*output*t::LOG*OUTPUT*UART;
+hf_logger_config_t config = {};
+config.default_level = hf_log_level_t::LOG_LEVEL_INFO;
+config.output_destination = hf_log_output_t::LOG_OUTPUT_UART;
 
-if (logger.Initialize(config) == hf*logger*err*t::LOGGER*SUCCESS) {
+if (logger.Initialize(config) == hf_logger_err_t::LOGGER_SUCCESS) {
     // Basic logging
     logger.LogInfo("System initialized successfully");
-    logger.LogError("Error code: %d", error*code);
+    logger.LogError("Error code: %d", error_code);
     
     // Formatted logging
     logger.LogDebug("Temperature: %.2f°C, Pressure: %d hPa", temp, pressure);
@@ -356,18 +356,18 @@ if (logger.Initialize(config) == hf*logger*err*t::LOGGER*SUCCESS) {
 ### Advanced Features
 ```cpp
 // Buffer logging
-std::vector<std::string> buffered*logs;
-logger.GetBufferedLogs(buffered*logs);
+std::vector<std::string> buffered_logs;
+logger.GetBufferedLogs(buffered_logs);
 
 // Statistics
 auto stats = logger.GetStatistics();
-ESP*LOGI("LOGGER", "Messages logged: %u, Errors: %u", 
-         stats.total*messages, stats.error*count);
+ESP_LOGI("LOGGER", "Messages logged: %u, Errors: %u", 
+         stats.total_messages, stats.error_count);
 
 // Health monitoring
 auto health = logger.GetHealthStatus();
-if (health.status == HF*HEALTH*STATUS*OK) {
-    ESP*LOGI("LOGGER", "Logger health: OK");
+if (health.status == HF_HEALTH_STATUS_OK) {
+    ESP_LOGI("LOGGER", "Logger health: OK");
 }
 ```text
 
@@ -376,8 +376,8 @@ if (health.status == HF*HEALTH*STATUS*OK) {
 ### Core Functions
 ```cpp
 // Lifecycle management
-hf*logger*err*t Initialize(const hf*logger*config*t& config) noexcept;
-hf*logger*err*t Deinitialize() noexcept;
+hf_logger_err_t Initialize(const hf_logger_config_t& config) noexcept;
+hf_logger_err_t Deinitialize() noexcept;
 bool IsInitialized() const noexcept;
 
 // Basic logging
@@ -393,23 +393,23 @@ void LogError(const char* format, ...) noexcept;
 // ... (similar for other levels)
 
 // Configuration
-hf*logger*err*t SetLogLevel(hf*log*level*t level) noexcept;
-hf*log*level*t GetLogLevel() const noexcept;
+hf_logger_err_t SetLogLevel(hf_log_level_t level) noexcept;
+hf_log_level_t GetLogLevel() const noexcept;
 ```text
 
 ### Advanced Functions
 ```cpp
 // Buffer management
-hf*logger*err*t GetBufferedLogs(std::vector<std::string>& logs) noexcept;
-hf*logger*err*t FlushBuffers() noexcept;
+hf_logger_err_t GetBufferedLogs(std::vector<std::string>& logs) noexcept;
+hf_logger_err_t FlushBuffers() noexcept;
 
 // Statistics and monitoring
-hf*logger*stats*t GetStatistics() const noexcept;
-hf*health*status*t GetHealthStatus() const noexcept;
+hf_logger_stats_t GetStatistics() const noexcept;
+hf_health_status_t GetHealthStatus() const noexcept;
 
 // Utility functions
 const char* GetDescription() const noexcept;
-hf*logger*err*t ValidateConfiguration(const hf*logger*config*t& config) noexcept;
+hf_logger_err_t ValidateConfiguration(const hf_logger_config_t& config) noexcept;
 ```text
 
 ## Embedded Development Best Practices
@@ -438,8 +438,8 @@ The logger test is automatically included in the continuous integration pipeline
 
 ```yaml
 matrix:
-  example*type: [logger*test, ...]
-  build*type: [Release, Debug]
+  example_type: [logger_test, ...]
+  build_type: [Release, Debug]
 ```text
 
 ### Automated Testing

@@ -62,24 +62,24 @@ and works across different timer implementations.
 classDiagram
     class BasePeriodicTimer {
         <<abstract>>
-        +Initialize() hf*timer*err*t
-        +Deinitialize() hf*timer*err*t
-        +Start(period*us) hf*timer*err*t
-        +Stop() hf*timer*err*t
-        +SetPeriod(period*us) hf*timer*err*t
-        +GetPeriod(period*us) hf*timer*err*t
-        +SetCallback(callback, user*data) hf*timer*err*t
-        +GetStats(callback*count, missed*callbacks, last*error) hf*timer*err*t
-        +ResetStats() hf*timer*err*t
-        +GetMinPeriod() uint64*t
-        +GetMaxPeriod() uint64*t
-        +GetResolution() uint64*t
+        +Initialize() hf_timer_err_t
+        +Deinitialize() hf_timer_err_t
+        +Start(period_us) hf_timer_err_t
+        +Stop() hf_timer_err_t
+        +SetPeriod(period_us) hf_timer_err_t
+        +GetPeriod(period_us) hf_timer_err_t
+        +SetCallback(callback, user_data) hf_timer_err_t
+        +GetStats(callback_count, missed_callbacks, last_error) hf_timer_err_t
+        +ResetStats() hf_timer_err_t
+        +GetMinPeriod() uint64_t
+        +GetMaxPeriod() uint64_t
+        +GetResolution() uint64_t
     }
     
     class EspPeriodicTimer {
-        +EspPeriodicTimer(timer*group, timer*num)
-        +GetTimerGroup() timer*group*t
-        +GetTimerNum() timer*idx*t
+        +EspPeriodicTimer(timer_group, timer_num)
+        +GetTimerGroup() timer_group_t
+        +GetTimerNum() timer_idx_t
     }
     
     BasePeriodicTimer <|-- EspPeriodicTimer
@@ -97,7 +97,7 @@ The timer system uses comprehensive error codes for robust error handling:
 
 |------|-------|-------------|
 
-| `TIMER*SUCCESS` | 0 | ✅ Operation completed successfully |
+| `TIMER_SUCCESS` | 0 | ✅ Operation completed successfully |
 
 ### ❌ **General Error Codes**
 
@@ -105,17 +105,17 @@ The timer system uses comprehensive error codes for robust error handling:
 
 |------|-------|-------------|------------|
 
-| `TIMER*ERR*FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
+| `TIMER_ERR_FAILURE` | 1 | ❌ General operation failure | Check hardware and configuration |
 
-| `TIMER*ERR*NOT*INITIALIZED` | 2 | ⚠️ Timer not initialized | Call Initialize() first |
+| `TIMER_ERR_NOT_INITIALIZED` | 2 | ⚠️ Timer not initialized | Call Initialize() first |
 
-| `TIMER*ERR*ALREADY*INITIALIZED` | 3 | ⚠️ Timer already initialized | Check initialization state |
+| `TIMER_ERR_ALREADY_INITIALIZED` | 3 | ⚠️ Timer already initialized | Check initialization state |
 
-| `TIMER*ERR*INVALID*PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
+| `TIMER_ERR_INVALID_PARAMETER` | 4 | 🚫 Invalid parameter | Validate input parameters |
 
-| `TIMER*ERR*NULL*POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
+| `TIMER_ERR_NULL_POINTER` | 5 | 🚫 Null pointer provided | Check pointer validity |
 
-| `TIMER*ERR*OUT*OF*MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
+| `TIMER_ERR_OUT_OF_MEMORY` | 6 | 💾 Memory allocation failed | Check system memory |
 
 ### ⏰ **Timer-Specific Error Codes**
 
@@ -123,17 +123,17 @@ The timer system uses comprehensive error codes for robust error handling:
 
 |------|-------|-------------|------------|
 
-| `TIMER*ERR*ALREADY*RUNNING` | 7 | 🔄 Timer already running | Stop timer first |
+| `TIMER_ERR_ALREADY_RUNNING` | 7 | 🔄 Timer already running | Stop timer first |
 
-| `TIMER*ERR*NOT*RUNNING` | 8 | ⏸️ Timer not running | Start timer first |
+| `TIMER_ERR_NOT_RUNNING` | 8 | ⏸️ Timer not running | Start timer first |
 
-| `TIMER*ERR*INVALID*PERIOD` | 9 | 📊 Invalid period | Use valid period range |
+| `TIMER_ERR_INVALID_PERIOD` | 9 | 📊 Invalid period | Use valid period range |
 
-| `TIMER*ERR*RESOURCE*BUSY` | 10 | 🔄 Timer resource busy | Wait or use different timer |
+| `TIMER_ERR_RESOURCE_BUSY` | 10 | 🔄 Timer resource busy | Wait or use different timer |
 
-| `TIMER*ERR*HARDWARE*FAULT` | 11 | 💥 Hardware fault | Check hardware connections |
+| `TIMER_ERR_HARDWARE_FAULT` | 11 | 💥 Hardware fault | Check hardware connections |
 
-| `TIMER*ERR*UNSUPPORTED*OPERATION` | 12 | 🚫 Unsupported operation | Check hardware capabilities |
+| `TIMER_ERR_UNSUPPORTED_OPERATION` | 12 | 🚫 Unsupported operation | Check hardware capabilities |
 
 ---
 
@@ -144,26 +144,26 @@ The timer system uses comprehensive error codes for robust error handling:
 ```cpp
 /**
  * @brief Initialize the timer hardware/resources
- * @return hf*timer*err*t error code
+ * @return hf_timer_err_t error code
  * 
  * 📝 Sets up timer hardware, configures callbacks, and prepares for operation.
  * Must be called before any timer operations.
  * 
  * @example
- * EspPeriodicTimer timer(TIMER*GROUP*0, TIMER*0);
- * if (timer.Initialize() == hf*timer*err*t::TIMER*SUCCESS) {
+ * EspPeriodicTimer timer(TIMER_GROUP_0, TIMER_0);
+ * if (timer.Initialize() == hf_timer_err_t::TIMER_SUCCESS) {
  *     // Timer ready for use
  * }
  */
-virtual hf*timer*err*t Initialize() noexcept = 0;
+virtual hf_timer_err_t Initialize() noexcept = 0;
 
 /**
  * @brief Deinitialize the timer and free resources
- * @return hf*timer*err*t error code
+ * @return hf_timer_err_t error code
  * 
  * 🧹 Cleanly shuts down timer hardware and releases resources.
  */
-virtual hf*timer*err*t Deinitialize() noexcept = 0;
+virtual hf_timer_err_t Deinitialize() noexcept = 0;
 
 /**
  * @brief Check if timer is initialized
@@ -187,38 +187,38 @@ bool IsRunning() const noexcept;
 ```cpp
 /**
  * @brief Start the periodic timer with specified period
- * @param period*us Timer period in microseconds
- * @return hf*timer*err*t error code
+ * @param period_us Timer period in microseconds
+ * @return hf_timer_err_t error code
  * 
  * ⏰ Starts the timer with the specified period.
  * Callback will be invoked at each period.
  * 
  * @example
- * hf*timer*err*t result = timer.Start(1000000);  // 1 second period
- * if (result != hf*timer*err*t::TIMER*SUCCESS) {
+ * hf_timer_err_t result = timer.Start(1000000);  // 1 second period
+ * if (result != hf_timer_err_t::TIMER_SUCCESS) {
  *     printf("Timer start failed: %s\n", HfTimerErrToString(result));
  * }
  */
-virtual hf*timer*err*t Start(uint64*t period*us) noexcept = 0;
+virtual hf_timer_err_t Start(uint64_t period_us) noexcept = 0;
 
 /**
  * @brief Stop the periodic timer
- * @return hf*timer*err*t error code
+ * @return hf_timer_err_t error code
  * 
  * ⏸️ Stops the timer and cancels all pending callbacks.
  * 
  * @example
- * hf*timer*err*t result = timer.Stop();
- * if (result == hf*timer*err*t::TIMER*SUCCESS) {
+ * hf_timer_err_t result = timer.Stop();
+ * if (result == hf_timer_err_t::TIMER_SUCCESS) {
  *     printf("Timer stopped successfully\n");
  * }
  */
-virtual hf*timer*err*t Stop() noexcept = 0;
+virtual hf_timer_err_t Stop() noexcept = 0;
 
 /**
  * @brief Change the timer period while running
- * @param period*us New timer period in microseconds
- * @return hf*timer*err*t error code
+ * @param period_us New timer period in microseconds
+ * @return hf_timer_err_t error code
  * 
  * 🔄 Changes the timer period without stopping and restarting.
  * 
@@ -226,22 +226,22 @@ virtual hf*timer*err*t Stop() noexcept = 0;
  * // Change from 1 second to 500ms while running
  * timer.SetPeriod(500000);
  */
-virtual hf*timer*err*t SetPeriod(uint64*t period*us) noexcept = 0;
+virtual hf_timer_err_t SetPeriod(uint64_t period_us) noexcept = 0;
 
 /**
  * @brief Get the current timer period
- * @param period*us Reference to store the current period
- * @return hf*timer*err*t error code
+ * @param period_us Reference to store the current period
+ * @return hf_timer_err_t error code
  * 
  * 📊 Retrieves the current timer period.
  * 
  * @example
- * uint64*t current*period;
- * if (timer.GetPeriod(current*period) == hf*timer*err*t::TIMER*SUCCESS) {
- *     printf("Current period: %llu μs\n", current*period);
+ * uint64_t current_period;
+ * if (timer.GetPeriod(current_period) == hf_timer_err_t::TIMER_SUCCESS) {
+ *     printf("Current period: %llu μs\n", current_period);
  * }
  */
-virtual hf*timer*err*t GetPeriod(uint64*t &period*us) noexcept = 0;
+virtual hf_timer_err_t GetPeriod(uint64_t &period_us) noexcept = 0;
 ```text
 
 ### 📞 **Callback Management**
@@ -250,20 +250,20 @@ virtual hf*timer*err*t GetPeriod(uint64*t &period*us) noexcept = 0;
 /**
  * @brief Set callback function for timer events
  * @param callback Callback function to invoke
- * @param user*data User data to pass to callback (optional)
- * @return hf*timer*err*t error code
+ * @param user_data User data to pass to callback (optional)
+ * @return hf_timer_err_t error code
  * 
  * 📞 Sets the callback function that will be invoked at each timer period.
  * 
  * @example
- * void on*timer*tick(void* user*data) {
- *     printf("Timer tick! User data: %p\n", user*data);
+ * void on_timer_tick(void* user_data) {
+ *     printf("Timer tick! User data: %p\n", user_data);
  *     // Handle timer event
  * }
  * 
- * timer.SetCallback(on*timer*tick, nullptr);
+ * timer.SetCallback(on_timer_tick, nullptr);
  */
-hf*timer*err*t SetCallback(hf*timer*callback*t callback, void *user*data = nullptr) noexcept;
+hf_timer_err_t SetCallback(hf_timer_callback_t callback, void *user_data = nullptr) noexcept;
 
 /**
  * @brief Get current user data pointer
@@ -299,7 +299,7 @@ virtual const char *GetDescription() const noexcept = 0;
  * 
  * 📊 Returns the minimum supported timer period for this hardware.
  */
-virtual uint64*t GetMinPeriod() const noexcept = 0;
+virtual uint64_t GetMinPeriod() const noexcept = 0;
 
 /**
  * @brief Get maximum supported timer period
@@ -307,7 +307,7 @@ virtual uint64*t GetMinPeriod() const noexcept = 0;
  * 
  * 📊 Returns the maximum supported timer period for this hardware.
  */
-virtual uint64*t GetMaxPeriod() const noexcept = 0;
+virtual uint64_t GetMaxPeriod() const noexcept = 0;
 
 /**
  * @brief Get timer resolution
@@ -315,7 +315,7 @@ virtual uint64*t GetMaxPeriod() const noexcept = 0;
  * 
  * 📊 Returns the timer resolution (minimum time increment).
  */
-virtual uint64*t GetResolution() const noexcept = 0;
+virtual uint64_t GetResolution() const noexcept = 0;
 ```text
 
 ### 📈 **Statistics and Diagnostics**
@@ -323,65 +323,65 @@ virtual uint64*t GetResolution() const noexcept = 0;
 ```cpp
 /**
  * @brief Get timer statistics and status information
- * @param callback*count Number of callbacks executed
- * @param missed*callbacks Number of missed callbacks (if supported)
- * @param last*error Last error that occurred
- * @return hf*timer*err*t error code
+ * @param callback_count Number of callbacks executed
+ * @param missed_callbacks Number of missed callbacks (if supported)
+ * @param last_error Last error that occurred
+ * @return hf_timer_err_t error code
  * 
  * 📊 Retrieves comprehensive statistics about timer operation.
  * 
  * @example
- * uint64*t callback*count, missed*callbacks;
- * hf*timer*err*t last*error;
- * if (timer.GetStats(callback*count, missed*callbacks, last*error) == hf*timer*err*t::TIMER*SUCCESS) {
+ * uint64_t callback_count, missed_callbacks;
+ * hf_timer_err_t last_error;
+ * if (timer.GetStats(callback_count, missed_callbacks, last_error) == hf_timer_err_t::TIMER_SUCCESS) {
  *     printf("Callbacks: %llu, Missed: %llu, Last error: %s\n", 
- *            callback*count, missed*callbacks, HfTimerErrToString(last*error));
+ *            callback_count, missed_callbacks, HfTimerErrToString(last_error));
  * }
  */
-virtual hf*timer*err*t GetStats(uint64*t &callback*count, uint64*t &missed*callbacks,
-                                hf*timer*err*t &last*error) noexcept = 0;
+virtual hf_timer_err_t GetStats(uint64_t &callback_count, uint64_t &missed_callbacks,
+                                hf_timer_err_t &last_error) noexcept = 0;
 
 /**
  * @brief Reset timer statistics
- * @return hf*timer*err*t error code
+ * @return hf_timer_err_t error code
  * 
  * 🔄 Clears all accumulated statistics counters.
  */
-virtual hf*timer*err*t ResetStats() noexcept = 0;
+virtual hf_timer_err_t ResetStats() noexcept = 0;
 
 /**
  * @brief Reset timer operation statistics
- * @return hf*timer*err*t error code
+ * @return hf_timer_err_t error code
  * 
  * 🔄 Clears operation statistics.
  */
-virtual hf*timer*err*t ResetStatistics() noexcept;
+virtual hf_timer_err_t ResetStatistics() noexcept;
 
 /**
  * @brief Reset timer diagnostic information
- * @return hf*timer*err*t error code
+ * @return hf_timer_err_t error code
  * 
  * 🔄 Clears diagnostic information and error counters.
  */
-virtual hf*timer*err*t ResetDiagnostics() noexcept;
+virtual hf_timer_err_t ResetDiagnostics() noexcept;
 
 /**
  * @brief Get timer operation statistics
  * @param statistics Reference to store statistics data
- * @return hf*timer*err*t error code
+ * @return hf_timer_err_t error code
  * 
  * 📊 Retrieves comprehensive statistics about timer operations.
  */
-virtual hf*timer*err*t GetStatistics(hf*timer*statistics*t &statistics) const noexcept;
+virtual hf_timer_err_t GetStatistics(hf_timer_statistics_t &statistics) const noexcept;
 
 /**
  * @brief Get timer diagnostic information
  * @param diagnostics Reference to store diagnostics data
- * @return hf*timer*err*t error code
+ * @return hf_timer_err_t error code
  * 
  * 🔍 Retrieves diagnostic information about timer health and status.
  */
-virtual hf*timer*err*t GetDiagnostics(hf*timer*diagnostics*t &diagnostics) const noexcept;
+virtual hf_timer_err_t GetDiagnostics(hf_timer_diagnostics_t &diagnostics) const noexcept;
 ```text
 
 ---
@@ -391,49 +391,49 @@ virtual hf*timer*err*t GetDiagnostics(hf*timer*diagnostics*t &diagnostics) const
 ### 📞 **Timer Callback Type**
 
 ```cpp
-using hf*timer*callback*t = std::function<void(void *user*data)>;
+using hf_timer_callback_t = std::function<void(void *user_data)>;
 ```text
 
 ### 📈 **Timer Statistics Structure**
 
 ```cpp
-struct hf*timer*statistics*t {
-    uint32*t totalStarts;          ///< Total timer starts
-    uint32*t totalStops;           ///< Total timer stops
-    uint32*t callbackExecutions;   ///< Number of callback executions
-    uint32*t missedCallbacks;      ///< Number of missed callbacks
-    uint32*t averageCallbackTimeUs; ///< Average callback execution time (microseconds)
-    uint32*t maxCallbackTimeUs;    ///< Maximum callback execution time
-    uint32*t minCallbackTimeUs;    ///< Minimum callback execution time
-    uint64*t totalRunningTimeUs;   ///< Total running time in microseconds
+struct hf_timer_statistics_t {
+    uint32_t totalStarts;          ///< Total timer starts
+    uint32_t totalStops;           ///< Total timer stops
+    uint32_t callbackExecutions;   ///< Number of callback executions
+    uint32_t missedCallbacks;      ///< Number of missed callbacks
+    uint32_t averageCallbackTimeUs; ///< Average callback execution time (microseconds)
+    uint32_t maxCallbackTimeUs;    ///< Maximum callback execution time
+    uint32_t minCallbackTimeUs;    ///< Minimum callback execution time
+    uint64_t totalRunningTimeUs;   ///< Total running time in microseconds
 };
 ```text
 
 ### 🔍 **Timer Diagnostics Structure**
 
 ```cpp
-struct hf*timer*diagnostics*t {
+struct hf_timer_diagnostics_t {
     bool timerHealthy;             ///< Overall timer health status
-    hf*timer*err*t lastErrorCode;  ///< Last error code
-    uint32*t lastErrorTimestamp;   ///< Last error timestamp
-    uint32*t consecutiveErrors;    ///< Consecutive error count
+    hf_timer_err_t lastErrorCode;  ///< Last error code
+    uint32_t lastErrorTimestamp;   ///< Last error timestamp
+    uint32_t consecutiveErrors;    ///< Consecutive error count
     bool timerInitialized;         ///< Timer initialization status
     bool timerRunning;             ///< Timer running status
-    uint64*t currentPeriodUs;      ///< Current timer period in microseconds
-    uint64*t timerResolutionUs;    ///< Timer resolution in microseconds
+    uint64_t currentPeriodUs;      ///< Current timer period in microseconds
+    uint64_t timerResolutionUs;    ///< Timer resolution in microseconds
 };
 ```text
 
 ### 📊 **Timer Stats Structure**
 
 ```cpp
-struct hf*timer*stats*t {
-    uint64*t start*count;          ///< Number of timer starts
-    uint64*t stop*count;           ///< Number of timer stops
-    uint64*t callback*count;       ///< Number of callback executions
-    uint64*t missed*callbacks;     ///< Number of missed callbacks
-    hf*timer*err*t last*error;     ///< Last error encountered
-    hf*timestamp*us*t last*start*us; ///< Timestamp of last start
+struct hf_timer_stats_t {
+    uint64_t start_count;          ///< Number of timer starts
+    uint64_t stop_count;           ///< Number of timer stops
+    uint64_t callback_count;       ///< Number of callback executions
+    uint64_t missed_callbacks;     ///< Number of missed callbacks
+    hf_timer_err_t last_error;     ///< Last error encountered
+    hf_timestamp_us_t last_start_us; ///< Timestamp of last start
 };
 ```text
 
@@ -447,46 +447,46 @@ struct hf*timer*stats*t {
 #include "mcu/esp32/EspPeriodicTimer.h"
 
 // Create timer instance
-EspPeriodicTimer timer(TIMER*GROUP*0, TIMER*0);
+EspPeriodicTimer timer(TIMER_GROUP_0, TIMER_0);
 
 // Timer callback function
-void on*timer*tick(void* user*data) {
-    static uint32*t tick*count = 0;
-    tick*count++;
+void on_timer_tick(void* user_data) {
+    static uint32_t tick_count = 0;
+    tick_count++;
     
-    printf("⏰ Timer tick %u\n", tick*count);
+    printf("⏰ Timer tick %u\n", tick_count);
     
     // Perform periodic task
     // e.g., read sensors, update control loops, etc.
 }
 
-void setup*timer() {
+void setup_timer() {
     // Initialize timer
-    if (timer.Initialize() != hf*timer*err*t::TIMER*SUCCESS) {
+    if (timer.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
         printf("❌ Timer initialization failed\n");
         return;
     }
     
     // Set callback function
-    timer.SetCallback(on*timer*tick, nullptr);
+    timer.SetCallback(on_timer_tick, nullptr);
     
     // Start timer with 1 second period
-    hf*timer*err*t result = timer.Start(1000000);  // 1,000,000 μs = 1 second
-    if (result == hf*timer*err*t::TIMER*SUCCESS) {
+    hf_timer_err_t result = timer.Start(1000000);  // 1,000,000 μs = 1 second
+    if (result == hf_timer_err_t::TIMER_SUCCESS) {
         printf("✅ Timer started successfully\n");
     } else {
         printf("❌ Timer start failed: %s\n", HfTimerErrToString(result));
     }
 }
 
-void stop*timer() {
-    hf*timer*err*t result = timer.Stop();
-    if (result == hf*timer*err*t::TIMER*SUCCESS) {
+void stop_timer() {
+    hf_timer_err_t result = timer.Stop();
+    if (result == hf_timer_err_t::TIMER_SUCCESS) {
         printf("✅ Timer stopped successfully\n");
     }
 }
 
-void print*timer*info() {
+void print_timer_info() {
     printf("📊 Timer Information:\n");
     printf("  Description: %s\n", timer.GetDescription());
     printf("  Min period: %llu μs\n", timer.GetMinPeriod());
@@ -506,36 +506,36 @@ class ControlLoop {
 private:
     EspPeriodicTimer timer*;
     float setpoint*;
-    float current*value*;
+    float current_value*;
     float kp*, ki*, kd*;
     float integral*;
-    float last*error*;
+    float last_error*;
     
 public:
-    ControlLoop() : timer*(TIMER*GROUP*0, TIMER*0), setpoint*(0.0f), current*value*(0.0f),
-                    kp*(1.0f), ki*(0.1f), kd*(0.01f), integral*(0.0f), last*error*(0.0f) {}
+    ControlLoop() : timer*(TIMER_GROUP_0, TIMER_0), setpoint*(0.0f), current_value*(0.0f),
+                    kp*(1.0f), ki*(0.1f), kd*(0.01f), integral*(0.0f), last_error*(0.0f) {}
     
     bool initialize() {
         // Initialize timer
-        if (timer*.Initialize() != hf*timer*err*t::TIMER*SUCCESS) {
+        if (timer*.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
             printf("❌ Control loop timer initialization failed\n");
             return false;
         }
         
         // Set callback
-        timer*.SetCallback([](void* user*data) {
-            static*cast<ControlLoop*>(user*data)->control*step();
+        timer*.SetCallback([](void* user_data) {
+            static_cast<ControlLoop*>(user_data)->control_step();
         }, this);
         
         return true;
     }
     
-    void start(float frequency*hz) {
-        uint64*t period*us = static*cast<uint64*t>(1000000.0f / frequency*hz);
+    void start(float frequency_hz) {
+        uint64_t period_us = static_cast<uint64_t>(1000000.0f / frequency_hz);
         
-        hf*timer*err*t result = timer*.Start(period*us);
-        if (result == hf*timer*err*t::TIMER*SUCCESS) {
-            printf("✅ Control loop started at %.1f Hz\n", frequency*hz);
+        hf_timer_err_t result = timer*.Start(period_us);
+        if (result == hf_timer_err_t::TIMER_SUCCESS) {
+            printf("✅ Control loop started at %.1f Hz\n", frequency_hz);
         } else {
             printf("❌ Control loop start failed: %s\n", HfTimerErrToString(result));
         }
@@ -546,15 +546,15 @@ public:
         printf("⏸️ Control loop stopped\n");
     }
     
-    void set*setpoint(float setpoint) {
+    void set_setpoint(float setpoint) {
         setpoint* = setpoint;
     }
     
-    void set*current*value(float value) {
-        current*value* = value;
+    void set_current_value(float value) {
+        current_value* = value;
     }
     
-    void set*gains(float kp, float ki, float kd) {
+    void set_gains(float kp, float ki, float kd) {
         kp* = kp;
         ki* = ki;
         kd* = kd;
@@ -562,39 +562,39 @@ public:
     }
     
 private:
-    void control*step() {
+    void control_step() {
         // Calculate error
-        float error = setpoint* - current*value*;
+        float error = setpoint* - current_value*;
         
         // PID control
         float proportional = kp* * error;
         integral* += ki* * error;
-        float derivative = kd* * (error - last*error*);
+        float derivative = kd* * (error - last_error*);
         
         float output = proportional + integral* + derivative;
         
         // Apply output (example: motor speed)
-        apply*control*output(output);
+        apply_control_output(output);
         
         // Update for next iteration
-        last*error* = error;
+        last_error* = error;
         
         // Optional: print control info
-        static uint32*t step*count = 0;
-        if (++step*count % 100 == 0) {  // Print every 100 steps
+        static uint32_t step_count = 0;
+        if (++step_count % 100 == 0) {  // Print every 100 steps
             printf("🎯 Control - Setpoint: %.2f, Current: %.2f, Output: %.2f\n",
-                   setpoint*, current*value*, output);
+                   setpoint*, current_value*, output);
         }
     }
     
-    void apply*control*output(float output) {
+    void apply_control_output(float output) {
         // Apply control output to actuator
         // This is just an example - implement based on your hardware
         printf("⚡ Control output: %.2f\n", output);
     }
 };
 
-void control*loop*example() {
+void control_loop_example() {
     ControlLoop controller;
     
     if (!controller.initialize()) {
@@ -603,17 +603,17 @@ void control*loop*example() {
     }
     
     // Configure control parameters
-    controller.set*gains(2.0f, 0.5f, 0.1f);
-    controller.set*setpoint(100.0f);
+    controller.set_gains(2.0f, 0.5f, 0.1f);
+    controller.set_setpoint(100.0f);
     
     // Start control loop at 100 Hz
     controller.start(100.0f);
     
     // Simulate changing setpoint
-    vTaskDelay(pdMS*TO*TICKS(5000));  // Wait 5 seconds
-    controller.set*setpoint(200.0f);
+    vTaskDelay(pdMS_TO_TICKS(5000));  // Wait 5 seconds
+    controller.set_setpoint(200.0f);
     
-    vTaskDelay(pdMS*TO*TICKS(5000));  // Wait 5 seconds
+    vTaskDelay(pdMS_TO_TICKS(5000));  // Wait 5 seconds
     controller.stop();
 }
 ```text
@@ -628,66 +628,66 @@ class HighFrequencySampler {
 private:
     EspPeriodicTimer timer*;
     std::vector<float> samples*;
-    size*t max*samples*;
-    bool sampling*active*;
+    size_t max_samples*;
+    bool sampling_active*;
     
 public:
-    HighFrequencySampler(size*t max*samples = 1000) 
-        : timer*(TIMER*GROUP*0, TIMER*0), max*samples*(max*samples), sampling*active*(false) {
-        samples*.reserve(max*samples);
+    HighFrequencySampler(size_t max_samples = 1000) 
+        : timer*(TIMER_GROUP_0, TIMER_0), max_samples*(max_samples), sampling_active*(false) {
+        samples*.reserve(max_samples);
     }
     
     bool initialize() {
-        if (timer*.Initialize() != hf*timer*err*t::TIMER*SUCCESS) {
+        if (timer*.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
             printf("❌ Sampler timer initialization failed\n");
             return false;
         }
         
-        timer*.SetCallback([](void* user*data) {
-            static*cast<HighFrequencySampler*>(user*data)->sample*data();
+        timer*.SetCallback([](void* user_data) {
+            static_cast<HighFrequencySampler*>(user_data)->sample_data();
         }, this);
         
         return true;
     }
     
-    void start*sampling(float frequency*hz) {
+    void start_sampling(float frequency_hz) {
         samples*.clear();
-        sampling*active* = true;
+        sampling_active* = true;
         
-        uint64*t period*us = static*cast<uint64*t>(1000000.0f / frequency*hz);
+        uint64_t period_us = static_cast<uint64_t>(1000000.0f / frequency_hz);
         
-        hf*timer*err*t result = timer*.Start(period*us);
-        if (result == hf*timer*err*t::TIMER*SUCCESS) {
-            printf("✅ Sampling started at %.1f Hz\n", frequency*hz);
+        hf_timer_err_t result = timer*.Start(period_us);
+        if (result == hf_timer_err_t::TIMER_SUCCESS) {
+            printf("✅ Sampling started at %.1f Hz\n", frequency_hz);
         } else {
             printf("❌ Sampling start failed: %s\n", HfTimerErrToString(result));
         }
     }
     
-    void stop*sampling() {
-        sampling*active* = false;
+    void stop_sampling() {
+        sampling_active* = false;
         timer*.Stop();
         printf("⏸️ Sampling stopped\n");
     }
     
-    const std::vector<float>& get*samples() const {
+    const std::vector<float>& get_samples() const {
         return samples*;
     }
     
-    void print*statistics() {
+    void print_statistics() {
         if (samples*.empty()) {
             printf("❌ No samples collected\n");
             return;
         }
         
         float sum = 0.0f;
-        float min*val = samples*[0];
-        float max*val = samples*[0];
+        float min_val = samples*[0];
+        float max_val = samples*[0];
         
         for (float sample : samples*) {
             sum += sample;
-            min*val = std::min(min*val, sample);
-            max*val = std::max(max*val, sample);
+            min_val = std::min(min_val, sample);
+            max_val = std::max(max_val, sample);
         }
         
         float average = sum / samples*.size();
@@ -695,31 +695,31 @@ public:
         printf("📊 Sampling Statistics:\n");
         printf("  Samples collected: %zu\n", samples*.size());
         printf("  Average: %.3f\n", average);
-        printf("  Min: %.3f\n", min*val);
-        printf("  Max: %.3f\n", max*val);
-        printf("  Range: %.3f\n", max*val - min*val);
+        printf("  Min: %.3f\n", min_val);
+        printf("  Max: %.3f\n", max_val);
+        printf("  Range: %.3f\n", max_val - min_val);
     }
     
 private:
-    void sample*data() {
-        if (!sampling*active*) {
+    void sample_data() {
+        if (!sampling_active*) {
             return;
         }
         
         // Simulate reading sensor data
-        float sensor*value = read*sensor*value();
+        float sensor_value = read_sensor_value();
         
-        if (samples*.size() < max*samples*) {
-            samples*.push*back(sensor*value);
+        if (samples*.size() < max_samples*) {
+            samples*.push_back(sensor_value);
         } else {
             // Buffer full, stop sampling
-            sampling*active* = false;
+            sampling_active* = false;
             timer*.Stop();
             printf("📦 Sample buffer full (%zu samples)\n", samples*.size());
         }
     }
     
-    float read*sensor*value() {
+    float read_sensor_value() {
         // Simulate sensor reading
         // Replace with actual sensor reading code
         static float value = 0.0f;
@@ -729,7 +729,7 @@ private:
     }
 };
 
-void sampling*example() {
+void sampling_example() {
     HighFrequencySampler sampler(1000);
     
     if (!sampler.initialize()) {
@@ -738,16 +738,16 @@ void sampling*example() {
     }
     
     // Start high-frequency sampling (1 kHz)
-    sampler.start*sampling(1000.0f);
+    sampler.start_sampling(1000.0f);
     
     // Wait for sampling to complete
-    vTaskDelay(pdMS*TO*TICKS(2000));  // Wait 2 seconds
+    vTaskDelay(pdMS_TO_TICKS(2000));  // Wait 2 seconds
     
     // Stop sampling
-    sampler.stop*sampling();
+    sampler.stop_sampling();
     
     // Print results
-    sampler.print*statistics();
+    sampler.print_statistics();
 }
 ```text
 
@@ -759,32 +759,32 @@ void sampling*example() {
 class AdaptiveTimer {
 private:
     EspPeriodicTimer timer*;
-    uint64*t current*period*;
-    uint64*t min*period*;
-    uint64*t max*period*;
-    uint32*t load*factor*;
+    uint64_t current_period*;
+    uint64_t min_period*;
+    uint64_t max_period*;
+    uint32_t load_factor*;
     
 public:
-    AdaptiveTimer(uint64*t min*period*us = 1000, uint64*t max*period*us = 1000000)
-        : timer*(TIMER*GROUP*0, TIMER*0), current*period*(100000), 
-          min*period*(min*period*us), max*period*(max*period*us), load*factor*(50) {}
+    AdaptiveTimer(uint64_t min_period_us = 1000, uint64_t max_period_us = 1000000)
+        : timer*(TIMER_GROUP_0, TIMER_0), current_period*(100000), 
+          min_period*(min_period_us), max_period*(max_period_us), load_factor*(50) {}
     
     bool initialize() {
-        if (timer*.Initialize() != hf*timer*err*t::TIMER*SUCCESS) {
+        if (timer*.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
             return false;
         }
         
-        timer*.SetCallback([](void* user*data) {
-            static*cast<AdaptiveTimer*>(user*data)->adaptive*step();
+        timer*.SetCallback([](void* user_data) {
+            static_cast<AdaptiveTimer*>(user_data)->adaptive_step();
         }, this);
         
         return true;
     }
     
     void start() {
-        hf*timer*err*t result = timer*.Start(current*period*);
-        if (result == hf*timer*err*t::TIMER*SUCCESS) {
-            printf("✅ Adaptive timer started with period %llu μs\n", current*period*);
+        hf_timer_err_t result = timer*.Start(current_period*);
+        if (result == hf_timer_err_t::TIMER_SUCCESS) {
+            printf("✅ Adaptive timer started with period %llu μs\n", current_period*);
         }
     }
     
@@ -792,69 +792,69 @@ public:
         timer*.Stop();
     }
     
-    void set*load*factor(uint32*t factor) {
-        load*factor* = std::min(factor, 100u);  // Clamp to 0-100
-        adjust*period();
+    void set_load_factor(uint32_t factor) {
+        load_factor* = std::min(factor, 100u);  // Clamp to 0-100
+        adjust_period();
     }
     
-    uint64*t get*current*period() const {
-        return current*period*;
+    uint64_t get_current_period() const {
+        return current_period*;
     }
     
 private:
-    void adaptive*step() {
+    void adaptive_step() {
         // Simulate system load measurement
-        uint32*t current*load = measure*system*load();
+        uint32_t current_load = measure_system_load();
         
         // Adjust load factor based on current load
-        if (current*load > 80) {
-            load*factor* = std::min(load*factor* + 5, 100u);
-        } else if (current*load < 20) {
-            load*factor* = std::max(load*factor* - 5, 0u);
+        if (current_load > 80) {
+            load_factor* = std::min(load_factor* + 5, 100u);
+        } else if (current_load < 20) {
+            load_factor* = std::max(load_factor* - 5, 0u);
         }
         
         // Adjust period based on load factor
-        adjust*period();
+        adjust_period();
         
         // Perform periodic task
-        perform*task();
+        perform_task();
     }
     
-    void adjust*period() {
+    void adjust_period() {
         // Calculate new period based on load factor
         // Higher load = longer period (slower execution)
-        uint64*t new*period = min*period* + 
-            ((max*period* - min*period*) * load*factor*) / 100;
+        uint64_t new_period = min_period* + 
+            ((max_period* - min_period*) * load_factor*) / 100;
         
-        if (new*period != current*period*) {
-            current*period* = new*period;
-            timer*.SetPeriod(current*period*);
-            printf("🔄 Period adjusted to %llu μs (load: %u%%)\n", current*period*, load*factor*);
+        if (new_period != current_period*) {
+            current_period* = new_period;
+            timer*.SetPeriod(current_period*);
+            printf("🔄 Period adjusted to %llu μs (load: %u%%)\n", current_period*, load_factor*);
         }
     }
     
-    uint32*t measure*system*load() {
+    uint32_t measure_system_load() {
         // Simulate system load measurement
         // Replace with actual load measurement
-        static uint32*t load = 50;
+        static uint32_t load = 50;
         load += (rand() % 21) - 10;  // Random change ±10
         if (load > 100) load = 100;
         if (load < 0) load = 0;
         return load;
     }
     
-    void perform*task() {
+    void perform_task() {
         // Simulate periodic task execution
-        static uint32*t task*count = 0;
-        task*count++;
+        static uint32_t task_count = 0;
+        task_count++;
         
-        if (task*count % 100 == 0) {
-            printf("⚡ Task executed %u times (period: %llu μs)\n", task*count, current*period*);
+        if (task_count % 100 == 0) {
+            printf("⚡ Task executed %u times (period: %llu μs)\n", task_count, current_period*);
         }
     }
 };
 
-void adaptive*timer*example() {
+void adaptive_timer_example() {
     AdaptiveTimer timer(1000, 100000);  // 1ms to 100ms range
     
     if (!timer.initialize()) {
@@ -866,15 +866,15 @@ void adaptive*timer*example() {
     
     // Simulate changing system load
     for (int i = 0; i < 10; i++) {
-        vTaskDelay(pdMS*TO*TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(1000));
         
         // Simulate high load
-        timer.set*load*factor(80);
+        timer.set_load_factor(80);
         
-        vTaskDelay(pdMS*TO*TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(1000));
         
         // Simulate low load
-        timer.set*load*factor(20);
+        timer.set_load_factor(20);
     }
     
     timer.stop();
@@ -889,45 +889,45 @@ void adaptive*timer*example() {
 
 ```cpp
 // ✅ Always check initialization
-if (timer.Initialize() != hf*timer*err*t::TIMER*SUCCESS) {
+if (timer.Initialize() != hf_timer_err_t::TIMER_SUCCESS) {
     printf("❌ Timer initialization failed\n");
     return false;
 }
 
 // ✅ Use appropriate period ranges
-uint64*t min*period = timer.GetMinPeriod();
-uint64*t max*period = timer.GetMaxPeriod();
-uint64*t period = std::clamp(desired*period, min*period, max*period);
+uint64_t min_period = timer.GetMinPeriod();
+uint64_t max_period = timer.GetMaxPeriod();
+uint64_t period = std::clamp(desired_period, min_period, max_period);
 
 // ✅ Handle all error codes
-hf*timer*err*t result = timer.Start(period);
-if (result != hf*timer*err*t::TIMER*SUCCESS) {
+hf_timer_err_t result = timer.Start(period);
+if (result != hf_timer_err_t::TIMER_SUCCESS) {
     printf("⚠️ Timer Error: %s\n", HfTimerErrToString(result));
     // Handle specific error types
-    if (result == hf*timer*err*t::TIMER*ERR*INVALID*PERIOD) {
+    if (result == hf_timer_err_t::TIMER_ERR_INVALID_PERIOD) {
         // Period out of range
-    } else if (result == hf*timer*err*t::TIMER*ERR*ALREADY*RUNNING) {
+    } else if (result == hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING) {
         // Timer already running
     }
 }
 
 // ✅ Set callback before starting timer
-timer.SetCallback(on*timer*tick, user*data);
+timer.SetCallback(on_timer_tick, user_data);
 timer.Start(period);
 
 // ✅ Keep callbacks short and efficient
-void on*timer*tick(void* user*data) {
+void on_timer_tick(void* user_data) {
     // Quick operations only
     // Avoid blocking operations
     // Use queues for longer tasks
 }
 
 // ✅ Monitor timer statistics
-uint64*t callback*count, missed*callbacks;
-hf*timer*err*t last*error;
-if (timer.GetStats(callback*count, missed*callbacks, last*error) == hf*timer*err*t::TIMER*SUCCESS) {
-    if (missed*callbacks > 0) {
-        printf("⚠️ Missed callbacks detected: %llu\n", missed*callbacks);
+uint64_t callback_count, missed_callbacks;
+hf_timer_err_t last_error;
+if (timer.GetStats(callback_count, missed_callbacks, last_error) == hf_timer_err_t::TIMER_SUCCESS) {
+    if (missed_callbacks > 0) {
+        printf("⚠️ Missed callbacks detected: %llu\n", missed_callbacks);
     }
 }
 ```text
@@ -945,7 +945,7 @@ timer.Start(0);  // Invalid period
 timer.Start(period);  // Error handling missing
 
 // ❌ Don't perform blocking operations in callbacks
-void on*timer*tick(void* user*data) {
+void on_timer_tick(void* user_data) {
     vTaskDelay(100);  // ❌ Blocking in callback
     // Use queues instead
 }

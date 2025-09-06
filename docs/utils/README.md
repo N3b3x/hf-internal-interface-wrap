@@ -133,11 +133,11 @@ The utility classes integrate seamlessly with the HardFOC Interface:
 #include "inc/mcu/esp32/EspGpio.h"
 
 // Create GPIO instance
-EspGpio led*pin(2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
+EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 
 // Use utility for safe GPIO management
 {
-    DigitalOutputGuard guard(led*pin);
+    DigitalOutputGuard guard(led_pin);
     if (guard.IsValid()) {
         // GPIO is automatically active
         // ... perform operations ...
@@ -162,16 +162,16 @@ Utilities provide convenient abstractions for application development:
 // Application code using utilities
 class MotorController {
 private:
-    EspGpio enable*pin*;
-    EspPwm motor*pwm*;
+    EspGpio enable_pin*;
+    EspPwm motor_pwm*;
     
 public:
     void EnableMotor() {
         // Safe GPIO control with automatic cleanup
-        DigitalOutputGuard guard(enable*pin*);
+        DigitalOutputGuard guard(enable_pin*);
         if (guard.IsValid()) {
             // Motor is safely enabled
-            motor*pwm*.SetDutyCycle(0, 50.0f);
+            motor_pwm*.SetDutyCycle(0, 50.0f);
         }
         // Motor automatically disabled when guard goes out of scope
     }
@@ -196,8 +196,8 @@ public:
 
 ```cpp
 // Create GPIO instance
-EspGpio led*pin(2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
-led*pin.EnsureInitialized();
+EspGpio led_pin(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
+led_pin.EnsureInitialized();
 ```text
 
 ### **3. Use Utility Classes**
@@ -205,7 +205,7 @@ led*pin.EnsureInitialized();
 ```cpp
 // Use DigitalOutputGuard for safe GPIO management
 {
-    DigitalOutputGuard guard(led*pin);
+    DigitalOutputGuard guard(led_pin);
     if (!guard.IsValid()) {
         // Handle initialization error
         return;
@@ -220,18 +220,18 @@ led*pin.EnsureInitialized();
 ### **4. Error Handling**
 
 ```cpp
-DigitalOutputGuard guard(led*pin);
+DigitalOutputGuard guard(led_pin);
 if (!guard.IsValid()) {
-    hf*gpio*err*t error = guard.GetLastError();
+    hf_gpio_err_t error = guard.GetLastError();
     switch (error) {
-        case hf*gpio*err*t::GPIO*ERR*NULL*POINTER:
-            ESP*LOGE(TAG, "Null pointer provided");
+        case hf_gpio_err_t::GPIO_ERR_NULL_POINTER:
+            ESP_LOGE(TAG, "Null pointer provided");
             break;
-        case hf*gpio*err*t::GPIO*ERR*NOT*INITIALIZED:
-            ESP*LOGE(TAG, "GPIO not initialized");
+        case hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED:
+            ESP_LOGE(TAG, "GPIO not initialized");
             break;
         default:
-            ESP*LOGE(TAG, "Unknown error: %d", static*cast<int>(error));
+            ESP_LOGE(TAG, "Unknown error: %d", static_cast<int>(error));
             break;
     }
     return;
@@ -250,25 +250,25 @@ if (!guard.IsValid()) {
 
 class StatusIndicator {
 private:
-    EspGpio status*led*;
+    EspGpio status_led*;
     
 public:
-    StatusIndicator(hf*pin*num*t pin) 
-        : status*led*(pin, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT,
-                      hf*gpio*active*state*t::HF*GPIO*ACTIVE*HIGH,
-                      hf*gpio*output*mode*t::HF*GPIO*OUTPUT*MODE*PUSH*PULL,
-                      hf*gpio*pull*mode*t::HF*GPIO*PULL*MODE*DOWN) {
-        status*led*.EnsureInitialized();
+    StatusIndicator(hf_pin_num_t pin) 
+        : status_led*(pin, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT,
+                      hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH,
+                      hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL,
+                      hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_DOWN) {
+        status_led*.EnsureInitialized();
     }
     
-    void ShowStatus(bool is*ok) {
+    void ShowStatus(bool is_ok) {
         // Safe GPIO control with automatic cleanup
-        DigitalOutputGuard guard(status*led*);
+        DigitalOutputGuard guard(status_led*);
         if (!guard.IsValid()) {
             return;
         }
         
-        if (is*ok) {
+        if (is_ok) {
             guard.SetActive();  // LED on
         } else {
             guard.SetInactive(); // LED off
@@ -288,35 +288,35 @@ public:
 
 class SafeMotorController {
 private:
-    EspGpio enable*pin*;
-    EspPwm motor*pwm*;
+    EspGpio enable_pin*;
+    EspPwm motor_pwm*;
     
 public:
-    SafeMotorController(hf*pin*num*t enable*pin, hf*pin*num*t pwm*pin) 
-        : enable*pin*(enable*pin, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT),
-          motor*pwm*() {
-        enable*pin*.EnsureInitialized();
-        motor*pwm*.EnsureInitialized();
-        motor*pwm*.EnableChannel(0);
+    SafeMotorController(hf_pin_num_t enable_pin, hf_pin_num_t pwm_pin) 
+        : enable_pin*(enable_pin, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT),
+          motor_pwm*() {
+        enable_pin*.EnsureInitialized();
+        motor_pwm*.EnsureInitialized();
+        motor_pwm*.EnableChannel(0);
     }
     
-    void SetSpeed(float speed*percent) {
+    void SetSpeed(float speed_percent) {
         // Safe motor control with automatic disable
-        DigitalOutputGuard guard(enable*pin*);
+        DigitalOutputGuard guard(enable_pin*);
         if (!guard.IsValid()) {
             return;
         }
         
         // Motor is safely enabled
-        motor*pwm*.SetDutyCycle(0, speed*percent);
+        motor_pwm*.SetDutyCycle(0, speed_percent);
         
         // Motor automatically disabled when guard goes out of scope
     }
     
     void EmergencyStop() {
         // Immediate motor disable
-        enable*pin*.SetInactive();
-        motor*pwm*.SetDutyCycle(0, 0.0f);
+        enable_pin*.SetInactive();
+        motor_pwm*.SetDutyCycle(0, 0.0f);
     }
 };
 ```text
@@ -330,25 +330,25 @@ public:
 #include "freertos/task.h"
 
 // Global GPIO for shared access
-EspGpio shared*led*(2, hf*gpio*direction*t::HF*GPIO*DIRECTION*OUTPUT);
+EspGpio shared_led*(2, hf_gpio_direction_t::HF_GPIO_DIRECTION_OUTPUT);
 
-void led*task(void* parameter) {
+void led_task(void* parameter) {
     while (true) {
         // Thread-safe GPIO control
-        DigitalOutputGuard guard(shared*led*);
+        DigitalOutputGuard guard(shared_led*);
         if (guard.IsValid()) {
             guard.SetActive();
-            vTaskDelay(pdMS*TO*TICKS(100));
+            vTaskDelay(pdMS_TO_TICKS(100));
             guard.SetInactive();
-            vTaskDelay(pdMS*TO*TICKS(100));
+            vTaskDelay(pdMS_TO_TICKS(100));
         }
     }
 }
 
 // Create multiple tasks safely accessing the same GPIO
-void setup*led*tasks() {
-    xTaskCreate(led*task, "led*task*1", 2048, NULL, 1, NULL);
-    xTaskCreate(led*task, "led*task*2", 2048, NULL, 1, NULL);
+void setup_led_tasks() {
+    xTaskCreate(led_task, "led_task_1", 2048, NULL, 1, NULL);
+    xTaskCreate(led_task, "led_task_2", 2048, NULL, 1, NULL);
 }
 ```text
 

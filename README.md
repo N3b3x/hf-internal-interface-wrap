@@ -52,7 +52,7 @@ performance.
 
 ```cpp
 // Write hardware-agnostic code
-BaseGpio* led = GpioFactory::Create(GPIO*PIN*2, GPIO*OUTPUT);
+BaseGpio* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);
 led->SetHigh();
 
 // Same code works on ESP32, STM32, or any supported MCU
@@ -103,19 +103,19 @@ led->SetHigh();
 ```cpp
 // Application code remains the same across MCUs
 class MotorController {
-    BaseGpio* enable*pin;
-    BasePwm* speed*control;
-    BaseAdc* current*sensor;
+    BaseGpio* enable_pin;
+    BasePwm* speed_control;
+    BaseAdc* current_sensor;
     
 public:
     void Initialize() {
-        enable*pin = GpioFactory::Create(MOTOR*ENABLE*PIN, GPIO*OUTPUT);
-        speed*control = PwmFactory::Create(PWM*CHANNEL*1, 1000); // 1kHz
-        current*sensor = AdcFactory::Create(ADC*CHANNEL*1);
+        enable_pin = GpioFactory::Create(MOTOR_ENABLE_PIN, GPIO_OUTPUT);
+        speed_control = PwmFactory::Create(PWM_CHANNEL_1, 1000); // 1kHz
+        current_sensor = AdcFactory::Create(ADC_CHANNEL_1);
     }
     
-    void SetSpeed(hf*u16*t speed*percent) {
-        speed*control->SetDutyCycle(speed*percent);
+    void SetSpeed(hf_u16_t speed_percent) {
+        speed_control->SetDutyCycle(speed_percent);
     }
 };
 ```text
@@ -124,13 +124,13 @@ public:
 The base classes can be extended for external chips:
 ```cpp
 // External motor driver chip
-class DRV8302*Driver : public BasePwm {
-    BaseI2c* i2c*bus;
-    BaseSpi* spi*bus;
+class DRV8302_Driver : public BasePwm {
+    BaseI2c* i2c_bus;
+    BaseSpi* spi_bus;
     
 public:
     // Implement BasePwm interface using external chip
-    void SetDutyCycle(hf*u16*t duty) override {
+    void SetDutyCycle(hf_u16_t duty) override {
         // Send PWM command to DRV8302 via SPI/I2C
     }
 };
@@ -219,7 +219,7 @@ public:
 
 ### **Adding New MCUs**
 
-1. **Create MCU directory**: `inc/mcu/your*mcu/` and `src/mcu/your*mcu/`
+1. **Create MCU directory**: `inc/mcu/your_mcu/` and `src/mcu/your_mcu/`
 2. **Implement base interfaces**: Inherit from base classes
 3. **Add factory support**: Register your implementations
 4. **Update build system**: Add MCU-specific compilation flags
@@ -227,16 +227,16 @@ public:
 ```cpp
 // Example: Adding STM32 GPIO support
 class Stm32Gpio : public BaseGpio {
-    GPIO*TypeDef* gpio*port;
-    hf*u16*t gpio*pin;
+    GPIO_TypeDef* gpio_port;
+    hf_u16_t gpio_pin;
     
 public:
     void SetHigh() override {
-        HAL*GPIO*WritePin(gpio*port, gpio*pin, GPIO*PIN*SET);
+        HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_SET);
     }
     
     void SetLow() override {
-        HAL*GPIO*WritePin(gpio*port, gpio*pin, GPIO*PIN*RESET);
+        HAL_GPIO_WritePin(gpio_port, gpio_pin, GPIO_PIN_RESET);
     }
 };
 ```text
@@ -255,22 +255,22 @@ cd hf-internal-interface-wrap
 ```bash
 ## For ESP32 development
 cd examples/esp32
-./scripts/setup*repo.sh
+./scripts/setup_repo.sh
 ```text
 
 ### **3. Build Example**
 ```bash
 ## Build GPIO test for ESP32
-./scripts/build*app.sh gpio*test Release esp32
+./scripts/build_app.sh gpio_test Release esp32
 ```text
 
 ### **4. Flash and Monitor**
 ```bash
 ## Flash to connected ESP32
-./scripts/flash*app.sh gpio*test Release flash
+./scripts/flash_app.sh gpio_test Release flash
 
 ## Monitor serial output
-./scripts/flash*app.sh gpio*test Release monitor
+./scripts/flash_app.sh gpio_test Release monitor
 ```text
 
 ### **5. Basic Usage**
@@ -280,14 +280,14 @@ cd examples/esp32
 
 void setup() {
     // Create GPIO instance for built-in LED
-    BaseGpio* led = new EspGpio(GPIO*NUM*2, GPIO*MODE*OUTPUT);
+    BaseGpio* led = new EspGpio(GPIO_NUM_2, GPIO_MODE_OUTPUT);
     
     // Blink LED
     while(true) {
         led->SetHigh();
-        vTaskDelay(pdMS*TO*TICKS(500));
+        vTaskDelay(pdMS_TO_TICKS(500));
         led->SetLow();
-        vTaskDelay(pdMS*TO*TICKS(500));
+        vTaskDelay(pdMS_TO_TICKS(500));
     }
 }
 ```text
@@ -305,12 +305,12 @@ void setup() {
 #### **Type System**
 ```cpp
 // Project uses consistent type definitions
-typedef uint8*t  hf*u8*t;
-typedef uint16*t hf*u16*t;
-typedef uint32*t hf*u32*t;
+typedef uint8_t  hf_u8_t;
+typedef uint16_t hf_u16_t;
+typedef uint32_t hf_u32_t;
 
-// Enums use snake*case with *t suffix
-enum class hf*gpio*state*t {
+// Enums use snake_case with *t suffix
+enum class hf_gpio_state_t {
     LOW = 0,
     HIGH = 1
 };
@@ -319,15 +319,15 @@ enum class hf*gpio*state*t {
 #### **Error Handling**
 ```cpp
 // All operations return status codes
-enum class hf*gpio*err*t {
+enum class hf_gpio_err_t {
     SUCCESS = 0,
-    INVALID*PIN,
-    ALREADY*CONFIGURED,
-    HARDWARE*ERROR
+    INVALID_PIN,
+    ALREADY_CONFIGURED,
+    HARDWARE_ERROR
 };
 
-hf*gpio*err*t result = gpio->Configure(GPIO*MODE*OUTPUT);
-if (result != hf*gpio*err*t::SUCCESS) {
+hf_gpio_err_t result = gpio->Configure(GPIO_MODE_OUTPUT);
+if (result != hf_gpio_err_t::SUCCESS) {
     Logger::GetInstance().LogError("GPIO configuration failed");
 }
 ```text
@@ -343,18 +343,18 @@ patterns:
 // inc/utils/GpioFactory.h - MCU-agnostic factory interface
 class GpioFactory {
 public:
-    static BaseGpio* Create(hf*u8*t pin, gpio*mode*t mode);
-    static BaseGpio* CreateWithInterrupt(hf*u8*t pin, gpio*isr*t callback);
+    static BaseGpio* Create(hf_u8_t pin, gpio_mode_t mode);
+    static BaseGpio* CreateWithInterrupt(hf_u8_t pin, gpio_isr_t callback);
     static void Destroy(BaseGpio* gpio);
 };
 
 // src/utils/GpioFactory.cpp - Automatic MCU selection
-BaseGpio* GpioFactory::Create(hf*u8*t pin, gpio*mode*t mode) {
-#ifdef MCU*ESP32
-    return new EspGpio(static*cast<gpio*num*t>(pin), mode);
-#elif defined(MCU*STM32)
+BaseGpio* GpioFactory::Create(hf_u8_t pin, gpio_mode_t mode) {
+#ifdef MCU_ESP32
+    return new EspGpio(static_cast<gpio_num_t>(pin), mode);
+#elif defined(MCU_STM32)
     return new Stm32Gpio(pin, mode);
-#elif defined(MCU*NRF)
+#elif defined(MCU_NRF)
     return new NrfGpio(pin, mode);
 #else
     #error "Unsupported MCU platform"
@@ -362,8 +362,8 @@ BaseGpio* GpioFactory::Create(hf*u8*t pin, gpio*mode*t mode) {
 }
 
 // Application code - same across all MCUs
-BaseGpio* led = GpioFactory::Create(GPIO*PIN*2, GPIO*OUTPUT);
-BaseGpio* button = GpioFactory::CreateWithInterrupt(GPIO*PIN*0, button*callback);
+BaseGpio* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);
+BaseGpio* button = GpioFactory::CreateWithInterrupt(GPIO_PIN_0, button_callback);
 ```text
 
 **Static Allocation Alternative:**
@@ -372,84 +372,84 @@ For systems requiring deterministic memory usage or avoiding heap allocation:
 
 ```cpp
 // inc/utils/StaticGpioFactory.h - Stack-based allocation (C++23 compatible)
-template<size*t MAX*GPIOS = 16>
+template<size_t MAX_GPIOS = 16>
 class StaticGpioFactory {
 private:
-    // Modern C++23 approach: alignas + std::byte array instead of deprecated std::aligned*storage
-    static std::array<alignas(BaseGpio) std::byte[sizeof(EspGpio)], MAX*GPIOS> gpio*storage;
-    static std::array<bool, MAX*GPIOS> gpio*used;
-    static size*t next*index;
+    // Modern C++23 approach: alignas + std::byte array instead of deprecated std::aligned_storage
+    static std::array<alignas(BaseGpio) std::byte[sizeof(EspGpio)], MAX_GPIOS> gpio_storage;
+    static std::array<bool, MAX_GPIOS> gpio_used;
+    static size_t next_index;
     
 public:
-    static BaseGpio* Create(hf*u8*t pin, gpio*mode*t mode) {
-        if (next*index >= MAX*GPIOS) return nullptr;
+    static BaseGpio* Create(hf_u8_t pin, gpio_mode_t mode) {
+        if (next_index >= MAX_GPIOS) return nullptr;
         
         // Construct in-place in pre-allocated storage using placement new
-        void* storage = &gpio*storage[next*index];
+        void* storage = &gpio_storage[next_index];
         BaseGpio* gpio = nullptr;
         
-#ifdef MCU*ESP32
-        gpio = new(storage) EspGpio(static*cast<gpio*num*t>(pin), mode);
-#elif defined(MCU*STM32)
+#ifdef MCU_ESP32
+        gpio = new(storage) EspGpio(static_cast<gpio_num_t>(pin), mode);
+#elif defined(MCU_STM32)
         gpio = new(storage) Stm32Gpio(pin, mode);
-#elif defined(MCU*NRF)
+#elif defined(MCU_NRF)
         gpio = new(storage) NrfGpio(pin, mode);
 #endif
         
-        gpio*used[next*index] = true;
-        next*index++;
+        gpio_used[next_index] = true;
+        next_index++;
         return gpio;
     }
     
     static void DestroyAll() {
-        for (size*t i = 0; i < next*index; ++i) {
-            if (gpio*used[i]) {
+        for (size_t i = 0; i < next_index; ++i) {
+            if (gpio_used[i]) {
                 // Use std::launder for safe pointer conversion (C++17+)
-                BaseGpio* gpio = std::launder(reinterpret*cast<BaseGpio*>(&gpio*storage[i]));
+                BaseGpio* gpio = std::launder(reinterpret_cast<BaseGpio*>(&gpio_storage[i]));
                 gpio->~BaseGpio();  // Call destructor explicitly
-                gpio*used[i] = false;
+                gpio_used[i] = false;
             }
         }
-        next*index = 0;
+        next_index = 0;
     }
 };
 
 // Pre-allocated object pool for known hardware configuration
 class HardwarePool {
 private:
-    // Modern C++23 approach: alignas + std::byte arrays instead of deprecated std::aligned*storage
-    alignas(BaseGpio) std::byte motor*enable*storage[sizeof(EspGpio)];
-    alignas(BaseGpio) std::byte fault*pin*storage[sizeof(EspGpio)];
-    alignas(BasePwm) std::byte motor*pwm*storage[sizeof(EspPwm)];
-    alignas(BaseAdc) std::byte current*adc*storage[sizeof(EspAdc)];
+    // Modern C++23 approach: alignas + std::byte arrays instead of deprecated std::aligned_storage
+    alignas(BaseGpio) std::byte motor_enable_storage[sizeof(EspGpio)];
+    alignas(BaseGpio) std::byte fault_pin_storage[sizeof(EspGpio)];
+    alignas(BasePwm) std::byte motor_pwm_storage[sizeof(EspPwm)];
+    alignas(BaseAdc) std::byte current_adc_storage[sizeof(EspAdc)];
     
 public:
-    BaseGpio* motor*enable;
-    BaseGpio* fault*pin;
-    BasePwm* motor*pwm;
-    BaseAdc* current*adc;
+    BaseGpio* motor_enable;
+    BaseGpio* fault_pin;
+    BasePwm* motor_pwm;
+    BaseAdc* current_adc;
     
     // Constructor creates all objects in pre-allocated storage
     HardwarePool() {
-#ifdef MCU*ESP32
-        motor*enable = new(&motor*enable*storage) EspGpio(GPIO*NUM*5, GPIO*MODE*OUTPUT);
-        fault*pin = new(&fault*pin*storage) EspGpio(GPIO*NUM*4, GPIO*MODE*INPUT);
-        motor*pwm = new(&motor*pwm*storage) EspPwm(LEDC*CHANNEL*0, 20000, 12, GPIO*NUM*18);
-        current*adc = new(&current*adc*storage) EspAdc(ADC1*CHANNEL*0);
-#elif defined(MCU*STM32)
-        motor*enable = new(&motor*enable*storage) Stm32Gpio(5, GPIO*MODE*OUTPUT);
-        fault*pin = new(&fault*pin*storage) Stm32Gpio(4, GPIO*MODE*INPUT);
-        motor*pwm = new(&motor*pwm*storage) Stm32Pwm(TIM1, 20000, 5);
-        current*adc = new(&current*adc*storage) Stm32Adc(ADC1, 0);
+#ifdef MCU_ESP32
+        motor_enable = new(&motor_enable_storage) EspGpio(GPIO_NUM_5, GPIO_MODE_OUTPUT);
+        fault_pin = new(&fault_pin_storage) EspGpio(GPIO_NUM_4, GPIO_MODE_INPUT);
+        motor_pwm = new(&motor_pwm_storage) EspPwm(LEDC_CHANNEL_0, 20000, 12, GPIO_NUM_18);
+        current_adc = new(&current_adc_storage) EspAdc(ADC1_CHANNEL_0);
+#elif defined(MCU_STM32)
+        motor_enable = new(&motor_enable_storage) Stm32Gpio(5, GPIO_MODE_OUTPUT);
+        fault_pin = new(&fault_pin_storage) Stm32Gpio(4, GPIO_MODE_INPUT);
+        motor_pwm = new(&motor_pwm_storage) Stm32Pwm(TIM1, 20000, 5);
+        current_adc = new(&current_adc_storage) Stm32Adc(ADC1, 0);
 #endif
     }
     
     // Destructor calls destructors explicitly
     ~HardwarePool() {
-        if (motor*enable) motor*enable->~BaseGpio();
-        if (fault*pin) fault*pin->~BaseGpio();
-        if (motor*pwm) motor*pwm->~BasePwm();
-        if (current*adc) current*adc->~BaseAdc();
+        if (motor_enable) motor_enable->~BaseGpio();
+        if (fault_pin) fault_pin->~BaseGpio();
+        if (motor_pwm) motor_pwm->~BasePwm();
+        if (current_adc) current_adc->~BaseAdc();
     }
 };
 ```text
@@ -459,18 +459,18 @@ public:
 ```cpp
 // Dynamic allocation (heap-based)
 class DynamicController {
-    BaseGpio* motor*enable;
-    BasePwm* motor*speed;
+    BaseGpio* motor_enable;
+    BasePwm* motor_speed;
     
 public:
     void Initialize() {
-        motor*enable = GpioFactory::Create(GPIO*PIN*5, GPIO*OUTPUT);
-        motor*speed = PwmFactory::CreateMotorControl(PWM*CH*0, GPIO*PIN*18);
+        motor_enable = GpioFactory::Create(GPIO_PIN_5, GPIO_OUTPUT);
+        motor_speed = PwmFactory::CreateMotorControl(PWM_CH_0, GPIO_PIN_18);
     }
     
     ~DynamicController() {
-        GpioFactory::Destroy(motor*enable);
-        PwmFactory::Destroy(motor*speed);
+        GpioFactory::Destroy(motor_enable);
+        PwmFactory::Destroy(motor_speed);
     }
 };
 
@@ -482,13 +482,13 @@ public:
     void Initialize() {
         // Objects already created in hardware pool constructor
         // Just configure them
-        hardware.motor*enable->SetHigh();
-        hardware.motor*pwm->SetDutyCycle(0);
+        hardware.motor_enable->SetHigh();
+        hardware.motor_pwm->SetDutyCycle(0);
     }
     
-    void RunMotor(hf*u16*t speed) {
-        hardware.motor*pwm->SetDutyCycle(speed);
-        hf*u16*t current = hardware.current*adc->ReadRaw();
+    void RunMotor(hf_u16_t speed) {
+        hardware.motor_pwm->SetDutyCycle(speed);
+        hf_u16_t current = hardware.current_adc->ReadRaw();
         Logger::GetInstance().LogInfo("Motor speed: %d%%, Current: %d", speed, current);
     }
     
@@ -497,22 +497,22 @@ public:
 
 // Real-time system with pre-allocated pool
 void RealTimeTask() {
-    static StaticGpioFactory<8> gpio*pool;  // Max 8 GPIOs, stack allocated
+    static StaticGpioFactory<8> gpio_pool;  // Max 8 GPIOs, stack allocated
     
-    BaseGpio* led1 = gpio*pool.Create(GPIO*PIN*2, GPIO*OUTPUT);
-    BaseGpio* led2 = gpio*pool.Create(GPIO*PIN*3, GPIO*OUTPUT);
-    BaseGpio* button = gpio*pool.Create(GPIO*PIN*0, GPIO*INPUT);
+    BaseGpio* led1 = gpio_pool.Create(GPIO_PIN_2, GPIO_OUTPUT);
+    BaseGpio* led2 = gpio_pool.Create(GPIO_PIN_3, GPIO_OUTPUT);
+    BaseGpio* button = gpio_pool.Create(GPIO_PIN_0, GPIO_INPUT);
     
     // No heap allocation, deterministic timing
     while(true) {
-        if (button->Read() == GPIO*HIGH) {
+        if (button->Read() == GPIO_HIGH) {
             led1->SetHigh();
             led2->SetLow();
         } else {
             led1->SetLow();
             led2->SetHigh();
         }
-        vTaskDelay(pdMS*TO*TICKS(10));
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
 ```text
@@ -536,10 +536,10 @@ void RealTimeTask() {
 
 **C++23 Compatibility Note:**
 The examples above use modern C++23 syntax with `alignas()` and `std::byte` arrays instead of the
-deprecated `std::aligned*storage`.
+deprecated `std::aligned_storage`.
 As noted in
 [P1413R3](https://stackoverflow.com/questions/71828288/why-is-stdaligned-storage-to-be-deprecated-in-c23-and-what-to-use-instead),
-`std::aligned*storage` is deprecated due to API issues and potential undefined behavior.
+`std::aligned_storage` is deprecated due to API issues and potential undefined behavior.
 The replacement pattern `alignas(T) std::byte[sizeof(T)]` provides the same functionality with
 better type safety and constexpr compatibility.
 
@@ -549,14 +549,14 @@ better type safety and constexpr compatibility.
 // PWM Factory with motor control optimization
 class PwmFactory {
 public:
-    static BasePwm* CreateMotorControl(hf*u8*t channel, hf*u8*t gpio*pin) {
+    static BasePwm* CreateMotorControl(hf_u8_t channel, hf_u8_t gpio_pin) {
         // Automatically configures optimal settings for motor control
         // ESP32: 20kHz, 12-bit resolution
         // STM32: 20kHz, 16-bit resolution  
         // nRF: 20kHz, 10-bit resolution
     }
     
-    static BasePwm* CreateServoControl(hf*u8*t channel, hf*u8*t gpio*pin) {
+    static BasePwm* CreateServoControl(hf_u8_t channel, hf_u8_t gpio_pin) {
         // Automatically configures for servo control (50Hz, precise timing)
     }
 };
@@ -564,7 +564,7 @@ public:
 // Communication Factory with bus management
 class CommFactory {
 public:
-    static BaseI2c* CreateSensorBus(hf*u8*t bus*num) {
+    static BaseI2c* CreateSensorBus(hf_u8_t bus_num) {
         // Optimized I2C settings for sensor communication
         // Handles MCU-specific pin assignments automatically
     }
@@ -590,25 +590,25 @@ public:
 ### **Build Commands**
 ```bash
 ## Build specific application
-./scripts/build*app.sh <app*name> <build*type> <target>
+./scripts/build_app.sh <app_name> <build_type> <target>
 
 ## Examples:
-./scripts/build*app.sh gpio*test Debug esp32
-./scripts/build*app.sh pwm*test Release esp32c6
-./scripts/build*app.sh uart*test Debug esp32s3
+./scripts/build_app.sh gpio_test Debug esp32
+./scripts/build_app.sh pwm_test Release esp32c6
+./scripts/build_app.sh uart_test Debug esp32s3
 ```yaml
 
 ### **Configuration**
-Applications are configured in `examples/esp32/app*config.yml`:
+Applications are configured in `examples/esp32/app_config.yml`:
 ```yaml
 applications:
-  gpio*test:
-    source*file: "GpioComprehensiveTest.cpp"
+  gpio_test:
+    source_file: "GpioComprehensiveTest.cpp"
     description: "GPIO interface testing"
     enabled: true
     
-  pwm*test:
-    source*file: "PwmComprehensiveTest.cpp" 
+  pwm_test:
+    source_file: "PwmComprehensiveTest.cpp" 
     description: "PWM interface testing"
     enabled: true
 ```text
@@ -645,13 +645,13 @@ applications:
 ```cpp
 // Simple GPIO control - works on any MCU
 void BlinkLED() {
-    BaseGpio* led = GpioFactory::Create(GPIO*PIN*2, GPIO*OUTPUT);
+    BaseGpio* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);
     
     while(true) {
         led->SetHigh();
-        vTaskDelay(pdMS*TO*TICKS(500));
+        vTaskDelay(pdMS_TO_TICKS(500));
         led->SetLow(); 
-        vTaskDelay(pdMS*TO*TICKS(500));
+        vTaskDelay(pdMS_TO_TICKS(500));
     }
     
     GpioFactory::Destroy(led);
@@ -659,13 +659,13 @@ void BlinkLED() {
 
 // PWM motor control - MCU-optimized automatically
 void ControlMotor() {
-    BasePwm* motor = PwmFactory::CreateMotorControl(PWM*CH*0, GPIO*PIN*5);
-    BaseAdc* current = AdcFactory::Create(ADC*CHANNEL*1);
+    BasePwm* motor = PwmFactory::CreateMotorControl(PWM_CH_0, GPIO_PIN_5);
+    BaseAdc* current = AdcFactory::Create(ADC_CHANNEL_1);
     
     motor->SetDutyCycle(75);  // 75% speed
-    hf*u16*t current*ma = current->ReadMillivolts() / 10;  // Convert to mA
+    hf_u16_t current_ma = current->ReadMillivolts() / 10;  // Convert to mA
     
-    Logger::GetInstance().LogInfo("Motor current: %d mA", current*ma);
+    Logger::GetInstance().LogInfo("Motor current: %d mA", current_ma);
 }
 ```text
 
@@ -673,75 +673,75 @@ void ControlMotor() {
 ```cpp
 class HardFOCController {
     // Hardware interfaces - MCU agnostic
-    BaseGpio* motor*enable;
-    BaseGpio* fault*pin;
-    BasePwm* motor*speed;
-    BaseAdc* current*sensor;
-    BaseAdc* voltage*sensor;
-    BaseUart* debug*port;
-    BaseI2c* sensor*bus;
+    BaseGpio* motor_enable;
+    BaseGpio* fault_pin;
+    BasePwm* motor_speed;
+    BaseAdc* current_sensor;
+    BaseAdc* voltage_sensor;
+    BaseUart* debug_port;
+    BaseI2c* sensor_bus;
     BaseWifi* telemetry;
     
 public:
-    hf*gpio*err*t Initialize() {
+    hf_gpio_err_t Initialize() {
         // Factory creates MCU-specific implementations automatically
-        motor*enable = GpioFactory::Create(MOTOR*EN*PIN, GPIO*OUTPUT);
-        fault*pin = GpioFactory::CreateWithInterrupt(FAULT*PIN, fault*callback);
-        motor*speed = PwmFactory::CreateMotorControl(PWM*CH*0, MOTOR*PWM*PIN);
-        current*sensor = AdcFactory::Create(CURRENT*ADC*CH);
-        voltage*sensor = AdcFactory::Create(VOLTAGE*ADC*CH);
-        debug*port = CommFactory::CreateDebugPort();
-        sensor*bus = CommFactory::CreateSensorBus(I2C*BUS*0);
+        motor_enable = GpioFactory::Create(MOTOR_EN_PIN, GPIO_OUTPUT);
+        fault_pin = GpioFactory::CreateWithInterrupt(FAULT_PIN, fault_callback);
+        motor_speed = PwmFactory::CreateMotorControl(PWM_CH_0, MOTOR_PWM_PIN);
+        current_sensor = AdcFactory::Create(CURRENT_ADC_CH);
+        voltage_sensor = AdcFactory::Create(VOLTAGE_ADC_CH);
+        debug_port = CommFactory::CreateDebugPort();
+        sensor_bus = CommFactory::CreateSensorBus(I2C_BUS_0);
         telemetry = WifiFactory::Create();
         
         // Validate all interfaces created successfully
-        if (!motor*enable || !motor*speed || !current*sensor) {
-            return hf*gpio*err*t::HARDWARE*ERROR;
+        if (!motor_enable || !motor_speed || !current_sensor) {
+            return hf_gpio_err_t::HARDWARE_ERROR;
         }
         
-        debug*port->Printf("HardFOC Controller initialized on %s\n", MCU*NAME);
-        return hf*gpio*err*t::SUCCESS;
+        debug_port->Printf("HardFOC Controller initialized on %s\n", MCU_NAME);
+        return hf_gpio_err_t::SUCCESS;
     }
     
-    void RunMotor(hf*u16*t speed*percent) {
+    void RunMotor(hf_u16_t speed_percent) {
         // Enable motor driver
-        motor*enable->SetHigh();
+        motor_enable->SetHigh();
         
         // Set motor speed
-        motor*speed->SetDutyCycle(speed*percent);
+        motor_speed->SetDutyCycle(speed_percent);
         
         // Read diagnostics
-        hf*u16*t current*ma = current*sensor->ReadMillivolts() / 10;
-        hf*u16*t voltage*mv = voltage*sensor->ReadMillivolts();
+        hf_u16_t current_ma = current_sensor->ReadMillivolts() / 10;
+        hf_u16_t voltage_mv = voltage_sensor->ReadMillivolts();
         
         // Log locally
-        debug*port->Printf("Speed: %d%%, Current: %dmA, Voltage: %dmV\n", 
-                          speed*percent, current*ma, voltage*mv);
+        debug_port->Printf("Speed: %d%%, Current: %dmA, Voltage: %dmV\n", 
+                          speed_percent, current_ma, voltage_mv);
         
         // Send telemetry if connected
         if (telemetry && telemetry->IsConnected()) {
-            telemetry->SendData("motor*speed", speed*percent);
-            telemetry->SendData("motor*current", current*ma);
-            telemetry->SendData("bus*voltage", voltage*mv);
+            telemetry->SendData("motor_speed", speed_percent);
+            telemetry->SendData("motor_current", current_ma);
+            telemetry->SendData("bus_voltage", voltage_mv);
         }
     }
     
     void EmergencyStop() {
-        motor*enable->SetLow();
-        motor*speed->SetDutyCycle(0);
-        debug*port->Printf("EMERGENCY STOP - Motor disabled\n");
+        motor_enable->SetLow();
+        motor_speed->SetDutyCycle(0);
+        debug_port->Printf("EMERGENCY STOP - Motor disabled\n");
     }
     
     ~HardFOCController() {
         // Clean up all resources
         EmergencyStop();
-        GpioFactory::Destroy(motor*enable);
-        GpioFactory::Destroy(fault*pin);
-        PwmFactory::Destroy(motor*speed);
-        AdcFactory::Destroy(current*sensor);
-        AdcFactory::Destroy(voltage*sensor);
-        CommFactory::DestroyComm(debug*port);
-        CommFactory::DestroyComm(sensor*bus);
+        GpioFactory::Destroy(motor_enable);
+        GpioFactory::Destroy(fault_pin);
+        PwmFactory::Destroy(motor_speed);
+        AdcFactory::Destroy(current_sensor);
+        AdcFactory::Destroy(voltage_sensor);
+        CommFactory::DestroyComm(debug_port);
+        CommFactory::DestroyComm(sensor_bus);
         WifiFactory::Destroy(telemetry);
     }
 };
@@ -756,31 +756,31 @@ controller.RunMotor(50);  // 50% speed
 ```cpp
 // Factories can create drivers for external chips too
 class EnvironmentalMonitor {
-    BaseTemperature* internal*temp;    // MCU internal sensor
-    BaseTemperature* external*temp;    // DS18B20 external sensor
-    BaseAdc* external*adc;             // MCP3208 external ADC
+    BaseTemperature* internal_temp;    // MCU internal sensor
+    BaseTemperature* external_temp;    // DS18B20 external sensor
+    BaseAdc* external_adc;             // MCP3208 external ADC
     
 public:
     void Initialize() {
         // Internal MCU sensors
-        internal*temp = SensorFactory::CreateInternalTemp();
+        internal_temp = SensorFactory::CreateInternalTemp();
         
         // External sensors using base interfaces
-        BaseGpio* ds18b20*pin = GpioFactory::Create(GPIO*PIN*4, GPIO*INPUT*OUTPUT);
-        external*temp = SensorFactory::CreateDS18B20(ds18b20*pin);
+        BaseGpio* ds18b20_pin = GpioFactory::Create(GPIO_PIN_4, GPIO_INPUT_OUTPUT);
+        external_temp = SensorFactory::CreateDS18B20(ds18b20_pin);
         
-        BaseSpi* spi*bus = CommFactory::CreateSpi(SPI*BUS*1, 1000000);
-        BaseGpio* cs*pin = GpioFactory::Create(GPIO*PIN*10, GPIO*OUTPUT);
-        external*adc = SensorFactory::CreateMCP3208(spi*bus, cs*pin);
+        BaseSpi* spi_bus = CommFactory::CreateSpi(SPI_BUS_1, 1000000);
+        BaseGpio* cs_pin = GpioFactory::Create(GPIO_PIN_10, GPIO_OUTPUT);
+        external_adc = SensorFactory::CreateMCP3208(spi_bus, cs_pin);
     }
     
     void ReadAllSensors() {
-        float internal*celsius = internal*temp->ReadCelsius();
-        float external*celsius = external*temp->ReadCelsius();
-        hf*u16*t external*raw = external*adc->ReadRaw();
+        float internal_celsius = internal_temp->ReadCelsius();
+        float external_celsius = external_temp->ReadCelsius();
+        hf_u16_t external_raw = external_adc->ReadRaw();
         
         Logger::GetInstance().LogInfo("Temps: Internal=%.1f°C, External=%.1f°C, ADC=%d", 
-                                     internal*celsius, external*celsius, external*raw);
+                                     internal_celsius, external_celsius, external_raw);
     }
 };
 ```text
@@ -805,8 +805,8 @@ public:
 
 ### **Coding Standards**
 - **Functions**: CamelCase (`SetDutyCycle`, `ReadValue`)
-- **Types**: snake*case with `*t` suffix (`hf*gpio*state*t`)
-- **Enums**: snake*case enum class (`hf*adc*err*t`)
+- **Types**: snake_case with `*t` suffix (`hf_gpio_state_t`)
+- **Enums**: snake_case enum class (`hf_adc_err_t`)
 - **Logging**: Use `Logger::GetInstance()` for all output
 
 ---

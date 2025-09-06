@@ -12,9 +12,9 @@ contributors.
 - **Consistent Naming** - Follow the established naming conventions:
   - Classes: `PascalCase` (e.g., `EspGpio`, `BaseTemperature`)
   - Functions: `PascalCase` (e.g., `EnsureInitialized`, `ReadChannelV`)
-  - Variables: `snake*case*` with trailing underscore for members (e.g., `motor*enable*`, `current*sensor*`)
-  - Constants: `UPPER*SNAKE*CASE` (e.g., `ADC*CHANNEL*0`)
-  - Types: `hf*` prefix with `*t` suffix (e.g., `hf*gpio*err*t`, `hf*pin*num*t`)
+  - Variables: `snake_case*` with trailing underscore for members (e.g., `motor_enable*`, `current_sensor*`)
+  - Constants: `UPPER_SNAKE_CASE` (e.g., `ADC_CHANNEL_0`)
+  - Types: `hf*` prefix with `*t` suffix (e.g., `hf_gpio_err_t`, `hf_pin_num_t`)
 
 ### 🏗️ **Architecture Guidelines**
 
@@ -27,7 +27,7 @@ contributors.
 - **Thread Safety** - Consider thread safety implications and document
   any limitations
 - **Platform Agnostic Types** - Use HardFOC type system
-  (`hf*u32*t`, `hf*pin*num_t`, etc.)
+  (`hf_u32_t`, `hf_pin_num_t`, etc.)
 
 ## 🧪 **Testing**
 

@@ -55,19 +55,19 @@ The test suite is organized into configurable sections:
 
 ```cpp
 // Core functionality tests
-static constexpr bool ENABLE*CORE*TESTS = true;
+static constexpr bool ENABLE_CORE_TESTS = true;
 
 // Advanced feature tests  
-static constexpr bool ENABLE*ADVANCED*TESTS = true;
+static constexpr bool ENABLE_ADVANCED_TESTS = true;
 
 // Error handling tests
-static constexpr bool ENABLE*ERROR*TESTS = true;
+static constexpr bool ENABLE_ERROR_TESTS = true;
 
 // Performance tests
-static constexpr bool ENABLE*PERFORMANCE*TESTS = true;
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;
 
 // SN65 transceiver tests
-static constexpr bool ENABLE*TRANSCEIVER*TESTS = true;
+static constexpr bool ENABLE_TRANSCEIVER_TESTS = true;
 ```text
 
 ## Test Categories
@@ -98,13 +98,13 @@ static constexpr bool ENABLE*TRANSCEIVER*TESTS = true;
 ## Loopback Modes
 
 ### Internal Loopback
-- **Configuration**: `enable*loopback = true`
+- **Configuration**: `enable_loopback = true`
 - **Hardware**: TX and RX on same pin (GPIO4)
 - **Use Case**: Basic functionality testing
 - **Limitations**: No real CAN bus signaling
 
 ### External Loopback
-- **Configuration**: `enable*loopback = false`
+- **Configuration**: `enable_loopback = false`
 - **Hardware**: CANH → 120Ω → CANL (after transceiver)
 - **Use Case**: Real CAN bus testing
 - **Advantages**: Tests actual differential signaling
@@ -152,10 +152,10 @@ idf.py build flash monitor
 
 ### Error Codes
 The test suite uses comprehensive error reporting:
-- `CAN*SUCCESS`: Operation completed successfully
-- `CAN*ERR*BUS*OFF`: Bus-off state detected
-- `CAN*ERR*TIMEOUT`: Operation timeout
-- `CAN*ERR*HARDWARE*FAULT`: Hardware issue detected
+- `CAN_SUCCESS`: Operation completed successfully
+- `CAN_ERR_BUS_OFF`: Bus-off state detected
+- `CAN_ERR_TIMEOUT`: Operation timeout
+- `CAN_ERR_HARDWARE_FAULT`: Hardware issue detected
 
 ## Performance Metrics
 

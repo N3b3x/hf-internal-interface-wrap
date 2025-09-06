@@ -45,7 +45,7 @@ public:
     std::string Generate(const std::string& input) const noexcept;
     
     // Custom character management
-    void AddCustomCharacter(char character, const std::vector<std::string>& art*lines) noexcept;
+    void AddCustomCharacter(char character, const std::vector<std::string>& art_lines) noexcept;
     void RemoveCustomCharacter(char character) noexcept;
     void ClearCustomCharacters() noexcept;
     
@@ -54,7 +54,7 @@ public:
     std::string GetSupportedCharacters() const noexcept;
 
 private:
-    std::map<char, std::vector<std::string>> custom*characters*;
+    std::map<char, std::vector<std::string>> custom_characters*;
     std::vector<std::string> GetCharacterArt(char character) const noexcept;
 };
 ```bash
@@ -81,16 +81,16 @@ Each character is represented as a 6-line ASCII art pattern with consistent widt
 AsciiArtGenerator generator;
 
 // Generate ASCII art for text
-std::string hello*art = generator.Generate("HELLO");
-printf("%s\n", hello*art.c*str());
+std::string hello_art = generator.Generate("HELLO");
+printf("%s\n", hello_art.c_str());
 
 // Generate ASCII art for numbers
-std::string number*art = generator.Generate("123");
-printf("%s\n", number*art.c*str());
+std::string number_art = generator.Generate("123");
+printf("%s\n", number_art.c_str());
 
 // Generate ASCII art for mixed content
-std::string mixed*art = generator.Generate("ESP32-C6");
-printf("%s\n", mixed*art.c*str());
+std::string mixed_art = generator.Generate("ESP32-C6");
+printf("%s\n", mixed_art.c_str());
 ```text
 
 ### Custom Character Management
@@ -99,7 +99,7 @@ printf("%s\n", mixed*art.c*str());
 AsciiArtGenerator generator;
 
 // Add custom character
-std::vector<std::string> custom*char = {
+std::vector<std::string> custom_char = {
     "  ***  ",
     " /   \\ ",
     "|     |",
@@ -108,11 +108,11 @@ std::vector<std::string> custom*char = {
     "       "
 };
 
-generator.AddCustomCharacter('@', custom*char);
+generator.AddCustomCharacter('@', custom_char);
 
 // Generate text with custom character
-std::string custom*art = generator.Generate("TEST@");
-printf("%s\n", custom*art.c*str());
+std::string custom_art = generator.Generate("TEST@");
+printf("%s\n", custom_art.c_str());
 
 // Remove custom character
 generator.RemoveCustomCharacter('@');
@@ -139,7 +139,7 @@ if (generator.IsCharacterSupported('€')) {
 
 // Get list of supported characters
 std::string supported = generator.GetSupportedCharacters();
-printf("Supported characters: %s\n", supported.c*str());
+printf("Supported characters: %s\n", supported.c_str());
 ```text
 
 ### Integration with Logging
@@ -155,11 +155,11 @@ logger.EnsureInitialized();
 
 // Generate ASCII art banner
 std::string banner = generator.Generate("SYSTEM STARTUP");
-logger.Log(hf*log*level*t::LOG*INFO, "APP", "ASCII Art Banner:\n%s", banner.c*str());
+logger.Log(hf_log_level_t::LOG_INFO, "APP", "ASCII Art Banner:\n%s", banner.c_str());
 
 // Generate test results
 std::string result = generator.Generate("SUCCESS");
-logger.Log(hf*log*level*t::LOG*INFO, "TEST", "Test Result:\n%s", result.c*str());
+logger.Log(hf_log_level_t::LOG_INFO, "TEST", "Test Result:\n%s", result.c_str());
 ```text
 
 ### Complete Example
@@ -167,37 +167,37 @@ logger.Log(hf*log*level*t::LOG*INFO, "TEST", "Test Result:\n%s", result.c*str())
 ```cpp
 #include "utils/AsciiArtGenerator.h"
 
-void print*test*header() {
+void print_test_header() {
     AsciiArtGenerator generator;
     
     // Print main header
     std::string header = generator.Generate("ESP32-C6 ADC TEST");
-    printf("%s\n", header.c*str());
+    printf("%s\n", header.c_str());
     
     // Print section header
     std::string section = generator.Generate("HARDWARE VALIDATION");
-    printf("%s\n", section.c*str());
+    printf("%s\n", section.c_str());
     
     // Print info
     std::string info = generator.Generate("CONNECTING TO ESP32-C6");
-    printf("%s\n", info.c*str());
+    printf("%s\n", info.c_str());
 }
 
-void print*test*results(bool success) {
+void print_test_results(bool success) {
     AsciiArtGenerator generator;
     
     if (success) {
-        std::string success*msg = generator.Generate("SUCCESS");
-        printf("%s\n", success*msg.c*str());
+        std::string success_msg = generator.Generate("SUCCESS");
+        printf("%s\n", success_msg.c_str());
         
         std::string passed = generator.Generate("ALL TESTS PASSED");
-        printf("%s\n", passed.c*str());
+        printf("%s\n", passed.c_str());
     } else {
-        std::string error*msg = generator.Generate("ERROR");
-        printf("%s\n", error*msg.c*str());
+        std::string error_msg = generator.Generate("ERROR");
+        printf("%s\n", error_msg.c_str());
         
         std::string failed = generator.Generate("TESTS FAILED");
-        printf("%s\n", failed.c*str());
+        printf("%s\n", failed.c_str());
     }
 }
 ```text
@@ -261,7 +261,7 @@ The `AsciiArtGenerator` can be extended with custom characters by adding them at
 AsciiArtGenerator generator;
 
 // Add custom character with 6-line ASCII art
-std::vector<std::string> custom*char = {
+std::vector<std::string> custom_char = {
     "  ***  ",  // Line 1
     " /   \\ ",  // Line 2
     "|     |",  // Line 3
@@ -270,11 +270,11 @@ std::vector<std::string> custom*char = {
     "       "   // Line 6
 };
 
-generator.AddCustomCharacter('@', custom*char);
+generator.AddCustomCharacter('@', custom_char);
 
 // Now '@' can be used in text generation
-std::string email*art = generator.Generate("TEST@EXAMPLE");
-printf("%s\n", email*art.c*str());
+std::string email_art = generator.Generate("TEST@EXAMPLE");
+printf("%s\n", email_art.c_str());
 ```text
 
 ### Custom Character Requirements

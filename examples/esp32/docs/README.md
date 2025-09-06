@@ -133,16 +133,16 @@ and performance characteristics of the respective peripheral interfaces.
 1. **Build and run specific test**:
    ```bash
    # Build CAN test
-   idf.py -DAPP*NAME=can*test build flash monitor
+   idf.py -DAPP_NAME=can_test build flash monitor
    
    # Build GPIO test
-   idf.py -DAPP*NAME=gpio*test build flash monitor
+   idf.py -DAPP_NAME=gpio_test build flash monitor
    ```
 
 1. **Run all tests**:
    ```bash
    # Build all test applications
-   ./scripts/build*all*tests.sh
+   ./scripts/build_all_tests.sh
    ```
 
 ### **Test Configuration**
