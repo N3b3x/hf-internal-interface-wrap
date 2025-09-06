@@ -30,6 +30,7 @@ jobs:
       output_dir: "docs/doxygen/html"
       run_link_check: true
       link_check_paths: "docs/**,*.md,**/docs/**,README.md"
+      link_check_exclude_paths: "nonexistent/path/to/exclude"
       run_markdown_lint: true
       markdown_lint_paths: "**/*.md"
       run_spell_check: false
