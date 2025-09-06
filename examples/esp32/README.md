@@ -132,10 +132,10 @@ provide clear guidance to users.
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        BASIC VALIDATION FIRST                              │
-│  • Validate app type exists                                              │
-│  • Validate build type is supported                                      │
-│  • Fail fast if basic validation fails                                   │
+│                        BASIC VALIDATION FIRST                               │
+│  • Validate app type exists                                                 │
+│  • Validate build type is supported                                         │
+│  • Fail fast if basic validation fails                                      │
 └─────────────────────┬───────────────────────────────────────────────────────┘
                       │
                       ▼
