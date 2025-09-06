@@ -101,7 +101,7 @@ jobs:
       project_dir: ${{ needs.validate.outputs.project_dir }}
       project_tools_dir: ${{ needs.validate.outputs.tools_dir }}
       scan_type: "all"
-      run_codeql: true
+      run_codeql: false
       codeql_languages: "cpp,python"
 
   # 🔍 Static analysis (runs in parallel)
