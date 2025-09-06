@@ -429,7 +429,7 @@ Use appropriate synchronization when accessing from multiple tasks.
 
 ## Implementation Notes
 
-- **Lazy Initialization**: Hardware configuration occurs only when `Initialize()` or `EnsureInitialized()` is called, (empty constructors)
+- **Lazy Initialization**: Hardware configuration occurs only when `Initialize()` or `EnsureInitialized()` is called
 - **ISR Compatibility**: Interrupt callbacks must be marked with `IRAM_ATTR` for proper execution
 - **Memory Efficiency**: Minimal RAM usage with static configuration
 - **Performance**: Optimized for real-time motor control applications

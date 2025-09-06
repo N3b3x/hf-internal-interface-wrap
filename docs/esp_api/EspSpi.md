@@ -104,6 +104,7 @@ The EspSpi library follows a two-tier architecture:
 
 ### **Design Principles**
 
+<!-- markdownlint-disable-next-line MD013 -->
 1. **Device Lifecycle Management**: `CreateDevice()` creates the C++ wrapper, `Initialize()` creates ESP-IDF device
 2. **Resource Ownership**: Bus owns devices, devices are managed through RAII
 3. **Thread Safety**: All operations protected by RTOS mutex
@@ -404,6 +405,7 @@ ESP_LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer_time);
 - **[BaseSpi API Reference](../api/BaseSpi.md)** - Abstract SPI interface
 - **[Hardware Types](../api/HardwareTypes.md)** - Type definitions
 - **[SPI Comprehensive Tests](../../examples/esp32/docs/README_SPI_TEST.md)** - Complete SPI validation
+<!-- markdownlint-disable-next-line MD013 -->
 - **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html)** - Official ESP-IDF docs
 
 ---

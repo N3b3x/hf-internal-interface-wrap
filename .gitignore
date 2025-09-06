@@ -69,3 +69,6 @@ logs/
 ci_build_path/
 **/node_modules/
 node_modules/
+
+package-lock.json
+package*.json

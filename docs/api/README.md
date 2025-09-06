@@ -96,31 +96,31 @@ The HardFOC Interface provides abstract base classes for all major hardware peri
 
 |-------|---------|--------------|-------------------|
 
-| **[BaseAdc](BaseAdc.md)** | Analog-to-Digital Conversion | Multi-channel, calibration | Sensor reading, current sensing |
+| **[BaseAdc](BaseAdc.md)** | Analog-to-Digital Conversion | Multi-channel, calibration | Sensor reading |
 
-| **[BaseGpio](BaseGpio.md)** | Digital I/O Control | Dynamic direction, interrupts | Status LEDs, switches, relay control |
+| **[BaseGpio](BaseGpio.md)** | Digital I/O Control | Dynamic direction, interrupts | Status LEDs, switches |
 
-| **BaseI2c** | I2C Bus Communication | Device scanning, register access | EEPROM, sensors, display controllers |
+| **BaseI2c** | I2C Bus Communication | Device scanning, register access | EEPROM, sensors |
 
-| **BaseNvs** | Non-Volatile Storage | Key-value storage, namespaces | Configuration storage, calibration data |
+| **BaseNvs** | Non-Volatile Storage | Key-value storage, namespaces | Configuration storage |
 
-| **BasePeriodicTimer** | High-Precision Timing | Microsecond resolution, callbacks | Control loops, sampling, event timing |
+| **BasePeriodicTimer** | High-Precision Timing | Microsecond resolution, callbacks | Control loops, sampling |
 
-| **BasePio** | Programmable I/O | Precise timing, symbol transmission | WS2812 LEDs, IR communication |
+| **BasePio** | Programmable I/O | Precise timing, symbol transmission | WS2812 LEDs, IR |
 
-| **BasePwm** | Pulse Width Modulation | Multi-channel, frequency control | Motor control, LED dimming |
+| **BasePwm** | Pulse Width Modulation | Multi-channel, frequency control | Motor control, LED |
 
-| **BaseSpi** | SPI Bus Communication | Full-duplex transfers, chip select | Flash memory, ADCs, display controllers |
+| **BaseSpi** | SPI Bus Communication | Full-duplex transfers, chip select | Flash memory, ADCs |
 
-| **BaseUart** | Serial Communication | Flow control, buffering, printf support | Debug output, GPS modules |
+| **BaseUart** | Serial Communication | Flow control, buffering, printf support | Debug output, GPS |
 
-| **BaseCan** | CAN Bus Communication | Message filtering, error handling | Motor control, vehicle systems |
+| **BaseCan** | CAN Bus Communication | Message filtering, error handling | Motor control, vehicle |
 
-| **BaseWifi** | WiFi Communication | Station/AP modes, security | IoT connectivity, remote monitoring |
+| **BaseWifi** | WiFi Communication | Station/AP modes, security | IoT connectivity |
 
-| **BaseBluetooth** | Bluetooth Communication | Classic & BLE, pairing | Mobile apps, wireless sensors |
+| **BaseBluetooth** | Bluetooth Communication | Classic & BLE, pairing | Mobile apps, wireless |
 
-| **BaseTemperature** | Temperature Sensing | Multi-sensor support, calibration | System monitoring, safety protection |
+| **BaseTemperature** | Temperature Sensing | Multi-sensor support, calibration | System monitoring |
 
 | **BaseLogger** | System Logging | Multi-level logging, multiple outputs | Debugging, diagnostics |
 
