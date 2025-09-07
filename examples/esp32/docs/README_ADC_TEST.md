@@ -181,8 +181,8 @@ cd examples/esp32
 
 ```text
 I (270) ADC_Test: ╔══════════════════════════════════════════════════════════════════════════════╗
-I (292) ADC_Test: ║                    ESP32-C6 ADC COMPREHENSIVE TEST SUITE                    ║
-I (301) ADC_Test: ║                         HardFOC Internal Interface                          ║
+I (292) ADC_Test: ║                    ESP32-C6 ADC COMPREHENSIVE TEST SUITE                     ║
+I (301) ADC_Test: ║                         HardFOC Internal Interface                           ║
 I (310) ADC_Test: ║                                                                              ║
 I (319) ADC_Test: ║  Hardware Setup Required (ESP32-C6 DevKit-M-1):                             ║
 I (328) ADC_Test: ║  - GPIO3 (ADC1_CH3): Connect to 3.3V via voltage divider (high reference)  ║
