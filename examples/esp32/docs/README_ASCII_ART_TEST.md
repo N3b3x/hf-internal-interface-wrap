@@ -51,7 +51,7 @@ and performance testing with a focus on embedded environments using `noexcept` f
 
 ## Set target platform
 export IDF_TARGET=esp32c6
-```text
+```
 
 ### Quick Start
 ```bash
@@ -63,7 +63,7 @@ idf.py build -DEXAMPLE_TYPE=ascii_art_test -DBUILD_TYPE=Release
 
 ## Flash and monitor
 idf.py -p /dev/ttyUSB0 flash monitor
-```text
+```
 
 ### Alternative Build Methods
 
@@ -77,7 +77,7 @@ source /path/to/esp-idf/export.sh
 
 ## Flash to device
 idf.py -B build_ascii_art_test_Release flash monitor
-```text
+```
 
 #### Debug Build for Development
 ```bash
@@ -86,14 +86,15 @@ idf.py build -DEXAMPLE_TYPE=ascii_art_test -DBUILD_TYPE=Debug
 
 ## Run with detailed logging
 idf.py -p /dev/ttyUSB0 flash monitor
-```text
+```
 
 ## Test Categories
 
 ### 1. Basic ASCII Art Generation
 ```cpp
 bool test_basic_ascii_art_generation() noexcept;
-```text
+```
+
 - **Validates**: Core text-to-ASCII art conversion functionality
 - **Tests**: 
   - Word generation ("HELLO")
@@ -105,7 +106,8 @@ bool test_basic_ascii_art_generation() noexcept;
 ### 2. Uppercase Conversion
 ```cpp
 bool test_uppercase_conversion() noexcept;
-```text
+```
+
 - **Validates**: Automatic case conversion for consistent output
 - **Tests**:
   - Lowercase input ("hello")
@@ -116,7 +118,8 @@ bool test_uppercase_conversion() noexcept;
 ### 3. Special Characters
 ```cpp
 bool test_special_characters() noexcept;
-```text
+```
+
 - **Validates**: Support for punctuation and special symbols
 - **Tests**:
   - Punctuation marks (!, ?, ., etc.)
@@ -127,7 +130,8 @@ bool test_special_characters() noexcept;
 ### 4. Numbers and Symbols
 ```cpp
 bool test_numbers_and_symbols() noexcept;
-```text
+```
+
 - **Validates**: Numeric character support and symbol generation
 - **Tests**:
   - Individual digits (0-9)
@@ -138,7 +142,8 @@ bool test_numbers_and_symbols() noexcept;
 ### 5. Empty and Edge Cases
 ```cpp
 bool test_empty_and_edge_cases() noexcept;
-```text
+```
+
 - **Validates**: Robust handling of boundary conditions
 - **Tests**:
   - Empty string input
@@ -150,7 +155,8 @@ bool test_empty_and_edge_cases() noexcept;
 ### 6. Custom Character Management
 ```cpp
 bool test_custom_character_management() noexcept;
-```text
+```
+
 - **Validates**: Custom ASCII art pattern functionality
 - **Tests**:
   - Adding custom character patterns
@@ -162,7 +168,8 @@ bool test_custom_character_management() noexcept;
 ### 7. Character Support Validation
 ```cpp
 bool test_character_support_validation() noexcept;
-```text
+```
+
 - **Validates**: Character support checking mechanisms
 - **Tests**:
   - Supported character detection
@@ -173,7 +180,8 @@ bool test_character_support_validation() noexcept;
 ### 8. Supported Characters List
 ```cpp
 bool test_supported_characters_list() noexcept;
-```text
+```
+
 - **Validates**: Complete character inventory functionality
 - **Tests**:
   - Full supported character enumeration
@@ -184,7 +192,8 @@ bool test_supported_characters_list() noexcept;
 ### 9. Complex Text Generation
 ```cpp
 bool test_complex_text_generation() noexcept;
-```text
+```
+
 - **Validates**: Advanced text processing capabilities
 - **Tests**:
   - Multi-word phrases
@@ -195,7 +204,8 @@ bool test_complex_text_generation() noexcept;
 ### 10. Performance and Stability
 ```cpp
 bool test_performance_and_stability() noexcept;
-```text
+```
+
 - **Validates**: Performance characteristics and system stability
 - **Tests**:
   - Generation speed measurements
@@ -218,7 +228,7 @@ All uppercase letters with distinctive ASCII art patterns:
 ██╔══██║
 ██║  ██║
 ╚═╝  ╚═╝
-```text
+```
 
 #### Numbers (0-9)
 All digits with clear, readable patterns:
@@ -229,7 +239,7 @@ All digits with clear, readable patterns:
 ██║   ██║
 ╚██████╔╝
  ╚═════╝ 
-```text
+```
 
 #### Special Characters
 Commonly used symbols and punctuation:
@@ -285,8 +295,7 @@ Total: 10, Passed: 10, Failed: 0, Success: 100.00%, Time: 89.45 ms
 ██║     ██║   ██║██║╚██╔╝██║██╔═══╝ ██║     ██╔══╝     ██║   ██╔══╝  ╚═╝
 ╚██████╗╚██████╔╝██║ ╚═╝ ██║██║     ███████╗███████╗   ██║   ███████╗██╗
  ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚═╝     ╚══════╝╚══════╝   ╚═╝   ╚══════╝╚═╝
-```text
-
+```
 ### Performance Metrics
 Typical performance on ESP32-C6 @ 160MHz:
 - **Single Character Generation**: ~500µs
@@ -316,7 +325,7 @@ idf.py set-target esp32c6
 ## Dependency issues
 idf.py clean
 idf.py build
-```text
+```
 
 #### Runtime Issues
 - **Character Display Issues**: Check terminal/serial monitor character encoding
@@ -331,7 +340,7 @@ idf.py monitor -p /dev/ttyUSB0 --print_filter="*"
 
 ## Alternative terminal configuration
 minicom -D /dev/ttyUSB0 -b 115200
-```text
+```
 
 ### Debug Mode Configuration
 Enable enhanced debugging:
@@ -342,7 +351,7 @@ idf.py build -DEXAMPLE_TYPE=ascii_art_test -DBUILD_TYPE=Debug
 ## Enable verbose logging
 idf.py menuconfig
 ## Component config → Log output → Default log verbosity → Debug
-```text
+```
 
 ## Integration Examples
 
@@ -360,7 +369,7 @@ ESP_LOGI("APP", "ASCII Art:\n%s", hello_art.c_str());
 // Generate numbers
 std::string number_art = generator.Generate("12345");
 ESP_LOGI("APP", "Numbers:\n%s", number_art.c_str());
-```text
+```
 
 ### Advanced Usage with Custom Characters
 ```cpp
@@ -377,7 +386,7 @@ ESP_LOGI("APP", "Supported characters: %s", supported_chars.c_str());
 // Generate complex text
 std::string complex_art = generator.Generate("ESP32-C6!");
 ESP_LOGI("APP", "Complex text:\n%s", complex_art.c_str());
-```text
+```
 
 ### Performance-Optimized Usage
 ```cpp
@@ -390,7 +399,7 @@ for (const auto& word : words) {
     std::string art = generator.Generate(word);
     // Process art...
 }
-```text
+```
 
 ## API Reference
 
@@ -410,7 +419,7 @@ public:
     void ReserveMemory(size_t size) noexcept;
     void ClearCache() noexcept;
 };
-```text
+```
 
 ### Advanced Functions
 ```cpp
@@ -422,7 +431,7 @@ std::vector<char> GetCustomCharacters() const noexcept;
 // Performance utilities
 size_t EstimateOutputSize(const std::string& text) const noexcept;
 void SetOptimizationLevel(int level) noexcept;
-```text
+```
 
 ## Character Pattern Format
 
@@ -437,8 +446,7 @@ const std::vector<std::string> CHAR_A = {
     "██║  ██║",
     "╚═╝  ╚═╝"
 };
-```text
-
+```
 ### Design Guidelines
 - **Height**: Exactly 6 lines for consistency
 - **Width**: Variable, optimized for readability
@@ -483,8 +491,6 @@ ESP_LOGI("BOOT", "\n%s", boot_art.c_str());
 // Error codes
 std::string error_art = generator.Generate("ERROR 404");
 ESP_LOGE("ERROR", "\n%s", error_art.c_str());
-```text
-
 ### User Interface Elements
 ```cpp
 // Menu headers
@@ -492,7 +498,7 @@ std::string menu_art = generator.Generate("MAIN MENU");
 
 // Status indicators
 std::string status_art = generator.Generate("ONLINE");
-```text
+```
 
 ### Debug and Development
 ```cpp
@@ -501,7 +507,7 @@ std::string test_art = generator.Generate("TEST PASS");
 
 // Progress indicators
 std::string progress_art = generator.Generate("75%");
-```text
+```
 
 ## CI/CD Integration
 
@@ -511,7 +517,7 @@ The ASCII Art test is automatically included in the continuous integration pipel
 matrix:
   example_type: [ascii_art_test, ...]
   build_type: [Release, Debug]
-```text
+```
 
 ### Automated Testing
 - **Build Verification**: Compile-time validation
