@@ -184,12 +184,12 @@ I (270) ADC_Test: ╔═══════════════════�
 I (292) ADC_Test: ║                    ESP32-C6 ADC COMPREHENSIVE TEST SUITE                     ║
 I (301) ADC_Test: ║                         HardFOC Internal Interface                           ║
 I (310) ADC_Test: ║                                                                              ║
-I (319) ADC_Test: ║  Hardware Setup Required (ESP32-C6 DevKit-M-1):                             ║
-I (328) ADC_Test: ║  - GPIO3 (ADC1_CH3): Connect to 3.3V via voltage divider (high reference)  ║
-I (337) ADC_Test: ║  - GPIO0 (ADC1_CH0): Connect to potentiometer center tap (variable 0-3.3V) ║
-I (346) ADC_Test: ║  - GPIO1 (ADC1_CH1): Connect to ground via 10kΩ resistor (low reference)   ║
+I (319) ADC_Test: ║  Hardware Setup Required (ESP32-C6 DevKit-M-1):                              ║
+I (328) ADC_Test: ║  - GPIO3 (ADC1_CH3): Connect to 3.3V via voltage divider (high reference)    ║
+I (337) ADC_Test: ║  - GPIO0 (ADC1_CH0): Connect to potentiometer center tap (variable 0-3.3V)   ║
+I (346) ADC_Test: ║  - GPIO1 (ADC1_CH1): Connect to ground via 10kΩ resistor (low reference)     ║
 I (356) ADC_Test: ║                                                                              ║
-I (365) ADC_Test: ║  Monitor Test: Adjust potentiometer on GPIO0 during monitor test            ║
+I (365) ADC_Test: ║  Monitor Test: Adjust potentiometer on GPIO0 during monitor test             ║
 I (374) ADC_Test: ╚══════════════════════════════════════════════════════════════════════════════╝
 
 I (2664) ADC_Test: GPIO3 (HIGH): 1627 mV
