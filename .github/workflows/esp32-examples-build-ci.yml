@@ -80,14 +80,10 @@ jobs:
     needs: validate
     uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@main
     with:
-      paths: "src/**,inc/**,examples/**,components/**"
-      auto_fix: true
-      commit: true
-      commit_message: "🔧 Auto-format code with clang-format"
-      git_name: "HardFOC Bot"
-      git_email: "bot@hardfoc.com"
       style: "file"
+      extensions: "c,cpp,cc,cxx,h,hpp"
       tidy_checks: "readability-*,performance-*,modernize-*"
+      ignore: "build|.git|third_party|vendor"
       files_changed_only: true
       step_summary: true
       file_annotations: true
