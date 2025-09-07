@@ -249,20 +249,20 @@ public:
 ```bash
 git clone <repository-url>
 cd hf-internal-interface-wrap
-```text
+```
 
 ### **2. Setup Development Environment**
 ```bash
 ## For ESP32 development
 cd examples/esp32
 ./scripts/setup_repo.sh
-```text
+```
 
 ### **3. Build Example**
 ```bash
 ## Build GPIO test for ESP32
 ./scripts/build_app.sh gpio_test Release esp32
-```text
+```
 
 ### **4. Flash and Monitor**
 ```bash
@@ -271,7 +271,7 @@ cd examples/esp32
 
 ## Monitor serial output
 ./scripts/flash_app.sh gpio_test Release monitor
-```text
+```
 
 ### **5. Basic Usage**
 ```cpp
@@ -614,7 +614,7 @@ applications:
     source_file: "PwmComprehensiveTest.cpp" 
     description: "PWM interface testing"
     enabled: true
-```text
+```
 
 ---
 

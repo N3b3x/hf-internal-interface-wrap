@@ -95,7 +95,7 @@ Data Flow:
 app_config.yml → generate_matrix.py → Matrix Generation
 setup_common.sh → build_app.sh → Dynamic Build Directories → Structured Naming → Complete Artifacts
 → Artifact Upload
-```text
+```
 
 ### **Build Process Flow**
 
