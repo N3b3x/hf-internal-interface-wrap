@@ -66,23 +66,9 @@ jobs:
       project_tools_dir: ${{ needs.set-vars.outputs.tools_dir }}
       clean_build: true  # Clean build for release
 
-  # 🔍 CodeQL Analysis for releases
-  codeql-analysis:
-    needs: [set-vars, wait-for-advanced-ci]
-    if: always() && (startsWith(github.ref, 'refs/tags/') || startsWith(github.ref, 'refs/heads/release/'))
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@main
-    with:
-      project_dir: ${{ needs.set-vars.outputs.project_dir }}
-      project_tools_dir: ${{ needs.set-vars.outputs.tools_dir }}
-      scan_type: "codeql"
-      run_codeql: true
-      codeql_languages: "cpp,python"
-      upload_results: true
-      fail_on_issues: false  # Don't fail release on CodeQL issues, just report them
-
   # Create release artifacts
   create-release:
-    needs: [wait-for-advanced-ci, build-release, codeql-analysis]
+    needs: [wait-for-advanced-ci, build-release]
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
@@ -247,7 +233,7 @@ jobs:
             
             ### 🛡️ Security & Quality
             - Full security audit completed
-            - CodeQL analysis: ${{ needs.codeql-analysis.result == 'success' && '✅ Passed' || '⚠️ Issues found' }}
+            - CodeQL analysis: ${{ needs.wait-for-advanced-ci.result == 'success' && '✅ Passed' || '⚠️ Issues found' }}
             - Comprehensive test suite
             - No known vulnerabilities
             
