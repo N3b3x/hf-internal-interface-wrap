@@ -158,11 +158,11 @@ provide clear guidance to users.
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           VALIDATION RESULT                                │
-│  ✅ VALID: gpio_test + Release + release/v5.5                            │
-│  → Proceed with build                                                    │
+│                           VALIDATION RESULT                                 │
+│  ✅ VALID: gpio_test + Release + release/v5.5                               │
+│  → Proceed with build                                                       │
 │                                                                             │
-│  ❌ INVALID: gpio_test + Release + release/v5.4                          │
+│  ❌ INVALID: gpio_test + Release + release/v5.4                             │
 │  → Show error with valid combinations                                     │
 │  → Provide helpful next steps                                             │
 └─────────────────────────────────────────────────────────────────────────────┘
