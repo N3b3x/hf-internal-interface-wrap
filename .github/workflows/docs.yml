@@ -24,7 +24,7 @@ concurrency:
 jobs:
   # Build documentation with linting and spell checking
   docs-build:
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/docs.yml@main
+    uses: N3b3x/hf-general-ci-tools/.github/workflows/docs.yml@main
     with:
       doxygen_config: "Doxyfile"
       output_dir: "docs/doxygen/html"

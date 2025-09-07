@@ -78,7 +78,7 @@ jobs:
   # 🔧 Lint and format code (runs in parallel)
   lint:
     needs: validate
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@main
+    uses: N3b3x/hf-general-ci-tools/.github/workflows/c-cpp-lint.yml@main
     with:
       style: "file"
       extensions: "c,cpp,cc,cxx,h,hpp"
@@ -103,7 +103,7 @@ jobs:
   # 🔍 Static analysis (runs in parallel)
   static-analysis:
     needs: validate
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/static-analysis.yml@main
+    uses: N3b3x/hf-general-ci-tools/.github/workflows/c-cpp-static-analysis.yml@main
     with:
       paths: "src inc examples components"
       std: "c++17"
