@@ -163,8 +163,8 @@ provide clear guidance to users.
 │  → Proceed with build                                                       │
 │                                                                             │
 │  ❌ INVALID: gpio_test + Release + release/v5.4                             │
-│  → Show error with valid combinations                                     │
-│  → Provide helpful next steps                                             │
+│  → Show error with valid combinations                                       │
+│  → Provide helpful next steps                                               │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```text
 
