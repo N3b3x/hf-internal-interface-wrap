@@ -297,7 +297,7 @@ void setup() {
 ## 📖 **API Documentation**
 
 ### **Generated Documentation**
-- **[API Reference](docs/api/)** - Complete interface documentation
+- **[API Reference](docs/api/)** - Complete base api interface documentation
 - **[ESP32 Implementation](docs/esp_api/)** - ESP32-specific details
 
 ### **Key Concepts**
