@@ -29,21 +29,11 @@ extern "C" {
 }
 #endif
 
-// Include the full EspGpio header for GPIO14 functionality
-#include "mcu/esp32/EspGpio.h"
-
-// Include ESP-IDF headers for GPIO operations
-#ifdef __cplusplus
-extern "C" {
-#endif
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#ifdef __cplusplus
-}
-#endif
-
 // Include GPIO types for proper functionality
 #include "HardwareTypes.h"
+
+// Include the full EspGpio header for GPIO14 functionality
+#include "mcu/esp32/EspGpio.h"
 
 //=============================================================================
 // GPIO14 TEST PROGRESSION INDICATOR MANAGEMENT
