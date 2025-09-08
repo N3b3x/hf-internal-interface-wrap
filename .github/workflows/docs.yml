@@ -27,7 +27,7 @@ permissions:
 
 concurrency:
   group: docs-ci-${{ github.ref }}
-  cancel-in-progress: false  # Don't cancel documentation builds
+  cancel-in-progress: true  # Don't cancel documentation builds
 
 jobs:
   # Build documentation with linting and spell checking
