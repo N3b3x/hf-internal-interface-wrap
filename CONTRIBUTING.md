@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🤝 Contributing"
+description: "Guidelines and information for contributing to the HardFOC Internal Interface Wrapper"
+nav_order: 5
+parent: "🔧 HardFOC Internal Interface Layer"
+permalink: /CONTRIBUTING/
+---
+
 # 🤝 Contributing to HardFOC Internal Interface Wrapper
 
 Thank you for your interest in contributing to the HardFOC Internal

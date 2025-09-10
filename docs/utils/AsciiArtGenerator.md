@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🎨 AsciiArtGenerator"
+description: "ASCII art generation utility for console output and logging enhancement"
+nav_order: 2
+parent: "🛠️ Utilities"
+permalink: /docs/utils/AsciiArtGenerator/
+---
+
 # 🎨 AsciiArtGenerator API Reference
 
 <div align="center">

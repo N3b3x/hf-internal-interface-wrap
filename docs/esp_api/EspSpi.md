@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🔄 EspSpi"
+description: "ESP32-C6 SPI implementation with full-duplex communication and DMA support"
+nav_order: 5
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspSpi/
+---
+
 # 🔌 EspSpi API Reference
 
 <div align="center">

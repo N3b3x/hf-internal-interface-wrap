@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📊 BaseAdc"
+description: "Analog-to-Digital Conversion base class for multi-channel ADC operations"
+nav_order: 2
+parent: "📋 API Reference"
+permalink: /docs/api/BaseAdc/
+---
+
 # 📊 BaseAdc API Reference
 
 ## 📋 Navigation

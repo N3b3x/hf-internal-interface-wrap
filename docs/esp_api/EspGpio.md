@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🔌 EspGpio"
+description: "ESP32-C6 GPIO implementation with hardware-optimized features and advanced configuration"
+nav_order: 1
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspGpio/
+---
+
 # EspGpio API Reference
 
 <div align="center">

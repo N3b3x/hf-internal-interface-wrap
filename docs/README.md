@@ -1,3 +1,13 @@
+---
+layout: default
+title: "📚 Documentation"
+description: "Complete documentation for the HardFOC Interface Wrapper - API reference, implementations, and utilities"
+nav_order: 2
+parent: "🔧 HardFOC Internal Interface Layer"
+permalink: /docs/
+has_children: true
+---
+
 # 🚀 HardFOC Internal Interface Wrapper
 
 <div align="center">

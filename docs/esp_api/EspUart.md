@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📡 EspUart"
+description: "ESP32-C6 UART implementation with hardware flow control and DMA integration"
+nav_order: 6
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspUart/
+---
+
 # EspUart API Reference
 
 <div align="center">

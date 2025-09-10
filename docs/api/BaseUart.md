@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📡 BaseUart"
+description: "Universal Asynchronous Receiver-Transmitter base class for serial communication"
+nav_order: 6
+parent: "📋 API Reference"
+permalink: /docs/api/BaseUart/
+---
+
 # 📡 BaseUart API Reference
 
 <div align="center">

@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🚌 BaseCan"
+description: "Controller Area Network base class for automotive and industrial communication"
+nav_order: 7
+parent: "📋 API Reference"
+permalink: /docs/api/BaseCan/
+---
+
 # 🚌 BaseCan API Reference
 
 <div align="center">

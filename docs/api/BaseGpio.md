@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🔌 BaseGpio"
+description: "Unified GPIO base class for all digital GPIO implementations in the HardFOC system"
+nav_order: 1
+parent: "📋 API Reference"
+permalink: /docs/api/BaseGpio/
+---
+
 # 🔌 BaseGpio API Reference
 
 <div align="center">

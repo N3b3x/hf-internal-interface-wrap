@@ -1,3 +1,12 @@
+---
+layout: default
+title: "💾 BaseNvs"
+description: "Non-Volatile Storage base class for configuration and data persistence"
+nav_order: 10
+parent: "📋 API Reference"
+permalink: /docs/api/BaseNvs/
+---
+
 # 💾 BaseNvs API Reference
 
 <div align="center">

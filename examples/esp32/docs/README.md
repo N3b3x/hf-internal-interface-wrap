@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 Test Documentation"
+description: "Comprehensive test documentation and validation for ESP32 implementations"
+nav_order: 1
+parent: "🚀 ESP32 Examples"
+permalink: /examples/esp32/docs/
+---
+
 # 🧪 ESP32 Test Documentation
 
 <div align="center">
