@@ -1,3 +1,13 @@
+---
+layout: default
+title: "🚀 ESP32 Examples"
+description: "Comprehensive examples with advanced build system for HardFOC ESP32 development"
+nav_order: 4
+parent: "🔧 HardFOC Internal Interface Layer"
+permalink: /examples/esp32/
+has_children: true
+---
+
 # 🚀 ESP32 Examples - HardFOC Internal Interface Wrapper
 
 <div align="center">

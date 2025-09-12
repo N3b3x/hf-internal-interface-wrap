@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📲 EspBluetooth"
+description: "ESP32-C6 Bluetooth implementation with NimBLE stack for Classic and BLE support"
+nav_order: 9
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspBluetooth/
+---
+
 # ESP32C6 NimBLE Bluetooth Implementation
 
 <div align="center">

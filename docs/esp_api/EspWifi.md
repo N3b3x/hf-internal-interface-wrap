@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📶 EspWifi"
+description: "ESP32-C6 WiFi implementation with 802.11n support and WPA3 security"
+nav_order: 8
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspWifi/
+---
+
 # EspWifi API Reference
 
 <div align="center">

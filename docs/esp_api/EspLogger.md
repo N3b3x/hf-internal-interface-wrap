@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📝 EspLogger"
+description: "ESP32-C6 Logger implementation with multi-output support and ESP-IDF integration"
+nav_order: 11
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspLogger/
+---
+
 # 📝 EspLogger API Reference
 
 <div align="center">

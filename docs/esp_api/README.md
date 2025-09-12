@@ -1,3 +1,13 @@
+---
+layout: default
+title: "🔧 ESP32 Implementations"
+description: "ESP32-C6 specific implementations with ESP-IDF v5.5+ features and hardware optimizations"
+nav_order: 2
+parent: "📚 Documentation"
+permalink: /docs/esp_api/
+has_children: true
+---
+
 # 🔧 ESP32-C6 Implementations
 
 <div align="center">

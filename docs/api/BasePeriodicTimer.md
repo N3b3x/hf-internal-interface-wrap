@@ -1,3 +1,12 @@
+---
+layout: default
+title: "⏰ BasePeriodicTimer"
+description: "High-precision timing base class for periodic operations and callbacks"
+nav_order: 12
+parent: "📋 API Reference"
+permalink: /docs/api/BasePeriodicTimer/
+---
+
 # ⏰ BasePeriodicTimer API Reference
 
 <div align="center">

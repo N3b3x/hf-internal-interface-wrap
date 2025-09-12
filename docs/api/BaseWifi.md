@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📶 BaseWifi"
+description: "WiFi base class for wireless network connectivity and IoT integration"
+nav_order: 8
+parent: "📋 API Reference"
+permalink: /docs/api/BaseWifi/
+---
+
 # 📶 BaseWifi API Reference
 
 <div align="center">

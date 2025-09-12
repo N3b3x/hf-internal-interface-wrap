@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🔗 BaseI2c"
+description: "Inter-Integrated Circuit base class for I2C bus communication"
+nav_order: 4
+parent: "📋 API Reference"
+permalink: /docs/api/BaseI2c/
+---
+
 # 🚌 BaseI2c API Reference
 
 <div align="center">

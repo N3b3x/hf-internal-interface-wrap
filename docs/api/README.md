@@ -1,3 +1,13 @@
+---
+layout: default
+title: "📋 API Reference"
+description: "Complete API reference for the HardFOC Interface Wrapper base classes and abstract interfaces"
+nav_order: 1
+parent: "📚 Documentation"
+permalink: /docs/api/
+has_children: true
+---
+
 # 🚀 HardFOC Interface Wrapper API Reference
 
 <div align="center">

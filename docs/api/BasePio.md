@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🎛️ BasePio"
+description: "Programmable I/O base class for custom protocols and precise timing"
+nav_order: 13
+parent: "📋 API Reference"
+permalink: /docs/api/BasePio/
+---
+
 # 🎛️ BasePio API Reference
 
 <div align="center">

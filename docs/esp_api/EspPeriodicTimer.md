@@ -1,3 +1,12 @@
+---
+layout: default
+title: "⏰ EspPeriodicTimer"
+description: "ESP32-C6 PeriodicTimer implementation with microsecond precision and hardware timers"
+nav_order: 12
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspPeriodicTimer/
+---
+
 # EspPeriodicTimer API Reference
 
 <div align="center">

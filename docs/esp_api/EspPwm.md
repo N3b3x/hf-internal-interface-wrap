@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🎛️ EspPwm"
+description: "ESP32-C6 PWM implementation with LEDC controller and hardware fade effects"
+nav_order: 3
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspPwm/
+---
+
 # EspPwm API Reference
 
 <div align="center">

@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🔄 BaseSpi"
+description: "Serial Peripheral Interface base class for high-speed SPI communication"
+nav_order: 5
+parent: "📋 API Reference"
+permalink: /docs/api/BaseSpi/
+---
+
 # 🔌 BaseSpi API Reference
 
 <div align="center">

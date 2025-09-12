@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🔧 HardFOC Internal Interface Layer"
+description: "Multi-MCU Peripheral Interface - Universal hardware abstraction layer enabling seamless MCU portability through unified peripheral APIs"
+nav_order: 1
+permalink: /
+has_children: true
+---
+
 # 🔧 HardFOC Internal Interface Layer: **Multi-MCU Peripheral Interface**
 
 <div align="center">

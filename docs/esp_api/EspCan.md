@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🚌 EspCan"
+description: "ESP32-C6 CAN implementation with TWAI controller for automotive communication"
+nav_order: 7
+parent: "🔧 ESP32 Implementations"
+permalink: /docs/esp_api/EspCan/
+---
+
 # EspCan API Reference
 
 <div align="center">

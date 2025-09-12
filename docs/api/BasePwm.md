@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🎛️ BasePwm"
+description: "Pulse Width Modulation base class for motor control and servo operations"
+nav_order: 3
+parent: "📋 API Reference"
+permalink: /docs/api/BasePwm/
+---
+
 # 🎛️ BasePwm API Reference
 
 <div align="center">

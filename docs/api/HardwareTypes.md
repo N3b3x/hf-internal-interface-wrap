@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🔧 HardwareTypes"
+description: "Platform-agnostic type definitions and validation functions for hardware abstraction"
+nav_order: 15
+parent: "📋 API Reference"
+permalink: /docs/api/HardwareTypes/
+---
+
 # HardwareTypes API Reference
 
 <div align="center">

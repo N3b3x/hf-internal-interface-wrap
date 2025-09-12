@@ -1,3 +1,13 @@
+---
+layout: default
+title: "🛠️ Utilities"
+description: "Advanced utility classes and helper components that enhance the HardFOC Interface Wrapper ecosystem"
+nav_order: 3
+parent: "📚 Documentation"
+permalink: /docs/utils/
+has_children: true
+---
+
 # 🛠️ HardFOC Interface Wrapper - Utilities
 
 <div align="center">

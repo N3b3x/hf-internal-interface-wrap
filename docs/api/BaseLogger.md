@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📝 BaseLogger"
+description: "Logging system base class for multi-level logging and diagnostics"
+nav_order: 11
+parent: "📋 API Reference"
+permalink: /docs/api/BaseLogger/
+---
+
 # 📝 BaseLogger API Reference
 
 <div align="center">

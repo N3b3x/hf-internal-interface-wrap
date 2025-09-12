@@ -1,3 +1,12 @@
+---
+layout: default
+title: "📲 BaseBluetooth"
+description: "Bluetooth base class for Classic and BLE wireless communication"
+nav_order: 9
+parent: "📋 API Reference"
+permalink: /docs/api/BaseBluetooth/
+---
+
 # 📲 BaseBluetooth API Reference
 
 ## 🎯 Unified Bluetooth abstraction for Classic and BLE wireless communication

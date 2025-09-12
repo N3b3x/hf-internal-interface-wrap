@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🛡️ DigitalOutputGuard"
+description: "RAII GPIO management utility for safe and automatic GPIO state control"
+nav_order: 1
+parent: "🛠️ Utilities"
+permalink: /docs/utils/DigitalOutputGuard/
+---
+
 # DigitalOutputGuard
 
 ## Overview

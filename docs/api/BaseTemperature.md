@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🌡️ BaseTemperature"
+description: "Temperature sensing base class for thermal monitoring and protection"
+nav_order: 14
+parent: "📋 API Reference"
+permalink: /docs/api/BaseTemperature/
+---
+
 # 🌡️ BaseTemperature API Reference
 
 <div align="center">
