@@ -1,0 +1,182 @@
+# Feature definitions for the HardFOC Internal Interface Layer
+
+core_peripherals:
+  - title: "GPIO Control"
+    description: "Comprehensive digital I/O management with interrupt support, pull-up/down configuration, and multi-pin operations"
+    icon: "fas fa-microchip"
+    badges:
+      - text: "Multi-MCU"
+        type: "success"
+      - text: "Interrupts"
+        type: "info"
+      - text: "Thread-Safe"
+        type: "primary"
+
+  - title: "ADC Measurement"
+    description: "High-precision analog-to-digital conversion with multi-channel support, calibration, and DMA integration"
+    icon: "fas fa-chart-line"
+    badges:
+      - text: "Multi-Channel"
+        type: "success"
+      - text: "DMA Support"
+        type: "info"
+      - text: "Calibration"
+        type: "primary"
+
+  - title: "PWM Generation"
+    description: "Flexible pulse-width modulation for motor control, servo positioning, and LED dimming with frequency and duty cycle control"
+    icon: "fas fa-cog"
+    badges:
+      - text: "Motor Control"
+        type: "success"
+      - text: "Servo Support"
+        type: "info"
+      - text: "LED Dimming"
+        type: "primary"
+
+  - title: "UART Communication"
+    description: "Asynchronous serial communication with flow control, custom baud rates, and interrupt-driven I/O"
+    icon: "fas fa-exchange-alt"
+    badges:
+      - text: "Flow Control"
+        type: "success"
+      - text: "Custom Baud"
+        type: "info"
+      - text: "Async I/O"
+        type: "primary"
+
+communication_buses:
+  - title: "I2C Master/Slave"
+    description: "Two-wire communication protocol for sensor integration with clock stretching and error recovery"
+    icon: "fas fa-link"
+    badges:
+      - text: "Master/Slave"
+        type: "success"
+      - text: "Clock Stretching"
+        type: "info"
+      - text: "Error Recovery"
+        type: "primary"
+
+  - title: "SPI Interface"
+    description: "High-speed serial peripheral interface with full/half duplex support and DMA integration"
+    icon: "fas fa-bolt"
+    badges:
+      - text: "High-Speed"
+        type: "success"
+      - text: "DMA Support"
+        type: "info"
+      - text: "Chip Select"
+        type: "primary"
+
+  - title: "CAN Bus"
+    description: "Controller Area Network for automotive and industrial applications with message filtering and error handling"
+    icon: "fas fa-truck"
+    badges:
+      - text: "Automotive"
+        type: "success"
+      - text: "Message Filtering"
+        type: "info"
+      - text: "Error Handling"
+        type: "primary"
+
+wireless_connectivity:
+  - title: "WiFi Support"
+    description: "IEEE 802.11 wireless networking with STA/AP modes, WPA3 security, and power management"
+    icon: "fas fa-wifi"
+    badges:
+      - text: "STA/AP Modes"
+        type: "success"
+      - text: "WPA3 Security"
+        type: "info"
+      - text: "Power Management"
+        type: "primary"
+
+  - title: "Bluetooth Classic/BLE"
+    description: "Short-range wireless communication with pairing, service discovery, and GATT support"
+    icon: "fas fa-bluetooth"
+    badges:
+      - text: "Classic/BLE"
+        type: "success"
+      - text: "GATT Services"
+        type: "info"
+      - text: "Pairing"
+        type: "primary"
+
+system_services:
+  - title: "NVS Storage"
+    description: "Non-volatile storage for configuration data with key-value pairs, encryption, and wear leveling"
+    icon: "fas fa-database"
+    badges:
+      - text: "Key-Value"
+        type: "success"
+      - text: "Encryption"
+        type: "info"
+      - text: "Wear Leveling"
+        type: "primary"
+
+  - title: "Logging System"
+    description: "Comprehensive logging with multiple levels, async operations, filtering, and performance monitoring"
+    icon: "fas fa-file-alt"
+    badges:
+      - text: "Multi-Level"
+        type: "success"
+      - text: "Async Logging"
+        type: "info"
+      - text: "Performance"
+        type: "primary"
+
+  - title: "Temperature Monitoring"
+    description: "Thermal monitoring with internal/external sensors, calibration, and threshold detection"
+    icon: "fas fa-thermometer-half"
+    badges:
+      - text: "Multi-Sensor"
+        type: "success"
+      - text: "Calibration"
+        type: "info"
+      - text: "Thresholds"
+        type: "primary"
+
+development_features:
+  - title: "Multi-MCU Support"
+    description: "Single codebase works across different microcontroller platforms with platform-specific optimizations"
+    icon: "fas fa-layer-group"
+    badges:
+      - text: "ESP32"
+        type: "success"
+      - text: "STM32"
+        type: "info"
+      - text: "Arduino"
+        type: "primary"
+
+  - title: "Thread-Safe Design"
+    description: "All interfaces are designed for concurrent access with proper synchronization and atomic operations"
+    icon: "fas fa-shield-alt"
+    badges:
+      - text: "Concurrent"
+        type: "success"
+      - text: "Atomic Ops"
+        type: "info"
+      - text: "Synchronized"
+        type: "primary"
+
+  - title: "Comprehensive Testing"
+    description: "Extensive test suites with hardware validation, performance benchmarks, and automated CI/CD"
+    icon: "fas fa-vial"
+    badges:
+      - text: "Hardware Tests"
+        type: "success"
+      - text: "Benchmarks"
+        type: "info"
+      - text: "CI/CD"
+        type: "primary"
+
+  - title: "Rich Documentation"
+    description: "Complete API documentation, examples, tutorials, and interactive guides for easy integration"
+    icon: "fas fa-book"
+    badges:
+      - text: "API Docs"
+        type: "success"
+      - text: "Examples"
+        type: "info"
+      - text: "Tutorials"
+        type: "primary"
