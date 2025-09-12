@@ -8,7 +8,8 @@ permalink: /features/
 
 # 🚀 Features
 
-The HardFOC Internal Interface Layer provides a comprehensive set of features designed for professional embedded development. This page showcases the key capabilities organized by category.
+The HardFOC Internal Interface Layer provides a comprehensive set of features designed for 
+professional embedded development. This page showcases the key capabilities organized by category.
 
 ## 🔌 Core Peripherals
 
@@ -49,4 +50,6 @@ Ready to explore these features? Check out our:
 - [💡 Examples](/examples/) - Real-world usage patterns
 - [🔧 Building Guide](/building/) - Compile and deploy your projects
 
-{% include alert.html type="info" title="Need Help?" content="Our comprehensive documentation includes step-by-step tutorials, API references, and real-world examples to help you get the most out of the HardFOC Internal Interface Layer." %}
+{% include alert.html type="info" title="Need Help?" 
+content="Our comprehensive documentation includes step-by-step tutorials, API references, and 
+real-world examples to help you get the most out of the HardFOC Internal Interface Layer." %}

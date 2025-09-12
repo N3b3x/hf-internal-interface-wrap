@@ -2,7 +2,8 @@
 
 core_peripherals:
   - title: "GPIO Control"
-    description: "Comprehensive digital I/O management with interrupt support, pull-up/down configuration, and multi-pin operations"
+    description: "Comprehensive digital I/O management with interrupt support, pull-up/down 
+      configuration, and multi-pin operations"
     icon: "fas fa-microchip"
     badges:
       - text: "Multi-MCU"
@@ -13,7 +14,8 @@ core_peripherals:
         type: "primary"
 
   - title: "ADC Measurement"
-    description: "High-precision analog-to-digital conversion with multi-channel support, calibration, and DMA integration"
+    description: "High-precision analog-to-digital conversion with multi-channel support, 
+      calibration, and DMA integration"
     icon: "fas fa-chart-line"
     badges:
       - text: "Multi-Channel"
@@ -24,7 +26,8 @@ core_peripherals:
         type: "primary"
 
   - title: "PWM Generation"
-    description: "Flexible pulse-width modulation for motor control, servo positioning, and LED dimming with frequency and duty cycle control"
+    description: "Flexible pulse-width modulation for motor control, servo positioning, and 
+      LED dimming with frequency and duty cycle control"
     icon: "fas fa-cog"
     badges:
       - text: "Motor Control"
@@ -69,7 +72,8 @@ communication_buses:
         type: "primary"
 
   - title: "CAN Bus"
-    description: "Controller Area Network for automotive and industrial applications with message filtering and error handling"
+    description: "Controller Area Network for automotive and industrial applications with 
+      message filtering and error handling"
     icon: "fas fa-truck"
     badges:
       - text: "Automotive"
