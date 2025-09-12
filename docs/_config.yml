@@ -152,6 +152,9 @@ exclude:
   - .sass-cache
   - .jekyll-cache
   - .jekyll-metadata
+  - examples/esp32/scripts/
+  - inc/
+  - src/
 
 # Include files that are normally excluded
 include:
