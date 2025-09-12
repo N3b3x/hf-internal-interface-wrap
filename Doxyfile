@@ -1020,6 +1020,8 @@ EXCLUDE_SYMLINKS       = NO
 
 EXCLUDE_PATTERNS       = */README.md \
                          */docs/* \
+                         */doxygen-awesome-css/* \
+                         */doxygen-awesome-extensions/* \
                          */CMakeLists.txt \
                          *.yml \
                          *.py \

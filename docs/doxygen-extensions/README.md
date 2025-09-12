@@ -1,4 +1,14 @@
-# Doxygen Extensions
+---
+layout: default
+title: "Configuration"
+nav_order: 1
+parent: "Doxygen Extensions"
+description: "Doxygen configuration and setup files for the HardFOC Interface Wrapper documentation"
+has_children: false
+has_toc: true
+---
+
+# Doxygen Extensions Configuration
 
 This directory contains all Doxygen-related content for generating the API documentation.
 

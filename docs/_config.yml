@@ -97,7 +97,7 @@ aux_links:
   "⭐ Star on GitHub":
     - "https://github.com/n3b3x/hf-internal-interface-wrap/stargazers"
   "📖 API Reference":
-    - "{{ site.baseurl }}/api/index.html"
+    - "hf-internal-interface-wrap/api/index.html"
 
 # Footer customization
 footer_content: >
@@ -153,6 +153,7 @@ exclude:
   - .jekyll-cache
   - .jekyll-metadata
   - examples/esp32/scripts/
+  - docs/doxygen-extensions/
   - inc/
   - src/
 

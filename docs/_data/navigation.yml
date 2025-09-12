@@ -122,10 +122,22 @@
           url: /docs/utils/AsciiArtGenerator/
           nav_order: 2
 
+    # Doxygen Extensions section
+    - title: "📖 Doxygen Extensions"
+      url: /docs/doxygen-extensions/
+      nav_order: 4
+      children:
+        - title: "⚙️ Configuration"
+          url: /docs/doxygen-extensions/README/
+          nav_order: 1
+        - title: "🧩 Extensions"
+          url: /docs/doxygen-extensions/extensions/
+          nav_order: 2
+
 # ESP32 Examples section
 - title: "🚀 ESP32 Examples"
   url: /examples/esp32/
-  nav_order: 3
+  nav_order: 5
   children:
     # Test Documentation section
     - title: "🧪 Test Documentation"
@@ -179,14 +191,14 @@
 - title: "📚 GitHub Repository"
   url: https://github.com/n3b3x/hf-internal-interface-wrap
   external: true
-  nav_order: 4
+  nav_order: 6
 
 - title: "🐛 Report Issues"
   url: https://github.com/n3b3x/hf-internal-interface-wrap/issues
   external: true
-  nav_order: 5
+  nav_order: 7
 
 - title: "⭐ Star on GitHub"
   url: https://github.com/n3b3x/hf-internal-interface-wrap/stargazers
   external: true
-  nav_order: 6
+  nav_order: 8
