@@ -20,6 +20,7 @@
 #include "HardwareTypes.h"
 #include <cstdint>
 #include <functional>
+#include <string_view>
 
 #ifndef HF_TIMESTAMP_US_T_DEFINED
 #define HF_TIMESTAMP_US_T_DEFINED
@@ -52,7 +53,8 @@ using hf_timestamp_us_t = hf_u64_t;
   X(TIMER_ERR_INVALID_PERIOD, 9, "Invalid period")                                                 \
   X(TIMER_ERR_RESOURCE_BUSY, 10, "Timer resource busy")                                            \
   X(TIMER_ERR_HARDWARE_FAULT, 11, "Timer hardware fault")                                          \
-  X(TIMER_ERR_UNSUPPORTED_OPERATION, 12, "Unsupported operation")
+  X(TIMER_ERR_UNSUPPORTED_OPERATION, 12, "Unsupported operation")                                  \
+  X(TIMER_ERR_UNKNOWN, 13, "Unknown error")
 
 // Generate enum class from X-macro
 enum class hf_timer_err_t : hf_i32_t {
@@ -61,16 +63,20 @@ enum class hf_timer_err_t : hf_i32_t {
 #undef X
 };
 
-// Generate error description function
-constexpr const char* HfTimerErrToString(hf_timer_err_t err) noexcept {
+/**
+ * @brief Convert timer error code to string view
+ * @param err The error code to convert
+ * @return String view of the error description
+ */
+constexpr std::string_view HfTimerErrToString(hf_timer_err_t err) noexcept {
   switch (err) {
-#define X(name, value, desc)                                                                       \
-  case hf_timer_err_t::name:                                                                       \
-    return desc;
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_timer_err_t::NAME:                                                                       \
+    return DESC;
     HF_TIMER_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfTimerErrToString(hf_timer_err_t::TIMER_ERR_UNKNOWN);
   }
 }
 

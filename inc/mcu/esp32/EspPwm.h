@@ -1022,7 +1022,7 @@ private:
    * @brief Notify channels that their timer has been reconfigured
    * @param timer_id Timer that was reconfigured
    * @param new_frequency New frequency
-   * @param new_resolution New resolution
+   * @param resolution_bits New resolution in bits
    */
   void NotifyTimerReconfiguration(hf_u8_t timer_id, hf_u32_t new_frequency,
                                   hf_u8_t resolution_bits) noexcept;

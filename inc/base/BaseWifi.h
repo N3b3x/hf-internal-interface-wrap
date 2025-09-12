@@ -72,7 +72,8 @@
   X(WIFI_ERR_CONFIG_INVALID, 21, "Invalid configuration")                                          \
   X(WIFI_ERR_ENTERPRISE_FAILED, 22, "Enterprise authentication failed")                            \
   X(WIFI_ERR_WPA3_NOT_SUPPORTED, 23, "WPA3 not supported")                                         \
-  X(WIFI_ERR_MESH_FAILED, 24, "Mesh operation failed")
+  X(WIFI_ERR_MESH_FAILED, 24, "Mesh operation failed")                                             \
+  X(WIFI_ERR_UNKNOWN, 25, "Unknown error")
 
 /**
  * @ingroup wifi
@@ -96,7 +97,7 @@ constexpr std::string_view HfWifiErrToString(hf_wifi_err_t err) noexcept {
     HF_WIFI_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfWifiErrToString(hf_wifi_err_t::WIFI_ERR_UNKNOWN);
   }
 }
 
@@ -510,7 +511,7 @@ inline std::string_view BaseWifi::GetErrorString(hf_wifi_err_t error) {
   switch (error) {
     HF_WIFI_ERR_LIST(X)
   default:
-    return "Unknown error";
+    return HfWifiErrToString(hf_wifi_err_t::WIFI_ERR_UNKNOWN);
   }
 #undef X
 }

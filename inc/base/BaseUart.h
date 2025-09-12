@@ -72,7 +72,8 @@
   /* System errors */                                                                              \
   X(UART_ERR_SYSTEM_ERROR, 29, "System error")                                                     \
   X(UART_ERR_PERMISSION_DENIED, 30, "Permission denied")                                           \
-  X(UART_ERR_OPERATION_ABORTED, 31, "Operation aborted")
+  X(UART_ERR_OPERATION_ABORTED, 31, "Operation aborted")                                           \
+  X(UART_ERR_UNKNOWN, 32, "Unknown error")
 
 enum class hf_uart_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
@@ -93,7 +94,7 @@ constexpr std::string_view HfUartErrToString(hf_uart_err_t err) noexcept {
     HF_UART_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfUartErrToString(hf_uart_err_t::UART_ERR_UNKNOWN);
   }
 }
 

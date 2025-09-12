@@ -328,6 +328,7 @@ inline void test_task_trampoline(void* param) {
  * @brief Print standardized test summary
  * @param test_results The TestResults instance to summarize
  * @param test_suite_name Name of the test suite for logging
+ * @param tag Logging tag for output identification
  */
 inline void print_test_summary(const TestResults& test_results, const char* test_suite_name,
                                const char* tag) noexcept {
@@ -345,8 +346,8 @@ inline void print_test_summary(const TestResults& test_results, const char* test
 }
 
 /**
- * @brief Print standardized test summary
- * @param test_results The TestResults instance to summarize
+ * @brief Print standardized test section status
+ * @param tag Logging tag for output identification
  * @param test_suite_name Name of the test suite for logging
  */
 inline void print_test_section_status(const char* tag, const char* test_suite_name) noexcept {
@@ -362,6 +363,7 @@ inline void print_test_section_status(const char* tag, const char* test_suite_na
 
 /**
  * @brief Print test section header with consistent formatting
+ * @param tag Logging tag for output identification
  * @param section_name Name of the test section
  * @param enabled Whether the section is enabled
  */
@@ -388,6 +390,7 @@ inline void print_test_section_header(const char* tag, const char* section_name,
 
 /**
  * @brief Print test section footer with consistent formatting
+ * @param tag Logging tag for output identification
  * @param section_name Name of the test section
  * @param enabled Whether the section is enabled
  */

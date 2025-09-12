@@ -23,6 +23,7 @@
 #include <cstdint>
 #include <functional>
 #include <string>
+#include <string_view>
 
 /**
  * @defgroup logger Logger Module
@@ -76,7 +77,8 @@
   X(LOGGER_ERR_INVALID_STATE, 20, "Invalid state")                                                 \
   X(LOGGER_ERR_INVALID_ARG, 21, "Invalid argument")                                                \
   X(LOGGER_ERR_TIMEOUT, 22, "Timeout")                                                             \
-  X(LOGGER_ERR_BUFFER_OVERFLOW, 23, "Buffer overflow")
+  X(LOGGER_ERR_BUFFER_OVERFLOW, 23, "Buffer overflow")                                             \
+  X(LOGGER_ERR_UNKNOWN, 24, "Unknown error")
 
 /**
  * @ingroup logger
@@ -209,6 +211,137 @@ struct hf_log_message_t {
   hf_u32_t thread_id;      ///< Thread ID
   hf_u32_t message_length; ///< Message length
 };
+
+//==============================================================================
+// UTILITY FUNCTIONS
+//==============================================================================
+
+/**
+ * @brief Convert logger error code to string view
+ * @param err The error code to convert
+ * @return String view of the error description
+ */
+constexpr std::string_view HfLoggerErrToString(hf_logger_err_t err) noexcept {
+  switch (err) {
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_logger_err_t::NAME:                                                                      \
+    return DESC;
+    HF_LOGGER_ERR_LIST(X)
+#undef X
+  default:
+    return HfLoggerErrToString(hf_logger_err_t::LOGGER_ERR_UNKNOWN);
+  }
+}
+
+/**
+ * @brief Convert log level to string
+ * @param level Log level
+ * @return const char* Level string
+ */
+inline const char* HfLogLevelToString(hf_log_level_t level) noexcept {
+  switch (level) {
+  case hf_log_level_t::LOG_LEVEL_NONE:
+    return "NONE";
+  case hf_log_level_t::LOG_LEVEL_ERROR:
+    return "ERROR";
+  case hf_log_level_t::LOG_LEVEL_WARN:
+    return "WARN";
+  case hf_log_level_t::LOG_LEVEL_INFO:
+    return "INFO";
+  case hf_log_level_t::LOG_LEVEL_DEBUG:
+    return "DEBUG";
+  case hf_log_level_t::LOG_LEVEL_VERBOSE:
+    return "VERBOSE";
+  default:
+    return "UNKNOWN";
+  }
+}
+
+/**
+ * @brief Convert log level to short string
+ * @param level Log level
+ * @return const char* Short level string
+ */
+inline const char* HfLogLevelToShortString(hf_log_level_t level) noexcept {
+  switch (level) {
+  case hf_log_level_t::LOG_LEVEL_NONE:
+    return "N";
+  case hf_log_level_t::LOG_LEVEL_ERROR:
+    return "E";
+  case hf_log_level_t::LOG_LEVEL_WARN:
+    return "W";
+  case hf_log_level_t::LOG_LEVEL_INFO:
+    return "I";
+  case hf_log_level_t::LOG_LEVEL_DEBUG:
+    return "D";
+  case hf_log_level_t::LOG_LEVEL_VERBOSE:
+    return "V";
+  default:
+    return "?";
+  }
+}
+
+/**
+ * @brief Get current timestamp in microseconds
+ * @return hf_u64_t Timestamp in microseconds
+ */
+hf_u64_t HfLoggerGetTimestamp() noexcept;
+
+/**
+ * @brief Get current thread ID
+ * @return hf_u32_t Thread ID
+ */
+hf_u32_t HfLoggerGetThreadId() noexcept;
+
+//==============================================================================
+// CONVENIENCE MACROS
+//==============================================================================
+
+/**
+ * @brief Log at ERROR level with file and line information
+ */
+#define HF_LOG_ERROR(tag, format, ...)                                                             \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_ERROR, tag, __FILE__, __LINE__, __FUNCTION__, format,  \
+                  ##__VA_ARGS__)
+
+/**
+ * @brief Log at WARN level with file and line information
+ */
+#define HF_LOG_WARN(tag, format, ...)                                                              \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_WARN, tag, __FILE__, __LINE__, __FUNCTION__, format,   \
+                  ##__VA_ARGS__)
+
+/**
+ * @brief Log at INFO level with file and line information
+ */
+#define HF_LOG_INFO(tag, format, ...)                                                              \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_INFO, tag, __FILE__, __LINE__, __FUNCTION__, format,   \
+                  ##__VA_ARGS__)
+
+/**
+ * @brief Log at DEBUG level with file and line information
+ */
+#define HF_LOG_DEBUG(tag, format, ...)                                                             \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_DEBUG, tag, __FILE__, __LINE__, __FUNCTION__, format,  \
+                  ##__VA_ARGS__)
+
+/**
+ * @brief Log at VERBOSE level with file and line information
+ */
+#define HF_LOG_VERBOSE(tag, format, ...)                                                           \
+  LogWithLocation(hf_log_level_t::LOG_LEVEL_VERBOSE, tag, __FILE__, __LINE__, __FUNCTION__,        \
+                  format, ##__VA_ARGS__)
+
+/**
+ * @brief Conditional logging macro
+ */
+#define HF_LOG_IF(condition, level, tag, format, ...)                                              \
+  do {                                                                                             \
+    if (condition) {                                                                               \
+      LogWithLocation(level, tag, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__);        \
+    }                                                                                              \
+  } while (0)
+
 
 /**
  * @ingroup logger
@@ -483,133 +616,3 @@ protected:
    */
   BaseLogger& operator=(BaseLogger&&) = delete;
 };
-
-//==============================================================================
-// UTILITY FUNCTIONS
-//==============================================================================
-
-/**
- * @brief Convert logger error code to string using X-macro pattern
- * @param error Error code
- * @return const char* Error string
- */
-inline const char* HfLoggerErrToString(hf_logger_err_t error) noexcept {
-  switch (error) {
-#define HF_LOGGER_ERR_TO_STRING(name, value, description)                                          \
-  case hf_logger_err_t::name:                                                                      \
-    return description;
-    HF_LOGGER_ERR_LIST(HF_LOGGER_ERR_TO_STRING)
-#undef HF_LOGGER_ERR_TO_STRING
-  default:
-    return "Unknown error";
-  }
-}
-
-/**
- * @brief Convert log level to string
- * @param level Log level
- * @return const char* Level string
- */
-inline const char* HfLogLevelToString(hf_log_level_t level) noexcept {
-  switch (level) {
-  case hf_log_level_t::LOG_LEVEL_NONE:
-    return "NONE";
-  case hf_log_level_t::LOG_LEVEL_ERROR:
-    return "ERROR";
-  case hf_log_level_t::LOG_LEVEL_WARN:
-    return "WARN";
-  case hf_log_level_t::LOG_LEVEL_INFO:
-    return "INFO";
-  case hf_log_level_t::LOG_LEVEL_DEBUG:
-    return "DEBUG";
-  case hf_log_level_t::LOG_LEVEL_VERBOSE:
-    return "VERBOSE";
-  default:
-    return "UNKNOWN";
-  }
-}
-
-/**
- * @brief Convert log level to short string
- * @param level Log level
- * @return const char* Short level string
- */
-inline const char* HfLogLevelToShortString(hf_log_level_t level) noexcept {
-  switch (level) {
-  case hf_log_level_t::LOG_LEVEL_NONE:
-    return "N";
-  case hf_log_level_t::LOG_LEVEL_ERROR:
-    return "E";
-  case hf_log_level_t::LOG_LEVEL_WARN:
-    return "W";
-  case hf_log_level_t::LOG_LEVEL_INFO:
-    return "I";
-  case hf_log_level_t::LOG_LEVEL_DEBUG:
-    return "D";
-  case hf_log_level_t::LOG_LEVEL_VERBOSE:
-    return "V";
-  default:
-    return "?";
-  }
-}
-
-/**
- * @brief Get current timestamp in microseconds
- * @return hf_u64_t Timestamp in microseconds
- */
-hf_u64_t HfLoggerGetTimestamp() noexcept;
-
-/**
- * @brief Get current thread ID
- * @return hf_u32_t Thread ID
- */
-hf_u32_t HfLoggerGetThreadId() noexcept;
-
-//==============================================================================
-// CONVENIENCE MACROS
-//==============================================================================
-
-/**
- * @brief Log at ERROR level with file and line information
- */
-#define HF_LOG_ERROR(tag, format, ...)                                                             \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_ERROR, tag, __FILE__, __LINE__, __FUNCTION__, format,  \
-                  ##__VA_ARGS__)
-
-/**
- * @brief Log at WARN level with file and line information
- */
-#define HF_LOG_WARN(tag, format, ...)                                                              \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_WARN, tag, __FILE__, __LINE__, __FUNCTION__, format,   \
-                  ##__VA_ARGS__)
-
-/**
- * @brief Log at INFO level with file and line information
- */
-#define HF_LOG_INFO(tag, format, ...)                                                              \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_INFO, tag, __FILE__, __LINE__, __FUNCTION__, format,   \
-                  ##__VA_ARGS__)
-
-/**
- * @brief Log at DEBUG level with file and line information
- */
-#define HF_LOG_DEBUG(tag, format, ...)                                                             \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_DEBUG, tag, __FILE__, __LINE__, __FUNCTION__, format,  \
-                  ##__VA_ARGS__)
-
-/**
- * @brief Log at VERBOSE level with file and line information
- */
-#define HF_LOG_VERBOSE(tag, format, ...)                                                           \
-  LogWithLocation(hf_log_level_t::LOG_LEVEL_VERBOSE, tag, __FILE__, __LINE__, __FUNCTION__,        \
-                  format, ##__VA_ARGS__)
-
-/**
- * @brief Conditional logging macro
- */
-#define HF_LOG_IF(condition, level, tag, format, ...)                                              \
-  do {                                                                                             \
-    if (condition) {                                                                               \
-      LogWithLocation(level, tag, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__);        \
-    }                                                                                              \
-  } while (0)

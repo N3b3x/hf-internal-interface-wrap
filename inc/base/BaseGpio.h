@@ -23,6 +23,7 @@
 #include "HardwareTypes.h"
 #include <cstdint>
 #include <functional>
+#include <string_view>
 
 /**
  * @defgroup gpio GPIO Module
@@ -97,7 +98,8 @@
   X(GPIO_ERR_DRIVER_ERROR, 34, "Driver error")                                                     \
   X(GPIO_ERR_INVALID_STATE, 35, "Invalid state")                                                   \
   X(GPIO_ERR_INVALID_ARG, 36, "Invalid argument")                                                  \
-  X(GPIO_ERR_CALIBRATION_FAILURE, 37, "Calibration failure")
+  X(GPIO_ERR_CALIBRATION_FAILURE, 37, "Calibration failure")                                       \
+  X(GPIO_ERR_UNKNOWN, 38, "Unknown error")
 
 /**
  * @ingroup gpio
@@ -115,9 +117,9 @@ enum class hf_gpio_err_t : hf_u8_t {
  * @ingroup gpio
  * @brief Convert hf_gpio_err_t to human-readable string
  * @param err The error code to convert
- * @return Pointer to error description string
+ * @return String view of the error description
  */
-constexpr const char* HfGpioErrToString(hf_gpio_err_t err) noexcept {
+constexpr std::string_view HfGpioErrToString(hf_gpio_err_t err) noexcept {
   switch (err) {
 #define X(NAME, VALUE, DESC)                                                                       \
   case hf_gpio_err_t::NAME:                                                                        \
@@ -125,7 +127,7 @@ constexpr const char* HfGpioErrToString(hf_gpio_err_t err) noexcept {
     HF_GPIO_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfGpioErrToString(hf_gpio_err_t::GPIO_ERR_UNKNOWN);
   }
 }
 

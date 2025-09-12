@@ -72,7 +72,8 @@
   /* System errors */                                                                              \
   X(SPI_ERR_SYSTEM_ERROR, 27, "System error")                                                      \
   X(SPI_ERR_PERMISSION_DENIED, 28, "Permission denied")                                            \
-  X(SPI_ERR_OPERATION_ABORTED, 29, "Operation aborted")
+  X(SPI_ERR_OPERATION_ABORTED, 29, "Operation aborted")                                            \
+  X(SPI_ERR_UNKNOWN, 30, "Unknown error")
 
 enum class hf_spi_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
@@ -93,7 +94,7 @@ constexpr std::string_view HfSpiErrToString(hf_spi_err_t err) noexcept {
     HF_SPI_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfSpiErrToString(hf_spi_err_t::SPI_ERR_UNKNOWN);
   }
 }
 

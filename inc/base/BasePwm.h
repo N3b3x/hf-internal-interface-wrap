@@ -19,6 +19,7 @@
 #include "HardwareTypes.h"
 #include <cstdint>
 #include <functional>
+#include <string_view>
 
 //--------------------------------------
 //  HardFOC PWM Error Codes (Table)
@@ -62,7 +63,8 @@
   X(PWM_ERR_COMMUNICATION_FAILURE, 21, "Communication failure")                                    \
   X(PWM_ERR_DEVICE_NOT_RESPONDING, 22, "Device not responding")                                    \
   X(PWM_ERR_INVALID_DEVICE_ID, 23, "Invalid device ID")                                            \
-  X(PWM_ERR_UNSUPPORTED_OPERATION, 24, "Unsupported operation")
+  X(PWM_ERR_UNSUPPORTED_OPERATION, 24, "Unsupported operation")                                    \
+  X(PWM_ERR_UNKNOWN, 25, "Unknown error")
 
 // Generate enum class
 enum class hf_pwm_err_t : hf_u32_t {
@@ -72,16 +74,20 @@ enum class hf_pwm_err_t : hf_u32_t {
       PWM_ERR_COUNT // Total number of error codes
 };
 
-// Generate error message function
-constexpr const char* HfPwmErrToString(hf_pwm_err_t error) noexcept {
-  switch (error) {
-#define X(name, value, description)                                                                \
-  case hf_pwm_err_t::name:                                                                         \
-    return description;
+/**
+ * @brief Convert PWM error code to string view
+ * @param err The error code to convert
+ * @return String view of the error description
+ */
+constexpr std::string_view HfPwmErrToString(hf_pwm_err_t err) noexcept {
+  switch (err) {
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_pwm_err_t::NAME:                                                                         \
+    return DESC;
     HF_PWM_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown PWM error";
+    return HfPwmErrToString(hf_pwm_err_t::PWM_ERR_UNKNOWN);
   }
 }
 

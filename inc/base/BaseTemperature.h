@@ -20,6 +20,7 @@
 #include "HardwareTypes.h"
 #include <cstdint>
 #include <functional>
+#include <string_view>
 
 //--------------------------------------
 //  HardFOC Temperature Error Codes (Table)
@@ -92,8 +93,9 @@
   /* Advanced feature errors */                                                                    \
   X(TEMP_ERR_UNSUPPORTED_OPERATION, 44, "Operation not supported")                                 \
   X(TEMP_ERR_DRIVER_ERROR, 45, "Driver error")                                                     \
+  X(TEMP_ERR_UNKNOWN, 46, "Unknown error")                                                         \
   /* Maximum error code marker */                                                                  \
-  X(TEMP_ERR_MAX, 46, "Maximum error code")
+  X(TEMP_ERR_MAX, 47, "Maximum error code")
 
 //--------------------------------------
 //  HardFOC Temperature Error Enum
@@ -107,6 +109,27 @@ typedef enum {
   HF_TEMP_ERR_LIST(TEMP_ERROR_ENUM)
 #undef TEMP_ERROR_ENUM
 } hf_temp_err_t;
+
+//--------------------------------------
+//  Error String Utility Implementation
+//--------------------------------------
+
+/**
+ * @brief Convert temperature error code to string view
+ * @param err The error code to convert
+ * @return String view of the error description
+ */
+constexpr std::string_view HfTempErrToString(hf_temp_err_t err) noexcept {
+  switch (err) {
+#define X(NAME, VALUE, DESC)                                                                       \
+  case NAME:                                                                                       \
+    return DESC;
+    HF_TEMP_ERR_LIST(X)
+#undef X
+  default:
+    return HfTempErrToString(TEMP_ERR_UNKNOWN);
+  }
+}
 
 //--------------------------------------
 //  HardFOC Temperature Types
@@ -340,21 +363,15 @@ using hf_temp_error_callback_t =
    .capabilities = HF_TEMP_CAP_NONE}
 
 /**
- * @brief Get error description string
- * @param error Error code
- * @return Human-readable error description
- */
-const char* GetTempErrorString(hf_temp_err_t error) noexcept;
-
-/**
  * @brief Check if temperature is within range
  * @param temperature Temperature to check
  * @param min_temp Minimum temperature
  * @param max_temp Maximum temperature
  * @return true if within range, false otherwise
  */
-bool IsTempInRange(float temperature, float min_temp, float max_temp) noexcept;
-
+ inline bool IsTempInRange(float temperature, float min_temp, float max_temp) noexcept {
+  return (temperature >= min_temp) && (temperature <= max_temp);
+}
 //--------------------------------------
 //  BaseTemperature Abstract Class
 //--------------------------------------
@@ -908,36 +925,4 @@ inline hf_temp_err_t BaseTemperature::ReadTemperatureUnit(float* temperature,
     }
   }
   return error;
-}
-
-//--------------------------------------
-//  Error String Utility Implementation
-//--------------------------------------
-
-/**
- * @brief Get human-readable error description
- * @param error Error code
- * @return Error description string
- */
-inline const char* GetTempErrorString(hf_temp_err_t error) noexcept {
-  switch (error) {
-#define TEMP_ERROR_STRING(name, code, desc)                                                        \
-  case name:                                                                                       \
-    return desc;
-    HF_TEMP_ERR_LIST(TEMP_ERROR_STRING)
-#undef TEMP_ERROR_STRING
-  default:
-    return "Unknown error";
-  }
-}
-
-/**
- * @brief Check if temperature is within range
- * @param temperature Temperature to check
- * @param min_temp Minimum temperature
- * @param max_temp Maximum temperature
- * @return true if within range, false otherwise
- */
-inline bool IsTempInRange(float temperature, float min_temp, float max_temp) noexcept {
-  return (temperature >= min_temp) && (temperature <= max_temp);
 }

@@ -71,7 +71,8 @@
   /* System errors */                                                                              \
   X(PIO_ERR_SYSTEM_ERROR, 28, "System error")                                                      \
   X(PIO_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
-  X(PIO_ERR_OPERATION_ABORTED, 30, "Operation aborted")
+  X(PIO_ERR_OPERATION_ABORTED, 30, "Operation aborted")                                            \
+  X(PIO_ERR_UNKNOWN, 31, "Unknown error")
 
 enum class hf_pio_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
@@ -92,7 +93,7 @@ constexpr std::string_view HfPioErrToString(hf_pio_err_t err) noexcept {
     HF_PIO_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfPioErrToString(hf_pio_err_t::PIO_ERR_UNKNOWN);
   }
 }
 

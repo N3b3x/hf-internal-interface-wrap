@@ -105,7 +105,8 @@
   X(CAN_ERR_RESOURCE_BUSY, 50, "Resource busy")                                                    \
   X(CAN_ERR_INVALID_STATE, 51, "Invalid state")                                                    \
   X(CAN_ERR_NOT_SUPPORTED, 52, "Not supported")                                                    \
-  X(CAN_ERR_TIMEOUT_ALT, 53, "Operation timeout")
+  X(CAN_ERR_TIMEOUT_ALT, 53, "Operation timeout")                                                  \
+  X(CAN_ERR_UNKNOWN, 54, "Unknown error")
 
 enum class hf_can_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
@@ -126,7 +127,7 @@ constexpr std::string_view HfCanErrToString(hf_can_err_t err) noexcept {
     HF_CAN_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfCanErrToString(hf_can_err_t::CAN_ERR_UNKNOWN);
   }
 }
 

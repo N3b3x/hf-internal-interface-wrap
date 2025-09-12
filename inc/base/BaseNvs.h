@@ -62,7 +62,8 @@
   X(NVS_ERR_PARTITION_NOT_FOUND, 23, "NVS partition not found")                                    \
   X(NVS_ERR_ITERATOR_INVALID, 24, "Iterator invalid or expired")                                   \
   X(NVS_ERR_SECURITY_VIOLATION, 25, "Security policy violation")                                   \
-  X(NVS_ERR_UNSUPPORTED_OPERATION, 26, "Unsupported operation")
+  X(NVS_ERR_UNSUPPORTED_OPERATION, 26, "Unsupported operation")                                    \
+  X(NVS_ERR_UNKNOWN, 27, "Unknown error")
 
 // Generate enum class from X-macro
 enum class hf_nvs_err_t : hf_i32_t {
@@ -71,16 +72,20 @@ enum class hf_nvs_err_t : hf_i32_t {
 #undef X
 };
 
-// Generate error description function
-constexpr const char* HfNvsErrToString(hf_nvs_err_t err) noexcept {
+/**
+ * @brief Convert NVS error code to string view
+ * @param err The error code to convert
+ * @return String view of the error description
+ */
+constexpr std::string_view HfNvsErrToString(hf_nvs_err_t err) noexcept {
   switch (err) {
-#define X(name, value, desc)                                                                       \
-  case hf_nvs_err_t::name:                                                                         \
-    return desc;
+#define X(NAME, VALUE, DESC)                                                                       \
+  case hf_nvs_err_t::NAME:                                                                         \
+    return DESC;
     HF_NVS_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfNvsErrToString(hf_nvs_err_t::NVS_ERR_UNKNOWN);
   }
 }
 

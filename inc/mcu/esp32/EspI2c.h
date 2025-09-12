@@ -41,7 +41,7 @@
  * @note Follows the same architectural pattern as EspSpi for consistency.
  * @note ESP-IDF v5.5+ enforces strict separation between sync/async modes.
  *
- * @example Basic Usage:
+ * @example Basic Mode Usage:
  * @code
  * // Create sync mode bus configuration
  * hf_i2c_master_bus_config_t bus_config = {};

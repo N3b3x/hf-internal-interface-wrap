@@ -73,7 +73,8 @@
   X(I2C_ERR_SYSTEM_ERROR, 28, "System error")                                                      \
   X(I2C_ERR_PERMISSION_DENIED, 29, "Permission denied")                                            \
   X(I2C_ERR_OPERATION_ABORTED, 30, "Operation aborted")                                            \
-  X(I2C_ERR_INVALID_STATE, 31, "Invalid state")
+  X(I2C_ERR_INVALID_STATE, 31, "Invalid state")                                                    \
+  X(I2C_ERR_UNKNOWN, 32, "Unknown error")
 
 enum class hf_i2c_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
@@ -94,7 +95,7 @@ constexpr std::string_view HfI2CErrToString(hf_i2c_err_t err) noexcept {
     HF_I2C_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfI2CErrToString(hf_i2c_err_t::I2C_ERR_UNKNOWN);
   }
 }
 

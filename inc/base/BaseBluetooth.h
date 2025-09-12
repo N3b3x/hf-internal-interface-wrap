@@ -93,7 +93,8 @@
   X(BLUETOOTH_ERR_GATT_SERVICE_ADD_FAILED, 38, "GATT service add failed")                          \
   X(BLUETOOTH_ERR_GATT_CHAR_ADD_FAILED, 39, "GATT characteristic add failed")                      \
   X(BLUETOOTH_ERR_GATT_SERVICE_NOT_FOUND, 40, "GATT service not found")                            \
-  X(BLUETOOTH_ERR_GATT_SERVICE_START_FAILED, 41, "GATT service start failed")
+  X(BLUETOOTH_ERR_GATT_SERVICE_START_FAILED, 41, "GATT service start failed")                      \
+  X(BLUETOOTH_ERR_UNKNOWN, 42, "Unknown error")
 
 /**
  * @ingroup bluetooth
@@ -117,7 +118,7 @@ constexpr std::string_view HfBluetoothErrToString(hf_bluetooth_err_t err) noexce
     HF_BLUETOOTH_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfBluetoothErrToString(hf_bluetooth_err_t::BLUETOOTH_ERR_UNKNOWN);
   }
 }
 
@@ -761,7 +762,7 @@ inline std::string_view BaseBluetooth::GetErrorString(hf_bluetooth_err_t error) 
   switch (error) {
     HF_BLUETOOTH_ERR_LIST(X)
   default:
-    return "Unknown error";
+    return HfBluetoothErrToString(hf_bluetooth_err_t::BLUETOOTH_ERR_UNKNOWN);
   }
 #undef X
 }

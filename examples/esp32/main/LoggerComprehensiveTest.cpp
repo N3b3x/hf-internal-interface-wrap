@@ -1,5 +1,5 @@
 /**
- * @file EspLoggerComprehensiveTest.cpp
+ * @file LoggerComprehensiveTest.cpp
  * @brief Comprehensive Logger testing suite for ESP32-C6 DevKit-M-1 (noexcept)
  *
  * This file contains a dedicated, comprehensive test suite for the EspLogger class

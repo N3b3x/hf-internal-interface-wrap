@@ -160,7 +160,7 @@ hf_pio_channel_config_t create_test_channel_config(
  * @param g Green component (0-255)
  * @param b Blue component (0-255)
  * @param symbols Output array (must have space for 48 symbols - 24 bits * 2 symbols per bit)
- * @param resolution_hz The resolution frequency for timing calculations
+ * @param resolution_ns The resolution in nanoseconds for timing calculations
  */
 void create_ws2812_rgb_symbols(uint8_t r, uint8_t g, uint8_t b, hf_pio_symbol_t* symbols,
                                uint32_t resolution_ns) noexcept {

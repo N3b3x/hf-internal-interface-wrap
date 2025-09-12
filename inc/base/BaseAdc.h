@@ -103,7 +103,8 @@
   X(ADC_ERR_CALIBRATION, 53, "Calibration error")                                                  \
   X(ADC_ERR_BUSY, 54, "Resource busy")                                                             \
   X(ADC_ERR_HARDWARE_FAILURE, 55, "Hardware failure")                                              \
-  X(ADC_ERR_CHANNEL_DISABLED, 56, "Channel disabled")
+  X(ADC_ERR_CHANNEL_DISABLED, 56, "Channel disabled")                                              \
+  X(ADC_ERR_UNKNOWN, 57, "Unknown error")
 
 enum class hf_adc_err_t : hf_u8_t {
 #define X(NAME, VALUE, DESC) NAME = VALUE,
@@ -124,7 +125,7 @@ constexpr std::string_view HfAdcErrToString(hf_adc_err_t err) noexcept {
     HF_ADC_ERR_LIST(X)
 #undef X
   default:
-    return "Unknown error";
+    return HfAdcErrToString(hf_adc_err_t::ADC_ERR_UNKNOWN);
   }
 }
 
