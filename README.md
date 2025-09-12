@@ -851,10 +851,8 @@ See [LICENSE](LICENSE) for full details.
 
 ---
 
-<div align="center">
+> **🧪 [Test 404 Page](nonexistent-page)** - (on live documentation) Click this link to test our custom 404 page!
 
 **Built for the HardFOC ecosystem - Enabling seamless MCU portability**
 
 *Hardware abstraction that just works™*
-
-</div>

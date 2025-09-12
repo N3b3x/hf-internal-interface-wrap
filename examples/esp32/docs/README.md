@@ -191,10 +191,6 @@ Most tests require minimal hardware:
 
 ---
 
-<div align="center">
-
 **🧪 Comprehensive Testing for HardFOC ESP32 Interface Wrapper**
 
 *Professional-grade test documentation with hardware validation*
-
-</div>

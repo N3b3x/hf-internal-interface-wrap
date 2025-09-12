@@ -10,8 +10,6 @@ has_children: true
 
 # 🚀 ESP32 Examples - HardFOC Internal Interface Wrapper
 
-<div align="center">
-
 ![ESP32 Examples](https://img.shields.io/badge/ESP32-Examples-blue?style=for-the-badge&logo=espressif)
 ![Build System](https://img.shields.io/badge/Build-System-green?style=for-the-badge&logo=github)
 ![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v5.5-orange?style=for-the-badge&logo=espressif)
@@ -20,8 +18,6 @@ has_children: true
 
 *Professional-grade examples demonstrating all HardFOC ESP32 interface capabilities with automated
 ESP-IDF management, structured build system, and CI/CD integration*
-
-</div>
 
 ---
 
@@ -894,10 +890,6 @@ details.
 
 ---
 
-<div align="center">
-
 **🚀 Built with ❤️ for the HardFOC Community**
 
 *Professional-grade examples with enterprise-ready build system*
-
-</div>
