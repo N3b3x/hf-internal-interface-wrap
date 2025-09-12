@@ -46,7 +46,6 @@ tests/build/
 **/docs/doxygen/
 docs/doxygen/
 .DS_Store
-**/doxygen*
 **/.cache/
 
 **/compile_commands.json

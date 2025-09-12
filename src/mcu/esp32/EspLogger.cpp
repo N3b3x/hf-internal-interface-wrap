@@ -937,7 +937,7 @@ hf_logger_err_t EspLogger::ValidateConfiguration(const hf_logger_config_t& confi
 }
 
 const char* EspLogger::ConvertErrorToString(hf_logger_err_t error) const noexcept {
-  return HfLoggerErrToString(error);
+  return HfLoggerErrToString(error).data();
 }
 
 hf_u64_t EspLogger::GetCurrentTimestamp() const noexcept {

@@ -22,6 +22,7 @@ jobs:
   publish-docs:
     uses: N3b3x/hf-general-ci-tools/.github/workflows/docs.yml@main
     with:
+      checkout_recursive: true
       doxygen_config: "Doxyfile"
 
       # Jekyll configuration for this repo's docs
