@@ -8,7 +8,7 @@ permalink: /docs/
 has_children: true
 ---
 
-# 🚀 HardFOC Internal Interface Wrapper
+## 🚀 HardFOC Internal Interface Wrapper
 
 ![Multi-MCU Interface](https://img.shields.io/badge/Multi--MCU-Interface%20Wrapper-blue?style=for-the-badge&logo=microchip)
 ![C++17](https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=cplusplus)
