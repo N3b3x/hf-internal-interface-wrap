@@ -111,7 +111,7 @@ bool test_temperature_reading() noexcept {
   hf_temp_reading_t reading = {};
   auto read_result = test_temp.ReadTemperature(&reading);
   if (read_result != hf_temp_err_t::TEMP_SUCCESS) {
-    ESP_LOGE(TAG, "Failed to read temperature: %s", GetTempErrorString(read_result));
+    ESP_LOGE(TAG, "Failed to read temperature: %s", HfTempErrToString(read_result).data());
     return false;
   }
 
@@ -488,14 +488,14 @@ bool test_self_test_and_health() noexcept {
   // Perform self-test
   auto self_test_result = test_temp.SelfTest();
   if (self_test_result != hf_temp_err_t::TEMP_SUCCESS) {
-    ESP_LOGE(TAG, "Self-test failed: %s", GetTempErrorString(self_test_result));
+    ESP_LOGE(TAG, "Self-test failed: %s", HfTempErrToString(self_test_result).data());
     return false;
   }
 
   // Check health status
   auto health_result = test_temp.CheckHealth();
   if (health_result != hf_temp_err_t::TEMP_SUCCESS) {
-    ESP_LOGW(TAG, "Health check indicates issues: %s", GetTempErrorString(health_result));
+    ESP_LOGW(TAG, "Health check indicates issues: %s", HfTempErrToString(health_result).data());
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Self-test and health monitoring passed");

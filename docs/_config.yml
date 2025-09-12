@@ -97,7 +97,7 @@ aux_links:
   "⭐ Star on GitHub":
     - "https://github.com/n3b3x/hf-internal-interface-wrap/stargazers"
   "📖 API Reference":
-    - "/api/index.html"
+    - "{site.baseurl}/api/index.html"
 
 # Footer customization
 footer_content: >
