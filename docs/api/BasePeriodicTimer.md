@@ -9,20 +9,11 @@ permalink: /docs/api/BasePeriodicTimer/
 
 # ⏰ BasePeriodicTimer API Reference
 
-<div align="center">
 
-![BasePeriodicTimer](https://img.shields.io/badge/BasePeriodicTimer-Abstract%20Base%20Class-blue?style=for-the-badge&logo=clock)
+
 
 **🎯 Unified periodic timer abstraction for all high-precision timing operations**
 
-**📋 Navigation**
-
-[← Previous: BaseTemperature](BaseTemperature.md) | [Back to API Index](README.md) | [Next: BasePio
-→](BasePio.md)
-
-</div>
-
----
 
 ## 📚 **Table of Contents**
 
@@ -1000,21 +991,13 @@ timer.Start(period);  // No callback set
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseTemperature](BaseTemperature.md) | [Back to API Index](README.md) | [Next: BasePio
-→](BasePio.md)
 
-</div>
 
----
-
-<div align="center">
 
 **⏰ BasePeriodicTimer - The Foundation of High-Precision Timing in HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*
 
-</div> 
+ 

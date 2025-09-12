@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 ADC Test"
+description: "ADC Test Suite - Analog-to-digital conversion and calibration testing"
+nav_order: 2
+parent: "🧪 Test Documentation"
+permalink: /examples/esp32/docs/adc_test/
+---
+
 # ESP32-C6 ADC Comprehensive Testing Suite
 
 ## Overview

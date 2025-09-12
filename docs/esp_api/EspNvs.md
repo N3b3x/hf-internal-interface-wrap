@@ -9,16 +9,8 @@ permalink: /docs/esp_api/EspNvs/
 
 # EspNvs API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspBluetooth](EspBluetooth.md) | [Back to ESP API Index](README.md) | [Next:
-EspPeriodicTimer →](EspPeriodicTimer.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -291,11 +283,5 @@ The `EspNvs` class provides comprehensive error handling with specific error cod
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspBluetooth](EspBluetooth.md) | [Back to ESP API Index](README.md) | [Next:
-EspPeriodicTimer →](EspPeriodicTimer.md)
-
-</div>

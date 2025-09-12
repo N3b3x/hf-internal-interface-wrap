@@ -9,15 +9,8 @@ permalink: /docs/esp_api/EspI2c/
 
 # EspI2c API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspPwm](EspPwm.md) | [Back to ESP API Index](README.md) | [Next: EspSpi →](EspSpi.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -169,10 +162,5 @@ failure modes:
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspPwm](EspPwm.md) | [Back to ESP API Index](README.md) | [Next: EspSpi →](EspSpi.md)
-
-</div>

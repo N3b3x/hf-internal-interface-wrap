@@ -9,15 +9,8 @@ permalink: /docs/api/BaseI2c/
 
 # 🚌 BaseI2c API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BasePwm](BasePwm.md) | [Back to API Index](README.md) | [Next: BaseSpi →](BaseSpi.md)
-
-</div>
-
----
 
 ## 🌟 Overview
 
@@ -718,16 +711,5 @@ For concurrent access from multiple tasks, use appropriate synchronization mecha
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BasePwm](BasePwm.md) | [Back to API Index](README.md) | [Next: BaseSpi →](BaseSpi.md)
-
-</div>
-
-**🚌 BaseI2c - Connecting the HardFOC Ecosystem** 🌐
-
-*From sensors to displays - BaseI2c bridges the gap between devices* 🔗
-
-</div> 

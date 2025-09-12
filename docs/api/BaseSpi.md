@@ -9,19 +9,11 @@ permalink: /docs/api/BaseSpi/
 
 # 🔌 BaseSpi API Reference
 
-<div align="center">
 
-![BaseSpi](https://img.shields.io/badge/BaseSpi-Abstract%20Base%20Class-blue?style=for-the-badge&logo=plug)
+
 
 **🔄 Unified SPI abstraction for high-speed serial communication**
 
-**📋 Navigation**
-
-[← Previous: BaseI2c](BaseI2c.md) | [Back to API Index](README.md) | [Next: BaseUart →](BaseUart.md)
-
-</div>
-
----
 
 ## 📚 **Table of Contents**
 
@@ -887,16 +879,5 @@ spi.ConfigureDevice(99, config);  // Invalid device
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseI2c](BaseI2c.md) | [Back to API Index](README.md) | [Next: BaseUart →](BaseUart.md)
-
-</div>
-
-**🔌 BaseSpi - High-Speed Serial Communication for HardFOC**
-
-*Part of the HardFOC Internal Interface Wrapper Documentation*
-
-</div> 

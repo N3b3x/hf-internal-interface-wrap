@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 Temperature Test"
+description: "Temperature Test Suite - Thermal monitoring and sensor testing"
+nav_order: 11
+parent: "🧪 Test Documentation"
+permalink: /examples/esp32/docs/temperature_test/
+---
+
 # ESP32-C6 Temperature Sensor Comprehensive Test Suite
 
 ## Overview

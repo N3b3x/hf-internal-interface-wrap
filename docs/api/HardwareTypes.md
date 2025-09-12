@@ -9,16 +9,8 @@ permalink: /docs/api/HardwareTypes/
 
 # HardwareTypes API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: API Index](README.md) | [Back to API Index](README.md) | [Next: BaseGpio
-→](BaseGpio.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -385,11 +377,5 @@ bool convert_pin_number(int input_pin, hf_pin_num_t& output_pin) {
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: API Index](README.md) | [Back to API Index](README.md) | [Next: BaseGpio
-→](BaseGpio.md)
-
-</div>

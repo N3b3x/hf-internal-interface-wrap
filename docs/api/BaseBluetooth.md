@@ -11,12 +11,6 @@ permalink: /docs/api/BaseBluetooth/
 
 ## 🎯 Unified Bluetooth abstraction for Classic and BLE wireless communication
 
-## 📋 Navigation
-
-[← Previous: BaseWifi](BaseWifi.md) | [Back to API Index](README.md) |
-[Next: BaseNvs →](BaseNvs.md)
-
----
 
 ## 📚 **Table of Contents**
 
@@ -820,20 +814,12 @@ private:
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseWifi](BaseWifi.md) | [Back to API Index](README.md) | [Next: BaseNvs →](BaseNvs.md)
 
-</div>
 
----
-
-<div align="center">
 
 **📲 Professional Bluetooth Communication for Modern Applications**
 
 *Enabling seamless wireless connectivity with robust security and optimal performance*
 
-</div>

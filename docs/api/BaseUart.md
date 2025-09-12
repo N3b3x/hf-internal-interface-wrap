@@ -9,19 +9,11 @@ permalink: /docs/api/BaseUart/
 
 # 📡 BaseUart API Reference
 
-<div align="center">
 
-![BaseUart](https://img.shields.io/badge/BaseUart-Abstract%20Base%20Class-blue?style=for-the-badge&logo=broadcast)
+
 
 **📡 Unified UART abstraction for serial communication**
 
-**📋 Navigation**
-
-[← Previous: BaseSpi](BaseSpi.md) | [Back to API Index](README.md) | [Next: BaseCan →](BaseCan.md)
-
-</div>
-
----
 
 ## 📚 **Table of Contents**
 
@@ -1024,20 +1016,13 @@ config.use_dma = (transfer_size > 64);  // Use DMA for transfers > 64 bytes
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseSpi](BaseSpi.md) | [Back to API Index](README.md) | [Next: BaseCan →](BaseCan.md)
 
-</div>
 
----
-
-<div align="center">
 
 **📡 BaseUart - Reliable Serial Communication for HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*
 
-</div> 
+ 

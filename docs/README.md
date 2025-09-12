@@ -10,20 +10,15 @@ has_children: true
 
 # 🚀 HardFOC Internal Interface Wrapper
 
-<div align="center">
-
-![Multi-MCU
-Interface](https://img.shields.io/badge/Multi--MCU-Interface%20Wrapper-blue?style=for-the-badge&logo=microchip)
+![Multi-MCU Interface](https://img.shields.io/badge/Multi--MCU-Interface%20Wrapper-blue?style=for-the-badge&logo=microchip)
 ![C++17](https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=cplusplus)
 ![ESP32-C6](https://img.shields.io/badge/ESP32--C6-First%20MCU-green?style=for-the-badge&logo=espressif)
 ![STM32](https://img.shields.io/badge/STM32-Coming%20Soon-orange?style=for-the-badge&logo=stmicroelectronics)
 ![License](https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge&logo=opensourceinitiative)
 
-**🎯 Multi-MCU Hardware Abstraction Layer**
+## 🎯 Multi-MCU Hardware Abstraction Layer
 
 *Universal interface wrapper supporting multiple MCU platforms - ESP32 first implementation*
-
-</div>
 
 ---
 
@@ -633,7 +628,7 @@ benefit the entire community.
 
 ---
 
-<div align="center">
+
 
 **🚀 Multi-MCU Interface Wrapper**
 
@@ -657,4 +652,4 @@ Classes](utils/README.md) | [🧪 Test Suites](../examples/esp32/docs/README.md)
 Tracker](https://github.com/N3b3x/hf-internal-interface-wrap/issues) | [📧 Multi-MCU
 Support](mailto:support@hardfoc.com)
 
-</div>
+

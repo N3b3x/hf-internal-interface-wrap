@@ -9,14 +9,7 @@ permalink: /docs/api/BaseGpio/
 
 # 🔌 BaseGpio API Reference
 
-<div align="center">
-
-**📋 Navigation**
-
-[← Previous: HardwareTypes](HardwareTypes.md) | [Back to API Index](README.md) | [Next: BaseAdc
-→](BaseAdc.md)
-
-</div>
+**🎯 Unified GPIO base class for all digital GPIO implementations in the HardFOC system**
 
 ---
 
@@ -320,12 +313,5 @@ The following concrete implementations are available:
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: HardwareTypes](HardwareTypes.md) | [Back to API Index](README.md) | [Next: BaseAdc
-→](BaseAdc.md)
-
-</div> 
->>>>>>> Incoming (Background Agent changes)

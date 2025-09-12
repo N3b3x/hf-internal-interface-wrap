@@ -2,7 +2,7 @@
 layout: default
 title: "🔧 ESP32 Implementations"
 description: "ESP32-C6 specific implementations with ESP-IDF v5.5+ features and hardware optimizations"
-nav_order: 2
+nav_order: 0
 parent: "📚 Documentation"
 permalink: /docs/esp_api/
 has_children: true
@@ -10,16 +10,12 @@ has_children: true
 
 # 🔧 ESP32-C6 Implementations
 
-<div align="center">
-
 ![ESP32-C6](https://img.shields.io/badge/ESP32--C6-Implementations-green?style=for-the-badge&logo=espressif)
 ![HardFOC](https://img.shields.io/badge/HardFOC-ESP32%20Support-blue?style=for-the-badge&logo=hardware)
 
 **🔧 ESP32-C6 specific implementations with ESP-IDF v5.5+ features**
 
 *Hardware-optimized implementations leveraging ESP32-C6 features*
-
-</div>
 
 ---
 
@@ -450,10 +446,10 @@ These implementations offer performance, power efficiency, and feature support.
 
 ---
 
-<div align="center">
+
 
 **🔧 ESP32-C6 Implementations - HardFOC Systems**
 
 *Leveraging ESP32-C6 hardware for performance and efficiency*
 
-</div>
+

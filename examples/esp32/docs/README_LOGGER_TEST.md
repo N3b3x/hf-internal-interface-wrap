@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 Logger Test"
+description: "Logger Test Suite - Logging system and debug output testing"
+nav_order: 12
+parent: "🧪 Test Documentation"
+permalink: /examples/esp32/docs/logger_test/
+---
+
 # ESP32-C6 Logger Comprehensive Test Suite
 
 ## Overview

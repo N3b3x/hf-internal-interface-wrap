@@ -9,16 +9,8 @@ permalink: /docs/esp_api/EspWifi/
 
 # EspWifi API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspCan](EspCan.md) | [Back to ESP API Index](README.md) | [Next: EspBluetooth
-→](EspBluetooth.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -304,11 +296,5 @@ Successfully found 2 real networks:
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspCan](EspCan.md) | [Back to ESP API Index](README.md) | [Next: EspBluetooth
-→](EspBluetooth.md)
-
-</div>

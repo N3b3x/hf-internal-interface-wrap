@@ -9,16 +9,8 @@ permalink: /docs/esp_api/EspCan/
 
 # EspCan API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspUart](EspUart.md) | [Back to ESP API Index](README.md) | [Next: EspWifi
-→](EspWifi.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -199,11 +191,5 @@ The `EspCan` class provides comprehensive error handling with specific error cod
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspUart](EspUart.md) | [Back to ESP API Index](README.md) | [Next: EspWifi
-→](EspWifi.md)
-
-</div>

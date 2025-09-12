@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 ASCII Art Test"
+description: "ASCII Art Test Suite - ASCII art generation and display testing"
+nav_order: 13
+parent: "🧪 Test Documentation"
+permalink: /examples/esp32/docs/ascii_art_test/
+---
+
 # ESP32-C6 ASCII Art Generator Comprehensive Test Suite
 
 ## Overview

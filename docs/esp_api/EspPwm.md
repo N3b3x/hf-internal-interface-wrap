@@ -9,15 +9,8 @@ permalink: /docs/esp_api/EspPwm/
 
 # EspPwm API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspAdc](EspAdc.md) | [Back to ESP API Index](README.md) | [Next: EspI2c →](EspI2c.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -230,10 +223,5 @@ The `EspPwm` class provides comprehensive error handling with specific error cod
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspAdc](EspAdc.md) | [Back to ESP API Index](README.md) | [Next: EspI2c →](EspI2c.md)
-
-</div>

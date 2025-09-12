@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 PWM Test"
+description: "PWM Test Suite - Pulse width modulation and frequency control testing"
+nav_order: 3
+parent: "🧪 Test Documentation"
+permalink: /examples/esp32/docs/pwm_test/
+---
+
 # ESP32 Family PWM Comprehensive Test Suite Documentation
 
 ## Overview

@@ -9,12 +9,7 @@ permalink: /docs/api/BaseAdc/
 
 # 📊 BaseAdc API Reference
 
-## 📋 Navigation
-
-[← Previous: BaseGpio](BaseGpio.md) | [Back to API Index](README.md) |
-[Next: BasePwm →](BasePwm.md)
-
----
+**🎯 Analog-to-Digital Conversion base class for multi-channel ADC operations**
 
 ## 🌟 Overview
 
@@ -398,7 +393,3 @@ The following concrete implementations are available:
 
 ---
 
-## 📋 Navigation
-
-[← Previous: BaseGpio](BaseGpio.md) | [Back to API Index](README.md) |
-[Next: BasePwm →](BasePwm.md)

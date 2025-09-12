@@ -9,19 +9,11 @@ permalink: /docs/esp_api/EspSpi/
 
 # 🔌 EspSpi API Reference
 
-<div align="center">
 
-![EspSpi](https://img.shields.io/badge/EspSpi-ESP32C6%20Implementation-blue?style=for-the-badge&logo=espressif)
+
 
 **🔄 ESP32-C6 SPI implementation with ESP-IDF v5.5+ features**
 
-**📋 Navigation**
-
-[← Previous: EspI2c](EspI2c.md) | [Back to ESP API Index](README.md) | [Next: EspUart →](EspUart.md)
-
-</div>
-
----
 
 ## 📚 **Table of Contents**
 
@@ -419,15 +411,5 @@ ESP_LOGI(TAG, "Transfer %zu bytes in %llu μs", length, transfer_time);
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspI2c](EspI2c.md) | [Back to ESP API Index](README.md) | [Next: EspUart →](EspUart.md)
-
-</div>
-
-- **Current**: ESP-IDF v5.5+ compatible implementation
-- **Features**: Full BaseSpi compliance, DMA support, IOMUX optimization
-- **Architecture**: Two-tier design with bus and device management
-- **Thread Safety**: RTOS mutex protection for all operations

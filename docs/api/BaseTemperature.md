@@ -9,20 +9,11 @@ permalink: /docs/api/BaseTemperature/
 
 # 🌡️ BaseTemperature API Reference
 
-<div align="center">
 
-![BaseTemperature](https://img.shields.io/badge/BaseTemperature-Abstract%20Base%20Class-red?style=for-the-badge&logo=thermometer)
+
 
 **🎯 Unified temperature sensing abstraction for all thermal monitoring operations**
 
-**📋 Navigation**
-
-[← Previous: BaseLogger](BaseLogger.md) | [Back to API Index](README.md) | [Next: BasePeriodicTimer
-→](BasePeriodicTimer.md)
-
-</div>
-
----
 
 ## 📚 **Table of Contents**
 
@@ -660,21 +651,12 @@ public:
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseLogger](BaseLogger.md) | [Back to API Index](README.md) | [Next: BasePeriodicTimer
-→](BasePeriodicTimer.md)
 
-</div>
 
----
-
-<div align="center">
 
 **🌡️ Professional Temperature Monitoring for Critical Applications**
 
 *Ensuring thermal safety and optimal performance across all operating conditions*
 
-</div>

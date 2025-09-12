@@ -9,14 +9,7 @@ permalink: /docs/esp_api/EspGpio/
 
 # EspGpio API Reference
 
-<div align="center">
-
-**📋 Navigation**
-
-[← Previous: ESP API Index](README.md) | [Back to ESP API Index](README.md) | [Next: EspAdc
-→](EspAdc.md)
-
-</div>
+**🎯 ESP32-C6 GPIO implementation with hardware-optimized features**
 
 ---
 
@@ -453,11 +446,5 @@ Use appropriate synchronization when accessing from multiple tasks.
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: ESP API Index](README.md) | [Back to ESP API Index](README.md) | [Next: EspAdc
-→](EspAdc.md)
-
-</div>

@@ -9,20 +9,11 @@ permalink: /docs/api/BaseCan/
 
 # 🚌 BaseCan API Reference
 
-<div align="center">
 
-![BaseCan](https://img.shields.io/badge/BaseCan-Abstract%20Base%20Class-blue?style=for-the-badge&logo=bus)
+
 
 **🎯 Unified CAN bus abstraction for all Controller Area Network operations**
 
-**📋 Navigation**
-
-[← Previous: BaseUart](BaseUart.md) | [Back to API Index](README.md) | [Next: BaseWifi
-→](BaseWifi.md)
-
-</div>
-
----
 
 ## 📚 **Table of Contents**
 
@@ -1038,21 +1029,13 @@ if (stats.tx_queue_overflows > 0) {
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseUart](BaseUart.md) | [Back to API Index](README.md) | [Next: BaseWifi
-→](BaseWifi.md)
 
-</div>
 
----
-
-<div align="center">
 
 **🚌 BaseCan - The Foundation of CAN Communication in HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*
 
-</div> 
+ 

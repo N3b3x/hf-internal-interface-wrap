@@ -9,16 +9,8 @@ permalink: /docs/utils/AsciiArtGenerator/
 
 # 🎨 AsciiArtGenerator API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: DigitalOutputGuard](DigitalOutputGuard.md) | [Back to Utils Index](README.md) | [Next:
-Utils Index](README.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -299,12 +291,5 @@ printf("%s\n", email_art.c_str());
 - **[DigitalOutputGuard Documentation](DigitalOutputGuard.md)** - Other utility classes
 - **[Utils Overview](README.md)** - Complete utilities documentation
 ## # <<<<<<< Current (Your changes)
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: DigitalOutputGuard](DigitalOutputGuard.md) | [Back to Utils Index](README.md) | [Next:
-Utils Index](README.md)
-
-</div>
->>>>>>> Incoming (Background Agent changes)

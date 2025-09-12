@@ -9,20 +9,11 @@ permalink: /docs/api/BasePio/
 
 # 🎛️ BasePio API Reference
 
-<div align="center">
 
-![BasePio](https://img.shields.io/badge/BasePio-Abstract%20Base%20Class-blue?style=for-the-badge&logo=chip)
+
 
 **⚡ Precise digital signal I/O for timing-critical operations**
 
-**📋 Navigation**
-
-[← Previous: BasePeriodicTimer](BasePeriodicTimer.md) | [Back to API Index](README.md) | [Next: API
-Index](README.md)
-
-</div>
-
----
 
 ## 📚 **Table of Contents**
 
@@ -923,21 +914,13 @@ hf_pio_symbol_t optimized[] = {
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BasePeriodicTimer](BasePeriodicTimer.md) | [Back to API Index](README.md) | [Next: API
-Index](README.md)
 
-</div>
 
----
-
-<div align="center">
 
 **🎛️ BasePio - Precision Digital Signal Control for HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*
 
-</div> 
+ 

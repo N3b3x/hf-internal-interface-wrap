@@ -9,19 +9,13 @@ permalink: /examples/esp32/docs/
 
 # 🧪 ESP32 Test Documentation
 
-<div align="center">
-
-![ESP32
-Tests](https://img.shields.io/badge/ESP32-Test%20Documentation-blue?style=for-the-badge&logo=espressif)
-![Test
-Coverage](https://img.shields.io/badge/Coverage-Comprehensive-green?style=for-the-badge&logo=testing-library)
+![ESP32 Tests](https://img.shields.io/badge/ESP32-Test%20Documentation-blue?style=for-the-badge&logo=espressif)
+![Test Coverage](https://img.shields.io/badge/Coverage-Comprehensive-green?style=for-the-badge&logo=testing-library)
 ![ESP-IDF](https://img.shields.io/badge/ESP--IDF-v5.5-orange?style=for-the-badge&logo=espressif)
 
 **🎯 Comprehensive Test Documentation for HardFOC ESP32 Interface Wrapper**
 
 *Complete test documentation covering all peripheral interfaces with hardware validation*
-
-</div>
 
 ---
 

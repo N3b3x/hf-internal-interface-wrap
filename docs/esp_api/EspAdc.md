@@ -9,15 +9,8 @@ permalink: /docs/esp_api/EspAdc/
 
 # 📊 EspAdc API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspGpio](EspGpio.md) | [Back to ESP API Index](README.md) | [Next: EspPwm →](EspPwm.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -418,10 +411,5 @@ Multiple threads can safely call ADC methods simultaneously.
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspGpio](EspGpio.md) | [Back to ESP API Index](README.md) | [Next: EspPwm →](EspPwm.md)
-
-</div>

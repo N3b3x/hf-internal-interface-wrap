@@ -9,19 +9,15 @@ has_children: true
 
 # 🔧 HardFOC Internal Interface Layer: **Multi-MCU Peripheral Interface**
 
-<div align="center">
-
 ![HAL](https://img.shields.io/badge/HAL-Hardware%20Abstraction%20Layer-blue?style=for-the-badge&logo=microchip)
 ![C++17](https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=cplusplus)
 ![Multi-MCU](https://img.shields.io/badge/Multi--MCU-Support-green?style=for-the-badge&logo=espressif)
 ![License](https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge&logo=opensourceinitiative)
 
-**🎯 Universal Hardware Interface for Multi-MCU Development**
+## 🎯 Universal Hardware Interface for Multi-MCU Development
 
 *A professional hardware abstraction layer enabling seamless MCU portability through unified
 peripheral APIs - designed for the HardFOC board ecosystem*
-
-</div>
 
 ---
 

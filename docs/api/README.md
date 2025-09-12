@@ -2,7 +2,7 @@
 layout: default
 title: "📋 API Reference"
 description: "Complete API reference for the HardFOC Interface Wrapper base classes and abstract interfaces"
-nav_order: 1
+nav_order: 0
 parent: "📚 Documentation"
 permalink: /docs/api/
 has_children: true
@@ -10,16 +10,11 @@ has_children: true
 
 # 🚀 HardFOC Interface Wrapper API Reference
 
-<div align="center">
-
-![HardFOC
-Interface](https://img.shields.io/badge/HardFOC-Interface%20Wrapper-blue?style=for-the-badge&logo=hardware)
+![HardFOC Interface](https://img.shields.io/badge/HardFOC-Interface%20Wrapper-blue?style=for-the-badge&logo=hardware)
 
 **🎯 Hardware Abstraction Layer for Embedded Systems**
 
 *A platform-agnostic interface wrapper for hardware peripherals*
-
-</div>
 
 ---
 
@@ -405,10 +400,10 @@ Comprehensive test suites for validating hardware interface implementations:
 
 ---
 
-<div align="center">
+
 
 **🚀 HardFOC Interface Wrapper**
 
 *Part of the HardFOC Ecosystem*
 
-</div> 
+ 

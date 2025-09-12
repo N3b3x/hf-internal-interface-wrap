@@ -9,15 +9,8 @@ permalink: /docs/esp_api/EspBluetooth/
 
 # ESP32C6 NimBLE Bluetooth Implementation
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspWifi](EspWifi.md) | [Back to ESP API Index](README.md) | [Next: EspNvs →](EspNvs.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -533,10 +526,5 @@ complete.
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspWifi](EspWifi.md) | [Back to ESP API Index](README.md) | [Next: EspNvs →](EspNvs.md)
-
-</div>

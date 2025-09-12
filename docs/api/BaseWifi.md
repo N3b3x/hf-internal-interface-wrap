@@ -9,16 +9,8 @@ permalink: /docs/api/BaseWifi/
 
 # 📶 BaseWifi API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseCan](BaseCan.md) | [Back to API Index](README.md) | [Next: BaseBluetooth
-→](BaseBluetooth.md)
-
-</div>
-
----
 
 ## 🌟 Overview
 
@@ -869,17 +861,5 @@ For concurrent access from multiple tasks, use appropriate synchronization mecha
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseCan](BaseCan.md) | [Back to API Index](README.md) | [Next: BaseBluetooth
-→](BaseBluetooth.md)
-
-</div>
-
-**📶 BaseWifi - Connecting HardFOC to the World** 🌐
-
-*From IoT connectivity to device configuration - BaseWifi enables seamless wireless communication* 🚀
-
-</div>

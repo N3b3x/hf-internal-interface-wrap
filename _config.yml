@@ -1,80 +1,38 @@
-# Jekyll Configuration for MCU Documentation
-# HardFOC Interface Wrapper Project
-
-# Site Settings
+---
+# Jekyll configuration for hf-internal-interface-wrap documentation
 title: "HardFOC Interface Wrapper"
-description: "Comprehensive MCU interface wrapper for HardFOC systems with unified API across multiple MCU platforms"
-baseurl: "/hf-internal-interface-wrap"
+description: >
+  A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API across 
+  multiple MCU platforms, supporting ESP32 family and planned STM32 support
+baseurl: "/hf-internal-interface-wrap"  # GitHub Pages subpath
 url: "https://n3b3x.github.io"
 
-# Build Settings
-markdown: kramdown
-highlighter: rouge
-theme: minima
+# Author and social information
+author:
+  name: "N3b3x"
+  email: "n3b3x@example.com"
+  url: "https://github.com/n3b3x"
 
-# Collections
-collections:
-  api:
-    output: true
-    permalink: /:collection/:name/
-  esp_api:
-    output: true
-    permalink: /:collection/:name/
-  utils:
-    output: true
-    permalink: /:collection/:name/
+# Directory configuration
+layouts_dir: docs/_layouts
+includes_dir: docs/_includes
 
-# Defaults
-defaults:
-  - scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "api"
-    values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "esp_api"
-    values:
-      layout: "default"
-  - scope:
-      path: ""
-      type: "utils"
-    values:
-      layout: "default"
-
-# Plugins
+# Theme and plugins
+remote_theme: just-the-docs/just-the-docs
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-remote-theme
+  - jekyll-redirect-from
+  - jekyll-optional-front-matter
 
-# Exclude files from processing
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor
-  - .git
-  - .gitignore
-  - README.md
-  - LICENSE
-  - examples/
-  - inc/
-  - src/
-  - CMakeLists.txt
-  - Doxyfile
-  - .github/
+# Navigation settings
+nav_next_prev: true
 
-# Include files that are normally excluded
-include:
-  - _pages
-
-# Kramdown settings
+# Markdown and syntax highlighting
+markdown: kramdown
+highlighter: rouge
 kramdown:
   input: GFM
   syntax_highlighter: rouge
@@ -86,37 +44,182 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-# Minima theme settings
-minima:
-  social_links:
-    github: n3b3x
-    twitter: n3b3x
+# Site settings
+timezone: UTC
+encoding: utf-8
+lang: en
 
-# SEO settings
-author: "N3b3x"
-twitter:
-  username: n3b3x
-github:
-  username: n3b3x
+# Just the Docs configuration
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 5
+  preview_words_before: 10
+  preview_words_after: 15
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: true
 
-# ESP32 specific settings
-esp32:
-  version: "latest"
+# Navigation and UI enhancements
+nav_enabled: true
+heading_anchors: true
+breadcrumbs: true
+toc:
+  min_level: 2
+  max_level: 4
+
+# Callouts for better content presentation
+callouts:
+  note:
+    title: Note
+    color: blue
+  warning:
+    title: Warning
+    color: yellow
+  tip:
+    title: Tip
+    color: green
+  important:
+    title: Important
+    color: red
+
+# Visual enhancements
+color_scheme: dark
+toggle_color_scheme: true
+toggle_auto_mode: true
+
+# Auxiliary links with better organization
+aux_links:
+  "📚 GitHub Repository":
+    - "https://github.com/n3b3x/hf-internal-interface-wrap"
+  "🐛 Report Issues":
+    - "https://github.com/n3b3x/hf-internal-interface-wrap/issues"
+  "⭐ Star on GitHub":
+    - "https://github.com/n3b3x/hf-internal-interface-wrap/stargazers"
+
+# Footer customization
+footer_content: >
+  Built with ❤️ using <a href='https://just-the-docs.github.io/just-the-docs/'>Just the Docs</a> •
+  <a href='https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE'>GPL v3 License</a> •
+  <a href='https://github.com/n3b3x/hf-internal-interface-wrap'>View on GitHub</a>
+
+# Collections for better organization
+collections:
+  api:
+    permalink: "/:collection/:path/"
+    output: true
+    sort_by: nav_order
+  esp_api:
+    permalink: "/:collection/:path/"
+    output: true
+    sort_by: nav_order
+  utils:
+    permalink: "/:collection/:path/"
+    output: true
+    sort_by: nav_order
+
+# Just the Docs configuration
+just_the_docs:
+  # Navigation configuration
+  nav_fold: true
+  nav_external_links:
+    - title: "📚 GitHub Repository"
+      url: https://github.com/n3b3x/hf-internal-interface-wrap
+    - title: "🐛 Issues"
+      url: https://github.com/n3b3x/hf-internal-interface-wrap/issues
+
+  # Custom head content
+  head_custom: _includes/head_custom.html
+
+  # Custom CSS and JS
+  custom_css:
+    - assets/css/custom.css
+  custom_js:
+    - assets/js/custom.js
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+  - "*.gem"
+  - "*.gemspec"
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+
+# Include files that are normally excluded
+include:
+  - _pages
+  - ../README.md
+  - ../LICENSE
+  - assets/
+
+# Enhanced SEO settings
+seo:
+  type: "Organization"
+  name: "HardFOC Interface Wrapper"
+  description: >
+    Multi-MCU hardware abstraction layer for HardFOC systems with unified API across 
+    multiple MCU platforms, supporting ESP32 family and planned STM32 support
+  url: "https://n3b3x.github.io/hf-internal-interface-wrap"
+  twitter:
+    card: "summary_large_image"
+    site: "@n3b3x"
+  og:
+    type: "website"
+    locale: "en_US"
+
+# Social media and sharing
+social:
+  name: "HardFOC Interface Wrapper"
+  links:
+    - "https://github.com/n3b3x/hf-internal-interface-wrap"
+    - "https://github.com/n3b3x"
+
+# Performance optimizations
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: [html, head, body]
+
+# HardFOC Interface Wrapper specific settings
+hardfoc:
+  version: "1.0.0"
   mcu_support:
-    - "ESP32"
-    - "ESP32-S2"
-    - "ESP32-S3"
-    - "ESP32-C3"
+    current:
+      - "ESP32"
+      - "ESP32-S2"
+      - "ESP32-S3"
+      - "ESP32-C3"
+      - "ESP32-C6"
+      - "ESP32-H2"
+    planned:
+      - "STM32F4"
+      - "STM32H7"
+      - "STM32G4"
+      - "nRF52840"
+      - "nRF5340"
   interfaces:
-    - "GPIO"
-    - "ADC"
-    - "PWM"
-    - "UART"
-    - "SPI"
-    - "I2C"
-    - "CAN"
-    - "WiFi"
-    - "Bluetooth"
-    - "NVS"
-    - "PIO"
-    - "Temperature"
+    core:
+      - "GPIO"
+      - "ADC"
+      - "PWM"
+      - "PIO"
+    communication:
+      - "UART"
+      - "SPI"
+      - "I2C"
+      - "CAN"
+    wireless:
+      - "WiFi"
+      - "Bluetooth"
+    system:
+      - "NVS"
+      - "Temperature"
+      - "Logger"
+      - "PeriodicTimer"

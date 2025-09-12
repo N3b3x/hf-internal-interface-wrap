@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 NVS Test"
+description: "NVS Test Suite - Non-volatile storage and data persistence testing"
+nav_order: 10
+parent: "🧪 Test Documentation"
+permalink: /examples/esp32/docs/nvs_test/
+---
+
 # ESP32-C6 NVS Comprehensive Test Suite
 
 ## Overview

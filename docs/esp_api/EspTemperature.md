@@ -9,16 +9,8 @@ permalink: /docs/esp_api/EspTemperature/
 
 # 🌡️ EspTemperature API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspPeriodicTimer](EspPeriodicTimer.md) | [Back to ESP API Index](README.md) | [Next:
-EspLogger →](EspLogger.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -281,12 +273,5 @@ Multiple threads can safely call temperature sensor methods simultaneously.
 <!-- markdownlint-disable-next-line MD013 -->
 - **[ESP-IDF Temperature Sensor Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/temp_sensor.html)** - ESP-IDF docs
 ---
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspPeriodicTimer](EspPeriodicTimer.md) | [Back to ESP API Index](README.md) | [Next:
-EspLogger →](EspLogger.md)
-
-</div>
->>>>>>> Incoming (Background Agent changes)

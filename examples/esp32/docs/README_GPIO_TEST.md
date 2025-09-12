@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 GPIO Test"
+description: "GPIO Test Suite - Digital I/O, interrupts, and pull resistor testing"
+nav_order: 1
+parent: "🧪 Test Documentation"
+permalink: /examples/esp32/docs/gpio_test/
+---
+
 # ESP32-C6 GPIO Comprehensive Test Suite
 
 This directory contains a comprehensive testing suite specifically designed for the EspGpio class on

@@ -9,20 +9,11 @@ permalink: /docs/api/BaseNvs/
 
 # 💾 BaseNvs API Reference
 
-<div align="center">
 
-![BaseNvs](https://img.shields.io/badge/BaseNvs-Abstract%20Base%20Class-blue?style=for-the-badge&logo=harddrive)
+
 
 **🎯 Unified Non-Volatile Storage abstraction for all persistent data operations**
 
-**📋 Navigation**
-
-[← Previous: BaseBluetooth](BaseBluetooth.md) | [Back to API Index](README.md) | [Next: BaseLogger
-→](BaseLogger.md)
-
-</div>
-
----
 
 ## 📚 **Table of Contents**
 
@@ -1013,21 +1004,13 @@ if (stats.bytes_written > max_storage_bytes) {
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseBluetooth](BaseBluetooth.md) | [Back to API Index](README.md) | [Next: BaseLogger
-→](BaseLogger.md)
 
-</div>
 
----
-
-<div align="center">
 
 **💾 BaseNvs - The Foundation of Persistent Storage in HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*
 
-</div> 
+ 

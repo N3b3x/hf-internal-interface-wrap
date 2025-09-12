@@ -1,3 +1,12 @@
+---
+layout: default
+title: "🧪 DOG Test"
+description: "DOG Test Suite - Display on Glass testing and graphics validation"
+nav_order: 14
+parent: "🧪 Test Documentation"
+permalink: /examples/esp32/docs/dog_test/
+---
+
 # DigitalOutputGuard (DOG) Comprehensive Test Suite
 
 ## Overview

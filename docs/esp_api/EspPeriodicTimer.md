@@ -9,16 +9,8 @@ permalink: /docs/esp_api/EspPeriodicTimer/
 
 # EspPeriodicTimer API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspNvs](EspNvs.md) | [Back to ESP API Index](README.md) | [Next: EspTemperature
-→](EspTemperature.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -317,11 +309,5 @@ The `EspPeriodicTimer` class provides comprehensive error handling with specific
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspNvs](EspNvs.md) | [Back to ESP API Index](README.md) | [Next: EspTemperature
-→](EspTemperature.md)
-
-</div>

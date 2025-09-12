@@ -9,16 +9,8 @@ permalink: /docs/esp_api/EspLogger/
 
 # 📝 EspLogger API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspTemperature](EspTemperature.md) | [Back to ESP API Index](README.md) | [Next: ESP
-API Index](README.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -308,12 +300,5 @@ Multiple threads can safely call logging methods simultaneously.
 - **[ESP-IDF Logging](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/system/log.html)** - ESP-IDF docs
 - **[DigitalOutputGuard Documentation](../utils/DigitalOutputGuard.md)** - Utility class documentation
 ## # <<<<<<< Current (Your changes)
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspTemperature](EspTemperature.md) | [Back to ESP API Index](README.md) | [Next: ESP
-API Index](README.md)
-
-</div>
->>>>>>> Incoming (Background Agent changes)

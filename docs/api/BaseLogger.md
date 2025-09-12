@@ -9,18 +9,7 @@ permalink: /docs/api/BaseLogger/
 
 # 📝 BaseLogger API Reference
 
-<div align="center">
-
-![BaseLogger](https://img.shields.io/badge/BaseLogger-Abstract%20Base%20Class-yellow?style=for-the-badge&logo=file-text)
-
 **🎯 Unified logging abstraction for comprehensive system monitoring and debugging**
-
-**📋 Navigation**
-
-[← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature
-→](BaseTemperature.md)
-
-</div>
 
 ---
 
@@ -1008,21 +997,17 @@ private:
 
 ---
 
-<div align="center">
-
 **📋 Navigation**
 
 [← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature
 →](BaseTemperature.md)
 
-</div>
 
 ---
 
-<div align="center">
+
 
 **📝 Professional Logging for Critical System Monitoring**
 
 *Enabling comprehensive system observability with optimal performance and reliability*
 
-</div>

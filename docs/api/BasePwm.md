@@ -9,15 +9,8 @@ permalink: /docs/api/BasePwm/
 
 # 🎛️ BasePwm API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseAdc](BaseAdc.md) | [Back to API Index](README.md) | [Next: BaseI2c →](BaseI2c.md)
-
-</div>
-
----
 
 ## 🌟 Overview
 
@@ -624,16 +617,5 @@ use appropriate synchronization or consider thread-safe wrapper implementations.
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: BaseAdc](BaseAdc.md) | [Back to API Index](README.md) | [Next: BaseI2c →](BaseI2c.md)
-
-</div>
-
-**🎛️ BasePwm - Powering Precise Control in HardFOC Systems** 🚀
-
-*From motor control to LED artistry - BasePwm delivers the precision you need* ⚡
-
-</div> 

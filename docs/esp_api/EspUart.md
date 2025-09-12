@@ -9,15 +9,8 @@ permalink: /docs/esp_api/EspUart/
 
 # EspUart API Reference
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspSpi](EspSpi.md) | [Back to ESP API Index](README.md) | [Next: EspCan →](EspCan.md)
-
-</div>
-
----
 
 ## Overview
 
@@ -270,10 +263,5 @@ The `EspUart` class provides comprehensive error handling with specific error co
 
 ---
 
-<div align="center">
 
-**📋 Navigation**
 
-[← Previous: EspSpi](EspSpi.md) | [Back to ESP API Index](README.md) | [Next: EspCan →](EspCan.md)
-
-</div>
