@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen $doxygenversion"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+$titlearea
+<link href="$relpath^$stylesheet" rel="stylesheet" type="text/css" />
+$extrastylesheet
+$mathjax
+$doxygenawesome
+
+<!-- Doxygen Awesome Extensions -->
+<script type="text/javascript" src="$relpath^doxygen-awesome-extensions/doxygen-awesome-darkmode-toggle.js"></script>
+<script type="text/javascript" src="$relpath^doxygen-awesome-extensions/doxygen-awesome-fragment-copy-button.js"></script>
+<script type="text/javascript" src="$relpath^doxygen-awesome-extensions/doxygen-awesome-paragraph-link.js"></script>
+<script type="text/javascript" src="$relpath^doxygen-awesome-extensions/doxygen-awesome-interactive-toc.js"></script>
+<script type="text/javascript" src="$relpath^doxygen-awesome-extensions/doxygen-awesome-tabs.js"></script>
+
+<script type="text/javascript">
+// Configure Dark Mode Toggle with automatic system preference detection
+DoxygenAwesomeDarkModeToggle.title = "Toggle between light and dark mode";
+DoxygenAwesomeDarkModeToggle.lightModeIcon = '🌞';
+DoxygenAwesomeDarkModeToggle.darkModeIcon = '🌙';
+
+// Configure Fragment Copy Button
+DoxygenAwesomeFragmentCopyButton.title = "Copy to clipboard";
+
+// Configure Paragraph Link
+DoxygenAwesomeParagraphLink.title = "Link to this section";
+DoxygenAwesomeParagraphLink.icon = "¶";
+
+// Configure Interactive TOC
+DoxygenAwesomeInteractiveToc.topOffset = 45;
+DoxygenAwesomeInteractiveToc.hideMobileMenu = false;
+
+// Initialize all extensions
+DoxygenAwesomeDarkModeToggle.init();
+DoxygenAwesomeFragmentCopyButton.init();
+DoxygenAwesomeParagraphLink.init();
+DoxygenAwesomeInteractiveToc.init();
+DoxygenAwesomeTabs.init();
+
+// Auto-detect system preference and apply dark mode
+(function() {
+    // Check for saved theme preference or default to system preference
+    const savedTheme = localStorage.getItem('doxygen-awesome-theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldUseDark = savedTheme ? savedTheme === 'dark' : systemPrefersDark;
+    
+    if (shouldUseDark) {
+        document.documentElement.classList.add('dark-mode');
+        // Update the toggle button state
+        const toggleButton = document.querySelector('.doxygen-awesome-darkmode-toggle');
+        if (toggleButton) {
+            toggleButton.setAttribute('data-theme', 'dark');
+        }
+    }
+    
+    // Listen for system theme changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        // Only auto-switch if user hasn't manually set a preference
+        if (!localStorage.getItem('doxygen-awesome-theme')) {
+            if (e.matches) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        }
+    });
+})();
+</script>
+</head>
+<body>
+$splitbar
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+
+<!--BEGIN TITLEAREA-->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="$relpath^$projectlogo"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">$projectname
+   $projectnumber
+   </div>
+   $projectbrief
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!--END TITLEAREA-->
+
+<!--BEGIN !TITLEAREA-->
+<!--END !TITLEAREA-->
+
+<!--BEGIN HEADER-->
+<!--END HEADER-->
+
+<!--BEGIN INDEX-->
+<!--END INDEX-->
+
+<!--BEGIN CONTENTS-->
+<!--END CONTENTS-->
+
+<!--BEGIN FOOTER-->
+<!--END FOOTER-->
+
+</div><!-- top -->
+<!--BEGIN !TITLEAREA-->
+<!--END !TITLEAREA-->
+
+<!--BEGIN FOOTER-->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    $navpath
+  </ul>
+</div>
+<!--END FOOTER-->
+
+<!--BEGIN !TITLEAREA-->
+<!--END !TITLEAREA-->
+
+<!--BEGIN FOOTER-->
+<!--END FOOTER-->
+
+</body>
+</html>
