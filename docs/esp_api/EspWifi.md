@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspWifi/
 ---
 
 # EspWifi API Reference
-
-
-
-
 ## Overview
 
 `EspWifi` is the ESP32-C6 implementation of the `BaseWifi` interface,
@@ -295,6 +291,5 @@ Successfully found 2 real networks:
 - [ESP-IDF WiFi Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/network/esp_wifi.html) - ESP-IDF docs
 
 ---
-
 
 

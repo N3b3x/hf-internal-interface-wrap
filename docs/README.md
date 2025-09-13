@@ -649,3 +649,4 @@ Classes](utils/README.md) | [🧪 Test Suites](../examples/esp32/docs/README.md)
 [💬 GitHub Discussions](https://github.com/N3b3x/hf-internal-interface-wrap/discussions) | [🐛 Issue
 Tracker](https://github.com/N3b3x/hf-internal-interface-wrap/issues) | [📧 Multi-MCU
 Support](mailto:support@hardfoc.com)
+

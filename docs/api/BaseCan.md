@@ -8,13 +8,7 @@ permalink: /docs/api/BaseCan/
 ---
 
 # 🚌 BaseCan API Reference
-
-
-
-
 **🎯 Unified CAN bus abstraction for all Controller Area Network operations**
-
-
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
@@ -1028,12 +1022,6 @@ if (stats.tx_queue_overflows > 0) {
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---
-
-
-
-
-
-
 **🚌 BaseCan - The Foundation of CAN Communication in HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*

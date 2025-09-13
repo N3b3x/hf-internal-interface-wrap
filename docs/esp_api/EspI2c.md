@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspI2c/
 ---
 
 # EspI2c API Reference
-
-
-
-
 ## Overview
 
 `EspI2c` is the ESP32-C6 implementation of the `BaseI2c` interface,
@@ -161,6 +157,5 @@ failure modes:
 - [ESP-IDF I2C Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/i2c.html) - ESP-IDF docs
 
 ---
-
 
 

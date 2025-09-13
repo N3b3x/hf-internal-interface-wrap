@@ -1002,12 +1002,10 @@ private:
 [← Previous: BaseNvs](BaseNvs.md) | [Back to API Index](README.md) | [Next: BaseTemperature
 →](BaseTemperature.md)
 
-
 ---
-
-
 
 **📝 Professional Logging for Critical System Monitoring**
 
 *Enabling comprehensive system observability with optimal performance and reliability*
+
 

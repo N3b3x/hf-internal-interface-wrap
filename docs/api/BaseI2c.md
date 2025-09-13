@@ -8,10 +8,6 @@ permalink: /docs/api/BaseI2c/
 ---
 
 # 🚌 BaseI2c API Reference
-
-
-
-
 ## 🌟 Overview
 
 `BaseI2c` is the abstract base class for I2C (Inter-Integrated Circuit) device communication in the
@@ -710,6 +706,5 @@ For concurrent access from multiple tasks, use appropriate synchronization mecha
 - **[HardwareTypes Reference](HardwareTypes.md)** - Platform-agnostic type definitions
 
 ---
-
 
 

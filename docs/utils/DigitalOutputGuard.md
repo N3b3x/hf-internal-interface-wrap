@@ -262,3 +262,4 @@ The DigitalOutputGuard integrates seamlessly with the HardFOC hardware abstracti
 - [BaseGpio](../api/BaseGpio.md) - Base GPIO interface
 - [EspGpio](../esp_api/EspGpio.md) - ESP32 GPIO implementation
 - [HardwareTypes](../api/HardwareTypes.md) - Hardware type definitions
+

@@ -8,10 +8,6 @@ permalink: /docs/utils/AsciiArtGenerator/
 ---
 
 # 🎨 AsciiArtGenerator API Reference
-
-
-
-
 ## Overview
 
 `AsciiArtGenerator` is a utility class that converts text strings into large ASCII art characters.
@@ -290,6 +286,3 @@ printf("%s\n", email_art.c_str());
 - **[EspLogger API Reference](../esp_api/EspLogger.md)** - Logging integration
 - **[DigitalOutputGuard Documentation](DigitalOutputGuard.md)** - Other utility classes
 - **[Utils Overview](README.md)** - Complete utilities documentation
-## # <<<<<<< Current (Your changes)
-
-

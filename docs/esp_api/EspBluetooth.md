@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspBluetooth/
 ---
 
 # ESP32C6 NimBLE Bluetooth Implementation
-
-
-
-
 ## Overview
 
 This document describes the **production-ready** ESP32C6 Bluetooth Low Energy (BLE) implementation
@@ -525,6 +521,5 @@ and the documented performance characteristics provide clear expectations for re
 complete.
 
 ---
-
 
 

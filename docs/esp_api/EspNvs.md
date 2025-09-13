@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspNvs/
 ---
 
 # EspNvs API Reference
-
-
-
-
 ## Overview
 
 `EspNvs` is the ESP32-C6 implementation of the `BaseNvs` interface,
@@ -282,6 +278,5 @@ The `EspNvs` class provides comprehensive error handling with specific error cod
 - [ESP-IDF NVS Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/storage/nvs_flash.html) - ESP-IDF docs
 
 ---
-
 
 

@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspCan/
 ---
 
 # EspCan API Reference
-
-
-
-
 ## Overview
 
 `EspCan` is the ESP32-C6 implementation of the `BaseCan` interface,
@@ -190,6 +186,5 @@ The `EspCan` class provides comprehensive error handling with specific error cod
 - [CAN Comprehensive Tests](../../examples/esp32/docs/README_CAN_TEST.md) - Complete CAN validation suite
 
 ---
-
 
 

@@ -8,13 +8,7 @@ permalink: /docs/api/BaseUart/
 ---
 
 # 📡 BaseUart API Reference
-
-
-
-
 **📡 Unified UART abstraction for serial communication**
-
-
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
@@ -1015,12 +1009,6 @@ config.use_dma = (transfer_size > 64);  // Use DMA for transfers > 64 bytes
 - [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---
-
-
-
-
-
-
 **📡 BaseUart - Reliable Serial Communication for HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*

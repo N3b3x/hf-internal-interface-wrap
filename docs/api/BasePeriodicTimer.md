@@ -8,13 +8,7 @@ permalink: /docs/api/BasePeriodicTimer/
 ---
 
 # ⏰ BasePeriodicTimer API Reference
-
-
-
-
 **🎯 Unified periodic timer abstraction for all high-precision timing operations**
-
-
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
@@ -990,12 +984,6 @@ timer.Start(period);  // No callback set
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---
-
-
-
-
-
-
 **⏰ BasePeriodicTimer - The Foundation of High-Precision Timing in HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*

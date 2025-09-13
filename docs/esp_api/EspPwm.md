@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspPwm/
 ---
 
 # EspPwm API Reference
-
-
-
-
 ## Overview
 
 `EspPwm` is the ESP32-C6 implementation of the `BasePwm` interface,
@@ -222,6 +218,5 @@ The `EspPwm` class provides comprehensive error handling with specific error cod
 - [ESP-IDF LEDC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/ledc.html) - ESP-IDF docs
 
 ---
-
 
 

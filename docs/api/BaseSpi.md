@@ -8,13 +8,7 @@ permalink: /docs/api/BaseSpi/
 ---
 
 # 🔌 BaseSpi API Reference
-
-
-
-
 **🔄 Unified SPI abstraction for high-speed serial communication**
-
-
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
@@ -878,6 +872,5 @@ spi.ConfigureDevice(99, config);  // Invalid device
 - **[ESP-IDF SPI Master Driver](https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html)** - Official ESP-IDF docs
 
 ---
-
 
 

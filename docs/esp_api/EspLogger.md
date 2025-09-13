@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspLogger/
 ---
 
 # 📝 EspLogger API Reference
-
-
-
-
 ## Overview
 
 `EspLogger` provides ESP32-specific logging functionality using ESP-IDF's esp_log system.
@@ -300,5 +296,4 @@ Multiple threads can safely call logging methods simultaneously.
 - **[ESP-IDF Logging](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/system/log.html)** - ESP-IDF docs
 - **[DigitalOutputGuard Documentation](../utils/DigitalOutputGuard.md)** - Utility class documentation
 ## # <<<<<<< Current (Your changes)
-
 

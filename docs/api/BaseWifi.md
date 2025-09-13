@@ -8,10 +8,6 @@ permalink: /docs/api/BaseWifi/
 ---
 
 # 📶 BaseWifi API Reference
-
-
-
-
 ## 🌟 Overview
 
 `BaseWifi` is the abstract base class for all WiFi implementations in the HardFOC system.
@@ -860,6 +856,5 @@ For concurrent access from multiple tasks, use appropriate synchronization mecha
 - **[HardwareTypes Reference](HardwareTypes.md)** - Platform-agnostic type definitions
 
 ---
-
 
 

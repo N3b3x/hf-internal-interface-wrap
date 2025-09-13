@@ -400,8 +400,6 @@ Comprehensive test suites for validating hardware interface implementations:
 
 ---
 
-
-
 **🚀 HardFOC Interface Wrapper**
 
 *Part of the HardFOC Ecosystem*

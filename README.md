@@ -38,7 +38,8 @@ peripheral APIs - designed for the HardFOC board ecosystem*
 
 ## 🎯 **Overview**
 
-> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - Interactive guides, examples, and step-by-step tutorials
+> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - 
+> Interactive guides, examples, and step-by-step tutorials
 
 This **Internal Interface Wrap (IID)** provides a unified interface for common MCU peripherals,
 enabling seamless portability between different microcontroller platforms.
@@ -147,7 +148,8 @@ public:
 
 ## 🔌 **Peripheral Interfaces**
 
-> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - Interactive guides, examples, and step-by-step tutorials
+> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - 
+> Interactive guides, examples, and step-by-step tutorials
 
 ### **Core Peripherals**
 
@@ -851,7 +853,8 @@ See [LICENSE](LICENSE) for full details.
 
 ---
 
-> **🧪 [Test 404 Page](nonexistent-page)** - (on live documentation) Click this link to test our custom 404 page!
+> **🧪 [Test 404 Page](nonexistent-page)** - (on live documentation) Click this link to test our 
+> custom 404 page!
 
 **Built for the HardFOC ecosystem - Enabling seamless MCU portability**
 

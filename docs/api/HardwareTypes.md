@@ -8,10 +8,6 @@ permalink: /docs/api/HardwareTypes/
 ---
 
 # HardwareTypes API Reference
-
-
-
-
 ## Overview
 
 `HardwareTypes.h` defines platform-agnostic hardware type definitions for the HardFOC system.
@@ -376,6 +372,5 @@ bool convert_pin_number(int input_pin, hf_pin_num_t& output_pin) {
 - [EspGpio API Reference](../esp_api/EspGpio.md) - ESP32-specific type mappings
 
 ---
-
 
 

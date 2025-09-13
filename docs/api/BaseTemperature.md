@@ -8,13 +8,7 @@ permalink: /docs/api/BaseTemperature/
 ---
 
 # 🌡️ BaseTemperature API Reference
-
-
-
-
 **🎯 Unified temperature sensing abstraction for all thermal monitoring operations**
-
-
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
@@ -650,13 +644,8 @@ public:
    ```
 
 ---
-
-
-
-
-
-
 **🌡️ Professional Temperature Monitoring for Critical Applications**
 
 *Ensuring thermal safety and optimal performance across all operating conditions*
+
 

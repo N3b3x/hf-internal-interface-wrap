@@ -8,13 +8,7 @@ permalink: /docs/api/BasePio/
 ---
 
 # 🎛️ BasePio API Reference
-
-
-
-
 **⚡ Precise digital signal I/O for timing-critical operations**
-
-
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
@@ -913,12 +907,6 @@ hf_pio_symbol_t optimized[] = {
 - [🎛️ **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---
-
-
-
-
-
-
 **🎛️ BasePio - Precision Digital Signal Control for HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*

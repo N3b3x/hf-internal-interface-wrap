@@ -10,8 +10,6 @@ permalink: /docs/api/BaseBluetooth/
 # 📲 BaseBluetooth API Reference
 
 ## 🎯 Unified Bluetooth abstraction for Classic and BLE wireless communication
-
-
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
@@ -813,13 +811,8 @@ private:
    ```
 
 ---
-
-
-
-
-
-
 **📲 Professional Bluetooth Communication for Modern Applications**
 
 *Enabling seamless wireless connectivity with robust security and optimal performance*
+
 

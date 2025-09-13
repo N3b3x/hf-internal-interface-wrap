@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspPeriodicTimer/
 ---
 
 # EspPeriodicTimer API Reference
-
-
-
-
 ## Overview
 
 `EspPeriodicTimer` is the ESP32-C6 implementation of the `BasePeriodicTimer` interface,
@@ -308,6 +304,5 @@ The `EspPeriodicTimer` class provides comprehensive error handling with specific
 - [ESP-IDF Timer Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/gptimer.html) - ESP-IDF docs
 
 ---
-
 
 

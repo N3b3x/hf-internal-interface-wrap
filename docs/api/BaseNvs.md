@@ -8,13 +8,7 @@ permalink: /docs/api/BaseNvs/
 ---
 
 # 💾 BaseNvs API Reference
-
-
-
-
 **🎯 Unified Non-Volatile Storage abstraction for all persistent data operations**
-
-
 ## 📚 **Table of Contents**
 
 - [🎯 **Overview**](#-overview)
@@ -1003,12 +997,6 @@ if (stats.bytes_written > max_storage_bytes) {
 - [🎯 **Hardware Types**](HardwareTypes.md) - Platform-agnostic types
 
 ---
-
-
-
-
-
-
 **💾 BaseNvs - The Foundation of Persistent Storage in HardFOC**
 
 *Part of the HardFOC Internal Interface Wrapper Documentation*

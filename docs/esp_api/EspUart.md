@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspUart/
 ---
 
 # EspUart API Reference
-
-
-
-
 ## Overview
 
 `EspUart` is the ESP32-C6 implementation of the `BaseUart` interface,
@@ -262,6 +258,5 @@ The `EspUart` class provides comprehensive error handling with specific error co
 - [ESP-IDF UART Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/uart.html) - ESP-IDF docs
 
 ---
-
 
 

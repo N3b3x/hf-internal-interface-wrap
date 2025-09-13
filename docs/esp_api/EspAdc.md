@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspAdc/
 ---
 
 # 📊 EspAdc API Reference
-
-
-
-
 ## Overview
 
 `EspAdc` provides ESP32 ADC (Analog-to-Digital Converter) functionality with comprehensive support
@@ -410,6 +406,5 @@ Multiple threads can safely call ADC methods simultaneously.
 - **[ESP-IDF ADC Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/adc.html)** - ESP-IDF docs
 
 ---
-
 
 

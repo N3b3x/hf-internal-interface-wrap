@@ -8,10 +8,6 @@ permalink: /docs/esp_api/EspTemperature/
 ---
 
 # 🌡️ EspTemperature API Reference
-
-
-
-
 ## Overview
 
 `EspTemperature` provides ESP32-C6 internal temperature sensor functionality with comprehensive
@@ -273,5 +269,4 @@ Multiple threads can safely call temperature sensor methods simultaneously.
 <!-- markdownlint-disable-next-line MD013 -->
 - **[ESP-IDF Temperature Sensor Driver](https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/temp_sensor.html)** - ESP-IDF docs
 ---
-
 

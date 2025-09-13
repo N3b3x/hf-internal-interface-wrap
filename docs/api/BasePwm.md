@@ -8,10 +8,6 @@ permalink: /docs/api/BasePwm/
 ---
 
 # 🎛️ BasePwm API Reference
-
-
-
-
 ## 🌟 Overview
 
 `BasePwm` is the abstract base class for all PWM (Pulse Width Modulation) implementations in the
@@ -616,6 +612,5 @@ use appropriate synchronization or consider thread-safe wrapper implementations.
 - **[HardwareTypes Reference](HardwareTypes.md)** - Platform-agnostic type definitions
 
 ---
-
 
 

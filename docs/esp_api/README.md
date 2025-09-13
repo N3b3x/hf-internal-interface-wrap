@@ -446,10 +446,7 @@ These implementations offer performance, power efficiency, and feature support.
 
 ---
 
-
-
 **🔧 ESP32-C6 Implementations - HardFOC Systems**
 
 *Leveraging ESP32-C6 hardware for performance and efficiency*
-
 
