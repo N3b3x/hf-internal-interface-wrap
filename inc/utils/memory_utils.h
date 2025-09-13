@@ -20,7 +20,6 @@ namespace utils {
  * @param args Arguments to forward to T's constructor
  * @return std::unique_ptr<T> Valid pointer on success, nullptr on allocation failure
  *
- * @example
  * @code
  * auto ptr = make_unique_nothrow<MyClass>(arg1, arg2);
  * if (!ptr) {
