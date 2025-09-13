@@ -2,6 +2,8 @@
 
 A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API across multiple MCU platforms.
 
+> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - Interactive guides, examples, and step-by-step tutorials
+
 ## Supported MCUs
 
 - **ESP32 Family**: ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6, ESP32-H2
