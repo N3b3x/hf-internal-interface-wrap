@@ -67,4 +67,3 @@ The documentation theme and features can be customized by modifying:
 - [API Reference](api/) - Base class documentation
 - [ESP32 Implementations](esp_api/) - ESP32-specific implementations
 - [Utilities](utils/) - Utility classes and helpers
-

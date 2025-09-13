@@ -53,4 +53,3 @@ Ready to explore these features? Check out our:
 {% include alert.html type="info" title="Need Help?" 
 content="Our comprehensive documentation includes step-by-step tutorials, API references, and 
 real-world examples to help you get the most out of the HardFOC Internal Interface Layer." %}
-

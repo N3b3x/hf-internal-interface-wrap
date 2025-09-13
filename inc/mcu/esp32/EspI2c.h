@@ -41,7 +41,6 @@
  * @note Follows the same architectural pattern as EspSpi for consistency.
  * @note ESP-IDF v5.5+ enforces strict separation between sync/async modes.
  *
- * @example sync_mode_example
  * @code
  * // Create sync mode bus configuration
  * hf_i2c_master_bus_config_t bus_config = {};
@@ -72,7 +71,6 @@
  * hf_i2c_err_t result = device->Write(data, sizeof(data));
  * @endcode
  *
- * @example async_mode_example
  * @code
  * // Create async mode bus configuration
  * hf_i2c_master_bus_config_t bus_config = {};

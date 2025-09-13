@@ -70,12 +70,6 @@ PROJECT_LOGO           = assets/images/logo.png
 
 OUTPUT_DIRECTORY = docs/doxygen
 
-# The WORKING_DIRECTORY tag is used to specify the (relative or absolute) path
-# to the working directory from which doxygen is run. This is the directory
-# in which doxygen will look for the files specified in INPUT and EXAMPLE_PATH.
-# If left blank the current directory will be used.
-WORKING_DIRECTORY = .
-
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create up to 4096
 # sub-directories (in 2 levels) under the output directory of each output format
 # and will distribute the generated files over these directories. Enabling this

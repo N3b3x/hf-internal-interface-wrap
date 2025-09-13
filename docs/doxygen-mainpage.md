@@ -34,13 +34,15 @@ across multiple MCU platforms.
 - [EspBluetooth](@ref EspBluetooth) - ESP32 Bluetooth implementation
 - [EspCan](@ref EspCan) - ESP32 CAN implementation
 - [EspGpio](@ref EspGpio) - ESP32 GPIO implementation
-- [EspI2c](@ref EspI2c) - ESP32 I2C implementation
+- [EspI2cDevice](@ref EspI2cDevice) - ESP32 I2C device implementation
+- [EspI2cBus](@ref EspI2cBus) - ESP32 I2C bus implementation
 - [EspLogger](@ref EspLogger) - ESP32 Logger implementation
 - [EspNvs](@ref EspNvs) - ESP32 NVS implementation
 - [EspPeriodicTimer](@ref EspPeriodicTimer) - ESP32 Periodic Timer implementation
 - [EspPio](@ref EspPio) - ESP32 PIO implementation
 - [EspPwm](@ref EspPwm) - ESP32 PWM implementation
-- [EspSpi](@ref EspSpi) - ESP32 SPI implementation
+- [EspSpiDevice](@ref EspSpiDevice) - ESP32 SPI device implementation
+- [EspSpiBus](@ref EspSpiBus) - ESP32 SPI bus implementation
 - [EspTemperature](@ref EspTemperature) - ESP32 Temperature implementation
 - [EspUart](@ref EspUart) - ESP32 UART implementation
 - [EspWifi](@ref EspWifi) - ESP32 WiFi implementation
@@ -48,12 +50,12 @@ across multiple MCU platforms.
 ### Utility Classes
 - [AsciiArtGenerator](@ref AsciiArtGenerator) - ASCII art generation utility
 - [DigitalOutputGuard](@ref DigitalOutputGuard) - Digital output protection utility
-- [McuSelect](@ref McuSelect) - MCU platform selection utilities
+- McuSelect - MCU platform selection utilities
 - [RtosMutex](@ref RtosMutex) - RTOS mutex wrapper utilities
 
 ## Hardware Types
 
-- [HardwareTypes](@ref HardwareTypes) - Common hardware type definitions
+- HardwareTypes - Common hardware type definitions
 
 ## Quick Start
 
@@ -96,4 +98,3 @@ This project is licensed under the GPL v3 License. See the LICENSE file for deta
 ## Contributing
 
 Please see the main project repository for contributing guidelines and code of conduct.
-
