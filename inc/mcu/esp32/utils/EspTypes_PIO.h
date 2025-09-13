@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_PIO.h
+ * @ingroup esp32_types
  * @brief ESP32 PIO/RMT type definitions for hardware abstraction.
  *
  * This header defines only the essential PIO/RMT-specific types used by

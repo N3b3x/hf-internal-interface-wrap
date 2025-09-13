@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_Timer.h
+ * @ingroup esp32_types
  * @brief ESP32 timer type definitions for hardware abstraction.
  *
  * This header defines only the essential timer-specific types used by

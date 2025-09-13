@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_Base.h
+ * @ingroup esp32_types
  * @brief ESP32 base type definitions for hardware abstraction.
  *
  * This header defines the common base types and includes that are shared across

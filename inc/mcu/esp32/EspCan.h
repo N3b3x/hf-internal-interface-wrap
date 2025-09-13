@@ -1,5 +1,6 @@
 /**
  * @file EspCan.h
+ * @ingroup can
  * @brief ESP32 CAN (TWAI) implementation for the HardFOC system - ESP-IDF v5.5 Compatible.
  *
  * This file contains the ESP32 CAN (TWAI) implementation that extends the BaseCan

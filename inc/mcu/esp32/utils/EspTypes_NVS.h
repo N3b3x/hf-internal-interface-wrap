@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_NVS.h
+ * @ingroup esp32_types
  * @brief ESP32 NVS type definitions for hardware abstraction.
  *
  * This header defines only the essential NVS-specific types used by

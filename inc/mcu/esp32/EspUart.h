@@ -1,5 +1,6 @@
 /**
  * @file EspUart.h
+ * @ingroup uart
  * @brief ESP32 UART implementation for the HardFOC system.
  *
  * This file provides a comprehensive UART implementation for ESP32 variants using the

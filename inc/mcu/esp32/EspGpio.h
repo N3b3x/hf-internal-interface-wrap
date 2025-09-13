@@ -1,5 +1,6 @@
 /**
  * @file EspGpio.h
+ * @ingroup gpio
  * @brief Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF
  * v5.5+ features.
  *

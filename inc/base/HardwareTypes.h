@@ -1,5 +1,6 @@
 /**
  * @file HardwareTypes.h
+ * @ingroup core
  * @brief Platform-agnostic hardware type definitions for the HardFOC system.
  *
  * This file defines platform-agnostic types used by base interface classes.
@@ -13,6 +14,14 @@
  *
  * @note These types are designed to be platform-independent and should not include
  *       any MCU-specific headers or definitions.
+ */
+
+/**
+ * @defgroup core Core Module
+ * @brief Core types and definitions for the HardFOC system.
+ * @details This module provides the fundamental types and definitions used throughout
+ *          the HardFOC system, including hardware types, platform detection, and
+ *          common data structures.
  */
 
 #pragma once

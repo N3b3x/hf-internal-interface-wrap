@@ -1,5 +1,6 @@
 /**
  * @file McuSelect.h
+ * @ingroup utils
  * @brief Centralized MCU platform selection and configuration header.
  *
  * This header provides a SINGLE POINT OF CONTROL for MCU platform selection.

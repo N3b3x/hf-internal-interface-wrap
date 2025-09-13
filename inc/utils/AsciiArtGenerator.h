@@ -1,5 +1,6 @@
 /**
  * @file AsciiArtGenerator.h
+ * @ingroup utils
  * @brief Simple ASCII art generator.
  *
  * This file provides a simple ASCII art generator that creates
@@ -10,6 +11,17 @@
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
+ */
+
+/**
+ * @defgroup utils Utility Module
+ * @brief Utility classes and helper functions for the HardFOC system.
+ * @details This module provides various utility classes and functions including:
+ *          - ASCII art generation
+ *          - GPIO output guards and RAII patterns
+ *          - MCU platform selection and configuration
+ *          - Memory management utilities
+ *          - RTOS synchronization primitives
  */
 
 #pragma once

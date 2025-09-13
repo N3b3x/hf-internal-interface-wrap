@@ -1,5 +1,6 @@
 /**
  * @file DigitalOutputGuard.h
+ * @ingroup utils
  * @brief Header file for the DigitalOutputGuard class.
  *
  * The DigitalOutputGuard class ensures that a DigitalGpio instance is set to

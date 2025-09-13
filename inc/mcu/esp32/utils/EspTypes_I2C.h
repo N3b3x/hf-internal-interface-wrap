@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_I2C.h
+ * @ingroup esp32_types
  * @brief ESP32 I2C type definitions for hardware abstraction.
  *
  * This header defines only the essential I2C-specific types used by
