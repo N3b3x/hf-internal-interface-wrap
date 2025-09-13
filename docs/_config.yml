@@ -91,19 +91,19 @@ toggle_auto_mode: true
 # Auxiliary links with better organization
 aux_links:
   "📚 GitHub Repository":
-    - "https://github.com/n3b3x/hf-internal-interface-wrap"
+    - "{{ site.url }}{{ site.baseurl }}"
   "🐛 Report Issues":
-    - "https://github.com/n3b3x/hf-internal-interface-wrap/issues"
+    - "{{ site.url }}{{ site.baseurl }}/issues"
   "⭐ Star on GitHub":
-    - "https://github.com/n3b3x/hf-internal-interface-wrap/stargazers"
+    - "{{ site.url }}{{ site.baseurl }}/stargazers"
   "📖 API Reference":
-    - "hf-internal-interface-wrap/api/index.html"
+    - "{{ site.baseurl }}/api/index.html"
 
 # Footer customization
 footer_content: >
   Built with ❤️ using <a href='https://just-the-docs.github.io/just-the-docs/'>Just the Docs</a> •
-  <a href='https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE'>GPL v3 License</a> •
-  <a href='https://github.com/n3b3x/hf-internal-interface-wrap'>View on GitHub</a>
+  <a href='{{ site.url }}{{ site.baseurl }}/blob/main/LICENSE'>GPL v3 License</a> •
+  <a href='{{ site.url }}{{ site.baseurl }}'>View on GitHub</a>
 
 # Collections for better organization
 collections:
@@ -126,9 +126,9 @@ just_the_docs:
   nav_fold: true
   nav_external_links:
     - title: "📚 GitHub Repository"
-      url: https://github.com/n3b3x/hf-internal-interface-wrap
+      url: "{{ site.url }}{{ site.baseurl }}"
     - title: "🐛 Issues"
-      url: https://github.com/n3b3x/hf-internal-interface-wrap/issues
+      url: "{{ site.url }}{{ site.baseurl }}/issues"
 
   # Custom head content
   head_custom: _includes/head_custom.html
@@ -171,7 +171,7 @@ seo:
   description: >
     Multi-MCU hardware abstraction layer for HardFOC systems with unified API across 
     multiple MCU platforms, supporting ESP32 family and planned STM32 support
-  url: "https://n3b3x.github.io/hf-internal-interface-wrap"
+  url: "{{ site.url }}{{ site.baseurl }}"
   twitter:
     card: "summary_large_image"
     site: "@n3b3x"
@@ -183,7 +183,7 @@ seo:
 social:
   name: "HardFOC Interface Wrapper"
   links:
-    - "https://github.com/n3b3x/hf-internal-interface-wrap"
+    - "{{ site.url }}{{ site.baseurl }}"
     - "https://github.com/n3b3x"
 
 # Performance optimizations

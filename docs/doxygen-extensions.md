@@ -9,7 +9,8 @@ has_toc: true
 
 # 📖 Doxygen Extensions
 
-This section contains advanced Doxygen documentation features and extensions for the HardFOC Interface Wrapper project.
+This section contains advanced Doxygen documentation features and extensions for the 
+HardFOC Interface Wrapper project.
 
 ## 🌟 Features
 
@@ -33,7 +34,8 @@ The Doxygen documentation is automatically generated from the source code and in
 ## 📁 Structure
 
 - **[Configuration](doxygen-extensions/)** - Doxygen configuration and setup files
-- **[Extensions](doxygen-extensions/doxygen-awesome-extensions/)** - Working copies of doxygen-awesome extensions
+- **[Extensions](doxygen-extensions/doxygen-awesome-extensions/)** - Working copies of 
+  doxygen-awesome extensions
 - **[Submodule](doxygen-extensions/doxygen-awesome-css/)** - Full doxygen-awesome-css repository
 
 ## 🔧 Technical Details
