@@ -1,5 +1,6 @@
 /**
  * @file RtosMutex.h
+ * @ingroup utils
  * @brief Cross-platform RTOS mutex and synchronization primitives.
  *
  * This header provides platform-agnostic mutex, lock guard, and timing utilities

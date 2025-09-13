@@ -1,5 +1,6 @@
 /**
  * @file EspTemperature.h
+ * @ingroup temperature
  * @brief ESP32-C6 internal temperature sensor implementation for the HardFOC system.
  *
  * This file contains the declaration of the EspTemperature class that extends the

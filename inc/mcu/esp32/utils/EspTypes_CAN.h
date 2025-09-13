@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_CAN.h
+ * @ingroup esp32_types
  * @brief ESP32 CAN type definitions for hardware abstraction.
  *
  * This header defines only the essential CAN-specific types and constants used by

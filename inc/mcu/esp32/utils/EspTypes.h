@@ -1,5 +1,6 @@
 /**
  * @file EspTypes.h
+ * @ingroup esp32_types
  * @brief Consolidated MCU-specific type definitions for hardware abstraction (hf_* types).
  *
  * This header consolidates all MCU-specific types and constants by including
@@ -23,6 +24,14 @@
  * @note All interface classes (CAN, UART, I2C, SPI, GPIO, ADC, PWM, RMT) must use only these types.
  * @note This implementation is verified against ESP-IDF v5.5+ documentation and supports all latest
  * features.
+ */
+
+/**
+ * @defgroup esp32_types ESP32 Type Definitions
+ * @brief ESP32-specific type definitions and hardware abstraction types.
+ * @details This module provides ESP32-specific type definitions for all hardware peripherals
+ *          including ADC, Bluetooth, CAN, GPIO, I2C, NVS, PIO, PWM, SPI, Timer, UART, and WiFi.
+ *          These types provide a clean abstraction layer over ESP-IDF APIs.
  */
 
 #pragma once

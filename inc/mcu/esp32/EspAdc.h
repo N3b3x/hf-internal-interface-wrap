@@ -1,5 +1,6 @@
 /**
  * @file EspAdc.h
+ * @ingroup adc
  * @brief ESP32 ADC implementation for the HardFOC system.
  *
  * This file contains the ESP32 ADC implementation that extends the BaseAdc

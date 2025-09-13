@@ -1,5 +1,6 @@
 /**
  * @file EspNvs.h
+ * @ingroup nvs
  * @brief World-class ESP32-C6 NVS storage implementation with ESP-IDF v5.5+ features.
  *
  * This header provides a production-ready NVS implementation for microcontrollers with

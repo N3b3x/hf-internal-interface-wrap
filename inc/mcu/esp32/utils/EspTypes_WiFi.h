@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_WiFi.h
+ * @ingroup esp32_types
  * @brief ESP32 WiFi type definitions for hardware abstraction.
  *
  * This header defines the ESP32-specific types, constants, and utility functions

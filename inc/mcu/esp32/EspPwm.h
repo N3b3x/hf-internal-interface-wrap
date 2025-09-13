@@ -1,5 +1,6 @@
 /**
  * @file EspPwm.h
+ * @ingroup pwm
  * @brief ESP32C6 LEDC (PWM) controller implementation for the HardFOC system.
  *
  * This header provides a comprehensive PWM implementation for ESP32C6 using the

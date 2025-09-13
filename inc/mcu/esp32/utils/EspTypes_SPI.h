@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_SPI.h
+ * @ingroup esp32_types
  * @brief ESP32 SPI type definitions for hardware abstraction.
  *
  * This header defines only the essential SPI-specific types used by

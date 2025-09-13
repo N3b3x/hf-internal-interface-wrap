@@ -1,5 +1,6 @@
 /**
  * @file EspSpi.h
+ * @ingroup spi
  * @brief Advanced MCU-integrated SPI controller implementation with ESP32C6/ESP-IDF v5.5+ features.
  *
  * This header provides a comprehensive SPI implementation that utilizes all the advanced

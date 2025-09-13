@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_UART.h
+ * @ingroup esp32_types
  * @brief ESP32 UART type definitions for hardware abstraction.
  *
  * This header defines only the essential UART-specific types used by

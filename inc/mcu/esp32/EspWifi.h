@@ -1,5 +1,6 @@
 /**
  * @file EspWifi.h
+ * @ingroup wifi
  * @brief Advanced ESP32 implementation of the unified BaseWifi class with ESP-IDF v5.5+ features.
  *
  * This file provides concrete implementations of the unified BaseWifi class
