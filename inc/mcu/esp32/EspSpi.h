@@ -25,6 +25,10 @@
  * @note This implementation fully complies with ESP-IDF v5.5 SPI Master driver API
  * @note Supports ESP32C6 hardware features including dual/quad/octal SPI modes
  * @note Thread-safe operations using RTOS mutex protection
+ *
+ * @example SpiComprehensiveTest.cpp
+ * This example demonstrates comprehensive SPI testing including device communication,
+ * transfer management, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

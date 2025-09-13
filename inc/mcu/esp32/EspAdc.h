@@ -21,6 +21,10 @@
  * @note Supports ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2
  * @note Each EspAdc instance represents a single ADC unit
  * @note Higher-level applications should instantiate multiple EspAdc objects for multi-unit boards
+ *
+ * @example AdcComprehensiveTest.cpp
+ * This example demonstrates comprehensive ADC testing including basic operations,
+ * calibration, continuous conversion, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

@@ -12,6 +12,10 @@
  * @author Nebiyu Tadesse
  * @date 2025
  * @copyright HardFOC
+ *
+ * @example GpioComprehensiveTest.cpp
+ * This example demonstrates comprehensive GPIO testing including basic operations,
+ * advanced features, interrupts, power management, and hardware-specific capabilities.
  */
 
 #pragma once

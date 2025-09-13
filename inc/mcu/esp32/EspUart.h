@@ -15,6 +15,10 @@
  * @note Supports ESP32-C6, ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C2, ESP32-H2
  * @note Each EspUart instance represents a single UART port
  * @note Higher-level applications should instantiate multiple EspUart objects for multi-port boards
+ *
+ * @example UartComprehensiveTest.cpp
+ * This example demonstrates comprehensive UART testing including serial communication,
+ * flow control, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

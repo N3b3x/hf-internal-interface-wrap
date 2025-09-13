@@ -16,6 +16,10 @@
  *
  * @note This class is not thread-safe. Use appropriate synchronization if
  * accessed from multiple contexts.
+ *
+ * @example GpioComprehensiveTest.cpp
+ * This example demonstrates comprehensive GPIO testing including basic operations,
+ * advanced features, interrupts, power management, and hardware-specific capabilities.
  */
 
 #pragma once

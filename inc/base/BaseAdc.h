@@ -14,6 +14,10 @@
  * controller types, making the system extensible and maintainable.
  *
  * @note This is a header-only abstract base class.
+ *
+ * @example AdcComprehensiveTest.cpp
+ * This example demonstrates comprehensive ADC testing including basic operations,
+ * calibration, continuous conversion, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

@@ -12,6 +12,10 @@
  *
  * @note This is a header-only abstract base class following the same pattern as BaseCan/BaseAdc.
  * @note Users should program against this interface, not specific implementations.
+ *
+ * @example PwmComprehensiveTest.cpp
+ * This example demonstrates comprehensive PWM testing including signal generation,
+ * frequency control, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

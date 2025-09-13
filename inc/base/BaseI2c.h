@@ -14,6 +14,10 @@
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
  * @note Each BaseI2c instance represents a specific I2C device, not the I2C bus itself.
+ *
+ * @example I2cComprehensiveTest.cpp
+ * This example demonstrates comprehensive I2C testing including device communication,
+ * error handling, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

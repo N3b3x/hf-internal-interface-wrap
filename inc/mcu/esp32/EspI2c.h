@@ -22,6 +22,10 @@
  * - **Comprehensive Error Handling**: Proper error conversion and reporting
  * - **Resource Management**: Automatic cleanup and proper resource lifecycle
  *
+ * @example I2cComprehensiveTest.cpp
+ * This example demonstrates comprehensive I2C testing including device communication,
+ * error handling, and hardware-specific capabilities for ESP32-C6.
+ *
  * @section performance Performance Characteristics:
  * - Standard Mode: 100 kHz
  * - Fast Mode: 400 kHz

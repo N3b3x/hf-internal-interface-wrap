@@ -15,6 +15,10 @@
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
  * @note Each BaseSpi instance represents a specific SPI device, not the SPI bus itself.
+ *
+ * @example SpiComprehensiveTest.cpp
+ * This example demonstrates comprehensive SPI testing including device communication,
+ * transfer management, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once
