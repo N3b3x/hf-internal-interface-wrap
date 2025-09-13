@@ -57,21 +57,6 @@ across multiple MCU platforms.
 
 - HardwareTypes - Common hardware type definitions
 
-## Quick Start
-
-```cpp
-#include "base/BaseGpio.h"
-#include "mcu/esp32/EspGpio.h"
-
-// Initialize GPIO
-EspGpio gpio;
-if (gpio.EnsureInitialized()) {
-    // Configure pin as output
-    gpio.SetMode(2, HF_GPIO_MODE_OUTPUT);
-    gpio.Write(2, HF_GPIO_STATE_HIGH);
-}
-```
-
 ## Features
 
 - **Unified API** - Consistent interface across different MCU platforms

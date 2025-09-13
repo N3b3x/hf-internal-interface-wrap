@@ -1344,13 +1344,13 @@ bool test_gpio_power_consumption() noexcept {
 extern "C" void app_main(void) {
   ESP_LOGI(TAG, "\n");
   ESP_LOGI(TAG, "╔══════════════════════════════════════════════════════════════════════════════╗");
-  ESP_LOGI(TAG, "║                    ESP32-C6 GPIO COMPREHENSIVE TEST SUITE                   ║");
-  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                          ║");
+  ESP_LOGI(TAG, "║                    ESP32-C6 GPIO COMPREHENSIVE TEST SUITE                    ║");
+  ESP_LOGI(TAG, "║                         HardFOC Internal Interface                           ║");
   ESP_LOGI(TAG, "╠══════════════════════════════════════════════════════════════════════════════╣");
-  ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                 ║");
-  ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                              ║");
-  ESP_LOGI(TAG, "║ Features: GPIO, Interrupts, RTC, Sleep, Advanced Features                  ║");
-  ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                             ║");
+  ESP_LOGI(TAG, "║ Target: ESP32-C6 DevKit-M-1                                                  ║");
+  ESP_LOGI(TAG, "║ ESP-IDF: v5.5+                                                               ║");
+  ESP_LOGI(TAG, "║ Features: GPIO, Interrupts, RTC, Sleep, Advanced Features                    ║");
+  ESP_LOGI(TAG, "║ Architecture: noexcept (no exception handling)                               ║");
   ESP_LOGI(TAG, "╚══════════════════════════════════════════════════════════════════════════════╝");
   ESP_LOGI(TAG, "\n");
 

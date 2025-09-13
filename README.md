@@ -7,7 +7,8 @@ permalink: /
 has_children: true
 ---
 
-# 🔧 HardFOC Internal Interface Layer: **Multi-MCU Peripheral Interface**
+# 🔧 HardFOC Internal Interface Layer: 
+**Multi-MCU Peripherals Interface**
 
 ![HAL](https://img.shields.io/badge/HAL-Hardware%20Abstraction%20Layer-blue?style=for-the-badge&logo=microchip)
 ![C++17](https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=cplusplus)
@@ -839,6 +840,7 @@ See [LICENSE](LICENSE) for full details.
 - 📚 [API Reference](docs/api/) - Complete interface documentation
 - 🔧 [ESP32 Implementations](docs/esp_api/) - Hardware-specific implementations
 - 🛠️ [Utility Classes](docs/utils/) - Advanced utility classes and helpers
+  - [McuSelect.h](inc/utils/McuSelect.h) - Centralized MCU platform selection and configuration
 - 🔧 [Build System](examples/esp32/) - Build and deployment guides
 - 🛡️ [CI/CD Pipeline](.github/workflows/) - Advanced automated workflows and testing
 
