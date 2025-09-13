@@ -1,8 +1,10 @@
 # HardFOC Interface Wrapper
 
-A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API across multiple MCU platforms.
+A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API 
+across multiple MCU platforms.
 
-> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - Interactive guides, examples, and step-by-step tutorials
+> **📖 [📚🌐 Live Complete Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)** - 
+> Interactive guides, examples, and step-by-step tutorials
 
 ## Supported MCUs
 
