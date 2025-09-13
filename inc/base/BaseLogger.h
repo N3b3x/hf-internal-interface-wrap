@@ -15,9 +15,9 @@
  *
  * @note This class is thread-safe and designed for concurrent access.
  *
- * @example LoggerComprehensiveTest.cpp
- * This example demonstrates comprehensive logging testing including multiple log levels,
- * output destinations, and hardware-specific capabilities for ESP32-C6.
+ * @example EspLogger.h
+ * This example demonstrates the ESP32 Logger implementation that shows how to use
+ * the base Logger API with ESP32-specific features and hardware capabilities.
  */
 
 #pragma once

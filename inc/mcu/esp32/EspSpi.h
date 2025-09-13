@@ -27,7 +27,7 @@
  * @note Thread-safe operations using RTOS mutex protection
  *
  * @example SpiComprehensiveTest.cpp
- * This example demonstrates comprehensive SPI testing including device communication,
+ * This comprehensive test demonstrates all ESP32 SPI features including device communication,
  * transfer management, and hardware-specific capabilities for ESP32-C6.
  */
 

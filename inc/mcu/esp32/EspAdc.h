@@ -23,8 +23,8 @@
  * @note Higher-level applications should instantiate multiple EspAdc objects for multi-unit boards
  *
  * @example AdcComprehensiveTest.cpp
- * This example demonstrates comprehensive ADC testing including basic operations,
- * calibration, continuous conversion, and hardware-specific capabilities for ESP32-C6.
+ * This comprehensive test demonstrates all ESP32 ADC features including basic operations,
+ * calibration, continuous conversion, monitor thresholds, and hardware-specific capabilities.
  */
 
 #pragma once

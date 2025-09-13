@@ -23,7 +23,7 @@
  * - **Resource Management**: Automatic cleanup and proper resource lifecycle
  *
  * @example I2cComprehensiveTest.cpp
- * This example demonstrates comprehensive I2C testing including device communication,
+ * This comprehensive test demonstrates all ESP32 I2C features including device communication,
  * error handling, and hardware-specific capabilities for ESP32-C6.
  *
  * @section performance Performance Characteristics:

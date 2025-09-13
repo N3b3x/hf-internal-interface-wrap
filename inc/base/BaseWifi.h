@@ -16,9 +16,9 @@
  * @note This class is not thread-safe. Use appropriate synchronization if
  * accessed from multiple contexts.
  *
- * @example WifiComprehensiveTest.cpp
- * This example demonstrates comprehensive WiFi testing including station and access point modes,
- * security configurations, and hardware-specific capabilities for ESP32-C6.
+ * @example EspWifi.h
+ * This example demonstrates the ESP32 WiFi implementation that shows how to use
+ * the base WiFi API with ESP32-specific features and hardware capabilities.
  */
 
 #pragma once

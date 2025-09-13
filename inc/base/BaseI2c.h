@@ -15,9 +15,9 @@
  * @note Users should program against this interface, not specific implementations.
  * @note Each BaseI2c instance represents a specific I2C device, not the I2C bus itself.
  *
- * @example I2cComprehensiveTest.cpp
- * This example demonstrates comprehensive I2C testing including device communication,
- * error handling, and hardware-specific capabilities for ESP32-C6.
+ * @example EspI2c.h
+ * This example demonstrates the ESP32 I2C implementation that shows how to use
+ * the base I2C API with ESP32-specific features and hardware capabilities.
  */
 
 #pragma once

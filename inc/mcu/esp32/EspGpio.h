@@ -14,7 +14,7 @@
  * @copyright HardFOC
  *
  * @example GpioComprehensiveTest.cpp
- * This example demonstrates comprehensive GPIO testing including basic operations,
+ * This comprehensive test demonstrates all ESP32 GPIO features including basic operations,
  * advanced features, interrupts, power management, and hardware-specific capabilities.
  */
 

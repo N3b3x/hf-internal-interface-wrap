@@ -17,7 +17,7 @@
  * @note Higher-level applications should instantiate multiple EspUart objects for multi-port boards
  *
  * @example UartComprehensiveTest.cpp
- * This example demonstrates comprehensive UART testing including serial communication,
+ * This comprehensive test demonstrates all ESP32 UART features including serial communication,
  * flow control, and hardware-specific capabilities for ESP32-C6.
  */
 

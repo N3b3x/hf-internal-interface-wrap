@@ -18,6 +18,10 @@
  *       multiple timer groups for independent frequency control.
  * @note This implementation follows the lazy initialization pattern established in
  *       other ESP32 modules (EspAdc, EspGpio, etc.).
+ *
+ * @example PwmComprehensiveTest.cpp
+ * This comprehensive test demonstrates all ESP32 PWM features including signal generation,
+ * frequency control, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

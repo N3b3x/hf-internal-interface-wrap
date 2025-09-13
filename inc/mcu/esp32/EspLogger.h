@@ -15,6 +15,10 @@
  *
  * @note This implementation is thread-safe and optimized for ESP32 platforms.
  * @note Supports both ESP-IDF Log V1 (default) and Log V2 (enhanced) systems.
+ *
+ * @example LoggerComprehensiveTest.cpp
+ * This comprehensive test demonstrates all ESP32 Logger features including multiple log levels,
+ * output destinations, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

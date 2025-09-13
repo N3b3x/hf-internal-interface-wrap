@@ -16,9 +16,9 @@
  * @note Users should program against this interface, not specific implementations.
  * @note Each BaseSpi instance represents a specific SPI device, not the SPI bus itself.
  *
- * @example SpiComprehensiveTest.cpp
- * This example demonstrates comprehensive SPI testing including device communication,
- * transfer management, and hardware-specific capabilities for ESP32-C6.
+ * @example EspSpi.h
+ * This example demonstrates the ESP32 SPI implementation that shows how to use
+ * the base SPI API with ESP32-specific features and hardware capabilities.
  */
 
 #pragma once

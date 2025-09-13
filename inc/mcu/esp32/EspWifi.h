@@ -15,6 +15,10 @@
  *
  * @note Requires ESP-IDF v5.5 or higher for full feature support
  * @note Thread-safe implementation with proper synchronization
+ *
+ * @example WifiComprehensiveTest.cpp
+ * This comprehensive test demonstrates all ESP32 WiFi features including station and access point modes,
+ * security configurations, and hardware-specific capabilities for ESP32-C6.
  */
 
 #pragma once

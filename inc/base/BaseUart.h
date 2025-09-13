@@ -14,9 +14,9 @@
  * @note This is a header-only abstract base class following the same pattern as BaseCan.
  * @note Users should program against this interface, not specific implementations.
  *
- * @example UartComprehensiveTest.cpp
- * This example demonstrates comprehensive UART testing including serial communication,
- * flow control, and hardware-specific capabilities for ESP32-C6.
+ * @example EspUart.h
+ * This example demonstrates the ESP32 UART implementation that shows how to use
+ * the base UART API with ESP32-specific features and hardware capabilities.
  */
 
 #pragma once

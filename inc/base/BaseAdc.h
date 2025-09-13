@@ -15,9 +15,9 @@
  *
  * @note This is a header-only abstract base class.
  *
- * @example AdcComprehensiveTest.cpp
- * This example demonstrates comprehensive ADC testing including basic operations,
- * calibration, continuous conversion, and hardware-specific capabilities for ESP32-C6.
+ * @example EspAdc.h
+ * This example demonstrates the ESP32 ADC implementation that shows how to use
+ * the base ADC API with ESP32-specific features and hardware capabilities.
  */
 
 #pragma once
