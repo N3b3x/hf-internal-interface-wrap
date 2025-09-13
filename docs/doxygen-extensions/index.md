@@ -34,8 +34,7 @@ The Doxygen documentation is automatically generated from the source code and in
 ## 📁 Structure
 
 - **[Configuration](README/)** - Doxygen configuration and setup files
-- **[Extensions](extensions/)** - Working copies of doxygen-awesome extensions
-- **[Submodule](doxygen-awesome-css/)** - Full doxygen-awesome-css repository
+- **[Submodule](doxygen-awesome-css/)** - Doxygen-awesome-css theme files
 
 ## 🔧 Technical Details
 
@@ -60,9 +59,8 @@ The generated documentation will be available in the `docs/doxygen/` directory.
 
 The documentation theme and features can be customized by modifying:
 
-- `docs/doxygen-extensions/header.html` - Custom header template
-- `docs/doxygen-extensions/doxygen-awesome-extensions/` - Extension files
 - `Doxyfile` - Main Doxygen configuration
+- `docs/doxygen-extensions/doxygen-awesome-css/` - Theme CSS and JavaScript files
 
 ## 🔗 Related Documentation
 

@@ -10,12 +10,15 @@ has_toc: true
 
 # Doxygen Awesome Extensions
 
-This directory contains working copies of the doxygen-awesome-css extension files used by the HardFOC Interface Wrapper documentation.
+The HardFOC Interface Wrapper documentation uses the doxygen-awesome-css theme directly from the submodule for modern styling and interactive features.
 
-## Files
+## Theme Files
+
+The theme files are located in the `doxygen-awesome-css/` submodule:
 
 ### CSS Files
 - `doxygen-awesome.css` - Main stylesheet with modern styling and dark mode support
+- `doxygen-awesome-sidebar-only.css` - Sidebar-only theme for better navigation
 - `doxygen-awesome-sidebar-only-darkmode-toggle.css` - Additional CSS for sidebar-only dark mode toggle
 
 ### JavaScript Extensions
@@ -36,26 +39,28 @@ This directory contains working copies of the doxygen-awesome-css extension file
 
 ## Source
 
-These files are copied from the [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) submodule located at `doxygen-awesome-css/`.
+These files come directly from the [doxygen-awesome-css](https://github.com/jothepro/doxygen-awesome-css) submodule located at `doxygen-awesome-css/`.
 
 ## Configuration
 
-The extensions are configured in `header.html` and referenced in `Doxyfile`:
+The extensions are configured in the root `Doxyfile`:
 
-- `HTML_HEADER = docs/doxygen-extensions/header.html`
-- `HTML_EXTRA_FILES` includes all JavaScript files
-- `HTML_EXTRA_STYLESHEET` includes the main CSS file
+- `HTML_EXTRA_FILES` includes all JavaScript files from the submodule
+- `HTML_EXTRA_STYLESHEET` includes the main CSS files from the submodule
 - `HTML_COPY_CLIPBOARD = NO` (required for fragment copy button)
 
 ## Directory Structure
 
 ```
 docs/doxygen-extensions/
-├── doxygen-awesome-css/           # Submodule with full doxygen-awesome-css repository
-└── doxygen-awesome-extensions/    # This directory - copies of extension files
-    ├── doxygen-awesome.css
-    ├── doxygen-awesome-*.js
-    └── README.md
+├── doxygen-awesome-css/           # Submodule with theme files only
+│   ├── doxygen-awesome.css
+│   ├── doxygen-awesome-sidebar-only.css
+│   ├── doxygen-awesome-*.js
+│   └── .git                       # Git submodule reference
+├── README.md                      # Configuration documentation
+├── index.md                       # Main documentation page
+└── extensions.md                  # This file
 ```
 
-This organization keeps the submodule clean while providing easy access to the specific extension files needed for the documentation.
+This streamlined organization uses the submodule directly without unnecessary file duplication.

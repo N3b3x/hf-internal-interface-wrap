@@ -14,9 +14,7 @@ This directory contains all Doxygen-related content for generating the API docum
 
 ## Contents
 
-- **`header.html`** - Custom Doxygen header template with doxygen-awesome extensions
-- **`doxygen-awesome-css/`** - Submodule containing the full doxygen-awesome-css repository
-- **`doxygen-awesome-extensions/`** - Working copies of extension files used by Doxygen
+- **`doxygen-awesome-css/`** - Submodule containing the doxygen-awesome-css theme files
 
 ## Features
 
@@ -33,9 +31,8 @@ The API documentation includes:
 
 The Doxygen configuration is set up in the root `Doxyfile`:
 
-- `HTML_HEADER = docs/doxygen-extensions/header.html`
-- `HTML_EXTRA_FILES` - References extension files
-- `HTML_EXTRA_STYLESHEET` - References the main CSS file
+- `HTML_EXTRA_FILES` - References JavaScript extension files
+- `HTML_EXTRA_STYLESHEET` - References the main CSS files
 - `HTML_COPY_CLIPBOARD = NO` - Required for fragment copy button
 
 ## Directory Structure
@@ -43,16 +40,13 @@ The Doxygen configuration is set up in the root `Doxyfile`:
 ```
 docs/doxygen-extensions/
 ├── README.md                           # This file
-├── header.html                         # Custom Doxygen header template
-├── doxygen-awesome-css/                # Submodule (full repository)
-│   ├── doxygen-awesome.css
-│   ├── doxygen-awesome-*.js
-│   └── ... (full submodule contents)
-└── doxygen-awesome-extensions/         # Working copies
-    ├── README.md
+├── index.md                            # Main documentation page
+├── extensions.md                       # Extensions documentation
+└── doxygen-awesome-css/                # Submodule (theme files only)
     ├── doxygen-awesome.css
+    ├── doxygen-awesome-sidebar-only.css
     ├── doxygen-awesome-*.js
-    └── doxygen-awesome-sidebar-only-darkmode-toggle.css
+    └── .git                            # Git submodule reference
 ```
 
 ## Usage
@@ -70,5 +64,5 @@ The generated documentation will be output to `docs/doxygen/` (as configured in 
 When the doxygen-awesome-css submodule is updated:
 
 1. Update the submodule: `git submodule update --remote`
-2. Copy new extension files to `doxygen-awesome-extensions/` if needed
-3. Update the `header.html` if new features are added
+2. Check if new JavaScript files need to be added to `HTML_EXTRA_FILES` in `Doxyfile`
+3. Test the documentation generation to ensure all features work correctly
