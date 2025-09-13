@@ -1,5 +1,6 @@
 /**
  * @file BaseUart.h
+ * @ingroup uart
  * @brief Abstract base class for UART driver implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for UART communication
@@ -23,11 +24,17 @@
 #include <functional>
 #include <string_view>
 
+/**
+ * @defgroup uart UART Module
+ * @brief All UART-related types, enums, and functions for Universal Asynchronous Receiver-Transmitter operations.
+ */
+
 //--------------------------------------
 //  HardFOC UART Error Codes (Table)
 //--------------------------------------
 /**
  * @brief HardFOC UART error codes
+ * @ingroup uart
  * @details Comprehensive error enumeration for all UART operations in the system.
  *          This enumeration is used across all UART-related classes to provide
  *          consistent error reporting and handling.
@@ -159,6 +166,7 @@ struct hf_uart_diagnostics_t {
 
 /**
  * @class BaseUart
+ * @ingroup uart
  * @brief Abstract base class for UART driver implementations.
  * @details This class provides a comprehensive UART driver abstraction that serves as the base
  *          for all UART implementations in the HardFOC system. It supports:

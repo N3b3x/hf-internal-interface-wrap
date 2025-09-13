@@ -1,5 +1,6 @@
 /**
  * @file BasePeriodicTimer.h
+ * @ingroup timer
  * @brief Abstract base class for periodic timer implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for periodic timer functionality
@@ -26,6 +27,11 @@
 #define HF_TIMESTAMP_US_T_DEFINED
 using hf_timestamp_us_t = hf_u64_t;
 #endif
+
+/**
+ * @defgroup timer Timer Module
+ * @brief All timer-related types, enums, and functions for periodic timer operations.
+ */
 
 //--------------------------------------
 //  HardFOC Timer Error Codes (Table)
@@ -142,6 +148,7 @@ using hf_timer_callback_t = std::function<void(void* user_data)>;
 
 /**
  * @class BasePeriodicTimer
+ * @ingroup timer
  * @brief Abstract base class for periodic timer operations.
  *
  * This class provides a consistent interface for periodic timer functionality across different

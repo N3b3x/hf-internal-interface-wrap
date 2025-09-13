@@ -1,5 +1,6 @@
 /**
  * @file BaseNvs.h
+ * @ingroup nvs
  * @brief Abstract base class for Non-Volatile Storage implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for non-volatile storage
@@ -21,11 +22,17 @@
 #include <cstdint>
 #include <string_view>
 
+/**
+ * @defgroup nvs NVS Module
+ * @brief All NVS-related types, enums, and functions for Non-Volatile Storage operations.
+ */
+
 //--------------------------------------
 //  HardFOC NVS Error Codes (Table)
 //--------------------------------------
 /**
  * @brief HardFOC NVS error codes
+ * @ingroup nvs
  * @details Comprehensive error enumeration for all NVS operations in the system.
  *          This enumeration is used across all NVS-related classes to provide
  *          consistent error reporting and handling.
@@ -119,6 +126,7 @@ struct hf_nvs_diagnostics_t {
 
 /**
  * @class BaseNvs
+ * @ingroup nvs
  * @brief Abstract base class for non-volatile storage operations.
  *
  * This class provides a consistent interface for non-volatile storage across different

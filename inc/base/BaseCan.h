@@ -1,5 +1,6 @@
 /**
  * @file BaseCan.h
+ * @ingroup can
  * @brief Abstract base class for CAN bus implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for CAN bus communication
@@ -29,11 +30,17 @@
 #include <functional>
 #include <string_view>
 
+/**
+ * @defgroup can CAN Module
+ * @brief All CAN-related types, enums, and functions for Controller Area Network operations.
+ */
+
 //--------------------------------------
 //  HardFOC CAN Error Codes (Table)
 //--------------------------------------
 /**
  * @brief HardFOC CAN error codes
+ * @ingroup can
  * @details Comprehensive error enumeration for all CAN operations in the system.
  *          This enumeration is used across all CAN-related classes to provide
  *          consistent error reporting and handling.
@@ -400,6 +407,7 @@ struct hf_can_diagnostics_t {
 
 /**
  * @class BaseCan
+ * @ingroup can
  * @brief Abstract base class defining the unified CAN bus API.
  *
  * This abstract class defines the interface that all CAN controller implementations

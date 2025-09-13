@@ -1,5 +1,6 @@
 /**
  * @file BaseAdc.h
+ * @ingroup adc
  * @brief Abstract base class for ADC implementations in the HardFOC system.
  *
  * This file contains the declaration of the BaseAdc abstract class, which provides
@@ -23,12 +24,18 @@
 #include <functional>
 #include <string_view>
 
+/**
+ * @defgroup adc ADC Module
+ * @brief All ADC-related types, enums, and functions for analog-to-digital conversion operations.
+ */
+
 //=======================================//
 //  ADC Error Codes (Table)
 //=======================================//
 
 /**
  * @brief ADC error codes
+ * @ingroup adc
  * @details Comprehensive error enumeration for all ADC operations in the system.
  *          This enumeration is used across all ADC-related classes to provide
  *          consistent error reporting and handling.
@@ -181,6 +188,7 @@ struct hf_adc_diagnostics_t {
 
 /**
  * @class BaseAdc
+ * @ingroup adc
  * @brief Base class for ADCs.
  * @details This class provides a common interface for all ADC implementations
  *          in the HardFOC system. It supports lazy initialization, robust error

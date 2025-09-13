@@ -1,5 +1,6 @@
 /**
  * @file BaseI2c.h
+ * @ingroup i2c
  * @brief Abstract base class for I2C device implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for I2C device communication
@@ -23,11 +24,17 @@
 #include <functional>
 #include <string_view>
 
+/**
+ * @defgroup i2c I2C Module
+ * @brief All I2C-related types, enums, and functions for Inter-Integrated Circuit operations.
+ */
+
 //--------------------------------------
 //  HardFOC I2C Error Codes (Table)
 //--------------------------------------
 /**
  * @brief HardFOC I2C error codes
+ * @ingroup i2c
  * @details Comprehensive error enumeration for all I2C operations in the system.
  *          This enumeration is used across all I2C-related classes to provide
  *          consistent error reporting and handling.
@@ -160,6 +167,7 @@ struct hf_i2c_diagnostics_t {
 
 /**
  * @class BaseI2c
+ * @ingroup i2c
  * @brief Abstract base class for I2C device implementations.
  * @details This class provides a comprehensive I2C device abstraction that serves as the base
  *          for all I2C device implementations in the HardFOC system. Each instance represents

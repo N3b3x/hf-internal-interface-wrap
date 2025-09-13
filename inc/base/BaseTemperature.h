@@ -1,5 +1,6 @@
 /**
  * @file BaseTemperature.h
+ * @ingroup temperature
  * @brief Abstract base class for temperature sensor implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for temperature sensing
@@ -22,12 +23,18 @@
 #include <functional>
 #include <string_view>
 
+/**
+ * @defgroup temperature Temperature Module
+ * @brief All temperature-related types, enums, and functions for temperature sensor operations.
+ */
+
 //--------------------------------------
 //  HardFOC Temperature Error Codes (Table)
 //--------------------------------------
 
 /**
  * @brief HardFOC Temperature sensor error codes
+ * @ingroup temperature
  * @details Comprehensive error enumeration for all temperature sensor operations in the system.
  *          This enumeration is used across all temperature-related classes to provide
  *          consistent error reporting and handling.
@@ -378,6 +385,7 @@ using hf_temp_error_callback_t =
 
 /**
  * @class BaseTemperature
+ * @ingroup temperature
  * @brief Abstract base class for all temperature sensor implementations
  *
  * This class defines the common interface that all temperature sensor implementations

@@ -1,5 +1,6 @@
 /**
  * @file BasePwm.h
+ * @ingroup pwm
  * @brief Abstract base class for PWM implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for PWM generation
@@ -21,12 +22,18 @@
 #include <functional>
 #include <string_view>
 
+/**
+ * @defgroup pwm PWM Module
+ * @brief All PWM-related types, enums, and functions for Pulse Width Modulation operations.
+ */
+
 //--------------------------------------
 //  HardFOC PWM Error Codes (Table)
 //--------------------------------------
 
 /**
  * @brief HardFOC PWM error codes
+ * @ingroup pwm
  * @details Comprehensive error enumeration for all PWM operations in the system.
  *          This enumeration is used across all PWM-related classes to provide
  *          consistent error reporting and handling.
@@ -156,6 +163,7 @@ using hf_pwm_fault_callback_t =
 
 /**
  * @class BasePwm
+ * @ingroup pwm
  * @brief Abstract base class for PWM implementations.
  *
  * This class defines the common interface that all PWM implementations must provide.

@@ -1,5 +1,6 @@
 /**
  * @file BasePio.h
+ * @ingroup pio
  * @brief Abstract base class for Programmable IO Channel implementations in the HardFOC system.
  *
  * This header defines the abstract base class for precise, buffered digital signal I/O
@@ -22,11 +23,17 @@
 #include <functional>
 #include <string_view>
 
+/**
+ * @defgroup pio PIO Module
+ * @brief All PIO-related types, enums, and functions for Programmable I/O operations.
+ */
+
 //--------------------------------------
 //  HardFOC PIO Error Codes (Table)
 //--------------------------------------
 /**
  * @brief HardFOC PIO error codes
+ * @ingroup pio
  * @details Comprehensive error enumeration for all PIO operations in the system.
  *          This enumeration is used across all PIO-related classes to provide
  *          consistent error reporting and handling.
@@ -265,6 +272,7 @@ using hf_pio_error_callback_t =
 
 /**
  * @class BasePio
+ * @ingroup pio
  * @brief Abstract base class for Programmable IO Channel implementations.
  *
  * This class defines the interface for precise, buffered digital signal I/O

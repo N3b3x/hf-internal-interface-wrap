@@ -1,5 +1,6 @@
 /**
  * @file BaseSpi.h
+ * @ingroup spi
  * @brief Abstract base class for SPI device implementations in the HardFOC system.
  *
  * This header-only file defines the abstract base class for SPI device communication
@@ -24,11 +25,17 @@
 #include <functional>
 #include <string_view>
 
+/**
+ * @defgroup spi SPI Module
+ * @brief All SPI-related types, enums, and functions for Serial Peripheral Interface operations.
+ */
+
 //--------------------------------------
 //  HardFOC SPI Error Codes (Table)
 //--------------------------------------
 /**
  * @brief HardFOC SPI error codes
+ * @ingroup spi
  * @details Comprehensive error enumeration for all SPI operations in the system.
  *          This enumeration is used across all SPI-related classes to provide
  *          consistent error reporting and handling.
@@ -147,6 +154,7 @@ struct hf_spi_diagnostics_t {
 
 /**
  * @class BaseSpi
+ * @ingroup spi
  * @brief Abstract base class for SPI device implementations.
  * @details This class provides a comprehensive SPI device abstraction that serves as the base
  *          for all SPI device implementations in the HardFOC system. Each instance represents
