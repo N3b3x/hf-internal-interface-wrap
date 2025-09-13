@@ -70,6 +70,12 @@ PROJECT_LOGO           = assets/images/logo.png
 
 OUTPUT_DIRECTORY = docs/doxygen
 
+# The WORKING_DIRECTORY tag is used to specify the (relative or absolute) path
+# to the working directory from which doxygen is run. This is the directory
+# in which doxygen will look for the files specified in INPUT and EXAMPLE_PATH.
+# If left blank the current directory will be used.
+WORKING_DIRECTORY = .
+
 # If the CREATE_SUBDIRS tag is set to YES then doxygen will create up to 4096
 # sub-directories (in 2 levels) under the output directory of each output format
 # and will distribute the generated files over these directories. Enabling this
@@ -2364,7 +2370,7 @@ SEARCH_INCLUDES        = YES
 # RECURSIVE has no effect here.
 # This tag requires that the tag SEARCH_INCLUDES is set to YES.
 
-INCLUDE_PATH           =
+INCLUDE_PATH           = inc/ inc/mcu/esp32/ inc/utils/
 
 # You can use the INCLUDE_FILE_PATTERNS tag to specify one or more wildcard
 # patterns (like *.h and *.hpp) to filter out the header-files in the

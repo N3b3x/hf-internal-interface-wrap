@@ -4,6 +4,7 @@ title: "HardFOC Interface Wrapper"
 description: >
   A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API across 
   multiple MCU platforms, supporting ESP32 family and planned STM32 support
+  
 baseurl: "/hf-internal-interface-wrap"  # GitHub Pages subpath
 url: "https://n3b3x.github.io"
 
@@ -91,19 +92,19 @@ toggle_auto_mode: true
 # Auxiliary links with better organization
 aux_links:
   "📚 GitHub Repository":
-    - "{{ site.url }}{{ site.baseurl }}"
+    - "https://github.com/n3b3x/hf-internal-interface-wrap"
   "🐛 Report Issues":
-    - "{{ site.url }}{{ site.baseurl }}/issues"
+    - "https://github.com/n3b3x/hf-internal-interface-wrap/issues"
   "⭐ Star on GitHub":
-    - "{{ site.url }}{{ site.baseurl }}/stargazers"
+    - "https://github.com/n3b3x/hf-internal-interface-wrap/stargazers"
   "📖 API Reference":
-    - "{{ site.baseurl }}/api/index.html"
+    - "/hf-internal-interface-wrap/api/index.html"
 
 # Footer customization
 footer_content: >
   Built with ❤️ using <a href='https://just-the-docs.github.io/just-the-docs/'>Just the Docs</a> •
-  <a href='{{ site.url }}{{ site.baseurl }}/blob/main/LICENSE'>GPL v3 License</a> •
-  <a href='{{ site.url }}{{ site.baseurl }}'>View on GitHub</a>
+  <a href='https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE'>GPL v3 License</a> •
+  <a href='https://github.com/n3b3x/hf-internal-interface-wrap'>View on GitHub</a>
 
 # Collections for better organization
 collections:
@@ -126,9 +127,9 @@ just_the_docs:
   nav_fold: true
   nav_external_links:
     - title: "📚 GitHub Repository"
-      url: "{{ site.url }}{{ site.baseurl }}"
+      url: "https://github.com/n3b3x/hf-internal-interface-wrap"
     - title: "🐛 Issues"
-      url: "{{ site.url }}{{ site.baseurl }}/issues"
+      url: "https://github.com/n3b3x/hf-internal-interface-wrap/issues"
 
   # Custom head content
   head_custom: _includes/head_custom.html
@@ -171,7 +172,7 @@ seo:
   description: >
     Multi-MCU hardware abstraction layer for HardFOC systems with unified API across 
     multiple MCU platforms, supporting ESP32 family and planned STM32 support
-  url: "{{ site.url }}{{ site.baseurl }}"
+  url: "https://n3b3x.github.io/hf-internal-interface-wrap"
   twitter:
     card: "summary_large_image"
     site: "@n3b3x"
@@ -183,7 +184,7 @@ seo:
 social:
   name: "HardFOC Interface Wrapper"
   links:
-    - "{{ site.url }}{{ site.baseurl }}"
+    - "https://github.com/n3b3x/hf-internal-interface-wrap"
     - "https://github.com/n3b3x"
 
 # Performance optimizations
