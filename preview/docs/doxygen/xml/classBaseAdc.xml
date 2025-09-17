@@ -1,0 +1,766 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBaseAdc" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseAdc</compoundname>
+    <derivedcompoundref refid="classEspAdc" prot="public" virt="non-virtual">EspAdc</derivedcompoundref>
+    <includes refid="BaseAdc_8h" local="no">BaseAdc.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BaseAdc::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BaseAdc::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="399" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="399" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref></type>
+        <definition>hf_adc_statistics_t BaseAdc::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BaseAdc::statistics_</qualifiedname>
+        <briefdescription>
+<para>ADC operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="400" column="23" bodyfile="inc/base/BaseAdc.h" bodystart="400" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref></type>
+        <definition>hf_adc_diagnostics_t BaseAdc::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BaseAdc::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>ADC diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="401" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="401" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseAdc_1a33e66d850746427789319566e201e6b9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BaseAdc::~BaseAdc</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BaseAdc</name>
+        <qualifiedname>BaseAdc::~BaseAdc</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="206" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1afa09240c509104a18d40aa2dbbbc5e9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseAdc::BaseAdc</definition>
+        <argsstring>(const BaseAdc &amp;)=delete</argsstring>
+        <name>BaseAdc</name>
+        <qualifiedname>BaseAdc::BaseAdc</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="209" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1aa1a7284050fe28d87413a452f1dfe24a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
+        <definition>BaseAdc &amp; BaseAdc::operator=</definition>
+        <argsstring>(const BaseAdc &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseAdc::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="210" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a37498a3ef03c848856290a4846c87dd7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseAdc::BaseAdc</definition>
+        <argsstring>(BaseAdc &amp;&amp;) noexcept=default</argsstring>
+        <name>BaseAdc</name>
+        <qualifiedname>BaseAdc::BaseAdc</qualifiedname>
+        <param>
+          <type><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="213" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a50784bdbb7ce352301cbab76bb4ac887" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
+        <definition>BaseAdc &amp; BaseAdc::operator=</definition>
+        <argsstring>(BaseAdc &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseAdc::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="214" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a7a0ce14e616b94b41b7f5f3103c75b61" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseAdc::EnsureInitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BaseAdc::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the ADC is initialized (lazy initialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the ADC is initialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="224" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="224" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1ac97e5b49f3e9705bcdd0d9a500532e2f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseAdc::EnsureDeinitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BaseAdc::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the ADC is initialized (lazy initialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the ADC is initialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="235" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="235" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a475764935a2e741538cfc643e0837653" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseAdc::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseAdc::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Checks if the class is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="246" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="246" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1ab783a31b8adb7af4b4d53226ffff375c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseAdc::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseAdc::Initialize</qualifiedname>
+        <reimplementedby refid="classEspAdc_1a3e0aba56249e205578cbe92541554b08">Initialize</reimplementedby>
+        <briefdescription>
+<para>Initializes the ADC peripheral (must be implemented by derived classes). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if the initialization is successful, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="258" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a16019ba36f14e8579be74e4849e59e72" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseAdc::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseAdc::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspAdc_1a3763c67c9ca0ecfd8feda1d44b22d1e0">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitializes the ADC peripheral (must be implemented by derived classes).. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>True if deinitialization is successful, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="264" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a0de6eca0aa2acd37a375a8a9a918f388" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>virtual hf_u8_t BaseAdc::GetMaxChannels</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetMaxChannels</name>
+        <qualifiedname>BaseAdc::GetMaxChannels</qualifiedname>
+        <reimplementedby refid="classEspAdc_1ac234759d85da10db28bb2773daeec9e1">GetMaxChannels</reimplementedby>
+        <briefdescription>
+<para>Get the maximum number of channels supported by this ADC. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum channel count </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="270" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a33d37384396674c31531994d77991965" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseAdc::IsChannelAvailable</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept=0</argsstring>
+        <name>IsChannelAvailable</name>
+        <qualifiedname>BaseAdc::IsChannelAvailable</qualifiedname>
+        <reimplementedby refid="classEspAdc_1a8d37e2e11fac48019803f6260a1b39cc">IsChannelAvailable</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Check if a specific channel is available. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if channel is available, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="277" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a7ad8ff099f8cd48d20c2cbbd6d45cf64" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>virtual hf_adc_err_t BaseAdc::ReadChannelV</definition>
+        <argsstring>(hf_channel_id_t channel_id, float &amp;channel_reading_v, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept=0</argsstring>
+        <name>ReadChannelV</name>
+        <qualifiedname>BaseAdc::ReadChannelV</qualifiedname>
+        <reimplementedby refid="classEspAdc_1a41dd2c15efe312397d72b9e803741318">ReadChannelV</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>channel_reading_v</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>numOfSamplesToAvg</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+          <declname>timeBetweenSamples</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read channel voltage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to read from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_reading_v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store voltage reading </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numOfSamplesToAvg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of samples to average (default 1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeBetweenSamples</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time between samples in milliseconds (default 0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="287" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1afd66aefd959c4be0267a2a605ff18525" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>virtual hf_adc_err_t BaseAdc::ReadChannelCount</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;channel_reading_count, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept=0</argsstring>
+        <name>ReadChannelCount</name>
+        <qualifiedname>BaseAdc::ReadChannelCount</qualifiedname>
+        <reimplementedby refid="classEspAdc_1aee902d7623f92e1a64b6708b41c63b3b">ReadChannelCount</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>channel_reading_count</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>numOfSamplesToAvg</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+          <declname>timeBetweenSamples</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read channel count (raw ADC value). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to read from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_reading_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store count reading </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numOfSamplesToAvg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of samples to average (default 1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeBetweenSamples</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time between samples in milliseconds (default 0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="299" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1abe791fa4f5d6e834578e7222dc8f9618" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>virtual hf_adc_err_t BaseAdc::ReadChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;channel_reading_count, float &amp;channel_reading_v, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept=0</argsstring>
+        <name>ReadChannel</name>
+        <qualifiedname>BaseAdc::ReadChannel</qualifiedname>
+        <reimplementedby refid="classEspAdc_1a4a1844e4b8add43b1f83c1bd59c430f8">ReadChannel</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>channel_reading_count</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>channel_reading_v</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>numOfSamplesToAvg</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+          <declname>timeBetweenSamples</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read both channel count and voltage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to read from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_reading_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store count reading </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_reading_v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store voltage reading </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numOfSamplesToAvg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of samples to average (default 1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeBetweenSamples</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time between samples in milliseconds (default 0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="312" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a7757f481ae8ab250b7df876e0370ef5a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>virtual hf_adc_err_t BaseAdc::ReadMultipleChannels</definition>
+        <argsstring>(const hf_channel_id_t *channel_ids, hf_u8_t num_channels, hf_u32_t *readings, float *voltages) noexcept</argsstring>
+        <name>ReadMultipleChannels</name>
+        <qualifiedname>BaseAdc::ReadMultipleChannels</qualifiedname>
+        <reimplementedby refid="classEspAdc_1ae78a280905f09634070c9ce624002cb7">ReadMultipleChannels</reimplementedby>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> *</type>
+          <declname>channel_ids</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>num_channels</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> *</type>
+          <declname>readings</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>voltages</declname>
+        </param>
+        <briefdescription>
+<para>Read multiple channels simultaneously. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of channel IDs </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_channels</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of channels </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>readings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array to store raw readings </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voltages</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array to store voltage readings </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+<simplesect kind="note"><para>Default implementation reads channels sequentially </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="329" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="329" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a10742f7d342d53682b6d3cec14176f0f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>virtual hf_adc_err_t BaseAdc::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BaseAdc::ResetStatistics</qualifiedname>
+        <reimplementedby refid="classEspAdc_1addd7719b17eb884fa6f81dc9174b1b91">ResetStatistics</reimplementedby>
+        <briefdescription>
+<para>Reset ADC operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="352" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="352" bodyend="355"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1ab7b9a99f3eaa4fc36dae5ec9fcb0571d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>virtual hf_adc_err_t BaseAdc::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BaseAdc::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset ADC diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="362" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="362" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1ae0c135b27c4cb07a5ff357f7c5e1be50" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>virtual hf_adc_err_t BaseAdc::GetStatistics</definition>
+        <argsstring>(hf_adc_statistics_t &amp;statistics) noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BaseAdc::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspAdc_1a6dbc06099ca66dc4c577c4a844b0f1cd">GetStatistics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get ADC operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to statistics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="373" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="373" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseAdc_1a1c15d97ea32b60ab3472744ca9a99ffd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>virtual hf_adc_err_t BaseAdc::GetDiagnostics</definition>
+        <argsstring>(hf_adc_diagnostics_t &amp;diagnostics) noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BaseAdc::GetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspAdc_1ac65647338df854681584bc1efc6bb88d">GetDiagnostics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get ADC diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to diagnostics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="384" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="384" bodyend="387"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseAdc_1aebc6e018b001afd845543708c1b3cb86" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseAdc::BaseAdc</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>BaseAdc</name>
+        <qualifiedname>BaseAdc::BaseAdc</qualifiedname>
+        <briefdescription>
+<para>Protected default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="393" column="3" bodyfile="inc/base/BaseAdc.h" bodystart="393" bodyend="393"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Base class for ADCs. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a common interface for all ADC implementations in the HardFOC system. It supports lazy initialization, robust error handling, and consistent API across different ADC hardware. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseAdc</label>
+        <link refid="classBaseAdc"/>
+      </node>
+      <node id="2">
+        <label>EspAdc</label>
+        <link refid="classEspAdc"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BaseAdc</label>
+        <link refid="classBaseAdc"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_adc_diagnostics_t</label>
+        <link refid="structhf__adc__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_adc_statistics_t</label>
+        <link refid="structhf__adc__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BaseAdc.h" line="197" column="1" bodyfile="inc/base/BaseAdc.h" bodystart="197" bodyend="406"/>
+    <listofallmembers>
+      <member refid="classBaseAdc_1afa09240c509104a18d40aa2dbbbc5e9d" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>BaseAdc</name></member>
+      <member refid="classBaseAdc_1a37498a3ef03c848856290a4846c87dd7" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>BaseAdc</name></member>
+      <member refid="classBaseAdc_1aebc6e018b001afd845543708c1b3cb86" prot="protected" virt="non-virtual"><scope>BaseAdc</scope><name>BaseAdc</name></member>
+      <member refid="classBaseAdc_1a16019ba36f14e8579be74e4849e59e72" prot="public" virt="pure-virtual"><scope>BaseAdc</scope><name>Deinitialize</name></member>
+      <member refid="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" prot="protected" virt="non-virtual"><scope>BaseAdc</scope><name>diagnostics_</name></member>
+      <member refid="classBaseAdc_1ac97e5b49f3e9705bcdd0d9a500532e2f" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseAdc_1a7a0ce14e616b94b41b7f5f3103c75b61" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseAdc_1a1c15d97ea32b60ab3472744ca9a99ffd" prot="public" virt="virtual"><scope>BaseAdc</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseAdc_1a0de6eca0aa2acd37a375a8a9a918f388" prot="public" virt="pure-virtual"><scope>BaseAdc</scope><name>GetMaxChannels</name></member>
+      <member refid="classBaseAdc_1ae0c135b27c4cb07a5ff357f7c5e1be50" prot="public" virt="virtual"><scope>BaseAdc</scope><name>GetStatistics</name></member>
+      <member refid="classBaseAdc_1ab783a31b8adb7af4b4d53226ffff375c" prot="public" virt="pure-virtual"><scope>BaseAdc</scope><name>Initialize</name></member>
+      <member refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" prot="protected" virt="non-virtual"><scope>BaseAdc</scope><name>initialized_</name></member>
+      <member refid="classBaseAdc_1a33d37384396674c31531994d77991965" prot="public" virt="pure-virtual"><scope>BaseAdc</scope><name>IsChannelAvailable</name></member>
+      <member refid="classBaseAdc_1a475764935a2e741538cfc643e0837653" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>IsInitialized</name></member>
+      <member refid="classBaseAdc_1aa1a7284050fe28d87413a452f1dfe24a" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>operator=</name></member>
+      <member refid="classBaseAdc_1a50784bdbb7ce352301cbab76bb4ac887" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>operator=</name></member>
+      <member refid="classBaseAdc_1abe791fa4f5d6e834578e7222dc8f9618" prot="public" virt="pure-virtual"><scope>BaseAdc</scope><name>ReadChannel</name></member>
+      <member refid="classBaseAdc_1afd66aefd959c4be0267a2a605ff18525" prot="public" virt="pure-virtual"><scope>BaseAdc</scope><name>ReadChannelCount</name></member>
+      <member refid="classBaseAdc_1a7ad8ff099f8cd48d20c2cbbd6d45cf64" prot="public" virt="pure-virtual"><scope>BaseAdc</scope><name>ReadChannelV</name></member>
+      <member refid="classBaseAdc_1a7757f481ae8ab250b7df876e0370ef5a" prot="public" virt="virtual"><scope>BaseAdc</scope><name>ReadMultipleChannels</name></member>
+      <member refid="classBaseAdc_1ab7b9a99f3eaa4fc36dae5ec9fcb0571d" prot="public" virt="virtual"><scope>BaseAdc</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseAdc_1a10742f7d342d53682b6d3cec14176f0f" prot="public" virt="virtual"><scope>BaseAdc</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" prot="protected" virt="non-virtual"><scope>BaseAdc</scope><name>statistics_</name></member>
+      <member refid="classBaseAdc_1a33e66d850746427789319566e201e6b9" prot="public" virt="virtual"><scope>BaseAdc</scope><name>~BaseAdc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

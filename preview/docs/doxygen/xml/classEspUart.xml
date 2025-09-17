@@ -1,0 +1,2376 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classEspUart" kind="class" language="C++" prot="public">
+    <compoundname>EspUart</compoundname>
+    <basecompoundref refid="classBaseUart" prot="public" virt="non-virtual">BaseUart</basecompoundref>
+    <includes refid="EspUart_8h" local="no">EspUart.h</includes>
+    <innerclass refid="structEspUart_1_1UartState" prot="private">EspUart::UartState</innerclass>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classEspUart_1acccf4bd506f073b15720a283fc2ba781" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t EspUart::MAX_PORTS</definition>
+        <argsstring></argsstring>
+        <name>MAX_PORTS</name>
+        <qualifiedname>EspUart::MAX_PORTS</qualifiedname>
+        <initializer>= 3</initializer>
+        <briefdescription>
+<para>Maximum UART ports. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="109" column="28" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a7baee03689e53568439f4a68d6662d35" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t EspUart::MAX_BAUD_RATE</definition>
+        <argsstring></argsstring>
+        <name>MAX_BAUD_RATE</name>
+        <qualifiedname>EspUart::MAX_BAUD_RATE</qualifiedname>
+        <initializer>= 5000000</initializer>
+        <briefdescription>
+<para>Maximum baud rate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="110" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a7e8194c9094761e4ca34160410faaeeb" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t EspUart::MIN_BAUD_RATE</definition>
+        <argsstring></argsstring>
+        <name>MIN_BAUD_RATE</name>
+        <qualifiedname>EspUart::MIN_BAUD_RATE</qualifiedname>
+        <initializer>= 110</initializer>
+        <briefdescription>
+<para>Minimum baud rate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="111" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a5d640d851b6a3ed29abd338d392a395d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t EspUart::DEFAULT_BAUD_RATE</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_BAUD_RATE</name>
+        <qualifiedname>EspUart::DEFAULT_BAUD_RATE</qualifiedname>
+        <initializer>= 115200</initializer>
+        <briefdescription>
+<para>Default baud rate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="112" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a2cc0ffbcf5d94cc1be9640a0bb394eb6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t EspUart::MAX_BUFFER_SIZE</definition>
+        <argsstring></argsstring>
+        <name>MAX_BUFFER_SIZE</name>
+        <qualifiedname>EspUart::MAX_BUFFER_SIZE</qualifiedname>
+        <initializer>= 1024</initializer>
+        <briefdescription>
+<para>Maximum buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="113" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a23b68168facceed1638156facf258ada" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t EspUart::DEFAULT_BUFFER_SIZE</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_BUFFER_SIZE</name>
+        <qualifiedname>EspUart::DEFAULT_BUFFER_SIZE</qualifiedname>
+        <initializer>= 256</initializer>
+        <briefdescription>
+<para>Default buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="114" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEspUart_1a63d3d9231a553707b6498e40829c0105" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspUart::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>EspUart::mutex_</qualifiedname>
+        <briefdescription>
+<para>Thread safety mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="589" column="21" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="589" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a00c20e249bbd100eedbf4c0c54c3c42e" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref></type>
+        <definition>hf_uart_config_t EspUart::port_config_</definition>
+        <argsstring></argsstring>
+        <name>port_config_</name>
+        <qualifiedname>EspUart::port_config_</qualifiedname>
+        <briefdescription>
+<para>Port configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="590" column="20" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="590" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1af13b21c3d90975c02a4f0197ffe2eaf3" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; EspUart::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>EspUart::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization state (atomic for lazy init) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="591" column="15" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="591" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" prot="private" static="no" mutable="no">
+        <type>uart_port_t</type>
+        <definition>uart_port_t EspUart::uart_port_</definition>
+        <argsstring></argsstring>
+        <name>uart_port_</name>
+        <qualifiedname>EspUart::uart_port_</qualifiedname>
+        <briefdescription>
+<para>Native UART port handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="592" column="15" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="592" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a6326f118fdd27a670e60ecb79d028292" prot="private" static="no" mutable="no">
+        <type>QueueHandle_t</type>
+        <definition>QueueHandle_t EspUart::event_queue_</definition>
+        <argsstring></argsstring>
+        <name>event_queue_</name>
+        <qualifiedname>EspUart::event_queue_</qualifiedname>
+        <briefdescription>
+<para>ESP-IDF UART event queue handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="595" column="17" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="595" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1af2370e22ff6ab5da54137adbcd91ad7d" prot="private" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref></type>
+        <definition>hf_uart_operating_mode_t EspUart::operating_mode_</definition>
+        <argsstring></argsstring>
+        <name>operating_mode_</name>
+        <qualifiedname>EspUart::operating_mode_</qualifiedname>
+        <briefdescription>
+<para>Current operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="598" column="28" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="598" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a27bb89d203912b998a84e3c9f51b45e8" prot="private" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref></type>
+        <definition>hf_uart_mode_t EspUart::communication_mode_</definition>
+        <argsstring></argsstring>
+        <name>communication_mode_</name>
+        <qualifiedname>EspUart::communication_mode_</qualifiedname>
+        <briefdescription>
+<para>Current communication mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="599" column="18" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="599" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a8919e3c9d6a7f2f4e0dc81915b77b491" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspUart::software_flow_enabled_</definition>
+        <argsstring></argsstring>
+        <name>software_flow_enabled_</name>
+        <qualifiedname>EspUart::software_flow_enabled_</qualifiedname>
+        <briefdescription>
+<para>Software flow control enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="600" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="600" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a4c04605b7e7105b001de8af91bf80880" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspUart::wakeup_enabled_</definition>
+        <argsstring></argsstring>
+        <name>wakeup_enabled_</name>
+        <qualifiedname>EspUart::wakeup_enabled_</qualifiedname>
+        <briefdescription>
+<para>Wakeup enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="601" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="601" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a98492b72377d7a4ee98260071a0996ff" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspUart::break_detected_</definition>
+        <argsstring></argsstring>
+        <name>break_detected_</name>
+        <qualifiedname>EspUart::break_detected_</qualifiedname>
+        <briefdescription>
+<para>Break condition detected. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="602" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="602" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1aba216cdada564969d39e4799eb2765eb" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspUart::tx_in_progress_</definition>
+        <argsstring></argsstring>
+        <name>tx_in_progress_</name>
+        <qualifiedname>EspUart::tx_in_progress_</qualifiedname>
+        <briefdescription>
+<para>Transmission in progress. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="603" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="603" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a05c3b59cfdc9bb7f61d5bf875daf2100" prot="private" static="no" mutable="no">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::last_error_</definition>
+        <argsstring></argsstring>
+        <name>last_error_</name>
+        <qualifiedname>EspUart::last_error_</qualifiedname>
+        <briefdescription>
+<para>Last error that occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="606" column="17" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="606" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a22e961a9c6a2396d310552e1ff23c60d" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref></type>
+        <definition>hf_uart_statistics_t EspUart::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>EspUart::statistics_</qualifiedname>
+        <briefdescription>
+<para>UART statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="609" column="24" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="609" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a1f8de6c645555ce6d656244488bee463" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref></type>
+        <definition>hf_uart_diagnostics_t EspUart::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>EspUart::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>UART diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="610" column="25" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="610" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspUart_1a203c1f13b4888ba1f4ede0d5a5289a2d" prot="private" static="no" mutable="no">
+        <type>char</type>
+        <definition>char EspUart::printf_buffer_[256]</definition>
+        <argsstring>[256]</argsstring>
+        <name>printf_buffer_</name>
+        <qualifiedname>EspUart::printf_buffer_</qualifiedname>
+        <briefdescription>
+<para>Printf buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="613" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="613" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEspUart_1aa7e3acef191e7a36d0893ee835b44926" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspUart::EspUart</definition>
+        <argsstring>(const hf_uart_config_t &amp;config) noexcept</argsstring>
+        <name>EspUart</name>
+        <qualifiedname>EspUart::EspUart</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for ESP32 UART controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>UART port configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Uses lazy initialization - no hardware action until first operation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="125" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="43" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1aa0c468b08a8888a37ebbf9aad04ec4bf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>EspUart::~EspUart</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~EspUart</name>
+        <qualifiedname>EspUart::~EspUart</qualifiedname>
+        <briefdescription>
+<para>Destructor - ensures clean shutdown. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="130" column="11" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="61" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a76957621a7abd9663dbcb64abcf4ce35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspUart::EspUart</definition>
+        <argsstring>(const EspUart &amp;)=delete</argsstring>
+        <name>EspUart</name>
+        <qualifiedname>EspUart::EspUart</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="133" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1aa8d8c4af95c460694f765d119d8916c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
+        <definition>EspUart &amp; EspUart::operator=</definition>
+        <argsstring>(const EspUart &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspUart::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="134" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a9eec6d898a062782872da2c2f28f9cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspUart::EspUart</definition>
+        <argsstring>(EspUart &amp;&amp;)=delete</argsstring>
+        <name>EspUart</name>
+        <qualifiedname>EspUart::EspUart</qualifiedname>
+        <param>
+          <type><ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="135" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a4674e0c876fc15203b194ce2d271e69b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
+        <definition>EspUart &amp; EspUart::operator=</definition>
+        <argsstring>(EspUart &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspUart::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="136" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1aae3b52313f5bcf520d34457140a23112" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::Write</definition>
+        <argsstring>(const uint8_t *data, uint16_t length, uint32_t timeout_ms=0) noexcept override</argsstring>
+        <name>Write</name>
+        <qualifiedname>EspUart::Write</qualifiedname>
+        <reimplements refid="classBaseUart_1a5de6a79ad512480a12f757ce73fa46a6">Write</reimplements>
+        <param>
+          <type>const uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write data to the UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data buffer to transmit </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="156" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="139" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a85b041ba28cc9309f7ddf2852f899364" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::Read</definition>
+        <argsstring>(uint8_t *data, uint16_t length, uint32_t timeout_ms=0) noexcept override</argsstring>
+        <name>Read</name>
+        <qualifiedname>EspUart::Read</qualifiedname>
+        <reimplements refid="classBaseUart_1a9ddc416f533c776cf879790c8cb10b57">Read</reimplements>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read data from the UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store received data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="166" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="192" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a6f40abc9001709ac5ee91c4383b95f2f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EspUart::WriteByte</definition>
+        <argsstring>(uint8_t byte) noexcept override</argsstring>
+        <name>WriteByte</name>
+        <qualifiedname>EspUart::WriteByte</qualifiedname>
+        <reimplements refid="classBaseUart_1a9c42866eb7d966a138755e5b71c725cf">WriteByte</reimplements>
+        <param>
+          <type>uint8_t</type>
+          <declname>byte</declname>
+        </param>
+        <briefdescription>
+<para>Write a single byte to the UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>byte</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte to write </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="173" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="229" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1ad0d639fbd3ff5f8ced77af29f13a081d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspUart::SetBaudRate</definition>
+        <argsstring>(uint32_t baud_rate) noexcept</argsstring>
+        <name>SetBaudRate</name>
+        <qualifiedname>EspUart::SetBaudRate</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>baud_rate</declname>
+        </param>
+        <briefdescription>
+<para>Set the baud rate. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>baud_rate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New baud rate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="180" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="416" bodyend="439"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a9fce2787e7b457164702660ce5f762d0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::SetFlowControl</definition>
+        <argsstring>(bool enable) noexcept</argsstring>
+        <name>SetFlowControl</name>
+        <qualifiedname>EspUart::SetFlowControl</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>Enable or disable hardware flow control. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable, false to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="187" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="441" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a28ef91e6eff98941eada61b22ad61ce4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::SetRTS</definition>
+        <argsstring>(bool active) noexcept</argsstring>
+        <name>SetRTS</name>
+        <qualifiedname>EspUart::SetRTS</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>active</declname>
+        </param>
+        <briefdescription>
+<para>Set RTS line state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true for active, false for inactive </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="194" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="467" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a0e8ee47992f3d875c2e65fb61ce20449" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::SendBreak</definition>
+        <argsstring>(uint32_t duration_ms) noexcept</argsstring>
+        <name>SendBreak</name>
+        <qualifiedname>EspUart::SendBreak</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>duration_ms</declname>
+        </param>
+        <briefdescription>
+<para>Send a break condition. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duration_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Break duration in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="201" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="485" bodyend="555"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a7508989a3ffb01571ae8cfb0cc61b6b6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::SetLoopback</definition>
+        <argsstring>(bool enable) noexcept</argsstring>
+        <name>SetLoopback</name>
+        <qualifiedname>EspUart::SetLoopback</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>Enable or disable loopback mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable, false to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="208" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="557" bodyend="574"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1abda8a2fd4c91670cd1325d4a04c33112" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspUart::WaitTransmitComplete</definition>
+        <argsstring>(uint32_t timeout_ms) noexcept</argsstring>
+        <name>WaitTransmitComplete</name>
+        <qualifiedname>EspUart::WaitTransmitComplete</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Wait for transmission to complete. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false on timeout </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="215" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="273" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1ab43e1c7aead219b7df960710d2e8782e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::SetOperatingMode</definition>
+        <argsstring>(hf_uart_operating_mode_t mode) noexcept</argsstring>
+        <name>SetOperatingMode</name>
+        <qualifiedname>EspUart::SetOperatingMode</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set UART operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operating mode (polling/interrupt/DMA) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="226" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="402" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a91d0e2bae14b427a5c1daeb75927852f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>hf_u16_t EspUart::ReadUntil</definition>
+        <argsstring>(uint8_t *data, uint16_t max_length, uint8_t terminator, uint32_t timeout_ms) noexcept</argsstring>
+        <name>ReadUntil</name>
+        <qualifiedname>EspUart::ReadUntil</qualifiedname>
+        <param>
+          <type>uint8_t *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>max_length</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>terminator</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Read data until a specific terminator is found. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store received data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of bytes to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>terminator</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Terminator byte to search for </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of bytes read (including terminator) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="236" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="350" bodyend="394"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a7490b8f55321824cb14c156a32d677ec" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>hf_u16_t EspUart::ReadLine</definition>
+        <argsstring>(char *buffer, uint16_t max_length, uint32_t timeout_ms) noexcept</argsstring>
+        <name>ReadLine</name>
+        <qualifiedname>EspUart::ReadLine</qualifiedname>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>max_length</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Read a line of text (until newline). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the line </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum line length </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of characters read (excluding newline) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="246" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="578" bodyend="620"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a19b04e570d86170dfa65a03c9555977f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::SetCommunicationMode</definition>
+        <argsstring>(hf_uart_mode_t mode) noexcept</argsstring>
+        <name>SetCommunicationMode</name>
+        <qualifiedname>EspUart::SetCommunicationMode</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set UART communication mode (UART/RS485/IrDA). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Communication mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="253" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="622" bodyend="661"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a2822adcf8f5c9e7068ec3ec0e44680cd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ConfigureRS485</definition>
+        <argsstring>(const hf_uart_rs485_config_t &amp;rs485_config) noexcept</argsstring>
+        <name>ConfigureRS485</name>
+        <qualifiedname>EspUart::ConfigureRS485</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__uart__rs485__config__t" kindref="compound">hf_uart_rs485_config_t</ref> &amp;</type>
+          <declname>rs485_config</declname>
+        </param>
+        <briefdescription>
+<para>Configure RS485 mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rs485_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RS485 configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="260" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="663" bodyend="682"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a123c264aa665cb991daa9dc48a171ecf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ConfigureIrDA</definition>
+        <argsstring>(const hf_uart_irda_config_t &amp;irda_config) noexcept</argsstring>
+        <name>ConfigureIrDA</name>
+        <qualifiedname>EspUart::ConfigureIrDA</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__uart__irda__config__t" kindref="compound">hf_uart_irda_config_t</ref> &amp;</type>
+          <declname>irda_config</declname>
+        </param>
+        <briefdescription>
+<para>Configure IrDA mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>irda_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>IrDA configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="267" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="684" bodyend="700"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a91ef024e3a23fd33449ca60339790461" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ConfigureSoftwareFlowControl</definition>
+        <argsstring>(bool enable, uint8_t xon_threshold=20, uint8_t xoff_threshold=80) noexcept</argsstring>
+        <name>ConfigureSoftwareFlowControl</name>
+        <qualifiedname>EspUart::ConfigureSoftwareFlowControl</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>xon_threshold</declname>
+          <defval>20</defval>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>xoff_threshold</declname>
+          <defval>80</defval>
+        </param>
+        <briefdescription>
+<para>Configure software flow control (XON/XOFF). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable, false to disable </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xon_threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>XON threshold (default: 20) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>xoff_threshold</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>XOFF threshold (default: 80) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="276" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="702" bodyend="734"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1af323dbe85b7e6af3328e4b63f8c8d577" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ConfigureWakeup</definition>
+        <argsstring>(const hf_uart_wakeup_config_t &amp;wakeup_config) noexcept</argsstring>
+        <name>ConfigureWakeup</name>
+        <qualifiedname>EspUart::ConfigureWakeup</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__uart__wakeup__config__t" kindref="compound">hf_uart_wakeup_config_t</ref> &amp;</type>
+          <declname>wakeup_config</declname>
+        </param>
+        <briefdescription>
+<para>Configure UART wakeup from light sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>wakeup_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Wakeup configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="284" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="736" bodyend="771"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1adb38ee06131726c32e151679ca277875" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::SetSignalInversion</definition>
+        <argsstring>(uint32_t inverse_mask) noexcept</argsstring>
+        <name>SetSignalInversion</name>
+        <qualifiedname>EspUart::SetSignalInversion</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>inverse_mask</declname>
+        </param>
+        <briefdescription>
+<para>Set signal inversion mask. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>inverse_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Inversion mask (UART_SIGNAL_INV_DISABLE, UART_SIGNAL_INV_TXD, etc.) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="291" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="773" bodyend="789"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a613c2456e38881c8c70d43c65b051415" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>QueueHandle_t</type>
+        <definition>QueueHandle_t EspUart::GetEventQueue</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetEventQueue</name>
+        <qualifiedname>EspUart::GetEventQueue</qualifiedname>
+        <briefdescription>
+<para>Get the ESP-IDF event queue handle for user task creation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>QueueHandle_t for ESP-IDF uart_event_t structures, or nullptr if not available </para>
+</simplesect>
+<simplesect kind="note"><para>User is responsible for creating FreeRTOS task to handle events </para>
+</simplesect>
+<simplesect kind="note"><para>Only available when driver is installed with event queue </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="303" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="795" bodyend="798"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a840292dc9845514c4b0ecc7ca7c477e6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspUart::IsEventQueueAvailable</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsEventQueueAvailable</name>
+        <qualifiedname>EspUart::IsEventQueueAvailable</qualifiedname>
+        <briefdescription>
+<para>Check if event queue is available. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if event queue is available, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="309" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="800" bodyend="803"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a64fac40cd1b92d1c3f0c4ca2d79bb9d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ConfigureInterrupts</definition>
+        <argsstring>(uint32_t intr_enable_mask, uint8_t rxfifo_full_thresh=100, uint8_t rx_timeout_thresh=10) noexcept</argsstring>
+        <name>ConfigureInterrupts</name>
+        <qualifiedname>EspUart::ConfigureInterrupts</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>intr_enable_mask</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>rxfifo_full_thresh</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>rx_timeout_thresh</declname>
+          <defval>10</defval>
+        </param>
+        <briefdescription>
+<para>Configure UART interrupt settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>intr_enable_mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Interrupt enable mask (UART_INTR_RXFIFO_FULL | UART_INTR_RXFIFO_TOUT) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rxfifo_full_thresh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RX FIFO full threshold </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_timeout_thresh</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RX timeout threshold </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+<simplesect kind="note"><para>Use ESP-IDF constants: UART_INTR_RXFIFO_FULL, UART_INTR_RXFIFO_TOUT, etc. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="319" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="805" bodyend="832"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a092e5195e9d01b58592ba73fa84b4fee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ResetEventQueue</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetEventQueue</name>
+        <qualifiedname>EspUart::ResetEventQueue</qualifiedname>
+        <briefdescription>
+<para>Reset event queue (clear all pending events). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="326" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="834" bodyend="845"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1af5e4768bcbdb44ca149f891c34240eea" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::EnablePatternDetection</definition>
+        <argsstring>(char pattern_chr, uint8_t chr_num=1, int chr_tout=9, int post_idle=0, int pre_idle=0) noexcept</argsstring>
+        <name>EnablePatternDetection</name>
+        <qualifiedname>EspUart::EnablePatternDetection</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>pattern_chr</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>chr_num</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>chr_tout</declname>
+          <defval>9</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>post_idle</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pre_idle</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Enable pattern detection for repeated byte sequences. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pattern_chr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte to detect (e.g., &apos;<linebreak/>
+&apos;, &apos;+&apos;) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chr_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of repeats to trigger detection (&gt;=1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chr_tout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Max idle between pattern bytes (baud periods) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>post_idle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Required idle after pattern (baud periods) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pre_idle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Required idle before pattern (baud periods) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+<simplesect kind="note"><para>Uses uart_enable_pattern_det_baud_intr from ESP-IDF v5.5 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="342" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="851" bodyend="872"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a41b46b421647bc6181d207651590375f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::DisablePatternDetection</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>DisablePatternDetection</name>
+        <qualifiedname>EspUart::DisablePatternDetection</qualifiedname>
+        <briefdescription>
+<para>Disable pattern detection. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="349" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="874" bodyend="891"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a15bd8e2881fa195b4e4cdb6b07267c87" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ResetPatternQueue</definition>
+        <argsstring>(int queue_length=32) noexcept</argsstring>
+        <name>ResetPatternQueue</name>
+        <qualifiedname>EspUart::ResetPatternQueue</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>queue_length</declname>
+          <defval>32</defval>
+        </param>
+        <briefdescription>
+<para>Reset pattern detection queue. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>queue_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pattern position queue length </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="356" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="893" bodyend="910"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1aebf9c60f56ae3b5190d89a3f0c1aa7be" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int EspUart::PopPatternPosition</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>PopPatternPosition</name>
+        <qualifiedname>EspUart::PopPatternPosition</qualifiedname>
+        <briefdescription>
+<para>Pop pattern position from queue (consumes entry). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pattern position index, or -1 if queue empty/overflow </para>
+</simplesect>
+<simplesect kind="note"><para>Call immediately before uart_read_bytes() to maintain data integrity </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="363" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="912" bodyend="928"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a6cf9f54490dde0cfb1fc85436e473c6e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int EspUart::PeekPatternPosition</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>PeekPatternPosition</name>
+        <qualifiedname>EspUart::PeekPatternPosition</qualifiedname>
+        <briefdescription>
+<para>Peek pattern position without consuming. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pattern position index, or -1 if queue empty </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="369" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="930" bodyend="943"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a0a5c6da9b4a45ce29d7c8f2f1caf21a4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::GetStatistics</definition>
+        <argsstring>(hf_uart_statistics_t &amp;statistics) const noexcept override</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>EspUart::GetStatistics</qualifiedname>
+        <reimplements refid="classBaseUart_1a6698396f98eb9f438f91999142b5cbdf">GetStatistics</reimplements>
+        <param>
+          <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get UART statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output statistics structure </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="380" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="949" bodyend="953"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a1c8b46105334d76c54879d7f8c901f14" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::GetDiagnostics</definition>
+        <argsstring>(hf_uart_diagnostics_t &amp;diagnostics) const noexcept override</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>EspUart::GetDiagnostics</qualifiedname>
+        <reimplements refid="classBaseUart_1a68ce0319cba173ccdf90812fd7ad8ee5">GetDiagnostics</reimplements>
+        <param>
+          <type><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get UART diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output diagnostics structure </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="387" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="955" bodyend="959"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1abef393dfa54e48c2b0f91ac1380793bb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::GetLastError</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetLastError</name>
+        <qualifiedname>EspUart::GetLastError</qualifiedname>
+        <briefdescription>
+<para>Get the last error that occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Last error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="393" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="961" bodyend="964"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a39bdd60fac079d2e53e6cc3f7a453b98" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref> &amp;</type>
+        <definition>const hf_uart_config_t &amp; EspUart::GetPortConfig</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetPortConfig</name>
+        <qualifiedname>EspUart::GetPortConfig</qualifiedname>
+        <briefdescription>
+<para>Get current UART configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current port configuration </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="399" column="26" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="966" bodyend="969"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1abe35b4b6532a107b5bdb679ac6acba5b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref></type>
+        <definition>hf_uart_operating_mode_t EspUart::GetOperatingMode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetOperatingMode</name>
+        <qualifiedname>EspUart::GetOperatingMode</qualifiedname>
+        <briefdescription>
+<para>Get current operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current operating mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="405" column="28" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="971" bodyend="974"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1aca26466026e95d128039fb6e4eddbbbb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref></type>
+        <definition>hf_uart_mode_t EspUart::GetCommunicationMode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetCommunicationMode</name>
+        <qualifiedname>EspUart::GetCommunicationMode</qualifiedname>
+        <briefdescription>
+<para>Get current communication mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current communication mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="411" column="18" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="976" bodyend="979"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a95486cae642a80ebfe3d24b9c9e75b37" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspUart::IsWakeupEnabled</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsWakeupEnabled</name>
+        <qualifiedname>EspUart::IsWakeupEnabled</qualifiedname>
+        <briefdescription>
+<para>Check if wakeup is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if enabled, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="417" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="981" bodyend="984"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a471a8ae57098f62044b83b80e75ef953" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspUart::IsTransmitting</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsTransmitting</name>
+        <qualifiedname>EspUart::IsTransmitting</qualifiedname>
+        <briefdescription>
+<para>Check if transmission is in progress. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if transmitting, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="423" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="986" bodyend="989"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1acb5ffee8689974b00aa792b6f865e3d2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspUart::IsReceiving</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsReceiving</name>
+        <qualifiedname>EspUart::IsReceiving</qualifiedname>
+        <briefdescription>
+<para>Check if reception is active. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if receiving, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="429" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="991" bodyend="994"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a4fa0a9981052db00829f5daa2ca67c4e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspUart::IsBreakDetected</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>IsBreakDetected</name>
+        <qualifiedname>EspUart::IsBreakDetected</qualifiedname>
+        <briefdescription>
+<para>Check if break condition was detected. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if break detected, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="435" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="996" bodyend="999"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a95d705a9febfd27db46df2520f669692" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>hf_u16_t EspUart::TxBytesWaiting</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>TxBytesWaiting</name>
+        <qualifiedname>EspUart::TxBytesWaiting</qualifiedname>
+        <briefdescription>
+<para>Get number of bytes waiting in TX buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of bytes waiting </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="441" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="340" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1ad507db496e86a84d3a5ed5d6d2d8eb38" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>int</type>
+        <definition>int EspUart::Printf</definition>
+        <argsstring>(const char *format,...) noexcept</argsstring>
+        <name>Printf</name>
+        <qualifiedname>EspUart::Printf</qualifiedname>
+        <reimplements refid="classBaseUart_1a9d071b6aa4fb1fe97b33cadf47b8ad7b">Printf</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Print formatted string to UART. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of characters written </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="453" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1005" bodyend="1015"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a487fb3d13b6644bce75f6e657ab1d357" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int EspUart::VPrintf</definition>
+        <argsstring>(const char *format, va_list args) noexcept</argsstring>
+        <name>VPrintf</name>
+        <qualifiedname>EspUart::VPrintf</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>va_list</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Print formatted string to UART with va_list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of characters written </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="461" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1017" bodyend="1024"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a3138eae9161daf1be1a04655798287e1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>uint16_t</type>
+        <definition>hf_u16_t EspUart::BytesAvailable</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>BytesAvailable</name>
+        <qualifiedname>EspUart::BytesAvailable</qualifiedname>
+        <reimplements refid="classBaseUart_1a9666c49827901f9a511c4fd824648eb0">BytesAvailable</reimplements>
+        <briefdescription>
+<para>Get the number of bytes available to read. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of bytes available in the receive buffer </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="617" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="298" bodyend="314"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1ae9d2e920c127672adf65cc4a7f0b58b5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::FlushTx</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>FlushTx</name>
+        <qualifiedname>EspUart::FlushTx</qualifiedname>
+        <reimplements refid="classBaseUart_1a97a3d02d570669c9c463b99916fdef2c">FlushTx</reimplements>
+        <briefdescription>
+<para>Flush the transmit buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="618" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="247" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a0d4beb1af47d1581fd753a0ade58378b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::FlushRx</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>FlushRx</name>
+        <qualifiedname>EspUart::FlushRx</qualifiedname>
+        <reimplements refid="classBaseUart_1a2361728845801eb4356bdaa560ba0315">FlushRx</reimplements>
+        <briefdescription>
+<para>Flush the receive buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_uart_err_t result code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="619" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="258" bodyend="267"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a8249177a7af1c167b4dfe867848e0fbf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspUart::IsTxBusy</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>IsTxBusy</name>
+        <qualifiedname>EspUart::IsTxBusy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="620" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="315" bodyend="338"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classEspUart_1aa31dc8ddb07afe483e0e00abc5a9322f" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EspUart::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>EspUart::Initialize</qualifiedname>
+        <reimplements refid="classBaseUart_1ac5f93b4f75c229d2e0ec04196f5cb844">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the UART driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>This is called automatically by <ref refid="classBaseUart_1a3551794eb6e958cbdf8c15aec49c4433" kindref="member">EnsureInitialized()</ref> on first use </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="473" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="73" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a8868b70653a14f3d895904086ec16db5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EspUart::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>EspUart::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseUart_1a6778f2da517273aa1a51c0658ec0a2c0">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the UART driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="479" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="112" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a02142e3d8db8c85f811b60601fae1b81" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ValidateConfiguration</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>ValidateConfiguration</name>
+        <qualifiedname>EspUart::ValidateConfiguration</qualifiedname>
+        <briefdescription>
+<para>Validate configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_SUCCESS if valid, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="511" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1030" bodyend="1053"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a5372fc06c5807c82d24b3a3c321cfe07" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::PlatformInitialize</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>PlatformInitialize</name>
+        <qualifiedname>EspUart::PlatformInitialize</qualifiedname>
+        <briefdescription>
+<para>Platform-specific initialization. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="517" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1055" bodyend="1080"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1ab6ae69978fa27490732f6df32b75ee02" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::PlatformDeinitialize</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>PlatformDeinitialize</name>
+        <qualifiedname>EspUart::PlatformDeinitialize</qualifiedname>
+        <briefdescription>
+<para>Platform-specific deinitialization. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="523" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1082" bodyend="1086"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a42cee776787269a8b0ec70ddd83c0550" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::InstallDriver</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>InstallDriver</name>
+        <qualifiedname>EspUart::InstallDriver</qualifiedname>
+        <briefdescription>
+<para>Install UART driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="529" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1088" bodyend="1173"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a1d8e25acc0da8b0b8eaca35cb37c45e4" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::UninstallDriver</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>UninstallDriver</name>
+        <qualifiedname>EspUart::UninstallDriver</qualifiedname>
+        <briefdescription>
+<para>Uninstall UART driver. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="535" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1175" bodyend="1185"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1aef25ff9dcf01d1b8e3d0458f0e5cef9f" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ConfigureUart</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ConfigureUart</name>
+        <qualifiedname>EspUart::ConfigureUart</qualifiedname>
+        <briefdescription>
+<para>Configure UART parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="541" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1187" bodyend="1191"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a47ec0e9a213b109f33aaf0049b0654af" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ConfigurePins</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ConfigurePins</name>
+        <qualifiedname>EspUart::ConfigurePins</qualifiedname>
+        <briefdescription>
+<para>Configure UART pins. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>UART_SUCCESS on success, error code on failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="547" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1193" bodyend="1204"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a55983273a666678ced3622dbb9bf0797" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::ConvertPlatformError</definition>
+        <argsstring>(int32_t platform_error) noexcept</argsstring>
+        <name>ConvertPlatformError</name>
+        <qualifiedname>EspUart::ConvertPlatformError</qualifiedname>
+        <param>
+          <type>int32_t</type>
+          <declname>platform_error</declname>
+        </param>
+        <briefdescription>
+<para>Convert platform error to HardFOC error. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>platform_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Platform error code </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HardFOC error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="554" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1206" bodyend="1225"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a32fadfcb18de0f2ea62d3824b889aea5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::UpdateStatistics</definition>
+        <argsstring>(hf_uart_err_t result, uint64_t start_time_us) noexcept</argsstring>
+        <name>UpdateStatistics</name>
+        <qualifiedname>EspUart::UpdateStatistics</qualifiedname>
+        <param>
+          <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>start_time_us</declname>
+        </param>
+        <briefdescription>
+<para>Update statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation result </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_time_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation start time </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Result for chaining </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="562" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1227" bodyend="1237"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a7e5c7137cc708d66db15e3a5dcffac7a" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspUart::UpdateDiagnostics</definition>
+        <argsstring>(hf_uart_err_t error) noexcept</argsstring>
+        <name>UpdateDiagnostics</name>
+        <qualifiedname>EspUart::UpdateDiagnostics</qualifiedname>
+        <param>
+          <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Update diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error that occurred </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="568" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1239" bodyend="1249"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1adf012fed8c99c93c19dde0cbb821709c" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>hf_u32_t EspUart::GetTimeoutMs</definition>
+        <argsstring>(uint32_t timeout_ms) const noexcept</argsstring>
+        <name>GetTimeoutMs</name>
+        <qualifiedname>EspUart::GetTimeoutMs</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Get timeout value in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Requested timeout </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Actual timeout value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="575" column="13" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1251" bodyend="1256"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspUart_1a1eacc6fc2880d22e444a29a48de2d628" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int EspUart::InternalPrintf</definition>
+        <argsstring>(const char *format, va_list args) noexcept</argsstring>
+        <name>InternalPrintf</name>
+        <qualifiedname>EspUart::InternalPrintf</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>va_list</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Internal printf implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Variable arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of characters written </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="583" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1258" bodyend="1268"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 UART implementation class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a complete implementation of the <ref refid="classBaseUart" kindref="compound">BaseUart</ref> interface for ESP32 variants. It supports both polling and interrupt-driven UART modes with comprehensive feature support. Each instance represents a single UART port on the ESP32.</para>
+<para>Key Features:<itemizedlist>
+<listitem><para>Polling mode: Blocking read/write operations for simple applications</para>
+</listitem><listitem><para>Interrupt mode: Non-blocking operations with event queue and callbacks</para>
+</listitem><listitem><para>Hardware flow control: RTS/CTS support for reliable communication</para>
+</listitem><listitem><para>Pattern detection: AT command and custom pattern detection</para>
+</listitem><listitem><para>Wakeup support: UART wakeup from light sleep mode</para>
+</listitem><listitem><para>RS485 support: Half-duplex and collision detection modes</para>
+</listitem><listitem><para>IrDA support: Infrared communication mode</para>
+</listitem><listitem><para>Thread safety: Proper mutex protection for multi-threaded access</para>
+</listitem><listitem><para>Error handling: Comprehensive error reporting and recovery</para>
+</listitem><listitem><para>Resource management: Automatic cleanup and proper resource lifecycle</para>
+</listitem><listitem><para>Multi-variant support: Works across all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2)</para>
+</listitem></itemizedlist>
+</para>
+<para>Usage Example (Single UART Port): <programlisting><codeline><highlight class="comment">//<sp/>For<sp/>ESP32-C6<sp/>(3<sp/>ports)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/>uart0({.port_number<sp/>=<sp/>0,<sp/>.baud_rate<sp/>=<sp/>115200,<sp/>.tx_pin<sp/>=<sp/>21,<sp/>.rx_pin<sp/>=<sp/>20});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>ESP32-C3<sp/>(2<sp/>ports)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/>uart0({.port_number<sp/>=<sp/>0,<sp/>.baud_rate<sp/>=<sp/>115200,<sp/>.tx_pin<sp/>=<sp/>21,<sp/>.rx_pin<sp/>=<sp/>20});</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart0.EnsureInitialized())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Hello<sp/>World!&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(uart0.Write(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal">uint8_t*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(message),<sp/>strlen(message))<sp/>==</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6ab1d931babc3d80897766d05cd169cbe4" kindref="member">hf_uart_err_t::UART_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>sent<sp/>successfully</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>Usage Example (Interrupt mode with callbacks): <programlisting><codeline><highlight class="normal"><ref refid="classEspUart" kindref="compound">EspUart</ref><sp/>uart({.port_number<sp/>=<sp/>0,<sp/>.operating_mode<sp/>=</highlight></codeline>
+<codeline><highlight class="normal"><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a6b4c350c97dc7e89a794bddce128b1ce" kindref="member">hf_uart_operating_mode_t::HF_UART_MODE_INTERRUPT</ref>});<sp/>uart.SetEventCallback([](</highlight><highlight class="keyword">const</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">hf_uart_event_native_t*<sp/>event,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>{<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(event-&gt;type<sp/>==<sp/>UART_DATA)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>received<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>to<sp/>yield<sp/>to<sp/>higher<sp/>priority<sp/>task</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+<codeline><highlight class="normal">uart.<ref refid="classBaseUart_1a3551794eb6e958cbdf8c15aec49c4433" kindref="member">EnsureInitialized</ref>();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="note"><para><ref refid="classEspUart" kindref="compound">EspUart</ref> instances cannot be copied or moved due to hardware resource management. </para>
+</simplesect>
+<simplesect kind="note"><para>If you need to transfer ownership, use std::unique_ptr&lt;EspUart&gt; or similar smart pointers. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseUart</label>
+        <link refid="classBaseUart"/>
+      </node>
+      <node id="1">
+        <label>EspUart</label>
+        <link refid="classEspUart"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseUart</label>
+        <link refid="classBaseUart"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EspUart</label>
+        <link refid="classEspUart"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>mutex_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>port_config_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>RtosMutex</label>
+        <link refid="classRtosMutex"/>
+      </node>
+      <node id="6">
+        <label>hf_uart_config_t</label>
+        <link refid="structhf__uart__config__t"/>
+      </node>
+      <node id="4">
+        <label>hf_uart_diagnostics_t</label>
+        <link refid="structhf__uart__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_uart_statistics_t</label>
+        <link refid="structhf__uart__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspUart.h" line="103" column="1" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="103" bodyend="621"/>
+    <listofallmembers>
+      <member refid="classBaseUart_1a5bd0243a3f6c1e242a5a867f6aebf928" prot="public" virt="non-virtual"><scope>EspUart</scope><name>BaseUart</name></member>
+      <member refid="classBaseUart_1aefd61298d23c892de11fce7404c909e9" prot="public" virt="non-virtual"><scope>EspUart</scope><name>BaseUart</name></member>
+      <member refid="classBaseUart_1af78039653dc8c846d3f90dc48f50b33d" prot="protected" virt="non-virtual"><scope>EspUart</scope><name>BaseUart</name></member>
+      <member refid="classEspUart_1a98492b72377d7a4ee98260071a0996ff" prot="private" virt="non-virtual"><scope>EspUart</scope><name>break_detected_</name></member>
+      <member refid="classEspUart_1a3138eae9161daf1be1a04655798287e1" prot="public" virt="virtual"><scope>EspUart</scope><name>BytesAvailable</name></member>
+      <member refid="classBaseUart_1aec851bc0079da79a3cbc617fafad7432" prot="public" virt="virtual"><scope>EspUart</scope><name>Close</name></member>
+      <member refid="classEspUart_1a27bb89d203912b998a84e3c9f51b45e8" prot="private" virt="non-virtual"><scope>EspUart</scope><name>communication_mode_</name></member>
+      <member refid="classEspUart_1a64fac40cd1b92d1c3f0c4ca2d79bb9d6" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ConfigureInterrupts</name></member>
+      <member refid="classEspUart_1a123c264aa665cb991daa9dc48a171ecf" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ConfigureIrDA</name></member>
+      <member refid="classEspUart_1a47ec0e9a213b109f33aaf0049b0654af" prot="private" virt="non-virtual"><scope>EspUart</scope><name>ConfigurePins</name></member>
+      <member refid="classEspUart_1a2822adcf8f5c9e7068ec3ec0e44680cd" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ConfigureRS485</name></member>
+      <member refid="classEspUart_1a91ef024e3a23fd33449ca60339790461" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ConfigureSoftwareFlowControl</name></member>
+      <member refid="classEspUart_1aef25ff9dcf01d1b8e3d0458f0e5cef9f" prot="private" virt="non-virtual"><scope>EspUart</scope><name>ConfigureUart</name></member>
+      <member refid="classEspUart_1af323dbe85b7e6af3328e4b63f8c8d577" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ConfigureWakeup</name></member>
+      <member refid="classEspUart_1a55983273a666678ced3622dbb9bf0797" prot="private" virt="non-virtual"><scope>EspUart</scope><name>ConvertPlatformError</name></member>
+      <member refid="classEspUart_1a5d640d851b6a3ed29abd338d392a395d" prot="public" virt="non-virtual"><scope>EspUart</scope><name>DEFAULT_BAUD_RATE</name></member>
+      <member refid="classEspUart_1a23b68168facceed1638156facf258ada" prot="public" virt="non-virtual"><scope>EspUart</scope><name>DEFAULT_BUFFER_SIZE</name></member>
+      <member refid="classEspUart_1a8868b70653a14f3d895904086ec16db5" prot="private" virt="virtual"><scope>EspUart</scope><name>Deinitialize</name></member>
+      <member refid="classEspUart_1a1f8de6c645555ce6d656244488bee463" prot="private" virt="non-virtual"><scope>EspUart</scope><name>diagnostics_</name></member>
+      <member refid="classEspUart_1a41b46b421647bc6181d207651590375f" prot="public" virt="non-virtual"><scope>EspUart</scope><name>DisablePatternDetection</name></member>
+      <member refid="classEspUart_1af5e4768bcbdb44ca149f891c34240eea" prot="public" virt="non-virtual"><scope>EspUart</scope><name>EnablePatternDetection</name></member>
+      <member refid="classBaseUart_1a0775104a12d8e7b418246ed53b660e55" prot="public" virt="non-virtual"><scope>EspUart</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseUart_1a3551794eb6e958cbdf8c15aec49c4433" prot="public" virt="non-virtual"><scope>EspUart</scope><name>EnsureInitialized</name></member>
+      <member refid="classEspUart_1aa7e3acef191e7a36d0893ee835b44926" prot="public" virt="non-virtual"><scope>EspUart</scope><name>EspUart</name></member>
+      <member refid="classEspUart_1a76957621a7abd9663dbcb64abcf4ce35" prot="public" virt="non-virtual"><scope>EspUart</scope><name>EspUart</name></member>
+      <member refid="classEspUart_1a9eec6d898a062782872da2c2f28f9cad" prot="public" virt="non-virtual"><scope>EspUart</scope><name>EspUart</name></member>
+      <member refid="classEspUart_1a6326f118fdd27a670e60ecb79d028292" prot="private" virt="non-virtual"><scope>EspUart</scope><name>event_queue_</name></member>
+      <member refid="classEspUart_1a0d4beb1af47d1581fd753a0ade58378b" prot="public" virt="virtual"><scope>EspUart</scope><name>FlushRx</name></member>
+      <member refid="classEspUart_1ae9d2e920c127672adf65cc4a7f0b58b5" prot="public" virt="virtual"><scope>EspUart</scope><name>FlushTx</name></member>
+      <member refid="classEspUart_1aca26466026e95d128039fb6e4eddbbbb" prot="public" virt="non-virtual"><scope>EspUart</scope><name>GetCommunicationMode</name></member>
+      <member refid="classEspUart_1a1c8b46105334d76c54879d7f8c901f14" prot="public" virt="virtual"><scope>EspUart</scope><name>GetDiagnostics</name></member>
+      <member refid="classEspUart_1a613c2456e38881c8c70d43c65b051415" prot="public" virt="non-virtual"><scope>EspUart</scope><name>GetEventQueue</name></member>
+      <member refid="classEspUart_1abef393dfa54e48c2b0f91ac1380793bb" prot="public" virt="non-virtual"><scope>EspUart</scope><name>GetLastError</name></member>
+      <member refid="classEspUart_1abe35b4b6532a107b5bdb679ac6acba5b" prot="public" virt="non-virtual"><scope>EspUart</scope><name>GetOperatingMode</name></member>
+      <member refid="classBaseUart_1ac3cbd2017d912e1ef8a1c64627bdcbf4" prot="public" virt="non-virtual"><scope>EspUart</scope><name>GetPort</name></member>
+      <member refid="classEspUart_1a39bdd60fac079d2e53e6cc3f7a453b98" prot="public" virt="non-virtual"><scope>EspUart</scope><name>GetPortConfig</name></member>
+      <member refid="classEspUart_1a0a5c6da9b4a45ce29d7c8f2f1caf21a4" prot="public" virt="virtual"><scope>EspUart</scope><name>GetStatistics</name></member>
+      <member refid="classEspUart_1adf012fed8c99c93c19dde0cbb821709c" prot="private" virt="non-virtual"><scope>EspUart</scope><name>GetTimeoutMs</name></member>
+      <member refid="classEspUart_1aa31dc8ddb07afe483e0e00abc5a9322f" prot="private" virt="virtual"><scope>EspUart</scope><name>Initialize</name></member>
+      <member refid="classEspUart_1af13b21c3d90975c02a4f0197ffe2eaf3" prot="private" virt="non-virtual"><scope>EspUart</scope><name>initialized_</name></member>
+      <member refid="classEspUart_1a42cee776787269a8b0ec70ddd83c0550" prot="private" virt="non-virtual"><scope>EspUart</scope><name>InstallDriver</name></member>
+      <member refid="classEspUart_1a1eacc6fc2880d22e444a29a48de2d628" prot="private" virt="non-virtual"><scope>EspUart</scope><name>InternalPrintf</name></member>
+      <member refid="classEspUart_1a4fa0a9981052db00829f5daa2ca67c4e" prot="public" virt="non-virtual"><scope>EspUart</scope><name>IsBreakDetected</name></member>
+      <member refid="classEspUart_1a840292dc9845514c4b0ecc7ca7c477e6" prot="public" virt="non-virtual"><scope>EspUart</scope><name>IsEventQueueAvailable</name></member>
+      <member refid="classBaseUart_1aa01db7402b20038f979b9073281bb430" prot="public" virt="non-virtual"><scope>EspUart</scope><name>IsInitialized</name></member>
+      <member refid="classEspUart_1acb5ffee8689974b00aa792b6f865e3d2" prot="public" virt="non-virtual"><scope>EspUart</scope><name>IsReceiving</name></member>
+      <member refid="classEspUart_1a471a8ae57098f62044b83b80e75ef953" prot="public" virt="non-virtual"><scope>EspUart</scope><name>IsTransmitting</name></member>
+      <member refid="classEspUart_1a8249177a7af1c167b4dfe867848e0fbf" prot="public" virt="non-virtual"><scope>EspUart</scope><name>IsTxBusy</name></member>
+      <member refid="classEspUart_1a95486cae642a80ebfe3d24b9c9e75b37" prot="public" virt="non-virtual"><scope>EspUart</scope><name>IsWakeupEnabled</name></member>
+      <member refid="classEspUart_1a05c3b59cfdc9bb7f61d5bf875daf2100" prot="private" virt="non-virtual"><scope>EspUart</scope><name>last_error_</name></member>
+      <member refid="classEspUart_1a7baee03689e53568439f4a68d6662d35" prot="public" virt="non-virtual"><scope>EspUart</scope><name>MAX_BAUD_RATE</name></member>
+      <member refid="classEspUart_1a2cc0ffbcf5d94cc1be9640a0bb394eb6" prot="public" virt="non-virtual"><scope>EspUart</scope><name>MAX_BUFFER_SIZE</name></member>
+      <member refid="classEspUart_1acccf4bd506f073b15720a283fc2ba781" prot="public" virt="non-virtual"><scope>EspUart</scope><name>MAX_PORTS</name></member>
+      <member refid="classEspUart_1a7e8194c9094761e4ca34160410faaeeb" prot="public" virt="non-virtual"><scope>EspUart</scope><name>MIN_BAUD_RATE</name></member>
+      <member refid="classEspUart_1a63d3d9231a553707b6498e40829c0105" prot="private" virt="non-virtual"><scope>EspUart</scope><name>mutex_</name></member>
+      <member refid="classBaseUart_1a75cbb2ce81d78f722874184878433249" prot="public" virt="virtual"><scope>EspUart</scope><name>Open</name></member>
+      <member refid="classEspUart_1af2370e22ff6ab5da54137adbcd91ad7d" prot="private" virt="non-virtual"><scope>EspUart</scope><name>operating_mode_</name></member>
+      <member refid="classEspUart_1aa8d8c4af95c460694f765d119d8916c3" prot="public" virt="non-virtual"><scope>EspUart</scope><name>operator=</name></member>
+      <member refid="classEspUart_1a4674e0c876fc15203b194ce2d271e69b" prot="public" virt="non-virtual"><scope>EspUart</scope><name>operator=</name></member>
+      <member refid="classBaseUart_1a21412c6c2f4479149d6c25337a0af7aa" prot="public" virt="non-virtual" ambiguityscope="BaseUart::"><scope>EspUart</scope><name>operator=</name></member>
+      <member refid="classBaseUart_1ab823b270624288541db2a44305249b75" prot="public" virt="non-virtual" ambiguityscope="BaseUart::"><scope>EspUart</scope><name>operator=</name></member>
+      <member refid="classEspUart_1a6cf9f54490dde0cfb1fc85436e473c6e" prot="public" virt="non-virtual"><scope>EspUart</scope><name>PeekPatternPosition</name></member>
+      <member refid="classEspUart_1ab6ae69978fa27490732f6df32b75ee02" prot="private" virt="non-virtual"><scope>EspUart</scope><name>PlatformDeinitialize</name></member>
+      <member refid="classEspUart_1a5372fc06c5807c82d24b3a3c321cfe07" prot="private" virt="non-virtual"><scope>EspUart</scope><name>PlatformInitialize</name></member>
+      <member refid="classEspUart_1aebf9c60f56ae3b5190d89a3f0c1aa7be" prot="public" virt="non-virtual"><scope>EspUart</scope><name>PopPatternPosition</name></member>
+      <member refid="classBaseUart_1ab49dfeb03b7a9f8cbf81460ebb711c38" prot="protected" virt="non-virtual"><scope>EspUart</scope><name>port_</name></member>
+      <member refid="classEspUart_1a00c20e249bbd100eedbf4c0c54c3c42e" prot="private" virt="non-virtual"><scope>EspUart</scope><name>port_config_</name></member>
+      <member refid="classEspUart_1ad507db496e86a84d3a5ed5d6d2d8eb38" prot="public" virt="virtual"><scope>EspUart</scope><name>Printf</name></member>
+      <member refid="classEspUart_1a203c1f13b4888ba1f4ede0d5a5289a2d" prot="private" virt="non-virtual"><scope>EspUart</scope><name>printf_buffer_</name></member>
+      <member refid="classEspUart_1a85b041ba28cc9309f7ddf2852f899364" prot="public" virt="virtual"><scope>EspUart</scope><name>Read</name></member>
+      <member refid="classEspUart_1a7490b8f55321824cb14c156a32d677ec" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ReadLine</name></member>
+      <member refid="classEspUart_1a91d0e2bae14b427a5c1daeb75927852f" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ReadUntil</name></member>
+      <member refid="classBaseUart_1abed0a5b5b2f852ea41b3133fb260aaf7" prot="public" virt="virtual"><scope>EspUart</scope><name>ResetDiagnostics</name></member>
+      <member refid="classEspUart_1a092e5195e9d01b58592ba73fa84b4fee" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ResetEventQueue</name></member>
+      <member refid="classEspUart_1a15bd8e2881fa195b4e4cdb6b07267c87" prot="public" virt="non-virtual"><scope>EspUart</scope><name>ResetPatternQueue</name></member>
+      <member refid="classBaseUart_1aa85590c6a17563a3ddcf2d6084210725" prot="public" virt="virtual"><scope>EspUart</scope><name>ResetStatistics</name></member>
+      <member refid="classEspUart_1a0e8ee47992f3d875c2e65fb61ce20449" prot="public" virt="non-virtual"><scope>EspUart</scope><name>SendBreak</name></member>
+      <member refid="classEspUart_1ad0d639fbd3ff5f8ced77af29f13a081d" prot="public" virt="non-virtual"><scope>EspUart</scope><name>SetBaudRate</name></member>
+      <member refid="classEspUart_1a19b04e570d86170dfa65a03c9555977f" prot="public" virt="non-virtual"><scope>EspUart</scope><name>SetCommunicationMode</name></member>
+      <member refid="classEspUart_1a9fce2787e7b457164702660ce5f762d0" prot="public" virt="non-virtual"><scope>EspUart</scope><name>SetFlowControl</name></member>
+      <member refid="classEspUart_1a7508989a3ffb01571ae8cfb0cc61b6b6" prot="public" virt="non-virtual"><scope>EspUart</scope><name>SetLoopback</name></member>
+      <member refid="classEspUart_1ab43e1c7aead219b7df960710d2e8782e" prot="public" virt="non-virtual"><scope>EspUart</scope><name>SetOperatingMode</name></member>
+      <member refid="classEspUart_1a28ef91e6eff98941eada61b22ad61ce4" prot="public" virt="non-virtual"><scope>EspUart</scope><name>SetRTS</name></member>
+      <member refid="classEspUart_1adb38ee06131726c32e151679ca277875" prot="public" virt="non-virtual"><scope>EspUart</scope><name>SetSignalInversion</name></member>
+      <member refid="classEspUart_1a8919e3c9d6a7f2f4e0dc81915b77b491" prot="private" virt="non-virtual"><scope>EspUart</scope><name>software_flow_enabled_</name></member>
+      <member refid="classEspUart_1a22e961a9c6a2396d310552e1ff23c60d" prot="private" virt="non-virtual"><scope>EspUart</scope><name>statistics_</name></member>
+      <member refid="classEspUart_1aba216cdada564969d39e4799eb2765eb" prot="private" virt="non-virtual"><scope>EspUart</scope><name>tx_in_progress_</name></member>
+      <member refid="classEspUart_1a95d705a9febfd27db46df2520f669692" prot="public" virt="non-virtual"><scope>EspUart</scope><name>TxBytesWaiting</name></member>
+      <member refid="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" prot="private" virt="non-virtual"><scope>EspUart</scope><name>uart_port_</name></member>
+      <member refid="classEspUart_1a1d8e25acc0da8b0b8eaca35cb37c45e4" prot="private" virt="non-virtual"><scope>EspUart</scope><name>UninstallDriver</name></member>
+      <member refid="classEspUart_1a7e5c7137cc708d66db15e3a5dcffac7a" prot="private" virt="non-virtual"><scope>EspUart</scope><name>UpdateDiagnostics</name></member>
+      <member refid="classEspUart_1a32fadfcb18de0f2ea62d3824b889aea5" prot="private" virt="non-virtual"><scope>EspUart</scope><name>UpdateStatistics</name></member>
+      <member refid="classEspUart_1a02142e3d8db8c85f811b60601fae1b81" prot="private" virt="non-virtual"><scope>EspUart</scope><name>ValidateConfiguration</name></member>
+      <member refid="classEspUart_1a487fb3d13b6644bce75f6e657ab1d357" prot="public" virt="non-virtual"><scope>EspUart</scope><name>VPrintf</name></member>
+      <member refid="classEspUart_1abda8a2fd4c91670cd1325d4a04c33112" prot="public" virt="non-virtual"><scope>EspUart</scope><name>WaitTransmitComplete</name></member>
+      <member refid="classEspUart_1a4c04605b7e7105b001de8af91bf80880" prot="private" virt="non-virtual"><scope>EspUart</scope><name>wakeup_enabled_</name></member>
+      <member refid="classEspUart_1aae3b52313f5bcf520d34457140a23112" prot="public" virt="virtual"><scope>EspUart</scope><name>Write</name></member>
+      <member refid="classEspUart_1a6f40abc9001709ac5ee91c4383b95f2f" prot="public" virt="virtual"><scope>EspUart</scope><name>WriteByte</name></member>
+      <member refid="classBaseUart_1aacddae116924093dc2d45a894772a9a6" prot="public" virt="virtual"><scope>EspUart</scope><name>WriteString</name></member>
+      <member refid="classBaseUart_1aeaf29070491a7ba9a8fdab4d57f88552" prot="public" virt="virtual"><scope>EspUart</scope><name>~BaseUart</name></member>
+      <member refid="classEspUart_1aa0c468b08a8888a37ebbf9aad04ec4bf" prot="public" virt="virtual"><scope>EspUart</scope><name>~EspUart</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

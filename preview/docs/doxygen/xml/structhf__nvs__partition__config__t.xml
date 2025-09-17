@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__nvs__partition__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_nvs_partition_config_t</compoundname>
+    <includes refid="EspTypes__NVS_8h" local="no">EspTypes_NVS.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__nvs__partition__config__t_1a25d4693673db6800b111c2aa72621e5e" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_nvs_partition_config_t::partition_label</definition>
+        <argsstring></argsstring>
+        <name>partition_label</name>
+        <qualifiedname>hf_nvs_partition_config_t::partition_label</qualifiedname>
+        <briefdescription>
+<para>Partition label. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="90" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__partition__config__t_1a956314821f9a7b6cc388863a6ebe4c3b" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_nvs_partition_config_t::namespace_name</definition>
+        <argsstring></argsstring>
+        <name>namespace_name</name>
+        <qualifiedname>hf_nvs_partition_config_t::namespace_name</qualifiedname>
+        <briefdescription>
+<para>Namespace name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="91" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__partition__config__t_1a4a094f7dc60b0dca840a96888c5730ae" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" kindref="member">hf_nvs_open_mode_t</ref></type>
+        <definition>hf_nvs_open_mode_t hf_nvs_partition_config_t::open_mode</definition>
+        <argsstring></argsstring>
+        <name>open_mode</name>
+        <qualifiedname>hf_nvs_partition_config_t::open_mode</qualifiedname>
+        <briefdescription>
+<para>Open mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="92" column="22" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__partition__config__t_1a4955da28c42450fa6e5f2d4747f30701" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" kindref="member">hf_nvs_encryption_mode_t</ref></type>
+        <definition>hf_nvs_encryption_mode_t hf_nvs_partition_config_t::encryption</definition>
+        <argsstring></argsstring>
+        <name>encryption</name>
+        <qualifiedname>hf_nvs_partition_config_t::encryption</qualifiedname>
+        <briefdescription>
+<para>Encryption mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="93" column="28" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__partition__config__t_1adc2f8249c1aa1178379baae8673c81ab" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_nvs_partition_config_t::max_entries</definition>
+        <argsstring></argsstring>
+        <name>max_entries</name>
+        <qualifiedname>hf_nvs_partition_config_t::max_entries</qualifiedname>
+        <briefdescription>
+<para>Maximum entries. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="94" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_nvs_partition_config_t::auto_commit</definition>
+        <argsstring></argsstring>
+        <name>auto_commit</name>
+        <qualifiedname>hf_nvs_partition_config_t::auto_commit</qualifiedname>
+        <briefdescription>
+<para>Auto-commit flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="95" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__nvs__partition__config__t_1ae38ecb16cd130fb144836b3c73f42eb4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_nvs_partition_config_t::hf_nvs_partition_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_nvs_partition_config_t</name>
+        <qualifiedname>hf_nvs_partition_config_t::hf_nvs_partition_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="97" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="97" bodyend="101"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 NVS partition configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="89" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="89" bodyend="102"/>
+    <listofallmembers>
+      <member refid="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" prot="public" virt="non-virtual"><scope>hf_nvs_partition_config_t</scope><name>auto_commit</name></member>
+      <member refid="structhf__nvs__partition__config__t_1a4955da28c42450fa6e5f2d4747f30701" prot="public" virt="non-virtual"><scope>hf_nvs_partition_config_t</scope><name>encryption</name></member>
+      <member refid="structhf__nvs__partition__config__t_1ae38ecb16cd130fb144836b3c73f42eb4" prot="public" virt="non-virtual"><scope>hf_nvs_partition_config_t</scope><name>hf_nvs_partition_config_t</name></member>
+      <member refid="structhf__nvs__partition__config__t_1adc2f8249c1aa1178379baae8673c81ab" prot="public" virt="non-virtual"><scope>hf_nvs_partition_config_t</scope><name>max_entries</name></member>
+      <member refid="structhf__nvs__partition__config__t_1a956314821f9a7b6cc388863a6ebe4c3b" prot="public" virt="non-virtual"><scope>hf_nvs_partition_config_t</scope><name>namespace_name</name></member>
+      <member refid="structhf__nvs__partition__config__t_1a4a094f7dc60b0dca840a96888c5730ae" prot="public" virt="non-virtual"><scope>hf_nvs_partition_config_t</scope><name>open_mode</name></member>
+      <member refid="structhf__nvs__partition__config__t_1a25d4693673db6800b111c2aa72621e5e" prot="public" virt="non-virtual"><scope>hf_nvs_partition_config_t</scope><name>partition_label</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

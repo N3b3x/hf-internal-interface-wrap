@@ -1,0 +1,587 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="BasePeriodicTimer_8h" kind="file" language="C++">
+    <compoundname>BasePeriodicTimer.h</compoundname>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string_view</includes>
+    <includedby refid="TimerComprehensiveTest_8cpp" local="yes">examples/esp32/main/TimerComprehensiveTest.cpp</includedby>
+    <includedby refid="EspPeriodicTimer_8h" local="yes">inc/mcu/esp32/EspPeriodicTimer.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/BasePeriodicTimer.h</label>
+        <link refid="BasePeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
+        <link refid="TimerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/base/BasePeriodicTimer.h</label>
+        <link refid="BasePeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__timer__stats__t" prot="public">hf_timer_stats_t</innerclass>
+    <innerclass refid="structhf__timer__statistics__t" prot="public">hf_timer_statistics_t</innerclass>
+    <innerclass refid="structhf__timer__diagnostics__t" prot="public">hf_timer_diagnostics_t</innerclass>
+    <innerclass refid="classBasePeriodicTimer" prot="public">BasePeriodicTimer</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="BasePeriodicTimer_8h_1a3ed884bb593dc7b15813c492111d782f" prot="public" static="no">
+        <name>HF_TIMESTAMP_US_T_DEFINED</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="27" column="9" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="BasePeriodicTimer_8h_1ad2d3be6179b29cef577e3551ae164e30" prot="public" static="no">
+        <name>HF_TIMER_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <initializer>  /* Success codes */                                                                              \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">TIMER_SUCCESS</ref>, 0, &quot;Success&quot;)                                                                   \
+  /* General errors */                                                                             \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa13bfcb4f27f170dc05cf106ec7fcfd4b" kindref="member">TIMER_ERR_FAILURE</ref>, 1, &quot;General failure&quot;)                                                       \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" kindref="member">TIMER_ERR_NOT_INITIALIZED</ref>, 2, &quot;Not initialized&quot;)                                               \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa26f148c2a8a3cb4f3418d43e991150b5" kindref="member">TIMER_ERR_ALREADY_INITIALIZED</ref>, 3, &quot;Already initialized&quot;)                                       \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa80a5887ffc963e2c85de9bb213dd4b97" kindref="member">TIMER_ERR_INVALID_PARAMETER</ref>, 4, &quot;Invalid parameter&quot;)                                           \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aad39d8e77293f6acdadb1e240a35195a3" kindref="member">TIMER_ERR_NULL_POINTER</ref>, 5, &quot;Null pointer&quot;)                                                     \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aab26aee0588966dcfd7977f9c49d674ce" kindref="member">TIMER_ERR_OUT_OF_MEMORY</ref>, 6, &quot;Out of memory&quot;)                                                   \
+  /* Timer specific errors */                                                                      \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa7b454e9201fcc08b660b78060d55f569" kindref="member">TIMER_ERR_ALREADY_RUNNING</ref>, 7, &quot;Timer already running&quot;)                                         \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa8dc602c72b8c537031429abcd168f19d" kindref="member">TIMER_ERR_NOT_RUNNING</ref>, 8, &quot;Timer not running&quot;)                                                 \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa53cdab9639a77f9d9efc9f0b426e5394" kindref="member">TIMER_ERR_INVALID_PERIOD</ref>, 9, &quot;Invalid period&quot;)                                                 \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aae9a59cb9e77975570dc85343badc488b" kindref="member">TIMER_ERR_RESOURCE_BUSY</ref>, 10, &quot;Timer resource busy&quot;)                                            \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa210eea569375da979c8918063d0220ce" kindref="member">TIMER_ERR_HARDWARE_FAULT</ref>, 11, &quot;Timer hardware fault&quot;)                                          \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" kindref="member">TIMER_ERR_UNSUPPORTED_OPERATION</ref>, 12, &quot;Unsupported operation&quot;)                                  \
+  <ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa82f7733bd9acc0ee5e6c57d0ef305b43" kindref="member">TIMER_ERR_UNKNOWN</ref>, 13, &quot;Unknown error&quot;)</initializer>
+        <briefdescription>
+<para>HardFOC Timer error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all timer operations in the system. This enumeration is used across all timer-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="46" column="9" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="46" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="define" id="BasePeriodicTimer_8h_1afbf3f04fa35349e183adb88ae6d03874" prot="public" static="no">
+        <name>X</name>
+        <param><defname>name</defname></param>
+        <param><defname>value</defname></param>
+        <param><defname>desc</defname></param>
+        <initializer>name = value,</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="67" column="9" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="BasePeriodicTimer_8h_1a94b225babb1626cee0621f8312eb32d1" prot="public" static="no">
+        <name>X</name>
+        <param><defname>NAME</defname></param>
+        <param><defname>VALUE</defname></param>
+        <param><defname>DESC</defname></param>
+        <initializer>  case hf_timer_err_t::NAME:                                                                       \
+    return DESC;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="79" column="9" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="67" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref></type>
+        <name>hf_timer_err_t</name>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa37324e52a31667f6ab80c89f2cd5ce01" prot="public">
+          <name>X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" prot="public">
+          <name>TIMER_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa13bfcb4f27f170dc05cf106ec7fcfd4b" prot="public">
+          <name>TIMER_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aacdb61d4fcc5069bb647d93f47f5c5ab9" prot="public">
+          <name>TIMER_ERR_NOT_INITIALIZED</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa26f148c2a8a3cb4f3418d43e991150b5" prot="public">
+          <name>TIMER_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa80a5887ffc963e2c85de9bb213dd4b97" prot="public">
+          <name>TIMER_ERR_INVALID_PARAMETER</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aad39d8e77293f6acdadb1e240a35195a3" prot="public">
+          <name>TIMER_ERR_NULL_POINTER</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aab26aee0588966dcfd7977f9c49d674ce" prot="public">
+          <name>TIMER_ERR_OUT_OF_MEMORY</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa7b454e9201fcc08b660b78060d55f569" prot="public">
+          <name>TIMER_ERR_ALREADY_RUNNING</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa8dc602c72b8c537031429abcd168f19d" prot="public">
+          <name>TIMER_ERR_NOT_RUNNING</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa53cdab9639a77f9d9efc9f0b426e5394" prot="public">
+          <name>TIMER_ERR_INVALID_PERIOD</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aae9a59cb9e77975570dc85343badc488b" prot="public">
+          <name>TIMER_ERR_RESOURCE_BUSY</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa210eea569375da979c8918063d0220ce" prot="public">
+          <name>TIMER_ERR_HARDWARE_FAULT</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" prot="public">
+          <name>TIMER_ERR_UNSUPPORTED_OPERATION</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa82f7733bd9acc0ee5e6c57d0ef305b43" prot="public">
+          <name>TIMER_ERR_UNKNOWN</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="66" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="66" bodyend="70"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>using hf_timestamp_us_t =  hf_u64_t</definition>
+        <argsstring></argsstring>
+        <name>hf_timestamp_us_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="28" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" prot="public" static="no">
+        <type>std::function&lt; void(void *user_data)&gt;</type>
+        <definition>using hf_timer_callback_t =  std::function&lt;void(void* user_data)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_timer_callback_t</name>
+        <briefdescription>
+<para>Timer callback function type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User-provided data passed to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="147" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="BasePeriodicTimer_8h_1a98f3bcaddfb845b86bca4bc52553d1bb" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr std::string_view</type>
+        <definition>constexpr std::string_view HfTimerErrToString</definition>
+        <argsstring>(hf_timer_err_t err) noexcept</argsstring>
+        <name>HfTimerErrToString</name>
+        <param>
+          <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+<para>Convert timer error code to string view. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>err</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error code to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String view of the error description </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="77" column="28" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="77" bodyend="87"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for periodic timer implementations in the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header-only file defines the abstract base class for periodic timer functionality that provides a consistent API across different timer implementations. Concrete implementations for various platforms inherit from this class to provide high-precision periodic callbacks, interval timing, and timer management features.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This is a header-only abstract base class following the same pattern as <ref refid="classBaseCan" kindref="compound">BaseCan</ref>. </para>
+</simplesect>
+<simplesect kind="note"><para>Users should program against this interface, not specific implementations. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_TIMESTAMP_US_T_DEFINED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="BasePeriodicTimer_8h_1a3ed884bb593dc7b15813c492111d782f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_TIMESTAMP_US_T_DEFINED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" kindref="member">hf_timestamp_us_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>HardFOC<sp/>Timer<sp/>Error<sp/>Codes<sp/>(Table)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight></codeline>
+<codeline lineno="46" refid="BasePeriodicTimer_8h_1ad2d3be6179b29cef577e3551ae164e30" refkind="member"><highlight class="preprocessor">#define<sp/>HF_TIMER_ERR_LIST(X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Success<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/>X(TIMER_SUCCESS,<sp/>0,<sp/>&quot;Success&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>General<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_FAILURE,<sp/>1,<sp/>&quot;General<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_NOT_INITIALIZED,<sp/>2,<sp/>&quot;Not<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_ALREADY_INITIALIZED,<sp/>3,<sp/>&quot;Already<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_INVALID_PARAMETER,<sp/>4,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_NULL_POINTER,<sp/>5,<sp/>&quot;Null<sp/>pointer&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_OUT_OF_MEMORY,<sp/>6,<sp/>&quot;Out<sp/>of<sp/>memory&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Timer<sp/>specific<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_ALREADY_RUNNING,<sp/>7,<sp/>&quot;Timer<sp/>already<sp/>running&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_NOT_RUNNING,<sp/>8,<sp/>&quot;Timer<sp/>not<sp/>running&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_INVALID_PERIOD,<sp/>9,<sp/>&quot;Invalid<sp/>period&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_RESOURCE_BUSY,<sp/>10,<sp/>&quot;Timer<sp/>resource<sp/>busy&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_HARDWARE_FAULT,<sp/>11,<sp/>&quot;Timer<sp/>hardware<sp/>fault&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_UNSUPPORTED_OPERATION,<sp/>12,<sp/>&quot;Unsupported<sp/>operation&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/>X(TIMER_ERR_UNKNOWN,<sp/>13,<sp/>&quot;Unknown<sp/>error&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Generate<sp/>enum<sp/>class<sp/>from<sp/>X-macro</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="67" refid="BasePeriodicTimer_8h_1afbf3f04fa35349e183adb88ae6d03874" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>desc)<sp/>name<sp/>=<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="BasePeriodicTimer_8h_1ad2d3be6179b29cef577e3551ae164e30" kindref="member">HF_TIMER_ERR_LIST</ref>(<ref refid="BasePeriodicTimer_8h_1afbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="BasePeriodicTimer_8h_1a98f3bcaddfb845b86bca4bc52553d1bb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="BasePeriodicTimer_8h_1a98f3bcaddfb845b86bca4bc52553d1bb" kindref="member">HfTimerErrToString</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/>err)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(err)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(NAME,<sp/>VALUE,<sp/>DESC)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_timer_err_t::NAME:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>DESC;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1ad2d3be6179b29cef577e3551ae164e30" kindref="member">HF_TIMER_ERR_LIST</ref>(<ref refid="BasePeriodicTimer_8h_1afbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a98f3bcaddfb845b86bca4bc52553d1bb" kindref="member">HfTimerErrToString</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa82f7733bd9acc0ee5e6c57d0ef305b43" kindref="member">hf_timer_err_t::TIMER_ERR_UNKNOWN</ref>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="structhf__timer__stats__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__timer__stats__t" kindref="compound">hf_timer_stats_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="93" refid="structhf__timer__stats__t_1ab63857c835e4c81c23062556c6ffdef8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__timer__stats__t_1ab63857c835e4c81c23062556c6ffdef8" kindref="member">start_count</ref>;</highlight></codeline>
+<codeline lineno="94" refid="structhf__timer__stats__t_1aca0212566a23961dfcc8699937286bd4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__timer__stats__t_1aca0212566a23961dfcc8699937286bd4" kindref="member">stop_count</ref>;</highlight></codeline>
+<codeline lineno="95" refid="structhf__timer__stats__t_1a977dcba9736902b37278714f0331a82e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__timer__stats__t_1a977dcba9736902b37278714f0331a82e" kindref="member">callback_count</ref>;</highlight></codeline>
+<codeline lineno="96" refid="structhf__timer__stats__t_1add75c8ed7d4a168c9eeb0cb456ed6f12" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__timer__stats__t_1add75c8ed7d4a168c9eeb0cb456ed6f12" kindref="member">missed_callbacks</ref>;</highlight></codeline>
+<codeline lineno="97" refid="structhf__timer__stats__t_1a4b2fe9fa66b6b3741e624d522a617fee" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="structhf__timer__stats__t_1a4b2fe9fa66b6b3741e624d522a617fee" kindref="member">last_error</ref>;</highlight></codeline>
+<codeline lineno="98" refid="structhf__timer__stats__t_1afabb2c1ab96803fefa546b602f1187f2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" kindref="member">hf_timestamp_us_t</ref><sp/><ref refid="structhf__timer__stats__t_1afabb2c1ab96803fefa546b602f1187f2" kindref="member">last_start_us</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="structhf__timer__stats__t_1a05633536091d34426b4381e984dc3708" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__timer__stats__t_1a05633536091d34426b4381e984dc3708" kindref="member">hf_timer_stats_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__timer__stats__t_1ab63857c835e4c81c23062556c6ffdef8" kindref="member">start_count</ref>(0),<sp/><ref refid="structhf__timer__stats__t_1aca0212566a23961dfcc8699937286bd4" kindref="member">stop_count</ref>(0),<sp/><ref refid="structhf__timer__stats__t_1a977dcba9736902b37278714f0331a82e" kindref="member">callback_count</ref>(0),<sp/><ref refid="structhf__timer__stats__t_1add75c8ed7d4a168c9eeb0cb456ed6f12" kindref="member">missed_callbacks</ref>(0),</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__timer__stats__t_1a4b2fe9fa66b6b3741e624d522a617fee" kindref="member">last_error</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref>::<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">TIMER_SUCCESS</ref>),<sp/><ref refid="structhf__timer__stats__t_1afabb2c1ab96803fefa546b602f1187f2" kindref="member">last_start_us</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="structhf__timer__statistics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="109" refid="structhf__timer__statistics__t_1a75549918f4402fa0048ecf4efb80ba26" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__statistics__t_1a75549918f4402fa0048ecf4efb80ba26" kindref="member">totalStarts</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110" refid="structhf__timer__statistics__t_1af6c9326acdf1f7ea6244b51a5f19e462" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__statistics__t_1af6c9326acdf1f7ea6244b51a5f19e462" kindref="member">totalStops</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111" refid="structhf__timer__statistics__t_1ac0f76d4e282eb54610a856b477ac1e4e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__statistics__t_1ac0f76d4e282eb54610a856b477ac1e4e" kindref="member">callbackExecutions</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112" refid="structhf__timer__statistics__t_1adaeeab0b23074d1a028e8d9ee82a3f22" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__statistics__t_1adaeeab0b23074d1a028e8d9ee82a3f22" kindref="member">missedCallbacks</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113" refid="structhf__timer__statistics__t_1ae7a4b0746242752ad4c4ca1ab284bdb4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__statistics__t_1ae7a4b0746242752ad4c4ca1ab284bdb4" kindref="member">averageCallbackTimeUs</ref>;<sp/></highlight></codeline>
+<codeline lineno="114" refid="structhf__timer__statistics__t_1a6857b6d403f1684e028e9e3b8885a91c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__statistics__t_1a6857b6d403f1684e028e9e3b8885a91c" kindref="member">maxCallbackTimeUs</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115" refid="structhf__timer__statistics__t_1a24f5535da87e13cb75d88a4df041e74c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__statistics__t_1a24f5535da87e13cb75d88a4df041e74c" kindref="member">minCallbackTimeUs</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116" refid="structhf__timer__statistics__t_1adb04a228cebc5b8972d547718c058f3b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__timer__statistics__t_1adb04a228cebc5b8972d547718c058f3b" kindref="member">totalRunningTimeUs</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="structhf__timer__statistics__t_1a7a40c804ac87f945ae71fc3f3376b77e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__timer__statistics__t_1a7a40c804ac87f945ae71fc3f3376b77e" kindref="member">hf_timer_statistics_t</ref>()</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__timer__statistics__t_1a75549918f4402fa0048ecf4efb80ba26" kindref="member">totalStarts</ref>(0),<sp/><ref refid="structhf__timer__statistics__t_1af6c9326acdf1f7ea6244b51a5f19e462" kindref="member">totalStops</ref>(0),<sp/><ref refid="structhf__timer__statistics__t_1ac0f76d4e282eb54610a856b477ac1e4e" kindref="member">callbackExecutions</ref>(0),<sp/><ref refid="structhf__timer__statistics__t_1adaeeab0b23074d1a028e8d9ee82a3f22" kindref="member">missedCallbacks</ref>(0),</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__timer__statistics__t_1ae7a4b0746242752ad4c4ca1ab284bdb4" kindref="member">averageCallbackTimeUs</ref>(0),<sp/><ref refid="structhf__timer__statistics__t_1a6857b6d403f1684e028e9e3b8885a91c" kindref="member">maxCallbackTimeUs</ref>(0),<sp/><ref refid="structhf__timer__statistics__t_1a24f5535da87e13cb75d88a4df041e74c" kindref="member">minCallbackTimeUs</ref>(UINT32_MAX),</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__timer__statistics__t_1adb04a228cebc5b8972d547718c058f3b" kindref="member">totalRunningTimeUs</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="structhf__timer__diagnostics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="128" refid="structhf__timer__diagnostics__t_1a5309ee8b30dd52ab54bd053909a79d23" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__timer__diagnostics__t_1a5309ee8b30dd52ab54bd053909a79d23" kindref="member">timerHealthy</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129" refid="structhf__timer__diagnostics__t_1a3cddd59f390b2ce4c6651c821693d76b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="structhf__timer__diagnostics__t_1a3cddd59f390b2ce4c6651c821693d76b" kindref="member">lastErrorCode</ref>;<sp/></highlight></codeline>
+<codeline lineno="130" refid="structhf__timer__diagnostics__t_1a7d8075e963afc9bb0f00f1f97f9a56ee" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__diagnostics__t_1a7d8075e963afc9bb0f00f1f97f9a56ee" kindref="member">lastErrorTimestamp</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="131" refid="structhf__timer__diagnostics__t_1a71d6acafd35309317cdb8fa68dac049a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__timer__diagnostics__t_1a71d6acafd35309317cdb8fa68dac049a" kindref="member">consecutiveErrors</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132" refid="structhf__timer__diagnostics__t_1abec955777b1c934cc318d4377e7d6723" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__timer__diagnostics__t_1abec955777b1c934cc318d4377e7d6723" kindref="member">timerInitialized</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="133" refid="structhf__timer__diagnostics__t_1a5e119828443d8eb7936c24f15c39c0ae" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__timer__diagnostics__t_1a5e119828443d8eb7936c24f15c39c0ae" kindref="member">timerRunning</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134" refid="structhf__timer__diagnostics__t_1a2f8a53fbc30fdd0dbb932bc99fe68e2f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__timer__diagnostics__t_1a2f8a53fbc30fdd0dbb932bc99fe68e2f" kindref="member">currentPeriodUs</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="135" refid="structhf__timer__diagnostics__t_1adb7974f41a1c4b06a2f261e7d374281c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__timer__diagnostics__t_1adb7974f41a1c4b06a2f261e7d374281c" kindref="member">timerResolutionUs</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="structhf__timer__diagnostics__t_1a09a01a913ff1d0fe233c6f703dc280e3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__timer__diagnostics__t_1a09a01a913ff1d0fe233c6f703dc280e3" kindref="member">hf_timer_diagnostics_t</ref>()</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__timer__diagnostics__t_1a5309ee8b30dd52ab54bd053909a79d23" kindref="member">timerHealthy</ref>(true),<sp/><ref refid="structhf__timer__diagnostics__t_1a3cddd59f390b2ce4c6651c821693d76b" kindref="member">lastErrorCode</ref>(<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref>::<ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">TIMER_SUCCESS</ref>),<sp/><ref refid="structhf__timer__diagnostics__t_1a7d8075e963afc9bb0f00f1f97f9a56ee" kindref="member">lastErrorTimestamp</ref>(0),</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__timer__diagnostics__t_1a71d6acafd35309317cdb8fa68dac049a" kindref="member">consecutiveErrors</ref>(0),<sp/><ref refid="structhf__timer__diagnostics__t_1abec955777b1c934cc318d4377e7d6723" kindref="member">timerInitialized</ref>(false),<sp/><ref refid="structhf__timer__diagnostics__t_1a5e119828443d8eb7936c24f15c39c0ae" kindref="member">timerRunning</ref>(false),<sp/><ref refid="structhf__timer__diagnostics__t_1a2f8a53fbc30fdd0dbb932bc99fe68e2f" kindref="member">currentPeriodUs</ref>(0),</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__timer__diagnostics__t_1adb7974f41a1c4b06a2f261e7d374281c" kindref="member">timerResolutionUs</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref><sp/>=<sp/>std::function&lt;void(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)&gt;;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="classBasePeriodicTimer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref><sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="174" refid="classBasePeriodicTimer_1abee693abb22864122f36aff2f8d1c6ee" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1abee693abb22864122f36aff2f8d1c6ee" kindref="member">~BasePeriodicTimer</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>copy<sp/>constructor<sp/>and<sp/>assignment<sp/>operator<sp/>for<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="classBasePeriodicTimer_1abe11f2c94d12cf1d658104f1280aa486" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref>(const<sp/><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="178" refid="classBasePeriodicTimer_1a31392093e5d8a40c22f8b6a7b2507c4c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref>&amp;<sp/>operator=(const<sp/><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PURE<sp/>VIRTUAL<sp/>FUNCTIONS<sp/>(MUST<sp/>BE<sp/>IMPLEMENTED)<sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="classBasePeriodicTimer_1ab5e9c79c29dd4b5b0c581b3124c09907" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1ab5e9c79c29dd4b5b0c581b3124c09907" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="classBasePeriodicTimer_1a832aec2c7b29459d585be24c2478857f" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a832aec2c7b29459d585be24c2478857f" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="classBasePeriodicTimer_1aedbfbbb79b85464d9c311bc7b42ba4a9" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1aedbfbbb79b85464d9c311bc7b42ba4a9" kindref="member">Start</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="classBasePeriodicTimer_1a614629ba36264694b66baffe7e72ab08" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a614629ba36264694b66baffe7e72ab08" kindref="member">Stop</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="classBasePeriodicTimer_1a22c103ed4866bb4f45eef55d77730a09" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a22c103ed4866bb4f45eef55d77730a09" kindref="member">SetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="classBasePeriodicTimer_1a64307da70204c07096177c722c0aba41" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a64307da70204c07096177c722c0aba41" kindref="member">GetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>period_us)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="classBasePeriodicTimer_1a98d76a272ec805a75ec2c1cc9ab885fd" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a98d76a272ec805a75ec2c1cc9ab885fd" kindref="member">GetStats</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>callback_count,<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>missed_callbacks,</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref>&amp;<sp/>last_error)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237" refid="classBasePeriodicTimer_1a6d418e90936077bd309b714cb4d646ad" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a6d418e90936077bd309b714cb4d646ad" kindref="member">ResetStats</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PUBLIC<sp/>INTERFACE<sp/>(IMPLEMENTED)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" kindref="member">IsRunning</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" kindref="member">running_</ref>;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263" refid="classBasePeriodicTimer_1ae9bdfcba0669d72ec6e8ebac8bcf7042" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classBasePeriodicTimer_1ae9bdfcba0669d72ec6e8ebac8bcf7042" kindref="member">GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="classBasePeriodicTimer_1ab2bb6001034bca26edddca31e314b233" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classBasePeriodicTimer_1ab2bb6001034bca26edddca31e314b233" kindref="member">GetMaxPeriod</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275" refid="classBasePeriodicTimer_1aec24a991610deca51f4623b5704ab8b3" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classBasePeriodicTimer_1aec24a991610deca51f4623b5704ab8b3" kindref="member">GetMinPeriod</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281" refid="classBasePeriodicTimer_1a4a55df2dbb3c7076fef5e413d9fd9ad4" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classBasePeriodicTimer_1a4a55df2dbb3c7076fef5e413d9fd9ad4" kindref="member">GetResolution</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289" refid="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" kindref="member">SetCallback</ref>(<ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" kindref="member">IsRunning</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa7b454e9201fcc08b660b78060d55f569" kindref="member">hf_timer_err_t::TIMER_ERR_ALREADY_RUNNING</ref>;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" kindref="member">callback_</ref><sp/>=<sp/>callback;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" kindref="member">user_data_</ref><sp/>=<sp/>user_data;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="classBasePeriodicTimer_1a9490ab374ff3044157d97ecb1ae40760" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classBasePeriodicTimer_1a9490ab374ff3044157d97ecb1ae40760" kindref="member">GetUserData</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" kindref="member">user_data_</ref>;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATISTICS<sp/>AND<sp/>DIAGNOSTICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="classBasePeriodicTimer_1acc1e7406989db6b2728038a465967162" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1acc1e7406989db6b2728038a465967162" kindref="member">ResetStatistics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" kindref="member">statistics_</ref><sp/>=<sp/><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" kindref="member">hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="classBasePeriodicTimer_1aa284ad4ee8f3bde5d0e71ce1b0004d02" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1aa284ad4ee8f3bde5d0e71ce1b0004d02" kindref="member">ResetDiagnostics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" kindref="member">diagnostics_</ref><sp/>=<sp/><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>diagnostics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" kindref="member">hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335" refid="classBasePeriodicTimer_1a04e87d17d4909a0bae0547bd9d2ca3f9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a04e87d17d4909a0bae0547bd9d2ca3f9" kindref="member">GetStatistics</ref>(<ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>statistics<sp/>=<sp/><ref refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" kindref="member">statistics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>statistics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" kindref="member">hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="classBasePeriodicTimer_1a47bb724f0a6d31877aeca1c5afb053c7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classBasePeriodicTimer_1a47bb724f0a6d31877aeca1c5afb053c7" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics<sp/>=<sp/><ref refid="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" kindref="member">diagnostics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>diagnostics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" kindref="member">hf_timer_err_t::TIMER_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="356" refid="classBasePeriodicTimer_1a251ae7cf73c7718069a2f1f9abb64311" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a251ae7cf73c7718069a2f1f9abb64311" kindref="member">BasePeriodicTimer</ref>(<ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>noexcept</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" kindref="member">callback_</ref>(callback),<sp/><ref refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" kindref="member">user_data_</ref>(user_data),<sp/><ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref>(false),<sp/><ref refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" kindref="member">running_</ref>(false),</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" kindref="member">statistics_</ref>{},<sp/><ref refid="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" kindref="member">diagnostics_</ref>{}<sp/>{}</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364" refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" kindref="member">SetInitialized</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>initialized)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref><sp/>=<sp/>initialized;</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372" refid="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" kindref="member">SetRunning</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>running)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" kindref="member">running_</ref><sp/>=<sp/>running;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379" refid="classBasePeriodicTimer_1aae4a0926e98fdb58b4930ff91c479a2b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1aae4a0926e98fdb58b4930ff91c479a2b" kindref="member">ExecuteCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" kindref="member">callback_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" kindref="member">callback_</ref>(<ref refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" kindref="member">user_data_</ref>);</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389" refid="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" kindref="member">HasValidCallback</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" kindref="member">callback_</ref>);</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393" refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref><sp/><ref refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" kindref="member">callback_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="394" refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" kindref="member">user_data_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="395" refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="396" refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" kindref="member">running_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="397" refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref><sp/><ref refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" kindref="member">statistics_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="398" refid="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref><sp/><ref refid="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" kindref="member">diagnostics_</ref>;<sp/></highlight></codeline>
+<codeline lineno="399"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BasePeriodicTimer.h"/>
+  </compounddef>
+</doxygen>

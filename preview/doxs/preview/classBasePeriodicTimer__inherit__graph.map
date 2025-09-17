@@ -1,0 +1,5 @@
+<map id="BasePeriodicTimer" name="BasePeriodicTimer">
+<area shape="rect" id="Node000001" title="Abstract base class for periodic timer operations." alt="" coords="5,5,180,36"/>
+<area shape="rect" id="Node000002" href="$classEspPeriodicTimer.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="10,84,175,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,50,95,84,90,84,90,50"/>
+</map>

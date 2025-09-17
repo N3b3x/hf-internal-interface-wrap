@@ -1,0 +1,1007 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBasePio" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BasePio</compoundname>
+    <derivedcompoundref refid="classEspPio" prot="public" virt="non-virtual">EspPio</derivedcompoundref>
+    <includes refid="BasePio_8h" local="no">BasePio.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBasePio_1a97f8f0ca82c03070321d7f85a1fb52a4" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BasePio::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BasePio::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization state tracking. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="513" column="8" bodyfile="inc/base/BasePio.h" bodystart="513" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePio_1a4391997ece89f854a236dbe006748369" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__pio__statistics__t" kindref="compound">hf_pio_statistics_t</ref></type>
+        <definition>hf_pio_statistics_t BasePio::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BasePio::statistics_</qualifiedname>
+        <briefdescription>
+<para>PIO operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="514" column="23" bodyfile="inc/base/BasePio.h" bodystart="514" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePio_1a406b6488d939e7253a014910f7f152c0" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__pio__diagnostics__t" kindref="compound">hf_pio_diagnostics_t</ref></type>
+        <definition>hf_pio_diagnostics_t BasePio::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BasePio::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>PIO diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="515" column="24" bodyfile="inc/base/BasePio.h" bodystart="515" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBasePio_1a81ed01134b7a35294779050ef94ed204" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BasePio::~BasePio</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BasePio</name>
+        <qualifiedname>BasePio::~BasePio</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="299" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a9d3dfc822fc2be86f8184af210aa6703" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BasePio::BasePio</definition>
+        <argsstring>(const BasePio &amp;)=delete</argsstring>
+        <name>BasePio</name>
+        <qualifiedname>BasePio::BasePio</qualifiedname>
+        <param>
+          <type>const <ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="302" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1aefb1a462906e0cc9b444d453391b0134" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;</type>
+        <definition>BasePio &amp; BasePio::operator=</definition>
+        <argsstring>(const BasePio &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BasePio::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="303" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1abae3c0afca5d357c8d481c97b27d38f4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BasePio::BasePio</definition>
+        <argsstring>(BasePio &amp;&amp;) noexcept=default</argsstring>
+        <name>BasePio</name>
+        <qualifiedname>BasePio::BasePio</qualifiedname>
+        <param>
+          <type><ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="306" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a61cc18335b235d0c6f0b69642a783435" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;</type>
+        <definition>BasePio &amp; BasePio::operator=</definition>
+        <argsstring>(BasePio &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BasePio::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBasePio" kindref="compound">BasePio</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="307" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1ad8be51bcf2ec90f5ed1e78759d4604b4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BasePio::Initialize</qualifiedname>
+        <reimplementedby refid="classEspPio_1a548c78074900963154c241557be714f4">Initialize</reimplementedby>
+        <briefdescription>
+<para>Initialize the PIO peripheral. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="317" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1aa7c07341b42d499b73cf2285cc965cb9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BasePio::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspPio_1aea1fbac9dab51ce76924462ebc5dba9f">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the PIO peripheral. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="323" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1aa8c8aea41f16846d52410e3a0ade354e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePio::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BasePio::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Check if the PIO is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="329" column="9" bodyfile="inc/base/BasePio.h" bodystart="329" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a28949d17756d23eb8fdaf1bd437b7b4b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePio::EnsureInitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BasePio::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the PIO is initialized (lazy initialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the PIO is initialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="337" column="8" bodyfile="inc/base/BasePio.h" bodystart="337" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a53a078ae16674075bcd7ed8355227b96" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePio::EnsureDeinitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BasePio::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the PIO is deinitialized (lazy deinitialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the PIO is deinitialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="348" column="8" bodyfile="inc/base/BasePio.h" bodystart="348" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a1df2eedf08baddd6b49309e6bcd18153" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::ConfigureChannel</definition>
+        <argsstring>(hf_u8_t channel_id, const hf_pio_channel_config_t &amp;config) noexcept=0</argsstring>
+        <name>ConfigureChannel</name>
+        <qualifiedname>BasePio::ConfigureChannel</qualifiedname>
+        <reimplementedby refid="classEspPio_1ab47d5c83365810530384b0c40b70e00a">ConfigureChannel</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configure a PIO channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="362" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a06f76799267d04b7f55f2c525256387e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::Transmit</definition>
+        <argsstring>(hf_u8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count, bool wait_completion=false) noexcept=0</argsstring>
+        <name>Transmit</name>
+        <qualifiedname>BasePio::Transmit</qualifiedname>
+        <reimplementedby refid="classEspPio_1a1c50e6baeb6ca6934d4893b3bb3c62f5">Transmit</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <declname>symbols</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>symbol_count</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait_completion</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Transmit a sequence of symbols. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of symbols to transmit </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbol_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of symbols in the array </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait_completion</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, block until transmission is complete </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="373" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a29e9cb9272c91f47f805cf4b75bb8f6d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::StartReceive</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size, hf_u32_t timeout_us=0) noexcept=0</argsstring>
+        <name>StartReceive</name>
+        <qualifiedname>BasePio::StartReceive</qualifiedname>
+        <reimplementedby refid="classEspPio_1a22647a7f9153379ea2225d6456298a0b">StartReceive</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_us</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Start receiving symbols. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store received symbols </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in microseconds (0 = no timeout) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="384" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a513502066c764271e131a3fa78648869" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::StopReceive</definition>
+        <argsstring>(hf_u8_t channel_id, size_t &amp;symbols_received) noexcept=0</argsstring>
+        <name>StopReceive</name>
+        <qualifiedname>BasePio::StopReceive</qualifiedname>
+        <reimplementedby refid="classEspPio_1afd21f639f1bee483981e76e6d2618d18">StopReceive</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>symbols_received</declname>
+        </param>
+        <briefdescription>
+<para>Stop receiving and get the number of symbols received. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbols_received</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Number of symbols actually received </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="393" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a6f55697fbe482663cd9690f6570f5e26" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BasePio::IsChannelBusy</definition>
+        <argsstring>(hf_u8_t channel_id) const noexcept=0</argsstring>
+        <name>IsChannelBusy</name>
+        <qualifiedname>BasePio::IsChannelBusy</qualifiedname>
+        <reimplementedby refid="classEspPio_1a9763ed6befd9ce2928a9710116f4d84d">IsChannelBusy</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Check if a channel is currently busy. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if channel is busy, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="400" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a9607dd3ef0e3e2025e240153a4827cd9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::GetChannelStatus</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_channel_status_t &amp;status) const noexcept=0</argsstring>
+        <name>GetChannelStatus</name>
+        <qualifiedname>BasePio::GetChannelStatus</qualifiedname>
+        <reimplementedby refid="classEspPio_1ac5d85469fb40223718d0a4b9d3fe13de">GetChannelStatus</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__channel__status__t" kindref="compound">hf_pio_channel_status_t</ref> &amp;</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Get channel status information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Status information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="408" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1ac20329f4cdc491c89e5b27d1fd806994" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::GetCapabilities</definition>
+        <argsstring>(hf_pio_capabilities_t &amp;capabilities) const noexcept=0</argsstring>
+        <name>GetCapabilities</name>
+        <qualifiedname>BasePio::GetCapabilities</qualifiedname>
+        <reimplementedby refid="classEspPio_1aebeafb537cc85f4b715b93a70982e5d9">GetCapabilities</reimplementedby>
+        <param>
+          <type><ref refid="structhf__pio__capabilities__t" kindref="compound">hf_pio_capabilities_t</ref> &amp;</type>
+          <declname>capabilities</declname>
+        </param>
+        <briefdescription>
+<para>Get PIO capabilities. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>capabilities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Capability information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="416" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1ac0c06541482ba77801e174c3be82a0ce" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void BasePio::SetTransmitCallback</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_transmit_callback_t callback, void *user_data=nullptr) noexcept=0</argsstring>
+        <name>SetTransmitCallback</name>
+        <qualifiedname>BasePio::SetTransmitCallback</qualifiedname>
+        <reimplementedby refid="classEspPio_1ac24f012073be0c9e406724cadd1c9788">SetTransmitCallback</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePio_8h_1ab8c62aa676888a6756a3ea726b24d64c" kindref="member">hf_pio_transmit_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set callback for transmission complete events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data to pass to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="424" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1ab5ed24fe603fab13d06265849e0dcab7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void BasePio::SetReceiveCallback</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_receive_callback_t callback, void *user_data=nullptr) noexcept=0</argsstring>
+        <name>SetReceiveCallback</name>
+        <qualifiedname>BasePio::SetReceiveCallback</qualifiedname>
+        <reimplementedby refid="classEspPio_1a80cc3f6b0def51b6d46dfb15d9ab4d95">SetReceiveCallback</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePio_8h_1a8e55d16268bbfd30ee876df3ee4561ed" kindref="member">hf_pio_receive_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set callback for reception complete events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data to pass to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="433" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1aa01d1974a8f2a1c36648bb7aa78632de" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void BasePio::SetErrorCallback</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_error_callback_t callback, void *user_data=nullptr) noexcept=0</argsstring>
+        <name>SetErrorCallback</name>
+        <qualifiedname>BasePio::SetErrorCallback</qualifiedname>
+        <reimplementedby refid="classEspPio_1a5c5371ff00a9b3f4c8f753907d8a40ff">SetErrorCallback</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePio_8h_1a03aa7b5372a89dbdf0770488fbb6f824" kindref="member">hf_pio_error_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set callback for error events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data to pass to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="442" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1ad84894a15fb747be88dbfde1c11d80d8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void BasePio::ClearChannelCallbacks</definition>
+        <argsstring>(hf_u8_t channel_id) noexcept=0</argsstring>
+        <name>ClearChannelCallbacks</name>
+        <qualifiedname>BasePio::ClearChannelCallbacks</qualifiedname>
+        <reimplementedby refid="classEspPio_1a07ad6ee8046e03dc6f224d5b219c392f">ClearChannelCallbacks</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Clear all callbacks for a specific channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="449" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a3bf2d029ab95172e27366fee39b03ca6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void BasePio::ClearCallbacks</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>ClearCallbacks</name>
+        <qualifiedname>BasePio::ClearCallbacks</qualifiedname>
+        <reimplementedby refid="classEspPio_1a6bfe58b6673ae3aa9d1cd0f54ebb6901">ClearCallbacks</reimplementedby>
+        <briefdescription>
+<para>Clear all callbacks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="454" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1abb16fcb7c34065f552eefebd0eb7d99a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BasePio::ResetStatistics</qualifiedname>
+        <briefdescription>
+<para>Reset PIO operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48ea60bac135720fbca0f9b2eec92f20495b" kindref="member">hf_pio_err_t::PIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="465" column="24" bodyfile="inc/base/BasePio.h" bodystart="465" bodyend="468"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a8d13978e9ffdc3a25ba1021e636d657f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BasePio::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset PIO diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48ea60bac135720fbca0f9b2eec92f20495b" kindref="member">hf_pio_err_t::PIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="475" column="24" bodyfile="inc/base/BasePio.h" bodystart="475" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1ac53da4015db8c7d6fe7acc637e11fb9c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::GetStatistics</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_statistics_t &amp;statistics) const noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BasePio::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspPio_1aa8c961670e551b3a959aa819f09a1460">GetStatistics</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__statistics__t" kindref="compound">hf_pio_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get PIO operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store statistics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48ea60bac135720fbca0f9b2eec92f20495b" kindref="member">hf_pio_err_t::PIO_SUCCESS</ref> if successful, PIO_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="486" column="24" bodyfile="inc/base/BasePio.h" bodystart="486" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePio_1a3f274406655b98208ad47977f7ffa152" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>virtual hf_pio_err_t BasePio::GetDiagnostics</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_diagnostics_t &amp;diagnostics) const noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BasePio::GetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspPio_1a54071f5511944e0a0be19052e421749f">GetDiagnostics</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__diagnostics__t" kindref="compound">hf_pio_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get PIO diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store diagnostics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48ea60bac135720fbca0f9b2eec92f20495b" kindref="member">hf_pio_err_t::PIO_SUCCESS</ref> if successful, PIO_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="498" column="24" bodyfile="inc/base/BasePio.h" bodystart="498" bodyend="502"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBasePio_1ad904e700f0e2693fbbe9b59bed2d3d7a" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BasePio::BasePio</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>BasePio</name>
+        <qualifiedname>BasePio::BasePio</qualifiedname>
+        <briefdescription>
+<para>Protected constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="508" column="3" bodyfile="inc/base/BasePio.h" bodystart="508" bodyend="508"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for Programmable IO Channel implementations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class defines the interface for precise, buffered digital signal I/O that can handle timing-critical operations like WS2812 LED driving, IR communication, stepper motor control, and custom protocols.</para>
+<para>The abstraction is designed to work with various hardware backends:<itemizedlist>
+<listitem><para>Dedicated peripherals (e.g. RMT or PIO engines)</para>
+</listitem><listitem><para>Timer + DMA + GPIO combinations</para>
+</listitem><listitem><para>Fully software-based implementations</para>
+</listitem></itemizedlist>
+</para>
+<para>Key features:<itemizedlist>
+<listitem><para>Precise timing control down to nanosecond resolution</para>
+</listitem><listitem><para>Buffered symbol transmission and reception</para>
+</listitem><listitem><para>Asynchronous operation with callbacks</para>
+</listitem><listitem><para>Platform-agnostic interface</para>
+</listitem><listitem><para>Support for complex waveform generation and decoding </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BasePio</label>
+        <link refid="classBasePio"/>
+      </node>
+      <node id="2">
+        <label>EspPio</label>
+        <link refid="classEspPio"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BasePio</label>
+        <link refid="classBasePio"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_pio_diagnostics_t</label>
+        <link refid="structhf__pio__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_pio_statistics_t</label>
+        <link refid="structhf__pio__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BasePio.h" line="294" column="1" bodyfile="inc/base/BasePio.h" bodystart="294" bodyend="516"/>
+    <listofallmembers>
+      <member refid="classBasePio_1a9d3dfc822fc2be86f8184af210aa6703" prot="public" virt="non-virtual"><scope>BasePio</scope><name>BasePio</name></member>
+      <member refid="classBasePio_1abae3c0afca5d357c8d481c97b27d38f4" prot="public" virt="non-virtual"><scope>BasePio</scope><name>BasePio</name></member>
+      <member refid="classBasePio_1ad904e700f0e2693fbbe9b59bed2d3d7a" prot="protected" virt="non-virtual"><scope>BasePio</scope><name>BasePio</name></member>
+      <member refid="classBasePio_1a3bf2d029ab95172e27366fee39b03ca6" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>ClearCallbacks</name></member>
+      <member refid="classBasePio_1ad84894a15fb747be88dbfde1c11d80d8" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>ClearChannelCallbacks</name></member>
+      <member refid="classBasePio_1a1df2eedf08baddd6b49309e6bcd18153" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>ConfigureChannel</name></member>
+      <member refid="classBasePio_1aa7c07341b42d499b73cf2285cc965cb9" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>Deinitialize</name></member>
+      <member refid="classBasePio_1a406b6488d939e7253a014910f7f152c0" prot="protected" virt="non-virtual"><scope>BasePio</scope><name>diagnostics_</name></member>
+      <member refid="classBasePio_1a53a078ae16674075bcd7ed8355227b96" prot="public" virt="non-virtual"><scope>BasePio</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBasePio_1a28949d17756d23eb8fdaf1bd437b7b4b" prot="public" virt="non-virtual"><scope>BasePio</scope><name>EnsureInitialized</name></member>
+      <member refid="classBasePio_1ac20329f4cdc491c89e5b27d1fd806994" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>GetCapabilities</name></member>
+      <member refid="classBasePio_1a9607dd3ef0e3e2025e240153a4827cd9" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>GetChannelStatus</name></member>
+      <member refid="classBasePio_1a3f274406655b98208ad47977f7ffa152" prot="public" virt="virtual"><scope>BasePio</scope><name>GetDiagnostics</name></member>
+      <member refid="classBasePio_1ac53da4015db8c7d6fe7acc637e11fb9c" prot="public" virt="virtual"><scope>BasePio</scope><name>GetStatistics</name></member>
+      <member refid="classBasePio_1ad8be51bcf2ec90f5ed1e78759d4604b4" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>Initialize</name></member>
+      <member refid="classBasePio_1a97f8f0ca82c03070321d7f85a1fb52a4" prot="protected" virt="non-virtual"><scope>BasePio</scope><name>initialized_</name></member>
+      <member refid="classBasePio_1a6f55697fbe482663cd9690f6570f5e26" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>IsChannelBusy</name></member>
+      <member refid="classBasePio_1aa8c8aea41f16846d52410e3a0ade354e" prot="public" virt="non-virtual"><scope>BasePio</scope><name>IsInitialized</name></member>
+      <member refid="classBasePio_1aefb1a462906e0cc9b444d453391b0134" prot="public" virt="non-virtual"><scope>BasePio</scope><name>operator=</name></member>
+      <member refid="classBasePio_1a61cc18335b235d0c6f0b69642a783435" prot="public" virt="non-virtual"><scope>BasePio</scope><name>operator=</name></member>
+      <member refid="classBasePio_1a8d13978e9ffdc3a25ba1021e636d657f" prot="public" virt="virtual"><scope>BasePio</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBasePio_1abb16fcb7c34065f552eefebd0eb7d99a" prot="public" virt="virtual"><scope>BasePio</scope><name>ResetStatistics</name></member>
+      <member refid="classBasePio_1aa01d1974a8f2a1c36648bb7aa78632de" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>SetErrorCallback</name></member>
+      <member refid="classBasePio_1ab5ed24fe603fab13d06265849e0dcab7" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>SetReceiveCallback</name></member>
+      <member refid="classBasePio_1ac0c06541482ba77801e174c3be82a0ce" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>SetTransmitCallback</name></member>
+      <member refid="classBasePio_1a29e9cb9272c91f47f805cf4b75bb8f6d" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>StartReceive</name></member>
+      <member refid="classBasePio_1a4391997ece89f854a236dbe006748369" prot="protected" virt="non-virtual"><scope>BasePio</scope><name>statistics_</name></member>
+      <member refid="classBasePio_1a513502066c764271e131a3fa78648869" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>StopReceive</name></member>
+      <member refid="classBasePio_1a06f76799267d04b7f55f2c525256387e" prot="public" virt="pure-virtual"><scope>BasePio</scope><name>Transmit</name></member>
+      <member refid="classBasePio_1a81ed01134b7a35294779050ef94ed204" prot="public" virt="virtual"><scope>BasePio</scope><name>~BasePio</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

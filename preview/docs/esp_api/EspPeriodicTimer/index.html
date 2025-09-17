@@ -1,0 +1,1257 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(12)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(12) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(12) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(12) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/preview/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/preview/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>⏰ EspPeriodicTimer | HardFOC Interface Wrapper - preview</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="⏰ EspPeriodicTimer" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="ESP32-C6 PeriodicTimer implementation with microsecond precision and hardware timers" />
+<meta property="og:description" content="ESP32-C6 PeriodicTimer implementation with microsecond precision and hardware timers" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - preview" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="⏰ EspPeriodicTimer" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"ESP32-C6 PeriodicTimer implementation with microsecond precision and hardware timers","headline":"⏰ EspPeriodicTimer","url":"https://n3b3x.github.io/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/preview/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/preview/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - preview
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/">🔧 ESP32 Implementations</a></li>
+    <li class="breadcrumb-nav-list-item"><span>⏰ EspPeriodicTimer</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="espperiodictimer-api-reference">
+  
+  
+    <a href="#espperiodictimer-api-reference" class="anchor-heading" aria-labelledby="espperiodictimer-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> EspPeriodicTimer API Reference
+  
+  
+</h1>
+    
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p><code class="language-plaintext highlighter-rouge">EspPeriodicTimer</code> is the ESP32-C6 implementation of the <code class="language-plaintext highlighter-rouge">BasePeriodicTimer</code> interface,
+providing comprehensive periodic timer functionality specifically optimized for ESP32-C6
+microcontrollers running ESP-IDF v5.5+.
+It offers both basic and advanced timer features with hardware-specific optimizations.</p>
+<h2 id="features">
+  
+  
+    <a href="#features" class="anchor-heading" aria-labelledby="features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>ESP32-C6 Timer</strong> - Full support for ESP32-C6 timer capabilities</li>
+  <li><strong>High Precision</strong> - Microsecond-level precision</li>
+  <li><strong>Multiple Timers</strong> - Support for multiple independent timers</li>
+  <li><strong>Interrupt Support</strong> - Configurable interrupt handling</li>
+  <li><strong>Power Management</strong> - Deep sleep compatibility</li>
+  <li><strong>Callback Support</strong> - User-defined callback functions</li>
+  <li><strong>Performance Optimized</strong> - Hardware-accelerated operations</li>
+</ul>
+<h2 id="header-file">
+  
+  
+    <a href="#header-file" class="anchor-heading" aria-labelledby="header-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Header File
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/mcu/esp32/EspPeriodicTimer.h"</span><span class="cp">
+</span></pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="class-definition">
+  
+  
+    <a href="#class-definition" class="anchor-heading" aria-labelledby="class-definition"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Class Definition
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">EspPeriodicTimer</span> <span class="o">:</span> <span class="k">public</span> <span class="n">BasePeriodicTimer</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="c1">// Constructor with full configuration</span>
+    <span class="k">explicit</span> <span class="n">EspPeriodicTimer</span><span class="p">(</span>
+        <span class="n">hf_timer_group_t</span> <span class="n">group</span> <span class="o">=</span> <span class="n">hf_timer_group_t</span><span class="o">::</span><span class="n">HF_TIMER_GROUP_0</span><span class="p">,</span>
+        <span class="n">hf_timer_t</span> <span class="n">timer</span> <span class="o">=</span> <span class="n">hf_timer_t</span><span class="o">::</span><span class="n">HF_TIMER_0</span><span class="p">,</span>
+        <span class="n">hf_timer_scale_t</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">hf_timer_scale_t</span><span class="o">::</span><span class="n">HF_TIMER_SCALE_MS</span><span class="p">,</span>
+        <span class="kt">bool</span> <span class="n">auto_reload</span> <span class="o">=</span> <span class="nb">true</span>
+    <span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="c1">// Destructor</span>
+    <span class="o">~</span><span class="n">EspPeriodicTimer</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="c1">// BasePeriodicTimer implementation</span>
+    <span class="kt">bool</span> <span class="n">Initialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">Deinitialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">GetDescription</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="c1">// Timer operations</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">Start</span><span class="p">(</span><span class="n">hf_timer_period_t</span> <span class="n">period</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">Stop</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">IsRunning</span><span class="p">(</span><span class="kt">bool</span><span class="o">*</span> <span class="n">running</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">SetPeriod</span><span class="p">(</span><span class="n">hf_timer_period_t</span> <span class="n">period</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">GetPeriod</span><span class="p">(</span><span class="n">hf_timer_period_t</span><span class="o">*</span> <span class="n">period</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">GetCount</span><span class="p">(</span><span class="n">hf_timer_count_t</span><span class="o">*</span> <span class="n">count</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">Reset</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="c1">// Advanced features</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">SetCallback</span><span class="p">(</span><span class="n">hf_timer_callback_t</span> <span class="n">callback</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">ClearCallback</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">SetScale</span><span class="p">(</span><span class="n">hf_timer_scale_t</span> <span class="n">scale</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">GetScale</span><span class="p">(</span><span class="n">hf_timer_scale_t</span><span class="o">*</span> <span class="n">scale</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">SetAutoReload</span><span class="p">(</span><span class="kt">bool</span> <span class="n">auto_reload</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">GetAutoReload</span><span class="p">(</span><span class="kt">bool</span><span class="o">*</span> <span class="n">auto_reload</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="usage-examples">
+  
+  
+    <a href="#usage-examples" class="anchor-heading" aria-labelledby="usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Usage Examples
+  
+  
+</h2>
+    
+<h3 id="basic-timer-usage">
+  
+  
+    <a href="#basic-timer-usage" class="anchor-heading" aria-labelledby="basic-timer-usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic Timer Usage
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/mcu/esp32/EspPeriodicTimer.h"</span><span class="cp">
+</span>
+<span class="c1">// Create timer instance</span>
+<span class="n">EspPeriodicTimer</span> <span class="nf">timer</span><span class="p">(</span><span class="n">HF_TIMER_GROUP_0</span><span class="p">,</span> <span class="n">HF_TIMER_0</span><span class="p">,</span> <span class="n">HF_TIMER_SCALE_MS</span><span class="p">);</span>
+
+<span class="c1">// Initialize</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">timer</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to initialize timer</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Start timer with 1 second period</span>
+<span class="n">hf_timer_err_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// 1000ms = 1 second</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to start timer: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Check if timer is running</span>
+<span class="kt">bool</span> <span class="n">running</span><span class="p">;</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">IsRunning</span><span class="p">(</span><span class="o">&amp;</span><span class="n">running</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">==</span> <span class="n">HF_TIMER_ERR_OK</span> <span class="o">&amp;&amp;</span> <span class="n">running</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Timer is running</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Stop timer</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">==</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Timer stopped</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="timer-with-callback">
+  
+  
+    <a href="#timer-with-callback" class="anchor-heading" aria-labelledby="timer-with-callback"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Timer with Callback
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre><span class="c1">// Timer callback function</span>
+<span class="kt">void</span> <span class="nf">timer_callback</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">count</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Timer callback called %d times</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+    
+    <span class="c1">// Access user data if needed</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span><span class="o">*</span> <span class="n">data</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">user_data</span><span class="p">);</span>
+        <span class="p">(</span><span class="o">*</span><span class="n">data</span><span class="p">)</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Create timer with callback</span>
+<span class="kt">int</span> <span class="n">callback_data</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">EspPeriodicTimer</span> <span class="n">timer</span><span class="p">(</span><span class="n">HF_TIMER_GROUP_0</span><span class="p">,</span> <span class="n">HF_TIMER_0</span><span class="p">,</span> <span class="n">HF_TIMER_SCALE_MS</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">timer</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to initialize timer</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Set callback</span>
+<span class="n">hf_timer_err_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">(</span><span class="n">timer_callback</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">callback_data</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to set callback: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Start timer with 500ms period</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to start timer: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Let timer run for a while</span>
+<span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">5000</span><span class="p">));</span> <span class="c1">// 5 seconds</span>
+
+<span class="c1">// Stop timer</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"Callback data: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">callback_data</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="multiple-timers">
+  
+  
+    <a href="#multiple-timers" class="anchor-heading" aria-labelledby="multiple-timers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Multiple Timers
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre><span class="c1">// Create multiple timers</span>
+<span class="n">EspPeriodicTimer</span> <span class="nf">timer1</span><span class="p">(</span><span class="n">HF_TIMER_GROUP_0</span><span class="p">,</span> <span class="n">HF_TIMER_0</span><span class="p">,</span> <span class="n">HF_TIMER_SCALE_MS</span><span class="p">);</span>
+<span class="n">EspPeriodicTimer</span> <span class="nf">timer2</span><span class="p">(</span><span class="n">HF_TIMER_GROUP_0</span><span class="p">,</span> <span class="n">HF_TIMER_1</span><span class="p">,</span> <span class="n">HF_TIMER_SCALE_MS</span><span class="p">);</span>
+<span class="n">EspPeriodicTimer</span> <span class="nf">timer3</span><span class="p">(</span><span class="n">HF_TIMER_GROUP_1</span><span class="p">,</span> <span class="n">HF_TIMER_0</span><span class="p">,</span> <span class="n">HF_TIMER_SCALE_US</span><span class="p">);</span> <span class="c1">// Microsecond precision</span>
+
+<span class="c1">// Initialize all timers</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">timer1</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="n">timer2</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">||</span> <span class="o">!</span><span class="n">timer3</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to initialize timers</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Set different periods</span>
+<span class="n">timer1</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>  <span class="c1">// 1 second</span>
+<span class="n">timer2</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>   <span class="c1">// 500ms</span>
+<span class="n">timer3</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">10000</span><span class="p">);</span> <span class="c1">// 10ms (in microseconds)</span>
+
+<span class="c1">// Set different callbacks</span>
+<span class="n">timer1</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">([](</span><span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"Timer 1 tick</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">},</span> <span class="nb">nullptr</span><span class="p">);</span>
+<span class="n">timer2</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">([](</span><span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"Timer 2 tick</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">},</span> <span class="nb">nullptr</span><span class="p">);</span>
+<span class="n">timer3</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">([](</span><span class="kt">void</span><span class="o">*</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span> <span class="n">printf</span><span class="p">(</span><span class="s">"Timer 3 tick</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span> <span class="p">},</span> <span class="nb">nullptr</span><span class="p">);</span>
+
+<span class="c1">// Let timers run</span>
+<span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">3000</span><span class="p">));</span> <span class="c1">// 3 seconds</span>
+
+<span class="c1">// Stop all timers</span>
+<span class="n">timer1</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+<span class="n">timer2</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+<span class="n">timer3</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="high-precision-timing">
+  
+  
+    <a href="#high-precision-timing" class="anchor-heading" aria-labelledby="high-precision-timing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> High Precision Timing
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre><span class="c1">// Create high-precision timer</span>
+<span class="n">EspPeriodicTimer</span> <span class="nf">timer</span><span class="p">(</span><span class="n">HF_TIMER_GROUP_0</span><span class="p">,</span> <span class="n">HF_TIMER_0</span><span class="p">,</span> <span class="n">HF_TIMER_SCALE_US</span><span class="p">);</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">timer</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to initialize timer</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Set microsecond precision</span>
+<span class="n">hf_timer_err_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">SetScale</span><span class="p">(</span><span class="n">HF_TIMER_SCALE_US</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to set scale: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Start with 1000 microsecond period (1ms)</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to start timer: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Get current count</span>
+<span class="n">hf_timer_count_t</span> <span class="n">count</span><span class="p">;</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">GetCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">count</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">==</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Current timer count: %llu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">count</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="timer-configuration">
+  
+  
+    <a href="#timer-configuration" class="anchor-heading" aria-labelledby="timer-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Timer Configuration
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="c1">// Create timer with specific configuration</span>
+<span class="n">EspPeriodicTimer</span> <span class="nf">timer</span><span class="p">(</span><span class="n">HF_TIMER_GROUP_0</span><span class="p">,</span> <span class="n">HF_TIMER_0</span><span class="p">,</span> <span class="n">HF_TIMER_SCALE_MS</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span> <span class="c1">// No auto-reload</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">timer</span><span class="p">.</span><span class="n">Initialize</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to initialize timer</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Configure timer properties</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">SetAutoReload</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>  <span class="c1">// Enable auto-reload</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">SetScale</span><span class="p">(</span><span class="n">HF_TIMER_SCALE_MS</span><span class="p">);</span>  <span class="c1">// Millisecond scale</span>
+
+<span class="c1">// Start timer</span>
+<span class="n">hf_timer_err_t</span> <span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span> <span class="c1">// 2 second period</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to start timer: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Change period while running</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">SetPeriod</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// Change to 1 second</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">!=</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to set period: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">err</span><span class="p">);</span>
+    <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Reset timer</span>
+<span class="n">err</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Reset</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">err</span> <span class="o">==</span> <span class="n">HF_TIMER_ERR_OK</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Timer reset</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="esp32-c6-specific-features">
+  
+  
+    <a href="#esp32-c6-specific-features" class="anchor-heading" aria-labelledby="esp32-c6-specific-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Specific Features
+  
+  
+</h2>
+    
+<h3 id="hardware-timers">
+  
+  
+    <a href="#hardware-timers" class="anchor-heading" aria-labelledby="hardware-timers"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Timers
+  
+  
+</h3>
+    
+
+<p>The ESP32-C6 provides multiple hardware timer groups with independent timers.</p>
+<h3 id="high-precision">
+  
+  
+    <a href="#high-precision" class="anchor-heading" aria-labelledby="high-precision"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> High Precision
+  
+  
+</h3>
+    
+
+<p>Support for microsecond-level precision timing.</p>
+<h3 id="interrupt-support">
+  
+  
+    <a href="#interrupt-support" class="anchor-heading" aria-labelledby="interrupt-support"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Interrupt Support
+  
+  
+</h3>
+    
+
+<p>Hardware interrupt support for efficient timer handling.</p>
+<h3 id="power-management">
+  
+  
+    <a href="#power-management" class="anchor-heading" aria-labelledby="power-management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Power Management
+  
+  
+</h3>
+    
+
+<p>Timers can be configured for deep sleep compatibility.</p>
+<h2 id="error-handling">
+  
+  
+    <a href="#error-handling" class="anchor-heading" aria-labelledby="error-handling"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Error Handling
+  
+  
+</h2>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">EspPeriodicTimer</code> class provides comprehensive error handling with specific error codes:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HF_TIMER_ERR_OK</code> - Operation successful</li>
+  <li><code class="language-plaintext highlighter-rouge">HF_TIMER_ERR_INVALID_ARG</code> - Invalid parameter</li>
+  <li><code class="language-plaintext highlighter-rouge">HF_TIMER_ERR_NOT_INITIALIZED</code> - Timer not initialized</li>
+  <li><code class="language-plaintext highlighter-rouge">HF_TIMER_ERR_INVALID_GROUP</code> - Invalid timer group</li>
+  <li><code class="language-plaintext highlighter-rouge">HF_TIMER_ERR_INVALID_TIMER</code> - Invalid timer</li>
+  <li><code class="language-plaintext highlighter-rouge">HF_TIMER_ERR_ALREADY_RUNNING</code> - Timer already running</li>
+  <li><code class="language-plaintext highlighter-rouge">HF_TIMER_ERR_NOT_RUNNING</code> - Timer not running</li>
+  <li><code class="language-plaintext highlighter-rouge">HF_TIMER_ERR_CALLBACK_FAILED</code> - Callback execution failed</li>
+</ul>
+<h2 id="performance-considerations">
+  
+  
+    <a href="#performance-considerations" class="anchor-heading" aria-labelledby="performance-considerations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Considerations
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>Timer Groups</strong>: Use different timer groups for independent timers</li>
+  <li><strong>Precision</strong>: Choose appropriate scale for your timing requirements</li>
+  <li><strong>Callbacks</strong>: Keep callback functions short and efficient</li>
+  <li><strong>Power</strong>: Consider power consumption for battery-powered applications</li>
+</ul>
+<h2 id="related-documentation">
+  
+  
+    <a href="#related-documentation" class="anchor-heading" aria-labelledby="related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Related Documentation
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="/hf-internal-interface-wrap/preview/docs/api/BasePeriodicTimer/">BasePeriodicTimer API Reference</a> - Base class interface</li>
+  <li><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/">HardwareTypes Reference</a> - Platform-agnostic type definitions
+<!-- markdownlint-disable-next-line MD013 --></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/gptimer.html">ESP-IDF Timer Driver</a> - ESP-IDF docs</li>
+</ul><hr />
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

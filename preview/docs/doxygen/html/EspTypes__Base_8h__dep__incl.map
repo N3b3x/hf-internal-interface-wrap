@@ -1,0 +1,134 @@
+<map id="inc/mcu/esp32/utils/EspTypes_Base.h" name="inc/mcu/esp32/utils/EspTypes_Base.h">
+<area shape="rect" id="Node000001" title="ESP32 base type definitions for hardware abstraction." alt="" coords="3134,5,3310,56"/>
+<area shape="rect" id="Node000002" href="$EspWifi_8h.html" title="Advanced ESP32 implementation of the unified BaseWifi class with ESP&#45;IDF v5.5+ features." alt="" coords="174,114,395,145"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="3120,38,396,127,396,122,3120,33"/>
+<area shape="rect" id="Node000005" href="$EspTypes_8h.html" title="Consolidated MCU&#45;specific type definitions for hardware abstraction (hf_* types)." alt="" coords="3245,301,3421,352"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="3286,62,3307,80,3324,103,3336,128,3343,155,3349,211,3346,262,3341,302,3335,301,3341,261,3343,211,3338,156,3330,130,3320,105,3303,84,3282,66"/>
+<area shape="rect" id="Node000024" href="$EspTypes__ADC_8h.html" title="ESP32 ADC type definitions for hardware abstraction." alt="" coords="3386,203,3562,253"/>
+<area shape="poly" id="edge23_Node000001_Node000024" title=" " alt="" coords="3297,59,3334,79,3369,102,3421,152,3460,201,3455,204,3417,156,3366,106,3331,83,3295,64"/>
+<area shape="rect" id="Node000025" href="$EspTypes__CAN_8h.html" title="ESP32 CAN type definitions for hardware abstraction." alt="" coords="2429,203,2605,253"/>
+<area shape="poly" id="edge26_Node000001_Node000025" title=" " alt="" coords="3121,47,3011,69,2952,86,2896,106,2874,119,2859,131,2843,144,2820,157,2765,177,2720,187,2675,194,2617,205,2606,208,2604,203,2616,200,2674,189,2719,182,2764,172,2818,152,2840,140,2856,127,2871,114,2894,102,2951,81,3009,64,3120,42"/>
+<area shape="rect" id="Node000029" href="$EspTypes__GPIO_8h.html" title="ESP32 GPIO type definitions for hardware abstraction." alt="" coords="2629,104,2807,155"/>
+<area shape="poly" id="edge31_Node000001_Node000029" title=" " alt="" coords="3121,53,2840,107,2808,113,2807,108,2839,101,3120,48"/>
+<area shape="rect" id="Node000041" href="$EspTypes__PWM_8h.html" title="ESP32 PWM type definitions for LEDC peripheral hardware abstraction." alt="" coords="2629,203,2807,253"/>
+<area shape="poly" id="edge73_Node000001_Node000041" title=" " alt="" coords="3144,63,3028,106,2779,205,2777,200,3026,102,3142,58"/>
+<area shape="rect" id="Node000044" href="$EspTypes__I2C_8h.html" title="ESP32 I2C type definitions for hardware abstraction." alt="" coords="2831,203,3007,253"/>
+<area shape="poly" id="edge62_Node000001_Node000044" title=" " alt="" coords="3174,66,3111,106,2958,205,2956,200,3109,102,3171,62"/>
+<area shape="rect" id="Node000045" href="$EspTypes__NVS_8h.html" title="ESP32 NVS type definitions for hardware abstraction." alt="" coords="3538,104,3714,155"/>
+<area shape="poly" id="edge65_Node000001_Node000045" title=" " alt="" coords="3324,54,3538,104,3537,110,3323,59"/>
+<area shape="rect" id="Node000048" href="$EspTypes__PIO_8h.html" title="ESP32 PIO/RMT type definitions for hardware abstraction." alt="" coords="3811,203,3987,253"/>
+<area shape="poly" id="edge69_Node000001_Node000048" title=" " alt="" coords="3324,49,3396,71,3467,102,3486,115,3498,128,3509,141,3527,152,3812,207,3811,212,3525,157,3506,145,3494,132,3482,119,3465,106,3394,76,3323,54"/>
+<area shape="rect" id="Node000049" href="$EspTypes__SPI_8h.html" title="ESP32 SPI type definitions for hardware abstraction." alt="" coords="3586,203,3762,253"/>
+<area shape="poly" id="edge74_Node000001_Node000049" title=" " alt="" coords="3314,58,3364,78,3414,102,3449,127,3483,152,3540,179,3596,200,3594,205,3538,184,3481,157,3446,132,3411,106,3362,83,3312,63"/>
+<area shape="rect" id="Node000050" href="$EspTypes__Timer_8h.html" title="ESP32 timer type definitions for hardware abstraction." alt="" coords="3133,104,3311,155"/>
+<area shape="poly" id="edge77_Node000001_Node000050" title=" " alt="" coords="3225,70,3225,103,3219,103,3219,70"/>
+<area shape="rect" id="Node000051" href="$EspTypes__UART_8h.html" title="ESP32 UART type definitions for hardware abstraction." alt="" coords="3082,203,3261,253"/>
+<area shape="poly" id="edge79_Node000001_Node000051" title=" " alt="" coords="3159,66,3139,84,3123,105,3118,130,3123,155,3136,180,3151,201,3147,204,3131,183,3118,157,3112,130,3118,103,3135,80,3156,62"/>
+<area shape="rect" id="Node000052" href="$EspTypes__WiFi_8h.html" title="ESP32 WiFi type definitions for hardware abstraction." alt="" coords="3738,104,3914,155"/>
+<area shape="poly" id="edge82_Node000001_Node000052" title=" " alt="" coords="3324,41,3512,66,3726,101,3738,104,3737,109,3726,107,3511,71,3323,46"/>
+<area shape="rect" id="Node000003" href="$WifiComprehensiveTest_8cpp.html" title="Comprehensive WiFi testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with ESP&#45;IDF v5.5f." alt="" coords="43,509,295,559"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="282,159,261,254,217,400,180,509,175,508,212,398,255,253,277,158"/>
+<area shape="rect" id="Node000004" href="$EspWifi_8cpp.html" title="Advanced ESP32 implementation of the unified BaseWifi class with ESP&#45;IDF v5.5+ features." alt="" coords="5,213,247,243"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="251,154,151,215,148,210,248,150"/>
+<area shape="rect" id="Node000006" href="$EspAdc_8h.html" title="ESP32 ADC implementation for the HardFOC system." alt="" coords="3986,410,4207,441"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="3435,337,3924,397,3998,407,3997,413,3923,403,3434,343"/>
+<area shape="rect" id="Node000009" href="$EspI2c_8h.html" title="Advanced ESP32&#45;integrated I2C controller for ESP&#45;IDF v5.5+ with proper bus&#45;device architecture." alt="" coords="3208,410,3423,441"/>
+<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="3329,366,3321,410,3315,409,3323,365"/>
+<area shape="rect" id="Node000012" href="$EspPeriodicTimer_8h.html" title="MCU&#45;integrated periodic timer implementation." alt="" coords="2943,400,3183,451"/>
+<area shape="poly" id="edge11_Node000005_Node000012" title=" " alt="" coords="3253,359,3132,402,3130,397,3251,354"/>
+<area shape="rect" id="Node000015" href="$EspPio_8h.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation with ESP&#45;IDF v5.5+ features." alt="" coords="3695,410,3911,441"/>
+<area shape="poly" id="edge14_Node000005_Node000015" title=" " alt="" coords="3435,346,3735,407,3734,413,3434,351"/>
+<area shape="rect" id="Node000018" href="$EspSpi_8h.html" title="Advanced MCU&#45;integrated SPI controller implementation with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="4591,410,4807,441"/>
+<area shape="poly" id="edge17_Node000005_Node000018" title=" " alt="" coords="3434,332,4591,414,4591,419,3434,338"/>
+<area shape="rect" id="Node000021" href="$EspUart_8h.html" title="ESP32 UART implementation for the HardFOC system." alt="" coords="3447,410,3671,441"/>
+<area shape="poly" id="edge20_Node000005_Node000021" title=" " alt="" coords="3403,355,3527,407,3525,412,3401,360"/>
+<area shape="rect" id="Node000007" href="$AdcComprehensiveTest_8cpp.html" title="Comprehensive ADC testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="4300,509,4552,559"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="4154,442,4352,506,4350,511,4152,447"/>
+<area shape="rect" id="Node000008" href="$EspAdc_8cpp.html" title="ESP32 ADC implementation for the HardFOC system." alt="" coords="4035,519,4276,549"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="4113,451,4150,517,4145,520,4109,454"/>
+<area shape="rect" id="Node000010" href="$I2cComprehensiveTest_8cpp.html" title="Comprehensive I2C testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="2423,509,2669,559"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="3238,446,3196,453,3051,469,2938,475,2825,482,2681,501,2633,511,2632,506,2680,496,2824,477,2938,470,3051,464,3195,448,3238,441"/>
+<area shape="rect" id="Node000011" href="$EspI2c_8cpp.html" title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture." alt="" coords="3238,519,3473,549"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="3328,453,3353,518,3348,520,3323,455"/>
+<area shape="rect" id="Node000013" href="$TimerComprehensiveTest_8cpp.html" title="ESP32&#45;C6 Periodic Timer Comprehensive Test Suite v2.0." alt="" coords="2131,509,2399,559"/>
+<area shape="poly" id="edge12_Node000012_Node000013" title=" " alt="" coords="2930,443,2623,476,2412,501,2362,511,2360,506,2411,496,2623,471,2929,438"/>
+<area shape="rect" id="Node000014" href="$EspPeriodicTimer_8cpp.html" title="Implementation of MCU&#45;integrated periodic timer." alt="" coords="2972,509,3213,559"/>
+<area shape="poly" id="edge13_Node000012_Node000014" title=" " alt="" coords="3076,463,3089,508,3083,509,3071,464"/>
+<area shape="rect" id="Node000016" href="$PioComprehensiveTest_8cpp.html" title="Comprehensive PIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with RMT peripheral (noexcept)" alt="" coords="3496,509,3743,559"/>
+<area shape="poly" id="edge15_Node000015_Node000016" title=" " alt="" coords="3768,450,3662,511,3660,506,3766,445"/>
+<area shape="rect" id="Node000017" href="$EspPio_8cpp.html" title="ESP32C6 RMT&#45;based Programmable IO Channel implementation." alt="" coords="5383,519,5619,549"/>
+<area shape="poly" id="edge16_Node000015_Node000017" title=" " alt="" coords="3904,440,3974,448,4187,462,4367,466,4674,458,4822,455,4981,458,5160,470,5372,496,5457,516,5456,521,5371,501,5160,476,4981,463,4822,461,4674,464,4367,471,4186,467,3974,453,3903,445"/>
+<area shape="rect" id="Node000019" href="$SpiComprehensiveTest_8cpp.html" title="Comprehensive SPI testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="4576,509,4823,559"/>
+<area shape="poly" id="edge18_Node000018_Node000019" title=" " alt="" coords="4702,454,4702,508,4697,508,4697,454"/>
+<area shape="rect" id="Node000020" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features." alt="" coords="4847,519,5083,549"/>
+<area shape="poly" id="edge19_Node000018_Node000020" title=" " alt="" coords="4748,443,4930,516,4928,521,4746,448"/>
+<area shape="rect" id="Node000022" href="$UartComprehensiveTest_8cpp.html" title="Comprehensive UART testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="2693,509,2948,559"/>
+<area shape="poly" id="edge21_Node000021_Node000022" title=" " alt="" coords="3479,446,3434,453,3301,469,3197,475,3092,483,2960,501,2911,511,2910,506,2959,496,3092,478,3196,470,3300,463,3434,448,3478,441"/>
+<area shape="rect" id="Node000023" href="$EspUart_8cpp.html" title="Implementation of ESP32 UART controller for the HardFOC system." alt="" coords="3767,519,4011,549"/>
+<area shape="poly" id="edge22_Node000021_Node000023" title=" " alt="" coords="3617,442,3846,516,3844,521,3615,447"/>
+<area shape="poly" id="edge25_Node000024_Node000005" title=" " alt="" coords="3428,264,3370,303,3367,299,3425,259"/>
+<area shape="poly" id="edge24_Node000024_Node000007" title=" " alt="" coords="3576,251,3675,272,3760,286,3906,307,3975,319,4047,337,4128,362,4220,398,4271,422,4320,451,4397,506,4394,511,4317,456,4269,427,4218,402,4126,367,4046,342,3974,324,3905,312,3760,291,3674,277,3575,256"/>
+<area shape="poly" id="edge30_Node000025_Node000005" title=" " alt="" coords="2618,251,2796,276,2969,296,3245,318,3244,323,2968,301,2795,282,2618,256"/>
+<area shape="rect" id="Node000026" href="$EspCan_8h.html" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="2311,311,2533,342"/>
+<area shape="poly" id="edge27_Node000025_Node000026" title=" " alt="" coords="2485,265,2438,313,2434,309,2481,262"/>
+<area shape="rect" id="Node000027" href="$CanComprehensiveTest_8cpp.html" title="Comprehensive CAN testing suite for ESP32&#45;C6 with ESP&#45;IDF v5.5 TWAI API and SN65 transceiver." alt="" coords="1224,509,1479,559"/>
+<area shape="poly" id="edge28_Node000026_Node000027" title=" " alt="" coords="2297,344,2084,370,1986,386,1915,403,1886,414,1865,428,1844,441,1815,453,1726,475,1654,483,1583,488,1492,501,1446,511,1445,506,1491,496,1582,483,1654,478,1725,470,1813,448,1842,436,1863,423,1884,410,1913,397,1985,381,2083,365,2296,338"/>
+<area shape="rect" id="Node000028" href="$EspCan_8cpp.html" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="2301,410,2543,441"/>
+<area shape="poly" id="edge29_Node000026_Node000028" title=" " alt="" coords="2425,356,2425,410,2419,410,2419,356"/>
+<area shape="poly" id="edge56_Node000029_Node000005" title=" " alt="" coords="2821,138,2921,160,2972,178,3021,200,3037,213,3047,226,3056,239,3071,251,3113,272,3158,288,3245,310,3244,315,3156,293,3111,277,3069,256,3052,243,3043,229,3033,217,3018,205,2970,182,2919,165,2820,144"/>
+<area shape="rect" id="Node000030" href="$GpioComprehensiveTest_8cpp.html" title="Comprehensive GPIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="319,509,579,559"/>
+<area shape="poly" id="edge32_Node000029_Node000030" title=" " alt="" coords="2615,140,2305,165,2093,186,1855,214,1598,249,1331,291,1063,342,803,403,719,427,637,456,503,511,501,506,636,451,718,422,801,397,1062,337,1330,286,1597,243,1854,209,2093,181,2305,160,2615,135"/>
+<area shape="rect" id="Node000031" href="$EspGpio_8h.html" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="1911,311,2141,342"/>
+<area shape="poly" id="edge33_Node000029_Node000031" title=" " alt="" coords="2616,156,2417,205,2221,264,2068,314,2067,309,2220,259,2416,200,2615,151"/>
+<area shape="poly" id="edge57_Node000029_Node000041" title=" " alt="" coords="2721,169,2721,202,2715,202,2715,169"/>
+<area shape="poly" id="edge36_Node000031_Node000010" title=" " alt="" coords="2063,347,2138,398,2166,425,2178,437,2195,448,2252,471,2299,480,2349,485,2411,496,2452,506,2451,511,2409,501,2348,491,2299,486,2251,476,2193,453,2174,441,2162,429,2135,402,2060,351"/>
+<area shape="poly" id="edge37_Node000031_Node000016" title=" " alt="" coords="2101,343,2168,365,2235,398,2252,411,2263,425,2273,438,2290,448,2321,457,2370,464,2509,474,2883,484,3260,488,3401,491,3485,496,3536,506,3535,511,3484,501,3400,496,3259,493,2883,489,2509,480,2370,469,2320,462,2288,453,2269,442,2258,429,2248,415,2233,402,2166,370,2099,348"/>
+<area shape="poly" id="edge54_Node000031_Node000022" title=" " alt="" coords="2078,345,2131,368,2186,398,2204,412,2216,425,2228,437,2246,448,2308,471,2362,483,2411,488,2458,488,2557,485,2614,487,2681,496,2730,506,2729,511,2680,501,2614,493,2557,490,2458,494,2411,493,2361,488,2306,476,2244,453,2224,442,2212,429,2200,416,2183,402,2129,373,2076,350"/>
+<area shape="poly" id="edge35_Node000031_Node000030" title=" " alt="" coords="1898,336,1535,358,1315,377,1094,403,952,424,841,445,591,501,547,511,546,506,589,496,840,440,951,419,1094,397,1314,372,1535,353,1897,331"/>
+<area shape="rect" id="Node000032" href="$DigitalOutputGuardComprehensiveTest_8cpp.html" title="DigitalOutputGuard comprehensive test suite for ESP32&#45;C6 DevKit&#45;M&#45;1." alt="" coords="603,499,913,569"/>
+<area shape="poly" id="edge34_Node000031_Node000032" title=" " alt="" coords="1898,340,1640,363,1490,381,1341,403,1100,450,888,501,887,496,1098,445,1340,397,1489,376,1639,358,1897,334"/>
+<area shape="rect" id="Node000033" href="$PwmComprehensiveTest_8cpp.html" title="Comprehensive PWM testing suite for ESP32 family (noexcept)" alt="" coords="937,509,1200,559"/>
+<area shape="poly" id="edge38_Node000031_Node000033" title=" " alt="" coords="1898,345,1728,369,1541,403,1324,457,1144,511,1142,506,1322,452,1540,397,1727,364,1897,340"/>
+<area shape="rect" id="Node000034" href="$TestFramework_8h.html" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="1927,400,2125,451"/>
+<area shape="poly" id="edge39_Node000031_Node000034" title=" " alt="" coords="2029,356,2029,400,2023,400,2023,356"/>
+<area shape="rect" id="Node000040" href="$EspGpio_8cpp.html" title="Production&#45;quality ESP32C6 GPIO implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="1553,410,1803,441"/>
+<area shape="poly" id="edge55_Node000031_Node000040" title=" " alt="" coords="1963,348,1730,412,1728,407,1961,343"/>
+<area shape="poly" id="edge53_Node000034_Node000003" title=" " alt="" coords="1913,444,1814,453,1585,466,1390,468,1058,461,899,459,728,462,534,475,306,501,254,511,253,506,306,496,534,470,728,457,899,453,1058,456,1390,463,1584,460,1814,448,1913,439"/>
+<area shape="poly" id="edge40_Node000034_Node000007" title=" " alt="" coords="2139,436,2289,448,2484,455,2726,458,3290,459,3579,462,3853,467,4095,478,4289,496,4342,506,4341,511,4288,501,4094,483,3853,472,3579,467,3290,465,2726,463,2484,460,2289,453,2139,441"/>
+<area shape="poly" id="edge46_Node000034_Node000010" title=" " alt="" coords="2140,447,2144,448,2277,471,2411,496,2454,506,2453,511,2409,501,2276,476,2143,453,2139,452"/>
+<area shape="poly" id="edge51_Node000034_Node000013" title=" " alt="" coords="2093,454,2211,506,2209,511,2091,459"/>
+<area shape="poly" id="edge48_Node000034_Node000016" title=" " alt="" coords="2139,438,2245,448,2434,459,2594,462,2866,458,2997,457,3138,461,3297,473,3485,496,3536,506,3535,511,3484,501,3297,478,3138,466,2997,462,2866,463,2594,467,2433,464,2244,453,2139,443"/>
+<area shape="poly" id="edge50_Node000034_Node000019" title=" " alt="" coords="2139,436,2289,448,2511,455,2787,458,3428,457,3757,459,4069,464,4344,476,4462,485,4565,496,4617,506,4616,511,4564,501,4462,490,4343,481,4068,469,3757,464,3428,463,2787,463,2511,461,2289,453,2139,441"/>
+<area shape="poly" id="edge52_Node000034_Node000022" title=" " alt="" coords="2139,441,2194,448,2331,461,2438,468,2545,477,2681,496,2730,506,2729,511,2680,501,2544,482,2438,473,2331,467,2194,453,2138,446"/>
+<area shape="poly" id="edge43_Node000034_Node000027" title=" " alt="" coords="1913,453,1909,453,1792,469,1700,476,1608,484,1492,501,1444,511,1443,506,1491,496,1608,479,1700,471,1791,463,1908,448,1913,447"/>
+<area shape="poly" id="edge45_Node000034_Node000030" title=" " alt="" coords="1913,444,1814,453,1628,464,1470,468,1201,465,1071,464,933,468,775,480,590,501,537,511,536,506,590,496,775,474,932,463,1071,459,1201,459,1470,462,1628,459,1814,448,1913,438"/>
+<area shape="poly" id="edge44_Node000034_Node000032" title=" " alt="" coords="1913,443,1814,453,1564,468,1369,471,1174,477,1060,486,925,501,914,503,913,498,924,496,1059,481,1174,472,1369,465,1564,462,1814,448,1913,438"/>
+<area shape="poly" id="edge49_Node000034_Node000033" title=" " alt="" coords="1914,446,1858,453,1676,468,1534,472,1392,480,1212,501,1160,511,1159,506,1211,496,1392,474,1534,467,1676,462,1858,448,1913,441"/>
+<area shape="rect" id="Node000035" href="$AsciiArtComprehensiveTest_8cpp.html" title="ASCII Art Generator comprehensive example and test suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="1503,509,1786,559"/>
+<area shape="poly" id="edge41_Node000034_Node000035" title=" " alt="" coords="1927,457,1732,511,1731,506,1926,452"/>
+<area shape="rect" id="Node000036" href="$BluetoothComprehensiveTest_8cpp.html" title="Comprehensive Bluetooth/NimBLE testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="1809,509,2107,559"/>
+<area shape="poly" id="edge42_Node000034_Node000036" title=" " alt="" coords="2005,464,1976,510,1971,507,2001,461"/>
+<area shape="rect" id="Node000038" href="$NvsComprehensiveTest_8cpp.html" title="Comprehensive NVS (Non&#45;Volatile Storage) testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5107,509,5359,559"/>
+<area shape="poly" id="edge47_Node000034_Node000038" title=" " alt="" coords="2139,436,2289,448,2563,456,2903,458,3694,454,4100,454,4484,459,4823,472,4969,483,5096,496,5149,506,5148,511,5095,501,4968,488,4823,477,4483,464,4100,460,3694,460,2903,464,2563,462,2289,453,2139,442"/>
+<area shape="poly" id="edge61_Node000041_Node000005" title=" " alt="" coords="2821,251,3054,288,3245,313,3244,318,3053,294,2820,256"/>
+<area shape="rect" id="Node000042" href="$EspPwm_8h.html" title="ESP32C6 LEDC (PWM) controller implementation for the HardFOC system." alt="" coords="2577,311,2808,342"/>
+<area shape="poly" id="edge58_Node000041_Node000042" title=" " alt="" coords="2711,267,2699,312,2694,311,2706,266"/>
+<area shape="poly" id="edge59_Node000042_Node000033" title=" " alt="" coords="2601,347,2545,355,2449,363,2366,366,2226,363,2159,363,2088,368,2008,380,1915,403,1886,414,1865,428,1844,441,1815,453,1725,475,1648,486,1580,489,1515,489,1381,486,1303,490,1212,501,1161,511,1160,506,1211,496,1303,485,1381,481,1515,484,1580,484,1648,480,1724,469,1813,448,1842,437,1863,423,1884,409,1913,397,2007,375,2087,363,2159,358,2226,357,2366,360,2448,358,2544,349,2600,341"/>
+<area shape="rect" id="Node000043" href="$EspPwm_8cpp.html" title="Implementation of ESP32 family LEDC (PWM) controller for the HardFOC system." alt="" coords="2567,410,2818,441"/>
+<area shape="poly" id="edge60_Node000042_Node000043" title=" " alt="" coords="2695,356,2695,410,2690,410,2690,356"/>
+<area shape="poly" id="edge64_Node000044_Node000005" title=" " alt="" coords="3021,250,3245,302,3244,307,3020,255"/>
+<area shape="poly" id="edge63_Node000044_Node000010" title=" " alt="" coords="2917,268,2908,310,2892,360,2867,410,2851,433,2831,453,2761,477,2637,511,2636,506,2760,471,2829,448,2847,429,2862,407,2887,358,2903,309,2912,266"/>
+<area shape="rect" id="Node000046" href="$EspNvs_8h.html" title="World&#45;class ESP32&#45;C6 NVS storage implementation with ESP&#45;IDF v5.5+ features." alt="" coords="4927,213,5149,243"/>
+<area shape="poly" id="edge66_Node000045_Node000046" title=" " alt="" coords="3728,152,3899,174,4074,191,4412,213,4708,222,4927,225,4927,230,4708,228,4412,218,4073,196,3899,179,3727,157"/>
+<area shape="poly" id="edge67_Node000046_Node000038" title=" " alt="" coords="5056,254,5118,351,5219,507,5214,510,5113,353,5052,256"/>
+<area shape="rect" id="Node000047" href="$EspNvs_8cpp.html" title="World&#45;class ESP32&#45;C6 NVS implementation with ESP&#45;IDF v5.5+ advanced features." alt="" coords="5127,311,5368,342"/>
+<area shape="poly" id="edge68_Node000046_Node000047" title=" " alt="" coords="5082,247,5218,309,5216,314,5080,252"/>
+<area shape="poly" id="edge71_Node000048_Node000005" title=" " alt="" coords="3798,252,3774,256,3421,314,3420,309,3774,251,3797,246"/>
+<area shape="poly" id="edge70_Node000048_Node000016" title=" " alt="" coords="3920,265,3936,307,3946,356,3948,381,3945,406,3938,430,3925,453,3851,475,3714,511,3713,506,3850,470,3922,449,3933,428,3940,405,3942,381,3941,356,3930,308,3915,267"/>
+<area shape="poly" id="edge72_Node000048_Node000017" title=" " alt="" coords="4001,243,4585,341,4976,414,5372,496,5451,516,5450,521,5371,501,4975,419,4584,346,4000,248"/>
+<area shape="poly" id="edge76_Node000049_Node000005" title=" " alt="" coords="3576,260,3419,304,3418,299,3575,255"/>
+<area shape="poly" id="edge75_Node000049_Node000019" title=" " alt="" coords="3776,248,3989,299,4173,353,4354,411,4633,506,4631,511,4352,416,4172,358,3988,304,3775,253"/>
+<area shape="poly" id="edge78_Node000050_Node000005" title=" " alt="" coords="3250,164,3275,201,3325,300,3320,302,3270,204,3246,167"/>
+<area shape="poly" id="edge81_Node000051_Node000005" title=" " alt="" coords="3225,258,3293,299,3291,303,3223,263"/>
+<area shape="poly" id="edge80_Node000051_Node000022" title=" " alt="" coords="3121,263,3030,324,2980,362,2933,402,2880,458,2840,510,2836,507,2876,455,2929,398,2977,357,3027,319,3118,258"/>
+</map>

@@ -1,0 +1,1796 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(11)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(11) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(11) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(11) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/preview/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/preview/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🧪 Temperature Test | HardFOC Interface Wrapper - preview</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🧪 Temperature Test" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Temperature Test Suite - Thermal monitoring and sensor testing" />
+<meta property="og:description" content="Temperature Test Suite - Thermal monitoring and sensor testing" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - preview" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🧪 Temperature Test" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Temperature Test Suite - Thermal monitoring and sensor testing","headline":"🧪 Temperature Test","url":"https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/preview/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/preview/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - preview
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/">🚀 ESP32 Examples</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/">🧪 Test Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🧪 Temperature Test</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="esp32-c6-temperature-sensor-comprehensive-test-suite">
+  
+  
+    <a href="#esp32-c6-temperature-sensor-comprehensive-test-suite" class="anchor-heading" aria-labelledby="esp32-c6-temperature-sensor-comprehensive-test-suite"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Temperature Sensor Comprehensive Test Suite
+  
+  
+</h1>
+    
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p>The Temperature Sensor Comprehensive Test Suite provides extensive validation of the
+<code class="language-plaintext highlighter-rouge">EspTemperature</code> class for ESP32-C6 platforms using ESP-IDF v5.5+.
+This test suite demonstrates complete temperature sensing functionality, threshold monitoring,
+continuous monitoring, calibration, power management,
+and health diagnostics with a focus on embedded environments using <code class="language-plaintext highlighter-rouge">noexcept</code> functions.</p>
+
+<p><strong>✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware</strong></p>
+<h2 id="features-tested">
+  
+  
+    <a href="#features-tested" class="anchor-heading" aria-labelledby="features-tested"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features Tested
+  
+  
+</h2>
+    
+<h3 id="core-temperature-functionality">
+  
+  
+    <a href="#core-temperature-functionality" class="anchor-heading" aria-labelledby="core-temperature-functionality"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core Temperature Functionality
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Basic Temperature Reading</strong>: Single-shot and continuous temperature measurements</li>
+  <li><strong>Sensor Initialization</strong>: Proper sensor startup and configuration</li>
+  <li><strong>Temperature Calibration</strong>: Offset and gain calibration with validation</li>
+  <li><strong>Reading Validation</strong>: Data integrity and range checking</li>
+</ul>
+<h3 id="advanced-monitoring-features">
+  
+  
+    <a href="#advanced-monitoring-features" class="anchor-heading" aria-labelledby="advanced-monitoring-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced Monitoring Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Threshold Monitoring</strong>: High/low temperature threshold detection with callbacks</li>
+  <li><strong>Continuous Monitoring</strong>: Real-time temperature monitoring with configurable intervals</li>
+  <li><strong>Range Management</strong>: Dynamic temperature range configuration and validation</li>
+  <li><strong>Statistics Collection</strong>: Temperature history, min/max tracking, and trend analysis</li>
+</ul>
+<h3 id="system-integration">
+  
+  
+    <a href="#system-integration" class="anchor-heading" aria-labelledby="system-integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> System Integration
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Power Management</strong>: Low-power modes and wake-up functionality</li>
+  <li><strong>Health Monitoring</strong>: Sensor health checks and diagnostic information</li>
+  <li><strong>Error Handling</strong>: Comprehensive error condition testing and recovery</li>
+  <li><strong>Performance Testing</strong>: Reading speed, accuracy, and resource usage optimization</li>
+</ul>
+<h3 id="esp32-c6-specific-features">
+  
+  
+    <a href="#esp32-c6-specific-features" class="anchor-heading" aria-labelledby="esp32-c6-specific-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Specific Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Built-in Temperature Sensor</strong>: Internal temperature sensor validation</li>
+  <li><strong>High Precision</strong>: Enhanced accuracy with calibration</li>
+  <li><strong>Low Power Operation</strong>: Optimized for battery-powered applications</li>
+  <li><strong>Interrupt Integration</strong>: Hardware interrupt-driven monitoring</li>
+</ul>
+<h2 id="hardware-requirements">
+  
+  
+    <a href="#hardware-requirements" class="anchor-heading" aria-labelledby="hardware-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Requirements
+  
+  
+</h2>
+    
+<h3 id="supported-platforms">
+  
+  
+    <a href="#supported-platforms" class="anchor-heading" aria-labelledby="supported-platforms"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Supported Platforms
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Primary Target</strong>: ESP32-C6-DevKitM-1</li>
+  <li><strong>ESP-IDF Version</strong>: v5.5 or later</li>
+  <li><strong>Minimum Flash</strong>: 4MB</li>
+  <li><strong>Minimum RAM</strong>: 256KB</li>
+</ul>
+<h3 id="temperature-sensor">
+  
+  
+    <a href="#temperature-sensor" class="anchor-heading" aria-labelledby="temperature-sensor"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Temperature Sensor
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Built-in Sensor</strong>: ESP32-C6 internal temperature sensor</li>
+  <li><strong>Range</strong>: -40°C to +125°C (typical)</li>
+  <li><strong>Resolution</strong>: 0.1°C</li>
+  <li><strong>Accuracy</strong>: ±2°C (after calibration)</li>
+</ul>
+<h3 id="connections">
+  
+  
+    <a href="#connections" class="anchor-heading" aria-labelledby="connections"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Connections
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>USB</strong>: For flashing and serial monitoring (built-in USB-JTAG)</li>
+  <li><strong>No External Hardware Required</strong>: Uses internal temperature sensor</li>
+</ul>
+<h2 id="building-and-running">
+  
+  
+    <a href="#building-and-running" class="anchor-heading" aria-labelledby="building-and-running"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Building and Running
+  
+  
+</h2>
+    
+<h3 id="prerequisites">
+  
+  
+    <a href="#prerequisites" class="anchor-heading" aria-labelledby="prerequisites"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Prerequisites
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="esp-idf-v55-installation-required">
+  
+  
+    <a href="#esp-idf-v55-installation-required" class="anchor-heading" aria-labelledby="esp-idf-v55-installation-required"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP-IDF v5.5+ installation required
+  
+  
+</h2>
+    
+<p>. $IDF_PATH/export.sh</p>
+<h2 id="set-target-platform">
+  
+  
+    <a href="#set-target-platform" class="anchor-heading" aria-labelledby="set-target-platform"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set target platform
+  
+  
+</h2>
+    
+<p>export IDF_TARGET=esp32c6
+```text</p>
+<h3 id="quick-start">
+  
+  
+    <a href="#quick-start" class="anchor-heading" aria-labelledby="quick-start"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Quick Start
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="navigate-to-examples-directory">
+  
+  
+    <a href="#navigate-to-examples-directory" class="anchor-heading" aria-labelledby="navigate-to-examples-directory"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Navigate to examples directory
+  
+  
+</h2>
+    
+<p>cd examples/esp32</p>
+<h2 id="build-temperature-test">
+  
+  
+    <a href="#build-temperature-test" class="anchor-heading" aria-labelledby="build-temperature-test"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build Temperature test
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=temperature_test -DBUILD_TYPE=Release</p>
+<h2 id="flash-and-monitor">
+  
+  
+    <a href="#flash-and-monitor" class="anchor-heading" aria-labelledby="flash-and-monitor"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash and monitor
+  
+  
+</h2>
+    
+<p>idf.py -p /dev/ttyUSB0 flash monitor
+```text</p>
+<h3 id="alternative-build-methods">
+  
+  
+    <a href="#alternative-build-methods" class="anchor-heading" aria-labelledby="alternative-build-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Alternative Build Methods
+  
+  
+</h3>
+    
+<h4 id="using-build-scripts-recommended">
+  
+  
+    <a href="#using-build-scripts-recommended" class="anchor-heading" aria-labelledby="using-build-scripts-recommended"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Build Scripts (Recommended)
+  
+  
+</h4>
+    
+<p>```bash</p>
+<h2 id="source-esp-idf-environment">
+  
+  
+    <a href="#source-esp-idf-environment" class="anchor-heading" aria-labelledby="source-esp-idf-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Source ESP-IDF environment
+  
+  
+</h2>
+    
+<p>source /path/to/esp-idf/export.sh</p>
+<h2 id="build-with-optimization">
+  
+  
+    <a href="#build-with-optimization" class="anchor-heading" aria-labelledby="build-with-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build with optimization
+  
+  
+</h2>
+    
+<p>./build_example.sh temperature_test Release</p>
+<h2 id="flash-to-device">
+  
+  
+    <a href="#flash-to-device" class="anchor-heading" aria-labelledby="flash-to-device"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash to device
+  
+  
+</h2>
+    
+<p>idf.py -B build_temperature_test_Release flash monitor
+```text</p>
+<h4 id="debug-build-for-development">
+  
+  
+    <a href="#debug-build-for-development" class="anchor-heading" aria-labelledby="debug-build-for-development"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Debug Build for Development
+  
+  
+</h4>
+    
+<p>```bash</p>
+<h2 id="build-with-debug-symbols-and-verbose-output">
+  
+  
+    <a href="#build-with-debug-symbols-and-verbose-output" class="anchor-heading" aria-labelledby="build-with-debug-symbols-and-verbose-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build with debug symbols and verbose output
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=temperature_test -DBUILD_TYPE=Debug</p>
+<h2 id="run-with-detailed-logging">
+  
+  
+    <a href="#run-with-detailed-logging" class="anchor-heading" aria-labelledby="run-with-detailed-logging"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run with detailed logging
+  
+  
+</h2>
+    
+<p>idf.py -p /dev/ttyUSB0 flash monitor
+```text</p>
+<h2 id="test-categories">
+  
+  
+    <a href="#test-categories" class="anchor-heading" aria-labelledby="test-categories"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Categories
+  
+  
+</h2>
+    
+<h3 id="1-sensor-initialization-tests">
+  
+  
+    <a href="#1-sensor-initialization-tests" class="anchor-heading" aria-labelledby="1-sensor-initialization-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Sensor Initialization Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_temperature_sensor_initialization() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Proper sensor startup and state management</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Initial state verification (UNINITIALIZED)</li>
+      <li>Successful initialization process</li>
+      <li>State transition validation (INITIALIZED)</li>
+      <li>Error handling for initialization failures</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Clean initialization with proper state transitions</li>
+</ul>
+<h3 id="2-basic-temperature-reading-tests">
+  
+  
+    <a href="#2-basic-temperature-reading-tests" class="anchor-heading" aria-labelledby="2-basic-temperature-reading-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Basic Temperature Reading Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_temperature_reading() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Core temperature measurement functionality</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Single temperature reading</li>
+      <li>Reading validation and range checking</li>
+      <li>Temperature accuracy verification</li>
+      <li>Reading consistency checks</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Accurate temperature readings within expected range</li>
+</ul>
+<h3 id="3-sensor-information-tests">
+  
+  
+    <a href="#3-sensor-information-tests" class="anchor-heading" aria-labelledby="3-sensor-information-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Sensor Information Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_sensor_info() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Sensor metadata and capability reporting</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Sensor description retrieval</li>
+      <li>Range information (min/max temperatures)</li>
+      <li>Resolution and accuracy specifications</li>
+      <li>Sensor identification and version</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Complete and accurate sensor information</li>
+</ul>
+<h3 id="4-range-management-tests">
+  
+  
+    <a href="#4-range-management-tests" class="anchor-heading" aria-labelledby="4-range-management-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Range Management Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_range_management() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Dynamic temperature range configuration</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Range setting and validation</li>
+      <li>Out-of-range handling</li>
+      <li>Range boundary testing</li>
+      <li>Invalid range rejection</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Proper range validation and boundary enforcement</li>
+</ul>
+<h3 id="5-threshold-monitoring-tests">
+  
+  
+    <a href="#5-threshold-monitoring-tests" class="anchor-heading" aria-labelledby="5-threshold-monitoring-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 5. Threshold Monitoring Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_threshold_monitoring() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Temperature threshold detection and alerting</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>High threshold configuration and detection</li>
+      <li>Low threshold configuration and detection</li>
+      <li>Threshold callback functionality</li>
+      <li>Multiple threshold management</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Accurate threshold detection with proper callback execution</li>
+</ul>
+<h3 id="6-continuous-monitoring-tests">
+  
+  
+    <a href="#6-continuous-monitoring-tests" class="anchor-heading" aria-labelledby="6-continuous-monitoring-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6. Continuous Monitoring Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_continuous_monitoring() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Real-time temperature monitoring capabilities</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Continuous monitoring start/stop</li>
+      <li>Monitoring interval configuration</li>
+      <li>Data streaming and buffering</li>
+      <li>Monitoring callback functionality</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Reliable continuous monitoring with configurable intervals</li>
+</ul>
+<h3 id="7-calibration-tests">
+  
+  
+    <a href="#7-calibration-tests" class="anchor-heading" aria-labelledby="7-calibration-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 7. Calibration Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_calibration() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Temperature sensor calibration functionality</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Offset calibration (temperature correction)</li>
+      <li>Gain calibration (scaling correction)</li>
+      <li>Calibration validation and persistence</li>
+      <li>Factory reset capabilities</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Improved accuracy through proper calibration</li>
+</ul>
+<h3 id="8-power-management-tests">
+  
+  
+    <a href="#8-power-management-tests" class="anchor-heading" aria-labelledby="8-power-management-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 8. Power Management Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_power_management() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Low-power operation modes</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Low-power mode entry/exit</li>
+      <li>Wake-up functionality</li>
+      <li>Power consumption optimization</li>
+      <li>Sleep mode compatibility</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Efficient power management with maintained functionality</li>
+</ul>
+<h3 id="9-self-test-and-health-monitoring">
+  
+  
+    <a href="#9-self-test-and-health-monitoring" class="anchor-heading" aria-labelledby="9-self-test-and-health-monitoring"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 9. Self-Test and Health Monitoring
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_self_test_and_health() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Sensor health and diagnostic capabilities</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Self-test execution and validation</li>
+      <li>Health status reporting</li>
+      <li>Diagnostic information collection</li>
+      <li>Error detection and reporting</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Comprehensive health monitoring with accurate diagnostics</li>
+</ul>
+<h3 id="10-statistics-and-diagnostics">
+  
+  
+    <a href="#10-statistics-and-diagnostics" class="anchor-heading" aria-labelledby="10-statistics-and-diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 10. Statistics and Diagnostics
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_statistics_and_diagnostics() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Performance metrics and data analysis</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Temperature statistics (min/max/average)</li>
+      <li>Reading count and frequency tracking</li>
+      <li>Trend analysis and history</li>
+      <li>Performance diagnostics</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Accurate statistics collection and analysis</li>
+</ul>
+<h3 id="11-esp32-specific-features">
+  
+  
+    <a href="#11-esp32-specific-features" class="anchor-heading" aria-labelledby="11-esp32-specific-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 11. ESP32-Specific Features
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_esp32_specific_features() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: ESP32-C6 specific temperature sensor features</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>ESP32-specific callback functions</li>
+      <li>Hardware interrupt integration</li>
+      <li>Advanced configuration options</li>
+      <li>Platform-specific optimizations</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Full utilization of ESP32-C6 temperature sensor capabilities</li>
+</ul>
+<h3 id="12-error-handling-tests">
+  
+  
+    <a href="#12-error-handling-tests" class="anchor-heading" aria-labelledby="12-error-handling-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 12. Error Handling Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_error_handling() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Robust error condition handling</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Invalid parameter handling</li>
+      <li>Sensor failure scenarios</li>
+      <li>Recovery mechanisms</li>
+      <li>Error reporting accuracy</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Graceful error handling without system crashes</li>
+</ul>
+<h3 id="13-performance-and-stress-tests">
+  
+  
+    <a href="#13-performance-and-stress-tests" class="anchor-heading" aria-labelledby="13-performance-and-stress-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 13. Performance and Stress Tests
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+bool test_performance_and_stress() noexcept;
+</code>text</p>
+<ul>
+  <li><strong>Validates</strong>: Performance characteristics under load</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Reading speed optimization</li>
+      <li>High-frequency sampling</li>
+      <li>Memory usage efficiency</li>
+      <li>Stress testing with rapid operations</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Optimal performance within embedded system constraints</li>
+</ul>
+<h2 id="expected-test-results">
+  
+  
+    <a href="#expected-test-results" class="anchor-heading" aria-labelledby="expected-test-results"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Expected Test Results
+  
+  
+</h2>
+    
+<h3 id="successful-execution-output">
+  
+  
+    <a href="#successful-execution-output" class="anchor-heading" aria-labelledby="successful-execution-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Successful Execution Output
+  
+  
+</h3>
+    
+<p>```text
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                ESP32-C6 TEMPERATURE COMPREHENSIVE TEST SUITE                ║
+║                         HardFOC Internal Interface                          ║
+╚══════════════════════════════════════════════════════════════════════════════╝</p>
+
+<p>╔══════════════════════════════════════════════════════════════════════════════╗
+║ Running: test_temperature_sensor_initialization                            ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+[SUCCESS] Temperature sensor initialization successful
+[SUCCESS] PASSED: test_temperature_sensor_initialization (0.85 ms)</p>
+
+<p>╔══════════════════════════════════════════════════════════════════════════════╗
+║ Running: test_temperature_reading                                          ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+Current temperature: 23.45°C
+[SUCCESS] Temperature reading within valid range
+[SUCCESS] PASSED: test_temperature_reading (1.23 ms)</p>
+
+<p>… (additional tests) …</p>
+
+<p>=== TEMPERATURE TEST SUMMARY ===
+Total: 13, Passed: 13, Failed: 0, Success: 100.00%, Time: 245.67 ms
+[SUCCESS] ALL TEMPERATURE TESTS PASSED!
+```text</p>
+<h3 id="performance-metrics">
+  
+  
+    <a href="#performance-metrics" class="anchor-heading" aria-labelledby="performance-metrics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Metrics
+  
+  
+</h3>
+    
+<p>Typical performance on ESP32-C6 @ 160MHz:</p>
+<ul>
+  <li><strong>Sensor Initialization</strong>: ~1ms</li>
+  <li><strong>Single Temperature Reading</strong>: ~500µs</li>
+  <li><strong>Continuous Monitoring</strong>: Configurable intervals (10ms - 10s)</li>
+  <li><strong>Calibration Operation</strong>: ~2ms</li>
+  <li><strong>Threshold Detection</strong>: &lt;100µs response time</li>
+</ul>
+<h3 id="accuracy-specifications">
+  
+  
+    <a href="#accuracy-specifications" class="anchor-heading" aria-labelledby="accuracy-specifications"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Accuracy Specifications
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Raw Accuracy</strong>: ±3°C (uncalibrated)</li>
+  <li><strong>Calibrated Accuracy</strong>: ±1°C (with offset/gain calibration)</li>
+  <li><strong>Resolution</strong>: 0.1°C</li>
+  <li><strong>Measurement Range</strong>: -40°C to +125°C</li>
+  <li><strong>Stability</strong>: ±0.1°C over 24 hours</li>
+</ul>
+<h3 id="memory-usage">
+  
+  
+    <a href="#memory-usage" class="anchor-heading" aria-labelledby="memory-usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Memory Usage
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Static Memory</strong>: ~500 bytes for sensor instance</li>
+  <li><strong>Dynamic Memory</strong>: Variable based on monitoring configuration</li>
+  <li><strong>Flash Usage</strong>: ~6KB for test code</li>
+  <li><strong>Stack Usage</strong>: ~128 bytes per reading operation</li>
+</ul>
+<h2 id="configuration-options">
+  
+  
+    <a href="#configuration-options" class="anchor-heading" aria-labelledby="configuration-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuration Options
+  
+  
+</h2>
+    
+<h3 id="temperature-sensor-configuration">
+  
+  
+    <a href="#temperature-sensor-configuration" class="anchor-heading" aria-labelledby="temperature-sensor-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Temperature Sensor Configuration
+  
+  
+</h3>
+    
+<p>```cpp
+// Basic configuration
+EspTemperature sensor;
+sensor.EnsureInitialized();</p>
+
+<p>// Set measurement range
+sensor.SetTemperatureRange(-20.0f, 80.0f);</p>
+
+<p>// Configure calibration
+sensor.SetCalibration(offset_celsius, gain_factor);</p>
+
+<p>// Set up threshold monitoring
+sensor.SetThresholds(low_threshold, high_threshold);
+```text</p>
+<h3 id="monitoring-configuration">
+  
+  
+    <a href="#monitoring-configuration" class="anchor-heading" aria-labelledby="monitoring-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Monitoring Configuration
+  
+  
+</h3>
+    
+<p>```cpp
+// Continuous monitoring setup
+sensor.StartContinuousMonitoring(interval_ms);</p>
+
+<p>// Register monitoring callback
+sensor.RegisterMonitoringCallback(monitoring_callback, user_data);</p>
+
+<p>// Register threshold callback
+sensor.RegisterThresholdCallback(threshold_callback, user_data);
+```text</p>
+<h3 id="power-management">
+  
+  
+    <a href="#power-management" class="anchor-heading" aria-labelledby="power-management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Power Management
+  
+  
+</h3>
+    
+<p>```cpp
+// Low-power mode configuration
+sensor.EnableLowPowerMode(true);</p>
+
+<p>// Configure wake-up settings
+sensor.SetWakeUpInterval(wake_interval_ms);
+```text</p>
+<h2 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h2>
+    
+<h3 id="common-issues">
+  
+  
+    <a href="#common-issues" class="anchor-heading" aria-labelledby="common-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Issues
+  
+  
+</h3>
+    
+<h4 id="build-failures">
+  
+  
+    <a href="#build-failures" class="anchor-heading" aria-labelledby="build-failures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build Failures
+  
+  
+</h4>
+    
+<p>```bash</p>
+<h2 id="missing-esp-idf-environment">
+  
+  
+    <a href="#missing-esp-idf-environment" class="anchor-heading" aria-labelledby="missing-esp-idf-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Missing ESP-IDF environment
+  
+  
+</h2>
+    
+<p>source $IDF_PATH/export.sh</p>
+<h2 id="wrong-target-platform">
+  
+  
+    <a href="#wrong-target-platform" class="anchor-heading" aria-labelledby="wrong-target-platform"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Wrong target platform
+  
+  
+</h2>
+    
+<p>idf.py set-target esp32c6</p>
+<h2 id="dependency-issues">
+  
+  
+    <a href="#dependency-issues" class="anchor-heading" aria-labelledby="dependency-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Dependency issues
+  
+  
+</h2>
+    
+<p>idf.py clean
+idf.py build
+```text</p>
+<h4 id="runtime-issues">
+  
+  
+    <a href="#runtime-issues" class="anchor-heading" aria-labelledby="runtime-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Runtime Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Initialization Failures</strong>: Check sensor availability and ESP-IDF version</li>
+  <li><strong>Inaccurate Readings</strong>: Perform calibration with known reference temperatures</li>
+  <li><strong>Callback Issues</strong>: Verify callback function signatures and user data handling</li>
+  <li><strong>Memory Issues</strong>: Monitor heap usage during continuous monitoring</li>
+</ul>
+<h4 id="calibration-issues">
+  
+  
+    <a href="#calibration-issues" class="anchor-heading" aria-labelledby="calibration-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Calibration Issues
+  
+  
+</h4>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+// Manual calibration example
+float reference_temp = 25.0f;  // Known reference temperature
+float measured_temp = sensor.ReadTemperature();
+float offset = reference_temp - measured_temp;
+sensor.SetCalibrationOffset(offset);
+</code>text</p>
+<h3 id="debug-mode-configuration">
+  
+  
+    <a href="#debug-mode-configuration" class="anchor-heading" aria-labelledby="debug-mode-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Debug Mode Configuration
+  
+  
+</h3>
+    
+<p>Enable enhanced debugging:
+```bash</p>
+<h2 id="build-with-debug-configuration">
+  
+  
+    <a href="#build-with-debug-configuration" class="anchor-heading" aria-labelledby="build-with-debug-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build with debug configuration
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=temperature_test -DBUILD_TYPE=Debug</p>
+<h2 id="enable-verbose-sensor-logging">
+  
+  
+    <a href="#enable-verbose-sensor-logging" class="anchor-heading" aria-labelledby="enable-verbose-sensor-logging"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Enable verbose sensor logging
+  
+  
+</h2>
+    
+<p>idf.py menuconfig</p>
+<h2 id="component-config--temperature-sensor--enable-debug-output">
+  
+  
+    <a href="#component-config--temperature-sensor--enable-debug-output" class="anchor-heading" aria-labelledby="component-config--temperature-sensor--enable-debug-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Component config → Temperature Sensor → Enable debug output
+  
+  
+</h2>
+    
+<p>```text</p>
+<h2 id="integration-examples">
+  
+  
+    <a href="#integration-examples" class="anchor-heading" aria-labelledby="integration-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Integration Examples
+  
+  
+</h2>
+    
+<h3 id="basic-temperature-monitoring">
+  
+  
+    <a href="#basic-temperature-monitoring" class="anchor-heading" aria-labelledby="basic-temperature-monitoring"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic Temperature Monitoring
+  
+  
+</h3>
+    
+<p>```cpp
+#include “mcu/esp32/EspTemperature.h”</p>
+
+<p>// Create temperature sensor instance
+EspTemperature temp_sensor;</p>
+
+<p>// Initialize sensor
+if (temp_sensor.EnsureInitialized()) {
+    // Read current temperature
+    hf_temp_reading_t reading = {};
+    auto result = temp_sensor.ReadTemperature(&amp;reading);</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre>if (result == hf_temp_err_t::TEMP_SUCCESS) {
+    ESP_LOGI("APP", "Temperature: %.2f°C", reading.temperature_celsius);
+} } ```text
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="advanced-monitoring-with-callbacks">
+  
+  
+    <a href="#advanced-monitoring-with-callbacks" class="anchor-heading" aria-labelledby="advanced-monitoring-with-callbacks"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced Monitoring with Callbacks
+  
+  
+</h3>
+    
+<p>```cpp
+// Threshold callback function
+void temperature_alert(EspTemperature* sensor, float temperature, bool is_high) {
+    if (is_high) {
+        ESP_LOGW(“TEMP”, “High temperature alert: %.2f°C”, temperature);
+    } else {
+        ESP_LOGW(“TEMP”, “Low temperature alert: %.2f°C”, temperature);
+    }
+}</p>
+
+<p>// Continuous monitoring callback
+void temperature_monitor(EspTemperature* sensor, float temperature, hf_u64_t timestamp) {
+    ESP_LOGI(“TEMP”, “Temperature: %.2f°C at %llu µs”, temperature, timestamp);
+}</p>
+
+<p>// Setup advanced monitoring
+temp_sensor.SetThresholds(15.0f, 35.0f);  // 15°C low, 35°C high
+temp_sensor.RegisterThresholdCallback(temperature_alert);
+temp_sensor.RegisterMonitoringCallback(temperature_monitor);
+temp_sensor.StartContinuousMonitoring(1000);  // 1 second interval
+```text</p>
+<h3 id="calibration-and-accuracy-improvement">
+  
+  
+    <a href="#calibration-and-accuracy-improvement" class="anchor-heading" aria-labelledby="calibration-and-accuracy-improvement"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Calibration and Accuracy Improvement
+  
+  
+</h3>
+    
+<p>```cpp
+// Perform calibration with known reference
+float known_temp = 25.0f;  // Reference temperature
+float measured = temp_sensor.ReadTemperatureValue();
+float offset = known_temp - measured;</p>
+
+<p>// Apply calibration
+temp_sensor.SetCalibrationOffset(offset);</p>
+
+<p>// Verify improved accuracy
+measured = temp_sensor.ReadTemperatureValue();
+ESP_LOGI(“TEMP”, “Calibrated reading: %.2f°C (expected: %.2f°C)”, 
+         measured, known_temp);
+```text</p>
+<h2 id="api-reference">
+  
+  
+    <a href="#api-reference" class="anchor-heading" aria-labelledby="api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> API Reference
+  
+  
+</h2>
+    
+<h3 id="core-functions">
+  
+  
+    <a href="#core-functions" class="anchor-heading" aria-labelledby="core-functions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core Functions
+  
+  
+</h3>
+    
+<p>```cpp
+class EspTemperature {
+public:
+    // Lifecycle management
+    bool EnsureInitialized() noexcept;
+    bool EnsureDeinitialized() noexcept;
+    hf_temp_state_t GetState() const noexcept;</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre>// Basic temperature reading
+hf_temp_err_t ReadTemperature(hf_temp_reading_t* reading) noexcept;
+float ReadTemperatureValue() noexcept;
+
+// Configuration
+hf_temp_err_t SetTemperatureRange(float min_celsius, float max_celsius) noexcept;
+hf_temp_err_t SetCalibration(float offset, float gain) noexcept; }; ```text
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="advanced-functions">
+  
+  
+    <a href="#advanced-functions" class="anchor-heading" aria-labelledby="advanced-functions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced Functions
+  
+  
+</h3>
+    
+<p>```cpp
+// Monitoring and callbacks
+hf_temp_err_t SetThresholds(float low_celsius, float high_celsius) noexcept;
+hf_temp_err_t StartContinuousMonitoring(hf_u32_t interval_ms) noexcept;
+hf_temp_err_t StopContinuousMonitoring() noexcept;</p>
+
+<p>// ESP32-specific callbacks
+void RegisterThresholdCallback(EspTempThresholdCallback callback) noexcept;
+void RegisterMonitoringCallback(EspTempMonitoringCallback callback) noexcept;</p>
+
+<p>// Statistics and diagnostics
+hf_temp_stats_t GetStatistics() const noexcept;
+hf_temp_health_t GetHealthStatus() const noexcept;
+```text</p>
+<h2 id="embedded-development-best-practices">
+  
+  
+    <a href="#embedded-development-best-practices" class="anchor-heading" aria-labelledby="embedded-development-best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Embedded Development Best Practices
+  
+  
+</h2>
+    
+<h3 id="performance-optimization">
+  
+  
+    <a href="#performance-optimization" class="anchor-heading" aria-labelledby="performance-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Optimization
+  
+  
+</h3>
+    
+<ul>
+  <li>Use appropriate monitoring intervals for your application</li>
+  <li>Enable low-power mode for battery applications</li>
+  <li>Cache temperature readings when high-frequency access is needed</li>
+  <li>Use callbacks instead of polling for event-driven applications</li>
+</ul>
+<h3 id="memory-management">
+  
+  
+    <a href="#memory-management" class="anchor-heading" aria-labelledby="memory-management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Memory Management
+  
+  
+</h3>
+    
+<ul>
+  <li>All functions are <code class="language-plaintext highlighter-rouge">noexcept</code> - no exception handling overhead</li>
+  <li>Minimal dynamic allocation during operation</li>
+  <li>Configurable monitoring buffers</li>
+  <li>Stack usage optimization for interrupt contexts</li>
+</ul>
+<h3 id="real-time-considerations">
+  
+  
+    <a href="#real-time-considerations" class="anchor-heading" aria-labelledby="real-time-considerations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Real-time Considerations
+  
+  
+</h3>
+    
+<ul>
+  <li>Temperature readings are non-blocking</li>
+  <li>Callback execution in interrupt context</li>
+  <li>Predictable response times for threshold detection</li>
+  <li>Suitable for real-time temperature control applications</li>
+</ul>
+<h2 id="applications-and-use-cases">
+  
+  
+    <a href="#applications-and-use-cases" class="anchor-heading" aria-labelledby="applications-and-use-cases"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Applications and Use Cases
+  
+  
+</h2>
+    
+<h3 id="environmental-monitoring">
+  
+  
+    <a href="#environmental-monitoring" class="anchor-heading" aria-labelledby="environmental-monitoring"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Environmental Monitoring
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+// Monitor ambient temperature
+temp_sensor.SetThresholds(18.0f, 28.0f);  // Comfort zone
+temp_sensor.StartContinuousMonitoring(30000);  // 30-second updates
+</code>text</p>
+<h3 id="thermal-protection">
+  
+  
+    <a href="#thermal-protection" class="anchor-heading" aria-labelledby="thermal-protection"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Thermal Protection
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+// CPU/system thermal protection
+temp_sensor.SetThresholds(60.0f, 80.0f);  // Warning/critical temps
+temp_sensor.RegisterThresholdCallback(thermal_protection_handler);
+</code>text</p>
+<h3 id="data-logging">
+  
+  
+    <a href="#data-logging" class="anchor-heading" aria-labelledby="data-logging"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Data Logging
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">cpp
+// Regular temperature logging
+temp_sensor.StartContinuousMonitoring(60000);  // 1-minute intervals
+temp_sensor.RegisterMonitoringCallback(log_temperature_data);
+</code>text</p>
+<h2 id="cicd-integration">
+  
+  
+    <a href="#cicd-integration" class="anchor-heading" aria-labelledby="cicd-integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CI/CD Integration
+  
+  
+</h2>
+    
+
+<p>The temperature test is automatically included in the continuous integration pipeline:</p>
+
+<p><code class="language-plaintext highlighter-rouge">yaml
+matrix:
+  example_type: [temperature_test, ...]
+  build_type: [Release, Debug]
+</code>text</p>
+<h3 id="automated-testing">
+  
+  
+    <a href="#automated-testing" class="anchor-heading" aria-labelledby="automated-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automated Testing
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Build Verification</strong>: Compile-time validation</li>
+  <li><strong>Runtime Testing</strong>: Automated test execution</li>
+  <li><strong>Accuracy Validation</strong>: Temperature reading verification</li>
+  <li><strong>Performance Benchmarking</strong>: Response time and accuracy testing</li>
+</ul>
+<h2 id="references">
+  
+  
+    <a href="#references" class="anchor-heading" aria-labelledby="references"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> References
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/temp_sensor.html">ESP32-C6 Temperature Sensor Documentation</a></li>
+  <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf">ESP32-C6 Technical Reference Manual</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/index.html">ESP-IDF v5.5 Programming Guide</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-guides/temp_sensor.html">Temperature Sensor Calibration Guide</a></li>
+</ul>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

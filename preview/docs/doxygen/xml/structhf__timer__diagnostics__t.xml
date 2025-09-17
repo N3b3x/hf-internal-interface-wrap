@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__timer__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_timer_diagnostics_t</compoundname>
+    <includes refid="BasePeriodicTimer_8h" local="no">BasePeriodicTimer.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__timer__diagnostics__t_1a5309ee8b30dd52ab54bd053909a79d23" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_timer_diagnostics_t::timerHealthy</definition>
+        <argsstring></argsstring>
+        <name>timerHealthy</name>
+        <qualifiedname>hf_timer_diagnostics_t::timerHealthy</qualifiedname>
+        <briefdescription>
+<para>Overall timer health status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="128" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__timer__diagnostics__t_1a3cddd59f390b2ce4c6651c821693d76b" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t hf_timer_diagnostics_t::lastErrorCode</definition>
+        <argsstring></argsstring>
+        <name>lastErrorCode</name>
+        <qualifiedname>hf_timer_diagnostics_t::lastErrorCode</qualifiedname>
+        <briefdescription>
+<para>Last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="129" column="18" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__timer__diagnostics__t_1a7d8075e963afc9bb0f00f1f97f9a56ee" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_timer_diagnostics_t::lastErrorTimestamp</definition>
+        <argsstring></argsstring>
+        <name>lastErrorTimestamp</name>
+        <qualifiedname>hf_timer_diagnostics_t::lastErrorTimestamp</qualifiedname>
+        <briefdescription>
+<para>Last error timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="130" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__timer__diagnostics__t_1a71d6acafd35309317cdb8fa68dac049a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_timer_diagnostics_t::consecutiveErrors</definition>
+        <argsstring></argsstring>
+        <name>consecutiveErrors</name>
+        <qualifiedname>hf_timer_diagnostics_t::consecutiveErrors</qualifiedname>
+        <briefdescription>
+<para>Consecutive error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="131" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__timer__diagnostics__t_1abec955777b1c934cc318d4377e7d6723" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_timer_diagnostics_t::timerInitialized</definition>
+        <argsstring></argsstring>
+        <name>timerInitialized</name>
+        <qualifiedname>hf_timer_diagnostics_t::timerInitialized</qualifiedname>
+        <briefdescription>
+<para>Timer initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="132" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__timer__diagnostics__t_1a5e119828443d8eb7936c24f15c39c0ae" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_timer_diagnostics_t::timerRunning</definition>
+        <argsstring></argsstring>
+        <name>timerRunning</name>
+        <qualifiedname>hf_timer_diagnostics_t::timerRunning</qualifiedname>
+        <briefdescription>
+<para>Timer running status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="133" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__timer__diagnostics__t_1a2f8a53fbc30fdd0dbb932bc99fe68e2f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_timer_diagnostics_t::currentPeriodUs</definition>
+        <argsstring></argsstring>
+        <name>currentPeriodUs</name>
+        <qualifiedname>hf_timer_diagnostics_t::currentPeriodUs</qualifiedname>
+        <briefdescription>
+<para>Current timer period in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="134" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__timer__diagnostics__t_1adb7974f41a1c4b06a2f261e7d374281c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_timer_diagnostics_t::timerResolutionUs</definition>
+        <argsstring></argsstring>
+        <name>timerResolutionUs</name>
+        <qualifiedname>hf_timer_diagnostics_t::timerResolutionUs</qualifiedname>
+        <briefdescription>
+<para>Timer resolution in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="135" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__timer__diagnostics__t_1a09a01a913ff1d0fe233c6f703dc280e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_timer_diagnostics_t::hf_timer_diagnostics_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_timer_diagnostics_t</name>
+        <qualifiedname>hf_timer_diagnostics_t::hf_timer_diagnostics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="137" column="3" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="137" bodyend="140"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Timer diagnostic information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BasePeriodicTimer.h" line="127" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="127" bodyend="141"/>
+    <listofallmembers>
+      <member refid="structhf__timer__diagnostics__t_1a71d6acafd35309317cdb8fa68dac049a" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>consecutiveErrors</name></member>
+      <member refid="structhf__timer__diagnostics__t_1a2f8a53fbc30fdd0dbb932bc99fe68e2f" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>currentPeriodUs</name></member>
+      <member refid="structhf__timer__diagnostics__t_1a09a01a913ff1d0fe233c6f703dc280e3" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>hf_timer_diagnostics_t</name></member>
+      <member refid="structhf__timer__diagnostics__t_1a3cddd59f390b2ce4c6651c821693d76b" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>lastErrorCode</name></member>
+      <member refid="structhf__timer__diagnostics__t_1a7d8075e963afc9bb0f00f1f97f9a56ee" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>lastErrorTimestamp</name></member>
+      <member refid="structhf__timer__diagnostics__t_1a5309ee8b30dd52ab54bd053909a79d23" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>timerHealthy</name></member>
+      <member refid="structhf__timer__diagnostics__t_1abec955777b1c934cc318d4377e7d6723" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>timerInitialized</name></member>
+      <member refid="structhf__timer__diagnostics__t_1adb7974f41a1c4b06a2f261e7d374281c" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>timerResolutionUs</name></member>
+      <member refid="structhf__timer__diagnostics__t_1a5e119828443d8eb7936c24f15c39c0ae" prot="public" virt="non-virtual"><scope>hf_timer_diagnostics_t</scope><name>timerRunning</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

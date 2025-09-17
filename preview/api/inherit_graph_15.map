@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classBaseWifi.html" title="Abstract base class for WiFi functionality." alt="" coords="5,5,100,36"/>
+<area shape="rect" id="Node000001" href="$classEspWifi.html" title="Advanced ESP32 implementation of unified BaseWifi with ESP&#45;IDF v5.5+ features." alt="" coords="148,5,232,36"/>
+<area shape="poly" id="edge14_Node000000_Node000001" title=" " alt="" coords="114,18,148,18,148,23,114,23"/>
+</map>

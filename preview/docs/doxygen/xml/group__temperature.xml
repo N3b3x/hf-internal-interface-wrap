@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__temperature" kind="group">
+    <compoundname>temperature</compoundname>
+    <title>Temperature Module</title>
+    <innerfile refid="BaseTemperature_8h">BaseTemperature.h</innerfile>
+    <innerclass refid="classBaseTemperature" prot="public">BaseTemperature</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__temperature_1ga8a7530bfdd1cefbda07bfa02bac456d0" prot="public" static="no">
+        <name>HF_TEMP_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC Temperature sensor error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all temperature sensor operations in the system. This enumeration is used across all temperature-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="42" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="42" bodyend="105"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All temperature-related types, enums, and functions for temperature sensor operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

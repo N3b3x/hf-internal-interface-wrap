@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classBaseBluetooth.html" title="Abstract base class for Bluetooth functionality." alt="" coords="5,5,144,36"/>
+<area shape="rect" id="Node000001" href="$classEspBluetooth.html" title="ESP32 Bluetooth implementation class." alt="" coords="192,5,321,36"/>
+<area shape="poly" id="edge2_Node000000_Node000001" title=" " alt="" coords="158,18,192,18,192,23,158,23"/>
+</map>

@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__can__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_can_statistics_t</compoundname>
+    <includes refid="BaseCan_8h" local="no">BaseCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a42a1a9acddb43243100e32cb91964040" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u64_t&gt; hf_can_statistics_t::messages_sent</definition>
+        <argsstring></argsstring>
+        <name>messages_sent</name>
+        <qualifiedname>hf_can_statistics_t::messages_sent</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Total messages successfully sent. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="358" column="15" bodyfile="inc/base/BaseCan.h" bodystart="358" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1acb5e2a142071e386f62468ffb3be2a78" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u64_t&gt; hf_can_statistics_t::messages_received</definition>
+        <argsstring></argsstring>
+        <name>messages_received</name>
+        <qualifiedname>hf_can_statistics_t::messages_received</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Total messages successfully received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="359" column="15" bodyfile="inc/base/BaseCan.h" bodystart="359" bodyend="359"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a7259bc7c4bcbb390d68a1f9f34c11055" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u64_t&gt; hf_can_statistics_t::bytes_transmitted</definition>
+        <argsstring></argsstring>
+        <name>bytes_transmitted</name>
+        <qualifiedname>hf_can_statistics_t::bytes_transmitted</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Total bytes transmitted. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="360" column="15" bodyfile="inc/base/BaseCan.h" bodystart="360" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a3e1c67e6d1ae31cf16f98310d9b092fa" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u64_t&gt; hf_can_statistics_t::bytes_received</definition>
+        <argsstring></argsstring>
+        <name>bytes_received</name>
+        <qualifiedname>hf_can_statistics_t::bytes_received</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Total bytes received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="361" column="15" bodyfile="inc/base/BaseCan.h" bodystart="361" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a6fa2a6fc5344b483c30049aacc0ce429" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::send_failures</definition>
+        <argsstring></argsstring>
+        <name>send_failures</name>
+        <qualifiedname>hf_can_statistics_t::send_failures</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Failed send operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="364" column="15" bodyfile="inc/base/BaseCan.h" bodystart="364" bodyend="364"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1ac7c444ee891d0d34e547d540d6b3a81d" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::receive_failures</definition>
+        <argsstring></argsstring>
+        <name>receive_failures</name>
+        <qualifiedname>hf_can_statistics_t::receive_failures</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Failed receive operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="365" column="15" bodyfile="inc/base/BaseCan.h" bodystart="365" bodyend="365"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a436e292e3f594cb51b7e3e2c795c391c" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::bus_error_count</definition>
+        <argsstring></argsstring>
+        <name>bus_error_count</name>
+        <qualifiedname>hf_can_statistics_t::bus_error_count</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Total bus errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="366" column="15" bodyfile="inc/base/BaseCan.h" bodystart="366" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a531fe1f8cea7bf0300c5ac0cf3d75af9" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::arbitration_lost_count</definition>
+        <argsstring></argsstring>
+        <name>arbitration_lost_count</name>
+        <qualifiedname>hf_can_statistics_t::arbitration_lost_count</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Arbitration lost events. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="367" column="15" bodyfile="inc/base/BaseCan.h" bodystart="367" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a818f6e7eb7f728a7f0bbf882496d1307" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::tx_failed_count</definition>
+        <argsstring></argsstring>
+        <name>tx_failed_count</name>
+        <qualifiedname>hf_can_statistics_t::tx_failed_count</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Transmission failures. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="368" column="15" bodyfile="inc/base/BaseCan.h" bodystart="368" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1adabf2819712bc6d5cfaf74e893c8d449" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::bus_off_events</definition>
+        <argsstring></argsstring>
+        <name>bus_off_events</name>
+        <qualifiedname>hf_can_statistics_t::bus_off_events</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Bus-off occurrences. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="369" column="15" bodyfile="inc/base/BaseCan.h" bodystart="369" bodyend="369"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a48b1a2d1150d29f3ea3d2ec0caee6727" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::error_warning_events</definition>
+        <argsstring></argsstring>
+        <name>error_warning_events</name>
+        <qualifiedname>hf_can_statistics_t::error_warning_events</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Error warning events. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="370" column="15" bodyfile="inc/base/BaseCan.h" bodystart="370" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a89b6fd61e6c03625a7f9b0ff81139b83" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u64_t&gt; hf_can_statistics_t::uptime_seconds</definition>
+        <argsstring></argsstring>
+        <name>uptime_seconds</name>
+        <qualifiedname>hf_can_statistics_t::uptime_seconds</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Total uptime in seconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="373" column="15" bodyfile="inc/base/BaseCan.h" bodystart="373" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a80c80945f20c50cb7d9ab4b9b9e4df10" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::last_activity_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_activity_timestamp</name>
+        <qualifiedname>hf_can_statistics_t::last_activity_timestamp</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Last activity timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="374" column="15" bodyfile="inc/base/BaseCan.h" bodystart="374" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a8c261516730e47d445d56df9049d697b" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_can_err_t&gt; hf_can_statistics_t::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>hf_can_statistics_t::last_error</qualifiedname>
+        <initializer>{<ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>}</initializer>
+        <briefdescription>
+<para>Last error encountered. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="375" column="15" bodyfile="inc/base/BaseCan.h" bodystart="375" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1aba07602085a2ec81ecdd65f53c1ca96f" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::tx_queue_peak</definition>
+        <argsstring></argsstring>
+        <name>tx_queue_peak</name>
+        <qualifiedname>hf_can_statistics_t::tx_queue_peak</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Peak TX queue usage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="378" column="15" bodyfile="inc/base/BaseCan.h" bodystart="378" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a7c64556d630c51f04a7e97d5beca155c" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::rx_queue_peak</definition>
+        <argsstring></argsstring>
+        <name>rx_queue_peak</name>
+        <qualifiedname>hf_can_statistics_t::rx_queue_peak</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>Peak RX queue usage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="379" column="15" bodyfile="inc/base/BaseCan.h" bodystart="379" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a2c259e2b8a42178625a2bc9ee248c91c" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::tx_queue_overflows</definition>
+        <argsstring></argsstring>
+        <name>tx_queue_overflows</name>
+        <qualifiedname>hf_can_statistics_t::tx_queue_overflows</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>TX queue overflow count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="380" column="15" bodyfile="inc/base/BaseCan.h" bodystart="380" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__statistics__t_1a66c9eac0c22489e6c56ea266fa537857" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; hf_can_statistics_t::rx_queue_overflows</definition>
+        <argsstring></argsstring>
+        <name>rx_queue_overflows</name>
+        <qualifiedname>hf_can_statistics_t::rx_queue_overflows</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+<para>RX queue overflow count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="381" column="15" bodyfile="inc/base/BaseCan.h" bodystart="381" bodyend="381"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__can__statistics__t_1ab5915bd4f67b906dfc92d8a4e997fcf2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_can_statistics_t::hf_can_statistics_t</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>hf_can_statistics_t</name>
+        <qualifiedname>hf_can_statistics_t::hf_can_statistics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="384" column="3"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CAN bus statistics structure for performance monitoring. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides comprehensive statistics for monitoring CAN bus performance and identifying potential issues. </para>
+    </detaileddescription>
+    <location file="inc/base/BaseCan.h" line="356" column="1" bodyfile="inc/base/BaseCan.h" bodystart="356" bodyend="385"/>
+    <listofallmembers>
+      <member refid="structhf__can__statistics__t_1a531fe1f8cea7bf0300c5ac0cf3d75af9" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>arbitration_lost_count</name></member>
+      <member refid="structhf__can__statistics__t_1a436e292e3f594cb51b7e3e2c795c391c" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>bus_error_count</name></member>
+      <member refid="structhf__can__statistics__t_1adabf2819712bc6d5cfaf74e893c8d449" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>bus_off_events</name></member>
+      <member refid="structhf__can__statistics__t_1a3e1c67e6d1ae31cf16f98310d9b092fa" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>bytes_received</name></member>
+      <member refid="structhf__can__statistics__t_1a7259bc7c4bcbb390d68a1f9f34c11055" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>bytes_transmitted</name></member>
+      <member refid="structhf__can__statistics__t_1a48b1a2d1150d29f3ea3d2ec0caee6727" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>error_warning_events</name></member>
+      <member refid="structhf__can__statistics__t_1ab5915bd4f67b906dfc92d8a4e997fcf2" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>hf_can_statistics_t</name></member>
+      <member refid="structhf__can__statistics__t_1a80c80945f20c50cb7d9ab4b9b9e4df10" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>last_activity_timestamp</name></member>
+      <member refid="structhf__can__statistics__t_1a8c261516730e47d445d56df9049d697b" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>last_error</name></member>
+      <member refid="structhf__can__statistics__t_1acb5e2a142071e386f62468ffb3be2a78" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>messages_received</name></member>
+      <member refid="structhf__can__statistics__t_1a42a1a9acddb43243100e32cb91964040" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>messages_sent</name></member>
+      <member refid="structhf__can__statistics__t_1ac7c444ee891d0d34e547d540d6b3a81d" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>receive_failures</name></member>
+      <member refid="structhf__can__statistics__t_1a66c9eac0c22489e6c56ea266fa537857" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>rx_queue_overflows</name></member>
+      <member refid="structhf__can__statistics__t_1a7c64556d630c51f04a7e97d5beca155c" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>rx_queue_peak</name></member>
+      <member refid="structhf__can__statistics__t_1a6fa2a6fc5344b483c30049aacc0ce429" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>send_failures</name></member>
+      <member refid="structhf__can__statistics__t_1a818f6e7eb7f728a7f0bbf882496d1307" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>tx_failed_count</name></member>
+      <member refid="structhf__can__statistics__t_1a2c259e2b8a42178625a2bc9ee248c91c" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>tx_queue_overflows</name></member>
+      <member refid="structhf__can__statistics__t_1aba07602085a2ec81ecdd65f53c1ca96f" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>tx_queue_peak</name></member>
+      <member refid="structhf__can__statistics__t_1a89b6fd61e6c03625a7f9b0ff81139b83" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>uptime_seconds</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

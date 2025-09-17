@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structInterruptStatus" kind="struct" language="C++" prot="public">
+    <compoundname>InterruptStatus</compoundname>
+    <includes refid="BaseGpio_8h" local="no">BaseGpio.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structInterruptStatus_1a26b3eebb18b5e2a7e45264b0cb216e4e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool InterruptStatus::is_enabled</definition>
+        <argsstring></argsstring>
+        <name>is_enabled</name>
+        <qualifiedname>InterruptStatus::is_enabled</qualifiedname>
+        <briefdescription>
+<para>Interrupt currently enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="229" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structInterruptStatus_1a9f18143aa438cbe4065bc7c923048887" prot="public" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref></type>
+        <definition>hf_gpio_interrupt_trigger_t InterruptStatus::trigger_type</definition>
+        <argsstring></argsstring>
+        <name>trigger_type</name>
+        <qualifiedname>InterruptStatus::trigger_type</qualifiedname>
+        <briefdescription>
+<para>Current trigger configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="230" column="31" bodyfile="inc/base/BaseGpio.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structInterruptStatus_1a64629d99731ed513155bebd9fd11a3c1" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t InterruptStatus::interrupt_count</definition>
+        <argsstring></argsstring>
+        <name>interrupt_count</name>
+        <qualifiedname>InterruptStatus::interrupt_count</qualifiedname>
+        <briefdescription>
+<para>Number of interrupts occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="231" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structInterruptStatus_1a55d2170d02fd159469846fac43c5b15d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool InterruptStatus::has_callback</definition>
+        <argsstring></argsstring>
+        <name>has_callback</name>
+        <qualifiedname>InterruptStatus::has_callback</qualifiedname>
+        <briefdescription>
+<para>Callback function is registered. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="232" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO interrupt status structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseGpio.h" line="228" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="228" bodyend="233"/>
+    <listofallmembers>
+      <member refid="structInterruptStatus_1a55d2170d02fd159469846fac43c5b15d" prot="public" virt="non-virtual"><scope>InterruptStatus</scope><name>has_callback</name></member>
+      <member refid="structInterruptStatus_1a64629d99731ed513155bebd9fd11a3c1" prot="public" virt="non-virtual"><scope>InterruptStatus</scope><name>interrupt_count</name></member>
+      <member refid="structInterruptStatus_1a26b3eebb18b5e2a7e45264b0cb216e4e" prot="public" virt="non-virtual"><scope>InterruptStatus</scope><name>is_enabled</name></member>
+      <member refid="structInterruptStatus_1a9f18143aa438cbe4065bc7c923048887" prot="public" virt="non-virtual"><scope>InterruptStatus</scope><name>trigger_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

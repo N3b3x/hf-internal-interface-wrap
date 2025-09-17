@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__adc__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_diagnostics_t</compoundname>
+    <includes refid="BaseAdc_8h" local="no">BaseAdc.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1a1e0b1c99282c5fe283580316afefc930" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_adc_diagnostics_t::adcHealthy</definition>
+        <argsstring></argsstring>
+        <name>adcHealthy</name>
+        <qualifiedname>hf_adc_diagnostics_t::adcHealthy</qualifiedname>
+        <briefdescription>
+<para>Overall ADC health status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="167" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1ad7d7323e43846d6d36770bdf9d186a9e" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t hf_adc_diagnostics_t::lastErrorCode</definition>
+        <argsstring></argsstring>
+        <name>lastErrorCode</name>
+        <qualifiedname>hf_adc_diagnostics_t::lastErrorCode</qualifiedname>
+        <briefdescription>
+<para>Last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="168" column="16" bodyfile="inc/base/BaseAdc.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1ae1e22ee485675311d884c475e026f0e4" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_diagnostics_t::lastErrorTimestamp</definition>
+        <argsstring></argsstring>
+        <name>lastErrorTimestamp</name>
+        <qualifiedname>hf_adc_diagnostics_t::lastErrorTimestamp</qualifiedname>
+        <briefdescription>
+<para>Last error timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="169" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1a8e93e164ee09f71c6273e146f4d3a2d9" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_diagnostics_t::consecutiveErrors</definition>
+        <argsstring></argsstring>
+        <name>consecutiveErrors</name>
+        <qualifiedname>hf_adc_diagnostics_t::consecutiveErrors</qualifiedname>
+        <briefdescription>
+<para>Consecutive error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="170" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1ab296ef25d5896f5b5bed5968fe20439d" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_adc_diagnostics_t::temperatureC</definition>
+        <argsstring></argsstring>
+        <name>temperatureC</name>
+        <qualifiedname>hf_adc_diagnostics_t::temperatureC</qualifiedname>
+        <briefdescription>
+<para>ADC temperature (if available) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="171" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1abdc5d12be09f67f96148c75af7a9fb9f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_adc_diagnostics_t::referenceVoltage</definition>
+        <argsstring></argsstring>
+        <name>referenceVoltage</name>
+        <qualifiedname>hf_adc_diagnostics_t::referenceVoltage</qualifiedname>
+        <briefdescription>
+<para>Reference voltage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="172" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1a5f4abea43e69583dc8b52c99b710da40" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_adc_diagnostics_t::calibrationValid</definition>
+        <argsstring></argsstring>
+        <name>calibrationValid</name>
+        <qualifiedname>hf_adc_diagnostics_t::calibrationValid</qualifiedname>
+        <briefdescription>
+<para>Calibration validity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="173" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1ab3dff4df11548bd7762fcd7efc0aac05" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_adc_diagnostics_t::enabled_channels</definition>
+        <argsstring></argsstring>
+        <name>enabled_channels</name>
+        <qualifiedname>hf_adc_diagnostics_t::enabled_channels</qualifiedname>
+        <briefdescription>
+<para>Bit mask of enabled channels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="174" column="12" bodyfile="inc/base/BaseAdc.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__diagnostics__t_1a358f62bd5c7258359c204ef9fbe3a9e6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_adc_diagnostics_t::initialization_state</definition>
+        <argsstring></argsstring>
+        <name>initialization_state</name>
+        <qualifiedname>hf_adc_diagnostics_t::initialization_state</qualifiedname>
+        <briefdescription>
+<para>Initialization state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="175" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__diagnostics__t_1a335596c4a285920ac1eef9a96d324986" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_diagnostics_t::hf_adc_diagnostics_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_diagnostics_t</name>
+        <qualifiedname>hf_adc_diagnostics_t::hf_adc_diagnostics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="177" column="3" bodyfile="inc/base/BaseAdc.h" bodystart="177" bodyend="180"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC diagnostic information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseAdc.h" line="166" column="1" bodyfile="inc/base/BaseAdc.h" bodystart="166" bodyend="181"/>
+    <listofallmembers>
+      <member refid="structhf__adc__diagnostics__t_1a1e0b1c99282c5fe283580316afefc930" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>adcHealthy</name></member>
+      <member refid="structhf__adc__diagnostics__t_1a5f4abea43e69583dc8b52c99b710da40" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>calibrationValid</name></member>
+      <member refid="structhf__adc__diagnostics__t_1a8e93e164ee09f71c6273e146f4d3a2d9" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>consecutiveErrors</name></member>
+      <member refid="structhf__adc__diagnostics__t_1ab3dff4df11548bd7762fcd7efc0aac05" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>enabled_channels</name></member>
+      <member refid="structhf__adc__diagnostics__t_1a335596c4a285920ac1eef9a96d324986" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>hf_adc_diagnostics_t</name></member>
+      <member refid="structhf__adc__diagnostics__t_1a358f62bd5c7258359c204ef9fbe3a9e6" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>initialization_state</name></member>
+      <member refid="structhf__adc__diagnostics__t_1ad7d7323e43846d6d36770bdf9d186a9e" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>lastErrorCode</name></member>
+      <member refid="structhf__adc__diagnostics__t_1ae1e22ee485675311d884c475e026f0e4" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>lastErrorTimestamp</name></member>
+      <member refid="structhf__adc__diagnostics__t_1abdc5d12be09f67f96148c75af7a9fb9f" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>referenceVoltage</name></member>
+      <member refid="structhf__adc__diagnostics__t_1ab296ef25d5896f5b5bed5968fe20439d" prot="public" virt="non-virtual"><scope>hf_adc_diagnostics_t</scope><name>temperatureC</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

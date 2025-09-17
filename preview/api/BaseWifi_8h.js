@@ -1,0 +1,85 @@
+var BaseWifi_8h =
+[
+    [ "HF_WIFI_ERR_LIST", "group__wifi.html#ga9f9e568d94077f9a13b02c0a2a9a07b1", null ],
+    [ "X", "group__wifi.html#gafbf3f04fa35349e183adb88ae6d03874", null ],
+    [ "X", "group__wifi.html#ga94b225babb1626cee0621f8312eb32d1", null ],
+    [ "X", "group__wifi.html#gafbf3f04fa35349e183adb88ae6d03874", null ],
+    [ "hf_wifi_event_callback_t", "group__wifi.html#gafc36eb4cdfaf0c2ea45afeaac3ad13c9", null ],
+    [ "hf_wifi_scan_callback_t", "group__wifi.html#ga427cf6c849ca99b6624e9106cefd0d60", null ],
+    [ "hf_wifi_err_t", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8", [
+      [ "WIFI_SUCCESS", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78", null ],
+      [ "WIFI_ERR_FAILURE", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a15a38f8eb5a3cd0e0b96296563daa3f3", null ],
+      [ "WIFI_ERR_INVALID_PARAM", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a55cd1f05f28416cdd4a9bb2eadec0e73", null ],
+      [ "WIFI_ERR_NOT_INITIALIZED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16", null ],
+      [ "WIFI_ERR_ALREADY_INITIALIZED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8ae59f4c66dbe551f0f5f627d943099e79", null ],
+      [ "WIFI_ERR_NOT_CONNECTED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a57a847e14bb397dd94d97c5b49cf493a", null ],
+      [ "WIFI_ERR_ALREADY_CONNECTED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a50e46e442a5070a22f34a00b5c0cacd7", null ],
+      [ "WIFI_ERR_CONNECTION_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a5a08df50f6eb89c807e3a1d5ec58b769", null ],
+      [ "WIFI_ERR_DISCONNECTION_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a4946bddc5adb3b211bcc4841874e1a29", null ],
+      [ "WIFI_ERR_SCAN_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a1e15398c36a32677f164ee207ed64cf8", null ],
+      [ "WIFI_ERR_AP_START_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a1bb2a03d355daba1e37a89c82bdf9bd8", null ],
+      [ "WIFI_ERR_AP_STOP_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8ab909a888d82c2db4003ffff2ca66abdf", null ],
+      [ "WIFI_ERR_TIMEOUT", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a294cb26b5243ba8db4fc146081202c5e", null ],
+      [ "WIFI_ERR_NO_MEMORY", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a3ac640174f18d7a6c7194021e7a72603", null ],
+      [ "WIFI_ERR_INVALID_SSID", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a3181398fc3cd1318d83e54f7b99aca99", null ],
+      [ "WIFI_ERR_INVALID_PASSWORD", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a07bd6ad10705cfbd7e7a66c8c5f7bb64", null ],
+      [ "WIFI_ERR_WEAK_SIGNAL", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a4ff5d5dadaab71ac4fcee59167fa77d7", null ],
+      [ "WIFI_ERR_AUTHENTICATION_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8aeb15c806558aa2e813a15370e71ed05c", null ],
+      [ "WIFI_ERR_ASSOCIATION_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a27c0c781e5f1a4398a2d18674eec6f4f", null ],
+      [ "WIFI_ERR_HANDSHAKE_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a1fa21e5953b7c44c2616f1e03c4c36a3", null ],
+      [ "WIFI_ERR_INIT_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8aacac0ea6e172f042936cbeddb0d37a2f", null ],
+      [ "WIFI_ERR_CONFIG_INVALID", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a7852b1715b050ae3101cff19bfa7af06", null ],
+      [ "WIFI_ERR_ENTERPRISE_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8ace594953aa0d8718cb0e8acf76908b24", null ],
+      [ "WIFI_ERR_WPA3_NOT_SUPPORTED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a5266248cf7ee91de81918c66c8c0cfd1", null ],
+      [ "WIFI_ERR_MESH_FAILED", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a25e5d00c8168c64b346ad42c8e5c4447", null ],
+      [ "WIFI_ERR_UNKNOWN", "BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a16a3812cc90c0de0034b98366370b7ab", null ]
+    ] ],
+    [ "hf_wifi_event_t", "group__wifi.html#ga0fc5cd83d2820476528dba010f9ccfbb", [
+      [ "HF_WIFI_EVENT_STA_START", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbaf92bfa17f25827b03d4c38b9a5b12fed", null ],
+      [ "HF_WIFI_EVENT_STA_STOP", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbaa6134af7fa2f1cb9dd5c073dfdda79f9", null ],
+      [ "HF_WIFI_EVENT_STA_CONNECTED", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba5775f2e8785a9f89d250576fb58c25bd", null ],
+      [ "HF_WIFI_EVENT_STA_DISCONNECTED", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbac3be6a4f7f22676a58916eff26cab97f", null ],
+      [ "HF_WIFI_EVENT_STA_AUTHMODE_CHANGE", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbae1e0d4b01056ab07371e633bc82cdbe2", null ],
+      [ "HF_WIFI_EVENT_STA_GOT_IP", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba31e6ab269d63cd2fe261a5f9377c217e", null ],
+      [ "HF_WIFI_EVENT_STA_LOST_IP", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba68770d9ff5da66a64a48c22305c5e116", null ],
+      [ "HF_WIFI_EVENT_AP_START", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbaa17d26945a91804f98acb719c5670b6d", null ],
+      [ "HF_WIFI_EVENT_AP_STOP", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba1cab8dc185607ed0f259c7cf686a8427", null ],
+      [ "HF_WIFI_EVENT_AP_STACONNECTED", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbaf23dc4e3afc9a14d71962b24b7c27f84", null ],
+      [ "HF_WIFI_EVENT_AP_STADISCONNECTED", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba75ced5f060962b871bcaa5656d919b60", null ],
+      [ "HF_WIFI_EVENT_SCAN_DONE", "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba27de53db7c725407fb155c33377b8346", null ]
+    ] ],
+    [ "hf_wifi_mode_t", "group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9", [
+      [ "HF_WIFI_MODE_STATION", "group__wifi.html#gga90ab2c8a51fc7cb116b659df115407b9a0e0c4b5a5bf02b61ca5aa7db0cf00ea0", null ],
+      [ "HF_WIFI_MODE_ACCESS_POINT", "group__wifi.html#gga90ab2c8a51fc7cb116b659df115407b9aca3fc28648422633c38422074f7e669b", null ],
+      [ "HF_WIFI_MODE_STATION_AP", "group__wifi.html#gga90ab2c8a51fc7cb116b659df115407b9aca1d3cacf20db7c218457051dd366355", null ],
+      [ "HF_WIFI_MODE_DISABLED", "group__wifi.html#gga90ab2c8a51fc7cb116b659df115407b9a0a66f56d841febc3a864de6c6c6ee8aa", null ]
+    ] ],
+    [ "hf_wifi_power_save_t", "group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760", [
+      [ "HF_WIFI_POWER_SAVE_NONE", "group__wifi.html#ggafd37336bb8e3a8528795ddfdbd9d5760a68443ff772c7fe9941de5f9748a217c3", null ],
+      [ "HF_WIFI_POWER_SAVE_MIN_MODEM", "group__wifi.html#ggafd37336bb8e3a8528795ddfdbd9d5760ad3af4c0f47b830b1e61108c98feecdf4", null ],
+      [ "HF_WIFI_POWER_SAVE_MAX_MODEM", "group__wifi.html#ggafd37336bb8e3a8528795ddfdbd9d5760a0a226388d21c3335ab7f7f84f895613a", null ]
+    ] ],
+    [ "hf_wifi_security_t", "group__wifi.html#gaa433fd9116606cbe69d1feeb748f41f7", [
+      [ "HF_WIFI_SECURITY_OPEN", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7a6c2ac93b7b92dd01285966d81b4c4b25", null ],
+      [ "HF_WIFI_SECURITY_WEP", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7ab85ee9acdcf05f4292466424bb367fae", null ],
+      [ "HF_WIFI_SECURITY_WPA_PSK", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7a61175b78017b936fe7ad931cdd68c6be", null ],
+      [ "HF_WIFI_SECURITY_WPA2_PSK", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7aad0d41f83861d8543a42673076f66bbc", null ],
+      [ "HF_WIFI_SECURITY_WPA_WPA2_PSK", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7a39e69301ced8ebe5a680fcd9815e7bd4", null ],
+      [ "HF_WIFI_SECURITY_WPA2_ENTERPRISE", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7a754aac58426b4ce19008820b1f1a522f", null ],
+      [ "HF_WIFI_SECURITY_WPA3_PSK", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7ab021c8178594863a7243ac31669a87c6", null ],
+      [ "HF_WIFI_SECURITY_WPA2_WPA3_PSK", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7acfafdeb953cbc1d7516fd6fa712edb02", null ],
+      [ "HF_WIFI_SECURITY_WPA3_ENTERPRISE", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7a51a49eb7d86d083a25ccf28389d190eb", null ],
+      [ "HF_WIFI_SECURITY_WAPI_PSK", "group__wifi.html#ggaa433fd9116606cbe69d1feeb748f41f7ab076e40f2ed7a08a4c9c292e4bfe443e", null ]
+    ] ],
+    [ "hf_wifi_state_t", "group__wifi.html#ga45e751432d70ba4ee36c1369914ee419", [
+      [ "HF_WIFI_STATE_DISCONNECTED", "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a415466d62e7e83707977ee4390e12b6c", null ],
+      [ "HF_WIFI_STATE_CONNECTING", "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a9bb99bb2f7635255855c767c4e921932", null ],
+      [ "HF_WIFI_STATE_CONNECTED", "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a0f3a9c87fae4616a67afc84a9b1286cc", null ],
+      [ "HF_WIFI_STATE_DISCONNECTING", "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419aab8ba5c7092d767a80ef4b678c73e780", null ],
+      [ "HF_WIFI_STATE_RECONNECTING", "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419a6d4f483c71a137fd5472874834dd34ac", null ],
+      [ "HF_WIFI_STATE_AP_STARTED", "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419ac784ed708d7c61296d6659a898e874a1", null ],
+      [ "HF_WIFI_STATE_AP_STOPPED", "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419aec315cb076e8b73c0af1c667813c6c97", null ],
+      [ "HF_WIFI_STATE_SCANNING", "group__wifi.html#gga45e751432d70ba4ee36c1369914ee419adc54a01d1353b4c41e239af37d7af6ca", null ]
+    ] ],
+    [ "HfWifiErrToString", "group__wifi.html#gad6a1454d2409e5f92e89682f8a37676a", null ]
+];

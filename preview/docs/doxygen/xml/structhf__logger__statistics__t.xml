@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__logger__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_logger_statistics_t</compoundname>
+    <includes refid="BaseLogger_8h" local="no">BaseLogger.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1ad6de2a70394493e108c51ea0e26b873b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::total_messages</definition>
+        <argsstring></argsstring>
+        <name>total_messages</name>
+        <qualifiedname>hf_logger_statistics_t::total_messages</qualifiedname>
+        <briefdescription>
+<para>Total messages logged. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="171" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1a5653355170f0031678b7110a1d7d8508" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::messages_by_level[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>messages_by_level</name>
+        <qualifiedname>hf_logger_statistics_t::messages_by_level</qualifiedname>
+        <briefdescription>
+<para>Messages by level (indexed by hf_log_level_t) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="172" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1a13db2ecce372067c4864b99ffc990d08" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::total_bytes_written</definition>
+        <argsstring></argsstring>
+        <name>total_bytes_written</name>
+        <qualifiedname>hf_logger_statistics_t::total_bytes_written</qualifiedname>
+        <briefdescription>
+<para>Total bytes written. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="173" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1ad0b98afd9aa45cc49049b6b11f08daaa" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::write_errors</definition>
+        <argsstring></argsstring>
+        <name>write_errors</name>
+        <qualifiedname>hf_logger_statistics_t::write_errors</qualifiedname>
+        <briefdescription>
+<para>Number of write errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="174" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1ac7719556e89e7244fd511e59ebdddf10" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::format_errors</definition>
+        <argsstring></argsstring>
+        <name>format_errors</name>
+        <qualifiedname>hf_logger_statistics_t::format_errors</qualifiedname>
+        <briefdescription>
+<para>Number of format errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="175" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1a3287f0ec71c6bc082dd4baccc3617ef8" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::buffer_overflows</definition>
+        <argsstring></argsstring>
+        <name>buffer_overflows</name>
+        <qualifiedname>hf_logger_statistics_t::buffer_overflows</qualifiedname>
+        <briefdescription>
+<para>Number of buffer overflows. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="176" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1a5c690ed89c197df02f384ada846c1ab9" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::performance_monitor_calls</definition>
+        <argsstring></argsstring>
+        <name>performance_monitor_calls</name>
+        <qualifiedname>hf_logger_statistics_t::performance_monitor_calls</qualifiedname>
+        <briefdescription>
+<para>Number of performance monitor calls. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="177" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1a0a0e53d5cf43f4b48e7746885653401f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::last_message_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_message_timestamp</name>
+        <qualifiedname>hf_logger_statistics_t::last_message_timestamp</qualifiedname>
+        <briefdescription>
+<para>Timestamp of last message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="178" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1a5bc425c32ac091d12f7fc0d18d192ab9" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::average_message_length</definition>
+        <argsstring></argsstring>
+        <name>average_message_length</name>
+        <qualifiedname>hf_logger_statistics_t::average_message_length</qualifiedname>
+        <briefdescription>
+<para>Average message length. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="179" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__statistics__t_1a55bbd274f7b6705ed635217485370a78" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_statistics_t::max_message_length_seen</definition>
+        <argsstring></argsstring>
+        <name>max_message_length_seen</name>
+        <qualifiedname>hf_logger_statistics_t::max_message_length_seen</qualifiedname>
+        <briefdescription>
+<para>Maximum message length seen. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="180" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Logger statistics structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseLogger.h" line="170" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="170" bodyend="181"/>
+    <listofallmembers>
+      <member refid="structhf__logger__statistics__t_1a5bc425c32ac091d12f7fc0d18d192ab9" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>average_message_length</name></member>
+      <member refid="structhf__logger__statistics__t_1a3287f0ec71c6bc082dd4baccc3617ef8" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>buffer_overflows</name></member>
+      <member refid="structhf__logger__statistics__t_1ac7719556e89e7244fd511e59ebdddf10" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>format_errors</name></member>
+      <member refid="structhf__logger__statistics__t_1a0a0e53d5cf43f4b48e7746885653401f" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>last_message_timestamp</name></member>
+      <member refid="structhf__logger__statistics__t_1a55bbd274f7b6705ed635217485370a78" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>max_message_length_seen</name></member>
+      <member refid="structhf__logger__statistics__t_1a5653355170f0031678b7110a1d7d8508" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>messages_by_level</name></member>
+      <member refid="structhf__logger__statistics__t_1a5c690ed89c197df02f384ada846c1ab9" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>performance_monitor_calls</name></member>
+      <member refid="structhf__logger__statistics__t_1a13db2ecce372067c4864b99ffc990d08" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>total_bytes_written</name></member>
+      <member refid="structhf__logger__statistics__t_1ad6de2a70394493e108c51ea0e26b873b" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>total_messages</name></member>
+      <member refid="structhf__logger__statistics__t_1ad0b98afd9aa45cc49049b6b11f08daaa" prot="public" virt="non-virtual"><scope>hf_logger_statistics_t</scope><name>write_errors</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,2374 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li:not(:nth-child(2)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/preview/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/preview/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🚀 ESP32 Examples | HardFOC Interface Wrapper - preview</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🚀 ESP32 Examples" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Comprehensive examples with advanced build system for HardFOC ESP32 development" />
+<meta property="og:description" content="Comprehensive examples with advanced build system for HardFOC ESP32 development" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - preview" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🚀 ESP32 Examples" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Comprehensive examples with advanced build system for HardFOC ESP32 development","headline":"🚀 ESP32 Examples","url":"https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/preview/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/preview/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - preview
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🚀 ESP32 Examples</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="-esp32-examples---hardfoc-internal-interface-wrapper">
+  
+  
+    <a href="#-esp32-examples---hardfoc-internal-interface-wrapper" class="anchor-heading" aria-labelledby="-esp32-examples---hardfoc-internal-interface-wrapper"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚀 ESP32 Examples - HardFOC Internal Interface Wrapper
+  
+  
+</h1>
+    
+
+<p><img src="https://img.shields.io/badge/ESP32-Examples-blue?style=for-the-badge&amp;logo=espressif" alt="ESP32 Examples" />
+<img src="https://img.shields.io/badge/Build-System-green?style=for-the-badge&amp;logo=github" alt="Build System" />
+<img src="https://img.shields.io/badge/ESP--IDF-v5.5-orange?style=for-the-badge&amp;logo=espressif" alt="ESP-IDF" /></p>
+
+<p><strong>🎯 Comprehensive Examples with Advanced Build System for HardFOC ESP32 Development</strong></p>
+
+<p><em>Professional-grade examples demonstrating all HardFOC ESP32 interface capabilities with automated
+ESP-IDF management, structured build system, and CI/CD integration</em></p><hr />
+<h2 id="-table-of-contents">
+  
+  
+    <a href="#-table-of-contents" class="anchor-heading" aria-labelledby="-table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📚 <strong>Table of Contents</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="#-overview">🎯 <strong>Overview</strong></a></li>
+  <li><a href="#-build-system-architecture">🏗️ <strong>Build System Architecture</strong></a></li>
+  <li><a href="#-esp-idf-management">🚀 <strong>ESP-IDF Management</strong></a></li>
+  <li><a href="#-project-structure">📁 <strong>Project Structure</strong></a></li>
+  <li><a href="#-quick-start">🔧 <strong>Quick Start</strong></a></li>
+  <li><a href="#-detailed-usage">📖 <strong>Detailed Usage</strong></a></li>
+  <li><a href="#-configuration">⚙️ <strong>Configuration</strong></a></li>
+  <li><a href="#-build-artifacts">📦 <strong>Build Artifacts</strong></a></li>
+  <li><a href="#-cicd-integration">🔄 <strong>CI/CD Integration</strong></a></li>
+  <li><a href="#-troubleshooting">🔍 <strong>Troubleshooting</strong></a></li>
+  <li><a href="#-examples-list">📋 <strong>Examples List</strong></a></li>
+</ul><hr />
+<h2 id="-overview">
+  
+  
+    <a href="#-overview" class="anchor-heading" aria-labelledby="-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Overview</strong>
+  
+  
+</h2>
+    
+
+<p>The ESP32 examples directory provides comprehensive demonstrations of all HardFOC interface
+capabilities, featuring a sophisticated build system that automatically manages ESP-IDF versions,
+generates build matrices, and produces structured, parseable build outputs.</p>
+<h3 id="-key-features">
+  
+  
+    <a href="#-key-features" class="anchor-heading" aria-labelledby="-key-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏆 <strong>Key Features</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>🔧 Automated ESP-IDF Management</strong> - Auto-detection, installation, and environment setup</li>
+  <li><strong>📊 Dynamic Build Matrix Generation</strong> - CI/CD matrix generation from configuration</li>
+  <li><strong>📁 Structured Build Directories</strong> - Parseable naming convention for automation</li>
+  <li><strong>🔄 Incremental Builds</strong> - Fast rebuilds with intelligent caching</li>
+  <li><strong>📦 Complete Artifact Management</strong> - All build outputs properly organized</li>
+  <li><strong>🌐 CI/CD Ready</strong> - Seamless integration with GitHub Actions</li>
+  <li><strong>🛡️ Enhanced Validation System</strong> - Smart combination validation and error prevention</li>
+  <li><strong>🧠 Smart Defaults</strong> - Automatic ESP-IDF version selection based on app and build type</li>
+</ul><hr />
+<h2 id="️-build-system-architecture">
+  
+  
+    <a href="#️-build-system-architecture" class="anchor-heading" aria-labelledby="️-build-system-architecture"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ <strong>Build System Architecture</strong>
+  
+  
+</h2>
+    
+<h3 id="system-components">
+  
+  
+    <a href="#system-components" class="anchor-heading" aria-labelledby="system-components"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>System Components</strong>
+  
+  
+</h3>
+    
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────────────────────┐
+│                           📁 CONFIGURATION LAYER                            │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  app_config.yml     ──┐                                                     │
+│                       │                                                     │
+│  generate_matrix.py ──┘                                                     │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             🔧 BUILD LAYER                                  │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  build_app.sh    ──┐                                                        │
+│  setup_common.sh   │                                                        │
+│  setup_ci.sh       │                                                        │
+│  setup_repo.sh   ──┘                                                        │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                             📦 OUTPUT LAYER                                 │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  Dynamic Build Directories  ──┐                                             │
+│  Structured Naming            │                                             │
+│  Complete Artifacts         ──┘                                             │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            🔄 CI/CD LAYER                                   │
+├─────────────────────────────────────────────────────────────────────────────┤
+│  GitHub Actions     ──┐                                                     │
+│  Matrix Generation    │                                                     │
+│  Artifact Upload    ──┘                                                     │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+Data Flow:
+app_config.yml → generate_matrix.py → Matrix Generation
+setup_common.sh → build_app.sh → Dynamic Build Directories → Structured Naming → Complete Artifacts
+→ Artifact Upload
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="build-process-flow">
+  
+  
+    <a href="#build-process-flow" class="anchor-heading" aria-labelledby="build-process-flow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Build Process Flow</strong>
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>Configuration Loading</strong> - Read <code class="language-plaintext highlighter-rouge">app_config.yml</code> for build parameters</li>
+  <li><strong>🛡️ Smart Validation</strong> - Validate app + build type + IDF version combination</li>
+  <li><strong>🧠 Smart Default Selection</strong> - Auto-select ESP-IDF version if not specified</li>
+  <li><strong>ESP-IDF Detection</strong> - Auto-detect or install required ESP-IDF version</li>
+  <li><strong>Environment Setup</strong> - Source ESP-IDF and configure build environment</li>
+  <li><strong>Build Execution</strong> - Run ESP-IDF build with project-specific settings</li>
+  <li><strong>Output Generation</strong> - Create structured build directory with all artifacts</li>
+  <li><strong>Path Export</strong> - Export build directory path for CI/CD integration</li>
+</ol><hr />
+<h2 id="️-enhanced-validation-system">
+  
+  
+    <a href="#️-enhanced-validation-system" class="anchor-heading" aria-labelledby="️-enhanced-validation-system"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🛡️ <strong>Enhanced Validation System</strong>
+  
+  
+</h2>
+    
+
+<p>The build system now includes comprehensive validation to prevent invalid build combinations and
+provide clear guidance to users.</p>
+<h3 id="validation-features">
+  
+  
+    <a href="#validation-features" class="anchor-heading" aria-labelledby="validation-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Validation Features</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>🔍 Combination Validation</strong> - Validates app + build type + IDF version combinations</li>
+  <li><strong>🚫 Invalid Build Prevention</strong> - Blocks builds with unsupported combinations</li>
+  <li><strong>💡 Smart Error Messages</strong> - Clear guidance on what combinations are allowed</li>
+  <li><strong>🧠 Smart Defaults</strong> - Automatic ESP-IDF version selection when not specified</li>
+</ul>
+<h3 id="validation-flow">
+  
+  
+    <a href="#validation-flow" class="anchor-heading" aria-labelledby="validation-flow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Validation Flow</strong>
+  
+  
+</h3>
+    
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527
+528
+529
+530
+531
+532
+533
+534
+535
+536
+537
+538
+539
+540
+541
+542
+543
+544
+545
+546
+547
+548
+549
+550
+551
+552
+553
+554
+555
+556
+557
+558
+559
+560
+561
+562
+563
+564
+565
+566
+567
+568
+569
+570
+571
+572
+573
+574
+575
+576
+577
+578
+579
+580
+581
+582
+583
+584
+585
+586
+587
+588
+589
+590
+591
+592
+593
+594
+595
+596
+597
+598
+599
+600
+601
+602
+603
+604
+605
+606
+607
+608
+609
+610
+611
+612
+613
+614
+615
+616
+617
+618
+619
+620
+621
+622
+623
+624
+625
+626
+627
+628
+629
+630
+631
+632
+633
+634
+635
+636
+637
+638
+639
+640
+641
+642
+643
+644
+645
+646
+647
+648
+649
+650
+651
+652
+653
+654
+655
+656
+657
+658
+659
+660
+661
+662
+663
+664
+665
+666
+667
+668
+669
+670
+671
+672
+673
+674
+675
+676
+677
+678
+679
+680
+681
+682
+683
+684
+685
+686
+687
+688
+689
+690
+691
+692
+693
+694
+695
+696
+697
+698
+699
+700
+701
+702
+703
+704
+705
+706
+707
+708
+709
+710
+711
+712
+713
+714
+715
+</pre></td><td class="rouge-code"><pre>┌─────────────────────────────────────────────────────────────────────────────┐
+│                           BUILD REQUEST                                     │
+│  app: gpio_test, build_type: Release, idf_version: (unspecified)            │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        BASIC VALIDATION FIRST                               │
+│  • Validate app type exists                                                 │
+│  • Validate build type is supported                                         │
+│  • Fail fast if basic validation fails                                      │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        SMART DEFAULT SELECTION                              │
+│  • Only if basic validation passes                                          │
+│  • Check app-specific IDF versions                                          │
+│  • Find first version supporting requested build type                       │
+│  • Fallback to global defaults if needed                                    │
+│  • Result: release/v5.5                                                     │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        FINAL COMBINATION VALIDATION                         │
+│  • Single comprehensive check (no redundant individual validations)         │
+│  • Functions remain standalone-safe for independent sourcing                │
+│  • Check combination constraints                                            │
+└─────────────────────┬───────────────────────────────────────────────────────┘
+                      │
+                      ▼
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           VALIDATION RESULT                                 │
+│  ✅ VALID: gpio_test + Release + release/v5.5                               │
+│  → Proceed with build                                                       │
+│                                                                             │
+│  ❌ INVALID: gpio_test + Release + release/v5.4                             │
+│  → Show error with valid combinations                                       │
+│  → Provide helpful next steps                                               │
+└─────────────────────────────────────────────────────────────────────────────┘
+```text
+
+**Key Optimization Points:**
+- **Early Exit**: Basic validation happens first, failing fast on invalid inputs
+- **Smart Defaults**: IDF version selection only occurs after basic validation passes
+- **Function Safety**: Individual validation functions remain standalone-safe for independent sourcing
+- **No Redundancy**: Combination validation doesn't repeat basic checks already performed
+
+---
+
+## 🚀 **ESP-IDF Management**
+
+### **Automatic ESP-IDF Setup**
+
+The build system automatically manages ESP-IDF versions without manual intervention:
+
+#### **Detection Process**
+```bash
+## 1. Check existing installations
+~/.espressif/esp-idf-{version}/
+~/esp/esp-idf-{version}/
+
+## 2. Auto-download if missing
+git clone --recursive https://github.com/espressif/esp-idf.git esp-idf-{version}
+
+## 3. Install tools and dependencies
+./install.sh
+
+## 4. Source environment
+source export.sh
+```text
+
+#### **Supported ESP-IDF Versions**
+- **v4.4** - Legacy support for older projects
+- **v5.0** - Stable release with modern features
+- **v5.1** - Enhanced performance and security
+- **v5.2** - Improved toolchain and debugging
+- **v5.3** - Latest stable with full ESP32-C6 support
+- **v5.4** - Performance optimizations
+- **v5.5** - Current latest release (recommended)
+
+#### **Target Support**
+- **ESP32-C6** - Primary target with full feature support
+- **ESP32-S3** - Secondary target for compatibility
+- **ESP32** - Legacy target support
+
+### **Environment Variables**
+
+The system automatically sets and manages:
+
+```bash
+export IDF_PATH="/path/to/esp-idf-{version}"
+export PATH="$IDF_PATH/tools:$PATH"
+export ESP_IDF_VERSION="{version}"
+export IDF_TARGET="esp32c6"
+```text
+
+---
+
+## 📁 **Project Structure**
+
+```text
+examples/esp32/
+├── 📁 components/              # Custom ESP-IDF components
+├── 📁 main/                    # Main application source code
+│   ├── 📄 CMakeLists.txt       # App being built cmake list
+├── 📁 scripts/                # Build and utility scripts
+│   ├── 📄 app_config.yml      # Centralized configuration
+│   ├── 📄 generate_matrix.py  # CI matrix generator
+│   ├── 📄 build_app.sh        # Main build script
+│   ├── 📄 setup_common.sh     # Shared setup functions
+│   ├── 📄 setup_ci.sh         # CI environment setup
+│   ├── 📄 setup_repo.sh       # Local development setup
+│   ├── 📄 flash_app.sh        # Flashing and monitoring
+│   └── 📄 config_loader.sh    # Configuration utilities
+├── 📁 build-*/                # Generated build directories
+└── 📄 app_config.yml          # All possible main applications that can be built
+└── 📄 CMakeLists.txt          # Project Cmake list
+└── 📄 sdkconfig               # Project config (idf.py menuconfig)
+└── 📄 README.md               # This documentation
+```yaml
+
+### **Key Files Explained**
+
+#### **`app_config.yml`**
+Centralized configuration for all applications, build types, and ESP-IDF versions:
+
+```yaml
+metadata:
+  idf_versions: ["release/v5.5", "release/v5.4"]
+  build_types: [["Debug", "Release"], ["Debug", "Release"]]
+  target: "esp32c6"
+
+apps:
+  gpio_test:
+    ci_enabled: true
+    description: "GPIO peripheral comprehensive testing"
+    idf_versions: ["release/v5.5"]  # Override global
+    build_types: [["Debug", "Release"]]
+```python
+
+#### **`generate_matrix.py`**
+Python script that generates CI/CD build matrices from centralized configuration:
+
+```bash
+## Generate full matrix (default JSON output)
+python3 scripts/generate_matrix.py
+
+## YAML format output
+python3 scripts/generate_matrix.py --format yaml
+
+## Filter for specific app
+python3 scripts/generate_matrix.py --filter gpio_test
+
+## Validate configuration
+python3 scripts/generate_matrix.py --validate
+
+## Verbose output with validation
+python3 scripts/generate_matrix.py --verbose --validate
+
+## Output to file
+python3 scripts/generate_matrix.py --output matrix.json
+
+## Complex combination
+python3 scripts/generate_matrix.py --filter wifi_test --validate --verbose --format yaml --output
+wifi_matrix.yaml
+```yaml
+
+**Features:**
+- **Configuration Validation**: Validates `app_config.yml` structure and content
+- **Flexible Output**: JSON (GitHub Actions) and YAML formats
+- **App Filtering**: Filter matrix for specific applications
+- **Verbose Processing**: Detailed processing information and statistics
+- **Smart Path Detection**: Works from any directory
+- **CI Integration**: Ready for GitHub Actions, GitLab CI, and Jenkins
+
+#### **`build_app.sh`**
+Main build script with automatic ESP-IDF management:
+
+```bash
+## Basic usage
+./scripts/build_app.sh &lt;app_name&gt; &lt;build_type&gt; [idf_version]
+
+## Examples
+./scripts/build_app.sh gpio_test Release
+./scripts/build_app.sh adc_test Debug release/v5.4
+./scripts/build_app.sh wifi_test Release release/v5.5
+```text
+
+---
+
+## 🔧 **Quick Start**
+
+### **1. Initial Setup**
+
+```bash
+## Clone the repository
+git clone &lt;repository-url&gt;
+cd hf-internal-interface-wrap
+
+## Navigate to ESP32 examples
+cd examples/esp32
+
+## Setup development environment
+source scripts/setup_repo.sh
+```text
+
+### **2. Build Your First Application**
+
+```bash
+## Build GPIO test application
+./scripts/build_app.sh gpio_test Release
+
+## Build ADC test with specific ESP-IDF version
+./scripts/build_app.sh adc_test Debug release/v5.4
+
+## Build with clean rebuild
+CLEAN=1 ./scripts/build_app.sh wifi_test Release
+## Or
+./scripts/build_app.sh wifi_test Release --clean
+```text
+
+### **3. Flash and Monitor**
+
+```bash
+## Flash and monitor
+./scripts/flash_app.sh flash_monitor gpio_test Release
+
+## Flash only
+./scripts/flash_app.sh flash gpio_test Release
+
+## Monitor only
+./scripts/flash_app.sh monitor
+```text
+
+---
+
+## 📖 **Detailed Usage**
+
+### **Build Script Options**
+
+#### **`build_app.sh`**
+```bash
+./scripts/build_app.sh [OPTIONS] &lt;app_name&gt; &lt;build_type&gt; [idf_version]
+
+Options:
+  -c, --clean          Clean build (remove existing build directory)
+  -v, --verbose        Verbose output
+  -h, --help           Show this help message
+
+Arguments:
+  app_name             Application name from app_config.yml
+  build_type           Build type (Debug, Release)
+  idf_version          ESP-IDF version (optional, uses default if not specified)
+
+Examples:
+  ./scripts/build_app.sh gpio_test Release
+  ./scripts/build_app.sh adc_test Debug release/v5.4
+  ./scripts/build_app.sh --clean wifi_test Release
+```text
+
+#### **`flash_app.sh`**
+```bash
+./scripts/flash_app.sh &lt;action&gt; [app_name] [build_type]
+
+Actions:
+  flash                Flash firmware only
+  monitor              Monitor serial output only
+  flash_monitor        Flash and then monitor
+  flash_erase          Erase flash and flash firmware
+
+Examples:
+  ./scripts/flash_app.sh flash_monitor gpio_test Release
+  ./scripts/flash_app.sh monitor
+  ./scripts/flash_app.sh flash_erase adc_test Debug
+```text
+
+### **Environment Setup Scripts**
+
+#### **`setup_repo.sh` (Local Development)**
+```bash
+## Setup local development environment
+source scripts/setup_repo.sh
+
+## This script:
+## 1. Installs development tools (clang, clang-format, clang-tidy)
+## 2. Sets up ESP-IDF environment
+## 3. Configures build tools
+## 4. Exports necessary environment variables
+```text
+
+#### **`setup_ci.sh` (CI/CD Environment)**
+```bash
+## Setup CI environment
+source scripts/setup_ci.sh
+
+## This script:
+## 1. Installs CI-specific tools
+## 2. Sets up ESP-IDF environment
+## 3. Configures for automated builds
+## 4. Exports CI-specific variables
+```yaml
+
+---
+
+## ⚙️ **Configuration**
+
+### **Application Configuration**
+
+Each application can be configured in `app_config.yml`:
+
+```yaml
+apps:
+  gpio_test:
+    ci_enabled: true                    # Include in CI builds
+    description: "GPIO testing suite"   # Human-readable description
+    idf_versions: ["release/v5.5"]     # Override global IDF versions
+    build_types: [["Debug", "Release"]] # Override global build types
+    
+  adc_test:
+    ci_enabled: true
+    description: "ADC peripheral testing"
+    # Uses global IDF versions and build types
+    
+  wifi_test:
+    ci_enabled: false                   # Exclude from CI builds
+    description: "WiFi functionality testing"
+    idf_versions: ["release/v5.4"]     # Specific IDF version only
+    build_types: [["Release"]]         # Release builds only
+```text
+
+### **Build Configuration**
+
+#### **Global Settings**
+```yaml
+metadata:
+  # ESP-IDF versions to support
+  idf_versions: ["release/v5.5", "release/v5.4", "release/v5.3"]
+  
+  # Build types per IDF version (nested array)
+  build_types: [
+    ["Debug", "Release"],  # For release/v5.5
+    ["Debug", "Release"],  # For release/v5.4
+    ["Debug"]              # For release/v5.3
+  ]
+  
+  # Target MCU
+  target: "esp32c6"
+  
+  # Build directory pattern
+build_directory_pattern: "build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}"
+```text
+
+#### **CI Configuration**
+```yaml
+ci_config:
+  # Exclude specific combinations
+  exclude_combinations:
+    - app_name: "wifi_test"
+      idf_version: "release/v5.3"
+      build_type: "Release"
+    - app_name: "bluetooth_test"
+      idf_version: "release/v5.4"
+      build_type: "Debug"
+```text
+
+### **Build Directory Naming**
+
+The system generates structured build directory names:
+
+```text
+build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}
+```json
+
+**Examples:**
+- `build-app-gpio_test-type-Release-target-esp32c6-idf-release_v5_5`
+- `build-app-adc_test-type-Debug-target-esp32c6-idf-release_v5_4`
+- `build-app-wifi_test-type-Release-target-esp32c6-idf-release_v5_3`
+
+**Benefits:**
+- ✅ **ESP-IDF Compatible** - No special characters
+- ✅ **Cross-Platform Safe** - Works on all file systems
+- ✅ **Handles Hyphenated Names** - No parsing ambiguity
+- ✅ **Structured &amp; Parsable** - Clear section boundaries
+- ✅ **CI/CD Ready** - Easy automation integration
+
+---
+
+## 📦 **Build Artifacts**
+
+### **Generated Files**
+
+Each build produces comprehensive artifacts:
+
+#### **Main Application Files**
+- **`{app_name}.bin`** - Flashable firmware binary
+- **`{app_name}.elf`** - ELF file for debugging and analysis
+- **`{app_name}.map`** - Memory layout and symbol information
+- **`{app_name}.hex`** - Intel HEX format (if enabled)
+
+#### **Bootloader and System Files**
+- **`bootloader/bootloader.bin`** - ESP32 bootloader
+- **`partition_table/partition-table.bin`** - Flash partition layout
+- **`sdkconfig`** - ESP-IDF configuration file
+- **`config.env`** - Environment configuration
+
+#### **Build System Files**
+- **`build.ninja`** - Ninja build system file
+- **`CMakeCache.txt`** - CMake cache
+- **`compile_commands.json`** - IDE integration
+- **`.ninja_deps`** - Build dependencies
+
+#### **Documentation and Analysis**
+- **`project_description.json`** - Project metadata
+- **`size.txt`** - Memory usage analysis
+- **`ccache_stats.txt`** - Cache statistics (if enabled)
+
+### **Artifact Organization**
+
+```text
+build-app-{app_name}-type-{build_type}-target-{target}-idf-{idf_version}/
+├── 📄 {app_name}.bin              # Main firmware
+├── 📄 {app_name}.elf              # Debug information
+├── 📄 {app_name}.map              # Memory layout
+├── 📁 bootloader/                 # Bootloader files
+│   ├── 📄 bootloader.bin
+│   └── 📄 bootloader.elf
+├── 📁 partition_table/            # Partition information
+│   └── 📄 partition-table.bin
+├── 📁 esp-idf/                    # ESP-IDF components
+├── 📄 sdkconfig                   # Configuration
+├── 📄 build.ninja                 # Build system
+└── 📄 compile_commands.json       # IDE integration
+```text
+
+---
+
+## 🔄 **CI/CD Integration**
+
+### **GitHub Actions Workflow**
+
+The project includes a comprehensive CI/CD pipeline:
+
+#### **Workflow Structure**
+```yaml
+name: ESP32 Component CI • Build • Size • Static Analysis
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  setup-environment:     # Setup development tools
+  generate-matrix:       # Generate build matrix from config
+  build:                 # Build all applications
+  static-analysis:       # Code quality analysis
+  workflow-lint:         # Workflow validation
+```yaml
+
+#### **Matrix Generation**
+The CI automatically generates build matrices from `app_config.yml`:
+
+```yaml
+## Generated matrix example
+matrix:
+  include:
+    - idf_version: "release/v5.5"
+      build_type: "Debug"
+      app_name: "gpio_test"
+      target: "esp32c6"
+    - idf_version: "release/v5.5"
+      build_type: "Release"
+      app_name: "gpio_test"
+      target: "esp32c6"
+    # ... more combinations
+```text
+
+#### **Build Process**
+```yaml
+- name: ESP-IDF Build
+  run: |
+    # Source CI setup
+    source $/scripts/setup_ci.sh
+    
+    # Build using standard script
+    ./scripts/build_app.sh "$" "$" "$"
+    
+    # Capture build directory for artifacts
+    echo "build_dir=$ESP32_BUILD_APP_MOST_RECENT_DIRECTORY" &gt;&gt; $GITHUB_OUTPUT
+```text
+
+#### **Artifact Upload**
+```yaml
+- name: Upload artifacts
+  uses: actions/upload-artifact@v4
+  with:
+    name: fw-$-$-$
+    path: $
+```text
+
+### **CI Environment Variables**
+
+```yaml
+env:
+  BUILD_PATH: ci_build_path
+  IDF_CCACHE_ENABLE: "1"
+  ESP32_PROJECT_PATH: examples/esp32
+```text
+
+### **Caching Strategy**
+
+The CI implements intelligent caching:
+
+```yaml
+- name: Cache ESP-IDF and tools
+  uses: actions/cache@v4
+  with:
+    path: |
+      ~/.espressif
+      ~/esp
+    key: esp-idf-$-$
+    
+- name: Cache ccache
+  uses: actions/cache@v4
+  with:
+    path: ~/.ccache
+    key: ccache-$-$
+```text
+
+---
+
+## 🔍 **Troubleshooting**
+
+### **Common Issues and Solutions**
+
+#### **ESP-IDF Not Found**
+```bash
+## Error: ESP-IDF environment not found
+## Solution: The build system will auto-install ESP-IDF
+
+## Manual installation if needed:
+cd ~/esp
+git clone --recursive https://github.com/espressif/esp-idf.git esp-idf-release_v5_5
+cd esp-idf-release_v5_5
+./install.sh
+source export.sh
+```text
+
+#### **Build Directory Issues**
+```bash
+## Error: Invalid build directory name
+## Solution: Check app_config.yml build_directory_pattern
+
+## Ensure pattern follows format:
+build_directory_pattern: "build-app-{app_type}-type-{build_type}-target-{target}-idf-{idf_version}"
+```text
+
+#### **Permission Issues**
+```bash
+## Error: Permission denied
+## Solution: Make scripts executable
+chmod +x scripts/*.sh
+chmod +x scripts/*.py
+```python
+
+#### **Python Dependencies**
+```bash
+## Error: Module not found
+## Solution: Install required packages
+pip install pyyaml
+pip install esptool
+```text
+
+### **Debug Mode**
+
+Enable verbose output for debugging:
+
+```bash
+## Verbose build
+./scripts/build_app.sh --verbose gpio_test Release
+
+## Clean rebuild
+CLEAN=1 ./scripts/build_app.sh gpio_test Release
+
+## Check environment
+source scripts/setup_repo.sh
+echo $IDF_PATH
+echo $IDF_TARGET
+```text
+
+### **Log Files**
+
+Build logs are available in:
+
+```bash
+## Build log
+cat build-*/log/build.log
+
+## CMake log
+cat build-*/CMakeFiles/CMakeOutput.log
+
+## Ninja log
+cat build-*/.ninja_log
+```cpp
+
+---
+
+## 📋 **Examples List**
+
+### **Available Applications**
+
+| Application | Description | CI Status | IDF Versions | Build Types |
+
+|-------------|-------------|-----------|--------------|-------------|
+
+| `gpio_test` | GPIO peripheral comprehensive testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `adc_test` | ADC peripheral testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `uart_test` | UART communication testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `spi_test` | SPI interface testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `i2c_test` | I2C interface testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `pwm_test` | PWM generation testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `can_test` | CAN bus testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `pio_test` | Programmable I/O testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `temperature_test` | Temperature sensor testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `nvs_test` | Non-volatile storage testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `timer_test` | Timer functionality testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `logger_test` | Logging system testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `wifi_test` | WiFi functionality testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `bluetooth_test` | Bluetooth testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `utils_test` | Utility functions testing | ✅ Enabled | v5.5 | Debug, Release |
+
+| `ascii_art` | ASCII art generation demo | ✅ Enabled | v5.5 | Debug, Release |
+
+### **Application Categories**
+
+#### **Core Peripherals**
+- **GPIO** - Digital input/output testing
+- **ADC** - Analog-to-digital conversion
+- **PWM** - Pulse-width modulation
+- **Timer** - Hardware timer functionality
+
+#### **Communication Interfaces**
+- **UART** - Serial communication
+- **SPI** - Serial peripheral interface
+- **I2C** - Inter-integrated circuit
+- **CAN** - Controller area network
+
+#### **Wireless Technologies**
+- **WiFi** - Wireless networking
+- **Bluetooth** - Short-range communication
+
+#### **System Features**
+- **NVS** - Non-volatile storage
+- **Logger** - Logging and debugging
+- **PIO** - Programmable I/O
+- **Temperature** - Thermal monitoring
+
+#### **Utilities**
+- **ASCII Art** - Text-based graphics
+- **Utils** - Common utility functions
+
+### **Test Documentation**
+
+Each application includes comprehensive test documentation:
+
+- **[Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/)** - Complete test documentation index
+- **[CAN Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/can_test/)** - CAN bus testing with SN65 transceiver
+- **[GPIO Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/gpio_test/)** - GPIO testing and validation
+- **[ADC Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/adc_test/)** - ADC testing and calibration
+- **[PWM Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/pwm_test/)** - PWM testing and frequency control
+- **[UART Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/uart_test/)** - UART communication testing
+- **[SPI Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/)** - SPI interface testing
+- **[I2C Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/i2c_test/)** - I2C device testing
+- **[PIO Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/)** - Programmable I/O testing
+- **[Temperature Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/)** - Temperature sensor testing
+- **[NVS Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/nvs_test/)** - Non-volatile storage testing
+- **[Logger Test Documentation](/hf-internal-interface-wrap/preview/examples/esp32/docs/logger_test/)** - Logging system testing
+
+---
+
+## 🤝 **Contributing**
+
+### **Adding New Applications**
+
+1. **Create Application Source**
+   ```cpp
+   // main/NewAppTest.cpp
+   #include "TestFramework.h"
+   
+   class NewAppTest : public TestFramework {
+   public:
+       void RunTests() override {
+           // Test implementation
+       }
+   };
+   
+   TEST_MAIN(NewAppTest)
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+
+<ol>
+  <li><strong>Update Configuration</strong>
+    <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="c1"># app_config.yml</span>
+<span class="na">apps</span><span class="pi">:</span>
+  <span class="na">new_app_test</span><span class="pi">:</span>
+    <span class="na">ci_enabled</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">New</span><span class="nv"> </span><span class="s">application</span><span class="nv"> </span><span class="s">testing"</span>
+    <span class="na">idf_versions</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">release/v5.5"</span><span class="pi">]</span>
+    <span class="na">build_types</span><span class="pi">:</span> <span class="pi">[[</span><span class="s2">"</span><span class="s">Debug"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">Release"</span><span class="pi">]]</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+  <li><strong>Test Build</strong>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre>./scripts/build_app.sh new_app_test Release
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+</ol>
+<h3 id="modifying-build-system">
+  
+  
+    <a href="#modifying-build-system" class="anchor-heading" aria-labelledby="modifying-build-system"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Modifying Build System</strong>
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>Update Scripts</strong> - Modify scripts in <code class="language-plaintext highlighter-rouge">scripts/</code> directory</li>
+  <li><strong>Test Locally</strong> - Verify changes work in local environment</li>
+  <li><strong>Update CI</strong> - Ensure CI pipeline compatibility</li>
+  <li><strong>Update Documentation</strong> - Keep this README current</li>
+</ol><hr />
+<h2 id="-license">
+  
+  
+    <a href="#-license" class="anchor-heading" aria-labelledby="-license"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📄 <strong>License</strong>
+  
+  
+</h2>
+    
+
+<p>This project is licensed under the GPL-3.0 License - see the <a href="/hf-internal-interface-wrap/preview/LICENSE">LICENSE</a> file for
+details.</p><hr />
+<h2 id="-related-documentation">
+  
+  
+    <a href="#-related-documentation" class="anchor-heading" aria-labelledby="-related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔗 <strong>Related Documentation</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="/hf-internal-interface-wrap/preview/">Main Project README</a> - Project overview and architecture</li>
+  <li><a href="../../docs/">API Documentation</a> - Interface API documentation</li>
+  <li><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/">Test Documentation</a> - Comprehensive test documentation and examples</li>
+  <li><a href="../../.github/workflows/">CI/CD Workflows</a> - GitHub Actions workflows</li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/">ESP-IDF Documentation</a> - ESP-IDF reference</li>
+</ul><hr />
+
+<p><strong>🚀 Built with ❤️ for the HardFOC Community</strong></p>
+
+<p><em>Professional-grade examples with enterprise-ready build system</em></p>
+
+          
+
+          
+            <hr>
+<h2 class="text-delta">📋 Table of Contents</h2>
+
+<ul>
+  
+  <li>
+    <a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/">🧪 Test Documentation</a>
+  </li>
+  
+</ul>
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

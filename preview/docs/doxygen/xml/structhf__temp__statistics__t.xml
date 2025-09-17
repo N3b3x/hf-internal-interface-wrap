@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__temp__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_temp_statistics_t</compoundname>
+    <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a237f5d7b048c0bf6412b1b12a26df02c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::total_operations</definition>
+        <argsstring></argsstring>
+        <name>total_operations</name>
+        <qualifiedname>hf_temp_statistics_t::total_operations</qualifiedname>
+        <briefdescription>
+<para>Total operations performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="255" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="255" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1acdc68755ec106fe10103633335f296fa" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::successful_operations</definition>
+        <argsstring></argsstring>
+        <name>successful_operations</name>
+        <qualifiedname>hf_temp_statistics_t::successful_operations</qualifiedname>
+        <briefdescription>
+<para>Successful operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="256" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="256" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a1d309985ffdd07a5627a643d1291af43" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::failed_operations</definition>
+        <argsstring></argsstring>
+        <name>failed_operations</name>
+        <qualifiedname>hf_temp_statistics_t::failed_operations</qualifiedname>
+        <briefdescription>
+<para>Failed operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="257" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a7e480896dd83b689cfe8068da97f15db" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::temperature_readings</definition>
+        <argsstring></argsstring>
+        <name>temperature_readings</name>
+        <qualifiedname>hf_temp_statistics_t::temperature_readings</qualifiedname>
+        <briefdescription>
+<para>Number of temperature readings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="258" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="258" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a8dbca9fef4d4e77c027e92dbda4460f8" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::calibration_count</definition>
+        <argsstring></argsstring>
+        <name>calibration_count</name>
+        <qualifiedname>hf_temp_statistics_t::calibration_count</qualifiedname>
+        <briefdescription>
+<para>Number of calibrations performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="259" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="259" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a379b39e99a1d9ba0fce526476576fcd5" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::threshold_violations</definition>
+        <argsstring></argsstring>
+        <name>threshold_violations</name>
+        <qualifiedname>hf_temp_statistics_t::threshold_violations</qualifiedname>
+        <briefdescription>
+<para>Number of threshold violations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="260" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a927a2bbf5d3a1f0803d77f5e77f87612" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::average_operation_time_us</definition>
+        <argsstring></argsstring>
+        <name>average_operation_time_us</name>
+        <qualifiedname>hf_temp_statistics_t::average_operation_time_us</qualifiedname>
+        <briefdescription>
+<para>Average operation time (microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="261" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1af8a7ebe55b63f0dca415f9fa76b51b21" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::max_operation_time_us</definition>
+        <argsstring></argsstring>
+        <name>max_operation_time_us</name>
+        <qualifiedname>hf_temp_statistics_t::max_operation_time_us</qualifiedname>
+        <briefdescription>
+<para>Maximum operation time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="262" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a27981b7b9f9fdec174780f948864dd58" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_statistics_t::min_operation_time_us</definition>
+        <argsstring></argsstring>
+        <name>min_operation_time_us</name>
+        <qualifiedname>hf_temp_statistics_t::min_operation_time_us</qualifiedname>
+        <briefdescription>
+<para>Minimum operation time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="263" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a7565696ba2cfde7e3e27550e11f26417" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_statistics_t::min_temperature_celsius</definition>
+        <argsstring></argsstring>
+        <name>min_temperature_celsius</name>
+        <qualifiedname>hf_temp_statistics_t::min_temperature_celsius</qualifiedname>
+        <briefdescription>
+<para>Minimum temperature recorded. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="264" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="264" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a8c6d2152708b1464f42c731944688dfc" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_statistics_t::max_temperature_celsius</definition>
+        <argsstring></argsstring>
+        <name>max_temperature_celsius</name>
+        <qualifiedname>hf_temp_statistics_t::max_temperature_celsius</qualifiedname>
+        <briefdescription>
+<para>Maximum temperature recorded. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="265" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="265" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__statistics__t_1a849d592b1fef29eba4c77248bdb6face" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_statistics_t::avg_temperature_celsius</definition>
+        <argsstring></argsstring>
+        <name>avg_temperature_celsius</name>
+        <qualifiedname>hf_temp_statistics_t::avg_temperature_celsius</qualifiedname>
+        <briefdescription>
+<para>Average temperature. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="266" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="266" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Temperature sensor statistics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseTemperature.h" line="254" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="254" bodyend="267"/>
+    <listofallmembers>
+      <member refid="structhf__temp__statistics__t_1a927a2bbf5d3a1f0803d77f5e77f87612" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>average_operation_time_us</name></member>
+      <member refid="structhf__temp__statistics__t_1a849d592b1fef29eba4c77248bdb6face" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>avg_temperature_celsius</name></member>
+      <member refid="structhf__temp__statistics__t_1a8dbca9fef4d4e77c027e92dbda4460f8" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>calibration_count</name></member>
+      <member refid="structhf__temp__statistics__t_1a1d309985ffdd07a5627a643d1291af43" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>failed_operations</name></member>
+      <member refid="structhf__temp__statistics__t_1af8a7ebe55b63f0dca415f9fa76b51b21" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>max_operation_time_us</name></member>
+      <member refid="structhf__temp__statistics__t_1a8c6d2152708b1464f42c731944688dfc" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>max_temperature_celsius</name></member>
+      <member refid="structhf__temp__statistics__t_1a27981b7b9f9fdec174780f948864dd58" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>min_operation_time_us</name></member>
+      <member refid="structhf__temp__statistics__t_1a7565696ba2cfde7e3e27550e11f26417" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>min_temperature_celsius</name></member>
+      <member refid="structhf__temp__statistics__t_1acdc68755ec106fe10103633335f296fa" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>successful_operations</name></member>
+      <member refid="structhf__temp__statistics__t_1a7e480896dd83b689cfe8068da97f15db" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>temperature_readings</name></member>
+      <member refid="structhf__temp__statistics__t_1a379b39e99a1d9ba0fce526476576fcd5" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>threshold_violations</name></member>
+      <member refid="structhf__temp__statistics__t_1a237f5d7b048c0bf6412b1b12a26df02c" prot="public" virt="non-virtual"><scope>hf_temp_statistics_t</scope><name>total_operations</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

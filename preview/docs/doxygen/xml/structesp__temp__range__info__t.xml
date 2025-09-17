@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structesp__temp__range__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>esp_temp_range_info_t</compoundname>
+    <includes refid="EspTemperature_8h" local="no">EspTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structesp__temp__range__info__t_1a33e3ba9131886f209f6eac338e26bdd4" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTemperature_8h_1ac20464eaa276aa198cb03d0fc5a6e679" kindref="member">esp_temp_range_t</ref></type>
+        <definition>esp_temp_range_t esp_temp_range_info_t::range</definition>
+        <argsstring></argsstring>
+        <name>range</name>
+        <qualifiedname>esp_temp_range_info_t::range</qualifiedname>
+        <briefdescription>
+<para>Range identifier. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="135" column="20" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__range__info__t_1a12e49d4f9810ae6f7434260cc9afe415" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float esp_temp_range_info_t::min_celsius</definition>
+        <argsstring></argsstring>
+        <name>min_celsius</name>
+        <qualifiedname>esp_temp_range_info_t::min_celsius</qualifiedname>
+        <briefdescription>
+<para>Minimum temperature. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="136" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__range__info__t_1a5349443a46220031e93c47df9b666f09" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float esp_temp_range_info_t::max_celsius</definition>
+        <argsstring></argsstring>
+        <name>max_celsius</name>
+        <qualifiedname>esp_temp_range_info_t::max_celsius</qualifiedname>
+        <briefdescription>
+<para>Maximum temperature. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="137" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__range__info__t_1abc02bc5b700e204c80492068b3d8f658" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float esp_temp_range_info_t::accuracy_celsius</definition>
+        <argsstring></argsstring>
+        <name>accuracy_celsius</name>
+        <qualifiedname>esp_temp_range_info_t::accuracy_celsius</qualifiedname>
+        <briefdescription>
+<para>Typical accuracy. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="138" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__range__info__t_1a6ba1cd80337fe97010b181ffbe64e4c2" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* esp_temp_range_info_t::description</definition>
+        <argsstring></argsstring>
+        <name>description</name>
+        <qualifiedname>esp_temp_range_info_t::description</qualifiedname>
+        <briefdescription>
+<para>Human-readable description. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="139" column="14" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Temperature range information structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspTemperature.h" line="134" column="1" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="134" bodyend="140"/>
+    <listofallmembers>
+      <member refid="structesp__temp__range__info__t_1abc02bc5b700e204c80492068b3d8f658" prot="public" virt="non-virtual"><scope>esp_temp_range_info_t</scope><name>accuracy_celsius</name></member>
+      <member refid="structesp__temp__range__info__t_1a6ba1cd80337fe97010b181ffbe64e4c2" prot="public" virt="non-virtual"><scope>esp_temp_range_info_t</scope><name>description</name></member>
+      <member refid="structesp__temp__range__info__t_1a5349443a46220031e93c47df9b666f09" prot="public" virt="non-virtual"><scope>esp_temp_range_info_t</scope><name>max_celsius</name></member>
+      <member refid="structesp__temp__range__info__t_1a12e49d4f9810ae6f7434260cc9afe415" prot="public" virt="non-virtual"><scope>esp_temp_range_info_t</scope><name>min_celsius</name></member>
+      <member refid="structesp__temp__range__info__t_1a33e3ba9131886f209f6eac338e26bdd4" prot="public" virt="non-virtual"><scope>esp_temp_range_info_t</scope><name>range</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

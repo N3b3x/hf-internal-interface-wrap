@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__uart__event__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_uart_event_t</compoundname>
+    <includes refid="EspTypes__UART_8h" local="no">EspTypes_UART.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__uart__event__t_1ad073f9713f20967f5027e85ab440abed" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aa" kindref="member">hf_uart_event_type_t</ref></type>
+        <definition>hf_uart_event_type_t hf_uart_event_t::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>hf_uart_event_t::type</qualifiedname>
+        <briefdescription>
+<para>Event type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="260" column="24" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__event__t_1ab767636a5abe68c979e61ace6da45a14" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_uart_event_t::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>hf_uart_event_t::size</qualifiedname>
+        <briefdescription>
+<para>Data size (for data events) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="261" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="261" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__event__t_1a6a8642e30e8aa3174f501fadf0bf08b7" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_uart_event_t::timeout_flag</definition>
+        <argsstring></argsstring>
+        <name>timeout_flag</name>
+        <qualifiedname>hf_uart_event_t::timeout_flag</qualifiedname>
+        <briefdescription>
+<para>Timeout flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="262" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="262" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>HardFOC UART event structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="259" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="259" bodyend="263"/>
+    <listofallmembers>
+      <member refid="structhf__uart__event__t_1ab767636a5abe68c979e61ace6da45a14" prot="public" virt="non-virtual"><scope>hf_uart_event_t</scope><name>size</name></member>
+      <member refid="structhf__uart__event__t_1a6a8642e30e8aa3174f501fadf0bf08b7" prot="public" virt="non-virtual"><scope>hf_uart_event_t</scope><name>timeout_flag</name></member>
+      <member refid="structhf__uart__event__t_1ad073f9713f20967f5027e85ab440abed" prot="public" virt="non-virtual"><scope>hf_uart_event_t</scope><name>type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

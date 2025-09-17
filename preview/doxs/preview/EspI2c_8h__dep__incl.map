@@ -1,0 +1,7 @@
+<map id="inc/mcu/esp32/EspI2c.h" name="inc/mcu/esp32/EspI2c.h">
+<area shape="rect" id="Node000001" title="Advanced ESP32&#45;integrated I2C controller for ESP&#45;IDF v5.5+ with proper bus&#45;device architecture." alt="" coords="153,5,367,36"/>
+<area shape="rect" id="Node000002" href="$I2cComprehensiveTest_8cpp.html" title="Comprehensive I2C testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,84,251,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,46,167,86,164,81,225,41"/>
+<area shape="rect" id="Node000003" href="$EspI2c_8cpp.html" title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture." alt="" coords="275,94,509,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="295,42,372,92,369,96,292,46"/>
+</map>

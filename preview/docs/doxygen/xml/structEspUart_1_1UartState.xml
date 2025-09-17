@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structEspUart_1_1UartState" kind="struct" language="C++" prot="private">
+    <compoundname>EspUart::UartState</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEspUart_1_1UartState_1aae872fa89746ec3e62b4caba0a47a4af" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspUart::UartState::configured</definition>
+        <argsstring></argsstring>
+        <name>configured</name>
+        <qualifiedname>EspUart::UartState::configured</qualifiedname>
+        <briefdescription>
+<para>UART is configured. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="489" column="10" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="489" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspUart_1_1UartState_1af3e1cad0ad315b431b9528d1133c2d7e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspUart::UartState::enabled</definition>
+        <argsstring></argsstring>
+        <name>enabled</name>
+        <qualifiedname>EspUart::UartState::enabled</qualifiedname>
+        <briefdescription>
+<para>UART is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="490" column="10" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="490" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspUart_1_1UartState_1a5089f1d953976d4ed81b3064287d3fd9" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref></type>
+        <definition>hf_uart_config_t EspUart::UartState::config</definition>
+        <argsstring></argsstring>
+        <name>config</name>
+        <qualifiedname>EspUart::UartState::config</qualifiedname>
+        <briefdescription>
+<para>Current configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="491" column="22" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="491" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspUart_1_1UartState_1a356a44ea7f25345f9dd70fa2383d630a" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref></type>
+        <definition>hf_uart_operating_mode_t EspUart::UartState::operating_mode</definition>
+        <argsstring></argsstring>
+        <name>operating_mode</name>
+        <qualifiedname>EspUart::UartState::operating_mode</qualifiedname>
+        <briefdescription>
+<para>Current operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="492" column="30" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="492" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspUart_1_1UartState_1a83a00c86d878439b42aaeaa288295f59" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref></type>
+        <definition>hf_uart_mode_t EspUart::UartState::communication_mode</definition>
+        <argsstring></argsstring>
+        <name>communication_mode</name>
+        <qualifiedname>EspUart::UartState::communication_mode</qualifiedname>
+        <briefdescription>
+<para>Current communication mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="493" column="20" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="493" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspUart_1_1UartState_1ab2580493fba505efbe65e19de590af08" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t EspUart::UartState::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>EspUart::UartState::last_error</qualifiedname>
+        <briefdescription>
+<para>Last error for this UART. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="494" column="19" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="494" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEspUart_1_1UartState_1a83d24d62cd8e020aef72d4f5ccac2eb7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspUart::UartState::UartState</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>UartState</name>
+        <qualifiedname>EspUart::UartState::UartState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspUart.h" line="496" column="5" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="496" bodyend="500"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>UART state tracking structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>EspUart::UartState</label>
+        <link refid="structEspUart_1_1UartState"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hf_uart_config_t</label>
+        <link refid="structhf__uart__config__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspUart.h" line="488" column="3" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="488" bodyend="501"/>
+    <listofallmembers>
+      <member refid="structEspUart_1_1UartState_1a83a00c86d878439b42aaeaa288295f59" prot="public" virt="non-virtual"><scope>EspUart::UartState</scope><name>communication_mode</name></member>
+      <member refid="structEspUart_1_1UartState_1a5089f1d953976d4ed81b3064287d3fd9" prot="public" virt="non-virtual"><scope>EspUart::UartState</scope><name>config</name></member>
+      <member refid="structEspUart_1_1UartState_1aae872fa89746ec3e62b4caba0a47a4af" prot="public" virt="non-virtual"><scope>EspUart::UartState</scope><name>configured</name></member>
+      <member refid="structEspUart_1_1UartState_1af3e1cad0ad315b431b9528d1133c2d7e" prot="public" virt="non-virtual"><scope>EspUart::UartState</scope><name>enabled</name></member>
+      <member refid="structEspUart_1_1UartState_1ab2580493fba505efbe65e19de590af08" prot="public" virt="non-virtual"><scope>EspUart::UartState</scope><name>last_error</name></member>
+      <member refid="structEspUart_1_1UartState_1a356a44ea7f25345f9dd70fa2383d630a" prot="public" virt="non-virtual"><scope>EspUart::UartState</scope><name>operating_mode</name></member>
+      <member refid="structEspUart_1_1UartState_1a83d24d62cd8e020aef72d4f5ccac2eb7" prot="public" virt="non-virtual"><scope>EspUart::UartState</scope><name>UartState</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

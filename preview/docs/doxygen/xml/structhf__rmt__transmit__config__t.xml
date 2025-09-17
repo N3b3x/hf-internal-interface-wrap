@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__rmt__transmit__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_rmt_transmit_config_t</compoundname>
+    <includes refid="EspTypes__PIO_8h" local="no">EspTypes_PIO.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__rmt__transmit__config__t_1abc3397d22ae6dae15c94dbb66c5d3fed" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_rmt_transmit_config_t::loop_count</definition>
+        <argsstring></argsstring>
+        <name>loop_count</name>
+        <qualifiedname>hf_rmt_transmit_config_t::loop_count</qualifiedname>
+        <briefdescription>
+<para>Loop count (0 = no loop) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="116" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__rmt__transmit__config__t_1a9c0ef2eb453518428ac0feb511df93ac" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_rmt_transmit_config_t::invert_signal</definition>
+        <argsstring></argsstring>
+        <name>invert_signal</name>
+        <qualifiedname>hf_rmt_transmit_config_t::invert_signal</qualifiedname>
+        <briefdescription>
+<para>Invert output signal. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="117" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__rmt__transmit__config__t_1a2eaa37be6151c91b183715162ae3d59c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_rmt_transmit_config_t::with_dma</definition>
+        <argsstring></argsstring>
+        <name>with_dma</name>
+        <qualifiedname>hf_rmt_transmit_config_t::with_dma</qualifiedname>
+        <briefdescription>
+<para>Enable DMA mode for large transfers. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="118" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__rmt__transmit__config__t_1a0bb3cd7e7d96cd8edbb74b3a3e19b7cc" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_rmt_transmit_config_t::queue_depth</definition>
+        <argsstring></argsstring>
+        <name>queue_depth</name>
+        <qualifiedname>hf_rmt_transmit_config_t::queue_depth</qualifiedname>
+        <briefdescription>
+<para>TX queue depth (1-32) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="119" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__rmt__transmit__config__t_1adebc7682a90a515f170a41ef77fe31c6" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_rmt_transmit_config_t::intr_priority</definition>
+        <argsstring></argsstring>
+        <name>intr_priority</name>
+        <qualifiedname>hf_rmt_transmit_config_t::intr_priority</qualifiedname>
+        <briefdescription>
+<para>Interrupt priority (0-7) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="120" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__rmt__transmit__config__t_1a5dd98107e0d96f70dc2bf37056a48e9c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_rmt_transmit_config_t::allow_pd</definition>
+        <argsstring></argsstring>
+        <name>allow_pd</name>
+        <qualifiedname>hf_rmt_transmit_config_t::allow_pd</qualifiedname>
+        <briefdescription>
+<para>Allow power down in sleep modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="121" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__rmt__transmit__config__t_1a04519f4a1925bc0cc8a9dc355953a395" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_rmt_transmit_config_t::hf_rmt_transmit_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_rmt_transmit_config_t</name>
+        <qualifiedname>hf_rmt_transmit_config_t::hf_rmt_transmit_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="123" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="123" bodyend="125"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 RMT transmission configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="115" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="115" bodyend="126"/>
+    <listofallmembers>
+      <member refid="structhf__rmt__transmit__config__t_1a5dd98107e0d96f70dc2bf37056a48e9c" prot="public" virt="non-virtual"><scope>hf_rmt_transmit_config_t</scope><name>allow_pd</name></member>
+      <member refid="structhf__rmt__transmit__config__t_1a04519f4a1925bc0cc8a9dc355953a395" prot="public" virt="non-virtual"><scope>hf_rmt_transmit_config_t</scope><name>hf_rmt_transmit_config_t</name></member>
+      <member refid="structhf__rmt__transmit__config__t_1adebc7682a90a515f170a41ef77fe31c6" prot="public" virt="non-virtual"><scope>hf_rmt_transmit_config_t</scope><name>intr_priority</name></member>
+      <member refid="structhf__rmt__transmit__config__t_1a9c0ef2eb453518428ac0feb511df93ac" prot="public" virt="non-virtual"><scope>hf_rmt_transmit_config_t</scope><name>invert_signal</name></member>
+      <member refid="structhf__rmt__transmit__config__t_1abc3397d22ae6dae15c94dbb66c5d3fed" prot="public" virt="non-virtual"><scope>hf_rmt_transmit_config_t</scope><name>loop_count</name></member>
+      <member refid="structhf__rmt__transmit__config__t_1a0bb3cd7e7d96cd8edbb74b3a3e19b7cc" prot="public" virt="non-virtual"><scope>hf_rmt_transmit_config_t</scope><name>queue_depth</name></member>
+      <member refid="structhf__rmt__transmit__config__t_1a2eaa37be6151c91b183715162ae3d59c" prot="public" virt="non-virtual"><scope>hf_rmt_transmit_config_t</scope><name>with_dma</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

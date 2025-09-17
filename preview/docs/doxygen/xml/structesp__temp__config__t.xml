@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structesp__temp__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>esp_temp_config_t</compoundname>
+    <includes refid="EspTemperature_8h" local="no">EspTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structesp__temp__config__t_1a15eb2b026d98122ce96bd29d47ce4b88" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTemperature_8h_1ac20464eaa276aa198cb03d0fc5a6e679" kindref="member">esp_temp_range_t</ref></type>
+        <definition>esp_temp_range_t esp_temp_config_t::range</definition>
+        <argsstring></argsstring>
+        <name>range</name>
+        <qualifiedname>esp_temp_config_t::range</qualifiedname>
+        <briefdescription>
+<para>Measurement range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="116" column="20" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__config__t_1a32f4e0572841ba20c07eb951d8c14b5c" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float esp_temp_config_t::calibration_offset</definition>
+        <argsstring></argsstring>
+        <name>calibration_offset</name>
+        <qualifiedname>esp_temp_config_t::calibration_offset</qualifiedname>
+        <briefdescription>
+<para>Initial calibration offset. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="117" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__config__t_1a532b01f4a182e30097a84fd14ceac05c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool esp_temp_config_t::enable_threshold_monitoring</definition>
+        <argsstring></argsstring>
+        <name>enable_threshold_monitoring</name>
+        <qualifiedname>esp_temp_config_t::enable_threshold_monitoring</qualifiedname>
+        <briefdescription>
+<para>Enable threshold monitoring. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="118" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__config__t_1a9107debb3e289dccaa1a45aeb5454d93" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float esp_temp_config_t::high_threshold_celsius</definition>
+        <argsstring></argsstring>
+        <name>high_threshold_celsius</name>
+        <qualifiedname>esp_temp_config_t::high_threshold_celsius</qualifiedname>
+        <briefdescription>
+<para>High temperature threshold. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="119" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__config__t_1a3cc2eee57cb670b909dc1eefa8d7049a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float esp_temp_config_t::low_threshold_celsius</definition>
+        <argsstring></argsstring>
+        <name>low_threshold_celsius</name>
+        <qualifiedname>esp_temp_config_t::low_threshold_celsius</qualifiedname>
+        <briefdescription>
+<para>Low temperature threshold. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="120" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__config__t_1a47cf6e19b01a751baa1cfe492f4ce54f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool esp_temp_config_t::enable_continuous_monitoring</definition>
+        <argsstring></argsstring>
+        <name>enable_continuous_monitoring</name>
+        <qualifiedname>esp_temp_config_t::enable_continuous_monitoring</qualifiedname>
+        <briefdescription>
+<para>Enable continuous monitoring. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="121" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__config__t_1a3f4ff437b88cf71e9a611d91086ce7d7" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t esp_temp_config_t::sample_rate_hz</definition>
+        <argsstring></argsstring>
+        <name>sample_rate_hz</name>
+        <qualifiedname>esp_temp_config_t::sample_rate_hz</qualifiedname>
+        <briefdescription>
+<para>Sample rate for continuous monitoring. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="122" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__config__t_1aeab3fc2dc607aa1a06b9169c25edf056" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool esp_temp_config_t::allow_power_down</definition>
+        <argsstring></argsstring>
+        <name>allow_power_down</name>
+        <qualifiedname>esp_temp_config_t::allow_power_down</qualifiedname>
+        <briefdescription>
+<para>Allow sensor power down in light sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="123" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__config__t_1ac402e25e8581918724253bd6c0dbb299" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t esp_temp_config_t::clk_src</definition>
+        <argsstring></argsstring>
+        <name>clk_src</name>
+        <qualifiedname>esp_temp_config_t::clk_src</qualifiedname>
+        <briefdescription>
+<para>Clock source (usually default) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="124" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32-C6 specific temperature sensor configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspTemperature.h" line="115" column="1" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="115" bodyend="125"/>
+    <listofallmembers>
+      <member refid="structesp__temp__config__t_1aeab3fc2dc607aa1a06b9169c25edf056" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>allow_power_down</name></member>
+      <member refid="structesp__temp__config__t_1a32f4e0572841ba20c07eb951d8c14b5c" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>calibration_offset</name></member>
+      <member refid="structesp__temp__config__t_1ac402e25e8581918724253bd6c0dbb299" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>clk_src</name></member>
+      <member refid="structesp__temp__config__t_1a47cf6e19b01a751baa1cfe492f4ce54f" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>enable_continuous_monitoring</name></member>
+      <member refid="structesp__temp__config__t_1a532b01f4a182e30097a84fd14ceac05c" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>enable_threshold_monitoring</name></member>
+      <member refid="structesp__temp__config__t_1a9107debb3e289dccaa1a45aeb5454d93" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>high_threshold_celsius</name></member>
+      <member refid="structesp__temp__config__t_1a3cc2eee57cb670b909dc1eefa8d7049a" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>low_threshold_celsius</name></member>
+      <member refid="structesp__temp__config__t_1a15eb2b026d98122ce96bd29d47ce4b88" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>range</name></member>
+      <member refid="structesp__temp__config__t_1a3f4ff437b88cf71e9a611d91086ce7d7" prot="public" virt="non-virtual"><scope>esp_temp_config_t</scope><name>sample_rate_hz</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

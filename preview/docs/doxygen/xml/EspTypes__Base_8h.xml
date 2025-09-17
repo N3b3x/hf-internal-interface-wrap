@@ -1,0 +1,831 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspTypes__Base_8h" kind="file" language="C++">
+    <compoundname>EspTypes_Base.h</compoundname>
+    <includes refid="McuSelect_8h" local="yes">../../utils/McuSelect.h</includes>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">atomic</includes>
+    <includes local="no">cstdint</includes>
+    <includedby refid="EspWifi_8h" local="yes">inc/mcu/esp32/EspWifi.h</includedby>
+    <includedby refid="EspTypes_8h" local="yes">inc/mcu/esp32/utils/EspTypes.h</includedby>
+    <includedby refid="EspTypes__ADC_8h" local="yes">inc/mcu/esp32/utils/EspTypes_ADC.h</includedby>
+    <includedby refid="EspTypes__CAN_8h" local="yes">inc/mcu/esp32/utils/EspTypes_CAN.h</includedby>
+    <includedby refid="EspTypes__GPIO_8h" local="yes">inc/mcu/esp32/utils/EspTypes_GPIO.h</includedby>
+    <includedby refid="EspTypes__I2C_8h" local="yes">inc/mcu/esp32/utils/EspTypes_I2C.h</includedby>
+    <includedby refid="EspTypes__NVS_8h" local="yes">inc/mcu/esp32/utils/EspTypes_NVS.h</includedby>
+    <includedby refid="EspTypes__PIO_8h" local="yes">inc/mcu/esp32/utils/EspTypes_PIO.h</includedby>
+    <includedby refid="EspTypes__PWM_8h" local="yes">inc/mcu/esp32/utils/EspTypes_PWM.h</includedby>
+    <includedby refid="EspTypes__SPI_8h" local="yes">inc/mcu/esp32/utils/EspTypes_SPI.h</includedby>
+    <includedby refid="EspTypes__Timer_8h" local="yes">inc/mcu/esp32/utils/EspTypes_Timer.h</includedby>
+    <includedby refid="EspTypes__UART_8h" local="yes">inc/mcu/esp32/utils/EspTypes_UART.h</includedby>
+    <includedby refid="EspTypes__WiFi_8h" local="yes">inc/mcu/esp32/utils/EspTypes_WiFi.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>../../utils/McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="6">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
+        <link refid="AdcComprehensiveTest_8cpp"/>
+      </node>
+      <node id="35">
+        <label>examples/esp32/main/AsciiArtComprehensiveTest.cpp</label>
+        <link refid="AsciiArtComprehensiveTest_8cpp"/>
+      </node>
+      <node id="36">
+        <label>examples/esp32/main/BluetoothComprehensiveTest.cpp</label>
+        <link refid="BluetoothComprehensiveTest_8cpp"/>
+      </node>
+      <node id="27">
+        <label>examples/esp32/main/CanComprehensiveTest.cpp</label>
+        <link refid="CanComprehensiveTest_8cpp"/>
+      </node>
+      <node id="32">
+        <label>examples/esp32/main/DigitalOutputGuardComprehensiveTest.cpp</label>
+        <link refid="DigitalOutputGuardComprehensiveTest_8cpp"/>
+      </node>
+      <node id="30">
+        <label>examples/esp32/main/GpioComprehensiveTest.cpp</label>
+        <link refid="GpioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="10">
+        <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
+        <link refid="I2cComprehensiveTest_8cpp"/>
+      </node>
+      <node id="37">
+        <label>examples/esp32/main/LoggerComprehensiveTest.cpp</label>
+        <link refid="LoggerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="38">
+        <label>examples/esp32/main/NvsComprehensiveTest.cpp</label>
+        <link refid="NvsComprehensiveTest_8cpp"/>
+      </node>
+      <node id="16">
+        <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
+        <link refid="PioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="33">
+        <label>examples/esp32/main/PwmComprehensiveTest.cpp</label>
+        <link refid="PwmComprehensiveTest_8cpp"/>
+      </node>
+      <node id="19">
+        <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
+        <link refid="SpiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="39">
+        <label>examples/esp32/main/TemperatureComprehensiveTest.cpp</label>
+        <link refid="TemperatureComprehensiveTest_8cpp"/>
+      </node>
+      <node id="34">
+        <label>examples/esp32/main/TestFramework.h</label>
+        <link refid="TestFramework_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
+        <link refid="TimerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="22">
+        <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
+        <link refid="UartComprehensiveTest_8cpp"/>
+      </node>
+      <node id="3">
+        <label>examples/esp32/main/WifiComprehensiveTest.cpp</label>
+        <link refid="WifiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="6">
+        <label>inc/mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>inc/mcu/esp32/EspCan.h</label>
+        <link refid="EspCan_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>inc/mcu/esp32/EspGpio.h</label>
+        <link refid="EspGpio_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="40" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>inc/mcu/esp32/EspNvs.h</label>
+        <link refid="EspNvs_8h"/>
+        <childnode refid="38" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>inc/mcu/esp32/EspPwm.h</label>
+        <link refid="EspPwm_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>inc/mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/mcu/esp32/EspWifi.h</label>
+        <link refid="EspWifi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>inc/mcu/esp32/utils/EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>inc/mcu/esp32/utils/EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>inc/mcu/esp32/utils/EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="41" relation="include">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>inc/mcu/esp32/utils/EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>inc/mcu/esp32/utils/EspTypes_NVS.h</label>
+        <link refid="EspTypes__NVS_8h"/>
+        <childnode refid="46" relation="include">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>inc/mcu/esp32/utils/EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="41">
+        <label>inc/mcu/esp32/utils/EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="49">
+        <label>inc/mcu/esp32/utils/EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>inc/mcu/esp32/utils/EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>inc/mcu/esp32/utils/EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="52">
+        <label>inc/mcu/esp32/utils/EspTypes_WiFi.h</label>
+        <link refid="EspTypes__WiFi_8h"/>
+      </node>
+      <node id="8">
+        <label>src/mcu/esp32/EspAdc.cpp</label>
+        <link refid="EspAdc_8cpp"/>
+      </node>
+      <node id="28">
+        <label>src/mcu/esp32/EspCan.cpp</label>
+        <link refid="EspCan_8cpp"/>
+      </node>
+      <node id="40">
+        <label>src/mcu/esp32/EspGpio.cpp</label>
+        <link refid="EspGpio_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="47">
+        <label>src/mcu/esp32/EspNvs.cpp</label>
+        <link refid="EspNvs_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="43">
+        <label>src/mcu/esp32/EspPwm.cpp</label>
+        <link refid="EspPwm_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/mcu/esp32/EspUart.cpp</label>
+        <link refid="EspUart_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspWifi.cpp</label>
+        <link refid="EspWifi_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="EspTypes__Base_8h_1a751b00acb9809cf4d537588cbb0af71f" prot="public" static="no">
+        <name>HF_TICKS_FROM_MS</name>
+        <param><defname>ms</defname></param>
+        <initializer>(pdMS_TO_TICKS(ms))</initializer>
+        <briefdescription>
+<para>Convert milliseconds to RTOS ticks for operations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Milliseconds to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>RTOS ticks (implementation-specific) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="51" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__Base_8h_1abae3f55e5cce5dd8e1c5967f87d1fc87" prot="public" static="no">
+        <name>HF_MS_FROM_TICKS</name>
+        <param><defname>ticks</defname></param>
+        <initializer>((ticks) * portTICK_PERIOD_MS)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="52" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__Base_8h_1af66c1bae8f7c2e6f49550aaec3b4a8b3" prot="public" static="no">
+        <name>HF_US_TO_TICKS</name>
+        <param><defname>us</defname></param>
+        <initializer>((us) / (portTICK_PERIOD_MS * 1000))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="53" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__Base_8h_1a2d8f92869aa4797750d4806fb92ded6e" prot="public" static="no">
+        <name>HF_TICKS_TO_US</name>
+        <param><defname>ticks</defname></param>
+        <initializer>((ticks) * portTICK_PERIOD_MS * 1000)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="54" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3a" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_power_domain_t</name>
+        <enumvalue id="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aaa62338c234eafc87967badafc99f5d86" prot="public">
+          <name>HF_POWER_DOMAIN_CPU</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>CPU power domain. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa8362a4f0625cd81a47097885c49e8a61" prot="public">
+          <name>HF_POWER_DOMAIN_RTC_PERIPH</name>
+          <briefdescription>
+<para>RTC peripherals power domain. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa4006d0d7540050cd238e6bf1d309673c" prot="public">
+          <name>HF_POWER_DOMAIN_XTAL</name>
+          <briefdescription>
+<para>Crystal oscillator domain. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa519c6701b01eb06a2ee2ab2ae15a2a0a" prot="public">
+          <name>HF_POWER_DOMAIN_MODEM</name>
+          <briefdescription>
+<para>RF/WiFi/BT modem domain. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa2bb67ddb86cac5cd81e3cdc18f56afa5" prot="public">
+          <name>HF_POWER_DOMAIN_VDDSDIO</name>
+          <briefdescription>
+<para>SDIO power domain. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa7e0e51161e94e8f4e361f6c269cf2f24" prot="public">
+          <name>HF_POWER_DOMAIN_TOP</name>
+          <briefdescription>
+<para>SoC top domain. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 power domain configuration for operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="63" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="63" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_sleep_mode_t</name>
+        <enumvalue id="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76aa93faf581b3d00ad3fe328157064cafc" prot="public">
+          <name>HF_SLEEP_MODE_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No sleep mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76a3d4f0d1d79e56a3d9b0c66cacb6f24a6" prot="public">
+          <name>HF_SLEEP_MODE_LIGHT</name>
+          <briefdescription>
+<para>Light sleep mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76ac5e0037a1eac745b948cc3f0516ade92" prot="public">
+          <name>HF_SLEEP_MODE_DEEP</name>
+          <briefdescription>
+<para>Deep sleep mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76a0cdc42c46715e650fad2b16d4011c614" prot="public">
+          <name>HF_SLEEP_MODE_HIBERNATION</name>
+          <briefdescription>
+<para>Hibernation mode (lowest power) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 sleep mode types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="75" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="75" bodyend="80"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="EspTypes__Base_8h_1a538889bf044fcea99989466762a2453f" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>using hf_timeout_ms_t =  uint32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_timeout_ms_t</name>
+        <briefdescription>
+<para>Timeout value in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="28" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__Base_8h_1a0bbef2772b1094582b85485f0a33e8cb" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using hf_timestamp_us_t =  uint64_t</definition>
+        <argsstring></argsstring>
+        <name>hf_timestamp_us_t</name>
+        <briefdescription>
+<para>High-resolution timing types for operations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Microsecond timestamp </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="85" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__Base_8h_1a263b9009b2219466a7a04cde88560048" prot="public" static="no">
+        <type>uint64_t</type>
+        <definition>using hf_timestamp_ns_t =  uint64_t</definition>
+        <argsstring></argsstring>
+        <name>hf_timestamp_ns_t</name>
+        <briefdescription>
+<para>Nanosecond timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="86" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__Base_8h_1ae68ca3adb50a07ea31f9635283086ca5" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>using hf_duration_us_t =  uint32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_duration_us_t</name>
+        <briefdescription>
+<para>Duration in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="87" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__Base_8h_1a4d0a75b88e9775423dfd348d41165dae" prot="public" static="no">
+        <type>uint32_t</type>
+        <definition>using hf_duration_ns_t =  uint32_t</definition>
+        <argsstring></argsstring>
+        <name>hf_duration_ns_t</name>
+        <briefdescription>
+<para>Duration in nanoseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="88" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="EspTypes__Base_8h_1a07766b8752f7987820791915a6dd5926" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref></type>
+        <definition>constexpr hf_timeout_ms_t HF_TIMEOUT_NEVER</definition>
+        <argsstring></argsstring>
+        <name>HF_TIMEOUT_NEVER</name>
+        <initializer>= 0xFFFFFFFF</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="34" column="34" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__Base_8h_1ae1a798c01cf515e865ac7056189f2b04" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref></type>
+        <definition>constexpr hf_timeout_ms_t HF_TIMEOUT_IMMEDIATE</definition>
+        <argsstring></argsstring>
+        <name>HF_TIMEOUT_IMMEDIATE</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="35" column="34" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__Base_8h_1a49e1d4ec365ec0af9f1be7859f71cc48" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref></type>
+        <definition>constexpr hf_timeout_ms_t HF_TIMEOUT_DEFAULT</definition>
+        <argsstring></argsstring>
+        <name>HF_TIMEOUT_DEFAULT</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="36" column="34" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__Base_8h_1a8463bc653af3b13e7b9dccf92e014cf8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_ADC_DEFAULT_SAMPLING_FREQ</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_DEFAULT_SAMPLING_FREQ</name>
+        <initializer>= 1000U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="39" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__Base_8h_1aedac5872a299accad94c3f5c179b30cb" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_ADC_DMA_BUFFER_SIZE_DEFAULT</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_DMA_BUFFER_SIZE_DEFAULT</name>
+        <initializer>= 1024U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_Base.h" line="40" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_Base.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 base type definitions for hardware abstraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines the common base types and includes that are shared across all ESP32 peripheral type definitions. Clean and minimal approach.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This file should be included by all EspTypes_*.h files. </para>
+</simplesect>
+<simplesect kind="note"><para>All interface classes must use only these types. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">../../utils/McuSelect.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Central<sp/>MCU<sp/>platform<sp/>selection<sp/>(includes<sp/>all<sp/>ESP-IDF<sp/>headers)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>BASIC<sp/>TYPE<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="EspTypes__Base_8h_1a538889bf044fcea99989466762a2453f" refkind="member"><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/>=<sp/>uint32_t;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-SPECIFIC<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="EspTypes__Base_8h_1a07766b8752f7987820791915a6dd5926" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/><ref refid="EspTypes__Base_8h_1a07766b8752f7987820791915a6dd5926" kindref="member">HF_TIMEOUT_NEVER</ref><sp/>=<sp/>0xFFFFFFFF;</highlight></codeline>
+<codeline lineno="35" refid="EspTypes__Base_8h_1ae1a798c01cf515e865ac7056189f2b04" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/><ref refid="EspTypes__Base_8h_1ae1a798c01cf515e865ac7056189f2b04" kindref="member">HF_TIMEOUT_IMMEDIATE</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="36" refid="EspTypes__Base_8h_1a49e1d4ec365ec0af9f1be7859f71cc48" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/><ref refid="EspTypes__Base_8h_1a49e1d4ec365ec0af9f1be7859f71cc48" kindref="member">HF_TIMEOUT_DEFAULT</ref><sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Missing<sp/>ADC<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="EspTypes__Base_8h_1a8463bc653af3b13e7b9dccf92e014cf8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__Base_8h_1a8463bc653af3b13e7b9dccf92e014cf8" kindref="member">HF_ADC_DEFAULT_SAMPLING_FREQ</ref><sp/>=<sp/>1000U;</highlight></codeline>
+<codeline lineno="40" refid="EspTypes__Base_8h_1aedac5872a299accad94c3f5c179b30cb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__Base_8h_1aedac5872a299accad94c3f5c179b30cb" kindref="member">HF_ADC_DMA_BUFFER_SIZE_DEFAULT</ref><sp/>=<sp/>1024U;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>TIMING<sp/>CONVERSION<sp/>MACROS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="EspTypes__Base_8h_1a751b00acb9809cf4d537588cbb0af71f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_TICKS_FROM_MS(ms)<sp/>(pdMS_TO_TICKS(ms))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="EspTypes__Base_8h_1abae3f55e5cce5dd8e1c5967f87d1fc87" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MS_FROM_TICKS(ticks)<sp/>((ticks)<sp/>*<sp/>portTICK_PERIOD_MS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="EspTypes__Base_8h_1af66c1bae8f7c2e6f49550aaec3b4a8b3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_US_TO_TICKS(us)<sp/>((us)<sp/>/<sp/>(portTICK_PERIOD_MS<sp/>*<sp/>1000))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="EspTypes__Base_8h_1a2d8f92869aa4797750d4806fb92ded6e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_TICKS_TO_US(ticks)<sp/>((ticks)<sp/>*<sp/>portTICK_PERIOD_MS<sp/>*<sp/>1000)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>POWER<sp/>MANAGEMENT<sp/>AND<sp/>TIMING<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3a" kindref="member">hf_power_domain_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aaa62338c234eafc87967badafc99f5d86" kindref="member">HF_POWER_DOMAIN_CPU</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa8362a4f0625cd81a47097885c49e8a61" kindref="member">HF_POWER_DOMAIN_RTC_PERIPH</ref>,<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa4006d0d7540050cd238e6bf1d309673c" kindref="member">HF_POWER_DOMAIN_XTAL</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa519c6701b01eb06a2ee2ab2ae15a2a0a" kindref="member">HF_POWER_DOMAIN_MODEM</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa2bb67ddb86cac5cd81e3cdc18f56afa5" kindref="member">HF_POWER_DOMAIN_VDDSDIO</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aea38952d5d004e44770d5dff3ac89c3aa7e0e51161e94e8f4e361f6c269cf2f24" kindref="member">HF_POWER_DOMAIN_TOP</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76" kindref="member">hf_sleep_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76aa93faf581b3d00ad3fe328157064cafc" kindref="member">HF_SLEEP_MODE_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76a3d4f0d1d79e56a3d9b0c66cacb6f24a6" kindref="member">HF_SLEEP_MODE_LIGHT</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76ac5e0037a1eac745b948cc3f0516ade92" kindref="member">HF_SLEEP_MODE_DEEP</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__Base_8h_1aa96b8b36ad5579f9ffb73ebef7c08c76a0cdc42c46715e650fad2b16d4011c614" kindref="member">HF_SLEEP_MODE_HIBERNATION</ref>,<sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="EspTypes__Base_8h_1a0bbef2772b1094582b85485f0a33e8cb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" kindref="member">hf_timestamp_us_t</ref><sp/>=<sp/>uint64_t;<sp/></highlight></codeline>
+<codeline lineno="86" refid="EspTypes__Base_8h_1a263b9009b2219466a7a04cde88560048" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__Base_8h_1a263b9009b2219466a7a04cde88560048" kindref="member">hf_timestamp_ns_t</ref><sp/>=<sp/>uint64_t;<sp/></highlight></codeline>
+<codeline lineno="87" refid="EspTypes__Base_8h_1ae68ca3adb50a07ea31f9635283086ca5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__Base_8h_1ae68ca3adb50a07ea31f9635283086ca5" kindref="member">hf_duration_us_t</ref><sp/>=<sp/>uint32_t;<sp/><sp/></highlight></codeline>
+<codeline lineno="88" refid="EspTypes__Base_8h_1a4d0a75b88e9775423dfd348d41165dae" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__Base_8h_1a4d0a75b88e9775423dfd348d41165dae" kindref="member">hf_duration_ns_t</ref><sp/>=<sp/>uint32_t;<sp/><sp/></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/utils/EspTypes_Base.h"/>
+  </compounddef>
+</doxygen>

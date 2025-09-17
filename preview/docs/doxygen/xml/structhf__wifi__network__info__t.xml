@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__wifi__network__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_wifi_network_info_t</compoundname>
+    <includes refid="BaseWifi_8h" local="no">BaseWifi.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__wifi__network__info__t_1adb0be4315a17235da186ae21e13a791a" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string hf_wifi_network_info_t::ssid</definition>
+        <argsstring></argsstring>
+        <name>ssid</name>
+        <qualifiedname>hf_wifi_network_info_t::ssid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Network SSID </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="181" column="15" bodyfile="inc/base/BaseWifi.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__network__info__t_1a0481ba5eed30bb73d24553520001bb23" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_wifi_network_info_t::bssid[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>bssid</name>
+        <qualifiedname>hf_wifi_network_info_t::bssid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Network BSSID (MAC address) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="182" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__network__info__t_1ac3bbd2ceed7578e487b93da8f7ce7a2c" prot="public" static="no" mutable="no">
+        <type><ref refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kindref="member">hf_wifi_security_t</ref></type>
+        <definition>hf_wifi_security_t hf_wifi_network_info_t::security</definition>
+        <argsstring></argsstring>
+        <name>security</name>
+        <qualifiedname>hf_wifi_network_info_t::security</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Security type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="183" column="22" bodyfile="inc/base/BaseWifi.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__network__info__t_1a8ae5e64f7d1eeb47ba40ee63b040fb51" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t hf_wifi_network_info_t::rssi</definition>
+        <argsstring></argsstring>
+        <name>rssi</name>
+        <qualifiedname>hf_wifi_network_info_t::rssi</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Signal strength (dBm) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="184" column="10" bodyfile="inc/base/BaseWifi.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__network__info__t_1af78d42c4c2f82438155d9e55fc204810" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_wifi_network_info_t::channel</definition>
+        <argsstring></argsstring>
+        <name>channel</name>
+        <qualifiedname>hf_wifi_network_info_t::channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>WiFi channel </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="185" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__network__info__t_1ac358acf115395f8239ec7cb2188853be" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_wifi_network_info_t::hidden</definition>
+        <argsstring></argsstring>
+        <name>hidden</name>
+        <qualifiedname>hf_wifi_network_info_t::hidden</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True if network is hidden </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="186" column="8" bodyfile="inc/base/BaseWifi.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>WiFi network information structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseWifi.h" line="180" column="1" bodyfile="inc/base/BaseWifi.h" bodystart="180" bodyend="187"/>
+    <listofallmembers>
+      <member refid="structhf__wifi__network__info__t_1a0481ba5eed30bb73d24553520001bb23" prot="public" virt="non-virtual"><scope>hf_wifi_network_info_t</scope><name>bssid</name></member>
+      <member refid="structhf__wifi__network__info__t_1af78d42c4c2f82438155d9e55fc204810" prot="public" virt="non-virtual"><scope>hf_wifi_network_info_t</scope><name>channel</name></member>
+      <member refid="structhf__wifi__network__info__t_1ac358acf115395f8239ec7cb2188853be" prot="public" virt="non-virtual"><scope>hf_wifi_network_info_t</scope><name>hidden</name></member>
+      <member refid="structhf__wifi__network__info__t_1a8ae5e64f7d1eeb47ba40ee63b040fb51" prot="public" virt="non-virtual"><scope>hf_wifi_network_info_t</scope><name>rssi</name></member>
+      <member refid="structhf__wifi__network__info__t_1ac3bbd2ceed7578e487b93da8f7ce7a2c" prot="public" virt="non-virtual"><scope>hf_wifi_network_info_t</scope><name>security</name></member>
+      <member refid="structhf__wifi__network__info__t_1adb0be4315a17235da186ae21e13a791a" prot="public" virt="non-virtual"><scope>hf_wifi_network_info_t</scope><name>ssid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

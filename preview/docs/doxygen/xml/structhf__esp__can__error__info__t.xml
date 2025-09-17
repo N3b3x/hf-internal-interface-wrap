@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__esp__can__error__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_esp_can_error_info_t</compoundname>
+    <includes refid="EspCan_8h" local="no">EspCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a337f060887be746ba3aa514fc7ec94b6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_error_info_t::error_type</definition>
+        <argsstring></argsstring>
+        <name>error_type</name>
+        <qualifiedname>hf_esp_can_error_info_t::error_type</qualifiedname>
+        <briefdescription>
+<para>ESP-IDF error type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="143" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__error__info__t_1afc980c020d46591ec4734184ca4443c3" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_error_info_t::tx_error_count</definition>
+        <argsstring></argsstring>
+        <name>tx_error_count</name>
+        <qualifiedname>hf_esp_can_error_info_t::tx_error_count</qualifiedname>
+        <briefdescription>
+<para>Transmit error counter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="144" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a2b29a78d9d1b7fab17e42a2718b1ac40" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_error_info_t::rx_error_count</definition>
+        <argsstring></argsstring>
+        <name>rx_error_count</name>
+        <qualifiedname>hf_esp_can_error_info_t::rx_error_count</qualifiedname>
+        <briefdescription>
+<para>Receive error counter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="145" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a0ff10456e35f6bea840201b935230fa7" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_esp_can_error_info_t::bus_off_state</definition>
+        <argsstring></argsstring>
+        <name>bus_off_state</name>
+        <qualifiedname>hf_esp_can_error_info_t::bus_off_state</qualifiedname>
+        <briefdescription>
+<para>Bus-off state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="146" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a2ddfc6bb399ed51efe47f6d630d1fe33" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_esp_can_error_info_t::error_warning</definition>
+        <argsstring></argsstring>
+        <name>error_warning</name>
+        <qualifiedname>hf_esp_can_error_info_t::error_warning</qualifiedname>
+        <briefdescription>
+<para>Error warning state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="147" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__error__info__t_1acd2ebe7f3854cbbcf8e5f2e57fdde882" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_esp_can_error_info_t::error_passive</definition>
+        <argsstring></argsstring>
+        <name>error_passive</name>
+        <qualifiedname>hf_esp_can_error_info_t::error_passive</qualifiedname>
+        <briefdescription>
+<para>Error passive state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="148" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__error__info__t_1a54d9937e08e032a706473d042a8557d6" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hf_esp_can_error_info_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_esp_can_error_info_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Error timestamp in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="149" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Comprehensive error information structure for error callbacks. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspCan.h" line="142" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="142" bodyend="150"/>
+    <listofallmembers>
+      <member refid="structhf__esp__can__error__info__t_1a0ff10456e35f6bea840201b935230fa7" prot="public" virt="non-virtual"><scope>hf_esp_can_error_info_t</scope><name>bus_off_state</name></member>
+      <member refid="structhf__esp__can__error__info__t_1acd2ebe7f3854cbbcf8e5f2e57fdde882" prot="public" virt="non-virtual"><scope>hf_esp_can_error_info_t</scope><name>error_passive</name></member>
+      <member refid="structhf__esp__can__error__info__t_1a337f060887be746ba3aa514fc7ec94b6" prot="public" virt="non-virtual"><scope>hf_esp_can_error_info_t</scope><name>error_type</name></member>
+      <member refid="structhf__esp__can__error__info__t_1a2ddfc6bb399ed51efe47f6d630d1fe33" prot="public" virt="non-virtual"><scope>hf_esp_can_error_info_t</scope><name>error_warning</name></member>
+      <member refid="structhf__esp__can__error__info__t_1a2b29a78d9d1b7fab17e42a2718b1ac40" prot="public" virt="non-virtual"><scope>hf_esp_can_error_info_t</scope><name>rx_error_count</name></member>
+      <member refid="structhf__esp__can__error__info__t_1a54d9937e08e032a706473d042a8557d6" prot="public" virt="non-virtual"><scope>hf_esp_can_error_info_t</scope><name>timestamp_us</name></member>
+      <member refid="structhf__esp__can__error__info__t_1afc980c020d46591ec4734184ca4443c3" prot="public" virt="non-virtual"><scope>hf_esp_can_error_info_t</scope><name>tx_error_count</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

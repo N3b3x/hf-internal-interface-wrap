@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pio__capabilities__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pio_capabilities_t</compoundname>
+    <includes refid="BasePio_8h" local="no">BasePio.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pio__capabilities__t_1abe05ca9bf91b120c571ae31559c2acf0" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_pio_capabilities_t::max_channels</definition>
+        <argsstring></argsstring>
+        <name>max_channels</name>
+        <qualifiedname>hf_pio_capabilities_t::max_channels</qualifiedname>
+        <briefdescription>
+<para>Maximum number of channels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="183" column="11" bodyfile="inc/base/BasePio.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__capabilities__t_1aef3c980f92eea1b3e55d0aedb83d610e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_capabilities_t::min_resolution_ns</definition>
+        <argsstring></argsstring>
+        <name>min_resolution_ns</name>
+        <qualifiedname>hf_pio_capabilities_t::min_resolution_ns</qualifiedname>
+        <briefdescription>
+<para>Minimum time resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="184" column="12" bodyfile="inc/base/BasePio.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__capabilities__t_1acb7be31a27216897050d784b4ce43cb7" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_capabilities_t::max_resolution_ns</definition>
+        <argsstring></argsstring>
+        <name>max_resolution_ns</name>
+        <qualifiedname>hf_pio_capabilities_t::max_resolution_ns</qualifiedname>
+        <briefdescription>
+<para>Maximum time resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="185" column="12" bodyfile="inc/base/BasePio.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__capabilities__t_1ac2fe6cd5a0af2b5cd2ea801c3c68f109" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_capabilities_t::max_duration</definition>
+        <argsstring></argsstring>
+        <name>max_duration</name>
+        <qualifiedname>hf_pio_capabilities_t::max_duration</qualifiedname>
+        <briefdescription>
+<para>Maximum single duration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="186" column="12" bodyfile="inc/base/BasePio.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__capabilities__t_1a4e154af30e173291a864e4e6fcaca89d" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_pio_capabilities_t::max_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>max_buffer_size</name>
+        <qualifiedname>hf_pio_capabilities_t::max_buffer_size</qualifiedname>
+        <briefdescription>
+<para>Maximum buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="187" column="10" bodyfile="inc/base/BasePio.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__capabilities__t_1a83087466152d0e4a945a6195bbc68ee1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_capabilities_t::supports_bidirectional</definition>
+        <argsstring></argsstring>
+        <name>supports_bidirectional</name>
+        <qualifiedname>hf_pio_capabilities_t::supports_bidirectional</qualifiedname>
+        <briefdescription>
+<para>Supports bidirectional mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="188" column="8" bodyfile="inc/base/BasePio.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__capabilities__t_1ac7abbbd1a25be6cb949525bb72f2d1db" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_capabilities_t::supports_loopback</definition>
+        <argsstring></argsstring>
+        <name>supports_loopback</name>
+        <qualifiedname>hf_pio_capabilities_t::supports_loopback</qualifiedname>
+        <briefdescription>
+<para>Supports loopback mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="189" column="8" bodyfile="inc/base/BasePio.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__capabilities__t_1a185070cf3cc658b5546e62696bb72826" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_capabilities_t::supports_carrier</definition>
+        <argsstring></argsstring>
+        <name>supports_carrier</name>
+        <qualifiedname>hf_pio_capabilities_t::supports_carrier</qualifiedname>
+        <briefdescription>
+<para>Supports carrier modulation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="190" column="8" bodyfile="inc/base/BasePio.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PIO capability information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BasePio.h" line="182" column="1" bodyfile="inc/base/BasePio.h" bodystart="182" bodyend="191"/>
+    <listofallmembers>
+      <member refid="structhf__pio__capabilities__t_1a4e154af30e173291a864e4e6fcaca89d" prot="public" virt="non-virtual"><scope>hf_pio_capabilities_t</scope><name>max_buffer_size</name></member>
+      <member refid="structhf__pio__capabilities__t_1abe05ca9bf91b120c571ae31559c2acf0" prot="public" virt="non-virtual"><scope>hf_pio_capabilities_t</scope><name>max_channels</name></member>
+      <member refid="structhf__pio__capabilities__t_1ac2fe6cd5a0af2b5cd2ea801c3c68f109" prot="public" virt="non-virtual"><scope>hf_pio_capabilities_t</scope><name>max_duration</name></member>
+      <member refid="structhf__pio__capabilities__t_1acb7be31a27216897050d784b4ce43cb7" prot="public" virt="non-virtual"><scope>hf_pio_capabilities_t</scope><name>max_resolution_ns</name></member>
+      <member refid="structhf__pio__capabilities__t_1aef3c980f92eea1b3e55d0aedb83d610e" prot="public" virt="non-virtual"><scope>hf_pio_capabilities_t</scope><name>min_resolution_ns</name></member>
+      <member refid="structhf__pio__capabilities__t_1a83087466152d0e4a945a6195bbc68ee1" prot="public" virt="non-virtual"><scope>hf_pio_capabilities_t</scope><name>supports_bidirectional</name></member>
+      <member refid="structhf__pio__capabilities__t_1a185070cf3cc658b5546e62696bb72826" prot="public" virt="non-virtual"><scope>hf_pio_capabilities_t</scope><name>supports_carrier</name></member>
+      <member refid="structhf__pio__capabilities__t_1ac7abbbd1a25be6cb949525bb72f2d1db" prot="public" virt="non-virtual"><scope>hf_pio_capabilities_t</scope><name>supports_loopback</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

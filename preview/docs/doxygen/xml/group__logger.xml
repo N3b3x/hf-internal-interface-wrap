@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__logger" kind="group">
+    <compoundname>logger</compoundname>
+    <title>Logger Module</title>
+    <innerfile refid="BaseLogger_8h">BaseLogger.h</innerfile>
+    <innerfile refid="EspLogger_8h">EspLogger.h</innerfile>
+    <innerclass refid="structhf__logger__config__t" prot="public">hf_logger_config_t</innerclass>
+    <innerclass refid="structhf__logger__statistics__t" prot="public">hf_logger_statistics_t</innerclass>
+    <innerclass refid="structhf__logger__diagnostics__t" prot="public">hf_logger_diagnostics_t</innerclass>
+    <innerclass refid="structhf__log__message__t" prot="public">hf_log_message_t</innerclass>
+    <innerclass refid="classBaseLogger" prot="public">BaseLogger</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_log_level_t</name>
+        <enumvalue id="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042af34cbc33c8d3951b72b3faa73a41d6b6" prot="public">
+          <name>LOG_LEVEL_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No logging. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042abf7b6e7a0366b699e4259a7c5f836114" prot="public">
+          <name>LOG_LEVEL_ERROR</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Error messages only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a726c7b1e8e76343b4e83fe61261fff7e" prot="public">
+          <name>LOG_LEVEL_WARN</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Warning and error messages. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" prot="public">
+          <name>LOG_LEVEL_INFO</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Info, warning, and error messages. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042acf47268b6930f0f296d7b29b93093019" prot="public">
+          <name>LOG_LEVEL_DEBUG</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Debug, info, warning, and error messages. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a9faae2c149317da7ee66128d87a88e5f" prot="public">
+          <name>LOG_LEVEL_VERBOSE</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>All messages including verbose. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Log levels enumeration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="95" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="95" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__logger_1ga1e55e86af9be6c9ac8b1c61560ac269c" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_log_output_t</name>
+        <enumvalue id="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca6caa993b9fab7e06b0e144c5f101e270" prot="public">
+          <name>LOG_OUTPUT_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No output. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca21d7ee388a7b468ff899724685d98277" prot="public">
+          <name>LOG_OUTPUT_UART</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>UART serial output. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca1f35e95cf10b5c88320ad8c8b10da24a" prot="public">
+          <name>LOG_OUTPUT_USB</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>USB CDC output. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca4706d100721abc95a816266a5511957c" prot="public">
+          <name>LOG_OUTPUT_FILE</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>File system output. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca057451878f8d5976737c3246e5ff8c2e" prot="public">
+          <name>LOG_OUTPUT_NETWORK</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Network output. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca676d90882c2d747bb6b115ef907afff9" prot="public">
+          <name>LOG_OUTPUT_CUSTOM</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Custom output callback. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Log output destination enumeration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="108" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="108" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__logger_1ga46e0958974ba5c45267d842a54148e2f" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <name>hf_log_format_t</name>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2fadfc09b8c7e2de3d69553b298bdab2358" prot="public">
+          <name>LOG_FORMAT_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No formatting. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2faf4f371add5e8bdfd60ac00623271f744" prot="public">
+          <name>LOG_FORMAT_TIMESTAMP</name>
+          <initializer>= (1U &lt;&lt; 0)</initializer>
+          <briefdescription>
+<para>Include timestamp. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2fa936459e73807b6857ee39b5b8b31e7dd" prot="public">
+          <name>LOG_FORMAT_LEVEL</name>
+          <initializer>= (1U &lt;&lt; 1)</initializer>
+          <briefdescription>
+<para>Include log level. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2faf4c0cdc4d5652643ca8a022c467fbd3c" prot="public">
+          <name>LOG_FORMAT_TAG</name>
+          <initializer>= (1U &lt;&lt; 2)</initializer>
+          <briefdescription>
+<para>Include tag. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2faab5a26a380e6b5e09167a85c966a8a56" prot="public">
+          <name>LOG_FORMAT_FILE_LINE</name>
+          <initializer>= (1U &lt;&lt; 3)</initializer>
+          <briefdescription>
+<para>Include file and line. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2fa2ea17d88cd2c353fa7a41d984651d0fe" prot="public">
+          <name>LOG_FORMAT_FUNCTION</name>
+          <initializer>= (1U &lt;&lt; 4)</initializer>
+          <briefdescription>
+<para>Include function name. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2faec954ee8061cbf4c1d45a8f48071e507" prot="public">
+          <name>LOG_FORMAT_THREAD_ID</name>
+          <initializer>= (1U &lt;&lt; 5)</initializer>
+          <briefdescription>
+<para>Include thread ID. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2fa8b4c7ea01528025497c33eb6b79c179b" prot="public">
+          <name>LOG_FORMAT_COLORS</name>
+          <initializer>= (1U &lt;&lt; 6)</initializer>
+          <briefdescription>
+<para>Include ANSI colors. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__logger_1gga46e0958974ba5c45267d842a54148e2fa34c8ed59d52562dbc736f5c50b4e1d1d" prot="public">
+          <name>LOG_FORMAT_DEFAULT</name>
+          <initializer>= LOG_FORMAT_TIMESTAMP | LOG_FORMAT_LEVEL | LOG_FORMAT_TAG</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Log format options. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="121" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="121" bodyend="131"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__logger_1ga96295a40d903d6203369d5fa079590cf" prot="public" static="no">
+        <name>HF_LOGGER_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC Logger error codes macro list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>X-macro pattern for comprehensive error enumeration. Each entry contains: <ref refid="BaseLogger_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X(NAME, VALUE, DESCRIPTION)</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="45" column="9" bodyfile="inc/base/BaseLogger.h" bodystart="45" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="define" id="group__logger_1gae7be95310e82db3612e5a72dfa9aea72" prot="public" static="no">
+        <name>HF_LOGGER_ERR_ENUM</name>
+        <param><defname>name</defname></param>
+        <param><defname>value</defname></param>
+        <param><defname>description</defname></param>
+        <initializer>name = value,</initializer>
+        <briefdescription>
+<para>Generate logger error enum from macro list. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="87" column="9" bodyfile="inc/base/BaseLogger.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All logging-related types, enums, and functions for system logging. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module provides comprehensive logging functionality including:<itemizedlist>
+<listitem><para>Multiple log levels (ERROR, WARN, INFO, DEBUG, VERBOSE)</para>
+</listitem><listitem><para>Thread-safe logging operations</para>
+</listitem><listitem><para>Configurable output destinations</para>
+</listitem><listitem><para>Performance monitoring and statistics</para>
+</listitem><listitem><para>Error handling and diagnostics </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

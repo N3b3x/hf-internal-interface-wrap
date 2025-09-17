@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__temp__reading__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_temp_reading_t</compoundname>
+    <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__temp__reading__t_1ad8b20df88ef338aef1912deba6301f0a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_reading_t::temperature_celsius</definition>
+        <argsstring></argsstring>
+        <name>temperature_celsius</name>
+        <qualifiedname>hf_temp_reading_t::temperature_celsius</qualifiedname>
+        <briefdescription>
+<para>Temperature in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="227" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__reading__t_1ae59b1774ec745080207c403ac5d0de9a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_reading_t::temperature_raw</definition>
+        <argsstring></argsstring>
+        <name>temperature_raw</name>
+        <qualifiedname>hf_temp_reading_t::temperature_raw</qualifiedname>
+        <briefdescription>
+<para>Raw sensor value (implementation specific) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="228" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__reading__t_1a20251d9e61ba4fd6ebbb94e91f711a93" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_temp_reading_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_temp_reading_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Timestamp of reading in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="229" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__reading__t_1acb320967db84b0d5469f14a5ea2eb000" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
+        <definition>hf_temp_err_t hf_temp_reading_t::error</definition>
+        <argsstring></argsstring>
+        <name>error</name>
+        <qualifiedname>hf_temp_reading_t::error</qualifiedname>
+        <briefdescription>
+<para>Error code for this reading. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="230" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__reading__t_1af3f7c7d9c7bf4c1f4e9c6083ac208c18" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_reading_t::is_valid</definition>
+        <argsstring></argsstring>
+        <name>is_valid</name>
+        <qualifiedname>hf_temp_reading_t::is_valid</qualifiedname>
+        <briefdescription>
+<para>Whether this reading is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="231" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__reading__t_1a062db9093a25117638fe5ee7546c47fc" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_reading_t::accuracy_celsius</definition>
+        <argsstring></argsstring>
+        <name>accuracy_celsius</name>
+        <qualifiedname>hf_temp_reading_t::accuracy_celsius</qualifiedname>
+        <briefdescription>
+<para>Estimated accuracy in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="232" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Temperature reading structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseTemperature.h" line="226" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="226" bodyend="233"/>
+    <listofallmembers>
+      <member refid="structhf__temp__reading__t_1a062db9093a25117638fe5ee7546c47fc" prot="public" virt="non-virtual"><scope>hf_temp_reading_t</scope><name>accuracy_celsius</name></member>
+      <member refid="structhf__temp__reading__t_1acb320967db84b0d5469f14a5ea2eb000" prot="public" virt="non-virtual"><scope>hf_temp_reading_t</scope><name>error</name></member>
+      <member refid="structhf__temp__reading__t_1af3f7c7d9c7bf4c1f4e9c6083ac208c18" prot="public" virt="non-virtual"><scope>hf_temp_reading_t</scope><name>is_valid</name></member>
+      <member refid="structhf__temp__reading__t_1ad8b20df88ef338aef1912deba6301f0a" prot="public" virt="non-virtual"><scope>hf_temp_reading_t</scope><name>temperature_celsius</name></member>
+      <member refid="structhf__temp__reading__t_1ae59b1774ec745080207c403ac5d0de9a" prot="public" virt="non-virtual"><scope>hf_temp_reading_t</scope><name>temperature_raw</name></member>
+      <member refid="structhf__temp__reading__t_1a20251d9e61ba4fd6ebbb94e91f711a93" prot="public" virt="non-virtual"><scope>hf_temp_reading_t</scope><name>timestamp_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

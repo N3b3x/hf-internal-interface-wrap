@@ -1,0 +1,35 @@
+<map id="examples/esp32/main/TestFramework.h" name="examples/esp32/main/TestFramework.h">
+<area shape="rect" id="Node000001" title="Shared testing framework for ESP32&#45;C6 comprehensive test suites." alt="" coords="2260,5,2459,56"/>
+<area shape="rect" id="Node000002" href="$AdcComprehensiveTest_8cpp.html" title="Comprehensive ADC testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,114,257,165"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="2246,35,1832,40,1262,52,689,73,451,88,270,107,218,117,217,111,270,101,450,83,689,68,1261,47,1832,35,2246,30"/>
+<area shape="rect" id="Node000003" href="$AsciiArtComprehensiveTest_8cpp.html" title="ASCII Art Generator comprehensive example and test suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="282,114,565,165"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="2246,37,1888,44,1405,58,926,79,727,92,576,107,519,117,518,111,575,101,726,86,926,73,1405,53,1888,39,2246,31"/>
+<area shape="rect" id="Node000004" href="$BluetoothComprehensiveTest_8cpp.html" title="Comprehensive Bluetooth/NimBLE testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="588,114,885,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="2246,34,2002,36,1667,46,1284,68,1088,85,897,107,838,117,837,111,896,101,1088,80,1284,63,1667,41,2002,31,2246,29"/>
+<area shape="rect" id="Node000005" href="$CanComprehensiveTest_8cpp.html" title="Comprehensive CAN testing suite for ESP32&#45;C6 with ESP&#45;IDF v5.5 TWAI API and SN65 transceiver." alt="" coords="909,114,1164,165"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="2246,35,2044,38,1778,49,1478,71,1325,87,1176,107,1125,117,1124,111,1175,101,1324,81,1477,65,1777,44,2044,33,2246,29"/>
+<area shape="rect" id="Node000006" href="$DigitalOutputGuardComprehensiveTest_8cpp.html" title="DigitalOutputGuard comprehensive test suite for ESP32&#45;C6 DevKit&#45;M&#45;1." alt="" coords="1188,104,1499,175"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="2246,40,1915,62,1713,82,1510,107,1499,108,1499,103,1510,101,1712,76,1915,57,2246,35"/>
+<area shape="rect" id="Node000007" href="$GpioComprehensiveTest_8cpp.html" title="Comprehensive GPIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="1523,114,1783,165"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="2246,46,2036,70,1796,107,1748,117,1747,111,1795,101,2036,65,2246,40"/>
+<area shape="rect" id="Node000008" href="$I2cComprehensiveTest_8cpp.html" title="Comprehensive I2C testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="1807,114,2053,165"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="2248,62,2065,107,2026,117,2024,111,2064,101,2246,57"/>
+<area shape="rect" id="Node000009" href="$LoggerComprehensiveTest_8cpp.html" title="Comprehensive Logger testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="2077,114,2354,165"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="2317,66,2250,116,2247,112,2314,62"/>
+<area shape="rect" id="Node000010" href="$NvsComprehensiveTest_8cpp.html" title="Comprehensive NVS (Non&#45;Volatile Storage) testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="2379,114,2631,165"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="2405,62,2473,112,2470,116,2402,66"/>
+<area shape="rect" id="Node000011" href="$PioComprehensiveTest_8cpp.html" title="Comprehensive PIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with RMT peripheral (noexcept)" alt="" coords="2655,114,2901,165"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="2468,57,2684,111,2682,117,2467,62"/>
+<area shape="rect" id="Node000012" href="$PwmComprehensiveTest_8cpp.html" title="Comprehensive PWM testing suite for ESP32 family (noexcept)" alt="" coords="2925,114,3188,165"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="2473,41,2679,65,2914,101,2962,111,2961,117,2914,107,2678,70,2472,46"/>
+<area shape="rect" id="Node000013" href="$SpiComprehensiveTest_8cpp.html" title="Comprehensive SPI testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="3212,114,3459,165"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="2473,33,2618,41,2801,54,3001,73,3201,101,3249,111,3248,117,3200,107,3000,79,2800,59,2618,46,2472,39"/>
+<area shape="rect" id="Node000014" href="$TemperatureComprehensiveTest_8cpp.html" title="Comprehensive Temperature sensor testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="3482,114,3805,165"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="2472,32,2662,38,2911,51,3191,71,3472,101,3533,111,3532,117,3471,107,3190,77,2911,56,2662,44,2472,37"/>
+<area shape="rect" id="Node000015" href="$TimerComprehensiveTest_8cpp.html" title="ESP32&#45;C6 Periodic Timer Comprehensive Test Suite v2.0." alt="" coords="3829,114,4097,165"/>
+<area shape="poly" id="edge14_Node000001_Node000015" title=" " alt="" coords="2473,32,3159,56,3539,76,3697,88,3817,101,3872,111,3871,117,3816,107,3696,94,3539,82,3158,62,2473,38"/>
+<area shape="rect" id="Node000016" href="$UartComprehensiveTest_8cpp.html" title="Comprehensive UART testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="4121,114,4376,165"/>
+<area shape="poly" id="edge15_Node000001_Node000016" title=" " alt="" coords="2473,31,2826,38,3298,51,3767,72,3962,86,4110,101,4162,111,4161,117,4110,107,3962,91,3767,77,3298,57,2825,43,2473,36"/>
+<area shape="rect" id="Node000017" href="$WifiComprehensiveTest_8cpp.html" title="Comprehensive WiFi testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 with ESP&#45;IDF v5.5f." alt="" coords="4400,114,4652,165"/>
+<area shape="poly" id="edge16_Node000001_Node000017" title=" " alt="" coords="2473,30,2875,35,3429,47,3983,69,4214,83,4389,101,4441,111,4440,117,4388,107,4214,89,3983,74,3429,53,2875,41,2473,36"/>
+</map>

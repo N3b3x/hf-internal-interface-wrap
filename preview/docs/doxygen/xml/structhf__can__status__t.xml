@@ -1,0 +1,355 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__can__status__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_can_status_t</compoundname>
+    <includes refid="BaseCan_8h" local="no">BaseCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__can__status__t_1a5d149f3d76ef7e2050ddab435fbe1350" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::tx_error_count</definition>
+        <argsstring></argsstring>
+        <name>tx_error_count</name>
+        <qualifiedname>hf_can_status_t::tx_error_count</qualifiedname>
+        <briefdescription>
+<para>Transmit error counter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="299" column="12" bodyfile="inc/base/BaseCan.h" bodystart="299" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1aefae2fe147ec849eb9ce8ee8c19efd35" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::rx_error_count</definition>
+        <argsstring></argsstring>
+        <name>rx_error_count</name>
+        <qualifiedname>hf_can_status_t::rx_error_count</qualifiedname>
+        <briefdescription>
+<para>Receive error counter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="300" column="12" bodyfile="inc/base/BaseCan.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1ac5f3926115525f76b57a916fb9a78774" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::tx_failed_count</definition>
+        <argsstring></argsstring>
+        <name>tx_failed_count</name>
+        <qualifiedname>hf_can_status_t::tx_failed_count</qualifiedname>
+        <briefdescription>
+<para>Failed transmission count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="301" column="12" bodyfile="inc/base/BaseCan.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a330c8d02b5405f30e9db6ac9e84ae3f0" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::rx_missed_count</definition>
+        <argsstring></argsstring>
+        <name>rx_missed_count</name>
+        <qualifiedname>hf_can_status_t::rx_missed_count</qualifiedname>
+        <briefdescription>
+<para>Missed reception count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="302" column="12" bodyfile="inc/base/BaseCan.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1aa4658cc3642f8be7392d596b285bf2d6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_status_t::bus_off</definition>
+        <argsstring></argsstring>
+        <name>bus_off</name>
+        <qualifiedname>hf_can_status_t::bus_off</qualifiedname>
+        <briefdescription>
+<para>Bus-off state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="303" column="8" bodyfile="inc/base/BaseCan.h" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a2b7d5ed0e596f6752c53421dbd681f3e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_status_t::error_warning</definition>
+        <argsstring></argsstring>
+        <name>error_warning</name>
+        <qualifiedname>hf_can_status_t::error_warning</qualifiedname>
+        <briefdescription>
+<para>Error warning state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="304" column="8" bodyfile="inc/base/BaseCan.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a602db26f6503f45e1178ccf84ea04c0b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_status_t::error_passive</definition>
+        <argsstring></argsstring>
+        <name>error_passive</name>
+        <qualifiedname>hf_can_status_t::error_passive</qualifiedname>
+        <briefdescription>
+<para>Error passive state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="305" column="8" bodyfile="inc/base/BaseCan.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1aed91b1c0a81cd06d31b79d2a6f53baf5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_status_t::canfd_enabled</definition>
+        <argsstring></argsstring>
+        <name>canfd_enabled</name>
+        <qualifiedname>hf_can_status_t::canfd_enabled</qualifiedname>
+        <briefdescription>
+<para>CAN-FD mode is active. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="308" column="8" bodyfile="inc/base/BaseCan.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1ae0eb52f010f38bfc19737e45b809c9e1" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_status_t::canfd_brs_enabled</definition>
+        <argsstring></argsstring>
+        <name>canfd_brs_enabled</name>
+        <qualifiedname>hf_can_status_t::canfd_brs_enabled</qualifiedname>
+        <briefdescription>
+<para>Bit Rate Switching is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="309" column="8" bodyfile="inc/base/BaseCan.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a7ee96db43c522c1589825bd66078f3a1" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::nominal_baudrate</definition>
+        <argsstring></argsstring>
+        <name>nominal_baudrate</name>
+        <qualifiedname>hf_can_status_t::nominal_baudrate</qualifiedname>
+        <briefdescription>
+<para>Nominal bit rate (arbitration phase) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="310" column="12" bodyfile="inc/base/BaseCan.h" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a56b602dd1697c61dc2e271720dea5838" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::data_baudrate</definition>
+        <argsstring></argsstring>
+        <name>data_baudrate</name>
+        <qualifiedname>hf_can_status_t::data_baudrate</qualifiedname>
+        <briefdescription>
+<para>Data bit rate (data phase for CAN-FD) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="311" column="12" bodyfile="inc/base/BaseCan.h" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a64979d86ac6c68aeafe1cb0f33729bf5" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::canfd_tx_count</definition>
+        <argsstring></argsstring>
+        <name>canfd_tx_count</name>
+        <qualifiedname>hf_can_status_t::canfd_tx_count</qualifiedname>
+        <briefdescription>
+<para>Number of CAN-FD frames transmitted. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="312" column="12" bodyfile="inc/base/BaseCan.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1aad7bc043fae131ce90de9ef494bb0e1b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::canfd_rx_count</definition>
+        <argsstring></argsstring>
+        <name>canfd_rx_count</name>
+        <qualifiedname>hf_can_status_t::canfd_rx_count</qualifiedname>
+        <briefdescription>
+<para>Number of CAN-FD frames received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="313" column="12" bodyfile="inc/base/BaseCan.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1ab64fe524b6ddb4a1f06f201a473a9e81" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::brs_tx_count</definition>
+        <argsstring></argsstring>
+        <name>brs_tx_count</name>
+        <qualifiedname>hf_can_status_t::brs_tx_count</qualifiedname>
+        <briefdescription>
+<para>Number of BRS frames transmitted. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="314" column="12" bodyfile="inc/base/BaseCan.h" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a9adf7cad5d275c6d7247fc699e0dd60a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::brs_rx_count</definition>
+        <argsstring></argsstring>
+        <name>brs_rx_count</name>
+        <qualifiedname>hf_can_status_t::brs_rx_count</qualifiedname>
+        <briefdescription>
+<para>Number of BRS frames received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="315" column="12" bodyfile="inc/base/BaseCan.h" bodystart="315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a75a18599400d297a1789d82214b90d37" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::form_errors</definition>
+        <argsstring></argsstring>
+        <name>form_errors</name>
+        <qualifiedname>hf_can_status_t::form_errors</qualifiedname>
+        <briefdescription>
+<para>CAN-FD form errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="316" column="12" bodyfile="inc/base/BaseCan.h" bodystart="316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1ae3dff4d5f9bebe7e35489cfc58d50c6a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::stuff_errors</definition>
+        <argsstring></argsstring>
+        <name>stuff_errors</name>
+        <qualifiedname>hf_can_status_t::stuff_errors</qualifiedname>
+        <briefdescription>
+<para>Stuff errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="317" column="12" bodyfile="inc/base/BaseCan.h" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a1f686ca36a96f1a1f6fa6e91935d790f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::crc_errors</definition>
+        <argsstring></argsstring>
+        <name>crc_errors</name>
+        <qualifiedname>hf_can_status_t::crc_errors</qualifiedname>
+        <briefdescription>
+<para>CRC errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="318" column="12" bodyfile="inc/base/BaseCan.h" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1ac0630fe8400c78532b36a53a278c6ec3" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::bit_errors</definition>
+        <argsstring></argsstring>
+        <name>bit_errors</name>
+        <qualifiedname>hf_can_status_t::bit_errors</qualifiedname>
+        <briefdescription>
+<para>Bit errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="319" column="12" bodyfile="inc/base/BaseCan.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__status__t_1a3f8d02fd744d1b707e71402934aab1e5" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_status_t::ack_errors</definition>
+        <argsstring></argsstring>
+        <name>ack_errors</name>
+        <qualifiedname>hf_can_status_t::ack_errors</qualifiedname>
+        <briefdescription>
+<para>Acknowledgment errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="320" column="12" bodyfile="inc/base/BaseCan.h" bodystart="320" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__can__status__t_1afdfd60084afe727c77376167f09091eb" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_can_status_t::hf_can_status_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_can_status_t</name>
+        <qualifiedname>hf_can_status_t::hf_can_status_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="322" column="3" bodyfile="inc/base/BaseCan.h" bodystart="322" bodyend="327"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CAN bus status information structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Comprehensive status information for CAN bus monitoring and diagnostics. </para>
+    </detaileddescription>
+    <location file="inc/base/BaseCan.h" line="298" column="1" bodyfile="inc/base/BaseCan.h" bodystart="298" bodyend="328"/>
+    <listofallmembers>
+      <member refid="structhf__can__status__t_1a3f8d02fd744d1b707e71402934aab1e5" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>ack_errors</name></member>
+      <member refid="structhf__can__status__t_1ac0630fe8400c78532b36a53a278c6ec3" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>bit_errors</name></member>
+      <member refid="structhf__can__status__t_1a9adf7cad5d275c6d7247fc699e0dd60a" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>brs_rx_count</name></member>
+      <member refid="structhf__can__status__t_1ab64fe524b6ddb4a1f06f201a473a9e81" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>brs_tx_count</name></member>
+      <member refid="structhf__can__status__t_1aa4658cc3642f8be7392d596b285bf2d6" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>bus_off</name></member>
+      <member refid="structhf__can__status__t_1ae0eb52f010f38bfc19737e45b809c9e1" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>canfd_brs_enabled</name></member>
+      <member refid="structhf__can__status__t_1aed91b1c0a81cd06d31b79d2a6f53baf5" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>canfd_enabled</name></member>
+      <member refid="structhf__can__status__t_1aad7bc043fae131ce90de9ef494bb0e1b" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>canfd_rx_count</name></member>
+      <member refid="structhf__can__status__t_1a64979d86ac6c68aeafe1cb0f33729bf5" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>canfd_tx_count</name></member>
+      <member refid="structhf__can__status__t_1a1f686ca36a96f1a1f6fa6e91935d790f" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>crc_errors</name></member>
+      <member refid="structhf__can__status__t_1a56b602dd1697c61dc2e271720dea5838" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>data_baudrate</name></member>
+      <member refid="structhf__can__status__t_1a602db26f6503f45e1178ccf84ea04c0b" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>error_passive</name></member>
+      <member refid="structhf__can__status__t_1a2b7d5ed0e596f6752c53421dbd681f3e" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>error_warning</name></member>
+      <member refid="structhf__can__status__t_1a75a18599400d297a1789d82214b90d37" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>form_errors</name></member>
+      <member refid="structhf__can__status__t_1afdfd60084afe727c77376167f09091eb" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>hf_can_status_t</name></member>
+      <member refid="structhf__can__status__t_1a7ee96db43c522c1589825bd66078f3a1" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>nominal_baudrate</name></member>
+      <member refid="structhf__can__status__t_1aefae2fe147ec849eb9ce8ee8c19efd35" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>rx_error_count</name></member>
+      <member refid="structhf__can__status__t_1a330c8d02b5405f30e9db6ac9e84ae3f0" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>rx_missed_count</name></member>
+      <member refid="structhf__can__status__t_1ae3dff4d5f9bebe7e35489cfc58d50c6a" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>stuff_errors</name></member>
+      <member refid="structhf__can__status__t_1a5d149f3d76ef7e2050ddab435fbe1350" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>tx_error_count</name></member>
+      <member refid="structhf__can__status__t_1ac5f3926115525f76b57a916fb9a78774" prot="public" virt="non-virtual"><scope>hf_can_status_t</scope><name>tx_failed_count</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

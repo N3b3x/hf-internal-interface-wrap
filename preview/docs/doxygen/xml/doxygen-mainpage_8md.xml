@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="doxygen-mainpage_8md" kind="file" language="Markdown">
+    <compoundname>doxygen-mainpage.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>HardFOC<sp/>Interface<sp/>Wrapper</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">A<sp/>comprehensive<sp/>multi-MCU<sp/>hardware<sp/>abstraction<sp/>layer<sp/>for<sp/>HardFOC<sp/>systems<sp/>with<sp/>unified<sp/>API<sp/></highlight></codeline>
+<codeline><highlight class="normal">across<sp/>multiple<sp/>MCU<sp/>platforms.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**📖<sp/>[📚🌐<sp/>Live<sp/>Complete<sp/>Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)**<sp/>-<sp/></highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Interactive<sp/>guides,<sp/>examples,<sp/>and<sp/>step-by-step<sp/>tutorials</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Supported<sp/>MCUs</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**ESP32<sp/>Family**:<sp/>ESP32,<sp/>ESP32-S2,<sp/>ESP32-S3,<sp/>ESP32-C3,<sp/>ESP32-C6,<sp/>ESP32-H2</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Planned**:<sp/>STM32F4,<sp/>STM32H7,<sp/>STM32G4,<sp/>nRF52840,<sp/>nRF5340</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Core<sp/>Interfaces</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Base<sp/>Classes</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseAdc](@ref<sp/>BaseAdc)<sp/>-<sp/>Analog-to-Digital<sp/>Converter<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseBluetooth](@ref<sp/>BaseBluetooth)<sp/>-<sp/>Bluetooth<sp/>communication<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseCan](@ref<sp/>BaseCan)<sp/>-<sp/>Controller<sp/>Area<sp/>Network<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseGpio](@ref<sp/>BaseGpio)<sp/>-<sp/>General<sp/>Purpose<sp/>Input/Output<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseI2c](@ref<sp/>BaseI2c)<sp/>-<sp/>Inter-Integrated<sp/>Circuit<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseLogger](@ref<sp/>BaseLogger)<sp/>-<sp/>Logging<sp/>system<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseNvs](@ref<sp/>BaseNvs)<sp/>-<sp/>Non-Volatile<sp/>Storage<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BasePeriodicTimer](@ref<sp/>BasePeriodicTimer)<sp/>-<sp/>Periodic<sp/>timer<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BasePio](@ref<sp/>BasePio)<sp/>-<sp/>Programmable<sp/>Input/Output<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BasePwm](@ref<sp/>BasePwm)<sp/>-<sp/>Pulse<sp/>Width<sp/>Modulation<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseSpi](@ref<sp/>BaseSpi)<sp/>-<sp/>Serial<sp/>Peripheral<sp/>Interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseTemperature](@ref<sp/>BaseTemperature)<sp/>-<sp/>Temperature<sp/>sensor<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseUart](@ref<sp/>BaseUart)<sp/>-<sp/>Universal<sp/>Asynchronous<sp/>Receiver-Transmitter</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[BaseWifi](@ref<sp/>BaseWifi)<sp/>-<sp/>WiFi<sp/>communication<sp/>interface</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>ESP32<sp/>Implementations</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspAdc](@ref<sp/>EspAdc)<sp/>-<sp/>ESP32<sp/>ADC<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspBluetooth](@ref<sp/>EspBluetooth)<sp/>-<sp/>ESP32<sp/>Bluetooth<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspCan](@ref<sp/>EspCan)<sp/>-<sp/>ESP32<sp/>CAN<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspGpio](@ref<sp/>EspGpio)<sp/>-<sp/>ESP32<sp/>GPIO<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspI2cDevice](@ref<sp/>EspI2cDevice)<sp/>-<sp/>ESP32<sp/>I2C<sp/>device<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspI2cBus](@ref<sp/>EspI2cBus)<sp/>-<sp/>ESP32<sp/>I2C<sp/>bus<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspLogger](@ref<sp/>EspLogger)<sp/>-<sp/>ESP32<sp/>Logger<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspNvs](@ref<sp/>EspNvs)<sp/>-<sp/>ESP32<sp/>NVS<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspPeriodicTimer](@ref<sp/>EspPeriodicTimer)<sp/>-<sp/>ESP32<sp/>Periodic<sp/>Timer<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspPio](@ref<sp/>EspPio)<sp/>-<sp/>ESP32<sp/>PIO<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspPwm](@ref<sp/>EspPwm)<sp/>-<sp/>ESP32<sp/>PWM<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspSpiDevice](@ref<sp/>EspSpiDevice)<sp/>-<sp/>ESP32<sp/>SPI<sp/>device<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspSpiBus](@ref<sp/>EspSpiBus)<sp/>-<sp/>ESP32<sp/>SPI<sp/>bus<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspTemperature](@ref<sp/>EspTemperature)<sp/>-<sp/>ESP32<sp/>Temperature<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspUart](@ref<sp/>EspUart)<sp/>-<sp/>ESP32<sp/>UART<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[EspWifi](@ref<sp/>EspWifi)<sp/>-<sp/>ESP32<sp/>WiFi<sp/>implementation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Utility<sp/>Classes</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[AsciiArtGenerator](@ref<sp/>AsciiArtGenerator)<sp/>-<sp/>ASCII<sp/>art<sp/>generation<sp/>utility</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[DigitalOutputGuard](@ref<sp/>DigitalOutputGuard)<sp/>-<sp/>Digital<sp/>output<sp/>protection<sp/>utility</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>McuSelect<sp/>-<sp/>MCU<sp/>platform<sp/>selection<sp/>utilities</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[RtosMutex](@ref<sp/>RtosMutex)<sp/>-<sp/>RTOS<sp/>mutex<sp/>wrapper<sp/>utilities</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Hardware<sp/>Types</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>HardwareTypes<sp/>-<sp/>Common<sp/>hardware<sp/>type<sp/>definitions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Features</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Unified<sp/>API**<sp/>-<sp/>Consistent<sp/>interface<sp/>across<sp/>different<sp/>MCU<sp/>platforms</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Type<sp/>Safety**<sp/>-<sp/>Strong<sp/>typing<sp/>with<sp/>project-specific<sp/>typedefs</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Error<sp/>Handling**<sp/>-<sp/>Comprehensive<sp/>error<sp/>reporting<sp/>and<sp/>handling</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Thread<sp/>Safety**<sp/>-<sp/>RTOS-aware<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Memory<sp/>Management**<sp/>-<sp/>Safe<sp/>memory<sp/>operations<sp/>and<sp/>guards</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Logging**<sp/>-<sp/>Integrated<sp/>logging<sp/>system</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Testing**<sp/>-<sp/>Comprehensive<sp/>test<sp/>suites<sp/>for<sp/>all<sp/>modules</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Architecture</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>HardFOC<sp/>Interface<sp/>Wrapper<sp/>follows<sp/>a<sp/>layered<sp/>architecture:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>**Base<sp/>Layer**<sp/>-<sp/>Abstract<sp/>interfaces<sp/>defining<sp/>the<sp/>API<sp/>contract</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>**Implementation<sp/>Layer**<sp/>-<sp/>MCU-specific<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>**Utility<sp/>Layer**<sp/>-<sp/>Common<sp/>utilities<sp/>and<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>**Application<sp/>Layer**<sp/>-<sp/>Example<sp/>applications<sp/>and<sp/>tests</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>License</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>project<sp/>is<sp/>licensed<sp/>under<sp/>the<sp/>GPL<sp/>v3<sp/>License.<sp/>See<sp/>the<sp/>LICENSE<sp/>file<sp/>for<sp/>details.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contributing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Please<sp/>see<sp/>the<sp/>main<sp/>project<sp/>repository<sp/>for<sp/>contributing<sp/>guidelines<sp/>and<sp/>code<sp/>of<sp/>conduct.</highlight></codeline>
+    </programlisting>
+    <location file="docs/doxygen-mainpage.md"/>
+  </compounddef>
+</doxygen>

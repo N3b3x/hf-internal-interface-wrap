@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__bluetooth__device__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_bluetooth_device_info_t</compoundname>
+    <includes refid="BaseBluetooth_8h" local="no">BaseBluetooth.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1ab3238cd28d4fa6324c5f8470b467afb4" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref></type>
+        <definition>hf_bluetooth_address_t hf_bluetooth_device_info_t::address</definition>
+        <argsstring></argsstring>
+        <name>address</name>
+        <qualifiedname>hf_bluetooth_device_info_t::address</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Device Bluetooth address </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="273" column="26" bodyfile="inc/base/BaseBluetooth.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1a5d6aca83d72d1ba01f265f33987cf9ae" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string hf_bluetooth_device_info_t::name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <qualifiedname>hf_bluetooth_device_info_t::name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Device name </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="274" column="15" bodyfile="inc/base/BaseBluetooth.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1aa4e7cdd7df30a77dccb53486d671603d" prot="public" static="no" mutable="no">
+        <type><ref refid="group__bluetooth_1gafda17a08e5002454a03b6839af565482" kindref="member">hf_bluetooth_device_type_t</ref></type>
+        <definition>hf_bluetooth_device_type_t hf_bluetooth_device_info_t::type</definition>
+        <argsstring></argsstring>
+        <name>type</name>
+        <qualifiedname>hf_bluetooth_device_info_t::type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Device type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="275" column="30" bodyfile="inc/base/BaseBluetooth.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1ad26d487cdd1b817651ef2afca7c24314" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t hf_bluetooth_device_info_t::rssi</definition>
+        <argsstring></argsstring>
+        <name>rssi</name>
+        <qualifiedname>hf_bluetooth_device_info_t::rssi</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Signal strength (dBm) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="276" column="10" bodyfile="inc/base/BaseBluetooth.h" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1a4cd72b73b359afa903623039f7b71a52" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_bluetooth_device_info_t::class_of_device</definition>
+        <argsstring></argsstring>
+        <name>class_of_device</name>
+        <qualifiedname>hf_bluetooth_device_info_t::class_of_device</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Class of Device (Classic only) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="277" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1ac1b435de54e204fc372f301d22bceb58" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; hf_bluetooth_device_info_t::uuids</definition>
+        <argsstring></argsstring>
+        <name>uuids</name>
+        <qualifiedname>hf_bluetooth_device_info_t::uuids</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Service UUIDs </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="278" column="15" bodyfile="inc/base/BaseBluetooth.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1af6c0fe4a8d8e125da4a9fd39415879d8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_bluetooth_device_info_t::is_bonded</definition>
+        <argsstring></argsstring>
+        <name>is_bonded</name>
+        <qualifiedname>hf_bluetooth_device_info_t::is_bonded</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True if device is bonded </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="279" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__device__info__t_1a6c8d766924120cf874847fa36635e087" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_bluetooth_device_info_t::is_connected</definition>
+        <argsstring></argsstring>
+        <name>is_connected</name>
+        <qualifiedname>hf_bluetooth_device_info_t::is_connected</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True if device is connected </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="280" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Bluetooth device information structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>hf_bluetooth_address_t</label>
+        <link refid="structhf__bluetooth__address__t"/>
+      </node>
+      <node id="1">
+        <label>hf_bluetooth_device_info_t</label>
+        <link refid="structhf__bluetooth__device__info__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>address</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BaseBluetooth.h" line="272" column="1" bodyfile="inc/base/BaseBluetooth.h" bodystart="272" bodyend="281"/>
+    <listofallmembers>
+      <member refid="structhf__bluetooth__device__info__t_1ab3238cd28d4fa6324c5f8470b467afb4" prot="public" virt="non-virtual"><scope>hf_bluetooth_device_info_t</scope><name>address</name></member>
+      <member refid="structhf__bluetooth__device__info__t_1a4cd72b73b359afa903623039f7b71a52" prot="public" virt="non-virtual"><scope>hf_bluetooth_device_info_t</scope><name>class_of_device</name></member>
+      <member refid="structhf__bluetooth__device__info__t_1af6c0fe4a8d8e125da4a9fd39415879d8" prot="public" virt="non-virtual"><scope>hf_bluetooth_device_info_t</scope><name>is_bonded</name></member>
+      <member refid="structhf__bluetooth__device__info__t_1a6c8d766924120cf874847fa36635e087" prot="public" virt="non-virtual"><scope>hf_bluetooth_device_info_t</scope><name>is_connected</name></member>
+      <member refid="structhf__bluetooth__device__info__t_1a5d6aca83d72d1ba01f265f33987cf9ae" prot="public" virt="non-virtual"><scope>hf_bluetooth_device_info_t</scope><name>name</name></member>
+      <member refid="structhf__bluetooth__device__info__t_1ad26d487cdd1b817651ef2afca7c24314" prot="public" virt="non-virtual"><scope>hf_bluetooth_device_info_t</scope><name>rssi</name></member>
+      <member refid="structhf__bluetooth__device__info__t_1aa4e7cdd7df30a77dccb53486d671603d" prot="public" virt="non-virtual"><scope>hf_bluetooth_device_info_t</scope><name>type</name></member>
+      <member refid="structhf__bluetooth__device__info__t_1ac1b435de54e204fc372f301d22bceb58" prot="public" virt="non-virtual"><scope>hf_bluetooth_device_info_t</scope><name>uuids</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

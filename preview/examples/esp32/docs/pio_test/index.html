@@ -1,0 +1,2007 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(4)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(4) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(4) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/preview/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/preview/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🧪 PIO Test | HardFOC Interface Wrapper - preview</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🧪 PIO Test" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="PIO Test Suite - Programmable I/O and custom protocol testing" />
+<meta property="og:description" content="PIO Test Suite - Programmable I/O and custom protocol testing" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - preview" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🧪 PIO Test" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"PIO Test Suite - Programmable I/O and custom protocol testing","headline":"🧪 PIO Test","url":"https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/preview/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/preview/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - preview
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/">🚀 ESP32 Examples</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/">🧪 Test Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🧪 PIO Test</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="esp32-c6-pio-comprehensive-test-suite-documentation">
+  
+  
+    <a href="#esp32-c6-pio-comprehensive-test-suite-documentation" class="anchor-heading" aria-labelledby="esp32-c6-pio-comprehensive-test-suite-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 PIO Comprehensive Test Suite Documentation
+  
+  
+</h1>
+    
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p>The PIO Comprehensive Test Suite provides extensive validation of the <code class="language-plaintext highlighter-rouge">EspPio</code> class for ESP32
+platforms using the RMT (Remote Control) peripheral with ESP-IDF v5.5+.
+This comprehensive test suite demonstrates complete PIO functionality including WS2812 LED protocol
+timing,
+automated loopback testing, channel-specific callbacks, ESP32 variant detection,
+and advanced RMT features with a focus on embedded environments using <code class="language-plaintext highlighter-rouge">noexcept</code> functions.</p>
+
+<p><strong>✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware with over 25 comprehensive tests</strong></p>
+<h3 id="supported-esp32-variants">
+  
+  
+    <a href="#supported-esp32-variants" class="anchor-heading" aria-labelledby="supported-esp32-variants"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Supported ESP32 Variants
+  
+  
+</h3>
+    
+
+<p>The implementation automatically detects and adapts to different ESP32 variants with their specific
+RMT channel allocation constraints:</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32 Variant</td>
+      <td>Total Channels</td>
+      <td>TX Channels</td>
+      <td>RX Channels</td>
+      <td>Channel Allocation</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|—————|—————-|————-|————-|——————-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32</td>
+      <td>8</td>
+      <td>8 (0-7)</td>
+      <td>8 (0-7)</td>
+      <td>Any channel can be TX or RX</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-S2</td>
+      <td>4</td>
+      <td>4 (0-3)</td>
+      <td>4 (0-3)</td>
+      <td>Any channel can be TX or RX</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-S3</td>
+      <td>8</td>
+      <td>4 (0-3)</td>
+      <td>4 (4-7)</td>
+      <td><strong>Hardcoded allocation</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-C3</td>
+      <td>4</td>
+      <td>2 (0-1)</td>
+      <td>2 (2-3)</td>
+      <td><strong>Hardcoded allocation</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-C6</td>
+      <td>4</td>
+      <td>2 (0-1)</td>
+      <td>2 (2-3)</td>
+      <td><strong>Hardcoded allocation</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-H2</td>
+      <td>4</td>
+      <td>2 (0-1)</td>
+      <td>2 (2-3)</td>
+      <td><strong>Hardcoded allocation</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="features-tested">
+  
+  
+    <a href="#features-tested" class="anchor-heading" aria-labelledby="features-tested"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features Tested
+  
+  
+</h2>
+    
+<h3 id="core-functionality">
+  
+  
+    <a href="#core-functionality" class="anchor-heading" aria-labelledby="core-functionality"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core Functionality
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Constructor/Destructor Behavior</strong>: Object lifecycle management and resource allocation</li>
+  <li><strong>Lifecycle Management</strong>: Initialize/Deinitialize operations with state validation</li>
+  <li><strong>Channel Configuration</strong>: Multi-channel setup and management</li>
+  <li><strong>Symbol Transmission/Reception</strong>: High-speed data transfer with timing validation</li>
+  <li><strong>Error Handling</strong>: Comprehensive error condition testing and recovery</li>
+</ul>
+<h3 id="esp32-variant-specific-features">
+  
+  
+    <a href="#esp32-variant-specific-features" class="anchor-heading" aria-labelledby="esp32-variant-specific-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32 Variant-Specific Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Automatic Variant Detection</strong>: Runtime detection of ESP32 chip variant</li>
+  <li><strong>Channel Allocation Helpers</strong>: Variant-specific TX/RX channel management</li>
+  <li><strong>Channel Direction Validation</strong>: Hardware-enforced TX/RX channel restrictions</li>
+  <li><strong>Resolution_ns Interface</strong>: User-friendly nanosecond resolution with internal Hz conversion</li>
+</ul>
+<h3 id="advanced-rmt-features">
+  
+  
+    <a href="#advanced-rmt-features" class="anchor-heading" aria-labelledby="advanced-rmt-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced RMT Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Channel-Specific Callbacks</strong>: Individual channel callback management with proper user data handling</li>
+  <li><strong>Resolution Control</strong>: Nanosecond-precision timing configuration with internal conversion</li>
+  <li><strong>Carrier Modulation</strong>: 38kHz carrier generation for IR protocols</li>
+  <li><strong>Loopback Mode Testing</strong>: Internal signal routing for validation</li>
+  <li><strong>Encoder Configuration</strong>: Hardware encoder setup and optimization</li>
+  <li><strong>DMA Support</strong>: Direct Memory Access for high-performance transfers</li>
+  <li><strong>Memory Block Management</strong>: Configurable memory allocation per channel</li>
+</ul>
+<h3 id="ws2812-led-protocol-testing">
+  
+  
+    <a href="#ws2812-led-protocol-testing" class="anchor-heading" aria-labelledby="ws2812-led-protocol-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> WS2812 LED Protocol Testing
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>WS2812 Timing Validation</strong>: Complete timing specification verification</li>
+  <li><strong>Single LED Testing</strong>: Built-in RGB LED on GPIO8</li>
+  <li><strong>Multiple LED Chain Testing</strong>: RGB LED chain support</li>
+  <li><strong>Comprehensive Color Cycle</strong>: 30+ color patterns including:
+    <ul>
+      <li>Primary colors (R/G/B) at maximum brightness</li>
+      <li>Secondary colors (Yellow/Magenta/Cyan) and white variations</li>
+      <li>Brightness sweep tests (0-255) for each color channel</li>
+      <li>Bit pattern validation (alternating, edge cases, specific patterns)</li>
+      <li>Rainbow color wheel transitions with HSV to RGB conversion</li>
+      <li>Rapid color change sequences for protocol stress testing</li>
+    </ul>
+  </li>
+  <li><strong>Pattern Validation</strong>: Specific bit patterns for timing analysis</li>
+  <li><strong>Rainbow Transitions</strong>: HSV to RGB color wheel with smooth transitions</li>
+  <li><strong>Brightness Sweep</strong>: Individual color channel intensity testing</li>
+</ul>
+<h3 id="automated-testing--diagnostics">
+  
+  
+    <a href="#automated-testing--diagnostics" class="anchor-heading" aria-labelledby="automated-testing--diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automated Testing &amp; Diagnostics
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Automated Loopback Testing</strong>: TX/RX verification with GPIO8→GPIO18 connection</li>
+  <li><strong>Logic Analyzer Patterns</strong>: Recognizable test patterns for signal analysis</li>
+  <li><strong>Frequency Sweep</strong>: Multi-frequency square wave generation and validation</li>
+  <li><strong>Test Progression Indicator</strong>: GPIO14 visual feedback for test progress</li>
+  <li><strong>Statistics Tracking</strong>: Comprehensive performance metrics and operation counting</li>
+  <li><strong>System Validation</strong>: End-to-end system functionality verification</li>
+</ul>
+<h3 id="performance--stress-testing">
+  
+  
+    <a href="#performance--stress-testing" class="anchor-heading" aria-labelledby="performance--stress-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance &amp; Stress Testing
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Callback Functionality</strong>: Interrupt-driven callback testing with channel isolation</li>
+  <li><strong>Stress Testing</strong>: High-load scenarios and rapid operation cycles</li>
+  <li><strong>Channel Isolation</strong>: Independent channel operation verification</li>
+  <li><strong>Timing Precision</strong>: Nanosecond-level timing accuracy verification</li>
+</ul>
+<h2 id="hardware-setup">
+  
+  
+    <a href="#hardware-setup" class="anchor-heading" aria-labelledby="hardware-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Setup
+  
+  
+</h2>
+    
+<h3 id="esp32-c6-devkitm-1-pin-configuration">
+  
+  
+    <a href="#esp32-c6-devkitm-1-pin-configuration" class="anchor-heading" aria-labelledby="esp32-c6-devkitm-1-pin-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6-DevKitM-1 Pin Configuration
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>GPIO8</strong>: Built-in RGB LED + transmission output (WS2812 protocol)</li>
+  <li><strong>GPIO14</strong>: Test progression indicator (visual feedback)</li>
+  <li><strong>GPIO18</strong>: Reception input for automated loopback testing</li>
+</ul>
+<h3 id="automated-testing-setup">
+  
+  
+    <a href="#automated-testing-setup" class="anchor-heading" aria-labelledby="automated-testing-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automated Testing Setup
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+ESP32-C6-DevKitM-1
+├── GPIO8 (Built-in RGB LED) ──► Jumper Wire ──► GPIO18 (RX)
+├── GPIO14 (Test Progress) ──► LED indicator for test progression
+├── Built-in RGB LED: WS2812 protocol testing
+└── Automated Loopback: Transmission/reception verification
+</code>text</p>
+
+<p><strong>For Automated Testing:</strong></p>
+<ul>
+  <li>Connect GPIO8 to GPIO18 with a jumper wire</li>
+  <li>This creates a loopback for transmission/reception verification</li>
+  <li>GPIO14 provides visual feedback of test progression</li>
+  <li>No external components required for basic testing</li>
+</ul>
+<h3 id="ws2812-led-testing-setup">
+  
+  
+    <a href="#ws2812-led-testing-setup" class="anchor-heading" aria-labelledby="ws2812-led-testing-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> WS2812 LED Testing Setup
+  
+  
+</h3>
+    
+<p>The ESP32-C6-DevKitM-1 includes a built-in RGB LED on GPIO8, perfect for comprehensive WS2812
+testing:</p>
+
+<p><code class="language-plaintext highlighter-rouge">text
+ESP32-C6-DevKitM-1 Built-in RGB LED (GPIO8)
+├── WS2812 Protocol Testing
+├── 30+ Color Pattern Verification
+├── Timing Validation
+├── Brightness Sweep Testing
+├── Bit Pattern Analysis
+└── Rainbow Transition Effects
+</code>text</p>
+
+<p><strong>Built-in LED Features:</strong></p>
+<ul>
+  <li>✅ No external wiring required</li>
+  <li>✅ WS2812 protocol compatible</li>
+  <li>✅ Comprehensive color testing (30+ patterns)</li>
+  <li>✅ Timing validation with nanosecond precision</li>
+  <li>✅ Visual verification of test patterns</li>
+</ul>
+<h3 id="test-progression-indicator">
+  
+  
+    <a href="#test-progression-indicator" class="anchor-heading" aria-labelledby="test-progression-indicator"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Progression Indicator
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+ESP32-C6 GPIO14 ──► Visual LED Indicator
+                   │
+                   └──► Toggles HIGH/LOW for each completed test
+                   └──► Provides feedback for logic analyzer capture
+</code>text</p>
+
+<p><strong>Progression Indicator Features:</strong></p>
+<ul>
+  <li>✅ Visual feedback for test completion</li>
+  <li>✅ Logic analyzer triggering reference</li>
+  <li>✅ Automated test sequencing verification</li>
+  <li>✅ Real-time test progress monitoring</li>
+</ul>
+<h3 id="external-ws2812-led-chain-optional">
+  
+  
+    <a href="#external-ws2812-led-chain-optional" class="anchor-heading" aria-labelledby="external-ws2812-led-chain-optional"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> External WS2812 LED Chain (Optional)
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+ESP32-C6 GPIO8 ──► WS2812 LED Chain ──► Additional LEDs
+                   │
+                   └──► 5V Power Supply
+                   └──► Ground
+</code>text</p>
+
+<p><strong>Requirements for External LEDs:</strong></p>
+<ul>
+  <li>WS2812/WS2812B/NeoPixel LEDs</li>
+  <li>5V power supply for LEDs</li>
+  <li>470Ω resistor in series with data line (recommended)</li>
+  <li>Common ground between ESP32 and LED power supply</li>
+</ul>
+<h3 id="logic-analyzer-setup">
+  
+  
+    <a href="#logic-analyzer-setup" class="anchor-heading" aria-labelledby="logic-analyzer-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Setup
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+ESP32-C6 GPIO8 ──► Logic Analyzer Channel 0 (WS2812 data)
+ESP32-C6 GPIO14 ──► Logic Analyzer Channel 1 (test progression)
+ESP32-C6 GPIO18 ──► Logic Analyzer Channel 2 (loopback verification)
+ESP32-C6 GND   ──► Logic Analyzer Ground
+</code>text</p>
+
+<p><strong>Logic Analyzer Settings:</strong></p>
+<ul>
+  <li>Sample rate: 20MHz or higher</li>
+  <li>Voltage threshold: 1.65V (3.3V logic)</li>
+  <li>Trigger: Rising edge on GPIO14 (test progression)</li>
+  <li>Capture: Multi-channel for comprehensive analysis</li>
+</ul>
+<h2 id="running-the-tests">
+  
+  
+    <a href="#running-the-tests" class="anchor-heading" aria-labelledby="running-the-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running the Tests
+  
+  
+</h2>
+    
+<h3 id="prerequisites">
+  
+  
+    <a href="#prerequisites" class="anchor-heading" aria-labelledby="prerequisites"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Prerequisites
+  
+  
+</h3>
+    
+<ul>
+  <li>ESP-IDF v5.5 or later</li>
+  <li>ESP32-C6-DevKitM-1 development board</li>
+  <li>Jumper wire for loopback testing (GPIO8 → GPIO18)</li>
+  <li>Optional: Logic analyzer for timing verification</li>
+</ul>
+<h3 id="using-build-scripts-recommended">
+  
+  
+    <a href="#using-build-scripts-recommended" class="anchor-heading" aria-labelledby="using-build-scripts-recommended"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Build Scripts (Recommended)
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="navigate-to-esp32-examples-directory">
+  
+  
+    <a href="#navigate-to-esp32-examples-directory" class="anchor-heading" aria-labelledby="navigate-to-esp32-examples-directory"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Navigate to ESP32 examples directory
+  
+  
+</h2>
+    
+<p>cd examples/esp32</p>
+<h2 id="source-esp-idf-environment">
+  
+  
+    <a href="#source-esp-idf-environment" class="anchor-heading" aria-labelledby="source-esp-idf-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Source ESP-IDF environment
+  
+  
+</h2>
+    
+<p>source /path/to/esp-idf/export.sh</p>
+<h2 id="set-target-and-build">
+  
+  
+    <a href="#set-target-and-build" class="anchor-heading" aria-labelledby="set-target-and-build"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set target and build
+  
+  
+</h2>
+    
+<p>export IDF_TARGET=esp32c6
+./build_example.sh pio_test Release</p>
+<h2 id="flash-to-device">
+  
+  
+    <a href="#flash-to-device" class="anchor-heading" aria-labelledby="flash-to-device"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash to device
+  
+  
+</h2>
+    
+<p>idf.py -B build_pio_test_Release flash monitor
+```text</p>
+<h3 id="direct-esp-idf-build-alternative">
+  
+  
+    <a href="#direct-esp-idf-build-alternative" class="anchor-heading" aria-labelledby="direct-esp-idf-build-alternative"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Direct ESP-IDF Build (Alternative)
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="set-target">
+  
+  
+    <a href="#set-target" class="anchor-heading" aria-labelledby="set-target"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set target
+  
+  
+</h2>
+    
+<p>export IDF_TARGET=esp32c6</p>
+<h2 id="build-pio-test">
+  
+  
+    <a href="#build-pio-test" class="anchor-heading" aria-labelledby="build-pio-test"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build PIO test
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=pio_test</p>
+<h2 id="flash-to-device-1">
+  
+  
+    <a href="#flash-to-device-1" class="anchor-heading" aria-labelledby="flash-to-device-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash to device
+  
+  
+</h2>
+    
+<p>idf.py flash monitor
+```text</p>
+<h3 id="cicd-integration">
+  
+  
+    <a href="#cicd-integration" class="anchor-heading" aria-labelledby="cicd-integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CI/CD Integration
+  
+  
+</h3>
+    
+<p>The test is automatically included in the CI pipeline and will run in both Release and Debug
+configurations:
+<code class="language-plaintext highlighter-rouge">yaml
+matrix:
+  example_type: [..., pio_test, ...]
+</code>text</p>
+<h2 id="test-categories">
+  
+  
+    <a href="#test-categories" class="anchor-heading" aria-labelledby="test-categories"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Categories
+  
+  
+</h2>
+    
+<h3 id="1-esp32-variant-information-tests">
+  
+  
+    <a href="#1-esp32-variant-information-tests" class="anchor-heading" aria-labelledby="1-esp32-variant-information-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. ESP32 Variant Information Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_esp32_variant_detection</code>: Automatic ESP32 variant detection and reporting</li>
+  <li><code class="language-plaintext highlighter-rouge">test_channel_allocation_helpers</code>: TX/RX channel helper function validation</li>
+  <li><code class="language-plaintext highlighter-rouge">test_channel_direction_validation</code>: Hardware-enforced channel direction validation</li>
+  <li><code class="language-plaintext highlighter-rouge">test_resolution_ns_usage</code>: Resolution_ns interface with clock calculation testing</li>
+</ul>
+<h3 id="2-constructordestructor-tests">
+  
+  
+    <a href="#2-constructordestructor-tests" class="anchor-heading" aria-labelledby="2-constructordestructor-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Constructor/Destructor Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_constructor_default</code>: Validates proper object initialization</li>
+  <li><code class="language-plaintext highlighter-rouge">test_destructor_cleanup</code>: Ensures clean resource deallocation</li>
+</ul>
+<h3 id="3-lifecycle-tests">
+  
+  
+    <a href="#3-lifecycle-tests" class="anchor-heading" aria-labelledby="3-lifecycle-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Lifecycle Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_initialization_states</code>: Tests manual initialization/deinitialization</li>
+  <li><code class="language-plaintext highlighter-rouge">test_lazy_initialization</code>: Validates automatic initialization</li>
+</ul>
+<h3 id="4-channel-configuration-tests">
+  
+  
+    <a href="#4-channel-configuration-tests" class="anchor-heading" aria-labelledby="4-channel-configuration-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Channel Configuration Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_channel_configuration</code>: Basic channel setup validation with variant awareness</li>
+  <li><code class="language-plaintext highlighter-rouge">test_multiple_channel_configuration</code>: Multi-channel operation with TX/RX allocation</li>
+</ul>
+<h3 id="5-transmission-tests">
+  
+  
+    <a href="#5-transmission-tests" class="anchor-heading" aria-labelledby="5-transmission-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 5. Transmission Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_basic_symbol_transmission</code>: Basic symbol transmission with improved error handling</li>
+  <li><code class="language-plaintext highlighter-rouge">test_transmission_edge_cases</code>: Error handling and boundary conditions</li>
+</ul>
+<h3 id="6-ws2812-led-protocol-tests">
+  
+  
+    <a href="#6-ws2812-led-protocol-tests" class="anchor-heading" aria-labelledby="6-ws2812-led-protocol-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6. WS2812 LED Protocol Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_ws2812_single_led</code>: Single LED color transmission using built-in RGB LED</li>
+  <li><code class="language-plaintext highlighter-rouge">test_ws2812_multiple_leds</code>: RGB LED chain testing</li>
+  <li><code class="language-plaintext highlighter-rouge">test_ws2812_color_cycle</code>: Comprehensive 30+ color pattern testing including:
+    <ul>
+      <li>Primary colors at maximum brightness</li>
+      <li>Secondary colors and white variations</li>
+      <li>Gradient patterns and brightness levels</li>
+      <li>Specific bit patterns for timing verification</li>
+      <li>Color wheel simulation</li>
+      <li>Rapid color change stress testing</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">test_ws2812_brightness_sweep</code>: Individual color channel intensity sweep (0-255)</li>
+  <li><code class="language-plaintext highlighter-rouge">test_ws2812_pattern_validation</code>: Specific bit patterns for protocol accuracy</li>
+  <li><code class="language-plaintext highlighter-rouge">test_ws2812_rainbow_transition</code>: HSV to RGB rainbow transitions with smooth color wheel</li>
+</ul>
+<h3 id="7-logic-analyzer-test-scenarios">
+  
+  
+    <a href="#7-logic-analyzer-test-scenarios" class="anchor-heading" aria-labelledby="7-logic-analyzer-test-scenarios"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 7. Logic Analyzer Test Scenarios
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_logic_analyzer_patterns</code>: Recognizable test patterns for signal analysis</li>
+  <li><code class="language-plaintext highlighter-rouge">test_frequency_sweep</code>: Multi-frequency square wave generation</li>
+</ul>
+<h3 id="8-advanced-rmt-feature-tests">
+  
+  
+    <a href="#8-advanced-rmt-feature-tests" class="anchor-heading" aria-labelledby="8-advanced-rmt-feature-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 8. Advanced RMT Feature Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_rmt_encoder_configuration</code>: Hardware encoder setup</li>
+  <li><code class="language-plaintext highlighter-rouge">test_rmt_carrier_modulation</code>: 38kHz carrier generation</li>
+  <li><code class="language-plaintext highlighter-rouge">test_rmt_advanced_configuration</code>: DMA and advanced features</li>
+</ul>
+<h3 id="9-loopback-and-reception-tests">
+  
+  
+    <a href="#9-loopback-and-reception-tests" class="anchor-heading" aria-labelledby="9-loopback-and-reception-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 9. Loopback and Reception Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_loopback_functionality</code>: Transmission/reception verification with automated setup</li>
+</ul>
+<h3 id="10-callback-tests">
+  
+  
+    <a href="#10-callback-tests" class="anchor-heading" aria-labelledby="10-callback-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 10. Callback Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_callback_functionality</code>: Channel-specific interrupt-driven callbacks with user data</li>
+</ul>
+<h3 id="11-statistics-and-diagnostics-tests">
+  
+  
+    <a href="#11-statistics-and-diagnostics-tests" class="anchor-heading" aria-labelledby="11-statistics-and-diagnostics-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 11. Statistics and Diagnostics Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_statistics_and_diagnostics</code>: Comprehensive performance metrics and error reporting</li>
+</ul>
+<h3 id="12-stress-and-performance-tests">
+  
+  
+    <a href="#12-stress-and-performance-tests" class="anchor-heading" aria-labelledby="12-stress-and-performance-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 12. Stress and Performance Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_stress_transmission</code>: High-load testing with rapid operation cycles</li>
+</ul>
+<h3 id="13-system-validation-tests">
+  
+  
+    <a href="#13-system-validation-tests" class="anchor-heading" aria-labelledby="13-system-validation-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 13. System Validation Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_pio_system_validation</code>: End-to-end comprehensive system functionality</li>
+</ul>
+<h2 id="ws2812-protocol-specifications">
+  
+  
+    <a href="#ws2812-protocol-specifications" class="anchor-heading" aria-labelledby="ws2812-protocol-specifications"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> WS2812 Protocol Specifications
+  
+  
+</h2>
+    
+<h3 id="timing-requirements">
+  
+  
+    <a href="#timing-requirements" class="anchor-heading" aria-labelledby="timing-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Timing Requirements
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Symbol</td>
+      <td>High Time</td>
+      <td>Low Time</td>
+      <td>Tolerance</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——–|———–|———-|———–|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>‘0’ bit</td>
+      <td>350ns</td>
+      <td>900ns</td>
+      <td>±150ns</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>‘1’ bit</td>
+      <td>700ns</td>
+      <td>600ns</td>
+      <td>±150ns</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Reset</td>
+      <td>-</td>
+      <td>&gt;50µs</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="color-format">
+  
+  
+    <a href="#color-format" class="anchor-heading" aria-labelledby="color-format"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Color Format
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Data Order</strong>: GRB (Green, Red, Blue)</li>
+  <li><strong>Resolution</strong>: 8 bits per color channel</li>
+  <li><strong>Total</strong>: 24 bits per LED</li>
+</ul>
+<h3 id="comprehensive-test-colors">
+  
+  
+    <a href="#comprehensive-test-colors" class="anchor-heading" aria-labelledby="comprehensive-test-colors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Comprehensive Test Colors
+  
+  
+</h3>
+    
+<h4 id="primary-colors-maximum-brightness">
+  
+  
+    <a href="#primary-colors-maximum-brightness" class="anchor-heading" aria-labelledby="primary-colors-maximum-brightness"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Primary Colors (Maximum Brightness)
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Red</strong>: RGB(255, 0, 0) → GRB(0, 255, 0)</li>
+  <li><strong>Green</strong>: RGB(0, 255, 0) → GRB(255, 0, 0)</li>
+  <li><strong>Blue</strong>: RGB(0, 0, 255) → GRB(0, 0, 255)</li>
+</ul>
+<h4 id="secondary-colors">
+  
+  
+    <a href="#secondary-colors" class="anchor-heading" aria-labelledby="secondary-colors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Secondary Colors
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Yellow</strong>: RGB(255, 255, 0) → GRB(255, 255, 0)</li>
+  <li><strong>Magenta</strong>: RGB(255, 0, 255) → GRB(0, 255, 255)</li>
+  <li><strong>Cyan</strong>: RGB(0, 255, 255) → GRB(255, 0, 255)</li>
+</ul>
+<h4 id="white-variations">
+  
+  
+    <a href="#white-variations" class="anchor-heading" aria-labelledby="white-variations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> White Variations
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>White Max</strong>: RGB(255, 255, 255) → GRB(255, 255, 255)</li>
+  <li><strong>White Mid</strong>: RGB(128, 128, 128) → GRB(128, 128, 128)</li>
+  <li><strong>White Low</strong>: RGB(64, 64, 64) → GRB(64, 64, 64)</li>
+</ul>
+<h4 id="bit-pattern-test-values">
+  
+  
+    <a href="#bit-pattern-test-values" class="anchor-heading" aria-labelledby="bit-pattern-test-values"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Bit Pattern Test Values
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Pattern 01</strong>: 0x55 (01010101) for alternating bit testing</li>
+  <li><strong>Pattern 10</strong>: 0xAA (10101010) for alternating bit testing</li>
+  <li><strong>Pattern F0</strong>: 0xF0 (11110000) for nibble testing</li>
+  <li><strong>Pattern 0F</strong>: 0x0F (00001111) for nibble testing</li>
+</ul>
+<h4 id="rainbow-transition">
+  
+  
+    <a href="#rainbow-transition" class="anchor-heading" aria-labelledby="rainbow-transition"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Rainbow Transition
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>360° Hue Sweep</strong>: HSV to RGB conversion with smooth transitions</li>
+  <li><strong>Brightness Control</strong>: Scalable intensity for visual comfort</li>
+  <li><strong>Timing Analysis</strong>: Smooth color wheel for protocol stress testing</li>
+</ul>
+<h2 id="logic-analyzer-test-patterns">
+  
+  
+    <a href="#logic-analyzer-test-patterns" class="anchor-heading" aria-labelledby="logic-analyzer-test-patterns"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Test Patterns
+  
+  
+</h2>
+    
+<h3 id="pattern-1-basic-timing-test">
+  
+  
+    <a href="#pattern-1-basic-timing-test" class="anchor-heading" aria-labelledby="pattern-1-basic-timing-test"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern 1: Basic Timing Test
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+1µs HIGH → 1µs LOW → 2µs HIGH → 2µs LOW → 0.5µs HIGH → 0.5µs LOW → 3µs HIGH → 1.5µs LOW → 0.75µs
+HIGH → 4µs LOW
+</code>text</p>
+<h3 id="pattern-2-frequency-sweep">
+  
+  
+    <a href="#pattern-2-frequency-sweep" class="anchor-heading" aria-labelledby="pattern-2-frequency-sweep"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern 2: Frequency Sweep
+  
+  
+</h3>
+    
+<ul>
+  <li>1kHz: 500µs HIGH, 500µs LOW</li>
+  <li>5kHz: 100µs HIGH, 100µs LOW</li>
+  <li>10kHz: 50µs HIGH, 50µs LOW</li>
+  <li>50kHz: 10µs HIGH, 10µs LOW</li>
+  <li>100kHz: 5µs HIGH, 5µs LOW</li>
+</ul>
+<h3 id="pattern-3-test-progression-monitoring">
+  
+  
+    <a href="#pattern-3-test-progression-monitoring" class="anchor-heading" aria-labelledby="pattern-3-test-progression-monitoring"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern 3: Test Progression Monitoring
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>GPIO14 Toggle</strong>: HIGH/LOW transition for each completed test</li>
+  <li><strong>Test Sequence</strong>: Visual feedback for 25+ individual tests</li>
+  <li><strong>Timing Reference</strong>: Consistent toggle pattern for analyzer triggering</li>
+</ul>
+<h2 id="expected-test-results">
+  
+  
+    <a href="#expected-test-results" class="anchor-heading" aria-labelledby="expected-test-results"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Expected Test Results
+  
+  
+</h2>
+    
+<h3 id="successful-test-output">
+  
+  
+    <a href="#successful-test-output" class="anchor-heading" aria-labelledby="successful-test-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Successful Test Output
+  
+  
+</h3>
+    
+<p>```text
+[PIO_Test] ╔═══════════════════════════════════════════════════════════════════════════════╗
+[PIO_Test] ║                    ESP32-C6 PIO COMPREHENSIVE TEST SUITE                     ║
+[PIO_Test] ║  Testing EspPio with ESP-IDF v5.5 RMT peripheral                             ║
+[PIO_Test] ║  Includes WS2812 LED protocol and automated loopback testing                 ║
+[PIO_Test] ║                                                                               ║
+[PIO_Test] ║  Test Pins (ESP32-C6 DevKitM-1):                                             ║
+[PIO_Test] ║    GPIO 8 - Built-in RGB LED (WS2812) + TX for loopback                     ║
+[PIO_Test] ║    GPIO 14 - Test progression indicator                                       ║
+[PIO_Test] ║    GPIO 18 - RX for automated loopback verification                          ║
+[PIO_Test] ║                                                                               ║
+[PIO_Test] ║  For automated testing: Connect GPIO 8 to GPIO 18 with jumper wire          ║
+[PIO_Test] ╚═══════════════════════════════════════════════════════════════════════════════╝</p>
+
+<p>[PIO_Test] === ESP32 VARIANT INFORMATION TESTS ===
+[PIO_Test] [SUCCESS] PASSED: test_esp32_variant_detection (0.05 ms)
+[PIO_Test] [SUCCESS] PASSED: test_channel_allocation_helpers (0.12 ms)
+[PIO_Test] [SUCCESS] PASSED: test_channel_direction_validation (0.08 ms)
+[PIO_Test] [SUCCESS] PASSED: test_resolution_ns_usage (1.45 ms)</p>
+
+<p>[PIO_Test] === CONSTRUCTOR/DESTRUCTOR TESTS ===
+[PIO_Test] [SUCCESS] PASSED: test_constructor_default (0.05 ms)
+[PIO_Test] [SUCCESS] PASSED: test_destructor_cleanup (0.32 ms)</p>
+
+<p>[PIO_Test] === WS2812 LED PROTOCOL TESTS ===
+[PIO_Test] [SUCCESS] PASSED: test_ws2812_single_led (2.34 ms)
+[PIO_Test] [SUCCESS] PASSED: test_ws2812_multiple_leds (5.67 ms)
+[PIO_Test] [SUCCESS] PASSED: test_ws2812_color_cycle (45.23 ms)
+[PIO_Test] [SUCCESS] PASSED: test_ws2812_brightness_sweep (12.89 ms)
+[PIO_Test] [SUCCESS] PASSED: test_ws2812_pattern_validation (8.76 ms)
+[PIO_Test] [SUCCESS] PASSED: test_ws2812_rainbow_transition (15.43 ms)</p>
+
+<p>…</p>
+
+<p>[PIO_Test] === PIO TEST SUMMARY ===
+[PIO_Test] Total: 25, Passed: 25, Failed: 0, Success: 100.00%, Time: 185.67 ms
+[PIO_Test] [SUCCESS] ALL PIO TESTS PASSED!</p>
+
+<p>[PIO_Test] ║  New Features Tested:                                                         ║
+[PIO_Test] ║    ✓ Channel-specific callbacks with user data                               ║
+[PIO_Test] ║    ✓ Resolution_hz for direct ESP-IDF compatibility                         ║
+[PIO_Test] ║    ✓ ESP32 variant-specific channel validation                              ║
+[PIO_Test] ║    ✓ Enhanced clock divider calculation                                     ║
+[PIO_Test] ║    ✓ Test progression indicator on GPIO14                                   ║
+[PIO_Test] ║    ✓ Comprehensive WS2812 color testing (30+ patterns)                     ║
+```text</p>
+<h3 id="built-in-rgb-led-verification">
+  
+  
+    <a href="#built-in-rgb-led-verification" class="anchor-heading" aria-labelledby="built-in-rgb-led-verification"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Built-in RGB LED Verification
+  
+  
+</h3>
+    
+<p>The ESP32-C6-DevKitM-1’s built-in RGB LED demonstrates comprehensive testing:</p>
+<ol>
+  <li><strong>Single LED Test</strong>: LED turns red</li>
+  <li><strong>Color Cycle Test</strong>: 30+ color patterns including:
+    <ul>
+      <li>Primary colors (R/G/B) at full brightness</li>
+      <li>Secondary colors (Yellow/Magenta/Cyan)</li>
+      <li>White variations at different intensities</li>
+      <li>Specific bit patterns for timing analysis</li>
+      <li>Rainbow color wheel transitions</li>
+      <li>Rapid color change sequences</li>
+    </ul>
+  </li>
+  <li><strong>Brightness Sweep</strong>: Smooth 0-255 intensity transitions for each color</li>
+  <li><strong>Pattern Validation</strong>: Specific bit patterns for protocol verification</li>
+  <li>Reset sequences between all tests</li>
+</ol>
+<h3 id="automated-loopback-verification">
+  
+  
+    <a href="#automated-loopback-verification" class="anchor-heading" aria-labelledby="automated-loopback-verification"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Automated Loopback Verification
+  
+  
+</h3>
+    
+<p>With GPIO8 → GPIO18 jumper wire:</p>
+<ol>
+  <li><strong>Transmission Test</strong>: Data sent from GPIO8</li>
+  <li><strong>Reception Test</strong>: Same data received on GPIO18</li>
+  <li><strong>Data Integrity</strong>: Automatic verification of transmission/reception</li>
+  <li><strong>Timing Validation</strong>: Signal timing accuracy verification</li>
+</ol>
+<h3 id="test-progression-monitoring">
+  
+  
+    <a href="#test-progression-monitoring" class="anchor-heading" aria-labelledby="test-progression-monitoring"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Progression Monitoring
+  
+  
+</h3>
+    
+<p>With GPIO14 monitoring:</p>
+<ol>
+  <li><strong>Visual Feedback</strong>: LED toggles for each completed test</li>
+  <li><strong>Logic Analyzer Triggering</strong>: Consistent reference for capture</li>
+  <li><strong>Test Sequence Verification</strong>: Real-time progress monitoring</li>
+  <li><strong>Automated Testing</strong>: Self-contained test progression</li>
+</ol>
+<h3 id="logic-analyzer-verification">
+  
+  
+    <a href="#logic-analyzer-verification" class="anchor-heading" aria-labelledby="logic-analyzer-verification"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Verification
+  
+  
+</h3>
+    
+<p>Capture signals on GPIO8, GPIO14, and GPIO18 to verify:</p>
+<ol>
+  <li><strong>WS2812 Timing</strong>: Accuracy within ±150ns tolerance</li>
+  <li><strong>Color Pattern Accuracy</strong>: Correct bit encoding for all 30+ color patterns</li>
+  <li><strong>Test Progression</strong>: GPIO14 toggle pattern</li>
+  <li><strong>Loopback Verification</strong>: TX/RX signal correlation</li>
+  <li><strong>Frequency Sweep</strong>: Multi-frequency pattern validation</li>
+</ol>
+<h2 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h2>
+    
+<h3 id="common-issues">
+  
+  
+    <a href="#common-issues" class="anchor-heading" aria-labelledby="common-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Issues
+  
+  
+</h3>
+    
+<h4 id="test-failures">
+  
+  
+    <a href="#test-failures" class="anchor-heading" aria-labelledby="test-failures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Failures
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Timing Issues</strong>: Verify resolution_ns values are within hardware constraints (use GetResolutionConstraints())</li>
+  <li><strong>GPIO Conflicts</strong>: Check pin availability and configuration</li>
+  <li><strong>Initialization Failures</strong>: Ensure ESP-IDF v5.5+ and proper hardware</li>
+  <li><strong>Variant Detection</strong>: Verify ESP32 variant is properly detected and supported</li>
+</ul>
+<h4 id="built-in-rgb-led-issues">
+  
+  
+    <a href="#built-in-rgb-led-issues" class="anchor-heading" aria-labelledby="built-in-rgb-led-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Built-in RGB LED Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>No LED Response</strong>: Check if LED is enabled in board configuration</li>
+  <li><strong>Wrong Colors</strong>: Verify GRB data format, timing accuracy</li>
+  <li><strong>Dim LED</strong>: Normal behavior for built-in LED at reduced intensity</li>
+  <li><strong>Color Pattern Issues</strong>: Verify test progression indicator shows completion</li>
+  <li><strong>Rapid Color Changes</strong>: Normal during stress testing sequences</li>
+</ul>
+<h4 id="test-progression-indicator-issues">
+  
+  
+    <a href="#test-progression-indicator-issues" class="anchor-heading" aria-labelledby="test-progression-indicator-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Progression Indicator Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>No GPIO14 Activity</strong>: Check GPIO14 initialization and connectivity</li>
+  <li><strong>Irregular Toggle Pattern</strong>: Verify test sequence completion</li>
+  <li><strong>Logic Analyzer Sync</strong>: Use GPIO14 as trigger reference</li>
+</ul>
+<h4 id="loopback-testing-issues">
+  
+  
+    <a href="#loopback-testing-issues" class="anchor-heading" aria-labelledby="loopback-testing-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Loopback Testing Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>No Reception</strong>: Verify jumper wire connection GPIO8 → GPIO18</li>
+  <li><strong>Data Mismatch</strong>: Check for loose connections or interference</li>
+  <li><strong>Timing Issues</strong>: Ensure proper RMT configuration</li>
+  <li><strong>Channel Allocation</strong>: Verify TX/RX channels available for current ESP32 variant</li>
+</ul>
+<h4 id="ws2812-testing-issues">
+  
+  
+    <a href="#ws2812-testing-issues" class="anchor-heading" aria-labelledby="ws2812-testing-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> WS2812 Testing Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Color Accuracy</strong>: Use logic analyzer to verify bit timing</li>
+  <li><strong>Pattern Recognition</strong>: Monitor GPIO8 during specific pattern tests</li>
+  <li><strong>Rainbow Transitions</strong>: Smooth color changes indicate proper HSV conversion</li>
+  <li><strong>Brightness Sweep</strong>: Verify gradual intensity changes</li>
+</ul>
+<h4 id="logic-analyzer-issues">
+  
+  
+    <a href="#logic-analyzer-issues" class="anchor-heading" aria-labelledby="logic-analyzer-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>No Signal</strong>: Verify probe connections, ground reference</li>
+  <li><strong>Timing Inaccuracy</strong>: Increase sample rate, check triggering on GPIO14</li>
+  <li><strong>Signal Distortion</strong>: Reduce probe capacitance, improve connections</li>
+  <li><strong>Multi-channel Sync</strong>: Use GPIO14 as common trigger reference</li>
+</ul>
+<h3 id="debug-mode">
+  
+  
+    <a href="#debug-mode" class="anchor-heading" aria-labelledby="debug-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Debug Mode
+  
+  
+</h3>
+    
+<p>Enable detailed logging by building in Debug mode:
+```bash</p>
+<h2 id="using-build-scripts-recommended-1">
+  
+  
+    <a href="#using-build-scripts-recommended-1" class="anchor-heading" aria-labelledby="using-build-scripts-recommended-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using build scripts (recommended)
+  
+  
+</h2>
+    
+<p>./build_example.sh pio_test Debug</p>
+<h2 id="or-direct-esp-idf-build">
+  
+  
+    <a href="#or-direct-esp-idf-build" class="anchor-heading" aria-labelledby="or-direct-esp-idf-build"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Or direct ESP-IDF build
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=pio_test -DBUILD_TYPE=Debug
+```text</p>
+<h2 id="performance-metrics">
+  
+  
+    <a href="#performance-metrics" class="anchor-heading" aria-labelledby="performance-metrics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Metrics
+  
+  
+</h2>
+    
+<h3 id="build-information">
+  
+  
+    <a href="#build-information" class="anchor-heading" aria-labelledby="build-information"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build Information
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Build Status</strong>: ✅ SUCCESS</li>
+  <li><strong>Target</strong>: ESP32-C6</li>
+  <li><strong>Binary Size</strong>: 0x335d0 bytes (209,872 bytes)</li>
+  <li><strong>Free Space</strong>: 86% of partition available</li>
+  <li><strong>ESP-IDF Version</strong>: v5.5</li>
+  <li><strong>Test Count</strong>: 25+ comprehensive tests</li>
+</ul>
+<h3 id="typical-results-esp32-c6--160mhz">
+  
+  
+    <a href="#typical-results-esp32-c6--160mhz" class="anchor-heading" aria-labelledby="typical-results-esp32-c6--160mhz"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Typical Results (ESP32-C6 @ 160MHz)
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Initialization Time</strong>: &lt;1ms</li>
+  <li><strong>Channel Configuration</strong>: &lt;0.5ms</li>
+  <li><strong>Single Symbol Transmission</strong>: ~10µs</li>
+  <li><strong>WS2812 24-bit Transmission</strong>: ~30µs</li>
+  <li><strong>Color Cycle Test (30+ patterns)</strong>: ~45ms</li>
+  <li><strong>Brightness Sweep Test</strong>: ~13ms</li>
+  <li><strong>Rainbow Transition Test</strong>: ~15ms</li>
+  <li><strong>Stress Test (100 symbols)</strong>: ~1ms</li>
+  <li><strong>Complete Test Suite</strong>: ~185ms</li>
+</ul>
+<h3 id="memory-usage">
+  
+  
+    <a href="#memory-usage" class="anchor-heading" aria-labelledby="memory-usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Memory Usage
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>RAM</strong>: ~3KB for enhanced test framework</li>
+  <li><strong>Flash</strong>: ~20KB for comprehensive test code</li>
+  <li><strong>RMT Memory</strong>: 64 symbols per channel (configurable)</li>
+</ul>
+<h2 id="integration-with-development-workflow">
+  
+  
+    <a href="#integration-with-development-workflow" class="anchor-heading" aria-labelledby="integration-with-development-workflow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Integration with Development Workflow
+  
+  
+</h2>
+    
+<h3 id="continuous-integration">
+  
+  
+    <a href="#continuous-integration" class="anchor-heading" aria-labelledby="continuous-integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Continuous Integration
+  
+  
+</h3>
+    
+<p>The test automatically runs in CI for:</p>
+<ul>
+  <li>Pull request validation</li>
+  <li>Main branch commits</li>
+  <li>Release candidate testing</li>
+  <li>ESP32 variant compatibility verification</li>
+</ul>
+<h3 id="hardware-in-the-loop-testing">
+  
+  
+    <a href="#hardware-in-the-loop-testing" class="anchor-heading" aria-labelledby="hardware-in-the-loop-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware-in-the-Loop Testing
+  
+  
+</h3>
+    
+<p>For production validation:</p>
+<ol>
+  <li>Use built-in RGB LED for comprehensive WS2812 testing</li>
+  <li>Monitor GPIO14 for test progression verification</li>
+  <li>Connect jumper wire for loopback verification</li>
+  <li>Use logic analyzer for timing verification</li>
+  <li>Run automated test suite (25+ tests)</li>
+  <li>Validate timing against WS2812 specifications</li>
+  <li>Verify variant-specific channel allocation</li>
+</ol>
+<h2 id="advanced-configuration">
+  
+  
+    <a href="#advanced-configuration" class="anchor-heading" aria-labelledby="advanced-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced Configuration
+  
+  
+</h2>
+    
+<h3 id="custom-gpio-pins">
+  
+  
+    <a href="#custom-gpio-pins" class="anchor-heading" aria-labelledby="custom-gpio-pins"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Custom GPIO Pins
+  
+  
+</h3>
+    
+<p>Modify the test for different hardware:
+<code class="language-plaintext highlighter-rouge">cpp
+// ESP32-C6 DevKitM-1 specific configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+static constexpr hf_gpio_num_t TEST_GPIO_TX = 8;   // Built-in RGB LED
+static constexpr hf_gpio_num_t TEST_GPIO_RX = 18;  // Loopback RX
+static constexpr hf_gpio_num_t TEST_GPIO_PROGRESS = 14; // Progress indicator
+#else
+static constexpr hf_gpio_num_t TEST_GPIO_TX = 2;   // Other ESP32 variants
+static constexpr hf_gpio_num_t TEST_GPIO_RX = 3;   // Other ESP32 variants
+static constexpr hf_gpio_num_t TEST_GPIO_PROGRESS = 2; // Other variants
+#endif
+</code>text</p>
+<h3 id="timing-resolution">
+  
+  
+    <a href="#timing-resolution" class="anchor-heading" aria-labelledby="timing-resolution"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Timing Resolution
+  
+  
+</h3>
+    
+<p>Adjust for different requirements:
+<code class="language-plaintext highlighter-rouge">cpp
+// ESP32-C6 specific resolution configuration
+#if defined(CONFIG_IDF_TARGET_ESP32C6)
+config.resolution_ns = 125; // 8MHz resolution - optimized for WS2812 timing
+#else
+config.resolution_ns = TEST_RESOLUTION_STANDARD_NS; // 1µs standard resolution
+#endif
+</code>text</p>
+<h3 id="test-parameters">
+  
+  
+    <a href="#test-parameters" class="anchor-heading" aria-labelledby="test-parameters"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Parameters
+  
+  
+</h3>
+    
+<p>Customize test behavior:
+```cpp
+// WS2812 timing specifications
+static constexpr uint32_t WS2812_T0H = 350;  // WS2812B high time for ‘0’
+static constexpr uint32_t WS2812_T0L = 900;  // WS2812B low time for ‘0’
+static constexpr uint32_t WS2812_T1H = 700;  // WS2812B high time for ‘1’
+static constexpr uint32_t WS2812_T1L = 600;  // WS2812B low time for ‘1’</p>
+
+<p>// Test progression configuration
+static constexpr uint32_t TEST_PROGRESS_DELAY_MS = 100; // Progress indicator timing
+```text</p>
+<h2 id="esp32-c6-specific-features">
+  
+  
+    <a href="#esp32-c6-specific-features" class="anchor-heading" aria-labelledby="esp32-c6-specific-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Specific Features
+  
+  
+</h2>
+    
+<h3 id="rmt-peripheral">
+  
+  
+    <a href="#rmt-peripheral" class="anchor-heading" aria-labelledby="rmt-peripheral"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> RMT Peripheral
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Channels</strong>: 2 TX (0-1) + 2 RX (2-3) channels</li>
+  <li><strong>Clock Source</strong>: PLL_F80M (80 MHz) with automatic fallback</li>
+  <li><strong>Memory</strong>: Configurable memory blocks per channel</li>
+  <li><strong>DMA</strong>: Supported for large transfers</li>
+  <li><strong>Resolution</strong>: 125ns minimum (8MHz) for WS2812 precision</li>
+</ul>
+<h3 id="built-in-rgb-led">
+  
+  
+    <a href="#built-in-rgb-led" class="anchor-heading" aria-labelledby="built-in-rgb-led"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Built-in RGB LED
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>GPIO</strong>: GPIO8</li>
+  <li><strong>Protocol</strong>: WS2812 compatible</li>
+  <li><strong>Power</strong>: 3.3V logic level</li>
+  <li><strong>Features</strong>: No external components required</li>
+  <li><strong>Testing</strong>: 30+ comprehensive color patterns</li>
+</ul>
+<h3 id="testing-advantages">
+  
+  
+    <a href="#testing-advantages" class="anchor-heading" aria-labelledby="testing-advantages"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing Advantages
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>No External Wiring</strong>: Uses built-in LED for WS2812 testing</li>
+  <li><strong>Visual Feedback</strong>: GPIO14 progression indicator</li>
+  <li><strong>Loopback Verification</strong>: Simple jumper wire connection</li>
+  <li><strong>Variant Awareness</strong>: Automatic ESP32 variant detection</li>
+  <li><strong>Self-Contained</strong>: Minimal external dependencies</li>
+  <li><strong>Reliable</strong>: Consistent hardware configuration</li>
+  <li><strong>Comprehensive</strong>: 25+ individual test cases</li>
+</ul>
+<h2 id="references">
+  
+  
+    <a href="#references" class="anchor-heading" aria-labelledby="references"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> References
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/rmt.html">ESP-IDF RMT Documentation</a></li>
+  <li><a href="https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf">WS2812B Datasheet</a></li>
+  <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf">ESP32-C6 Technical Reference Manual</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/migration-guides/release-5.x/5.0/peripherals.html">ESP-IDF v5.5 Migration Guide</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/hw-reference/esp32c6/user-guide-devkitm-1.html">ESP32-C6-DevKitM-1 User Guide</a></li>
+</ul>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

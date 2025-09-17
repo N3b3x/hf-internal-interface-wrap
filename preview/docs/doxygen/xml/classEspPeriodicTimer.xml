@@ -1,0 +1,795 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classEspPeriodicTimer" kind="class" language="C++" prot="public">
+    <compoundname>EspPeriodicTimer</compoundname>
+    <basecompoundref refid="classBasePeriodicTimer" prot="public" virt="non-virtual">BasePeriodicTimer</basecompoundref>
+    <includes refid="EspPeriodicTimer_8h" local="no">EspPeriodicTimer.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEspPeriodicTimer_1afdfea16d2af3266ab12806d25263e7fc" prot="private" static="no" mutable="no">
+        <type><ref refid="EspTypes__Timer_8h_1a5cf2d8552051c31be03ff8540f070132" kindref="member">hf_timer_handle_t</ref></type>
+        <definition>hf_timer_handle_t EspPeriodicTimer::timer_handle_</definition>
+        <argsstring></argsstring>
+        <name>timer_handle_</name>
+        <qualifiedname>EspPeriodicTimer::timer_handle_</qualifiedname>
+        <briefdescription>
+<para>Platform-specific timer handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="158" column="21" bodyfile="inc/mcu/esp32/EspPeriodicTimer.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPeriodicTimer_1a1f81f78cf8dd2620749cd99131dc2259" prot="private" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t EspPeriodicTimer::period_us_</definition>
+        <argsstring></argsstring>
+        <name>period_us_</name>
+        <qualifiedname>EspPeriodicTimer::period_us_</qualifiedname>
+        <briefdescription>
+<para>Current timer period in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="159" column="12" bodyfile="inc/mcu/esp32/EspPeriodicTimer.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPeriodicTimer_1a75d9db377b27d539a693ca70d75ead34" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__timer__stats__t" kindref="compound">hf_timer_stats_t</ref></type>
+        <definition>hf_timer_stats_t EspPeriodicTimer::stats_</definition>
+        <argsstring></argsstring>
+        <name>stats_</name>
+        <qualifiedname>EspPeriodicTimer::stats_</qualifiedname>
+        <briefdescription>
+<para>Timer statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="160" column="20" bodyfile="inc/mcu/esp32/EspPeriodicTimer.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEspPeriodicTimer_1a16e60591c1ffc70ddfe2eca13d5fcfe8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPeriodicTimer::EspPeriodicTimer</definition>
+        <argsstring>(hf_timer_callback_t callback=nullptr, void *user_data=nullptr) noexcept</argsstring>
+        <name>EspPeriodicTimer</name>
+        <qualifiedname>EspPeriodicTimer::EspPeriodicTimer</qualifiedname>
+        <param>
+          <type><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref></type>
+          <declname>callback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Constructor with callback specification. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function to be called on timer expiry </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data passed to callback function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="47" column="3" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a067abebb9f6d6277e44e879b9abde52c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPeriodicTimer::~EspPeriodicTimer</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~EspPeriodicTimer</name>
+        <qualifiedname>EspPeriodicTimer::~EspPeriodicTimer</qualifiedname>
+        <briefdescription>
+<para>Destructor - ensures timer is stopped and resources are freed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="52" column="3" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a3864a829e95d9468c44d91ff386089dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspPeriodicTimer::EspPeriodicTimer</definition>
+        <argsstring>(const EspPeriodicTimer &amp;)=delete</argsstring>
+        <name>EspPeriodicTimer</name>
+        <qualifiedname>EspPeriodicTimer::EspPeriodicTimer</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="55" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1aedb23cfac603c39c112021b4e39b23ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;</type>
+        <definition>EspPeriodicTimer &amp; EspPeriodicTimer::operator=</definition>
+        <argsstring>(const EspPeriodicTimer &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspPeriodicTimer::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="56" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a2ba63374fcc4fab5ea42cac7b769b895" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspPeriodicTimer::EspPeriodicTimer</definition>
+        <argsstring>(EspPeriodicTimer &amp;&amp;)=delete</argsstring>
+        <name>EspPeriodicTimer</name>
+        <qualifiedname>EspPeriodicTimer::EspPeriodicTimer</qualifiedname>
+        <param>
+          <type><ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="57" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a7338b4f62eb287d6986daaf7f39310b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;</type>
+        <definition>EspPeriodicTimer &amp; EspPeriodicTimer::operator=</definition>
+        <argsstring>(EspPeriodicTimer &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspPeriodicTimer::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="58" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a2d71348fe53d45612f586f7a81920adc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>EspPeriodicTimer::Initialize</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1ab5e9c79c29dd4b5b0c581b3124c09907">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the timer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Success or specific error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="68" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="54" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a7d27449fd8105d996b0d661708a1658a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>EspPeriodicTimer::Deinitialize</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a832aec2c7b29459d585be24c2478857f">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the timer and free resources. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Success or specific error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="74" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="77" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1ac352033e596e27719ede7c11ec860d40" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::Start</definition>
+        <argsstring>(hf_u64_t period_us) noexcept override</argsstring>
+        <name>Start</name>
+        <qualifiedname>EspPeriodicTimer::Start</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1aedbfbbb79b85464d9c311bc7b42ba4a9">Start</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+          <declname>period_us</declname>
+        </param>
+        <briefdescription>
+<para>Start the timer with specified period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>period_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer period in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Success or specific error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="81" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="96" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1ab7916bb8965569cba0e5f2da171b2b5d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::Stop</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Stop</name>
+        <qualifiedname>EspPeriodicTimer::Stop</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a614629ba36264694b66baffe7e72ab08">Stop</reimplements>
+        <briefdescription>
+<para>Stop the timer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Success or specific error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="87" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="127" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a2feb5be89d39cdaf1813cf82edb281a1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::SetPeriod</definition>
+        <argsstring>(hf_u64_t new_period_us) noexcept override</argsstring>
+        <name>SetPeriod</name>
+        <qualifiedname>EspPeriodicTimer::SetPeriod</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a22c103ed4866bb4f45eef55d77730a09">SetPeriod</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+          <declname>new_period_us</declname>
+        </param>
+        <briefdescription>
+<para>Change timer period (timer can be running or stopped). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>new_period_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New period in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Success or specific error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="94" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="151" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1ac8255b99f1786bd785effa818c3db876" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::GetPeriod</definition>
+        <argsstring>(hf_u64_t &amp;period_us) noexcept override</argsstring>
+        <name>GetPeriod</name>
+        <qualifiedname>EspPeriodicTimer::GetPeriod</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a64307da70204c07096177c722c0aba41">GetPeriod</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &amp;</type>
+          <declname>period_us</declname>
+        </param>
+        <briefdescription>
+<para>Get current timer period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>period_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store current period </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Success or specific error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="101" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="183" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1af0c1a5e199fa8e75d484d575c02e815c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::GetStats</definition>
+        <argsstring>(hf_u64_t &amp;callback_count, hf_u64_t &amp;missed_callbacks, hf_timer_err_t &amp;last_error) noexcept override</argsstring>
+        <name>GetStats</name>
+        <qualifiedname>EspPeriodicTimer::GetStats</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a98d76a272ec805a75ec2c1cc9ab885fd">GetStats</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &amp;</type>
+          <declname>callback_count</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &amp;</type>
+          <declname>missed_callbacks</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref> &amp;</type>
+          <declname>last_error</declname>
+        </param>
+        <briefdescription>
+<para>Get timer statistics and status information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of callbacks executed </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>missed_callbacks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of missed callbacks (if supported) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last error that occurred </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Success or specific error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="110" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="191" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a074cc62783802fb12d95ca93edaf139e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::ResetStats</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>ResetStats</name>
+        <qualifiedname>EspPeriodicTimer::ResetStats</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a6d418e90936077bd309b714cb4d646ad">ResetStats</reimplements>
+        <briefdescription>
+<para>Reset timer statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Success or specific error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="117" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="202" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a1cd74060851211a103f5bfdc380a58a5" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * EspPeriodicTimer::GetDescription</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetDescription</name>
+        <qualifiedname>EspPeriodicTimer::GetDescription</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1ae9bdfcba0669d72ec6e8ebac8bcf7042">GetDescription</reimplements>
+        <briefdescription>
+<para>Get description of this timer implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Description string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="123" column="14" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="210" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a53bf8e1a7fe5da2ef9dfc5bd00aeca63" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t EspPeriodicTimer::GetMinPeriod</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMinPeriod</name>
+        <qualifiedname>EspPeriodicTimer::GetMinPeriod</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1aec24a991610deca51f4623b5704ab8b3">GetMinPeriod</reimplements>
+        <briefdescription>
+<para>Get minimum supported timer period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Minimum period in microseconds </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="129" column="12" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="214" bodyend="217"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a24851bbc3359b261076ac7ce63175bc4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t EspPeriodicTimer::GetMaxPeriod</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMaxPeriod</name>
+        <qualifiedname>EspPeriodicTimer::GetMaxPeriod</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1ab2bb6001034bca26edddca31e314b233">GetMaxPeriod</reimplements>
+        <briefdescription>
+<para>Get maximum supported timer period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum period in microseconds </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="135" column="12" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="219" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1afd6d7373e40fae8922117bd9dc7b6428" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t EspPeriodicTimer::GetResolution</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetResolution</name>
+        <qualifiedname>EspPeriodicTimer::GetResolution</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a4a55df2dbb3c7076fef5e413d9fd9ad4">GetResolution</reimplements>
+        <briefdescription>
+<para>Get timer resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Timer resolution in microseconds </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="141" column="12" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="225" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a4fa8ad6a89cd1cc21ce5707926565eb2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::GetStatistics</definition>
+        <argsstring>(hf_timer_statistics_t &amp;statistics) const noexcept override</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>EspPeriodicTimer::GetStatistics</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a04e87d17d4909a0bae0547bd9d2ca3f9">GetStatistics</reimplements>
+        <param>
+          <type><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get timer operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to statistics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="148" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="292" bodyend="295"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a29dc38189cc126d681a893baf2e2ff03" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::GetDiagnostics</definition>
+        <argsstring>(hf_timer_diagnostics_t &amp;diagnostics) const noexcept override</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>EspPeriodicTimer::GetDiagnostics</qualifiedname>
+        <reimplements refid="classBasePeriodicTimer_1a47bb724f0a6d31877aeca1c5afb053c7">GetDiagnostics</reimplements>
+        <param>
+          <type><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get timer diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to diagnostics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="155" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="297" bodyend="301"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classEspPeriodicTimer_1aa957512d77db32431d6d56a2d488f351" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t EspPeriodicTimer::ConvertError</definition>
+        <argsstring>(int platform_error) const noexcept</argsstring>
+        <name>ConvertError</name>
+        <qualifiedname>EspPeriodicTimer::ConvertError</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>platform_error</declname>
+        </param>
+        <briefdescription>
+<para>Convert platform-specific error to hf_timer_err_t. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>platform_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Platform-specific error code </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Corresponding hf_timer_err_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="167" column="18" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="233" bodyend="246"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a0349a3781b6b48587e739dc705987b69" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspPeriodicTimer::ValidatePeriod</definition>
+        <argsstring>(hf_u64_t period_us) const noexcept</argsstring>
+        <name>ValidatePeriod</name>
+        <qualifiedname>EspPeriodicTimer::ValidatePeriod</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+          <declname>period_us</declname>
+        </param>
+        <briefdescription>
+<para>Validate timer period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>period_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Period to validate in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="174" column="8" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="248" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1a2d830235ededf0da8e79050c044bc239" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspPeriodicTimer::CreateTimerHandle</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>CreateTimerHandle</name>
+        <qualifiedname>EspPeriodicTimer::CreateTimerHandle</qualifiedname>
+        <briefdescription>
+<para>Create platform-specific timer handle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Success if handle created successfully </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="180" column="8" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="252" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPeriodicTimer_1ae5b399e734d0f7ff3006cab30e8a2550" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspPeriodicTimer::DestroyTimerHandle</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>DestroyTimerHandle</name>
+        <qualifiedname>EspPeriodicTimer::DestroyTimerHandle</qualifiedname>
+        <briefdescription>
+<para>Destroy platform-specific timer handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="185" column="8" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="274" bodyend="286"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classEspPeriodicTimer_1afad8aa4de436f7593e9db91f10e388f9" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspPeriodicTimer::InternalTimerCallback</definition>
+        <argsstring>(void *arg)</argsstring>
+        <name>InternalTimerCallback</name>
+        <qualifiedname>EspPeriodicTimer::InternalTimerCallback</qualifiedname>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+<para>Internal timer callback dispatcher (ISR-safe C bridge). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>arg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data (pointer to <ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> instance) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>This is the C callback that bridges to C++ class methods </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="192" column="15" bodyfile="src/mcu/esp32/EspPeriodicTimer.cpp" bodystart="307" bodyend="321"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>MCU-integrated periodic timer implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides periodic timer functionality using the microcontroller&apos;s built-in timer peripherals. On ESP32, it uses the ESP timer API. The implementation handles platform-specific details while providing the unified <ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> API.</para>
+<para>Features:<itemizedlist>
+<listitem><para>High-precision periodic timing using MCU&apos;s integrated timers</para>
+</listitem><listitem><para>Microsecond resolution timing</para>
+</listitem><listitem><para>Callback-based event notification</para>
+</listitem><listitem><para>Start/stop control with period adjustment</para>
+</listitem><listitem><para>Comprehensive error handling and status reporting</para>
+</listitem><listitem><para>Lazy initialization support</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>This implementation uses hardware timers for precise timing </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BasePeriodicTimer</label>
+        <link refid="classBasePeriodicTimer"/>
+      </node>
+      <node id="1">
+        <label>EspPeriodicTimer</label>
+        <link refid="classEspPeriodicTimer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BasePeriodicTimer</label>
+        <link refid="classBasePeriodicTimer"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EspPeriodicTimer</label>
+        <link refid="classEspPeriodicTimer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>stats_</edgelabel>
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hf_timer_diagnostics_t</label>
+        <link refid="structhf__timer__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_timer_statistics_t</label>
+        <link refid="structhf__timer__statistics__t"/>
+      </node>
+      <node id="5">
+        <label>hf_timer_stats_t</label>
+        <link refid="structhf__timer__stats__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspPeriodicTimer.h" line="40" column="1" bodyfile="inc/mcu/esp32/EspPeriodicTimer.h" bodystart="40" bodyend="193"/>
+    <listofallmembers>
+      <member refid="classBasePeriodicTimer_1abe11f2c94d12cf1d658104f1280aa486" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>BasePeriodicTimer</name></member>
+      <member refid="classBasePeriodicTimer_1a251ae7cf73c7718069a2f1f9abb64311" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>BasePeriodicTimer</name></member>
+      <member refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>callback_</name></member>
+      <member refid="classEspPeriodicTimer_1aa957512d77db32431d6d56a2d488f351" prot="private" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>ConvertError</name></member>
+      <member refid="classEspPeriodicTimer_1a2d830235ededf0da8e79050c044bc239" prot="private" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>CreateTimerHandle</name></member>
+      <member refid="classEspPeriodicTimer_1a7d27449fd8105d996b0d661708a1658a" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>Deinitialize</name></member>
+      <member refid="classEspPeriodicTimer_1ae5b399e734d0f7ff3006cab30e8a2550" prot="private" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>DestroyTimerHandle</name></member>
+      <member refid="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>diagnostics_</name></member>
+      <member refid="classEspPeriodicTimer_1a16e60591c1ffc70ddfe2eca13d5fcfe8" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>EspPeriodicTimer</name></member>
+      <member refid="classEspPeriodicTimer_1a3864a829e95d9468c44d91ff386089dc" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>EspPeriodicTimer</name></member>
+      <member refid="classEspPeriodicTimer_1a2ba63374fcc4fab5ea42cac7b769b895" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>EspPeriodicTimer</name></member>
+      <member refid="classBasePeriodicTimer_1aae4a0926e98fdb58b4930ff91c479a2b" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>ExecuteCallback</name></member>
+      <member refid="classEspPeriodicTimer_1a1cd74060851211a103f5bfdc380a58a5" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>GetDescription</name></member>
+      <member refid="classEspPeriodicTimer_1a29dc38189cc126d681a893baf2e2ff03" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>GetDiagnostics</name></member>
+      <member refid="classEspPeriodicTimer_1a24851bbc3359b261076ac7ce63175bc4" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>GetMaxPeriod</name></member>
+      <member refid="classEspPeriodicTimer_1a53bf8e1a7fe5da2ef9dfc5bd00aeca63" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>GetMinPeriod</name></member>
+      <member refid="classEspPeriodicTimer_1ac8255b99f1786bd785effa818c3db876" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>GetPeriod</name></member>
+      <member refid="classEspPeriodicTimer_1afd6d7373e40fae8922117bd9dc7b6428" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>GetResolution</name></member>
+      <member refid="classEspPeriodicTimer_1a4fa8ad6a89cd1cc21ce5707926565eb2" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>GetStatistics</name></member>
+      <member refid="classEspPeriodicTimer_1af0c1a5e199fa8e75d484d575c02e815c" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>GetStats</name></member>
+      <member refid="classBasePeriodicTimer_1a9490ab374ff3044157d97ecb1ae40760" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>GetUserData</name></member>
+      <member refid="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>HasValidCallback</name></member>
+      <member refid="classEspPeriodicTimer_1a2d71348fe53d45612f586f7a81920adc" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>Initialize</name></member>
+      <member refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>initialized_</name></member>
+      <member refid="classEspPeriodicTimer_1afad8aa4de436f7593e9db91f10e388f9" prot="private" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>InternalTimerCallback</name></member>
+      <member refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>IsInitialized</name></member>
+      <member refid="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>IsRunning</name></member>
+      <member refid="classEspPeriodicTimer_1aedb23cfac603c39c112021b4e39b23ae" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>operator=</name></member>
+      <member refid="classEspPeriodicTimer_1a7338b4f62eb287d6986daaf7f39310b0" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>operator=</name></member>
+      <member refid="classBasePeriodicTimer_1a31392093e5d8a40c22f8b6a7b2507c4c" prot="public" virt="non-virtual" ambiguityscope="BasePeriodicTimer::"><scope>EspPeriodicTimer</scope><name>operator=</name></member>
+      <member refid="classEspPeriodicTimer_1a1f81f78cf8dd2620749cd99131dc2259" prot="private" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>period_us_</name></member>
+      <member refid="classBasePeriodicTimer_1aa284ad4ee8f3bde5d0e71ce1b0004d02" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBasePeriodicTimer_1acc1e7406989db6b2728038a465967162" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>ResetStatistics</name></member>
+      <member refid="classEspPeriodicTimer_1a074cc62783802fb12d95ca93edaf139e" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>ResetStats</name></member>
+      <member refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>running_</name></member>
+      <member refid="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>SetCallback</name></member>
+      <member refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>SetInitialized</name></member>
+      <member refid="classEspPeriodicTimer_1a2feb5be89d39cdaf1813cf82edb281a1" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>SetPeriod</name></member>
+      <member refid="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>SetRunning</name></member>
+      <member refid="classEspPeriodicTimer_1ac352033e596e27719ede7c11ec860d40" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>Start</name></member>
+      <member refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>statistics_</name></member>
+      <member refid="classEspPeriodicTimer_1a75d9db377b27d539a693ca70d75ead34" prot="private" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>stats_</name></member>
+      <member refid="classEspPeriodicTimer_1ab7916bb8965569cba0e5f2da171b2b5d" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>Stop</name></member>
+      <member refid="classEspPeriodicTimer_1afdfea16d2af3266ab12806d25263e7fc" prot="private" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>timer_handle_</name></member>
+      <member refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" prot="protected" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>user_data_</name></member>
+      <member refid="classEspPeriodicTimer_1a0349a3781b6b48587e739dc705987b69" prot="private" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>ValidatePeriod</name></member>
+      <member refid="classBasePeriodicTimer_1abee693abb22864122f36aff2f8d1c6ee" prot="public" virt="virtual"><scope>EspPeriodicTimer</scope><name>~BasePeriodicTimer</name></member>
+      <member refid="classEspPeriodicTimer_1a067abebb9f6d6277e44e879b9abde52c" prot="public" virt="non-virtual"><scope>EspPeriodicTimer</scope><name>~EspPeriodicTimer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

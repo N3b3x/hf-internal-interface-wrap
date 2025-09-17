@@ -1,0 +1,5 @@
+<map id="EspPwm::ChannelState" name="EspPwm::ChannelState">
+<area shape="rect" id="Node000001" title="Internal channel state with per&#45;channel callback support." alt="" coords="15,104,228,135"/>
+<area shape="rect" id="Node000002" href="$structhf__pwm__channel__config__t.html" title="ESP32 PWM channel configuration with comprehensive LEDC feature support." alt="" coords="5,5,237,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,50,124,104,119,104,119,50"/>
+</map>

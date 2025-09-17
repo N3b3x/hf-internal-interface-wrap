@@ -1,0 +1,594 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="BaseWifi_8h" kind="file" language="C++">
+    <compoundname>BaseWifi.h</compoundname>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">string_view</includes>
+    <includedby refid="WifiComprehensiveTest_8cpp" local="yes">examples/esp32/main/WifiComprehensiveTest.cpp</includedby>
+    <includedby refid="EspWifi_8h" local="yes">inc/mcu/esp32/EspWifi.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/BaseWifi.h</label>
+        <link refid="BaseWifi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/WifiComprehensiveTest.cpp</label>
+        <link refid="WifiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/base/BaseWifi.h</label>
+        <link refid="BaseWifi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/EspWifi.h</label>
+        <link refid="EspWifi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspWifi.cpp</label>
+        <link refid="EspWifi_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__wifi__network__info__t" prot="public">hf_wifi_network_info_t</innerclass>
+    <innerclass refid="structhf__wifi__station__config__t" prot="public">hf_wifi_station_config_t</innerclass>
+    <innerclass refid="structhf__wifi__ap__config__t" prot="public">hf_wifi_ap_config_t</innerclass>
+    <innerclass refid="structhf__wifi__ip__info__t" prot="public">hf_wifi_ip_info_t</innerclass>
+    <innerclass refid="classBaseWifi" prot="public">BaseWifi</innerclass>
+    <sectiondef kind="define">
+      <member refid="group__wifi_1ga9f9e568d94077f9a13b02c0a2a9a07b1" kind="define"><name>HF_WIFI_ERR_LIST</name></member>
+      <member refid="group__wifi_1gafbf3f04fa35349e183adb88ae6d03874" kind="define"><name>X</name></member>
+      <member refid="group__wifi_1ga94b225babb1626cee0621f8312eb32d1" kind="define"><name>X</name></member>
+      <member refid="group__wifi_1gafbf3f04fa35349e183adb88ae6d03874" kind="define"><name>X</name></member>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_wifi_err_t</name>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" prot="public">
+          <name>WIFI_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a15a38f8eb5a3cd0e0b96296563daa3f3" prot="public">
+          <name>WIFI_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a55cd1f05f28416cdd4a9bb2eadec0e73" prot="public">
+          <name>WIFI_ERR_INVALID_PARAM</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" prot="public">
+          <name>WIFI_ERR_NOT_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8ae59f4c66dbe551f0f5f627d943099e79" prot="public">
+          <name>WIFI_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a57a847e14bb397dd94d97c5b49cf493a" prot="public">
+          <name>WIFI_ERR_NOT_CONNECTED</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a50e46e442a5070a22f34a00b5c0cacd7" prot="public">
+          <name>WIFI_ERR_ALREADY_CONNECTED</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a5a08df50f6eb89c807e3a1d5ec58b769" prot="public">
+          <name>WIFI_ERR_CONNECTION_FAILED</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a4946bddc5adb3b211bcc4841874e1a29" prot="public">
+          <name>WIFI_ERR_DISCONNECTION_FAILED</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a1e15398c36a32677f164ee207ed64cf8" prot="public">
+          <name>WIFI_ERR_SCAN_FAILED</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a1bb2a03d355daba1e37a89c82bdf9bd8" prot="public">
+          <name>WIFI_ERR_AP_START_FAILED</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8ab909a888d82c2db4003ffff2ca66abdf" prot="public">
+          <name>WIFI_ERR_AP_STOP_FAILED</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a294cb26b5243ba8db4fc146081202c5e" prot="public">
+          <name>WIFI_ERR_TIMEOUT</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a3ac640174f18d7a6c7194021e7a72603" prot="public">
+          <name>WIFI_ERR_NO_MEMORY</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a3181398fc3cd1318d83e54f7b99aca99" prot="public">
+          <name>WIFI_ERR_INVALID_SSID</name>
+          <initializer>=  14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a07bd6ad10705cfbd7e7a66c8c5f7bb64" prot="public">
+          <name>WIFI_ERR_INVALID_PASSWORD</name>
+          <initializer>=  15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a4ff5d5dadaab71ac4fcee59167fa77d7" prot="public">
+          <name>WIFI_ERR_WEAK_SIGNAL</name>
+          <initializer>=  16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8aeb15c806558aa2e813a15370e71ed05c" prot="public">
+          <name>WIFI_ERR_AUTHENTICATION_FAILED</name>
+          <initializer>=  17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a27c0c781e5f1a4398a2d18674eec6f4f" prot="public">
+          <name>WIFI_ERR_ASSOCIATION_FAILED</name>
+          <initializer>=  18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a1fa21e5953b7c44c2616f1e03c4c36a3" prot="public">
+          <name>WIFI_ERR_HANDSHAKE_FAILED</name>
+          <initializer>=  19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8aacac0ea6e172f042936cbeddb0d37a2f" prot="public">
+          <name>WIFI_ERR_INIT_FAILED</name>
+          <initializer>=  20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a7852b1715b050ae3101cff19bfa7af06" prot="public">
+          <name>WIFI_ERR_CONFIG_INVALID</name>
+          <initializer>=  21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8ace594953aa0d8718cb0e8acf76908b24" prot="public">
+          <name>WIFI_ERR_ENTERPRISE_FAILED</name>
+          <initializer>=  22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a5266248cf7ee91de81918c66c8c0cfd1" prot="public">
+          <name>WIFI_ERR_WPA3_NOT_SUPPORTED</name>
+          <initializer>=  23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a25e5d00c8168c64b346ad42c8e5c4447" prot="public">
+          <name>WIFI_ERR_MESH_FAILED</name>
+          <initializer>=  24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a16a3812cc90c0de0034b98366370b7ab" prot="public">
+          <name>WIFI_ERR_UNKNOWN</name>
+          <initializer>=  25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="83" column="1" bodyfile="inc/base/BaseWifi.h" bodystart="83" bodyend="83"/>
+      </memberdef>
+      <member refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kind="enum"><name>hf_wifi_mode_t</name></member>
+      <member refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kind="enum"><name>hf_wifi_security_t</name></member>
+      <member refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kind="enum"><name>hf_wifi_state_t</name></member>
+      <member refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kind="enum"><name>hf_wifi_power_save_t</name></member>
+      <member refid="group__wifi_1ga0fc5cd83d2820476528dba010f9ccfbb" kind="enum"><name>hf_wifi_event_t</name></member>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <member refid="group__wifi_1gafc36eb4cdfaf0c2ea45afeaac3ad13c9" kind="typedef"><name>hf_wifi_event_callback_t</name></member>
+      <member refid="group__wifi_1ga427cf6c849ca99b6624e9106cefd0d60" kind="typedef"><name>hf_wifi_scan_callback_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__wifi_1gad6a1454d2409e5f92e89682f8a37676a" kind="function"><name>HfWifiErrToString</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Unified WiFi base class for all WiFi implementations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains the declaration of the <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> abstract class, which provides a comprehensive WiFi abstraction that serves as the base for all WiFi implementations in the HardFOC system. It supports station and access point modes, security configurations, connection management, and works across different hardware platforms including ESP32, and other WiFi-capable MCUs.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This class is not thread-safe. Use appropriate synchronization if accessed from multiple contexts. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="group__wifi_1ga9f9e568d94077f9a13b02c0a2a9a07b1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_WIFI_ERR_LIST(X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Success<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/>X(WIFI_SUCCESS,<sp/>0,<sp/>&quot;Success&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>General<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_FAILURE,<sp/>1,<sp/>&quot;General<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_INVALID_PARAM,<sp/>2,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_NOT_INITIALIZED,<sp/>3,<sp/>&quot;WiFi<sp/>not<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_ALREADY_INITIALIZED,<sp/>4,<sp/>&quot;WiFi<sp/>already<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_NOT_CONNECTED,<sp/>5,<sp/>&quot;WiFi<sp/>not<sp/>connected&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_ALREADY_CONNECTED,<sp/>6,<sp/>&quot;WiFi<sp/>already<sp/>connected&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_CONNECTION_FAILED,<sp/>7,<sp/>&quot;Connection<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_DISCONNECTION_FAILED,<sp/>8,<sp/>&quot;Disconnection<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_SCAN_FAILED,<sp/>9,<sp/>&quot;Network<sp/>scan<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_AP_START_FAILED,<sp/>10,<sp/>&quot;Access<sp/>Point<sp/>start<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_AP_STOP_FAILED,<sp/>11,<sp/>&quot;Access<sp/>Point<sp/>stop<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_TIMEOUT,<sp/>12,<sp/>&quot;Operation<sp/>timeout&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_NO_MEMORY,<sp/>13,<sp/>&quot;Insufficient<sp/>memory&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_INVALID_SSID,<sp/>14,<sp/>&quot;Invalid<sp/>SSID&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_INVALID_PASSWORD,<sp/>15,<sp/>&quot;Invalid<sp/>password&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_WEAK_SIGNAL,<sp/>16,<sp/>&quot;Weak<sp/>signal<sp/>strength&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_AUTHENTICATION_FAILED,<sp/>17,<sp/>&quot;Authentication<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_ASSOCIATION_FAILED,<sp/>18,<sp/>&quot;Association<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_HANDSHAKE_FAILED,<sp/>19,<sp/>&quot;4-way<sp/>handshake<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_INIT_FAILED,<sp/>20,<sp/>&quot;WiFi<sp/>initialization<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_CONFIG_INVALID,<sp/>21,<sp/>&quot;Invalid<sp/>configuration&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_ENTERPRISE_FAILED,<sp/>22,<sp/>&quot;Enterprise<sp/>authentication<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_WPA3_NOT_SUPPORTED,<sp/>23,<sp/>&quot;WPA3<sp/>not<sp/>supported&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_MESH_FAILED,<sp/>24,<sp/>&quot;Mesh<sp/>operation<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/>X(WIFI_ERR_UNKNOWN,<sp/>25,<sp/>&quot;Unknown<sp/>error&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="group__wifi_1gafbf3f04fa35349e183adb88ae6d03874" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>desc)<sp/>name<sp/>=<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{<sp/><ref refid="group__wifi_1ga9f9e568d94077f9a13b02c0a2a9a07b1" kindref="member">HF_WIFI_ERR_LIST</ref>(<ref refid="group__wifi_1gafbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)<sp/>};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="group__wifi_1gad6a1454d2409e5f92e89682f8a37676a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="group__wifi_1gad6a1454d2409e5f92e89682f8a37676a" kindref="member">HfWifiErrToString</ref>(<ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/>err)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(err)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(NAME,<sp/>VALUE,<sp/>DESC)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_wifi_err_t::NAME:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>DESC;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__wifi_1ga9f9e568d94077f9a13b02c0a2a9a07b1" kindref="member">HF_WIFI_ERR_LIST</ref>(<ref refid="group__wifi_1gafbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1gad6a1454d2409e5f92e89682f8a37676a" kindref="member">HfWifiErrToString</ref>(<ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a16a3812cc90c0de0034b98366370b7ab" kindref="member">hf_wifi_err_t::WIFI_ERR_UNKNOWN</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga90ab2c8a51fc7cb116b659df115407b9a0e0c4b5a5bf02b61ca5aa7db0cf00ea0" kindref="member">HF_WIFI_MODE_STATION</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga90ab2c8a51fc7cb116b659df115407b9aca3fc28648422633c38422074f7e669b" kindref="member">HF_WIFI_MODE_ACCESS_POINT</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga90ab2c8a51fc7cb116b659df115407b9aca1d3cacf20db7c218457051dd366355" kindref="member">HF_WIFI_MODE_STATION_AP</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga90ab2c8a51fc7cb116b659df115407b9a0a66f56d841febc3a864de6c6c6ee8aa" kindref="member">HF_WIFI_MODE_DISABLED</ref><sp/>=<sp/>3<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kindref="member">hf_wifi_security_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7a6c2ac93b7b92dd01285966d81b4c4b25" kindref="member">HF_WIFI_SECURITY_OPEN</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7ab85ee9acdcf05f4292466424bb367fae" kindref="member">HF_WIFI_SECURITY_WEP</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7a61175b78017b936fe7ad931cdd68c6be" kindref="member">HF_WIFI_SECURITY_WPA_PSK</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7aad0d41f83861d8543a42673076f66bbc" kindref="member">HF_WIFI_SECURITY_WPA2_PSK</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7a39e69301ced8ebe5a680fcd9815e7bd4" kindref="member">HF_WIFI_SECURITY_WPA_WPA2_PSK</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7a754aac58426b4ce19008820b1f1a522f" kindref="member">HF_WIFI_SECURITY_WPA2_ENTERPRISE</ref><sp/>=<sp/>5,<sp/></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7ab021c8178594863a7243ac31669a87c6" kindref="member">HF_WIFI_SECURITY_WPA3_PSK</ref><sp/>=<sp/>6,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7acfafdeb953cbc1d7516fd6fa712edb02" kindref="member">HF_WIFI_SECURITY_WPA2_WPA3_PSK</ref><sp/>=<sp/>7,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7a51a49eb7d86d083a25ccf28389d190eb" kindref="member">HF_WIFI_SECURITY_WPA3_ENTERPRISE</ref><sp/>=<sp/>8,<sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7ab076e40f2ed7a08a4c9c292e4bfe443e" kindref="member">HF_WIFI_SECURITY_WAPI_PSK</ref><sp/>=<sp/>9<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kindref="member">hf_wifi_state_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a415466d62e7e83707977ee4390e12b6c" kindref="member">HF_WIFI_STATE_DISCONNECTED</ref><sp/>=<sp/>0,<sp/><sp/></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a9bb99bb2f7635255855c767c4e921932" kindref="member">HF_WIFI_STATE_CONNECTING</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a0f3a9c87fae4616a67afc84a9b1286cc" kindref="member">HF_WIFI_STATE_CONNECTED</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419aab8ba5c7092d767a80ef4b678c73e780" kindref="member">HF_WIFI_STATE_DISCONNECTING</ref><sp/>=<sp/>3,<sp/></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a6d4f483c71a137fd5472874834dd34ac" kindref="member">HF_WIFI_STATE_RECONNECTING</ref><sp/>=<sp/>4,<sp/><sp/></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419ac784ed708d7c61296d6659a898e874a1" kindref="member">HF_WIFI_STATE_AP_STARTED</ref><sp/>=<sp/>5,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419aec315cb076e8b73c0af1c667813c6c97" kindref="member">HF_WIFI_STATE_AP_STOPPED</ref><sp/>=<sp/>6,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419adc54a01d1353b4c41e239af37d7af6ca" kindref="member">HF_WIFI_STATE_SCANNING</ref><sp/>=<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kindref="member">hf_wifi_power_save_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggafd37336bb8e3a8528795ddfdbd9d5760a68443ff772c7fe9941de5f9748a217c3" kindref="member">HF_WIFI_POWER_SAVE_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggafd37336bb8e3a8528795ddfdbd9d5760ad3af4c0f47b830b1e61108c98feecdf4" kindref="member">HF_WIFI_POWER_SAVE_MIN_MODEM</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1ggafd37336bb8e3a8528795ddfdbd9d5760a0a226388d21c3335ab7f7f84f895613a" kindref="member">HF_WIFI_POWER_SAVE_MAX_MODEM</ref><sp/>=<sp/>2<sp/><sp/></highlight></codeline>
+<codeline lineno="155"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="group__wifi_1ga0fc5cd83d2820476528dba010f9ccfbb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ga0fc5cd83d2820476528dba010f9ccfbb" kindref="member">hf_wifi_event_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbbaf92bfa17f25827b03d4c38b9a5b12fed" kindref="member">HF_WIFI_EVENT_STA_START</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbbaa6134af7fa2f1cb9dd5c073dfdda79f9" kindref="member">HF_WIFI_EVENT_STA_STOP</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbba5775f2e8785a9f89d250576fb58c25bd" kindref="member">HF_WIFI_EVENT_STA_CONNECTED</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbbac3be6a4f7f22676a58916eff26cab97f" kindref="member">HF_WIFI_EVENT_STA_DISCONNECTED</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbbae1e0d4b01056ab07371e633bc82cdbe2" kindref="member">HF_WIFI_EVENT_STA_AUTHMODE_CHANGE</ref><sp/>=<sp/>4,<sp/></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbba31e6ab269d63cd2fe261a5f9377c217e" kindref="member">HF_WIFI_EVENT_STA_GOT_IP</ref><sp/>=<sp/>5,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbba68770d9ff5da66a64a48c22305c5e116" kindref="member">HF_WIFI_EVENT_STA_LOST_IP</ref><sp/>=<sp/>6,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbbaa17d26945a91804f98acb719c5670b6d" kindref="member">HF_WIFI_EVENT_AP_START</ref><sp/>=<sp/>7,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbba1cab8dc185607ed0f259c7cf686a8427" kindref="member">HF_WIFI_EVENT_AP_STOP</ref><sp/>=<sp/>8,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbbaf23dc4e3afc9a14d71962b24b7c27f84" kindref="member">HF_WIFI_EVENT_AP_STACONNECTED</ref><sp/>=<sp/>9,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbba75ced5f060962b871bcaa5656d919b60" kindref="member">HF_WIFI_EVENT_AP_STADISCONNECTED</ref><sp/>=<sp/>10,<sp/></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gga0fc5cd83d2820476528dba010f9ccfbba27de53db7c725407fb155c33377b8346" kindref="member">HF_WIFI_EVENT_SCAN_DONE</ref><sp/>=<sp/>11<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="structhf__wifi__network__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="181" refid="structhf__wifi__network__info__t_1adb0be4315a17235da186ae21e13a791a" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__wifi__network__info__t_1adb0be4315a17235da186ae21e13a791a" kindref="member">ssid</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182" refid="structhf__wifi__network__info__t_1a0481ba5eed30bb73d24553520001bb23" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__wifi__network__info__t_1a0481ba5eed30bb73d24553520001bb23" kindref="member">bssid</ref>[6];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="183" refid="structhf__wifi__network__info__t_1ac3bbd2ceed7578e487b93da8f7ce7a2c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kindref="member">hf_wifi_security_t</ref><sp/><ref refid="structhf__wifi__network__info__t_1ac3bbd2ceed7578e487b93da8f7ce7a2c" kindref="member">security</ref>;<sp/></highlight></codeline>
+<codeline lineno="184" refid="structhf__wifi__network__info__t_1a8ae5e64f7d1eeb47ba40ee63b040fb51" refkind="member"><highlight class="normal"><sp/><sp/>int8_t<sp/><ref refid="structhf__wifi__network__info__t_1a8ae5e64f7d1eeb47ba40ee63b040fb51" kindref="member">rssi</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="185" refid="structhf__wifi__network__info__t_1af78d42c4c2f82438155d9e55fc204810" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__wifi__network__info__t_1af78d42c4c2f82438155d9e55fc204810" kindref="member">channel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186" refid="structhf__wifi__network__info__t_1ac358acf115395f8239ec7cb2188853be" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__wifi__network__info__t_1ac358acf115395f8239ec7cb2188853be" kindref="member">hidden</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="187"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193" refid="structhf__wifi__station__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="194" refid="structhf__wifi__station__config__t_1a9bec5a9a39cf0f7827fa697c46ed338a" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__wifi__station__config__t_1a9bec5a9a39cf0f7827fa697c46ed338a" kindref="member">ssid</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="195" refid="structhf__wifi__station__config__t_1a18939a056d90423a88c5f31412f93fce" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__wifi__station__config__t_1a18939a056d90423a88c5f31412f93fce" kindref="member">password</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="196" refid="structhf__wifi__station__config__t_1ac3fc454eb6e2d3c3892527984e6bfd23" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__wifi__station__config__t_1ac3fc454eb6e2d3c3892527984e6bfd23" kindref="member">bssid</ref>[6];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="197" refid="structhf__wifi__station__config__t_1ae92c8cdb70a56a99ad11d433c18925e6" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__wifi__station__config__t_1ae92c8cdb70a56a99ad11d433c18925e6" kindref="member">channel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="198" refid="structhf__wifi__station__config__t_1ab17e16f345d3be419ac4635abcac681d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__wifi__station__config__t_1ab17e16f345d3be419ac4635abcac681d" kindref="member">bssid_set</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="199" refid="structhf__wifi__station__config__t_1a803122e9c77b8f5d4c026afc64b80efe" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__wifi__station__config__t_1a803122e9c77b8f5d4c026afc64b80efe" kindref="member">scan_method</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200" refid="structhf__wifi__station__config__t_1af9150571eac6a1dacf0f02bd9650f152" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__wifi__station__config__t_1af9150571eac6a1dacf0f02bd9650f152" kindref="member">sort_method</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="201" refid="structhf__wifi__station__config__t_1a8fdad64ca7df7590d9e1a3a4c25fec56" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__wifi__station__config__t_1a8fdad64ca7df7590d9e1a3a4c25fec56" kindref="member">threshold_rssi</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="202" refid="structhf__wifi__station__config__t_1a0937e6645ec03df2c5ce62672e20971e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kindref="member">hf_wifi_security_t</ref><sp/><ref refid="structhf__wifi__station__config__t_1a0937e6645ec03df2c5ce62672e20971e" kindref="member">threshold_authmode</ref>;<sp/></highlight></codeline>
+<codeline lineno="203"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="structhf__wifi__ap__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="210" refid="structhf__wifi__ap__config__t_1a0b0565f4d761b1e192fd0b96c041808d" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__wifi__ap__config__t_1a0b0565f4d761b1e192fd0b96c041808d" kindref="member">ssid</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211" refid="structhf__wifi__ap__config__t_1a398bcfee6f1c4e993c3e74ad4b2347e1" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__wifi__ap__config__t_1a398bcfee6f1c4e993c3e74ad4b2347e1" kindref="member">password</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="212" refid="structhf__wifi__ap__config__t_1a10f66e7e3276c1b86524929534fcf42e" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__wifi__ap__config__t_1a10f66e7e3276c1b86524929534fcf42e" kindref="member">ssid_len</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="213" refid="structhf__wifi__ap__config__t_1a5a8eb0c04a8f37049c48a1c003369907" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__wifi__ap__config__t_1a5a8eb0c04a8f37049c48a1c003369907" kindref="member">channel</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="214" refid="structhf__wifi__ap__config__t_1a0db71ba44db92be933c654d4fa1ec934" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kindref="member">hf_wifi_security_t</ref><sp/><ref refid="structhf__wifi__ap__config__t_1a0db71ba44db92be933c654d4fa1ec934" kindref="member">authmode</ref>;<sp/></highlight></codeline>
+<codeline lineno="215" refid="structhf__wifi__ap__config__t_1a4ec44f492940c72feba4b3c5a0b6cfb9" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__wifi__ap__config__t_1a4ec44f492940c72feba4b3c5a0b6cfb9" kindref="member">ssid_hidden</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="216" refid="structhf__wifi__ap__config__t_1a182f0a7b237d36109367a1544e6892ec" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__wifi__ap__config__t_1a182f0a7b237d36109367a1544e6892ec" kindref="member">max_connection</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="217" refid="structhf__wifi__ap__config__t_1a2af81bc34be9da0bb13b09aad9f5397c" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__wifi__ap__config__t_1a2af81bc34be9da0bb13b09aad9f5397c" kindref="member">beacon_interval</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="structhf__wifi__ip__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__wifi__ip__info__t" kindref="compound">hf_wifi_ip_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="225" refid="structhf__wifi__ip__info__t_1afd5bebba14fc1d13e67eff14ee7253b4" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__wifi__ip__info__t_1afd5bebba14fc1d13e67eff14ee7253b4" kindref="member">ip</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="226" refid="structhf__wifi__ip__info__t_1a5c28898562af2a8346742562bdf4583e" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__wifi__ip__info__t_1a5c28898562af2a8346742562bdf4583e" kindref="member">netmask</ref>;<sp/></highlight></codeline>
+<codeline lineno="227" refid="structhf__wifi__ip__info__t_1a01343f7dd2712b9701efac78b323f821" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__wifi__ip__info__t_1a01343f7dd2712b9701efac78b323f821" kindref="member">gateway</ref>;<sp/></highlight></codeline>
+<codeline lineno="228"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="group__wifi_1gafc36eb4cdfaf0c2ea45afeaac3ad13c9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="group__wifi_1gafc36eb4cdfaf0c2ea45afeaac3ad13c9" kindref="member">hf_wifi_event_callback_t</ref><sp/>=<sp/>std::function&lt;void(<ref refid="group__wifi_1ga0fc5cd83d2820476528dba010f9ccfbb" kindref="member">hf_wifi_event_t</ref><sp/>event,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>event_data)&gt;;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="group__wifi_1ga427cf6c849ca99b6624e9106cefd0d60" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="group__wifi_1ga427cf6c849ca99b6624e9106cefd0d60" kindref="member">hf_wifi_scan_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;hf_wifi_network_info_t&gt;&amp;<sp/>networks)&gt;;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="classBaseWifi" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBaseWifi" kindref="compound">BaseWifi</ref><sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="260" refid="classBaseWifi_1a564fef8c0ffdd4f1d69b367bb58cbf73" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBaseWifi_1a564fef8c0ffdd4f1d69b367bb58cbf73" kindref="member">~BaseWifi</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Initialization<sp/>and<sp/>Configuration<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269" refid="classBaseWifi_1afb3f364e100cf74087b65c8529bda6da" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1afb3f364e100cf74087b65c8529bda6da" kindref="member">Initialize</ref>(<ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref><sp/>mode)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275" refid="classBaseWifi_1afaf483e98b1f98467356bdfed5071069" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1afaf483e98b1f98467356bdfed5071069" kindref="member">Deinitialize</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281" refid="classBaseWifi_1a0f9a5bb5a9fbee7af3412385286baf59" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseWifi_1a0f9a5bb5a9fbee7af3412385286baf59" kindref="member">IsInitialized</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288" refid="classBaseWifi_1afd648ddba6ad1f2e10941318dcb0dfab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1afd648ddba6ad1f2e10941318dcb0dfab" kindref="member">SetMode</ref>(<ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref><sp/>mode)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="classBaseWifi_1a849f44352adf62aab5d07cb9f4666b8e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref><sp/><ref refid="classBaseWifi_1a849f44352adf62aab5d07cb9f4666b8e" kindref="member">GetMode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Station<sp/>Mode<sp/>Operations<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="classBaseWifi_1aed3ba55f847bb8de043fc794394e85d9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1aed3ba55f847bb8de043fc794394e85d9" kindref="member">ConfigureStation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref>&amp;<sp/>config)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310" refid="classBaseWifi_1ada2eadb6792ac79148a0e2c4fccab27d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1ada2eadb6792ac79148a0e2c4fccab27d" kindref="member">Connect</ref>(uint32_t<sp/>timeout_ms<sp/>=<sp/>0)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316" refid="classBaseWifi_1a116ea68e8e5e29ed87b3a3ab60df164e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a116ea68e8e5e29ed87b3a3ab60df164e" kindref="member">Disconnect</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322" refid="classBaseWifi_1a7d913dc24e648f770066873000af4d1e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseWifi_1a7d913dc24e648f770066873000af4d1e" kindref="member">IsConnected</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328" refid="classBaseWifi_1a3a314875b45ef4198c7b69ccc0660066" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="classBaseWifi_1a3a314875b45ef4198c7b69ccc0660066" kindref="member">GetRssi</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335" refid="classBaseWifi_1a2f92e5e27c043ea1d5cc90ed3d473bec" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a2f92e5e27c043ea1d5cc90ed3d473bec" kindref="member">GetIpInfo</ref>(<ref refid="structhf__wifi__ip__info__t" kindref="compound">hf_wifi_ip_info_t</ref>&amp;<sp/>ip_info)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Access<sp/>Point<sp/>Mode<sp/>Operations<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344" refid="classBaseWifi_1ab5e8e2fc7f09be74b034260b4e499d96" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1ab5e8e2fc7f09be74b034260b4e499d96" kindref="member">ConfigureAccessPoint</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref>&amp;<sp/>config)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350" refid="classBaseWifi_1ab038bcdbce9651c4c3b0305805cbd7f3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1ab038bcdbce9651c4c3b0305805cbd7f3" kindref="member">StartAccessPoint</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="356" refid="classBaseWifi_1a8671f5c88289bc48f1dbdbf109d5e4d0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a8671f5c88289bc48f1dbdbf109d5e4d0" kindref="member">StopAccessPoint</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362" refid="classBaseWifi_1ab0b198b02ca774d1ca2fe0ac9b468c61" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseWifi_1ab0b198b02ca774d1ca2fe0ac9b468c61" kindref="member">IsAccessPointActive</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368" refid="classBaseWifi_1abf5439db72fa1f93e0d37ac8ccaffef8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classBaseWifi_1abf5439db72fa1f93e0d37ac8ccaffef8" kindref="member">GetConnectedStationCount</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Network<sp/>Scanning<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379" refid="classBaseWifi_1a309f30f05a1b4e26687ca19e55a12667" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a309f30f05a1b4e26687ca19e55a12667" kindref="member">StartScan</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>show_hidden<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>passive<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>max_scan_time_ms<sp/>=<sp/>0)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388" refid="classBaseWifi_1a8d71d17477b03d2775f5c8d89aecbf52" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a8d71d17477b03d2775f5c8d89aecbf52" kindref="member">GetScanResults</ref>(std::vector&lt;hf_wifi_network_info_t&gt;&amp;<sp/>networks,</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>max_networks<sp/>=<sp/>0)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395" refid="classBaseWifi_1a3470b0cf542ca2aed0cf2fa36674edb2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseWifi_1a3470b0cf542ca2aed0cf2fa36674edb2" kindref="member">IsScanning</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>State<sp/>and<sp/>Status<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403" refid="classBaseWifi_1add13affb5f6071fc54a24f25545f8098" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kindref="member">hf_wifi_state_t</ref><sp/><ref refid="classBaseWifi_1add13affb5f6071fc54a24f25545f8098" kindref="member">GetState</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="409" refid="classBaseWifi_1afcbe903d63da73d424ecd932ca038b08" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classBaseWifi_1afcbe903d63da73d424ecd932ca038b08" kindref="member">GetConnectedSsid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416" refid="classBaseWifi_1a02b0af73b308b92b8cc8ad2ce0f27bc8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a02b0af73b308b92b8cc8ad2ce0f27bc8" kindref="member">GetConnectedBssid</ref>(uint8_t<sp/>bssid[6])<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Power<sp/>Management<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425" refid="classBaseWifi_1ab17695fd4b2f50230451d82ac8c746e4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1ab17695fd4b2f50230451d82ac8c746e4" kindref="member">SetPowerSave</ref>(<ref refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kindref="member">hf_wifi_power_save_t</ref><sp/>mode)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"></highlight></codeline>
+<codeline lineno="431" refid="classBaseWifi_1a0b1b27bfd6843ed21e3d9220ddaad908" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kindref="member">hf_wifi_power_save_t</ref><sp/><ref refid="classBaseWifi_1a0b1b27bfd6843ed21e3d9220ddaad908" kindref="member">GetPowerSave</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Event<sp/>Handling<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440" refid="classBaseWifi_1a46ce6ae5f1b9193941c1e3daaf88ae0c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a46ce6ae5f1b9193941c1e3daaf88ae0c" kindref="member">RegisterEventCallback</ref>(<ref refid="group__wifi_1gafc36eb4cdfaf0c2ea45afeaac3ad13c9" kindref="member">hf_wifi_event_callback_t</ref><sp/>callback)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446" refid="classBaseWifi_1a6b722385f7ca418d40f17c853f1483b4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a6b722385f7ca418d40f17c853f1483b4" kindref="member">UnregisterEventCallback</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Utility<sp/>Functions<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="449"><highlight class="normal"></highlight></codeline>
+<codeline lineno="456" refid="classBaseWifi_1a87af382a1139b74961f048b094e60cb5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1a87af382a1139b74961f048b094e60cb5" kindref="member">GetMacAddress</ref>(uint8_t<sp/>mac[6],<sp/>uint8_t<sp/>interface<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="464" refid="classBaseWifi_1aace6973de51aaa1b7157f15cf677f0f2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1aace6973de51aaa1b7157f15cf677f0f2" kindref="member">SetMacAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>mac[6],<sp/>uint8_t<sp/>interface<sp/>=<sp/>0)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"></highlight></codeline>
+<codeline lineno="470" refid="classBaseWifi_1a2b10843cc30b6e3aac4f81db0ab03cb0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="classBaseWifi_1a2b10843cc30b6e3aac4f81db0ab03cb0" kindref="member">GetChannel</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"></highlight></codeline>
+<codeline lineno="477" refid="classBaseWifi_1ab8b157a985ffb062418456b66d523f92" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classBaseWifi_1ab8b157a985ffb062418456b66d523f92" kindref="member">SetChannel</ref>(uint8_t<sp/>channel)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="group__wifi_1gafde1b68efc0648ef58ccb0ee5d3d9644" kindref="member">GetErrorString</ref>(<ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/>error);</highlight></codeline>
+<codeline lineno="485"><highlight class="normal"></highlight></codeline>
+<codeline lineno="486"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="490" refid="classBaseWifi_1a150dc952c7f2336aa1ba5dbf53fe2f9d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseWifi_1a150dc952c7f2336aa1ba5dbf53fe2f9d" kindref="member">BaseWifi</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495" refid="classBaseWifi_1a850a025d5f7ddceaf6f8f551cde22cf2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseWifi_1a850a025d5f7ddceaf6f8f551cde22cf2" kindref="member">BaseWifi</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseWifi" kindref="compound">BaseWifi</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="500" refid="classBaseWifi_1a4c3a60c174313577476f5ede80d0382b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseWifi" kindref="compound">BaseWifi</ref>&amp;<sp/><ref refid="classBaseWifi_1a4c3a60c174313577476f5ede80d0382b" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseWifi" kindref="compound">BaseWifi</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="501"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"></highlight></codeline>
+<codeline lineno="507" refid="group__wifi_1gafde1b68efc0648ef58ccb0ee5d3d9644" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="group__wifi_1gafde1b68efc0648ef58ccb0ee5d3d9644" kindref="member">BaseWifi::GetErrorString</ref>(<ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/>error)<sp/>{</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>desc)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="509"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_wifi_err_t::name:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="510"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>desc;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(error)<sp/>{</highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__wifi_1ga9f9e568d94077f9a13b02c0a2a9a07b1" kindref="member">HF_WIFI_ERR_LIST</ref>(<ref refid="group__wifi_1gafbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1gad6a1454d2409e5f92e89682f8a37676a" kindref="member">HfWifiErrToString</ref>(<ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a16a3812cc90c0de0034b98366370b7ab" kindref="member">hf_wifi_err_t::WIFI_ERR_UNKNOWN</ref>);</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="517"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BaseWifi.h"/>
+  </compounddef>
+</doxygen>

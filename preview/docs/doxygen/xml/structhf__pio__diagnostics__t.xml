@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pio__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pio_diagnostics_t</compoundname>
+    <includes refid="BasePio_8h" local="no">BasePio.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a3d0d22b3ed599c4464822c136f669e1c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_diagnostics_t::pioHealthy</definition>
+        <argsstring></argsstring>
+        <name>pioHealthy</name>
+        <qualifiedname>hf_pio_diagnostics_t::pioHealthy</qualifiedname>
+        <briefdescription>
+<para>Overall PIO health status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="222" column="8" bodyfile="inc/base/BasePio.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a8744f5f74c45b0be08db6c2227da6899" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t hf_pio_diagnostics_t::lastErrorCode</definition>
+        <argsstring></argsstring>
+        <name>lastErrorCode</name>
+        <qualifiedname>hf_pio_diagnostics_t::lastErrorCode</qualifiedname>
+        <briefdescription>
+<para>Last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="223" column="16" bodyfile="inc/base/BasePio.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a2069622523a7c9545d0925aa9812d26d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_diagnostics_t::lastErrorTimestamp</definition>
+        <argsstring></argsstring>
+        <name>lastErrorTimestamp</name>
+        <qualifiedname>hf_pio_diagnostics_t::lastErrorTimestamp</qualifiedname>
+        <briefdescription>
+<para>Last error timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="224" column="12" bodyfile="inc/base/BasePio.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__diagnostics__t_1aa5ea7475c3d75583d25ba4cb566e913a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_diagnostics_t::consecutiveErrors</definition>
+        <argsstring></argsstring>
+        <name>consecutiveErrors</name>
+        <qualifiedname>hf_pio_diagnostics_t::consecutiveErrors</qualifiedname>
+        <briefdescription>
+<para>Consecutive error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="225" column="12" bodyfile="inc/base/BasePio.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a0bc841274f1920504829d96c2d92c448" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_diagnostics_t::pioInitialized</definition>
+        <argsstring></argsstring>
+        <name>pioInitialized</name>
+        <qualifiedname>hf_pio_diagnostics_t::pioInitialized</qualifiedname>
+        <briefdescription>
+<para>PIO initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="226" column="8" bodyfile="inc/base/BasePio.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a543cdcf6fc4888358767c8309181601d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_pio_diagnostics_t::activeChannels</definition>
+        <argsstring></argsstring>
+        <name>activeChannels</name>
+        <qualifiedname>hf_pio_diagnostics_t::activeChannels</qualifiedname>
+        <briefdescription>
+<para>Number of active channels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="227" column="11" bodyfile="inc/base/BasePio.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__diagnostics__t_1ad5a9dbbf09b75ed4df811822f85c3f41" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_diagnostics_t::currentResolutionNs</definition>
+        <argsstring></argsstring>
+        <name>currentResolutionNs</name>
+        <qualifiedname>hf_pio_diagnostics_t::currentResolutionNs</qualifiedname>
+        <briefdescription>
+<para>Current time resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="228" column="12" bodyfile="inc/base/BasePio.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__diagnostics__t_1a4eb0ec34fad2e4d77384194580e9ead9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_diagnostics_t::bidirectionalSupported</definition>
+        <argsstring></argsstring>
+        <name>bidirectionalSupported</name>
+        <qualifiedname>hf_pio_diagnostics_t::bidirectionalSupported</qualifiedname>
+        <briefdescription>
+<para>Bidirectional mode support. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="229" column="8" bodyfile="inc/base/BasePio.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pio__diagnostics__t_1acabe951f9812c4f82d568abbe058219a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pio_diagnostics_t::hf_pio_diagnostics_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_pio_diagnostics_t</name>
+        <qualifiedname>hf_pio_diagnostics_t::hf_pio_diagnostics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="231" column="3" bodyfile="inc/base/BasePio.h" bodystart="231" bodyend="234"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PIO diagnostic information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BasePio.h" line="221" column="1" bodyfile="inc/base/BasePio.h" bodystart="221" bodyend="235"/>
+    <listofallmembers>
+      <member refid="structhf__pio__diagnostics__t_1a543cdcf6fc4888358767c8309181601d" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>activeChannels</name></member>
+      <member refid="structhf__pio__diagnostics__t_1a4eb0ec34fad2e4d77384194580e9ead9" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>bidirectionalSupported</name></member>
+      <member refid="structhf__pio__diagnostics__t_1aa5ea7475c3d75583d25ba4cb566e913a" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>consecutiveErrors</name></member>
+      <member refid="structhf__pio__diagnostics__t_1ad5a9dbbf09b75ed4df811822f85c3f41" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>currentResolutionNs</name></member>
+      <member refid="structhf__pio__diagnostics__t_1acabe951f9812c4f82d568abbe058219a" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>hf_pio_diagnostics_t</name></member>
+      <member refid="structhf__pio__diagnostics__t_1a8744f5f74c45b0be08db6c2227da6899" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>lastErrorCode</name></member>
+      <member refid="structhf__pio__diagnostics__t_1a2069622523a7c9545d0925aa9812d26d" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>lastErrorTimestamp</name></member>
+      <member refid="structhf__pio__diagnostics__t_1a3d0d22b3ed599c4464822c136f669e1c" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>pioHealthy</name></member>
+      <member refid="structhf__pio__diagnostics__t_1a0bc841274f1920504829d96c2d92c448" prot="public" virt="non-virtual"><scope>hf_pio_diagnostics_t</scope><name>pioInitialized</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

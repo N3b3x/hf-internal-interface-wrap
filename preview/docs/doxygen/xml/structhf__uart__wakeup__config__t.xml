@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__uart__wakeup__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_uart_wakeup_config_t</compoundname>
+    <includes refid="EspTypes__UART_8h" local="no">EspTypes_UART.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__uart__wakeup__config__t_1a76e8ea3fadb340e3a26b6d1cc1ace34b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_wakeup_config_t::enable_wakeup</definition>
+        <argsstring></argsstring>
+        <name>enable_wakeup</name>
+        <qualifiedname>hf_uart_wakeup_config_t::enable_wakeup</qualifiedname>
+        <briefdescription>
+<para>Enable UART wakeup from light sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="230" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__wakeup__config__t_1a410bc7b8c1fcb3c69d71bd7e49f57229" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_uart_wakeup_config_t::wakeup_threshold</definition>
+        <argsstring></argsstring>
+        <name>wakeup_threshold</name>
+        <qualifiedname>hf_uart_wakeup_config_t::wakeup_threshold</qualifiedname>
+        <briefdescription>
+<para>Number of RX edges to trigger wakeup (3-1023) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="231" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__wakeup__config__t_1a4ac464ca640984d471f17defcf1a1784" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_wakeup_config_t::use_ref_tick</definition>
+        <argsstring></argsstring>
+        <name>use_ref_tick</name>
+        <qualifiedname>hf_uart_wakeup_config_t::use_ref_tick</qualifiedname>
+        <briefdescription>
+<para>Use REF_TICK as clock source during sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="232" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__uart__wakeup__config__t_1aed7fc6d646fd59649eedc406b8e6169b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_uart_wakeup_config_t::hf_uart_wakeup_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_uart_wakeup_config_t</name>
+        <qualifiedname>hf_uart_wakeup_config_t::hf_uart_wakeup_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="234" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="234" bodyend="235"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 UART wakeup configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="229" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="229" bodyend="236"/>
+    <listofallmembers>
+      <member refid="structhf__uart__wakeup__config__t_1a76e8ea3fadb340e3a26b6d1cc1ace34b" prot="public" virt="non-virtual"><scope>hf_uart_wakeup_config_t</scope><name>enable_wakeup</name></member>
+      <member refid="structhf__uart__wakeup__config__t_1aed7fc6d646fd59649eedc406b8e6169b" prot="public" virt="non-virtual"><scope>hf_uart_wakeup_config_t</scope><name>hf_uart_wakeup_config_t</name></member>
+      <member refid="structhf__uart__wakeup__config__t_1a4ac464ca640984d471f17defcf1a1784" prot="public" virt="non-virtual"><scope>hf_uart_wakeup_config_t</scope><name>use_ref_tick</name></member>
+      <member refid="structhf__uart__wakeup__config__t_1a410bc7b8c1fcb3c69d71bd7e49f57229" prot="public" virt="non-virtual"><scope>hf_uart_wakeup_config_t</scope><name>wakeup_threshold</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

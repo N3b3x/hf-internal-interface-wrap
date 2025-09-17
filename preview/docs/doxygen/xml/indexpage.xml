@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="indexpage" kind="page">
+    <compoundname>index</compoundname>
+    <title>HardFOC Interface Wrapper</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><anchor id="index_1md_docs_2doxygen-mainpage"/> A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API across multiple MCU platforms.</para>
+<para><blockquote><para><zwj/><bold>📖 <ulink url="https://n3b3x.github.io/hf-internal-interface-wrap/">📚🌐 Live Complete Documentation</ulink></bold> - Interactive guides, examples, and step-by-step tutorials </para>
+</blockquote></para>
+<sect1 id="index_1autotoc_md25">
+<title>Supported MCUs</title><para><itemizedlist>
+<listitem><para><bold>ESP32 Family</bold>: ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6, ESP32-H2</para>
+</listitem><listitem><para><bold>Planned</bold>: STM32F4, STM32H7, STM32G4, nRF52840, nRF5340</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md26">
+<title>Core Interfaces</title><sect2 id="index_1autotoc_md27">
+<title>Base Classes</title><para><itemizedlist>
+<listitem><para><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> - Analog-to-Digital Converter interface</para>
+</listitem><listitem><para><ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref> - Bluetooth communication interface</para>
+</listitem><listitem><para><ref refid="classBaseCan" kindref="compound">BaseCan</ref> - Controller Area Network interface</para>
+</listitem><listitem><para><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> - General Purpose Input/Output interface</para>
+</listitem><listitem><para><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> - Inter-Integrated Circuit interface</para>
+</listitem><listitem><para><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> - Logging system interface</para>
+</listitem><listitem><para><ref refid="classBaseNvs" kindref="compound">BaseNvs</ref> - Non-Volatile Storage interface</para>
+</listitem><listitem><para><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> - Periodic timer interface</para>
+</listitem><listitem><para><ref refid="classBasePio" kindref="compound">BasePio</ref> - Programmable Input/Output interface</para>
+</listitem><listitem><para><ref refid="classBasePwm" kindref="compound">BasePwm</ref> - Pulse Width Modulation interface</para>
+</listitem><listitem><para><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> - Serial Peripheral Interface</para>
+</listitem><listitem><para><ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> - Temperature sensor interface</para>
+</listitem><listitem><para><ref refid="classBaseUart" kindref="compound">BaseUart</ref> - Universal Asynchronous Receiver-Transmitter</para>
+</listitem><listitem><para><ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> - WiFi communication interface</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md28">
+<title>ESP32 Implementations</title><para><itemizedlist>
+<listitem><para><ref refid="classEspAdc" kindref="compound">EspAdc</ref> - ESP32 ADC implementation</para>
+</listitem><listitem><para><ref refid="classEspBluetooth" kindref="compound">EspBluetooth</ref> - ESP32 Bluetooth implementation</para>
+</listitem><listitem><para><ref refid="classEspCan" kindref="compound">EspCan</ref> - ESP32 CAN implementation</para>
+</listitem><listitem><para><ref refid="classEspGpio" kindref="compound">EspGpio</ref> - ESP32 GPIO implementation</para>
+</listitem><listitem><para><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> - ESP32 I2C device implementation</para>
+</listitem><listitem><para><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> - ESP32 I2C bus implementation</para>
+</listitem><listitem><para><ref refid="classEspLogger" kindref="compound">EspLogger</ref> - ESP32 Logger implementation</para>
+</listitem><listitem><para><ref refid="classEspNvs" kindref="compound">EspNvs</ref> - ESP32 NVS implementation</para>
+</listitem><listitem><para><ref refid="classEspPeriodicTimer" kindref="compound">EspPeriodicTimer</ref> - ESP32 Periodic Timer implementation</para>
+</listitem><listitem><para><ref refid="classEspPio" kindref="compound">EspPio</ref> - ESP32 PIO implementation</para>
+</listitem><listitem><para><ref refid="classEspPwm" kindref="compound">EspPwm</ref> - ESP32 PWM implementation</para>
+</listitem><listitem><para><ref refid="classEspSpiDevice" kindref="compound">EspSpiDevice</ref> - ESP32 SPI device implementation</para>
+</listitem><listitem><para><ref refid="classEspSpiBus" kindref="compound">EspSpiBus</ref> - ESP32 SPI bus implementation</para>
+</listitem><listitem><para><ref refid="classEspTemperature" kindref="compound">EspTemperature</ref> - ESP32 Temperature implementation</para>
+</listitem><listitem><para><ref refid="classEspUart" kindref="compound">EspUart</ref> - ESP32 UART implementation</para>
+</listitem><listitem><para><ref refid="classEspWifi" kindref="compound">EspWifi</ref> - ESP32 WiFi implementation</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="index_1autotoc_md29">
+<title>Utility Classes</title><para><itemizedlist>
+<listitem><para><ref refid="classAsciiArtGenerator" kindref="compound">AsciiArtGenerator</ref> - ASCII art generation utility</para>
+</listitem><listitem><para><ref refid="classDigitalOutputGuard" kindref="compound">DigitalOutputGuard</ref> - Digital output protection utility</para>
+</listitem><listitem><para>McuSelect - MCU platform selection utilities</para>
+</listitem><listitem><para><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref> - RTOS mutex wrapper utilities</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+</sect1>
+<sect1 id="index_1autotoc_md30">
+<title>Hardware Types</title><para><itemizedlist>
+<listitem><para>HardwareTypes - Common hardware type definitions</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md31">
+<title>Features</title><para><itemizedlist>
+<listitem><para><bold>Unified API</bold> - Consistent interface across different MCU platforms</para>
+</listitem><listitem><para><bold>Type Safety</bold> - Strong typing with project-specific typedefs</para>
+</listitem><listitem><para><bold>Error Handling</bold> - Comprehensive error reporting and handling</para>
+</listitem><listitem><para><bold>Thread Safety</bold> - RTOS-aware implementations</para>
+</listitem><listitem><para><bold>Memory Management</bold> - Safe memory operations and guards</para>
+</listitem><listitem><para><bold>Logging</bold> - Integrated logging system</para>
+</listitem><listitem><para><bold>Testing</bold> - Comprehensive test suites for all modules</para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md32">
+<title>Architecture</title><para>The HardFOC Interface Wrapper follows a layered architecture:</para>
+<para><orderedlist>
+<listitem><para><bold>Base Layer</bold> - Abstract interfaces defining the API contract</para>
+</listitem><listitem><para><bold>Implementation Layer</bold> - MCU-specific implementations</para>
+</listitem><listitem><para><bold>Utility Layer</bold> - Common utilities and helpers</para>
+</listitem><listitem><para><bold>Application Layer</bold> - Example applications and tests</para>
+</listitem></orderedlist>
+</para>
+</sect1>
+<sect1 id="index_1autotoc_md33">
+<title>License</title><para>This project is licensed under the GPL v3 License. See the LICENSE file for details.</para>
+</sect1>
+<sect1 id="index_1autotoc_md34">
+<title>Contributing</title><para>Please see the main project repository for contributing guidelines and code of conduct. </para>
+</sect1>
+    </detaileddescription>
+    <location file="docs/doxygen-mainpage.md"/>
+  </compounddef>
+</doxygen>

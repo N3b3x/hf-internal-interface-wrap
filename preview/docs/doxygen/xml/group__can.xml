@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__can" kind="group">
+    <compoundname>can</compoundname>
+    <title>CAN Module</title>
+    <innerfile refid="BaseCan_8h">BaseCan.h</innerfile>
+    <innerclass refid="classBaseCan" prot="public">BaseCan</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__can_1gab1d5cdd9fb2d30563cc88f9ca31988ef" prot="public" static="no">
+        <name>HF_CAN_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC CAN error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all CAN operations in the system. This enumeration is used across all CAN-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="49" column="9" bodyfile="inc/base/BaseCan.h" bodystart="49" bodyend="116"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All CAN-related types, enums, and functions for Controller Area Network operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

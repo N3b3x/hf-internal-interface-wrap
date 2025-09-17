@@ -1,0 +1,7 @@
+<map id="BaseUart" name="BaseUart">
+<area shape="rect" id="Node000001" title="Abstract base class for UART driver implementations." alt="" coords="145,104,243,135"/>
+<area shape="rect" id="Node000002" href="$structhf__uart__statistics__t.html" title="UART operation statistics." alt="" coords="5,5,177,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,44,181,102,177,106,115,47"/>
+<area shape="rect" id="Node000003" href="$structhf__uart__diagnostics__t.html" title="UART diagnostic information." alt="" coords="201,5,395,36"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="279,48,245,82,215,106,212,102,242,78,275,45"/>
+</map>

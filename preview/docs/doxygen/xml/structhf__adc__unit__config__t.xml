@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__adc__unit__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_unit_config_t</compoundname>
+    <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__unit__config__t_1a913ab26a613a66311a1ff5e98e45541d" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_adc_unit_config_t::unit_id</definition>
+        <argsstring></argsstring>
+        <name>unit_id</name>
+        <qualifiedname>hf_adc_unit_config_t::unit_id</qualifiedname>
+        <briefdescription>
+<para>ADC unit ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="161" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__unit__config__t_1a92dfc178e6e403b9345de8fd21457b2e" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044" kindref="member">hf_adc_mode_t</ref></type>
+        <definition>hf_adc_mode_t hf_adc_unit_config_t::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <qualifiedname>hf_adc_unit_config_t::mode</qualifiedname>
+        <briefdescription>
+<para>Operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="162" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__unit__config__t_1abfdb771d34ee7b7a22fca9ce7a2fc983" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9" kindref="member">hf_adc_bitwidth_t</ref></type>
+        <definition>hf_adc_bitwidth_t hf_adc_unit_config_t::bit_width</definition>
+        <argsstring></argsstring>
+        <name>bit_width</name>
+        <qualifiedname>hf_adc_unit_config_t::bit_width</qualifiedname>
+        <briefdescription>
+<para>ADC bit width. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="163" column="21" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__unit__config__t_1a3ccf2392358d6dc82d361024cc932596" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__adc__channel__config__t" kindref="compound">hf_adc_channel_config_t</ref></type>
+        <definition>hf_adc_channel_config_t hf_adc_unit_config_t::channel_configs[7]</definition>
+        <argsstring>[7]</argsstring>
+        <name>channel_configs</name>
+        <qualifiedname>hf_adc_unit_config_t::channel_configs</qualifiedname>
+        <briefdescription>
+<para>Channel configurations (ESP32 has 7 channels) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="164" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__unit__config__t_1ad81dd7fad6a6dfc7924fbf20f0566837" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__adc__continuous__config__t" kindref="compound">hf_adc_continuous_config_t</ref></type>
+        <definition>hf_adc_continuous_config_t hf_adc_unit_config_t::continuous_config</definition>
+        <argsstring></argsstring>
+        <name>continuous_config</name>
+        <qualifiedname>hf_adc_unit_config_t::continuous_config</qualifiedname>
+        <briefdescription>
+<para>Continuous mode configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="165" column="30" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__unit__config__t_1a0408122facaca850618d55a337663c04" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__adc__calibration__config__t" kindref="compound">hf_adc_calibration_config_t</ref></type>
+        <definition>hf_adc_calibration_config_t hf_adc_unit_config_t::calibration_config</definition>
+        <argsstring></argsstring>
+        <name>calibration_config</name>
+        <qualifiedname>hf_adc_unit_config_t::calibration_config</qualifiedname>
+        <briefdescription>
+<para>Calibration configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="166" column="31" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__unit__config__t_1aff3b57dfa9de4ea758e596db7e1637b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_unit_config_t::hf_adc_unit_config_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_unit_config_t</name>
+        <qualifiedname>hf_adc_unit_config_t::hf_adc_unit_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="168" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="168" bodyend="169"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC unit configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4">
+        <label>hf_adc_calibration_config_t</label>
+        <link refid="structhf__adc__calibration__config__t"/>
+      </node>
+      <node id="2">
+        <label>hf_adc_channel_config_t</label>
+        <link refid="structhf__adc__channel__config__t"/>
+      </node>
+      <node id="3">
+        <label>hf_adc_continuous_config_t</label>
+        <link refid="structhf__adc__continuous__config__t"/>
+      </node>
+      <node id="1">
+        <label>hf_adc_unit_config_t</label>
+        <link refid="structhf__adc__unit__config__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>channel_configs</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>continuous_config</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>calibration_config</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="160" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="160" bodyend="170"/>
+    <listofallmembers>
+      <member refid="structhf__adc__unit__config__t_1abfdb771d34ee7b7a22fca9ce7a2fc983" prot="public" virt="non-virtual"><scope>hf_adc_unit_config_t</scope><name>bit_width</name></member>
+      <member refid="structhf__adc__unit__config__t_1a0408122facaca850618d55a337663c04" prot="public" virt="non-virtual"><scope>hf_adc_unit_config_t</scope><name>calibration_config</name></member>
+      <member refid="structhf__adc__unit__config__t_1a3ccf2392358d6dc82d361024cc932596" prot="public" virt="non-virtual"><scope>hf_adc_unit_config_t</scope><name>channel_configs</name></member>
+      <member refid="structhf__adc__unit__config__t_1ad81dd7fad6a6dfc7924fbf20f0566837" prot="public" virt="non-virtual"><scope>hf_adc_unit_config_t</scope><name>continuous_config</name></member>
+      <member refid="structhf__adc__unit__config__t_1aff3b57dfa9de4ea758e596db7e1637b3" prot="public" virt="non-virtual"><scope>hf_adc_unit_config_t</scope><name>hf_adc_unit_config_t</name></member>
+      <member refid="structhf__adc__unit__config__t_1a92dfc178e6e403b9345de8fd21457b2e" prot="public" virt="non-virtual"><scope>hf_adc_unit_config_t</scope><name>mode</name></member>
+      <member refid="structhf__adc__unit__config__t_1a913ab26a613a66311a1ff5e98e45541d" prot="public" virt="non-virtual"><scope>hf_adc_unit_config_t</scope><name>unit_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

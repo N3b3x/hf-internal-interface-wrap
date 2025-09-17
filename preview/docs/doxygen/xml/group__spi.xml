@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__spi" kind="group">
+    <compoundname>spi</compoundname>
+    <title>SPI Module</title>
+    <innerfile refid="BaseSpi_8h">BaseSpi.h</innerfile>
+    <innerclass refid="classBaseSpi" prot="public">BaseSpi</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__spi_1gaa5e0c8e903e4cbb2dec8d69a27aa670a" prot="public" static="no">
+        <name>HF_SPI_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC SPI error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all SPI operations in the system. This enumeration is used across all SPI-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="44" column="9" bodyfile="inc/base/BaseSpi.h" bodystart="44" bodyend="83"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All SPI-related types, enums, and functions for Serial Peripheral Interface operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

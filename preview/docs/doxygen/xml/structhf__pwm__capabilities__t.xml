@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pwm__capabilities__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pwm_capabilities_t</compoundname>
+    <includes refid="EspTypes__PWM_8h" local="no">EspTypes_PWM.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a391016f7b9de8439103097b0775a50ea" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_capabilities_t::num_channels</definition>
+        <argsstring></argsstring>
+        <name>num_channels</name>
+        <qualifiedname>hf_pwm_capabilities_t::num_channels</qualifiedname>
+        <briefdescription>
+<para>Number of PWM channels (8 for ESP32) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="360" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="360" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1af34217d5f45ed2d62c49fe836a58880b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_capabilities_t::num_timers</definition>
+        <argsstring></argsstring>
+        <name>num_timers</name>
+        <qualifiedname>hf_pwm_capabilities_t::num_timers</qualifiedname>
+        <briefdescription>
+<para>Number of timer groups (4 for ESP32) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="361" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="361" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a57019e090c215e8fcc5810b0ede2ab2e" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_capabilities_t::max_resolution_bits</definition>
+        <argsstring></argsstring>
+        <name>max_resolution_bits</name>
+        <qualifiedname>hf_pwm_capabilities_t::max_resolution_bits</qualifiedname>
+        <briefdescription>
+<para>Maximum resolution bits (14 for ESP32) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="362" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="362" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a5bcf2ec696c8dee2f23ffee7588b0c7f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_capabilities_t::max_frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>max_frequency_hz</name>
+        <qualifiedname>hf_pwm_capabilities_t::max_frequency_hz</qualifiedname>
+        <briefdescription>
+<para>Maximum supported frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="363" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="363" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a34f963a1dccf23611000bcded3eb935f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_capabilities_t::min_frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>min_frequency_hz</name>
+        <qualifiedname>hf_pwm_capabilities_t::min_frequency_hz</qualifiedname>
+        <briefdescription>
+<para>Minimum supported frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="364" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="364" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1acb74e0bd939ed4dc052b2b83aa9a3cda" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_capabilities_t::supports_fade</definition>
+        <argsstring></argsstring>
+        <name>supports_fade</name>
+        <qualifiedname>hf_pwm_capabilities_t::supports_fade</qualifiedname>
+        <briefdescription>
+<para>Hardware fade support. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="365" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="365" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a8193026ef5e9a5fc865277f6383ed4a7" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_capabilities_t::supports_sleep_retention</definition>
+        <argsstring></argsstring>
+        <name>supports_sleep_retention</name>
+        <qualifiedname>hf_pwm_capabilities_t::supports_sleep_retention</qualifiedname>
+        <briefdescription>
+<para>Sleep retention support. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="366" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="366" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a18eb3aa4a859aea687a8f21726e1a6ef" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_capabilities_t::supports_complementary</definition>
+        <argsstring></argsstring>
+        <name>supports_complementary</name>
+        <qualifiedname>hf_pwm_capabilities_t::supports_complementary</qualifiedname>
+        <briefdescription>
+<para>Complementary outputs (software) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="367" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="367" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a90a592704f07045c101bc4fdb8ee269c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_capabilities_t::supports_deadtime</definition>
+        <argsstring></argsstring>
+        <name>supports_deadtime</name>
+        <qualifiedname>hf_pwm_capabilities_t::supports_deadtime</qualifiedname>
+        <briefdescription>
+<para>Deadtime insertion (software) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="368" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="368" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a779fb16b4bb4ba10697ed75526c1b639" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_capabilities_t::supports_phase_shift</definition>
+        <argsstring></argsstring>
+        <name>supports_phase_shift</name>
+        <qualifiedname>hf_pwm_capabilities_t::supports_phase_shift</qualifiedname>
+        <briefdescription>
+<para>Phase shifting support. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="369" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="369" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__capabilities__t_1a3e0bdc9f368c909ed63f194821f3d8b9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_capabilities_t::available_clock_sources</definition>
+        <argsstring></argsstring>
+        <name>available_clock_sources</name>
+        <qualifiedname>hf_pwm_capabilities_t::available_clock_sources</qualifiedname>
+        <briefdescription>
+<para>Number of available clock sources. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="370" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="370" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pwm__capabilities__t_1a2bedb3b1b9e5fb461dcc9467fa7e706a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pwm_capabilities_t::hf_pwm_capabilities_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_pwm_capabilities_t</name>
+        <qualifiedname>hf_pwm_capabilities_t::hf_pwm_capabilities_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="373" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="373" bodyend="378"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM capabilities and limitations for ESP32. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Static capability information for runtime feature detection. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="359" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="359" bodyend="379"/>
+    <listofallmembers>
+      <member refid="structhf__pwm__capabilities__t_1a3e0bdc9f368c909ed63f194821f3d8b9" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>available_clock_sources</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a2bedb3b1b9e5fb461dcc9467fa7e706a" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>hf_pwm_capabilities_t</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a5bcf2ec696c8dee2f23ffee7588b0c7f" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>max_frequency_hz</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a57019e090c215e8fcc5810b0ede2ab2e" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>max_resolution_bits</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a34f963a1dccf23611000bcded3eb935f" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>min_frequency_hz</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a391016f7b9de8439103097b0775a50ea" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>num_channels</name></member>
+      <member refid="structhf__pwm__capabilities__t_1af34217d5f45ed2d62c49fe836a58880b" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>num_timers</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a18eb3aa4a859aea687a8f21726e1a6ef" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>supports_complementary</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a90a592704f07045c101bc4fdb8ee269c" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>supports_deadtime</name></member>
+      <member refid="structhf__pwm__capabilities__t_1acb74e0bd939ed4dc052b2b83aa9a3cda" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>supports_fade</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a779fb16b4bb4ba10697ed75526c1b639" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>supports_phase_shift</name></member>
+      <member refid="structhf__pwm__capabilities__t_1a8193026ef5e9a5fc865277f6383ed4a7" prot="public" virt="non-virtual"><scope>hf_pwm_capabilities_t</scope><name>supports_sleep_retention</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

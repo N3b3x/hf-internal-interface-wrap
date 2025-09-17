@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pio__channel__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pio_channel_statistics_t</compoundname>
+    <includes refid="EspPio_8h" local="no">EspPio.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1ac67556d6bf40181cb369fab0f90a7216" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_pio_channel_statistics_t::total_transmissions</definition>
+        <argsstring></argsstring>
+        <name>total_transmissions</name>
+        <qualifiedname>hf_pio_channel_statistics_t::total_transmissions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="54" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1acba8a18c23d571d059aec5161096c5cc" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_pio_channel_statistics_t::total_receptions</definition>
+        <argsstring></argsstring>
+        <name>total_receptions</name>
+        <qualifiedname>hf_pio_channel_statistics_t::total_receptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="55" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1ab5c6cc803f3f60ad04a5ebd7123bc714" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_pio_channel_statistics_t::failed_transmissions</definition>
+        <argsstring></argsstring>
+        <name>failed_transmissions</name>
+        <qualifiedname>hf_pio_channel_statistics_t::failed_transmissions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="56" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a23a9b42f075c72a21a846d9c9618b2e5" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_pio_channel_statistics_t::failed_receptions</definition>
+        <argsstring></argsstring>
+        <name>failed_receptions</name>
+        <qualifiedname>hf_pio_channel_statistics_t::failed_receptions</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="57" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a33e0d7910b1beacd5063a7629e52d959" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_pio_channel_statistics_t::last_operation_time</definition>
+        <argsstring></argsstring>
+        <name>last_operation_time</name>
+        <qualifiedname>hf_pio_channel_statistics_t::last_operation_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="58" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1ace0f770d2408fd564472ac249bcc99b2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_channel_statistics_t::is_configured</definition>
+        <argsstring></argsstring>
+        <name>is_configured</name>
+        <qualifiedname>hf_pio_channel_statistics_t::is_configured</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="59" column="8" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a4d174d7d891273df448f059874f3727e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_channel_statistics_t::is_busy</definition>
+        <argsstring></argsstring>
+        <name>is_busy</name>
+        <qualifiedname>hf_pio_channel_statistics_t::is_busy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="60" column="8" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a69c30583ee56551e8448a37c5633f6dd" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_channel_statistics_t::current_resolution_ns</definition>
+        <argsstring></argsstring>
+        <name>current_resolution_ns</name>
+        <qualifiedname>hf_pio_channel_statistics_t::current_resolution_ns</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="61" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a6f810ce1ffeaa8e51fb018e6abcdb438" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_pio_channel_statistics_t::memory_blocks_allocated</definition>
+        <argsstring></argsstring>
+        <name>memory_blocks_allocated</name>
+        <qualifiedname>hf_pio_channel_statistics_t::memory_blocks_allocated</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="62" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__statistics__t_1a53461034af45f9acc80eba7cceaec0e8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_channel_statistics_t::dma_enabled</definition>
+        <argsstring></argsstring>
+        <name>dma_enabled</name>
+        <qualifiedname>hf_pio_channel_statistics_t::dma_enabled</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="63" column="8" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspPio.h" line="53" column="1" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="53" bodyend="64"/>
+    <listofallmembers>
+      <member refid="structhf__pio__channel__statistics__t_1a69c30583ee56551e8448a37c5633f6dd" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>current_resolution_ns</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1a53461034af45f9acc80eba7cceaec0e8" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>dma_enabled</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1a23a9b42f075c72a21a846d9c9618b2e5" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>failed_receptions</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1ab5c6cc803f3f60ad04a5ebd7123bc714" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>failed_transmissions</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1a4d174d7d891273df448f059874f3727e" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>is_busy</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1ace0f770d2408fd564472ac249bcc99b2" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>is_configured</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1a33e0d7910b1beacd5063a7629e52d959" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>last_operation_time</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1a6f810ce1ffeaa8e51fb018e6abcdb438" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>memory_blocks_allocated</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1acba8a18c23d571d059aec5161096c5cc" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>total_receptions</name></member>
+      <member refid="structhf__pio__channel__statistics__t_1ac67556d6bf40181cb369fab0f90a7216" prot="public" virt="non-virtual"><scope>hf_pio_channel_statistics_t</scope><name>total_transmissions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

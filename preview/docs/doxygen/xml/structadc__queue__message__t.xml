@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structadc__queue__message__t" kind="struct" language="C++" prot="public">
+    <compoundname>adc_queue_message_t</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structadc__queue__message__t_1a3a061e2d958466414ef03180cdc02c97" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t adc_queue_message_t::sample_count</definition>
+        <argsstring></argsstring>
+        <name>sample_count</name>
+        <qualifiedname>adc_queue_message_t::sample_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/AdcComprehensiveTest.cpp" line="74" column="12" bodyfile="examples/esp32/main/AdcComprehensiveTest.cpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structadc__queue__message__t_1abce6177e500fe14214f7cb85297f2022" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t adc_queue_message_t::timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <qualifiedname>adc_queue_message_t::timestamp</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/AdcComprehensiveTest.cpp" line="75" column="12" bodyfile="examples/esp32/main/AdcComprehensiveTest.cpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="examples/esp32/main/AdcComprehensiveTest.cpp" line="73" column="1" bodyfile="examples/esp32/main/AdcComprehensiveTest.cpp" bodystart="73" bodyend="76"/>
+    <listofallmembers>
+      <member refid="structadc__queue__message__t_1a3a061e2d958466414ef03180cdc02c97" prot="public" virt="non-virtual"><scope>adc_queue_message_t</scope><name>sample_count</name></member>
+      <member refid="structadc__queue__message__t_1abce6177e500fe14214f7cb85297f2022" prot="public" virt="non-virtual"><scope>adc_queue_message_t</scope><name>timestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

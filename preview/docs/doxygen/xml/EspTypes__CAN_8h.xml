@@ -1,0 +1,461 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspTypes__CAN_8h" kind="file" language="C++">
+    <compoundname>EspTypes_CAN.h</compoundname>
+    <includes refid="BaseCan_8h" local="yes">BaseCan.h</includes>
+    <includes refid="EspTypes__Base_8h" local="yes">EspTypes_Base.h</includes>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includedby refid="EspCan_8h" local="yes">inc/mcu/esp32/EspCan.h</includedby>
+    <includedby refid="EspTypes_8h" local="yes">inc/mcu/esp32/utils/EspTypes.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>../../utils/McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="6">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7">
+        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
+        <link refid="AdcComprehensiveTest_8cpp"/>
+      </node>
+      <node id="3">
+        <label>examples/esp32/main/CanComprehensiveTest.cpp</label>
+        <link refid="CanComprehensiveTest_8cpp"/>
+      </node>
+      <node id="10">
+        <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
+        <link refid="I2cComprehensiveTest_8cpp"/>
+      </node>
+      <node id="16">
+        <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
+        <link refid="PioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="19">
+        <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
+        <link refid="SpiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="13">
+        <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
+        <link refid="TimerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="22">
+        <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
+        <link refid="UartComprehensiveTest_8cpp"/>
+      </node>
+      <node id="6">
+        <label>inc/mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>inc/mcu/esp32/EspCan.h</label>
+        <link refid="EspCan_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>inc/mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/mcu/esp32/EspAdc.cpp</label>
+        <link refid="EspAdc_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspCan.cpp</label>
+        <link refid="EspCan_8cpp"/>
+      </node>
+      <node id="11">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+      <node id="23">
+        <label>src/mcu/esp32/EspUart.cpp</label>
+        <link refid="EspUart_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__can__filter__config__t" prot="public">hf_can_filter_config_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_can_controller_id_t</name>
+        <enumvalue id="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6a218ec6a4ce230d831e99e3c9b5963581" prot="public">
+          <name>HF_CAN_CONTROLLER_0</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Primary CAN controller. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6a5eea195c28eaadc4440f14e732cd2e35" prot="public">
+          <name>HF_CAN_CONTROLLER_1</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Secondary CAN controller (ESP32 only) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>CAN controller ID for ESP32 family. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="32" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7e" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_can_mode_t</name>
+        <enumvalue id="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7eafa95589dd70ad5ad1c080a3aa1458c80" prot="public">
+          <name>HF_CAN_MODE_NORMAL</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Normal operating mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7eaec58b85a431cac25c1891471b63fce52" prot="public">
+          <name>HF_CAN_MODE_NO_ACK</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>No acknowledgment mode (self-test) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7ea8f15d33693d45732e15d4c0b0034d35a" prot="public">
+          <name>HF_CAN_MODE_LISTEN_ONLY</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Listen-only mode (bus monitor) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>CAN operating mode mapping from ESP-IDF TWAI modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="40" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="40" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070e" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_can_operation_type_t</name>
+        <enumvalue id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070eab93fd8b67d8341b2f91be168a6d65129" prot="public">
+          <name>HF_CAN_OP_SEND</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Send operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070eaaa20097e2ca23af5a4df438c7b686b71" prot="public">
+          <name>HF_CAN_OP_RECEIVE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Receive operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea788ed9cc87bf3fed36ae8112e7b1f56d" prot="public">
+          <name>HF_CAN_OP_FILTER</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Filter operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea1c23087759ed9aab1eb3be820938f90a" prot="public">
+          <name>HF_CAN_OP_ALERT</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Alert operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea6c6a5593b725e80ed76eecfe5ec3e32b" prot="public">
+          <name>HF_CAN_OP_INIT</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Initialization operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea69de264f813ce957321bce004f2ea7db" prot="public">
+          <name>HF_CAN_OP_DEINIT</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Deinitialization operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea381ac13bf7b45cb88afdb8333181c047" prot="public">
+          <name>HF_CAN_OP_RESET</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>Reset operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070eadfd31adfbf22867188a1f7f7ec375d88" prot="public">
+          <name>HF_CAN_OP_RECOVER</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+<para>Bus recovery operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>CAN operation types for statistics tracking. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="49" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="49" bodyend="58"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="EspTypes__CAN_8h_1a9a02e65fd1fdb357ad59576c0cf8cf1c" prot="public" static="no">
+        <type>void(*)(uint32_t alerts, void *user_data)</type>
+        <definition>using hf_can_alert_callback_t =  void (*)(uint32_t alerts, void* user_data)</definition>
+        <argsstring></argsstring>
+        <name>hf_can_alert_callback_t</name>
+        <briefdescription>
+<para>CAN alert callback function type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="79" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 CAN type definitions for hardware abstraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines only the essential CAN-specific types and constants used by the <ref refid="classEspCan" kindref="compound">EspCan</ref> implementation. It follows the same clean, minimal pattern as <ref refid="EspTypes__ADC_8h" kindref="compound">EspTypes_ADC.h</ref>, providing only necessary types without redundant or duplicate definitions.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseCan_8h" kindref="compound">BaseCan.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>hf_can_err_t<sp/>and<sp/>hf_can_message_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__Base_8h" kindref="compound">EspTypes_Base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Central<sp/>MCU<sp/>platform<sp/>selection<sp/>(includes<sp/>all<sp/>ESP-IDF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESSENTIAL<sp/>CAN<sp/>TYPES<sp/>(ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESSENTIAL<sp/>CAN<sp/>ENUMS<sp/>(ESP32<sp/>SPECIFIC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6" kindref="member">hf_can_controller_id_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6a218ec6a4ce230d831e99e3c9b5963581" kindref="member">HF_CAN_CONTROLLER_0</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6a5eea195c28eaadc4440f14e732cd2e35" kindref="member">HF_CAN_CONTROLLER_1</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7e" kindref="member">hf_can_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7eafa95589dd70ad5ad1c080a3aa1458c80" kindref="member">HF_CAN_MODE_NORMAL</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7eaec58b85a431cac25c1891471b63fce52" kindref="member">HF_CAN_MODE_NO_ACK</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7ea8f15d33693d45732e15d4c0b0034d35a" kindref="member">HF_CAN_MODE_LISTEN_ONLY</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070e" kindref="member">hf_can_operation_type_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070eab93fd8b67d8341b2f91be168a6d65129" kindref="member">HF_CAN_OP_SEND</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070eaaa20097e2ca23af5a4df438c7b686b71" kindref="member">HF_CAN_OP_RECEIVE</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea788ed9cc87bf3fed36ae8112e7b1f56d" kindref="member">HF_CAN_OP_FILTER</ref><sp/>=<sp/>2,<sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea1c23087759ed9aab1eb3be820938f90a" kindref="member">HF_CAN_OP_ALERT</ref><sp/>=<sp/>3,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea6c6a5593b725e80ed76eecfe5ec3e32b" kindref="member">HF_CAN_OP_INIT</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea69de264f813ce957321bce004f2ea7db" kindref="member">HF_CAN_OP_DEINIT</ref><sp/>=<sp/>5,<sp/><sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070ea381ac13bf7b45cb88afdb8333181c047" kindref="member">HF_CAN_OP_RESET</ref><sp/>=<sp/>6,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070eadfd31adfbf22867188a1f7f7ec375d88" kindref="member">HF_CAN_OP_RECOVER</ref><sp/>=<sp/>7,<sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESSENTIAL<sp/>CAN<sp/>CONFIGURATION<sp/>STRUCTURES<sp/>(MINIMAL)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="structhf__can__filter__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__can__filter__config__t" kindref="compound">hf_can_filter_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="68" refid="structhf__can__filter__config__t_1a2091ca1a431ea58b179919e4fb4d3021" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__can__filter__config__t_1a2091ca1a431ea58b179919e4fb4d3021" kindref="member">acceptance_code</ref>;<sp/></highlight></codeline>
+<codeline lineno="69" refid="structhf__can__filter__config__t_1a1d0a313b0c1c9b15afb3f71c9b05cdf0" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__can__filter__config__t_1a1d0a313b0c1c9b15afb3f71c9b05cdf0" kindref="member">acceptance_mask</ref>;<sp/></highlight></codeline>
+<codeline lineno="70" refid="structhf__can__filter__config__t_1a457d961a4cd803ba506753c910067711" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__can__filter__config__t_1a457d961a4cd803ba506753c910067711" kindref="member">single_filter</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="structhf__can__filter__config__t_1aa30646ff215f94e89592fb13c15252e5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__filter__config__t_1aa30646ff215f94e89592fb13c15252e5" kindref="member">hf_can_filter_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__can__filter__config__t_1a2091ca1a431ea58b179919e4fb4d3021" kindref="member">acceptance_code</ref>(0),<sp/><ref refid="structhf__can__filter__config__t_1a1d0a313b0c1c9b15afb3f71c9b05cdf0" kindref="member">acceptance_mask</ref>(0xFFFFFFFF),<sp/><ref refid="structhf__can__filter__config__t_1a457d961a4cd803ba506753c910067711" kindref="member">single_filter</ref>(true)<sp/>{}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="EspTypes__CAN_8h_1a9a02e65fd1fdb357ad59576c0cf8cf1c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__CAN_8h_1a9a02e65fd1fdb357ad59576c0cf8cf1c" kindref="member">hf_can_alert_callback_t</ref><sp/>=<sp/>void<sp/>(*)(uint32_t<sp/>alerts,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>ESPCAN<sp/>TYPES<sp/>-<sp/>MINIMAL<sp/>AND<sp/>ESSENTIAL<sp/>ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/utils/EspTypes_CAN.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1015 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="BaseAdc_8h" kind="file" language="C++">
+    <compoundname>BaseAdc.h</compoundname>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string_view</includes>
+    <includedby refid="AdcComprehensiveTest_8cpp" local="yes">examples/esp32/main/AdcComprehensiveTest.cpp</includedby>
+    <includedby refid="EspAdc_8h" local="yes">inc/mcu/esp32/EspAdc.h</includedby>
+    <includedby refid="EspTypes__ADC_8h" local="yes">inc/mcu/esp32/utils/EspTypes_ADC.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/BaseAdc.h</label>
+        <link refid="BaseAdc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
+        <link refid="AdcComprehensiveTest_8cpp"/>
+      </node>
+      <node id="8">
+        <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
+        <link refid="I2cComprehensiveTest_8cpp"/>
+      </node>
+      <node id="14">
+        <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
+        <link refid="PioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="17">
+        <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
+        <link refid="SpiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="11">
+        <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
+        <link refid="TimerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="20">
+        <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
+        <link refid="UartComprehensiveTest_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/base/BaseAdc.h</label>
+        <link refid="BaseAdc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>inc/mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>inc/mcu/esp32/utils/EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspAdc.cpp</label>
+        <link refid="EspAdc_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+      <node id="21">
+        <label>src/mcu/esp32/EspUart.cpp</label>
+        <link refid="EspUart_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__adc__statistics__t" prot="public">hf_adc_statistics_t</innerclass>
+    <innerclass refid="structhf__adc__diagnostics__t" prot="public">hf_adc_diagnostics_t</innerclass>
+    <innerclass refid="classBaseAdc" prot="public">BaseAdc</innerclass>
+    <sectiondef kind="define">
+      <member refid="group__adc_1ga891102c18cebf84f4f4da96bb6110bb7" kind="define"><name>HF_ADC_ERR_LIST</name></member>
+      <memberdef kind="define" id="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" prot="public" static="no">
+        <name>X</name>
+        <param><defname>NAME</defname></param>
+        <param><defname>VALUE</defname></param>
+        <param><defname>DESC</defname></param>
+        <initializer>NAME = VALUE,</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="117" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" prot="public" static="no">
+        <name>X</name>
+        <param><defname>NAME</defname></param>
+        <param><defname>VALUE</defname></param>
+        <param><defname>DESC</defname></param>
+        <initializer>  case hf_adc_err_t::NAME:                                                                         \
+    return DESC;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="129" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_adc_err_t</name>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a4edf38c36b44ec6289313be3dbff3bd1" prot="public">
+          <name>X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" prot="public">
+          <name>ADC_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a1fde7853eb6044e884639a3a4e0adb4c" prot="public">
+          <name>ADC_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a245a270f0ab15d53dcc80cb7366ea876" prot="public">
+          <name>ADC_ERR_NOT_INITIALIZED</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a8922ffefc405afe09137751e00f28569" prot="public">
+          <name>ADC_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aed090742de2fbefe16a249801ae15f49" prot="public">
+          <name>ADC_ERR_INVALID_PARAMETER</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a7dff9960c62071eada61e90d89de5f2b" prot="public">
+          <name>ADC_ERR_NULL_POINTER</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a9346c2a3912bfc28c0c26a4cf973e4d3" prot="public">
+          <name>ADC_ERR_OUT_OF_MEMORY</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a02f0ab565d649ebca9886d6362247c76" prot="public">
+          <name>ADC_ERR_CHANNEL_NOT_FOUND</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0ac020d63aa3a02969d0e24751ddd49f08" prot="public">
+          <name>ADC_ERR_CHANNEL_NOT_ENABLED</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aa61f9d85c0af5d23d3f2da2f5461dfe8" prot="public">
+          <name>ADC_ERR_CHANNEL_NOT_CONFIGURED</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0ac1e0ae7fd467bd7eb7a93c92e065981d" prot="public">
+          <name>ADC_ERR_CHANNEL_ALREADY_REGISTERED</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0acc6eb94b907303450805bb9d58a1cf79" prot="public">
+          <name>ADC_ERR_CHANNEL_READ_ERR</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a3cd9eb1bad6b65296d068026f88d6f50" prot="public">
+          <name>ADC_ERR_CHANNEL_WRITE_ERR</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aa1ce2db003622875d40a54fdd1e9ec66" prot="public">
+          <name>ADC_ERR_INVALID_CHANNEL</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a6a6553b72b4e8755ef21dbe860b67939" prot="public">
+          <name>ADC_ERR_CHANNEL_BUSY</name>
+          <initializer>=  14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aa904ab4f9013484775e844b2326d72de" prot="public">
+          <name>ADC_ERR_INVALID_SAMPLE_COUNT</name>
+          <initializer>=  15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0af5b8e1508fdfef31346089706a8bff91" prot="public">
+          <name>ADC_ERR_SAMPLE_TIMEOUT</name>
+          <initializer>=  16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a6920645fc9e5f46457e89163a32e0536" prot="public">
+          <name>ADC_ERR_SAMPLE_OVERFLOW</name>
+          <initializer>=  17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a08e4bccd63bef6bad02e18dd9a7d85d7" prot="public">
+          <name>ADC_ERR_SAMPLE_UNDERFLOW</name>
+          <initializer>=  18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a3adf15b4f21c474833ea48cc3920fe70" prot="public">
+          <name>ADC_ERR_HARDWARE_FAULT</name>
+          <initializer>=  19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a6a8503b54da03d185c3645a18ecc1e6e" prot="public">
+          <name>ADC_ERR_COMMUNICATION_FAILURE</name>
+          <initializer>=  20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0ac30edb7bb451f9ba1e4b387d3c187078" prot="public">
+          <name>ADC_ERR_DEVICE_NOT_RESPONDING</name>
+          <initializer>=  21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a9e4a3e978d3c01b4165d7d0b51d117c0" prot="public">
+          <name>ADC_ERR_CALIBRATION_FAILURE</name>
+          <initializer>=  22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aa9a6192e8258893d5534d152a2e315e3" prot="public">
+          <name>ADC_ERR_VOLTAGE_OUT_OF_RANGE</name>
+          <initializer>=  23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aa68e118d346b42d9e006bda17f95d6be" prot="public">
+          <name>ADC_ERR_INVALID_CONFIGURATION</name>
+          <initializer>=  24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a367b1232069ad191651b2c066c0d7dd8" prot="public">
+          <name>ADC_ERR_UNSUPPORTED_OPERATION</name>
+          <initializer>=  25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a15e7bc2d79570ea8347b1702d9572fb0" prot="public">
+          <name>ADC_ERR_RESOURCE_BUSY</name>
+          <initializer>=  26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a8be9e0acf805fbd3b95c0b2efb962c93" prot="public">
+          <name>ADC_ERR_RESOURCE_UNAVAILABLE</name>
+          <initializer>=  27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0afe2fd24d5400274cb0ea531eae9219f4" prot="public">
+          <name>ADC_ERR_CALIBRATION_NOT_FOUND</name>
+          <initializer>=  28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a5e52358c9c244a517e6f40348f81fe3c" prot="public">
+          <name>ADC_ERR_CALIBRATION_INVALID</name>
+          <initializer>=  29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a708a758d0b69f344ea63a0d5785c8888" prot="public">
+          <name>ADC_ERR_CALIBRATION_EXPIRED</name>
+          <initializer>=  30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a221c6b693c45f8352957db760409f205" prot="public">
+          <name>ADC_ERR_CALIBRATION_DRIFT</name>
+          <initializer>=  31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a220d48fa466a0a3ebddeb5b1505795f7" prot="public">
+          <name>ADC_ERR_CALIBRATION_POINTS_INSUFFICIENT</name>
+          <initializer>=  32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a9596ed2cde8c584349b9c6125d0891a1" prot="public">
+          <name>ADC_ERR_CALIBRATION_POINTS_INVALID</name>
+          <initializer>=  33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a35746e99af7843212eb724704bde9098" prot="public">
+          <name>ADC_ERR_CALIBRATION_LINEARITY_ERROR</name>
+          <initializer>=  34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0af15d84ee34733107f2b798fa6a00c782" prot="public">
+          <name>ADC_ERR_CALIBRATION_STORAGE_FAILURE</name>
+          <initializer>=  35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a05f02e562752557615945caf5a3f7934" prot="public">
+          <name>ADC_ERR_CALIBRATION_LOAD_FAILURE</name>
+          <initializer>=  36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aea14764bc7b2ad3795f50f7297249de1" prot="public">
+          <name>ADC_ERR_CALIBRATION_VERIFICATION_FAILED</name>
+          <initializer>=  37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a9e9032bfef93876fa3c38d7d932ea374" prot="public">
+          <name>ADC_ERR_CALIBRATION_TEMPERATURE_ERROR</name>
+          <initializer>=  38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a562220d69939b440272a0fcfa80d8aa3" prot="public">
+          <name>ADC_ERR_CALIBRATION_POLYNOMIAL_ERROR</name>
+          <initializer>=  39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0af200483a87a57dd25e015a6e32aa6882" prot="public">
+          <name>ADC_ERR_SYSTEM_ERROR</name>
+          <initializer>=  40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0ae3fee6564e8432bd533e924e26c1047f" prot="public">
+          <name>ADC_ERR_PERMISSION_DENIED</name>
+          <initializer>=  41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a91d3ddb083431d454b87f304f58cb658" prot="public">
+          <name>ADC_ERR_OPERATION_ABORTED</name>
+          <initializer>=  42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a8d20fd5050e3eb1aaab9652c7d7213f2" prot="public">
+          <name>ADC_ERR_INITIALIZATION_FAILED</name>
+          <initializer>=  43</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a8b59664dab54c1a5a1dcdfbdeeb0fcb1" prot="public">
+          <name>ADC_ERR_INVALID_PARAM</name>
+          <initializer>=  44</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aa7037778c0674435cfbc1c50de899286" prot="public">
+          <name>ADC_ERR_TIMEOUT</name>
+          <initializer>=  45</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aeeabec6c76058fad78a0e55365e4b5ce" prot="public">
+          <name>ADC_ERR_NOT_SUPPORTED</name>
+          <initializer>=  46</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a68082c73bd905fc8778bec774905dd66" prot="public">
+          <name>ADC_ERR_INVALID_STATE</name>
+          <initializer>=  47</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0ae9216504ec7b5288ba43ecaee5a7acd2" prot="public">
+          <name>ADC_ERR_DRIVER_ERROR</name>
+          <initializer>=  48</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0ab6ba1421d4faa6db992beaf403a57b06" prot="public">
+          <name>ADC_ERR_DMA_ERROR</name>
+          <initializer>=  49</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a3a5c7f7ed77df37c892ed461ab29e6c9" prot="public">
+          <name>ADC_ERR_FILTER_ERROR</name>
+          <initializer>=  50</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a29ecc8d701b61012872997de995c53d8" prot="public">
+          <name>ADC_ERR_NO_CALLBACK</name>
+          <initializer>=  51</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a768ec2ad989cedf7a78ae2c78f0d184d" prot="public">
+          <name>ADC_ERR_NOT_STARTED</name>
+          <initializer>=  52</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a779e50a216d89e01797b0dbd8a12f8ad" prot="public">
+          <name>ADC_ERR_CALIBRATION</name>
+          <initializer>=  53</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aef00ba836cea5118c814c15413049412" prot="public">
+          <name>ADC_ERR_BUSY</name>
+          <initializer>=  54</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0aabff878b25b083a9a5514c56c6d66e50" prot="public">
+          <name>ADC_ERR_HARDWARE_FAILURE</name>
+          <initializer>=  55</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a18f4fd08e7dbe14f47be43777f04426d" prot="public">
+          <name>ADC_ERR_CHANNEL_DISABLED</name>
+          <initializer>=  56</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0ac75ceb57ffaaa4a6f0d180dd73f1f5d4" prot="public">
+          <name>ADC_ERR_UNKNOWN</name>
+          <initializer>=  57</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="116" column="1" bodyfile="inc/base/BaseAdc.h" bodystart="116" bodyend="120"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="BaseAdc_8h_1a184ca5b6f65cf702ee9667f5256dcb46" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr std::string_view</type>
+        <definition>constexpr std::string_view HfAdcErrToString</definition>
+        <argsstring>(hf_adc_err_t err) noexcept</argsstring>
+        <name>HfAdcErrToString</name>
+        <param>
+          <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+<para>Convert hf_adc_err_t to human-readable string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>err</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error code to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String view of the error description </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="127" column="28" bodyfile="inc/base/BaseAdc.h" bodystart="127" bodyend="137"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for ADC implementations in the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains the declaration of the <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> abstract class, which provides a common interface and comprehensive features for all ADC implementations.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This class defines the unified ADC API that all ADC controller implementations must provide. It ensures a consistent API across different platforms and ADC controller types, making the system extensible and maintainable.</para>
+</simplesect>
+<simplesect kind="note"><para>This is a header-only abstract base class. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//=======================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>ADC<sp/>Error<sp/>Codes<sp/>(Table)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//=======================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="group__adc_1ga891102c18cebf84f4f4da96bb6110bb7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ADC_ERR_LIST(X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="45"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Success<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/>X(ADC_SUCCESS,<sp/>0,<sp/>&quot;Success&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>General<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_FAILURE,<sp/>1,<sp/>&quot;General<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_NOT_INITIALIZED,<sp/>2,<sp/>&quot;Not<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_ALREADY_INITIALIZED,<sp/>3,<sp/>&quot;Already<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_INVALID_PARAMETER,<sp/>4,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_NULL_POINTER,<sp/>5,<sp/>&quot;Null<sp/>pointer&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_OUT_OF_MEMORY,<sp/>6,<sp/>&quot;Out<sp/>of<sp/>memory&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Channel<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CHANNEL_NOT_FOUND,<sp/>7,<sp/>&quot;Channel<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CHANNEL_NOT_ENABLED,<sp/>8,<sp/>&quot;Channel<sp/>not<sp/>enabled&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CHANNEL_NOT_CONFIGURED,<sp/>9,<sp/>&quot;Channel<sp/>not<sp/>configured&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CHANNEL_ALREADY_REGISTERED,<sp/>10,<sp/>&quot;Channel<sp/>already<sp/>registered&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CHANNEL_READ_ERR,<sp/>11,<sp/>&quot;Channel<sp/>read<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CHANNEL_WRITE_ERR,<sp/>12,<sp/>&quot;Channel<sp/>write<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_INVALID_CHANNEL,<sp/>13,<sp/>&quot;Invalid<sp/>channel&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CHANNEL_BUSY,<sp/>14,<sp/>&quot;Channel<sp/>busy&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Sampling<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_INVALID_SAMPLE_COUNT,<sp/>15,<sp/>&quot;Invalid<sp/>sample<sp/>count&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_SAMPLE_TIMEOUT,<sp/>16,<sp/>&quot;Sample<sp/>timeout&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_SAMPLE_OVERFLOW,<sp/>17,<sp/>&quot;Sample<sp/>overflow&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_SAMPLE_UNDERFLOW,<sp/>18,<sp/>&quot;Sample<sp/>underflow&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Hardware<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_HARDWARE_FAULT,<sp/>19,<sp/>&quot;Hardware<sp/>fault&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_COMMUNICATION_FAILURE,<sp/>20,<sp/>&quot;Communication<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_DEVICE_NOT_RESPONDING,<sp/>21,<sp/>&quot;Device<sp/>not<sp/>responding&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_FAILURE,<sp/>22,<sp/>&quot;Calibration<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_VOLTAGE_OUT_OF_RANGE,<sp/>23,<sp/>&quot;Voltage<sp/>out<sp/>of<sp/>range&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configuration<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_INVALID_CONFIGURATION,<sp/>24,<sp/>&quot;Invalid<sp/>configuration&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_UNSUPPORTED_OPERATION,<sp/>25,<sp/>&quot;Unsupported<sp/>operation&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_RESOURCE_BUSY,<sp/>26,<sp/>&quot;Resource<sp/>busy&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_RESOURCE_UNAVAILABLE,<sp/>27,<sp/>&quot;Resource<sp/>unavailable&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Calibration<sp/>specific<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_NOT_FOUND,<sp/>28,<sp/>&quot;Calibration<sp/>data<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_INVALID,<sp/>29,<sp/>&quot;Invalid<sp/>calibration<sp/>data&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_EXPIRED,<sp/>30,<sp/>&quot;Calibration<sp/>has<sp/>expired&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_DRIFT,<sp/>31,<sp/>&quot;Calibration<sp/>drift<sp/>detected&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="84"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_POINTS_INSUFFICIENT,<sp/>32,<sp/>&quot;Insufficient<sp/>calibration<sp/>points&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_POINTS_INVALID,<sp/>33,<sp/>&quot;Invalid<sp/>calibration<sp/>points&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_LINEARITY_ERROR,<sp/>34,<sp/>&quot;Calibration<sp/>linearity<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_STORAGE_FAILURE,<sp/>35,<sp/>&quot;Calibration<sp/>storage<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_LOAD_FAILURE,<sp/>36,<sp/>&quot;Calibration<sp/>load<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_VERIFICATION_FAILED,<sp/>37,<sp/>&quot;Calibration<sp/>verification<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_TEMPERATURE_ERROR,<sp/>38,<sp/>&quot;Temperature<sp/>compensation<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION_POLYNOMIAL_ERROR,<sp/>39,<sp/>&quot;Polynomial<sp/>calibration<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>System<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_SYSTEM_ERROR,<sp/>40,<sp/>&quot;System<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_PERMISSION_DENIED,<sp/>41,<sp/>&quot;Permission<sp/>denied&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_OPERATION_ABORTED,<sp/>42,<sp/>&quot;Operation<sp/>aborted&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Extended<sp/>ADC<sp/>errors<sp/>(for<sp/>ESP32<sp/>compatibility)<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="98"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_INITIALIZATION_FAILED,<sp/>43,<sp/>&quot;Initialization<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="99"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_INVALID_PARAM,<sp/>44,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="100"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_TIMEOUT,<sp/>45,<sp/>&quot;Operation<sp/>timeout&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="101"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_NOT_SUPPORTED,<sp/>46,<sp/>&quot;Not<sp/>supported&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="102"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="103"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Additional<sp/>missing<sp/>error<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="104"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_INVALID_STATE,<sp/>47,<sp/>&quot;Invalid<sp/>state&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="105"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_DRIVER_ERROR,<sp/>48,<sp/>&quot;Driver<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="106"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_DMA_ERROR,<sp/>49,<sp/>&quot;DMA<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="107"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_FILTER_ERROR,<sp/>50,<sp/>&quot;Filter<sp/>configuration<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="108"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_NO_CALLBACK,<sp/>51,<sp/>&quot;No<sp/>callback<sp/>provided&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="109"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_NOT_STARTED,<sp/>52,<sp/>&quot;Operation<sp/>not<sp/>started&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="110"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CALIBRATION,<sp/>53,<sp/>&quot;Calibration<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="111"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_BUSY,<sp/>54,<sp/>&quot;Resource<sp/>busy&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="112"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_HARDWARE_FAILURE,<sp/>55,<sp/>&quot;Hardware<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="113"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_CHANNEL_DISABLED,<sp/>56,<sp/>&quot;Channel<sp/>disabled&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="114"><highlight class="preprocessor"><sp/><sp/>X(ADC_ERR_UNKNOWN,<sp/>57,<sp/>&quot;Unknown<sp/>error&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="117" refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(NAME,<sp/>VALUE,<sp/>DESC)<sp/>NAME<sp/>=<sp/>VALUE,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="group__adc_1ga891102c18cebf84f4f4da96bb6110bb7" kindref="member">HF_ADC_ERR_LIST</ref>(<ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127" refid="BaseAdc_8h_1a184ca5b6f65cf702ee9667f5256dcb46" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="BaseAdc_8h_1a184ca5b6f65cf702ee9667f5256dcb46" kindref="member">HfAdcErrToString</ref>(<ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>err)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(err)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(NAME,<sp/>VALUE,<sp/>DESC)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="130"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_adc_err_t::NAME:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="131"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>DESC;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__adc_1ga891102c18cebf84f4f4da96bb6110bb7" kindref="member">HF_ADC_ERR_LIST</ref>(<ref refid="BaseAdc_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a184ca5b6f65cf702ee9667f5256dcb46" kindref="member">HfAdcErrToString</ref>(<ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0ac75ceb57ffaaa4a6f0d180dd73f1f5d4" kindref="member">hf_adc_err_t::ADC_ERR_UNKNOWN</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>ADC<sp/>DRIVER<sp/>ENUMS<sp/>AND<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="structhf__adc__statistics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="147" refid="structhf__adc__statistics__t_1a7c95ecaf76f1b7548f33913ff7483231" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1a7c95ecaf76f1b7548f33913ff7483231" kindref="member">totalConversions</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="148" refid="structhf__adc__statistics__t_1a6bd23bd1290acf6b5292dfefb70aa9d4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1a6bd23bd1290acf6b5292dfefb70aa9d4" kindref="member">successfulConversions</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149" refid="structhf__adc__statistics__t_1abd7cfb4eef5dce706fad92f83ea6286a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1abd7cfb4eef5dce706fad92f83ea6286a" kindref="member">failedConversions</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="150" refid="structhf__adc__statistics__t_1adb8b3a9729725c780346794c4ed39f3a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1adb8b3a9729725c780346794c4ed39f3a" kindref="member">averageConversionTimeUs</ref>;<sp/></highlight></codeline>
+<codeline lineno="151" refid="structhf__adc__statistics__t_1a60b17c5c1d90c76874e71e6494314bdd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1a60b17c5c1d90c76874e71e6494314bdd" kindref="member">maxConversionTimeUs</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="152" refid="structhf__adc__statistics__t_1ad9344da335b97a18fd6ac0bcfe67852c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1ad9344da335b97a18fd6ac0bcfe67852c" kindref="member">minConversionTimeUs</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="153" refid="structhf__adc__statistics__t_1abeb1d6ab980436620cee1a4f9347ae2c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1abeb1d6ab980436620cee1a4f9347ae2c" kindref="member">calibrationCount</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="154" refid="structhf__adc__statistics__t_1a14707f325b1525644a047cd323c9874f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1a14707f325b1525644a047cd323c9874f" kindref="member">thresholdViolations</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="155" refid="structhf__adc__statistics__t_1afe0836b56c003884263fca8506c44e7e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__statistics__t_1afe0836b56c003884263fca8506c44e7e" kindref="member">calibration_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="structhf__adc__statistics__t_1afc4419f5559ce8671b4bcaf1f2c5d7b1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__statistics__t_1afc4419f5559ce8671b4bcaf1f2c5d7b1" kindref="member">hf_adc_statistics_t</ref>()</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__adc__statistics__t_1a7c95ecaf76f1b7548f33913ff7483231" kindref="member">totalConversions</ref>(0),<sp/><ref refid="structhf__adc__statistics__t_1a6bd23bd1290acf6b5292dfefb70aa9d4" kindref="member">successfulConversions</ref>(0),<sp/><ref refid="structhf__adc__statistics__t_1abd7cfb4eef5dce706fad92f83ea6286a" kindref="member">failedConversions</ref>(0),</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__adc__statistics__t_1adb8b3a9729725c780346794c4ed39f3a" kindref="member">averageConversionTimeUs</ref>(0),<sp/><ref refid="structhf__adc__statistics__t_1a60b17c5c1d90c76874e71e6494314bdd" kindref="member">maxConversionTimeUs</ref>(0),<sp/><ref refid="structhf__adc__statistics__t_1ad9344da335b97a18fd6ac0bcfe67852c" kindref="member">minConversionTimeUs</ref>(UINT32_MAX),</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__adc__statistics__t_1abeb1d6ab980436620cee1a4f9347ae2c" kindref="member">calibrationCount</ref>(0),<sp/><ref refid="structhf__adc__statistics__t_1a14707f325b1525644a047cd323c9874f" kindref="member">thresholdViolations</ref>(0),<sp/><ref refid="structhf__adc__statistics__t_1afe0836b56c003884263fca8506c44e7e" kindref="member">calibration_errors</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="structhf__adc__diagnostics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="167" refid="structhf__adc__diagnostics__t_1a1e0b1c99282c5fe283580316afefc930" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__adc__diagnostics__t_1a1e0b1c99282c5fe283580316afefc930" kindref="member">adcHealthy</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168" refid="structhf__adc__diagnostics__t_1ad7d7323e43846d6d36770bdf9d186a9e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="structhf__adc__diagnostics__t_1ad7d7323e43846d6d36770bdf9d186a9e" kindref="member">lastErrorCode</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="169" refid="structhf__adc__diagnostics__t_1ae1e22ee485675311d884c475e026f0e4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__diagnostics__t_1ae1e22ee485675311d884c475e026f0e4" kindref="member">lastErrorTimestamp</ref>;<sp/></highlight></codeline>
+<codeline lineno="170" refid="structhf__adc__diagnostics__t_1a8e93e164ee09f71c6273e146f4d3a2d9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__diagnostics__t_1a8e93e164ee09f71c6273e146f4d3a2d9" kindref="member">consecutiveErrors</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="171" refid="structhf__adc__diagnostics__t_1ab296ef25d5896f5b5bed5968fe20439d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structhf__adc__diagnostics__t_1ab296ef25d5896f5b5bed5968fe20439d" kindref="member">temperatureC</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172" refid="structhf__adc__diagnostics__t_1abdc5d12be09f67f96148c75af7a9fb9f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structhf__adc__diagnostics__t_1abdc5d12be09f67f96148c75af7a9fb9f" kindref="member">referenceVoltage</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="173" refid="structhf__adc__diagnostics__t_1a5f4abea43e69583dc8b52c99b710da40" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__adc__diagnostics__t_1a5f4abea43e69583dc8b52c99b710da40" kindref="member">calibrationValid</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174" refid="structhf__adc__diagnostics__t_1ab3dff4df11548bd7762fcd7efc0aac05" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__adc__diagnostics__t_1ab3dff4df11548bd7762fcd7efc0aac05" kindref="member">enabled_channels</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="175" refid="structhf__adc__diagnostics__t_1a358f62bd5c7258359c204ef9fbe3a9e6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__adc__diagnostics__t_1a358f62bd5c7258359c204ef9fbe3a9e6" kindref="member">initialization_state</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177" refid="structhf__adc__diagnostics__t_1a335596c4a285920ac1eef9a96d324986" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__diagnostics__t_1a335596c4a285920ac1eef9a96d324986" kindref="member">hf_adc_diagnostics_t</ref>()</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__adc__diagnostics__t_1a1e0b1c99282c5fe283580316afefc930" kindref="member">adcHealthy</ref>(true),<sp/><ref refid="structhf__adc__diagnostics__t_1ad7d7323e43846d6d36770bdf9d186a9e" kindref="member">lastErrorCode</ref>(<ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref>::<ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">ADC_SUCCESS</ref>),<sp/><ref refid="structhf__adc__diagnostics__t_1ae1e22ee485675311d884c475e026f0e4" kindref="member">lastErrorTimestamp</ref>(0),</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__adc__diagnostics__t_1a8e93e164ee09f71c6273e146f4d3a2d9" kindref="member">consecutiveErrors</ref>(0),<sp/><ref refid="structhf__adc__diagnostics__t_1ab296ef25d5896f5b5bed5968fe20439d" kindref="member">temperatureC</ref>(25.0f),<sp/><ref refid="structhf__adc__diagnostics__t_1abdc5d12be09f67f96148c75af7a9fb9f" kindref="member">referenceVoltage</ref>(3.3f),<sp/><ref refid="structhf__adc__diagnostics__t_1a5f4abea43e69583dc8b52c99b710da40" kindref="member">calibrationValid</ref>(false),</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__adc__diagnostics__t_1ab3dff4df11548bd7762fcd7efc0aac05" kindref="member">enabled_channels</ref>(0),<sp/><ref refid="structhf__adc__diagnostics__t_1a358f62bd5c7258359c204ef9fbe3a9e6" kindref="member">initialization_state</ref>(false)<sp/>{}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment">//=======================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>BASE<sp/>ADC<sp/>CLASS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight><highlight class="comment">//=======================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="classBaseAdc" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CONSTRUCTION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="classBaseAdc_1a33e66d850746427789319566e201e6b9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1a33e66d850746427789319566e201e6b9" kindref="member">~BaseAdc</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>copy<sp/>constructor<sp/>and<sp/>assignment<sp/>operator<sp/>for<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="classBaseAdc_1afa09240c509104a18d40aa2dbbbc5e9d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>(const<sp/><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="210" refid="classBaseAdc_1aa1a7284050fe28d87413a452f1dfe24a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>&amp;<sp/>operator=(const<sp/><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Allow<sp/>move<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="classBaseAdc_1a37498a3ef03c848856290a4846c87dd7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>(<ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>&amp;&amp;)<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="214" refid="classBaseAdc_1a50784bdbb7ce352301cbab76bb4ac887" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>&amp;<sp/>operator=(<ref refid="classBaseAdc" kindref="compound">BaseAdc</ref>&amp;&amp;)<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LAZY-INITIALIZATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="classBaseAdc_1a7a0ce14e616b94b41b7f5f3103c75b61" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1a7a0ce14e616b94b41b7f5f3103c75b61" kindref="member">EnsureInitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref><sp/>=<sp/><ref refid="classBaseAdc_1ab783a31b8adb7af4b4d53226ffff375c" kindref="member">Initialize</ref>();</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235" refid="classBaseAdc_1ac97e5b49f3e9705bcdd0d9a500532e2f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1ac97e5b49f3e9705bcdd0d9a500532e2f" kindref="member">EnsureDeinitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref><sp/>=<sp/>!<ref refid="classBaseAdc_1a16019ba36f14e8579be74e4849e59e72" kindref="member">Deinitialize</ref>();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="classBaseAdc_1a475764935a2e741538cfc643e0837653" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1a475764935a2e741538cfc643e0837653" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref>;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PURE<sp/>VIRTUAL<sp/>FUNCTIONS<sp/>[MUST<sp/>BE<sp/>OVERRIDDEN]<sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258" refid="classBaseAdc_1ab783a31b8adb7af4b4d53226ffff375c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1ab783a31b8adb7af4b4d53226ffff375c" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264" refid="classBaseAdc_1a16019ba36f14e8579be74e4849e59e72" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1a16019ba36f14e8579be74e4849e59e72" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270" refid="classBaseAdc_1a0de6eca0aa2acd37a375a8a9a918f388" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="classBaseAdc_1a0de6eca0aa2acd37a375a8a9a918f388" kindref="member">GetMaxChannels</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277" refid="classBaseAdc_1a33d37384396674c31531994d77991965" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1a33d37384396674c31531994d77991965" kindref="member">IsChannelAvailable</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287" refid="classBaseAdc_1a7ad8ff099f8cd48d20c2cbbd6d45cf64" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="classBaseAdc_1a7ad8ff099f8cd48d20c2cbbd6d45cf64" kindref="member">ReadChannelV</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&amp;<sp/>channel_reading_v,</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>numOfSamplesToAvg<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>timeBetweenSamples<sp/>=<sp/>0)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="classBaseAdc_1afd66aefd959c4be0267a2a605ff18525" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="classBaseAdc_1afd66aefd959c4be0267a2a605ff18525" kindref="member">ReadChannelCount</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>channel_reading_count,</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>numOfSamplesToAvg<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>timeBetweenSamples<sp/>=<sp/>0)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312" refid="classBaseAdc_1abe791fa4f5d6e834578e7222dc8f9618" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="classBaseAdc_1abe791fa4f5d6e834578e7222dc8f9618" kindref="member">ReadChannel</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&amp;<sp/>channel_reading_count,</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">&amp;<sp/>channel_reading_v,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>numOfSamplesToAvg<sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>timeBetweenSamples<sp/>=<sp/>0)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>(OPTIONAL<sp/>IMPLEMENTATIONS)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="classBaseAdc_1a7757f481ae8ab250b7df876e0370ef5a" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="classBaseAdc_1a7757f481ae8ab250b7df876e0370ef5a" kindref="member">ReadMultipleChannels</ref>(const<sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>*<sp/>channel_ids,</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>num_channels,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>*<sp/>readings,</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>voltages)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!channel_ids<sp/>||<sp/>!readings<sp/>||<sp/>!voltages)<sp/>{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a7dff9960c62071eada61e90d89de5f2b" kindref="member">hf_adc_err_t::ADC_ERR_NULL_POINTER</ref>;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>num_channels;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>err<sp/>=<sp/><ref refid="classBaseAdc_1abe791fa4f5d6e834578e7222dc8f9618" kindref="member">ReadChannel</ref>(channel_ids[i],<sp/>readings[i],<sp/>voltages[i]);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>err;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight></codeline>
+<codeline lineno="352" refid="classBaseAdc_1a10742f7d342d53682b6d3cec14176f0f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="classBaseAdc_1a10742f7d342d53682b6d3cec14176f0f" kindref="member">ResetStatistics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" kindref="member">statistics_</ref><sp/>=<sp/><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a367b1232069ad191651b2c066c0d7dd8" kindref="member">hf_adc_err_t::ADC_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362" refid="classBaseAdc_1ab7b9a99f3eaa4fc36dae5ec9fcb0571d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="classBaseAdc_1ab7b9a99f3eaa4fc36dae5ec9fcb0571d" kindref="member">ResetDiagnostics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" kindref="member">diagnostics_</ref><sp/>=<sp/><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref>{};<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>diagnostics<sp/>to<sp/>default<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a367b1232069ad191651b2c066c0d7dd8" kindref="member">hf_adc_err_t::ADC_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373" refid="classBaseAdc_1ae0c135b27c4cb07a5ff357f7c5e1be50" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="classBaseAdc_1ae0c135b27c4cb07a5ff357f7c5e1be50" kindref="member">GetStatistics</ref>(<ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/>statistics<sp/>=<sp/><ref refid="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" kindref="member">statistics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>empty<sp/>statistics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a367b1232069ad191651b2c066c0d7dd8" kindref="member">hf_adc_err_t::ADC_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384" refid="classBaseAdc_1a1c15d97ea32b60ab3472744ca9a99ffd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/><ref refid="classBaseAdc_1a1c15d97ea32b60ab3472744ca9a99ffd" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/>diagnostics<sp/>=<sp/><ref refid="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" kindref="member">diagnostics_</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>empty<sp/>diagnostics<sp/>by<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0a367b1232069ad191651b2c066c0d7dd8" kindref="member">hf_adc_err_t::ADC_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="393" refid="classBaseAdc_1aebc6e018b001afd845543708c1b3cb86" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseAdc_1aebc6e018b001afd845543708c1b3cb86" kindref="member">BaseAdc</ref>()<sp/>noexcept<sp/>:<sp/><ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref>(false),<sp/><ref refid="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" kindref="member">statistics_</ref>{},<sp/><ref refid="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" kindref="member">diagnostics_</ref>{}<sp/>{}</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>VARIABLES<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399" refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="400" refid="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref><sp/><ref refid="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" kindref="member">statistics_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="401" refid="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref><sp/><ref refid="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" kindref="member">diagnostics_</ref>;<sp/></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BaseAdc.h"/>
+  </compounddef>
+</doxygen>

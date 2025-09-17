@@ -1,0 +1,20 @@
+<map id="inc/mcu/esp32/utils/EspTypes_Timer.h" name="inc/mcu/esp32/utils/EspTypes_Timer.h">
+<area shape="rect" id="Node000001" title="ESP32 timer type definitions for hardware abstraction." alt="" coords="241,5,418,56"/>
+<area shape="rect" id="Node000002" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="186,104,353,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="314,58,289,94,285,91,310,55"/>
+<area shape="rect" id="Node000003" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="5,183,195,213"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="261,58,217,79,175,106,143,139,118,172,113,169,138,135,172,102,214,75,258,54"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="371,183,533,213"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="350,55,436,170,431,173,345,58"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="429,104,545,135"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="375,54,450,95,448,100,372,59"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="239,137,145,179,143,175,237,132"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="304,132,407,175,405,180,302,137"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="259,261,333,292"/>
+<area shape="poly" id="edge7_Node000002_Node000005" title=" " alt="" coords="267,135,258,171,257,192,260,213,278,249,273,251,255,214,252,192,253,170,261,134"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="270,183,346,213"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="279,134,297,169,292,172,274,136"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="424,216,338,258,336,253,422,211"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="420,261,484,292"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="455,214,455,248,449,248,449,214"/>
+</map>

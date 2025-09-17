@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__i2c__device__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_i2c_device_config_t</compoundname>
+    <includes refid="EspTypes__I2C_8h" local="no">EspTypes_I2C.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_i2c_device_config_t::device_address</definition>
+        <argsstring></argsstring>
+        <name>device_address</name>
+        <qualifiedname>hf_i2c_device_config_t::device_address</qualifiedname>
+        <briefdescription>
+<para>7-bit or 10-bit device address </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="226" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__device__config__t_1a30e9a6a1ffbe59f64c84486fa4e4605f" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__I2C_8h_1ada5c1c4b9978d9458ddf062c6c07c7c5" kindref="member">hf_i2c_address_bits_t</ref></type>
+        <definition>hf_i2c_address_bits_t hf_i2c_device_config_t::dev_addr_length</definition>
+        <argsstring></argsstring>
+        <name>dev_addr_length</name>
+        <qualifiedname>hf_i2c_device_config_t::dev_addr_length</qualifiedname>
+        <briefdescription>
+<para>Address bit length (7 or 10 bit) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="227" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__device__config__t_1a770633f438e5e923370732a6275189d5" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_device_config_t::scl_speed_hz</definition>
+        <argsstring></argsstring>
+        <name>scl_speed_hz</name>
+        <qualifiedname>hf_i2c_device_config_t::scl_speed_hz</qualifiedname>
+        <briefdescription>
+<para>SCL clock frequency for this device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="228" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__device__config__t_1ad77fa8ec7a23b21a95cc54b49d9f646c" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_device_config_t::scl_wait_us</definition>
+        <argsstring></argsstring>
+        <name>scl_wait_us</name>
+        <qualifiedname>hf_i2c_device_config_t::scl_wait_us</qualifiedname>
+        <briefdescription>
+<para>SCL wait time in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="229" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="229" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__device__config__t_1a8ab82a6247382e45f57c1bb0ad703c55" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_i2c_device_config_t::disable_ack_check</definition>
+        <argsstring></argsstring>
+        <name>disable_ack_check</name>
+        <qualifiedname>hf_i2c_device_config_t::disable_ack_check</qualifiedname>
+        <briefdescription>
+<para>Disable ACK check for this device. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="230" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__device__config__t_1a3809aab8ff35e6b82ae9dc5e4917aa08" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_device_config_t::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <qualifiedname>hf_i2c_device_config_t::flags</qualifiedname>
+        <briefdescription>
+<para>Device-specific configuration flags. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="231" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="231" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__i2c__device__config__t_1ad714da0f23e5e76c16ff462ec4488b48" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_i2c_device_config_t::hf_i2c_device_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_i2c_device_config_t</name>
+        <qualifiedname>hf_i2c_device_config_t::hf_i2c_device_config_t</qualifiedname>
+        <briefdescription>
+<para>Default constructor with sensible defaults. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="236" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="236" bodyend="238"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>I2C device configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Configuration for adding a device to an I2C master bus. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="225" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="225" bodyend="239"/>
+    <listofallmembers>
+      <member refid="structhf__i2c__device__config__t_1a30e9a6a1ffbe59f64c84486fa4e4605f" prot="public" virt="non-virtual"><scope>hf_i2c_device_config_t</scope><name>dev_addr_length</name></member>
+      <member refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" prot="public" virt="non-virtual"><scope>hf_i2c_device_config_t</scope><name>device_address</name></member>
+      <member refid="structhf__i2c__device__config__t_1a8ab82a6247382e45f57c1bb0ad703c55" prot="public" virt="non-virtual"><scope>hf_i2c_device_config_t</scope><name>disable_ack_check</name></member>
+      <member refid="structhf__i2c__device__config__t_1a3809aab8ff35e6b82ae9dc5e4917aa08" prot="public" virt="non-virtual"><scope>hf_i2c_device_config_t</scope><name>flags</name></member>
+      <member refid="structhf__i2c__device__config__t_1ad714da0f23e5e76c16ff462ec4488b48" prot="public" virt="non-virtual"><scope>hf_i2c_device_config_t</scope><name>hf_i2c_device_config_t</name></member>
+      <member refid="structhf__i2c__device__config__t_1a770633f438e5e923370732a6275189d5" prot="public" virt="non-virtual"><scope>hf_i2c_device_config_t</scope><name>scl_speed_hz</name></member>
+      <member refid="structhf__i2c__device__config__t_1ad77fa8ec7a23b21a95cc54b49d9f646c" prot="public" virt="non-virtual"><scope>hf_i2c_device_config_t</scope><name>scl_wait_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__logger__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_logger_diagnostics_t</compoundname>
+    <includes refid="BaseLogger_8h" local="no">BaseLogger.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1a50e7c87e64f37a2fbeb55a3bb4b3f9f4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_logger_diagnostics_t::is_initialized</definition>
+        <argsstring></argsstring>
+        <name>is_initialized</name>
+        <qualifiedname>hf_logger_diagnostics_t::is_initialized</qualifiedname>
+        <briefdescription>
+<para>Initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="188" column="8" bodyfile="inc/base/BaseLogger.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1a6592e1cfc972ecb2fe31d399efcba081" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_logger_diagnostics_t::is_healthy</definition>
+        <argsstring></argsstring>
+        <name>is_healthy</name>
+        <qualifiedname>hf_logger_diagnostics_t::is_healthy</qualifiedname>
+        <briefdescription>
+<para>Health status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="189" column="8" bodyfile="inc/base/BaseLogger.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1a05c5d1234a118c2ecfcf0a97d28bbefa" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>hf_logger_err_t hf_logger_diagnostics_t::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>hf_logger_diagnostics_t::last_error</qualifiedname>
+        <briefdescription>
+<para>Last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="190" column="19" bodyfile="inc/base/BaseLogger.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1aa136df42009e1c7afe40fe7de0e9ac3b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_diagnostics_t::last_error_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_error_timestamp</name>
+        <qualifiedname>hf_logger_diagnostics_t::last_error_timestamp</qualifiedname>
+        <briefdescription>
+<para>Last error timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="191" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1aa15ff8088d73ff83e0840bdb251bec0b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_logger_diagnostics_t::consecutive_errors</definition>
+        <argsstring></argsstring>
+        <name>consecutive_errors</name>
+        <qualifiedname>hf_logger_diagnostics_t::consecutive_errors</qualifiedname>
+        <briefdescription>
+<para>Consecutive error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="192" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1a17536cd32ffdf2888069b9a5e4504838" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_logger_diagnostics_t::error_recovery_count</definition>
+        <argsstring></argsstring>
+        <name>error_recovery_count</name>
+        <qualifiedname>hf_logger_diagnostics_t::error_recovery_count</qualifiedname>
+        <briefdescription>
+<para>Error recovery count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="193" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1a91eb53511a5f01511f3fca72237ecce1" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_diagnostics_t::uptime_seconds</definition>
+        <argsstring></argsstring>
+        <name>uptime_seconds</name>
+        <qualifiedname>hf_logger_diagnostics_t::uptime_seconds</qualifiedname>
+        <briefdescription>
+<para>Uptime in seconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="194" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1a29db39017ec60f3bbbd5c24249ab8d2c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_logger_diagnostics_t::last_health_check</definition>
+        <argsstring></argsstring>
+        <name>last_health_check</name>
+        <qualifiedname>hf_logger_diagnostics_t::last_health_check</qualifiedname>
+        <briefdescription>
+<para>Last health check timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="195" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__diagnostics__t_1a0128d1c2ca591315a3ce99dec9ae647b" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char hf_logger_diagnostics_t::last_error_message[256]</definition>
+        <argsstring>[256]</argsstring>
+        <name>last_error_message</name>
+        <qualifiedname>hf_logger_diagnostics_t::last_error_message</qualifiedname>
+        <briefdescription>
+<para>Last error message. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="196" column="8" bodyfile="inc/base/BaseLogger.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Logger diagnostics structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseLogger.h" line="187" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="187" bodyend="197"/>
+    <listofallmembers>
+      <member refid="structhf__logger__diagnostics__t_1aa15ff8088d73ff83e0840bdb251bec0b" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>consecutive_errors</name></member>
+      <member refid="structhf__logger__diagnostics__t_1a17536cd32ffdf2888069b9a5e4504838" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>error_recovery_count</name></member>
+      <member refid="structhf__logger__diagnostics__t_1a6592e1cfc972ecb2fe31d399efcba081" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>is_healthy</name></member>
+      <member refid="structhf__logger__diagnostics__t_1a50e7c87e64f37a2fbeb55a3bb4b3f9f4" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>is_initialized</name></member>
+      <member refid="structhf__logger__diagnostics__t_1a05c5d1234a118c2ecfcf0a97d28bbefa" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>last_error</name></member>
+      <member refid="structhf__logger__diagnostics__t_1a0128d1c2ca591315a3ce99dec9ae647b" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>last_error_message</name></member>
+      <member refid="structhf__logger__diagnostics__t_1aa136df42009e1c7afe40fe7de0e9ac3b" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>last_error_timestamp</name></member>
+      <member refid="structhf__logger__diagnostics__t_1a29db39017ec60f3bbbd5c24249ab8d2c" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>last_health_check</name></member>
+      <member refid="structhf__logger__diagnostics__t_1a91eb53511a5f01511f3fca72237ecce1" prot="public" virt="non-virtual"><scope>hf_logger_diagnostics_t</scope><name>uptime_seconds</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

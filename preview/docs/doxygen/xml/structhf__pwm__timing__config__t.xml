@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pwm__timing__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pwm_timing_config_t</compoundname>
+    <includes refid="EspTypes__PWM_8h" local="no">EspTypes_PWM.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pwm__timing__config__t_1a3b91fddab1d7de64f985a41b79ad9c0e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_timing_config_t::frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>frequency_hz</name>
+        <qualifiedname>hf_pwm_timing_config_t::frequency_hz</qualifiedname>
+        <briefdescription>
+<para>PWM frequency in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="244" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__timing__config__t_1a44e7ddaf7a8817030da3eb1b83f7cff5" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_timing_config_t::resolution_bits</definition>
+        <argsstring></argsstring>
+        <name>resolution_bits</name>
+        <qualifiedname>hf_pwm_timing_config_t::resolution_bits</qualifiedname>
+        <briefdescription>
+<para>PWM resolution (8-14 bits) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="245" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__timing__config__t_1a4f2e1844b48330ed4037a53abe45de61" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
+        <definition>hf_pwm_clock_source_t hf_pwm_timing_config_t::clk_src</definition>
+        <argsstring></argsstring>
+        <name>clk_src</name>
+        <qualifiedname>hf_pwm_timing_config_t::clk_src</qualifiedname>
+        <briefdescription>
+<para>Clock source selection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="246" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__timing__config__t_1a06e4708b0fe89b72233193c658600d88" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_timing_config_t::clk_divider</definition>
+        <argsstring></argsstring>
+        <name>clk_divider</name>
+        <qualifiedname>hf_pwm_timing_config_t::clk_divider</qualifiedname>
+        <briefdescription>
+<para>Clock divider (calculated automatically) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="247" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__timing__config__t_1af3dbf084f22b6ed41190dac318a2a8c1" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_timing_config_t::actual_frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>actual_frequency_hz</name>
+        <qualifiedname>hf_pwm_timing_config_t::actual_frequency_hz</qualifiedname>
+        <briefdescription>
+<para>Actual achieved frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="250" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="250" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__timing__config__t_1ad5dd45b1c9fe71cb0309eebb2c32fb55" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_pwm_timing_config_t::frequency_accuracy</definition>
+        <argsstring></argsstring>
+        <name>frequency_accuracy</name>
+        <qualifiedname>hf_pwm_timing_config_t::frequency_accuracy</qualifiedname>
+        <briefdescription>
+<para>Frequency accuracy percentage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="251" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__timing__config__t_1a412e798b9860ba9b1b226e83af9f3bfd" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_timing_config_t::period_ticks</definition>
+        <argsstring></argsstring>
+        <name>period_ticks</name>
+        <qualifiedname>hf_pwm_timing_config_t::period_ticks</qualifiedname>
+        <briefdescription>
+<para>Period in timer ticks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="252" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__timing__config__t_1a2098aa2b7c6f3d22df0b8d910cd266e7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_timing_config_t::max_duty_ticks</definition>
+        <argsstring></argsstring>
+        <name>max_duty_ticks</name>
+        <qualifiedname>hf_pwm_timing_config_t::max_duty_ticks</qualifiedname>
+        <briefdescription>
+<para>Maximum duty cycle ticks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="253" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="253" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pwm__timing__config__t_1a090f04a4fccd57dbbc4fe3d0be71f2c6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pwm_timing_config_t::hf_pwm_timing_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_pwm_timing_config_t</name>
+        <qualifiedname>hf_pwm_timing_config_t::hf_pwm_timing_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="255" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="255" bodyend="258"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 PWM timing configuration with optimization support. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Platform-specific timing parameters optimized for ESP32 80MHz APB clock. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="243" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="243" bodyend="259"/>
+    <listofallmembers>
+      <member refid="structhf__pwm__timing__config__t_1af3dbf084f22b6ed41190dac318a2a8c1" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>actual_frequency_hz</name></member>
+      <member refid="structhf__pwm__timing__config__t_1a06e4708b0fe89b72233193c658600d88" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>clk_divider</name></member>
+      <member refid="structhf__pwm__timing__config__t_1a4f2e1844b48330ed4037a53abe45de61" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>clk_src</name></member>
+      <member refid="structhf__pwm__timing__config__t_1ad5dd45b1c9fe71cb0309eebb2c32fb55" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>frequency_accuracy</name></member>
+      <member refid="structhf__pwm__timing__config__t_1a3b91fddab1d7de64f985a41b79ad9c0e" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>frequency_hz</name></member>
+      <member refid="structhf__pwm__timing__config__t_1a090f04a4fccd57dbbc4fe3d0be71f2c6" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>hf_pwm_timing_config_t</name></member>
+      <member refid="structhf__pwm__timing__config__t_1a2098aa2b7c6f3d22df0b8d910cd266e7" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>max_duty_ticks</name></member>
+      <member refid="structhf__pwm__timing__config__t_1a412e798b9860ba9b1b226e83af9f3bfd" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>period_ticks</name></member>
+      <member refid="structhf__pwm__timing__config__t_1a44e7ddaf7a8817030da3eb1b83f7cff5" prot="public" virt="non-virtual"><scope>hf_pwm_timing_config_t</scope><name>resolution_bits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

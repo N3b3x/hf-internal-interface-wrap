@@ -1,0 +1,927 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="BaseBluetooth_8h" kind="file" language="C++">
+    <compoundname>BaseBluetooth.h</compoundname>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">cctype</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">string_view</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="BluetoothComprehensiveTest_8cpp" local="yes">examples/esp32/main/BluetoothComprehensiveTest.cpp</includedby>
+    <includedby refid="EspBluetooth_8h" local="yes">inc/mcu/esp32/EspBluetooth.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/BaseBluetooth.h</label>
+        <link refid="BaseBluetooth_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>cctype</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+      <node id="9">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/BluetoothComprehensiveTest.cpp</label>
+        <link refid="BluetoothComprehensiveTest_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/base/BaseBluetooth.h</label>
+        <link refid="BaseBluetooth_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/EspBluetooth.h</label>
+        <link refid="EspBluetooth_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspBluetooth.cpp</label>
+        <link refid="EspBluetooth_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__bluetooth__address__t" prot="public">hf_bluetooth_address_t</innerclass>
+    <innerclass refid="structhf__bluetooth__device__info__t" prot="public">hf_bluetooth_device_info_t</innerclass>
+    <innerclass refid="structhf__bluetooth__classic__config__t" prot="public">hf_bluetooth_classic_config_t</innerclass>
+    <innerclass refid="structhf__bluetooth__ble__config__t" prot="public">hf_bluetooth_ble_config_t</innerclass>
+    <innerclass refid="structhf__bluetooth__gatt__service__t" prot="public">hf_bluetooth_gatt_service_t</innerclass>
+    <innerclass refid="structhf__bluetooth__gatt__characteristic__t" prot="public">hf_bluetooth_gatt_characteristic_t</innerclass>
+    <innerclass refid="classBaseBluetooth" prot="public">BaseBluetooth</innerclass>
+    <sectiondef kind="define">
+      <member refid="group__bluetooth_1gaa51a59d1a4465963e8777d3a0fbe2e00" kind="define"><name>HF_BLUETOOTH_ERR_LIST</name></member>
+      <member refid="group__bluetooth_1gafbf3f04fa35349e183adb88ae6d03874" kind="define"><name>X</name></member>
+      <member refid="group__bluetooth_1ga94b225babb1626cee0621f8312eb32d1" kind="define"><name>X</name></member>
+      <member refid="group__bluetooth_1gafbf3f04fa35349e183adb88ae6d03874" kind="define"><name>X</name></member>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_bluetooth_err_t</name>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" prot="public">
+          <name>BLUETOOTH_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca6638531456137a992f8915e0cff5c2da" prot="public">
+          <name>BLUETOOTH_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca2ab398d6410c0edd6505433d264548fc" prot="public">
+          <name>BLUETOOTH_ERR_INVALID_PARAM</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca35b333b6c6bd9110ac25ece7e718833c" prot="public">
+          <name>BLUETOOTH_ERR_NOT_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca0e0d3db0dac476f6dbeeeaccff92b444" prot="public">
+          <name>BLUETOOTH_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca61f3da18c63eb54ec31d5df5647b9c2e" prot="public">
+          <name>BLUETOOTH_ERR_NOT_ENABLED</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcae7a2aa414735bcc0f1222824c27b9e79" prot="public">
+          <name>BLUETOOTH_ERR_ALREADY_ENABLED</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca57abff7ce03e5997d93d18f87c424568" prot="public">
+          <name>BLUETOOTH_ERR_NOT_CONNECTED</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcad7bdfdc3b156cded2bf869c8be55c464" prot="public">
+          <name>BLUETOOTH_ERR_ALREADY_CONNECTED</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca082d06c846143ed5b85859ea3ed2b193" prot="public">
+          <name>BLUETOOTH_ERR_CONNECTION_FAILED</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcafe690feed75ef8f13b7875c352e669d0" prot="public">
+          <name>BLUETOOTH_ERR_DISCONNECTION_FAILED</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaac46aadc574001d9736ac2e499cadc9f" prot="public">
+          <name>BLUETOOTH_ERR_SCAN_FAILED</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca1d9d93b4a1236610429224fe9c65b357" prot="public">
+          <name>BLUETOOTH_ERR_PAIR_FAILED</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca3997ab441cd3349b6653d1472df155f8" prot="public">
+          <name>BLUETOOTH_ERR_UNPAIR_FAILED</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca57ba134b5be62166ab0e05e3ab8bebd8" prot="public">
+          <name>BLUETOOTH_ERR_TIMEOUT</name>
+          <initializer>=  14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcadb7c733ff51bc4a822a70051e39e2233" prot="public">
+          <name>BLUETOOTH_ERR_NO_MEMORY</name>
+          <initializer>=  15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca48fe02293943503fcc25e1aec40c8b18" prot="public">
+          <name>BLUETOOTH_ERR_INVALID_ADDRESS</name>
+          <initializer>=  16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca3b6bed6cc89b3c86d32f1d6e6341c3a0" prot="public">
+          <name>BLUETOOTH_ERR_DEVICE_NOT_FOUND</name>
+          <initializer>=  17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca734bd11102923579facca293d53a9498" prot="public">
+          <name>BLUETOOTH_ERR_SERVICE_NOT_FOUND</name>
+          <initializer>=  18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca341f93e80fb3f58182496391d983ef66" prot="public">
+          <name>BLUETOOTH_ERR_CHARACTERISTIC_NOT_FOUND</name>
+          <initializer>=  19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcac10b358bb220f044b569179c1581befa" prot="public">
+          <name>BLUETOOTH_ERR_AUTHENTICATION_FAILED</name>
+          <initializer>=  20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcac20fe705f0decba17d6389e1f6a9b52e" prot="public">
+          <name>BLUETOOTH_ERR_AUTHORIZATION_FAILED</name>
+          <initializer>=  21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca7754451b351b83fd625dbae0934b868a" prot="public">
+          <name>BLUETOOTH_ERR_ENCRYPTION_FAILED</name>
+          <initializer>=  22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca0ebed6c0dfa185abedac7eefe4fc8ae9" prot="public">
+          <name>BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED</name>
+          <initializer>=  23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca4b82a7e1831f4b5001328b428f4c9ea8" prot="public">
+          <name>BLUETOOTH_ERR_GATT_ERROR</name>
+          <initializer>=  24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaac607b5b5deca10f4463432a3ae8067f" prot="public">
+          <name>BLUETOOTH_ERR_INVALID_STATE</name>
+          <initializer>=  25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcacadf0dd2b43b7721c68778b166163604" prot="public">
+          <name>BLUETOOTH_ERR_PERMISSION_DENIED</name>
+          <initializer>=  26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca482409fe3143c61e08640e8fd66565e1" prot="public">
+          <name>BLUETOOTH_ERR_BUSY</name>
+          <initializer>=  27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca2a00c2ffe5a5e8c7d9485ea468db952f" prot="public">
+          <name>BLUETOOTH_ERR_SECURITY_ERROR</name>
+          <initializer>=  28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca66d85f86376849ed893cab676babdf25" prot="public">
+          <name>BLUETOOTH_ERR_INIT_FAILED</name>
+          <initializer>=  29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca42500fa140a6462b39b67bb76bdec5f6" prot="public">
+          <name>BLUETOOTH_ERR_NOT_SUPPORTED</name>
+          <initializer>=  30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcabe79df1dfeab663ab58088e7756d4ca6" prot="public">
+          <name>BLUETOOTH_ERR_ALREADY_STARTED</name>
+          <initializer>=  31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca31badd3fdd4add983031662791002101" prot="public">
+          <name>BLUETOOTH_ERR_CONFIG_FAILED</name>
+          <initializer>=  32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaea8de82b42153e17e461aa84ada2b3e9" prot="public">
+          <name>BLUETOOTH_ERR_START_FAILED</name>
+          <initializer>=  33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca6acb70587dcc7469ebcaaa635ca5a99b" prot="public">
+          <name>BLUETOOTH_ERR_STOP_FAILED</name>
+          <initializer>=  34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca897fd76312f5e72c1877a9fa498f4603" prot="public">
+          <name>BLUETOOTH_ERR_CONNECTION_NOT_FOUND</name>
+          <initializer>=  35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca20961876b2515bff9cb9bd4d80e1ba3c" prot="public">
+          <name>BLUETOOTH_ERR_MAX_CONNECTIONS_REACHED</name>
+          <initializer>=  36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca48b3be243f6c32925c9654efe72c0153" prot="public">
+          <name>BLUETOOTH_ERR_SEND_FAILED</name>
+          <initializer>=  37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca76ecc04c28d5f50bf60c50ca1f48ae5a" prot="public">
+          <name>BLUETOOTH_ERR_GATT_SERVICE_ADD_FAILED</name>
+          <initializer>=  38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca428010c025f3112a90cc45dfe03e898b" prot="public">
+          <name>BLUETOOTH_ERR_GATT_CHAR_ADD_FAILED</name>
+          <initializer>=  39</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca1499959cb3529ff28c54b3f3bd30d1af" prot="public">
+          <name>BLUETOOTH_ERR_GATT_SERVICE_NOT_FOUND</name>
+          <initializer>=  40</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bca7d5d9c2c49a657b7971862bb311dfa4a" prot="public">
+          <name>BLUETOOTH_ERR_GATT_SERVICE_START_FAILED</name>
+          <initializer>=  41</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf17beb4c86ed2ee5aa1991c55d1e5920" prot="public">
+          <name>BLUETOOTH_ERR_UNKNOWN</name>
+          <initializer>=  42</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="104" column="1" bodyfile="inc/base/BaseBluetooth.h" bodystart="104" bodyend="104"/>
+      </memberdef>
+      <member refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kind="enum"><name>hf_bluetooth_mode_t</name></member>
+      <member refid="group__bluetooth_1gafda17a08e5002454a03b6839af565482" kind="enum"><name>hf_bluetooth_device_type_t</name></member>
+      <member refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" kind="enum"><name>hf_bluetooth_state_t</name></member>
+      <member refid="group__bluetooth_1gafd55018d995cc8e2cc0add725d960aad" kind="enum"><name>hf_bluetooth_security_t</name></member>
+      <member refid="group__bluetooth_1gaf5e48b9d9196063d4218a713d3e4d26c" kind="enum"><name>hf_bluetooth_scan_type_t</name></member>
+      <member refid="group__bluetooth_1gaccbe5a8c22f5e3e429b397e3636d390a" kind="enum"><name>hf_bluetooth_scan_mode_t</name></member>
+      <member refid="group__bluetooth_1ga279cc9e07f3b51e087d70eeb3f439003" kind="enum"><name>hf_bluetooth_connection_type_t</name></member>
+      <member refid="group__bluetooth_1gaa2d24c13652ad267d8e7fc00df0a884a" kind="enum"><name>hf_bluetooth_connection_state_t</name></member>
+      <member refid="group__bluetooth_1gaf4d7f320ef7ffa2ef26966adc8facb67" kind="enum"><name>hf_bluetooth_event_t</name></member>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <member refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" kind="typedef"><name>hf_bluetooth_event_callback_t</name></member>
+      <member refid="group__bluetooth_1ga65e5bf89736f8023fe4cf15163655f6a" kind="typedef"><name>hf_bluetooth_data_callback_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <member refid="group__bluetooth_1ga2d49568a5fa6f7240bd5331d8b9402e9" kind="function"><name>HfBluetoothErrToString</name></member>
+    </sectiondef>
+    <briefdescription>
+<para>Unified Bluetooth base class for all Bluetooth implementations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains the declaration of the <ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref> abstract class, which provides a comprehensive Bluetooth abstraction that serves as the base for all Bluetooth implementations in the HardFOC system. It supports both Bluetooth Classic and Bluetooth Low Energy (BLE), device discovery, pairing, connection management, and works across different hardware platforms including ESP32, and other Bluetooth-capable MCUs.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This class is not thread-safe. Use appropriate synchronization if accessed from multiple contexts. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cctype&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="group__bluetooth_1gaa51a59d1a4465963e8777d3a0fbe2e00" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_BLUETOOTH_ERR_LIST(X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Success<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_SUCCESS,<sp/>0,<sp/>&quot;Success&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>General<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_FAILURE,<sp/>1,<sp/>&quot;General<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_INVALID_PARAM,<sp/>2,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_NOT_INITIALIZED,<sp/>3,<sp/>&quot;Bluetooth<sp/>not<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_ALREADY_INITIALIZED,<sp/>4,<sp/>&quot;Bluetooth<sp/>already<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_NOT_ENABLED,<sp/>5,<sp/>&quot;Bluetooth<sp/>not<sp/>enabled&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_ALREADY_ENABLED,<sp/>6,<sp/>&quot;Bluetooth<sp/>already<sp/>enabled&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_NOT_CONNECTED,<sp/>7,<sp/>&quot;Bluetooth<sp/>not<sp/>connected&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_ALREADY_CONNECTED,<sp/>8,<sp/>&quot;Bluetooth<sp/>already<sp/>connected&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_CONNECTION_FAILED,<sp/>9,<sp/>&quot;Connection<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_DISCONNECTION_FAILED,<sp/>10,<sp/>&quot;Disconnection<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_SCAN_FAILED,<sp/>11,<sp/>&quot;Device<sp/>scan<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_PAIR_FAILED,<sp/>12,<sp/>&quot;Pairing<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_UNPAIR_FAILED,<sp/>13,<sp/>&quot;Unpairing<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_TIMEOUT,<sp/>14,<sp/>&quot;Operation<sp/>timeout&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_NO_MEMORY,<sp/>15,<sp/>&quot;Insufficient<sp/>memory&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_INVALID_ADDRESS,<sp/>16,<sp/>&quot;Invalid<sp/>Bluetooth<sp/>address&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_DEVICE_NOT_FOUND,<sp/>17,<sp/>&quot;Device<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_SERVICE_NOT_FOUND,<sp/>18,<sp/>&quot;Service<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_CHARACTERISTIC_NOT_FOUND,<sp/>19,<sp/>&quot;Characteristic<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_AUTHENTICATION_FAILED,<sp/>20,<sp/>&quot;Authentication<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_AUTHORIZATION_FAILED,<sp/>21,<sp/>&quot;Authorization<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_ENCRYPTION_FAILED,<sp/>22,<sp/>&quot;Encryption<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED,<sp/>23,<sp/>&quot;Operation<sp/>not<sp/>supported&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_GATT_ERROR,<sp/>24,<sp/>&quot;GATT<sp/>operation<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_INVALID_STATE,<sp/>25,<sp/>&quot;Invalid<sp/>state<sp/>for<sp/>operation&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_PERMISSION_DENIED,<sp/>26,<sp/>&quot;Permission<sp/>denied&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="82"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_BUSY,<sp/>27,<sp/>&quot;Device<sp/>or<sp/>operation<sp/>busy&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="83"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_SECURITY_ERROR,<sp/>28,<sp/>&quot;Security<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="84"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_INIT_FAILED,<sp/>29,<sp/>&quot;Initialization<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="85"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_NOT_SUPPORTED,<sp/>30,<sp/>&quot;Operation<sp/>not<sp/>supported&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="86"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_ALREADY_STARTED,<sp/>31,<sp/>&quot;Operation<sp/>already<sp/>started&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="87"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_CONFIG_FAILED,<sp/>32,<sp/>&quot;Configuration<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="88"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_START_FAILED,<sp/>33,<sp/>&quot;Start<sp/>operation<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="89"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_STOP_FAILED,<sp/>34,<sp/>&quot;Stop<sp/>operation<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="90"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_CONNECTION_NOT_FOUND,<sp/>35,<sp/>&quot;Connection<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="91"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_MAX_CONNECTIONS_REACHED,<sp/>36,<sp/>&quot;Maximum<sp/>connections<sp/>reached&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="92"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_SEND_FAILED,<sp/>37,<sp/>&quot;Send<sp/>operation<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="93"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_GATT_SERVICE_ADD_FAILED,<sp/>38,<sp/>&quot;GATT<sp/>service<sp/>add<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="94"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_GATT_CHAR_ADD_FAILED,<sp/>39,<sp/>&quot;GATT<sp/>characteristic<sp/>add<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="95"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_GATT_SERVICE_NOT_FOUND,<sp/>40,<sp/>&quot;GATT<sp/>service<sp/>not<sp/>found&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="96"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_GATT_SERVICE_START_FAILED,<sp/>41,<sp/>&quot;GATT<sp/>service<sp/>start<sp/>failed&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="97"><highlight class="preprocessor"><sp/><sp/>X(BLUETOOTH_ERR_UNKNOWN,<sp/>42,<sp/>&quot;Unknown<sp/>error&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="group__bluetooth_1gafbf3f04fa35349e183adb88ae6d03874" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>desc)<sp/>name<sp/>=<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{<sp/><ref refid="group__bluetooth_1gaa51a59d1a4465963e8777d3a0fbe2e00" kindref="member">HF_BLUETOOTH_ERR_LIST</ref>(<ref refid="group__bluetooth_1gafbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)<sp/>};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="group__bluetooth_1ga2d49568a5fa6f7240bd5331d8b9402e9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="group__bluetooth_1ga2d49568a5fa6f7240bd5331d8b9402e9" kindref="member">HfBluetoothErrToString</ref>(<ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>err)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(err)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(NAME,<sp/>VALUE,<sp/>DESC)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="116"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_bluetooth_err_t::NAME:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="117"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>DESC;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__bluetooth_1gaa51a59d1a4465963e8777d3a0fbe2e00" kindref="member">HF_BLUETOOTH_ERR_LIST</ref>(<ref refid="group__bluetooth_1gafbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1ga2d49568a5fa6f7240bd5331d8b9402e9" kindref="member">HfBluetoothErrToString</ref>(<ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf17beb4c86ed2ee5aa1991c55d1e5920" kindref="member">hf_bluetooth_err_t::BLUETOOTH_ERR_UNKNOWN</ref>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129" refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445bad8cd9e23590818ef1e805edec8e131c5" kindref="member">HF_BLUETOOTH_MODE_DISABLED</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba6697341cbd54a4a120aedcafdd64540b" kindref="member">HF_BLUETOOTH_MODE_CLASSIC</ref><sp/>=<sp/>1,<sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba0f798dc93d69a080a82aaeca55cd90b1" kindref="member">HF_BLUETOOTH_MODE_BLE</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba74a92e04a478dcb1d18b2497ee5333a2" kindref="member">HF_BLUETOOTH_MODE_DUAL</ref><sp/>=<sp/>3<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="group__bluetooth_1gafda17a08e5002454a03b6839af565482" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1gafda17a08e5002454a03b6839af565482" kindref="member">hf_bluetooth_device_type_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafda17a08e5002454a03b6839af565482a5d47974454955d8a8453f210be4a9f3c" kindref="member">HF_BLUETOOTH_DEVICE_TYPE_UNKNOWN</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafda17a08e5002454a03b6839af565482a3e4af4d9e1b0165b596eec422ce30043" kindref="member">HF_BLUETOOTH_DEVICE_TYPE_CLASSIC</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafda17a08e5002454a03b6839af565482a5509a4603d40c2eb68cdde2565dd9de7" kindref="member">HF_BLUETOOTH_DEVICE_TYPE_BLE</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafda17a08e5002454a03b6839af565482a4c27a2d7a744e8a9dd4de0e72dfb8411" kindref="member">HF_BLUETOOTH_DEVICE_TYPE_DUAL</ref><sp/>=<sp/>3<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" kindref="member">hf_bluetooth_state_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggac451db000ab6ee8c0a80c938da26a738aadc9d7f5087d0288fad75b21952206e2" kindref="member">HF_BLUETOOTH_STATE_DISABLED</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggac451db000ab6ee8c0a80c938da26a738a7294118a6528bac81e64193043930543" kindref="member">HF_BLUETOOTH_STATE_ENABLED</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggac451db000ab6ee8c0a80c938da26a738ae313efc312d3856091abf48a42f1bc62" kindref="member">HF_BLUETOOTH_STATE_SCANNING</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggac451db000ab6ee8c0a80c938da26a738a7988789a3614746f9319e0f4e1120b96" kindref="member">HF_BLUETOOTH_STATE_CONNECTING</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggac451db000ab6ee8c0a80c938da26a738a63c98408d61d087899dbf2ef9d121212" kindref="member">HF_BLUETOOTH_STATE_CONNECTED</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggac451db000ab6ee8c0a80c938da26a738a0261a94d757d8c13112699eb68f4aee3" kindref="member">HF_BLUETOOTH_STATE_DISCONNECTING</ref><sp/>=<sp/>5,<sp/></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggac451db000ab6ee8c0a80c938da26a738a72738e6ae504bc211de23f81e5ca0d04" kindref="member">HF_BLUETOOTH_STATE_PAIRING</ref><sp/>=<sp/>6,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggac451db000ab6ee8c0a80c938da26a738aa9d0a777396fddc6b1a6d2e515b4be9a" kindref="member">HF_BLUETOOTH_STATE_PAIRED</ref><sp/>=<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="group__bluetooth_1gafd55018d995cc8e2cc0add725d960aad" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1gafd55018d995cc8e2cc0add725d960aad" kindref="member">hf_bluetooth_security_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafd55018d995cc8e2cc0add725d960aada93d6d5ebd2e08233d2b76720f280a7d4" kindref="member">HF_BLUETOOTH_SECURITY_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafd55018d995cc8e2cc0add725d960aada9389abaefe349ee43deac627ddcf6266" kindref="member">HF_BLUETOOTH_SECURITY_UNAUTHENTICATED</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafd55018d995cc8e2cc0add725d960aada5a7cc1dacd2641b697921358ae56113c" kindref="member">HF_BLUETOOTH_SECURITY_AUTHENTICATED</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafd55018d995cc8e2cc0add725d960aada392a7fa577c6a8f91d2e4008850c9206" kindref="member">HF_BLUETOOTH_SECURITY_AUTHORIZED</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafd55018d995cc8e2cc0add725d960aadad2161bf37003633da4e7f4a4be1218bf" kindref="member">HF_BLUETOOTH_SECURITY_ENCRYPTED</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggafd55018d995cc8e2cc0add725d960aada081c9e5172572dad4b45891717a92c74" kindref="member">HF_BLUETOOTH_SECURITY_AUTHENTICATED_SC</ref><sp/>=<sp/>5<sp/></highlight></codeline>
+<codeline lineno="173"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179" refid="group__bluetooth_1gaf5e48b9d9196063d4218a713d3e4d26c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1gaf5e48b9d9196063d4218a713d3e4d26c" kindref="member">hf_bluetooth_scan_type_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf5e48b9d9196063d4218a713d3e4d26ca1ae8efd14d61a27168ce327a13b4c02c" kindref="member">HF_BLUETOOTH_SCAN_TYPE_PASSIVE</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf5e48b9d9196063d4218a713d3e4d26cada5deb1cd60bb274cb388226795304aa" kindref="member">HF_BLUETOOTH_SCAN_TYPE_ACTIVE</ref><sp/>=<sp/>1<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="182"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="group__bluetooth_1gaccbe5a8c22f5e3e429b397e3636d390a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1gaccbe5a8c22f5e3e429b397e3636d390a" kindref="member">hf_bluetooth_scan_mode_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaccbe5a8c22f5e3e429b397e3636d390aae1f0e4672e191b6b50d1c3be281f6777" kindref="member">HF_BLUETOOTH_SCAN_MODE_GENERAL_INQUIRY</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaccbe5a8c22f5e3e429b397e3636d390aaaeb8c88615f80be29d340ae673d1aa65" kindref="member">HF_BLUETOOTH_SCAN_MODE_LE_GENERAL</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaccbe5a8c22f5e3e429b397e3636d390aa9c8cad65cb4882e33170eb77a39dcb0b" kindref="member">HF_BLUETOOTH_SCAN_MODE_LE_LIMITED</ref><sp/>=<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="192"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="group__bluetooth_1ga279cc9e07f3b51e087d70eeb3f439003" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1ga279cc9e07f3b51e087d70eeb3f439003" kindref="member">hf_bluetooth_connection_type_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gga279cc9e07f3b51e087d70eeb3f439003aa08d392bccdefefc781494140949d4fc" kindref="member">HF_BLUETOOTH_CONNECTION_TYPE_AUTO</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gga279cc9e07f3b51e087d70eeb3f439003a0f8e31e0daf99afa513c3c0d359f1885" kindref="member">HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gga279cc9e07f3b51e087d70eeb3f439003af787b67cceb83b3bb3899b71afe01560" kindref="member">HF_BLUETOOTH_CONNECTION_TYPE_BLE</ref><sp/>=<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="202"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="group__bluetooth_1gaa2d24c13652ad267d8e7fc00df0a884a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1gaa2d24c13652ad267d8e7fc00df0a884a" kindref="member">hf_bluetooth_connection_state_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaa2d24c13652ad267d8e7fc00df0a884aa705ce5e2960217867c034f2f962ea6c8" kindref="member">HF_BLUETOOTH_CONNECTION_STATE_DISCONNECTED</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaa2d24c13652ad267d8e7fc00df0a884aa51bfc6d0522b7af1f86e7e20c8ec7dac" kindref="member">HF_BLUETOOTH_CONNECTION_STATE_CONNECTING</ref><sp/>=<sp/>1,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaa2d24c13652ad267d8e7fc00df0a884aa2926b3814f425704c70e3a7fa2d16432" kindref="member">HF_BLUETOOTH_CONNECTION_STATE_CONNECTED</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaa2d24c13652ad267d8e7fc00df0a884aa46f9330da016466819811a09cb80e5ad" kindref="member">HF_BLUETOOTH_CONNECTION_STATE_ADVERTISING</ref><sp/>=<sp/>3,<sp/><sp/></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaa2d24c13652ad267d8e7fc00df0a884aa7ba928c93891092618fcbf03669abc22" kindref="member">HF_BLUETOOTH_CONNECTION_STATE_SCANNING</ref><sp/>=<sp/>4<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="214"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="group__bluetooth_1gaf4d7f320ef7ffa2ef26966adc8facb67" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1gaf4d7f320ef7ffa2ef26966adc8facb67" kindref="member">hf_bluetooth_event_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67af94a72b4839784b35ff3201b5834aa21" kindref="member">HF_BLUETOOTH_EVENT_ENABLED</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a209a4d247fb609a1c8552fd44ccb3beb" kindref="member">HF_BLUETOOTH_EVENT_DISABLED</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a631cb5011c69f0a88aaa39e0e3254dc9" kindref="member">HF_BLUETOOTH_EVENT_SCAN_START</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a26b947325ab0d54503ca1a639de9782f" kindref="member">HF_BLUETOOTH_EVENT_SCAN_STOP</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a5c82831a3aaeb50cb8b58dc8e992f771" kindref="member">HF_BLUETOOTH_EVENT_DEVICE_FOUND</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a44e0a2ecfe10488a158e21695a0fb9d7" kindref="member">HF_BLUETOOTH_EVENT_PAIR_REQUEST</ref><sp/>=<sp/>5,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67ad9179d78cefa8b9932e24df339318270" kindref="member">HF_BLUETOOTH_EVENT_PAIR_SUCCESS</ref><sp/>=<sp/>6,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a71db6ff144b9f71fa28145c8cbaa9777" kindref="member">HF_BLUETOOTH_EVENT_PAIR_FAILED</ref><sp/>=<sp/>7,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a0b8ff98cb7dec1eb43b5a8a31a1d710c" kindref="member">HF_BLUETOOTH_EVENT_UNPAIR_SUCCESS</ref><sp/>=<sp/>8,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a6e5ccf1f7b3d8d826aa1655e645ca97c" kindref="member">HF_BLUETOOTH_EVENT_CONNECT_SUCCESS</ref><sp/>=<sp/>9,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a8698e792ee9d5acc8dcbf81107d8583f" kindref="member">HF_BLUETOOTH_EVENT_CONNECT_FAILED</ref><sp/>=<sp/>10,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67aa58f2d09c8736ca6643e519469c311ac" kindref="member">HF_BLUETOOTH_EVENT_DISCONNECT</ref><sp/>=<sp/>11,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a753931953f23b5cc068055937c80552b" kindref="member">HF_BLUETOOTH_EVENT_DATA_RECEIVED</ref><sp/>=<sp/>12,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a9cae1d3824ed47edc938b2d9559df828" kindref="member">HF_BLUETOOTH_EVENT_DATA_SENT</ref><sp/>=<sp/>13,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67a9a4a8f71381ef88584170af7dcb47fc5" kindref="member">HF_BLUETOOTH_EVENT_GATT_SERVICE_DISCOVERED</ref><sp/>=<sp/>14,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67ae59b4ff9b0680444f8b6371ffa2fbacf" kindref="member">HF_BLUETOOTH_EVENT_GATT_CHARACTERISTIC_READ</ref><sp/>=<sp/>15,<sp/><sp/></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67ab0e084420822966a48db6bf2e95f94b8" kindref="member">HF_BLUETOOTH_EVENT_GATT_CHARACTERISTIC_WRITE</ref><sp/>=<sp/>16,<sp/></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ggaf4d7f320ef7ffa2ef26966adc8facb67aca9e5b01018e2fb8d64983972c7ba8d3" kindref="member">HF_BLUETOOTH_EVENT_GATT_NOTIFICATION</ref><sp/>=<sp/>17<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="239"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="structhf__bluetooth__address__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="246" refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[6];<sp/></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="group__bluetooth_1ga16a952238c469abc6433c912341d7d81" kindref="member">ToString</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t_1a7c179cb878a03ff95c9b82f7354a8ea9" kindref="member">FromString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>addr_str);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t_1a3d7d7126836b26eeca117f25b12b12b1" kindref="member">IsValid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272" refid="structhf__bluetooth__device__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="273" refid="structhf__bluetooth__device__info__t_1ab3238cd28d4fa6324c5f8470b467afb4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref><sp/><ref refid="structhf__bluetooth__device__info__t_1ab3238cd28d4fa6324c5f8470b467afb4" kindref="member">address</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="274" refid="structhf__bluetooth__device__info__t_1a5d6aca83d72d1ba01f265f33987cf9ae" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__bluetooth__device__info__t_1a5d6aca83d72d1ba01f265f33987cf9ae" kindref="member">name</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="275" refid="structhf__bluetooth__device__info__t_1aa4e7cdd7df30a77dccb53486d671603d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gafda17a08e5002454a03b6839af565482" kindref="member">hf_bluetooth_device_type_t</ref><sp/><ref refid="structhf__bluetooth__device__info__t_1aa4e7cdd7df30a77dccb53486d671603d" kindref="member">type</ref>;<sp/></highlight></codeline>
+<codeline lineno="276" refid="structhf__bluetooth__device__info__t_1ad26d487cdd1b817651ef2afca7c24314" refkind="member"><highlight class="normal"><sp/><sp/>int8_t<sp/><ref refid="structhf__bluetooth__device__info__t_1ad26d487cdd1b817651ef2afca7c24314" kindref="member">rssi</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="277" refid="structhf__bluetooth__device__info__t_1a4cd72b73b359afa903623039f7b71a52" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__bluetooth__device__info__t_1a4cd72b73b359afa903623039f7b71a52" kindref="member">class_of_device</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="278" refid="structhf__bluetooth__device__info__t_1ac1b435de54e204fc372f301d22bceb58" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="structhf__bluetooth__device__info__t_1ac1b435de54e204fc372f301d22bceb58" kindref="member">uuids</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="279" refid="structhf__bluetooth__device__info__t_1af6c0fe4a8d8e125da4a9fd39415879d8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__device__info__t_1af6c0fe4a8d8e125da4a9fd39415879d8" kindref="member">is_bonded</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="280" refid="structhf__bluetooth__device__info__t_1a6c8d766924120cf874847fa36635e087" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__device__info__t_1a6c8d766924120cf874847fa36635e087" kindref="member">is_connected</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="281"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287" refid="structhf__bluetooth__classic__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__bluetooth__classic__config__t" kindref="compound">hf_bluetooth_classic_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="288" refid="structhf__bluetooth__classic__config__t_1a69c1ed2b0cca25c1323899e7967c3ea8" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__bluetooth__classic__config__t_1a69c1ed2b0cca25c1323899e7967c3ea8" kindref="member">device_name</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="289" refid="structhf__bluetooth__classic__config__t_1a8fcb37c2c5403e8e8ea3d140ebeabe3e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__classic__config__t_1a8fcb37c2c5403e8e8ea3d140ebeabe3e" kindref="member">discoverable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="290" refid="structhf__bluetooth__classic__config__t_1afffb3fd55e10ce205db21bb5f3d260f2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__classic__config__t_1afffb3fd55e10ce205db21bb5f3d260f2" kindref="member">connectable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="291" refid="structhf__bluetooth__classic__config__t_1abb00a082e520885d390c514483a7bd8f" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__bluetooth__classic__config__t_1abb00a082e520885d390c514483a7bd8f" kindref="member">discovery_timeout_ms</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="292" refid="structhf__bluetooth__classic__config__t_1a1a7e4ea76dceed09ffb5eb16d9827c8c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gafd55018d995cc8e2cc0add725d960aad" kindref="member">hf_bluetooth_security_t</ref><sp/><ref refid="structhf__bluetooth__classic__config__t_1a1a7e4ea76dceed09ffb5eb16d9827c8c" kindref="member">security</ref>;<sp/></highlight></codeline>
+<codeline lineno="293"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="structhf__bluetooth__ble__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="300" refid="structhf__bluetooth__ble__config__t_1a8b2e3677d9dd8b45b035570155fe17fa" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__bluetooth__ble__config__t_1a8b2e3677d9dd8b45b035570155fe17fa" kindref="member">device_name</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="301" refid="structhf__bluetooth__ble__config__t_1a7dbdb6d852f3148e0a7e3f628cc81e6b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__ble__config__t_1a7dbdb6d852f3148e0a7e3f628cc81e6b" kindref="member">advertising</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="302" refid="structhf__bluetooth__ble__config__t_1a69caf206673da36a9d3024445cb4a218" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__ble__config__t_1a69caf206673da36a9d3024445cb4a218" kindref="member">scannable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="303" refid="structhf__bluetooth__ble__config__t_1a71d2ac471e61ad37a07b4308369d69c8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__ble__config__t_1a71d2ac471e61ad37a07b4308369d69c8" kindref="member">connectable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="304" refid="structhf__bluetooth__ble__config__t_1af530377773136b461f15a89e265b5b31" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__bluetooth__ble__config__t_1af530377773136b461f15a89e265b5b31" kindref="member">advertising_interval_ms</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="305" refid="structhf__bluetooth__ble__config__t_1a6fe854fdbbdeb5bc65bb5d53be82b3c1" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__bluetooth__ble__config__t_1a6fe854fdbbdeb5bc65bb5d53be82b3c1" kindref="member">scan_interval_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="306" refid="structhf__bluetooth__ble__config__t_1a9974fc7466f342cf3db78370e4c80069" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__bluetooth__ble__config__t_1a9974fc7466f342cf3db78370e4c80069" kindref="member">scan_window_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="307" refid="structhf__bluetooth__ble__config__t_1a52c6d3ad55336a02b44aae62858c5c60" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gaf5e48b9d9196063d4218a713d3e4d26c" kindref="member">hf_bluetooth_scan_type_t</ref><sp/><ref refid="structhf__bluetooth__ble__config__t_1a52c6d3ad55336a02b44aae62858c5c60" kindref="member">scan_type</ref>;<sp/></highlight></codeline>
+<codeline lineno="308" refid="structhf__bluetooth__ble__config__t_1a9396da6586b33490338d55c7891fd0ca" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gafd55018d995cc8e2cc0add725d960aad" kindref="member">hf_bluetooth_security_t</ref><sp/><ref refid="structhf__bluetooth__ble__config__t_1a9396da6586b33490338d55c7891fd0ca" kindref="member">security</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="309"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="structhf__bluetooth__gatt__service__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__bluetooth__gatt__service__t" kindref="compound">hf_bluetooth_gatt_service_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="316" refid="structhf__bluetooth__gatt__service__t_1ab31b88eaafd54e7d616d1735e97863cd" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__bluetooth__gatt__service__t_1ab31b88eaafd54e7d616d1735e97863cd" kindref="member">uuid</ref>;<sp/></highlight></codeline>
+<codeline lineno="317" refid="structhf__bluetooth__gatt__service__t_1a6ffaad5257a9a2680f77519874f86bf4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__gatt__service__t_1a6ffaad5257a9a2680f77519874f86bf4" kindref="member">is_primary</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="318" refid="structhf__bluetooth__gatt__service__t_1a7b598597e462004669e0f93359f0f587" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__bluetooth__gatt__service__t_1a7b598597e462004669e0f93359f0f587" kindref="member">handle</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="319"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325" refid="structhf__bluetooth__gatt__characteristic__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__bluetooth__gatt__characteristic__t" kindref="compound">hf_bluetooth_gatt_characteristic_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="326" refid="structhf__bluetooth__gatt__characteristic__t_1abb8ce02be19d55f0dd8a4e0d78374a6a" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structhf__bluetooth__gatt__characteristic__t_1abb8ce02be19d55f0dd8a4e0d78374a6a" kindref="member">uuid</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="327" refid="structhf__bluetooth__gatt__characteristic__t_1adb9eb8327064c68d57f4d480e03dffdf" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__bluetooth__gatt__characteristic__t_1adb9eb8327064c68d57f4d480e03dffdf" kindref="member">handle</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="328" refid="structhf__bluetooth__gatt__characteristic__t_1a15cc0566fe8b0cffa81d200120cc27cf" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__bluetooth__gatt__characteristic__t_1a15cc0566fe8b0cffa81d200120cc27cf" kindref="member">properties</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="329" refid="structhf__bluetooth__gatt__characteristic__t_1afb0b91e4d8f5eb6a7cea22a980506c14" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;uint8_t&gt;<sp/><ref refid="structhf__bluetooth__gatt__characteristic__t_1afb0b91e4d8f5eb6a7cea22a980506c14" kindref="member">value</ref>;<sp/></highlight></codeline>
+<codeline lineno="330"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336" refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" kindref="member">hf_bluetooth_event_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(<ref refid="group__bluetooth_1gaf4d7f320ef7ffa2ef26966adc8facb67" kindref="member">hf_bluetooth_event_t</ref><sp/>event,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>event_data)&gt;;</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343" refid="group__bluetooth_1ga65e5bf89736f8023fe4cf15163655f6a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="group__bluetooth_1ga65e5bf89736f8023fe4cf15163655f6a" kindref="member">hf_bluetooth_data_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;uint8_t&gt;&amp;<sp/>data)&gt;;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359" refid="classBaseBluetooth" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref><sp/>{</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="364" refid="classBaseBluetooth_1ae77e7b8c64bfdfcdc5563d14f0f23472" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1ae77e7b8c64bfdfcdc5563d14f0f23472" kindref="member">~BaseBluetooth</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Initialization<sp/>and<sp/>Configuration<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373" refid="classBaseBluetooth_1a196c07d346d5433ec07cd130002abef6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a196c07d346d5433ec07cd130002abef6" kindref="member">Initialize</ref>(<ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref><sp/>mode)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379" refid="classBaseBluetooth_1a3b78e495412b0c58e9f1d34b0d6b0584" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a3b78e495412b0c58e9f1d34b0d6b0584" kindref="member">Deinitialize</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="385" refid="classBaseBluetooth_1af8e1ecb1d4e3e6f31e14d9b152e812a0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1af8e1ecb1d4e3e6f31e14d9b152e812a0" kindref="member">IsInitialized</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391" refid="classBaseBluetooth_1ae3f0672a639f4ae1eb87887d866fc584" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1ae3f0672a639f4ae1eb87887d866fc584" kindref="member">Enable</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="397" refid="classBaseBluetooth_1af9488d4b6303ae3f72462e6919e08e97" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1af9488d4b6303ae3f72462e6919e08e97" kindref="member">Disable</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403" refid="classBaseBluetooth_1a626da2b0e75af05bccae77dae40f47ae" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1a626da2b0e75af05bccae77dae40f47ae" kindref="member">IsEnabled</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="410" refid="classBaseBluetooth_1a62c7bb7ccccfa4b8d920f7001e9899f4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a62c7bb7ccccfa4b8d920f7001e9899f4" kindref="member">SetMode</ref>(<ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref><sp/>mode)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416" refid="classBaseBluetooth_1a029b3ca472e6c048ea98db766e361f19" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref><sp/><ref refid="classBaseBluetooth_1a029b3ca472e6c048ea98db766e361f19" kindref="member">GetMode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Device<sp/>Management<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425" refid="classBaseBluetooth_1aff3d25b5192168951bbf844459d25014" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1aff3d25b5192168951bbf844459d25014" kindref="member">GetLocalAddress</ref>(<ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432" refid="classBaseBluetooth_1a1792bf9086c8db3951bd1f01a934771e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a1792bf9086c8db3951bd1f01a934771e" kindref="member">SetDeviceName</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>name)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"></highlight></codeline>
+<codeline lineno="438" refid="classBaseBluetooth_1a226554f64e1cba76d0b021077f81088f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="classBaseBluetooth_1a226554f64e1cba76d0b021077f81088f" kindref="member">GetDeviceName</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Classic<sp/>Bluetooth<sp/>Operations<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="447" refid="classBaseBluetooth_1adcd47674624cf1c692c88d96391b9024" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1adcd47674624cf1c692c88d96391b9024" kindref="member">ConfigureClassic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__classic__config__t" kindref="compound">hf_bluetooth_classic_config_t</ref>&amp;<sp/>config)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="455" refid="classBaseBluetooth_1ae16b5e49487dd2b010802c0fefa3cf95" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1ae16b5e49487dd2b010802c0fefa3cf95" kindref="member">SetDiscoverable</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>discoverable,<sp/>uint32_t<sp/>timeout_ms<sp/>=<sp/>0)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="461" refid="classBaseBluetooth_1a1cff8c3db74ba4776f3ca4a550eaa2f4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1a1cff8c3db74ba4776f3ca4a550eaa2f4" kindref="member">IsDiscoverable</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>BLE<sp/>Operations<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal"></highlight></codeline>
+<codeline lineno="470" refid="classBaseBluetooth_1a6cfce1df3b1dbd1267154de7d957a525" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a6cfce1df3b1dbd1267154de7d957a525" kindref="member">ConfigureBle</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref>&amp;<sp/>config)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"></highlight></codeline>
+<codeline lineno="476" refid="classBaseBluetooth_1a2bef4ad7b3b531bd42c342b85ea27772" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a2bef4ad7b3b531bd42c342b85ea27772" kindref="member">StartAdvertising</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"></highlight></codeline>
+<codeline lineno="482" refid="classBaseBluetooth_1a3014d71e82d9d0ed7082a84b432025f1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a3014d71e82d9d0ed7082a84b432025f1" kindref="member">StopAdvertising</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="483"><highlight class="normal"></highlight></codeline>
+<codeline lineno="488" refid="classBaseBluetooth_1a6806e3ecd8d83530c8bfb101099f2fd4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1a6806e3ecd8d83530c8bfb101099f2fd4" kindref="member">IsAdvertising</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"></highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Device<sp/>Discovery<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="491"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498" refid="classBaseBluetooth_1a7cbef9bcb0a02d8d4129c5063f182542" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a7cbef9bcb0a02d8d4129c5063f182542" kindref="member">StartScan</ref>(</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>duration_ms<sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__bluetooth_1gaf5e48b9d9196063d4218a713d3e4d26c" kindref="member">hf_bluetooth_scan_type_t</ref><sp/>type<sp/>=<sp/><ref refid="group__bluetooth_1ggaf5e48b9d9196063d4218a713d3e4d26cada5deb1cd60bb274cb388226795304aa" kindref="member">hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE</ref>)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight></codeline>
+<codeline lineno="506" refid="classBaseBluetooth_1aa284375eca6ab3cf746b00f4b92a1d21" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1aa284375eca6ab3cf746b00f4b92a1d21" kindref="member">StopScan</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="507"><highlight class="normal"></highlight></codeline>
+<codeline lineno="512" refid="classBaseBluetooth_1a4a7eca3f951cd2847965dc0eaaf1aa67" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1a4a7eca3f951cd2847965dc0eaaf1aa67" kindref="member">IsScanning</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"></highlight></codeline>
+<codeline lineno="519" refid="classBaseBluetooth_1ae680e1a6ea8aa510a3d8a6e66b33f4e6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1ae680e1a6ea8aa510a3d8a6e66b33f4e6" kindref="member">GetDiscoveredDevices</ref>(</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;hf_bluetooth_device_info_t&gt;&amp;<sp/>devices)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"></highlight></codeline>
+<codeline lineno="526" refid="classBaseBluetooth_1ad996e7aa11d766792e31d9b8b402500c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1ad996e7aa11d766792e31d9b8b402500c" kindref="member">ClearDiscoveredDevices</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="527"><highlight class="normal"></highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Connection<sp/>Management<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="529"><highlight class="normal"></highlight></codeline>
+<codeline lineno="536" refid="classBaseBluetooth_1a491ab1503e8860ab5550a6eba81c3ad8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a491ab1503e8860ab5550a6eba81c3ad8" kindref="member">Connect</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>timeout_ms<sp/>=<sp/>0)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"></highlight></codeline>
+<codeline lineno="544" refid="classBaseBluetooth_1afccb08941b4fafb6d0899242e15b2920" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1afccb08941b4fafb6d0899242e15b2920" kindref="member">Disconnect</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="545"><highlight class="normal"></highlight></codeline>
+<codeline lineno="551" refid="classBaseBluetooth_1a8b4f8e6d6bc7fc2ad1274018eb83f984" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1a8b4f8e6d6bc7fc2ad1274018eb83f984" kindref="member">IsConnected</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="552"><highlight class="normal"></highlight></codeline>
+<codeline lineno="558" refid="classBaseBluetooth_1ab42108b4a596b6ff15b93fd6c5c06cab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1ab42108b4a596b6ff15b93fd6c5c06cab" kindref="member">GetConnectedDevices</ref>(</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;hf_bluetooth_device_info_t&gt;&amp;<sp/>devices)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"></highlight></codeline>
+<codeline lineno="561"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Pairing<sp/>and<sp/>Bonding<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"></highlight></codeline>
+<codeline lineno="569" refid="classBaseBluetooth_1a7462b4aef22ddd43203e44214f5536c2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a7462b4aef22ddd43203e44214f5536c2" kindref="member">Pair</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,</highlight></codeline>
+<codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>pin<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="571"><highlight class="normal"></highlight></codeline>
+<codeline lineno="577" refid="classBaseBluetooth_1accbd6d7ae7676023638e7e4f651467b5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1accbd6d7ae7676023638e7e4f651467b5" kindref="member">Unpair</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"></highlight></codeline>
+<codeline lineno="584" refid="classBaseBluetooth_1a0886a8faae0cfe0f69330c0efcdf226f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1a0886a8faae0cfe0f69330c0efcdf226f" kindref="member">IsPaired</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"></highlight></codeline>
+<codeline lineno="591" refid="classBaseBluetooth_1a1eea76b41ba09697e53099c075d51787" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a1eea76b41ba09697e53099c075d51787" kindref="member">GetPairedDevices</ref>(std::vector&lt;hf_bluetooth_device_info_t&gt;&amp;<sp/>devices)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="592"><highlight class="normal"></highlight></codeline>
+<codeline lineno="593"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Data<sp/>Transmission<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="594"><highlight class="normal"></highlight></codeline>
+<codeline lineno="601" refid="classBaseBluetooth_1a4c5f73a535305f072f5bdf096efd19ce" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a4c5f73a535305f072f5bdf096efd19ce" kindref="member">SendData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,</highlight></codeline>
+<codeline lineno="602"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;uint8_t&gt;&amp;<sp/>data)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="603"><highlight class="normal"></highlight></codeline>
+<codeline lineno="609" refid="classBaseBluetooth_1a3c9c4e3e4ff5d70f646c328df340a959" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth_1a3c9c4e3e4ff5d70f646c328df340a959" kindref="member">GetAvailableData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="610"><highlight class="normal"></highlight></codeline>
+<codeline lineno="618" refid="classBaseBluetooth_1a0ef42af7a494714ed851eca3fec124cc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a0ef42af7a494714ed851eca3fec124cc" kindref="member">ReadData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,</highlight></codeline>
+<codeline lineno="619"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;&amp;<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>max_bytes<sp/>=<sp/>0)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="620"><highlight class="normal"></highlight></codeline>
+<codeline lineno="621"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>GATT<sp/>Operations<sp/>(BLE)<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="622"><highlight class="normal"></highlight></codeline>
+<codeline lineno="629" refid="classBaseBluetooth_1afc5629fe0b63c4c113a545b5eacf6f7a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1afc5629fe0b63c4c113a545b5eacf6f7a" kindref="member">DiscoverServices</ref>(</highlight></codeline>
+<codeline lineno="630"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,</highlight></codeline>
+<codeline lineno="631"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;hf_bluetooth_gatt_service_t&gt;&amp;<sp/>services)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="632"><highlight class="normal"></highlight></codeline>
+<codeline lineno="640" refid="classBaseBluetooth_1ad37958dc6328f4152af8ce7d4dacb542" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1ad37958dc6328f4152af8ce7d4dacb542" kindref="member">DiscoverCharacteristics</ref>(</highlight></codeline>
+<codeline lineno="641"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_uuid,</highlight></codeline>
+<codeline lineno="642"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;hf_bluetooth_gatt_characteristic_t&gt;&amp;<sp/>characteristics)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="643"><highlight class="normal"></highlight></codeline>
+<codeline lineno="652" refid="classBaseBluetooth_1a7e191af8a19ddb52181c853c27f26eeb" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a7e191af8a19ddb52181c853c27f26eeb" kindref="member">ReadCharacteristic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,</highlight></codeline>
+<codeline lineno="653"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_uuid,</highlight></codeline>
+<codeline lineno="654"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>characteristic_uuid,</highlight></codeline>
+<codeline lineno="655"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;uint8_t&gt;&amp;<sp/>value)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="656"><highlight class="normal"></highlight></codeline>
+<codeline lineno="666" refid="classBaseBluetooth_1a5775d0876c891ce57f7e5da1499be4cd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a5775d0876c891ce57f7e5da1499be4cd" kindref="member">WriteCharacteristic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,</highlight></codeline>
+<codeline lineno="667"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_uuid,</highlight></codeline>
+<codeline lineno="668"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>characteristic_uuid,</highlight></codeline>
+<codeline lineno="669"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;uint8_t&gt;&amp;<sp/>value,</highlight></codeline>
+<codeline lineno="670"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>with_response<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="671"><highlight class="normal"></highlight></codeline>
+<codeline lineno="680" refid="classBaseBluetooth_1ab93a81eda5ea79f516d548ab7266016c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1ab93a81eda5ea79f516d548ab7266016c" kindref="member">SubscribeCharacteristic</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address,</highlight></codeline>
+<codeline lineno="681"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>service_uuid,</highlight></codeline>
+<codeline lineno="682"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>characteristic_uuid,</highlight></codeline>
+<codeline lineno="683"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="684"><highlight class="normal"></highlight></codeline>
+<codeline lineno="685"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>State<sp/>and<sp/>Status<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="686"><highlight class="normal"></highlight></codeline>
+<codeline lineno="691" refid="classBaseBluetooth_1a49aadef553ed72baa4d7bc5e96f0c95e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" kindref="member">hf_bluetooth_state_t</ref><sp/><ref refid="classBaseBluetooth_1a49aadef553ed72baa4d7bc5e96f0c95e" kindref="member">GetState</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="692"><highlight class="normal"></highlight></codeline>
+<codeline lineno="698" refid="classBaseBluetooth_1a99a5b02e2f3a0bccd554a692340fa64d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="classBaseBluetooth_1a99a5b02e2f3a0bccd554a692340fa64d" kindref="member">GetRssi</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref>&amp;<sp/>address)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="699"><highlight class="normal"></highlight></codeline>
+<codeline lineno="700"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Event<sp/>Handling<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="701"><highlight class="normal"></highlight></codeline>
+<codeline lineno="707" refid="classBaseBluetooth_1a393db49fdbbb0db872262b0b12ad25ea" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a393db49fdbbb0db872262b0b12ad25ea" kindref="member">RegisterEventCallback</ref>(<ref refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" kindref="member">hf_bluetooth_event_callback_t</ref><sp/>callback)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="708"><highlight class="normal"></highlight></codeline>
+<codeline lineno="713" refid="classBaseBluetooth_1a799e4cdc54f8256ae0f80cf3a2caf52c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a799e4cdc54f8256ae0f80cf3a2caf52c" kindref="member">UnregisterEventCallback</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="714"><highlight class="normal"></highlight></codeline>
+<codeline lineno="720" refid="classBaseBluetooth_1a7d6eb7a09b4185eb9de0ebbaadcddec1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1a7d6eb7a09b4185eb9de0ebbaadcddec1" kindref="member">RegisterDataCallback</ref>(<ref refid="group__bluetooth_1ga65e5bf89736f8023fe4cf15163655f6a" kindref="member">hf_bluetooth_data_callback_t</ref><sp/>callback)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="721"><highlight class="normal"></highlight></codeline>
+<codeline lineno="726" refid="classBaseBluetooth_1ad01c053e5b9d41f8c60f63f2b7d2642c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/><ref refid="classBaseBluetooth_1ad01c053e5b9d41f8c60f63f2b7d2642c" kindref="member">UnregisterDataCallback</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="727"><highlight class="normal"></highlight></codeline>
+<codeline lineno="728"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>==========<sp/>Utility<sp/>Functions<sp/>==========</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="729"><highlight class="normal"></highlight></codeline>
+<codeline lineno="735"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="group__bluetooth_1gab088db30edcbbd9875e9381f9b8cbe8d" kindref="member">GetErrorString</ref>(<ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>error);</highlight></codeline>
+<codeline lineno="736"><highlight class="normal"></highlight></codeline>
+<codeline lineno="737"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="741" refid="classBaseBluetooth_1a0f1d6deaa05381c5643fa5034beca274" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseBluetooth_1a0f1d6deaa05381c5643fa5034beca274" kindref="member">BaseBluetooth</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="742"><highlight class="normal"></highlight></codeline>
+<codeline lineno="746" refid="classBaseBluetooth_1a372ad20c5010431efbdc08bfa3222a26" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseBluetooth_1a372ad20c5010431efbdc08bfa3222a26" kindref="member">BaseBluetooth</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="747"><highlight class="normal"></highlight></codeline>
+<codeline lineno="751" refid="classBaseBluetooth_1a30639bf1607e6a95e8127a3ec810227f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref>&amp;<sp/><ref refid="classBaseBluetooth_1a30639bf1607e6a95e8127a3ec810227f" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref>&amp;)<sp/>=<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="752"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="753"><highlight class="normal"></highlight></codeline>
+<codeline lineno="758" refid="group__bluetooth_1gab088db30edcbbd9875e9381f9b8cbe8d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="group__bluetooth_1gab088db30edcbbd9875e9381f9b8cbe8d" kindref="member">BaseBluetooth::GetErrorString</ref>(<ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>error)<sp/>{</highlight></codeline>
+<codeline lineno="759"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(name,<sp/>value,<sp/>desc)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="760"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_bluetooth_err_t::name:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="761"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>desc;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="762"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(error)<sp/>{</highlight></codeline>
+<codeline lineno="763"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__bluetooth_1gaa51a59d1a4465963e8777d3a0fbe2e00" kindref="member">HF_BLUETOOTH_ERR_LIST</ref>(<ref refid="group__bluetooth_1gafbf3f04fa35349e183adb88ae6d03874" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="764"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="765"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__bluetooth_1ga2d49568a5fa6f7240bd5331d8b9402e9" kindref="member">HfBluetoothErrToString</ref>(<ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf17beb4c86ed2ee5aa1991c55d1e5920" kindref="member">hf_bluetooth_err_t::BLUETOOTH_ERR_UNKNOWN</ref>);</highlight></codeline>
+<codeline lineno="766"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="767"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="768"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="769"><highlight class="normal"></highlight></codeline>
+<codeline lineno="774" refid="group__bluetooth_1ga16a952238c469abc6433c912341d7d81" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>std::string<sp/><ref refid="group__bluetooth_1ga16a952238c469abc6433c912341d7d81" kindref="member">hf_bluetooth_address_t::ToString</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="775"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buffer[18];</highlight></codeline>
+<codeline lineno="776"><highlight class="normal"><sp/><sp/>snprintf(buffer,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(buffer),<sp/></highlight><highlight class="stringliteral">&quot;%02X:%02X:%02X:%02X:%02X:%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[0],<sp/><ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[1],<sp/><ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[2],</highlight></codeline>
+<codeline lineno="777"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[3],<sp/><ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[4],<sp/><ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[5]);</highlight></codeline>
+<codeline lineno="778"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(buffer);</highlight></codeline>
+<codeline lineno="779"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="780"><highlight class="normal"></highlight></codeline>
+<codeline lineno="781" refid="structhf__bluetooth__address__t_1a7c179cb878a03ff95c9b82f7354a8ea9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t_1a7c179cb878a03ff95c9b82f7354a8ea9" kindref="member">hf_bluetooth_address_t::FromString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>addr_str)<sp/>{</highlight></codeline>
+<codeline lineno="782"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(addr_str.length()<sp/>!=<sp/>17)</highlight></codeline>
+<codeline lineno="783"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="784"><highlight class="normal"></highlight></codeline>
+<codeline lineno="785"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>format:<sp/>XX:XX:XX:XX:XX:XX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="786"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>addr_str.length();<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="787"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i<sp/>%<sp/>3<sp/>==<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="788"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(addr_str[i]<sp/>!=<sp/></highlight><highlight class="charliteral">&apos;:&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="789"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="790"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="791"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!std::isxdigit(addr_str[i]))</highlight></codeline>
+<codeline lineno="792"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="793"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="794"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="795"><highlight class="normal"></highlight></codeline>
+<codeline lineno="796"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>using<sp/>no-exceptions<sp/>approach<sp/>with<sp/>manual<sp/>hex<sp/>conversion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="797"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>6;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="798"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>i<sp/>*<sp/>3;</highlight></codeline>
+<codeline lineno="799"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>hex_start<sp/>=<sp/>addr_str.c_str()<sp/>+<sp/>pos;</highlight></codeline>
+<codeline lineno="800"><highlight class="normal"></highlight></codeline>
+<codeline lineno="801"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Manual<sp/>hex<sp/>conversion<sp/>without<sp/>exceptions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="802"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>value<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="803"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>2;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="804"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>hex_start[j];</highlight></codeline>
+<codeline lineno="805"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>c<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;9&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="806"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/>(value<sp/>&lt;&lt;<sp/>4)<sp/>+<sp/>(c<sp/>-<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="807"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;A&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>c<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;F&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="808"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/>(value<sp/>&lt;&lt;<sp/>4)<sp/>+<sp/>(c<sp/>-<sp/></highlight><highlight class="charliteral">&apos;A&apos;</highlight><highlight class="normal"><sp/>+<sp/>10);</highlight></codeline>
+<codeline lineno="809"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>&gt;=<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>c<sp/>&lt;=<sp/></highlight><highlight class="charliteral">&apos;f&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="810"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/>(value<sp/>&lt;&lt;<sp/>4)<sp/>+<sp/>(c<sp/>-<sp/></highlight><highlight class="charliteral">&apos;a&apos;</highlight><highlight class="normal"><sp/>+<sp/>10);</highlight></codeline>
+<codeline lineno="811"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="812"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Invalid<sp/>hex<sp/>character</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="813"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="814"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="815"><highlight class="normal"></highlight></codeline>
+<codeline lineno="816"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value<sp/>&gt;<sp/>255)</highlight></codeline>
+<codeline lineno="817"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="818"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[i]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">uint8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(value);</highlight></codeline>
+<codeline lineno="819"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="820"><highlight class="normal"></highlight></codeline>
+<codeline lineno="821"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="822"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="823"><highlight class="normal"></highlight></codeline>
+<codeline lineno="824" refid="structhf__bluetooth__address__t_1a3d7d7126836b26eeca117f25b12b12b1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__bluetooth__address__t_1a3d7d7126836b26eeca117f25b12b12b1" kindref="member">hf_bluetooth_address_t::IsValid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="825"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>6;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="826"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" kindref="member">addr</ref>[i]<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="827"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="828"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="829"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="830"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BaseBluetooth.h"/>
+  </compounddef>
+</doxygen>

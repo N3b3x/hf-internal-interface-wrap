@@ -1,0 +1,909 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspTypes__PIO_8h" kind="file" language="C++">
+    <compoundname>EspTypes_PIO.h</compoundname>
+    <includes refid="BasePio_8h" local="yes">BasePio.h</includes>
+    <includes refid="EspTypes__Base_8h" local="yes">EspTypes_Base.h</includes>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includedby refid="PioComprehensiveTest_8cpp" local="yes">examples/esp32/main/PioComprehensiveTest.cpp</includedby>
+    <includedby refid="EspTypes_8h" local="yes">inc/mcu/esp32/utils/EspTypes.h</includedby>
+    <includedby refid="EspPio_8cpp" local="yes">src/mcu/esp32/EspPio.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BasePio.h</label>
+        <link refid="BasePio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>../../utils/McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="10">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
+        <link refid="AdcComprehensiveTest_8cpp"/>
+      </node>
+      <node id="8">
+        <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
+        <link refid="I2cComprehensiveTest_8cpp"/>
+      </node>
+      <node id="2">
+        <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
+        <link refid="PioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="16">
+        <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
+        <link refid="SpiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="11">
+        <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
+        <link refid="TimerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="19">
+        <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
+        <link refid="UartComprehensiveTest_8cpp"/>
+      </node>
+      <node id="4">
+        <label>inc/mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>inc/mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/mcu/esp32/EspAdc.cpp</label>
+        <link refid="EspAdc_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="14">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="17">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/mcu/esp32/EspUart.cpp</label>
+        <link refid="EspUart_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__rmt__transmit__config__t" prot="public">hf_rmt_transmit_config_t</innerclass>
+    <innerclass refid="structhf__rmt__receive__config__t" prot="public">hf_rmt_receive_config_t</innerclass>
+    <innerclass refid="structhf__rmt__carrier__config__t" prot="public">hf_rmt_carrier_config_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="EspTypes__PIO_8h_1ad2b82da7e096893f1b444ae97c35a6d7" prot="public" static="no">
+        <name>HF_RMT_IS_VALID_CHANNEL</name>
+        <param><defname>ch</defname></param>
+        <initializer>((ch) &lt; <ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref>)</initializer>
+        <briefdescription>
+<para>RMT validation macros for ESP32 variants. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="163" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__PIO_8h_1a7cc70c572c5295cf3882286ca95f4e58" prot="public" static="no">
+        <name>HF_RMT_IS_VALID_TX_CHANNEL</name>
+        <param><defname>ch</defname></param>
+        <initializer>((ch) &gt;= 0 &amp;&amp; (ch) &lt; 2)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="181" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__PIO_8h_1a44b7217b0d81e66dcae71f9b95aac199" prot="public" static="no">
+        <name>HF_RMT_IS_VALID_RX_CHANNEL</name>
+        <param><defname>ch</defname></param>
+        <initializer>((ch) &gt;= 2 &amp;&amp; (ch) &lt; 4)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="182" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__PIO_8h_1a79618227c51e7178748cf70f7c84a637" prot="public" static="no">
+        <name>HF_RMT_IS_VALID_RESOLUTION</name>
+        <param><defname>res</defname></param>
+        <initializer>  ((res) &gt;= <ref refid="EspTypes__PIO_8h_1aa53ae081043326b2da0d45b2ff2deefd" kindref="member">HF_RMT_MIN_RESOLUTION_HZ</ref> &amp;&amp; (res) &lt;= <ref refid="EspTypes__PIO_8h_1af1f43e780955fdef90eb64cc59fd9e5b" kindref="member">HF_RMT_MAX_RESOLUTION_HZ</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="185" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="185" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__PIO_8h_1a16f0f4b3950f65ab90e827d27934c2e3" prot="public" static="no">
+        <name>HF_RMT_IS_VALID_MEM_BLOCK_SIZE</name>
+        <param><defname>size</defname></param>
+        <initializer>  ((size) &gt;= <ref refid="EspTypes__PIO_8h_1a093b6a80899f1bef2c78d6ec138f5b02" kindref="member">HF_RMT_MIN_MEM_BLOCK_SYMBOLS</ref> &amp;&amp; (size) &lt;= <ref refid="EspTypes__PIO_8h_1a53f79917c818696345617b0f7024bbba" kindref="member">HF_RMT_MAX_MEM_BLOCK_SYMBOLS</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="187" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="187" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__PIO_8h_1a6f1d8b2942a0e57c90d534b938ce34ec" prot="public" static="no">
+        <name>HF_RMT_IS_VALID_QUEUE_DEPTH</name>
+        <param><defname>depth</defname></param>
+        <initializer>((depth) &gt;= 1 &amp;&amp; (depth) &lt;= <ref refid="EspTypes__PIO_8h_1a59da624c787717e4376c090e8af6cb1d" kindref="member">HF_RMT_MAX_QUEUE_DEPTH</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="189" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__PIO_8h_1a06902f6fba6197fe4d7dd89ea354bbd4" prot="public" static="no">
+        <name>HF_RMT_IS_VALID_INTR_PRIORITY</name>
+        <param><defname>prio</defname></param>
+        <initializer>((prio) &lt;= <ref refid="EspTypes__PIO_8h_1abbad47f4714a6616eee3725dccc6099f" kindref="member">HF_RMT_MAX_INTERRUPT_PRIORITY</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="190" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76c" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_rmt_clock_source_t</name>
+        <enumvalue id="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76ca0852836af0359416443d821e1b102966" prot="public">
+          <name>HF_RMT_CLK_SRC_DEFAULT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Default clock source (APB) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76caa673c51d0ce95a7cd66376e561f21547" prot="public">
+          <name>HF_RMT_CLK_SRC_APB</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>APB clock (80MHz) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76caa73f865a726c9912dae7c38c4327e501" prot="public">
+          <name>HF_RMT_CLK_SRC_XTAL</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Crystal clock (40MHz) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76ca2a215c14d702721f272aefcd894a6fcc" prot="public">
+          <name>HF_RMT_CLK_SRC_RC_FAST</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>RC fast clock (~8MHz) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 RMT clock source selection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="93" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="93" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__PIO_8h_1ad2129d37fc84128daf1b5b86637a3099" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_rmt_channel_direction_t</name>
+        <enumvalue id="EspTypes__PIO_8h_1ad2129d37fc84128daf1b5b86637a3099aa6535646255ac83212e4b4619fb7865b" prot="public">
+          <name>HF_RMT_CHANNEL_DIRECTION_TX</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Transmit direction. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__PIO_8h_1ad2129d37fc84128daf1b5b86637a3099aef9366dfcad4598471752316545f8760" prot="public">
+          <name>HF_RMT_CHANNEL_DIRECTION_RX</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Receive direction. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 RMT channel direction. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="103" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="103" bodyend="106"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_RMT_MAX_CHANNELS</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MAX_CHANNELS</name>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="69" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1ab7508e4109aca3f413275fa993a77a8a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_RMT_MAX_TX_CHANNELS</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MAX_TX_CHANNELS</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="70" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1aaacfbfc21e26ea350f2e7236e4aea940" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_RMT_MAX_RX_CHANNELS</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MAX_RX_CHANNELS</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="71" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1a79a3ac57b4c63981d8886acea6763d84" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_RMT_TX_CHANNEL_START</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_TX_CHANNEL_START</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="72" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1abf40c326792439da2c90257eb3adada6" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_RMT_RX_CHANNEL_START</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_RX_CHANNEL_START</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="73" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1a093b6a80899f1bef2c78d6ec138f5b02" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_RMT_MIN_MEM_BLOCK_SYMBOLS</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MIN_MEM_BLOCK_SYMBOLS</name>
+        <initializer>= 48</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="77" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1a53f79917c818696345617b0f7024bbba" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_RMT_MAX_MEM_BLOCK_SYMBOLS</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MAX_MEM_BLOCK_SYMBOLS</name>
+        <initializer>= 1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="78" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1aaad0ee623c1038e34eb944b5b445731c" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_RMT_DEFAULT_MEM_BLOCK_SYMBOLS</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_DEFAULT_MEM_BLOCK_SYMBOLS</name>
+        <initializer>= 64</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="79" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1af1f43e780955fdef90eb64cc59fd9e5b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_RMT_MAX_RESOLUTION_HZ</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MAX_RESOLUTION_HZ</name>
+        <initializer>= 80000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="80" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1aa53ae081043326b2da0d45b2ff2deefd" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_RMT_MIN_RESOLUTION_HZ</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MIN_RESOLUTION_HZ</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="81" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1af45dc50559dae58188c536cc308343c2" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_RMT_DEFAULT_RESOLUTION_HZ</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_DEFAULT_RESOLUTION_HZ</name>
+        <initializer>= 1000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="82" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1a59da624c787717e4376c090e8af6cb1d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_RMT_MAX_QUEUE_DEPTH</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MAX_QUEUE_DEPTH</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="83" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__PIO_8h_1abbad47f4714a6616eee3725dccc6099f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_RMT_MAX_INTERRUPT_PRIORITY</definition>
+        <argsstring></argsstring>
+        <name>HF_RMT_MAX_INTERRUPT_PRIORITY</name>
+        <initializer>= 7</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="84" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="EspTypes__PIO_8h_1aead29c9898f4807452bd81781d37575e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr int8_t</type>
+        <definition>constexpr int8_t HfRmtGetTxChannel</definition>
+        <argsstring>(uint8_t index) noexcept</argsstring>
+        <name>HfRmtGetTxChannel</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Get the recommended TX channel for the current ESP32 variant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel index (0-based within available TX channels) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Actual channel number, or -1 if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="197" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="197" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__PIO_8h_1a6de836c13a7f5ffe6f9520ff94fedc4f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr int8_t</type>
+        <definition>constexpr int8_t HfRmtGetRxChannel</definition>
+        <argsstring>(uint8_t index) noexcept</argsstring>
+        <name>HfRmtGetRxChannel</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+<para>Get the recommended RX channel for the current ESP32 variant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel index (0-based within available RX channels) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Actual channel number, or -1 if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="209" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="209" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__PIO_8h_1a79298e81322ce727d23c9e32677f12ea" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool HfRmtIsChannelValidForDirection</definition>
+        <argsstring>(uint8_t channel_id, hf_pio_direction_t direction) noexcept</argsstring>
+        <name>HfRmtIsChannelValidForDirection</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655" kindref="member">hf_pio_direction_t</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Validate channel for specific direction on current ESP32 variant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel number to validate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Direction (TX or RX) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if channel is valid for the direction, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="222" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="222" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__PIO_8h_1a173709d1cf3ebe73343fe96b9d2428ea" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr const char *</type>
+        <definition>constexpr const char * HfRmtGetVariantName</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>HfRmtGetVariantName</name>
+        <briefdescription>
+<para>Get ESP32 variant name for debugging. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>String describing the current ESP32 variant </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="245" column="29" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="245" bodyend="261"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 PIO/RMT type definitions for hardware abstraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines only the essential PIO/RMT-specific types used by the <ref refid="classEspPio" kindref="compound">EspPio</ref> implementation. Clean and minimal approach.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BasePio_8h" kindref="compound">BasePio.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>hf_pio_err_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__Base_8h" kindref="compound">EspTypes_Base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>basic<sp/>hardware<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Central<sp/>MCU<sp/>platform<sp/>selection<sp/>(includes<sp/>all<sp/>ESP-IDF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>PIO/RMT<sp/>TYPE<sp/>MAPPINGS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Direct<sp/>ESP-IDF<sp/>type<sp/>usage<sp/>-<sp/>no<sp/>unnecessary<sp/>aliases</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>types<sp/>are<sp/>used<sp/>internally<sp/>by<sp/>EspPio<sp/>implementation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>PIO/RMT<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Variant-Specific<sp/>RMT<sp/>Channel<sp/>Allocation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Based<sp/>on<sp/>ESP-IDF<sp/>v5.5<sp/>specifications<sp/>for<sp/>different<sp/>ESP32<sp/>models</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(CONFIG_IDF_TARGET_ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32:<sp/>8<sp/>channels,<sp/>each<sp/>configurable<sp/>as<sp/>TX<sp/>or<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1ab7508e4109aca3f413275fa993a77a8a" kindref="member">HF_RMT_MAX_TX_CHANNELS</ref><sp/>=<sp/>8;<sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>channels<sp/>can<sp/>be<sp/>TX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1aaacfbfc21e26ea350f2e7236e4aea940" kindref="member">HF_RMT_MAX_RX_CHANNELS</ref><sp/>=<sp/>8;<sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>channels<sp/>can<sp/>be<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1a79a3ac57b4c63981d8886acea6763d84" kindref="member">HF_RMT_TX_CHANNEL_START</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>TX<sp/>channels:<sp/>0-7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1abf40c326792439da2c90257eb3adada6" kindref="member">HF_RMT_RX_CHANNEL_START</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>RX<sp/>channels:<sp/>0-7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S2:<sp/>4<sp/>channels,<sp/>each<sp/>configurable<sp/>as<sp/>TX<sp/>or<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1ab7508e4109aca3f413275fa993a77a8a" kindref="member">HF_RMT_MAX_TX_CHANNELS</ref><sp/>=<sp/>4;<sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>channels<sp/>can<sp/>be<sp/>TX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1aaacfbfc21e26ea350f2e7236e4aea940" kindref="member">HF_RMT_MAX_RX_CHANNELS</ref><sp/>=<sp/>4;<sp/><sp/></highlight><highlight class="comment">//<sp/>All<sp/>channels<sp/>can<sp/>be<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1a79a3ac57b4c63981d8886acea6763d84" kindref="member">HF_RMT_TX_CHANNEL_START</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>TX<sp/>channels:<sp/>0-3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1abf40c326792439da2c90257eb3adada6" kindref="member">HF_RMT_RX_CHANNEL_START</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>RX<sp/>channels:<sp/>0-3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S3:<sp/>8<sp/>channels,<sp/>hardcoded<sp/>TX/RX<sp/>allocation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1ab7508e4109aca3f413275fa993a77a8a" kindref="member">HF_RMT_MAX_TX_CHANNELS</ref><sp/>=<sp/>4;<sp/><sp/></highlight><highlight class="comment">//<sp/>Channels<sp/>0-3<sp/>are<sp/>hardcoded<sp/>for<sp/>TX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1aaacfbfc21e26ea350f2e7236e4aea940" kindref="member">HF_RMT_MAX_RX_CHANNELS</ref><sp/>=<sp/>4;<sp/><sp/></highlight><highlight class="comment">//<sp/>Channels<sp/>4-7<sp/>are<sp/>hardcoded<sp/>for<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1a79a3ac57b4c63981d8886acea6763d84" kindref="member">HF_RMT_TX_CHANNEL_START</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>TX<sp/>channels:<sp/>0-3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1abf40c326792439da2c90257eb3adada6" kindref="member">HF_RMT_RX_CHANNEL_START</ref><sp/>=<sp/>4;<sp/></highlight><highlight class="comment">//<sp/>RX<sp/>channels:<sp/>4-7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32C3)<sp/>||<sp/>defined(CONFIG_IDF_TARGET_ESP32C6)<sp/>||<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>defined(CONFIG_IDF_TARGET_ESP32H2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C3/C6/H2:<sp/>4<sp/>channels,<sp/>hardcoded<sp/>TX/RX<sp/>allocation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1ab7508e4109aca3f413275fa993a77a8a" kindref="member">HF_RMT_MAX_TX_CHANNELS</ref><sp/>=<sp/>2;<sp/><sp/></highlight><highlight class="comment">//<sp/>Channels<sp/>0-1<sp/>are<sp/>hardcoded<sp/>for<sp/>TX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1aaacfbfc21e26ea350f2e7236e4aea940" kindref="member">HF_RMT_MAX_RX_CHANNELS</ref><sp/>=<sp/>2;<sp/><sp/></highlight><highlight class="comment">//<sp/>Channels<sp/>2-3<sp/>are<sp/>hardcoded<sp/>for<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1a79a3ac57b4c63981d8886acea6763d84" kindref="member">HF_RMT_TX_CHANNEL_START</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>TX<sp/>channels:<sp/>0-1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1abf40c326792439da2c90257eb3adada6" kindref="member">HF_RMT_RX_CHANNEL_START</ref><sp/>=<sp/>2;<sp/></highlight><highlight class="comment">//<sp/>RX<sp/>channels:<sp/>2-3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Default<sp/>fallback<sp/>for<sp/>unknown<sp/>ESP32<sp/>variants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="70" refid="EspTypes__PIO_8h_1ab7508e4109aca3f413275fa993a77a8a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1ab7508e4109aca3f413275fa993a77a8a" kindref="member">HF_RMT_MAX_TX_CHANNELS</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="71" refid="EspTypes__PIO_8h_1aaacfbfc21e26ea350f2e7236e4aea940" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1aaacfbfc21e26ea350f2e7236e4aea940" kindref="member">HF_RMT_MAX_RX_CHANNELS</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="72" refid="EspTypes__PIO_8h_1a79a3ac57b4c63981d8886acea6763d84" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1a79a3ac57b4c63981d8886acea6763d84" kindref="member">HF_RMT_TX_CHANNEL_START</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="73" refid="EspTypes__PIO_8h_1abf40c326792439da2c90257eb3adada6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1abf40c326792439da2c90257eb3adada6" kindref="member">HF_RMT_RX_CHANNEL_START</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Common<sp/>RMT<sp/>constants<sp/>for<sp/>all<sp/>ESP32<sp/>variants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="EspTypes__PIO_8h_1a093b6a80899f1bef2c78d6ec138f5b02" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1a093b6a80899f1bef2c78d6ec138f5b02" kindref="member">HF_RMT_MIN_MEM_BLOCK_SYMBOLS</ref><sp/>=<sp/>48;</highlight></codeline>
+<codeline lineno="78" refid="EspTypes__PIO_8h_1a53f79917c818696345617b0f7024bbba" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1a53f79917c818696345617b0f7024bbba" kindref="member">HF_RMT_MAX_MEM_BLOCK_SYMBOLS</ref><sp/>=<sp/>1024;</highlight></codeline>
+<codeline lineno="79" refid="EspTypes__PIO_8h_1aaad0ee623c1038e34eb944b5b445731c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1aaad0ee623c1038e34eb944b5b445731c" kindref="member">HF_RMT_DEFAULT_MEM_BLOCK_SYMBOLS</ref><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="80" refid="EspTypes__PIO_8h_1af1f43e780955fdef90eb64cc59fd9e5b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__PIO_8h_1af1f43e780955fdef90eb64cc59fd9e5b" kindref="member">HF_RMT_MAX_RESOLUTION_HZ</ref><sp/>=<sp/>80000000;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>80<sp/>MHz<sp/>max</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="EspTypes__PIO_8h_1aa53ae081043326b2da0d45b2ff2deefd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__PIO_8h_1aa53ae081043326b2da0d45b2ff2deefd" kindref="member">HF_RMT_MIN_RESOLUTION_HZ</ref><sp/>=<sp/>1000;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1<sp/>kHz<sp/>min</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="EspTypes__PIO_8h_1af45dc50559dae58188c536cc308343c2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__PIO_8h_1af45dc50559dae58188c536cc308343c2" kindref="member">HF_RMT_DEFAULT_RESOLUTION_HZ</ref><sp/>=<sp/>1000000;<sp/></highlight><highlight class="comment">//<sp/>1<sp/>MHz<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="EspTypes__PIO_8h_1a59da624c787717e4376c090e8af6cb1d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1a59da624c787717e4376c090e8af6cb1d" kindref="member">HF_RMT_MAX_QUEUE_DEPTH</ref><sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="84" refid="EspTypes__PIO_8h_1abbad47f4714a6616eee3725dccc6099f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PIO_8h_1abbad47f4714a6616eee3725dccc6099f" kindref="member">HF_RMT_MAX_INTERRUPT_PRIORITY</ref><sp/>=<sp/>7;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>PIO/RMT<sp/>ENUMS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76c" kindref="member">hf_rmt_clock_source_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76ca0852836af0359416443d821e1b102966" kindref="member">HF_RMT_CLK_SRC_DEFAULT</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76caa673c51d0ce95a7cd66376e561f21547" kindref="member">HF_RMT_CLK_SRC_APB</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76caa73f865a726c9912dae7c38c4327e501" kindref="member">HF_RMT_CLK_SRC_XTAL</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PIO_8h_1a2a962d40c84ff2d9757252baa806a76ca2a215c14d702721f272aefcd894a6fcc" kindref="member">HF_RMT_CLK_SRC_RC_FAST</ref><sp/>=<sp/>3,<sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="EspTypes__PIO_8h_1ad2129d37fc84128daf1b5b86637a3099" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1ad2129d37fc84128daf1b5b86637a3099" kindref="member">hf_rmt_channel_direction_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PIO_8h_1ad2129d37fc84128daf1b5b86637a3099aa6535646255ac83212e4b4619fb7865b" kindref="member">HF_RMT_CHANNEL_DIRECTION_TX</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PIO_8h_1ad2129d37fc84128daf1b5b86637a3099aef9366dfcad4598471752316545f8760" kindref="member">HF_RMT_CHANNEL_DIRECTION_RX</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>PIO/RMT<sp/>CONFIGURATION<sp/>STRUCTURES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="structhf__rmt__transmit__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__rmt__transmit__config__t" kindref="compound">hf_rmt_transmit_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="116" refid="structhf__rmt__transmit__config__t_1abc3397d22ae6dae15c94dbb66c5d3fed" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__rmt__transmit__config__t_1abc3397d22ae6dae15c94dbb66c5d3fed" kindref="member">loop_count</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117" refid="structhf__rmt__transmit__config__t_1a9c0ef2eb453518428ac0feb511df93ac" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__rmt__transmit__config__t_1a9c0ef2eb453518428ac0feb511df93ac" kindref="member">invert_signal</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="118" refid="structhf__rmt__transmit__config__t_1a2eaa37be6151c91b183715162ae3d59c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__rmt__transmit__config__t_1a2eaa37be6151c91b183715162ae3d59c" kindref="member">with_dma</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="119" refid="structhf__rmt__transmit__config__t_1a0bb3cd7e7d96cd8edbb74b3a3e19b7cc" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__rmt__transmit__config__t_1a0bb3cd7e7d96cd8edbb74b3a3e19b7cc" kindref="member">queue_depth</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="120" refid="structhf__rmt__transmit__config__t_1adebc7682a90a515f170a41ef77fe31c6" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__rmt__transmit__config__t_1adebc7682a90a515f170a41ef77fe31c6" kindref="member">intr_priority</ref>;<sp/></highlight></codeline>
+<codeline lineno="121" refid="structhf__rmt__transmit__config__t_1a5dd98107e0d96f70dc2bf37056a48e9c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__rmt__transmit__config__t_1a5dd98107e0d96f70dc2bf37056a48e9c" kindref="member">allow_pd</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123" refid="structhf__rmt__transmit__config__t_1a04519f4a1925bc0cc8a9dc355953a395" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__rmt__transmit__config__t_1a04519f4a1925bc0cc8a9dc355953a395" kindref="member">hf_rmt_transmit_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__rmt__transmit__config__t_1abc3397d22ae6dae15c94dbb66c5d3fed" kindref="member">loop_count</ref>(0),<sp/><ref refid="structhf__rmt__transmit__config__t_1a9c0ef2eb453518428ac0feb511df93ac" kindref="member">invert_signal</ref>(false),<sp/><ref refid="structhf__rmt__transmit__config__t_1a2eaa37be6151c91b183715162ae3d59c" kindref="member">with_dma</ref>(false),<sp/><ref refid="structhf__rmt__transmit__config__t_1a0bb3cd7e7d96cd8edbb74b3a3e19b7cc" kindref="member">queue_depth</ref>(4),<sp/><ref refid="structhf__rmt__transmit__config__t_1adebc7682a90a515f170a41ef77fe31c6" kindref="member">intr_priority</ref>(0),</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__rmt__transmit__config__t_1a5dd98107e0d96f70dc2bf37056a48e9c" kindref="member">allow_pd</ref>(false)<sp/>{}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="structhf__rmt__receive__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__rmt__receive__config__t" kindref="compound">hf_rmt_receive_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="132" refid="structhf__rmt__receive__config__t_1aca47defe9973d11b9e0522cc1dfa1f0c" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__rmt__receive__config__t_1aca47defe9973d11b9e0522cc1dfa1f0c" kindref="member">signal_range_min_ns</ref>;<sp/></highlight></codeline>
+<codeline lineno="133" refid="structhf__rmt__receive__config__t_1ace392b39a071d0eafa0bba176082243f" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__rmt__receive__config__t_1ace392b39a071d0eafa0bba176082243f" kindref="member">signal_range_max_ns</ref>;<sp/></highlight></codeline>
+<codeline lineno="134" refid="structhf__rmt__receive__config__t_1a8cfc5833c6a98455e2ef6742bb998290" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__rmt__receive__config__t_1a8cfc5833c6a98455e2ef6742bb998290" kindref="member">with_dma</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="135" refid="structhf__rmt__receive__config__t_1abc64020d95e88f1d7ec10d1177887a95" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__rmt__receive__config__t_1abc64020d95e88f1d7ec10d1177887a95" kindref="member">intr_priority</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="136" refid="structhf__rmt__receive__config__t_1a7ce2cf3f96c36cf2f890f8a7fb8439fa" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__rmt__receive__config__t_1a7ce2cf3f96c36cf2f890f8a7fb8439fa" kindref="member">allow_pd</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="structhf__rmt__receive__config__t_1a448edfb7b985b61a584cb1d98fd35806" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__rmt__receive__config__t_1a448edfb7b985b61a584cb1d98fd35806" kindref="member">hf_rmt_receive_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__rmt__receive__config__t_1aca47defe9973d11b9e0522cc1dfa1f0c" kindref="member">signal_range_min_ns</ref>(1000),<sp/><ref refid="structhf__rmt__receive__config__t_1ace392b39a071d0eafa0bba176082243f" kindref="member">signal_range_max_ns</ref>(1000000),<sp/><ref refid="structhf__rmt__receive__config__t_1a8cfc5833c6a98455e2ef6742bb998290" kindref="member">with_dma</ref>(false),<sp/><ref refid="structhf__rmt__receive__config__t_1abc64020d95e88f1d7ec10d1177887a95" kindref="member">intr_priority</ref>(0),</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__rmt__receive__config__t_1a7ce2cf3f96c36cf2f890f8a7fb8439fa" kindref="member">allow_pd</ref>(false)<sp/>{}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="structhf__rmt__carrier__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__rmt__carrier__config__t" kindref="compound">hf_rmt_carrier_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="147" refid="structhf__rmt__carrier__config__t_1ae84054ef4008da890a853cd7e6e8aa16" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__rmt__carrier__config__t_1ae84054ef4008da890a853cd7e6e8aa16" kindref="member">frequency_hz</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="148" refid="structhf__rmt__carrier__config__t_1ac67b681d7bbb93ceaef2a30bf8db41c1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="structhf__rmt__carrier__config__t_1ac67b681d7bbb93ceaef2a30bf8db41c1" kindref="member">duty_cycle</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149" refid="structhf__rmt__carrier__config__t_1a1581f036ec899e3819be3a2827121b91" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__rmt__carrier__config__t_1a1581f036ec899e3819be3a2827121b91" kindref="member">polarity_active_low</ref>;<sp/></highlight></codeline>
+<codeline lineno="150" refid="structhf__rmt__carrier__config__t_1aa2ca649022ad228b60543eec8a8b2e65" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__rmt__carrier__config__t_1aa2ca649022ad228b60543eec8a8b2e65" kindref="member">always_on</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="structhf__rmt__carrier__config__t_1aa54c09fdac18473a8fce85793a72015f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__rmt__carrier__config__t_1aa54c09fdac18473a8fce85793a72015f" kindref="member">hf_rmt_carrier_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__rmt__carrier__config__t_1ae84054ef4008da890a853cd7e6e8aa16" kindref="member">frequency_hz</ref>(38000),<sp/><ref refid="structhf__rmt__carrier__config__t_1ac67b681d7bbb93ceaef2a30bf8db41c1" kindref="member">duty_cycle</ref>(0.5f),<sp/><ref refid="structhf__rmt__carrier__config__t_1a1581f036ec899e3819be3a2827121b91" kindref="member">polarity_active_low</ref>(0),<sp/><ref refid="structhf__rmt__carrier__config__t_1aa2ca649022ad228b60543eec8a8b2e65" kindref="member">always_on</ref>(false)<sp/>{}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>PIO/RMT<sp/>VALIDATION<sp/>MACROS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="EspTypes__PIO_8h_1ad2b82da7e096893f1b444ae97c35a6d7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_CHANNEL(ch)<sp/>((ch)<sp/>&lt;<sp/>HF_RMT_MAX_CHANNELS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>variant-specific<sp/>TX<sp/>channel<sp/>validation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(CONFIG_IDF_TARGET_ESP32)<sp/>||<sp/>defined(CONFIG_IDF_TARGET_ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32/ESP32-S2:<sp/>Any<sp/>channel<sp/>can<sp/>be<sp/>TX<sp/>or<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_TX_CHANNEL(ch)<sp/>((ch)<sp/>&lt;<sp/>HF_RMT_MAX_CHANNELS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_RX_CHANNEL(ch)<sp/>((ch)<sp/>&lt;<sp/>HF_RMT_MAX_CHANNELS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S3:<sp/>Channels<sp/>0-3<sp/>for<sp/>TX,<sp/>4-7<sp/>for<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_TX_CHANNEL(ch)<sp/>((ch)<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>(ch)<sp/>&lt;<sp/>4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_RX_CHANNEL(ch)<sp/>((ch)<sp/>&gt;=<sp/>4<sp/>&amp;&amp;<sp/>(ch)<sp/>&lt;<sp/>8)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32C3)<sp/>||<sp/>defined(CONFIG_IDF_TARGET_ESP32C6)<sp/>||<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="175"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>defined(CONFIG_IDF_TARGET_ESP32H2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C3/C6/H2:<sp/>Channels<sp/>0-1<sp/>for<sp/>TX,<sp/>2-3<sp/>for<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_TX_CHANNEL(ch)<sp/>((ch)<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>(ch)<sp/>&lt;<sp/>2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_RX_CHANNEL(ch)<sp/>((ch)<sp/>&gt;=<sp/>2<sp/>&amp;&amp;<sp/>(ch)<sp/>&lt;<sp/>4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Default<sp/>fallback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="EspTypes__PIO_8h_1a7cc70c572c5295cf3882286ca95f4e58" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_TX_CHANNEL(ch)<sp/>((ch)<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>(ch)<sp/>&lt;<sp/>2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="EspTypes__PIO_8h_1a44b7217b0d81e66dcae71f9b95aac199" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_RX_CHANNEL(ch)<sp/>((ch)<sp/>&gt;=<sp/>2<sp/>&amp;&amp;<sp/>(ch)<sp/>&lt;<sp/>4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="EspTypes__PIO_8h_1a79618227c51e7178748cf70f7c84a637" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_RESOLUTION(res)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="186"><highlight class="preprocessor"><sp/><sp/>((res)<sp/>&gt;=<sp/>HF_RMT_MIN_RESOLUTION_HZ<sp/>&amp;&amp;<sp/>(res)<sp/>&lt;=<sp/>HF_RMT_MAX_RESOLUTION_HZ)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="EspTypes__PIO_8h_1a16f0f4b3950f65ab90e827d27934c2e3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_MEM_BLOCK_SIZE(size)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="188"><highlight class="preprocessor"><sp/><sp/>((size)<sp/>&gt;=<sp/>HF_RMT_MIN_MEM_BLOCK_SYMBOLS<sp/>&amp;&amp;<sp/>(size)<sp/>&lt;=<sp/>HF_RMT_MAX_MEM_BLOCK_SYMBOLS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="EspTypes__PIO_8h_1a6f1d8b2942a0e57c90d534b938ce34ec" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_QUEUE_DEPTH(depth)<sp/>((depth)<sp/>&gt;=<sp/>1<sp/>&amp;&amp;<sp/>(depth)<sp/>&lt;=<sp/>HF_RMT_MAX_QUEUE_DEPTH)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="EspTypes__PIO_8h_1a06902f6fba6197fe4d7dd89ea354bbd4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_RMT_IS_VALID_INTR_PRIORITY(prio)<sp/>((prio)<sp/>&lt;=<sp/>HF_RMT_MAX_INTERRUPT_PRIORITY)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="EspTypes__PIO_8h_1aead29c9898f4807452bd81781d37575e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="EspTypes__PIO_8h_1aead29c9898f4807452bd81781d37575e" kindref="member">HfRmtGetTxChannel</ref>(uint8_t<sp/>index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&gt;=<sp/><ref refid="EspTypes__PIO_8h_1ab7508e4109aca3f413275fa993a77a8a" kindref="member">HF_RMT_MAX_TX_CHANNELS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">int8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="EspTypes__PIO_8h_1a79a3ac57b4c63981d8886acea6763d84" kindref="member">HF_RMT_TX_CHANNEL_START</ref><sp/>+<sp/>index);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="EspTypes__PIO_8h_1a6de836c13a7f5ffe6f9520ff94fedc4f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>int8_t<sp/><ref refid="EspTypes__PIO_8h_1a6de836c13a7f5ffe6f9520ff94fedc4f" kindref="member">HfRmtGetRxChannel</ref>(uint8_t<sp/>index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&gt;=<sp/><ref refid="EspTypes__PIO_8h_1aaacfbfc21e26ea350f2e7236e4aea940" kindref="member">HF_RMT_MAX_RX_CHANNELS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">int8_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="EspTypes__PIO_8h_1abf40c326792439da2c90257eb3adada6" kindref="member">HF_RMT_RX_CHANNEL_START</ref><sp/>+<sp/>index);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="EspTypes__PIO_8h_1a79298e81322ce727d23c9e32677f12ea" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1a79298e81322ce727d23c9e32677f12ea" kindref="member">HfRmtIsChannelValidForDirection</ref>(uint8_t<sp/>channel_id,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655" kindref="member">hf_pio_direction_t</ref><sp/>direction)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="EspTypes__PIO_8h_1ad2b82da7e096893f1b444ae97c35a6d7" kindref="member">HF_RMT_IS_VALID_CHANNEL</ref>(channel_id))<sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(direction)<sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655a6c2958de5e2295b8cb67bac908244879" kindref="member">hf_pio_direction_t::Transmit</ref>:</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1a7cc70c572c5295cf3882286ca95f4e58" kindref="member">HF_RMT_IS_VALID_TX_CHANNEL</ref>(channel_id);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655a5639d3df5aea3d9e78027b843ee3cbb2" kindref="member">hf_pio_direction_t::Receive</ref>:</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1a44b7217b0d81e66dcae71f9b95aac199" kindref="member">HF_RMT_IS_VALID_RX_CHANNEL</ref>(channel_id);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655aabd4328c725637aabedbd02d3b7ffd40" kindref="member">hf_pio_direction_t::Bidirectional</ref>:</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bidirectional<sp/>requires<sp/>both<sp/>TX<sp/>and<sp/>RX<sp/>capability</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PIO_8h_1a7cc70c572c5295cf3882286ca95f4e58" kindref="member">HF_RMT_IS_VALID_TX_CHANNEL</ref>(channel_id)<sp/>&amp;&amp;<sp/><ref refid="EspTypes__PIO_8h_1a44b7217b0d81e66dcae71f9b95aac199" kindref="member">HF_RMT_IS_VALID_RX_CHANNEL</ref>(channel_id);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="EspTypes__PIO_8h_1a173709d1cf3ebe73343fe96b9d2428ea" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="EspTypes__PIO_8h_1a173709d1cf3ebe73343fe96b9d2428ea" kindref="member">HfRmtGetVariantName</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(CONFIG_IDF_TARGET_ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ESP32&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ESP32-S2&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ESP32-S3&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32C3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ESP32-C3&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32C6)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ESP32-C6&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(CONFIG_IDF_TARGET_ESP32H2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ESP32-H2&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>ESP32&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>ESPPIO<sp/>TYPES<sp/>-<sp/>MINIMAL<sp/>AND<sp/>ESSENTIAL<sp/>ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/utils/EspTypes_PIO.h"/>
+  </compounddef>
+</doxygen>

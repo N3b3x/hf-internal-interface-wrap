@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structEspPwm_1_1ValidationResult" kind="struct" language="C++" prot="private">
+    <compoundname>EspPwm::ValidationResult</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1a866fcdc59c761dde8870337f03af992e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPwm::ValidationResult::is_valid</definition>
+        <argsstring></argsstring>
+        <name>is_valid</name>
+        <qualifiedname>EspPwm::ValidationResult::is_valid</qualifiedname>
+        <briefdescription>
+<para>Overall validation result. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="939" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="939" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1aec6fced46c1c2c43c247e355abbed17e" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t EspPwm::ValidationResult::error_code</definition>
+        <argsstring></argsstring>
+        <name>error_code</name>
+        <qualifiedname>EspPwm::ValidationResult::error_code</qualifiedname>
+        <briefdescription>
+<para>Specific error code if invalid. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="940" column="18" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="940" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1a479799d6007643681a43b0da284da79e" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* EspPwm::ValidationResult::reason</definition>
+        <argsstring></argsstring>
+        <name>reason</name>
+        <qualifiedname>EspPwm::ValidationResult::reason</qualifiedname>
+        <briefdescription>
+<para>Human-readable reason for failure. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="941" column="16" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="941" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1a351da8c280f4074a43acc8eddac6761c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t EspPwm::ValidationResult::max_achievable_resolution</definition>
+        <argsstring></argsstring>
+        <name>max_achievable_resolution</name>
+        <qualifiedname>EspPwm::ValidationResult::max_achievable_resolution</qualifiedname>
+        <briefdescription>
+<para>Maximum resolution for this frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="942" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="942" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1a07f8748cc7ba687e546292fee11ee0d6" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPwm::ValidationResult::max_achievable_frequency</definition>
+        <argsstring></argsstring>
+        <name>max_achievable_frequency</name>
+        <qualifiedname>EspPwm::ValidationResult::max_achievable_frequency</qualifiedname>
+        <briefdescription>
+<para>Maximum frequency for this resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="943" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="943" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1ab8910eb820419fc2c601d283a3d98a46" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t EspPwm::ValidationResult::required_clock_hz</definition>
+        <argsstring></argsstring>
+        <name>required_clock_hz</name>
+        <qualifiedname>EspPwm::ValidationResult::required_clock_hz</qualifiedname>
+        <briefdescription>
+<para>Required timer clock frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="944" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="944" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationResult_1a46a6889b96ddfd7dee0739f92fe5211d" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t EspPwm::ValidationResult::available_clock_hz</definition>
+        <argsstring></argsstring>
+        <name>available_clock_hz</name>
+        <qualifiedname>EspPwm::ValidationResult::available_clock_hz</qualifiedname>
+        <briefdescription>
+<para>Available source clock frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="945" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="945" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEspPwm_1_1ValidationResult_1a48ea061e23889d58c2a5a0978bfaed89" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPwm::ValidationResult::ValidationResult</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ValidationResult</name>
+        <qualifiedname>EspPwm::ValidationResult::ValidationResult</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="947" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="947" bodyend="950"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Comprehensive validation result with detailed information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspPwm.h" line="938" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="938" bodyend="951"/>
+    <listofallmembers>
+      <member refid="structEspPwm_1_1ValidationResult_1a46a6889b96ddfd7dee0739f92fe5211d" prot="public" virt="non-virtual"><scope>EspPwm::ValidationResult</scope><name>available_clock_hz</name></member>
+      <member refid="structEspPwm_1_1ValidationResult_1aec6fced46c1c2c43c247e355abbed17e" prot="public" virt="non-virtual"><scope>EspPwm::ValidationResult</scope><name>error_code</name></member>
+      <member refid="structEspPwm_1_1ValidationResult_1a866fcdc59c761dde8870337f03af992e" prot="public" virt="non-virtual"><scope>EspPwm::ValidationResult</scope><name>is_valid</name></member>
+      <member refid="structEspPwm_1_1ValidationResult_1a07f8748cc7ba687e546292fee11ee0d6" prot="public" virt="non-virtual"><scope>EspPwm::ValidationResult</scope><name>max_achievable_frequency</name></member>
+      <member refid="structEspPwm_1_1ValidationResult_1a351da8c280f4074a43acc8eddac6761c" prot="public" virt="non-virtual"><scope>EspPwm::ValidationResult</scope><name>max_achievable_resolution</name></member>
+      <member refid="structEspPwm_1_1ValidationResult_1a479799d6007643681a43b0da284da79e" prot="public" virt="non-virtual"><scope>EspPwm::ValidationResult</scope><name>reason</name></member>
+      <member refid="structEspPwm_1_1ValidationResult_1ab8910eb820419fc2c601d283a3d98a46" prot="public" virt="non-virtual"><scope>EspPwm::ValidationResult</scope><name>required_clock_hz</name></member>
+      <member refid="structEspPwm_1_1ValidationResult_1a48ea061e23889d58c2a5a0978bfaed89" prot="public" virt="non-virtual"><scope>EspPwm::ValidationResult</scope><name>ValidationResult</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

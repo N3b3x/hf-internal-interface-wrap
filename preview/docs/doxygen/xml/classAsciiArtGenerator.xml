@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classAsciiArtGenerator" kind="class" language="C++" prot="public">
+    <compoundname>AsciiArtGenerator</compoundname>
+    <includes refid="AsciiArtGenerator_8h" local="no">AsciiArtGenerator.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classAsciiArtGenerator_1a3c0a763b63befc2fec4113db17968a03" prot="private" static="no" mutable="no">
+        <type>std::map&lt; char, std::vector&lt; std::string &gt; &gt;</type>
+        <definition>std::map&lt;char, std::vector&lt;std::string&gt; &gt; AsciiArtGenerator::custom_characters_</definition>
+        <argsstring></argsstring>
+        <name>custom_characters_</name>
+        <qualifiedname>AsciiArtGenerator::custom_characters_</qualifiedname>
+        <briefdescription>
+<para>Custom character mappings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="104" column="12" bodyfile="inc/utils/AsciiArtGenerator.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classAsciiArtGenerator_1a90b8da25407accbe12ed5fa67346e98a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>AsciiArtGenerator::AsciiArtGenerator</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>AsciiArtGenerator</name>
+        <qualifiedname>AsciiArtGenerator::AsciiArtGenerator</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="54" column="3" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classAsciiArtGenerator_1aeab9a32548c2fefbda9c345c402b99c4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>AsciiArtGenerator::~AsciiArtGenerator</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~AsciiArtGenerator</name>
+        <qualifiedname>AsciiArtGenerator::~AsciiArtGenerator</qualifiedname>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="59" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classAsciiArtGenerator_1a5fbd853ebc4fcd647c90c307d4b09eaa" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string AsciiArtGenerator::Generate</definition>
+        <argsstring>(const std::string &amp;input) const noexcept</argsstring>
+        <name>Generate</name>
+        <qualifiedname>AsciiArtGenerator::Generate</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>input</declname>
+        </param>
+        <briefdescription>
+<para>Generate ASCII art from string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>input</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input string to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Generated ASCII art </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="66" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="119" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classAsciiArtGenerator_1a8c964526be3777137b7178e0c5899256" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AsciiArtGenerator::AddCustomCharacter</definition>
+        <argsstring>(char character, const std::vector&lt; std::string &gt; &amp;art_lines) noexcept</argsstring>
+        <name>AddCustomCharacter</name>
+        <qualifiedname>AsciiArtGenerator::AddCustomCharacter</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>character</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>art_lines</declname>
+        </param>
+        <briefdescription>
+<para>Add custom character mapping. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>character</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Character to map </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>art_lines</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector of art lines for the character </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="73" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="149" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="classAsciiArtGenerator_1a8c389f7e432f659b2f0e188f69ec7474" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AsciiArtGenerator::RemoveCustomCharacter</definition>
+        <argsstring>(char character) noexcept</argsstring>
+        <name>RemoveCustomCharacter</name>
+        <qualifiedname>AsciiArtGenerator::RemoveCustomCharacter</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>character</declname>
+        </param>
+        <briefdescription>
+<para>Remove custom character mapping. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>character</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Character to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="79" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="156" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classAsciiArtGenerator_1a3c7febff5e83919dc6088971d1be2dc9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void AsciiArtGenerator::ClearCustomCharacters</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearCustomCharacters</name>
+        <qualifiedname>AsciiArtGenerator::ClearCustomCharacters</qualifiedname>
+        <briefdescription>
+<para>Clear all custom character mappings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="84" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="160" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classAsciiArtGenerator_1a623a5ea7b217aa2d20fbfc85b4fd0b61" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool AsciiArtGenerator::IsCharacterSupported</definition>
+        <argsstring>(char character) const noexcept</argsstring>
+        <name>IsCharacterSupported</name>
+        <qualifiedname>AsciiArtGenerator::IsCharacterSupported</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>character</declname>
+        </param>
+        <briefdescription>
+<para>Check if character is supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>character</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Character to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if supported, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="91" column="8" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="164" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classAsciiArtGenerator_1ab42dc9fb7f379e7ba51431295a207258" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string AsciiArtGenerator::GetSupportedCharacters</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetSupportedCharacters</name>
+        <qualifiedname>AsciiArtGenerator::GetSupportedCharacters</qualifiedname>
+        <briefdescription>
+<para>Get supported characters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>String of supported characters </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="97" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="169" bodyend="178"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classAsciiArtGenerator_1ad4b133fd0762afa26339bb2650eab228" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt; std::string &gt; AsciiArtGenerator::GetCharacterArt</definition>
+        <argsstring>(char character) const noexcept</argsstring>
+        <name>GetCharacterArt</name>
+        <qualifiedname>AsciiArtGenerator::GetCharacterArt</qualifiedname>
+        <param>
+          <type>char</type>
+          <declname>character</declname>
+        </param>
+        <briefdescription>
+<para>Get art lines for a character. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>character</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Character to get art for </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Vector of art lines </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/AsciiArtGenerator.h" line="115" column="15" bodyfile="src/utils/AsciiArtGenerator.cpp" bodystart="184" bodyend="205"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Simple ASCII art generator. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a simple ASCII art generator that creates large, stylized text from input strings. It focuses only on generating plain ASCII art without formatting - formatting is handled by the Logger system.</para>
+<para>Key Features:<itemizedlist>
+<listitem><para><bold>Simple Interface</bold>: Just generate ASCII art</para>
+</listitem><listitem><para><bold>Performance Optimized</bold>: Efficient string handling</para>
+</listitem><listitem><para><bold>Extensible</bold>: Easy to add new fonts and characters</para>
+</listitem><listitem><para><bold>No Formatting</bold>: Pure ASCII art generation</para>
+</listitem></itemizedlist>
+</para>
+<para>Usage Example: <programlisting><codeline><highlight class="normal"><ref refid="classAsciiArtGenerator" kindref="compound">AsciiArtGenerator</ref><sp/>generator;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Basic<sp/>usage</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">std::string<sp/>art<sp/>=<sp/>generator.<ref refid="classAsciiArtGenerator_1a5fbd853ebc4fcd647c90c307d4b09eaa" kindref="member">Generate</ref>(</highlight><highlight class="stringliteral">&quot;Hello<sp/>World&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>with<sp/>Logger<sp/>for<sp/>formatting</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">Logger&amp;<sp/>logger<sp/>=<sp/>Logger::GetInstance();</highlight></codeline>
+<codeline><highlight class="normal">logger.LogAsciiArt(</highlight><highlight class="stringliteral">&quot;BANNER&quot;</highlight><highlight class="normal">,<sp/>art,<sp/>AsciiArtFormat{});</highlight></codeline>
+</programlisting> </para>
+    </detaileddescription>
+    <location file="inc/utils/AsciiArtGenerator.h" line="49" column="1" bodyfile="inc/utils/AsciiArtGenerator.h" bodystart="49" bodyend="116"/>
+    <listofallmembers>
+      <member refid="classAsciiArtGenerator_1a8c964526be3777137b7178e0c5899256" prot="public" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>AddCustomCharacter</name></member>
+      <member refid="classAsciiArtGenerator_1a90b8da25407accbe12ed5fa67346e98a" prot="public" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>AsciiArtGenerator</name></member>
+      <member refid="classAsciiArtGenerator_1a3c7febff5e83919dc6088971d1be2dc9" prot="public" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>ClearCustomCharacters</name></member>
+      <member refid="classAsciiArtGenerator_1a3c0a763b63befc2fec4113db17968a03" prot="private" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>custom_characters_</name></member>
+      <member refid="classAsciiArtGenerator_1a5fbd853ebc4fcd647c90c307d4b09eaa" prot="public" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>Generate</name></member>
+      <member refid="classAsciiArtGenerator_1ad4b133fd0762afa26339bb2650eab228" prot="private" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>GetCharacterArt</name></member>
+      <member refid="classAsciiArtGenerator_1ab42dc9fb7f379e7ba51431295a207258" prot="public" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>GetSupportedCharacters</name></member>
+      <member refid="classAsciiArtGenerator_1a623a5ea7b217aa2d20fbfc85b4fd0b61" prot="public" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>IsCharacterSupported</name></member>
+      <member refid="classAsciiArtGenerator_1a8c389f7e432f659b2f0e188f69ec7474" prot="public" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>RemoveCustomCharacter</name></member>
+      <member refid="classAsciiArtGenerator_1aeab9a32548c2fefbda9c345c402b99c4" prot="public" virt="non-virtual"><scope>AsciiArtGenerator</scope><name>~AsciiArtGenerator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

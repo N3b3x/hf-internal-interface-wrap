@@ -1,0 +1,1743 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classEspCan" kind="class" language="C++" prot="public">
+    <compoundname>EspCan</compoundname>
+    <basecompoundref refid="classBaseCan" prot="public" virt="non-virtual">BaseCan</basecompoundref>
+    <includes refid="EspCan_8h" local="no">EspCan.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" prot="private" static="no" mutable="no">
+        <type>const <ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref></type>
+        <definition>const hf_esp_can_config_t EspCan::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>EspCan::config_</qualifiedname>
+        <briefdescription>
+<para>TWAI node configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="510" column="29" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="510" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a8f4ec03bb515d5543808e3c3a076621e" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; EspCan::is_enabled_</definition>
+        <argsstring></argsstring>
+        <name>is_enabled_</name>
+        <qualifiedname>EspCan::is_enabled_</qualifiedname>
+        <briefdescription>
+<para>Node enabled state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="513" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="513" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a9268e3542c090d15173658df7154e683" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; EspCan::is_recovering_</definition>
+        <argsstring></argsstring>
+        <name>is_recovering_</name>
+        <qualifiedname>EspCan::is_recovering_</qualifiedname>
+        <briefdescription>
+<para>Bus recovery state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="514" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="514" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspCan::config_mutex_</definition>
+        <argsstring></argsstring>
+        <name>config_mutex_</name>
+        <qualifiedname>EspCan::config_mutex_</qualifiedname>
+        <briefdescription>
+<para>Configuration mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="517" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="517" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a5558e66e04d7289fd79cc6d003ef29b6" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspCan::stats_mutex_</definition>
+        <argsstring></argsstring>
+        <name>stats_mutex_</name>
+        <qualifiedname>EspCan::stats_mutex_</qualifiedname>
+        <briefdescription>
+<para>Statistics mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="518" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="518" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspCan::callback_mutex_</definition>
+        <argsstring></argsstring>
+        <name>callback_mutex_</name>
+        <qualifiedname>EspCan::callback_mutex_</qualifiedname>
+        <briefdescription>
+<para>Callback registry mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="519" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="519" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" prot="private" static="no" mutable="no">
+        <type>twai_node_handle_t</type>
+        <definition>twai_node_handle_t EspCan::twai_node_handle_</definition>
+        <argsstring></argsstring>
+        <name>twai_node_handle_</name>
+        <qualifiedname>EspCan::twai_node_handle_</qualifiedname>
+        <briefdescription>
+<para>Native TWAI node handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="522" column="22" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="522" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a033c6357046c20596ec8c70d4315da07" prot="private" static="no" mutable="no">
+        <type><ref refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" kindref="member">hf_esp_can_receive_callback_t</ref></type>
+        <definition>hf_esp_can_receive_callback_t EspCan::receive_cb_</definition>
+        <argsstring></argsstring>
+        <name>receive_cb_</name>
+        <qualifiedname>EspCan::receive_cb_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="525" column="33" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="525" bodyend="525"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspCan::receive_ud_</definition>
+        <argsstring></argsstring>
+        <name>receive_ud_</name>
+        <qualifiedname>EspCan::receive_ud_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="526" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="526" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1ad310be0cce73339268d83a1c3744a970" prot="private" static="no" mutable="no">
+        <type><ref refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" kindref="member">hf_esp_can_error_callback_t</ref></type>
+        <definition>hf_esp_can_error_callback_t EspCan::error_cb_</definition>
+        <argsstring></argsstring>
+        <name>error_cb_</name>
+        <qualifiedname>EspCan::error_cb_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="528" column="31" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="528" bodyend="528"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspCan::error_ud_</definition>
+        <argsstring></argsstring>
+        <name>error_ud_</name>
+        <qualifiedname>EspCan::error_ud_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="529" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="529" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a0283765650c36540b4a61fee2360d196" prot="private" static="no" mutable="no">
+        <type><ref refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" kindref="member">hf_esp_can_state_callback_t</ref></type>
+        <definition>hf_esp_can_state_callback_t EspCan::state_cb_</definition>
+        <argsstring></argsstring>
+        <name>state_cb_</name>
+        <qualifiedname>EspCan::state_cb_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="531" column="31" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="531" bodyend="531"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspCan::state_ud_</definition>
+        <argsstring></argsstring>
+        <name>state_ud_</name>
+        <qualifiedname>EspCan::state_ud_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="532" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="532" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" prot="private" static="no" mutable="no">
+        <type><ref refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" kindref="member">hf_esp_can_tx_callback_t</ref></type>
+        <definition>hf_esp_can_tx_callback_t EspCan::tx_cb_</definition>
+        <argsstring></argsstring>
+        <name>tx_cb_</name>
+        <qualifiedname>EspCan::tx_cb_</qualifiedname>
+        <initializer>{}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="534" column="28" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="534" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1ab431b6af90e985b67e4cc2d8c5fbd0b4" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspCan::tx_ud_</definition>
+        <argsstring></argsstring>
+        <name>tx_ud_</name>
+        <qualifiedname>EspCan::tx_ud_</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="535" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="535" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a2598cfa17215039375d57ff8a0682873" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref></type>
+        <definition>hf_can_statistics_t EspCan::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>EspCan::statistics_</qualifiedname>
+        <briefdescription>
+<para>Performance statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="538" column="23" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="538" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a6f392c8538addd589e6bccb3ba53e0ab" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref></type>
+        <definition>hf_can_diagnostics_t EspCan::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>EspCan::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>Diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="539" column="24" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="539" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1a3cf21056f01a68e4d23cb6abc8c8d7c2" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__esp__can__timing__config__t" kindref="compound">hf_esp_can_timing_config_t</ref></type>
+        <definition>hf_esp_can_timing_config_t EspCan::advanced_timing_</definition>
+        <argsstring></argsstring>
+        <name>advanced_timing_</name>
+        <qualifiedname>EspCan::advanced_timing_</qualifiedname>
+        <briefdescription>
+<para>Advanced timing configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="542" column="30" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="542" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1aa15ed2e4704f88bb924799628a305f7f" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__esp__can__filter__config__t" kindref="compound">hf_esp_can_filter_config_t</ref></type>
+        <definition>hf_esp_can_filter_config_t EspCan::current_filter_</definition>
+        <argsstring></argsstring>
+        <name>current_filter_</name>
+        <qualifiedname>EspCan::current_filter_</qualifiedname>
+        <briefdescription>
+<para>Current filter configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="543" column="30" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="543" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspCan_1acb5ae2ddfce72a30d1bd14b721f1faab" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspCan::filter_configured_</definition>
+        <argsstring></argsstring>
+        <name>filter_configured_</name>
+        <qualifiedname>EspCan::filter_configured_</qualifiedname>
+        <briefdescription>
+<para>Filter configuration state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="544" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="544" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEspCan_1ad254073ec0b39870dcc3f8d29806ed3b" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspCan::EspCan</definition>
+        <argsstring>(const hf_esp_can_config_t &amp;config) noexcept</argsstring>
+        <name>EspCan</name>
+        <qualifiedname>EspCan::EspCan</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Constructor with TWAI node configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TWAI node configuration parameters</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<bold>LAZY INITIALIZATION</bold>: The TWAI node is NOT physically configured until <ref refid="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" kindref="member">Initialize()</ref> is called. This follows the same pattern as <ref refid="classEspAdc" kindref="compound">EspAdc</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="216" column="12" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="55" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1aa842144f61a6f969b270e6d194d40f5c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspCan::~EspCan</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~EspCan</name>
+        <qualifiedname>EspCan::~EspCan</qualifiedname>
+        <briefdescription>
+<para>Destructor - ensures proper cleanup and resource deallocation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="221" column="3" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="67" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>EspCan::Initialize</qualifiedname>
+        <reimplements refid="classBaseCan_1a7a32156d471b1d44b1cff68cd3024bb2">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the TWAI node and allocate resources. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+<simplesect kind="note"><para>This method configures the TWAI hardware and starts the node </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="232" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="87" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a96ec0a7e2636ba9e99d651f21c4e9153" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>EspCan::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseCan_1a9d207d69485c479ab68c5396ce3d814c">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the TWAI node and free resources. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+<simplesect kind="note"><para>This method stops the TWAI node and releases all resources </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="239" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="168" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a3b9bfd81e512b835c89111b6cf0ced79" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::SendMessage</definition>
+        <argsstring>(const hf_can_message_t &amp;message, uint32_t timeout_ms=1000) noexcept override</argsstring>
+        <name>SendMessage</name>
+        <qualifiedname>EspCan::SendMessage</qualifiedname>
+        <reimplements refid="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8">SendMessage</reimplements>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>1000</defval>
+        </param>
+        <briefdescription>
+<para>Send a CAN message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CAN message to send </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = non-blocking) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="247" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="210" bodyend="280"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1ad33472b071ef5f1ab76efbdb58f3c855" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::ReceiveMessage</definition>
+        <argsstring>(hf_can_message_t &amp;message, uint32_t timeout_ms=0) noexcept override</argsstring>
+        <name>ReceiveMessage</name>
+        <qualifiedname>EspCan::ReceiveMessage</qualifiedname>
+        <reimplements refid="classBaseCan_1a300b5b097246fd7b9575050eb7eb239c">ReceiveMessage</reimplements>
+        <param>
+          <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Receive a CAN message (legacy polling interface). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store received message </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = non-blocking) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+<simplesect kind="note"><para>Callback-based reception is preferred for ESP-IDF v5.5+ </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="257" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="282" bodyend="294"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a15ded2afcc3564560fa704e661546500" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::SetReceiveCallback</definition>
+        <argsstring>(hf_can_receive_callback_t callback) noexcept override</argsstring>
+        <name>SetReceiveCallback</name>
+        <qualifiedname>EspCan::SetReceiveCallback</qualifiedname>
+        <reimplements refid="classBaseCan_1a9cef56fa208f09304bbd7129914a51a8">SetReceiveCallback</reimplements>
+        <param>
+          <type><ref refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" kindref="member">hf_can_receive_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+<para>Set callback for received messages (legacy support removed - use RegisterReceiveCallback). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function to handle received messages </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="265" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="296" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a6c7eea2a0ccea5125cafb3b26af6c5ff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EspCan::ClearReceiveCallback</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>ClearReceiveCallback</name>
+        <qualifiedname>EspCan::ClearReceiveCallback</qualifiedname>
+        <reimplements refid="classBaseCan_1a372729e0eeb758ba624aecfd07ef918c">ClearReceiveCallback</reimplements>
+        <briefdescription>
+<para>Clear the receive callback (legacy support removed - use UnregisterCallback). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="270" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="301" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1aacf7899068a281cb12144f913660aa49" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::SetReceiveCallbackEx</definition>
+        <argsstring>(hf_esp_can_receive_callback_t cb, void *user_data=nullptr) noexcept</argsstring>
+        <name>SetReceiveCallbackEx</name>
+        <qualifiedname>EspCan::SetReceiveCallbackEx</qualifiedname>
+        <param>
+          <type><ref refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" kindref="member">hf_esp_can_receive_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="277" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="310" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1af0cad1fa0e4c312eebcc5d1b938876df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::ClearReceiveCallbackEx</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearReceiveCallbackEx</name>
+        <qualifiedname>EspCan::ClearReceiveCallbackEx</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="279" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="319" bodyend="323"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1ae49c30b2a556b92b8a8dbb12d1eec148" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::SetErrorCallback</definition>
+        <argsstring>(hf_esp_can_error_callback_t cb, void *user_data=nullptr) noexcept</argsstring>
+        <name>SetErrorCallback</name>
+        <qualifiedname>EspCan::SetErrorCallback</qualifiedname>
+        <param>
+          <type><ref refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" kindref="member">hf_esp_can_error_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="282" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="325" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a077cc96263ea79483559055841d873d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::ClearErrorCallback</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearErrorCallback</name>
+        <qualifiedname>EspCan::ClearErrorCallback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="283" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="333" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::SetStateChangeCallback</definition>
+        <argsstring>(hf_esp_can_state_callback_t cb, void *user_data=nullptr) noexcept</argsstring>
+        <name>SetStateChangeCallback</name>
+        <qualifiedname>EspCan::SetStateChangeCallback</qualifiedname>
+        <param>
+          <type><ref refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" kindref="member">hf_esp_can_state_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="286" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="339" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a86db68ed58d7c1791683151cb9a49260" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::ClearStateChangeCallback</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearStateChangeCallback</name>
+        <qualifiedname>EspCan::ClearStateChangeCallback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="288" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="348" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a774bf708978527bf71ecee26c5075c48" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::SetTxCompleteCallback</definition>
+        <argsstring>(hf_esp_can_tx_callback_t cb, void *user_data=nullptr) noexcept</argsstring>
+        <name>SetTxCompleteCallback</name>
+        <qualifiedname>EspCan::SetTxCompleteCallback</qualifiedname>
+        <param>
+          <type><ref refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" kindref="member">hf_esp_can_tx_callback_t</ref></type>
+          <declname>cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="291" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="354" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a335b99de3bbf289de667f843ba83d31d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::ClearTxCompleteCallback</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearTxCompleteCallback</name>
+        <qualifiedname>EspCan::ClearTxCompleteCallback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="293" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="362" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1ab663edd5afb99a7ca95a9dd206d9ce85" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::GetStatus</definition>
+        <argsstring>(hf_can_status_t &amp;status) noexcept override</argsstring>
+        <name>GetStatus</name>
+        <qualifiedname>EspCan::GetStatus</qualifiedname>
+        <reimplements refid="classBaseCan_1ac39ec574726318ccb010c87bcea0ed0d">GetStatus</reimplements>
+        <param>
+          <type><ref refid="structhf__can__status__t" kindref="compound">hf_can_status_t</ref> &amp;</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Get current CAN bus status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store status information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="300" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="368" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a38369430ccabfe4f339052590d5e4960" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::Reset</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Reset</name>
+        <qualifiedname>EspCan::Reset</qualifiedname>
+        <reimplements refid="classBaseCan_1ab51e96a8d84616a1f2fdabd8452c0665">Reset</reimplements>
+        <briefdescription>
+<para>Reset the CAN controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="306" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="419" bodyend="471"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a10e2f318110996d269ab9b4c550aa1c7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::SetAcceptanceFilter</definition>
+        <argsstring>(uint32_t id, uint32_t mask, bool extended=false) noexcept override</argsstring>
+        <name>SetAcceptanceFilter</name>
+        <qualifiedname>EspCan::SetAcceptanceFilter</qualifiedname>
+        <reimplements refid="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c">SetAcceptanceFilter</reimplements>
+        <param>
+          <type>uint32_t</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>mask</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>extended</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Set acceptance filter for incoming messages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>CAN ID to accept </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>mask</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Acceptance mask (0 = don&apos;t care bits) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>extended</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true for extended frames, false for standard </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="315" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="473" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a8afcf00583c55f120bce0bdcd440cd29" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::ClearAcceptanceFilter</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>ClearAcceptanceFilter</name>
+        <qualifiedname>EspCan::ClearAcceptanceFilter</qualifiedname>
+        <reimplements refid="classBaseCan_1a523000694cee960aa8eee19bbd74c408">ClearAcceptanceFilter</reimplements>
+        <briefdescription>
+<para>Clear all acceptance filters (accept all messages). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="322" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="487" bodyend="494"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a0b3a9a316c7fc7949d481de6f6ac9856" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::GetStatistics</definition>
+        <argsstring>(hf_can_statistics_t &amp;stats) noexcept override</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>EspCan::GetStatistics</qualifiedname>
+        <reimplements refid="classBaseCan_1a938484f6f54bef73a04b5698214df442">GetStatistics</reimplements>
+        <param>
+          <type><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref> &amp;</type>
+          <declname>stats</declname>
+        </param>
+        <briefdescription>
+<para>Get detailed statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stats</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store statistics </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="333" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="500" bodyend="521"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a93f9301c2a7c54c29f4c115e41bd1c4e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::ResetStatistics</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>EspCan::ResetStatistics</qualifiedname>
+        <reimplements refid="classBaseCan_1ac6924ccef37360dd48ed18f128c8a17e">ResetStatistics</reimplements>
+        <briefdescription>
+<para>Reset statistics counters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="339" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="523" bodyend="544"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a56b08aacb4bdb4c440067e319593c013" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::GetDiagnostics</definition>
+        <argsstring>(hf_can_diagnostics_t &amp;diagnostics) noexcept override</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>EspCan::GetDiagnostics</qualifiedname>
+        <reimplements refid="classBaseCan_1a0c05b53922dafb9c544f1e1fa6977397">GetDiagnostics</reimplements>
+        <param>
+          <type><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store diagnostic data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="346" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="546" bodyend="565"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a2b68a7ae3dfcda3bb81766a9b333c7fd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::ConfigureAdvancedTiming</definition>
+        <argsstring>(const hf_esp_can_timing_config_t &amp;timing_config) noexcept</argsstring>
+        <name>ConfigureAdvancedTiming</name>
+        <qualifiedname>EspCan::ConfigureAdvancedTiming</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__esp__can__timing__config__t" kindref="compound">hf_esp_can_timing_config_t</ref> &amp;</type>
+          <declname>timing_config</declname>
+        </param>
+        <briefdescription>
+<para>Configure advanced bit timing parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timing_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Advanced timing configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="357" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="571" bodyend="627"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a2dceac78571417483299cfc7360e4cda" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::ConfigureAdvancedFilter</definition>
+        <argsstring>(const hf_esp_can_filter_config_t &amp;filter_config) noexcept</argsstring>
+        <name>ConfigureAdvancedFilter</name>
+        <qualifiedname>EspCan::ConfigureAdvancedFilter</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__esp__can__filter__config__t" kindref="compound">hf_esp_can_filter_config_t</ref> &amp;</type>
+          <declname>filter_config</declname>
+        </param>
+        <briefdescription>
+<para>Configure hardware acceptance filter with advanced options. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filter configuration including dual filter support </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="364" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="629" bodyend="687"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a5e051944e810526770cc8533ec28e7cf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::InitiateBusRecovery</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>InitiateBusRecovery</name>
+        <qualifiedname>EspCan::InitiateBusRecovery</qualifiedname>
+        <briefdescription>
+<para>Initiate bus recovery from bus-off state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="370" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="689" bodyend="725"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1aae5b5879e2700aad137e516be9edf1b7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::GetNodeInfo</definition>
+        <argsstring>(twai_node_record_t &amp;node_info) noexcept</argsstring>
+        <name>GetNodeInfo</name>
+        <qualifiedname>EspCan::GetNodeInfo</qualifiedname>
+        <param>
+          <type>twai_node_record_t &amp;</type>
+          <declname>node_info</declname>
+        </param>
+        <briefdescription>
+<para>Get detailed node information including error states. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>node_info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store node information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="377" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="727" bodyend="740"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a1c80557f426bd1c1b78cd0a7e0bbb8ee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t EspCan::SendMessageBatch</definition>
+        <argsstring>(const hf_can_message_t *messages, uint32_t count, uint32_t timeout_ms=1000) noexcept</argsstring>
+        <name>SendMessageBatch</name>
+        <qualifiedname>EspCan::SendMessageBatch</qualifiedname>
+        <reimplements refid="classBaseCan_1a6aa06ee8540daad6ffef529802cb2334">SendMessageBatch</reimplements>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> *</type>
+          <declname>messages</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>count</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>1000</defval>
+        </param>
+        <briefdescription>
+<para>Send multiple messages in a batch for improved performance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>messages</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of messages to send </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of messages </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout for each message </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of messages successfully sent </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="386" column="12" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="742" bodyend="760"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classEspCan_1a105e73dbb299a49c55dd044b4a30587e" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspCan::InternalReceiveCallback</definition>
+        <argsstring>(twai_node_handle_t handle, const twai_rx_done_event_data_t *event_data, void *user_ctx) noexcept</argsstring>
+        <name>InternalReceiveCallback</name>
+        <qualifiedname>EspCan::InternalReceiveCallback</qualifiedname>
+        <param>
+          <type>twai_node_handle_t</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>const twai_rx_done_event_data_t *</type>
+          <declname>event_data</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_ctx</declname>
+        </param>
+        <briefdescription>
+<para>Internal receive event callback for ESP-IDF v5.5 event system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TWAI node handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>event_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Event data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true to yield to higher priority task </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="401" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="766" bodyend="801"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a47f76d6f0c8f8e313709d7a6eadaa70f" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspCan::InternalErrorCallback</definition>
+        <argsstring>(twai_node_handle_t handle, const twai_error_event_data_t *event_data, void *user_ctx) noexcept</argsstring>
+        <name>InternalErrorCallback</name>
+        <qualifiedname>EspCan::InternalErrorCallback</qualifiedname>
+        <param>
+          <type>twai_node_handle_t</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>const twai_error_event_data_t *</type>
+          <declname>event_data</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_ctx</declname>
+        </param>
+        <briefdescription>
+<para>Internal error event callback for comprehensive error handling. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TWAI node handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>event_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error event data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true to yield to higher priority task </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="412" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="803" bodyend="817"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1aa6f1d7c5c5ad82b55ae5c83076ed0013" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspCan::InternalStateChangeCallback</definition>
+        <argsstring>(twai_node_handle_t handle, const twai_state_change_event_data_t *event_data, void *user_ctx) noexcept</argsstring>
+        <name>InternalStateChangeCallback</name>
+        <qualifiedname>EspCan::InternalStateChangeCallback</qualifiedname>
+        <param>
+          <type>twai_node_handle_t</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>const twai_state_change_event_data_t *</type>
+          <declname>event_data</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_ctx</declname>
+        </param>
+        <briefdescription>
+<para>Internal state change callback for bus recovery monitoring. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>TWAI node handle </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>event_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>State change event data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User context </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true to yield to higher priority task </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="423" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="819" bodyend="844"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classEspCan_1ae27d8b7560c7ce88f8a927dd2df94836" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::ConvertToTwaiFrame</definition>
+        <argsstring>(const hf_can_message_t &amp;hf_message, twai_frame_t &amp;twai_frame) noexcept</argsstring>
+        <name>ConvertToTwaiFrame</name>
+        <qualifiedname>EspCan::ConvertToTwaiFrame</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>hf_message</declname>
+        </param>
+        <param>
+          <type>twai_frame_t &amp;</type>
+          <declname>twai_frame</declname>
+        </param>
+        <briefdescription>
+<para>Convert HF CAN message to ESP-IDF v5.5 TWAI frame. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>hf_message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source HF message </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>twai_frame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination TWAI frame </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="437" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="850" bodyend="874"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a1b91c8ad9fd014b9eba4417e7abbbb1d" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::ConvertFromTwaiFrame</definition>
+        <argsstring>(const twai_frame_t &amp;twai_frame, hf_can_message_t &amp;hf_message) noexcept</argsstring>
+        <name>ConvertFromTwaiFrame</name>
+        <qualifiedname>EspCan::ConvertFromTwaiFrame</qualifiedname>
+        <param>
+          <type>const twai_frame_t &amp;</type>
+          <declname>twai_frame</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;</type>
+          <declname>hf_message</declname>
+        </param>
+        <briefdescription>
+<para>Convert ESP-IDF v5.5 TWAI frame to HF CAN message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>twai_frame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source TWAI frame </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hf_message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Destination HF message </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="446" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="876" bodyend="896"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
+        <definition>hf_can_err_t EspCan::ConvertEspError</definition>
+        <argsstring>(esp_err_t esp_err) noexcept</argsstring>
+        <name>ConvertEspError</name>
+        <qualifiedname>EspCan::ConvertEspError</qualifiedname>
+        <param>
+          <type>esp_err_t</type>
+          <declname>esp_err</declname>
+        </param>
+        <briefdescription>
+<para>Convert ESP-IDF error to HF error code. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>esp_err</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ESP-IDF error code </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_can_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="454" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="898" bodyend="917"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1aac77cb4d9af633288fd60fad3fee474b" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::UpdateStatistics</definition>
+        <argsstring>(hf_can_operation_type_t operation_type, bool success) noexcept</argsstring>
+        <name>UpdateStatistics</name>
+        <qualifiedname>EspCan::UpdateStatistics</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070e" kindref="member">hf_can_operation_type_t</ref></type>
+          <declname>operation_type</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>success</declname>
+        </param>
+        <briefdescription>
+<para>Update statistics after an operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>operation_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of operation </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>success</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether operation was successful </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="461" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="919" bodyend="941"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a5c0fe05680907d926d0bacdc6cebd811" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::ProcessReceivedMessage</definition>
+        <argsstring>(const twai_frame_t &amp;frame) noexcept</argsstring>
+        <name>ProcessReceivedMessage</name>
+        <qualifiedname>EspCan::ProcessReceivedMessage</qualifiedname>
+        <param>
+          <type>const twai_frame_t &amp;</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+<para>Process received message through callback system. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Received TWAI frame </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="467" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="947" bodyend="950"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a8fff536c8eae7799252dc4341bad7ba3" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::UpdateErrorStatistics</definition>
+        <argsstring>(uint32_t error_type) noexcept</argsstring>
+        <name>UpdateErrorStatistics</name>
+        <qualifiedname>EspCan::UpdateErrorStatistics</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>error_type</declname>
+        </param>
+        <briefdescription>
+<para>Update error statistics from error event. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error_type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error type from ESP-IDF </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="473" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="985" bodyend="1016"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1aea03a2e1e72fe5e104c150e71f988083" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::DispatchReceiveCallbacks</definition>
+        <argsstring>(const twai_frame_t &amp;frame) noexcept</argsstring>
+        <name>DispatchReceiveCallbacks</name>
+        <qualifiedname>EspCan::DispatchReceiveCallbacks</qualifiedname>
+        <param>
+          <type>const twai_frame_t &amp;</type>
+          <declname>frame</declname>
+        </param>
+        <briefdescription>
+<para>Dispatch message to all registered receive callbacks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frame</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Received TWAI frame </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="483" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="952" bodyend="963"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1a67fa247f0a5f007b0cb20e405ed1ed0c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::DispatchErrorCallbacks</definition>
+        <argsstring>(const hf_esp_can_error_info_t &amp;error_info) noexcept</argsstring>
+        <name>DispatchErrorCallbacks</name>
+        <qualifiedname>EspCan::DispatchErrorCallbacks</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__esp__can__error__info__t" kindref="compound">hf_esp_can_error_info_t</ref> &amp;</type>
+          <declname>error_info</declname>
+        </param>
+        <briefdescription>
+<para>Dispatch error event to all registered error callbacks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>error_info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="489" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="965" bodyend="969"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1abead43013dd161753d56006157679fe0" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::DispatchStateChangeCallbacks</definition>
+        <argsstring>(const hf_esp_can_state_info_t &amp;state_info) noexcept</argsstring>
+        <name>DispatchStateChangeCallbacks</name>
+        <qualifiedname>EspCan::DispatchStateChangeCallbacks</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__esp__can__state__info__t" kindref="compound">hf_esp_can_state_info_t</ref> &amp;</type>
+          <declname>state_info</declname>
+        </param>
+        <briefdescription>
+<para>Dispatch state change to all registered state callbacks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state_info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>State change information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="495" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="971" bodyend="975"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspCan_1afbdb95ac14728f468847fae264b8f536" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspCan::DispatchTxCompleteCallbacks</definition>
+        <argsstring>(const hf_esp_can_tx_info_t &amp;tx_info) noexcept</argsstring>
+        <name>DispatchTxCompleteCallbacks</name>
+        <qualifiedname>EspCan::DispatchTxCompleteCallbacks</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__esp__can__tx__info__t" kindref="compound">hf_esp_can_tx_info_t</ref> &amp;</type>
+          <declname>tx_info</declname>
+        </param>
+        <briefdescription>
+<para>Dispatch transmission complete to all registered TX callbacks. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tx_info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Transmission information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="501" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="977" bodyend="981"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 CAN (TWAI) implementation using ESP-IDF v5.5+ node-based API. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides clean, comprehensive CAN communication using the ESP32&apos;s TWAI (Two-Wire Automotive Interface) controllers with modern ESP-IDF v5.5+ node-based APIs. The implementation supports ESP32-C6 and external SN65 CAN transceivers.</para>
+<para>Key Features:<itemizedlist>
+<listitem><para>ESP-IDF v5.5+ handle-based TWAI node API</para>
+</listitem><listitem><para>ESP32-C6 compatible TWAI controller support</para>
+</listitem><listitem><para>Event-driven callback-based message reception</para>
+</listitem><listitem><para>Advanced acceptance filtering (single/dual mask modes)</para>
+</listitem><listitem><para>Comprehensive error detection and bus recovery</para>
+</listitem><listitem><para>Advanced bit timing configuration for various baud rates</para>
+</listitem><listitem><para>Thread-safe operations with proper resource management</para>
+</listitem><listitem><para>Support for external SN65 CAN transceivers</para>
+</listitem><listitem><para>Comprehensive diagnostics and performance monitoring</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>This implementation requires ESP-IDF v5.5 or later </para>
+</simplesect>
+<simplesect kind="note"><para>Each <ref refid="classEspCan" kindref="compound">EspCan</ref> instance represents a single TWAI node </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseCan</label>
+        <link refid="classBaseCan"/>
+      </node>
+      <node id="1">
+        <label>EspCan</label>
+        <link refid="classEspCan"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseCan</label>
+        <link refid="classBaseCan"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EspCan</label>
+        <link refid="classEspCan"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>callback_mutex_</edgelabel>
+          <edgelabel>config_mutex_</edgelabel>
+          <edgelabel>stats_mutex_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>advanced_timing_</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>current_filter_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>RtosMutex</label>
+        <link refid="classRtosMutex"/>
+      </node>
+      <node id="4">
+        <label>hf_can_diagnostics_t</label>
+        <link refid="structhf__can__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_can_statistics_t</label>
+        <link refid="structhf__can__statistics__t"/>
+      </node>
+      <node id="5">
+        <label>hf_esp_can_config_t</label>
+        <link refid="structhf__esp__can__config__t"/>
+      </node>
+      <node id="8">
+        <label>hf_esp_can_filter_config_t</label>
+        <link refid="structhf__esp__can__filter__config__t"/>
+      </node>
+      <node id="7">
+        <label>hf_esp_can_timing_config_t</label>
+        <link refid="structhf__esp__can__timing__config__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspCan.h" line="204" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="204" bodyend="545"/>
+    <listofallmembers>
+      <member refid="classEspCan_1a3cf21056f01a68e4d23cb6abc8c8d7c2" prot="private" virt="non-virtual"><scope>EspCan</scope><name>advanced_timing_</name></member>
+      <member refid="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" prot="public" virt="non-virtual"><scope>EspCan</scope><name>BaseCan</name></member>
+      <member refid="classBaseCan_1a530bc9bf147c4e0df1fa0ee38bb22e39" prot="public" virt="non-virtual"><scope>EspCan</scope><name>BaseCan</name></member>
+      <member refid="classBaseCan_1a138f75fbc7c937fa12c50fc4466c3407" prot="protected" virt="non-virtual"><scope>EspCan</scope><name>BaseCan</name></member>
+      <member refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" prot="private" virt="non-virtual"><scope>EspCan</scope><name>callback_mutex_</name></member>
+      <member refid="classEspCan_1a8afcf00583c55f120bce0bdcd440cd29" prot="public" virt="virtual"><scope>EspCan</scope><name>ClearAcceptanceFilter</name></member>
+      <member refid="classEspCan_1a077cc96263ea79483559055841d873d6" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ClearErrorCallback</name></member>
+      <member refid="classEspCan_1a6c7eea2a0ccea5125cafb3b26af6c5ff" prot="public" virt="virtual"><scope>EspCan</scope><name>ClearReceiveCallback</name></member>
+      <member refid="classEspCan_1af0cad1fa0e4c312eebcc5d1b938876df" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ClearReceiveCallbackEx</name></member>
+      <member refid="classEspCan_1a86db68ed58d7c1791683151cb9a49260" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ClearStateChangeCallback</name></member>
+      <member refid="classEspCan_1a335b99de3bbf289de667f843ba83d31d" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ClearTxCompleteCallback</name></member>
+      <member refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" prot="private" virt="non-virtual"><scope>EspCan</scope><name>config_</name></member>
+      <member refid="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" prot="private" virt="non-virtual"><scope>EspCan</scope><name>config_mutex_</name></member>
+      <member refid="classEspCan_1a2dceac78571417483299cfc7360e4cda" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ConfigureAdvancedFilter</name></member>
+      <member refid="classEspCan_1a2b68a7ae3dfcda3bb81766a9b333c7fd" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ConfigureAdvancedTiming</name></member>
+      <member refid="classBaseCan_1a67d60cd1fe9783de6f335948af385158" prot="public" virt="virtual"><scope>EspCan</scope><name>ConfigureCanFDTiming</name></member>
+      <member refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" prot="private" virt="non-virtual"><scope>EspCan</scope><name>ConvertEspError</name></member>
+      <member refid="classEspCan_1a1b91c8ad9fd014b9eba4417e7abbbb1d" prot="private" virt="non-virtual"><scope>EspCan</scope><name>ConvertFromTwaiFrame</name></member>
+      <member refid="classEspCan_1ae27d8b7560c7ce88f8a927dd2df94836" prot="private" virt="non-virtual"><scope>EspCan</scope><name>ConvertToTwaiFrame</name></member>
+      <member refid="classEspCan_1aa15ed2e4704f88bb924799628a305f7f" prot="private" virt="non-virtual"><scope>EspCan</scope><name>current_filter_</name></member>
+      <member refid="classEspCan_1a96ec0a7e2636ba9e99d651f21c4e9153" prot="public" virt="virtual"><scope>EspCan</scope><name>Deinitialize</name></member>
+      <member refid="classEspCan_1a6f392c8538addd589e6bccb3ba53e0ab" prot="private" virt="non-virtual"><scope>EspCan</scope><name>diagnostics_</name></member>
+      <member refid="classEspCan_1a67fa247f0a5f007b0cb20e405ed1ed0c" prot="private" virt="non-virtual"><scope>EspCan</scope><name>DispatchErrorCallbacks</name></member>
+      <member refid="classEspCan_1aea03a2e1e72fe5e104c150e71f988083" prot="private" virt="non-virtual"><scope>EspCan</scope><name>DispatchReceiveCallbacks</name></member>
+      <member refid="classEspCan_1abead43013dd161753d56006157679fe0" prot="private" virt="non-virtual"><scope>EspCan</scope><name>DispatchStateChangeCallbacks</name></member>
+      <member refid="classEspCan_1afbdb95ac14728f468847fae264b8f536" prot="private" virt="non-virtual"><scope>EspCan</scope><name>DispatchTxCompleteCallbacks</name></member>
+      <member refid="classBaseCan_1a03daa6284ad75c2bbd335077141ea9d7" prot="public" virt="non-virtual"><scope>EspCan</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseCan_1a3c372c570cb93abf33e2de4f05970d36" prot="public" virt="non-virtual"><scope>EspCan</scope><name>EnsureInitialized</name></member>
+      <member refid="classEspCan_1ad310be0cce73339268d83a1c3744a970" prot="private" virt="non-virtual"><scope>EspCan</scope><name>error_cb_</name></member>
+      <member refid="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" prot="private" virt="non-virtual"><scope>EspCan</scope><name>error_ud_</name></member>
+      <member refid="classEspCan_1ad254073ec0b39870dcc3f8d29806ed3b" prot="public" virt="non-virtual"><scope>EspCan</scope><name>EspCan</name></member>
+      <member refid="classEspCan_1acb5ae2ddfce72a30d1bd14b721f1faab" prot="private" virt="non-virtual"><scope>EspCan</scope><name>filter_configured_</name></member>
+      <member refid="classEspCan_1a56b08aacb4bdb4c440067e319593c013" prot="public" virt="virtual"><scope>EspCan</scope><name>GetDiagnostics</name></member>
+      <member refid="classEspCan_1aae5b5879e2700aad137e516be9edf1b7" prot="public" virt="non-virtual"><scope>EspCan</scope><name>GetNodeInfo</name></member>
+      <member refid="classEspCan_1a0b3a9a316c7fc7949d481de6f6ac9856" prot="public" virt="virtual"><scope>EspCan</scope><name>GetStatistics</name></member>
+      <member refid="classEspCan_1ab663edd5afb99a7ca95a9dd206d9ce85" prot="public" virt="virtual"><scope>EspCan</scope><name>GetStatus</name></member>
+      <member refid="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" prot="public" virt="virtual"><scope>EspCan</scope><name>Initialize</name></member>
+      <member refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" prot="protected" virt="non-virtual"><scope>EspCan</scope><name>initialized_</name></member>
+      <member refid="classEspCan_1a5e051944e810526770cc8533ec28e7cf" prot="public" virt="non-virtual"><scope>EspCan</scope><name>InitiateBusRecovery</name></member>
+      <member refid="classEspCan_1a47f76d6f0c8f8e313709d7a6eadaa70f" prot="private" virt="non-virtual"><scope>EspCan</scope><name>InternalErrorCallback</name></member>
+      <member refid="classEspCan_1a105e73dbb299a49c55dd044b4a30587e" prot="private" virt="non-virtual"><scope>EspCan</scope><name>InternalReceiveCallback</name></member>
+      <member refid="classEspCan_1aa6f1d7c5c5ad82b55ae5c83076ed0013" prot="private" virt="non-virtual"><scope>EspCan</scope><name>InternalStateChangeCallback</name></member>
+      <member refid="classEspCan_1a8f4ec03bb515d5543808e3c3a076621e" prot="private" virt="non-virtual"><scope>EspCan</scope><name>is_enabled_</name></member>
+      <member refid="classEspCan_1a9268e3542c090d15173658df7154e683" prot="private" virt="non-virtual"><scope>EspCan</scope><name>is_recovering_</name></member>
+      <member refid="classBaseCan_1a1c8f9099b9cd860c3e8196768f51651b" prot="public" virt="non-virtual"><scope>EspCan</scope><name>IsInitialized</name></member>
+      <member refid="classBaseCan_1ad9dc7b9f27d9909273f077baaf00df33" prot="public" virt="non-virtual"><scope>EspCan</scope><name>operator=</name></member>
+      <member refid="classBaseCan_1a01c7dbf06a7c24a0608ab1998d91827c" prot="public" virt="non-virtual"><scope>EspCan</scope><name>operator=</name></member>
+      <member refid="classEspCan_1a5c0fe05680907d926d0bacdc6cebd811" prot="private" virt="non-virtual"><scope>EspCan</scope><name>ProcessReceivedMessage</name></member>
+      <member refid="classEspCan_1a033c6357046c20596ec8c70d4315da07" prot="private" virt="non-virtual"><scope>EspCan</scope><name>receive_cb_</name></member>
+      <member refid="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" prot="private" virt="non-virtual"><scope>EspCan</scope><name>receive_ud_</name></member>
+      <member refid="classEspCan_1ad33472b071ef5f1ab76efbdb58f3c855" prot="public" virt="virtual"><scope>EspCan</scope><name>ReceiveMessage</name></member>
+      <member refid="classBaseCan_1a06981fc040b040418551f79eafea295d" prot="public" virt="virtual"><scope>EspCan</scope><name>ReceiveMessageBatch</name></member>
+      <member refid="classEspCan_1a38369430ccabfe4f339052590d5e4960" prot="public" virt="virtual"><scope>EspCan</scope><name>Reset</name></member>
+      <member refid="classBaseCan_1a6e26f72d55472f7dd825063abaa87ebc" prot="public" virt="virtual"><scope>EspCan</scope><name>ResetDiagnostics</name></member>
+      <member refid="classEspCan_1a93f9301c2a7c54c29f4c115e41bd1c4e" prot="public" virt="virtual"><scope>EspCan</scope><name>ResetStatistics</name></member>
+      <member refid="classEspCan_1a3b9bfd81e512b835c89111b6cf0ced79" prot="public" virt="virtual"><scope>EspCan</scope><name>SendMessage</name></member>
+      <member refid="classEspCan_1a1c80557f426bd1c1b78cd0a7e0bbb8ee" prot="public" virt="virtual"><scope>EspCan</scope><name>SendMessageBatch</name></member>
+      <member refid="classEspCan_1a10e2f318110996d269ab9b4c550aa1c7" prot="public" virt="virtual"><scope>EspCan</scope><name>SetAcceptanceFilter</name></member>
+      <member refid="classBaseCan_1a2148e9e19a394699809d6e4592df5b5c" prot="public" virt="virtual"><scope>EspCan</scope><name>SetCanFDMode</name></member>
+      <member refid="classEspCan_1ae49c30b2a556b92b8a8dbb12d1eec148" prot="public" virt="non-virtual"><scope>EspCan</scope><name>SetErrorCallback</name></member>
+      <member refid="classEspCan_1a15ded2afcc3564560fa704e661546500" prot="public" virt="virtual"><scope>EspCan</scope><name>SetReceiveCallback</name></member>
+      <member refid="classEspCan_1aacf7899068a281cb12144f913660aa49" prot="public" virt="non-virtual"><scope>EspCan</scope><name>SetReceiveCallbackEx</name></member>
+      <member refid="classBaseCan_1a44753662096232f45e49ad752e8f68e4" prot="public" virt="virtual"><scope>EspCan</scope><name>SetReceiveCallbackFD</name></member>
+      <member refid="classEspCan_1a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" prot="public" virt="non-virtual"><scope>EspCan</scope><name>SetStateChangeCallback</name></member>
+      <member refid="classBaseCan_1acdab43f967e641b0566a7f851ea37114" prot="public" virt="virtual"><scope>EspCan</scope><name>SetTransmitterDelayCompensation</name></member>
+      <member refid="classEspCan_1a774bf708978527bf71ecee26c5075c48" prot="public" virt="non-virtual"><scope>EspCan</scope><name>SetTxCompleteCallback</name></member>
+      <member refid="classEspCan_1a0283765650c36540b4a61fee2360d196" prot="private" virt="non-virtual"><scope>EspCan</scope><name>state_cb_</name></member>
+      <member refid="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" prot="private" virt="non-virtual"><scope>EspCan</scope><name>state_ud_</name></member>
+      <member refid="classEspCan_1a2598cfa17215039375d57ff8a0682873" prot="private" virt="non-virtual"><scope>EspCan</scope><name>statistics_</name></member>
+      <member refid="classEspCan_1a5558e66e04d7289fd79cc6d003ef29b6" prot="private" virt="non-virtual"><scope>EspCan</scope><name>stats_mutex_</name></member>
+      <member refid="classBaseCan_1a5af808724133b48742ebdcd448e93515" prot="public" virt="virtual"><scope>EspCan</scope><name>SupportsCanFD</name></member>
+      <member refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" prot="private" virt="non-virtual"><scope>EspCan</scope><name>twai_node_handle_</name></member>
+      <member refid="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" prot="private" virt="non-virtual"><scope>EspCan</scope><name>tx_cb_</name></member>
+      <member refid="classEspCan_1ab431b6af90e985b67e4cc2d8c5fbd0b4" prot="private" virt="non-virtual"><scope>EspCan</scope><name>tx_ud_</name></member>
+      <member refid="classEspCan_1a8fff536c8eae7799252dc4341bad7ba3" prot="private" virt="non-virtual"><scope>EspCan</scope><name>UpdateErrorStatistics</name></member>
+      <member refid="classEspCan_1aac77cb4d9af633288fd60fad3fee474b" prot="private" virt="non-virtual"><scope>EspCan</scope><name>UpdateStatistics</name></member>
+      <member refid="classBaseCan_1a95fbffe100ce79e6551fbfd113e9a874" prot="public" virt="virtual"><scope>EspCan</scope><name>~BaseCan</name></member>
+      <member refid="classEspCan_1aa842144f61a6f969b270e6d194d40f5c" prot="public" virt="non-virtual"><scope>EspCan</scope><name>~EspCan</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

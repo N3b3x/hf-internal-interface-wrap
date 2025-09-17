@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__adc__continuous__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_continuous_config_t</compoundname>
+    <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__continuous__config__t_1a5368296c2faab03b7221b29e82e79b0b" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_adc_continuous_config_t::sample_freq_hz</definition>
+        <argsstring></argsstring>
+        <name>sample_freq_hz</name>
+        <qualifiedname>hf_adc_continuous_config_t::sample_freq_hz</qualifiedname>
+        <briefdescription>
+<para>Sampling frequency in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="110" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__continuous__config__t_1a5887e33011fff3996f506dcbc8a0ab8a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_adc_continuous_config_t::samples_per_frame</definition>
+        <argsstring></argsstring>
+        <name>samples_per_frame</name>
+        <qualifiedname>hf_adc_continuous_config_t::samples_per_frame</qualifiedname>
+        <briefdescription>
+<para>Number of samples per frame per enabled channel (64-1024 recommended) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="112" column="7" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__continuous__config__t_1a3c2cdd0243704479f95ff6daa05ca28d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_adc_continuous_config_t::max_store_frames</definition>
+        <argsstring></argsstring>
+        <name>max_store_frames</name>
+        <qualifiedname>hf_adc_continuous_config_t::max_store_frames</qualifiedname>
+        <briefdescription>
+<para>Maximum number of frames to store in buffer pool (1-8 recommended) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="113" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__continuous__config__t_1a7c5182bbeff9bc8052b614cc824715b5" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_adc_continuous_config_t::flush_pool</definition>
+        <argsstring></argsstring>
+        <name>flush_pool</name>
+        <qualifiedname>hf_adc_continuous_config_t::flush_pool</qualifiedname>
+        <briefdescription>
+<para>Flush pool flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="114" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__continuous__config__t_1abb9cd39d3025634d4670c3d3612a89d8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_continuous_config_t::hf_adc_continuous_config_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_continuous_config_t</name>
+        <qualifiedname>hf_adc_continuous_config_t::hf_adc_continuous_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="116" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="116" bodyend="117"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC continuous mode configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure provides a user-friendly way to configure continuous mode ADC. The frame size is automatically calculated based on samples_per_frame and enabled channels. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="109" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="109" bodyend="118"/>
+    <listofallmembers>
+      <member refid="structhf__adc__continuous__config__t_1a7c5182bbeff9bc8052b614cc824715b5" prot="public" virt="non-virtual"><scope>hf_adc_continuous_config_t</scope><name>flush_pool</name></member>
+      <member refid="structhf__adc__continuous__config__t_1abb9cd39d3025634d4670c3d3612a89d8" prot="public" virt="non-virtual"><scope>hf_adc_continuous_config_t</scope><name>hf_adc_continuous_config_t</name></member>
+      <member refid="structhf__adc__continuous__config__t_1a3c2cdd0243704479f95ff6daa05ca28d" prot="public" virt="non-virtual"><scope>hf_adc_continuous_config_t</scope><name>max_store_frames</name></member>
+      <member refid="structhf__adc__continuous__config__t_1a5368296c2faab03b7221b29e82e79b0b" prot="public" virt="non-virtual"><scope>hf_adc_continuous_config_t</scope><name>sample_freq_hz</name></member>
+      <member refid="structhf__adc__continuous__config__t_1a5887e33011fff3996f506dcbc8a0ab8a" prot="public" virt="non-virtual"><scope>hf_adc_continuous_config_t</scope><name>samples_per_frame</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

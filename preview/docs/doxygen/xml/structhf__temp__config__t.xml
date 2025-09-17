@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__temp__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_temp_config_t</compoundname>
+    <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__temp__config__t_1a8bf079e9e70701467bd094adf28cf0d6" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_config_t::range_min_celsius</definition>
+        <argsstring></argsstring>
+        <name>range_min_celsius</name>
+        <qualifiedname>hf_temp_config_t::range_min_celsius</qualifiedname>
+        <briefdescription>
+<para>Minimum temperature range in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="209" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1ae83ece7934b916be170ceadc925ddc97" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_config_t::range_max_celsius</definition>
+        <argsstring></argsstring>
+        <name>range_max_celsius</name>
+        <qualifiedname>hf_temp_config_t::range_max_celsius</qualifiedname>
+        <briefdescription>
+<para>Maximum temperature range in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="210" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1a9a803a38493bf525ebc23cd430e2ac58" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_config_t::resolution</definition>
+        <argsstring></argsstring>
+        <name>resolution</name>
+        <qualifiedname>hf_temp_config_t::resolution</qualifiedname>
+        <briefdescription>
+<para>Temperature resolution in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="211" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1af2267a06c12d6761d6625a60428aa071" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_config_t::sample_rate_hz</definition>
+        <argsstring></argsstring>
+        <name>sample_rate_hz</name>
+        <qualifiedname>hf_temp_config_t::sample_rate_hz</qualifiedname>
+        <briefdescription>
+<para>Sampling rate in Hz (0 = on-demand) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="212" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1a01ba57b12a4356b9afac64556badbc9b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_config_t::enable_threshold_monitoring</definition>
+        <argsstring></argsstring>
+        <name>enable_threshold_monitoring</name>
+        <qualifiedname>hf_temp_config_t::enable_threshold_monitoring</qualifiedname>
+        <briefdescription>
+<para>Enable threshold monitoring. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="213" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1a93e169569ad7e911356e1b917fed3e7e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_config_t::high_threshold_celsius</definition>
+        <argsstring></argsstring>
+        <name>high_threshold_celsius</name>
+        <qualifiedname>hf_temp_config_t::high_threshold_celsius</qualifiedname>
+        <briefdescription>
+<para>High temperature threshold in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="214" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1a10a9aa7cbb60404a5a5de94d9f09789a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_config_t::low_threshold_celsius</definition>
+        <argsstring></argsstring>
+        <name>low_threshold_celsius</name>
+        <qualifiedname>hf_temp_config_t::low_threshold_celsius</qualifiedname>
+        <briefdescription>
+<para>Low temperature threshold in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="215" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1a17591a4ee68c1ade3f6cc3172973dd95" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_config_t::enable_power_management</definition>
+        <argsstring></argsstring>
+        <name>enable_power_management</name>
+        <qualifiedname>hf_temp_config_t::enable_power_management</qualifiedname>
+        <briefdescription>
+<para>Enable power management features. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="216" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1a00cbdbad86ea284334de0bdc59de0d96" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_config_t::enable_calibration</definition>
+        <argsstring></argsstring>
+        <name>enable_calibration</name>
+        <qualifiedname>hf_temp_config_t::enable_calibration</qualifiedname>
+        <briefdescription>
+<para>Enable calibration if supported. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="217" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1aee9c9a3af10ac889e79442f561b3dd0c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_config_t::timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>timeout_ms</name>
+        <qualifiedname>hf_temp_config_t::timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Operation timeout in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="218" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1a769ae892b2aa374d76d64643f5570656" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseTemperature_8h_1a698a95604ca19f87ee2ff5c99f903577" kindref="member">hf_temp_sensor_type_t</ref></type>
+        <definition>hf_temp_sensor_type_t hf_temp_config_t::sensor_type</definition>
+        <argsstring></argsstring>
+        <name>sensor_type</name>
+        <qualifiedname>hf_temp_config_t::sensor_type</qualifiedname>
+        <briefdescription>
+<para>Sensor type (hint for implementation) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="219" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__config__t_1a3d841c72748305241ffed952dc702968" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_config_t::capabilities</definition>
+        <argsstring></argsstring>
+        <name>capabilities</name>
+        <qualifiedname>hf_temp_config_t::capabilities</qualifiedname>
+        <briefdescription>
+<para>Required capabilities (hf_temp_capabilities_t flags) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="220" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="220" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Temperature sensor configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseTemperature.h" line="208" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="208" bodyend="221"/>
+    <listofallmembers>
+      <member refid="structhf__temp__config__t_1a3d841c72748305241ffed952dc702968" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>capabilities</name></member>
+      <member refid="structhf__temp__config__t_1a00cbdbad86ea284334de0bdc59de0d96" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>enable_calibration</name></member>
+      <member refid="structhf__temp__config__t_1a17591a4ee68c1ade3f6cc3172973dd95" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>enable_power_management</name></member>
+      <member refid="structhf__temp__config__t_1a01ba57b12a4356b9afac64556badbc9b" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>enable_threshold_monitoring</name></member>
+      <member refid="structhf__temp__config__t_1a93e169569ad7e911356e1b917fed3e7e" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>high_threshold_celsius</name></member>
+      <member refid="structhf__temp__config__t_1a10a9aa7cbb60404a5a5de94d9f09789a" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>low_threshold_celsius</name></member>
+      <member refid="structhf__temp__config__t_1ae83ece7934b916be170ceadc925ddc97" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>range_max_celsius</name></member>
+      <member refid="structhf__temp__config__t_1a8bf079e9e70701467bd094adf28cf0d6" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>range_min_celsius</name></member>
+      <member refid="structhf__temp__config__t_1a9a803a38493bf525ebc23cd430e2ac58" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>resolution</name></member>
+      <member refid="structhf__temp__config__t_1af2267a06c12d6761d6625a60428aa071" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>sample_rate_hz</name></member>
+      <member refid="structhf__temp__config__t_1a769ae892b2aa374d76d64643f5570656" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>sensor_type</name></member>
+      <member refid="structhf__temp__config__t_1aee9c9a3af10ac889e79442f561b3dd0c" prot="public" virt="non-virtual"><scope>hf_temp_config_t</scope><name>timeout_ms</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,242 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__uart__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_uart_diagnostics_t</compoundname>
+    <includes refid="BaseUart_8h" local="no">BaseUart.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a819ac1514e5cbeb21b1f3f806cd769a7" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
+        <definition>hf_uart_err_t hf_uart_diagnostics_t::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>hf_uart_diagnostics_t::last_error</qualifiedname>
+        <briefdescription>
+<para>Last error that occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="142" column="17" bodyfile="inc/base/BaseUart.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1aa47d02b2cb5988d2838fa90e927b97f9" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_uart_diagnostics_t::consecutive_errors</definition>
+        <argsstring></argsstring>
+        <name>consecutive_errors</name>
+        <qualifiedname>hf_uart_diagnostics_t::consecutive_errors</qualifiedname>
+        <briefdescription>
+<para>Number of consecutive errors. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="143" column="12" bodyfile="inc/base/BaseUart.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a53d723ec372aad3e830d389890b1ca27" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_uart_diagnostics_t::error_reset_count</definition>
+        <argsstring></argsstring>
+        <name>error_reset_count</name>
+        <qualifiedname>hf_uart_diagnostics_t::error_reset_count</qualifiedname>
+        <briefdescription>
+<para>Number of times error state was reset. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="144" column="12" bodyfile="inc/base/BaseUart.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a268b95d19b2871fadc271f033e9ce068" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_uart_diagnostics_t::last_error_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_error_timestamp</name>
+        <qualifiedname>hf_uart_diagnostics_t::last_error_timestamp</qualifiedname>
+        <briefdescription>
+<para>Timestamp of last error (microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="145" column="12" bodyfile="inc/base/BaseUart.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a47ed89b1c6a36336692a0b514bfa1492" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_diagnostics_t::is_initialized</definition>
+        <argsstring></argsstring>
+        <name>is_initialized</name>
+        <qualifiedname>hf_uart_diagnostics_t::is_initialized</qualifiedname>
+        <briefdescription>
+<para>Initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="146" column="8" bodyfile="inc/base/BaseUart.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1afddc733ba48e921c8287590c249f91b6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_diagnostics_t::is_transmitting</definition>
+        <argsstring></argsstring>
+        <name>is_transmitting</name>
+        <qualifiedname>hf_uart_diagnostics_t::is_transmitting</qualifiedname>
+        <briefdescription>
+<para>Transmission status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="147" column="8" bodyfile="inc/base/BaseUart.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1abbba424bf9907b52bcd5f322a066271d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_diagnostics_t::is_receiving</definition>
+        <argsstring></argsstring>
+        <name>is_receiving</name>
+        <qualifiedname>hf_uart_diagnostics_t::is_receiving</qualifiedname>
+        <briefdescription>
+<para>Reception status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="148" column="8" bodyfile="inc/base/BaseUart.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a161d792932c793db01068abee6bcb403" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_diagnostics_t::flow_control_active</definition>
+        <argsstring></argsstring>
+        <name>flow_control_active</name>
+        <qualifiedname>hf_uart_diagnostics_t::flow_control_active</qualifiedname>
+        <briefdescription>
+<para>Flow control status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="149" column="8" bodyfile="inc/base/BaseUart.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a9656a07908f6ea6af38b6fc61d93a0ff" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_diagnostics_t::pattern_detection_active</definition>
+        <argsstring></argsstring>
+        <name>pattern_detection_active</name>
+        <qualifiedname>hf_uart_diagnostics_t::pattern_detection_active</qualifiedname>
+        <briefdescription>
+<para>Pattern detection status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="150" column="8" bodyfile="inc/base/BaseUart.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1ae51153d1dd24c469bf3af1697e8392b4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_diagnostics_t::wakeup_enabled</definition>
+        <argsstring></argsstring>
+        <name>wakeup_enabled</name>
+        <qualifiedname>hf_uart_diagnostics_t::wakeup_enabled</qualifiedname>
+        <briefdescription>
+<para>Wakeup status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="151" column="8" bodyfile="inc/base/BaseUart.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a3a64a4db001099253aec32ecc7ef3123" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_uart_diagnostics_t::tx_buffer_usage</definition>
+        <argsstring></argsstring>
+        <name>tx_buffer_usage</name>
+        <qualifiedname>hf_uart_diagnostics_t::tx_buffer_usage</qualifiedname>
+        <briefdescription>
+<para>TX buffer usage percentage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="152" column="12" bodyfile="inc/base/BaseUart.h" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1a0a9377bd1aa609f2fd438b5c630c2d46" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_uart_diagnostics_t::rx_buffer_usage</definition>
+        <argsstring></argsstring>
+        <name>rx_buffer_usage</name>
+        <qualifiedname>hf_uart_diagnostics_t::rx_buffer_usage</qualifiedname>
+        <briefdescription>
+<para>RX buffer usage percentage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="153" column="12" bodyfile="inc/base/BaseUart.h" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__diagnostics__t_1af4d7cc87067d1f978a152b6d700a6c94" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_uart_diagnostics_t::event_queue_usage</definition>
+        <argsstring></argsstring>
+        <name>event_queue_usage</name>
+        <qualifiedname>hf_uart_diagnostics_t::event_queue_usage</qualifiedname>
+        <briefdescription>
+<para>Event queue usage percentage. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="154" column="12" bodyfile="inc/base/BaseUart.h" bodystart="154" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__uart__diagnostics__t_1a6759dbba5936e6aa11e9638302e3b29c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_uart_diagnostics_t::hf_uart_diagnostics_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_uart_diagnostics_t</name>
+        <qualifiedname>hf_uart_diagnostics_t::hf_uart_diagnostics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="156" column="3" bodyfile="inc/base/BaseUart.h" bodystart="156" bodyend="160"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>UART diagnostic information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseUart.h" line="141" column="1" bodyfile="inc/base/BaseUart.h" bodystart="141" bodyend="161"/>
+    <listofallmembers>
+      <member refid="structhf__uart__diagnostics__t_1aa47d02b2cb5988d2838fa90e927b97f9" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>consecutive_errors</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a53d723ec372aad3e830d389890b1ca27" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>error_reset_count</name></member>
+      <member refid="structhf__uart__diagnostics__t_1af4d7cc87067d1f978a152b6d700a6c94" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>event_queue_usage</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a161d792932c793db01068abee6bcb403" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>flow_control_active</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a6759dbba5936e6aa11e9638302e3b29c" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>hf_uart_diagnostics_t</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a47ed89b1c6a36336692a0b514bfa1492" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>is_initialized</name></member>
+      <member refid="structhf__uart__diagnostics__t_1abbba424bf9907b52bcd5f322a066271d" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>is_receiving</name></member>
+      <member refid="structhf__uart__diagnostics__t_1afddc733ba48e921c8287590c249f91b6" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>is_transmitting</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a819ac1514e5cbeb21b1f3f806cd769a7" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>last_error</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a268b95d19b2871fadc271f033e9ce068" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>last_error_timestamp</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a9656a07908f6ea6af38b6fc61d93a0ff" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>pattern_detection_active</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a0a9377bd1aa609f2fd438b5c630c2d46" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>rx_buffer_usage</name></member>
+      <member refid="structhf__uart__diagnostics__t_1a3a64a4db001099253aec32ecc7ef3123" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>tx_buffer_usage</name></member>
+      <member refid="structhf__uart__diagnostics__t_1ae51153d1dd24c469bf3af1697e8392b4" prot="public" virt="non-virtual"><scope>hf_uart_diagnostics_t</scope><name>wakeup_enabled</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

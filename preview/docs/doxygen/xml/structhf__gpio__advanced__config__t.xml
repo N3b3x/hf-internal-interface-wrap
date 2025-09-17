@@ -1,0 +1,244 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__gpio__advanced__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_gpio_advanced_config_t</compoundname>
+    <includes refid="EspTypes__GPIO_8h" local="no">EspTypes_GPIO.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1ad7d9a0395f4520120d86c889bc77f228" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_pin_num_t hf_gpio_advanced_config_t::gpio_num</definition>
+        <argsstring></argsstring>
+        <name>gpio_num</name>
+        <qualifiedname>hf_gpio_advanced_config_t::gpio_num</qualifiedname>
+        <briefdescription>
+<para>GPIO pin number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="188" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1a45a28747743de1a4bbd08f278c31f8ae" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kindref="member">hf_gpio_mode_t</ref></type>
+        <definition>hf_gpio_mode_t hf_gpio_advanced_config_t::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <qualifiedname>hf_gpio_advanced_config_t::mode</qualifiedname>
+        <briefdescription>
+<para>GPIO mode (input/output/etc) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="189" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1ab61bbfb9af5600546d717dbebf451533" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" kindref="member">hf_gpio_pull_t</ref></type>
+        <definition>hf_gpio_pull_t hf_gpio_advanced_config_t::pull_mode</definition>
+        <argsstring></argsstring>
+        <name>pull_mode</name>
+        <qualifiedname>hf_gpio_advanced_config_t::pull_mode</qualifiedname>
+        <briefdescription>
+<para>Pull resistor configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="190" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1a969aa225347dbc8797b9dc1328276d08" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" kindref="member">hf_gpio_intr_type_t</ref></type>
+        <definition>hf_gpio_intr_type_t hf_gpio_advanced_config_t::intr_type</definition>
+        <argsstring></argsstring>
+        <name>intr_type</name>
+        <qualifiedname>hf_gpio_advanced_config_t::intr_type</qualifiedname>
+        <briefdescription>
+<para>Interrupt trigger type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="191" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1a0010bcef44f2124ffcbb7a1421a81103" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref></type>
+        <definition>hf_gpio_drive_cap_t hf_gpio_advanced_config_t::drive_strength</definition>
+        <argsstring></argsstring>
+        <name>drive_strength</name>
+        <qualifiedname>hf_gpio_advanced_config_t::drive_strength</qualifiedname>
+        <briefdescription>
+<para>Output drive capability. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="192" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1a8a0be4da7e2c5177796fc4ffe3b97d9a" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kindref="member">hf_gpio_glitch_filter_type_t</ref></type>
+        <definition>hf_gpio_glitch_filter_type_t hf_gpio_advanced_config_t::glitch_filter_type</definition>
+        <argsstring></argsstring>
+        <name>glitch_filter_type</name>
+        <qualifiedname>hf_gpio_advanced_config_t::glitch_filter_type</qualifiedname>
+        <briefdescription>
+<para>Glitch filter type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="193" column="32" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1ac4f05c98c185801e39617296a5e0cc65" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref></type>
+        <definition>hf_gpio_flex_filter_config_t hf_gpio_advanced_config_t::flex_filter_config</definition>
+        <argsstring></argsstring>
+        <name>flex_filter_config</name>
+        <qualifiedname>hf_gpio_advanced_config_t::flex_filter_config</qualifiedname>
+        <briefdescription>
+<para>Flexible filter configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="194" column="32" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1a5795ed470af6a3e3f8feee338381a64b" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__gpio__pin__filter__config__t" kindref="compound">hf_gpio_pin_filter_config_t</ref></type>
+        <definition>hf_gpio_pin_filter_config_t hf_gpio_advanced_config_t::pin_filter_config</definition>
+        <argsstring></argsstring>
+        <name>pin_filter_config</name>
+        <qualifiedname>hf_gpio_advanced_config_t::pin_filter_config</qualifiedname>
+        <briefdescription>
+<para>Pin filter configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="195" column="31" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1ad189d1620ce263324d1a500850a1aee7" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref></type>
+        <definition>hf_gpio_sleep_config_t hf_gpio_advanced_config_t::sleep_config</definition>
+        <argsstring></argsstring>
+        <name>sleep_config</name>
+        <qualifiedname>hf_gpio_advanced_config_t::sleep_config</qualifiedname>
+        <briefdescription>
+<para>Sleep mode configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="196" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1a965d2df4aa102d12bc9f797cc530c8ac" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__gpio__wakeup__config__t" kindref="compound">hf_gpio_wakeup_config_t</ref></type>
+        <definition>hf_gpio_wakeup_config_t hf_gpio_advanced_config_t::wakeup_config</definition>
+        <argsstring></argsstring>
+        <name>wakeup_config</name>
+        <qualifiedname>hf_gpio_advanced_config_t::wakeup_config</qualifiedname>
+        <briefdescription>
+<para>Wake-up configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="197" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1aa7e515455e77197e4b7d2b1a9c86d941" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_advanced_config_t::enable_hold_function</definition>
+        <argsstring></argsstring>
+        <name>enable_hold_function</name>
+        <qualifiedname>hf_gpio_advanced_config_t::enable_hold_function</qualifiedname>
+        <briefdescription>
+<para>Enable GPIO hold function. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="198" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__advanced__config__t_1ae53b72ab0e89c9d6f255e1398ec90c98" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_advanced_config_t::enable_rtc_gpio</definition>
+        <argsstring></argsstring>
+        <name>enable_rtc_gpio</name>
+        <qualifiedname>hf_gpio_advanced_config_t::enable_rtc_gpio</qualifiedname>
+        <briefdescription>
+<para>Enable RTC GPIO functionality. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="199" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Complete ESP32 GPIO configuration with all advanced features. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Comprehensive configuration structure for ESP32 GPIO. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>hf_gpio_advanced_config_t</label>
+        <link refid="structhf__gpio__advanced__config__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>flex_filter_config</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>pin_filter_config</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>sleep_config</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>wakeup_config</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hf_gpio_flex_filter_config_t</label>
+        <link refid="structhf__gpio__flex__filter__config__t"/>
+      </node>
+      <node id="3">
+        <label>hf_gpio_pin_filter_config_t</label>
+        <link refid="structhf__gpio__pin__filter__config__t"/>
+      </node>
+      <node id="4">
+        <label>hf_gpio_sleep_config_t</label>
+        <link refid="structhf__gpio__sleep__config__t"/>
+      </node>
+      <node id="5">
+        <label>hf_gpio_wakeup_config_t</label>
+        <link refid="structhf__gpio__wakeup__config__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="187" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="187" bodyend="200"/>
+    <listofallmembers>
+      <member refid="structhf__gpio__advanced__config__t_1a0010bcef44f2124ffcbb7a1421a81103" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>drive_strength</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1aa7e515455e77197e4b7d2b1a9c86d941" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>enable_hold_function</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1ae53b72ab0e89c9d6f255e1398ec90c98" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>enable_rtc_gpio</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1ac4f05c98c185801e39617296a5e0cc65" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>flex_filter_config</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1a8a0be4da7e2c5177796fc4ffe3b97d9a" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>glitch_filter_type</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1ad7d9a0395f4520120d86c889bc77f228" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>gpio_num</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1a969aa225347dbc8797b9dc1328276d08" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>intr_type</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1a45a28747743de1a4bbd08f278c31f8ae" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>mode</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1a5795ed470af6a3e3f8feee338381a64b" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>pin_filter_config</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1ab61bbfb9af5600546d717dbebf451533" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>pull_mode</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1ad189d1620ce263324d1a500850a1aee7" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>sleep_config</name></member>
+      <member refid="structhf__gpio__advanced__config__t_1a965d2df4aa102d12bc9f797cc530c8ac" prot="public" virt="non-virtual"><scope>hf_gpio_advanced_config_t</scope><name>wakeup_config</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

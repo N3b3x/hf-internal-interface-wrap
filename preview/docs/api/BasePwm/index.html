@@ -1,0 +1,1903 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(3)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(3) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(3) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/preview/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/preview/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🎛️ BasePwm | HardFOC Interface Wrapper - preview</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🎛️ BasePwm" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Pulse Width Modulation base class for motor control and servo operations" />
+<meta property="og:description" content="Pulse Width Modulation base class for motor control and servo operations" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/preview/docs/api/BasePwm/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/preview/docs/api/BasePwm/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - preview" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🎛️ BasePwm" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Pulse Width Modulation base class for motor control and servo operations","headline":"🎛️ BasePwm","url":"https://n3b3x.github.io/hf-internal-interface-wrap/preview/docs/api/BasePwm/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/preview/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/preview/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - preview
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/">📋 API Reference</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🎛️ BasePwm</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="️-basepwm-api-reference">
+  
+  
+    <a href="#️-basepwm-api-reference" class="anchor-heading" aria-labelledby="️-basepwm-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎛️ BasePwm API Reference
+  
+  
+</h1>
+    
+<h2 id="-overview">
+  
+  
+    <a href="#-overview" class="anchor-heading" aria-labelledby="-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🌟 Overview
+  
+  
+</h2>
+    
+
+<p><code class="language-plaintext highlighter-rouge">BasePwm</code> is the abstract base class for all PWM (Pulse Width Modulation) implementations in the
+HardFOC system.
+It provides a unified interface for motor control, LED dimming, servo control,
+and other PWM applications with comprehensive multi-channel support.</p>
+<h2 id="-features">
+  
+  
+    <a href="#-features" class="anchor-heading" aria-labelledby="-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✨ Features
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>🔢 Multi-Channel Support</strong> - Control multiple PWM channels simultaneously</li>
+  <li><strong>⚡ Variable Frequency</strong> - Configurable frequency per channel with wide range support</li>
+  <li><strong>🎯 Precise Duty Control</strong> - High-resolution duty cycle control with hardware precision</li>
+  <li><strong>🔄 Fade Operations</strong> - Smooth transitions between duty cycle values</li>
+  <li><strong>🛡️ Hardware Protection</strong> - Built-in fault detection and recovery mechanisms</li>
+  <li><strong>📊 Performance Monitoring</strong> - Comprehensive statistics and diagnostics</li>
+  <li><strong>🔧 Lazy Initialization</strong> - Resources allocated only when needed</li>
+  <li><strong>🏎️ Real-Time Optimized</strong> - Designed for time-critical motor control applications</li>
+</ul>
+<h2 id="-header-file">
+  
+  
+    <a href="#-header-file" class="anchor-heading" aria-labelledby="-header-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📁 Header File
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/base/BasePwm.h"</span><span class="cp">
+</span></pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="-type-definitions">
+  
+  
+    <a href="#-type-definitions" class="anchor-heading" aria-labelledby="-type-definitions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 Type Definitions
+  
+  
+</h2>
+    
+<h3 id="-error-codes">
+  
+  
+    <a href="#-error-codes" class="anchor-heading" aria-labelledby="-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚨 Error Codes
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre><span class="k">enum</span> <span class="k">class</span> <span class="nc">hf_pwm_err_t</span> <span class="o">:</span> <span class="n">hf_u32_t</span> <span class="p">{</span>
+    <span class="n">PWM_SUCCESS</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>                    <span class="c1">// ✅ Success</span>
+    <span class="n">PWM_ERR_FAILURE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>                <span class="c1">// ❌ General failure</span>
+    <span class="n">PWM_ERR_NOT_INITIALIZED</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>        <span class="c1">// ⚠️ Not initialized</span>
+    <span class="n">PWM_ERR_ALREADY_INITIALIZED</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>    <span class="c1">// ⚠️ Already initialized</span>
+    <span class="n">PWM_ERR_INVALID_PARAMETER</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>      <span class="c1">// 🚫 Invalid parameter</span>
+    <span class="n">PWM_ERR_NULL_POINTER</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>           <span class="c1">// 🚫 Null pointer</span>
+    <span class="n">PWM_ERR_OUT_OF_MEMORY</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>          <span class="c1">// 💾 Out of memory</span>
+    <span class="n">PWM_ERR_INVALID_CHANNEL</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>        <span class="c1">// 🔍 Invalid PWM channel</span>
+    <span class="n">PWM_ERR_CHANNEL_BUSY</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>           <span class="c1">// 🔄 Channel already in use</span>
+    <span class="n">PWM_ERR_CHANNEL_NOT_AVAILABLE</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>  <span class="c1">// 🚫 Channel not available</span>
+    <span class="n">PWM_ERR_INSUFFICIENT_CHANNELS</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="c1">// 📉 Insufficient channels</span>
+    <span class="n">PWM_ERR_INVALID_FREQUENCY</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>     <span class="c1">// 📻 Invalid frequency</span>
+    <span class="n">PWM_ERR_FREQUENCY_TOO_HIGH</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>    <span class="c1">// 📈 Frequency too high</span>
+    <span class="n">PWM_ERR_FREQUENCY_TOO_LOW</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>     <span class="c1">// 📉 Frequency too low</span>
+    <span class="n">PWM_ERR_RESOLUTION_NOT_SUPPORTED</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="c1">// 🎯 Resolution not supported</span>
+    <span class="n">PWM_ERR_INVALID_DUTY_CYCLE</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>    <span class="c1">// 🎛️ Invalid duty cycle</span>
+    <span class="n">PWM_ERR_DUTY_OUT_OF_RANGE</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>     <span class="c1">// 📏 Duty cycle out of range</span>
+    <span class="n">PWM_ERR_HARDWARE_FAULT</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>        <span class="c1">// 💥 Hardware fault</span>
+    <span class="n">PWM_ERR_TIMER_CONFLICT</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span>        <span class="c1">// ⏱️ Timer resource conflict</span>
+    <span class="n">PWM_ERR_PIN_CONFLICT</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span>          <span class="c1">// 🔌 Pin already in use</span>
+    <span class="n">PWM_ERR_COMMUNICATION_TIMEOUT</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="c1">// ⏰ Communication timeout</span>
+    <span class="n">PWM_ERR_COMMUNICATION_FAILURE</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span> <span class="c1">// 📡 Communication failure</span>
+    <span class="n">PWM_ERR_DEVICE_NOT_RESPONDING</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="c1">// 🔇 Device not responding</span>
+    <span class="n">PWM_ERR_INVALID_DEVICE_ID</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span>     <span class="c1">// 🆔 Invalid device ID</span>
+    <span class="n">PWM_ERR_UNSUPPORTED_OPERATION</span> <span class="o">=</span> <span class="mi">24</span>  <span class="c1">// 🚫 Unsupported operation</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-statistics-structure">
+  
+  
+    <a href="#-statistics-structure" class="anchor-heading" aria-labelledby="-statistics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 Statistics Structure
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_pwm_statistics_t</span> <span class="p">{</span>
+    <span class="n">hf_u32_t</span> <span class="n">duty_updates_count</span><span class="p">;</span>        <span class="c1">// 🔄 Total duty cycle updates</span>
+    <span class="n">hf_u32_t</span> <span class="n">frequency_changes_count</span><span class="p">;</span>   <span class="c1">// 📻 Total frequency changes</span>
+    <span class="n">hf_u32_t</span> <span class="n">fade_operations_count</span><span class="p">;</span>     <span class="c1">// 🌟 Total fade operations</span>
+    <span class="n">hf_u32_t</span> <span class="n">error_count</span><span class="p">;</span>               <span class="c1">// ❌ Total error count</span>
+    <span class="n">hf_u32_t</span> <span class="n">channel_enables_count</span><span class="p">;</span>     <span class="c1">// ✅ Total channel enable operations</span>
+    <span class="n">hf_u32_t</span> <span class="n">channel_disables_count</span><span class="p">;</span>    <span class="c1">// ❌ Total channel disable operations</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="️-class-interface">
+  
+  
+    <a href="#️-class-interface" class="anchor-heading" aria-labelledby="️-class-interface"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ Class Interface
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">BasePwm</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="c1">// 🔧 Lifecycle management</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">BasePwm</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">Initialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">Deinitialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">EnsureInitialized</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">EnsureDeinitialized</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="c1">// 📡 Channel management</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">EnableChannel</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">DisableChannel</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsChannelEnabled</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 🎛️ PWM control</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">SetDutyCycle</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duty_cycle</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">virtual</span> <span class="kt">float</span> <span class="n">GetDutyCycle</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">SetFrequency</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="n">hf_frequency_hz_t</span> <span class="n">frequency</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">GetFrequency</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="n">hf_frequency_hz_t</span><span class="o">&amp;</span> <span class="n">frequency</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 🌟 Advanced features</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">StartFade</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="kt">float</span> <span class="n">target_duty_percent</span><span class="p">,</span> 
+                                  <span class="n">hf_time_t</span> <span class="n">fade_time_ms</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">StopFade</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsFading</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 📊 Information and diagnostics</span>
+    <span class="k">virtual</span> <span class="n">hf_u8_t</span> <span class="n">GetMaxChannels</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsChannelAvailable</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">GetStatistics</span><span class="p">(</span><span class="n">hf_pwm_statistics_t</span><span class="o">&amp;</span> <span class="n">stats</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_pwm_err_t</span> <span class="n">ResetStatistics</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="-core-methods">
+  
+  
+    <a href="#-core-methods" class="anchor-heading" aria-labelledby="-core-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 Core Methods
+  
+  
+</h2>
+    
+<h3 id="-initialization">
+  
+  
+    <a href="#-initialization" class="anchor-heading" aria-labelledby="-initialization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 Initialization
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="n">EnsureInitialized</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> 🚀 Lazy initialization - automatically initializes PWM if not already done<br />
+<strong>Returns:</strong> <code class="language-plaintext highlighter-rouge">true</code> if successful, <code class="language-plaintext highlighter-rouge">false</code> on failure<br />
+<strong>Usage:</strong> Call before any PWM operations</p>
+<h3 id="-channel-control">
+  
+  
+    <a href="#-channel-control" class="anchor-heading" aria-labelledby="-channel-control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📡 Channel Control
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="n">hf_pwm_err_t</span> <span class="n">EnableChannel</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_pwm_err_t</span> <span class="n">DisableChannel</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">IsChannelEnabled</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> 🎛️ Enable/disable individual PWM channels<br />
+<strong>Parameters:</strong> Channel ID (0-based indexing)<br />
+<strong>Returns:</strong> Error code or boolean status</p>
+<h3 id="️-duty-cycle-control">
+  
+  
+    <a href="#️-duty-cycle-control" class="anchor-heading" aria-labelledby="️-duty-cycle-control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎛️ Duty Cycle Control
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">hf_pwm_err_t</span> <span class="n">SetDutyCycle</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duty_percent</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_pwm_err_t</span> <span class="n">GetDutyCycle</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">duty_percent</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> 🎯 Set/get PWM duty cycle as percentage (0.0 - 100.0)<br />
+<strong>Parameters:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">channel_id</code> - Target PWM channel</li>
+  <li><code class="language-plaintext highlighter-rouge">duty_percent</code> - Duty cycle percentage (0.0 = 0%, 100.0 = 100%)</li>
+</ul>
+<h3 id="-frequency-control">
+  
+  
+    <a href="#-frequency-control" class="anchor-heading" aria-labelledby="-frequency-control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📻 Frequency Control
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="n">hf_pwm_err_t</span> <span class="n">SetFrequency</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="n">hf_frequency_hz_t</span> <span class="n">frequency</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_pwm_err_t</span> <span class="n">GetFrequency</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="n">hf_frequency_hz_t</span><span class="o">&amp;</span> <span class="n">frequency</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> ⚡ Set/get PWM frequency in Hz<br />
+<strong>Parameters:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">channel_id</code> - Target PWM channel</li>
+  <li><code class="language-plaintext highlighter-rouge">frequency</code> - Frequency in Hz</li>
+</ul>
+<h3 id="-fade-operations">
+  
+  
+    <a href="#-fade-operations" class="anchor-heading" aria-labelledby="-fade-operations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🌟 Fade Operations
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="n">hf_pwm_err_t</span> <span class="n">StartFade</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">,</span> <span class="kt">float</span> <span class="n">target_duty_percent</span><span class="p">,</span> 
+                      <span class="n">hf_time_t</span> <span class="n">fade_time_ms</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_pwm_err_t</span> <span class="n">StopFade</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="kt">bool</span> <span class="n">IsFading</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel_id</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> 🌅 Smooth transitions between duty cycle values<br />
+<strong>Parameters:</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">target_duty_percent</code> - Target duty cycle (0.0 - 100.0)</li>
+  <li><code class="language-plaintext highlighter-rouge">fade_time_ms</code> - Fade duration in milliseconds</li>
+</ul>
+<h2 id="-usage-examples">
+  
+  
+    <a href="#-usage-examples" class="anchor-heading" aria-labelledby="-usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 💡 Usage Examples
+  
+  
+</h2>
+    
+<h3 id="-basic-motor-speed-control">
+  
+  
+    <a href="#-basic-motor-speed-control" class="anchor-heading" aria-labelledby="-basic-motor-speed-control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 Basic Motor Speed Control
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/mcu/esp32/EspPwm.h"</span><span class="cp">
+</span>
+<span class="c1">// 🏗️ Create PWM instance for motor control</span>
+<span class="n">EspPwm</span> <span class="n">motor_pwm</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">setup_motor_control</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 🚀 Initialize PWM system</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">motor_pwm</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize PWM</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 📡 Enable channel 0 for motor speed control</span>
+    <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">motor_pwm</span><span class="p">.</span><span class="n">EnableChannel</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to enable PWM channel: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 📻 Set PWM frequency to 20kHz (typical for motor control)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">motor_pwm</span><span class="p">.</span><span class="n">SetFrequency</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20000</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to set frequency: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Motor PWM initialized successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">set_motor_speed</span><span class="p">(</span><span class="kt">float</span> <span class="n">speed_percent</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 🎛️ Set motor speed (0-100%)</span>
+    <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">motor_pwm</span><span class="p">.</span><span class="n">SetDutyCycle</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">speed_percent</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🏎️ Motor speed set to %.1f%%</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">speed_percent</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to set motor speed: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">motor_control_demo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">setup_motor_control</span><span class="p">();</span>
+    
+    <span class="c1">// 🚀 Gradually increase motor speed</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">float</span> <span class="n">speed</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span> <span class="n">speed</span> <span class="o">&lt;=</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">;</span> <span class="n">speed</span> <span class="o">+=</span> <span class="mf">10.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">set_motor_speed</span><span class="p">(</span><span class="n">speed</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>  <span class="c1">// Wait 500ms</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 🛑 Stop motor</span>
+    <span class="n">set_motor_speed</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-led-dimming-with-fade-effects">
+  
+  
+    <a href="#-led-dimming-with-fade-effects" class="anchor-heading" aria-labelledby="-led-dimming-with-fade-effects"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 💡 LED Dimming with Fade Effects
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/mcu/esp32/EspPwm.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">SmartLED</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspPwm</span> <span class="n">led_pwm</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">hf_channel_id_t</span> <span class="n">channel</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">SmartLED</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel</span><span class="p">)</span> <span class="o">:</span> <span class="n">channel</span><span class="o">*</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 🚀 Initialize PWM for LED control</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">led_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize LED PWM</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📡 Enable LED channel</span>
+        <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">led_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">EnableChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to enable LED channel: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📻 Set frequency to 1kHz (good for LED dimming)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">led_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">SetFrequency</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to set LED frequency: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Smart LED initialized on channel %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">channel</span><span class="o">*</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">set_brightness</span><span class="p">(</span><span class="kt">float</span> <span class="n">brightness_percent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 💡 Set LED brightness instantly</span>
+        <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">led_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">SetDutyCycle</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">,</span> <span class="n">brightness_percent</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"💡 LED brightness set to %.1f%%</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">brightness_percent</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to set brightness: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">fade_to</span><span class="p">(</span><span class="kt">float</span> <span class="n">target_brightness</span><span class="p">,</span> <span class="n">hf_time_t</span> <span class="n">fade_time_ms</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 🌟 Start smooth fade to target brightness</span>
+        <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">led_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">StartFade</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">,</span> <span class="n">target_brightness</span><span class="p">,</span> <span class="n">fade_time_ms</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"🌅 Starting fade to %.1f%% over %u ms</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">target_brightness</span><span class="p">,</span> <span class="n">fade_time_ms</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to start fade: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">breathing_effect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🫁 Starting breathing effect...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        
+        <span class="c1">// 🌟 Fade in over 2 seconds</span>
+        <span class="n">fade_to</span><span class="p">(</span><span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">2500</span><span class="p">));</span>  <span class="c1">// Wait for fade + extra</span>
+        
+        <span class="c1">// 🌙 Fade out over 2 seconds</span>
+        <span class="n">fade_to</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">2500</span><span class="p">));</span>  <span class="c1">// Wait for fade + extra</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">is_fading</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">led_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">IsFading</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-multi-channel-rgb-led-control">
+  
+  
+    <a href="#-multi-channel-rgb-led-control" class="anchor-heading" aria-labelledby="-multi-channel-rgb-led-control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎵 Multi-Channel RGB LED Control
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">RGBController</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspPwm</span> <span class="n">rgb_pwm</span><span class="o">*</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_channel_id_t</span> <span class="n">RED_CHANNEL</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_channel_id_t</span> <span class="n">GREEN_CHANNEL</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_channel_id_t</span> <span class="n">BLUE_CHANNEL</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 🚀 Initialize RGB PWM controller</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">rgb_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize RGB PWM</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📡 Enable all RGB channels</span>
+        <span class="k">const</span> <span class="n">hf_channel_id_t</span> <span class="n">channels</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">RED_CHANNEL</span><span class="p">,</span> <span class="n">GREEN_CHANNEL</span><span class="p">,</span> <span class="n">BLUE_CHANNEL</span><span class="p">};</span>
+        <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">colors</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">"🔴 Red"</span><span class="p">,</span> <span class="s">"🟢 Green"</span><span class="p">,</span> <span class="s">"🔵 Blue"</span><span class="p">};</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">rgb_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">EnableChannel</span><span class="p">(</span><span class="n">channels</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to enable %s channel: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+            
+            <span class="c1">// 📻 Set frequency to 1kHz for all channels</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">rgb_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">SetFrequency</span><span class="p">(</span><span class="n">channels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1000</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to set %s frequency: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+                <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🌈 RGB Controller initialized successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">set_rgb_color</span><span class="p">(</span><span class="kt">float</span> <span class="n">red_percent</span><span class="p">,</span> <span class="kt">float</span> <span class="n">green_percent</span><span class="p">,</span> <span class="kt">float</span> <span class="n">blue_percent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 🎨 Set RGB color components</span>
+        <span class="k">struct</span> <span class="p">{</span>
+            <span class="n">hf_channel_id_t</span> <span class="n">channel</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">value</span><span class="p">;</span>
+            <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">name</span><span class="p">;</span>
+            <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">emoji</span><span class="p">;</span>
+        <span class="p">}</span> <span class="n">components</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="p">{</span><span class="n">RED_CHANNEL</span><span class="p">,</span> <span class="n">red_percent</span><span class="p">,</span> <span class="s">"Red"</span><span class="p">,</span> <span class="s">"🔴"</span><span class="p">},</span>
+            <span class="p">{</span><span class="n">GREEN_CHANNEL</span><span class="p">,</span> <span class="n">green_percent</span><span class="p">,</span> <span class="s">"Green"</span><span class="p">,</span> <span class="s">"🟢"</span><span class="p">},</span>
+            <span class="p">{</span><span class="n">BLUE_CHANNEL</span><span class="p">,</span> <span class="n">blue_percent</span><span class="p">,</span> <span class="s">"Blue"</span><span class="p">,</span> <span class="s">"🔵"</span><span class="p">}</span>
+        <span class="p">};</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🎨 Setting RGB color: R=%.1f%%, G=%.1f%%, B=%.1f%%</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+               <span class="n">red_percent</span><span class="p">,</span> <span class="n">green_percent</span><span class="p">,</span> <span class="n">blue_percent</span><span class="p">);</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span><span class="o">&amp;</span> <span class="n">comp</span> <span class="o">:</span> <span class="n">components</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">rgb_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">SetDutyCycle</span><span class="p">(</span><span class="n">comp</span><span class="p">.</span><span class="n">channel</span><span class="p">,</span> <span class="n">comp</span><span class="p">.</span><span class="n">value</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to set %s %s: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">comp</span><span class="p">.</span><span class="n">emoji</span><span class="p">,</span> <span class="n">comp</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">color_demo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🌈 Starting RGB color demo...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        
+        <span class="c1">// 🔴 Pure red</span>
+        <span class="n">set_rgb_color</span><span class="p">(</span><span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// 🟢 Pure green  </span>
+        <span class="n">set_rgb_color</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// 🔵 Pure blue</span>
+        <span class="n">set_rgb_color</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// 🟡 Yellow (red + green)</span>
+        <span class="n">set_rgb_color</span><span class="p">(</span><span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// 🟣 Magenta (red + blue)</span>
+        <span class="n">set_rgb_color</span><span class="p">(</span><span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// 🟦 Cyan (green + blue)</span>
+        <span class="n">set_rgb_color</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// ⚪ White (all colors)</span>
+        <span class="n">set_rgb_color</span><span class="p">(</span><span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// ⚫ Off</span>
+        <span class="n">set_rgb_color</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">rainbow_fade</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🌈 Starting rainbow fade effect...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        
+        <span class="c1">// Start fade operations for smooth color transitions</span>
+        <span class="n">rgb_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">StartFade</span><span class="p">(</span><span class="n">RED_CHANNEL</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
+        <span class="n">rgb_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">StartFade</span><span class="p">(</span><span class="n">GREEN_CHANNEL</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
+        <span class="n">rgb_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">StartFade</span><span class="p">(</span><span class="n">BLUE_CHANNEL</span><span class="p">,</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-servo-motor-control">
+  
+  
+    <a href="#-servo-motor-control" class="anchor-heading" aria-labelledby="-servo-motor-control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🤖 Servo Motor Control
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">ServoController</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspPwm</span> <span class="n">servo_pwm</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">hf_channel_id_t</span> <span class="n">channel</span><span class="o">*</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">float</span> <span class="n">SERVO_MIN_DUTY</span> <span class="o">=</span> <span class="mf">2.5</span><span class="n">f</span><span class="p">;</span>   <span class="c1">// 2.5% duty cycle (0 degrees)</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="kt">float</span> <span class="n">SERVO_MAX_DUTY</span> <span class="o">=</span> <span class="mf">12.5</span><span class="n">f</span><span class="p">;</span>  <span class="c1">// 12.5% duty cycle (180 degrees)</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_frequency_hz_t</span> <span class="n">SERVO_FREQ</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span> <span class="c1">// 50Hz for standard servos</span>
+    
+<span class="nl">public:</span>
+    <span class="n">ServoController</span><span class="p">(</span><span class="n">hf_channel_id_t</span> <span class="n">channel</span><span class="p">)</span> <span class="o">:</span> <span class="n">channel</span><span class="o">*</span><span class="p">(</span><span class="n">channel</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 🚀 Initialize servo PWM</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">servo_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize servo PWM</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📡 Enable servo channel</span>
+        <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">servo_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">EnableChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to enable servo channel: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📻 Set servo frequency to 50Hz</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">servo_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">SetFrequency</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">,</span> <span class="n">SERVO_FREQ</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to set servo frequency: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 🎯 Set to center position (90 degrees)</span>
+        <span class="n">set_angle</span><span class="p">(</span><span class="mf">90.0</span><span class="n">f</span><span class="p">);</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🤖 Servo controller initialized on channel %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">channel</span><span class="o">*</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">set_angle</span><span class="p">(</span><span class="kt">float</span> <span class="n">angle_degrees</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 🎯 Convert angle to PWM duty cycle</span>
+        <span class="c1">// Servo range: 0-180 degrees maps to 2.5%-12.5% duty cycle</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">angle_degrees</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="n">angle_degrees</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">angle_degrees</span> <span class="o">&gt;</span> <span class="mf">180.0</span><span class="n">f</span><span class="p">)</span> <span class="n">angle_degrees</span> <span class="o">=</span> <span class="mf">180.0</span><span class="n">f</span><span class="p">;</span>
+        
+        <span class="kt">float</span> <span class="n">duty_percent</span> <span class="o">=</span> <span class="n">SERVO_MIN_DUTY</span> <span class="o">+</span> <span class="p">(</span><span class="n">angle_degrees</span> <span class="o">/</span> <span class="mf">180.0</span><span class="n">f</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">SERVO_MAX_DUTY</span> <span class="o">-</span> <span class="n">SERVO_MIN_DUTY</span><span class="p">);</span>
+        
+        <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">servo_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">SetDutyCycle</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">,</span> <span class="n">duty_percent</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"🤖 Servo angle set to %.1f° (%.2f%% duty)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">angle_degrees</span><span class="p">,</span> <span class="n">duty_percent</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to set servo angle: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">smooth_move_to</span><span class="p">(</span><span class="kt">float</span> <span class="n">target_angle</span><span class="p">,</span> <span class="n">hf_time_t</span> <span class="n">move_time_ms</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 🌟 Smooth movement to target angle</span>
+        <span class="kt">float</span> <span class="n">current_duty</span><span class="p">,</span> <span class="n">target_duty</span><span class="p">;</span>
+        <span class="n">servo_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">GetDutyCycle</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">,</span> <span class="n">current_duty</span><span class="p">);</span>
+        
+        <span class="c1">// Calculate target duty cycle</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">target_angle</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="n">target_angle</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">target_angle</span> <span class="o">&gt;</span> <span class="mf">180.0</span><span class="n">f</span><span class="p">)</span> <span class="n">target_angle</span> <span class="o">=</span> <span class="mf">180.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="n">target_duty</span> <span class="o">=</span> <span class="n">SERVO_MIN_DUTY</span> <span class="o">+</span> <span class="p">(</span><span class="n">target_angle</span> <span class="o">/</span> <span class="mf">180.0</span><span class="n">f</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">SERVO_MAX_DUTY</span> <span class="o">-</span> <span class="n">SERVO_MIN_DUTY</span><span class="p">);</span>
+        
+        <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">servo_pwm</span><span class="o">*</span><span class="p">.</span><span class="n">StartFade</span><span class="p">(</span><span class="n">channel</span><span class="o">*</span><span class="p">,</span> <span class="n">target_duty</span><span class="p">,</span> <span class="n">move_time_ms</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"🌟 Servo smoothly moving to %.1f° over %u ms</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">target_angle</span><span class="p">,</span> <span class="n">move_time_ms</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to start smooth movement: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">sweep_demo</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🔄 Starting servo sweep demo...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        
+        <span class="c1">// 🔄 Sweep from 0 to 180 degrees</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">float</span> <span class="n">angle</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span> <span class="n">angle</span> <span class="o">&lt;=</span> <span class="mf">180.0</span><span class="n">f</span><span class="p">;</span> <span class="n">angle</span> <span class="o">+=</span> <span class="mf">30.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">set_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+            <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 🔄 Sweep back from 180 to 0 degrees</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">float</span> <span class="n">angle</span> <span class="o">=</span> <span class="mf">180.0</span><span class="n">f</span><span class="p">;</span> <span class="n">angle</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span> <span class="n">angle</span> <span class="o">-=</span> <span class="mf">30.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">set_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">);</span>
+            <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 🎯 Return to center</span>
+        <span class="n">set_angle</span><span class="p">(</span><span class="mf">90.0</span><span class="n">f</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="-performance-and-diagnostics">
+  
+  
+    <a href="#-performance-and-diagnostics" class="anchor-heading" aria-labelledby="-performance-and-diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 Performance and Diagnostics
+  
+  
+</h2>
+    
+<h3 id="-statistics-monitoring">
+  
+  
+    <a href="#-statistics-monitoring" class="anchor-heading" aria-labelledby="-statistics-monitoring"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 Statistics Monitoring
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">monitor_pwm_performance</span><span class="p">(</span><span class="n">BasePwm</span><span class="o">&amp;</span> <span class="n">pwm</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">hf_pwm_statistics_t</span> <span class="n">stats</span><span class="p">;</span>
+    <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pwm</span><span class="p">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="n">stats</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"📊 PWM Performance Statistics:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   🔄 Duty Updates: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">duty_updates_count</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   📻 Frequency Changes: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">frequency_changes_count</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   🌟 Fade Operations: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">fade_operations_count</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   ✅ Channel Enables: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">channel_enables_count</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   ❌ Channel Disables: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">channel_disables_count</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   ⚠️ Total Errors: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">error_count</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="️-error-handling-best-practices">
+  
+  
+    <a href="#️-error-handling-best-practices" class="anchor-heading" aria-labelledby="️-error-handling-best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🛡️ Error Handling Best Practices
+  
+  
+</h2>
+    
+<h3 id="-comprehensive-error-checking">
+  
+  
+    <a href="#-comprehensive-error-checking" class="anchor-heading" aria-labelledby="-comprehensive-error-checking"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 Comprehensive Error Checking
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="n">hf_pwm_err_t</span> <span class="nf">safe_set_duty_cycle</span><span class="p">(</span><span class="n">BasePwm</span><span class="o">&amp;</span> <span class="n">pwm</span><span class="p">,</span> <span class="n">hf_channel_id_t</span> <span class="n">channel</span><span class="p">,</span> <span class="kt">float</span> <span class="n">duty</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ✅ Validate duty cycle range</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">duty</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="n">f</span> <span class="o">||</span> <span class="n">duty</span> <span class="o">&gt;</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Invalid duty cycle: %.2f%% (must be 0-100%%)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">duty</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_ERR_DUTY_OUT_OF_RANGE</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// ✅ Check if channel is available</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pwm</span><span class="p">.</span><span class="n">IsChannelAvailable</span><span class="p">(</span><span class="n">channel</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Channel %u not available</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">channel</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_ERR_INVALID_CHANNEL</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// ✅ Ensure PWM is initialized</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pwm</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize PWM</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_ERR_NOT_INITIALIZED</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// ✅ Enable channel if not already enabled</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pwm</span><span class="p">.</span><span class="n">IsChannelEnabled</span><span class="p">(</span><span class="n">channel</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">hf_pwm_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">pwm</span><span class="p">.</span><span class="n">EnableChannel</span><span class="p">(</span><span class="n">channel</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_pwm_err_t</span><span class="o">::</span><span class="n">PWM_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to enable channel %u: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">channel</span><span class="p">,</span> <span class="n">HfPwmErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// 🎛️ Set duty cycle</span>
+    <span class="k">return</span> <span class="n">pwm</span><span class="p">.</span><span class="n">SetDutyCycle</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">duty</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="️-performance-considerations">
+  
+  
+    <a href="#️-performance-considerations" class="anchor-heading" aria-labelledby="️-performance-considerations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏎️ Performance Considerations
+  
+  
+</h2>
+    
+<h3 id="-optimization-tips">
+  
+  
+    <a href="#-optimization-tips" class="anchor-heading" aria-labelledby="-optimization-tips"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⚡ Optimization Tips
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>🔢 Channel Limits</strong> - Check <code class="language-plaintext highlighter-rouge">GetMaxChannels()</code> before allocating channels</li>
+  <li><strong>📻 Frequency Ranges</strong> - Respect hardware frequency limitations</li>
+  <li><strong>🎯 Resolution Trade-offs</strong> - Higher frequencies may reduce duty cycle resolution</li>
+  <li><strong>🌟 Fade Performance</strong> - Hardware-based fading is faster than software loops</li>
+  <li><strong>💾 Memory Usage</strong> - Use lazy initialization to save memory</li>
+</ul>
+<h3 id="-typical-performance-ranges">
+  
+  
+    <a href="#-typical-performance-ranges" class="anchor-heading" aria-labelledby="-typical-performance-ranges"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 Typical Performance Ranges
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Hardware</strong></td>
+      <td><strong>Channels</strong></td>
+      <td><strong>Frequency Range</strong></td>
+      <td><strong>Resolution</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|————–|————–|———————|—————-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>ESP32-C6 LEDC</strong></td>
+      <td>8</td>
+      <td>1Hz - 40MHz</td>
+      <td>1-20 bits</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>External PWM ICs</strong></td>
+      <td>4-16</td>
+      <td>1Hz - 1.5MHz</td>
+      <td>8-16 bits</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Motor Controllers</strong></td>
+      <td>2-6</td>
+      <td>1kHz - 100kHz</td>
+      <td>10-16 bits</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="-thread-safety">
+  
+  
+    <a href="#-thread-safety" class="anchor-heading" aria-labelledby="-thread-safety"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🧵 Thread Safety
+  
+  
+</h2>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">BasePwm</code> class is <strong>not thread-safe</strong>.
+For concurrent access,
+use appropriate synchronization or consider thread-safe wrapper implementations.</p>
+<h2 id="-related-documentation">
+  
+  
+    <a href="#-related-documentation" class="anchor-heading" aria-labelledby="-related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔗 Related Documentation
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPwm/">EspPwm API Reference</a></strong> - ESP32-C6 PWM implementation</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/api/BaseGpio/">BaseGpio API Reference</a></strong> - GPIO interface for PWM output pins</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/">HardwareTypes Reference</a></strong> - Platform-agnostic type definitions</li>
+</ul><hr />
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

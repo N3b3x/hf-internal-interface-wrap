@@ -1,0 +1,176 @@
+###############################################################################
+#  HardFOC Internal Interface Wrapper – ESP-IDF Component Manager Manifest
+#
+#  This manifest file describes the HardFOC Internal Interface Wrapper component
+#  for the ESP-IDF Component Manager. The wrapper provides unified abstract base
+#  classes and ESP32 implementations for hardware interfaces including ADC, CAN,
+#  GPIO, I2C, PWM, SPI, UART, timers, and specialized peripherals.
+#
+#  For more information about the ESP-IDF Component Manager manifest format,
+#  see: https://docs.espressif.com/projects/idf-component-manager/en/latest/reference/manifest_file.html
+###############################################################################
+
+# ─── Component Metadata ───────────────────────────────────────────────────────
+name: hf-internal-interface-wrap
+version: "1.0.0"
+description: |
+  HardFOC Internal Interface Wrapper - comprehensive hardware abstraction layer
+  providing unified base classes and ESP32 implementations for motor control and
+  embedded systems. Features abstract interfaces for ADC, CAN, GPIO, I2C, PWM,
+  SPI, UART, periodic timers, PIO, and specialized peripherals with full ESP32
+  family support and modern ESP-IDF v5.5+ integration.
+
+# ─── External Links ───────────────────────────────────────────────────────────
+url: "https://github.com/N3b3x/hf-internal-interface-wrap"
+repository: "https://github.com/N3b3x/hf-internal-interface-wrap.git"
+documentation: "https://github.com/N3b3x/hf-internal-interface-wrap/blob/main/README.md"
+issues: "https://github.com/N3b3x/hf-internal-interface-wrap/issues"
+
+# ─── Licensing and Maintenance ───────────────────────────────────────────────
+license: "MIT"
+maintainers:
+  - "Nebiyu Tadesse <nebysma@gmail.com>"
+
+# ─── Component Classification ────────────────────────────────────────────────
+tags:
+  - "hardfoc"           # HardFOC ecosystem
+  - "interface"         # Interface abstraction
+  - "wrapper"           # Hardware wrapper
+  - "hal"               # Hardware abstraction layer
+  - "driver"            # Device drivers
+  - "esp-idf"           # ESP-IDF framework
+  - "esp32"             # ESP32 family
+  - "esp32c6"           # ESP32-C6 support
+  - "gpio"              # GPIO control
+  - "spi"               # SPI communication
+  - "i2c"               # I2C communication
+  - "uart"              # UART communication
+  - "can"               # CAN/TWAI communication
+  - "adc"               # ADC functionality
+  - "pwm"               # PWM generation
+  - "timer"             # Periodic timers
+  - "pio"               # Programmable I/O
+  - "rtos"              # RTOS integration
+  - "abstraction"       # Hardware abstraction
+
+# ─── Supported Targets ───────────────────────────────────────────────────────
+targets:
+  - esp32c6             # Primary target - ESP32-C6
+  - esp32               # ESP32 classic
+  - esp32s2             # ESP32-S2
+  - esp32s3             # ESP32-S3
+  - esp32c3             # ESP32-C3
+  - esp32c2             # ESP32-C2
+  - esp32h2             # ESP32-H2
+
+# ─── Dependencies ────────────────────────────────────────────────────────────
+dependencies:
+  # ESP-IDF Framework (required for all ESP32 development)
+  idf: ">=5.0.0"
+
+  # ESP-IDF Core Components (built-in, no external dependencies needed)
+  # These are automatically available when using ESP-IDF
+
+# ─── Packaging Configuration ─────────────────────────────────────────────────
+files:
+  # Include all source files and headers
+  include:
+    - "inc/**/*"
+    - "src/**/*"
+    - "CMakeLists.txt"
+    - "idf_component.yml"
+    - "LICENSE"
+    - "README.md"
+
+  # Exclude development and documentation files to minimize package size
+  exclude:
+    # Documentation and examples (kept separate)
+    - "**/docs/**"
+    - "**/examples/**"
+    - "**/tests/**"
+
+    # Development and CI files
+    - "**/.github/**"
+    - "**/.gitlab-ci.yml"
+    - "**/.git/**"
+    - "**/.svn/**"
+
+    # IDE and editor files
+    - "**/.idea/**"
+    - "**/.vscode/**"
+    - "**/.settings/**"
+    - "**/.DS_Store"
+    - "**/Thumbs.db"
+
+    # Build artifacts
+    - "**/build/**"
+    - "**/dist/**"
+    - "**/managed_components/**"
+    - "**/dependencies.lock"
+    - "**/sdkconfig"
+    - "**/sdkconfig.old"
+    - "**/.component_hash"
+
+    # Python and cache files
+    - "**/__pycache__/**"
+    - "**/*.pyc"
+    - "**/*.pyd"
+    - "**/*.pyo"
+
+###############################################################################
+#  Component Architecture Overview
+#
+#  The HardFOC Internal Interface Wrapper consists of several layers:
+#
+#  1. Base Abstract Classes (inc/base/)
+#     - BaseAdc: ADC interface abstraction
+#     - BaseCan: CAN/TWAI communication interface
+#     - BaseGpio: GPIO control interface
+#     - BaseI2c: I2C communication interface
+#     - BasePeriodicTimer: Timer interface abstraction
+#     - BasePio: Programmable I/O interface
+#     - BasePwm: PWM generation interface
+#     - BaseSpi: SPI communication interface
+#     - BaseUart: UART communication interface
+#     - BaseWifi/BaseBluetooth: Wireless interfaces
+#     - BaseTemperature/BaseNvs: Specialized interfaces
+#
+#  2. ESP32 Implementations (inc/mcu/esp32/)
+#     - EspAdc: ESP32 ADC implementation
+#     - EspCan: ESP32 TWAI implementation
+#     - EspGpio: ESP32 GPIO implementation with advanced features
+#     - EspI2c: ESP32 I2C implementation
+#     - EspPeriodicTimer: ESP32 timer implementation
+#     - EspPio: ESP32 RMT-based PIO implementation
+#     - EspPwm: ESP32 LEDC PWM implementation
+#     - EspSpi: ESP32 SPI implementation
+#     - EspUart: ESP32 UART implementation
+#     - EspWifi/EspBluetooth: ESP32 wireless implementations
+#
+#  3. Type Definitions (inc/mcu/esp32/utils/)
+#     - EspTypes_*.h: Platform-specific type definitions
+#     - Hardware abstraction for different ESP32 variants
+#
+#  4. Utility Classes (inc/utils/)
+#     - AsciiArtGenerator: Advanced text formatting
+#     - DigitalOutputGuard: Safe GPIO output management
+#     - McuSelect: Platform selection macros
+#     - memory_utils: Memory management utilities
+#     - RtosMutex: RTOS synchronization primitives
+#
+#  Usage Example:
+#  ```cpp
+#  #include "mcu/esp32/EspGpio.h"
+#  #include "mcu/esp32/EspPwm.h"
+#
+#  // Create instances using base class interfaces
+#  std::unique_ptr<BaseGpio> led = std::make_unique<EspGpio>(GPIO_NUM_8);
+#  std::unique_ptr<BasePwm> motor = std::make_unique<EspPwm>();
+#
+#  // Initialize and use through unified interface
+#  if (led->EnsureInitialized() && motor->EnsureInitialized()) {
+#      led->SetHigh();
+#      motor->SetDutyCycle(0, 50.0f);  // 50% duty cycle on channel 0
+#  }
+#  ```
+###############################################################################

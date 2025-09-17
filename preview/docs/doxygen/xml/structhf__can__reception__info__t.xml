@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__can__reception__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_can_reception_info_t</compoundname>
+    <includes refid="BaseCan_8h" local="no">BaseCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__can__reception__info__t_1ae1fbb6e6b8850678fc0d601bf80806c0" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_can_reception_info_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_can_reception_info_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Reception timestamp in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="342" column="12" bodyfile="inc/base/BaseCan.h" bodystart="342" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__reception__info__t_1ae46c2b74fdb0496b9fc0591d90735f14" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_can_reception_info_t::rx_fifo_level</definition>
+        <argsstring></argsstring>
+        <name>rx_fifo_level</name>
+        <qualifiedname>hf_can_reception_info_t::rx_fifo_level</qualifiedname>
+        <briefdescription>
+<para>RX FIFO level when received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="343" column="11" bodyfile="inc/base/BaseCan.h" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__reception__info__t_1a299a88dec5d5f724a407ab6607bd3e6a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_reception_info_t::data_phase_error</definition>
+        <argsstring></argsstring>
+        <name>data_phase_error</name>
+        <qualifiedname>hf_can_reception_info_t::data_phase_error</qualifiedname>
+        <briefdescription>
+<para>Error occurred in data phase. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="344" column="8" bodyfile="inc/base/BaseCan.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__reception__info__t_1ac1bd33853ea338c9163bd9e838d0859b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_reception_info_t::arbitration_lost</definition>
+        <argsstring></argsstring>
+        <name>arbitration_lost</name>
+        <qualifiedname>hf_can_reception_info_t::arbitration_lost</qualifiedname>
+        <briefdescription>
+<para>Arbitration was lost during transmission. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="345" column="8" bodyfile="inc/base/BaseCan.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__reception__info__t_1a3a5057318523511320dbbc1417557247" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_can_reception_info_t::bit_timing_tolerance</definition>
+        <argsstring></argsstring>
+        <name>bit_timing_tolerance</name>
+        <qualifiedname>hf_can_reception_info_t::bit_timing_tolerance</qualifiedname>
+        <briefdescription>
+<para>Measured bit timing tolerance. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseCan.h" line="346" column="9" bodyfile="inc/base/BaseCan.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CAN-FD specific receive callback with enhanced information. </para>
+    </briefdescription>
+    <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Received CAN/CAN-FD message </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reception_info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Additional reception information (timing, errors, etc.) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="inc/base/BaseCan.h" line="341" column="1" bodyfile="inc/base/BaseCan.h" bodystart="341" bodyend="347"/>
+    <listofallmembers>
+      <member refid="structhf__can__reception__info__t_1ac1bd33853ea338c9163bd9e838d0859b" prot="public" virt="non-virtual"><scope>hf_can_reception_info_t</scope><name>arbitration_lost</name></member>
+      <member refid="structhf__can__reception__info__t_1a3a5057318523511320dbbc1417557247" prot="public" virt="non-virtual"><scope>hf_can_reception_info_t</scope><name>bit_timing_tolerance</name></member>
+      <member refid="structhf__can__reception__info__t_1a299a88dec5d5f724a407ab6607bd3e6a" prot="public" virt="non-virtual"><scope>hf_can_reception_info_t</scope><name>data_phase_error</name></member>
+      <member refid="structhf__can__reception__info__t_1ae46c2b74fdb0496b9fc0591d90735f14" prot="public" virt="non-virtual"><scope>hf_can_reception_info_t</scope><name>rx_fifo_level</name></member>
+      <member refid="structhf__can__reception__info__t_1ae1fbb6e6b8850678fc0d601bf80806c0" prot="public" virt="non-virtual"><scope>hf_can_reception_info_t</scope><name>timestamp_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

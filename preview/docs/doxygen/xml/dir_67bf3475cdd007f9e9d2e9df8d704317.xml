@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_67bf3475cdd007f9e9d2e9df8d704317" kind="dir">
+    <compoundname>inc/mcu/esp32/utils</compoundname>
+    <innerfile refid="EspTypes_8h">EspTypes.h</innerfile>
+    <innerfile refid="EspTypes__ADC_8h">EspTypes_ADC.h</innerfile>
+    <innerfile refid="EspTypes__Base_8h">EspTypes_Base.h</innerfile>
+    <innerfile refid="EspTypes__CAN_8h">EspTypes_CAN.h</innerfile>
+    <innerfile refid="EspTypes__GPIO_8h">EspTypes_GPIO.h</innerfile>
+    <innerfile refid="EspTypes__I2C_8h">EspTypes_I2C.h</innerfile>
+    <innerfile refid="EspTypes__NVS_8h">EspTypes_NVS.h</innerfile>
+    <innerfile refid="EspTypes__PIO_8h">EspTypes_PIO.h</innerfile>
+    <innerfile refid="EspTypes__PWM_8h">EspTypes_PWM.h</innerfile>
+    <innerfile refid="EspTypes__SPI_8h">EspTypes_SPI.h</innerfile>
+    <innerfile refid="EspTypes__Timer_8h">EspTypes_Timer.h</innerfile>
+    <innerfile refid="EspTypes__UART_8h">EspTypes_UART.h</innerfile>
+    <innerfile refid="EspTypes__WiFi_8h">EspTypes_WiFi.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/"/>
+  </compounddef>
+</doxygen>

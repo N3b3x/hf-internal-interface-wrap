@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pwm__channel__status__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pwm_channel_status_t</compoundname>
+    <includes refid="EspTypes__PWM_8h" local="no">EspTypes_PWM.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pwm__channel__status__t_1a8a4271296226416f1ed7b3b4c2391fc2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_channel_status_t::enabled</definition>
+        <argsstring></argsstring>
+        <name>enabled</name>
+        <qualifiedname>hf_pwm_channel_status_t::enabled</qualifiedname>
+        <briefdescription>
+<para>Channel is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="220" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__status__t_1a27d5ea959206f0db1d7cf3f339c47400" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_channel_status_t::configured</definition>
+        <argsstring></argsstring>
+        <name>configured</name>
+        <qualifiedname>hf_pwm_channel_status_t::configured</qualifiedname>
+        <briefdescription>
+<para>Channel is configured. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="221" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__status__t_1a0b93adfffd66ff1743a83203f4380b33" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_pwm_channel_status_t::current_duty_cycle</definition>
+        <argsstring></argsstring>
+        <name>current_duty_cycle</name>
+        <qualifiedname>hf_pwm_channel_status_t::current_duty_cycle</qualifiedname>
+        <briefdescription>
+<para>Current duty cycle (0.0-1.0) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="222" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__status__t_1afb9bf06a6ebdcfb6cfa73032dfb7bc1f" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
+        <definition>hf_frequency_hz_t hf_pwm_channel_status_t::current_frequency</definition>
+        <argsstring></argsstring>
+        <name>current_frequency</name>
+        <qualifiedname>hf_pwm_channel_status_t::current_frequency</qualifiedname>
+        <briefdescription>
+<para>Current frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="223" column="21" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__status__t_1a1c55dd0e0a8c0c11f220a5b4a42c537a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_channel_status_t::resolution_bits</definition>
+        <argsstring></argsstring>
+        <name>resolution_bits</name>
+        <qualifiedname>hf_pwm_channel_status_t::resolution_bits</qualifiedname>
+        <briefdescription>
+<para>Current resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="224" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="224" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__status__t_1afddc02aa6e069dd1f3744002a9fb47ab" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_channel_status_t::raw_duty_value</definition>
+        <argsstring></argsstring>
+        <name>raw_duty_value</name>
+        <qualifiedname>hf_pwm_channel_status_t::raw_duty_value</qualifiedname>
+        <briefdescription>
+<para>Raw duty cycle value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="225" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__status__t_1a2103191f9ce6fbc7683fe9016b320daa" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_channel_status_t::fade_active</definition>
+        <argsstring></argsstring>
+        <name>fade_active</name>
+        <qualifiedname>hf_pwm_channel_status_t::fade_active</qualifiedname>
+        <briefdescription>
+<para>Hardware fade is active. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="226" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__status__t_1a2d2fc64f2fbd98292dc7becc8b342d2a" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
+        <definition>hf_pwm_err_t hf_pwm_channel_status_t::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>hf_pwm_channel_status_t::last_error</qualifiedname>
+        <briefdescription>
+<para>Last error for this channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="227" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pwm__channel__status__t_1a78f5d15a105445d40c09bfc65c779681" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pwm_channel_status_t::hf_pwm_channel_status_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_pwm_channel_status_t</name>
+        <qualifiedname>hf_pwm_channel_status_t::hf_pwm_channel_status_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="229" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="229" bodyend="232"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM channel status information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="219" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="219" bodyend="233"/>
+    <listofallmembers>
+      <member refid="structhf__pwm__channel__status__t_1a27d5ea959206f0db1d7cf3f339c47400" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>configured</name></member>
+      <member refid="structhf__pwm__channel__status__t_1a0b93adfffd66ff1743a83203f4380b33" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>current_duty_cycle</name></member>
+      <member refid="structhf__pwm__channel__status__t_1afb9bf06a6ebdcfb6cfa73032dfb7bc1f" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>current_frequency</name></member>
+      <member refid="structhf__pwm__channel__status__t_1a8a4271296226416f1ed7b3b4c2391fc2" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>enabled</name></member>
+      <member refid="structhf__pwm__channel__status__t_1a2103191f9ce6fbc7683fe9016b320daa" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>fade_active</name></member>
+      <member refid="structhf__pwm__channel__status__t_1a78f5d15a105445d40c09bfc65c779681" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>hf_pwm_channel_status_t</name></member>
+      <member refid="structhf__pwm__channel__status__t_1a2d2fc64f2fbd98292dc7becc8b342d2a" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>last_error</name></member>
+      <member refid="structhf__pwm__channel__status__t_1afddc02aa6e069dd1f3744002a9fb47ab" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>raw_duty_value</name></member>
+      <member refid="structhf__pwm__channel__status__t_1a1c55dd0e0a8c0c11f220a5b4a42c537a" prot="public" virt="non-virtual"><scope>hf_pwm_channel_status_t</scope><name>resolution_bits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

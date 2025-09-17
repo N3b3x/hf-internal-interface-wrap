@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__log__message__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_log_message_t</compoundname>
+    <includes refid="BaseLogger_8h" local="no">BaseLogger.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__log__message__t_1a69e40af6b21ed062ecc9aaf1cef13841" prot="public" static="no" mutable="no">
+        <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+        <definition>hf_log_level_t hf_log_message_t::level</definition>
+        <argsstring></argsstring>
+        <name>level</name>
+        <qualifiedname>hf_log_message_t::level</qualifiedname>
+        <briefdescription>
+<para>Log level. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="204" column="18" bodyfile="inc/base/BaseLogger.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__log__message__t_1a6b5fd3140e501bb1ba3439d3f0a7d910" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_log_message_t::tag</definition>
+        <argsstring></argsstring>
+        <name>tag</name>
+        <qualifiedname>hf_log_message_t::tag</qualifiedname>
+        <briefdescription>
+<para>Message tag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="205" column="14" bodyfile="inc/base/BaseLogger.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__log__message__t_1a743d4d26ae46e07e604ac5f781bae0c4" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_log_message_t::message</definition>
+        <argsstring></argsstring>
+        <name>message</name>
+        <qualifiedname>hf_log_message_t::message</qualifiedname>
+        <briefdescription>
+<para>Message content. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="206" column="14" bodyfile="inc/base/BaseLogger.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__log__message__t_1a0bef771ae26113ec182a599404acf4e6" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_log_message_t::file</definition>
+        <argsstring></argsstring>
+        <name>file</name>
+        <qualifiedname>hf_log_message_t::file</qualifiedname>
+        <briefdescription>
+<para>Source file. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="207" column="14" bodyfile="inc/base/BaseLogger.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__log__message__t_1af359a0928238d210947879eeaf245762" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_log_message_t::line</definition>
+        <argsstring></argsstring>
+        <name>line</name>
+        <qualifiedname>hf_log_message_t::line</qualifiedname>
+        <briefdescription>
+<para>Source line. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="208" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__log__message__t_1a73678486868b2d22572af1703d3f8370" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_log_message_t::function</definition>
+        <argsstring></argsstring>
+        <name>function</name>
+        <qualifiedname>hf_log_message_t::function</qualifiedname>
+        <briefdescription>
+<para>Function name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="209" column="14" bodyfile="inc/base/BaseLogger.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__log__message__t_1adb4c7eef4ccc5c5e5f9a52b426d8bcb6" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_log_message_t::timestamp</definition>
+        <argsstring></argsstring>
+        <name>timestamp</name>
+        <qualifiedname>hf_log_message_t::timestamp</qualifiedname>
+        <briefdescription>
+<para>Timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="210" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__log__message__t_1a6288896e788bbac7d683396c4d4d08a4" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_log_message_t::thread_id</definition>
+        <argsstring></argsstring>
+        <name>thread_id</name>
+        <qualifiedname>hf_log_message_t::thread_id</qualifiedname>
+        <briefdescription>
+<para>Thread ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="211" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__log__message__t_1aab5ee16089b2a088c2ccc99e9703063d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_log_message_t::message_length</definition>
+        <argsstring></argsstring>
+        <name>message_length</name>
+        <qualifiedname>hf_log_message_t::message_length</qualifiedname>
+        <briefdescription>
+<para>Message length. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="212" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Log message structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseLogger.h" line="203" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="203" bodyend="213"/>
+    <listofallmembers>
+      <member refid="structhf__log__message__t_1a0bef771ae26113ec182a599404acf4e6" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>file</name></member>
+      <member refid="structhf__log__message__t_1a73678486868b2d22572af1703d3f8370" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>function</name></member>
+      <member refid="structhf__log__message__t_1a69e40af6b21ed062ecc9aaf1cef13841" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>level</name></member>
+      <member refid="structhf__log__message__t_1af359a0928238d210947879eeaf245762" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>line</name></member>
+      <member refid="structhf__log__message__t_1a743d4d26ae46e07e604ac5f781bae0c4" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>message</name></member>
+      <member refid="structhf__log__message__t_1aab5ee16089b2a088c2ccc99e9703063d" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>message_length</name></member>
+      <member refid="structhf__log__message__t_1a6b5fd3140e501bb1ba3439d3f0a7d910" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>tag</name></member>
+      <member refid="structhf__log__message__t_1a6288896e788bbac7d683396c4d4d08a4" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>thread_id</name></member>
+      <member refid="structhf__log__message__t_1adb4c7eef4ccc5c5e5f9a52b426d8bcb6" prot="public" virt="non-virtual"><scope>hf_log_message_t</scope><name>timestamp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

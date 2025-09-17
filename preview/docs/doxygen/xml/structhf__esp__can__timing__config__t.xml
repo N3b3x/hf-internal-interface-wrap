@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__esp__can__timing__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_esp_can_timing_config_t</compoundname>
+    <includes refid="EspCan_8h" local="no">EspCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__esp__can__timing__config__t_1a1eda91ba0c3f3725ce8c508c1315e828" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_timing_config_t::brp</definition>
+        <argsstring></argsstring>
+        <name>brp</name>
+        <qualifiedname>hf_esp_can_timing_config_t::brp</qualifiedname>
+        <briefdescription>
+<para>Baud rate prescaler. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="107" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__timing__config__t_1aa2427cb06caec735ca900d9485a31e49" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_timing_config_t::prop_seg</definition>
+        <argsstring></argsstring>
+        <name>prop_seg</name>
+        <qualifiedname>hf_esp_can_timing_config_t::prop_seg</qualifiedname>
+        <briefdescription>
+<para>Propagation segment. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="108" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__timing__config__t_1aa98d242b37b3da2655c639c8b7de74a6" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_timing_config_t::tseg_1</definition>
+        <argsstring></argsstring>
+        <name>tseg_1</name>
+        <qualifiedname>hf_esp_can_timing_config_t::tseg_1</qualifiedname>
+        <briefdescription>
+<para>Time segment 1 (before sample point) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="109" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__timing__config__t_1a883463586954e5fa6a850c3844bac131" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_timing_config_t::tseg_2</definition>
+        <argsstring></argsstring>
+        <name>tseg_2</name>
+        <qualifiedname>hf_esp_can_timing_config_t::tseg_2</qualifiedname>
+        <briefdescription>
+<para>Time segment 2 (after sample point) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="110" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__timing__config__t_1a1e31613cf98266e147cd883871f9000a" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_timing_config_t::sjw</definition>
+        <argsstring></argsstring>
+        <name>sjw</name>
+        <qualifiedname>hf_esp_can_timing_config_t::sjw</qualifiedname>
+        <briefdescription>
+<para>Synchronization jump width. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="111" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__timing__config__t_1a1a40d7471f775bcda423e0dcdcc6adec" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_timing_config_t::ssp_offset</definition>
+        <argsstring></argsstring>
+        <name>ssp_offset</name>
+        <qualifiedname>hf_esp_can_timing_config_t::ssp_offset</qualifiedname>
+        <briefdescription>
+<para>Secondary sample point offset. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="112" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__esp__can__timing__config__t_1ac0c60497f1f712729134bf9d75cbe150" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_esp_can_timing_config_t::hf_esp_can_timing_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_esp_can_timing_config_t</name>
+        <qualifiedname>hf_esp_can_timing_config_t::hf_esp_can_timing_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="114" column="3" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="114" bodyend="115"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Advanced bit timing configuration for fine-tuning. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspCan.h" line="106" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="106" bodyend="116"/>
+    <listofallmembers>
+      <member refid="structhf__esp__can__timing__config__t_1a1eda91ba0c3f3725ce8c508c1315e828" prot="public" virt="non-virtual"><scope>hf_esp_can_timing_config_t</scope><name>brp</name></member>
+      <member refid="structhf__esp__can__timing__config__t_1ac0c60497f1f712729134bf9d75cbe150" prot="public" virt="non-virtual"><scope>hf_esp_can_timing_config_t</scope><name>hf_esp_can_timing_config_t</name></member>
+      <member refid="structhf__esp__can__timing__config__t_1aa2427cb06caec735ca900d9485a31e49" prot="public" virt="non-virtual"><scope>hf_esp_can_timing_config_t</scope><name>prop_seg</name></member>
+      <member refid="structhf__esp__can__timing__config__t_1a1e31613cf98266e147cd883871f9000a" prot="public" virt="non-virtual"><scope>hf_esp_can_timing_config_t</scope><name>sjw</name></member>
+      <member refid="structhf__esp__can__timing__config__t_1a1a40d7471f775bcda423e0dcdcc6adec" prot="public" virt="non-virtual"><scope>hf_esp_can_timing_config_t</scope><name>ssp_offset</name></member>
+      <member refid="structhf__esp__can__timing__config__t_1aa98d242b37b3da2655c639c8b7de74a6" prot="public" virt="non-virtual"><scope>hf_esp_can_timing_config_t</scope><name>tseg_1</name></member>
+      <member refid="structhf__esp__can__timing__config__t_1a883463586954e5fa6a850c3844bac131" prot="public" virt="non-virtual"><scope>hf_esp_can_timing_config_t</scope><name>tseg_2</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

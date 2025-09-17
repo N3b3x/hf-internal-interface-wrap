@@ -1,0 +1,1453 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(6)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(6) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(6) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(6) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/preview/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/preview/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🧪 SPI Test | HardFOC Interface Wrapper - preview</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🧪 SPI Test" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="SPI Test Suite - Serial peripheral interface and DMA testing" />
+<meta property="og:description" content="SPI Test Suite - Serial peripheral interface and DMA testing" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - preview" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🧪 SPI Test" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"SPI Test Suite - Serial peripheral interface and DMA testing","headline":"🧪 SPI Test","url":"https://n3b3x.github.io/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/preview/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/preview/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/preview/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - preview
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/preview/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/">🚀 ESP32 Examples</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/">🧪 Test Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🧪 SPI Test</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="esp32-c6-spi-comprehensive-test-suite-documentation">
+  
+  
+    <a href="#esp32-c6-spi-comprehensive-test-suite-documentation" class="anchor-heading" aria-labelledby="esp32-c6-spi-comprehensive-test-suite-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 SPI Comprehensive Test Suite Documentation
+  
+  
+</h1>
+    
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p>The SPI Comprehensive Test Suite provides extensive validation of the <code class="language-plaintext highlighter-rouge">EspSpi</code> class for ESP32-C6
+platforms using ESP-IDF v5.5+ SPI master driver.
+This comprehensive test suite demonstrates complete SPI functionality including bus management,
+device lifecycle, data transfer operations, DMA support, clock configuration,
+ESP-specific features,
+and advanced capabilities with a focus on embedded environments using <code class="language-plaintext highlighter-rouge">noexcept</code> functions.</p>
+
+<p><strong>✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware with comprehensive validation</strong>
+<strong>🎯 Focus: Full-duplex communication, DMA operations, and ESP32-C6 specific optimizations</strong>
+<strong>🔧 Updated: Comprehensive SPI documentation with logic analyzer requirements</strong></p>
+<h2 id="features-tested">
+  
+  
+    <a href="#features-tested" class="anchor-heading" aria-labelledby="features-tested"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features Tested
+  
+  
+</h2>
+    
+<h3 id="core-spi-functionality">
+  
+  
+    <a href="#core-spi-functionality" class="anchor-heading" aria-labelledby="core-spi-functionality"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core SPI Functionality
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Bus Management</strong>: Initialization, configuration, and cleanup</li>
+  <li><strong>Device Lifecycle</strong>: Creation, initialization, and removal</li>
+  <li><strong>Data Transfer</strong>: Full-duplex, half-duplex, and read-only operations</li>
+  <li><strong>Transfer Sizes</strong>: 1, 4, 16, 64, 256, and 1024 byte transfers</li>
+  <li><strong>Pattern Generation</strong>: Sequential and alternating data patterns</li>
+  <li><strong>Error Handling</strong>: Comprehensive error condition testing and recovery</li>
+</ul>
+<h3 id="advanced-spi-features">
+  
+  
+    <a href="#advanced-spi-features" class="anchor-heading" aria-labelledby="advanced-spi-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced SPI Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Clock Configuration</strong>: Multiple clock sources and frequency settings</li>
+  <li><strong>SPI Modes</strong>: CPOL/CPHA configuration (Mode 0-3)</li>
+  <li><strong>DMA Operations</strong>: Hardware-accelerated data transfer</li>
+  <li><strong>Multi-Device Support</strong>: Concurrent device management</li>
+  <li><strong>Thread Safety</strong>: RTOS mutex protection and concurrent access</li>
+  <li><strong>Performance Optimization</strong>: Timing and throughput measurement</li>
+</ul>
+<h3 id="esp32-c6-specific-features">
+  
+  
+    <a href="#esp32-c6-specific-features" class="anchor-heading" aria-labelledby="esp32-c6-specific-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Specific Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>IOMUX Integration</strong>: Direct pin-to-peripheral connections</li>
+  <li><strong>Clock Sources</strong>: PLL_F80M, XTAL, and RC_FAST clock options</li>
+  <li><strong>Host Management</strong>: SPI2_HOST (only general-purpose host on ESP32-C6)</li>
+  <li><strong>Power Management</strong>: Sleep mode compatibility and wake-up</li>
+  <li><strong>Hardware Constraints</strong>: PHASE_0 sampling point limitation</li>
+</ul>
+<h3 id="direct-api-comparison">
+  
+  
+    <a href="#direct-api-comparison" class="anchor-heading" aria-labelledby="direct-api-comparison"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Direct API Comparison
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>ESP-IDF Direct API</strong>: Pure C-based SPI testing for baseline validation</li>
+  <li><strong>C++ Wrapper Replica</strong>: C++ wrapper comparison for wrapper validation</li>
+  <li><strong>Performance Comparison</strong>: Direct vs wrapper performance analysis</li>
+</ul>
+<h2 id="hardware-requirements">
+  
+  
+    <a href="#hardware-requirements" class="anchor-heading" aria-labelledby="hardware-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Requirements
+  
+  
+</h2>
+    
+<h3 id="esp32-c6-devkit-m-1-pin-layout">
+  
+  
+    <a href="#esp32-c6-devkit-m-1-pin-layout" class="anchor-heading" aria-labelledby="esp32-c6-devkit-m-1-pin-layout"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 DevKit-M-1 Pin Layout
+  
+  
+</h3>
+    
+
+<p>The test suite uses the following safe pins on ESP32-C6 DevKit-M-1:</p>
+
+<p><code class="language-plaintext highlighter-rouge">text
+Safe Test Pins:
+┌─────────────────────────────────────┐
+│ Function            │ GPIO Pin      │
+├─────────────────────┼───────────────┤
+│ MOSI (Master Out)   │ GPIO 7        │
+│ MISO (Master In)    │ GPIO 2        │
+│ SCLK (Clock)        │ GPIO 6        │
+│ CS (Chip Select)    │ GPIO 21       │
+│ Test Progress LED    │ GPIO 14       │
+└─────────────────────┴───────────────┘
+</code>text</p>
+<h3 id="optional-hardware">
+  
+  
+    <a href="#optional-hardware" class="anchor-heading" aria-labelledby="optional-hardware"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Optional Hardware
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Logic Analyzer</strong>: For signal analysis and timing validation</li>
+  <li><strong>SPI Device</strong>: For real device communication testing</li>
+  <li><strong>Oscilloscope</strong>: For detailed signal analysis</li>
+</ul>
+<h2 id="test-configuration">
+  
+  
+    <a href="#test-configuration" class="anchor-heading" aria-labelledby="test-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Configuration
+  
+  
+</h2>
+    
+<h3 id="default-test-settings">
+  
+  
+    <a href="#default-test-settings" class="anchor-heading" aria-labelledby="default-test-settings"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Default Test Settings
+  
+  
+</h3>
+    
+
+<p>```cpp
+// GPIO pin configuration
+static constexpr hf_pin_num_t TEST_MOSI_PIN = 7;
+static constexpr hf_pin_num_t TEST_MISO_PIN = 2;
+static constexpr hf_pin_num_t TEST_SCLK_PIN = 6;
+static constexpr hf_pin_num_t TEST_CS_PIN = 21;</p>
+
+<p>// SPI host configuration
+static constexpr hf_host_id_t SPI_HOST_NUM = static_cast<hf_host_id_t>(1); // SPI2_HOST</hf_host_id_t></p>
+
+<p>// Clock configuration
+static constexpr uint32_t SPI_CLOCK_SPEED = 1000000; // 1MHz
+static constexpr hf_spi_clock_source_t CLOCK_SOURCE = hf_spi_clock_source_t::PLL_F80M_CLK;</p>
+
+<p>// SPI mode configuration
+static constexpr hf_spi_mode_t SPI_MODE = hf_spi_mode_t::MODE_0; // CPOL=0, CPHA=0
+```text</p>
+<h3 id="test-section-configuration">
+  
+  
+    <a href="#test-section-configuration" class="anchor-heading" aria-labelledby="test-section-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Section Configuration
+  
+  
+</h3>
+    
+
+<p>The test suite includes configurable test sections:</p>
+
+<p>```cpp
+// Core SPI functionality tests
+static constexpr bool ENABLE_CORE_TESTS = true;           // Bus management, device lifecycle
+static constexpr bool ENABLE_TRANSFER_TESTS = true;       // Data transfer operations
+static constexpr bool ENABLE_PERFORMANCE_TESTS = true;    // Clock speeds, performance
+static constexpr bool ENABLE_ADVANCED_TESTS = true;       // ESP-specific features
+static constexpr bool ENABLE_STRESS_TESTS = true;         // Error handling, edge cases</p>
+
+<p>// Direct API comparison tests
+static constexpr bool ENABLE_ESPIDF_DIRECT_TEST = true;   // Pure ESP-IDF API testing
+static constexpr bool ENABLE_ESPIDF_WRAPPER_REPLICA = true; // C++ wrapper comparison
+```text</p>
+<h2 id="test-categories">
+  
+  
+    <a href="#test-categories" class="anchor-heading" aria-labelledby="test-categories"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Categories
+  
+  
+</h2>
+    
+<h3 id="core-functionality-8-tests">
+  
+  
+    <a href="#core-functionality-8-tests" class="anchor-heading" aria-labelledby="core-functionality-8-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core Functionality (8 tests)
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>Bus initialization</strong> - Basic setup and configuration validation</li>
+  <li><strong>Bus deinitialization</strong> - Cleanup and state management verification</li>
+  <li><strong>Configuration validation</strong> - Clock sources and settings verification</li>
+  <li><strong>Device creation</strong> - Device lifecycle management</li>
+  <li><strong>Device management</strong> - Multi-device operations and cleanup</li>
+  <li><strong>Write operations</strong> - Data transmission validation</li>
+  <li><strong>Read operations</strong> - Data reception validation</li>
+  <li><strong>Write-read operations</strong> - Full-duplex communication testing</li>
+</ol>
+<h3 id="advanced-features-8-tests">
+  
+  
+    <a href="#advanced-features-8-tests" class="anchor-heading" aria-labelledby="advanced-features-8-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced Features (8 tests)
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>Error handling</strong> - Fault conditions and recovery mechanisms</li>
+  <li><strong>Timeout handling</strong> - Timing validation and error recovery</li>
+  <li><strong>Multi-device operations</strong> - Concurrent device access testing</li>
+  <li><strong>Clock speeds</strong> - Various frequency configuration testing</li>
+  <li><strong>SPI modes</strong> - CPOL/CPHA configuration validation</li>
+  <li><strong>ESP-specific features</strong> - Clock sources, power management</li>
+  <li><strong>Thread safety</strong> - Concurrent access verification</li>
+  <li><strong>Performance</strong> - Timing and throughput measurement</li>
+</ol>
+<h3 id="transfer-size-testing-4-tests">
+  
+  
+    <a href="#transfer-size-testing-4-tests" class="anchor-heading" aria-labelledby="transfer-size-testing-4-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Transfer Size Testing (4 tests)
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>Small transfers</strong> - 1, 4, 16 byte transfer validation</li>
+  <li><strong>Medium transfers</strong> - 64, 256 byte transfer validation</li>
+  <li><strong>Large transfers</strong> - 1024 byte transfer validation</li>
+  <li><strong>Pattern generation</strong> - Sequential and alternating pattern validation</li>
+</ol>
+<h3 id="direct-api-comparison-2-tests">
+  
+  
+    <a href="#direct-api-comparison-2-tests" class="anchor-heading" aria-labelledby="direct-api-comparison-2-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Direct API Comparison (2 tests)
+  
+  
+</h3>
+    
+<ol>
+  <li><strong>ESP-IDF direct API</strong> - Pure C-based SPI testing for baseline</li>
+  <li><strong>C++ wrapper replica</strong> - C++ wrapper comparison for validation</li>
+</ol>
+<h2 id="expected-output">
+  
+  
+    <a href="#expected-output" class="anchor-heading" aria-labelledby="expected-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Expected Output
+  
+  
+</h2>
+    
+<h3 id="test-suite-header">
+  
+  
+    <a href="#test-suite-header" class="anchor-heading" aria-labelledby="test-suite-header"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Suite Header
+  
+  
+</h3>
+    
+
+<p>```text
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    ESP32-C6 SPI COMPREHENSIVE TEST SUITE                    ║
+║                         HardFOC Internal Interface                          ║
+╚══════════════════════════════════════════════════════════════════════════════╝</p>
+
+<p>═══════════════════════════════════════════════════════════════════
+  ESP-IDF Direct API Test
+═══════════════════════════════════════════════════════════════════
+[SUCCESS] ESP-IDF direct API test passed</p>
+
+<p>═══════════════════════════════════════════════════════════════════
+  C++ Wrapper Replica Test
+═══════════════════════════════════════════════════════════════════
+[SUCCESS] C++ wrapper replica test passed</p>
+
+<p>═══════════════════════════════════════════════════════════════════
+  SPI Core Functionality Tests
+═══════════════════════════════════════════════════════════════════
+[SUCCESS] Bus initialization tests passed
+[SUCCESS] Bus deinitialization tests passed
+[SUCCESS] Configuration validation tests passed
+[SUCCESS] Device creation tests passed
+[SUCCESS] Device management tests passed
+[SUCCESS] Write operations tests passed
+[SUCCESS] Read operations tests passed
+[SUCCESS] Write-read operations tests passed</p>
+
+<p>═══════════════════════════════════════════════════════════════════
+  SPI Advanced Features Tests
+═══════════════════════════════════════════════════════════════════
+[SUCCESS] Error handling tests passed
+[SUCCESS] Timeout handling tests passed
+[SUCCESS] Multi-device operations tests passed
+[SUCCESS] Clock speeds tests passed
+[SUCCESS] SPI modes tests passed
+[SUCCESS] ESP-specific features tests passed
+[SUCCESS] Thread safety tests passed
+[SUCCESS] Performance tests passed</p>
+
+<p>═══════════════════════════════════════════════════════════════════
+  SPI Transfer Size Tests
+═══════════════════════════════════════════════════════════════════
+[SUCCESS] Small transfers tests passed
+[SUCCESS] Medium transfers tests passed
+[SUCCESS] Large transfers tests passed
+[SUCCESS] Pattern generation tests passed</p>
+<h2 id="test-summary-spi">
+  
+  
+    <a href="#test-summary-spi" class="anchor-heading" aria-labelledby="test-summary-spi"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Summary: SPI
+  
+  
+</h2>
+    
+<p>Tests Run: 22
+Passed: 22<br />
+Failed: 0
+Success Rate: 100.00%
+```text</p>
+<h2 id="logic-analyzer-requirements">
+  
+  
+    <a href="#logic-analyzer-requirements" class="anchor-heading" aria-labelledby="logic-analyzer-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Requirements
+  
+  
+</h2>
+    
+<h3 id="sampling-rate-requirements">
+  
+  
+    <a href="#sampling-rate-requirements" class="anchor-heading" aria-labelledby="sampling-rate-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Sampling Rate Requirements
+  
+  
+</h3>
+    
+
+<p>For proper SPI signal analysis, ensure your logic analyzer meets these specifications:</p>
+<h4 id="minimum-requirements">
+  
+  
+    <a href="#minimum-requirements" class="anchor-heading" aria-labelledby="minimum-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Minimum Requirements
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Sampling Rate</strong>: 4x SPI clock frequency</li>
+  <li><strong>Example</strong>: For 1MHz SPI clock → 4MS/s minimum</li>
+</ul>
+<h4 id="recommended-requirements">
+  
+  
+    <a href="#recommended-requirements" class="anchor-heading" aria-labelledby="recommended-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Recommended Requirements
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Sampling Rate</strong>: 10x SPI clock frequency</li>
+  <li><strong>Example</strong>: For 1MHz SPI clock → 10MS/s minimum, 40MS/s recommended</li>
+</ul>
+<h3 id="mathematical-justification">
+  
+  
+    <a href="#mathematical-justification" class="anchor-heading" aria-labelledby="mathematical-justification"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Mathematical Justification
+  
+  
+</h3>
+    
+
+<p>Based on Nyquist-Shannon theorem and digital signal analysis:</p>
+<h4 id="nyquist-rate">
+  
+  
+    <a href="#nyquist-rate" class="anchor-heading" aria-labelledby="nyquist-rate"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Nyquist Rate
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Fundamental</strong>: 2x clock frequency (minimum required)</li>
+  <li><strong>Digital signals</strong>: Contain harmonics up to 5x-10x fundamental frequency</li>
+  <li><strong>Jitter tolerance</strong>: Higher sampling rates reduce timing uncertainty</li>
+</ul>
+<h4 id="oversampling-benefits">
+  
+  
+    <a href="#oversampling-benefits" class="anchor-heading" aria-labelledby="oversampling-benefits"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Oversampling Benefits
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Signal reconstruction</strong>: 4x oversampling provides reliable digital signal capture</li>
+  <li><strong>Noise immunity</strong>: Higher sampling rates improve signal-to-noise ratio</li>
+  <li><strong>Timing accuracy</strong>: Better resolution for edge detection and timing analysis</li>
+</ul>
+<h3 id="key-considerations">
+  
+  
+    <a href="#key-considerations" class="anchor-heading" aria-labelledby="key-considerations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Key Considerations
+  
+  
+</h3>
+    
+<h4 id="hardware-requirements-1">
+  
+  
+    <a href="#hardware-requirements-1" class="anchor-heading" aria-labelledby="hardware-requirements-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Requirements
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Memory depth</strong>: Ensure sufficient capture length for complete transfers</li>
+  <li><strong>Probe quality</strong>: High-quality probes reduce signal degradation</li>
+  <li><strong>Ground connection</strong>: Proper grounding essential for signal integrity</li>
+  <li><strong>Bandwidth</strong>: Logic analyzer bandwidth should exceed sampling rate</li>
+</ul>
+<h4 id="signal-analysis">
+  
+  
+    <a href="#signal-analysis" class="anchor-heading" aria-labelledby="signal-analysis"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Signal Analysis
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Clock signal</strong>: Verify clean clock edges and proper frequency</li>
+  <li><strong>Data signals</strong>: Check for proper data timing and levels</li>
+  <li><strong>CS signal</strong>: Validate chip select timing and behavior</li>
+  <li><strong>Timing relationships</strong>: Ensure proper setup and hold times</li>
+</ul>
+<h2 id="running-the-tests">
+  
+  
+    <a href="#running-the-tests" class="anchor-heading" aria-labelledby="running-the-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running the Tests
+  
+  
+</h2>
+    
+<h3 id="build-and-flash">
+  
+  
+    <a href="#build-and-flash" class="anchor-heading" aria-labelledby="build-and-flash"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build and Flash
+  
+  
+</h3>
+    
+
+<p>```bash</p>
+<h2 id="from-project-root">
+  
+  
+    <a href="#from-project-root" class="anchor-heading" aria-labelledby="from-project-root"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> From project root
+  
+  
+</h2>
+    
+<p>cd examples/esp32</p>
+<h2 id="build-the-spi-test-suite">
+  
+  
+    <a href="#build-the-spi-test-suite" class="anchor-heading" aria-labelledby="build-the-spi-test-suite"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build the SPI test suite
+  
+  
+</h2>
+    
+<p>./scripts/build_example.sh main Release</p>
+<h2 id="flash-and-monitor">
+  
+  
+    <a href="#flash-and-monitor" class="anchor-heading" aria-labelledby="flash-and-monitor"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash and monitor
+  
+  
+</h2>
+    
+<p>./scripts/flash_example.sh main Release flash_monitor
+```text</p>
+<h3 id="test-execution">
+  
+  
+    <a href="#test-execution" class="anchor-heading" aria-labelledby="test-execution"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Execution
+  
+  
+</h3>
+    
+
+<p>The test suite runs automatically with the following sequence:</p>
+
+<ol>
+  <li><strong>ESP-IDF Direct API Test</strong> - Pure C-based validation</li>
+  <li><strong>C++ Wrapper Replica Test</strong> - C++ wrapper comparison</li>
+  <li><strong>Core Functionality Tests</strong> - Basic SPI operations</li>
+  <li><strong>Advanced Features Tests</strong> - ESP-specific capabilities</li>
+  <li><strong>Transfer Size Tests</strong> - Various data transfer sizes</li>
+  <li><strong>Test Summary</strong> - Complete results and statistics</li>
+</ol>
+<h3 id="monitoring-output">
+  
+  
+    <a href="#monitoring-output" class="anchor-heading" aria-labelledby="monitoring-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Monitoring Output
+  
+  
+</h3>
+    
+
+<p>```bash</p>
+<h2 id="monitor-test-execution">
+  
+  
+    <a href="#monitor-test-execution" class="anchor-heading" aria-labelledby="monitor-test-execution"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Monitor test execution
+  
+  
+</h2>
+    
+<p>./scripts/flash_example.sh main Release monitor</p>
+<h2 id="view-detailed-logs">
+  
+  
+    <a href="#view-detailed-logs" class="anchor-heading" aria-labelledby="view-detailed-logs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> View detailed logs
+  
+  
+</h2>
+    
+<p>./scripts/flash_example.sh main Release monitor –log
+```text</p>
+<h2 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h2>
+    
+<h3 id="common-issues">
+  
+  
+    <a href="#common-issues" class="anchor-heading" aria-labelledby="common-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Issues
+  
+  
+</h3>
+    
+<h4 id="build-errors">
+  
+  
+    <a href="#build-errors" class="anchor-heading" aria-labelledby="build-errors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build Errors
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>ESP-IDF not sourced</strong>: Ensure <code class="language-plaintext highlighter-rouge">export.sh</code> is sourced</li>
+  <li><strong>Missing dependencies</strong>: Check component requirements</li>
+  <li><strong>Version mismatch</strong>: Verify ESP-IDF v5.5+ compatibility</li>
+</ul>
+<h4 id="runtime-errors">
+  
+  
+    <a href="#runtime-errors" class="anchor-heading" aria-labelledby="runtime-errors"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Runtime Errors
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>GPIO conflicts</strong>: Verify pin assignments don’t conflict</li>
+  <li><strong>Memory issues</strong>: Check available heap and stack sizes</li>
+  <li><strong>Clock configuration</strong>: Validate clock source and frequency settings</li>
+</ul>
+<h4 id="logic-analyzer-issues">
+  
+  
+    <a href="#logic-analyzer-issues" class="anchor-heading" aria-labelledby="logic-analyzer-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Sampling rate too low</strong>: Increase to 4x-10x clock frequency</li>
+  <li><strong>Signal quality</strong>: Check probe connections and grounding</li>
+  <li><strong>Memory depth</strong>: Ensure sufficient capture length</li>
+</ul>
+<h3 id="debug-information">
+  
+  
+    <a href="#debug-information" class="anchor-heading" aria-labelledby="debug-information"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Debug Information
+  
+  
+</h3>
+    
+
+<p>The test suite provides comprehensive debug output:</p>
+
+<ul>
+  <li><strong>Test section headers</strong>: Clear separation between test categories</li>
+  <li><strong>Individual test results</strong>: Success/failure status for each test</li>
+  <li><strong>Performance metrics</strong>: Timing and throughput measurements</li>
+  <li><strong>Error details</strong>: Specific error codes and descriptions</li>
+</ul>
+<h2 id="performance-characteristics">
+  
+  
+    <a href="#performance-characteristics" class="anchor-heading" aria-labelledby="performance-characteristics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Characteristics
+  
+  
+</h2>
+    
+<h3 id="transfer-performance">
+  
+  
+    <a href="#transfer-performance" class="anchor-heading" aria-labelledby="transfer-performance"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Transfer Performance
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Transfer Size</strong></td>
+      <td><strong>Expected Performance</strong></td>
+      <td><strong>Notes</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——————-|————————–|———–|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>1-16 bytes</strong></td>
+      <td>&lt; 100 μs</td>
+      <td>Small transfer optimization</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>64-256 bytes</strong></td>
+      <td>&lt; 500 μs</td>
+      <td>Medium transfer with DMA</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>1024 bytes</strong></td>
+      <td>&lt; 2 ms</td>
+      <td>Large transfer with DMA</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="clock-performance">
+  
+  
+    <a href="#clock-performance" class="anchor-heading" aria-labelledby="clock-performance"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Clock Performance
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Clock Source</strong></td>
+      <td><strong>Maximum Frequency</strong></td>
+      <td><strong>Notes</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——————|———————-|———–|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>PLL_F80M</strong></td>
+      <td>80 MHz</td>
+      <td>Maximum performance</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>XTAL</strong></td>
+      <td>40 MHz</td>
+      <td>Stable, crystal-based</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>RC_FAST</strong></td>
+      <td>~17.5 MHz</td>
+      <td>Low-power, approximate</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="for-complete-documentation">
+  
+  
+    <a href="#for-complete-documentation" class="anchor-heading" aria-labelledby="for-complete-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> For Complete Documentation
+  
+  
+</h2>
+    
+
+<p><strong>📖 See <a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspSpi/">EspSpi.md</a> for:</strong></p>
+
+<ul>
+  <li>Complete API reference and implementation details</li>
+  <li>Detailed test descriptions and validation procedures</li>
+  <li>Usage examples and best practices</li>
+  <li>Clock configuration and optimization details</li>
+  <li>SPI mode explanations and timing requirements</li>
+  <li>Performance characteristics and benchmarking</li>
+  <li>Advanced features and ESP-specific capabilities</li>
+  <li>Troubleshooting guide and common solutions</li>
+</ul>
+<h2 id="navigation">
+  
+  
+    <a href="#navigation" class="anchor-heading" aria-labelledby="navigation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Navigation
+  
+  
+</h2>
+    
+<h3 id="documentation-structure">
+  
+  
+    <a href="#documentation-structure" class="anchor-heading" aria-labelledby="documentation-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Documentation Structure</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/">🏠 Main Documentation</a></strong> - Complete system overview</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/api/">📋 API Interfaces</a></strong> - Base classes and interfaces</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/esp_api/">🔧 ESP32 Implementations</a></strong> - Hardware-specific implementations</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/">🧪 Test Suites</a></strong> - Testing and validation overview</li>
+</ul>
+<h3 id="related-documentation">
+  
+  
+    <a href="#related-documentation" class="anchor-heading" aria-labelledby="related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Related Documentation</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/esp_api/EspSpi/">EspSpi Implementation</a></strong> - ESP32-C6 SPI implementation</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/api/BaseSpi/">BaseSpi API Reference</a></strong> - Abstract SPI interface</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/docs/api/HardwareTypes/">Hardware Types</a></strong> - Type definitions</li>
+  <li><strong><a href="https://docs.espressif.com/projects/esp-idf/en/release-v5.5/esp32c6/api-reference/peripherals/spi_master.html">ESP-IDF SPI Master Driver</a></strong> - Official ESP-IDF documentation</li>
+</ul>
+<h3 id="navigation-links">
+  
+  
+    <a href="#navigation-links" class="anchor-heading" aria-labelledby="navigation-links"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Navigation Links</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/i2c_test/">⬅️ Previous: I2C Tests</a></strong> - I2C functionality testing</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/uart_test/">➡️ Next: UART Tests</a></strong> - Serial communication testing</li>
+  <li><strong><a href="/hf-internal-interface-wrap/preview/examples/esp32/docs/">🔙 Back to Test Suites</a></strong> - Test suites overview</li>
+</ul>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

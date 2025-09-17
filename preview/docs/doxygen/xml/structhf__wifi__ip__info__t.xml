@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__wifi__ip__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_wifi_ip_info_t</compoundname>
+    <includes refid="BaseWifi_8h" local="no">BaseWifi.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__wifi__ip__info__t_1afd5bebba14fc1d13e67eff14ee7253b4" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_wifi_ip_info_t::ip</definition>
+        <argsstring></argsstring>
+        <name>ip</name>
+        <qualifiedname>hf_wifi_ip_info_t::ip</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>IP address </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="225" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ip__info__t_1a5c28898562af2a8346742562bdf4583e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_wifi_ip_info_t::netmask</definition>
+        <argsstring></argsstring>
+        <name>netmask</name>
+        <qualifiedname>hf_wifi_ip_info_t::netmask</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Netmask </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="226" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="226" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ip__info__t_1a01343f7dd2712b9701efac78b323f821" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_wifi_ip_info_t::gateway</definition>
+        <argsstring></argsstring>
+        <name>gateway</name>
+        <qualifiedname>hf_wifi_ip_info_t::gateway</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Gateway address </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="227" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="227" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>WiFi IP configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseWifi.h" line="224" column="1" bodyfile="inc/base/BaseWifi.h" bodystart="224" bodyend="228"/>
+    <listofallmembers>
+      <member refid="structhf__wifi__ip__info__t_1a01343f7dd2712b9701efac78b323f821" prot="public" virt="non-virtual"><scope>hf_wifi_ip_info_t</scope><name>gateway</name></member>
+      <member refid="structhf__wifi__ip__info__t_1afd5bebba14fc1d13e67eff14ee7253b4" prot="public" virt="non-virtual"><scope>hf_wifi_ip_info_t</scope><name>ip</name></member>
+      <member refid="structhf__wifi__ip__info__t_1a5c28898562af2a8346742562bdf4583e" prot="public" virt="non-virtual"><scope>hf_wifi_ip_info_t</scope><name>netmask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

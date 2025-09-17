@@ -1,0 +1,1627 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBaseBluetooth" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseBluetooth</compoundname>
+    <derivedcompoundref refid="classEspBluetooth" prot="public" virt="non-virtual">EspBluetooth</derivedcompoundref>
+    <includes refid="BaseBluetooth_8h" local="no">BaseBluetooth.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseBluetooth_1ae77e7b8c64bfdfcdc5563d14f0f23472" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual BaseBluetooth::~BaseBluetooth</definition>
+        <argsstring>()=default</argsstring>
+        <name>~BaseBluetooth</name>
+        <qualifiedname>BaseBluetooth::~BaseBluetooth</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor for proper cleanup of derived classes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="364" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a196c07d346d5433ec07cd130002abef6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::Initialize</definition>
+        <argsstring>(hf_bluetooth_mode_t mode)=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseBluetooth::Initialize</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1ad1b73541ee07d1797eb1ed151eb65799">Initialize</reimplementedby>
+        <param>
+          <type><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the Bluetooth subsystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bluetooth operating mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="373" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a3b78e495412b0c58e9f1d34b0d6b0584" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::Deinitialize</definition>
+        <argsstring>()=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseBluetooth::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a2c2487161a2d769d6ee8aba326099c26">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the Bluetooth subsystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="379" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1af8e1ecb1d4e3e6f31e14d9b152e812a0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseBluetooth::IsInitialized</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseBluetooth::IsInitialized</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a355b62ef036e3212dc888c72fc6ff503">IsInitialized</reimplementedby>
+        <briefdescription>
+<para>Check if Bluetooth is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="385" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1ae3f0672a639f4ae1eb87887d866fc584" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::Enable</definition>
+        <argsstring>()=0</argsstring>
+        <name>Enable</name>
+        <qualifiedname>BaseBluetooth::Enable</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a1c8e9f1e44d21cc4ad5e789ee5f3dbce">Enable</reimplementedby>
+        <briefdescription>
+<para>Enable Bluetooth. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="391" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1af9488d4b6303ae3f72462e6919e08e97" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::Disable</definition>
+        <argsstring>()=0</argsstring>
+        <name>Disable</name>
+        <qualifiedname>BaseBluetooth::Disable</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a8aabdb4cdfcc466168664cecea0b5730">Disable</reimplementedby>
+        <briefdescription>
+<para>Disable Bluetooth. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="397" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a626da2b0e75af05bccae77dae40f47ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseBluetooth::IsEnabled</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsEnabled</name>
+        <qualifiedname>BaseBluetooth::IsEnabled</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a39f39ac36e8cb1405d63e7df3f14c813">IsEnabled</reimplementedby>
+        <briefdescription>
+<para>Check if Bluetooth is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if enabled, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="403" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a62c7bb7ccccfa4b8d920f7001e9899f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::SetMode</definition>
+        <argsstring>(hf_bluetooth_mode_t mode)=0</argsstring>
+        <name>SetMode</name>
+        <qualifiedname>BaseBluetooth::SetMode</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a374d6abb835b46146f08fc112b95f3cc">SetMode</reimplementedby>
+        <param>
+          <type><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set Bluetooth operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bluetooth operating mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="410" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a029b3ca472e6c048ea98db766e361f19" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref></type>
+        <definition>virtual hf_bluetooth_mode_t BaseBluetooth::GetMode</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetMode</name>
+        <qualifiedname>BaseBluetooth::GetMode</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a786d4e2567bfcbe2f9df4f61e7a686ff">GetMode</reimplementedby>
+        <briefdescription>
+<para>Get current Bluetooth operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current Bluetooth mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="416" column="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1aff3d25b5192168951bbf844459d25014" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::GetLocalAddress</definition>
+        <argsstring>(hf_bluetooth_address_t &amp;address) const =0</argsstring>
+        <name>GetLocalAddress</name>
+        <qualifiedname>BaseBluetooth::GetLocalAddress</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1aa0608e60d9a74a7fa7f8c5b49b155981">GetLocalAddress</reimplementedby>
+        <param>
+          <type><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Get local Bluetooth address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store local address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="425" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a1792bf9086c8db3951bd1f01a934771e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::SetDeviceName</definition>
+        <argsstring>(const std::string &amp;name)=0</argsstring>
+        <name>SetDeviceName</name>
+        <qualifiedname>BaseBluetooth::SetDeviceName</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a6e080c3c051d20db369a9a4947f97a34">SetDeviceName</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Set local device name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="432" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a226554f64e1cba76d0b021077f81088f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string BaseBluetooth::GetDeviceName</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetDeviceName</name>
+        <qualifiedname>BaseBluetooth::GetDeviceName</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a52323a4f04d001da2b506db298f651dd">GetDeviceName</reimplementedby>
+        <briefdescription>
+<para>Get local device name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Device name string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="438" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1adcd47674624cf1c692c88d96391b9024" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::ConfigureClassic</definition>
+        <argsstring>(const hf_bluetooth_classic_config_t &amp;config)=0</argsstring>
+        <name>ConfigureClassic</name>
+        <qualifiedname>BaseBluetooth::ConfigureClassic</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1aa86e9aaf05af6672d9c68408e9039dde">ConfigureClassic</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__classic__config__t" kindref="compound">hf_bluetooth_classic_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configure Bluetooth Classic parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Classic configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="447" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1ae16b5e49487dd2b010802c0fefa3cf95" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::SetDiscoverable</definition>
+        <argsstring>(bool discoverable, uint32_t timeout_ms=0)=0</argsstring>
+        <name>SetDiscoverable</name>
+        <qualifiedname>BaseBluetooth::SetDiscoverable</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a9b4ed0a4e8fadcc14b2bbd99fd302034">SetDiscoverable</reimplementedby>
+        <param>
+          <type>bool</type>
+          <declname>discoverable</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Make device discoverable. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>discoverable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to make discoverable, false otherwise </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Discoverable timeout in milliseconds (0 for indefinite) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="455" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a1cff8c3db74ba4776f3ca4a550eaa2f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseBluetooth::IsDiscoverable</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsDiscoverable</name>
+        <qualifiedname>BaseBluetooth::IsDiscoverable</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1aea05b74fe7af2a8cfc7ebc9b9d23525a">IsDiscoverable</reimplementedby>
+        <briefdescription>
+<para>Check if device is discoverable. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if discoverable, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="461" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a6cfce1df3b1dbd1267154de7d957a525" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::ConfigureBle</definition>
+        <argsstring>(const hf_bluetooth_ble_config_t &amp;config)=0</argsstring>
+        <name>ConfigureBle</name>
+        <qualifiedname>BaseBluetooth::ConfigureBle</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a21f34c8693086a3ff6a522be67e45394">ConfigureBle</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configure Bluetooth Low Energy parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>BLE configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="470" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a2bef4ad7b3b531bd42c342b85ea27772" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::StartAdvertising</definition>
+        <argsstring>()=0</argsstring>
+        <name>StartAdvertising</name>
+        <qualifiedname>BaseBluetooth::StartAdvertising</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a2d3ee543b288d47f005555a6297f784e">StartAdvertising</reimplementedby>
+        <briefdescription>
+<para>Start BLE advertising. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="476" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a3014d71e82d9d0ed7082a84b432025f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::StopAdvertising</definition>
+        <argsstring>()=0</argsstring>
+        <name>StopAdvertising</name>
+        <qualifiedname>BaseBluetooth::StopAdvertising</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a5599daf444f735cf9d68492d9b4ef765">StopAdvertising</reimplementedby>
+        <briefdescription>
+<para>Stop BLE advertising. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="482" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a6806e3ecd8d83530c8bfb101099f2fd4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseBluetooth::IsAdvertising</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsAdvertising</name>
+        <qualifiedname>BaseBluetooth::IsAdvertising</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1af08b9be8919f12f20a1ec975f69cd8bd">IsAdvertising</reimplementedby>
+        <briefdescription>
+<para>Check if BLE advertising is active. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if advertising, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="488" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a7cbef9bcb0a02d8d4129c5063f182542" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::StartScan</definition>
+        <argsstring>(uint32_t duration_ms=0, hf_bluetooth_scan_type_t type=hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE)=0</argsstring>
+        <name>StartScan</name>
+        <qualifiedname>BaseBluetooth::StartScan</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1aa6a8a49f8ba193ca87faed9686dc45e8">StartScan</reimplementedby>
+        <param>
+          <type>uint32_t</type>
+          <declname>duration_ms</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type><ref refid="group__bluetooth_1gaf5e48b9d9196063d4218a713d3e4d26c" kindref="member">hf_bluetooth_scan_type_t</ref></type>
+          <declname>type</declname>
+          <defval><ref refid="group__bluetooth_1ggaf5e48b9d9196063d4218a713d3e4d26cada5deb1cd60bb274cb388226795304aa" kindref="member">hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE</ref></defval>
+        </param>
+        <briefdescription>
+<para>Start device discovery/scanning. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>duration_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scan duration in milliseconds (0 for indefinite) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scan type (BLE only) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="498" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1aa284375eca6ab3cf746b00f4b92a1d21" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::StopScan</definition>
+        <argsstring>()=0</argsstring>
+        <name>StopScan</name>
+        <qualifiedname>BaseBluetooth::StopScan</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a5b00eaad02fa60c18ad8f9553bb4a180">StopScan</reimplementedby>
+        <briefdescription>
+<para>Stop device discovery/scanning. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="506" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a4a7eca3f951cd2847965dc0eaaf1aa67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseBluetooth::IsScanning</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsScanning</name>
+        <qualifiedname>BaseBluetooth::IsScanning</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1aba032c11551997dca218bd8162a44f8b">IsScanning</reimplementedby>
+        <briefdescription>
+<para>Check if scanning is in progress. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if scanning, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="512" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1ae680e1a6ea8aa510a3d8a6e66b33f4e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::GetDiscoveredDevices</definition>
+        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices)=0</argsstring>
+        <name>GetDiscoveredDevices</name>
+        <qualifiedname>BaseBluetooth::GetDiscoveredDevices</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a4bfb7b848bb93452373e060d5748a436">GetDiscoveredDevices</reimplementedby>
+        <param>
+          <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
+          <declname>devices</declname>
+        </param>
+        <briefdescription>
+<para>Get discovered devices. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>devices</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store discovered devices </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="519" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1ad996e7aa11d766792e31d9b8b402500c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::ClearDiscoveredDevices</definition>
+        <argsstring>()=0</argsstring>
+        <name>ClearDiscoveredDevices</name>
+        <qualifiedname>BaseBluetooth::ClearDiscoveredDevices</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a8461a03c45119319321f6a391a0a5135">ClearDiscoveredDevices</reimplementedby>
+        <briefdescription>
+<para>Clear discovered devices list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="526" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a491ab1503e8860ab5550a6eba81c3ad8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::Connect</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, uint32_t timeout_ms=0)=0</argsstring>
+        <name>Connect</name>
+        <qualifiedname>BaseBluetooth::Connect</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a409cc44a82b415ff5abc311aef9ed165">Connect</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Connect to a remote device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Connection timeout in milliseconds (0 for default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="536" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1afccb08941b4fafb6d0899242e15b2920" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::Disconnect</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address)=0</argsstring>
+        <name>Disconnect</name>
+        <qualifiedname>BaseBluetooth::Disconnect</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a1737908361424529d735fdfbe552b6f7">Disconnect</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Disconnect from a remote device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="544" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a8b4f8e6d6bc7fc2ad1274018eb83f984" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseBluetooth::IsConnected</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) const =0</argsstring>
+        <name>IsConnected</name>
+        <qualifiedname>BaseBluetooth::IsConnected</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1ae96a09bbf25506f65e49b71ef0fb4bbb">IsConnected</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Check if connected to a device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if connected, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="551" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1ab42108b4a596b6ff15b93fd6c5c06cab" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::GetConnectedDevices</definition>
+        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices)=0</argsstring>
+        <name>GetConnectedDevices</name>
+        <qualifiedname>BaseBluetooth::GetConnectedDevices</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a00f5c601bce68d612ecbd8cc0bb3d78b">GetConnectedDevices</reimplementedby>
+        <param>
+          <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
+          <declname>devices</declname>
+        </param>
+        <briefdescription>
+<para>Get list of connected devices. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>devices</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store connected devices </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="558" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a7462b4aef22ddd43203e44214f5536c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::Pair</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;pin=&quot;&quot;)=0</argsstring>
+        <name>Pair</name>
+        <qualifiedname>BaseBluetooth::Pair</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1aad54e4f2b9434ea7f84cfdfa392d9141">Pair</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>pin</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Pair with a remote device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>PIN code (for Classic, empty for BLE) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="569" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1accbd6d7ae7676023638e7e4f651467b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::Unpair</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address)=0</argsstring>
+        <name>Unpair</name>
+        <qualifiedname>BaseBluetooth::Unpair</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a73de0eb96a8261c23e7d21862535d4c9">Unpair</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Unpair from a remote device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="577" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a0886a8faae0cfe0f69330c0efcdf226f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseBluetooth::IsPaired</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) const =0</argsstring>
+        <name>IsPaired</name>
+        <qualifiedname>BaseBluetooth::IsPaired</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a0fb00e110f247ed8a86bd7c7a0885dd9">IsPaired</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Check if paired with a device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if paired, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="584" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a1eea76b41ba09697e53099c075d51787" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::GetPairedDevices</definition>
+        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices)=0</argsstring>
+        <name>GetPairedDevices</name>
+        <qualifiedname>BaseBluetooth::GetPairedDevices</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a71ed4973e6db54cf9b3a22a96f66f4e8">GetPairedDevices</reimplementedby>
+        <param>
+          <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
+          <declname>devices</declname>
+        </param>
+        <briefdescription>
+<para>Get list of paired devices. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>devices</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store paired devices </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="591" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a4c5f73a535305f072f5bdf096efd19ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::SendData</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::vector&lt; uint8_t &gt; &amp;data)=0</argsstring>
+        <name>SendData</name>
+        <qualifiedname>BaseBluetooth::SendData</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1ab8d945185adbccb25093f59f758cd8f3">SendData</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Send data to a connected device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data to send </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="601" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a3c9c4e3e4ff5d70f646c328df340a959" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int BaseBluetooth::GetAvailableData</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) const =0</argsstring>
+        <name>GetAvailableData</name>
+        <qualifiedname>BaseBluetooth::GetAvailableData</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a49346d4f535119cfdf1c7a44592e2ec0">GetAvailableData</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Check if data is available to read. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of bytes available, or -1 on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="609" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a0ef42af7a494714ed851eca3fec124cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::ReadData</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, std::vector&lt; uint8_t &gt; &amp;data, size_t max_bytes=0)=0</argsstring>
+        <name>ReadData</name>
+        <qualifiedname>BaseBluetooth::ReadData</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a372f9249278b7aa12070aa908c9f224b">ReadData</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>max_bytes</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read available data from a connected device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store received data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_bytes</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum bytes to read (0 for all available) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="618" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1afc5629fe0b63c4c113a545b5eacf6f7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::DiscoverServices</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, std::vector&lt; hf_bluetooth_gatt_service_t &gt; &amp;services)=0</argsstring>
+        <name>DiscoverServices</name>
+        <qualifiedname>BaseBluetooth::DiscoverServices</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1aeb84527d0adb3262fef210ce29c9a84e">DiscoverServices</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structhf__bluetooth__gatt__service__t" kindref="compound">hf_bluetooth_gatt_service_t</ref> &gt; &amp;</type>
+          <declname>services</declname>
+        </param>
+        <briefdescription>
+<para>Discover GATT services on a connected device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>services</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store discovered services </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="629" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1ad37958dc6328f4152af8ce7d4dacb542" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::DiscoverCharacteristics</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, std::vector&lt; hf_bluetooth_gatt_characteristic_t &gt; &amp;characteristics)=0</argsstring>
+        <name>DiscoverCharacteristics</name>
+        <qualifiedname>BaseBluetooth::DiscoverCharacteristics</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a04191edbe3f209b1ec4d20c359e0943d">DiscoverCharacteristics</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_uuid</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structhf__bluetooth__gatt__characteristic__t" kindref="compound">hf_bluetooth_gatt_characteristic_t</ref> &gt; &amp;</type>
+          <declname>characteristics</declname>
+        </param>
+        <briefdescription>
+<para>Discover GATT characteristics for a service. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>service_uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service UUID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>characteristics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store discovered characteristics </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="640" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a7e191af8a19ddb52181c853c27f26eeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::ReadCharacteristic</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, std::vector&lt; uint8_t &gt; &amp;value)=0</argsstring>
+        <name>ReadCharacteristic</name>
+        <qualifiedname>BaseBluetooth::ReadCharacteristic</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1ad6fd71931ee339bdb4a66e2837dc6983">ReadCharacteristic</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_uuid</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>characteristic_uuid</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Read GATT characteristic value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>service_uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service UUID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>characteristic_uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Characteristic UUID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store characteristic value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="652" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a5775d0876c891ce57f7e5da1499be4cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::WriteCharacteristic</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, const std::vector&lt; uint8_t &gt; &amp;value, bool with_response=true)=0</argsstring>
+        <name>WriteCharacteristic</name>
+        <qualifiedname>BaseBluetooth::WriteCharacteristic</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a6cd33f01012e6db7e1f340c516f9521f">WriteCharacteristic</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_uuid</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>characteristic_uuid</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; uint8_t &gt; &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>with_response</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Write GATT characteristic value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>service_uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service UUID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>characteristic_uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Characteristic UUID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>with_response</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to wait for write response </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="666" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1ab93a81eda5ea79f516d548ab7266016c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::SubscribeCharacteristic</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, bool enable)=0</argsstring>
+        <name>SubscribeCharacteristic</name>
+        <qualifiedname>BaseBluetooth::SubscribeCharacteristic</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1acb1256113dabf1b44584bf34c25c7574">SubscribeCharacteristic</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_uuid</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>characteristic_uuid</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>Subscribe to GATT characteristic notifications. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>service_uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Service UUID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>characteristic_uuid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Characteristic UUID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>True to enable notifications, false to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="680" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a49aadef553ed72baa4d7bc5e96f0c95e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" kindref="member">hf_bluetooth_state_t</ref></type>
+        <definition>virtual hf_bluetooth_state_t BaseBluetooth::GetState</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetState</name>
+        <qualifiedname>BaseBluetooth::GetState</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a900bdf9f92cd5bc4259d2360171f9cf4">GetState</reimplementedby>
+        <briefdescription>
+<para>Get current Bluetooth state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current Bluetooth state </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="691" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a99a5b02e2f3a0bccd554a692340fa64d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int8_t</type>
+        <definition>virtual int8_t BaseBluetooth::GetRssi</definition>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) const =0</argsstring>
+        <name>GetRssi</name>
+        <qualifiedname>BaseBluetooth::GetRssi</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a9090b878e33958b109e5b53af48308fa">GetRssi</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+<para>Get signal strength for a connected device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Remote device address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Signal strength in dBm, or INT8_MIN on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="698" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a393db49fdbbb0db872262b0b12ad25ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::RegisterEventCallback</definition>
+        <argsstring>(hf_bluetooth_event_callback_t callback)=0</argsstring>
+        <name>RegisterEventCallback</name>
+        <qualifiedname>BaseBluetooth::RegisterEventCallback</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a20201cde03378f0f1bad5ee9c0899ae6">RegisterEventCallback</reimplementedby>
+        <param>
+          <type><ref refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" kindref="member">hf_bluetooth_event_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+<para>Register event callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Event callback function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="707" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a799e4cdc54f8256ae0f80cf3a2caf52c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::UnregisterEventCallback</definition>
+        <argsstring>()=0</argsstring>
+        <name>UnregisterEventCallback</name>
+        <qualifiedname>BaseBluetooth::UnregisterEventCallback</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1a90f435461e1114cfd01b9091c88ffa47">UnregisterEventCallback</reimplementedby>
+        <briefdescription>
+<para>Unregister event callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="713" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a7d6eb7a09b4185eb9de0ebbaadcddec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::RegisterDataCallback</definition>
+        <argsstring>(hf_bluetooth_data_callback_t callback)=0</argsstring>
+        <name>RegisterDataCallback</name>
+        <qualifiedname>BaseBluetooth::RegisterDataCallback</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1afe72fcb5f77f9183c803144a480ecdad">RegisterDataCallback</reimplementedby>
+        <param>
+          <type><ref refid="group__bluetooth_1ga65e5bf89736f8023fe4cf15163655f6a" kindref="member">hf_bluetooth_data_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+<para>Register data received callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data callback function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="720" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1ad01c053e5b9d41f8c60f63f2b7d2642c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
+        <definition>virtual hf_bluetooth_err_t BaseBluetooth::UnregisterDataCallback</definition>
+        <argsstring>()=0</argsstring>
+        <name>UnregisterDataCallback</name>
+        <qualifiedname>BaseBluetooth::UnregisterDataCallback</qualifiedname>
+        <reimplementedby refid="classEspBluetooth_1af84094c238583d06251f4fb7c5aee803">UnregisterDataCallback</reimplementedby>
+        <briefdescription>
+<para>Unregister data received callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="726" column="30"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <member refid="group__bluetooth_1gab088db30edcbbd9875e9381f9b8cbe8d" kind="function"><name>GetErrorString</name></member>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseBluetooth_1a0f1d6deaa05381c5643fa5034beca274" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseBluetooth::BaseBluetooth</definition>
+        <argsstring>()=default</argsstring>
+        <name>BaseBluetooth</name>
+        <qualifiedname>BaseBluetooth::BaseBluetooth</qualifiedname>
+        <briefdescription>
+<para>Protected constructor - only derived classes can instantiate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="741" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a372ad20c5010431efbdc08bfa3222a26" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseBluetooth::BaseBluetooth</definition>
+        <argsstring>(const BaseBluetooth &amp;)=delete</argsstring>
+        <name>BaseBluetooth</name>
+        <qualifiedname>BaseBluetooth::BaseBluetooth</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy constructor - deleted to prevent copying. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="746" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseBluetooth_1a30639bf1607e6a95e8127a3ec810227f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref> &amp;</type>
+        <definition>BaseBluetooth &amp; BaseBluetooth::operator=</definition>
+        <argsstring>(const BaseBluetooth &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseBluetooth::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseBluetooth" kindref="compound">BaseBluetooth</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Assignment operator - deleted to prevent copying. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="751" column="17"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for Bluetooth functionality. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides the interface for Bluetooth operations including:<itemizedlist>
+<listitem><para>Bluetooth Classic and BLE operations</para>
+</listitem><listitem><para>Device discovery and scanning</para>
+</listitem><listitem><para>Pairing and bonding management</para>
+</listitem><listitem><para>Connection management</para>
+</listitem><listitem><para>Data transmission and reception</para>
+</listitem><listitem><para>GATT operations (for BLE)</para>
+</listitem><listitem><para>Event handling and callbacks </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseBluetooth</label>
+        <link refid="classBaseBluetooth"/>
+      </node>
+      <node id="2">
+        <label>EspBluetooth</label>
+        <link refid="classEspBluetooth"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/base/BaseBluetooth.h" line="359" column="1" bodyfile="inc/base/BaseBluetooth.h" bodystart="359" bodyend="752"/>
+    <listofallmembers>
+      <member refid="classBaseBluetooth_1a0f1d6deaa05381c5643fa5034beca274" prot="protected" virt="non-virtual"><scope>BaseBluetooth</scope><name>BaseBluetooth</name></member>
+      <member refid="classBaseBluetooth_1a372ad20c5010431efbdc08bfa3222a26" prot="protected" virt="non-virtual"><scope>BaseBluetooth</scope><name>BaseBluetooth</name></member>
+      <member refid="classBaseBluetooth_1ad996e7aa11d766792e31d9b8b402500c" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>ClearDiscoveredDevices</name></member>
+      <member refid="classBaseBluetooth_1a6cfce1df3b1dbd1267154de7d957a525" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>ConfigureBle</name></member>
+      <member refid="classBaseBluetooth_1adcd47674624cf1c692c88d96391b9024" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>ConfigureClassic</name></member>
+      <member refid="classBaseBluetooth_1a491ab1503e8860ab5550a6eba81c3ad8" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>Connect</name></member>
+      <member refid="classBaseBluetooth_1a3b78e495412b0c58e9f1d34b0d6b0584" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>Deinitialize</name></member>
+      <member refid="classBaseBluetooth_1af9488d4b6303ae3f72462e6919e08e97" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>Disable</name></member>
+      <member refid="classBaseBluetooth_1afccb08941b4fafb6d0899242e15b2920" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>Disconnect</name></member>
+      <member refid="classBaseBluetooth_1ad37958dc6328f4152af8ce7d4dacb542" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>DiscoverCharacteristics</name></member>
+      <member refid="classBaseBluetooth_1afc5629fe0b63c4c113a545b5eacf6f7a" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>DiscoverServices</name></member>
+      <member refid="classBaseBluetooth_1ae3f0672a639f4ae1eb87887d866fc584" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>Enable</name></member>
+      <member refid="classBaseBluetooth_1a3c9c4e3e4ff5d70f646c328df340a959" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetAvailableData</name></member>
+      <member refid="classBaseBluetooth_1ab42108b4a596b6ff15b93fd6c5c06cab" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetConnectedDevices</name></member>
+      <member refid="classBaseBluetooth_1a226554f64e1cba76d0b021077f81088f" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetDeviceName</name></member>
+      <member refid="classBaseBluetooth_1ae680e1a6ea8aa510a3d8a6e66b33f4e6" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetDiscoveredDevices</name></member>
+      <member refid="group__bluetooth_1gab088db30edcbbd9875e9381f9b8cbe8d" prot="public" virt="non-virtual"><scope>BaseBluetooth</scope><name>GetErrorString</name></member>
+      <member refid="classBaseBluetooth_1aff3d25b5192168951bbf844459d25014" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetLocalAddress</name></member>
+      <member refid="classBaseBluetooth_1a029b3ca472e6c048ea98db766e361f19" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetMode</name></member>
+      <member refid="classBaseBluetooth_1a1eea76b41ba09697e53099c075d51787" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetPairedDevices</name></member>
+      <member refid="classBaseBluetooth_1a99a5b02e2f3a0bccd554a692340fa64d" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetRssi</name></member>
+      <member refid="classBaseBluetooth_1a49aadef553ed72baa4d7bc5e96f0c95e" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>GetState</name></member>
+      <member refid="classBaseBluetooth_1a196c07d346d5433ec07cd130002abef6" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>Initialize</name></member>
+      <member refid="classBaseBluetooth_1a6806e3ecd8d83530c8bfb101099f2fd4" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>IsAdvertising</name></member>
+      <member refid="classBaseBluetooth_1a8b4f8e6d6bc7fc2ad1274018eb83f984" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>IsConnected</name></member>
+      <member refid="classBaseBluetooth_1a1cff8c3db74ba4776f3ca4a550eaa2f4" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>IsDiscoverable</name></member>
+      <member refid="classBaseBluetooth_1a626da2b0e75af05bccae77dae40f47ae" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>IsEnabled</name></member>
+      <member refid="classBaseBluetooth_1af8e1ecb1d4e3e6f31e14d9b152e812a0" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>IsInitialized</name></member>
+      <member refid="classBaseBluetooth_1a0886a8faae0cfe0f69330c0efcdf226f" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>IsPaired</name></member>
+      <member refid="classBaseBluetooth_1a4a7eca3f951cd2847965dc0eaaf1aa67" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>IsScanning</name></member>
+      <member refid="classBaseBluetooth_1a30639bf1607e6a95e8127a3ec810227f" prot="protected" virt="non-virtual"><scope>BaseBluetooth</scope><name>operator=</name></member>
+      <member refid="classBaseBluetooth_1a7462b4aef22ddd43203e44214f5536c2" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>Pair</name></member>
+      <member refid="classBaseBluetooth_1a7e191af8a19ddb52181c853c27f26eeb" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>ReadCharacteristic</name></member>
+      <member refid="classBaseBluetooth_1a0ef42af7a494714ed851eca3fec124cc" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>ReadData</name></member>
+      <member refid="classBaseBluetooth_1a7d6eb7a09b4185eb9de0ebbaadcddec1" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>RegisterDataCallback</name></member>
+      <member refid="classBaseBluetooth_1a393db49fdbbb0db872262b0b12ad25ea" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>RegisterEventCallback</name></member>
+      <member refid="classBaseBluetooth_1a4c5f73a535305f072f5bdf096efd19ce" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>SendData</name></member>
+      <member refid="classBaseBluetooth_1a1792bf9086c8db3951bd1f01a934771e" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>SetDeviceName</name></member>
+      <member refid="classBaseBluetooth_1ae16b5e49487dd2b010802c0fefa3cf95" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>SetDiscoverable</name></member>
+      <member refid="classBaseBluetooth_1a62c7bb7ccccfa4b8d920f7001e9899f4" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>SetMode</name></member>
+      <member refid="classBaseBluetooth_1a2bef4ad7b3b531bd42c342b85ea27772" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>StartAdvertising</name></member>
+      <member refid="classBaseBluetooth_1a7cbef9bcb0a02d8d4129c5063f182542" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>StartScan</name></member>
+      <member refid="classBaseBluetooth_1a3014d71e82d9d0ed7082a84b432025f1" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>StopAdvertising</name></member>
+      <member refid="classBaseBluetooth_1aa284375eca6ab3cf746b00f4b92a1d21" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>StopScan</name></member>
+      <member refid="classBaseBluetooth_1ab93a81eda5ea79f516d548ab7266016c" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>SubscribeCharacteristic</name></member>
+      <member refid="classBaseBluetooth_1accbd6d7ae7676023638e7e4f651467b5" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>Unpair</name></member>
+      <member refid="classBaseBluetooth_1ad01c053e5b9d41f8c60f63f2b7d2642c" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>UnregisterDataCallback</name></member>
+      <member refid="classBaseBluetooth_1a799e4cdc54f8256ae0f80cf3a2caf52c" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>UnregisterEventCallback</name></member>
+      <member refid="classBaseBluetooth_1a5775d0876c891ce57f7e5da1499be4cd" prot="public" virt="pure-virtual"><scope>BaseBluetooth</scope><name>WriteCharacteristic</name></member>
+      <member refid="classBaseBluetooth_1ae77e7b8c64bfdfcdc5563d14f0f23472" prot="public" virt="virtual"><scope>BaseBluetooth</scope><name>~BaseBluetooth</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

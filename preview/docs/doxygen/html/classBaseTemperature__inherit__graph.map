@@ -1,0 +1,5 @@
+<map id="BaseTemperature" name="BaseTemperature">
+<area shape="rect" id="Node000001" title="Abstract base class for all temperature sensor implementations." alt="" coords="5,5,171,36"/>
+<area shape="rect" id="Node000002" href="$classEspTemperature.html" title="ESP32&#45;C6 internal temperature sensor implementation." alt="" coords="11,84,165,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,50,91,84,85,84,85,50"/>
+</map>

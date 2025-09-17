@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__spi__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_spi_statistics_t</compoundname>
+    <includes refid="BaseSpi_8h" local="no">BaseSpi.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1ac07f160b820be2fbc02d7dc35f4bbb5c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_statistics_t::total_transactions</definition>
+        <argsstring></argsstring>
+        <name>total_transactions</name>
+        <qualifiedname>hf_spi_statistics_t::total_transactions</qualifiedname>
+        <briefdescription>
+<para>Total number of transactions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="112" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1a99a67c268725f410bfee4eb8528d4f0c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_statistics_t::successful_transactions</definition>
+        <argsstring></argsstring>
+        <name>successful_transactions</name>
+        <qualifiedname>hf_spi_statistics_t::successful_transactions</qualifiedname>
+        <briefdescription>
+<para>Number of successful transactions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="113" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1a53eeead22d2f7db4ad68eb8e470bcdde" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_statistics_t::failed_transactions</definition>
+        <argsstring></argsstring>
+        <name>failed_transactions</name>
+        <qualifiedname>hf_spi_statistics_t::failed_transactions</qualifiedname>
+        <briefdescription>
+<para>Number of failed transactions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="114" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1a254206b449ef304a67006771fea8eca9" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_statistics_t::timeout_transactions</definition>
+        <argsstring></argsstring>
+        <name>timeout_transactions</name>
+        <qualifiedname>hf_spi_statistics_t::timeout_transactions</qualifiedname>
+        <briefdescription>
+<para>Number of timed-out transactions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="115" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1aed700f32cc020fc16435cc165769f35c" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_statistics_t::total_bytes_sent</definition>
+        <argsstring></argsstring>
+        <name>total_bytes_sent</name>
+        <qualifiedname>hf_spi_statistics_t::total_bytes_sent</qualifiedname>
+        <briefdescription>
+<para>Total bytes transmitted. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="116" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1a46284420c7a88af4ce997929eadc5b43" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_statistics_t::total_bytes_received</definition>
+        <argsstring></argsstring>
+        <name>total_bytes_received</name>
+        <qualifiedname>hf_spi_statistics_t::total_bytes_received</qualifiedname>
+        <briefdescription>
+<para>Total bytes received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="117" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1a0a2402d7e2f5deb61dd19b6a1bdf1b3a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_statistics_t::max_transaction_time_us</definition>
+        <argsstring></argsstring>
+        <name>max_transaction_time_us</name>
+        <qualifiedname>hf_spi_statistics_t::max_transaction_time_us</qualifiedname>
+        <briefdescription>
+<para>Maximum transaction time (microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="118" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1a186581d5b955d2e299e3636e09460c24" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_statistics_t::min_transaction_time_us</definition>
+        <argsstring></argsstring>
+        <name>min_transaction_time_us</name>
+        <qualifiedname>hf_spi_statistics_t::min_transaction_time_us</qualifiedname>
+        <briefdescription>
+<para>Minimum transaction time (microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="119" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1a9bcfa205b38e2f5478f362c17bd347d6" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_spi_statistics_t::last_activity_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_activity_timestamp</name>
+        <qualifiedname>hf_spi_statistics_t::last_activity_timestamp</qualifiedname>
+        <briefdescription>
+<para>Last activity timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="120" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__statistics__t_1a2f999ef964b8982b2fa3006b6e350551" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t hf_spi_statistics_t::initialization_timestamp</definition>
+        <argsstring></argsstring>
+        <name>initialization_timestamp</name>
+        <qualifiedname>hf_spi_statistics_t::initialization_timestamp</qualifiedname>
+        <briefdescription>
+<para>Initialization timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="121" column="12" bodyfile="inc/base/BaseSpi.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__spi__statistics__t_1a2724e8c4fa2e905d4524c9c090dce81b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_spi_statistics_t::hf_spi_statistics_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_spi_statistics_t</name>
+        <qualifiedname>hf_spi_statistics_t::hf_spi_statistics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseSpi.h" line="123" column="3" bodyfile="inc/base/BaseSpi.h" bodystart="123" bodyend="127"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>SPI operation statistics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseSpi.h" line="111" column="1" bodyfile="inc/base/BaseSpi.h" bodystart="111" bodyend="128"/>
+    <listofallmembers>
+      <member refid="structhf__spi__statistics__t_1a53eeead22d2f7db4ad68eb8e470bcdde" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>failed_transactions</name></member>
+      <member refid="structhf__spi__statistics__t_1a2724e8c4fa2e905d4524c9c090dce81b" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>hf_spi_statistics_t</name></member>
+      <member refid="structhf__spi__statistics__t_1a2f999ef964b8982b2fa3006b6e350551" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>initialization_timestamp</name></member>
+      <member refid="structhf__spi__statistics__t_1a9bcfa205b38e2f5478f362c17bd347d6" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>last_activity_timestamp</name></member>
+      <member refid="structhf__spi__statistics__t_1a0a2402d7e2f5deb61dd19b6a1bdf1b3a" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>max_transaction_time_us</name></member>
+      <member refid="structhf__spi__statistics__t_1a186581d5b955d2e299e3636e09460c24" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>min_transaction_time_us</name></member>
+      <member refid="structhf__spi__statistics__t_1a99a67c268725f410bfee4eb8528d4f0c" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>successful_transactions</name></member>
+      <member refid="structhf__spi__statistics__t_1a254206b449ef304a67006771fea8eca9" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>timeout_transactions</name></member>
+      <member refid="structhf__spi__statistics__t_1a46284420c7a88af4ce997929eadc5b43" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>total_bytes_received</name></member>
+      <member refid="structhf__spi__statistics__t_1aed700f32cc020fc16435cc165769f35c" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>total_bytes_sent</name></member>
+      <member refid="structhf__spi__statistics__t_1ac07f160b820be2fbc02d7dc35f4bbb5c" prot="public" virt="non-virtual"><scope>hf_spi_statistics_t</scope><name>total_transactions</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

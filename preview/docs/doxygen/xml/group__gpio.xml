@@ -1,0 +1,728 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__gpio" kind="group">
+    <compoundname>gpio</compoundname>
+    <title>GPIO Module</title>
+    <innerfile refid="BaseGpio_8h">BaseGpio.h</innerfile>
+    <innerclass refid="structInterruptStatus" prot="public">InterruptStatus</innerclass>
+    <innerclass refid="structhf__gpio__statistics__t" prot="public">hf_gpio_statistics_t</innerclass>
+    <innerclass refid="structhf__gpio__diagnostics__t" prot="public">hf_gpio_diagnostics_t</innerclass>
+    <innerclass refid="classBaseGpio" prot="public">BaseGpio</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__gpio_1ga2632aac2351807c35e790ec20bda305d" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_gpio_err_t</name>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da4edf38c36b44ec6289313be3dbff3bd1" prot="public">
+          <name>X</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" prot="public">
+          <name>GPIO_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da3e74dd36bf6d066da5a6cd611f23277b" prot="public">
+          <name>GPIO_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dab04683ad857b2517e5793490e3568bce" prot="public">
+          <name>GPIO_ERR_NOT_INITIALIZED</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305daf0a93e17339a18d4f9483db8be996892" prot="public">
+          <name>GPIO_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da91fd58f5ca1f07c7ac4582826b9efdd3" prot="public">
+          <name>GPIO_ERR_INVALID_PARAMETER</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da256954b890b4465ff3e01a68a1742812" prot="public">
+          <name>GPIO_ERR_NULL_POINTER</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da425ad913151330d4ad51535e7e31d30a" prot="public">
+          <name>GPIO_ERR_OUT_OF_MEMORY</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dae129022a9db54a23a0f2b5b9c678d40a" prot="public">
+          <name>GPIO_ERR_INVALID_PIN</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da833caab2ac64c22894b0e5415d3e4168" prot="public">
+          <name>GPIO_ERR_PIN_NOT_FOUND</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da665cd6866bb8bf54cb5c1eb42f68ba20" prot="public">
+          <name>GPIO_ERR_PIN_NOT_CONFIGURED</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dab988dbee738e95b8c802b4fc6754bbd6" prot="public">
+          <name>GPIO_ERR_PIN_ALREADY_REGISTERED</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da963337aa12ed713ecee24d8bc0bc1af7" prot="public">
+          <name>GPIO_ERR_PIN_ACCESS_DENIED</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da583f31f55f292d9460d4401997878135" prot="public">
+          <name>GPIO_ERR_PIN_BUSY</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da9d05c78e2d6dbd4868a3c7ad13ed5c25" prot="public">
+          <name>GPIO_ERR_HARDWARE_FAULT</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dac830e46415a4ec395ce2b9a9f1a2fd62" prot="public">
+          <name>GPIO_ERR_COMMUNICATION_FAILURE</name>
+          <initializer>=  14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dae656a8d5b2e8d547c0d976cc883cb601" prot="public">
+          <name>GPIO_ERR_DEVICE_NOT_RESPONDING</name>
+          <initializer>=  15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da60701f049c086b44b9b07455b31b32d4" prot="public">
+          <name>GPIO_ERR_TIMEOUT</name>
+          <initializer>=  16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dad08bc7a57b45033bc186de679f17d3fa" prot="public">
+          <name>GPIO_ERR_VOLTAGE_OUT_OF_RANGE</name>
+          <initializer>=  17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da56d5db816b34f92a07c27dc2b22035be" prot="public">
+          <name>GPIO_ERR_INVALID_CONFIGURATION</name>
+          <initializer>=  18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da8cc09234750055376887ad35240174e5" prot="public">
+          <name>GPIO_ERR_UNSUPPORTED_OPERATION</name>
+          <initializer>=  19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da3b9274154bbc74e912aee32a8be38573" prot="public">
+          <name>GPIO_ERR_RESOURCE_BUSY</name>
+          <initializer>=  20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da3d8c84f6917cd95b346b4c9269466274" prot="public">
+          <name>GPIO_ERR_RESOURCE_UNAVAILABLE</name>
+          <initializer>=  21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dad373c8c390069c2855b78d797b2b114a" prot="public">
+          <name>GPIO_ERR_READ_FAILURE</name>
+          <initializer>=  22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da875f2148cc6ff4a4e5c5ac14ef468218" prot="public">
+          <name>GPIO_ERR_WRITE_FAILURE</name>
+          <initializer>=  23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305daf325d6fbe617f4a9a26c320d3d3f26b0" prot="public">
+          <name>GPIO_ERR_DIRECTION_MISMATCH</name>
+          <initializer>=  24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da7784f100f9881c8950cb9376118c533c" prot="public">
+          <name>GPIO_ERR_PULL_RESISTOR_FAILURE</name>
+          <initializer>=  25</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da21fcfb07c03413755abfbcee7fd7f267" prot="public">
+          <name>GPIO_ERR_INTERRUPT_NOT_SUPPORTED</name>
+          <initializer>=  26</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da081cd9145412fbcccd5e59c5dfff8515" prot="public">
+          <name>GPIO_ERR_INTERRUPT_ALREADY_ENABLED</name>
+          <initializer>=  27</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305daded9e1e9c5cba44f5dd775b76c2c7eb8" prot="public">
+          <name>GPIO_ERR_INTERRUPT_NOT_ENABLED</name>
+          <initializer>=  28</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da48c59a175bbf7e75d7a633ab8c9f5ee0" prot="public">
+          <name>GPIO_ERR_INTERRUPT_HANDLER_FAILED</name>
+          <initializer>=  29</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da1924675e5ce4a6f35862c3170b2cf82c" prot="public">
+          <name>GPIO_ERR_SYSTEM_ERROR</name>
+          <initializer>=  30</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da64dd337c77c8ad344b81077d1563a75f" prot="public">
+          <name>GPIO_ERR_PERMISSION_DENIED</name>
+          <initializer>=  31</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da36813840681f05663478922b67509143" prot="public">
+          <name>GPIO_ERR_OPERATION_ABORTED</name>
+          <initializer>=  32</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dad0dedbb315ad871e12c7da9e293a37dd" prot="public">
+          <name>GPIO_ERR_NOT_SUPPORTED</name>
+          <initializer>=  33</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da335a7094845a2813f8b06105d3f3e210" prot="public">
+          <name>GPIO_ERR_DRIVER_ERROR</name>
+          <initializer>=  34</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305daedd8db4c5482eb9b06a93f7686e7df5a" prot="public">
+          <name>GPIO_ERR_INVALID_STATE</name>
+          <initializer>=  35</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da88adf359e7e9360c9b7a03ca100ce46b" prot="public">
+          <name>GPIO_ERR_INVALID_ARG</name>
+          <initializer>=  36</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da90cb9acd4ee0be850b46e00382ebda3e" prot="public">
+          <name>GPIO_ERR_CALIBRATION_FAILURE</name>
+          <initializer>=  37</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305dae95d515b07b7e1ff6706de3ebc08bd50" prot="public">
+          <name>GPIO_ERR_UNKNOWN</name>
+          <initializer>=  38</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga2632aac2351807c35e790ec20bda305da2736a20c86d944fdf231c360a49b98d8" prot="public">
+          <name>GPIO_ERR_COUNT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>HardFOC GPIO error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all GPIO operations in the system. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="109" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="109" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_gpio_state_t</name>
+        <enumvalue id="group__gpio_1gga49490004a4935c1f8f727fcbfba7f887a4646f94b6d7499976b7c997e826b95dc" prot="public">
+          <name>HF_GPIO_STATE_INACTIVE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Logical inactive state. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga49490004a4935c1f8f727fcbfba7f887a14da1ccdb89e74c932383b4d4cd86573" prot="public">
+          <name>HF_GPIO_STATE_ACTIVE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Logical active state. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO pin logical states. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Represents the logical state of a GPIO pin, independent of electrical polarity. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="139" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="139" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__gpio_1ga04d416163750773ac08d092bd0d4038e" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_gpio_level_t</name>
+        <enumvalue id="group__gpio_1gga04d416163750773ac08d092bd0d4038ea0e6f86bd5369fde81e8064b7865ea9e3" prot="public">
+          <name>HF_GPIO_LEVEL_LOW</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Electrical low level (0V) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga04d416163750773ac08d092bd0d4038ea38ff7115dcf0a8897f602d7a63861f17" prot="public">
+          <name>HF_GPIO_LEVEL_HIGH</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Electrical high level (VCC) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO pin electrical levels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Represents the actual electrical level of a GPIO pin. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="149" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="149" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_gpio_active_state_t</name>
+        <enumvalue id="group__gpio_1ggaf02cdaf150fa829e4a871e58ed772c6da450278e3db6a65478bdb5a456f824c42" prot="public">
+          <name>HF_GPIO_ACTIVE_LOW</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Active state is electrical low. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356" prot="public">
+          <name>HF_GPIO_ACTIVE_HIGH</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Active state is electrical high. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO active state polarity configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines which electrical level corresponds to the logical &quot;active&quot; state. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="159" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="159" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_gpio_direction_t</name>
+        <enumvalue id="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3a5090403a0f4f177d6fb813cd9d06bf1e" prot="public">
+          <name>HF_GPIO_DIRECTION_INPUT</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Pin configured as input. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3ae8b58d24a05839b6d1c0305c945748b0" prot="public">
+          <name>HF_GPIO_DIRECTION_OUTPUT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Pin configured as output. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO pin direction/mode configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines whether the pin is configured as input or output. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="169" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="169" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_gpio_output_mode_t</name>
+        <enumvalue id="group__gpio_1gga825412a54660defc9ecbf8ad1ea1cf7ba26b362f67afa6dbc264fb539c0dc304d" prot="public">
+          <name>HF_GPIO_OUTPUT_MODE_PUSH_PULL</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Push-pull output (strong high and low) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga825412a54660defc9ecbf8ad1ea1cf7ba5f14b6a9f5f28544b4314b7dfd2cdf51" prot="public">
+          <name>HF_GPIO_OUTPUT_MODE_OPEN_DRAIN</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Open-drain output (strong low, high-impedance high) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO output drive modes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines the electrical characteristics of GPIO output pins. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="179" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="179" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_gpio_pull_mode_t</name>
+        <enumvalue id="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335ae17c8cfbde2e4323ba15750747758875" prot="public">
+          <name>HF_GPIO_PULL_MODE_FLOATING</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No pull resistor (floating/high-impedance) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335a88a10405bfdfad3cb5c0f3ee531a54eb" prot="public">
+          <name>HF_GPIO_PULL_MODE_UP</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Internal pull-up resistor enabled. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335addecfb46009ce8c5ad563e8fbab0a749" prot="public">
+          <name>HF_GPIO_PULL_MODE_DOWN</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Internal pull-down resistor enabled. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335ad8fb8979e9fdbec7cc4e842f23abcdb1" prot="public">
+          <name>HF_GPIO_PULL_MODE_UP_DOWN</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Both pull-up and pull-down resistors enabled. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO pull resistor configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines the internal pull resistor configuration for GPIO pins. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="189" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="189" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>hf_gpio_interrupt_trigger_t</name>
+        <enumvalue id="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1a599debe50453c8a67ce2ce7dfb455fa6" prot="public">
+          <name>HF_GPIO_INTERRUPT_TRIGGER_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No interrupt (disabled) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1a3329c6966749e885e0fae014078c306b" prot="public">
+          <name>HF_GPIO_INTERRUPT_TRIGGER_RISING_EDGE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Trigger on rising edge (low to high) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1a5aed939da4e6fc63381ce0a51ce58e9d" prot="public">
+          <name>HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Trigger on falling edge (high to low) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1a09801f149bee7cb99caad5d5e649abc3" prot="public">
+          <name>HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Trigger on both rising and falling edges. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1adea2885dba61754e32fed0ce5e6657c6" prot="public">
+          <name>HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Trigger on low level. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1a5e5303d5ffc82721bd4158217156dde0" prot="public">
+          <name>HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Trigger on high level. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO interrupt trigger types. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Defines the conditions that trigger GPIO interrupts. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="201" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="201" bodyend="208"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" prot="public" static="no">
+        <type>std::function&lt; void(<ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> *gpio, <ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref> trigger, void *user_data)&gt;</type>
+        <definition>using InterruptCallback = 
+    std::function&lt;void(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* user_data)&gt;</definition>
+        <argsstring></argsstring>
+        <name>InterruptCallback</name>
+        <briefdescription>
+<para>GPIO interrupt callback function type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Callback invoked when GPIO interrupt occurs. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the GPIO instance that triggered </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>trigger</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The trigger type that caused the interrupt </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User-provided data passed to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="221" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="221" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="group__gpio_1gafc39fe16e57bc415f05e1f8bf7c4e0be" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr std::string_view</type>
+        <definition>constexpr std::string_view HfGpioErrToString</definition>
+        <argsstring>(hf_gpio_err_t err) noexcept</argsstring>
+        <name>HfGpioErrToString</name>
+        <param>
+          <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+<para>Convert hf_gpio_err_t to human-readable string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>err</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error code to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String view of the error description </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="122" column="28" bodyfile="inc/base/BaseGpio.h" bodystart="122" bodyend="132"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__gpio_1gacdef61b325fdcc83f9974bc7c3c6d800" prot="public" static="no">
+        <name>HF_GPIO_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC GPIO error codes macro list. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>X-macro pattern for comprehensive error enumeration. Each entry contains: <ref refid="BaseGpio_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X(NAME, VALUE, DESCRIPTION)</ref> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="46" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="46" bodyend="102"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All GPIO-related types, enums, and functions for digital I/O operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module provides comprehensive GPIO functionality including:<itemizedlist>
+<listitem><para>Digital input/output operations</para>
+</listitem><listitem><para>Interrupt handling</para>
+</listitem><listitem><para>Pull resistor configuration</para>
+</listitem><listitem><para>Active state polarity</para>
+</listitem><listitem><para>Output drive modes</para>
+</listitem><listitem><para>Error handling and diagnostics </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

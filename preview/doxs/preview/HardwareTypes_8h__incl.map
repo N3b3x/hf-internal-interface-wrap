@@ -1,0 +1,7 @@
+<map id="inc/base/HardwareTypes.h" name="inc/base/HardwareTypes.h">
+<area shape="rect" id="Node000001" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,5,240,36"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="39,84,113,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,38,94,74,90,71,112,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="137,84,201,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="134,35,156,71,151,74,129,38"/>
+</map>

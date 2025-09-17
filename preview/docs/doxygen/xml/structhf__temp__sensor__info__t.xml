@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__temp__sensor__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_temp_sensor_info_t</compoundname>
+    <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a43a9d6e0c1515f6587ff105a0ea0e320" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseTemperature_8h_1a698a95604ca19f87ee2ff5c99f903577" kindref="member">hf_temp_sensor_type_t</ref></type>
+        <definition>hf_temp_sensor_type_t hf_temp_sensor_info_t::sensor_type</definition>
+        <argsstring></argsstring>
+        <name>sensor_type</name>
+        <qualifiedname>hf_temp_sensor_info_t::sensor_type</qualifiedname>
+        <briefdescription>
+<para>Type of temperature sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="239" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a4221b056d9548525e309e4aac693e9a1" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_sensor_info_t::min_temp_celsius</definition>
+        <argsstring></argsstring>
+        <name>min_temp_celsius</name>
+        <qualifiedname>hf_temp_sensor_info_t::min_temp_celsius</qualifiedname>
+        <briefdescription>
+<para>Minimum measurable temperature. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="240" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a6de08587fd4c08f24b025ab985966fe9" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_sensor_info_t::max_temp_celsius</definition>
+        <argsstring></argsstring>
+        <name>max_temp_celsius</name>
+        <qualifiedname>hf_temp_sensor_info_t::max_temp_celsius</qualifiedname>
+        <briefdescription>
+<para>Maximum measurable temperature. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="241" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1ac9cf0f05bef73c301ed9e8b6b07f75fd" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_sensor_info_t::resolution_celsius</definition>
+        <argsstring></argsstring>
+        <name>resolution_celsius</name>
+        <qualifiedname>hf_temp_sensor_info_t::resolution_celsius</qualifiedname>
+        <briefdescription>
+<para>Temperature resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="242" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a1a0629db07414a728cd5b5194eedb01e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_temp_sensor_info_t::accuracy_celsius</definition>
+        <argsstring></argsstring>
+        <name>accuracy_celsius</name>
+        <qualifiedname>hf_temp_sensor_info_t::accuracy_celsius</qualifiedname>
+        <briefdescription>
+<para>Typical accuracy. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="243" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1aec4df26cb4bcc3c339ba4b253a566ce3" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_sensor_info_t::response_time_ms</definition>
+        <argsstring></argsstring>
+        <name>response_time_ms</name>
+        <qualifiedname>hf_temp_sensor_info_t::response_time_ms</qualifiedname>
+        <briefdescription>
+<para>Typical response time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="244" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a5a274ebeb78313a516dcf4ac4231419d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_sensor_info_t::capabilities</definition>
+        <argsstring></argsstring>
+        <name>capabilities</name>
+        <qualifiedname>hf_temp_sensor_info_t::capabilities</qualifiedname>
+        <briefdescription>
+<para>Sensor capabilities (hf_temp_capabilities_t flags) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="245" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a548d01ddec59454ff327118d58b7262d" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_temp_sensor_info_t::manufacturer</definition>
+        <argsstring></argsstring>
+        <name>manufacturer</name>
+        <qualifiedname>hf_temp_sensor_info_t::manufacturer</qualifiedname>
+        <briefdescription>
+<para>Sensor manufacturer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="246" column="14" bodyfile="inc/base/BaseTemperature.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a0c4fd02170af505ef07488baa106c5b3" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_temp_sensor_info_t::model</definition>
+        <argsstring></argsstring>
+        <name>model</name>
+        <qualifiedname>hf_temp_sensor_info_t::model</qualifiedname>
+        <briefdescription>
+<para>Sensor model. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="247" column="14" bodyfile="inc/base/BaseTemperature.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__sensor__info__t_1a36d44a724620dbdd0d1ca9a0e595c069" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_temp_sensor_info_t::version</definition>
+        <argsstring></argsstring>
+        <name>version</name>
+        <qualifiedname>hf_temp_sensor_info_t::version</qualifiedname>
+        <briefdescription>
+<para>Driver/firmware version. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="248" column="14" bodyfile="inc/base/BaseTemperature.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Temperature sensor information structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseTemperature.h" line="238" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="238" bodyend="249"/>
+    <listofallmembers>
+      <member refid="structhf__temp__sensor__info__t_1a1a0629db07414a728cd5b5194eedb01e" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>accuracy_celsius</name></member>
+      <member refid="structhf__temp__sensor__info__t_1a5a274ebeb78313a516dcf4ac4231419d" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>capabilities</name></member>
+      <member refid="structhf__temp__sensor__info__t_1a548d01ddec59454ff327118d58b7262d" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>manufacturer</name></member>
+      <member refid="structhf__temp__sensor__info__t_1a6de08587fd4c08f24b025ab985966fe9" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>max_temp_celsius</name></member>
+      <member refid="structhf__temp__sensor__info__t_1a4221b056d9548525e309e4aac693e9a1" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>min_temp_celsius</name></member>
+      <member refid="structhf__temp__sensor__info__t_1a0c4fd02170af505ef07488baa106c5b3" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>model</name></member>
+      <member refid="structhf__temp__sensor__info__t_1ac9cf0f05bef73c301ed9e8b6b07f75fd" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>resolution_celsius</name></member>
+      <member refid="structhf__temp__sensor__info__t_1aec4df26cb4bcc3c339ba4b253a566ce3" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>response_time_ms</name></member>
+      <member refid="structhf__temp__sensor__info__t_1a43a9d6e0c1515f6587ff105a0ea0e320" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>sensor_type</name></member>
+      <member refid="structhf__temp__sensor__info__t_1a36d44a724620dbdd0d1ca9a0e595c069" prot="public" virt="non-virtual"><scope>hf_temp_sensor_info_t</scope><name>version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

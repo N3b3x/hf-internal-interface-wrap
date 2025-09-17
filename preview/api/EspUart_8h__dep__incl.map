@@ -1,0 +1,7 @@
+<map id="inc/mcu/esp32/EspUart.h" name="inc/mcu/esp32/EspUart.h">
+<area shape="rect" id="Node000001" title="ESP32 UART implementation for the HardFOC system." alt="" coords="157,5,381,36"/>
+<area shape="rect" id="Node000002" href="$UartComprehensiveTest_8cpp.html" title="Comprehensive UART testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,84,260,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,46,173,86,170,81,233,41"/>
+<area shape="rect" id="Node000003" href="$EspUart_8cpp.html" title="Implementation of ESP32 UART controller for the HardFOC system." alt="" coords="284,94,528,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="304,41,385,92,382,96,302,46"/>
+</map>

@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__wifi__ap__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_wifi_ap_config_t</compoundname>
+    <includes refid="BaseWifi_8h" local="no">BaseWifi.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__wifi__ap__config__t_1a0b0565f4d761b1e192fd0b96c041808d" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string hf_wifi_ap_config_t::ssid</definition>
+        <argsstring></argsstring>
+        <name>ssid</name>
+        <qualifiedname>hf_wifi_ap_config_t::ssid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>AP SSID </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="210" column="15" bodyfile="inc/base/BaseWifi.h" bodystart="210" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ap__config__t_1a398bcfee6f1c4e993c3e74ad4b2347e1" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string hf_wifi_ap_config_t::password</definition>
+        <argsstring></argsstring>
+        <name>password</name>
+        <qualifiedname>hf_wifi_ap_config_t::password</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>AP password </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="211" column="15" bodyfile="inc/base/BaseWifi.h" bodystart="211" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ap__config__t_1a10f66e7e3276c1b86524929534fcf42e" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_wifi_ap_config_t::ssid_len</definition>
+        <argsstring></argsstring>
+        <name>ssid_len</name>
+        <qualifiedname>hf_wifi_ap_config_t::ssid_len</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>SSID length (0 for auto) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="212" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ap__config__t_1a5a8eb0c04a8f37049c48a1c003369907" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_wifi_ap_config_t::channel</definition>
+        <argsstring></argsstring>
+        <name>channel</name>
+        <qualifiedname>hf_wifi_ap_config_t::channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>WiFi channel </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="213" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ap__config__t_1a0db71ba44db92be933c654d4fa1ec934" prot="public" static="no" mutable="no">
+        <type><ref refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kindref="member">hf_wifi_security_t</ref></type>
+        <definition>hf_wifi_security_t hf_wifi_ap_config_t::authmode</definition>
+        <argsstring></argsstring>
+        <name>authmode</name>
+        <qualifiedname>hf_wifi_ap_config_t::authmode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Authentication mode </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="214" column="22" bodyfile="inc/base/BaseWifi.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ap__config__t_1a4ec44f492940c72feba4b3c5a0b6cfb9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_wifi_ap_config_t::ssid_hidden</definition>
+        <argsstring></argsstring>
+        <name>ssid_hidden</name>
+        <qualifiedname>hf_wifi_ap_config_t::ssid_hidden</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Broadcast SSID (0) or hide (1) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="215" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ap__config__t_1a182f0a7b237d36109367a1544e6892ec" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_wifi_ap_config_t::max_connection</definition>
+        <argsstring></argsstring>
+        <name>max_connection</name>
+        <qualifiedname>hf_wifi_ap_config_t::max_connection</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maximum concurrent connections </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="216" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__ap__config__t_1a2af81bc34be9da0bb13b09aad9f5397c" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_wifi_ap_config_t::beacon_interval</definition>
+        <argsstring></argsstring>
+        <name>beacon_interval</name>
+        <qualifiedname>hf_wifi_ap_config_t::beacon_interval</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Beacon interval (ms) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="217" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>WiFi Access Point configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseWifi.h" line="209" column="1" bodyfile="inc/base/BaseWifi.h" bodystart="209" bodyend="218"/>
+    <listofallmembers>
+      <member refid="structhf__wifi__ap__config__t_1a0db71ba44db92be933c654d4fa1ec934" prot="public" virt="non-virtual"><scope>hf_wifi_ap_config_t</scope><name>authmode</name></member>
+      <member refid="structhf__wifi__ap__config__t_1a2af81bc34be9da0bb13b09aad9f5397c" prot="public" virt="non-virtual"><scope>hf_wifi_ap_config_t</scope><name>beacon_interval</name></member>
+      <member refid="structhf__wifi__ap__config__t_1a5a8eb0c04a8f37049c48a1c003369907" prot="public" virt="non-virtual"><scope>hf_wifi_ap_config_t</scope><name>channel</name></member>
+      <member refid="structhf__wifi__ap__config__t_1a182f0a7b237d36109367a1544e6892ec" prot="public" virt="non-virtual"><scope>hf_wifi_ap_config_t</scope><name>max_connection</name></member>
+      <member refid="structhf__wifi__ap__config__t_1a398bcfee6f1c4e993c3e74ad4b2347e1" prot="public" virt="non-virtual"><scope>hf_wifi_ap_config_t</scope><name>password</name></member>
+      <member refid="structhf__wifi__ap__config__t_1a0b0565f4d761b1e192fd0b96c041808d" prot="public" virt="non-virtual"><scope>hf_wifi_ap_config_t</scope><name>ssid</name></member>
+      <member refid="structhf__wifi__ap__config__t_1a4ec44f492940c72feba4b3c5a0b6cfb9" prot="public" virt="non-virtual"><scope>hf_wifi_ap_config_t</scope><name>ssid_hidden</name></member>
+      <member refid="structhf__wifi__ap__config__t_1a10f66e7e3276c1b86524929534fcf42e" prot="public" virt="non-virtual"><scope>hf_wifi_ap_config_t</scope><name>ssid_len</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
