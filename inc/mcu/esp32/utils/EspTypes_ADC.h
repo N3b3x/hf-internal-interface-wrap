@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_ADC.h
+ * @ingroup esp32_types
  * @brief ESP32 ADC type definitions for hardware abstraction.
  *
  * This header defines only the essential ADC-specific types and constants used by

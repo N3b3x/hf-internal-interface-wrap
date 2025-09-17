@@ -1,5 +1,6 @@
 /**
  * @file EspPeriodicTimer.h
+ * @ingroup timer
  * @brief MCU-integrated periodic timer implementation.
  *
  * This header provides a periodic timer implementation for microcontrollers with

@@ -1,3 +1,9 @@
+/**
+ * @file memory_utils.h
+ * @ingroup utils
+ * @brief Memory management utilities for exception-free design.
+ */
+
 #pragma once
 
 #include <memory>

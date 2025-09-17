@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_PWM.h
+ * @ingroup esp32_types
  * @brief ESP32 PWM type definitions for LEDC peripheral hardware abstraction.
  *
  * This header defines essential PWM-specific types and constants for the EspPwm

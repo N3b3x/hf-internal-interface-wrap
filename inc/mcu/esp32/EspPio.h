@@ -1,5 +1,6 @@
 /**
  * @file EspPio.h
+ * @ingroup pio
  * @brief ESP32C6 RMT-based Programmable IO Channel implementation with ESP-IDF v5.5+ features.
  *
  * This header provides a comprehensive PIO implementation for ESP32C6 microcontrollers using

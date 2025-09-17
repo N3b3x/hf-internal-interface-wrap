@@ -3,6 +3,7 @@
 
 /**
  * @file EspI2c.h
+ * @ingroup i2c
  * @brief Advanced ESP32-integrated I2C controller for ESP-IDF v5.5+ with proper bus-device
  * architecture.
  *

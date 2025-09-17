@@ -1,5 +1,6 @@
 /**
  * @file EspTypes_GPIO.h
+ * @ingroup esp32_types
  * @brief ESP32 GPIO type definitions for hardware abstraction.
  *
  * This header defines only the essential GPIO-specific types and constants used by
