@@ -1,0 +1,27 @@
+<map id="EspAdc::MonitorContext" name="EspAdc::MonitorContext">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1285,125,1503,155"/>
+<area shape="rect" id="Node000002" href="$structhf__adc__monitor__event__t.html" title="ADC monitor event structure." alt="" coords="909,98,1125,129"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1139,119,1285,130,1285,135,1139,125"/>
+<area shape="rect" id="Node000003" href="$classEspAdc.html" title="ESP32 ADC implementation class." alt="" coords="975,153,1059,183"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="1073,164,1261,153,1285,151,1285,156,1262,159,1073,169"/>
+<area shape="rect" id="Node000004" href="$classBaseAdc.html" title="Base class for ADCs." alt="" coords="520,73,615,103"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="629,88,749,100,818,111,886,127,910,137,976,156,974,161,908,143,884,132,817,116,748,105,628,93"/>
+<area shape="rect" id="Node000005" href="$structhf__adc__statistics__t.html" title="ADC operation statistics." alt="" coords="43,31,214,62"/>
+<area shape="poly" id="edge12_Node000003_Node000005" title=" " alt="" coords="227,36,276,33,351,31,427,33,498,34,561,30,670,22,721,24,773,35,827,57,887,94,897,105,900,117,903,128,911,138,942,154,976,162,974,168,940,159,908,142,898,130,895,118,892,108,884,98,825,62,771,40,721,29,670,27,562,35,499,39,427,39,351,37,276,39,228,41"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="228,53,520,81,520,86,228,59"/>
+<area shape="rect" id="Node000006" href="$structhf__adc__diagnostics__t.html" title="ADC diagnostic information." alt="" coords="33,97,224,127"/>
+<area shape="poly" id="edge13_Node000003_Node000006" title=" " alt="" coords="238,117,451,132,975,163,975,168,450,137,238,123"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="238,108,426,100,519,91,520,96,427,105,238,113"/>
+<area shape="rect" id="Node000007" href="$structhf__adc__unit__config__t.html" title="ADC unit configuration structure." alt="" coords="473,197,661,227"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="675,202,885,184,975,172,975,177,886,189,676,208"/>
+<area shape="rect" id="Node000008" href="$structhf__adc__channel__config__t.html" title="ADC channel configuration structure." alt="" coords="17,170,240,201"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="254,190,473,204,473,209,254,196"/>
+<area shape="rect" id="Node000009" href="$structhf__adc__continuous__config__t.html" title="ADC continuous mode configuration structure." alt="" coords="5,225,252,255"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="265,235,426,227,473,222,473,227,427,232,266,240"/>
+<area shape="rect" id="Node000010" href="$structhf__adc__calibration__config__t.html" title="ADC calibration configuration structure." alt="" coords="45,280,213,331"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="226,304,274,300,325,293,377,280,425,260,437,249,449,236,476,225,478,230,452,241,441,253,428,265,378,285,326,298,275,306,226,309"/>
+<area shape="rect" id="Node000011" href="$classRtosMutex.html" title=" " alt="" coords="513,251,622,282"/>
+<area shape="poly" id="edge10_Node000003_Node000011" title=" " alt="" coords="636,269,690,271,754,268,820,261,885,245,917,232,947,215,996,181,999,186,950,220,919,237,886,251,821,266,754,274,690,276,635,275"/>
+<area shape="rect" id="Node000012" href="$structhf__adc__continuous__data__t.html" title="ADC continuous data structure." alt="" coords="451,306,684,337"/>
+<area shape="poly" id="edge11_Node000003_Node000012" title=" " alt="" coords="698,329,744,327,792,322,839,311,884,295,923,271,957,240,1004,182,1008,185,961,243,927,275,886,300,841,316,793,327,744,332,698,334"/>
+</map>

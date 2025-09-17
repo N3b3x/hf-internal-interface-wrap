@@ -1,0 +1,7 @@
+<map id="BaseI2c" name="BaseI2c">
+<area shape="rect" id="Node000001" title="Abstract base class for I2C device implementations." alt="" coords="143,104,229,135"/>
+<area shape="rect" id="Node000002" href="$structhf__i2c__statistics__t.html" title="I2C operation statistics." alt="" coords="5,5,169,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,44,173,102,170,106,110,47"/>
+<area shape="rect" id="Node000003" href="$structhf__i2c__diagnostics__t.html" title="I2C diagnostic information." alt="" coords="193,5,379,36"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="269,49,238,82,209,106,205,102,235,78,265,45"/>
+</map>

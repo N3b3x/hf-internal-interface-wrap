@@ -1,0 +1,1252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBaseLogger" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseLogger</compoundname>
+    <derivedcompoundref refid="classEspLogger" prot="public" virt="non-virtual">EspLogger</derivedcompoundref>
+    <includes refid="BaseLogger_8h" local="no">BaseLogger.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseLogger_1aaf8957e6554581ceb22692563f0925e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual BaseLogger::~BaseLogger</definition>
+        <argsstring>()=default</argsstring>
+        <name>~BaseLogger</name>
+        <qualifiedname>BaseLogger::~BaseLogger</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="364" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1ad0406cdacbade55f2911bf717e35c22c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Initialize</definition>
+        <argsstring>(const hf_logger_config_t &amp;config) noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseLogger::Initialize</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a65a25428dd2429380fa5e44ddb31f883">Initialize</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the logger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Logger configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="375" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a5c4e83d89a9039e336dfb9f13d2be9a5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseLogger::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspLogger_1ad55e13200cd30558a1c6b51cd37bd9de">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the logger. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="381" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a9f14e4754c3840c59106db0670e90fca" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseLogger::IsInitialized</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseLogger::IsInitialized</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a4d300e5e6ae8f3da60d756686f520495">IsInitialized</reimplementedby>
+        <briefdescription>
+<para>Check if logger is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="387" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a14f30b5cd0922487a49b77ec9833a0bc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseLogger::EnsureInitialized</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BaseLogger::EnsureInitialized</qualifiedname>
+        <reimplementedby refid="classEspLogger_1afd6ed0aa4e042aa0356952ca4cb968da">EnsureInitialized</reimplementedby>
+        <briefdescription>
+<para>Ensure logger is initialized (lazy initialization) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialization successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="393" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a960f90f79007791d7129bd22be151a57" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::SetLogLevel</definition>
+        <argsstring>(const char *tag, hf_log_level_t level) noexcept=0</argsstring>
+        <name>SetLogLevel</name>
+        <qualifiedname>BaseLogger::SetLogLevel</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a2ba313925a91c912e926af982b1f99df">SetLogLevel</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Set log level for a specific tag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag (nullptr for default) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="401" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a7bab272b2ae8e5bf4a2d0c0c8a9ea203" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::GetLogLevel</definition>
+        <argsstring>(const char *tag, hf_log_level_t &amp;level) const noexcept=0</argsstring>
+        <name>GetLogLevel</name>
+        <qualifiedname>BaseLogger::GetLogLevel</qualifiedname>
+        <reimplementedby refid="classEspLogger_1ad6062eec104b3cdf9532cfa2a9f15bdc">GetLogLevel</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref> &amp;</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Get log level for a specific tag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag (nullptr for default) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output log level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="409" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a4075d445b4199e72e9a0c09ba438c076" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Error</definition>
+        <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
+        <name>Error</name>
+        <qualifiedname>BaseLogger::Error</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a666cd0894691948bf449fb7e325d222f">Error</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Log a message at ERROR level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="422" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1ac1492294d1cc35697eaf02d6b617cce8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Warn</definition>
+        <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
+        <name>Warn</name>
+        <qualifiedname>BaseLogger::Warn</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a097cbcffbb54f838cddab0e20abff8ac">Warn</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Log a message at WARN level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="431" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a79975dd958a7f1b10570474deb42637b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Info</definition>
+        <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
+        <name>Info</name>
+        <qualifiedname>BaseLogger::Info</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a3f54f20a15b35aee84a5148b84a846c1">Info</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Log a message at INFO level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="440" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a15474a07a615cd39de6c2884b1035808" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Debug</definition>
+        <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
+        <name>Debug</name>
+        <qualifiedname>BaseLogger::Debug</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a6dff2af97ae0ee413b89aec8cf96f09a">Debug</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Log a message at DEBUG level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="449" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a7c108881b2bda1a6b938f0aebbe1b264" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Verbose</definition>
+        <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
+        <name>Verbose</name>
+        <qualifiedname>BaseLogger::Verbose</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a8b5952680c76fd4d3f7c7e3cce904e41">Verbose</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Log a message at VERBOSE level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="458" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1ad0549df66e58b6726f8dee0792f73a45" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Log</definition>
+        <argsstring>(hf_log_level_t level, const char *tag, const char *format,...) noexcept=0</argsstring>
+        <name>Log</name>
+        <qualifiedname>BaseLogger::Log</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a35a264de336e8f2de1b7cd1751eab044">Log</reimplementedby>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Log a message at specified level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log level </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="468" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a9e7c920256b418cf70d092ec5ad606cf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::LogV</definition>
+        <argsstring>(hf_log_level_t level, const char *tag, const char *format, va_list args) noexcept=0</argsstring>
+        <name>LogV</name>
+        <qualifiedname>BaseLogger::LogV</qualifiedname>
+        <reimplementedby refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e">LogV</reimplementedby>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>va_list</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Log a message with va_list (for internal use) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log level </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>va_list of arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="479" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a4c22f92b913379d3407426d7e4ce19dc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::LogWithLocation</definition>
+        <argsstring>(hf_log_level_t level, const char *tag, const char *file, hf_u32_t line, const char *function, const char *format,...) noexcept=0</argsstring>
+        <name>LogWithLocation</name>
+        <qualifiedname>BaseLogger::LogWithLocation</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a0622fca14e6fc69b91975cf720af3603">LogWithLocation</reimplementedby>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>format</declname>
+        </param>
+        <param>
+          <type>...</type>
+        </param>
+        <briefdescription>
+<para>Log a message with file and line information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log level </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source file </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source line </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>function</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function name </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style format string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>...</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>printf-style arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="493" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a37a29d6d49c0a3ec7d5d6163c23aef39" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::Flush</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Flush</name>
+        <qualifiedname>BaseLogger::Flush</qualifiedname>
+        <reimplementedby refid="classEspLogger_1ac3fddcbe82a7de191a903a5427dd44e0">Flush</reimplementedby>
+        <briefdescription>
+<para>Flush any buffered output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="505" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1afb83c8e24e07a9bfb0874bf4c65e71e6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseLogger::IsLevelEnabled</definition>
+        <argsstring>(hf_log_level_t level, const char *tag=nullptr) const noexcept=0</argsstring>
+        <name>IsLevelEnabled</name>
+        <qualifiedname>BaseLogger::IsLevelEnabled</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a7ec1e202ab853fd2ee1f2b93c4089a08">IsLevelEnabled</reimplementedby>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Check if a log level is enabled for a tag. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log level to check </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag (nullptr for default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if level is enabled, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="513" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a3b030cfdc55beea0afd1f80b94bdc90f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::GetStatistics</definition>
+        <argsstring>(hf_logger_statistics_t &amp;statistics) const noexcept=0</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BaseLogger::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a9c245d1d50c9665832b75332ba752689">GetStatistics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__logger__statistics__t" kindref="compound">hf_logger_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get logger statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output statistics structure </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="520" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1ae7b732b376b7066214dec2c741dc9e1e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::GetDiagnostics</definition>
+        <argsstring>(hf_logger_diagnostics_t &amp;diagnostics) const noexcept=0</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BaseLogger::GetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspLogger_1ac2b2ffa4d116dc2e75c96ccb8f08e61b">GetDiagnostics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__logger__diagnostics__t" kindref="compound">hf_logger_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get logger diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output diagnostics structure </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="527" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a3cf9119158fe0f18d7c04aec03c6449b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::ResetStatistics</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BaseLogger::ResetStatistics</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a0c8b15b05c28dc619ebf777c870bd2ec">ResetStatistics</reimplementedby>
+        <briefdescription>
+<para>Reset statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="533" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a24d1d4542ce03818617a6ca47c5cadf9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::ResetDiagnostics</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BaseLogger::ResetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspLogger_1aefe2fb8f5f9359423c198a4980236ffe">ResetDiagnostics</reimplementedby>
+        <briefdescription>
+<para>Reset diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="539" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a5ada4c120460e66a3aa95d0d9d1f2688" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseLogger::IsHealthy</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>IsHealthy</name>
+        <qualifiedname>BaseLogger::IsHealthy</qualifiedname>
+        <reimplementedby refid="classEspLogger_1ab003664bef163b80f2071efbccfb1fe9">IsHealthy</reimplementedby>
+        <briefdescription>
+<para>Check if logger is healthy. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if healthy, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="545" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a1065e8155fd78171bba853d64d3deeee" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::GetLastError</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetLastError</name>
+        <qualifiedname>BaseLogger::GetLastError</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a3452b953312f5d8512ecb64b7b8e6624">GetLastError</reimplementedby>
+        <briefdescription>
+<para>Get last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_logger_err_t Last error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="551" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1ae1ce782666e43f19b3b4e59278398880" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::GetLastErrorMessage</definition>
+        <argsstring>(char *message, hf_u32_t max_length) const noexcept=0</argsstring>
+        <name>GetLastErrorMessage</name>
+        <qualifiedname>BaseLogger::GetLastErrorMessage</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a7dee6257ad605104ffe53822747b82b1">GetLastErrorMessage</reimplementedby>
+        <param>
+          <type>char *</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>max_length</declname>
+        </param>
+        <briefdescription>
+<para>Get last error message. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>message</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output error message buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum message length </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="559" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a7c7b4dd7579edbf83e3f3abe51d9605d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::PrintStatistics</definition>
+        <argsstring>(const char *tag=nullptr, bool detailed=true) const noexcept=0</argsstring>
+        <name>PrintStatistics</name>
+        <qualifiedname>BaseLogger::PrintStatistics</qualifiedname>
+        <reimplementedby refid="classEspLogger_1a3707bd0b8d05153fce8c306461ad8a5b">PrintStatistics</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>detailed</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Print statistics to log output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag for the output (optional, uses implementation-specific default if nullptr) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>detailed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, prints detailed per-level statistics </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="572" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1abf400ef24cd83257f6c3ca6e5f905069" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::PrintDiagnostics</definition>
+        <argsstring>(const char *tag=nullptr, bool detailed=true) const noexcept=0</argsstring>
+        <name>PrintDiagnostics</name>
+        <qualifiedname>BaseLogger::PrintDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspLogger_1af4dd2ff188f30b1a5da6c174361ee2d0">PrintDiagnostics</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>detailed</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Print diagnostics to log output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag for the output (optional, uses implementation-specific default if nullptr) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>detailed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, prints detailed diagnostic information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="581" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a0fb33baa7231cd20d8ada51eb144e47c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+        <definition>virtual hf_logger_err_t BaseLogger::PrintStatus</definition>
+        <argsstring>(const char *tag=nullptr, bool detailed=true) const noexcept=0</argsstring>
+        <name>PrintStatus</name>
+        <qualifiedname>BaseLogger::PrintStatus</qualifiedname>
+        <reimplementedby refid="classEspLogger_1ae9668859f987dd750a3ca89bbffa94d4">PrintStatus</reimplementedby>
+        <param>
+          <type>const char *</type>
+          <declname>tag</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>detailed</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Print both statistics and diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tag</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log tag for the output (optional, uses implementation-specific default if nullptr) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>detailed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, prints detailed information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_logger_err_t Success or error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="590" column="27"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseLogger_1ad3174118bec359f399b89a7ca0c18881" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseLogger::BaseLogger</definition>
+        <argsstring>()=default</argsstring>
+        <name>BaseLogger</name>
+        <qualifiedname>BaseLogger::BaseLogger</qualifiedname>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="597" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a9bc13a6a2e51b915e049bef19458ab14" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseLogger::BaseLogger</definition>
+        <argsstring>(const BaseLogger &amp;)=delete</argsstring>
+        <name>BaseLogger</name>
+        <qualifiedname>BaseLogger::BaseLogger</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy constructor (deleted) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="602" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a527c6cc4476270922f2a29b3714f95e2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> &amp;</type>
+        <definition>BaseLogger &amp; BaseLogger::operator=</definition>
+        <argsstring>(const BaseLogger &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseLogger::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Assignment operator (deleted) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="607" column="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1ad8074912949ec914c7ea50733e51f720" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseLogger::BaseLogger</definition>
+        <argsstring>(BaseLogger &amp;&amp;)=delete</argsstring>
+        <name>BaseLogger</name>
+        <qualifiedname>BaseLogger::BaseLogger</qualifiedname>
+        <param>
+          <type><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move constructor (deleted) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="612" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseLogger_1a576bbb9fc3ac85c96779a3cd041ecb04" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> &amp;</type>
+        <definition>BaseLogger &amp; BaseLogger::operator=</definition>
+        <argsstring>(BaseLogger &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseLogger::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move assignment operator (deleted) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="617" column="14"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Base logger abstract class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a comprehensive logging abstraction that supports:<itemizedlist>
+<listitem><para>Multiple log levels (ERROR, WARN, INFO, DEBUG, VERBOSE)</para>
+</listitem><listitem><para>Thread-safe operations</para>
+</listitem><listitem><para>Configurable output destinations</para>
+</listitem><listitem><para>Performance monitoring and statistics</para>
+</listitem><listitem><para>Error handling and diagnostics</para>
+</listitem><listitem><para>Custom output callbacks</para>
+</listitem><listitem><para>Message formatting and buffering </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseLogger</label>
+        <link refid="classBaseLogger"/>
+      </node>
+      <node id="2">
+        <label>EspLogger</label>
+        <link refid="classEspLogger"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/base/BaseLogger.h" line="359" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="359" bodyend="618"/>
+    <listofallmembers>
+      <member refid="classBaseLogger_1ad3174118bec359f399b89a7ca0c18881" prot="protected" virt="non-virtual"><scope>BaseLogger</scope><name>BaseLogger</name></member>
+      <member refid="classBaseLogger_1a9bc13a6a2e51b915e049bef19458ab14" prot="protected" virt="non-virtual"><scope>BaseLogger</scope><name>BaseLogger</name></member>
+      <member refid="classBaseLogger_1ad8074912949ec914c7ea50733e51f720" prot="protected" virt="non-virtual"><scope>BaseLogger</scope><name>BaseLogger</name></member>
+      <member refid="classBaseLogger_1a15474a07a615cd39de6c2884b1035808" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Debug</name></member>
+      <member refid="classBaseLogger_1a5c4e83d89a9039e336dfb9f13d2be9a5" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Deinitialize</name></member>
+      <member refid="classBaseLogger_1a14f30b5cd0922487a49b77ec9833a0bc" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseLogger_1a4075d445b4199e72e9a0c09ba438c076" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Error</name></member>
+      <member refid="classBaseLogger_1a37a29d6d49c0a3ec7d5d6163c23aef39" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Flush</name></member>
+      <member refid="classBaseLogger_1ae7b732b376b7066214dec2c741dc9e1e" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseLogger_1a1065e8155fd78171bba853d64d3deeee" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>GetLastError</name></member>
+      <member refid="classBaseLogger_1ae1ce782666e43f19b3b4e59278398880" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>GetLastErrorMessage</name></member>
+      <member refid="classBaseLogger_1a7bab272b2ae8e5bf4a2d0c0c8a9ea203" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>GetLogLevel</name></member>
+      <member refid="classBaseLogger_1a3b030cfdc55beea0afd1f80b94bdc90f" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>GetStatistics</name></member>
+      <member refid="classBaseLogger_1a79975dd958a7f1b10570474deb42637b" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Info</name></member>
+      <member refid="classBaseLogger_1ad0406cdacbade55f2911bf717e35c22c" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Initialize</name></member>
+      <member refid="classBaseLogger_1a5ada4c120460e66a3aa95d0d9d1f2688" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>IsHealthy</name></member>
+      <member refid="classBaseLogger_1a9f14e4754c3840c59106db0670e90fca" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>IsInitialized</name></member>
+      <member refid="classBaseLogger_1afb83c8e24e07a9bfb0874bf4c65e71e6" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>IsLevelEnabled</name></member>
+      <member refid="classBaseLogger_1ad0549df66e58b6726f8dee0792f73a45" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Log</name></member>
+      <member refid="classBaseLogger_1a9e7c920256b418cf70d092ec5ad606cf" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>LogV</name></member>
+      <member refid="classBaseLogger_1a4c22f92b913379d3407426d7e4ce19dc" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>LogWithLocation</name></member>
+      <member refid="classBaseLogger_1a527c6cc4476270922f2a29b3714f95e2" prot="protected" virt="non-virtual"><scope>BaseLogger</scope><name>operator=</name></member>
+      <member refid="classBaseLogger_1a576bbb9fc3ac85c96779a3cd041ecb04" prot="protected" virt="non-virtual"><scope>BaseLogger</scope><name>operator=</name></member>
+      <member refid="classBaseLogger_1abf400ef24cd83257f6c3ca6e5f905069" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>PrintDiagnostics</name></member>
+      <member refid="classBaseLogger_1a7c7b4dd7579edbf83e3f3abe51d9605d" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>PrintStatistics</name></member>
+      <member refid="classBaseLogger_1a0fb33baa7231cd20d8ada51eb144e47c" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>PrintStatus</name></member>
+      <member refid="classBaseLogger_1a24d1d4542ce03818617a6ca47c5cadf9" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseLogger_1a3cf9119158fe0f18d7c04aec03c6449b" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseLogger_1a960f90f79007791d7129bd22be151a57" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>SetLogLevel</name></member>
+      <member refid="classBaseLogger_1a7c108881b2bda1a6b938f0aebbe1b264" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Verbose</name></member>
+      <member refid="classBaseLogger_1ac1492294d1cc35697eaf02d6b617cce8" prot="public" virt="pure-virtual"><scope>BaseLogger</scope><name>Warn</name></member>
+      <member refid="classBaseLogger_1aaf8957e6554581ceb22692563f0925e9" prot="public" virt="virtual"><scope>BaseLogger</scope><name>~BaseLogger</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

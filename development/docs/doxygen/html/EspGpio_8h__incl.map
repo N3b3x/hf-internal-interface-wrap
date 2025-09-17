@@ -1,0 +1,35 @@
+<map id="inc/mcu/esp32/EspGpio.h" name="inc/mcu/esp32/EspGpio.h">
+<area shape="rect" id="Node000001" title="Advanced MCU&#45;specific implementation of the unified BaseGpio class with ESP32C6/ESP&#45;IDF v5...." alt="" coords="175,5,405,36"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,84,127,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="249,39,121,82,119,77,248,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="151,84,253,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="275,38,231,77,227,73,272,34"/>
+<area shape="rect" id="Node000004" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="231,163,349,193"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="293,36,293,149,287,149,287,36"/>
+<area shape="rect" id="Node000010" href="$EspTypes__GPIO_8h.html" title="ESP32 GPIO type definitions for hardware abstraction." alt="" coords="327,84,501,115"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="315,34,380,74,378,79,312,39"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="525,84,599,115"/>
+<area shape="poly" id="edge19_Node000001_Node000014" title=" " alt="" coords="342,34,512,81,510,86,340,39"/>
+<area shape="rect" id="Node000005" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="327,241,490,272"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="314,191,376,231,373,236,311,196"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="325,320,399,351"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="295,193,303,229,318,271,342,308,338,311,313,273,298,231,290,194"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="18,241,117,272"/>
+<area shape="poly" id="edge8_Node000004_Node000008" title=" " alt="" coords="250,196,122,239,120,234,248,191"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="141,241,253,272"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="274,196,226,235,223,230,271,192"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="402,274,380,310,376,307,398,271"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="423,320,487,351"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="420,271,442,307,437,310,415,274"/>
+<area shape="poly" id="edge11_Node000010_Node000004" title=" " alt="" coords="392,117,326,158,324,153,389,113"/>
+<area shape="poly" id="edge17_Node000010_Node000005" title=" " alt="" coords="416,115,412,228,407,227,411,115"/>
+<area shape="rect" id="Node000011" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="447,163,613,193"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="437,113,498,153,495,157,434,117"/>
+<area shape="rect" id="Node000012" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="666,241,855,272"/>
+<area shape="poly" id="edge18_Node000010_Node000012" title=" " alt="" coords="483,112,553,132,627,160,686,195,735,230,732,235,683,199,625,165,552,137,481,117"/>
+<area shape="poly" id="edge14_Node000011_Node000005" title=" " alt="" coords="509,196,444,236,441,232,506,191"/>
+<area shape="poly" id="edge16_Node000011_Node000006" title=" " alt="" coords="532,194,525,233,517,254,504,274,489,285,467,297,413,319,411,314,464,293,486,281,500,270,512,252,520,231,527,193"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="574,191,706,235,705,240,572,196"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="565,241,641,272"/>
+<area shape="poly" id="edge15_Node000011_Node000013" title=" " alt="" coords="546,192,582,230,578,233,542,195"/>
+</map>

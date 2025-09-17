@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__bluetooth__gatt__characteristic__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_bluetooth_gatt_characteristic_t</compoundname>
+    <includes refid="BaseBluetooth_8h" local="no">BaseBluetooth.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__bluetooth__gatt__characteristic__t_1abb8ce02be19d55f0dd8a4e0d78374a6a" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string hf_bluetooth_gatt_characteristic_t::uuid</definition>
+        <argsstring></argsstring>
+        <name>uuid</name>
+        <qualifiedname>hf_bluetooth_gatt_characteristic_t::uuid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Characteristic UUID </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="326" column="15" bodyfile="inc/base/BaseBluetooth.h" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__gatt__characteristic__t_1adb9eb8327064c68d57f4d480e03dffdf" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_bluetooth_gatt_characteristic_t::handle</definition>
+        <argsstring></argsstring>
+        <name>handle</name>
+        <qualifiedname>hf_bluetooth_gatt_characteristic_t::handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Characteristic handle </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="327" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__gatt__characteristic__t_1a15cc0566fe8b0cffa81d200120cc27cf" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_bluetooth_gatt_characteristic_t::properties</definition>
+        <argsstring></argsstring>
+        <name>properties</name>
+        <qualifiedname>hf_bluetooth_gatt_characteristic_t::properties</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Characteristic properties </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="328" column="11" bodyfile="inc/base/BaseBluetooth.h" bodystart="328" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__gatt__characteristic__t_1afb0b91e4d8f5eb6a7cea22a980506c14" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; hf_bluetooth_gatt_characteristic_t::value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <qualifiedname>hf_bluetooth_gatt_characteristic_t::value</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Characteristic value </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="329" column="15" bodyfile="inc/base/BaseBluetooth.h" bodystart="329" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GATT characteristic structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseBluetooth.h" line="325" column="1" bodyfile="inc/base/BaseBluetooth.h" bodystart="325" bodyend="330"/>
+    <listofallmembers>
+      <member refid="structhf__bluetooth__gatt__characteristic__t_1adb9eb8327064c68d57f4d480e03dffdf" prot="public" virt="non-virtual"><scope>hf_bluetooth_gatt_characteristic_t</scope><name>handle</name></member>
+      <member refid="structhf__bluetooth__gatt__characteristic__t_1a15cc0566fe8b0cffa81d200120cc27cf" prot="public" virt="non-virtual"><scope>hf_bluetooth_gatt_characteristic_t</scope><name>properties</name></member>
+      <member refid="structhf__bluetooth__gatt__characteristic__t_1abb8ce02be19d55f0dd8a4e0d78374a6a" prot="public" virt="non-virtual"><scope>hf_bluetooth_gatt_characteristic_t</scope><name>uuid</name></member>
+      <member refid="structhf__bluetooth__gatt__characteristic__t_1afb0b91e4d8f5eb6a7cea22a980506c14" prot="public" virt="non-virtual"><scope>hf_bluetooth_gatt_characteristic_t</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

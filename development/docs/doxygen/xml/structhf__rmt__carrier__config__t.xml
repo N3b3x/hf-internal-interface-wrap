@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__rmt__carrier__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_rmt_carrier_config_t</compoundname>
+    <includes refid="EspTypes__PIO_8h" local="no">EspTypes_PIO.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__rmt__carrier__config__t_1ae84054ef4008da890a853cd7e6e8aa16" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_rmt_carrier_config_t::frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>frequency_hz</name>
+        <qualifiedname>hf_rmt_carrier_config_t::frequency_hz</qualifiedname>
+        <briefdescription>
+<para>Carrier frequency in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="147" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__rmt__carrier__config__t_1ac67b681d7bbb93ceaef2a30bf8db41c1" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_rmt_carrier_config_t::duty_cycle</definition>
+        <argsstring></argsstring>
+        <name>duty_cycle</name>
+        <qualifiedname>hf_rmt_carrier_config_t::duty_cycle</qualifiedname>
+        <briefdescription>
+<para>Duty cycle (0.0 to 1.0) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="148" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__rmt__carrier__config__t_1a1581f036ec899e3819be3a2827121b91" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_rmt_carrier_config_t::polarity_active_low</definition>
+        <argsstring></argsstring>
+        <name>polarity_active_low</name>
+        <qualifiedname>hf_rmt_carrier_config_t::polarity_active_low</qualifiedname>
+        <briefdescription>
+<para>Carrier polarity (0=high, 1=low) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="149" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__rmt__carrier__config__t_1aa2ca649022ad228b60543eec8a8b2e65" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_rmt_carrier_config_t::always_on</definition>
+        <argsstring></argsstring>
+        <name>always_on</name>
+        <qualifiedname>hf_rmt_carrier_config_t::always_on</qualifiedname>
+        <briefdescription>
+<para>Always on carrier mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="150" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__rmt__carrier__config__t_1aa54c09fdac18473a8fce85793a72015f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_rmt_carrier_config_t::hf_rmt_carrier_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_rmt_carrier_config_t</name>
+        <qualifiedname>hf_rmt_carrier_config_t::hf_rmt_carrier_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="152" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="152" bodyend="153"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 RMT carrier configuration for IR protocols. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_PIO.h" line="146" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PIO.h" bodystart="146" bodyend="154"/>
+    <listofallmembers>
+      <member refid="structhf__rmt__carrier__config__t_1aa2ca649022ad228b60543eec8a8b2e65" prot="public" virt="non-virtual"><scope>hf_rmt_carrier_config_t</scope><name>always_on</name></member>
+      <member refid="structhf__rmt__carrier__config__t_1ac67b681d7bbb93ceaef2a30bf8db41c1" prot="public" virt="non-virtual"><scope>hf_rmt_carrier_config_t</scope><name>duty_cycle</name></member>
+      <member refid="structhf__rmt__carrier__config__t_1ae84054ef4008da890a853cd7e6e8aa16" prot="public" virt="non-virtual"><scope>hf_rmt_carrier_config_t</scope><name>frequency_hz</name></member>
+      <member refid="structhf__rmt__carrier__config__t_1aa54c09fdac18473a8fce85793a72015f" prot="public" virt="non-virtual"><scope>hf_rmt_carrier_config_t</scope><name>hf_rmt_carrier_config_t</name></member>
+      <member refid="structhf__rmt__carrier__config__t_1a1581f036ec899e3819be3a2827121b91" prot="public" virt="non-virtual"><scope>hf_rmt_carrier_config_t</scope><name>polarity_active_low</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

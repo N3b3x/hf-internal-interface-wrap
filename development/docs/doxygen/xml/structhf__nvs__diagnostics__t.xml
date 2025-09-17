@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__nvs__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_nvs_diagnostics_t</compoundname>
+    <includes refid="BaseNvs_8h" local="no">BaseNvs.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__nvs__diagnostics__t_1a3afc67f366de693b72a1d8d6e72ab552" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t hf_nvs_diagnostics_t::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>hf_nvs_diagnostics_t::last_error</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="121" column="16" bodyfile="inc/base/BaseNvs.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__diagnostics__t_1a0b4e0215414e9e0d1413a3db05240cd0" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_diagnostics_t::consecutive_errors</definition>
+        <argsstring></argsstring>
+        <name>consecutive_errors</name>
+        <qualifiedname>hf_nvs_diagnostics_t::consecutive_errors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="122" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__diagnostics__t_1acdf473aebeb20f3f24cf4f3bed77ac7e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_nvs_diagnostics_t::storage_healthy</definition>
+        <argsstring></argsstring>
+        <name>storage_healthy</name>
+        <qualifiedname>hf_nvs_diagnostics_t::storage_healthy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="123" column="8" bodyfile="inc/base/BaseNvs.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__nvs__diagnostics__t_1a204fb8657db0238559f9ba5cea751593" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_nvs_diagnostics_t::system_uptime_ms</definition>
+        <argsstring></argsstring>
+        <name>system_uptime_ms</name>
+        <qualifiedname>hf_nvs_diagnostics_t::system_uptime_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="124" column="12" bodyfile="inc/base/BaseNvs.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>NVS diagnostic information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseNvs.h" line="120" column="1" bodyfile="inc/base/BaseNvs.h" bodystart="120" bodyend="125"/>
+    <listofallmembers>
+      <member refid="structhf__nvs__diagnostics__t_1a0b4e0215414e9e0d1413a3db05240cd0" prot="public" virt="non-virtual"><scope>hf_nvs_diagnostics_t</scope><name>consecutive_errors</name></member>
+      <member refid="structhf__nvs__diagnostics__t_1a3afc67f366de693b72a1d8d6e72ab552" prot="public" virt="non-virtual"><scope>hf_nvs_diagnostics_t</scope><name>last_error</name></member>
+      <member refid="structhf__nvs__diagnostics__t_1acdf473aebeb20f3f24cf4f3bed77ac7e" prot="public" virt="non-virtual"><scope>hf_nvs_diagnostics_t</scope><name>storage_healthy</name></member>
+      <member refid="structhf__nvs__diagnostics__t_1a204fb8657db0238559f9ba5cea751593" prot="public" virt="non-virtual"><scope>hf_nvs_diagnostics_t</scope><name>system_uptime_ms</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

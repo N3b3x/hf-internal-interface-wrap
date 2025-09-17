@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__temp__diagnostics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_temp_diagnostics_t</compoundname>
+    <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a32db512c61749abbdac3e7190dfbe8e2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_diagnostics_t::sensor_healthy</definition>
+        <argsstring></argsstring>
+        <name>sensor_healthy</name>
+        <qualifiedname>hf_temp_diagnostics_t::sensor_healthy</qualifiedname>
+        <briefdescription>
+<para>Overall sensor health status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="273" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a4f109fb8787513ce1183f120142aca59" prot="public" static="no" mutable="no">
+        <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
+        <definition>hf_temp_err_t hf_temp_diagnostics_t::last_error_code</definition>
+        <argsstring></argsstring>
+        <name>last_error_code</name>
+        <qualifiedname>hf_temp_diagnostics_t::last_error_code</qualifiedname>
+        <briefdescription>
+<para>Last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="274" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1aad5ca4942fc98b8411c59df073eb4e22" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_diagnostics_t::last_error_timestamp</definition>
+        <argsstring></argsstring>
+        <name>last_error_timestamp</name>
+        <qualifiedname>hf_temp_diagnostics_t::last_error_timestamp</qualifiedname>
+        <briefdescription>
+<para>Last error timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="275" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a8a645c1a12d2ad97175ef7b83e8cca2e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_diagnostics_t::consecutive_errors</definition>
+        <argsstring></argsstring>
+        <name>consecutive_errors</name>
+        <qualifiedname>hf_temp_diagnostics_t::consecutive_errors</qualifiedname>
+        <briefdescription>
+<para>Consecutive error count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="276" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a76b07c86189bda15f081ebdafbc1dadd" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_diagnostics_t::sensor_available</definition>
+        <argsstring></argsstring>
+        <name>sensor_available</name>
+        <qualifiedname>hf_temp_diagnostics_t::sensor_available</qualifiedname>
+        <briefdescription>
+<para>Sensor availability status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="277" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1adbc1dbc8f83af3ce7ecb5bfc9a91dad9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_diagnostics_t::threshold_monitoring_supported</definition>
+        <argsstring></argsstring>
+        <name>threshold_monitoring_supported</name>
+        <qualifiedname>hf_temp_diagnostics_t::threshold_monitoring_supported</qualifiedname>
+        <briefdescription>
+<para>Threshold monitoring support. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="278" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="278" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a744b9f72ba155602c86667c63d9a329b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_diagnostics_t::threshold_monitoring_enabled</definition>
+        <argsstring></argsstring>
+        <name>threshold_monitoring_enabled</name>
+        <qualifiedname>hf_temp_diagnostics_t::threshold_monitoring_enabled</qualifiedname>
+        <briefdescription>
+<para>Threshold monitoring enabled status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="279" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a7fee07809400edb66e2070c976262c44" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_diagnostics_t::continuous_monitoring_active</definition>
+        <argsstring></argsstring>
+        <name>continuous_monitoring_active</name>
+        <qualifiedname>hf_temp_diagnostics_t::continuous_monitoring_active</qualifiedname>
+        <briefdescription>
+<para>Continuous monitoring status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="280" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a877f57e7534b15b28bbb690f895e5435" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_temp_diagnostics_t::current_temperature_raw</definition>
+        <argsstring></argsstring>
+        <name>current_temperature_raw</name>
+        <qualifiedname>hf_temp_diagnostics_t::current_temperature_raw</qualifiedname>
+        <briefdescription>
+<para>Current raw temperature reading. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="281" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__temp__diagnostics__t_1accd373a9d9b312fa88be3b857ffc94ea" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_temp_diagnostics_t::calibration_valid</definition>
+        <argsstring></argsstring>
+        <name>calibration_valid</name>
+        <qualifiedname>hf_temp_diagnostics_t::calibration_valid</qualifiedname>
+        <briefdescription>
+<para>Calibration validity status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseTemperature.h" line="282" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Temperature sensor diagnostics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseTemperature.h" line="272" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="272" bodyend="283"/>
+    <listofallmembers>
+      <member refid="structhf__temp__diagnostics__t_1accd373a9d9b312fa88be3b857ffc94ea" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>calibration_valid</name></member>
+      <member refid="structhf__temp__diagnostics__t_1a8a645c1a12d2ad97175ef7b83e8cca2e" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>consecutive_errors</name></member>
+      <member refid="structhf__temp__diagnostics__t_1a7fee07809400edb66e2070c976262c44" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>continuous_monitoring_active</name></member>
+      <member refid="structhf__temp__diagnostics__t_1a877f57e7534b15b28bbb690f895e5435" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>current_temperature_raw</name></member>
+      <member refid="structhf__temp__diagnostics__t_1a4f109fb8787513ce1183f120142aca59" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>last_error_code</name></member>
+      <member refid="structhf__temp__diagnostics__t_1aad5ca4942fc98b8411c59df073eb4e22" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>last_error_timestamp</name></member>
+      <member refid="structhf__temp__diagnostics__t_1a76b07c86189bda15f081ebdafbc1dadd" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>sensor_available</name></member>
+      <member refid="structhf__temp__diagnostics__t_1a32db512c61749abbdac3e7190dfbe8e2" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>sensor_healthy</name></member>
+      <member refid="structhf__temp__diagnostics__t_1a744b9f72ba155602c86667c63d9a329b" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>threshold_monitoring_enabled</name></member>
+      <member refid="structhf__temp__diagnostics__t_1adbc1dbc8f83af3ce7ecb5bfc9a91dad9" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>threshold_monitoring_supported</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

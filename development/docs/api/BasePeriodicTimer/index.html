@@ -1,0 +1,2708 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(12)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(12) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(12) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(12) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>⏰ BasePeriodicTimer | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="⏰ BasePeriodicTimer" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="High-precision timing base class for periodic operations and callbacks" />
+<meta property="og:description" content="High-precision timing base class for periodic operations and callbacks" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="⏰ BasePeriodicTimer" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"High-precision timing base class for periodic operations and callbacks","headline":"⏰ BasePeriodicTimer","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/">📋 API Reference</a></li>
+    <li class="breadcrumb-nav-list-item"><span>⏰ BasePeriodicTimer</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="-baseperiodictimer-api-reference">
+  
+  
+    <a href="#-baseperiodictimer-api-reference" class="anchor-heading" aria-labelledby="-baseperiodictimer-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⏰ BasePeriodicTimer API Reference
+  
+  
+</h1>
+    
+<p><strong>🎯 Unified periodic timer abstraction for all high-precision timing operations</strong></p>
+<h2 id="-table-of-contents">
+  
+  
+    <a href="#-table-of-contents" class="anchor-heading" aria-labelledby="-table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📚 <strong>Table of Contents</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="#-overview">🎯 <strong>Overview</strong></a></li>
+  <li><a href="#-class-hierarchy">🏗️ <strong>Class Hierarchy</strong></a></li>
+  <li><a href="#-error-codes">📋 <strong>Error Codes</strong></a></li>
+  <li><a href="#-core-api">🔧 <strong>Core API</strong></a></li>
+  <li><a href="#-data-structures">📊 <strong>Data Structures</strong></a></li>
+  <li><a href="#-usage-examples">📊 <strong>Usage Examples</strong></a></li>
+  <li><a href="#-best-practices">🧪 <strong>Best Practices</strong></a></li>
+</ul><hr />
+<h2 id="-overview">
+  
+  
+    <a href="#-overview" class="anchor-heading" aria-labelledby="-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Overview</strong>
+  
+  
+</h2>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">BasePeriodicTimer</code> class provides a comprehensive periodic timer abstraction that serves as the
+unified interface for all high-precision timing operations in the HardFOC system.
+It supports microsecond resolution, callback-based notifications,
+and works across different timer implementations.</p>
+<h3 id="-key-features">
+  
+  
+    <a href="#-key-features" class="anchor-heading" aria-labelledby="-key-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✨ <strong>Key Features</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li>⏰ <strong>Microsecond Resolution</strong> - High-precision timing down to microseconds</li>
+  <li>📞 <strong>Callback Support</strong> - Event-driven timer notifications</li>
+  <li>🔄 <strong>Dynamic Period Control</strong> - Change period during operation</li>
+  <li>🛡️ <strong>Robust Error Handling</strong> - Comprehensive validation and error reporting</li>
+  <li>🔌 <strong>Platform Agnostic</strong> - Works with hardware and software timers</li>
+  <li>📊 <strong>Statistics &amp; Diagnostics</strong> - Built-in monitoring and health reporting</li>
+  <li>🧵 <strong>Thread Safe</strong> - Designed for multi-threaded applications</li>
+  <li>⚡ <strong>Low Overhead</strong> - Optimized for real-time applications</li>
+</ul>
+<h3 id="-supported-hardware">
+  
+  
+    <a href="#-supported-hardware" class="anchor-heading" aria-labelledby="-supported-hardware"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Supported Hardware</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Implementation</td>
+      <td>Hardware Type</td>
+      <td>Resolution</td>
+      <td>Max Period</td>
+      <td>Features</td>
+      <td>Use Cases</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|—————-|—————|————|————|———-|———–|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EspPeriodicTimer</code></td>
+      <td>ESP32-C6 Hardware</td>
+      <td>1 μs</td>
+      <td>8.5 hours</td>
+      <td>Multiple channels, DMA</td>
+    </tr>
+    <tr>
+      <td>Control loops, sampling</td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="️-class-hierarchy">
+  
+  
+    <a href="#️-class-hierarchy" class="anchor-heading" aria-labelledby="️-class-hierarchy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ <strong>Class Hierarchy</strong>
+  
+  
+</h2>
+    
+
+<pre><code class="language-mermaid">classDiagram
+    class BasePeriodicTimer {
+        &lt;&lt;abstract&gt;&gt;
+        +Initialize() hf_timer_err_t
+        +Deinitialize() hf_timer_err_t
+        +Start(period_us) hf_timer_err_t
+        +Stop() hf_timer_err_t
+        +SetPeriod(period_us) hf_timer_err_t
+        +GetPeriod(period_us) hf_timer_err_t
+        +SetCallback(callback, user_data) hf_timer_err_t
+        +GetStats(callback_count, missed_callbacks, last_error) hf_timer_err_t
+        +ResetStats() hf_timer_err_t
+        +GetMinPeriod() uint64_t
+        +GetMaxPeriod() uint64_t
+        +GetResolution() uint64_t
+    }
+    
+    class EspPeriodicTimer {
+        +EspPeriodicTimer(timer_group, timer_num)
+        +GetTimerGroup() timer_group_t
+        +GetTimerNum() timer_idx_t
+    }
+    
+    BasePeriodicTimer &lt;|-- EspPeriodicTimer
+</code></pre><hr />
+<h2 id="-error-codes">
+  
+  
+    <a href="#-error-codes" class="anchor-heading" aria-labelledby="-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📋 <strong>Error Codes</strong>
+  
+  
+</h2>
+    
+
+<p>The timer system uses comprehensive error codes for robust error handling:</p>
+<h3 id="-success-codes">
+  
+  
+    <a href="#-success-codes" class="anchor-heading" aria-labelledby="-success-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✅ <strong>Success Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_SUCCESS</code></td>
+      <td>0</td>
+      <td>✅ Operation completed successfully</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-general-error-codes">
+  
+  
+    <a href="#-general-error-codes" class="anchor-heading" aria-labelledby="-general-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ❌ <strong>General Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_FAILURE</code></td>
+      <td>1</td>
+      <td>❌ General operation failure</td>
+      <td>Check hardware and configuration</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_NOT_INITIALIZED</code></td>
+      <td>2</td>
+      <td>⚠️ Timer not initialized</td>
+      <td>Call Initialize() first</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_ALREADY_INITIALIZED</code></td>
+      <td>3</td>
+      <td>⚠️ Timer already initialized</td>
+      <td>Check initialization state</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_INVALID_PARAMETER</code></td>
+      <td>4</td>
+      <td>🚫 Invalid parameter</td>
+      <td>Validate input parameters</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_NULL_POINTER</code></td>
+      <td>5</td>
+      <td>🚫 Null pointer provided</td>
+      <td>Check pointer validity</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_OUT_OF_MEMORY</code></td>
+      <td>6</td>
+      <td>💾 Memory allocation failed</td>
+      <td>Check system memory</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-timer-specific-error-codes">
+  
+  
+    <a href="#-timer-specific-error-codes" class="anchor-heading" aria-labelledby="-timer-specific-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⏰ <strong>Timer-Specific Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_ALREADY_RUNNING</code></td>
+      <td>7</td>
+      <td>🔄 Timer already running</td>
+      <td>Stop timer first</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_NOT_RUNNING</code></td>
+      <td>8</td>
+      <td>⏸️ Timer not running</td>
+      <td>Start timer first</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_INVALID_PERIOD</code></td>
+      <td>9</td>
+      <td>📊 Invalid period</td>
+      <td>Use valid period range</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_RESOURCE_BUSY</code></td>
+      <td>10</td>
+      <td>🔄 Timer resource busy</td>
+      <td>Wait or use different timer</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_HARDWARE_FAULT</code></td>
+      <td>11</td>
+      <td>💥 Hardware fault</td>
+      <td>Check hardware connections</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TIMER_ERR_UNSUPPORTED_OPERATION</code></td>
+      <td>12</td>
+      <td>🚫 Unsupported operation</td>
+      <td>Check hardware capabilities</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="-core-api">
+  
+  
+    <a href="#-core-api" class="anchor-heading" aria-labelledby="-core-api"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 <strong>Core API</strong>
+  
+  
+</h2>
+    
+<h3 id="️-initialization-methods">
+  
+  
+    <a href="#️-initialization-methods" class="anchor-heading" aria-labelledby="️-initialization-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ <strong>Initialization Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Initialize the timer hardware/resources
+ * @return hf_timer_err_t error code
+ * 
+ * 📝 Sets up timer hardware, configures callbacks, and prepares for operation.
+ * Must be called before any timer operations.
+ * 
+ * @example
+ * EspPeriodicTimer timer(TIMER_GROUP_0, TIMER_0);
+ * if (timer.Initialize() == hf_timer_err_t::TIMER_SUCCESS) {
+ *     // Timer ready for use
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">Initialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Deinitialize the timer and free resources
+ * @return hf_timer_err_t error code
+ * 
+ * 🧹 Cleanly shuts down timer hardware and releases resources.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">Deinitialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Check if timer is initialized
+ * @return true if initialized, false otherwise
+ * 
+ * ❓ Query initialization status without side effects.
+ */</span>
+<span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Check if timer is currently running
+ * @return true if running, false otherwise
+ * 
+ * ❓ Query running status without side effects.
+ */</span>
+<span class="kt">bool</span> <span class="n">IsRunning</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-timer-control-methods">
+  
+  
+    <a href="#-timer-control-methods" class="anchor-heading" aria-labelledby="-timer-control-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⏰ <strong>Timer Control Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Start the periodic timer with specified period
+ * @param period_us Timer period in microseconds
+ * @return hf_timer_err_t error code
+ * 
+ * ⏰ Starts the timer with the specified period.
+ * Callback will be invoked at each period.
+ * 
+ * @example
+ * hf_timer_err_t result = timer.Start(1000000);  // 1 second period
+ * if (result != hf_timer_err_t::TIMER_SUCCESS) {
+ *     printf("Timer start failed: %s\n", HfTimerErrToString(result));
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">Start</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">period_us</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Stop the periodic timer
+ * @return hf_timer_err_t error code
+ * 
+ * ⏸️ Stops the timer and cancels all pending callbacks.
+ * 
+ * @example
+ * hf_timer_err_t result = timer.Stop();
+ * if (result == hf_timer_err_t::TIMER_SUCCESS) {
+ *     printf("Timer stopped successfully\n");
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">Stop</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Change the timer period while running
+ * @param period_us New timer period in microseconds
+ * @return hf_timer_err_t error code
+ * 
+ * 🔄 Changes the timer period without stopping and restarting.
+ * 
+ * @example
+ * // Change from 1 second to 500ms while running
+ * timer.SetPeriod(500000);
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">SetPeriod</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">period_us</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get the current timer period
+ * @param period_us Reference to store the current period
+ * @return hf_timer_err_t error code
+ * 
+ * 📊 Retrieves the current timer period.
+ * 
+ * @example
+ * uint64_t current_period;
+ * if (timer.GetPeriod(current_period) == hf_timer_err_t::TIMER_SUCCESS) {
+ *     printf("Current period: %llu μs\n", current_period);
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">GetPeriod</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="o">&amp;</span><span class="n">period_us</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-callback-management">
+  
+  
+    <a href="#-callback-management" class="anchor-heading" aria-labelledby="-callback-management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📞 <strong>Callback Management</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Set callback function for timer events
+ * @param callback Callback function to invoke
+ * @param user_data User data to pass to callback (optional)
+ * @return hf_timer_err_t error code
+ * 
+ * 📞 Sets the callback function that will be invoked at each timer period.
+ * 
+ * @example
+ * void on_timer_tick(void* user_data) {
+ *     printf("Timer tick! User data: %p\n", user_data);
+ *     // Handle timer event
+ * }
+ * 
+ * timer.SetCallback(on_timer_tick, nullptr);
+ */</span>
+<span class="n">hf_timer_err_t</span> <span class="n">SetCallback</span><span class="p">(</span><span class="n">hf_timer_callback_t</span> <span class="n">callback</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">user_data</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get current user data pointer
+ * @return User data pointer
+ * 
+ * 📊 Returns the user data associated with the timer callback.
+ */</span>
+<span class="kt">void</span> <span class="o">*</span><span class="n">GetUserData</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Check if timer has a valid callback
+ * @return true if callback is set, false otherwise
+ * 
+ * ✅ Checks if a callback function has been set.
+ */</span>
+<span class="kt">bool</span> <span class="n">HasValidCallback</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-information-methods">
+  
+  
+    <a href="#-information-methods" class="anchor-heading" aria-labelledby="-information-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Information Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Get description of this timer implementation
+ * @return Description string
+ * 
+ * 📝 Returns a human-readable description of this timer implementation.
+ */</span>
+<span class="k">virtual</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">GetDescription</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get minimum supported timer period
+ * @return Minimum period in microseconds
+ * 
+ * 📊 Returns the minimum supported timer period for this hardware.
+ */</span>
+<span class="k">virtual</span> <span class="kt">uint64_t</span> <span class="n">GetMinPeriod</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get maximum supported timer period
+ * @return Maximum period in microseconds
+ * 
+ * 📊 Returns the maximum supported timer period for this hardware.
+ */</span>
+<span class="k">virtual</span> <span class="kt">uint64_t</span> <span class="n">GetMaxPeriod</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get timer resolution
+ * @return Timer resolution in microseconds
+ * 
+ * 📊 Returns the timer resolution (minimum time increment).
+ */</span>
+<span class="k">virtual</span> <span class="kt">uint64_t</span> <span class="n">GetResolution</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-statistics-and-diagnostics">
+  
+  
+    <a href="#-statistics-and-diagnostics" class="anchor-heading" aria-labelledby="-statistics-and-diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 <strong>Statistics and Diagnostics</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Get timer statistics and status information
+ * @param callback_count Number of callbacks executed
+ * @param missed_callbacks Number of missed callbacks (if supported)
+ * @param last_error Last error that occurred
+ * @return hf_timer_err_t error code
+ * 
+ * 📊 Retrieves comprehensive statistics about timer operation.
+ * 
+ * @example
+ * uint64_t callback_count, missed_callbacks;
+ * hf_timer_err_t last_error;
+ * if (timer.GetStats(callback_count, missed_callbacks, last_error) == hf_timer_err_t::TIMER_SUCCESS) {
+ *     printf("Callbacks: %llu, Missed: %llu, Last error: %s\n", 
+ *            callback_count, missed_callbacks, HfTimerErrToString(last_error));
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">GetStats</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="o">&amp;</span><span class="n">callback_count</span><span class="p">,</span> <span class="kt">uint64_t</span> <span class="o">&amp;</span><span class="n">missed_callbacks</span><span class="p">,</span>
+                                <span class="n">hf_timer_err_t</span> <span class="o">&amp;</span><span class="n">last_error</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Reset timer statistics
+ * @return hf_timer_err_t error code
+ * 
+ * 🔄 Clears all accumulated statistics counters.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">ResetStats</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Reset timer operation statistics
+ * @return hf_timer_err_t error code
+ * 
+ * 🔄 Clears operation statistics.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">ResetStatistics</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Reset timer diagnostic information
+ * @return hf_timer_err_t error code
+ * 
+ * 🔄 Clears diagnostic information and error counters.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">ResetDiagnostics</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get timer operation statistics
+ * @param statistics Reference to store statistics data
+ * @return hf_timer_err_t error code
+ * 
+ * 📊 Retrieves comprehensive statistics about timer operations.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">GetStatistics</span><span class="p">(</span><span class="n">hf_timer_statistics_t</span> <span class="o">&amp;</span><span class="n">statistics</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get timer diagnostic information
+ * @param diagnostics Reference to store diagnostics data
+ * @return hf_timer_err_t error code
+ * 
+ * 🔍 Retrieves diagnostic information about timer health and status.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_timer_err_t</span> <span class="n">GetDiagnostics</span><span class="p">(</span><span class="n">hf_timer_diagnostics_t</span> <span class="o">&amp;</span><span class="n">diagnostics</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-data-structures">
+  
+  
+    <a href="#-data-structures" class="anchor-heading" aria-labelledby="-data-structures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Data Structures</strong>
+  
+  
+</h2>
+    
+<h3 id="-timer-callback-type">
+  
+  
+    <a href="#-timer-callback-type" class="anchor-heading" aria-labelledby="-timer-callback-type"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📞 <strong>Timer Callback Type</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">using</span> <span class="n">hf_timer_callback_t</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">function</span><span class="o">&lt;</span><span class="kt">void</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">user_data</span><span class="p">)</span><span class="o">&gt;</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-timer-statistics-structure">
+  
+  
+    <a href="#-timer-statistics-structure" class="anchor-heading" aria-labelledby="-timer-statistics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 <strong>Timer Statistics Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_timer_statistics_t</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">totalStarts</span><span class="p">;</span>          <span class="c1">///&lt; Total timer starts</span>
+    <span class="kt">uint32_t</span> <span class="n">totalStops</span><span class="p">;</span>           <span class="c1">///&lt; Total timer stops</span>
+    <span class="kt">uint32_t</span> <span class="n">callbackExecutions</span><span class="p">;</span>   <span class="c1">///&lt; Number of callback executions</span>
+    <span class="kt">uint32_t</span> <span class="n">missedCallbacks</span><span class="p">;</span>      <span class="c1">///&lt; Number of missed callbacks</span>
+    <span class="kt">uint32_t</span> <span class="n">averageCallbackTimeUs</span><span class="p">;</span> <span class="c1">///&lt; Average callback execution time (microseconds)</span>
+    <span class="kt">uint32_t</span> <span class="n">maxCallbackTimeUs</span><span class="p">;</span>    <span class="c1">///&lt; Maximum callback execution time</span>
+    <span class="kt">uint32_t</span> <span class="n">minCallbackTimeUs</span><span class="p">;</span>    <span class="c1">///&lt; Minimum callback execution time</span>
+    <span class="kt">uint64_t</span> <span class="n">totalRunningTimeUs</span><span class="p">;</span>   <span class="c1">///&lt; Total running time in microseconds</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-timer-diagnostics-structure">
+  
+  
+    <a href="#-timer-diagnostics-structure" class="anchor-heading" aria-labelledby="-timer-diagnostics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔍 <strong>Timer Diagnostics Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_timer_diagnostics_t</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">timerHealthy</span><span class="p">;</span>             <span class="c1">///&lt; Overall timer health status</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">lastErrorCode</span><span class="p">;</span>  <span class="c1">///&lt; Last error code</span>
+    <span class="kt">uint32_t</span> <span class="n">lastErrorTimestamp</span><span class="p">;</span>   <span class="c1">///&lt; Last error timestamp</span>
+    <span class="kt">uint32_t</span> <span class="n">consecutiveErrors</span><span class="p">;</span>    <span class="c1">///&lt; Consecutive error count</span>
+    <span class="kt">bool</span> <span class="n">timerInitialized</span><span class="p">;</span>         <span class="c1">///&lt; Timer initialization status</span>
+    <span class="kt">bool</span> <span class="n">timerRunning</span><span class="p">;</span>             <span class="c1">///&lt; Timer running status</span>
+    <span class="kt">uint64_t</span> <span class="n">currentPeriodUs</span><span class="p">;</span>      <span class="c1">///&lt; Current timer period in microseconds</span>
+    <span class="kt">uint64_t</span> <span class="n">timerResolutionUs</span><span class="p">;</span>    <span class="c1">///&lt; Timer resolution in microseconds</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-timer-stats-structure">
+  
+  
+    <a href="#-timer-stats-structure" class="anchor-heading" aria-labelledby="-timer-stats-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Timer Stats Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_timer_stats_t</span> <span class="p">{</span>
+    <span class="kt">uint64_t</span> <span class="n">start_count</span><span class="p">;</span>          <span class="c1">///&lt; Number of timer starts</span>
+    <span class="kt">uint64_t</span> <span class="n">stop_count</span><span class="p">;</span>           <span class="c1">///&lt; Number of timer stops</span>
+    <span class="kt">uint64_t</span> <span class="n">callback_count</span><span class="p">;</span>       <span class="c1">///&lt; Number of callback executions</span>
+    <span class="kt">uint64_t</span> <span class="n">missed_callbacks</span><span class="p">;</span>     <span class="c1">///&lt; Number of missed callbacks</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">last_error</span><span class="p">;</span>     <span class="c1">///&lt; Last error encountered</span>
+    <span class="n">hf_timestamp_us_t</span> <span class="n">last_start_us</span><span class="p">;</span> <span class="c1">///&lt; Timestamp of last start</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-usage-examples">
+  
+  
+    <a href="#-usage-examples" class="anchor-heading" aria-labelledby="-usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Usage Examples</strong>
+  
+  
+</h2>
+    
+<h3 id="-basic-periodic-timer">
+  
+  
+    <a href="#-basic-periodic-timer" class="anchor-heading" aria-labelledby="-basic-periodic-timer"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⏰ <strong>Basic Periodic Timer</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspPeriodicTimer.h"</span><span class="cp">
+</span>
+<span class="c1">// Create timer instance</span>
+<span class="n">EspPeriodicTimer</span> <span class="nf">timer</span><span class="p">(</span><span class="n">TIMER_GROUP_0</span><span class="p">,</span> <span class="n">TIMER_0</span><span class="p">);</span>
+
+<span class="c1">// Timer callback function</span>
+<span class="kt">void</span> <span class="nf">on_timer_tick</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="kt">uint32_t</span> <span class="n">tick_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">tick_count</span><span class="o">++</span><span class="p">;</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"⏰ Timer tick %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">tick_count</span><span class="p">);</span>
+    
+    <span class="c1">// Perform periodic task</span>
+    <span class="c1">// e.g., read sensors, update control loops, etc.</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">setup_timer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize timer</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Timer initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Set callback function</span>
+    <span class="n">timer</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">(</span><span class="n">on_timer_tick</span><span class="p">,</span> <span class="nb">nullptr</span><span class="p">);</span>
+    
+    <span class="c1">// Start timer with 1 second period</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">1000000</span><span class="p">);</span>  <span class="c1">// 1,000,000 μs = 1 second</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Timer started successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Timer start failed: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfTimerErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">stop_timer</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">hf_timer_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Timer stopped successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">print_timer_info</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"📊 Timer Information:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  Description: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timer</span><span class="p">.</span><span class="n">GetDescription</span><span class="p">());</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  Min period: %llu μs</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timer</span><span class="p">.</span><span class="n">GetMinPeriod</span><span class="p">());</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  Max period: %llu μs</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timer</span><span class="p">.</span><span class="n">GetMaxPeriod</span><span class="p">());</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  Resolution: %llu μs</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timer</span><span class="p">.</span><span class="n">GetResolution</span><span class="p">());</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  Initialized: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timer</span><span class="p">.</span><span class="n">IsInitialized</span><span class="p">()</span> <span class="o">?</span> <span class="s">"Yes"</span> <span class="o">:</span> <span class="s">"No"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  Running: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">timer</span><span class="p">.</span><span class="n">IsRunning</span><span class="p">()</span> <span class="o">?</span> <span class="s">"Yes"</span> <span class="o">:</span> <span class="s">"No"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-control-loop-timer">
+  
+  
+    <a href="#-control-loop-timer" class="anchor-heading" aria-labelledby="-control-loop-timer"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔄 <strong>Control Loop Timer</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspPeriodicTimer.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">ControlLoop</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspPeriodicTimer</span> <span class="n">timer</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">setpoint</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">current_value</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">kp</span><span class="o">*</span><span class="p">,</span> <span class="n">ki</span><span class="o">*</span><span class="p">,</span> <span class="n">kd</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">integral</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">last_error</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">ControlLoop</span><span class="p">()</span> <span class="o">:</span> <span class="n">timer</span><span class="o">*</span><span class="p">(</span><span class="n">TIMER_GROUP_0</span><span class="p">,</span> <span class="n">TIMER_0</span><span class="p">),</span> <span class="n">setpoint</span><span class="o">*</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">),</span> <span class="n">current_value</span><span class="o">*</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">),</span>
+                    <span class="n">kp</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="n">f</span><span class="p">),</span> <span class="n">ki</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="n">f</span><span class="p">),</span> <span class="n">kd</span><span class="o">*</span><span class="p">(</span><span class="mf">0.01</span><span class="n">f</span><span class="p">),</span> <span class="n">integral</span><span class="o">*</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">),</span> <span class="n">last_error</span><span class="o">*</span><span class="p">(</span><span class="mf">0.0</span><span class="n">f</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Initialize timer</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Control loop timer initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Set callback</span>
+        <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">([](</span><span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">ControlLoop</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">user_data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">control_step</span><span class="p">();</span>
+        <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+        
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">start</span><span class="p">(</span><span class="kt">float</span> <span class="n">frequency_hz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">uint64_t</span> <span class="n">period_us</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1000000.0</span><span class="n">f</span> <span class="o">/</span> <span class="n">frequency_hz</span><span class="p">);</span>
+        
+        <span class="n">hf_timer_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">period_us</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Control loop started at %.1f Hz</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">frequency_hz</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Control loop start failed: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfTimerErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">stop</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"⏸️ Control loop stopped</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">set_setpoint</span><span class="p">(</span><span class="kt">float</span> <span class="n">setpoint</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">setpoint</span><span class="o">*</span> <span class="o">=</span> <span class="n">setpoint</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">set_current_value</span><span class="p">(</span><span class="kt">float</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">current_value</span><span class="o">*</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">set_gains</span><span class="p">(</span><span class="kt">float</span> <span class="n">kp</span><span class="p">,</span> <span class="kt">float</span> <span class="n">ki</span><span class="p">,</span> <span class="kt">float</span> <span class="n">kd</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">kp</span><span class="o">*</span> <span class="o">=</span> <span class="n">kp</span><span class="p">;</span>
+        <span class="n">ki</span><span class="o">*</span> <span class="o">=</span> <span class="n">ki</span><span class="p">;</span>
+        <span class="n">kd</span><span class="o">*</span> <span class="o">=</span> <span class="n">kd</span><span class="p">;</span>
+        <span class="n">integral</span><span class="o">*</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>  <span class="c1">// Reset integral on gain change</span>
+    <span class="p">}</span>
+    
+<span class="nl">private:</span>
+    <span class="kt">void</span> <span class="n">control_step</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Calculate error</span>
+        <span class="kt">float</span> <span class="n">error</span> <span class="o">=</span> <span class="n">setpoint</span><span class="o">*</span> <span class="o">-</span> <span class="n">current_value</span><span class="o">*</span><span class="p">;</span>
+        
+        <span class="c1">// PID control</span>
+        <span class="kt">float</span> <span class="n">proportional</span> <span class="o">=</span> <span class="n">kp</span><span class="o">*</span> <span class="o">*</span> <span class="n">error</span><span class="p">;</span>
+        <span class="n">integral</span><span class="o">*</span> <span class="o">+=</span> <span class="n">ki</span><span class="o">*</span> <span class="o">*</span> <span class="n">error</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">derivative</span> <span class="o">=</span> <span class="n">kd</span><span class="o">*</span> <span class="o">*</span> <span class="p">(</span><span class="n">error</span> <span class="o">-</span> <span class="n">last_error</span><span class="o">*</span><span class="p">);</span>
+        
+        <span class="kt">float</span> <span class="n">output</span> <span class="o">=</span> <span class="n">proportional</span> <span class="o">+</span> <span class="n">integral</span><span class="o">*</span> <span class="o">+</span> <span class="n">derivative</span><span class="p">;</span>
+        
+        <span class="c1">// Apply output (example: motor speed)</span>
+        <span class="n">apply_control_output</span><span class="p">(</span><span class="n">output</span><span class="p">);</span>
+        
+        <span class="c1">// Update for next iteration</span>
+        <span class="n">last_error</span><span class="o">*</span> <span class="o">=</span> <span class="n">error</span><span class="p">;</span>
+        
+        <span class="c1">// Optional: print control info</span>
+        <span class="k">static</span> <span class="kt">uint32_t</span> <span class="n">step_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">++</span><span class="n">step_count</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// Print every 100 steps</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"🎯 Control - Setpoint: %.2f, Current: %.2f, Output: %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                   <span class="n">setpoint</span><span class="o">*</span><span class="p">,</span> <span class="n">current_value</span><span class="o">*</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">apply_control_output</span><span class="p">(</span><span class="kt">float</span> <span class="n">output</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Apply control output to actuator</span>
+        <span class="c1">// This is just an example - implement based on your hardware</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"⚡ Control output: %.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="n">control_loop_example</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">ControlLoop</span> <span class="n">controller</span><span class="p">;</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">controller</span><span class="p">.</span><span class="n">initialize</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Controller initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Configure control parameters</span>
+    <span class="n">controller</span><span class="p">.</span><span class="n">set_gains</span><span class="p">(</span><span class="mf">2.0</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.5</span><span class="n">f</span><span class="p">,</span> <span class="mf">0.1</span><span class="n">f</span><span class="p">);</span>
+    <span class="n">controller</span><span class="p">.</span><span class="n">set_setpoint</span><span class="p">(</span><span class="mf">100.0</span><span class="n">f</span><span class="p">);</span>
+    
+    <span class="c1">// Start control loop at 100 Hz</span>
+    <span class="n">controller</span><span class="p">.</span><span class="n">start</span><span class="p">(</span><span class="mf">100.0</span><span class="n">f</span><span class="p">);</span>
+    
+    <span class="c1">// Simulate changing setpoint</span>
+    <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">5000</span><span class="p">));</span>  <span class="c1">// Wait 5 seconds</span>
+    <span class="n">controller</span><span class="p">.</span><span class="n">set_setpoint</span><span class="p">(</span><span class="mf">200.0</span><span class="n">f</span><span class="p">);</span>
+    
+    <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">5000</span><span class="p">));</span>  <span class="c1">// Wait 5 seconds</span>
+    <span class="n">controller</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-high-frequency-sampling-timer">
+  
+  
+    <a href="#-high-frequency-sampling-timer" class="anchor-heading" aria-labelledby="-high-frequency-sampling-timer"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>High-Frequency Sampling Timer</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspPeriodicTimer.h"</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">HighFrequencySampler</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspPeriodicTimer</span> <span class="n">timer</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span> <span class="n">samples</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">size_t</span> <span class="n">max_samples</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">sampling_active</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">HighFrequencySampler</span><span class="p">(</span><span class="kt">size_t</span> <span class="n">max_samples</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> 
+        <span class="o">:</span> <span class="n">timer</span><span class="o">*</span><span class="p">(</span><span class="n">TIMER_GROUP_0</span><span class="p">,</span> <span class="n">TIMER_0</span><span class="p">),</span> <span class="n">max_samples</span><span class="o">*</span><span class="p">(</span><span class="n">max_samples</span><span class="p">),</span> <span class="n">sampling_active</span><span class="o">*</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">samples</span><span class="o">*</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">max_samples</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Sampler timer initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">([](</span><span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">HighFrequencySampler</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">user_data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">sample_data</span><span class="p">();</span>
+        <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+        
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">start_sampling</span><span class="p">(</span><span class="kt">float</span> <span class="n">frequency_hz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">samples</span><span class="o">*</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+        <span class="n">sampling_active</span><span class="o">*</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        
+        <span class="kt">uint64_t</span> <span class="n">period_us</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint64_t</span><span class="o">&gt;</span><span class="p">(</span><span class="mf">1000000.0</span><span class="n">f</span> <span class="o">/</span> <span class="n">frequency_hz</span><span class="p">);</span>
+        
+        <span class="n">hf_timer_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">period_us</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Sampling started at %.1f Hz</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">frequency_hz</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Sampling start failed: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfTimerErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">stop_sampling</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">sampling_active</span><span class="o">*</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"⏸️ Sampling stopped</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;&amp;</span> <span class="n">get_samples</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">samples</span><span class="o">*</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">print_statistics</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">samples</span><span class="o">*</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ No samples collected</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="kt">float</span> <span class="n">sum</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="kt">float</span> <span class="n">min_val</span> <span class="o">=</span> <span class="n">samples</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="kt">float</span> <span class="n">max_val</span> <span class="o">=</span> <span class="n">samples</span><span class="o">*</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="kt">float</span> <span class="n">sample</span> <span class="o">:</span> <span class="n">samples</span><span class="o">*</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">sum</span> <span class="o">+=</span> <span class="n">sample</span><span class="p">;</span>
+            <span class="n">min_val</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">min_val</span><span class="p">,</span> <span class="n">sample</span><span class="p">);</span>
+            <span class="n">max_val</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">max_val</span><span class="p">,</span> <span class="n">sample</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="kt">float</span> <span class="n">average</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">/</span> <span class="n">samples</span><span class="o">*</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"📊 Sampling Statistics:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  Samples collected: %zu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">samples</span><span class="o">*</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  Average: %.3f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">average</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  Min: %.3f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">min_val</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  Max: %.3f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">max_val</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  Range: %.3f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">max_val</span> <span class="o">-</span> <span class="n">min_val</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+<span class="nl">private:</span>
+    <span class="kt">void</span> <span class="n">sample_data</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sampling_active</span><span class="o">*</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Simulate reading sensor data</span>
+        <span class="kt">float</span> <span class="n">sensor_value</span> <span class="o">=</span> <span class="n">read_sensor_value</span><span class="p">();</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">samples</span><span class="o">*</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">max_samples</span><span class="o">*</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">samples</span><span class="o">*</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">sensor_value</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// Buffer full, stop sampling</span>
+            <span class="n">sampling_active</span><span class="o">*</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+            <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"📦 Sample buffer full (%zu samples)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">samples</span><span class="o">*</span><span class="p">.</span><span class="n">size</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">float</span> <span class="n">read_sensor_value</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Simulate sensor reading</span>
+        <span class="c1">// Replace with actual sensor reading code</span>
+        <span class="k">static</span> <span class="kt">float</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="n">value</span> <span class="o">+=</span> <span class="mf">0.1</span><span class="n">f</span><span class="p">;</span>  <span class="c1">// Simulate changing value</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span> <span class="o">&gt;</span> <span class="mf">10.0</span><span class="n">f</span><span class="p">)</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span><span class="n">f</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="n">sampling_example</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">HighFrequencySampler</span> <span class="n">sampler</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sampler</span><span class="p">.</span><span class="n">initialize</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Sampler initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Start high-frequency sampling (1 kHz)</span>
+    <span class="n">sampler</span><span class="p">.</span><span class="n">start_sampling</span><span class="p">(</span><span class="mf">1000.0</span><span class="n">f</span><span class="p">);</span>
+    
+    <span class="c1">// Wait for sampling to complete</span>
+    <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">2000</span><span class="p">));</span>  <span class="c1">// Wait 2 seconds</span>
+    
+    <span class="c1">// Stop sampling</span>
+    <span class="n">sampler</span><span class="p">.</span><span class="n">stop_sampling</span><span class="p">();</span>
+    
+    <span class="c1">// Print results</span>
+    <span class="n">sampler</span><span class="p">.</span><span class="n">print_statistics</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-dynamic-period-timer">
+  
+  
+    <a href="#-dynamic-period-timer" class="anchor-heading" aria-labelledby="-dynamic-period-timer"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔄 <strong>Dynamic Period Timer</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspPeriodicTimer.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">AdaptiveTimer</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspPeriodicTimer</span> <span class="n">timer</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">uint64_t</span> <span class="n">current_period</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">uint64_t</span> <span class="n">min_period</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">uint64_t</span> <span class="n">max_period</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">load_factor</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">AdaptiveTimer</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="n">min_period_us</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="kt">uint64_t</span> <span class="n">max_period_us</span> <span class="o">=</span> <span class="mi">1000000</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">timer</span><span class="o">*</span><span class="p">(</span><span class="n">TIMER_GROUP_0</span><span class="p">,</span> <span class="n">TIMER_0</span><span class="p">),</span> <span class="n">current_period</span><span class="o">*</span><span class="p">(</span><span class="mi">100000</span><span class="p">),</span> 
+          <span class="n">min_period</span><span class="o">*</span><span class="p">(</span><span class="n">min_period_us</span><span class="p">),</span> <span class="n">max_period</span><span class="o">*</span><span class="p">(</span><span class="n">max_period_us</span><span class="p">),</span> <span class="n">load_factor</span><span class="o">*</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">([](</span><span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">AdaptiveTimer</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">user_data</span><span class="p">)</span><span class="o">-&gt;</span><span class="n">adaptive_step</span><span class="p">();</span>
+        <span class="p">},</span> <span class="k">this</span><span class="p">);</span>
+        
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">start</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">hf_timer_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">current_period</span><span class="o">*</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Adaptive timer started with period %llu μs</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">current_period</span><span class="o">*</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">stop</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">set_load_factor</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">factor</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">load_factor</span><span class="o">*</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">factor</span><span class="p">,</span> <span class="mi">100u</span><span class="p">);</span>  <span class="c1">// Clamp to 0-100</span>
+        <span class="n">adjust_period</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kt">uint64_t</span> <span class="n">get_current_period</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">current_period</span><span class="o">*</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+<span class="nl">private:</span>
+    <span class="kt">void</span> <span class="n">adaptive_step</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Simulate system load measurement</span>
+        <span class="kt">uint32_t</span> <span class="n">current_load</span> <span class="o">=</span> <span class="n">measure_system_load</span><span class="p">();</span>
+        
+        <span class="c1">// Adjust load factor based on current load</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">current_load</span> <span class="o">&gt;</span> <span class="mi">80</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">load_factor</span><span class="o">*</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">load_factor</span><span class="o">*</span> <span class="o">+</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100u</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">current_load</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">load_factor</span><span class="o">*</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span><span class="n">load_factor</span><span class="o">*</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0u</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Adjust period based on load factor</span>
+        <span class="n">adjust_period</span><span class="p">();</span>
+        
+        <span class="c1">// Perform periodic task</span>
+        <span class="n">perform_task</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">adjust_period</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Calculate new period based on load factor</span>
+        <span class="c1">// Higher load = longer period (slower execution)</span>
+        <span class="kt">uint64_t</span> <span class="n">new_period</span> <span class="o">=</span> <span class="n">min_period</span><span class="o">*</span> <span class="o">+</span> 
+            <span class="p">((</span><span class="n">max_period</span><span class="o">*</span> <span class="o">-</span> <span class="n">min_period</span><span class="o">*</span><span class="p">)</span> <span class="o">*</span> <span class="n">load_factor</span><span class="o">*</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">new_period</span> <span class="o">!=</span> <span class="n">current_period</span><span class="o">*</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">current_period</span><span class="o">*</span> <span class="o">=</span> <span class="n">new_period</span><span class="p">;</span>
+            <span class="n">timer</span><span class="o">*</span><span class="p">.</span><span class="n">SetPeriod</span><span class="p">(</span><span class="n">current_period</span><span class="o">*</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"🔄 Period adjusted to %llu μs (load: %u%%)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">current_period</span><span class="o">*</span><span class="p">,</span> <span class="n">load_factor</span><span class="o">*</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">uint32_t</span> <span class="n">measure_system_load</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Simulate system load measurement</span>
+        <span class="c1">// Replace with actual load measurement</span>
+        <span class="k">static</span> <span class="kt">uint32_t</span> <span class="n">load</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span>
+        <span class="n">load</span> <span class="o">+=</span> <span class="p">(</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">21</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span><span class="p">;</span>  <span class="c1">// Random change ±10</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">load</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="n">load</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">load</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">load</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">load</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">perform_task</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Simulate periodic task execution</span>
+        <span class="k">static</span> <span class="kt">uint32_t</span> <span class="n">task_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">task_count</span><span class="o">++</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">task_count</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"⚡ Task executed %u times (period: %llu μs)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">task_count</span><span class="p">,</span> <span class="n">current_period</span><span class="o">*</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">void</span> <span class="n">adaptive_timer_example</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">AdaptiveTimer</span> <span class="n">timer</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">);</span>  <span class="c1">// 1ms to 100ms range</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">timer</span><span class="p">.</span><span class="n">initialize</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Adaptive timer initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="n">timer</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+    
+    <span class="c1">// Simulate changing system load</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// Simulate high load</span>
+        <span class="n">timer</span><span class="p">.</span><span class="n">set_load_factor</span><span class="p">(</span><span class="mi">80</span><span class="p">);</span>
+        
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// Simulate low load</span>
+        <span class="n">timer</span><span class="p">.</span><span class="n">set_load_factor</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="n">timer</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-best-practices">
+  
+  
+    <a href="#-best-practices" class="anchor-heading" aria-labelledby="-best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🧪 <strong>Best Practices</strong>
+  
+  
+</h2>
+    
+<h3 id="-recommended-patterns">
+  
+  
+    <a href="#-recommended-patterns" class="anchor-heading" aria-labelledby="-recommended-patterns"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✅ <strong>Recommended Patterns</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre><span class="c1">// ✅ Always check initialization</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Timer initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Use appropriate period ranges</span>
+<span class="kt">uint64_t</span> <span class="n">min_period</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">GetMinPeriod</span><span class="p">();</span>
+<span class="kt">uint64_t</span> <span class="n">max_period</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">GetMaxPeriod</span><span class="p">();</span>
+<span class="kt">uint64_t</span> <span class="n">period</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">clamp</span><span class="p">(</span><span class="n">desired_period</span><span class="p">,</span> <span class="n">min_period</span><span class="p">,</span> <span class="n">max_period</span><span class="p">);</span>
+
+<span class="c1">// ✅ Handle all error codes</span>
+<span class="n">hf_timer_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">period</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Timer Error: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfTimerErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+    <span class="c1">// Handle specific error types</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_ERR_INVALID_PERIOD</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Period out of range</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_ERR_ALREADY_RUNNING</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Timer already running</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Set callback before starting timer</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">SetCallback</span><span class="p">(</span><span class="n">on_timer_tick</span><span class="p">,</span> <span class="n">user_data</span><span class="p">);</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">period</span><span class="p">);</span>
+
+<span class="c1">// ✅ Keep callbacks short and efficient</span>
+<span class="kt">void</span> <span class="n">on_timer_tick</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Quick operations only</span>
+    <span class="c1">// Avoid blocking operations</span>
+    <span class="c1">// Use queues for longer tasks</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Monitor timer statistics</span>
+<span class="kt">uint64_t</span> <span class="n">callback_count</span><span class="p">,</span> <span class="n">missed_callbacks</span><span class="p">;</span>
+<span class="n">hf_timer_err_t</span> <span class="n">last_error</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">timer</span><span class="p">.</span><span class="n">GetStats</span><span class="p">(</span><span class="n">callback_count</span><span class="p">,</span> <span class="n">missed_callbacks</span><span class="p">,</span> <span class="n">last_error</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_timer_err_t</span><span class="o">::</span><span class="n">TIMER_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">missed_callbacks</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Missed callbacks detected: %llu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">missed_callbacks</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-common-pitfalls">
+  
+  
+    <a href="#-common-pitfalls" class="anchor-heading" aria-labelledby="-common-pitfalls"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ❌ <strong>Common Pitfalls</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="c1">// ❌ Don't ignore initialization</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">period</span><span class="p">);</span>  <span class="c1">// May fail silently</span>
+
+<span class="c1">// ❌ Don't use periods outside valid range</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>  <span class="c1">// Invalid period</span>
+
+<span class="c1">// ❌ Don't ignore error codes</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">period</span><span class="p">);</span>  <span class="c1">// Error handling missing</span>
+
+<span class="c1">// ❌ Don't perform blocking operations in callbacks</span>
+<span class="kt">void</span> <span class="nf">on_timer_tick</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">vTaskDelay</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>  <span class="c1">// ❌ Blocking in callback</span>
+    <span class="c1">// Use queues instead</span>
+<span class="p">}</span>
+
+<span class="c1">// ❌ Don't start timer without callback</span>
+<span class="n">timer</span><span class="p">.</span><span class="n">Start</span><span class="p">(</span><span class="n">period</span><span class="p">);</span>  <span class="c1">// No callback set</span>
+
+<span class="c1">// ❌ Don't forget to stop timer</span>
+<span class="c1">// Always stop timer when done</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-performance-optimization">
+  
+  
+    <a href="#-performance-optimization" class="anchor-heading" aria-labelledby="-performance-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Performance Optimization</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre></td><td class="rouge-code"><pre><span class="c1">// 🚀 Use appropriate period for application</span>
+<span class="c1">// Too short: may cause missed callbacks</span>
+<span class="c1">// Too long: may not meet timing requirements</span>
+
+<span class="c1">// 🚀 Keep callbacks lightweight</span>
+<span class="c1">// Use queues for longer operations</span>
+<span class="c1">// Avoid memory allocation in callbacks</span>
+
+<span class="c1">// 🚀 Use hardware timers when available</span>
+<span class="c1">// Hardware timers are more precise than software timers</span>
+
+<span class="c1">// 🚀 Monitor missed callbacks</span>
+<span class="c1">// High missed callback count indicates system overload</span>
+
+<span class="c1">// 🚀 Use appropriate timer resolution</span>
+<span class="c1">// Don't use 1μs resolution for 1-second periods</span>
+
+<span class="c1">// 🚀 Consider timer priority</span>
+<span class="c1">// High-priority timers for critical operations</span>
+<span class="c1">// Lower priority for non-critical operations</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-related-documentation">
+  
+  
+    <a href="#-related-documentation" class="anchor-heading" aria-labelledby="-related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔗 <strong>Related Documentation</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/">⚙️ <strong>EspPeriodicTimer</strong></a> - ESP32-C6 implementation</li>
+  <li><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/">🎯 <strong>Hardware Types</strong></a> - Platform-agnostic types</li>
+</ul><hr />
+<p><strong>⏰ BasePeriodicTimer - The Foundation of High-Precision Timing in HardFOC</strong></p>
+
+<p><em>Part of the HardFOC Internal Interface Wrapper Documentation</em></p>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

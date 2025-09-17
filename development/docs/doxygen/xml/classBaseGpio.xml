@@ -1,0 +1,1784 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBaseGpio" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseGpio</compoundname>
+    <derivedcompoundref refid="classEspGpio" prot="public" virt="non-virtual">EspGpio</derivedcompoundref>
+    <includes refid="BaseGpio_8h" local="no">BaseGpio.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>const hf_pin_num_t BaseGpio::pin_</definition>
+        <argsstring></argsstring>
+        <name>pin_</name>
+        <qualifiedname>BaseGpio::pin_</qualifiedname>
+        <briefdescription>
+<para>GPIO pin number/identifier. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="771" column="22" bodyfile="inc/base/BaseGpio.h" bodystart="771" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseGpio_1ac5c36e8f02f1483820a15c7dbcdc8e6c" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BaseGpio::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BaseGpio::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization state flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="772" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="772" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseGpio_1a42e5fe390af4b700cbd861237fcef37e" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
+        <definition>hf_gpio_direction_t BaseGpio::current_direction_</definition>
+        <argsstring></argsstring>
+        <name>current_direction_</name>
+        <qualifiedname>BaseGpio::current_direction_</qualifiedname>
+        <briefdescription>
+<para>Current pin direction. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="773" column="23" bodyfile="inc/base/BaseGpio.h" bodystart="773" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseGpio_1aa521b7b75306b4a53b6c726fa07406e9" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref></type>
+        <definition>hf_gpio_active_state_t BaseGpio::active_state_</definition>
+        <argsstring></argsstring>
+        <name>active_state_</name>
+        <qualifiedname>BaseGpio::active_state_</qualifiedname>
+        <briefdescription>
+<para>Active state polarity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="774" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="774" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseGpio_1a009b41614328663508a6dfccdd1bfa8e" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
+        <definition>hf_gpio_output_mode_t BaseGpio::output_mode_</definition>
+        <argsstring></argsstring>
+        <name>output_mode_</name>
+        <qualifiedname>BaseGpio::output_mode_</qualifiedname>
+        <briefdescription>
+<para>Output drive mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="775" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="775" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseGpio_1a47fd29eb70c7eb4f7ea6ff00782539a5" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
+        <definition>hf_gpio_pull_mode_t BaseGpio::pull_mode_</definition>
+        <argsstring></argsstring>
+        <name>pull_mode_</name>
+        <qualifiedname>BaseGpio::pull_mode_</qualifiedname>
+        <briefdescription>
+<para>Pull resistor configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="776" column="23" bodyfile="inc/base/BaseGpio.h" bodystart="776" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseGpio_1a69461140f1f8e9717926235118bae0b9" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
+        <definition>hf_gpio_state_t BaseGpio::current_state_</definition>
+        <argsstring></argsstring>
+        <name>current_state_</name>
+        <qualifiedname>BaseGpio::current_state_</qualifiedname>
+        <briefdescription>
+<para>Current logical state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="777" column="19" bodyfile="inc/base/BaseGpio.h" bodystart="777" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseGpio_1acc7b7575c32b77a766adf3e275bd1973" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__gpio__statistics__t" kindref="compound">hf_gpio_statistics_t</ref></type>
+        <definition>hf_gpio_statistics_t BaseGpio::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BaseGpio::statistics_</qualifiedname>
+        <briefdescription>
+<para>GPIO operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="778" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="778" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseGpio_1a82ac9df6b2e7c01355b72ccbc007b201" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__gpio__diagnostics__t" kindref="compound">hf_gpio_diagnostics_t</ref></type>
+        <definition>hf_gpio_diagnostics_t BaseGpio::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BaseGpio::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>GPIO diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="779" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="779" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseGpio_1a182759a9452aa9b39f6ec0bcfdc1827f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseGpio::BaseGpio</definition>
+        <argsstring>(const BaseGpio &amp;copy)=delete</argsstring>
+        <name>BaseGpio</name>
+        <qualifiedname>BaseGpio::BaseGpio</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> &amp;</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor is deleted to avoid copying instances. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="304" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a80f934a9f41ef0315bae75ba3883c426" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> &amp;</type>
+        <definition>BaseGpio &amp; BaseGpio::operator=</definition>
+        <argsstring>(const BaseGpio &amp;copy)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseGpio::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> &amp;</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+<para>Assignment operator is deleted to avoid copying instances. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="309" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a042ea8f01b96fe5641258e8b662d4d78" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual BaseGpio::~BaseGpio</definition>
+        <argsstring>()=default</argsstring>
+        <name>~BaseGpio</name>
+        <qualifiedname>BaseGpio::~BaseGpio</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor for proper cleanup of derived classes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="314" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a2c654042248121cefac7e79590b35ec6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseGpio::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseGpio::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Check if the pin is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="324" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="787" bodyend="789"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a363769239e2d658315215af324ee5aba" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseGpio::EnsureInitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BaseGpio::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures the pin is initialized (lazy initialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized successfully, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="330" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="791" bodyend="796"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a33c01186a67211b905c9efd8a64af2b1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseGpio::EnsureDeinitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BaseGpio::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures the pin is deinitialized (lazy deinitialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if deinitialized successfully, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="336" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="798" bodyend="804"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a33f1c7b8d1ab1f2d2d1bcb3ccb1860d3" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>hf_pin_num_t BaseGpio::GetPin</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetPin</name>
+        <qualifiedname>BaseGpio::GetPin</qualifiedname>
+        <briefdescription>
+<para>Get the GPIO pin number/identifier. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Platform-agnostic pin identifier </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="342" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="806" bodyend="808"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a962ee940c181b782f4612f913fb352a7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
+        <definition>hf_gpio_direction_t BaseGpio::GetDirection</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetDirection</name>
+        <qualifiedname>BaseGpio::GetDirection</qualifiedname>
+        <briefdescription>
+<para>Get the current pin direction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current Direction setting (Input or Output) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="418" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="811" bodyend="813"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a54987f95debcc8faef0a7ecd38447031" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::SetDirection</definition>
+        <argsstring>(hf_gpio_direction_t direction) noexcept</argsstring>
+        <name>SetDirection</name>
+        <qualifiedname>BaseGpio::SetDirection</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Set the pin direction (input or output). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New Direction setting (Input or Output) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="425" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="815" bodyend="826"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a33f91a55c88f95d12f651a08c2175f9e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseGpio::IsInput</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInput</name>
+        <qualifiedname>BaseGpio::IsInput</qualifiedname>
+        <briefdescription>
+<para>Check if the pin is currently configured as input. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if input, false if output </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="431" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="834" bodyend="836"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1ae6daa5410a578598b694320cdc1997e0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseGpio::IsOutput</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsOutput</name>
+        <qualifiedname>BaseGpio::IsOutput</qualifiedname>
+        <briefdescription>
+<para>Check if the pin is currently configured as output. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if output, false if input </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="437" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="838" bodyend="840"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1af619dacf07dd2b15e40c0f5bfb1c5cb7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
+        <definition>hf_gpio_output_mode_t BaseGpio::GetOutputMode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetOutputMode</name>
+        <qualifiedname>BaseGpio::GetOutputMode</qualifiedname>
+        <briefdescription>
+<para>Get the output drive mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current OutputMode setting (PushPull or OpenDrain) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="443" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="842" bodyend="844"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1aa33e02658b1a9eb41851c723b236758c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::SetOutputMode</definition>
+        <argsstring>(hf_gpio_output_mode_t mode) noexcept</argsstring>
+        <name>SetOutputMode</name>
+        <qualifiedname>BaseGpio::SetOutputMode</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set the output drive mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New OutputMode setting (PushPull or OpenDrain) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="450" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="846" bodyend="857"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1aa5786db64ba7dc4114de02ae2b91483c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
+        <definition>hf_gpio_pull_mode_t BaseGpio::GetPullMode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetPullMode</name>
+        <qualifiedname>BaseGpio::GetPullMode</qualifiedname>
+        <briefdescription>
+<para>Get the current pull resistor mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current PullMode setting </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="460" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="860" bodyend="862"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a7493f384bf9965b89632ce86fbab82ab" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::SetPullMode</definition>
+        <argsstring>(hf_gpio_pull_mode_t mode) noexcept</argsstring>
+        <name>SetPullMode</name>
+        <qualifiedname>BaseGpio::SetPullMode</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set the pull resistor mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New PullMode setting (Floating, PullUp, or PullDown) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="467" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="864" bodyend="875"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a0a9b9db4afeedbd326fad93037717337" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
+        <definition>hf_gpio_state_t BaseGpio::GetCurrentState</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetCurrentState</name>
+        <qualifiedname>BaseGpio::GetCurrentState</qualifiedname>
+        <briefdescription>
+<para>Get the current logical state of the pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current State (Active or Inactive) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="477" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="878" bodyend="880"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a9d5e847076559bec0fdd3724eb3a6e31" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::SetState</definition>
+        <argsstring>(hf_gpio_state_t state) noexcept</argsstring>
+        <name>SetState</name>
+        <qualifiedname>BaseGpio::SetState</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Set the pin to a specific logical state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New logical state to set (Active or Inactive) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="484" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="882" bodyend="895"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a3bf8b64e2c0cdc440540f1b81e347952" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref></type>
+        <definition>hf_gpio_active_state_t BaseGpio::GetActiveState</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetActiveState</name>
+        <qualifiedname>BaseGpio::GetActiveState</qualifiedname>
+        <briefdescription>
+<para>Get the active state polarity configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current ActiveState setting (High or Low) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="490" column="27" bodyfile="inc/base/BaseGpio.h" bodystart="897" bodyend="899"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a17782f317993dcb800ba05411f157d70" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BaseGpio::SetActiveState</definition>
+        <argsstring>(hf_gpio_active_state_t active_state) noexcept</argsstring>
+        <name>SetActiveState</name>
+        <qualifiedname>BaseGpio::SetActiveState</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref></type>
+          <declname>active_state</declname>
+        </param>
+        <briefdescription>
+<para>Set the active state polarity configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>active_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New ActiveState setting (High or Low) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="496" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="901" bodyend="903"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1aa2a7854a7829455131113f059f498af0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::SetActive</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>SetActive</name>
+        <qualifiedname>BaseGpio::SetActive</qualifiedname>
+        <briefdescription>
+<para>Set the GPIO to active state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="506" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="906" bodyend="919"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a3178fb8f082369d79c699453bbb707ee" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::SetInactive</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>SetInactive</name>
+        <qualifiedname>BaseGpio::SetInactive</qualifiedname>
+        <briefdescription>
+<para>Set the GPIO to inactive state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="512" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="921" bodyend="934"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a7defeeabf3fbb66f820178a668a62148" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::Toggle</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Toggle</name>
+        <qualifiedname>BaseGpio::Toggle</qualifiedname>
+        <briefdescription>
+<para>Toggle the GPIO state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="518" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="936" bodyend="958"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a7f2adc44918574595986177767494092" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::IsActive</definition>
+        <argsstring>(bool &amp;is_active) noexcept</argsstring>
+        <name>IsActive</name>
+        <qualifiedname>BaseGpio::IsActive</qualifiedname>
+        <param>
+          <type>bool &amp;</type>
+          <declname>is_active</declname>
+        </param>
+        <briefdescription>
+<para>Check if the GPIO is currently active. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>is_active</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the result </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="525" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="960" bodyend="974"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a3448c7f18d22d58055554dc79f2babf9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::VerifyDirection</definition>
+        <argsstring>(hf_gpio_direction_t &amp;direction) const noexcept</argsstring>
+        <name>VerifyDirection</name>
+        <qualifiedname>BaseGpio::VerifyDirection</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref> &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Verify current direction setting by reading from hardware registers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output parameter: actual hardware direction setting </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise</para>
+</simplesect>
+Reads the actual direction configuration from hardware registers for fault detection and verification. Compares against cached value. <simplesect kind="note"><para>Some hardware may not support this operation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="539" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1098" bodyend="1116"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a21fe3e0c3a8f2c6a78803e986b195ef6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::VerifyOutputMode</definition>
+        <argsstring>(hf_gpio_output_mode_t &amp;mode) const noexcept</argsstring>
+        <name>VerifyOutputMode</name>
+        <qualifiedname>BaseGpio::VerifyOutputMode</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref> &amp;</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Verify current output mode setting by reading from hardware registers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output parameter: actual hardware output mode setting </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise</para>
+</simplesect>
+Reads the actual output mode configuration from hardware registers for fault detection and verification. Compares against cached value. <simplesect kind="note"><para>Some hardware may not support this operation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="549" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1118" bodyend="1136"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a81ba9758d36f8d7955d5808069ff99af" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::VerifyHardwareConfiguration</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>VerifyHardwareConfiguration</name>
+        <qualifiedname>BaseGpio::VerifyHardwareConfiguration</qualifiedname>
+        <briefdescription>
+<para>Perform comprehensive hardware verification of all pin settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if all settings match, error code otherwise</para>
+</simplesect>
+Verifies that all hardware registers match the expected cached values. Useful for detecting hardware faults, register corruption, or power management issues. Updates diagnostics on mismatch. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="558" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1138" bodyend="1166"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a5fa43d23d2049a40d1235de202ccc935" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseGpio::IsPinAvailable</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>IsPinAvailable</name>
+        <qualifiedname>BaseGpio::IsPinAvailable</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a5805fe2d581a4ce5cd42edf1b64b2fb9">IsPinAvailable</reimplementedby>
+        <briefdescription>
+<para>Check if the pin is available for GPIO operations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if pin is available, false if reserved for other functions </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="568" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1adc93269f341ba2ec1a2b35dc32f4f31a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>virtual hf_u8_t BaseGpio::GetMaxPins</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetMaxPins</name>
+        <qualifiedname>BaseGpio::GetMaxPins</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a89914a1ecc1201e97df0bae0c13ad556">GetMaxPins</reimplementedby>
+        <briefdescription>
+<para>Get the maximum number of pins supported by this GPIO instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum pin count </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="574" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a36d5613164945ed0d1fdd121bb47bff3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>const char *</type>
+        <definition>virtual const char * BaseGpio::GetDescription</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetDescription</name>
+        <qualifiedname>BaseGpio::GetDescription</qualifiedname>
+        <reimplementedby refid="classEspGpio_1aee5346c09c9d81992935c5fd37455ea8">GetDescription</reimplementedby>
+        <briefdescription>
+<para>Get human-readable description of this GPIO instance. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to description string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="579" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a90af5a4646e3d15940bf2604a705233d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::SupportsInterrupts</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>SupportsInterrupts</name>
+        <qualifiedname>BaseGpio::SupportsInterrupts</qualifiedname>
+        <reimplementedby refid="classEspGpio_1af0b68c0d1b3fda915803ba602ddab7fe">SupportsInterrupts</reimplementedby>
+        <briefdescription>
+<para>Check if this GPIO implementation supports interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if interrupts are supported, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="589" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="589" bodyend="591"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1aa3e94ea07ff15dc719cdf5de7c2d1a46" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::ConfigureInterrupt</definition>
+        <argsstring>(hf_gpio_interrupt_trigger_t trigger, InterruptCallback callback=nullptr, void *user_data=nullptr) noexcept</argsstring>
+        <name>ConfigureInterrupt</name>
+        <qualifiedname>BaseGpio::ConfigureInterrupt</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a385ff46f95432183be7cd52d4a69fde4">ConfigureInterrupt</reimplementedby>
+        <param>
+          <type><ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref></type>
+          <declname>trigger</declname>
+        </param>
+        <param>
+          <type><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref></type>
+          <declname>callback</declname>
+          <defval>nullptr</defval>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Configure GPIO interrupt settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>trigger</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Interrupt trigger type </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function to invoke on interrupt (optional) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data passed to callback (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="600" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="600" bodyend="604"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a379720946db91ef301fe14d8385d8208" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::EnableInterrupt</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnableInterrupt</name>
+        <qualifiedname>BaseGpio::EnableInterrupt</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a378b48a5c96c8c55313a354db5b673ca">EnableInterrupt</reimplementedby>
+        <briefdescription>
+<para>Enable GPIO interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="610" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="610" bodyend="612"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1ab2a4153923e1411a7abd5e7a0e406018" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::DisableInterrupt</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>DisableInterrupt</name>
+        <qualifiedname>BaseGpio::DisableInterrupt</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a08cc5eb9df6036fdc3cf4cac383678d4">DisableInterrupt</reimplementedby>
+        <briefdescription>
+<para>Disable GPIO interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="618" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="618" bodyend="620"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a38643a8949be75f6944f15f140904d25" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::WaitForInterrupt</definition>
+        <argsstring>(hf_u32_t timeout_ms=0) noexcept</argsstring>
+        <name>WaitForInterrupt</name>
+        <qualifiedname>BaseGpio::WaitForInterrupt</qualifiedname>
+        <reimplementedby refid="classEspGpio_1ae518911cc7720b8ba4f7e854b3018a6f">WaitForInterrupt</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Wait for GPIO interrupt to occur. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = wait forever) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if interrupt occurred, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="627" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="627" bodyend="629"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1aa6ea99f5b6bfc64f0e94c50f9e91f2e1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::GetInterruptStatus</definition>
+        <argsstring>(InterruptStatus &amp;status) noexcept</argsstring>
+        <name>GetInterruptStatus</name>
+        <qualifiedname>BaseGpio::GetInterruptStatus</qualifiedname>
+        <reimplementedby refid="classEspGpio_1ac9c07576f5e322fd9ca80d159f662f65">GetInterruptStatus</reimplementedby>
+        <param>
+          <type><ref refid="structInterruptStatus" kindref="compound">InterruptStatus</ref> &amp;</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Get interrupt status information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store status information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="636" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="636" bodyend="638"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a850ba260aec4cda209a53136c9c270b9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::ClearInterruptStats</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearInterruptStats</name>
+        <qualifiedname>BaseGpio::ClearInterruptStats</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a24c69898357e7d08edd37a8f9674b735">ClearInterruptStats</reimplementedby>
+        <briefdescription>
+<para>Clear interrupt statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="644" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="644" bodyend="646"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1ab90fba65d84dd0249076b89052568bcb" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BaseGpio::ResetStatistics</qualifiedname>
+        <briefdescription>
+<para>Reset GPIO operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="657" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="657" bodyend="660"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a3d3400ff38b0f0531ecce0a432b25367" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BaseGpio::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset GPIO diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="667" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="667" bodyend="670"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1aeb544b838a8508af37bc8e6d40b056da" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::GetStatistics</definition>
+        <argsstring>(hf_gpio_statistics_t &amp;statistics) const noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BaseGpio::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a13f0f2bb08bdf3201b380bd6ad7aa0ae">GetStatistics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__gpio__statistics__t" kindref="compound">hf_gpio_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get GPIO operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store statistics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, GPIO_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="677" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="677" bodyend="680"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a53728ff73bade39aa3ed6c34cff93023" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::GetDiagnostics</definition>
+        <argsstring>(hf_gpio_diagnostics_t &amp;diagnostics) const noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BaseGpio::GetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspGpio_1ab95d357d1b206b878cf3d960e06a269b">GetDiagnostics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__gpio__diagnostics__t" kindref="compound">hf_gpio_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get GPIO diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store diagnostics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, GPIO_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="687" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="687" bodyend="690"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a74b7105774c1a992884e332d9ebf6979" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseGpio::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseGpio::Initialize</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a49e15d19126b54ba23a5c7e928dc0bb3">Initialize</reimplementedby>
+        <briefdescription>
+<para>Initialize the GPIO pin with current configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialization successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="711" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a10393bd9b8eeacc40bc2e643be69576d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseGpio::Deinitialize</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseGpio::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspGpio_1ac27780ff0bbc266cff0a2052c8146d11">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if deinitialization successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="717" column="16" bodyfile="inc/base/BaseGpio.h" bodystart="717" bodyend="720"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseGpio_1ad6be75f565ccb5a2e12a1d1af58c3931" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::SetDirectionImpl</definition>
+        <argsstring>(hf_gpio_direction_t direction) noexcept=0</argsstring>
+        <name>SetDirectionImpl</name>
+        <qualifiedname>BaseGpio::SetDirectionImpl</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a8b189d48e93417185a9b7fe7afd3306c">SetDirectionImpl</reimplementedby>
+        <param>
+          <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Platform-specific implementation for setting pin direction. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New pin direction (Input or Output) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="354" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a29eadd1af0b5bef23fec17a47d9f1347" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::GetDirectionImpl</definition>
+        <argsstring>(hf_gpio_direction_t &amp;direction) const noexcept=0</argsstring>
+        <name>GetDirectionImpl</name>
+        <qualifiedname>BaseGpio::GetDirectionImpl</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a36373bacde83b2c40b8a9d9ee1240795">GetDirectionImpl</reimplementedby>
+        <param>
+          <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref> &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+<para>Hardware read-back of current pin direction from registers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output parameter: actual hardware pin direction </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise</para>
+</simplesect>
+Reads the actual direction configuration from hardware registers. Useful for fault detection and hardware verification. <simplesect kind="note"><para>Some hardware may not support this operation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="363" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a868d9c20441512c174d66f4ceabfcfd6" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::SetOutputModeImpl</definition>
+        <argsstring>(hf_gpio_output_mode_t mode) noexcept=0</argsstring>
+        <name>SetOutputModeImpl</name>
+        <qualifiedname>BaseGpio::SetOutputModeImpl</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a9661ef14697ca21f3a580add2f3a4623">SetOutputModeImpl</reimplementedby>
+        <param>
+          <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Platform-specific implementation for setting output mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New output mode (PushPull or OpenDrain) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="370" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a49e2cbb2ec9837fc6a3130f4417961e5" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::GetOutputModeImpl</definition>
+        <argsstring>(hf_gpio_output_mode_t &amp;mode) const noexcept=0</argsstring>
+        <name>GetOutputModeImpl</name>
+        <qualifiedname>BaseGpio::GetOutputModeImpl</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a662b4f3168a5566025c1984b7e903914">GetOutputModeImpl</reimplementedby>
+        <param>
+          <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref> &amp;</type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Hardware read-back of current output mode from registers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output parameter: actual hardware output mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise</para>
+</simplesect>
+Reads the actual output mode configuration from hardware registers. Useful for fault detection and hardware verification. <simplesect kind="note"><para>Some hardware may not support this operation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="379" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1ae48e68b2c746371a64d1ffea39d7fe13" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::SetPullModeImpl</definition>
+        <argsstring>(hf_gpio_pull_mode_t mode) noexcept=0</argsstring>
+        <name>SetPullModeImpl</name>
+        <qualifiedname>BaseGpio::SetPullModeImpl</qualifiedname>
+        <reimplementedby refid="classEspGpio_1aeb44f0d33e47afd3bf0437b24fed0ae9">SetPullModeImpl</reimplementedby>
+        <param>
+          <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Platform-specific implementation for setting pull resistor mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New pull resistor mode (Floating, PullUp, PullDown) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="386" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1aeadd79fe67b4e747f072f51ab28459bb" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
+        <definition>virtual hf_gpio_pull_mode_t BaseGpio::GetPullModeImpl</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetPullModeImpl</name>
+        <qualifiedname>BaseGpio::GetPullModeImpl</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a9c4eb71cf5585351a0fb08749fe37b27">GetPullModeImpl</reimplementedby>
+        <briefdescription>
+<para>Hardware read-back of current pull resistor mode from registers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current pull resistor mode</para>
+</simplesect>
+Reads the actual pull resistor configuration from hardware registers. Useful for fault detection and hardware verification. <simplesect kind="note"><para>Some hardware may not support this operation. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="394" column="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a6571c0de7f07268d4dcb6c2e175573d5" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::SetPinLevelImpl</definition>
+        <argsstring>(hf_gpio_level_t level) noexcept=0</argsstring>
+        <name>SetPinLevelImpl</name>
+        <qualifiedname>BaseGpio::SetPinLevelImpl</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a4625ee672d358bf48bff8c3d1f9d8201">SetPinLevelImpl</reimplementedby>
+        <param>
+          <type><ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Platform-specific implementation for setting pin electrical level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New electrical level (Low or High) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="401" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a9b7158d667fb6950bb00a45fd3ba2a19" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>virtual hf_gpio_err_t BaseGpio::GetPinLevelImpl</definition>
+        <argsstring>(hf_gpio_level_t &amp;level) noexcept=0</argsstring>
+        <name>GetPinLevelImpl</name>
+        <qualifiedname>BaseGpio::GetPinLevelImpl</qualifiedname>
+        <reimplementedby refid="classEspGpio_1a5a4c74349b2fb3f93d920f3b902a66ce">GetPinLevelImpl</reimplementedby>
+        <param>
+          <type><ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref> &amp;</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Platform-specific implementation for getting pin electrical level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output parameter: current electrical level (Low or High) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305da08c6dcbce56949318695e40344555937" kindref="member">hf_gpio_err_t::GPIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="407" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a1b95b3797bcf47cb2f27b3fbf65d0563" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
+        <definition>hf_gpio_err_t BaseGpio::ValidateBasicOperation</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>ValidateBasicOperation</name>
+        <qualifiedname>BaseGpio::ValidateBasicOperation</qualifiedname>
+        <briefdescription>
+<para>Validate basic parameters before GPIO operations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_gpio_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="731" column="18" bodyfile="inc/base/BaseGpio.h" bodystart="977" bodyend="985"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1ade6e9755735a8eb9f08db59396dbecc4" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref></type>
+        <definition>hf_gpio_level_t BaseGpio::StateToLevel</definition>
+        <argsstring>(hf_gpio_state_t state) const noexcept</argsstring>
+        <name>StateToLevel</name>
+        <qualifiedname>BaseGpio::StateToLevel</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Convert logical state to electrical level based on polarity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Logical state (Active or Inactive) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Electrical level (High or Low) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="738" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="987" bodyend="992"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1aeaf2282b59e4b9d06c5af433eab74953" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
+        <definition>hf_gpio_state_t BaseGpio::LevelToState</definition>
+        <argsstring>(hf_gpio_level_t level) const noexcept</argsstring>
+        <name>LevelToState</name>
+        <qualifiedname>BaseGpio::LevelToState</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Convert electrical level to logical state based on polarity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Electrical level (High or Low) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Logical state (Active or Inactive) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="745" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="994" bodyend="999"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a1a1c7695af0b0dcb1d3f0fb745673b72" prot="protected" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseGpio::BaseGpio</definition>
+        <argsstring>(hf_pin_num_t pin_num, hf_gpio_direction_t direction=hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT, hf_gpio_active_state_t active_state=hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH, hf_gpio_output_mode_t output_mode=hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL, hf_gpio_pull_mode_t pull_mode=hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING) noexcept</argsstring>
+        <name>BaseGpio</name>
+        <qualifiedname>BaseGpio::BaseGpio</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+          <declname>pin_num</declname>
+        </param>
+        <param>
+          <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
+          <declname>direction</declname>
+          <defval><ref refid="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3a5090403a0f4f177d6fb813cd9d06bf1e" kindref="member">hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref></type>
+          <declname>active_state</declname>
+          <defval><ref refid="group__gpio_1ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356" kindref="member">hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
+          <declname>output_mode</declname>
+          <defval><ref refid="group__gpio_1gga825412a54660defc9ecbf8ad1ea1cf7ba26b362f67afa6dbc264fb539c0dc304d" kindref="member">hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
+          <declname>pull_mode</declname>
+          <defval><ref refid="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335ae17c8cfbde2e4323ba15750747758875" kindref="member">hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING</ref></defval>
+        </param>
+        <briefdescription>
+<para>Protected constructor with configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pin_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO pin number </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>direction</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO direction (input/output) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>active_state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Active state polarity (high/low) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>output_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output drive mode (push-pull/open-drain) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pull_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pull resistor configuration (Floating, PullUp, or PullDown)</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+Initializes the GPIO with specified configuration. The pin is not physically configured until <ref refid="classBaseGpio_1a74b7105774c1a992884e332d9ebf6979" kindref="member">Initialize()</ref> is called. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="757" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="757" bodyend="765"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * BaseGpio::ToString</definition>
+        <argsstring>(hf_gpio_state_t state) noexcept</argsstring>
+        <name>ToString</name>
+        <qualifiedname>BaseGpio::ToString</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="695" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1005" bodyend="1014"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a2eda1258440e5533133c3b19fe616673" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * BaseGpio::ToString</definition>
+        <argsstring>(hf_gpio_level_t level) noexcept</argsstring>
+        <name>ToString</name>
+        <qualifiedname>BaseGpio::ToString</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="696" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1016" bodyend="1025"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a2362c8606c31008f0687640df813dee8" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * BaseGpio::ToString</definition>
+        <argsstring>(hf_gpio_active_state_t active_state) noexcept</argsstring>
+        <name>ToString</name>
+        <qualifiedname>BaseGpio::ToString</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref></type>
+          <declname>active_state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="697" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1027" bodyend="1036"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a51484809ee69e5742cb5130aead62fb4" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * BaseGpio::ToString</definition>
+        <argsstring>(hf_gpio_direction_t direction) noexcept</argsstring>
+        <name>ToString</name>
+        <qualifiedname>BaseGpio::ToString</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="698" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1038" bodyend="1047"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a191e85e652bd5133968d0f3d7bb21b0e" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * BaseGpio::ToString</definition>
+        <argsstring>(hf_gpio_output_mode_t output_mode) noexcept</argsstring>
+        <name>ToString</name>
+        <qualifiedname>BaseGpio::ToString</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
+          <declname>output_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="699" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1049" bodyend="1058"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a61bd63d0e7a6dc373a22856e9b90ef7c" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * BaseGpio::ToString</definition>
+        <argsstring>(hf_gpio_pull_mode_t pull_mode) noexcept</argsstring>
+        <name>ToString</name>
+        <qualifiedname>BaseGpio::ToString</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
+          <declname>pull_mode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="700" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1060" bodyend="1073"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseGpio_1a28828756e1f8fffe36628ec3cc7979bd" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * BaseGpio::ToString</definition>
+        <argsstring>(hf_gpio_interrupt_trigger_t trigger) noexcept</argsstring>
+        <name>ToString</name>
+        <qualifiedname>BaseGpio::ToString</qualifiedname>
+        <param>
+          <type><ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref></type>
+          <declname>trigger</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="701" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1075" bodyend="1092"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Unified GPIO base class for all digital GPIO implementations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a comprehensive digital GPIO implementation that serves as the base for all GPIO hardware in the HardFOC system. It supports:<itemizedlist>
+<listitem><para>Dynamic mode switching between input and output</para>
+</listitem><listitem><para>Active-high/active-low polarity support</para>
+</listitem><listitem><para>Pull resistor configuration</para>
+</listitem><listitem><para>Push-pull and open-drain output modes</para>
+</listitem><listitem><para>Comprehensive error handling and validation</para>
+</listitem><listitem><para>Lazy initialization pattern</para>
+</listitem></itemizedlist>
+</para>
+<para>Derived classes implement platform-specific details for:<itemizedlist>
+<listitem><para>On-chip GPIO controllers</para>
+</listitem><listitem><para>I2C GPIO expanders</para>
+</listitem><listitem><para>SPI GPIO expanders</para>
+</listitem><listitem><para>Other GPIO hardware </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseGpio</label>
+        <link refid="classBaseGpio"/>
+      </node>
+      <node id="2">
+        <label>EspGpio</label>
+        <link refid="classEspGpio"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BaseGpio</label>
+        <link refid="classBaseGpio"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_gpio_diagnostics_t</label>
+        <link refid="structhf__gpio__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_gpio_statistics_t</label>
+        <link refid="structhf__gpio__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BaseGpio.h" line="295" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="295" bodyend="780"/>
+    <listofallmembers>
+      <member refid="classBaseGpio_1aa521b7b75306b4a53b6c726fa07406e9" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>active_state_</name></member>
+      <member refid="classBaseGpio_1a182759a9452aa9b39f6ec0bcfdc1827f" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>BaseGpio</name></member>
+      <member refid="classBaseGpio_1a1a1c7695af0b0dcb1d3f0fb745673b72" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>BaseGpio</name></member>
+      <member refid="classBaseGpio_1a850ba260aec4cda209a53136c9c270b9" prot="public" virt="virtual"><scope>BaseGpio</scope><name>ClearInterruptStats</name></member>
+      <member refid="classBaseGpio_1aa3e94ea07ff15dc719cdf5de7c2d1a46" prot="public" virt="virtual"><scope>BaseGpio</scope><name>ConfigureInterrupt</name></member>
+      <member refid="classBaseGpio_1a42e5fe390af4b700cbd861237fcef37e" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>current_direction_</name></member>
+      <member refid="classBaseGpio_1a69461140f1f8e9717926235118bae0b9" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>current_state_</name></member>
+      <member refid="classBaseGpio_1a10393bd9b8eeacc40bc2e643be69576d" prot="public" virt="virtual"><scope>BaseGpio</scope><name>Deinitialize</name></member>
+      <member refid="classBaseGpio_1a82ac9df6b2e7c01355b72ccbc007b201" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>diagnostics_</name></member>
+      <member refid="classBaseGpio_1ab2a4153923e1411a7abd5e7a0e406018" prot="public" virt="virtual"><scope>BaseGpio</scope><name>DisableInterrupt</name></member>
+      <member refid="classBaseGpio_1a379720946db91ef301fe14d8385d8208" prot="public" virt="virtual"><scope>BaseGpio</scope><name>EnableInterrupt</name></member>
+      <member refid="classBaseGpio_1a33c01186a67211b905c9efd8a64af2b1" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseGpio_1a363769239e2d658315215af324ee5aba" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseGpio_1a3bf8b64e2c0cdc440540f1b81e347952" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>GetActiveState</name></member>
+      <member refid="classBaseGpio_1a0a9b9db4afeedbd326fad93037717337" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>GetCurrentState</name></member>
+      <member refid="classBaseGpio_1a36d5613164945ed0d1fdd121bb47bff3" prot="public" virt="pure-virtual"><scope>BaseGpio</scope><name>GetDescription</name></member>
+      <member refid="classBaseGpio_1a53728ff73bade39aa3ed6c34cff93023" prot="public" virt="virtual"><scope>BaseGpio</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseGpio_1a962ee940c181b782f4612f913fb352a7" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>GetDirection</name></member>
+      <member refid="classBaseGpio_1a29eadd1af0b5bef23fec17a47d9f1347" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>GetDirectionImpl</name></member>
+      <member refid="classBaseGpio_1aa6ea99f5b6bfc64f0e94c50f9e91f2e1" prot="public" virt="virtual"><scope>BaseGpio</scope><name>GetInterruptStatus</name></member>
+      <member refid="classBaseGpio_1adc93269f341ba2ec1a2b35dc32f4f31a" prot="public" virt="pure-virtual"><scope>BaseGpio</scope><name>GetMaxPins</name></member>
+      <member refid="classBaseGpio_1af619dacf07dd2b15e40c0f5bfb1c5cb7" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>GetOutputMode</name></member>
+      <member refid="classBaseGpio_1a49e2cbb2ec9837fc6a3130f4417961e5" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>GetOutputModeImpl</name></member>
+      <member refid="classBaseGpio_1a33f1c7b8d1ab1f2d2d1bcb3ccb1860d3" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>GetPin</name></member>
+      <member refid="classBaseGpio_1a9b7158d667fb6950bb00a45fd3ba2a19" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>GetPinLevelImpl</name></member>
+      <member refid="classBaseGpio_1aa5786db64ba7dc4114de02ae2b91483c" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>GetPullMode</name></member>
+      <member refid="classBaseGpio_1aeadd79fe67b4e747f072f51ab28459bb" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>GetPullModeImpl</name></member>
+      <member refid="classBaseGpio_1aeb544b838a8508af37bc8e6d40b056da" prot="public" virt="virtual"><scope>BaseGpio</scope><name>GetStatistics</name></member>
+      <member refid="classBaseGpio_1a74b7105774c1a992884e332d9ebf6979" prot="public" virt="pure-virtual"><scope>BaseGpio</scope><name>Initialize</name></member>
+      <member refid="classBaseGpio_1ac5c36e8f02f1483820a15c7dbcdc8e6c" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>initialized_</name></member>
+      <member refid="classBaseGpio_1a7f2adc44918574595986177767494092" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>IsActive</name></member>
+      <member refid="classBaseGpio_1a2c654042248121cefac7e79590b35ec6" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>IsInitialized</name></member>
+      <member refid="classBaseGpio_1a33f91a55c88f95d12f651a08c2175f9e" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>IsInput</name></member>
+      <member refid="classBaseGpio_1ae6daa5410a578598b694320cdc1997e0" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>IsOutput</name></member>
+      <member refid="classBaseGpio_1a5fa43d23d2049a40d1235de202ccc935" prot="public" virt="pure-virtual"><scope>BaseGpio</scope><name>IsPinAvailable</name></member>
+      <member refid="classBaseGpio_1aeaf2282b59e4b9d06c5af433eab74953" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>LevelToState</name></member>
+      <member refid="classBaseGpio_1a80f934a9f41ef0315bae75ba3883c426" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>operator=</name></member>
+      <member refid="classBaseGpio_1a009b41614328663508a6dfccdd1bfa8e" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>output_mode_</name></member>
+      <member refid="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>pin_</name></member>
+      <member refid="classBaseGpio_1a47fd29eb70c7eb4f7ea6ff00782539a5" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>pull_mode_</name></member>
+      <member refid="classBaseGpio_1a3d3400ff38b0f0531ecce0a432b25367" prot="public" virt="virtual"><scope>BaseGpio</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseGpio_1ab90fba65d84dd0249076b89052568bcb" prot="public" virt="virtual"><scope>BaseGpio</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseGpio_1aa2a7854a7829455131113f059f498af0" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>SetActive</name></member>
+      <member refid="classBaseGpio_1a17782f317993dcb800ba05411f157d70" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>SetActiveState</name></member>
+      <member refid="classBaseGpio_1a54987f95debcc8faef0a7ecd38447031" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>SetDirection</name></member>
+      <member refid="classBaseGpio_1ad6be75f565ccb5a2e12a1d1af58c3931" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>SetDirectionImpl</name></member>
+      <member refid="classBaseGpio_1a3178fb8f082369d79c699453bbb707ee" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>SetInactive</name></member>
+      <member refid="classBaseGpio_1aa33e02658b1a9eb41851c723b236758c" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>SetOutputMode</name></member>
+      <member refid="classBaseGpio_1a868d9c20441512c174d66f4ceabfcfd6" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>SetOutputModeImpl</name></member>
+      <member refid="classBaseGpio_1a6571c0de7f07268d4dcb6c2e175573d5" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>SetPinLevelImpl</name></member>
+      <member refid="classBaseGpio_1a7493f384bf9965b89632ce86fbab82ab" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>SetPullMode</name></member>
+      <member refid="classBaseGpio_1ae48e68b2c746371a64d1ffea39d7fe13" prot="protected" virt="pure-virtual"><scope>BaseGpio</scope><name>SetPullModeImpl</name></member>
+      <member refid="classBaseGpio_1a9d5e847076559bec0fdd3724eb3a6e31" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>SetState</name></member>
+      <member refid="classBaseGpio_1ade6e9755735a8eb9f08db59396dbecc4" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>StateToLevel</name></member>
+      <member refid="classBaseGpio_1acc7b7575c32b77a766adf3e275bd1973" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>statistics_</name></member>
+      <member refid="classBaseGpio_1a90af5a4646e3d15940bf2604a705233d" prot="public" virt="virtual"><scope>BaseGpio</scope><name>SupportsInterrupts</name></member>
+      <member refid="classBaseGpio_1a7defeeabf3fbb66f820178a668a62148" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>Toggle</name></member>
+      <member refid="classBaseGpio_1a26162b7180af0e0715fe0d8f37e695a3" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>ToString</name></member>
+      <member refid="classBaseGpio_1a2eda1258440e5533133c3b19fe616673" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>ToString</name></member>
+      <member refid="classBaseGpio_1a2362c8606c31008f0687640df813dee8" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>ToString</name></member>
+      <member refid="classBaseGpio_1a51484809ee69e5742cb5130aead62fb4" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>ToString</name></member>
+      <member refid="classBaseGpio_1a191e85e652bd5133968d0f3d7bb21b0e" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>ToString</name></member>
+      <member refid="classBaseGpio_1a61bd63d0e7a6dc373a22856e9b90ef7c" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>ToString</name></member>
+      <member refid="classBaseGpio_1a28828756e1f8fffe36628ec3cc7979bd" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>ToString</name></member>
+      <member refid="classBaseGpio_1a1b95b3797bcf47cb2f27b3fbf65d0563" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>ValidateBasicOperation</name></member>
+      <member refid="classBaseGpio_1a3448c7f18d22d58055554dc79f2babf9" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>VerifyDirection</name></member>
+      <member refid="classBaseGpio_1a81ba9758d36f8d7955d5808069ff99af" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>VerifyHardwareConfiguration</name></member>
+      <member refid="classBaseGpio_1a21fe3e0c3a8f2c6a78803e986b195ef6" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>VerifyOutputMode</name></member>
+      <member refid="classBaseGpio_1a38643a8949be75f6944f15f140904d25" prot="public" virt="virtual"><scope>BaseGpio</scope><name>WaitForInterrupt</name></member>
+      <member refid="classBaseGpio_1a042ea8f01b96fe5641258e8b662d4d78" prot="public" virt="virtual"><scope>BaseGpio</scope><name>~BaseGpio</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

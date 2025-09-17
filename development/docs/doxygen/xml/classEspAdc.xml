@@ -1,0 +1,2642 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classEspAdc" kind="class" language="C++" prot="public">
+    <compoundname>EspAdc</compoundname>
+    <basecompoundref refid="classBaseAdc" prot="public" virt="non-virtual">BaseAdc</basecompoundref>
+    <includes refid="EspAdc_8h" local="no">EspAdc.h</includes>
+    <innerclass refid="structEspAdc_1_1MonitorContext" prot="private">EspAdc::MonitorContext</innerclass>
+    <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classEspAdc_1ae7109751b31c9a9b6f6e660300eb1d43" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t EspAdc::HF_ADC_MAX_UNITS</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_MAX_UNITS</name>
+        <qualifiedname>EspAdc::HF_ADC_MAX_UNITS</qualifiedname>
+        <initializer>=
+       1</initializer>
+        <briefdescription>
+<para>Maximum ADC units for this ESP32 variant. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="290" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a290c2aea8eabeff58d069c845d00af54" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t EspAdc::HF_ADC_MAX_CHANNELS</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_MAX_CHANNELS</name>
+        <qualifiedname>EspAdc::HF_ADC_MAX_CHANNELS</qualifiedname>
+        <initializer>=
+       7</initializer>
+        <briefdescription>
+<para>Maximum ADC channels per unit. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="292" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1aa348b52181cff17770ecc4f30c83a281" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t EspAdc::HF_ADC_MAX_FILTERS</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_MAX_FILTERS</name>
+        <qualifiedname>EspAdc::HF_ADC_MAX_FILTERS</qualifiedname>
+        <initializer>=
+       2</initializer>
+        <briefdescription>
+<para>Maximum IIR filters supported. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="294" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t EspAdc::HF_ADC_MAX_MONITORS</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_MAX_MONITORS</name>
+        <qualifiedname>EspAdc::HF_ADC_MAX_MONITORS</qualifiedname>
+        <initializer>=
+       2</initializer>
+        <briefdescription>
+<para>Maximum threshold monitors supported. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="296" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a654a79dd9b9995b5212e3774801af713" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t EspAdc::HF_ADC_MAX_RAW_VALUE_12BIT</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_MAX_RAW_VALUE_12BIT</name>
+        <qualifiedname>EspAdc::HF_ADC_MAX_RAW_VALUE_12BIT</qualifiedname>
+        <initializer>=
+       4095</initializer>
+        <briefdescription>
+<para>12-bit max raw value </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="298" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1aaa5e88282ea20316303cacadcc48e194" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t EspAdc::HF_ADC_REFERENCE_VOLTAGE_MV</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_REFERENCE_VOLTAGE_MV</name>
+        <qualifiedname>EspAdc::HF_ADC_REFERENCE_VOLTAGE_MV</qualifiedname>
+        <initializer>=
+       1100</initializer>
+        <briefdescription>
+<para>Reference voltage in mV. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="300" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1af56e5ffd8f329983d4dccd5faed97588" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t EspAdc::HF_ADC_MAX_SAMPLING_FREQ</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_MAX_SAMPLING_FREQ</name>
+        <qualifiedname>EspAdc::HF_ADC_MAX_SAMPLING_FREQ</qualifiedname>
+        <initializer>=
+       100000</initializer>
+        <briefdescription>
+<para>Maximum sampling frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="302" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1ae331601ad9c6323ac82674ed3522e2c3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t EspAdc::HF_ADC_MIN_SAMPLING_FREQ</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_MIN_SAMPLING_FREQ</name>
+        <qualifiedname>EspAdc::HF_ADC_MIN_SAMPLING_FREQ</qualifiedname>
+        <initializer>=
+       10</initializer>
+        <briefdescription>
+<para>Minimum sampling frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="304" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a751617ee185376fa0d6ab36192d3bd21" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t EspAdc::HF_ADC_DEFAULT_SAMPLING_FREQ</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_DEFAULT_SAMPLING_FREQ</name>
+        <qualifiedname>EspAdc::HF_ADC_DEFAULT_SAMPLING_FREQ</qualifiedname>
+        <initializer>=
+       1000</initializer>
+        <briefdescription>
+<para>Default sampling frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="306" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a4681252972a0ff3e5d7a4ad30e8129bc" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t EspAdc::HF_ADC_DMA_BUFFER_SIZE_MIN</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_DMA_BUFFER_SIZE_MIN</name>
+        <qualifiedname>EspAdc::HF_ADC_DMA_BUFFER_SIZE_MIN</qualifiedname>
+        <initializer>=
+       256</initializer>
+        <briefdescription>
+<para>Minimum DMA buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="308" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a8e86a890fef42cf2df860aab0e7232c9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t EspAdc::HF_ADC_DMA_BUFFER_SIZE_MAX</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_DMA_BUFFER_SIZE_MAX</name>
+        <qualifiedname>EspAdc::HF_ADC_DMA_BUFFER_SIZE_MAX</qualifiedname>
+        <initializer>=
+       4096</initializer>
+        <briefdescription>
+<para>Maximum DMA buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="310" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a4f3041f636ac945e80c729950dba0c36" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t EspAdc::HF_ADC_DMA_BUFFER_SIZE_DEFAULT</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_DMA_BUFFER_SIZE_DEFAULT</name>
+        <qualifiedname>EspAdc::HF_ADC_DMA_BUFFER_SIZE_DEFAULT</qualifiedname>
+        <initializer>=
+       1024</initializer>
+        <briefdescription>
+<para>Default DMA buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="312" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a12abe097f1e7355cdb6b0954a703e1d4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr adc_oneshot_clk_src_t</type>
+        <definition>constexpr adc_oneshot_clk_src_t EspAdc::HF_ADC_ONESHOT_CLK_SRC</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_ONESHOT_CLK_SRC</name>
+        <qualifiedname>EspAdc::HF_ADC_ONESHOT_CLK_SRC</qualifiedname>
+        <initializer>=
+       ADC_DIGI_CLK_SRC_DEFAULT</initializer>
+        <briefdescription>
+<para>Clock source for one-shot mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="315" column="42" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="315" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a74a01c81453e5a592a42d9dbf6822ca9" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr adc_continuous_clk_src_t</type>
+        <definition>constexpr adc_continuous_clk_src_t EspAdc::HF_ADC_CONTINUOUS_CLK_SRC</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_CONTINUOUS_CLK_SRC</name>
+        <qualifiedname>EspAdc::HF_ADC_CONTINUOUS_CLK_SRC</qualifiedname>
+        <initializer>=
+       ADC_DIGI_CLK_SRC_DEFAULT</initializer>
+        <briefdescription>
+<para>Clock source for continuous mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="317" column="45" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1ae9c8c79e7e3b4e99a1265c8262c09771" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr adc_ulp_mode_t</type>
+        <definition>constexpr adc_ulp_mode_t EspAdc::HF_ADC_ULP_MODE</definition>
+        <argsstring></argsstring>
+        <name>HF_ADC_ULP_MODE</name>
+        <qualifiedname>EspAdc::HF_ADC_ULP_MODE</qualifiedname>
+        <initializer>=
+       ADC_ULP_MODE_DISABLE</initializer>
+        <briefdescription>
+<para>ULP mode disabled by default. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="319" column="35" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEspAdc_1a6db623dfa1c5f83a76c8d6f9af42c7c8" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref></type>
+        <definition>hf_adc_unit_config_t EspAdc::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>EspAdc::config_</qualifiedname>
+        <briefdescription>
+<para>ADC unit configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="709" column="24" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="709" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1ae7327d528b6bcd71aa6d4364a9b61a8f" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_bool_t&gt; EspAdc::continuous_running_</definition>
+        <argsstring></argsstring>
+        <name>continuous_running_</name>
+        <qualifiedname>EspAdc::continuous_running_</qualifiedname>
+        <briefdescription>
+<para>Continuous mode running flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="710" column="15" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="710" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a73204df6c563d802757b27188b644b5e" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_adc_err_t&gt; EspAdc::last_error_</definition>
+        <argsstring></argsstring>
+        <name>last_error_</name>
+        <qualifiedname>EspAdc::last_error_</qualifiedname>
+        <briefdescription>
+<para>Last error code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="711" column="15" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="711" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a2de8a2dae650ab29adce6821a639e28c" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspAdc::config_mutex_</definition>
+        <argsstring></argsstring>
+        <name>config_mutex_</name>
+        <qualifiedname>EspAdc::config_mutex_</qualifiedname>
+        <briefdescription>
+<para>Configuration mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="714" column="21" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="714" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a75d7e5963af45c0a975ac428344b096d" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspAdc::stats_mutex_</definition>
+        <argsstring></argsstring>
+        <name>stats_mutex_</name>
+        <qualifiedname>EspAdc::stats_mutex_</qualifiedname>
+        <briefdescription>
+<para>Statistics mutex. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="715" column="21" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="715" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1aee946b33ba3816292c7a7e82babf57ec" prot="private" static="no" mutable="no">
+        <type>adc_oneshot_unit_handle_t</type>
+        <definition>adc_oneshot_unit_handle_t EspAdc::oneshot_handle_</definition>
+        <argsstring></argsstring>
+        <name>oneshot_handle_</name>
+        <qualifiedname>EspAdc::oneshot_handle_</qualifiedname>
+        <briefdescription>
+<para>Oneshot mode handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="718" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="718" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1ab88a971087cd83f541f906af6deda056" prot="private" static="no" mutable="no">
+        <type>adc_continuous_handle_t</type>
+        <definition>adc_continuous_handle_t EspAdc::continuous_handle_</definition>
+        <argsstring></argsstring>
+        <name>continuous_handle_</name>
+        <qualifiedname>EspAdc::continuous_handle_</qualifiedname>
+        <briefdescription>
+<para>Continuous mode handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="719" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="719" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a57582feb18bd008a49768d5539348e57" prot="private" static="no" mutable="no">
+        <type>std::array&lt; adc_cali_handle_t, 4 &gt;</type>
+        <definition>std::array&lt;adc_cali_handle_t, 4&gt; EspAdc::calibration_handles_</definition>
+        <argsstring></argsstring>
+        <name>calibration_handles_</name>
+        <qualifiedname>EspAdc::calibration_handles_</qualifiedname>
+        <briefdescription>
+<para>Calibration handles (one per attenuation) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="721" column="7" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="721" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a2b24c60b289769e1baff7421ac4a614a" prot="private" static="no" mutable="no">
+        <type>std::array&lt; adc_iir_filter_handle_t, <ref refid="classEspAdc_1aa348b52181cff17770ecc4f30c83a281" kindref="member">HF_ADC_MAX_FILTERS</ref> &gt;</type>
+        <definition>std::array&lt;adc_iir_filter_handle_t, HF_ADC_MAX_FILTERS&gt; EspAdc::filter_handles_</definition>
+        <argsstring></argsstring>
+        <name>filter_handles_</name>
+        <qualifiedname>EspAdc::filter_handles_</qualifiedname>
+        <briefdescription>
+<para>Filter handles. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="722" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="722" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a1c76bfd433fc8685330cc866650c1b4b" prot="private" static="no" mutable="no">
+        <type>std::array&lt; adc_monitor_handle_t, <ref refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kindref="member">HF_ADC_MAX_MONITORS</ref> &gt;</type>
+        <definition>std::array&lt;adc_monitor_handle_t, HF_ADC_MAX_MONITORS&gt; EspAdc::monitor_handles_</definition>
+        <argsstring></argsstring>
+        <name>monitor_handles_</name>
+        <qualifiedname>EspAdc::monitor_handles_</qualifiedname>
+        <briefdescription>
+<para>Monitor handles. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="723" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="723" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a4a81d64afb4455f9f5ebbffa402c8fe4" prot="private" static="no" mutable="no">
+        <type><ref refid="EspTypes__ADC_8h_1a0e2d23199837f1a7cf8ca9c555bcf367" kindref="member">hf_adc_continuous_callback_t</ref></type>
+        <definition>hf_adc_continuous_callback_t EspAdc::continuous_callback_</definition>
+        <argsstring></argsstring>
+        <name>continuous_callback_</name>
+        <qualifiedname>EspAdc::continuous_callback_</qualifiedname>
+        <briefdescription>
+<para>Continuous callback function. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="726" column="32" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="726" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a8223af54ab4b28b80ff73b7e1b42b3ba" prot="private" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspAdc::continuous_user_data_</definition>
+        <argsstring></argsstring>
+        <name>continuous_user_data_</name>
+        <qualifiedname>EspAdc::continuous_user_data_</qualifiedname>
+        <briefdescription>
+<para>Continuous callback user data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="727" column="8" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="727" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a1beefdaee72af0353b6bca259d7acc34" prot="private" static="no" mutable="no">
+        <type>std::array&lt; <ref refid="EspTypes__ADC_8h_1afb37bea53ade46ebbac1eba5eb604cda" kindref="member">hf_adc_monitor_callback_t</ref>, <ref refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kindref="member">HF_ADC_MAX_MONITORS</ref> &gt;</type>
+        <definition>std::array&lt;hf_adc_monitor_callback_t, HF_ADC_MAX_MONITORS&gt; EspAdc::monitor_callbacks_</definition>
+        <argsstring></argsstring>
+        <name>monitor_callbacks_</name>
+        <qualifiedname>EspAdc::monitor_callbacks_</qualifiedname>
+        <briefdescription>
+<para>Monitor callbacks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="729" column="7" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="729" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1ac296b19dfe33ff8b5d7d6eec9dd18df2" prot="private" static="no" mutable="no">
+        <type>std::array&lt; void *, <ref refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kindref="member">HF_ADC_MAX_MONITORS</ref> &gt;</type>
+        <definition>std::array&lt;void*, HF_ADC_MAX_MONITORS&gt; EspAdc::monitor_user_data_</definition>
+        <argsstring></argsstring>
+        <name>monitor_user_data_</name>
+        <qualifiedname>EspAdc::monitor_user_data_</qualifiedname>
+        <briefdescription>
+<para>Monitor callback user data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="730" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="730" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a67f977b364fddbd45aa4d4abdae9be7b" prot="private" static="no" mutable="no">
+        <type>std::array&lt; <ref refid="structEspAdc_1_1MonitorContext" kindref="compound">MonitorContext</ref>, <ref refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kindref="member">HF_ADC_MAX_MONITORS</ref> &gt;</type>
+        <definition>std::array&lt;MonitorContext, HF_ADC_MAX_MONITORS&gt; EspAdc::monitor_contexts_</definition>
+        <argsstring></argsstring>
+        <name>monitor_contexts_</name>
+        <qualifiedname>EspAdc::monitor_contexts_</qualifiedname>
+        <briefdescription>
+<para>Monitor context data. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="731" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="731" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a455883a7cc0f32cd205451d79c444c57" prot="private" static="no" mutable="yes">
+        <type><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref></type>
+        <definition>hf_adc_statistics_t EspAdc::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>EspAdc::statistics_</qualifiedname>
+        <briefdescription>
+<para>Operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="734" column="31" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="734" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspAdc_1a91c329fe7f1e0abaf44ede88ed3590c9" prot="private" static="no" mutable="yes">
+        <type><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref></type>
+        <definition>hf_adc_diagnostics_t EspAdc::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>EspAdc::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>Diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="735" column="32" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="735" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEspAdc_1a535eda201dc1e424367b0b79094328ca" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspAdc::EspAdc</definition>
+        <argsstring>(const hf_adc_unit_config_t &amp;config) noexcept</argsstring>
+        <name>EspAdc</name>
+        <qualifiedname>EspAdc::EspAdc</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC unit configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="268" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="89" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a7c57e4e693144146542be1218cd929aa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspAdc::~EspAdc</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~EspAdc</name>
+        <qualifiedname>EspAdc::~EspAdc</qualifiedname>
+        <briefdescription>
+<para>Destructor - ensures proper cleanup. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="273" column="3" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="106" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a040a8174fe3df5f7b3eeb79e6e0e4eac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspAdc::EspAdc</definition>
+        <argsstring>(const EspAdc &amp;)=delete</argsstring>
+        <name>EspAdc</name>
+        <qualifiedname>EspAdc::EspAdc</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="277" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1aa9b02a740c72d5064613a3b9bb6a6249" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;</type>
+        <definition>EspAdc &amp; EspAdc::operator=</definition>
+        <argsstring>(const EspAdc &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspAdc::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="278" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a176689eaf3ffc30a447dc292960922d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspAdc::EspAdc</definition>
+        <argsstring>(EspAdc &amp;&amp;other)=delete</argsstring>
+        <name>EspAdc</name>
+        <qualifiedname>EspAdc::EspAdc</qualifiedname>
+        <param>
+          <type><ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="282" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a1c46e8dce3bb9de8c59ce1b2408ac92c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;</type>
+        <definition>EspAdc &amp; EspAdc::operator=</definition>
+        <argsstring>(EspAdc &amp;&amp;other)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspAdc::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="283" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a3e0aba56249e205578cbe92541554b08" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+        <definition>hf_bool_t EspAdc::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>EspAdc::Initialize</qualifiedname>
+        <reimplements refid="classBaseAdc_1ab783a31b8adb7af4b4d53226ffff375c">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the ESP32 ADC peripheral. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialization successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="330" column="13" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="115" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a3763c67c9ca0ecfd8feda1d44b22d1e0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+        <definition>hf_bool_t EspAdc::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>EspAdc::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseAdc_1a16019ba36f14e8579be74e4849e59e72">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the ESP32 ADC peripheral. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if deinitialization successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="336" column="13" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="180" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1ac234759d85da10db28bb2773daeec9e1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t EspAdc::GetMaxChannels</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMaxChannels</name>
+        <qualifiedname>EspAdc::GetMaxChannels</qualifiedname>
+        <reimplements refid="classBaseAdc_1a0de6eca0aa2acd37a375a8a9a918f388">GetMaxChannels</reimplements>
+        <briefdescription>
+<para>Get maximum number of ADC channels for this ESP32 variant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum channel count </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="342" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="939" bodyend="941"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a8d37e2e11fac48019803f6260a1b39cc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+        <definition>hf_bool_t EspAdc::IsChannelAvailable</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept override</argsstring>
+        <name>IsChannelAvailable</name>
+        <qualifiedname>EspAdc::IsChannelAvailable</qualifiedname>
+        <reimplements refid="classBaseAdc_1a33d37384396674c31531994d77991965">IsChannelAvailable</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Check if specific channel is available on this ESP32 variant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if channel available, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="349" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="943" bodyend="945"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a41dd2c15efe312397d72b9e803741318" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadChannelV</definition>
+        <argsstring>(hf_channel_id_t channel_id, float &amp;channel_reading_v, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept override</argsstring>
+        <name>ReadChannelV</name>
+        <qualifiedname>EspAdc::ReadChannelV</qualifiedname>
+        <reimplements refid="classBaseAdc_1a7ad8ff099f8cd48d20c2cbbd6d45cf64">ReadChannelV</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>channel_reading_v</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>numOfSamplesToAvg</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+          <declname>timeBetweenSamples</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read channel voltage with optional averaging. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_reading_v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store voltage in volts </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numOfSamplesToAvg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of samples to average (default 1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeBetweenSamples</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time between samples in ms (default 0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="359" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="947" bodyend="984"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1aee902d7623f92e1a64b6708b41c63b3b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadChannelCount</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;channel_reading_count, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept override</argsstring>
+        <name>ReadChannelCount</name>
+        <qualifiedname>EspAdc::ReadChannelCount</qualifiedname>
+        <reimplements refid="classBaseAdc_1afd66aefd959c4be0267a2a605ff18525">ReadChannelCount</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>channel_reading_count</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>numOfSamplesToAvg</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+          <declname>timeBetweenSamples</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read channel raw count with optional averaging. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_reading_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store raw count </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numOfSamplesToAvg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of samples to average (default 1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeBetweenSamples</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time between samples in ms (default 0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="371" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="986" bodyend="994"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a4a1844e4b8add43b1f83c1bd59c430f8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;channel_reading_count, float &amp;channel_reading_v, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept override</argsstring>
+        <name>ReadChannel</name>
+        <qualifiedname>EspAdc::ReadChannel</qualifiedname>
+        <reimplements refid="classBaseAdc_1abe791fa4f5d6e834578e7222dc8f9618">ReadChannel</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>channel_reading_count</declname>
+        </param>
+        <param>
+          <type>float &amp;</type>
+          <declname>channel_reading_v</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>numOfSamplesToAvg</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+          <declname>timeBetweenSamples</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read both channel count and voltage with optional averaging. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_reading_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store raw count </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>channel_reading_v</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store voltage in volts </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>numOfSamplesToAvg</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of samples to average (default 1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeBetweenSamples</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time between samples in ms (default 0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="384" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="996" bodyend="1030"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1ae78a280905f09634070c9ce624002cb7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadMultipleChannels</definition>
+        <argsstring>(const hf_channel_id_t *channel_ids, hf_u8_t num_channels, hf_u32_t *readings, float *voltages) noexcept override</argsstring>
+        <name>ReadMultipleChannels</name>
+        <qualifiedname>EspAdc::ReadMultipleChannels</qualifiedname>
+        <reimplements refid="classBaseAdc_1a7757f481ae8ab250b7df876e0370ef5a">ReadMultipleChannels</reimplements>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> *</type>
+          <declname>channel_ids</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>num_channels</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> *</type>
+          <declname>readings</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>voltages</declname>
+        </param>
+        <briefdescription>
+<para>Read multiple channels simultaneously. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of channel IDs </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_channels</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of channels </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>readings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array to store raw readings </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voltages</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array to store voltage readings </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="396" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1032" bodyend="1050"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1aa5565e8cc60dc1c8c38ef1416ceb9eee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::SetMode</definition>
+        <argsstring>(hf_adc_mode_t mode) noexcept</argsstring>
+        <name>SetMode</name>
+        <qualifiedname>EspAdc::SetMode</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044" kindref="member">hf_adc_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set ADC operation mode (one-shot or continuous) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Operation mode to set </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="408" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="439" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a90c2d7e6e1f828fbde16b861d82e08c4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044" kindref="member">hf_adc_mode_t</ref></type>
+        <definition>hf_adc_mode_t EspAdc::GetMode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetMode</name>
+        <qualifiedname>EspAdc::GetMode</qualifiedname>
+        <briefdescription>
+<para>Get current ADC operation mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current operation mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="414" column="18" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="480" bodyend="483"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a8761809a54d41ff5bbe428a1bf26876b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ConfigureChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_adc_atten_t attenuation, hf_adc_bitwidth_t bitwidth=hf_adc_bitwidth_t::WIDTH_DEFAULT) noexcept</argsstring>
+        <name>ConfigureChannel</name>
+        <qualifiedname>EspAdc::ConfigureChannel</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref></type>
+          <declname>attenuation</declname>
+        </param>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9" kindref="member">hf_adc_bitwidth_t</ref></type>
+          <declname>bitwidth</declname>
+          <defval><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9a57256fc1353543b129565285e1bc1667" kindref="member">hf_adc_bitwidth_t::WIDTH_DEFAULT</ref></defval>
+        </param>
+        <briefdescription>
+<para>Configure ADC channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to configure </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attenuation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attenuation level </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bitwidth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bit width (optional, uses default if not specified) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="423" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="228" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a82197660e2697e83a75dcec82715edea" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::SetChannelEnabled</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_bool_t enabled) noexcept</argsstring>
+        <name>SetChannelEnabled</name>
+        <qualifiedname>EspAdc::SetChannelEnabled</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Enable or disable ADC channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Enable/disable flag </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="433" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="489" bodyend="495"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1aa2dbbca1008b19554050fb3d61d4efbc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::EnableChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id) noexcept</argsstring>
+        <name>EnableChannel</name>
+        <qualifiedname>EspAdc::EnableChannel</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Enable a specific channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to enable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="440" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="272" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a8d7f0c758314d5d2335228ae089a411a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::DisableChannel</definition>
+        <argsstring>(hf_channel_id_t channel_id) noexcept</argsstring>
+        <name>DisableChannel</name>
+        <qualifiedname>EspAdc::DisableChannel</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Disable a specific channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="447" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="293" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1abc6f77bdd3c2148174e25f6cb4fef6b9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadSingleRaw</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;raw_value) noexcept</argsstring>
+        <name>ReadSingleRaw</name>
+        <qualifiedname>EspAdc::ReadSingleRaw</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+<para>Read single raw value from channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to read from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>raw_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output raw value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="455" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="310" bodyend="329"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1aaf1ab6e5fc8f3dd1d98adb58217c7999" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadSingleVoltage</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;voltage_mv) noexcept</argsstring>
+        <name>ReadSingleVoltage</name>
+        <qualifiedname>EspAdc::ReadSingleVoltage</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>voltage_mv</declname>
+        </param>
+        <briefdescription>
+<para>Read single voltage value from channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to read from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voltage_mv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output voltage in millivolts </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="463" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="331" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a3a4746635880b676e2539a57e03019e5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadMultipleRaw</definition>
+        <argsstring>(const hf_channel_id_t *channel_ids, hf_u8_t num_channels, hf_u32_t *raw_values) noexcept</argsstring>
+        <name>ReadMultipleRaw</name>
+        <qualifiedname>EspAdc::ReadMultipleRaw</qualifiedname>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> *</type>
+          <declname>channel_ids</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>num_channels</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> *</type>
+          <declname>raw_values</declname>
+        </param>
+        <briefdescription>
+<para>Read multiple raw values from channels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of channel IDs </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_channels</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of channels </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>raw_values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output array of raw values </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="472" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="363" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a9a485efe16e4c4cffd8430e93b50abdc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadMultipleVoltage</definition>
+        <argsstring>(const hf_channel_id_t *channel_ids, hf_u8_t num_channels, hf_u32_t *voltage_values) noexcept</argsstring>
+        <name>ReadMultipleVoltage</name>
+        <qualifiedname>EspAdc::ReadMultipleVoltage</qualifiedname>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> *</type>
+          <declname>channel_ids</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>num_channels</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> *</type>
+          <declname>voltage_values</declname>
+        </param>
+        <briefdescription>
+<para>Read multiple voltage values from channels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_ids</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of channel IDs </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_channels</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of channels </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voltage_values</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output array of voltage values in millivolts </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="482" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="383" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a8536b9fb3f4501f0ae3904a69be7d89e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadAveraged</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u16_t num_samples, hf_u32_t &amp;averaged_value) noexcept</argsstring>
+        <name>ReadAveraged</name>
+        <qualifiedname>EspAdc::ReadAveraged</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>num_samples</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>averaged_value</declname>
+        </param>
+        <briefdescription>
+<para>Read averaged value from channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to read from </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>num_samples</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of samples to average </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>averaged_value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output averaged value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="492" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="403" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a5fec22227de2002dd6eee83d7a3d71b3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+        <definition>hf_bool_t EspAdc::IsChannelEnabled</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept</argsstring>
+        <name>IsChannelEnabled</name>
+        <qualifiedname>EspAdc::IsChannelEnabled</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Check if channel is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel ID to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if enabled, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="500" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="497" bodyend="504"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a45ad33cf12b52f2f2ef2f49631b79cdf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ConfigureContinuous</definition>
+        <argsstring>(const hf_adc_continuous_config_t &amp;config) noexcept</argsstring>
+        <name>ConfigureContinuous</name>
+        <qualifiedname>EspAdc::ConfigureContinuous</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__adc__continuous__config__t" kindref="compound">hf_adc_continuous_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configure continuous mode parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Continuous mode configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="511" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="510" bodyend="548"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a15e521d7b7f7999350c92f7324163a44" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::SetContinuousCallback</definition>
+        <argsstring>(hf_adc_continuous_callback_t callback, void *user_data=nullptr) noexcept</argsstring>
+        <name>SetContinuousCallback</name>
+        <qualifiedname>EspAdc::SetContinuousCallback</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1a0e2d23199837f1a7cf8ca9c555bcf367" kindref="member">hf_adc_continuous_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set continuous mode data callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function for continuous data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data passed to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="519" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="550" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a557503781b6750e588f294d5335f38c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::StartContinuous</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>StartContinuous</name>
+        <qualifiedname>EspAdc::StartContinuous</qualifiedname>
+        <briefdescription>
+<para>Start continuous mode sampling. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="526" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="560" bodyend="584"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a7fc0aa8f5824bbbc5e822cc54376a104" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::StopContinuous</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>StopContinuous</name>
+        <qualifiedname>EspAdc::StopContinuous</qualifiedname>
+        <briefdescription>
+<para>Stop continuous mode sampling. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="532" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="586" bodyend="606"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a53adaf2491145413c52c99047bd489ee" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+        <definition>hf_bool_t EspAdc::IsContinuousRunning</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsContinuousRunning</name>
+        <qualifiedname>EspAdc::IsContinuousRunning</qualifiedname>
+        <briefdescription>
+<para>Check if continuous mode is running. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if running, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="538" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="608" bodyend="610"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1ab01214748f53f27d55d434455882a6bf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadContinuousData</definition>
+        <argsstring>(hf_u8_t *buffer, hf_u32_t buffer_size, hf_u32_t &amp;bytes_read, hf_time_t timeout_ms) noexcept</argsstring>
+        <name>ReadContinuousData</name>
+        <qualifiedname>EspAdc::ReadContinuousData</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>bytes_read</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Read continuous mode data (blocking) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer size in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bytes_read</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual bytes read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="548" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="612" bodyend="641"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a8ebd0d0a3003612f510c2083115bf6ed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::InitializeCalibration</definition>
+        <argsstring>(hf_adc_atten_t attenuation, hf_adc_bitwidth_t bitwidth=hf_adc_bitwidth_t::WIDTH_DEFAULT) noexcept</argsstring>
+        <name>InitializeCalibration</name>
+        <qualifiedname>EspAdc::InitializeCalibration</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref></type>
+          <declname>attenuation</declname>
+        </param>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9" kindref="member">hf_adc_bitwidth_t</ref></type>
+          <declname>bitwidth</declname>
+          <defval><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9a57256fc1353543b129565285e1bc1667" kindref="member">hf_adc_bitwidth_t::WIDTH_DEFAULT</ref></defval>
+        </param>
+        <briefdescription>
+<para>Initialize calibration for a specific attenuation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>attenuation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attenuation level to calibrate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bitwidth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bit width for calibration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="561" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="647" bodyend="683"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a4b6578a771f9719df0aba7a483c42797" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+        <definition>hf_bool_t EspAdc::IsCalibrationAvailable</definition>
+        <argsstring>(hf_adc_atten_t attenuation) const noexcept</argsstring>
+        <name>IsCalibrationAvailable</name>
+        <qualifiedname>EspAdc::IsCalibrationAvailable</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref></type>
+          <declname>attenuation</declname>
+        </param>
+        <briefdescription>
+<para>Check if calibration is available for attenuation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>attenuation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attenuation level to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if calibration available, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="570" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="685" bodyend="693"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a57368d9056bbb8ad629f45b4f4d38380" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::RawToVoltage</definition>
+        <argsstring>(hf_u32_t raw_count, hf_adc_atten_t attenuation, hf_u32_t &amp;voltage_mv) noexcept</argsstring>
+        <name>RawToVoltage</name>
+        <qualifiedname>EspAdc::RawToVoltage</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>raw_count</declname>
+        </param>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847" kindref="member">hf_adc_atten_t</ref></type>
+          <declname>attenuation</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>voltage_mv</declname>
+        </param>
+        <briefdescription>
+<para>Convert raw count to voltage using calibration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>raw_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Raw ADC count </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>attenuation</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Attenuation used for conversion </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>voltage_mv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output voltage in millivolts </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="579" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="695" bodyend="720"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1aa01f372706dc5b9c7c2030c6f519c1e9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ConfigureFilter</definition>
+        <argsstring>(const hf_adc_filter_config_t &amp;filter_config) noexcept</argsstring>
+        <name>ConfigureFilter</name>
+        <qualifiedname>EspAdc::ConfigureFilter</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__adc__filter__config__t" kindref="compound">hf_adc_filter_config_t</ref> &amp;</type>
+          <declname>filter_config</declname>
+        </param>
+        <briefdescription>
+<para>Configure digital IIR filter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filter configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="591" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="726" bodyend="762"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a4cd4f281d8522e923efffa875b0f4ad2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::SetFilterEnabled</definition>
+        <argsstring>(hf_u8_t filter_id, hf_bool_t enabled) noexcept</argsstring>
+        <name>SetFilterEnabled</name>
+        <qualifiedname>EspAdc::SetFilterEnabled</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>filter_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Enable/disable IIR filter. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>filter_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Filter ID (0-1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Enable/disable flag </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="599" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="764" bodyend="789"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a751df10d4361e34b8204bc8758b24e04" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ConfigureMonitor</definition>
+        <argsstring>(const hf_adc_monitor_config_t &amp;monitor_config) noexcept</argsstring>
+        <name>ConfigureMonitor</name>
+        <qualifiedname>EspAdc::ConfigureMonitor</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__adc__monitor__config__t" kindref="compound">hf_adc_monitor_config_t</ref> &amp;</type>
+          <declname>monitor_config</declname>
+        </param>
+        <briefdescription>
+<para>Configure threshold monitor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>monitor_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Monitor configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="610" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="795" bodyend="857"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a5d311547b6f8db4b91b5c43496588e1a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::SetMonitorCallback</definition>
+        <argsstring>(hf_u8_t monitor_id, hf_adc_monitor_callback_t callback, void *user_data=nullptr) noexcept</argsstring>
+        <name>SetMonitorCallback</name>
+        <qualifiedname>EspAdc::SetMonitorCallback</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>monitor_id</declname>
+        </param>
+        <param>
+          <type><ref refid="EspTypes__ADC_8h_1afb37bea53ade46ebbac1eba5eb604cda" kindref="member">hf_adc_monitor_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set monitor threshold callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>monitor_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Monitor ID (0-1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function for threshold events </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data passed to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="619" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="859" bodyend="876"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1adb665aed1dce9777b004839ff2f354a7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::SetMonitorEnabled</definition>
+        <argsstring>(hf_u8_t monitor_id, hf_bool_t enabled) noexcept</argsstring>
+        <name>SetMonitorEnabled</name>
+        <qualifiedname>EspAdc::SetMonitorEnabled</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>monitor_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
+          <declname>enabled</declname>
+        </param>
+        <briefdescription>
+<para>Enable/disable threshold monitor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>monitor_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Monitor ID (0-1) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enabled</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Enable/disable flag </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_adc_err_t error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="628" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="878" bodyend="903"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a6dbc06099ca66dc4c577c4a844b0f1cd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::GetStatistics</definition>
+        <argsstring>(hf_adc_statistics_t &amp;statistics) noexcept override</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>EspAdc::GetStatistics</qualifiedname>
+        <reimplements refid="classBaseAdc_1ae0c135b27c4cb07a5ff357f7c5e1be50">GetStatistics</reimplements>
+        <param>
+          <type><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get ADC operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to statistics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="639" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="909" bodyend="913"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1ac65647338df854681584bc1efc6bb88d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::GetDiagnostics</definition>
+        <argsstring>(hf_adc_diagnostics_t &amp;diagnostics) noexcept override</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>EspAdc::GetDiagnostics</qualifiedname>
+        <reimplements refid="classBaseAdc_1a1c15d97ea32b60ab3472744ca9a99ffd">GetDiagnostics</reimplements>
+        <param>
+          <type><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get ADC diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to diagnostics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="646" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="915" bodyend="919"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1addd7719b17eb884fa6f81dc9174b1b91" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ResetStatistics</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>EspAdc::ResetStatistics</qualifiedname>
+        <reimplements refid="classBaseAdc_1a10742f7d342d53682b6d3cec14176f0f">ResetStatistics</reimplements>
+        <briefdescription>
+<para>Reset statistics counters. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="651" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="921" bodyend="925"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a5f62c857a09e625de27e74a83573a0f1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::GetLastError</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetLastError</name>
+        <qualifiedname>EspAdc::GetLastError</qualifiedname>
+        <briefdescription>
+<para>Get last error information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Last error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="657" column="17" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="927" bodyend="929"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1abf2663c3ab8440f0e2fa307995a6adfb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref> &amp;</type>
+        <definition>const hf_adc_unit_config_t &amp; EspAdc::GetUnitConfig</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetUnitConfig</name>
+        <qualifiedname>EspAdc::GetUnitConfig</qualifiedname>
+        <briefdescription>
+<para>Get unit configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Reference to unit configuration </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="663" column="31" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="931" bodyend="933"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classEspAdc_1af25f7cf3172ad0d92a18e961e2917f8d" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::InitializeOneshot</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>InitializeOneshot</name>
+        <qualifiedname>EspAdc::InitializeOneshot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="682" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1132" bodyend="1172"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a0333cae3bf2014e1ae13df604b7be2c9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::InitializeContinuous</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>InitializeContinuous</name>
+        <qualifiedname>EspAdc::InitializeContinuous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="683" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1174" bodyend="1257"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a2cbcd4128df1547b8a4f09a82234aa77" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::DeinitializeOneshot</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>DeinitializeOneshot</name>
+        <qualifiedname>EspAdc::DeinitializeOneshot</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="684" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1259" bodyend="1275"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a9e25cd7222d7331d085e1eebf433f552" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::DeinitializeContinuous</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>DeinitializeContinuous</name>
+        <qualifiedname>EspAdc::DeinitializeContinuous</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="685" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1277" bodyend="1299"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1aab7320c2f32db76f75e9841d7104f96c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ReadOneshotRaw</definition>
+        <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;raw_value) noexcept</argsstring>
+        <name>ReadOneshotRaw</name>
+        <qualifiedname>EspAdc::ReadOneshotRaw</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>raw_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="686" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1301" bodyend="1326"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1aa291093348a844eaab107b0a71113074" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ValidateChannelId</definition>
+        <argsstring>(hf_channel_id_t channel_id) const noexcept</argsstring>
+        <name>ValidateChannelId</name>
+        <qualifiedname>EspAdc::ValidateChannelId</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="687" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1328" bodyend="1333"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a363cb73973674e2bc825ded4fd5626d4" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::ValidateConfiguration</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>ValidateConfiguration</name>
+        <qualifiedname>EspAdc::ValidateConfiguration</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="688" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1335" bodyend="1396"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1ae95ea4a7a416b0dc4bad321a2c1ac40b" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+        <definition>hf_adc_err_t EspAdc::UpdateStatistics</definition>
+        <argsstring>(hf_adc_err_t result, uint64_t start_time_us) noexcept</argsstring>
+        <name>UpdateStatistics</name>
+        <qualifiedname>EspAdc::UpdateStatistics</qualifiedname>
+        <param>
+          <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+          <declname>result</declname>
+        </param>
+        <param>
+          <type>uint64_t</type>
+          <declname>start_time_us</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="689" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1398" bodyend="1431"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a662613228626db068d20291afdd4872d" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint64_t</type>
+        <definition>hf_u64_t EspAdc::GetCurrentTimeUs</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetCurrentTimeUs</name>
+        <qualifiedname>EspAdc::GetCurrentTimeUs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="690" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1433" bodyend="1435"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a8f3eb3aba7e2e740f50e82653c6193d3" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspAdc::UpdateDiagnostics</definition>
+        <argsstring>(hf_adc_err_t error) noexcept</argsstring>
+        <name>UpdateDiagnostics</name>
+        <qualifiedname>EspAdc::UpdateDiagnostics</qualifiedname>
+        <param>
+          <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="691" column="8" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1437" bodyend="1460"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classEspAdc_1ad189760e43ce4529c4dbcf40c4a5873d" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref> IRAM_ATTR</type>
+        <definition>hf_bool_t IRAM_ATTR EspAdc::ContinuousCallback</definition>
+        <argsstring>(adc_continuous_handle_t handle, const adc_continuous_evt_data_t *edata, void *user_data) noexcept</argsstring>
+        <name>ContinuousCallback</name>
+        <qualifiedname>EspAdc::ContinuousCallback</qualifiedname>
+        <param>
+          <type>adc_continuous_handle_t</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type>const adc_continuous_evt_data_t *</type>
+          <declname>edata</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="694" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1053" bodyend="1076"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a2d566599e1f11e2f38bde8235e66177a" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref> IRAM_ATTR</type>
+        <definition>hf_bool_t IRAM_ATTR EspAdc::HighThresholdCallback</definition>
+        <argsstring>(adc_monitor_handle_t monitor_handle, const adc_monitor_evt_data_t *event_data, void *user_data) noexcept</argsstring>
+        <name>HighThresholdCallback</name>
+        <qualifiedname>EspAdc::HighThresholdCallback</qualifiedname>
+        <param>
+          <type>adc_monitor_handle_t</type>
+          <declname>monitor_handle</declname>
+        </param>
+        <param>
+          <type>const adc_monitor_evt_data_t *</type>
+          <declname>event_data</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="697" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1078" bodyend="1101"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspAdc_1a25d9e8a2f953312b3b2019a1c3d74c49" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref> IRAM_ATTR</type>
+        <definition>hf_bool_t IRAM_ATTR EspAdc::LowThresholdCallback</definition>
+        <argsstring>(adc_monitor_handle_t monitor_handle, const adc_monitor_evt_data_t *event_data, void *user_data) noexcept</argsstring>
+        <name>LowThresholdCallback</name>
+        <qualifiedname>EspAdc::LowThresholdCallback</qualifiedname>
+        <param>
+          <type>adc_monitor_handle_t</type>
+          <declname>monitor_handle</declname>
+        </param>
+        <param>
+          <type>const adc_monitor_evt_data_t *</type>
+          <declname>event_data</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspAdc.h" line="700" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1103" bodyend="1126"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 ADC implementation class. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a complete implementation of the <ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> interface for ESP32 variants. It supports both one-shot and continuous ADC modes with comprehensive feature support. Each instance represents a single ADC unit on the ESP32.</para>
+<para>Key Features:<itemizedlist>
+<listitem><para>One-shot mode: Single channel conversions with blocking or non-blocking operation</para>
+</listitem><listitem><para>Continuous mode: Multi-channel high-speed sampling with DMA and callbacks</para>
+</listitem><listitem><para>Hardware calibration: Automatic calibration using ESP32 eFuse data</para>
+</listitem><listitem><para>Digital filters: Up to 2 IIR filters for noise reduction</para>
+</listitem><listitem><para>Threshold monitors: Up to 2 monitors with configurable thresholds and callbacks</para>
+</listitem><listitem><para>Thread safety: Proper mutex protection for multi-threaded access</para>
+</listitem><listitem><para>Error handling: Comprehensive error reporting and recovery</para>
+</listitem><listitem><para>Resource management: Automatic cleanup and proper resource lifecycle</para>
+</listitem><listitem><para>Multi-variant support: Works across all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2)</para>
+</listitem></itemizedlist>
+</para>
+<para>Usage Example (Single ADC Unit): <programlisting><codeline><highlight class="comment">//<sp/>For<sp/>ESP32-C6<sp/>(single<sp/>unit)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>adc1({.unit_id<sp/>=<sp/>0});<sp/></highlight><highlight class="comment">//<sp/>ADC1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>ESP32<sp/>Classic<sp/>(two<sp/>units)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>adc1({.unit_id<sp/>=<sp/>0});<sp/></highlight><highlight class="comment">//<sp/>ADC1</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>adc2({.unit_id<sp/>=<sp/>1});<sp/></highlight><highlight class="comment">//<sp/>ADC2</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(adc1.EnsureInitialized())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>voltage;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(adc1.ReadChannelV(2,<sp/>voltage)<sp/>==<sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0adfe2a6250ec9b82103404aa9825e725f" kindref="member">hf_adc_err_t::ADC_SUCCESS</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>voltage<sp/>reading</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+</programlisting></para>
+<para>Usage Example (Continuous mode): <programlisting><codeline><highlight class="normal"><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>adc({.unit_id<sp/>=<sp/>0});</highlight></codeline>
+<codeline><highlight class="normal">adc.<ref refid="classEspAdc_1aa5565e8cc60dc1c8c38ef1416ceb9eee" kindref="member">SetMode</ref>(<ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ab1fa9dd3af034b3ef4291579aa673c07" kindref="member">hf_adc_mode_t::CONTINUOUS</ref>);</highlight></codeline>
+<codeline><highlight class="normal">adc.ConfigureChannel(0,<sp/><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847a2f3a36ebefed1b370fc9cd8b8f9b087c" kindref="member">hf_adc_atten_t::ATTEN_DB_12</ref>);</highlight></codeline>
+<codeline><highlight class="normal">adc.ConfigureChannel(1,<sp/><ref refid="EspTypes__ADC_8h_1a98bc196c1369437761fa2459f53ff847a2f3a36ebefed1b370fc9cd8b8f9b087c" kindref="member">hf_adc_atten_t::ATTEN_DB_12</ref>);</highlight></codeline>
+<codeline><highlight class="normal">adc.SetContinuousCallback([](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__adc__continuous__data__t" kindref="compound">hf_adc_continuous_data_t</ref>*<sp/>data,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>continuous<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>to<sp/>yield<sp/>to<sp/>higher<sp/>priority<sp/>task</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">});</highlight></codeline>
+<codeline><highlight class="normal">adc.StartContinuous();</highlight></codeline>
+</programlisting></para>
+<para><simplesect kind="note"><para><ref refid="classEspAdc" kindref="compound">EspAdc</ref> instances cannot be copied or moved due to hardware resource management. </para>
+</simplesect>
+<simplesect kind="note"><para>If you need to transfer ownership, use std::unique_ptr&lt;EspAdc&gt; or similar smart pointers. </para>
+</simplesect>
+<simplesect kind="note"><para>Each <ref refid="classEspAdc" kindref="compound">EspAdc</ref> instance should be created and destroyed in the same thread context. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseAdc</label>
+        <link refid="classBaseAdc"/>
+      </node>
+      <node id="1">
+        <label>EspAdc</label>
+        <link refid="classEspAdc"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseAdc</label>
+        <link refid="classBaseAdc"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EspAdc</label>
+        <link refid="classEspAdc"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+        <childnode refid="9" relation="usage">
+          <edgelabel>config_mutex_</edgelabel>
+          <edgelabel>stats_mutex_</edgelabel>
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>continuous_callback_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="9">
+        <label>RtosMutex</label>
+        <link refid="classRtosMutex"/>
+      </node>
+      <node id="8">
+        <label>hf_adc_calibration_config_t</label>
+        <link refid="structhf__adc__calibration__config__t"/>
+      </node>
+      <node id="6">
+        <label>hf_adc_channel_config_t</label>
+        <link refid="structhf__adc__channel__config__t"/>
+      </node>
+      <node id="7">
+        <label>hf_adc_continuous_config_t</label>
+        <link refid="structhf__adc__continuous__config__t"/>
+      </node>
+      <node id="10">
+        <label>hf_adc_continuous_data_t</label>
+        <link refid="structhf__adc__continuous__data__t"/>
+      </node>
+      <node id="4">
+        <label>hf_adc_diagnostics_t</label>
+        <link refid="structhf__adc__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_adc_statistics_t</label>
+        <link refid="structhf__adc__statistics__t"/>
+      </node>
+      <node id="5">
+        <label>hf_adc_unit_config_t</label>
+        <link refid="structhf__adc__unit__config__t"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>channel_configs</edgelabel>
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>continuous_config</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>calibration_config</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspAdc.h" line="258" column="1" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="258" bodyend="736"/>
+    <listofallmembers>
+      <member refid="classBaseAdc_1afa09240c509104a18d40aa2dbbbc5e9d" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>BaseAdc</name></member>
+      <member refid="classBaseAdc_1a37498a3ef03c848856290a4846c87dd7" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>BaseAdc</name></member>
+      <member refid="classBaseAdc_1aebc6e018b001afd845543708c1b3cb86" prot="protected" virt="non-virtual"><scope>EspAdc</scope><name>BaseAdc</name></member>
+      <member refid="classEspAdc_1a57582feb18bd008a49768d5539348e57" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>calibration_handles_</name></member>
+      <member refid="classEspAdc_1a6db623dfa1c5f83a76c8d6f9af42c7c8" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>config_</name></member>
+      <member refid="classEspAdc_1a2de8a2dae650ab29adce6821a639e28c" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>config_mutex_</name></member>
+      <member refid="classEspAdc_1a8761809a54d41ff5bbe428a1bf26876b" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ConfigureChannel</name></member>
+      <member refid="classEspAdc_1a45ad33cf12b52f2f2ef2f49631b79cdf" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ConfigureContinuous</name></member>
+      <member refid="classEspAdc_1aa01f372706dc5b9c7c2030c6f519c1e9" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ConfigureFilter</name></member>
+      <member refid="classEspAdc_1a751df10d4361e34b8204bc8758b24e04" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ConfigureMonitor</name></member>
+      <member refid="classEspAdc_1a4a81d64afb4455f9f5ebbffa402c8fe4" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>continuous_callback_</name></member>
+      <member refid="classEspAdc_1ab88a971087cd83f541f906af6deda056" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>continuous_handle_</name></member>
+      <member refid="classEspAdc_1ae7327d528b6bcd71aa6d4364a9b61a8f" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>continuous_running_</name></member>
+      <member refid="classEspAdc_1a8223af54ab4b28b80ff73b7e1b42b3ba" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>continuous_user_data_</name></member>
+      <member refid="classEspAdc_1ad189760e43ce4529c4dbcf40c4a5873d" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>ContinuousCallback</name></member>
+      <member refid="classEspAdc_1a3763c67c9ca0ecfd8feda1d44b22d1e0" prot="public" virt="virtual"><scope>EspAdc</scope><name>Deinitialize</name></member>
+      <member refid="classEspAdc_1a9e25cd7222d7331d085e1eebf433f552" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>DeinitializeContinuous</name></member>
+      <member refid="classEspAdc_1a2cbcd4128df1547b8a4f09a82234aa77" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>DeinitializeOneshot</name></member>
+      <member refid="classEspAdc_1a91c329fe7f1e0abaf44ede88ed3590c9" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>diagnostics_</name></member>
+      <member refid="classEspAdc_1a8d7f0c758314d5d2335228ae089a411a" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>DisableChannel</name></member>
+      <member refid="classEspAdc_1aa2dbbca1008b19554050fb3d61d4efbc" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>EnableChannel</name></member>
+      <member refid="classBaseAdc_1ac97e5b49f3e9705bcdd0d9a500532e2f" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseAdc_1a7a0ce14e616b94b41b7f5f3103c75b61" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>EnsureInitialized</name></member>
+      <member refid="classEspAdc_1a535eda201dc1e424367b0b79094328ca" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>EspAdc</name></member>
+      <member refid="classEspAdc_1a040a8174fe3df5f7b3eeb79e6e0e4eac" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>EspAdc</name></member>
+      <member refid="classEspAdc_1a176689eaf3ffc30a447dc292960922d0" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>EspAdc</name></member>
+      <member refid="classEspAdc_1a2b24c60b289769e1baff7421ac4a614a" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>filter_handles_</name></member>
+      <member refid="classEspAdc_1a662613228626db068d20291afdd4872d" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>GetCurrentTimeUs</name></member>
+      <member refid="classEspAdc_1ac65647338df854681584bc1efc6bb88d" prot="public" virt="virtual"><scope>EspAdc</scope><name>GetDiagnostics</name></member>
+      <member refid="classEspAdc_1a5f62c857a09e625de27e74a83573a0f1" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>GetLastError</name></member>
+      <member refid="classEspAdc_1ac234759d85da10db28bb2773daeec9e1" prot="public" virt="virtual"><scope>EspAdc</scope><name>GetMaxChannels</name></member>
+      <member refid="classEspAdc_1a90c2d7e6e1f828fbde16b861d82e08c4" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>GetMode</name></member>
+      <member refid="classEspAdc_1a6dbc06099ca66dc4c577c4a844b0f1cd" prot="public" virt="virtual"><scope>EspAdc</scope><name>GetStatistics</name></member>
+      <member refid="classEspAdc_1abf2663c3ab8440f0e2fa307995a6adfb" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>GetUnitConfig</name></member>
+      <member refid="classEspAdc_1a74a01c81453e5a592a42d9dbf6822ca9" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_CONTINUOUS_CLK_SRC</name></member>
+      <member refid="classEspAdc_1a751617ee185376fa0d6ab36192d3bd21" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_DEFAULT_SAMPLING_FREQ</name></member>
+      <member refid="classEspAdc_1a4f3041f636ac945e80c729950dba0c36" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_DMA_BUFFER_SIZE_DEFAULT</name></member>
+      <member refid="classEspAdc_1a8e86a890fef42cf2df860aab0e7232c9" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_DMA_BUFFER_SIZE_MAX</name></member>
+      <member refid="classEspAdc_1a4681252972a0ff3e5d7a4ad30e8129bc" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_DMA_BUFFER_SIZE_MIN</name></member>
+      <member refid="classEspAdc_1a290c2aea8eabeff58d069c845d00af54" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_MAX_CHANNELS</name></member>
+      <member refid="classEspAdc_1aa348b52181cff17770ecc4f30c83a281" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_MAX_FILTERS</name></member>
+      <member refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_MAX_MONITORS</name></member>
+      <member refid="classEspAdc_1a654a79dd9b9995b5212e3774801af713" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_MAX_RAW_VALUE_12BIT</name></member>
+      <member refid="classEspAdc_1af56e5ffd8f329983d4dccd5faed97588" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_MAX_SAMPLING_FREQ</name></member>
+      <member refid="classEspAdc_1ae7109751b31c9a9b6f6e660300eb1d43" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_MAX_UNITS</name></member>
+      <member refid="classEspAdc_1ae331601ad9c6323ac82674ed3522e2c3" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_MIN_SAMPLING_FREQ</name></member>
+      <member refid="classEspAdc_1a12abe097f1e7355cdb6b0954a703e1d4" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_ONESHOT_CLK_SRC</name></member>
+      <member refid="classEspAdc_1aaa5e88282ea20316303cacadcc48e194" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_REFERENCE_VOLTAGE_MV</name></member>
+      <member refid="classEspAdc_1ae9c8c79e7e3b4e99a1265c8262c09771" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>HF_ADC_ULP_MODE</name></member>
+      <member refid="classEspAdc_1a2d566599e1f11e2f38bde8235e66177a" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>HighThresholdCallback</name></member>
+      <member refid="classEspAdc_1a3e0aba56249e205578cbe92541554b08" prot="public" virt="virtual"><scope>EspAdc</scope><name>Initialize</name></member>
+      <member refid="classEspAdc_1a8ebd0d0a3003612f510c2083115bf6ed" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>InitializeCalibration</name></member>
+      <member refid="classEspAdc_1a0333cae3bf2014e1ae13df604b7be2c9" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>InitializeContinuous</name></member>
+      <member refid="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" prot="protected" virt="non-virtual"><scope>EspAdc</scope><name>initialized_</name></member>
+      <member refid="classEspAdc_1af25f7cf3172ad0d92a18e961e2917f8d" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>InitializeOneshot</name></member>
+      <member refid="classEspAdc_1a4b6578a771f9719df0aba7a483c42797" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>IsCalibrationAvailable</name></member>
+      <member refid="classEspAdc_1a8d37e2e11fac48019803f6260a1b39cc" prot="public" virt="virtual"><scope>EspAdc</scope><name>IsChannelAvailable</name></member>
+      <member refid="classEspAdc_1a5fec22227de2002dd6eee83d7a3d71b3" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>IsChannelEnabled</name></member>
+      <member refid="classEspAdc_1a53adaf2491145413c52c99047bd489ee" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>IsContinuousRunning</name></member>
+      <member refid="classBaseAdc_1a475764935a2e741538cfc643e0837653" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>IsInitialized</name></member>
+      <member refid="classEspAdc_1a73204df6c563d802757b27188b644b5e" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>last_error_</name></member>
+      <member refid="classEspAdc_1a25d9e8a2f953312b3b2019a1c3d74c49" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>LowThresholdCallback</name></member>
+      <member refid="classEspAdc_1a1beefdaee72af0353b6bca259d7acc34" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>monitor_callbacks_</name></member>
+      <member refid="classEspAdc_1a67f977b364fddbd45aa4d4abdae9be7b" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>monitor_contexts_</name></member>
+      <member refid="classEspAdc_1a1c76bfd433fc8685330cc866650c1b4b" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>monitor_handles_</name></member>
+      <member refid="classEspAdc_1ac296b19dfe33ff8b5d7d6eec9dd18df2" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>monitor_user_data_</name></member>
+      <member refid="classEspAdc_1aee946b33ba3816292c7a7e82babf57ec" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>oneshot_handle_</name></member>
+      <member refid="classEspAdc_1aa9b02a740c72d5064613a3b9bb6a6249" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>operator=</name></member>
+      <member refid="classEspAdc_1a1c46e8dce3bb9de8c59ce1b2408ac92c" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>operator=</name></member>
+      <member refid="classBaseAdc_1aa1a7284050fe28d87413a452f1dfe24a" prot="public" virt="non-virtual" ambiguityscope="BaseAdc::"><scope>EspAdc</scope><name>operator=</name></member>
+      <member refid="classBaseAdc_1a50784bdbb7ce352301cbab76bb4ac887" prot="public" virt="non-virtual" ambiguityscope="BaseAdc::"><scope>EspAdc</scope><name>operator=</name></member>
+      <member refid="classEspAdc_1a57368d9056bbb8ad629f45b4f4d38380" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>RawToVoltage</name></member>
+      <member refid="classEspAdc_1a8536b9fb3f4501f0ae3904a69be7d89e" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ReadAveraged</name></member>
+      <member refid="classEspAdc_1a4a1844e4b8add43b1f83c1bd59c430f8" prot="public" virt="virtual"><scope>EspAdc</scope><name>ReadChannel</name></member>
+      <member refid="classEspAdc_1aee902d7623f92e1a64b6708b41c63b3b" prot="public" virt="virtual"><scope>EspAdc</scope><name>ReadChannelCount</name></member>
+      <member refid="classEspAdc_1a41dd2c15efe312397d72b9e803741318" prot="public" virt="virtual"><scope>EspAdc</scope><name>ReadChannelV</name></member>
+      <member refid="classEspAdc_1ab01214748f53f27d55d434455882a6bf" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ReadContinuousData</name></member>
+      <member refid="classEspAdc_1ae78a280905f09634070c9ce624002cb7" prot="public" virt="virtual"><scope>EspAdc</scope><name>ReadMultipleChannels</name></member>
+      <member refid="classEspAdc_1a3a4746635880b676e2539a57e03019e5" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ReadMultipleRaw</name></member>
+      <member refid="classEspAdc_1a9a485efe16e4c4cffd8430e93b50abdc" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ReadMultipleVoltage</name></member>
+      <member refid="classEspAdc_1aab7320c2f32db76f75e9841d7104f96c" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>ReadOneshotRaw</name></member>
+      <member refid="classEspAdc_1abc6f77bdd3c2148174e25f6cb4fef6b9" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ReadSingleRaw</name></member>
+      <member refid="classEspAdc_1aaf1ab6e5fc8f3dd1d98adb58217c7999" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>ReadSingleVoltage</name></member>
+      <member refid="classBaseAdc_1ab7b9a99f3eaa4fc36dae5ec9fcb0571d" prot="public" virt="virtual"><scope>EspAdc</scope><name>ResetDiagnostics</name></member>
+      <member refid="classEspAdc_1addd7719b17eb884fa6f81dc9174b1b91" prot="public" virt="virtual"><scope>EspAdc</scope><name>ResetStatistics</name></member>
+      <member refid="classEspAdc_1a82197660e2697e83a75dcec82715edea" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>SetChannelEnabled</name></member>
+      <member refid="classEspAdc_1a15e521d7b7f7999350c92f7324163a44" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>SetContinuousCallback</name></member>
+      <member refid="classEspAdc_1a4cd4f281d8522e923efffa875b0f4ad2" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>SetFilterEnabled</name></member>
+      <member refid="classEspAdc_1aa5565e8cc60dc1c8c38ef1416ceb9eee" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>SetMode</name></member>
+      <member refid="classEspAdc_1a5d311547b6f8db4b91b5c43496588e1a" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>SetMonitorCallback</name></member>
+      <member refid="classEspAdc_1adb665aed1dce9777b004839ff2f354a7" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>SetMonitorEnabled</name></member>
+      <member refid="classEspAdc_1a557503781b6750e588f294d5335f38c5" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>StartContinuous</name></member>
+      <member refid="classEspAdc_1a455883a7cc0f32cd205451d79c444c57" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>statistics_</name></member>
+      <member refid="classEspAdc_1a75d7e5963af45c0a975ac428344b096d" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>stats_mutex_</name></member>
+      <member refid="classEspAdc_1a7fc0aa8f5824bbbc5e822cc54376a104" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>StopContinuous</name></member>
+      <member refid="classEspAdc_1a8f3eb3aba7e2e740f50e82653c6193d3" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>UpdateDiagnostics</name></member>
+      <member refid="classEspAdc_1ae95ea4a7a416b0dc4bad321a2c1ac40b" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>UpdateStatistics</name></member>
+      <member refid="classEspAdc_1aa291093348a844eaab107b0a71113074" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>ValidateChannelId</name></member>
+      <member refid="classEspAdc_1a363cb73973674e2bc825ded4fd5626d4" prot="private" virt="non-virtual"><scope>EspAdc</scope><name>ValidateConfiguration</name></member>
+      <member refid="classBaseAdc_1a33e66d850746427789319566e201e6b9" prot="public" virt="virtual"><scope>EspAdc</scope><name>~BaseAdc</name></member>
+      <member refid="classEspAdc_1a7c57e4e693144146542be1218cd929aa" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>~EspAdc</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structesp__temp__state__t" kind="struct" language="C++" prot="public">
+    <compoundname>esp_temp_state_t</compoundname>
+    <includes refid="EspTemperature_8h" local="no">EspTemperature.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structesp__temp__state__t_1a8c43679a55729c46d107804c3e0f8d91" prot="public" static="no" mutable="no">
+        <type>temperature_sensor_handle_t</type>
+        <definition>temperature_sensor_handle_t esp_temp_state_t::handle</definition>
+        <argsstring></argsstring>
+        <name>handle</name>
+        <qualifiedname>esp_temp_state_t::handle</qualifiedname>
+        <briefdescription>
+<para>ESP-IDF temperature sensor handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="100" column="31" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1aa27ed92ce9a8ac860496978b0a41f614" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTemperature_8h_1ac20464eaa276aa198cb03d0fc5a6e679" kindref="member">esp_temp_range_t</ref></type>
+        <definition>esp_temp_range_t esp_temp_state_t::current_range</definition>
+        <argsstring></argsstring>
+        <name>current_range</name>
+        <qualifiedname>esp_temp_state_t::current_range</qualifiedname>
+        <briefdescription>
+<para>Current measurement range. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="101" column="20" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1a7ea6386f0990755a7e6569081a701bfa" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float esp_temp_state_t::calibration_offset</definition>
+        <argsstring></argsstring>
+        <name>calibration_offset</name>
+        <qualifiedname>esp_temp_state_t::calibration_offset</qualifiedname>
+        <briefdescription>
+<para>Calibration offset in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="102" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1a88f1b850e2b1a619dd9e87a246c26eda" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool esp_temp_state_t::threshold_monitoring_enabled</definition>
+        <argsstring></argsstring>
+        <name>threshold_monitoring_enabled</name>
+        <qualifiedname>esp_temp_state_t::threshold_monitoring_enabled</qualifiedname>
+        <briefdescription>
+<para>Threshold monitoring status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="103" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1a2a7e449e9494d084491b6a02682a407c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool esp_temp_state_t::continuous_monitoring_active</definition>
+        <argsstring></argsstring>
+        <name>continuous_monitoring_active</name>
+        <qualifiedname>esp_temp_state_t::continuous_monitoring_active</qualifiedname>
+        <briefdescription>
+<para>Continuous monitoring status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="104" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1ad9f8009a7018aa3365717afffdd4839c" prot="public" static="no" mutable="no">
+        <type>esp_timer_handle_t</type>
+        <definition>esp_timer_handle_t esp_temp_state_t::monitoring_timer</definition>
+        <argsstring></argsstring>
+        <name>monitoring_timer</name>
+        <qualifiedname>esp_temp_state_t::monitoring_timer</qualifiedname>
+        <briefdescription>
+<para>Timer handle for continuous monitoring. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="105" column="22" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1ab8a38c3e4b46c890de26651536f7ee8e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t esp_temp_state_t::sample_rate_hz</definition>
+        <argsstring></argsstring>
+        <name>sample_rate_hz</name>
+        <qualifiedname>esp_temp_state_t::sample_rate_hz</qualifiedname>
+        <briefdescription>
+<para>Current sample rate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="106" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1ac83da7adf4796080727845ea6edb8bca" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t esp_temp_state_t::last_reading_timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>last_reading_timestamp_us</name>
+        <qualifiedname>esp_temp_state_t::last_reading_timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Last reading timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="107" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1a0bd9df15c3eadb5793ecdf9829ad1bab" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float esp_temp_state_t::last_temperature_celsius</definition>
+        <argsstring></argsstring>
+        <name>last_temperature_celsius</name>
+        <qualifiedname>esp_temp_state_t::last_temperature_celsius</qualifiedname>
+        <briefdescription>
+<para>Last temperature reading. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="108" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structesp__temp__state__t_1ae3ff4b7eb1a7c86c3c083bdc7d46ca1c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool esp_temp_state_t::allow_power_down</definition>
+        <argsstring></argsstring>
+        <name>allow_power_down</name>
+        <qualifiedname>esp_temp_state_t::allow_power_down</qualifiedname>
+        <briefdescription>
+<para>Allow power down during light sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="109" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32-C6 specific temperature sensor state. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspTemperature.h" line="99" column="1" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="99" bodyend="110"/>
+    <listofallmembers>
+      <member refid="structesp__temp__state__t_1ae3ff4b7eb1a7c86c3c083bdc7d46ca1c" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>allow_power_down</name></member>
+      <member refid="structesp__temp__state__t_1a7ea6386f0990755a7e6569081a701bfa" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>calibration_offset</name></member>
+      <member refid="structesp__temp__state__t_1a2a7e449e9494d084491b6a02682a407c" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>continuous_monitoring_active</name></member>
+      <member refid="structesp__temp__state__t_1aa27ed92ce9a8ac860496978b0a41f614" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>current_range</name></member>
+      <member refid="structesp__temp__state__t_1a8c43679a55729c46d107804c3e0f8d91" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>handle</name></member>
+      <member refid="structesp__temp__state__t_1ac83da7adf4796080727845ea6edb8bca" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>last_reading_timestamp_us</name></member>
+      <member refid="structesp__temp__state__t_1a0bd9df15c3eadb5793ecdf9829ad1bab" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>last_temperature_celsius</name></member>
+      <member refid="structesp__temp__state__t_1ad9f8009a7018aa3365717afffdd4839c" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>monitoring_timer</name></member>
+      <member refid="structesp__temp__state__t_1ab8a38c3e4b46c890de26651536f7ee8e" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>sample_rate_hz</name></member>
+      <member refid="structesp__temp__state__t_1a88f1b850e2b1a619dd9e87a246c26eda" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>threshold_monitoring_enabled</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

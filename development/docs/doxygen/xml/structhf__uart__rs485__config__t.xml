@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__uart__rs485__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_uart_rs485_config_t</compoundname>
+    <includes refid="EspTypes__UART_8h" local="no">EspTypes_UART.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a2c2b7274f794e33ab23b7ae1a6ab3c9f" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref></type>
+        <definition>hf_uart_mode_t hf_uart_rs485_config_t::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <qualifiedname>hf_uart_rs485_config_t::mode</qualifiedname>
+        <briefdescription>
+<para>RS485 operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="199" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a818080c9397d34955b4232ef58258666" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_rs485_config_t::enable_collision_detect</definition>
+        <argsstring></argsstring>
+        <name>enable_collision_detect</name>
+        <qualifiedname>hf_uart_rs485_config_t::enable_collision_detect</qualifiedname>
+        <briefdescription>
+<para>Enable collision detection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="200" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a3601528cb25db0e361bea72eac49d9d6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_rs485_config_t::enable_echo_suppression</definition>
+        <argsstring></argsstring>
+        <name>enable_echo_suppression</name>
+        <qualifiedname>hf_uart_rs485_config_t::enable_echo_suppression</qualifiedname>
+        <briefdescription>
+<para>Suppress echo during transmission. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="201" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__rs485__config__t_1ab6b1b3c4a8b9fe0d3cd21e9fb64fcbff" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_rs485_config_t::auto_rts_control</definition>
+        <argsstring></argsstring>
+        <name>auto_rts_control</name>
+        <qualifiedname>hf_uart_rs485_config_t::auto_rts_control</qualifiedname>
+        <briefdescription>
+<para>Automatic RTS line control. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="202" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a4228b02c063ac124c6c10073c8fdada7" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_uart_rs485_config_t::rts_delay_ms</definition>
+        <argsstring></argsstring>
+        <name>rts_delay_ms</name>
+        <qualifiedname>hf_uart_rs485_config_t::rts_delay_ms</qualifiedname>
+        <briefdescription>
+<para>RTS delay in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="203" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a8e5f308519a6106c32dc5b6e6d967582" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_uart_rs485_config_t::rts_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>rts_timeout_ms</name>
+        <qualifiedname>hf_uart_rs485_config_t::rts_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>RTS timeout in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="204" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__rs485__config__t_1ac271b6dc597721d0a37548d9234f75f0" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_uart_rs485_config_t::collision_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>collision_timeout_ms</name>
+        <qualifiedname>hf_uart_rs485_config_t::collision_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Collision detection timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="205" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__uart__rs485__config__t_1a5fbdb79feb7f8f4272a6479752b96bcb" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_uart_rs485_config_t::hf_uart_rs485_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_uart_rs485_config_t</name>
+        <qualifiedname>hf_uart_rs485_config_t::hf_uart_rs485_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="207" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="207" bodyend="210"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 UART RS485 configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="198" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="198" bodyend="211"/>
+    <listofallmembers>
+      <member refid="structhf__uart__rs485__config__t_1ab6b1b3c4a8b9fe0d3cd21e9fb64fcbff" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>auto_rts_control</name></member>
+      <member refid="structhf__uart__rs485__config__t_1ac271b6dc597721d0a37548d9234f75f0" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>collision_timeout_ms</name></member>
+      <member refid="structhf__uart__rs485__config__t_1a818080c9397d34955b4232ef58258666" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>enable_collision_detect</name></member>
+      <member refid="structhf__uart__rs485__config__t_1a3601528cb25db0e361bea72eac49d9d6" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>enable_echo_suppression</name></member>
+      <member refid="structhf__uart__rs485__config__t_1a5fbdb79feb7f8f4272a6479752b96bcb" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>hf_uart_rs485_config_t</name></member>
+      <member refid="structhf__uart__rs485__config__t_1a2c2b7274f794e33ab23b7ae1a6ab3c9f" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>mode</name></member>
+      <member refid="structhf__uart__rs485__config__t_1a4228b02c063ac124c6c10073c8fdada7" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>rts_delay_ms</name></member>
+      <member refid="structhf__uart__rs485__config__t_1a8e5f308519a6106c32dc5b6e6d967582" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>rts_timeout_ms</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

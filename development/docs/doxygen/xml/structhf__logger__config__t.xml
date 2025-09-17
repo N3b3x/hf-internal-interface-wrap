@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__logger__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_logger_config_t</compoundname>
+    <includes refid="BaseLogger_8h" local="no">BaseLogger.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__logger__config__t_1a0544221f8aeeccea37f4512cec656ebb" prot="public" static="no" mutable="no">
+        <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+        <definition>hf_log_level_t hf_logger_config_t::default_level</definition>
+        <argsstring></argsstring>
+        <name>default_level</name>
+        <qualifiedname>hf_logger_config_t::default_level</qualifiedname>
+        <briefdescription>
+<para>Default log level. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="155" column="18" bodyfile="inc/base/BaseLogger.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__config__t_1aea701908932be510a4b1e64e43528909" prot="public" static="no" mutable="no">
+        <type><ref refid="group__logger_1ga1e55e86af9be6c9ac8b1c61560ac269c" kindref="member">hf_log_output_t</ref></type>
+        <definition>hf_log_output_t hf_logger_config_t::output_destination</definition>
+        <argsstring></argsstring>
+        <name>output_destination</name>
+        <qualifiedname>hf_logger_config_t::output_destination</qualifiedname>
+        <briefdescription>
+<para>Output destination. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="156" column="19" bodyfile="inc/base/BaseLogger.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__config__t_1ad15d1c7a0acf2eaea8919823dfa29473" prot="public" static="no" mutable="no">
+        <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+        <definition>hf_log_format_t hf_logger_config_t::format_options</definition>
+        <argsstring></argsstring>
+        <name>format_options</name>
+        <qualifiedname>hf_logger_config_t::format_options</qualifiedname>
+        <briefdescription>
+<para>Format options. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="157" column="19" bodyfile="inc/base/BaseLogger.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__config__t_1ae3fcbecb28d9835d881296d6a934b5cf" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_logger_config_t::max_message_length</definition>
+        <argsstring></argsstring>
+        <name>max_message_length</name>
+        <qualifiedname>hf_logger_config_t::max_message_length</qualifiedname>
+        <briefdescription>
+<para>Maximum message length. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="158" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__config__t_1ad1a6d394808a12f5773a0575c23c3f0a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_logger_config_t::buffer_size</definition>
+        <argsstring></argsstring>
+        <name>buffer_size</name>
+        <qualifiedname>hf_logger_config_t::buffer_size</qualifiedname>
+        <briefdescription>
+<para>Internal buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="159" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__config__t_1a68ff4dc59cc386debc230a69c2b842e6" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_logger_config_t::flush_interval_ms</definition>
+        <argsstring></argsstring>
+        <name>flush_interval_ms</name>
+        <qualifiedname>hf_logger_config_t::flush_interval_ms</qualifiedname>
+        <briefdescription>
+<para>Flush interval in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="160" column="12" bodyfile="inc/base/BaseLogger.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__config__t_1a37cb39bba078b77ebda93c112f51c446" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_logger_config_t::enable_thread_safety</definition>
+        <argsstring></argsstring>
+        <name>enable_thread_safety</name>
+        <qualifiedname>hf_logger_config_t::enable_thread_safety</qualifiedname>
+        <briefdescription>
+<para>Enable thread safety. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="161" column="8" bodyfile="inc/base/BaseLogger.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__config__t_1a37b0e76820ae9a9800d3053cde8ecf89" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_logger_config_t::enable_performance_monitoring</definition>
+        <argsstring></argsstring>
+        <name>enable_performance_monitoring</name>
+        <qualifiedname>hf_logger_config_t::enable_performance_monitoring</qualifiedname>
+        <briefdescription>
+<para>Enable performance monitoring. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="162" column="8" bodyfile="inc/base/BaseLogger.h" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__logger__config__t_1a52ba248a018c6aaf368bdea56a67c447" prot="public" static="no" mutable="no">
+        <type>std::function&lt; void(const char *, <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>)</type>
+        <definition>std::function&lt;void(const char*, hf_u32_t) hf_logger_config_t::custom_output_callback) </definition>
+        <argsstring>)</argsstring>
+        <name>custom_output_callback</name>
+        <qualifiedname>hf_logger_config_t::custom_output_callback</qualifiedname>
+        <briefdescription>
+<para>Custom output callback. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="163" column="17" bodyfile="inc/base/BaseLogger.h" bodystart="163" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Logger configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseLogger.h" line="154" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="154" bodyend="164"/>
+    <listofallmembers>
+      <member refid="structhf__logger__config__t_1ad1a6d394808a12f5773a0575c23c3f0a" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>buffer_size</name></member>
+      <member refid="structhf__logger__config__t_1a52ba248a018c6aaf368bdea56a67c447" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>custom_output_callback</name></member>
+      <member refid="structhf__logger__config__t_1a0544221f8aeeccea37f4512cec656ebb" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>default_level</name></member>
+      <member refid="structhf__logger__config__t_1a37b0e76820ae9a9800d3053cde8ecf89" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>enable_performance_monitoring</name></member>
+      <member refid="structhf__logger__config__t_1a37cb39bba078b77ebda93c112f51c446" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>enable_thread_safety</name></member>
+      <member refid="structhf__logger__config__t_1a68ff4dc59cc386debc230a69c2b842e6" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>flush_interval_ms</name></member>
+      <member refid="structhf__logger__config__t_1ad15d1c7a0acf2eaea8919823dfa29473" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>format_options</name></member>
+      <member refid="structhf__logger__config__t_1ae3fcbecb28d9835d881296d6a934b5cf" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>max_message_length</name></member>
+      <member refid="structhf__logger__config__t_1aea701908932be510a4b1e64e43528909" prot="public" virt="non-virtual"><scope>hf_logger_config_t</scope><name>output_destination</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

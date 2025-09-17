@@ -1,0 +1,967 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBaseWifi" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseWifi</compoundname>
+    <derivedcompoundref refid="classEspWifi" prot="public" virt="non-virtual">EspWifi</derivedcompoundref>
+    <includes refid="BaseWifi_8h" local="no">BaseWifi.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseWifi_1a564fef8c0ffdd4f1d69b367bb58cbf73" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual BaseWifi::~BaseWifi</definition>
+        <argsstring>()=default</argsstring>
+        <name>~BaseWifi</name>
+        <qualifiedname>BaseWifi::~BaseWifi</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor for proper cleanup of derived classes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="260" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1afb3f364e100cf74087b65c8529bda6da" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::Initialize</definition>
+        <argsstring>(hf_wifi_mode_t mode)=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseWifi::Initialize</qualifiedname>
+        <reimplementedby refid="classEspWifi_1aba6a1fd280dbcd23fee9281eaaef7a20">Initialize</reimplementedby>
+        <param>
+          <type><ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Initialize the WiFi subsystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>WiFi operating mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="269" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1afaf483e98b1f98467356bdfed5071069" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::Deinitialize</definition>
+        <argsstring>()=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseWifi::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a08a5f89824b7d4f845cecabc4278f356">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the WiFi subsystem. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="275" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a0f9a5bb5a9fbee7af3412385286baf59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseWifi::IsInitialized</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseWifi::IsInitialized</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a8ac15d4e7a8156eafa7b2850495c3083">IsInitialized</reimplementedby>
+        <briefdescription>
+<para>Check if WiFi is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="281" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1afd648ddba6ad1f2e10941318dcb0dfab" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::SetMode</definition>
+        <argsstring>(hf_wifi_mode_t mode)=0</argsstring>
+        <name>SetMode</name>
+        <qualifiedname>BaseWifi::SetMode</qualifiedname>
+        <reimplementedby refid="classEspWifi_1ad572aec1ea4575004b5639a386948c04">SetMode</reimplementedby>
+        <param>
+          <type><ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set WiFi operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>WiFi operating mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="288" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a849f44352adf62aab5d07cb9f4666b8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref></type>
+        <definition>virtual hf_wifi_mode_t BaseWifi::GetMode</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetMode</name>
+        <qualifiedname>BaseWifi::GetMode</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a916f331fe7258222a58f213dec3e3a0b">GetMode</reimplementedby>
+        <briefdescription>
+<para>Get current WiFi operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current WiFi mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="294" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1aed3ba55f847bb8de043fc794394e85d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::ConfigureStation</definition>
+        <argsstring>(const hf_wifi_station_config_t &amp;config)=0</argsstring>
+        <name>ConfigureStation</name>
+        <qualifiedname>BaseWifi::ConfigureStation</qualifiedname>
+        <reimplementedby refid="classEspWifi_1af9d85df22e5b2f7f0e4a9f083a68e27b">ConfigureStation</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configure station parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Station configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="303" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1ada2eadb6792ac79148a0e2c4fccab27d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::Connect</definition>
+        <argsstring>(uint32_t timeout_ms=0)=0</argsstring>
+        <name>Connect</name>
+        <qualifiedname>BaseWifi::Connect</qualifiedname>
+        <reimplementedby refid="classEspWifi_1ac4dc5a2ff0d3699cb5dfc7dabe2e4522">Connect</reimplementedby>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Connect to a WiFi network (station mode) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Connection timeout in milliseconds (0 for default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="310" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a116ea68e8e5e29ed87b3a3ab60df164e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::Disconnect</definition>
+        <argsstring>()=0</argsstring>
+        <name>Disconnect</name>
+        <qualifiedname>BaseWifi::Disconnect</qualifiedname>
+        <reimplementedby refid="classEspWifi_1af8511154338b1285cb386ba2cde71158">Disconnect</reimplementedby>
+        <briefdescription>
+<para>Disconnect from WiFi network. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="316" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a7d913dc24e648f770066873000af4d1e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseWifi::IsConnected</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsConnected</name>
+        <qualifiedname>BaseWifi::IsConnected</qualifiedname>
+        <reimplementedby refid="classEspWifi_1ae3418e13e9da9cbe0b0b68656233847a">IsConnected</reimplementedby>
+        <briefdescription>
+<para>Check if connected to a network. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if connected, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="322" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a3a314875b45ef4198c7b69ccc0660066" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int8_t</type>
+        <definition>virtual int8_t BaseWifi::GetRssi</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetRssi</name>
+        <qualifiedname>BaseWifi::GetRssi</qualifiedname>
+        <reimplementedby refid="classEspWifi_1accc189589995ac17cd27a9ba60d63c9a">GetRssi</reimplementedby>
+        <briefdescription>
+<para>Get signal strength (RSSI) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Signal strength in dBm, or INT8_MIN on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="328" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a2f92e5e27c043ea1d5cc90ed3d473bec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::GetIpInfo</definition>
+        <argsstring>(hf_wifi_ip_info_t &amp;ip_info) const =0</argsstring>
+        <name>GetIpInfo</name>
+        <qualifiedname>BaseWifi::GetIpInfo</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a91b02d2cc3f0a1bc3a93bef5ac1767f0">GetIpInfo</reimplementedby>
+        <param>
+          <type><ref refid="structhf__wifi__ip__info__t" kindref="compound">hf_wifi_ip_info_t</ref> &amp;</type>
+          <declname>ip_info</declname>
+        </param>
+        <briefdescription>
+<para>Get current IP information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ip_info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store IP information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="335" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1ab5e8e2fc7f09be74b034260b4e499d96" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::ConfigureAccessPoint</definition>
+        <argsstring>(const hf_wifi_ap_config_t &amp;config)=0</argsstring>
+        <name>ConfigureAccessPoint</name>
+        <qualifiedname>BaseWifi::ConfigureAccessPoint</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a2a2b0ecff30d6d953da490565c8ca0b9">ConfigureAccessPoint</reimplementedby>
+        <param>
+          <type>const <ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configure Access Point parameters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>AP configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="344" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1ab038bcdbce9651c4c3b0305805cbd7f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::StartAccessPoint</definition>
+        <argsstring>()=0</argsstring>
+        <name>StartAccessPoint</name>
+        <qualifiedname>BaseWifi::StartAccessPoint</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a1f140a31ef650411478818c285aef64b">StartAccessPoint</reimplementedby>
+        <briefdescription>
+<para>Start Access Point. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="350" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a8671f5c88289bc48f1dbdbf109d5e4d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::StopAccessPoint</definition>
+        <argsstring>()=0</argsstring>
+        <name>StopAccessPoint</name>
+        <qualifiedname>BaseWifi::StopAccessPoint</qualifiedname>
+        <reimplementedby refid="classEspWifi_1aeec25630ed35de561df39b358418e566">StopAccessPoint</reimplementedby>
+        <briefdescription>
+<para>Stop Access Point. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="356" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1ab0b198b02ca774d1ca2fe0ac9b468c61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseWifi::IsAccessPointActive</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsAccessPointActive</name>
+        <qualifiedname>BaseWifi::IsAccessPointActive</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a5a1d456000d644dfd8282673ba4f5009">IsAccessPointActive</reimplementedby>
+        <briefdescription>
+<para>Check if Access Point is running. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if AP is active, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="362" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1abf5439db72fa1f93e0d37ac8ccaffef8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int BaseWifi::GetConnectedStationCount</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetConnectedStationCount</name>
+        <qualifiedname>BaseWifi::GetConnectedStationCount</qualifiedname>
+        <reimplementedby refid="classEspWifi_1abf1bc4660bcef2ae9d213b5f93f3ca8c">GetConnectedStationCount</reimplementedby>
+        <briefdescription>
+<para>Get number of connected stations. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of connected stations, or -1 on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="368" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a309f30f05a1b4e26687ca19e55a12667" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::StartScan</definition>
+        <argsstring>(bool show_hidden=false, bool passive=false, uint32_t max_scan_time_ms=0)=0</argsstring>
+        <name>StartScan</name>
+        <qualifiedname>BaseWifi::StartScan</qualifiedname>
+        <reimplementedby refid="classEspWifi_1af8eb0906128aeb938eb5822a910d7d63">StartScan</reimplementedby>
+        <param>
+          <type>bool</type>
+          <declname>show_hidden</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>passive</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>max_scan_time_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Start network scan. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>show_hidden</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Include hidden networks in scan </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>passive</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Use passive scanning </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_scan_time_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum scan time per channel </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="379" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a8d71d17477b03d2775f5c8d89aecbf52" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::GetScanResults</definition>
+        <argsstring>(std::vector&lt; hf_wifi_network_info_t &gt; &amp;networks, uint16_t max_networks=0)=0</argsstring>
+        <name>GetScanResults</name>
+        <qualifiedname>BaseWifi::GetScanResults</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a5397db2984b1531639511dee9c013a9f">GetScanResults</reimplementedby>
+        <param>
+          <type>std::vector&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt; &amp;</type>
+          <declname>networks</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>max_networks</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Get scan results. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>networks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store found networks </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_networks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of networks to return (0 for all) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="388" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a3470b0cf542ca2aed0cf2fa36674edb2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseWifi::IsScanning</definition>
+        <argsstring>() const =0</argsstring>
+        <name>IsScanning</name>
+        <qualifiedname>BaseWifi::IsScanning</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a43e97cdf4af2c05b2e68031add87d782">IsScanning</reimplementedby>
+        <briefdescription>
+<para>Check if scan is in progress. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if scanning, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="395" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1add13affb5f6071fc54a24f25545f8098" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kindref="member">hf_wifi_state_t</ref></type>
+        <definition>virtual hf_wifi_state_t BaseWifi::GetState</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetState</name>
+        <qualifiedname>BaseWifi::GetState</qualifiedname>
+        <reimplementedby refid="classEspWifi_1abaa4ac07b9ef057964dfd07dd2948e47">GetState</reimplementedby>
+        <briefdescription>
+<para>Get current WiFi state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current WiFi state </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="403" column="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1afcbe903d63da73d424ecd932ca038b08" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string BaseWifi::GetConnectedSsid</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetConnectedSsid</name>
+        <qualifiedname>BaseWifi::GetConnectedSsid</qualifiedname>
+        <reimplementedby refid="classEspWifi_1af65c3becf925791207bc7333be78d3ef">GetConnectedSsid</reimplementedby>
+        <briefdescription>
+<para>Get connected network SSID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>SSID string, empty if not connected </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="409" column="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a02b0af73b308b92b8cc8ad2ce0f27bc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::GetConnectedBssid</definition>
+        <argsstring>(uint8_t bssid[6]) const =0</argsstring>
+        <name>GetConnectedBssid</name>
+        <qualifiedname>BaseWifi::GetConnectedBssid</qualifiedname>
+        <reimplementedby refid="classEspWifi_1ac35856636ff6281693e9ce57dc13d162">GetConnectedBssid</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>bssid</declname>
+          <array>[6]</array>
+        </param>
+        <briefdescription>
+<para>Get connected network BSSID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>bssid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store BSSID (6 bytes) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="416" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1ab17695fd4b2f50230451d82ac8c746e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::SetPowerSave</definition>
+        <argsstring>(hf_wifi_power_save_t mode)=0</argsstring>
+        <name>SetPowerSave</name>
+        <qualifiedname>BaseWifi::SetPowerSave</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a3d22fc24922e5e4d08531fdeaacfe371">SetPowerSave</reimplementedby>
+        <param>
+          <type><ref refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kindref="member">hf_wifi_power_save_t</ref></type>
+          <declname>mode</declname>
+        </param>
+        <briefdescription>
+<para>Set power save mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Power save mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="425" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a0b1b27bfd6843ed21e3d9220ddaad908" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kindref="member">hf_wifi_power_save_t</ref></type>
+        <definition>virtual hf_wifi_power_save_t BaseWifi::GetPowerSave</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetPowerSave</name>
+        <qualifiedname>BaseWifi::GetPowerSave</qualifiedname>
+        <reimplementedby refid="classEspWifi_1acc350fad8c7d5563b6dcff4fdbc3c8a6">GetPowerSave</reimplementedby>
+        <briefdescription>
+<para>Get current power save mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current power save mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="431" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a46ce6ae5f1b9193941c1e3daaf88ae0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::RegisterEventCallback</definition>
+        <argsstring>(hf_wifi_event_callback_t callback)=0</argsstring>
+        <name>RegisterEventCallback</name>
+        <qualifiedname>BaseWifi::RegisterEventCallback</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a3fb1805a09d9f9ff00bd15a9af693d88">RegisterEventCallback</reimplementedby>
+        <param>
+          <type><ref refid="group__wifi_1gafc36eb4cdfaf0c2ea45afeaac3ad13c9" kindref="member">hf_wifi_event_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <briefdescription>
+<para>Register event callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Event callback function </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="440" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a6b722385f7ca418d40f17c853f1483b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::UnregisterEventCallback</definition>
+        <argsstring>()=0</argsstring>
+        <name>UnregisterEventCallback</name>
+        <qualifiedname>BaseWifi::UnregisterEventCallback</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a9cd11cd1acebc5455ca6b7357987daa9">UnregisterEventCallback</reimplementedby>
+        <briefdescription>
+<para>Unregister event callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="446" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a87af382a1139b74961f048b094e60cb5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::GetMacAddress</definition>
+        <argsstring>(uint8_t mac[6], uint8_t interface=0) const =0</argsstring>
+        <name>GetMacAddress</name>
+        <qualifiedname>BaseWifi::GetMacAddress</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a98c82d71b4bf54dfaa20c305fae750d2">GetMacAddress</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>mac</declname>
+          <array>[6]</array>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>interface</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Get MAC address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mac</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store MAC address (6 bytes) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>interface</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>WiFi interface (0 for station, 1 for AP) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="456" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1aace6973de51aaa1b7157f15cf677f0f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::SetMacAddress</definition>
+        <argsstring>(const uint8_t mac[6], uint8_t interface=0)=0</argsstring>
+        <name>SetMacAddress</name>
+        <qualifiedname>BaseWifi::SetMacAddress</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a91ddbfd6b2f471e1ed5329ad32833401">SetMacAddress</reimplementedby>
+        <param>
+          <type>const uint8_t</type>
+          <declname>mac</declname>
+          <array>[6]</array>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>interface</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Set MAC address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>mac</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>MAC address to set (6 bytes) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>interface</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>WiFi interface (0 for station, 1 for AP) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="464" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a2b10843cc30b6e3aac4f81db0ab03cb0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>uint8_t</type>
+        <definition>virtual uint8_t BaseWifi::GetChannel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>GetChannel</name>
+        <qualifiedname>BaseWifi::GetChannel</qualifiedname>
+        <reimplementedby refid="classEspWifi_1a3807a44527938991f110f33e70ab0caa">GetChannel</reimplementedby>
+        <briefdescription>
+<para>Get WiFi channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current channel, or 0 on error </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="470" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1ab8b157a985ffb062418456b66d523f92" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
+        <definition>virtual hf_wifi_err_t BaseWifi::SetChannel</definition>
+        <argsstring>(uint8_t channel)=0</argsstring>
+        <name>SetChannel</name>
+        <qualifiedname>BaseWifi::SetChannel</qualifiedname>
+        <reimplementedby refid="classEspWifi_1aa24463dc5e86cc6c851044213ce711d3">SetChannel</reimplementedby>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Set WiFi channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel number (1-14) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref> on success, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="477" column="25"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <member refid="group__wifi_1gafde1b68efc0648ef58ccb0ee5d3d9644" kind="function"><name>GetErrorString</name></member>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseWifi_1a150dc952c7f2336aa1ba5dbf53fe2f9d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseWifi::BaseWifi</definition>
+        <argsstring>()=default</argsstring>
+        <name>BaseWifi</name>
+        <qualifiedname>BaseWifi::BaseWifi</qualifiedname>
+        <briefdescription>
+<para>Protected constructor - only derived classes can instantiate. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="490" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a850a025d5f7ddceaf6f8f551cde22cf2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseWifi::BaseWifi</definition>
+        <argsstring>(const BaseWifi &amp;)=delete</argsstring>
+        <name>BaseWifi</name>
+        <qualifiedname>BaseWifi::BaseWifi</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy constructor - deleted to prevent copying. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="495" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseWifi_1a4c3a60c174313577476f5ede80d0382b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> &amp;</type>
+        <definition>BaseWifi &amp; BaseWifi::operator=</definition>
+        <argsstring>(const BaseWifi &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseWifi::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseWifi" kindref="compound">BaseWifi</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Assignment operator - deleted to prevent copying. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="500" column="12"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for WiFi functionality. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides the interface for WiFi operations including:<itemizedlist>
+<listitem><para>Station mode operations (connecting to networks)</para>
+</listitem><listitem><para>Access Point mode operations (creating hotspots)</para>
+</listitem><listitem><para>Network scanning and discovery</para>
+</listitem><listitem><para>Security configuration</para>
+</listitem><listitem><para>Event handling and callbacks</para>
+</listitem><listitem><para>Power management </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseWifi</label>
+        <link refid="classBaseWifi"/>
+      </node>
+      <node id="2">
+        <label>EspWifi</label>
+        <link refid="classEspWifi"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="inc/base/BaseWifi.h" line="255" column="1" bodyfile="inc/base/BaseWifi.h" bodystart="255" bodyend="501"/>
+    <listofallmembers>
+      <member refid="classBaseWifi_1a150dc952c7f2336aa1ba5dbf53fe2f9d" prot="protected" virt="non-virtual"><scope>BaseWifi</scope><name>BaseWifi</name></member>
+      <member refid="classBaseWifi_1a850a025d5f7ddceaf6f8f551cde22cf2" prot="protected" virt="non-virtual"><scope>BaseWifi</scope><name>BaseWifi</name></member>
+      <member refid="classBaseWifi_1ab5e8e2fc7f09be74b034260b4e499d96" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>ConfigureAccessPoint</name></member>
+      <member refid="classBaseWifi_1aed3ba55f847bb8de043fc794394e85d9" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>ConfigureStation</name></member>
+      <member refid="classBaseWifi_1ada2eadb6792ac79148a0e2c4fccab27d" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>Connect</name></member>
+      <member refid="classBaseWifi_1afaf483e98b1f98467356bdfed5071069" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>Deinitialize</name></member>
+      <member refid="classBaseWifi_1a116ea68e8e5e29ed87b3a3ab60df164e" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>Disconnect</name></member>
+      <member refid="classBaseWifi_1a2b10843cc30b6e3aac4f81db0ab03cb0" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetChannel</name></member>
+      <member refid="classBaseWifi_1a02b0af73b308b92b8cc8ad2ce0f27bc8" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetConnectedBssid</name></member>
+      <member refid="classBaseWifi_1afcbe903d63da73d424ecd932ca038b08" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetConnectedSsid</name></member>
+      <member refid="classBaseWifi_1abf5439db72fa1f93e0d37ac8ccaffef8" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetConnectedStationCount</name></member>
+      <member refid="group__wifi_1gafde1b68efc0648ef58ccb0ee5d3d9644" prot="public" virt="non-virtual"><scope>BaseWifi</scope><name>GetErrorString</name></member>
+      <member refid="classBaseWifi_1a2f92e5e27c043ea1d5cc90ed3d473bec" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetIpInfo</name></member>
+      <member refid="classBaseWifi_1a87af382a1139b74961f048b094e60cb5" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetMacAddress</name></member>
+      <member refid="classBaseWifi_1a849f44352adf62aab5d07cb9f4666b8e" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetMode</name></member>
+      <member refid="classBaseWifi_1a0b1b27bfd6843ed21e3d9220ddaad908" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetPowerSave</name></member>
+      <member refid="classBaseWifi_1a3a314875b45ef4198c7b69ccc0660066" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetRssi</name></member>
+      <member refid="classBaseWifi_1a8d71d17477b03d2775f5c8d89aecbf52" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetScanResults</name></member>
+      <member refid="classBaseWifi_1add13affb5f6071fc54a24f25545f8098" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>GetState</name></member>
+      <member refid="classBaseWifi_1afb3f364e100cf74087b65c8529bda6da" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>Initialize</name></member>
+      <member refid="classBaseWifi_1ab0b198b02ca774d1ca2fe0ac9b468c61" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>IsAccessPointActive</name></member>
+      <member refid="classBaseWifi_1a7d913dc24e648f770066873000af4d1e" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>IsConnected</name></member>
+      <member refid="classBaseWifi_1a0f9a5bb5a9fbee7af3412385286baf59" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>IsInitialized</name></member>
+      <member refid="classBaseWifi_1a3470b0cf542ca2aed0cf2fa36674edb2" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>IsScanning</name></member>
+      <member refid="classBaseWifi_1a4c3a60c174313577476f5ede80d0382b" prot="protected" virt="non-virtual"><scope>BaseWifi</scope><name>operator=</name></member>
+      <member refid="classBaseWifi_1a46ce6ae5f1b9193941c1e3daaf88ae0c" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>RegisterEventCallback</name></member>
+      <member refid="classBaseWifi_1ab8b157a985ffb062418456b66d523f92" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>SetChannel</name></member>
+      <member refid="classBaseWifi_1aace6973de51aaa1b7157f15cf677f0f2" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>SetMacAddress</name></member>
+      <member refid="classBaseWifi_1afd648ddba6ad1f2e10941318dcb0dfab" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>SetMode</name></member>
+      <member refid="classBaseWifi_1ab17695fd4b2f50230451d82ac8c746e4" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>SetPowerSave</name></member>
+      <member refid="classBaseWifi_1ab038bcdbce9651c4c3b0305805cbd7f3" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>StartAccessPoint</name></member>
+      <member refid="classBaseWifi_1a309f30f05a1b4e26687ca19e55a12667" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>StartScan</name></member>
+      <member refid="classBaseWifi_1a8671f5c88289bc48f1dbdbf109d5e4d0" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>StopAccessPoint</name></member>
+      <member refid="classBaseWifi_1a6b722385f7ca418d40f17c853f1483b4" prot="public" virt="pure-virtual"><scope>BaseWifi</scope><name>UnregisterEventCallback</name></member>
+      <member refid="classBaseWifi_1a564fef8c0ffdd4f1d69b367bb58cbf73" prot="public" virt="virtual"><scope>BaseWifi</scope><name>~BaseWifi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_b24b7e6370455d61c0bb46dddfb27cce" kind="dir">
+    <compoundname>src/mcu</compoundname>
+    <innerdir refid="dir_49c313528b2c1d8a65741cac94b1b5e3">src/mcu/esp32</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/"/>
+  </compounddef>
+</doxygen>

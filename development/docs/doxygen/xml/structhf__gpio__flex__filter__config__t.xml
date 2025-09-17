@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__gpio__flex__filter__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_gpio_flex_filter_config_t</compoundname>
+    <includes refid="EspTypes__GPIO_8h" local="no">EspTypes_GPIO.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__gpio__flex__filter__config__t_1a1d2713b3410534bb131d7d9265c70759" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_gpio_flex_filter_config_t::window_width_ns</definition>
+        <argsstring></argsstring>
+        <name>window_width_ns</name>
+        <qualifiedname>hf_gpio_flex_filter_config_t::window_width_ns</qualifiedname>
+        <briefdescription>
+<para>Sample window width in nanoseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="137" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__flex__filter__config__t_1a00bc74702cdd052bd2b727ed2d4f5509" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_gpio_flex_filter_config_t::window_threshold_ns</definition>
+        <argsstring></argsstring>
+        <name>window_threshold_ns</name>
+        <qualifiedname>hf_gpio_flex_filter_config_t::window_threshold_ns</qualifiedname>
+        <briefdescription>
+<para>Threshold for filtering in nanoseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="138" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__flex__filter__config__t_1acf6e27a34c318282f92e6a1849ac4e37" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607" kindref="member">hf_gpio_glitch_filter_clk_src_t</ref></type>
+        <definition>hf_gpio_glitch_filter_clk_src_t hf_gpio_flex_filter_config_t::clk_src</definition>
+        <argsstring></argsstring>
+        <name>clk_src</name>
+        <qualifiedname>hf_gpio_flex_filter_config_t::clk_src</qualifiedname>
+        <briefdescription>
+<para>Clock source selection. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="139" column="35" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__flex__filter__config__t_1a6883d28ceb1b307fe8c079fb81504241" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_flex_filter_config_t::enable_on_init</definition>
+        <argsstring></argsstring>
+        <name>enable_on_init</name>
+        <qualifiedname>hf_gpio_flex_filter_config_t::enable_on_init</qualifiedname>
+        <briefdescription>
+<para>Enable filter immediately after creation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="140" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="140" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Flexible glitch filter configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Configurable glitch filter for advanced noise rejection. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="136" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="136" bodyend="141"/>
+    <listofallmembers>
+      <member refid="structhf__gpio__flex__filter__config__t_1acf6e27a34c318282f92e6a1849ac4e37" prot="public" virt="non-virtual"><scope>hf_gpio_flex_filter_config_t</scope><name>clk_src</name></member>
+      <member refid="structhf__gpio__flex__filter__config__t_1a6883d28ceb1b307fe8c079fb81504241" prot="public" virt="non-virtual"><scope>hf_gpio_flex_filter_config_t</scope><name>enable_on_init</name></member>
+      <member refid="structhf__gpio__flex__filter__config__t_1a00bc74702cdd052bd2b727ed2d4f5509" prot="public" virt="non-virtual"><scope>hf_gpio_flex_filter_config_t</scope><name>window_threshold_ns</name></member>
+      <member refid="structhf__gpio__flex__filter__config__t_1a1d2713b3410534bb131d7d9265c70759" prot="public" virt="non-virtual"><scope>hf_gpio_flex_filter_config_t</scope><name>window_width_ns</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

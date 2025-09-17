@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__uart" kind="group">
+    <compoundname>uart</compoundname>
+    <title>UART Module</title>
+    <innerfile refid="BaseUart_8h">BaseUart.h</innerfile>
+    <innerclass refid="classBaseUart" prot="public">BaseUart</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__uart_1ga8b05a6d56824281551272e94ab130dc7" prot="public" static="no">
+        <name>HF_UART_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC UART error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all UART operations in the system. This enumeration is used across all UART-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseUart.h" line="43" column="9" bodyfile="inc/base/BaseUart.h" bodystart="43" bodyend="83"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All UART-related types, enums, and functions for Universal Asynchronous Receiver-Transmitter operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

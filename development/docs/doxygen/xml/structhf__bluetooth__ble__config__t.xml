@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__bluetooth__ble__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_bluetooth_ble_config_t</compoundname>
+    <includes refid="BaseBluetooth_8h" local="no">BaseBluetooth.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a8b2e3677d9dd8b45b035570155fe17fa" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string hf_bluetooth_ble_config_t::device_name</definition>
+        <argsstring></argsstring>
+        <name>device_name</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::device_name</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Local device name </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="300" column="15" bodyfile="inc/base/BaseBluetooth.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a7dbdb6d852f3148e0a7e3f628cc81e6b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_bluetooth_ble_config_t::advertising</definition>
+        <argsstring></argsstring>
+        <name>advertising</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::advertising</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Enable advertising </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="301" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="301" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a69caf206673da36a9d3024445cb4a218" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_bluetooth_ble_config_t::scannable</definition>
+        <argsstring></argsstring>
+        <name>scannable</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::scannable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Make device scannable </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="302" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="302" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a71d2ac471e61ad37a07b4308369d69c8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_bluetooth_ble_config_t::connectable</definition>
+        <argsstring></argsstring>
+        <name>connectable</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::connectable</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Make device connectable </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="303" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="303" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1af530377773136b461f15a89e265b5b31" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_bluetooth_ble_config_t::advertising_interval_ms</definition>
+        <argsstring></argsstring>
+        <name>advertising_interval_ms</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::advertising_interval_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Advertising interval in milliseconds </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="304" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a6fe854fdbbdeb5bc65bb5d53be82b3c1" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_bluetooth_ble_config_t::scan_interval_ms</definition>
+        <argsstring></argsstring>
+        <name>scan_interval_ms</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::scan_interval_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scan interval in milliseconds </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="305" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a9974fc7466f342cf3db78370e4c80069" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_bluetooth_ble_config_t::scan_window_ms</definition>
+        <argsstring></argsstring>
+        <name>scan_window_ms</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::scan_window_ms</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scan window in milliseconds </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="306" column="12" bodyfile="inc/base/BaseBluetooth.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a52c6d3ad55336a02b44aae62858c5c60" prot="public" static="no" mutable="no">
+        <type><ref refid="group__bluetooth_1gaf5e48b9d9196063d4218a713d3e4d26c" kindref="member">hf_bluetooth_scan_type_t</ref></type>
+        <definition>hf_bluetooth_scan_type_t hf_bluetooth_ble_config_t::scan_type</definition>
+        <argsstring></argsstring>
+        <name>scan_type</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::scan_type</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scan type </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="307" column="28" bodyfile="inc/base/BaseBluetooth.h" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__bluetooth__ble__config__t_1a9396da6586b33490338d55c7891fd0ca" prot="public" static="no" mutable="no">
+        <type><ref refid="group__bluetooth_1gafd55018d995cc8e2cc0add725d960aad" kindref="member">hf_bluetooth_security_t</ref></type>
+        <definition>hf_bluetooth_security_t hf_bluetooth_ble_config_t::security</definition>
+        <argsstring></argsstring>
+        <name>security</name>
+        <qualifiedname>hf_bluetooth_ble_config_t::security</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Security level </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="308" column="27" bodyfile="inc/base/BaseBluetooth.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Bluetooth Low Energy configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseBluetooth.h" line="299" column="1" bodyfile="inc/base/BaseBluetooth.h" bodystart="299" bodyend="309"/>
+    <listofallmembers>
+      <member refid="structhf__bluetooth__ble__config__t_1a7dbdb6d852f3148e0a7e3f628cc81e6b" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>advertising</name></member>
+      <member refid="structhf__bluetooth__ble__config__t_1af530377773136b461f15a89e265b5b31" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>advertising_interval_ms</name></member>
+      <member refid="structhf__bluetooth__ble__config__t_1a71d2ac471e61ad37a07b4308369d69c8" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>connectable</name></member>
+      <member refid="structhf__bluetooth__ble__config__t_1a8b2e3677d9dd8b45b035570155fe17fa" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>device_name</name></member>
+      <member refid="structhf__bluetooth__ble__config__t_1a6fe854fdbbdeb5bc65bb5d53be82b3c1" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>scan_interval_ms</name></member>
+      <member refid="structhf__bluetooth__ble__config__t_1a52c6d3ad55336a02b44aae62858c5c60" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>scan_type</name></member>
+      <member refid="structhf__bluetooth__ble__config__t_1a9974fc7466f342cf3db78370e4c80069" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>scan_window_ms</name></member>
+      <member refid="structhf__bluetooth__ble__config__t_1a69caf206673da36a9d3024445cb4a218" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>scannable</name></member>
+      <member refid="structhf__bluetooth__ble__config__t_1a9396da6586b33490338d55c7891fd0ca" prot="public" virt="non-virtual"><scope>hf_bluetooth_ble_config_t</scope><name>security</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

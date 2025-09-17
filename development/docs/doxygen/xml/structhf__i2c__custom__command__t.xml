@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__i2c__custom__command__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_i2c_custom_command_t</compoundname>
+    <includes refid="EspTypes__I2C_8h" local="no">EspTypes_I2C.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a4698f6963963e23ba7805ab1f4adb6c3" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__I2C_8h_1a138e2f714ed2680b69e0158d47279d62" kindref="member">hf_i2c_command_type_t</ref></type>
+        <definition>hf_i2c_command_type_t hf_i2c_custom_command_t::command_type</definition>
+        <argsstring></argsstring>
+        <name>command_type</name>
+        <qualifiedname>hf_i2c_custom_command_t::command_type</qualifiedname>
+        <briefdescription>
+<para>Command type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="319" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="319" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a6de318c10918bef3986dd18ec0cd7cdb" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_i2c_custom_command_t::device_addr</definition>
+        <argsstring></argsstring>
+        <name>device_addr</name>
+        <qualifiedname>hf_i2c_custom_command_t::device_addr</qualifiedname>
+        <briefdescription>
+<para>Device address for the command. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="320" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="320" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a86b814f00746901f060cd9af475ae77f" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; uint8_t &gt;</type>
+        <definition>std::vector&lt;uint8_t&gt; hf_i2c_custom_command_t::data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <qualifiedname>hf_i2c_custom_command_t::data</qualifiedname>
+        <briefdescription>
+<para>Command data (if applicable) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="321" column="15" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a67428d9b9c1eb4c41cc8d6a115983734" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_custom_command_t::delay_us</definition>
+        <argsstring></argsstring>
+        <name>delay_us</name>
+        <qualifiedname>hf_i2c_custom_command_t::delay_us</qualifiedname>
+        <briefdescription>
+<para>Delay in microseconds (for DELAY command) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="322" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="322" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a0b9cd5102b234d69e51d4162b1314ee1" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_custom_command_t::timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>timeout_ms</name>
+        <qualifiedname>hf_i2c_custom_command_t::timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Timeout for the command. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="323" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__custom__command__t_1ae4f72d3a0a59bc3032477f339dbefc4a" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_i2c_custom_command_t::expected_read_size</definition>
+        <argsstring></argsstring>
+        <name>expected_read_size</name>
+        <qualifiedname>hf_i2c_custom_command_t::expected_read_size</qualifiedname>
+        <briefdescription>
+<para>Expected read size for READ commands. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="324" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="324" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__i2c__custom__command__t_1a4135df4a3ac47350a09d0a0b82961c4e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_i2c_custom_command_t::flags</definition>
+        <argsstring></argsstring>
+        <name>flags</name>
+        <qualifiedname>hf_i2c_custom_command_t::flags</qualifiedname>
+        <briefdescription>
+<para>Command-specific flags. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="325" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__i2c__custom__command__t_1ae52c2e7b63bbf028380304ae6e72d429" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_i2c_custom_command_t::hf_i2c_custom_command_t</definition>
+        <argsstring>(hf_i2c_command_type_t type, uint16_t addr=0) noexcept</argsstring>
+        <name>hf_i2c_custom_command_t</name>
+        <qualifiedname>hf_i2c_custom_command_t::hf_i2c_custom_command_t</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__I2C_8h_1a138e2f714ed2680b69e0158d47279d62" kindref="member">hf_i2c_command_type_t</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>addr</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Constructor for basic command. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="330" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="330" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__i2c__custom__command__t_1a93bab6bd6bd0615fad48568cda7e6bdc" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_i2c_custom_command_t::hf_i2c_custom_command_t</definition>
+        <argsstring>(uint32_t delay_microseconds) noexcept</argsstring>
+        <name>hf_i2c_custom_command_t</name>
+        <qualifiedname>hf_i2c_custom_command_t::hf_i2c_custom_command_t</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>delay_microseconds</declname>
+        </param>
+        <briefdescription>
+<para>Constructor for delay command. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="337" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="337" bodyend="339"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Custom I2C command for non-standard protocols. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides flexibility for implementing custom I2C sequences. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="318" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="318" bodyend="340"/>
+    <listofallmembers>
+      <member refid="structhf__i2c__custom__command__t_1a4698f6963963e23ba7805ab1f4adb6c3" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>command_type</name></member>
+      <member refid="structhf__i2c__custom__command__t_1a86b814f00746901f060cd9af475ae77f" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>data</name></member>
+      <member refid="structhf__i2c__custom__command__t_1a67428d9b9c1eb4c41cc8d6a115983734" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>delay_us</name></member>
+      <member refid="structhf__i2c__custom__command__t_1a6de318c10918bef3986dd18ec0cd7cdb" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>device_addr</name></member>
+      <member refid="structhf__i2c__custom__command__t_1ae4f72d3a0a59bc3032477f339dbefc4a" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>expected_read_size</name></member>
+      <member refid="structhf__i2c__custom__command__t_1a4135df4a3ac47350a09d0a0b82961c4e" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>flags</name></member>
+      <member refid="structhf__i2c__custom__command__t_1ae52c2e7b63bbf028380304ae6e72d429" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>hf_i2c_custom_command_t</name></member>
+      <member refid="structhf__i2c__custom__command__t_1a93bab6bd6bd0615fad48568cda7e6bdc" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>hf_i2c_custom_command_t</name></member>
+      <member refid="structhf__i2c__custom__command__t_1a0b9cd5102b234d69e51d4162b1314ee1" prot="public" virt="non-virtual"><scope>hf_i2c_custom_command_t</scope><name>timeout_ms</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

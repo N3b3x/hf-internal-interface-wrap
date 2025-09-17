@@ -1,0 +1,126 @@
+var BaseBluetooth_8h =
+[
+    [ "HF_BLUETOOTH_ERR_LIST", "group__bluetooth.html#gaa51a59d1a4465963e8777d3a0fbe2e00", null ],
+    [ "X", "group__bluetooth.html#gafbf3f04fa35349e183adb88ae6d03874", null ],
+    [ "X", "group__bluetooth.html#ga94b225babb1626cee0621f8312eb32d1", null ],
+    [ "X", "group__bluetooth.html#gafbf3f04fa35349e183adb88ae6d03874", null ],
+    [ "hf_bluetooth_data_callback_t", "group__bluetooth.html#ga65e5bf89736f8023fe4cf15163655f6a", null ],
+    [ "hf_bluetooth_event_callback_t", "group__bluetooth.html#gaeb49a17c65e01fa9236e9ab0b4994f77", null ],
+    [ "hf_bluetooth_connection_state_t", "group__bluetooth.html#gaa2d24c13652ad267d8e7fc00df0a884a", [
+      [ "HF_BLUETOOTH_CONNECTION_STATE_DISCONNECTED", "group__bluetooth.html#ggaa2d24c13652ad267d8e7fc00df0a884aa705ce5e2960217867c034f2f962ea6c8", null ],
+      [ "HF_BLUETOOTH_CONNECTION_STATE_CONNECTING", "group__bluetooth.html#ggaa2d24c13652ad267d8e7fc00df0a884aa51bfc6d0522b7af1f86e7e20c8ec7dac", null ],
+      [ "HF_BLUETOOTH_CONNECTION_STATE_CONNECTED", "group__bluetooth.html#ggaa2d24c13652ad267d8e7fc00df0a884aa2926b3814f425704c70e3a7fa2d16432", null ],
+      [ "HF_BLUETOOTH_CONNECTION_STATE_ADVERTISING", "group__bluetooth.html#ggaa2d24c13652ad267d8e7fc00df0a884aa46f9330da016466819811a09cb80e5ad", null ],
+      [ "HF_BLUETOOTH_CONNECTION_STATE_SCANNING", "group__bluetooth.html#ggaa2d24c13652ad267d8e7fc00df0a884aa7ba928c93891092618fcbf03669abc22", null ]
+    ] ],
+    [ "hf_bluetooth_connection_type_t", "group__bluetooth.html#ga279cc9e07f3b51e087d70eeb3f439003", [
+      [ "HF_BLUETOOTH_CONNECTION_TYPE_AUTO", "group__bluetooth.html#gga279cc9e07f3b51e087d70eeb3f439003aa08d392bccdefefc781494140949d4fc", null ],
+      [ "HF_BLUETOOTH_CONNECTION_TYPE_CLASSIC", "group__bluetooth.html#gga279cc9e07f3b51e087d70eeb3f439003a0f8e31e0daf99afa513c3c0d359f1885", null ],
+      [ "HF_BLUETOOTH_CONNECTION_TYPE_BLE", "group__bluetooth.html#gga279cc9e07f3b51e087d70eeb3f439003af787b67cceb83b3bb3899b71afe01560", null ]
+    ] ],
+    [ "hf_bluetooth_device_type_t", "group__bluetooth.html#gafda17a08e5002454a03b6839af565482", [
+      [ "HF_BLUETOOTH_DEVICE_TYPE_UNKNOWN", "group__bluetooth.html#ggafda17a08e5002454a03b6839af565482a5d47974454955d8a8453f210be4a9f3c", null ],
+      [ "HF_BLUETOOTH_DEVICE_TYPE_CLASSIC", "group__bluetooth.html#ggafda17a08e5002454a03b6839af565482a3e4af4d9e1b0165b596eec422ce30043", null ],
+      [ "HF_BLUETOOTH_DEVICE_TYPE_BLE", "group__bluetooth.html#ggafda17a08e5002454a03b6839af565482a5509a4603d40c2eb68cdde2565dd9de7", null ],
+      [ "HF_BLUETOOTH_DEVICE_TYPE_DUAL", "group__bluetooth.html#ggafda17a08e5002454a03b6839af565482a4c27a2d7a744e8a9dd4de0e72dfb8411", null ]
+    ] ],
+    [ "hf_bluetooth_err_t", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc", [
+      [ "BLUETOOTH_SUCCESS", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74", null ],
+      [ "BLUETOOTH_ERR_FAILURE", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca6638531456137a992f8915e0cff5c2da", null ],
+      [ "BLUETOOTH_ERR_INVALID_PARAM", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca2ab398d6410c0edd6505433d264548fc", null ],
+      [ "BLUETOOTH_ERR_NOT_INITIALIZED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca35b333b6c6bd9110ac25ece7e718833c", null ],
+      [ "BLUETOOTH_ERR_ALREADY_INITIALIZED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca0e0d3db0dac476f6dbeeeaccff92b444", null ],
+      [ "BLUETOOTH_ERR_NOT_ENABLED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca61f3da18c63eb54ec31d5df5647b9c2e", null ],
+      [ "BLUETOOTH_ERR_ALREADY_ENABLED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcae7a2aa414735bcc0f1222824c27b9e79", null ],
+      [ "BLUETOOTH_ERR_NOT_CONNECTED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca57abff7ce03e5997d93d18f87c424568", null ],
+      [ "BLUETOOTH_ERR_ALREADY_CONNECTED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcad7bdfdc3b156cded2bf869c8be55c464", null ],
+      [ "BLUETOOTH_ERR_CONNECTION_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca082d06c846143ed5b85859ea3ed2b193", null ],
+      [ "BLUETOOTH_ERR_DISCONNECTION_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcafe690feed75ef8f13b7875c352e669d0", null ],
+      [ "BLUETOOTH_ERR_SCAN_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaac46aadc574001d9736ac2e499cadc9f", null ],
+      [ "BLUETOOTH_ERR_PAIR_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca1d9d93b4a1236610429224fe9c65b357", null ],
+      [ "BLUETOOTH_ERR_UNPAIR_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca3997ab441cd3349b6653d1472df155f8", null ],
+      [ "BLUETOOTH_ERR_TIMEOUT", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca57ba134b5be62166ab0e05e3ab8bebd8", null ],
+      [ "BLUETOOTH_ERR_NO_MEMORY", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcadb7c733ff51bc4a822a70051e39e2233", null ],
+      [ "BLUETOOTH_ERR_INVALID_ADDRESS", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca48fe02293943503fcc25e1aec40c8b18", null ],
+      [ "BLUETOOTH_ERR_DEVICE_NOT_FOUND", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca3b6bed6cc89b3c86d32f1d6e6341c3a0", null ],
+      [ "BLUETOOTH_ERR_SERVICE_NOT_FOUND", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca734bd11102923579facca293d53a9498", null ],
+      [ "BLUETOOTH_ERR_CHARACTERISTIC_NOT_FOUND", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca341f93e80fb3f58182496391d983ef66", null ],
+      [ "BLUETOOTH_ERR_AUTHENTICATION_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcac10b358bb220f044b569179c1581befa", null ],
+      [ "BLUETOOTH_ERR_AUTHORIZATION_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcac20fe705f0decba17d6389e1f6a9b52e", null ],
+      [ "BLUETOOTH_ERR_ENCRYPTION_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca7754451b351b83fd625dbae0934b868a", null ],
+      [ "BLUETOOTH_ERR_OPERATION_NOT_SUPPORTED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca0ebed6c0dfa185abedac7eefe4fc8ae9", null ],
+      [ "BLUETOOTH_ERR_GATT_ERROR", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca4b82a7e1831f4b5001328b428f4c9ea8", null ],
+      [ "BLUETOOTH_ERR_INVALID_STATE", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaac607b5b5deca10f4463432a3ae8067f", null ],
+      [ "BLUETOOTH_ERR_PERMISSION_DENIED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcacadf0dd2b43b7721c68778b166163604", null ],
+      [ "BLUETOOTH_ERR_BUSY", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca482409fe3143c61e08640e8fd66565e1", null ],
+      [ "BLUETOOTH_ERR_SECURITY_ERROR", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca2a00c2ffe5a5e8c7d9485ea468db952f", null ],
+      [ "BLUETOOTH_ERR_INIT_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca66d85f86376849ed893cab676babdf25", null ],
+      [ "BLUETOOTH_ERR_NOT_SUPPORTED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca42500fa140a6462b39b67bb76bdec5f6", null ],
+      [ "BLUETOOTH_ERR_ALREADY_STARTED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcabe79df1dfeab663ab58088e7756d4ca6", null ],
+      [ "BLUETOOTH_ERR_CONFIG_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca31badd3fdd4add983031662791002101", null ],
+      [ "BLUETOOTH_ERR_START_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaea8de82b42153e17e461aa84ada2b3e9", null ],
+      [ "BLUETOOTH_ERR_STOP_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca6acb70587dcc7469ebcaaa635ca5a99b", null ],
+      [ "BLUETOOTH_ERR_CONNECTION_NOT_FOUND", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca897fd76312f5e72c1877a9fa498f4603", null ],
+      [ "BLUETOOTH_ERR_MAX_CONNECTIONS_REACHED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca20961876b2515bff9cb9bd4d80e1ba3c", null ],
+      [ "BLUETOOTH_ERR_SEND_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca48b3be243f6c32925c9654efe72c0153", null ],
+      [ "BLUETOOTH_ERR_GATT_SERVICE_ADD_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca76ecc04c28d5f50bf60c50ca1f48ae5a", null ],
+      [ "BLUETOOTH_ERR_GATT_CHAR_ADD_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca428010c025f3112a90cc45dfe03e898b", null ],
+      [ "BLUETOOTH_ERR_GATT_SERVICE_NOT_FOUND", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca1499959cb3529ff28c54b3f3bd30d1af", null ],
+      [ "BLUETOOTH_ERR_GATT_SERVICE_START_FAILED", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bca7d5d9c2c49a657b7971862bb311dfa4a", null ],
+      [ "BLUETOOTH_ERR_UNKNOWN", "BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf17beb4c86ed2ee5aa1991c55d1e5920", null ]
+    ] ],
+    [ "hf_bluetooth_event_t", "group__bluetooth.html#gaf4d7f320ef7ffa2ef26966adc8facb67", [
+      [ "HF_BLUETOOTH_EVENT_ENABLED", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67af94a72b4839784b35ff3201b5834aa21", null ],
+      [ "HF_BLUETOOTH_EVENT_DISABLED", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a209a4d247fb609a1c8552fd44ccb3beb", null ],
+      [ "HF_BLUETOOTH_EVENT_SCAN_START", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a631cb5011c69f0a88aaa39e0e3254dc9", null ],
+      [ "HF_BLUETOOTH_EVENT_SCAN_STOP", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a26b947325ab0d54503ca1a639de9782f", null ],
+      [ "HF_BLUETOOTH_EVENT_DEVICE_FOUND", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a5c82831a3aaeb50cb8b58dc8e992f771", null ],
+      [ "HF_BLUETOOTH_EVENT_PAIR_REQUEST", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a44e0a2ecfe10488a158e21695a0fb9d7", null ],
+      [ "HF_BLUETOOTH_EVENT_PAIR_SUCCESS", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67ad9179d78cefa8b9932e24df339318270", null ],
+      [ "HF_BLUETOOTH_EVENT_PAIR_FAILED", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a71db6ff144b9f71fa28145c8cbaa9777", null ],
+      [ "HF_BLUETOOTH_EVENT_UNPAIR_SUCCESS", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a0b8ff98cb7dec1eb43b5a8a31a1d710c", null ],
+      [ "HF_BLUETOOTH_EVENT_CONNECT_SUCCESS", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a6e5ccf1f7b3d8d826aa1655e645ca97c", null ],
+      [ "HF_BLUETOOTH_EVENT_CONNECT_FAILED", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a8698e792ee9d5acc8dcbf81107d8583f", null ],
+      [ "HF_BLUETOOTH_EVENT_DISCONNECT", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67aa58f2d09c8736ca6643e519469c311ac", null ],
+      [ "HF_BLUETOOTH_EVENT_DATA_RECEIVED", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a753931953f23b5cc068055937c80552b", null ],
+      [ "HF_BLUETOOTH_EVENT_DATA_SENT", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a9cae1d3824ed47edc938b2d9559df828", null ],
+      [ "HF_BLUETOOTH_EVENT_GATT_SERVICE_DISCOVERED", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67a9a4a8f71381ef88584170af7dcb47fc5", null ],
+      [ "HF_BLUETOOTH_EVENT_GATT_CHARACTERISTIC_READ", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67ae59b4ff9b0680444f8b6371ffa2fbacf", null ],
+      [ "HF_BLUETOOTH_EVENT_GATT_CHARACTERISTIC_WRITE", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67ab0e084420822966a48db6bf2e95f94b8", null ],
+      [ "HF_BLUETOOTH_EVENT_GATT_NOTIFICATION", "group__bluetooth.html#ggaf4d7f320ef7ffa2ef26966adc8facb67aca9e5b01018e2fb8d64983972c7ba8d3", null ]
+    ] ],
+    [ "hf_bluetooth_mode_t", "group__bluetooth.html#ga6625c9f718627e0ecc95952f757a445b", [
+      [ "HF_BLUETOOTH_MODE_DISABLED", "group__bluetooth.html#gga6625c9f718627e0ecc95952f757a445bad8cd9e23590818ef1e805edec8e131c5", null ],
+      [ "HF_BLUETOOTH_MODE_CLASSIC", "group__bluetooth.html#gga6625c9f718627e0ecc95952f757a445ba6697341cbd54a4a120aedcafdd64540b", null ],
+      [ "HF_BLUETOOTH_MODE_BLE", "group__bluetooth.html#gga6625c9f718627e0ecc95952f757a445ba0f798dc93d69a080a82aaeca55cd90b1", null ],
+      [ "HF_BLUETOOTH_MODE_DUAL", "group__bluetooth.html#gga6625c9f718627e0ecc95952f757a445ba74a92e04a478dcb1d18b2497ee5333a2", null ]
+    ] ],
+    [ "hf_bluetooth_scan_mode_t", "group__bluetooth.html#gaccbe5a8c22f5e3e429b397e3636d390a", [
+      [ "HF_BLUETOOTH_SCAN_MODE_GENERAL_INQUIRY", "group__bluetooth.html#ggaccbe5a8c22f5e3e429b397e3636d390aae1f0e4672e191b6b50d1c3be281f6777", null ],
+      [ "HF_BLUETOOTH_SCAN_MODE_LE_GENERAL", "group__bluetooth.html#ggaccbe5a8c22f5e3e429b397e3636d390aaaeb8c88615f80be29d340ae673d1aa65", null ],
+      [ "HF_BLUETOOTH_SCAN_MODE_LE_LIMITED", "group__bluetooth.html#ggaccbe5a8c22f5e3e429b397e3636d390aa9c8cad65cb4882e33170eb77a39dcb0b", null ]
+    ] ],
+    [ "hf_bluetooth_scan_type_t", "group__bluetooth.html#gaf5e48b9d9196063d4218a713d3e4d26c", [
+      [ "HF_BLUETOOTH_SCAN_TYPE_PASSIVE", "group__bluetooth.html#ggaf5e48b9d9196063d4218a713d3e4d26ca1ae8efd14d61a27168ce327a13b4c02c", null ],
+      [ "HF_BLUETOOTH_SCAN_TYPE_ACTIVE", "group__bluetooth.html#ggaf5e48b9d9196063d4218a713d3e4d26cada5deb1cd60bb274cb388226795304aa", null ]
+    ] ],
+    [ "hf_bluetooth_security_t", "group__bluetooth.html#gafd55018d995cc8e2cc0add725d960aad", [
+      [ "HF_BLUETOOTH_SECURITY_NONE", "group__bluetooth.html#ggafd55018d995cc8e2cc0add725d960aada93d6d5ebd2e08233d2b76720f280a7d4", null ],
+      [ "HF_BLUETOOTH_SECURITY_UNAUTHENTICATED", "group__bluetooth.html#ggafd55018d995cc8e2cc0add725d960aada9389abaefe349ee43deac627ddcf6266", null ],
+      [ "HF_BLUETOOTH_SECURITY_AUTHENTICATED", "group__bluetooth.html#ggafd55018d995cc8e2cc0add725d960aada5a7cc1dacd2641b697921358ae56113c", null ],
+      [ "HF_BLUETOOTH_SECURITY_AUTHORIZED", "group__bluetooth.html#ggafd55018d995cc8e2cc0add725d960aada392a7fa577c6a8f91d2e4008850c9206", null ],
+      [ "HF_BLUETOOTH_SECURITY_ENCRYPTED", "group__bluetooth.html#ggafd55018d995cc8e2cc0add725d960aadad2161bf37003633da4e7f4a4be1218bf", null ],
+      [ "HF_BLUETOOTH_SECURITY_AUTHENTICATED_SC", "group__bluetooth.html#ggafd55018d995cc8e2cc0add725d960aada081c9e5172572dad4b45891717a92c74", null ]
+    ] ],
+    [ "hf_bluetooth_state_t", "group__bluetooth.html#gac451db000ab6ee8c0a80c938da26a738", [
+      [ "HF_BLUETOOTH_STATE_DISABLED", "group__bluetooth.html#ggac451db000ab6ee8c0a80c938da26a738aadc9d7f5087d0288fad75b21952206e2", null ],
+      [ "HF_BLUETOOTH_STATE_ENABLED", "group__bluetooth.html#ggac451db000ab6ee8c0a80c938da26a738a7294118a6528bac81e64193043930543", null ],
+      [ "HF_BLUETOOTH_STATE_SCANNING", "group__bluetooth.html#ggac451db000ab6ee8c0a80c938da26a738ae313efc312d3856091abf48a42f1bc62", null ],
+      [ "HF_BLUETOOTH_STATE_CONNECTING", "group__bluetooth.html#ggac451db000ab6ee8c0a80c938da26a738a7988789a3614746f9319e0f4e1120b96", null ],
+      [ "HF_BLUETOOTH_STATE_CONNECTED", "group__bluetooth.html#ggac451db000ab6ee8c0a80c938da26a738a63c98408d61d087899dbf2ef9d121212", null ],
+      [ "HF_BLUETOOTH_STATE_DISCONNECTING", "group__bluetooth.html#ggac451db000ab6ee8c0a80c938da26a738a0261a94d757d8c13112699eb68f4aee3", null ],
+      [ "HF_BLUETOOTH_STATE_PAIRING", "group__bluetooth.html#ggac451db000ab6ee8c0a80c938da26a738a72738e6ae504bc211de23f81e5ca0d04", null ],
+      [ "HF_BLUETOOTH_STATE_PAIRED", "group__bluetooth.html#ggac451db000ab6ee8c0a80c938da26a738aa9d0a777396fddc6b1a6d2e515b4be9a", null ]
+    ] ],
+    [ "HfBluetoothErrToString", "group__bluetooth.html#ga2d49568a5fa6f7240bd5331d8b9402e9", null ]
+];

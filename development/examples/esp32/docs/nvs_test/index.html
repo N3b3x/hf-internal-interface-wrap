@@ -1,0 +1,1081 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(10)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(10) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(10) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(10) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🧪 NVS Test | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🧪 NVS Test" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="NVS Test Suite - Non-volatile storage and data persistence testing" />
+<meta property="og:description" content="NVS Test Suite - Non-volatile storage and data persistence testing" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🧪 NVS Test" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"NVS Test Suite - Non-volatile storage and data persistence testing","headline":"🧪 NVS Test","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/">🚀 ESP32 Examples</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/">🧪 Test Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🧪 NVS Test</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="esp32-c6-nvs-comprehensive-test-suite">
+  
+  
+    <a href="#esp32-c6-nvs-comprehensive-test-suite" class="anchor-heading" aria-labelledby="esp32-c6-nvs-comprehensive-test-suite"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 NVS Comprehensive Test Suite
+  
+  
+</h1>
+    
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p>The NVS Comprehensive Test Suite provides extensive validation of the <code class="language-plaintext highlighter-rouge">EspNvs</code> class for ESP32-C6
+platforms using ESP-IDF v5.5+.
+This test suite demonstrates complete Non-Volatile Storage functionality, data persistence,
+error handling,
+and performance optimization with a focus on embedded environments using <code class="language-plaintext highlighter-rouge">noexcept</code> functions.</p>
+
+<p><strong>✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware</strong></p>
+
+<p>The comprehensive test suite provides full coverage of the <code class="language-plaintext highlighter-rouge">EspNvs</code> class, testing all methods,
+error conditions, edge cases, and boundary conditions.
+The tests are designed to run without exceptions and without RTTI,
+making them suitable for embedded environments.</p>
+<h2 id="test-coverage">
+  
+  
+    <a href="#test-coverage" class="anchor-heading" aria-labelledby="test-coverage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Coverage
+  
+  
+</h2>
+    
+
+<p>The test suite covers:</p>
+
+<ol>
+  <li><strong>Initialization and Deinitialization</strong>
+    <ul>
+      <li>Normal initialization/deinitialization</li>
+      <li>Double initialization/deinitialization</li>
+      <li>Lazy initialization patterns</li>
+      <li>Error handling</li>
+    </ul>
+  </li>
+  <li><strong>U32 Operations</strong>
+    <ul>
+      <li>Basic set/get operations</li>
+      <li>Boundary values (min/max)</li>
+      <li>Overwriting existing values</li>
+      <li>Invalid parameters (null pointers, empty keys)</li>
+      <li>Key length limits</li>
+    </ul>
+  </li>
+  <li><strong>String Operations</strong>
+    <ul>
+      <li>Basic string storage/retrieval</li>
+      <li>Empty strings</li>
+      <li>Long strings</li>
+      <li>Buffer size validation</li>
+      <li>Special characters</li>
+    </ul>
+  </li>
+  <li><strong>Blob Operations</strong>
+    <ul>
+      <li>Binary data storage/retrieval</li>
+      <li>Large blobs</li>
+      <li>Buffer size validation</li>
+      <li>Null bytes in data</li>
+    </ul>
+  </li>
+  <li><strong>Key Management</strong>
+    <ul>
+      <li>Key existence checking</li>
+      <li>Key size retrieval</li>
+      <li>Key erasure</li>
+      <li>Invalid key handling</li>
+    </ul>
+  </li>
+  <li><strong>Commit Operations</strong>
+    <ul>
+      <li>Normal commits</li>
+      <li>Multiple commits</li>
+      <li>Commits on uninitialized NVS</li>
+    </ul>
+  </li>
+  <li><strong>Statistics and Diagnostics</strong>
+    <ul>
+      <li>Operation counting</li>
+      <li>Error tracking</li>
+      <li>Performance monitoring</li>
+      <li>Health diagnostics</li>
+    </ul>
+  </li>
+  <li><strong>Metadata</strong>
+    <ul>
+      <li>Description retrieval</li>
+      <li>Namespace information</li>
+      <li>Maximum limits</li>
+    </ul>
+  </li>
+  <li><strong>Edge Cases</strong>
+    <ul>
+      <li>Special characters in keys/values</li>
+      <li>Rapid successive operations</li>
+      <li>Type overwriting</li>
+      <li>Binary data with null bytes</li>
+    </ul>
+  </li>
+  <li><strong>Stress Testing</strong>
+    <ul>
+      <li>Multiple namespaces</li>
+      <li>Large number of keys</li>
+      <li>Rapid init/deinit cycles</li>
+      <li>Mixed operation types</li>
+    </ul>
+  </li>
+</ol>
+<h2 id="hardware-requirements">
+  
+  
+    <a href="#hardware-requirements" class="anchor-heading" aria-labelledby="hardware-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Requirements
+  
+  
+</h2>
+    
+<h3 id="supported-platforms">
+  
+  
+    <a href="#supported-platforms" class="anchor-heading" aria-labelledby="supported-platforms"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Supported Platforms
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Primary Target</strong>: ESP32-C6-DevKitM-1</li>
+  <li><strong>ESP-IDF Version</strong>: v5.5 or later</li>
+  <li><strong>Minimum Flash</strong>: 4MB</li>
+  <li><strong>Minimum RAM</strong>: 256KB</li>
+</ul>
+<h3 id="connections">
+  
+  
+    <a href="#connections" class="anchor-heading" aria-labelledby="connections"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Connections
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>USB</strong>: For flashing and serial monitoring (built-in USB-JTAG)</li>
+  <li><strong>No External Hardware Required</strong>: All tests use internal NVS partition</li>
+</ul>
+<h2 id="building-and-running">
+  
+  
+    <a href="#building-and-running" class="anchor-heading" aria-labelledby="building-and-running"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Building and Running
+  
+  
+</h2>
+    
+<h3 id="prerequisites">
+  
+  
+    <a href="#prerequisites" class="anchor-heading" aria-labelledby="prerequisites"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Prerequisites
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="esp-idf-v55-installation-required">
+  
+  
+    <a href="#esp-idf-v55-installation-required" class="anchor-heading" aria-labelledby="esp-idf-v55-installation-required"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP-IDF v5.5+ installation required
+  
+  
+</h2>
+    
+<p>. $IDF_PATH/export.sh</p>
+<h2 id="set-target-platform">
+  
+  
+    <a href="#set-target-platform" class="anchor-heading" aria-labelledby="set-target-platform"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set target platform
+  
+  
+</h2>
+    
+<p>export IDF_TARGET=esp32c6
+```text</p>
+<h3 id="quick-start">
+  
+  
+    <a href="#quick-start" class="anchor-heading" aria-labelledby="quick-start"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Quick Start
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="navigate-to-examples-directory">
+  
+  
+    <a href="#navigate-to-examples-directory" class="anchor-heading" aria-labelledby="navigate-to-examples-directory"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Navigate to examples directory
+  
+  
+</h2>
+    
+<p>cd examples/esp32</p>
+<h2 id="build-nvs-test">
+  
+  
+    <a href="#build-nvs-test" class="anchor-heading" aria-labelledby="build-nvs-test"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build NVS test
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Release</p>
+<h2 id="flash-and-monitor">
+  
+  
+    <a href="#flash-and-monitor" class="anchor-heading" aria-labelledby="flash-and-monitor"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash and monitor
+  
+  
+</h2>
+    
+<p>idf.py -p /dev/ttyUSB0 flash monitor
+```text</p>
+<h3 id="alternative-build-methods">
+  
+  
+    <a href="#alternative-build-methods" class="anchor-heading" aria-labelledby="alternative-build-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Alternative Build Methods
+  
+  
+</h3>
+    
+<h4 id="using-build-scripts-recommended">
+  
+  
+    <a href="#using-build-scripts-recommended" class="anchor-heading" aria-labelledby="using-build-scripts-recommended"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Build Scripts (Recommended)
+  
+  
+</h4>
+    
+<p>```bash</p>
+<h2 id="source-esp-idf-environment">
+  
+  
+    <a href="#source-esp-idf-environment" class="anchor-heading" aria-labelledby="source-esp-idf-environment"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Source ESP-IDF environment
+  
+  
+</h2>
+    
+<p>source /path/to/esp-idf/export.sh</p>
+<h2 id="build-with-optimization">
+  
+  
+    <a href="#build-with-optimization" class="anchor-heading" aria-labelledby="build-with-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build with optimization
+  
+  
+</h2>
+    
+<p>./build_example.sh nvs_test Release</p>
+<h2 id="flash-to-device">
+  
+  
+    <a href="#flash-to-device" class="anchor-heading" aria-labelledby="flash-to-device"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash to device
+  
+  
+</h2>
+    
+<p>idf.py -B build_nvs_test_Release flash monitor
+```text</p>
+<h4 id="debug-build-for-development">
+  
+  
+    <a href="#debug-build-for-development" class="anchor-heading" aria-labelledby="debug-build-for-development"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Debug Build for Development
+  
+  
+</h4>
+    
+<p>```bash</p>
+<h2 id="build-with-debug-symbols-and-verbose-output">
+  
+  
+    <a href="#build-with-debug-symbols-and-verbose-output" class="anchor-heading" aria-labelledby="build-with-debug-symbols-and-verbose-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build with debug symbols and verbose output
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=nvs_test -DBUILD_TYPE=Debug</p>
+<h2 id="run-with-detailed-logging">
+  
+  
+    <a href="#run-with-detailed-logging" class="anchor-heading" aria-labelledby="run-with-detailed-logging"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Run with detailed logging
+  
+  
+</h2>
+    
+<p>idf.py -p /dev/ttyUSB0 flash monitor
+```text</p>
+<h2 id="running-the-test">
+  
+  
+    <a href="#running-the-test" class="anchor-heading" aria-labelledby="running-the-test"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running the Test
+  
+  
+</h2>
+    
+
+<p>Once flashed, the test will automatically start and run through all test cases.
+The output will show:</p>
+
+<ul>
+  <li>Progress for each test case</li>
+  <li>Pass/fail status for each test</li>
+  <li>Detailed error messages for any failures</li>
+  <li>Final summary with total tests, passed, failed, and execution time</li>
+</ul>
+<h3 id="expected-output">
+  
+  
+    <a href="#expected-output" class="anchor-heading" aria-labelledby="expected-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Expected Output
+  
+  
+</h3>
+    
+
+<p>```text
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    ESP32-C6 NVS COMPREHENSIVE TEST SUITE                     ║
+╚══════════════════════════════════════════════════════════════════════════════╝</p>
+
+<p>╔══════════════════════════════════════════════════════════════════════════════╗
+║ Running: test_nvs_initialization                                            ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+[SUCCESS] PASSED: test_nvs_initialization (XX.XX ms)</p>
+
+<p>… (more tests) …</p>
+
+<p>=== NVS TEST SUMMARY ===
+Total: 10, Passed: 10, Failed: 0, Success: 100.00%, Time: XXX.XX ms
+[SUCCESS] ALL NVS TESTS PASSED!
+```text</p>
+<h2 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h2>
+    
+<h3 id="common-issues">
+  
+  
+    <a href="#common-issues" class="anchor-heading" aria-labelledby="common-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Issues
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>NVS partition not found:</strong>
+    <ul>
+      <li>Ensure your partition table includes an NVS partition</li>
+      <li>Check <code class="language-plaintext highlighter-rouge">sdkconfig</code> for proper NVS configuration</li>
+    </ul>
+  </li>
+  <li><strong>Initialization failures:</strong>
+    <ul>
+      <li>The NVS partition might be corrupted</li>
+      <li>Try erasing flash: <code class="language-plaintext highlighter-rouge">idf.py -p /dev/ttyUSB0 erase-flash</code></li>
+    </ul>
+  </li>
+  <li><strong>Test failures:</strong>
+    <ul>
+      <li>Check the detailed error messages in the output</li>
+      <li>Ensure sufficient free space in NVS partition</li>
+      <li>Verify ESP-IDF version is 5.5 or later</li>
+    </ul>
+  </li>
+</ol>
+<h2 id="configuration">
+  
+  
+    <a href="#configuration" class="anchor-heading" aria-labelledby="configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Configuration
+  
+  
+</h2>
+    
+
+<p>The test uses the following compiler flags to ensure embedded-friendly code:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">-fno-exceptions</code>: No C++ exceptions</li>
+  <li><code class="language-plaintext highlighter-rouge">-fno-rtti</code>: No Run-Time Type Information</li>
+  <li><code class="language-plaintext highlighter-rouge">-O2</code>: Optimization level 2 for release builds</li>
+  <li><code class="language-plaintext highlighter-rouge">-Wall -Wextra</code>: Enable most warnings</li>
+</ul>
+<h2 id="customization">
+  
+  
+    <a href="#customization" class="anchor-heading" aria-labelledby="customization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Customization
+  
+  
+</h2>
+    
+
+<p>To add more tests or modify existing ones, edit:
+<code class="language-plaintext highlighter-rouge">examples/esp32/main/NvsComprehensiveTest.cpp</code></p>
+
+<p>The test framework in <code class="language-plaintext highlighter-rouge">TestFramework.h</code> provides:</p>
+<ul>
+  <li>Automatic timing measurement</li>
+  <li>Result tracking</li>
+  <li>Standardized output format</li>
+</ul>
+<h2 id="notes">
+  
+  
+    <a href="#notes" class="anchor-heading" aria-labelledby="notes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Notes
+  
+  
+</h2>
+    
+
+<ul>
+  <li>The test suite is designed to be self-contained and requires no external dependencies</li>
+  <li>All tests use the <code class="language-plaintext highlighter-rouge">noexcept</code> specifier to ensure no exceptions are thrown</li>
+  <li>The code is compatible with C++17 standard</li>
+  <li>Thread safety is enabled by default (HF_THREAD_SAFE=1)</li>
+</ul>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

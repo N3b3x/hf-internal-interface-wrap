@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classRtosUniqueLock" kind="class" language="C++" prot="public">
+    <compoundname>RtosUniqueLock</compoundname>
+    <includes refid="RtosMutex_8h" local="no">RtosMutex.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Mutex</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classRtosUniqueLock_1a7b11552fac4479324f323c969b31f10b" prot="private" static="no" mutable="no">
+        <type>Mutex *</type>
+        <definition>Mutex* RtosUniqueLock&lt; Mutex &gt;::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>RtosUniqueLock::mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="386" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="386" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classRtosUniqueLock_1a89ad89a30e33c3e6a43d0bfeac1422de" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool RtosUniqueLock&lt; Mutex &gt;::locked_</definition>
+        <argsstring></argsstring>
+        <name>locked_</name>
+        <qualifiedname>RtosUniqueLock::locked_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="387" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="387" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classRtosUniqueLock_1a80c4ce4d9f80c22f4538c471cbf67464" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosUniqueLock&lt; Mutex &gt;::RtosUniqueLock</definition>
+        <argsstring>(Mutex &amp;mutex, uint32_t timeout_ms=0) noexcept</argsstring>
+        <name>RtosUniqueLock</name>
+        <qualifiedname>RtosUniqueLock::RtosUniqueLock</qualifiedname>
+        <param>
+          <type>Mutex &amp;</type>
+          <declname>mutex</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="338" column="12" bodyfile="inc/utils/RtosMutex.h" bodystart="338" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosUniqueLock_1a59124b82120bbe0b1b98fa5087a9317f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosUniqueLock&lt; Mutex &gt;::~RtosUniqueLock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~RtosUniqueLock</name>
+        <qualifiedname>RtosUniqueLock::~RtosUniqueLock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="347" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="347" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosUniqueLock_1a36f86e2cdda6d07844f07244fdf0f4b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RtosUniqueLock&lt; Mutex &gt;::RtosUniqueLock</definition>
+        <argsstring>(const RtosUniqueLock &amp;)=delete</argsstring>
+        <name>RtosUniqueLock</name>
+        <qualifiedname>RtosUniqueLock::RtosUniqueLock</qualifiedname>
+        <param>
+          <type>const <ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="353" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosUniqueLock_1ad5abbbb94f3e8fa10ff48e8ef505e712" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock</ref> &amp;</type>
+        <definition>RtosUniqueLock &amp; RtosUniqueLock&lt; Mutex &gt;::operator=</definition>
+        <argsstring>(const RtosUniqueLock &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RtosUniqueLock::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="354" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosUniqueLock_1aceef150d143e7a1f76e6f4dc4f4fee1d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosUniqueLock&lt; Mutex &gt;::RtosUniqueLock</definition>
+        <argsstring>(RtosUniqueLock &amp;&amp;other) noexcept</argsstring>
+        <name>RtosUniqueLock</name>
+        <qualifiedname>RtosUniqueLock::RtosUniqueLock</qualifiedname>
+        <param>
+          <type><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="356" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="356" bodyend="359"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosUniqueLock_1a8c9bb127ad2d5e4e2a0790c57c0d91de" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock</ref> &amp;</type>
+        <definition>RtosUniqueLock &amp; RtosUniqueLock&lt; Mutex &gt;::operator=</definition>
+        <argsstring>(RtosUniqueLock &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RtosUniqueLock::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="361" column="18" bodyfile="inc/utils/RtosMutex.h" bodystart="361" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosUniqueLock_1a5c85f4016f0a1cbdaa3cdb4134774d25" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosUniqueLock&lt; Mutex &gt;::IsLocked</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsLocked</name>
+        <qualifiedname>RtosUniqueLock::IsLocked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="374" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="374" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosUniqueLock_1a128c64f4cb86d7735dbf4fd0d471d82b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RtosUniqueLock&lt; Mutex &gt;::Unlock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Unlock</name>
+        <qualifiedname>RtosUniqueLock::Unlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="378" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="378" bodyend="383"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/utils/RtosMutex.h" line="336" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="336" bodyend="388"/>
+    <listofallmembers>
+      <member refid="classRtosUniqueLock_1a5c85f4016f0a1cbdaa3cdb4134774d25" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>IsLocked</name></member>
+      <member refid="classRtosUniqueLock_1a89ad89a30e33c3e6a43d0bfeac1422de" prot="private" virt="non-virtual"><scope>RtosUniqueLock</scope><name>locked_</name></member>
+      <member refid="classRtosUniqueLock_1a7b11552fac4479324f323c969b31f10b" prot="private" virt="non-virtual"><scope>RtosUniqueLock</scope><name>mutex_</name></member>
+      <member refid="classRtosUniqueLock_1ad5abbbb94f3e8fa10ff48e8ef505e712" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>operator=</name></member>
+      <member refid="classRtosUniqueLock_1a8c9bb127ad2d5e4e2a0790c57c0d91de" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>operator=</name></member>
+      <member refid="classRtosUniqueLock_1a80c4ce4d9f80c22f4538c471cbf67464" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>RtosUniqueLock</name></member>
+      <member refid="classRtosUniqueLock_1a36f86e2cdda6d07844f07244fdf0f4b9" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>RtosUniqueLock</name></member>
+      <member refid="classRtosUniqueLock_1aceef150d143e7a1f76e6f4dc4f4fee1d" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>RtosUniqueLock</name></member>
+      <member refid="classRtosUniqueLock_1a128c64f4cb86d7735dbf4fd0d471d82b" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>Unlock</name></member>
+      <member refid="classRtosUniqueLock_1a59124b82120bbe0b1b98fa5087a9317f" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>~RtosUniqueLock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

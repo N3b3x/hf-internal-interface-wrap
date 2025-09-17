@@ -1,0 +1,2365 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classEspPio" kind="class" language="C++" prot="public">
+    <compoundname>EspPio</compoundname>
+    <basecompoundref refid="classBasePio" prot="public" virt="non-virtual">BasePio</basecompoundref>
+    <includes refid="EspPio_8h" local="no">EspPio.h</includes>
+    <innerclass refid="structEspPio_1_1ChannelState" prot="private">EspPio::ChannelState</innerclass>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classEspPio_1ac4e5b7482b20d6852d1e8ab45984d853" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t EspPio::MAX_CHANNELS</definition>
+        <argsstring></argsstring>
+        <name>MAX_CHANNELS</name>
+        <qualifiedname>EspPio::MAX_CHANNELS</qualifiedname>
+        <initializer>= <ref refid="EspTypes__PIO_8h_1affbcbc9b8c7595fc42442350149f1df8" kindref="member">HF_RMT_MAX_CHANNELS</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="373" column="28" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="373" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPio_1a03675432b6a1a0d67ba0a87d8782d854" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t EspPio::MAX_SYMBOLS_PER_TRANSMISSION</definition>
+        <argsstring></argsstring>
+        <name>MAX_SYMBOLS_PER_TRANSMISSION</name>
+        <qualifiedname>EspPio::MAX_SYMBOLS_PER_TRANSMISSION</qualifiedname>
+        <initializer>= 256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="374" column="27" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="374" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPio_1a98997f966da26af47b3c6259dbaeb07b" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t EspPio::DEFAULT_RESOLUTION_NS</definition>
+        <argsstring></argsstring>
+        <name>DEFAULT_RESOLUTION_NS</name>
+        <qualifiedname>EspPio::DEFAULT_RESOLUTION_NS</qualifiedname>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="375" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="375" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t EspPio::RMT_CLK_SRC_FREQ</definition>
+        <argsstring></argsstring>
+        <name>RMT_CLK_SRC_FREQ</name>
+        <qualifiedname>EspPio::RMT_CLK_SRC_FREQ</qualifiedname>
+        <initializer>= 80000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="380" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="380" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPio_1a6961547bda9a07105b8a285b884922c1" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr const char *</type>
+        <definition>constexpr const char* EspPio::TAG</definition>
+        <argsstring></argsstring>
+        <name>TAG</name>
+        <qualifiedname>EspPio::TAG</qualifiedname>
+        <initializer>= &quot;EspPio&quot;</initializer>
+        <briefdescription>
+<para>Logging tag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="512" column="31" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="512" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEspPio_1a2cfe917257c8f0d1e35914b545690c6b" prot="private" static="no" mutable="no">
+        <type>std::array&lt; <ref refid="structEspPio_1_1ChannelState" kindref="compound">ChannelState</ref>, <ref refid="classEspPio_1ac4e5b7482b20d6852d1e8ab45984d853" kindref="member">MAX_CHANNELS</ref> &gt;</type>
+        <definition>std::array&lt;ChannelState, MAX_CHANNELS&gt; EspPio::channels_</definition>
+        <argsstring></argsstring>
+        <name>channels_</name>
+        <qualifiedname>EspPio::channels_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="383" column="14" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="383" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPio_1a72c959369a34be8c3d02fc5e91e1ba27" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspPio::state_mutex_</definition>
+        <argsstring></argsstring>
+        <name>state_mutex_</name>
+        <qualifiedname>EspPio::state_mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="384" column="21" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="384" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPio_1a83171490adbcc59ea168e231a436cf8d" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__pio__statistics__t" kindref="compound">hf_pio_statistics_t</ref></type>
+        <definition>hf_pio_statistics_t EspPio::global_statistics_</definition>
+        <argsstring></argsstring>
+        <name>global_statistics_</name>
+        <qualifiedname>EspPio::global_statistics_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="387" column="23" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="387" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspPio_1affc852df7d0de8a4c89fbbd5f0b3e1ef" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__pio__diagnostics__t" kindref="compound">hf_pio_diagnostics_t</ref></type>
+        <definition>hf_pio_diagnostics_t EspPio::global_diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>global_diagnostics_</name>
+        <qualifiedname>EspPio::global_diagnostics_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="388" column="24" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="388" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEspPio_1a02ffc50131df34a1ac6c1a688a43eaeb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPio::EspPio</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EspPio</name>
+        <qualifiedname>EspPio::EspPio</qualifiedname>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="115" column="3" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a416698fd3ef86febfc2e1d3609747f02" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPio::~EspPio</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~EspPio</name>
+        <qualifiedname>EspPio::~EspPio</qualifiedname>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="120" column="3" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1acc7644cbdce0120b621080d2e3fae5af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspPio::EspPio</definition>
+        <argsstring>(const EspPio &amp;)=delete</argsstring>
+        <name>EspPio</name>
+        <qualifiedname>EspPio::EspPio</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="123" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ac16811c00bc008cd087bd4dc3435b8f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
+        <definition>EspPio &amp; EspPio::operator=</definition>
+        <argsstring>(const EspPio &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspPio::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="124" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a5bd79a12ccad8576ee09958f32f214f3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPio::EspPio</definition>
+        <argsstring>(EspPio &amp;&amp;) noexcept=default</argsstring>
+        <name>EspPio</name>
+        <qualifiedname>EspPio::EspPio</qualifiedname>
+        <param>
+          <type><ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="127" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a07e1b13b98206a15e5c829aa29b692d4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
+        <definition>EspPio &amp; EspPio::operator=</definition>
+        <argsstring>(EspPio &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspPio::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="128" column="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a548c78074900963154c241557be714f4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>EspPio::Initialize</qualifiedname>
+        <reimplements refid="classBasePio_1ad8be51bcf2ec90f5ed1e78759d4604b4">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the PIO peripheral. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="133" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="59" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1aea1fbac9dab51ce76924462ebc5dba9f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>EspPio::Deinitialize</qualifiedname>
+        <reimplements refid="classBasePio_1aa7c07341b42d499b73cf2285cc965cb9">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the PIO peripheral. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="134" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="77" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ab47d5c83365810530384b0c40b70e00a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ConfigureChannel</definition>
+        <argsstring>(hf_u8_t channel_id, const hf_pio_channel_config_t &amp;config) noexcept override</argsstring>
+        <name>ConfigureChannel</name>
+        <qualifiedname>EspPio::ConfigureChannel</qualifiedname>
+        <reimplements refid="classBasePio_1a1df2eedf08baddd6b49309e6bcd18153">ConfigureChannel</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Configure a PIO channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="136" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="106" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a1c50e6baeb6ca6934d4893b3bb3c62f5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::Transmit</definition>
+        <argsstring>(hf_u8_t channel_id, const hf_pio_symbol_t *symbols, size_t symbol_count, bool wait_completion=false) noexcept override</argsstring>
+        <name>Transmit</name>
+        <qualifiedname>EspPio::Transmit</qualifiedname>
+        <reimplements refid="classBasePio_1a06f76799267d04b7f55f2c525256387e">Transmit</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <declname>symbols</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>symbol_count</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait_completion</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Transmit a sequence of symbols. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of symbols to transmit </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbol_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of symbols in the array </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait_completion</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, block until transmission is complete </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="139" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="154" bodyend="269"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a22647a7f9153379ea2225d6456298a0b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::StartReceive</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_symbol_t *buffer, size_t buffer_size, uint32_t timeout_us=0) noexcept override</argsstring>
+        <name>StartReceive</name>
+        <qualifiedname>EspPio::StartReceive</qualifiedname>
+        <reimplements refid="classBasePio_1a29e9cb9272c91f47f805cf4b75bb8f6d">StartReceive</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_us</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Start receiving symbols. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store received symbols </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in microseconds (0 = no timeout) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="142" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="275" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1afd21f639f1bee483981e76e6d2618d18" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::StopReceive</definition>
+        <argsstring>(hf_u8_t channel_id, size_t &amp;symbols_received) noexcept override</argsstring>
+        <name>StopReceive</name>
+        <qualifiedname>EspPio::StopReceive</qualifiedname>
+        <reimplements refid="classBasePio_1a513502066c764271e131a3fa78648869">StopReceive</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>symbols_received</declname>
+        </param>
+        <briefdescription>
+<para>Stop receiving and get the number of symbols received. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbols_received</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Number of symbols actually received </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="144" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="423" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a9763ed6befd9ce2928a9710116f4d84d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool EspPio::IsChannelBusy</definition>
+        <argsstring>(hf_u8_t channel_id) const noexcept override</argsstring>
+        <name>IsChannelBusy</name>
+        <qualifiedname>EspPio::IsChannelBusy</qualifiedname>
+        <reimplements refid="classBasePio_1a6f55697fbe482663cd9690f6570f5e26">IsChannelBusy</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Check if a channel is currently busy. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if channel is busy, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="146" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="461" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ac5d85469fb40223718d0a4b9d3fe13de" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetChannelStatus</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_channel_status_t &amp;status) const noexcept override</argsstring>
+        <name>GetChannelStatus</name>
+        <qualifiedname>EspPio::GetChannelStatus</qualifiedname>
+        <reimplements refid="classBasePio_1a9607dd3ef0e3e2025e240153a4827cd9">GetChannelStatus</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__channel__status__t" kindref="compound">hf_pio_channel_status_t</ref> &amp;</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+<para>Get channel status information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>status</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Status information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="147" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="471" bodyend="484"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1aebeafb537cc85f4b715b93a70982e5d9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetCapabilities</definition>
+        <argsstring>(hf_pio_capabilities_t &amp;capabilities) const noexcept override</argsstring>
+        <name>GetCapabilities</name>
+        <qualifiedname>EspPio::GetCapabilities</qualifiedname>
+        <reimplements refid="classBasePio_1ac20329f4cdc491c89e5b27d1fd806994">GetCapabilities</reimplements>
+        <param>
+          <type><ref refid="structhf__pio__capabilities__t" kindref="compound">hf_pio_capabilities_t</ref> &amp;</type>
+          <declname>capabilities</declname>
+        </param>
+        <briefdescription>
+<para>Get PIO capabilities. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>capabilities</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Capability information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="149" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="486" bodyend="497"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ac24f012073be0c9e406724cadd1c9788" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EspPio::SetTransmitCallback</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_transmit_callback_t callback, void *user_data=nullptr) noexcept override</argsstring>
+        <name>SetTransmitCallback</name>
+        <qualifiedname>EspPio::SetTransmitCallback</qualifiedname>
+        <reimplements refid="classBasePio_1ac0c06541482ba77801e174c3be82a0ce">SetTransmitCallback</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePio_8h_1ab8c62aa676888a6756a3ea726b24d64c" kindref="member">hf_pio_transmit_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set callback for transmission complete events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data to pass to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="151" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="503" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a80cc3f6b0def51b6d46dfb15d9ab4d95" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EspPio::SetReceiveCallback</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_receive_callback_t callback, void *user_data=nullptr) noexcept override</argsstring>
+        <name>SetReceiveCallback</name>
+        <qualifiedname>EspPio::SetReceiveCallback</qualifiedname>
+        <reimplements refid="classBasePio_1ab5ed24fe603fab13d06265849e0dcab7">SetReceiveCallback</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePio_8h_1a8e55d16268bbfd30ee876df3ee4561ed" kindref="member">hf_pio_receive_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set callback for reception complete events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data to pass to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="153" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="532" bodyend="559"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a5c5371ff00a9b3f4c8f753907d8a40ff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EspPio::SetErrorCallback</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_error_callback_t callback, void *user_data=nullptr) noexcept override</argsstring>
+        <name>SetErrorCallback</name>
+        <qualifiedname>EspPio::SetErrorCallback</qualifiedname>
+        <reimplements refid="classBasePio_1aa01d1974a8f2a1c36648bb7aa78632de">SetErrorCallback</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePio_8h_1a03aa7b5372a89dbdf0770488fbb6f824" kindref="member">hf_pio_error_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set callback for error events. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data to pass to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="155" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="561" bodyend="583"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a07ad6ee8046e03dc6f224d5b219c392f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EspPio::ClearChannelCallbacks</definition>
+        <argsstring>(hf_u8_t channel_id) noexcept override</argsstring>
+        <name>ClearChannelCallbacks</name>
+        <qualifiedname>EspPio::ClearChannelCallbacks</qualifiedname>
+        <reimplements refid="classBasePio_1ad84894a15fb747be88dbfde1c11d80d8">ClearChannelCallbacks</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Clear all callbacks for a specific channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="157" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="585" bodyend="610"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a6bfe58b6673ae3aa9d1cd0f54ebb6901" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>void</type>
+        <definition>void EspPio::ClearCallbacks</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>ClearCallbacks</name>
+        <qualifiedname>EspPio::ClearCallbacks</qualifiedname>
+        <reimplements refid="classBasePio_1a3bf2d029ab95172e27366fee39b03ca6">ClearCallbacks</reimplements>
+        <briefdescription>
+<para>Clear all callbacks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="158" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="612" bodyend="626"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1aa8c961670e551b3a959aa819f09a1460" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetStatistics</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_statistics_t &amp;statistics) const noexcept override</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>EspPio::GetStatistics</qualifiedname>
+        <reimplements refid="classBasePio_1ac53da4015db8c7d6fe7acc637e11fb9c">GetStatistics</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__statistics__t" kindref="compound">hf_pio_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get PIO operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to statistics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48ea60bac135720fbca0f9b2eec92f20495b" kindref="member">hf_pio_err_t::PIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="166" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1881" bodyend="1891"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a54071f5511944e0a0be19052e421749f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetDiagnostics</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_diagnostics_t &amp;diagnostics) const noexcept override</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>EspPio::GetDiagnostics</qualifiedname>
+        <reimplements refid="classBasePio_1a3f274406655b98208ad47977f7ffa152">GetDiagnostics</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__diagnostics__t" kindref="compound">hf_pio_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get PIO diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to diagnostics structure to fill </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48ea60bac135720fbca0f9b2eec92f20495b" kindref="member">hf_pio_err_t::PIO_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="175" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1893" bodyend="1917"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1adec787e469920ae4dca1302c31940b55" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::TransmitRawRmtSymbols</definition>
+        <argsstring>(hf_u8_t channel_id, const rmt_symbol_word_t *rmt_symbols, size_t symbol_count, bool wait_completion=false) noexcept</argsstring>
+        <name>TransmitRawRmtSymbols</name>
+        <qualifiedname>EspPio::TransmitRawRmtSymbols</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>const rmt_symbol_word_t *</type>
+          <declname>rmt_symbols</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>symbol_count</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>wait_completion</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Transmit raw RMT symbols directly (bypassing <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> conversion) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rmt_symbols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of raw RMT symbols </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbol_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of RMT symbols </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>wait_completion</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If true, block until transmission is complete </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+<simplesect kind="note"><para>This provides direct RMT access similar to rmt_wrapper.hpp </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="192" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1001" bodyend="1078"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a7f8dc96e595d8832df3bb1f5f45dc7f8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ReceiveRawRmtSymbols</definition>
+        <argsstring>(hf_u8_t channel_id, rmt_symbol_word_t *rmt_buffer, size_t buffer_size, size_t &amp;symbols_received, uint32_t timeout_us=10000) noexcept</argsstring>
+        <name>ReceiveRawRmtSymbols</name>
+        <qualifiedname>EspPio::ReceiveRawRmtSymbols</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>rmt_symbol_word_t *</type>
+          <declname>rmt_buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>symbols_received</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_us</declname>
+          <defval>10000</defval>
+        </param>
+        <briefdescription>
+<para>Receive raw RMT symbols directly (bypassing <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> conversion) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rmt_buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store raw RMT symbols </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of buffer in RMT symbols </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbols_received</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Number of symbols actually received </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+<simplesect kind="note"><para>This provides direct RMT access similar to rmt_wrapper.hpp </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="205" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1080" bodyend="1174"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a93a977f86b70a0e074e75fc68156d7e6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ConfigureAdvancedRmt</definition>
+        <argsstring>(hf_u8_t channel_id, size_t memory_blocks=64, bool enable_dma=false, uint32_t queue_depth=4) noexcept</argsstring>
+        <name>ConfigureAdvancedRmt</name>
+        <qualifiedname>EspPio::ConfigureAdvancedRmt</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>memory_blocks</declname>
+          <defval>64</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable_dma</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>queue_depth</declname>
+          <defval>4</defval>
+        </param>
+        <briefdescription>
+<para>Configure advanced RMT channel settings. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>memory_blocks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of memory blocks (symbols) to allocate </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable_dma</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Enable DMA mode for large transfers </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>queue_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Transmit queue depth </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="216" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="686" bodyend="838"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ac063aea086f17b16c12b3e04e90c9ade" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ConfigureCarrier</definition>
+        <argsstring>(hf_u8_t channel_id, uint32_t carrier_freq_hz, float duty_cycle) noexcept</argsstring>
+        <name>ConfigureCarrier</name>
+        <qualifiedname>EspPio::ConfigureCarrier</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>carrier_freq_hz</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>duty_cycle</declname>
+        </param>
+        <briefdescription>
+<para>Configure carrier modulation for IR protocols. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>carrier_freq_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Carrier frequency in Hz (0 to disable) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>duty_cycle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Carrier duty cycle (0.0 to 1.0) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="230" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="632" bodyend="668"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a3cbd9ff6fc01e7f00df0fa0b0889aad8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::EnableLoopback</definition>
+        <argsstring>(hf_u8_t channel_id, bool enable) noexcept</argsstring>
+        <name>EnableLoopback</name>
+        <qualifiedname>EspPio::EnableLoopback</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>Enable/disable loopback mode for testing. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true to enable loopback, false to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="239" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="670" bodyend="680"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1aa5050a7a117545e320540581461d2c08" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t EspPio::GetMaxSymbolCount</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetMaxSymbolCount</name>
+        <qualifiedname>EspPio::GetMaxSymbolCount</qualifiedname>
+        <briefdescription>
+<para>Get the maximum number of symbols that can be transmitted in one operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum symbol count </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="245" column="10" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1176" bodyend="1179"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a78667ac6a809d1c275b01086b3bfaf7b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspPio::ValidatePioSystem</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ValidatePioSystem</name>
+        <qualifiedname>EspPio::ValidatePioSystem</qualifiedname>
+        <briefdescription>
+<para>Comprehensive PIO system validation and performance test. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if all systems pass validation, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="251" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1786" bodyend="1875"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ad8d0504aa345ad65f1d8e041136504f3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ConfigureEncoder</definition>
+        <argsstring>(hf_u8_t channel_id, const hf_pio_symbol_t &amp;bit0_config, const hf_pio_symbol_t &amp;bit1_config) noexcept</argsstring>
+        <name>ConfigureEncoder</name>
+        <qualifiedname>EspPio::ConfigureEncoder</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> &amp;</type>
+          <declname>bit0_config</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> &amp;</type>
+          <declname>bit1_config</declname>
+        </param>
+        <briefdescription>
+<para>Configure RMT encoder for specific protocol. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bit0_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration for bit 0 encoding </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bit1_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Configuration for bit 1 encoding </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="260" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="844" bodyend="896"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1afbb6990ea342a5aa31b341d60ed889ae" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::SetIdleLevel</definition>
+        <argsstring>(hf_u8_t channel_id, bool idle_level) noexcept</argsstring>
+        <name>SetIdleLevel</name>
+        <qualifiedname>EspPio::SetIdleLevel</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>idle_level</declname>
+        </param>
+        <briefdescription>
+<para>Set RMT channel idle output level. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>idle_level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>true for high, false for low </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="269" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="898" bodyend="917"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ad3052314d71664513acb1df7aceddc6d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetChannelStatistics</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_channel_statistics_t &amp;stats) const noexcept</argsstring>
+        <name>GetChannelStatistics</name>
+        <qualifiedname>EspPio::GetChannelStatistics</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__channel__statistics__t" kindref="compound">hf_pio_channel_statistics_t</ref> &amp;</type>
+          <declname>stats</declname>
+        </param>
+        <briefdescription>
+<para>Get current RMT channel statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>stats</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Channel statistics structure </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="277" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="919" bodyend="940"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a3212d7cf5fc428046ff3eb4ca0c4f5a8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ResetChannelStatistics</definition>
+        <argsstring>(hf_u8_t channel_id) noexcept</argsstring>
+        <name>ResetChannelStatistics</name>
+        <qualifiedname>EspPio::ResetChannelStatistics</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Reset channel statistics counters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="285" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="942" bodyend="947"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1acfb058f34a7e0cf21c7a037c5b198621" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetActualResolution</definition>
+        <argsstring>(hf_u8_t channel_id, hf_u32_t &amp;achieved_resolution_ns) const noexcept</argsstring>
+        <name>GetActualResolution</name>
+        <qualifiedname>EspPio::GetActualResolution</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>achieved_resolution_ns</declname>
+        </param>
+        <briefdescription>
+<para>Get the actual achieved resolution for a channel in nanoseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>achieved_resolution_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Actual resolution achieved by hardware </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+<simplesect kind="note"><para>Due to 8-bit clock divider limitations (1-255), the actual resolution may differ from the requested resolution_ns in the configuration </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="295" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="949" bodyend="962"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a5c58bbc45366736bd54f043cf39fc9a1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::SetClockSource</definition>
+        <argsstring>(hf_u8_t channel_id, rmt_clock_source_t clk_src) noexcept</argsstring>
+        <name>SetClockSource</name>
+        <qualifiedname>EspPio::SetClockSource</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>rmt_clock_source_t</type>
+          <declname>clk_src</declname>
+        </param>
+        <briefdescription>
+<para>Allow caller to choose the RMT clock source per channel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clk_src</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>RMT clock source (e.g. RMT_CLK_SRC_PLL_F80M, RMT_CLK_SRC_XTAL, RMT_CLK_SRC_RC_FAST) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+<simplesect kind="note"><para>Must be called before <ref refid="classEspPio_1ab47d5c83365810530384b0c40b70e00a" kindref="member">ConfigureChannel()</ref> to take effect for initial install. Reconfiguration via <ref refid="classEspPio_1a93a977f86b70a0e074e75fc68156d7e6" kindref="member">ConfigureAdvancedRmt()</ref> also respects this selection. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="307" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1310" bodyend="1322"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a028d9993a803fac3f16bfd650bef3aff" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetClockSource</definition>
+        <argsstring>(hf_u8_t channel_id, rmt_clock_source_t &amp;clk_src) const noexcept</argsstring>
+        <name>GetClockSource</name>
+        <qualifiedname>EspPio::GetClockSource</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>rmt_clock_source_t &amp;</type>
+          <declname>clk_src</declname>
+        </param>
+        <briefdescription>
+<para>Get the currently selected RMT clock source for a channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="312" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1324" bodyend="1332"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1adcdcad3a021a42f84cc978c5ac8b81aa" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetSourceClockHz</definition>
+        <argsstring>(hf_u8_t channel_id, hf_u32_t &amp;clock_hz) const noexcept</argsstring>
+        <name>GetSourceClockHz</name>
+        <qualifiedname>EspPio::GetSourceClockHz</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>clock_hz</declname>
+        </param>
+        <briefdescription>
+<para>Get the current source clock frequency for a channel (Hz) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="317" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1334" bodyend="1341"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classEspPio_1a68923d078ceecd71f7e2f77e8c5bc947" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspPio::IsValidChannelId</definition>
+        <argsstring>(hf_u8_t channel_id) const noexcept</argsstring>
+        <name>IsValidChannelId</name>
+        <qualifiedname>EspPio::IsValidChannelId</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Validate channel ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="397" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1185" bodyend="1187"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a4ac66d796bb5d5087cd20d49e26c4b49" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ConvertToRmtSymbols</definition>
+        <argsstring>(const hf_pio_symbol_t *symbols, size_t symbol_count, rmt_symbol_word_t *rmt_symbols, size_t &amp;rmt_symbol_count) noexcept</argsstring>
+        <name>ConvertToRmtSymbols</name>
+        <qualifiedname>EspPio::ConvertToRmtSymbols</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <declname>symbols</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>symbol_count</declname>
+        </param>
+        <param>
+          <type>rmt_symbol_word_t *</type>
+          <declname>rmt_symbols</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>rmt_symbol_count</declname>
+        </param>
+        <briefdescription>
+<para>Convert <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> array to RMT symbol format. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="401" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1189" bodyend="1221"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a9941024800163ea0fa4c06a7a5131046" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ConvertFromRmtSymbols</definition>
+        <argsstring>(const rmt_symbol_word_t *rmt_symbols, size_t rmt_symbol_count, hf_pio_symbol_t *symbols, size_t max_symbols, size_t &amp;symbols_converted) noexcept</argsstring>
+        <name>ConvertFromRmtSymbols</name>
+        <qualifiedname>EspPio::ConvertFromRmtSymbols</qualifiedname>
+        <param>
+          <type>const rmt_symbol_word_t *</type>
+          <declname>rmt_symbols</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>rmt_symbol_count</declname>
+        </param>
+        <param>
+          <type><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <declname>symbols</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>max_symbols</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>symbols_converted</declname>
+        </param>
+        <briefdescription>
+<para>Convert RMT symbols back to <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> format. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>rmt_symbols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input RMT symbols to convert </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rmt_symbol_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of RMT symbols to convert </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output buffer for converted PIO symbols </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_symbols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum number of PIO symbols that can be stored in the buffer </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>symbols_converted</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Actual number of PIO symbols converted </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="413" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1223" bodyend="1308"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a321173563822b4e43519bce2b297b26c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::InitializeChannel</definition>
+        <argsstring>(hf_u8_t channel_id) noexcept</argsstring>
+        <name>InitializeChannel</name>
+        <qualifiedname>EspPio::InitializeChannel</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Initialize a specific channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="428" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1595" bodyend="1725"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1aebbd89059a4217c14677900a62b6969c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::DeinitializeChannel</definition>
+        <argsstring>(hf_u8_t channel_id) noexcept</argsstring>
+        <name>DeinitializeChannel</name>
+        <qualifiedname>EspPio::DeinitializeChannel</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <briefdescription>
+<para>Deinitialize a specific channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="433" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1727" bodyend="1771"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a7052de443a7a277407f2bbe1655354e6" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ValidateSymbols</definition>
+        <argsstring>(const hf_pio_symbol_t *symbols, size_t symbol_count) const noexcept</argsstring>
+        <name>ValidateSymbols</name>
+        <qualifiedname>EspPio::ValidateSymbols</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+          <declname>symbols</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>symbol_count</declname>
+        </param>
+        <briefdescription>
+<para>Validate symbol array. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="438" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1773" bodyend="1784"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a508b7579bd404e0c839f3a698ac6f01a" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPio::CalculateResolutionHz</definition>
+        <argsstring>(hf_u32_t resolution_ns, hf_u32_t &amp;actual_resolution_ns, hf_u32_t source_clock_hz) const noexcept</argsstring>
+        <name>CalculateResolutionHz</name>
+        <qualifiedname>EspPio::CalculateResolutionHz</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>resolution_ns</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>actual_resolution_ns</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>source_clock_hz</declname>
+        </param>
+        <briefdescription>
+<para>Calculate the best possible resolution_hz from requested resolution_ns. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resolution_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Requested resolution in nanoseconds </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_resolution_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Actual resolution that will be achieved </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source_clock_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source clock frequency in Hz for the selected clk_src </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Calculated resolution_hz for RMT peripheral </para>
+</simplesect>
+<simplesect kind="note"><para>This handles the 8-bit divider constraint (1-255) and returns the closest achievable resolution </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="449" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="964" bodyend="978"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a4db79fdbd7ec5c9123d89689015a24be" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>hf_u32_t EspPio::CalculateClockDivider</definition>
+        <argsstring>(uint32_t resolution_ns, uint32_t &amp;actual_resolution_ns, uint32_t source_clock_hz) const noexcept</argsstring>
+        <name>CalculateClockDivider</name>
+        <qualifiedname>EspPio::CalculateClockDivider</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>resolution_ns</declname>
+        </param>
+        <param>
+          <type>uint32_t &amp;</type>
+          <declname>actual_resolution_ns</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>source_clock_hz</declname>
+        </param>
+        <briefdescription>
+<para>Calculate RMT clock divider for desired resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>resolution_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired resolution in nanoseconds </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_resolution_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Actual resolution that will be achieved </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source_clock_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source clock frequency in Hz for the selected clk_src </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Clock divider value (1-255) </para>
+</simplesect>
+<simplesect kind="note"><para>This method handles the 8-bit divider constraint and calculates the closest achievable resolution </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="461" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1385" bodyend="1406"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a45cde70f88c3c21f89bffe86998f87c6" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t EspPio::GetEffectiveClockFrequency</definition>
+        <argsstring>(uint32_t clock_divider, uint32_t source_clock_hz) const noexcept</argsstring>
+        <name>GetEffectiveClockFrequency</name>
+        <qualifiedname>EspPio::GetEffectiveClockFrequency</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>clock_divider</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>source_clock_hz</declname>
+        </param>
+        <briefdescription>
+<para>Get effective RMT clock frequency for a given divider. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>clock_divider</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Clock divider value </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>source_clock_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Source clock frequency in Hz for the selected clk_src </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Effective clock frequency in Hz </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="470" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1408" bodyend="1415"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1acdbed7a7dadd9633292e9d9cb10a65ea" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetResolutionConstraints</definition>
+        <argsstring>(hf_u32_t &amp;min_resolution_ns, hf_u32_t &amp;max_resolution_ns, hf_u32_t &amp;clock_freq_hz) const noexcept</argsstring>
+        <name>GetResolutionConstraints</name>
+        <qualifiedname>EspPio::GetResolutionConstraints</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>min_resolution_ns</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>max_resolution_ns</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>clock_freq_hz</declname>
+        </param>
+        <briefdescription>
+<para>Get information about resolution constraints for current ESP32 variant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min_resolution_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Minimum achievable resolution in nanoseconds </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>max_resolution_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Maximum achievable resolution in nanoseconds </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>clock_freq_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>[out] Source clock frequency in Hz </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating success or failure </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="480" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="980" bodyend="995"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ac693c8e37d5b7f84b5ebcd79f01a10d4" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::GetResolutionConstraints</definition>
+        <argsstring>(hf_u8_t channel_id, hf_u32_t &amp;min_resolution_ns, hf_u32_t &amp;max_resolution_ns, hf_u32_t &amp;clock_freq_hz) const noexcept</argsstring>
+        <name>GetResolutionConstraints</name>
+        <qualifiedname>EspPio::GetResolutionConstraints</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>min_resolution_ns</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>max_resolution_ns</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>clock_freq_hz</declname>
+        </param>
+        <briefdescription>
+<para>Get resolution constraints for a specific channel&apos;s selected clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="486" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1ae5dfb88e6d41e82b2a728a6c18a90d2b" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t EspPio::ValidateChannelConfiguration</definition>
+        <argsstring>(hf_u8_t channel_id, const hf_pio_channel_config_t &amp;config) const noexcept</argsstring>
+        <name>ValidateChannelConfiguration</name>
+        <qualifiedname>EspPio::ValidateChannelConfiguration</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Validate channel configuration for current ESP32 variant. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel configuration to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code indicating validation result </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="502" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1417" bodyend="1471"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a6e9a1caf693efaa2f0c7f3b71fe2d02c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void EspPio::InvokeChannelErrorCallback</definition>
+        <argsstring>(hf_u8_t channel_id, hf_pio_err_t error) noexcept</argsstring>
+        <name>InvokeChannelErrorCallback</name>
+        <qualifiedname>EspPio::InvokeChannelErrorCallback</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channel_id</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+<para>Invoke channel-specific error callback. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel_id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Channel identifier </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Error that occurred </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="510" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1473" bodyend="1488"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classEspPio_1ae55002300a0b32f83807e9cbe49d17fb" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspPio::OnTransmitComplete</definition>
+        <argsstring>(rmt_channel_handle_t channel, const rmt_tx_done_event_data_t *edata, void *user_ctx)</argsstring>
+        <name>OnTransmitComplete</name>
+        <qualifiedname>EspPio::OnTransmitComplete</qualifiedname>
+        <param>
+          <type>rmt_channel_handle_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>const rmt_tx_done_event_data_t *</type>
+          <declname>edata</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="419" column="15" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1490" bodyend="1528"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a37d0c4aec852b04b3bb5b290fa06a408" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspPio::OnReceiveComplete</definition>
+        <argsstring>(rmt_channel_handle_t channel, const rmt_rx_done_event_data_t *edata, void *user_ctx)</argsstring>
+        <name>OnReceiveComplete</name>
+        <qualifiedname>EspPio::OnReceiveComplete</qualifiedname>
+        <param>
+          <type>rmt_channel_handle_t</type>
+          <declname>channel</declname>
+        </param>
+        <param>
+          <type>const rmt_rx_done_event_data_t *</type>
+          <declname>edata</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="421" column="15" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1530" bodyend="1593"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a6eef1b3a7a795f668318302142e0cef2" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPio::GetClockSourceFrequency</definition>
+        <argsstring>(rmt_clock_source_t clk_src) noexcept</argsstring>
+        <name>GetClockSourceFrequency</name>
+        <qualifiedname>EspPio::GetClockSourceFrequency</qualifiedname>
+        <param>
+          <type>rmt_clock_source_t</type>
+          <declname>clk_src</declname>
+        </param>
+        <briefdescription>
+<para>Map an RMT clock source to its nominal frequency in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="493" column="26" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1372" bodyend="1383"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspPio_1a0fe47f2b5447e648470f0f0e68841cf2" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPio::ResolveClockSourceHz</definition>
+        <argsstring>(rmt_clock_source_t clk_src) noexcept</argsstring>
+        <name>ResolveClockSourceHz</name>
+        <qualifiedname>EspPio::ResolveClockSourceHz</qualifiedname>
+        <param>
+          <type>rmt_clock_source_t</type>
+          <declname>clk_src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="494" column="26" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1343" bodyend="1369"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32C6 RMT-based Programmable IO Channel implementation with advanced ESP-IDF v5.5+ features. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class implements the <ref refid="classBasePio" kindref="compound">BasePio</ref> interface using the ESP32C6&apos;s advanced RMT peripheral with full ESP-IDF v5.5+ feature support. The RMT peripheral is specifically designed for generating and receiving infrared remote control signals, but it&apos;s versatile enough to handle many types of precisely-timed digital protocols with hardware acceleration.</para>
+<para><bold>Key ESP32C6 RMT features utilized:</bold><itemizedlist>
+<listitem><para>Hardware symbol encoding with configurable timing and DMA support</para>
+</listitem><listitem><para>Built-in carrier generation for IR protocols with precise frequency control</para>
+</listitem><listitem><para>Configurable idle levels and end markers with hardware validation</para>
+</listitem><listitem><para>Interrupt-driven operation with minimal CPU overhead and advanced callbacks</para>
+</listitem><listitem><para>Support for both transmission and reception with hardware filtering</para>
+</listitem><listitem><para>Advanced power management and ULP integration capabilities</para>
+</listitem><listitem><para>Hardware oversampling and digital filtering for noise reduction</para>
+</listitem><listitem><para>Multi-channel synchronization and triggered sampling support</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Advanced ESP-IDF v5.5+ Features:</bold><itemizedlist>
+<listitem><para>DMA-accelerated transfers for high-throughput applications</para>
+</listitem><listitem><para>Hardware-based digital filters for signal conditioning</para>
+</listitem><listitem><para>Advanced calibration and drift compensation mechanisms</para>
+</listitem><listitem><para>Real-time threshold monitoring with interrupt notifications</para>
+</listitem><listitem><para>Zero-crossing detection for AC signal analysis</para>
+</listitem><listitem><para>Adaptive power management for battery-powered applications</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Robustness Features:</bold><itemizedlist>
+<listitem><para>True lazy initialization (no hardware access until needed)</para>
+</listitem><listitem><para>Comprehensive error handling and diagnostics</para>
+</listitem><listitem><para>Thread-safe operation with mutex protection</para>
+</listitem><listitem><para>Resource leak prevention with RAII principles</para>
+</listitem><listitem><para>Extensive validation and bounds checking</para>
+</listitem></itemizedlist>
+</para>
+<para><bold>Limitations:</bold><itemizedlist>
+<listitem><para>Maximum symbol duration depends on RMT clock configuration</para>
+</listitem><listitem><para>Symbol buffer size is limited by available memory</para>
+</listitem><listitem><para>Some advanced features may not be available on all ESP32 variants</para>
+</listitem><listitem><para>DMA mode requires continuous memory allocation</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>This implementation prioritizes performance, accuracy, and resource efficiency. </para>
+</simplesect>
+<simplesect kind="note"><para>All advanced features are gracefully degraded on older ESP-IDF versions. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BasePio</label>
+        <link refid="classBasePio"/>
+      </node>
+      <node id="1">
+        <label>EspPio</label>
+        <link refid="classEspPio"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BasePio</label>
+        <link refid="classBasePio"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>EspPio</label>
+        <link refid="classEspPio"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>state_mutex_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>global_statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>global_diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>RtosMutex</label>
+        <link refid="classRtosMutex"/>
+      </node>
+      <node id="4">
+        <label>hf_pio_diagnostics_t</label>
+        <link refid="structhf__pio__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_pio_statistics_t</label>
+        <link refid="structhf__pio__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspPio.h" line="110" column="1" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="110" bodyend="513"/>
+    <listofallmembers>
+      <member refid="classBasePio_1a9d3dfc822fc2be86f8184af210aa6703" prot="public" virt="non-virtual"><scope>EspPio</scope><name>BasePio</name></member>
+      <member refid="classBasePio_1abae3c0afca5d357c8d481c97b27d38f4" prot="public" virt="non-virtual"><scope>EspPio</scope><name>BasePio</name></member>
+      <member refid="classBasePio_1ad904e700f0e2693fbbe9b59bed2d3d7a" prot="protected" virt="non-virtual"><scope>EspPio</scope><name>BasePio</name></member>
+      <member refid="classEspPio_1a4db79fdbd7ec5c9123d89689015a24be" prot="private" virt="non-virtual"><scope>EspPio</scope><name>CalculateClockDivider</name></member>
+      <member refid="classEspPio_1a508b7579bd404e0c839f3a698ac6f01a" prot="private" virt="non-virtual"><scope>EspPio</scope><name>CalculateResolutionHz</name></member>
+      <member refid="classEspPio_1a2cfe917257c8f0d1e35914b545690c6b" prot="private" virt="non-virtual"><scope>EspPio</scope><name>channels_</name></member>
+      <member refid="classEspPio_1a6bfe58b6673ae3aa9d1cd0f54ebb6901" prot="public" virt="virtual"><scope>EspPio</scope><name>ClearCallbacks</name></member>
+      <member refid="classEspPio_1a07ad6ee8046e03dc6f224d5b219c392f" prot="public" virt="virtual"><scope>EspPio</scope><name>ClearChannelCallbacks</name></member>
+      <member refid="classEspPio_1a93a977f86b70a0e074e75fc68156d7e6" prot="public" virt="non-virtual"><scope>EspPio</scope><name>ConfigureAdvancedRmt</name></member>
+      <member refid="classEspPio_1ac063aea086f17b16c12b3e04e90c9ade" prot="public" virt="non-virtual"><scope>EspPio</scope><name>ConfigureCarrier</name></member>
+      <member refid="classEspPio_1ab47d5c83365810530384b0c40b70e00a" prot="public" virt="virtual"><scope>EspPio</scope><name>ConfigureChannel</name></member>
+      <member refid="classEspPio_1ad8d0504aa345ad65f1d8e041136504f3" prot="public" virt="non-virtual"><scope>EspPio</scope><name>ConfigureEncoder</name></member>
+      <member refid="classEspPio_1a9941024800163ea0fa4c06a7a5131046" prot="private" virt="non-virtual"><scope>EspPio</scope><name>ConvertFromRmtSymbols</name></member>
+      <member refid="classEspPio_1a4ac66d796bb5d5087cd20d49e26c4b49" prot="private" virt="non-virtual"><scope>EspPio</scope><name>ConvertToRmtSymbols</name></member>
+      <member refid="classEspPio_1a98997f966da26af47b3c6259dbaeb07b" prot="private" virt="non-virtual"><scope>EspPio</scope><name>DEFAULT_RESOLUTION_NS</name></member>
+      <member refid="classEspPio_1aea1fbac9dab51ce76924462ebc5dba9f" prot="public" virt="virtual"><scope>EspPio</scope><name>Deinitialize</name></member>
+      <member refid="classEspPio_1aebbd89059a4217c14677900a62b6969c" prot="private" virt="non-virtual"><scope>EspPio</scope><name>DeinitializeChannel</name></member>
+      <member refid="classBasePio_1a406b6488d939e7253a014910f7f152c0" prot="protected" virt="non-virtual"><scope>EspPio</scope><name>diagnostics_</name></member>
+      <member refid="classEspPio_1a3cbd9ff6fc01e7f00df0fa0b0889aad8" prot="public" virt="non-virtual"><scope>EspPio</scope><name>EnableLoopback</name></member>
+      <member refid="classBasePio_1a53a078ae16674075bcd7ed8355227b96" prot="public" virt="non-virtual"><scope>EspPio</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBasePio_1a28949d17756d23eb8fdaf1bd437b7b4b" prot="public" virt="non-virtual"><scope>EspPio</scope><name>EnsureInitialized</name></member>
+      <member refid="classEspPio_1a02ffc50131df34a1ac6c1a688a43eaeb" prot="public" virt="non-virtual"><scope>EspPio</scope><name>EspPio</name></member>
+      <member refid="classEspPio_1acc7644cbdce0120b621080d2e3fae5af" prot="public" virt="non-virtual"><scope>EspPio</scope><name>EspPio</name></member>
+      <member refid="classEspPio_1a5bd79a12ccad8576ee09958f32f214f3" prot="public" virt="non-virtual"><scope>EspPio</scope><name>EspPio</name></member>
+      <member refid="classEspPio_1acfb058f34a7e0cf21c7a037c5b198621" prot="public" virt="non-virtual"><scope>EspPio</scope><name>GetActualResolution</name></member>
+      <member refid="classEspPio_1aebeafb537cc85f4b715b93a70982e5d9" prot="public" virt="virtual"><scope>EspPio</scope><name>GetCapabilities</name></member>
+      <member refid="classEspPio_1ad3052314d71664513acb1df7aceddc6d" prot="public" virt="non-virtual"><scope>EspPio</scope><name>GetChannelStatistics</name></member>
+      <member refid="classEspPio_1ac5d85469fb40223718d0a4b9d3fe13de" prot="public" virt="virtual"><scope>EspPio</scope><name>GetChannelStatus</name></member>
+      <member refid="classEspPio_1a028d9993a803fac3f16bfd650bef3aff" prot="public" virt="non-virtual"><scope>EspPio</scope><name>GetClockSource</name></member>
+      <member refid="classEspPio_1a6eef1b3a7a795f668318302142e0cef2" prot="private" virt="non-virtual"><scope>EspPio</scope><name>GetClockSourceFrequency</name></member>
+      <member refid="classEspPio_1a54071f5511944e0a0be19052e421749f" prot="public" virt="virtual"><scope>EspPio</scope><name>GetDiagnostics</name></member>
+      <member refid="classEspPio_1a45cde70f88c3c21f89bffe86998f87c6" prot="private" virt="non-virtual"><scope>EspPio</scope><name>GetEffectiveClockFrequency</name></member>
+      <member refid="classEspPio_1aa5050a7a117545e320540581461d2c08" prot="public" virt="non-virtual"><scope>EspPio</scope><name>GetMaxSymbolCount</name></member>
+      <member refid="classEspPio_1acdbed7a7dadd9633292e9d9cb10a65ea" prot="private" virt="non-virtual"><scope>EspPio</scope><name>GetResolutionConstraints</name></member>
+      <member refid="classEspPio_1ac693c8e37d5b7f84b5ebcd79f01a10d4" prot="private" virt="non-virtual"><scope>EspPio</scope><name>GetResolutionConstraints</name></member>
+      <member refid="classEspPio_1adcdcad3a021a42f84cc978c5ac8b81aa" prot="public" virt="non-virtual"><scope>EspPio</scope><name>GetSourceClockHz</name></member>
+      <member refid="classEspPio_1aa8c961670e551b3a959aa819f09a1460" prot="public" virt="virtual"><scope>EspPio</scope><name>GetStatistics</name></member>
+      <member refid="classEspPio_1affc852df7d0de8a4c89fbbd5f0b3e1ef" prot="private" virt="non-virtual"><scope>EspPio</scope><name>global_diagnostics_</name></member>
+      <member refid="classEspPio_1a83171490adbcc59ea168e231a436cf8d" prot="private" virt="non-virtual"><scope>EspPio</scope><name>global_statistics_</name></member>
+      <member refid="classEspPio_1a548c78074900963154c241557be714f4" prot="public" virt="virtual"><scope>EspPio</scope><name>Initialize</name></member>
+      <member refid="classEspPio_1a321173563822b4e43519bce2b297b26c" prot="private" virt="non-virtual"><scope>EspPio</scope><name>InitializeChannel</name></member>
+      <member refid="classBasePio_1a97f8f0ca82c03070321d7f85a1fb52a4" prot="protected" virt="non-virtual"><scope>EspPio</scope><name>initialized_</name></member>
+      <member refid="classEspPio_1a6e9a1caf693efaa2f0c7f3b71fe2d02c" prot="private" virt="non-virtual"><scope>EspPio</scope><name>InvokeChannelErrorCallback</name></member>
+      <member refid="classEspPio_1a9763ed6befd9ce2928a9710116f4d84d" prot="public" virt="virtual"><scope>EspPio</scope><name>IsChannelBusy</name></member>
+      <member refid="classBasePio_1aa8c8aea41f16846d52410e3a0ade354e" prot="public" virt="non-virtual"><scope>EspPio</scope><name>IsInitialized</name></member>
+      <member refid="classEspPio_1a68923d078ceecd71f7e2f77e8c5bc947" prot="private" virt="non-virtual"><scope>EspPio</scope><name>IsValidChannelId</name></member>
+      <member refid="classEspPio_1ac4e5b7482b20d6852d1e8ab45984d853" prot="private" virt="non-virtual"><scope>EspPio</scope><name>MAX_CHANNELS</name></member>
+      <member refid="classEspPio_1a03675432b6a1a0d67ba0a87d8782d854" prot="private" virt="non-virtual"><scope>EspPio</scope><name>MAX_SYMBOLS_PER_TRANSMISSION</name></member>
+      <member refid="classEspPio_1a37d0c4aec852b04b3bb5b290fa06a408" prot="private" virt="non-virtual"><scope>EspPio</scope><name>OnReceiveComplete</name></member>
+      <member refid="classEspPio_1ae55002300a0b32f83807e9cbe49d17fb" prot="private" virt="non-virtual"><scope>EspPio</scope><name>OnTransmitComplete</name></member>
+      <member refid="classEspPio_1ac16811c00bc008cd087bd4dc3435b8f6" prot="public" virt="non-virtual"><scope>EspPio</scope><name>operator=</name></member>
+      <member refid="classEspPio_1a07e1b13b98206a15e5c829aa29b692d4" prot="public" virt="non-virtual"><scope>EspPio</scope><name>operator=</name></member>
+      <member refid="classBasePio_1aefb1a462906e0cc9b444d453391b0134" prot="public" virt="non-virtual" ambiguityscope="BasePio::"><scope>EspPio</scope><name>operator=</name></member>
+      <member refid="classBasePio_1a61cc18335b235d0c6f0b69642a783435" prot="public" virt="non-virtual" ambiguityscope="BasePio::"><scope>EspPio</scope><name>operator=</name></member>
+      <member refid="classEspPio_1a7f8dc96e595d8832df3bb1f5f45dc7f8" prot="public" virt="non-virtual"><scope>EspPio</scope><name>ReceiveRawRmtSymbols</name></member>
+      <member refid="classEspPio_1a3212d7cf5fc428046ff3eb4ca0c4f5a8" prot="public" virt="non-virtual"><scope>EspPio</scope><name>ResetChannelStatistics</name></member>
+      <member refid="classBasePio_1a8d13978e9ffdc3a25ba1021e636d657f" prot="public" virt="virtual"><scope>EspPio</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBasePio_1abb16fcb7c34065f552eefebd0eb7d99a" prot="public" virt="virtual"><scope>EspPio</scope><name>ResetStatistics</name></member>
+      <member refid="classEspPio_1a0fe47f2b5447e648470f0f0e68841cf2" prot="private" virt="non-virtual"><scope>EspPio</scope><name>ResolveClockSourceHz</name></member>
+      <member refid="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" prot="private" virt="non-virtual"><scope>EspPio</scope><name>RMT_CLK_SRC_FREQ</name></member>
+      <member refid="classEspPio_1a5c58bbc45366736bd54f043cf39fc9a1" prot="public" virt="non-virtual"><scope>EspPio</scope><name>SetClockSource</name></member>
+      <member refid="classEspPio_1a5c5371ff00a9b3f4c8f753907d8a40ff" prot="public" virt="virtual"><scope>EspPio</scope><name>SetErrorCallback</name></member>
+      <member refid="classEspPio_1afbb6990ea342a5aa31b341d60ed889ae" prot="public" virt="non-virtual"><scope>EspPio</scope><name>SetIdleLevel</name></member>
+      <member refid="classEspPio_1a80cc3f6b0def51b6d46dfb15d9ab4d95" prot="public" virt="virtual"><scope>EspPio</scope><name>SetReceiveCallback</name></member>
+      <member refid="classEspPio_1ac24f012073be0c9e406724cadd1c9788" prot="public" virt="virtual"><scope>EspPio</scope><name>SetTransmitCallback</name></member>
+      <member refid="classEspPio_1a22647a7f9153379ea2225d6456298a0b" prot="public" virt="virtual"><scope>EspPio</scope><name>StartReceive</name></member>
+      <member refid="classEspPio_1a72c959369a34be8c3d02fc5e91e1ba27" prot="private" virt="non-virtual"><scope>EspPio</scope><name>state_mutex_</name></member>
+      <member refid="classBasePio_1a4391997ece89f854a236dbe006748369" prot="protected" virt="non-virtual"><scope>EspPio</scope><name>statistics_</name></member>
+      <member refid="classEspPio_1afd21f639f1bee483981e76e6d2618d18" prot="public" virt="virtual"><scope>EspPio</scope><name>StopReceive</name></member>
+      <member refid="classEspPio_1a6961547bda9a07105b8a285b884922c1" prot="private" virt="non-virtual"><scope>EspPio</scope><name>TAG</name></member>
+      <member refid="classEspPio_1a1c50e6baeb6ca6934d4893b3bb3c62f5" prot="public" virt="virtual"><scope>EspPio</scope><name>Transmit</name></member>
+      <member refid="classEspPio_1adec787e469920ae4dca1302c31940b55" prot="public" virt="non-virtual"><scope>EspPio</scope><name>TransmitRawRmtSymbols</name></member>
+      <member refid="classEspPio_1ae5dfb88e6d41e82b2a728a6c18a90d2b" prot="private" virt="non-virtual"><scope>EspPio</scope><name>ValidateChannelConfiguration</name></member>
+      <member refid="classEspPio_1a78667ac6a809d1c275b01086b3bfaf7b" prot="public" virt="non-virtual"><scope>EspPio</scope><name>ValidatePioSystem</name></member>
+      <member refid="classEspPio_1a7052de443a7a277407f2bbe1655354e6" prot="private" virt="non-virtual"><scope>EspPio</scope><name>ValidateSymbols</name></member>
+      <member refid="classBasePio_1a81ed01134b7a35294779050ef94ed204" prot="public" virt="virtual"><scope>EspPio</scope><name>~BasePio</name></member>
+      <member refid="classEspPio_1a416698fd3ef86febfc2e1d3609747f02" prot="public" virt="non-virtual"><scope>EspPio</scope><name>~EspPio</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

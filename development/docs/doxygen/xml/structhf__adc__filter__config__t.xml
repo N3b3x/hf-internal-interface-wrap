@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__adc__filter__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_filter_config_t</compoundname>
+    <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__filter__config__t_1a6d97e8f7a6f4a8000427a6ae3b480457" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_adc_filter_config_t::filter_id</definition>
+        <argsstring></argsstring>
+        <name>filter_id</name>
+        <qualifiedname>hf_adc_filter_config_t::filter_id</qualifiedname>
+        <briefdescription>
+<para>Filter ID (0-1) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="124" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__filter__config__t_1aee0bd43aaee79d731da095741d95937d" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
+        <definition>hf_channel_id_t hf_adc_filter_config_t::channel_id</definition>
+        <argsstring></argsstring>
+        <name>channel_id</name>
+        <qualifiedname>hf_adc_filter_config_t::channel_id</qualifiedname>
+        <briefdescription>
+<para>Channel ID to filter. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="125" column="19" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__filter__config__t_1ad8ca24c8d779e03da9920e38bdd788b6" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__ADC_8h_1a019a3762dcc02c63586b48f24b77436a" kindref="member">hf_adc_filter_coeff_t</ref></type>
+        <definition>hf_adc_filter_coeff_t hf_adc_filter_config_t::coefficient</definition>
+        <argsstring></argsstring>
+        <name>coefficient</name>
+        <qualifiedname>hf_adc_filter_config_t::coefficient</qualifiedname>
+        <briefdescription>
+<para>Filter coefficient. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="126" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__filter__config__t_1a442bec7975c450dd61c1d3212bf9f9ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_filter_config_t::hf_adc_filter_config_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_filter_config_t</name>
+        <qualifiedname>hf_adc_filter_config_t::hf_adc_filter_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="128" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="128" bodyend="129"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC filter configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="123" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="123" bodyend="130"/>
+    <listofallmembers>
+      <member refid="structhf__adc__filter__config__t_1aee0bd43aaee79d731da095741d95937d" prot="public" virt="non-virtual"><scope>hf_adc_filter_config_t</scope><name>channel_id</name></member>
+      <member refid="structhf__adc__filter__config__t_1ad8ca24c8d779e03da9920e38bdd788b6" prot="public" virt="non-virtual"><scope>hf_adc_filter_config_t</scope><name>coefficient</name></member>
+      <member refid="structhf__adc__filter__config__t_1a6d97e8f7a6f4a8000427a6ae3b480457" prot="public" virt="non-virtual"><scope>hf_adc_filter_config_t</scope><name>filter_id</name></member>
+      <member refid="structhf__adc__filter__config__t_1a442bec7975c450dd61c1d3212bf9f9ee" prot="public" virt="non-virtual"><scope>hf_adc_filter_config_t</scope><name>hf_adc_filter_config_t</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

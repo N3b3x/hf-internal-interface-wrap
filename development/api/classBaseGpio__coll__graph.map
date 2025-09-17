@@ -1,0 +1,7 @@
+<map id="BaseGpio" name="BaseGpio">
+<area shape="rect" id="Node000001" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="145,104,248,135"/>
+<area shape="rect" id="Node000002" href="$structhf__gpio__statistics__t.html" title="GPIO operation statistics." alt="" coords="5,5,180,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="120,44,183,102,179,106,116,47"/>
+<area shape="rect" id="Node000003" href="$structhf__gpio__diagnostics__t.html" title="GPIO diagnostic information." alt="" coords="204,5,400,36"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="281,48,246,82,217,106,214,102,243,78,277,44"/>
+</map>

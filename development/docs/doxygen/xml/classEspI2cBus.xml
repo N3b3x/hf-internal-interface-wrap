@@ -1,0 +1,1482 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classEspI2cBus" kind="class" language="C++" prot="public">
+    <compoundname>EspI2cBus</compoundname>
+    <includes refid="EspI2c_8h" local="no">EspI2c.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref></type>
+        <definition>hf_i2c_master_bus_config_t EspI2cBus::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>EspI2cBus::config_</qualifiedname>
+        <briefdescription>
+<para>Bus configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="881" column="30" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="881" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" prot="private" static="no" mutable="no">
+        <type>i2c_master_bus_handle_t</type>
+        <definition>i2c_master_bus_handle_t EspI2cBus::bus_handle_</definition>
+        <argsstring></argsstring>
+        <name>bus_handle_</name>
+        <qualifiedname>EspI2cBus::bus_handle_</qualifiedname>
+        <briefdescription>
+<para>ESP-IDF bus handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="882" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="882" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspI2cBus::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>EspI2cBus::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="883" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="883" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" prot="private" static="no" mutable="yes">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
+        <definition>RtosMutex EspI2cBus::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>EspI2cBus::mutex_</qualifiedname>
+        <briefdescription>
+<para>Bus mutex for thread safety. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="884" column="21" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="884" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;EspI2cDevice&gt; &gt; EspI2cBus::devices_</definition>
+        <argsstring></argsstring>
+        <name>devices_</name>
+        <qualifiedname>EspI2cBus::devices_</qualifiedname>
+        <briefdescription>
+<para>Device instances. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="885" column="15" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="885" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" prot="private" static="no" mutable="no">
+        <type><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref></type>
+        <definition>hf_i2c_mode_t EspI2cBus::current_mode_</definition>
+        <argsstring></argsstring>
+        <name>current_mode_</name>
+        <qualifiedname>EspI2cBus::current_mode_</qualifiedname>
+        <briefdescription>
+<para>Current operation mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="886" column="17" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="886" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspI2cBus_1a8206592fe0beaf37815e03efd162527d" prot="private" static="no" mutable="yes">
+        <type><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref></type>
+        <definition>hf_i2c_statistics_t EspI2cBus::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>EspI2cBus::statistics_</qualifiedname>
+        <briefdescription>
+<para>Bus-level statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="889" column="31" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="889" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classEspI2cBus_1a2ab6b00eef84d1ae0e97fcf75f20eb24" prot="private" static="no" mutable="yes">
+        <type><ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref></type>
+        <definition>hf_i2c_diagnostics_t EspI2cBus::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>EspI2cBus::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>Bus-level diagnostics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="890" column="32" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="890" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classEspI2cBus_1a4eb323a3531218e2623d8126d31d255d" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspI2cBus::EspI2cBus</definition>
+        <argsstring>(const hf_i2c_master_bus_config_t &amp;config) noexcept</argsstring>
+        <name>EspI2cBus</name>
+        <qualifiedname>EspI2cBus::EspI2cBus</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Construct a new <ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Bus configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="553" column="12" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="84" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1af387e087bc25f527bfede2222e830fed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspI2cBus::~EspI2cBus</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~EspI2cBus</name>
+        <qualifiedname>EspI2cBus::~EspI2cBus</qualifiedname>
+        <briefdescription>
+<para>Destructor. Automatically deinitializes the bus and devices if needed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="558" column="3" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a7f02893ec64ac76767d1303af6d98343" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspI2cBus::EspI2cBus</definition>
+        <argsstring>(const EspI2cBus &amp;)=delete</argsstring>
+        <name>EspI2cBus</name>
+        <qualifiedname>EspI2cBus::EspI2cBus</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="561" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a6a93e7a215e14bef1fd1cb0042420b98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> &amp;</type>
+        <definition>EspI2cBus &amp; EspI2cBus::operator=</definition>
+        <argsstring>(const EspI2cBus &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspI2cBus::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="562" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a98a8b554bb5d0b04b214661f3b3c0dec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EspI2cBus::EspI2cBus</definition>
+        <argsstring>(EspI2cBus &amp;&amp;)=delete</argsstring>
+        <name>EspI2cBus</name>
+        <qualifiedname>EspI2cBus::EspI2cBus</qualifiedname>
+        <param>
+          <type><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="563" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a3ab0c633ce258424585cf19f89d8cb52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> &amp;</type>
+        <definition>EspI2cBus &amp; EspI2cBus::operator=</definition>
+        <argsstring>(EspI2cBus &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>EspI2cBus::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="564" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a4ac590e55ca816e06b5e6749781ad1de" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::Initialize</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>EspI2cBus::Initialize</qualifiedname>
+        <briefdescription>
+<para>Initialize the I2C bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="570" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="103" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a3f9a9142733743906449d119a25c3cf1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::Deinitialize</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>EspI2cBus::Deinitialize</qualifiedname>
+        <briefdescription>
+<para>Deinitialize the I2C bus and remove all devices. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="576" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="188" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a578c36e975b01c96fe15a492de148e51" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int EspI2cBus::CreateDevice</definition>
+        <argsstring>(const hf_i2c_device_config_t &amp;device_config) noexcept</argsstring>
+        <name>CreateDevice</name>
+        <qualifiedname>EspI2cBus::CreateDevice</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
+          <declname>device_config</declname>
+        </param>
+        <briefdescription>
+<para>Create and add a device to the I2C bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device configuration </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Device index (&gt;= 0) if successful, -1 if failed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="583" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="269" bodyend="316"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a185a28a9e32b8ebb22d72e19318bcd02" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>BaseI2c * EspI2cBus::GetDevice</definition>
+        <argsstring>(int device_index) noexcept</argsstring>
+        <name>GetDevice</name>
+        <qualifiedname>EspI2cBus::GetDevice</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Get device by index (<ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> interface). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="590" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="318" bodyend="327"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1aa871503a0126efc9c5f28503fd19b47c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>const BaseI2c * EspI2cBus::GetDevice</definition>
+        <argsstring>(int device_index) const noexcept</argsstring>
+        <name>GetDevice</name>
+        <qualifiedname>EspI2cBus::GetDevice</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Get device by index (const version). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="597" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="329" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1aeaec58a5ab33498346eec68f5caa56a3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> *</type>
+        <definition>EspI2cDevice * EspI2cBus::GetEspDevice</definition>
+        <argsstring>(int device_index) noexcept</argsstring>
+        <name>GetEspDevice</name>
+        <qualifiedname>EspI2cBus::GetEspDevice</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Get ESP-specific device by index. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>, or nullptr if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="604" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="339" bodyend="347"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a40c5b3910dc38f33d15a956af36ba2e7" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> *</type>
+        <definition>const EspI2cDevice * EspI2cBus::GetEspDevice</definition>
+        <argsstring>(int device_index) const noexcept</argsstring>
+        <name>GetEspDevice</name>
+        <qualifiedname>EspI2cBus::GetEspDevice</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Get ESP-specific device by index (const version). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>, or nullptr if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="611" column="22" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="349" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a007e11c4560179ac0a5d8989a43d4733" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>BaseI2c * EspI2cBus::GetDeviceByAddress</definition>
+        <argsstring>(hf_u16_t device_address) noexcept</argsstring>
+        <name>GetDeviceByAddress</name>
+        <qualifiedname>EspI2cBus::GetDeviceByAddress</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>device_address</declname>
+        </param>
+        <briefdescription>
+<para>Get device by address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device address to find </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if not found </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="618" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="359" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1ad96d7e4b8693fdad686c134bada1034b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t EspI2cBus::GetDeviceCount</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetDeviceCount</name>
+        <qualifiedname>EspI2cBus::GetDeviceCount</qualifiedname>
+        <briefdescription>
+<para>Get number of devices on the bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="624" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="370" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1af6c29fb3e4e40662a32cd9aa3fc0eace" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::RemoveDevice</definition>
+        <argsstring>(int device_index) noexcept</argsstring>
+        <name>RemoveDevice</name>
+        <qualifiedname>EspI2cBus::RemoveDevice</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Remove a device from the bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="631" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="469" bodyend="510"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1ae029e38875a64d1ca4c5ec590a1cb3ff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::RemoveDeviceByAddress</definition>
+        <argsstring>(hf_u16_t device_address) noexcept</argsstring>
+        <name>RemoveDeviceByAddress</name>
+        <qualifiedname>EspI2cBus::RemoveDeviceByAddress</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>device_address</declname>
+        </param>
+        <briefdescription>
+<para>Remove a device from the bus by address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address of the device to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="638" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="512" bodyend="521"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1ad493703939f8fe4981cc42d8c19d1115" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>BaseI2c * EspI2cBus::operator[]</definition>
+        <argsstring>(int device_index) noexcept</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>EspI2cBus::operator[]</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Get device by index with bounds checking. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device (0-based) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if index out of bounds </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe access to devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="650" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="683" bodyend="685"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1abe684259ab88b5027fd59b446146bdb3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>const BaseI2c * EspI2cBus::operator[]</definition>
+        <argsstring>(int device_index) const noexcept</argsstring>
+        <name>operator[]</name>
+        <qualifiedname>EspI2cBus::operator[]</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Get device by index with bounds checking (const version). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device (0-based) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if index out of bounds </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe access to devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="658" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="687" bodyend="689"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a978c7722c8d5b224c3423f8acf542620" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> *</type>
+        <definition>EspI2cDevice * EspI2cBus::At</definition>
+        <argsstring>(int device_index) noexcept</argsstring>
+        <name>At</name>
+        <qualifiedname>EspI2cBus::At</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Get ESP-specific device by index with bounds checking. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device (0-based) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>, or nullptr if index out of bounds </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe access to devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="666" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="691" bodyend="693"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1afb26ac6de7b7ff526dfb97d9eecf00fb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> *</type>
+        <definition>const EspI2cDevice * EspI2cBus::At</definition>
+        <argsstring>(int device_index) const noexcept</argsstring>
+        <name>At</name>
+        <qualifiedname>EspI2cBus::At</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Get ESP-specific device by index with bounds checking (const version). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index of the device (0-based) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>, or nullptr if index out of bounds </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe access to devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="674" column="22" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="695" bodyend="697"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1aa948bf6a1ab715e03dafda66f4335817" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::IsValidIndex</definition>
+        <argsstring>(int device_index) const noexcept</argsstring>
+        <name>IsValidIndex</name>
+        <qualifiedname>EspI2cBus::IsValidIndex</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+<para>Check if device index is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_index</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Index to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if index is valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="681" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="699" bodyend="702"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a052f50385b702e1bdb1d4ccab41123a2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>BaseI2c * EspI2cBus::GetFirstDevice</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>GetFirstDevice</name>
+        <qualifiedname>EspI2cBus::GetFirstDevice</qualifiedname>
+        <briefdescription>
+<para>Get first device on the bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to first <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if no devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="687" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="704" bodyend="710"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a8d857550064529b5c0dfee2f9680bc52" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>const BaseI2c * EspI2cBus::GetFirstDevice</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetFirstDevice</name>
+        <qualifiedname>EspI2cBus::GetFirstDevice</qualifiedname>
+        <briefdescription>
+<para>Get first device on the bus (const version). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to first const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if no devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="693" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="712" bodyend="718"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1ab96cb9eee00e8192a499fa7e86c24d21" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>BaseI2c * EspI2cBus::GetLastDevice</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>GetLastDevice</name>
+        <qualifiedname>EspI2cBus::GetLastDevice</qualifiedname>
+        <briefdescription>
+<para>Get last device on the bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to last <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if no devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="699" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="720" bodyend="726"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a01d63e0786c9b28da60fc2fc5a072f2e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
+        <definition>const BaseI2c * EspI2cBus::GetLastDevice</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetLastDevice</name>
+        <qualifiedname>EspI2cBus::GetLastDevice</qualifiedname>
+        <briefdescription>
+<para>Get last device on the bus (const version). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to last const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> device, or nullptr if no devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="705" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="728" bodyend="734"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1ae3d92db5473c43f90534fb2dfebc6036" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> * &gt;</type>
+        <definition>std::vector&lt; BaseI2c * &gt; EspI2cBus::GetAllDevices</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>GetAllDevices</name>
+        <qualifiedname>EspI2cBus::GetAllDevices</qualifiedname>
+        <briefdescription>
+<para>Get all devices as a vector of <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> pointers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Vector of <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> pointers (copy of internal device list) </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe, returns a copy of the current device list </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="712" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="736" bodyend="744"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a4b5e06d30e87f72e66eb1de2923ad8f7" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::vector&lt; const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> * &gt;</type>
+        <definition>std::vector&lt; const BaseI2c * &gt; EspI2cBus::GetAllDevices</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetAllDevices</name>
+        <qualifiedname>EspI2cBus::GetAllDevices</qualifiedname>
+        <briefdescription>
+<para>Get all devices as a vector of const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> pointers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Vector of const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> pointers (copy of internal device list) </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe, returns a copy of the current device list </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="719" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="746" bodyend="754"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a3bea9a78bea25be04a153ae4c8403992" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> * &gt;</type>
+        <definition>std::vector&lt; EspI2cDevice * &gt; EspI2cBus::GetAllEspDevices</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>GetAllEspDevices</name>
+        <qualifiedname>EspI2cBus::GetAllEspDevices</qualifiedname>
+        <briefdescription>
+<para>Get all ESP-specific devices as a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Vector of <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> pointers (copy of internal device list) </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe, returns a copy of the current device list </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="726" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="756" bodyend="764"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a89ddcc5867c86139287e4d09ea83c796" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::vector&lt; const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> * &gt;</type>
+        <definition>std::vector&lt; const EspI2cDevice * &gt; EspI2cBus::GetAllEspDevices</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetAllEspDevices</name>
+        <qualifiedname>EspI2cBus::GetAllEspDevices</qualifiedname>
+        <briefdescription>
+<para>Get all ESP-specific devices as a vector (const version). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Vector of const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> pointers (copy of internal device list) </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe, returns a copy of the current device list </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="733" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="766" bodyend="774"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1af4e84bb45a0d8795d4a8b6c16f8a02d1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int EspI2cBus::FindDeviceIndex</definition>
+        <argsstring>(hf_u16_t device_address) const noexcept</argsstring>
+        <name>FindDeviceIndex</name>
+        <qualifiedname>EspI2cBus::FindDeviceIndex</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>device_address</declname>
+        </param>
+        <briefdescription>
+<para>Find device index by address with bounds checking. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device address to find </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Device index if found, -1 if not found </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="740" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="776" bodyend="778"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a955deee620e981e723feb2102783fafa" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref> &gt;</type>
+        <definition>std::vector&lt; hf_u16_t &gt; EspI2cBus::GetDeviceAddresses</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetDeviceAddresses</name>
+        <qualifiedname>EspI2cBus::GetDeviceAddresses</qualifiedname>
+        <briefdescription>
+<para>Get device addresses as a vector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Vector of device addresses </para>
+</simplesect>
+<simplesect kind="note"><para>Thread-safe, returns a copy of current device addresses </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="747" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="780" bodyend="788"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a99765c2acdbe285f42a93254543b0011" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::HasDevices</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>HasDevices</name>
+        <qualifiedname>EspI2cBus::HasDevices</qualifiedname>
+        <briefdescription>
+<para>Check if bus has any devices. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if bus has devices, false if empty </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="753" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="790" bodyend="793"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a6f8dd3bc3713e4377f727a658000d334" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::IsEmpty</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsEmpty</name>
+        <qualifiedname>EspI2cBus::IsEmpty</qualifiedname>
+        <briefdescription>
+<para>Check if bus is empty (no devices). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if bus is empty, false if it has devices </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="759" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="795" bodyend="798"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1ace282f4e828034cda3498762fc6fe47f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::ClearAllDevices</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ClearAllDevices</name>
+        <qualifiedname>EspI2cBus::ClearAllDevices</qualifiedname>
+        <briefdescription>
+<para>Clear all devices from the bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>All devices will be properly deinitialized and removed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="766" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="800" bodyend="814"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1aaf11e8ab91b3e06ee1ccae192397aceb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref> &amp;</type>
+        <definition>const hf_i2c_master_bus_config_t &amp; EspI2cBus::GetConfig</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetConfig</name>
+        <qualifiedname>EspI2cBus::GetConfig</qualifiedname>
+        <briefdescription>
+<para>Get the bus configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>const <ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref>&amp; </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="772" column="36" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="523" bodyend="525"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a39671c0d8d5ae9aa4cf34814cda7fe52" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>i2c_master_bus_handle_t</type>
+        <definition>i2c_master_bus_handle_t EspI2cBus::GetHandle</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetHandle</name>
+        <qualifiedname>EspI2cBus::GetHandle</qualifiedname>
+        <briefdescription>
+<para>Get the ESP-IDF bus handle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>i2c_master_bus_handle_t </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="778" column="27" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="527" bodyend="529"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1addc8bd3b1e92d4cf94e0b6895b18930e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int EspI2cBus::GetPort</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetPort</name>
+        <qualifiedname>EspI2cBus::GetPort</qualifiedname>
+        <briefdescription>
+<para>Get the I2C port number. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>I2C port number </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="784" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="531" bodyend="533"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1ab5ab97f8ed52a4c33f6ddf248b1b67a2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>EspI2cBus::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Check if the bus is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="790" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="535" bodyend="538"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a1e151fdee4c15afd34b0b5cba49d09ba" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t EspI2cBus::ScanDevices</definition>
+        <argsstring>(std::vector&lt; hf_u16_t &gt; &amp;found_devices, hf_u16_t start_addr=0x08, hf_u16_t end_addr=0x77, hf_u32_t scan_timeout_ms=0) noexcept</argsstring>
+        <name>ScanDevices</name>
+        <qualifiedname>EspI2cBus::ScanDevices</qualifiedname>
+        <param>
+          <type>std::vector&lt; <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref> &gt; &amp;</type>
+          <declname>found_devices</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>start_addr</declname>
+          <defval>0x08</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>end_addr</declname>
+          <defval>0x77</defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>scan_timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Scan the I2C bus for devices. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>found_devices</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Vector to store found device addresses </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>start_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Starting address for scan (default: 0x08) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>end_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ending address for scan (default: 0x77) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>scan_timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout for each probe operation (0 = use fast 10ms timeout) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of devices found </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="800" column="10" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="540" bodyend="577"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1aa1ce51043fdff12290ae8ce4faa04719" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::ProbeDevice</definition>
+        <argsstring>(hf_u16_t device_addr, hf_u32_t timeout_ms=10) noexcept</argsstring>
+        <name>ProbeDevice</name>
+        <qualifiedname>EspI2cBus::ProbeDevice</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>device_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>10</defval>
+        </param>
+        <briefdescription>
+<para>Probe for device presence on the bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device address to probe </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default 1000ms) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if device responds, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="809" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="579" bodyend="631"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1ada599f9418ee55133905049270d08163" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::ResetBus</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetBus</name>
+        <qualifiedname>EspI2cBus::ResetBus</qualifiedname>
+        <briefdescription>
+<para>Reset the I2C bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="815" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="633" bodyend="668"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a3b9dc4528ba496f4b3b949b2cf18af25" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref></type>
+        <definition>hf_i2c_mode_t EspI2cBus::GetMode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetMode</name>
+        <qualifiedname>EspI2cBus::GetMode</qualifiedname>
+        <briefdescription>
+<para>Get the current I2C operation mode. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Current operation mode (sync/async) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="825" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="236" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a0ffb6779431ab728bc58c44c1c2455f0" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::IsAsyncMode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsAsyncMode</name>
+        <qualifiedname>EspI2cBus::IsAsyncMode</qualifiedname>
+        <briefdescription>
+<para>Check if async mode is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if in async mode, false if in sync mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="831" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="241" bodyend="243"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a4f76b56523c72f8cfd9d7ecbc817e0da" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::IsSyncMode</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsSyncMode</name>
+        <qualifiedname>EspI2cBus::IsSyncMode</qualifiedname>
+        <briefdescription>
+<para>Check if sync mode is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if in sync mode, false if in async mode </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="837" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="245" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1af2af2c027dee720ff88038004104bc2d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::SwitchMode</definition>
+        <argsstring>(hf_i2c_mode_t new_mode, uint8_t queue_depth=10) noexcept</argsstring>
+        <name>SwitchMode</name>
+        <qualifiedname>EspI2cBus::SwitchMode</qualifiedname>
+        <param>
+          <type><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref></type>
+          <declname>new_mode</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>queue_depth</declname>
+          <defval>10</defval>
+        </param>
+        <briefdescription>
+<para>Switch operation mode (recreates bus) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>new_mode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New operation mode to switch to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>queue_depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Queue depth for async mode (ignored for sync mode) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>This will deinitialize and reinitialize the bus </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="846" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="249" bodyend="267"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classEspI2cBus_1aa5ae51a75e373009e9cae8d97ee4b811" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int EspI2cBus::FindDeviceIndexByAddress</definition>
+        <argsstring>(hf_u16_t device_address) const noexcept</argsstring>
+        <name>FindDeviceIndexByAddress</name>
+        <qualifiedname>EspI2cBus::FindDeviceIndexByAddress</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>device_address</declname>
+        </param>
+        <briefdescription>
+<para>Find device index by address. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_address</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device address to find </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Device index if found, -1 otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="858" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="670" bodyend="677"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a38441634852078aeb598cf204e239637" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>hf_i2c_err_t EspI2cBus::ConvertEspError</definition>
+        <argsstring>(esp_err_t esp_error) const noexcept</argsstring>
+        <name>ConvertEspError</name>
+        <qualifiedname>EspI2cBus::ConvertEspError</qualifiedname>
+        <param>
+          <type>esp_err_t</type>
+          <declname>esp_error</declname>
+        </param>
+        <briefdescription>
+<para>Convert ESP-IDF error to HardFOC error. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>esp_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ESP-IDF error code </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>HardFOC I2C error code </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="865" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="816" bodyend="835"/>
+      </memberdef>
+      <memberdef kind="function" id="classEspI2cBus_1a7c12d7a9b61f69cf5e581ad40b9a3ff6" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EspI2cBus::CustomFastProbe</definition>
+        <argsstring>(hf_u16_t device_addr, hf_u32_t timeout_ms) noexcept</argsstring>
+        <name>CustomFastProbe</name>
+        <qualifiedname>EspI2cBus::CustomFastProbe</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>device_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+<para>Custom fast I2C probe that works around ESP-IDF&apos;s broken probe function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>device_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Device address to probe </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if device responds, false otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>This function creates a temporary device and performs a real I2C transaction </para>
+</simplesect>
+<simplesect kind="note"><para>Much faster and more reliable than ESP-IDF&apos;s broken probe function </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspI2c.h" line="875" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="387" bodyend="467"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Manages a single I2C bus. Handles bus initialization and device creation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Provides full configuration and control for the I2C bus, including device management, bus initialization, and ESP-IDF v5.5+ features. Thread-safe device management with proper resource cleanup. </para>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>EspI2cBus</label>
+        <link refid="classEspI2cBus"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>mutex_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>RtosMutex</label>
+        <link refid="classRtosMutex"/>
+      </node>
+      <node id="5">
+        <label>hf_i2c_diagnostics_t</label>
+        <link refid="structhf__i2c__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_i2c_master_bus_config_t</label>
+        <link refid="structhf__i2c__master__bus__config__t"/>
+      </node>
+      <node id="4">
+        <label>hf_i2c_statistics_t</label>
+        <link refid="structhf__i2c__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspI2c.h" line="547" column="1" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="547" bodyend="891"/>
+    <listofallmembers>
+      <member refid="classEspI2cBus_1a978c7722c8d5b224c3423f8acf542620" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>At</name></member>
+      <member refid="classEspI2cBus_1afb26ac6de7b7ff526dfb97d9eecf00fb" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>At</name></member>
+      <member refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>bus_handle_</name></member>
+      <member refid="classEspI2cBus_1ace282f4e828034cda3498762fc6fe47f" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>ClearAllDevices</name></member>
+      <member refid="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>config_</name></member>
+      <member refid="classEspI2cBus_1a38441634852078aeb598cf204e239637" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>ConvertEspError</name></member>
+      <member refid="classEspI2cBus_1a578c36e975b01c96fe15a492de148e51" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>CreateDevice</name></member>
+      <member refid="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>current_mode_</name></member>
+      <member refid="classEspI2cBus_1a7c12d7a9b61f69cf5e581ad40b9a3ff6" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>CustomFastProbe</name></member>
+      <member refid="classEspI2cBus_1a3f9a9142733743906449d119a25c3cf1" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>Deinitialize</name></member>
+      <member refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>devices_</name></member>
+      <member refid="classEspI2cBus_1a2ab6b00eef84d1ae0e97fcf75f20eb24" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>diagnostics_</name></member>
+      <member refid="classEspI2cBus_1a4eb323a3531218e2623d8126d31d255d" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>EspI2cBus</name></member>
+      <member refid="classEspI2cBus_1a7f02893ec64ac76767d1303af6d98343" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>EspI2cBus</name></member>
+      <member refid="classEspI2cBus_1a98a8b554bb5d0b04b214661f3b3c0dec" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>EspI2cBus</name></member>
+      <member refid="classEspI2cBus_1af4e84bb45a0d8795d4a8b6c16f8a02d1" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>FindDeviceIndex</name></member>
+      <member refid="classEspI2cBus_1aa5ae51a75e373009e9cae8d97ee4b811" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>FindDeviceIndexByAddress</name></member>
+      <member refid="classEspI2cBus_1ae3d92db5473c43f90534fb2dfebc6036" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetAllDevices</name></member>
+      <member refid="classEspI2cBus_1a4b5e06d30e87f72e66eb1de2923ad8f7" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetAllDevices</name></member>
+      <member refid="classEspI2cBus_1a3bea9a78bea25be04a153ae4c8403992" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetAllEspDevices</name></member>
+      <member refid="classEspI2cBus_1a89ddcc5867c86139287e4d09ea83c796" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetAllEspDevices</name></member>
+      <member refid="classEspI2cBus_1aaf11e8ab91b3e06ee1ccae192397aceb" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetConfig</name></member>
+      <member refid="classEspI2cBus_1a185a28a9e32b8ebb22d72e19318bcd02" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetDevice</name></member>
+      <member refid="classEspI2cBus_1aa871503a0126efc9c5f28503fd19b47c" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetDevice</name></member>
+      <member refid="classEspI2cBus_1a955deee620e981e723feb2102783fafa" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetDeviceAddresses</name></member>
+      <member refid="classEspI2cBus_1a007e11c4560179ac0a5d8989a43d4733" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetDeviceByAddress</name></member>
+      <member refid="classEspI2cBus_1ad96d7e4b8693fdad686c134bada1034b" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetDeviceCount</name></member>
+      <member refid="classEspI2cBus_1aeaec58a5ab33498346eec68f5caa56a3" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetEspDevice</name></member>
+      <member refid="classEspI2cBus_1a40c5b3910dc38f33d15a956af36ba2e7" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetEspDevice</name></member>
+      <member refid="classEspI2cBus_1a052f50385b702e1bdb1d4ccab41123a2" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetFirstDevice</name></member>
+      <member refid="classEspI2cBus_1a8d857550064529b5c0dfee2f9680bc52" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetFirstDevice</name></member>
+      <member refid="classEspI2cBus_1a39671c0d8d5ae9aa4cf34814cda7fe52" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetHandle</name></member>
+      <member refid="classEspI2cBus_1ab96cb9eee00e8192a499fa7e86c24d21" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetLastDevice</name></member>
+      <member refid="classEspI2cBus_1a01d63e0786c9b28da60fc2fc5a072f2e" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetLastDevice</name></member>
+      <member refid="classEspI2cBus_1a3b9dc4528ba496f4b3b949b2cf18af25" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetMode</name></member>
+      <member refid="classEspI2cBus_1addc8bd3b1e92d4cf94e0b6895b18930e" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>GetPort</name></member>
+      <member refid="classEspI2cBus_1a99765c2acdbe285f42a93254543b0011" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>HasDevices</name></member>
+      <member refid="classEspI2cBus_1a4ac590e55ca816e06b5e6749781ad1de" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>Initialize</name></member>
+      <member refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>initialized_</name></member>
+      <member refid="classEspI2cBus_1a0ffb6779431ab728bc58c44c1c2455f0" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>IsAsyncMode</name></member>
+      <member refid="classEspI2cBus_1a6f8dd3bc3713e4377f727a658000d334" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>IsEmpty</name></member>
+      <member refid="classEspI2cBus_1ab5ab97f8ed52a4c33f6ddf248b1b67a2" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>IsInitialized</name></member>
+      <member refid="classEspI2cBus_1a4f76b56523c72f8cfd9d7ecbc817e0da" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>IsSyncMode</name></member>
+      <member refid="classEspI2cBus_1aa948bf6a1ab715e03dafda66f4335817" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>IsValidIndex</name></member>
+      <member refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>mutex_</name></member>
+      <member refid="classEspI2cBus_1a6a93e7a215e14bef1fd1cb0042420b98" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>operator=</name></member>
+      <member refid="classEspI2cBus_1a3ab0c633ce258424585cf19f89d8cb52" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>operator=</name></member>
+      <member refid="classEspI2cBus_1ad493703939f8fe4981cc42d8c19d1115" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>operator[]</name></member>
+      <member refid="classEspI2cBus_1abe684259ab88b5027fd59b446146bdb3" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>operator[]</name></member>
+      <member refid="classEspI2cBus_1aa1ce51043fdff12290ae8ce4faa04719" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>ProbeDevice</name></member>
+      <member refid="classEspI2cBus_1af6c29fb3e4e40662a32cd9aa3fc0eace" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>RemoveDevice</name></member>
+      <member refid="classEspI2cBus_1ae029e38875a64d1ca4c5ec590a1cb3ff" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>RemoveDeviceByAddress</name></member>
+      <member refid="classEspI2cBus_1ada599f9418ee55133905049270d08163" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>ResetBus</name></member>
+      <member refid="classEspI2cBus_1a1e151fdee4c15afd34b0b5cba49d09ba" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>ScanDevices</name></member>
+      <member refid="classEspI2cBus_1a8206592fe0beaf37815e03efd162527d" prot="private" virt="non-virtual"><scope>EspI2cBus</scope><name>statistics_</name></member>
+      <member refid="classEspI2cBus_1af2af2c027dee720ff88038004104bc2d" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>SwitchMode</name></member>
+      <member refid="classEspI2cBus_1af387e087bc25f527bfede2222e830fed" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>~EspI2cBus</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

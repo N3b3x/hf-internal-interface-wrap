@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structEspPwm_1_1TimerState" kind="struct" language="C++" prot="private">
+    <compoundname>EspPwm::TimerState</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEspPwm_1_1TimerState_1a0ea7648253a7a3f08d53ac57b58f891a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPwm::TimerState::in_use</definition>
+        <argsstring></argsstring>
+        <name>in_use</name>
+        <qualifiedname>EspPwm::TimerState::in_use</qualifiedname>
+        <briefdescription>
+<para>Timer is in use. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="738" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="738" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1TimerState_1a4a5fd2e0e4c91bf4953052d05bec6474" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPwm::TimerState::frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>frequency_hz</name>
+        <qualifiedname>EspPwm::TimerState::frequency_hz</qualifiedname>
+        <briefdescription>
+<para>Timer frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="739" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="739" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1TimerState_1afa55f582ffc63989ba94dc8087dea26b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t EspPwm::TimerState::resolution_bits</definition>
+        <argsstring></argsstring>
+        <name>resolution_bits</name>
+        <qualifiedname>EspPwm::TimerState::resolution_bits</qualifiedname>
+        <briefdescription>
+<para>Timer resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="740" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="740" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1TimerState_1a16f7e95099ad216e9f93fc1a7525c0f3" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t EspPwm::TimerState::channel_count</definition>
+        <argsstring></argsstring>
+        <name>channel_count</name>
+        <qualifiedname>EspPwm::TimerState::channel_count</qualifiedname>
+        <briefdescription>
+<para>Number of channels using this timer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="741" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="741" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1TimerState_1a7c1bcfda27eb7be35fbb843252ad80e5" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
+        <definition>hf_pwm_clock_source_t EspPwm::TimerState::clock_source</definition>
+        <argsstring></argsstring>
+        <name>clock_source</name>
+        <qualifiedname>EspPwm::TimerState::clock_source</qualifiedname>
+        <briefdescription>
+<para>Clock source configured for this timer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="742" column="27" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="742" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1TimerState_1affc9adf387692d7829aca3fd9f14e1bc" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPwm::TimerState::has_hardware_conflicts</definition>
+        <argsstring></argsstring>
+        <name>has_hardware_conflicts</name>
+        <qualifiedname>EspPwm::TimerState::has_hardware_conflicts</qualifiedname>
+        <briefdescription>
+<para>Timer has hardware conflicts (avoid reusing) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="743" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="743" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEspPwm_1_1TimerState_1ac48c98b08125c9473a9bd261be11f939" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPwm::TimerState::TimerState</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>TimerState</name>
+        <qualifiedname>EspPwm::TimerState::TimerState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="745" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="745" bodyend="748"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Internal timer state. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspPwm.h" line="737" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="737" bodyend="749"/>
+    <listofallmembers>
+      <member refid="structEspPwm_1_1TimerState_1a16f7e95099ad216e9f93fc1a7525c0f3" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>channel_count</name></member>
+      <member refid="structEspPwm_1_1TimerState_1a7c1bcfda27eb7be35fbb843252ad80e5" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>clock_source</name></member>
+      <member refid="structEspPwm_1_1TimerState_1a4a5fd2e0e4c91bf4953052d05bec6474" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>frequency_hz</name></member>
+      <member refid="structEspPwm_1_1TimerState_1affc9adf387692d7829aca3fd9f14e1bc" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>has_hardware_conflicts</name></member>
+      <member refid="structEspPwm_1_1TimerState_1a0ea7648253a7a3f08d53ac57b58f891a" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>in_use</name></member>
+      <member refid="structEspPwm_1_1TimerState_1afa55f582ffc63989ba94dc8087dea26b" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>resolution_bits</name></member>
+      <member refid="structEspPwm_1_1TimerState_1ac48c98b08125c9473a9bd261be11f939" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>TimerState</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

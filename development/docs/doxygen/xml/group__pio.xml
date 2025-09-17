@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__pio" kind="group">
+    <compoundname>pio</compoundname>
+    <title>PIO Module</title>
+    <innerfile refid="BasePio_8h">BasePio.h</innerfile>
+    <innerclass refid="classBasePio" prot="public">BasePio</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__pio_1ga78769f14dfef18368b2668dd1c535e80" prot="public" static="no">
+        <name>HF_PIO_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC PIO error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all PIO operations in the system. This enumeration is used across all PIO-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="42" column="9" bodyfile="inc/base/BasePio.h" bodystart="42" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All PIO-related types, enums, and functions for Programmable I/O operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

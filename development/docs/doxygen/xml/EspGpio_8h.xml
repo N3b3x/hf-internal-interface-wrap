@@ -1,0 +1,470 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspGpio_8h" kind="file" language="C++">
+    <compoundname>EspGpio.h</compoundname>
+    <includes local="yes">driver/gpio.h</includes>
+    <includes local="no">esp_attr.h</includes>
+    <includes refid="BaseGpio_8h" local="yes">BaseGpio.h</includes>
+    <includes refid="EspTypes__GPIO_8h" local="yes">EspTypes_GPIO.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includedby refid="DigitalOutputGuardComprehensiveTest_8cpp" local="yes">examples/esp32/main/DigitalOutputGuardComprehensiveTest.cpp</includedby>
+    <includedby refid="GpioComprehensiveTest_8cpp" local="yes">examples/esp32/main/GpioComprehensiveTest.cpp</includedby>
+    <includedby refid="I2cComprehensiveTest_8cpp" local="yes">examples/esp32/main/I2cComprehensiveTest.cpp</includedby>
+    <includedby refid="PioComprehensiveTest_8cpp" local="yes">examples/esp32/main/PioComprehensiveTest.cpp</includedby>
+    <includedby refid="PwmComprehensiveTest_8cpp" local="yes">examples/esp32/main/PwmComprehensiveTest.cpp</includedby>
+    <includedby refid="TestFramework_8h" local="yes">examples/esp32/main/TestFramework.h</includedby>
+    <includedby refid="UartComprehensiveTest_8cpp" local="yes">examples/esp32/main/UartComprehensiveTest.cpp</includedby>
+    <includedby refid="EspGpio_8cpp" local="yes">src/mcu/esp32/EspGpio.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspGpio.h</label>
+        <link refid="EspGpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>../../utils/McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="13">
+        <label>atomic</label>
+      </node>
+      <node id="6">
+        <label>cstdint</label>
+      </node>
+      <node id="2">
+        <label>driver/gpio.h</label>
+      </node>
+      <node id="3">
+        <label>esp_attr.h</label>
+      </node>
+      <node id="8">
+        <label>functional</label>
+      </node>
+      <node id="7">
+        <label>limits</label>
+      </node>
+      <node id="14">
+        <label>stdio.h</label>
+      </node>
+      <node id="9">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8">
+        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
+        <link refid="AdcComprehensiveTest_8cpp"/>
+      </node>
+      <node id="9">
+        <label>examples/esp32/main/AsciiArtComprehensiveTest.cpp</label>
+        <link refid="AsciiArtComprehensiveTest_8cpp"/>
+      </node>
+      <node id="10">
+        <label>examples/esp32/main/BluetoothComprehensiveTest.cpp</label>
+        <link refid="BluetoothComprehensiveTest_8cpp"/>
+      </node>
+      <node id="11">
+        <label>examples/esp32/main/CanComprehensiveTest.cpp</label>
+        <link refid="CanComprehensiveTest_8cpp"/>
+      </node>
+      <node id="2">
+        <label>examples/esp32/main/DigitalOutputGuardComprehensiveTest.cpp</label>
+        <link refid="DigitalOutputGuardComprehensiveTest_8cpp"/>
+      </node>
+      <node id="3">
+        <label>examples/esp32/main/GpioComprehensiveTest.cpp</label>
+        <link refid="GpioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="4">
+        <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
+        <link refid="I2cComprehensiveTest_8cpp"/>
+      </node>
+      <node id="12">
+        <label>examples/esp32/main/LoggerComprehensiveTest.cpp</label>
+        <link refid="LoggerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="13">
+        <label>examples/esp32/main/NvsComprehensiveTest.cpp</label>
+        <link refid="NvsComprehensiveTest_8cpp"/>
+      </node>
+      <node id="5">
+        <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
+        <link refid="PioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="6">
+        <label>examples/esp32/main/PwmComprehensiveTest.cpp</label>
+        <link refid="PwmComprehensiveTest_8cpp"/>
+      </node>
+      <node id="14">
+        <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
+        <link refid="SpiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="15">
+        <label>examples/esp32/main/TemperatureComprehensiveTest.cpp</label>
+        <link refid="TemperatureComprehensiveTest_8cpp"/>
+      </node>
+      <node id="7">
+        <label>examples/esp32/main/TestFramework.h</label>
+        <link refid="TestFramework_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
+        <link refid="TimerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="17">
+        <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
+        <link refid="UartComprehensiveTest_8cpp"/>
+      </node>
+      <node id="18">
+        <label>examples/esp32/main/WifiComprehensiveTest.cpp</label>
+        <link refid="WifiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspGpio.h</label>
+        <link refid="EspGpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>src/mcu/esp32/EspGpio.cpp</label>
+        <link refid="EspGpio_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classEspGpio" prot="public">EspGpio</innerclass>
+    <briefdescription>
+<para>Advanced MCU-specific implementation of the unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> class with ESP32C6/ESP-IDF v5.5+ features. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file provides concrete implementations of the unified <ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> class for microcontroller-based GPIO pins with support for both basic and advanced features. It supports dynamic mode switching, pull resistor configuration, various output drive modes, and advanced ESP32C6-specific features like glitch filtering, power management, and RTC GPIO. The implementation includes interrupt handling, debouncing, and hardware-accelerated operations.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;driver/gpio.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;esp_attr.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//<sp/>C++<sp/>headers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseGpio_8h" kindref="compound">BaseGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__GPIO_8h" kindref="compound">EspTypes_GPIO.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__GPIO_8h" kindref="compound">mcu/esp32/utils/EspTypes_GPIO.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classEspGpio" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspGpio" kindref="compound">EspGpio</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CONSTRUCTORS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a6500c4b82a610d0ec0a1aa95fdccb284" kindref="member">EspGpio</ref>(</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>pin_num,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref><sp/>direction<sp/>=<sp/><ref refid="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3a5090403a0f4f177d6fb813cd9d06bf1e" kindref="member">hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT</ref>,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref><sp/>active_state<sp/>=<sp/><ref refid="group__gpio_1ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356" kindref="member">hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH</ref>,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref><sp/>output_mode<sp/>=<sp/><ref refid="group__gpio_1gga825412a54660defc9ecbf8ad1ea1cf7ba26b362f67afa6dbc264fb539c0dc304d" kindref="member">hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL</ref>,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref><sp/>pull_mode<sp/>=<sp/><ref refid="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335ae17c8cfbde2e4323ba15750747758875" kindref="member">hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING</ref>,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/>drive_capability<sp/>=</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03faa17918132458975f33a21b703a313b00" kindref="member">hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="classEspGpio_1ae0e709e0e5748f81116fb9f15425fd78" kindref="member">~EspGpio</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>BASEGPIO<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a49e15d19126b54ba23a5c7e928dc0bb3" kindref="member">Initialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1ac27780ff0bbc266cff0a2052c8146d11" kindref="member">Deinitialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a5805fe2d581a4ce5cd42edf1b64b2fb9" kindref="member">IsPinAvailable</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="classEspGpio_1a89914a1ecc1201e97df0bae0c13ad556" kindref="member">GetMaxPins</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classEspGpio_1aee5346c09c9d81992935c5fd37455ea8" kindref="member">GetDescription</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>INTERRUPT<sp/>FUNCTIONALITY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1af0b68c0d1b3fda915803ba602ddab7fe" kindref="member">SupportsInterrupts</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a385ff46f95432183be7cd52d4a69fde4" kindref="member">ConfigureInterrupt</ref>(<ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref><sp/>trigger,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref><sp/>callback<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a378b48a5c96c8c55313a354db5b673ca" kindref="member">EnableInterrupt</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a08cc5eb9df6036fdc3cf4cac383678d4" kindref="member">DisableInterrupt</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1ae518911cc7720b8ba4f7e854b3018a6f" kindref="member">WaitForInterrupt</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1ac9c07576f5e322fd9ca80d159f662f65" kindref="member">GetInterruptStatus</ref>(<ref refid="structInterruptStatus" kindref="compound">InterruptStatus</ref>&amp;<sp/>status)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a24c69898357e7d08edd37a8f9674b735" kindref="member">ClearInterruptStats</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LAZY<sp/>INITIALIZATION<sp/>SUPPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Note:<sp/>EnsureInitialized()<sp/>is<sp/>inherited<sp/>from<sp/>BaseGpio<sp/>and<sp/>provides<sp/>lazy<sp/>initialization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="classEspGpio_1a5f0ce0b49b277e718d60f21bcc158827" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a5f0ce0b49b277e718d60f21bcc158827" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classBaseGpio_1a2c654042248121cefac7e79590b35ec6" kindref="member">BaseGpio::IsInitialized</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATISTICS<sp/>AND<sp/>DIAGNOSTICS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a13f0f2bb08bdf3201b380bd6ad7aa0ae" kindref="member">GetStatistics</ref>(<ref refid="structhf__gpio__statistics__t" kindref="compound">hf_gpio_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1ab95d357d1b206b878cf3d960e06a269b" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__gpio__diagnostics__t" kindref="compound">hf_gpio_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>DIGITALGPIO<sp/>PURE<sp/>VIRTUAL<sp/>IMPLEMENTATIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a8b189d48e93417185a9b7fe7afd3306c" kindref="member">SetDirectionImpl</ref>(<ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref><sp/>direction)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a9661ef14697ca21f3a580add2f3a4623" kindref="member">SetOutputModeImpl</ref>(<ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref><sp/>mode)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a4625ee672d358bf48bff8c3d1f9d8201" kindref="member">SetPinLevelImpl</ref>(<ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a5a4c74349b2fb3f93d920f3b902a66ce" kindref="member">GetPinLevelImpl</ref>(<ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref>&amp;<sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1aeb44f0d33e47afd3bf0437b24fed0ae9" kindref="member">SetPullModeImpl</ref>(<ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref><sp/>mode)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref><sp/><ref refid="classEspGpio_1a9c4eb71cf5585351a0fb08749fe37b27" kindref="member">GetPullModeImpl</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a36373bacde83b2c40b8a9d9ee1240795" kindref="member">GetDirectionImpl</ref>(<ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref>&amp;<sp/>direction)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a662b4f3168a5566025c1984b7e903914" kindref="member">GetOutputModeImpl</ref>(<ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref>&amp;<sp/>mode)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal">public:</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>GPIO<sp/>FEATURES<sp/>(ESP32C6/ESP-IDF<sp/>v5.5+)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="classEspGpio_1a39144774b89ee9403b4a75bbd828950f" refkind="member"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/><ref refid="classEspGpio_1a39144774b89ee9403b4a75bbd828950f" kindref="member">GetDriveCapability</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a2cd94a74eda9b9736e0541f3fa963a3f" kindref="member">drive_capability_</ref>;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a68e7e6cf53c58d706a7ae00e321f1e3d" kindref="member">SetDriveCapability</ref>(<ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/>capability)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a8a8afa2c6f5cdf99fee057869e33be43" kindref="member">SupportsGlitchFilter</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a093fe910f55946ecd55ccb6d2139824a" kindref="member">ConfigurePinGlitchFilter</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a2c71bcffe9a6180b770a22d00af34571" kindref="member">ConfigureGlitchFilter</ref>(</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kindref="member">hf_gpio_glitch_filter_type_t</ref><sp/>filter_type,</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>const<sp/><ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref>*<sp/>flex_config<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a2c79c703fa89be2d6c180e43e8a5be19" kindref="member">ConfigureSleepMode</ref>(const<sp/><ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref>&amp;<sp/>sleep_config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a185dff0a8d47139e29b2a11b627aa916" kindref="member">ConfigureFlexGlitchFilter</ref>(const<sp/><ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref>&amp;<sp/>config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1abec628007c34fe89d133d56e7714e119" kindref="member">EnableGlitchFilters</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1aacd6a871bb388d4b30d148b8206d88d2" kindref="member">DisableGlitchFilters</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a278d4f15f4a47c2f602e0b5bc8e92166" kindref="member">SupportsRtcGpio</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a029215f672e9b08f0287b187b1c2d4c1" kindref="member">ConfigureSleep</ref>(const<sp/><ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref>&amp;<sp/>config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a4e9a361804cc545b6667ff62fe3561df" kindref="member">ConfigureHold</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1aac40d891a4e5d0ea8095462e9b02bdc9" kindref="member">ConfigureWakeUp</ref>(const<sp/><ref refid="structhf__gpio__wakeup__config__t" kindref="compound">hf_gpio_wakeup_config_t</ref>&amp;<sp/>config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="structhf__gpio__status__info__t" kindref="compound">hf_gpio_status_info_t</ref><sp/><ref refid="classEspGpio_1a69adebea4532cfd080f9987015722fa6" kindref="member">GetConfigurationDump</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a47b05205db6a3d993875a9ab993ee2c6" kindref="member">IsHeld</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATIC<sp/>UTILITY<sp/>METHODS<sp/>FOR<sp/>ESP32C6<sp/>PIN<sp/>VALIDATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a08bdc6128b25384532662d93d2049ec2" kindref="member">GetPinCapabilities</ref>(<ref refid="structhf__gpio__pin__capabilities__t" kindref="compound">hf_gpio_pin_capabilities_t</ref>&amp;<sp/>capabilities)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a28f867ec423d2dcfbcc25cfc0dd658ea" kindref="member">GetStatusInfo</ref>(<ref refid="structhf__gpio__status__info__t" kindref="compound">hf_gpio_status_info_t</ref>&amp;<sp/>status)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/>static<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classEspGpio_1a3b2fca526fd91aec5e0867346559afa3" kindref="member">GetTotalInterruptCount</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/>static<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classEspGpio_1aa3ef4dc499aa7693e3a96fa47766de13" kindref="member">GetActiveGpioCount</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a987113dad2ac0f206afdcdc124850db5" kindref="member">IsValidPin</ref>(<ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>pin_num)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1ae7c78b0135038cfb9302d2c131bdb39d" kindref="member">IsRtcGpio</ref>(<ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>pin_num)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1ae55553a663099f4fafbb65488477640e" kindref="member">IsStrappingPin</ref>(<ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>pin_num)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>HELPER<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="normal"></highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/>gpio_int_type_t<sp/><ref refid="classEspGpio_1a452475ffffe087b209f7613ca4ae9b35" kindref="member">MapInterruptTrigger</ref>(<ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref><sp/>trigger)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"></highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>IRAM_ATTR<sp/><ref refid="classEspGpio_1a04a1fc91cea1032c9db77373a113e433" kindref="member">StaticInterruptHandler</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg);</highlight></codeline>
+<codeline lineno="488"><highlight class="normal"></highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>IRAM_ATTR<sp/><ref refid="classEspGpio_1a786bacf7186807a58fdf2d3a338d918a" kindref="member">HandleInterrupt</ref>();</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1ada64948bf1df413764e02bef340e4062" kindref="member">InitializeAdvancedFeatures</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="499"><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a1bc4d9e3208d76bb8a0861c3de21d2e3" kindref="member">CleanupAdvancedFeatures</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1adfd48fa3edbbf0a146ae13b6a8622c56" kindref="member">CleanupGlitchFilters</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"></highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a35edac2436920f517f75c958fc265da6" kindref="member">CleanupInterruptSemaphore</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"></highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1ab1a2c40c2fc4896c58392592e39e6d06" kindref="member">WriteImpl</ref>(<ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref><sp/>state)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a2bba4bb6107fa6a4131223a679cdecac" kindref="member">ReadImpl</ref>(<ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref>&amp;<sp/>state)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="517"><highlight class="normal"></highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>MEMBER<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="521"><highlight class="normal"></highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Interrupt<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="523" refid="classEspGpio_1a4d98e2c42bc3c236ca80fa7569909157" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref><sp/><ref refid="classEspGpio_1a4d98e2c42bc3c236ca80fa7569909157" kindref="member">interrupt_trigger_</ref>;<sp/></highlight></codeline>
+<codeline lineno="524" refid="classEspGpio_1a63dee710d1d84cd56e8c50d3e20d8370" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref><sp/><ref refid="classEspGpio_1a63dee710d1d84cd56e8c50d3e20d8370" kindref="member">interrupt_callback_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="525" refid="classEspGpio_1a78b0811f7be9f554d6b91f7de07b422d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspGpio_1a78b0811f7be9f554d6b91f7de07b422d" kindref="member">interrupt_user_data_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="526" refid="classEspGpio_1a1fe4de0ad5e20fc200115cd4bb52ecf0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a1fe4de0ad5e20fc200115cd4bb52ecf0" kindref="member">interrupt_enabled_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="527" refid="classEspGpio_1a72b2184392d57af209598c1b42065e5c" refkind="member"><highlight class="normal"><sp/><sp/>std::atomic&lt;<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&gt;<sp/><ref refid="classEspGpio_1a72b2184392d57af209598c1b42065e5c" kindref="member">interrupt_count_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="528" refid="classEspGpio_1a4d3ee152727c2221f314c9d2b5283aaf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspGpio_1a4d3ee152727c2221f314c9d2b5283aaf" kindref="member">platform_semaphore_</ref>;<sp/></highlight></codeline>
+<codeline lineno="529" refid="classEspGpio_1a0aaa57aac6b572129338e1124dbd01b7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a0aaa57aac6b572129338e1124dbd01b7" kindref="member">isr_handler_added_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="530"><highlight class="normal"></highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Advanced<sp/>GPIO<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="532" refid="classEspGpio_1a2cd94a74eda9b9736e0541f3fa963a3f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/><ref refid="classEspGpio_1a2cd94a74eda9b9736e0541f3fa963a3f" kindref="member">drive_capability_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="533" refid="classEspGpio_1aa2af04744c3d0e256359d33b6f9a43c7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kindref="member">hf_gpio_glitch_filter_type_t</ref><sp/><ref refid="classEspGpio_1aa2af04744c3d0e256359d33b6f9a43c7" kindref="member">glitch_filter_type_</ref>;<sp/></highlight></codeline>
+<codeline lineno="534" refid="classEspGpio_1a04b78e55bdb1d95cec78571424892b27" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a04b78e55bdb1d95cec78571424892b27" kindref="member">pin_glitch_filter_enabled_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="535" refid="classEspGpio_1af8a683fc6c6e869c4a576cb7be13eb0b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1af8a683fc6c6e869c4a576cb7be13eb0b" kindref="member">flex_glitch_filter_enabled_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="536" refid="classEspGpio_1a7734c5cb7b6df9ccbf079e1d8a45a822" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref><sp/><ref refid="classEspGpio_1a7734c5cb7b6df9ccbf079e1d8a45a822" kindref="member">flex_filter_config_</ref>;<sp/></highlight></codeline>
+<codeline lineno="537" refid="classEspGpio_1a1bb6b5cb2d2217cef56f1b3cf426ed49" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref><sp/><ref refid="classEspGpio_1a1bb6b5cb2d2217cef56f1b3cf426ed49" kindref="member">sleep_config_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="538" refid="classEspGpio_1a06e1241c8517cb66e98d0054590b943a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a06e1241c8517cb66e98d0054590b943a" kindref="member">hold_enabled_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="539" refid="classEspGpio_1ae034b797966174d1ab52157b69195289" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1ae034b797966174d1ab52157b69195289" kindref="member">rtc_gpio_enabled_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="540" refid="classEspGpio_1a5ff67c40d3adaa6183167b4beeda00be" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__gpio__wakeup__config__t" kindref="compound">hf_gpio_wakeup_config_t</ref><sp/><ref refid="classEspGpio_1a5ff67c40d3adaa6183167b4beeda00be" kindref="member">wakeup_config_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"></highlight></codeline>
+<codeline lineno="542"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Platform-specific<sp/>handles<sp/>for<sp/>advanced<sp/>features</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="543" refid="classEspGpio_1ac28a7882cdc9ef28da6c0a130d43b601" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspGpio_1ac28a7882cdc9ef28da6c0a130d43b601" kindref="member">glitch_filter_handle_</ref>;<sp/></highlight></codeline>
+<codeline lineno="544" refid="classEspGpio_1a54d1c5cb96fcc14fa893cf12d82b410a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspGpio_1a54d1c5cb96fcc14fa893cf12d82b410a" kindref="member">rtc_gpio_handle_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="545"><highlight class="normal"></highlight></codeline>
+<codeline lineno="546"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Static<sp/>members<sp/>for<sp/>ISR<sp/>management</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="547" refid="classEspGpio_1a85ed85c826744590f82101f07aacb69e" refkind="member"><highlight class="normal"><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a85ed85c826744590f82101f07aacb69e" kindref="member">gpio_isr_handler_installed_</ref>;<sp/></highlight></codeline>
+<codeline lineno="548"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/EspGpio.h"/>
+  </compounddef>
+</doxygen>

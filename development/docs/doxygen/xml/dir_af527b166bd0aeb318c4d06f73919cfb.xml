@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_af527b166bd0aeb318c4d06f73919cfb" kind="dir">
+    <compoundname>inc/base</compoundname>
+    <innerfile refid="BaseAdc_8h">BaseAdc.h</innerfile>
+    <innerfile refid="BaseBluetooth_8h">BaseBluetooth.h</innerfile>
+    <innerfile refid="BaseCan_8h">BaseCan.h</innerfile>
+    <innerfile refid="BaseGpio_8h">BaseGpio.h</innerfile>
+    <innerfile refid="BaseI2c_8h">BaseI2c.h</innerfile>
+    <innerfile refid="BaseLogger_8h">BaseLogger.h</innerfile>
+    <innerfile refid="BaseNvs_8h">BaseNvs.h</innerfile>
+    <innerfile refid="BasePeriodicTimer_8h">BasePeriodicTimer.h</innerfile>
+    <innerfile refid="BasePio_8h">BasePio.h</innerfile>
+    <innerfile refid="BasePwm_8h">BasePwm.h</innerfile>
+    <innerfile refid="BaseSpi_8h">BaseSpi.h</innerfile>
+    <innerfile refid="BaseTemperature_8h">BaseTemperature.h</innerfile>
+    <innerfile refid="BaseUart_8h">BaseUart.h</innerfile>
+    <innerfile refid="BaseWifi_8h">BaseWifi.h</innerfile>
+    <innerfile refid="HardwareTypes_8h">HardwareTypes.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/"/>
+  </compounddef>
+</doxygen>

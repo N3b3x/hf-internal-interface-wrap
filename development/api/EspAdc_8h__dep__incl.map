@@ -1,0 +1,7 @@
+<map id="inc/mcu/esp32/EspAdc.h" name="inc/mcu/esp32/EspAdc.h">
+<area shape="rect" id="Node000001" title="ESP32 ADC implementation for the HardFOC system." alt="" coords="155,5,377,36"/>
+<area shape="rect" id="Node000002" href="$AdcComprehensiveTest_8cpp.html" title="Comprehensive ADC testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,84,257,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,46,171,86,168,81,231,41"/>
+<area shape="rect" id="Node000003" href="$EspAdc_8cpp.html" title="ESP32 ADC implementation for the HardFOC system." alt="" coords="281,94,523,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="301,41,381,92,378,96,298,46"/>
+</map>

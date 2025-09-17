@@ -1,0 +1,5 @@
+<map id="EspWifi" name="EspWifi">
+<area shape="rect" id="Node000001" title="Advanced ESP32 implementation of unified BaseWifi with ESP&#45;IDF v5.5+ features." alt="" coords="11,84,95,115"/>
+<area shape="rect" id="Node000002" href="$classBaseWifi.html" title="Abstract base class for WiFi functionality." alt="" coords="5,5,100,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="55,50,55,84,50,84,50,50"/>
+</map>

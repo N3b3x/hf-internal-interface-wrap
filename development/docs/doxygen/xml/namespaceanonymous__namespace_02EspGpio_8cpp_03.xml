@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespaceanonymous__namespace_02EspGpio_8cpp_03" kind="namespace" language="C++">
+    <compoundname>anonymous_namespace{EspGpio.cpp}</compoundname>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02EspGpio_8cpp_03_1a8d92a7c490f5ab71bb40ae9b866c310c" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; anonymous_namespace{EspGpio.cpp}::g_total_gpio_interrupts</definition>
+        <argsstring></argsstring>
+        <name>g_total_gpio_interrupts</name>
+        <qualifiedname>anonymous_namespace{EspGpio.cpp}::g_total_gpio_interrupts</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/esp32/EspGpio.cpp" line="67" column="13" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02EspGpio_8cpp_03_1a5f218373a579dbffd6f2382b20ace916" prot="public" static="no" mutable="no">
+        <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
+        <definition>std::atomic&lt;hf_u32_t&gt; anonymous_namespace{EspGpio.cpp}::g_active_gpio_count</definition>
+        <argsstring></argsstring>
+        <name>g_active_gpio_count</name>
+        <qualifiedname>anonymous_namespace{EspGpio.cpp}::g_active_gpio_count</qualifiedname>
+        <initializer>{0}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/esp32/EspGpio.cpp" line="68" column="13" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceanonymous__namespace_02EspGpio_8cpp_03_1ab863d6b5d30e7134ec2ba98e87dbdf07" prot="public" static="no" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="structhf__gpio__pin__capabilities__t" kindref="compound">hf_gpio_pin_capabilities_t</ref></type>
+        <definition>constexpr hf_gpio_pin_capabilities_t anonymous_namespace{EspGpio.cpp}::GPIO_PIN_CAPABILITIES[31]</definition>
+        <argsstring>[31]</argsstring>
+        <name>GPIO_PIN_CAPABILITIES</name>
+        <qualifiedname>anonymous_namespace{EspGpio.cpp}::GPIO_PIN_CAPABILITIES</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/esp32/EspGpio.cpp" line="72" column="38" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="72" bodyend="119"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/esp32/EspGpio.cpp" line="65" column="1"/>
+  </compounddef>
+</doxygen>

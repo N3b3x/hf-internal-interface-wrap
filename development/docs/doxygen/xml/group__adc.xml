@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__adc" kind="group">
+    <compoundname>adc</compoundname>
+    <title>ADC Module</title>
+    <innerfile refid="BaseAdc_8h">BaseAdc.h</innerfile>
+    <innerclass refid="classBaseAdc" prot="public">BaseAdc</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__adc_1ga891102c18cebf84f4f4da96bb6110bb7" prot="public" static="no">
+        <name>HF_ADC_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>ADC error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all ADC operations in the system. This enumeration is used across all ADC-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseAdc.h" line="44" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="44" bodyend="114"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All ADC-related types, enums, and functions for analog-to-digital conversion operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

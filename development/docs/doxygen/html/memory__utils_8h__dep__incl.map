@@ -1,0 +1,11 @@
+<map id="inc/utils/memory_utils.h" name="inc/utils/memory_utils.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="463,5,674,36"/>
+<area shape="rect" id="Node000002" href="$GpioComprehensiveTest_8cpp.html" title="Comprehensive GPIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,84,265,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="485,41,257,87,256,81,484,36"/>
+<area shape="rect" id="Node000003" href="$LoggerComprehensiveTest_8cpp.html" title="Comprehensive Logger testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="290,84,567,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="535,46,470,86,467,81,533,41"/>
+<area shape="rect" id="Node000004" href="$EspI2c_8cpp.html" title="Implementation of ESP32&#45;integrated I2C controller with proper bus&#45;device architecture." alt="" coords="591,94,826,125"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="605,41,687,92,684,96,602,46"/>
+<area shape="rect" id="Node000005" href="$EspSpi_8cpp.html" title="Implementation of MCU&#45;integrated SPI controller for ESP32C6 with ESP&#45;IDF v5.5+ features." alt="" coords="849,94,1085,125"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="648,36,903,91,902,97,647,42"/>
+</map>

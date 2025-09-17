@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__nvs" kind="group">
+    <compoundname>nvs</compoundname>
+    <title>NVS Module</title>
+    <innerfile refid="BaseNvs_8h">BaseNvs.h</innerfile>
+    <innerclass refid="classBaseNvs" prot="public">BaseNvs</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__nvs_1ga39e87a409abc82e8e5c93b26adb86245" prot="public" static="no">
+        <name>HF_NVS_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC NVS error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all NVS operations in the system. This enumeration is used across all NVS-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseNvs.h" line="41" column="9" bodyfile="inc/base/BaseNvs.h" bodystart="41" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All NVS-related types, enums, and functions for Non-Volatile Storage operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

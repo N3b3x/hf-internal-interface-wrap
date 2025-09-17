@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structEspPwm_1_1ValidationContext" kind="struct" language="C++" prot="private">
+    <compoundname>EspPwm::ValidationContext</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationContext_1a7f13cfef94f7d070e003e4bf7d750de6" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPwm::ValidationContext::frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>frequency_hz</name>
+        <qualifiedname>EspPwm::ValidationContext::frequency_hz</qualifiedname>
+        <briefdescription>
+<para>Target frequency in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="924" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="924" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationContext_1a3be5447a556a9303c0dbe10c874d708a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t EspPwm::ValidationContext::resolution_bits</definition>
+        <argsstring></argsstring>
+        <name>resolution_bits</name>
+        <qualifiedname>EspPwm::ValidationContext::resolution_bits</qualifiedname>
+        <briefdescription>
+<para>Target resolution in bits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="925" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="925" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationContext_1aee5c005648e24deeeda0e0c2b8e97768" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
+        <definition>hf_pwm_clock_source_t EspPwm::ValidationContext::clock_source</definition>
+        <argsstring></argsstring>
+        <name>clock_source</name>
+        <qualifiedname>EspPwm::ValidationContext::clock_source</qualifiedname>
+        <briefdescription>
+<para>Clock source for validation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="926" column="27" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="926" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPwm_1_1ValidationContext_1a569ea7ce6a7519d199e90433bbefe8e9" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref></type>
+        <definition>hf_i8_t EspPwm::ValidationContext::timer_id</definition>
+        <argsstring></argsstring>
+        <name>timer_id</name>
+        <qualifiedname>EspPwm::ValidationContext::timer_id</qualifiedname>
+        <briefdescription>
+<para>Optional specific timer (-1 for general) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="927" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="927" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEspPwm_1_1ValidationContext_1ad8ae4b0ed0b6fd2683c591ec1c00dc8e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPwm::ValidationContext::ValidationContext</definition>
+        <argsstring>(hf_u32_t freq, hf_u8_t res, hf_pwm_clock_source_t clk=hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB, hf_i8_t timer=-1) noexcept</argsstring>
+        <name>ValidationContext</name>
+        <qualifiedname>EspPwm::ValidationContext::ValidationContext</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>freq</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>res</declname>
+        </param>
+        <param>
+          <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
+          <declname>clk</declname>
+          <defval><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82a2fb4f97b7c1b78586a5f9f8365272822" kindref="member">hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref></type>
+          <declname>timer</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPwm.h" line="929" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="929" bodyend="932"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Simple validation context for frequency/resolution validation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspPwm.h" line="923" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="923" bodyend="933"/>
+    <listofallmembers>
+      <member refid="structEspPwm_1_1ValidationContext_1aee5c005648e24deeeda0e0c2b8e97768" prot="public" virt="non-virtual"><scope>EspPwm::ValidationContext</scope><name>clock_source</name></member>
+      <member refid="structEspPwm_1_1ValidationContext_1a7f13cfef94f7d070e003e4bf7d750de6" prot="public" virt="non-virtual"><scope>EspPwm::ValidationContext</scope><name>frequency_hz</name></member>
+      <member refid="structEspPwm_1_1ValidationContext_1a3be5447a556a9303c0dbe10c874d708a" prot="public" virt="non-virtual"><scope>EspPwm::ValidationContext</scope><name>resolution_bits</name></member>
+      <member refid="structEspPwm_1_1ValidationContext_1a569ea7ce6a7519d199e90433bbefe8e9" prot="public" virt="non-virtual"><scope>EspPwm::ValidationContext</scope><name>timer_id</name></member>
+      <member refid="structEspPwm_1_1ValidationContext_1ad8ae4b0ed0b6fd2683c591ec1c00dc8e" prot="public" virt="non-virtual"><scope>EspPwm::ValidationContext</scope><name>ValidationContext</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,776 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspTypes__NVS_8h" kind="file" language="C++">
+    <compoundname>EspTypes_NVS.h</compoundname>
+    <includes refid="BaseNvs_8h" local="yes">BaseNvs.h</includes>
+    <includes refid="EspTypes__Base_8h" local="yes">EspTypes_Base.h</includes>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includes local="no">cstring</includes>
+    <includedby refid="EspNvs_8h" local="yes">inc/mcu/esp32/EspNvs.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseNvs.h</label>
+        <link refid="BaseNvs_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_NVS.h</label>
+        <link refid="EspTypes__NVS_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>../../utils/McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="9">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="10">
+        <label>cstring</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>examples/esp32/main/NvsComprehensiveTest.cpp</label>
+        <link refid="NvsComprehensiveTest_8cpp"/>
+      </node>
+      <node id="2">
+        <label>inc/mcu/esp32/EspNvs.h</label>
+        <link refid="EspNvs_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_NVS.h</label>
+        <link refid="EspTypes__NVS_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspNvs.cpp</label>
+        <link refid="EspNvs_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__nvs__partition__config__t" prot="public">hf_nvs_partition_config_t</innerclass>
+    <innerclass refid="structhf__nvs__capabilities__t" prot="public">hf_nvs_capabilities_t</innerclass>
+    <innerclass refid="structhf__nvs__iterator__config__t" prot="public">hf_nvs_iterator_config_t</innerclass>
+    <innerclass refid="structhf__nvs__entry__info__t" prot="public">hf_nvs_entry_info_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="EspTypes__NVS_8h_1a61909dc999b3029d637d8f2b6ab04c6c" prot="public" static="no">
+        <name>HF_NVS_IS_VALID_KEY_LENGTH</name>
+        <param><defname>len</defname></param>
+        <initializer>((len) &gt; 0 &amp;&amp; (len) &lt;= <ref refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" kindref="member">HF_NVS_MAX_KEY_LENGTH</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="159" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__NVS_8h_1a7e3f7d0ccce51a9d14be8621b0f16ffc" prot="public" static="no">
+        <name>HF_NVS_IS_VALID_VALUE_SIZE</name>
+        <param><defname>size</defname></param>
+        <initializer>((size) &lt;= <ref refid="EspTypes__NVS_8h_1a00dd6a75504fc5428f7dd8eb6dbf4fa8" kindref="member">HF_NVS_MAX_VALUE_SIZE</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="160" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__NVS_8h_1a106d19fd51da327f8fee30db28eabc7e" prot="public" static="no">
+        <name>HF_NVS_IS_VALID_NAMESPACE_LENGTH</name>
+        <param><defname>len</defname></param>
+        <initializer>((len) &gt; 0 &amp;&amp; (len) &lt;= <ref refid="EspTypes__NVS_8h_1a6732ac2dfabf27a7eae3f7117b55fdfc" kindref="member">HF_NVS_MAX_NAMESPACE_LENGTH</ref>)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="161" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="161" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_nvs_type_t</name>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" prot="public">
+          <name>HF_NVS_TYPE_U8</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>8-bit unsigned integer </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a7cb63e1d5d8fb9a08fc4b76c12ecc3a4" prot="public">
+          <name>HF_NVS_TYPE_I8</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>8-bit signed integer </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617ada555b403b18419f1d423dd3d60786f2" prot="public">
+          <name>HF_NVS_TYPE_U16</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>16-bit unsigned integer </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a81e2672b9e752c64143ec39bf5bf80dc" prot="public">
+          <name>HF_NVS_TYPE_I16</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>16-bit signed integer </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a17c8cba1e40d6e76f450220abae3c6dc" prot="public">
+          <name>HF_NVS_TYPE_U32</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>32-bit unsigned integer </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a4085c79d69c447e842862a9f1d77474f" prot="public">
+          <name>HF_NVS_TYPE_I32</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>32-bit signed integer </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a66e1603b1103c306d85c76f70b19b8be" prot="public">
+          <name>HF_NVS_TYPE_U64</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>64-bit unsigned integer </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a09de28fe50a0c76abdb0167b471ba4d1" prot="public">
+          <name>HF_NVS_TYPE_I64</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+<para>64-bit signed integer </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a1c5dc8de38dbebe74d4bfbcba16106ab" prot="public">
+          <name>HF_NVS_TYPE_STR</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+<para>String. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a5387a33fa068bb23735e95eadc5cba86" prot="public">
+          <name>HF_NVS_TYPE_BLOB</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+<para>Binary blob. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 NVS data types. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="52" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="52" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_nvs_open_mode_t</name>
+        <enumvalue id="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa01f2861b174eeddc0abf8fabf1ae48df" prot="public">
+          <name>HF_NVS_READONLY</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Read-only mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa9de1ba7d3f0471369c2d4d5e16d212dc" prot="public">
+          <name>HF_NVS_READWRITE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Read-write mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 NVS open modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="68" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="68" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_nvs_encryption_mode_t</name>
+        <enumvalue id="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ab092ccbcf732dd28498fc4d4a4958ba6" prot="public">
+          <name>HF_NVS_ENCRYPTION_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No encryption. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2aee877b8d0ef55769dd976a4a2e1a91d7" prot="public">
+          <name>HF_NVS_ENCRYPTION_HMAC</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>HMAC encryption. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ac5586db581a7725170e9010c8f7c5fc7" prot="public">
+          <name>HF_NVS_ENCRYPTION_XTS</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>XTS encryption. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 NVS encryption modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="76" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="76" bodyend="80"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_NVS_MAX_KEY_LENGTH</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_MAX_KEY_LENGTH</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="32" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1a00dd6a75504fc5428f7dd8eb6dbf4fa8" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_NVS_MAX_VALUE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_MAX_VALUE_SIZE</name>
+        <initializer>= 4000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="33" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1a6732ac2dfabf27a7eae3f7117b55fdfc" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_NVS_MAX_NAMESPACE_LENGTH</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_MAX_NAMESPACE_LENGTH</name>
+        <initializer>= 15</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="34" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1adb6399f5a4a701c4fe6358054e39ff7d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_NVS_MAX_NAMESPACES</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_MAX_NAMESPACES</name>
+        <initializer>= 256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="35" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1a393e890752b8b823c8fcf61f5bad575d" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_NVS_FLASH_SECTOR_SIZE</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_FLASH_SECTOR_SIZE</name>
+        <initializer>= 4096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="36" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1a269ddbecae6d8587d128ade2eeb95d13" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_NVS_PAGE_SIZE</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_PAGE_SIZE</name>
+        <initializer>= 4096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="37" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1a1ae0d938b9b4ff3bdcbcc339e71b0975" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t HF_NVS_ENTRY_SIZE</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_ENTRY_SIZE</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="38" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1a553b207307a6ac9af3a6cf39698fe3f3" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_NVS_OPERATION_TIMEOUT_MS</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_OPERATION_TIMEOUT_MS</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+<para>Default operation timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="41" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1aac77e90f835e0df6df399c0f6c46b14b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_NVS_INIT_TIMEOUT_MS</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_INIT_TIMEOUT_MS</name>
+        <initializer>= 5000</initializer>
+        <briefdescription>
+<para>Initialization timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="42" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__NVS_8h_1a1b939eec78119d90237c290f36c663e0" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_NVS_COMMIT_TIMEOUT_MS</definition>
+        <argsstring></argsstring>
+        <name>HF_NVS_COMMIT_TIMEOUT_MS</name>
+        <initializer>= 2000</initializer>
+        <briefdescription>
+<para>Commit operation timeout. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="43" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="EspTypes__NVS_8h_1a8641201efc750e465b29e13fd3840af8" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool IsValidNvsKey</definition>
+        <argsstring>(const char *key) noexcept</argsstring>
+        <name>IsValidNvsKey</name>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Validate NVS key name for ESP32. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Key name to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="172" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="172" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__NVS_8h_1a40698a7f82017e735b1cb544ceb106ff" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool IsValidNvsNamespace</definition>
+        <argsstring>(const char *namespace_name) noexcept</argsstring>
+        <name>IsValidNvsNamespace</name>
+        <param>
+          <type>const char *</type>
+          <declname>namespace_name</declname>
+        </param>
+        <briefdescription>
+<para>Validate NVS namespace name for ESP32. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>namespace_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Namespace name to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="184" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="184" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__NVS_8h_1a33d0acd2ef347bd0c22406fc4aeec3a1" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool IsValidNvsValueSize</definition>
+        <argsstring>(size_t size) noexcept</argsstring>
+        <name>IsValidNvsValueSize</name>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Validate NVS value size for ESP32. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value size to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="196" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="196" bodyend="198"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__NVS_8h_1aef03a4f30898c92c437762c676cadbe2" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t GetMaxValueSizeForType</definition>
+        <argsstring>(hf_nvs_type_t type) noexcept</argsstring>
+        <name>GetMaxValueSizeForType</name>
+        <param>
+          <type><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+<para>Get maximum supported value size for given type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>type</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>NVS data type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Maximum size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="205" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="205" bodyend="225"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 NVS type definitions for hardware abstraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines only the essential NVS-specific types used by the <ref refid="classEspNvs" kindref="compound">EspNvs</ref> implementation. Clean and minimal approach.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseNvs_8h" kindref="compound">BaseNvs.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>hf_nvs_err_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__Base_8h" kindref="compound">EspTypes_Base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>basic<sp/>hardware<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Central<sp/>MCU<sp/>platform<sp/>selection<sp/>(includes<sp/>all<sp/>ESP-IDF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>NVS<sp/>TYPE<sp/>MAPPINGS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Direct<sp/>ESP-IDF<sp/>type<sp/>usage<sp/>-<sp/>no<sp/>unnecessary<sp/>aliases</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>types<sp/>are<sp/>used<sp/>internally<sp/>by<sp/>EspNvs<sp/>implementation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>NVS<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" kindref="member">HF_NVS_MAX_KEY_LENGTH</ref><sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="33" refid="EspTypes__NVS_8h_1a00dd6a75504fc5428f7dd8eb6dbf4fa8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a00dd6a75504fc5428f7dd8eb6dbf4fa8" kindref="member">HF_NVS_MAX_VALUE_SIZE</ref><sp/>=<sp/>4000;</highlight></codeline>
+<codeline lineno="34" refid="EspTypes__NVS_8h_1a6732ac2dfabf27a7eae3f7117b55fdfc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a6732ac2dfabf27a7eae3f7117b55fdfc" kindref="member">HF_NVS_MAX_NAMESPACE_LENGTH</ref><sp/>=<sp/>15;</highlight></codeline>
+<codeline lineno="35" refid="EspTypes__NVS_8h_1adb6399f5a4a701c4fe6358054e39ff7d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6399f5a4a701c4fe6358054e39ff7d" kindref="member">HF_NVS_MAX_NAMESPACES</ref><sp/>=<sp/>256;</highlight></codeline>
+<codeline lineno="36" refid="EspTypes__NVS_8h_1a393e890752b8b823c8fcf61f5bad575d" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a393e890752b8b823c8fcf61f5bad575d" kindref="member">HF_NVS_FLASH_SECTOR_SIZE</ref><sp/>=<sp/>4096;</highlight></codeline>
+<codeline lineno="37" refid="EspTypes__NVS_8h_1a269ddbecae6d8587d128ade2eeb95d13" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a269ddbecae6d8587d128ade2eeb95d13" kindref="member">HF_NVS_PAGE_SIZE</ref><sp/>=<sp/>4096;</highlight></codeline>
+<codeline lineno="38" refid="EspTypes__NVS_8h_1a1ae0d938b9b4ff3bdcbcc339e71b0975" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a1ae0d938b9b4ff3bdcbcc339e71b0975" kindref="member">HF_NVS_ENTRY_SIZE</ref><sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>NVS<sp/>operation<sp/>timeouts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="EspTypes__NVS_8h_1a553b207307a6ac9af3a6cf39698fe3f3" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__NVS_8h_1a553b207307a6ac9af3a6cf39698fe3f3" kindref="member">HF_NVS_OPERATION_TIMEOUT_MS</ref><sp/>=<sp/>1000;<sp/></highlight></codeline>
+<codeline lineno="42" refid="EspTypes__NVS_8h_1aac77e90f835e0df6df399c0f6c46b14b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__NVS_8h_1aac77e90f835e0df6df399c0f6c46b14b" kindref="member">HF_NVS_INIT_TIMEOUT_MS</ref><sp/>=<sp/>5000;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43" refid="EspTypes__NVS_8h_1a1b939eec78119d90237c290f36c663e0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__NVS_8h_1a1b939eec78119d90237c290f36c663e0" kindref="member">HF_NVS_COMMIT_TIMEOUT_MS</ref><sp/>=<sp/>2000;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>NVS<sp/>ENUMS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" kindref="member">HF_NVS_TYPE_U8</ref><sp/>=<sp/>0,<sp/><sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a7cb63e1d5d8fb9a08fc4b76c12ecc3a4" kindref="member">HF_NVS_TYPE_I8</ref><sp/>=<sp/>1,<sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617ada555b403b18419f1d423dd3d60786f2" kindref="member">HF_NVS_TYPE_U16</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a81e2672b9e752c64143ec39bf5bf80dc" kindref="member">HF_NVS_TYPE_I16</ref><sp/>=<sp/>3,<sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a17c8cba1e40d6e76f450220abae3c6dc" kindref="member">HF_NVS_TYPE_U32</ref><sp/>=<sp/>4,<sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a4085c79d69c447e842862a9f1d77474f" kindref="member">HF_NVS_TYPE_I32</ref><sp/>=<sp/>5,<sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a66e1603b1103c306d85c76f70b19b8be" kindref="member">HF_NVS_TYPE_U64</ref><sp/>=<sp/>6,<sp/></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a09de28fe50a0c76abdb0167b471ba4d1" kindref="member">HF_NVS_TYPE_I64</ref><sp/>=<sp/>7,<sp/></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a1c5dc8de38dbebe74d4bfbcba16106ab" kindref="member">HF_NVS_TYPE_STR</ref><sp/>=<sp/>8,<sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a5387a33fa068bb23735e95eadc5cba86" kindref="member">HF_NVS_TYPE_BLOB</ref><sp/>=<sp/>9<sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" kindref="member">hf_nvs_open_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa01f2861b174eeddc0abf8fabf1ae48df" kindref="member">HF_NVS_READONLY</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa9de1ba7d3f0471369c2d4d5e16d212dc" kindref="member">HF_NVS_READWRITE</ref><sp/>=<sp/>1<sp/></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" kindref="member">hf_nvs_encryption_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ab092ccbcf732dd28498fc4d4a4958ba6" kindref="member">HF_NVS_ENCRYPTION_NONE</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2aee877b8d0ef55769dd976a4a2e1a91d7" kindref="member">HF_NVS_ENCRYPTION_HMAC</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ac5586db581a7725170e9010c8f7c5fc7" kindref="member">HF_NVS_ENCRYPTION_XTS</ref><sp/>=<sp/>2<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>NVS<sp/>CONFIGURATION<sp/>STRUCTURES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="structhf__nvs__partition__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__nvs__partition__config__t" kindref="compound">hf_nvs_partition_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="90" refid="structhf__nvs__partition__config__t_1a25d4693673db6800b111c2aa72621e5e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__nvs__partition__config__t_1a25d4693673db6800b111c2aa72621e5e" kindref="member">partition_label</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="91" refid="structhf__nvs__partition__config__t_1a956314821f9a7b6cc388863a6ebe4c3b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__nvs__partition__config__t_1a956314821f9a7b6cc388863a6ebe4c3b" kindref="member">namespace_name</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="92" refid="structhf__nvs__partition__config__t_1a4a094f7dc60b0dca840a96888c5730ae" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" kindref="member">hf_nvs_open_mode_t</ref><sp/><ref refid="structhf__nvs__partition__config__t_1a4a094f7dc60b0dca840a96888c5730ae" kindref="member">open_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93" refid="structhf__nvs__partition__config__t_1a4955da28c42450fa6e5f2d4747f30701" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" kindref="member">hf_nvs_encryption_mode_t</ref><sp/><ref refid="structhf__nvs__partition__config__t_1a4955da28c42450fa6e5f2d4747f30701" kindref="member">encryption</ref>;<sp/></highlight></codeline>
+<codeline lineno="94" refid="structhf__nvs__partition__config__t_1adc2f8249c1aa1178379baae8673c81ab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__partition__config__t_1adc2f8249c1aa1178379baae8673c81ab" kindref="member">max_entries</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="95" refid="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" kindref="member">auto_commit</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97" refid="structhf__nvs__partition__config__t_1ae38ecb16cd130fb144836b3c73f42eb4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1ae38ecb16cd130fb144836b3c73f42eb4" kindref="member">hf_nvs_partition_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__nvs__partition__config__t_1a25d4693673db6800b111c2aa72621e5e" kindref="member">partition_label</ref>(&quot;nvs&quot;),<sp/><ref refid="structhf__nvs__partition__config__t_1a956314821f9a7b6cc388863a6ebe4c3b" kindref="member">namespace_name</ref>(&quot;default&quot;),</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1a4a094f7dc60b0dca840a96888c5730ae" kindref="member">open_mode</ref>(<ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3ba" kindref="member">hf_nvs_open_mode_t</ref>::<ref refid="EspTypes__NVS_8h_1a70c30af070b1291da4f329b9109be3baa9de1ba7d3f0471369c2d4d5e16d212dc" kindref="member">HF_NVS_READWRITE</ref>),</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1a4955da28c42450fa6e5f2d4747f30701" kindref="member">encryption</ref>(<ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2" kindref="member">hf_nvs_encryption_mode_t</ref>::<ref refid="EspTypes__NVS_8h_1a561ba44ffb97ba66401ae2b0b0f7c2d2ab092ccbcf732dd28498fc4d4a4958ba6" kindref="member">HF_NVS_ENCRYPTION_NONE</ref>),<sp/><ref refid="structhf__nvs__partition__config__t_1adc2f8249c1aa1178379baae8673c81ab" kindref="member">max_entries</ref>(256),</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__partition__config__t_1a8979b3d0d128254e0c919c30a59f78c2" kindref="member">auto_commit</ref>(true)<sp/>{}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="structhf__nvs__capabilities__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__nvs__capabilities__t" kindref="compound">hf_nvs_capabilities_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="108" refid="structhf__nvs__capabilities__t_1a30251edaa0f83ca63430cf61ce4f0ba3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1a30251edaa0f83ca63430cf61ce4f0ba3" kindref="member">max_namespaces</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109" refid="structhf__nvs__capabilities__t_1ae47180670acbbc7ca5c67264d8f53108" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1ae47180670acbbc7ca5c67264d8f53108" kindref="member">max_keys_per_namespace</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110" refid="structhf__nvs__capabilities__t_1a35ad86193e5214b4cd0fd228ca79d508" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1a35ad86193e5214b4cd0fd228ca79d508" kindref="member">max_key_length</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111" refid="structhf__nvs__capabilities__t_1ac797bf5d2d0ad433ecb41332c87fb8a4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1ac797bf5d2d0ad433ecb41332c87fb8a4" kindref="member">max_value_size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112" refid="structhf__nvs__capabilities__t_1a96ddf04bb913e0967df0ba28c4371ad2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1a96ddf04bb913e0967df0ba28c4371ad2" kindref="member">flash_sector_size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113" refid="structhf__nvs__capabilities__t_1a0db73ea48c19f9f62383d9ced6ef2e7e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1a0db73ea48c19f9f62383d9ced6ef2e7e" kindref="member">supports_encryption</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114" refid="structhf__nvs__capabilities__t_1aed25a4381da34ed61f41496eae77b8fc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1aed25a4381da34ed61f41496eae77b8fc" kindref="member">supports_hmac_encryption</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115" refid="structhf__nvs__capabilities__t_1a56c576b20942aea101189f90471a1288" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1a56c576b20942aea101189f90471a1288" kindref="member">supports_xts_encryption</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116" refid="structhf__nvs__capabilities__t_1ab9b752d6daf7d3899375846747ebd2fe" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1ab9b752d6daf7d3899375846747ebd2fe" kindref="member">supports_atomic_operations</ref>;<sp/></highlight></codeline>
+<codeline lineno="117" refid="structhf__nvs__capabilities__t_1a9141725a7918dc37664bcb87b19b447c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__capabilities__t_1a9141725a7918dc37664bcb87b19b447c" kindref="member">supports_wear_leveling</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="structhf__nvs__capabilities__t_1aade4d0e7880b1d69f0691b2188410522" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1aade4d0e7880b1d69f0691b2188410522" kindref="member">hf_nvs_capabilities_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__nvs__capabilities__t_1a30251edaa0f83ca63430cf61ce4f0ba3" kindref="member">max_namespaces</ref>(<ref refid="EspTypes__NVS_8h_1adb6399f5a4a701c4fe6358054e39ff7d" kindref="member">HF_NVS_MAX_NAMESPACES</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1ae47180670acbbc7ca5c67264d8f53108" kindref="member">max_keys_per_namespace</ref>(256),</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1a35ad86193e5214b4cd0fd228ca79d508" kindref="member">max_key_length</ref>(<ref refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" kindref="member">HF_NVS_MAX_KEY_LENGTH</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1ac797bf5d2d0ad433ecb41332c87fb8a4" kindref="member">max_value_size</ref>(<ref refid="EspTypes__NVS_8h_1a00dd6a75504fc5428f7dd8eb6dbf4fa8" kindref="member">HF_NVS_MAX_VALUE_SIZE</ref>),</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1a96ddf04bb913e0967df0ba28c4371ad2" kindref="member">flash_sector_size</ref>(<ref refid="EspTypes__NVS_8h_1a393e890752b8b823c8fcf61f5bad575d" kindref="member">HF_NVS_FLASH_SECTOR_SIZE</ref>),<sp/><ref refid="structhf__nvs__capabilities__t_1a0db73ea48c19f9f62383d9ced6ef2e7e" kindref="member">supports_encryption</ref>(true),</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1aed25a4381da34ed61f41496eae77b8fc" kindref="member">supports_hmac_encryption</ref>(true),<sp/><ref refid="structhf__nvs__capabilities__t_1a56c576b20942aea101189f90471a1288" kindref="member">supports_xts_encryption</ref>(true),</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__capabilities__t_1ab9b752d6daf7d3899375846747ebd2fe" kindref="member">supports_atomic_operations</ref>(true),<sp/><ref refid="structhf__nvs__capabilities__t_1a9141725a7918dc37664bcb87b19b447c" kindref="member">supports_wear_leveling</ref>(true)<sp/>{}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="structhf__nvs__iterator__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__nvs__iterator__config__t" kindref="compound">hf_nvs_iterator_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="131" refid="structhf__nvs__iterator__config__t_1a65f62a32e0cce249d88cf7ae5af478f0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__nvs__iterator__config__t_1a65f62a32e0cce249d88cf7ae5af478f0" kindref="member">namespace_name</ref>;<sp/></highlight></codeline>
+<codeline lineno="132" refid="structhf__nvs__iterator__config__t_1a679b91e6c7e1b8bf721564040be56b3a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref><sp/><ref refid="structhf__nvs__iterator__config__t_1a679b91e6c7e1b8bf721564040be56b3a" kindref="member">type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="133" refid="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" kindref="member">key_prefix</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="134" refid="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" kindref="member">max_entries</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="structhf__nvs__iterator__config__t_1a92649a1339942a2530228237ecc5e72f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__iterator__config__t_1a92649a1339942a2530228237ecc5e72f" kindref="member">hf_nvs_iterator_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__nvs__iterator__config__t_1a65f62a32e0cce249d88cf7ae5af478f0" kindref="member">namespace_name</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),<sp/><ref refid="structhf__nvs__iterator__config__t_1a679b91e6c7e1b8bf721564040be56b3a" kindref="member">type</ref>(<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref>::<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" kindref="member">HF_NVS_TYPE_U8</ref>),<sp/><ref refid="structhf__nvs__iterator__config__t_1a8bc76d2487c20d73b26bd130e04878bc" kindref="member">key_prefix</ref>(</highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__iterator__config__t_1a36a3a658981b87edd3f46194e3e68c1b" kindref="member">max_entries</ref>(100)<sp/>{}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="structhf__nvs__entry__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__nvs__entry__info__t" kindref="compound">hf_nvs_entry_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="145" refid="structhf__nvs__entry__info__t_1adeb6e3dd4f6818964de5d244ebdb7bf2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__entry__info__t_1adeb6e3dd4f6818964de5d244ebdb7bf2" kindref="member">key</ref>[<ref refid="EspTypes__NVS_8h_1a9097ab0c9516e77d3c7a0f5d1ff06f4e" kindref="member">HF_NVS_MAX_KEY_LENGTH</ref><sp/>+<sp/>1];<sp/></highlight></codeline>
+<codeline lineno="146" refid="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref><sp/><ref refid="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" kindref="member">type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="147" refid="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" kindref="member">size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="148" refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" kindref="member">crc</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="structhf__nvs__entry__info__t_1aa699a5beadc9585996b7ad8f5b7ec291" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__nvs__entry__info__t_1aa699a5beadc9585996b7ad8f5b7ec291" kindref="member">hf_nvs_entry_info_t</ref>()<sp/>noexcept<sp/>:<sp/><ref refid="structhf__nvs__entry__info__t_1a251ce88b08f259a47a3245cc728b6e21" kindref="member">type</ref>(<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref>::<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" kindref="member">HF_NVS_TYPE_U8</ref>),<sp/><ref refid="structhf__nvs__entry__info__t_1a51ffd60006efd11887cbfdc224a8a45d" kindref="member">size</ref>(0),<sp/><ref refid="structhf__nvs__entry__info__t_1ae9d023d62c4361f22f36d8b5db9a2249" kindref="member">crc</ref>(0)<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__nvs__entry__info__t_1adeb6e3dd4f6818964de5d244ebdb7bf2" kindref="member">key</ref>[0]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>NVS<sp/>VALIDATION<sp/>MACROS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="EspTypes__NVS_8h_1a61909dc999b3029d637d8f2b6ab04c6c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_NVS_IS_VALID_KEY_LENGTH(len)<sp/>((len)<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>(len)<sp/>&lt;=<sp/>HF_NVS_MAX_KEY_LENGTH)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="EspTypes__NVS_8h_1a7e3f7d0ccce51a9d14be8621b0f16ffc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_NVS_IS_VALID_VALUE_SIZE(size)<sp/>((size)<sp/>&lt;=<sp/>HF_NVS_MAX_VALUE_SIZE)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="EspTypes__NVS_8h_1a106d19fd51da327f8fee30db28eabc7e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_NVS_IS_VALID_NAMESPACE_LENGTH(len)<sp/>((len)<sp/>&gt;<sp/>0<sp/>&amp;&amp;<sp/>(len)<sp/>&lt;=<sp/>HF_NVS_MAX_NAMESPACE_LENGTH)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>NVS<sp/>UTILITY<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172" refid="EspTypes__NVS_8h_1a8641201efc750e465b29e13fd3840af8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a8641201efc750e465b29e13fd3840af8" kindref="member">IsValidNvsKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!key)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len<sp/>=<sp/>strlen(key);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a61909dc999b3029d637d8f2b6ab04c6c" kindref="member">HF_NVS_IS_VALID_KEY_LENGTH</ref>(len);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184" refid="EspTypes__NVS_8h_1a40698a7f82017e735b1cb544ceb106ff" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a40698a7f82017e735b1cb544ceb106ff" kindref="member">IsValidNvsNamespace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>namespace_name)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!namespace_name)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len<sp/>=<sp/>strlen(namespace_name);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a106d19fd51da327f8fee30db28eabc7e" kindref="member">HF_NVS_IS_VALID_NAMESPACE_LENGTH</ref>(len);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="EspTypes__NVS_8h_1a33d0acd2ef347bd0c22406fc4aeec3a1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a33d0acd2ef347bd0c22406fc4aeec3a1" kindref="member">IsValidNvsValueSize</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a7e3f7d0ccce51a9d14be8621b0f16ffc" kindref="member">HF_NVS_IS_VALID_VALUE_SIZE</ref>(size);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205" refid="EspTypes__NVS_8h_1aef03a4f30898c92c437762c676cadbe2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1aef03a4f30898c92c437762c676cadbe2" kindref="member">GetMaxValueSizeForType</ref>(<ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617" kindref="member">hf_nvs_type_t</ref><sp/>type)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type)<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a74a956df6eb6fe85d598d42ead5081dd" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_U8</ref>:</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a7cb63e1d5d8fb9a08fc4b76c12ecc3a4" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_I8</ref>:</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617ada555b403b18419f1d423dd3d60786f2" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_U16</ref>:</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a81e2672b9e752c64143ec39bf5bf80dc" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_I16</ref>:</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>2;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a17c8cba1e40d6e76f450220abae3c6dc" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_U32</ref>:</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a4085c79d69c447e842862a9f1d77474f" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_I32</ref>:</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>4;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a66e1603b1103c306d85c76f70b19b8be" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_U64</ref>:</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a09de28fe50a0c76abdb0167b471ba4d1" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_I64</ref>:</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>8;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a1c5dc8de38dbebe74d4bfbcba16106ab" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_STR</ref>:</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1adb6ff9fca79475731d03e02ddff4e617a5387a33fa068bb23735e95eadc5cba86" kindref="member">hf_nvs_type_t::HF_NVS_TYPE_BLOB</ref>:</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__NVS_8h_1a00dd6a75504fc5428f7dd8eb6dbf4fa8" kindref="member">HF_NVS_MAX_VALUE_SIZE</ref>;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>ESPNVS<sp/>TYPES<sp/>-<sp/>MINIMAL<sp/>AND<sp/>ESSENTIAL<sp/>ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/utils/EspTypes_NVS.h"/>
+  </compounddef>
+</doxygen>

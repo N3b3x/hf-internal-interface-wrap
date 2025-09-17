@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__gpio__statistics__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_gpio_statistics_t</compoundname>
+    <includes refid="BaseGpio_8h" local="no">BaseGpio.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1a8e198df2ebf17df724cb68b5c76f64d3" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::totalOperations</definition>
+        <argsstring></argsstring>
+        <name>totalOperations</name>
+        <qualifiedname>hf_gpio_statistics_t::totalOperations</qualifiedname>
+        <briefdescription>
+<para>Total GPIO operations performed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="240" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1ab96b549efa8bff1d464e1306db319493" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::successfulOperations</definition>
+        <argsstring></argsstring>
+        <name>successfulOperations</name>
+        <qualifiedname>hf_gpio_statistics_t::successfulOperations</qualifiedname>
+        <briefdescription>
+<para>Successful operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="241" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1af73fc56601cf47079be5eae7a1d64cbd" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::failedOperations</definition>
+        <argsstring></argsstring>
+        <name>failedOperations</name>
+        <qualifiedname>hf_gpio_statistics_t::failedOperations</qualifiedname>
+        <briefdescription>
+<para>Failed operations. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="242" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1a2ef0b7f917094e424422c87466dca139" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::stateChanges</definition>
+        <argsstring></argsstring>
+        <name>stateChanges</name>
+        <qualifiedname>hf_gpio_statistics_t::stateChanges</qualifiedname>
+        <briefdescription>
+<para>Number of state changes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="243" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1ab39ba2239a68f6c146bab88cdaf0ea92" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::directionChanges</definition>
+        <argsstring></argsstring>
+        <name>directionChanges</name>
+        <qualifiedname>hf_gpio_statistics_t::directionChanges</qualifiedname>
+        <briefdescription>
+<para>Number of direction changes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="244" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1a8877caff8731087eedab6b705864448e" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::interruptCount</definition>
+        <argsstring></argsstring>
+        <name>interruptCount</name>
+        <qualifiedname>hf_gpio_statistics_t::interruptCount</qualifiedname>
+        <briefdescription>
+<para>Number of interrupts received. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="245" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="245" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1a430f14e6e90d9f4b0ecd31c01ab9188b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::averageOperationTimeUs</definition>
+        <argsstring></argsstring>
+        <name>averageOperationTimeUs</name>
+        <qualifiedname>hf_gpio_statistics_t::averageOperationTimeUs</qualifiedname>
+        <briefdescription>
+<para>Average operation time (microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="246" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1a90aa3a431f07be47b98aef4243f67ec2" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::maxOperationTimeUs</definition>
+        <argsstring></argsstring>
+        <name>maxOperationTimeUs</name>
+        <qualifiedname>hf_gpio_statistics_t::maxOperationTimeUs</qualifiedname>
+        <briefdescription>
+<para>Maximum operation time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="247" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__statistics__t_1a49c0133280e83c317fa1d258b3989b7b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_gpio_statistics_t::minOperationTimeUs</definition>
+        <argsstring></argsstring>
+        <name>minOperationTimeUs</name>
+        <qualifiedname>hf_gpio_statistics_t::minOperationTimeUs</qualifiedname>
+        <briefdescription>
+<para>Minimum operation time. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="248" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__gpio__statistics__t_1a0b16ce8799372593d132e1f5e05523a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_gpio_statistics_t::hf_gpio_statistics_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_gpio_statistics_t</name>
+        <qualifiedname>hf_gpio_statistics_t::hf_gpio_statistics_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseGpio.h" line="250" column="3" bodyfile="inc/base/BaseGpio.h" bodystart="250" bodyend="253"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO operation statistics. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseGpio.h" line="239" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="239" bodyend="254"/>
+    <listofallmembers>
+      <member refid="structhf__gpio__statistics__t_1a430f14e6e90d9f4b0ecd31c01ab9188b" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>averageOperationTimeUs</name></member>
+      <member refid="structhf__gpio__statistics__t_1ab39ba2239a68f6c146bab88cdaf0ea92" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>directionChanges</name></member>
+      <member refid="structhf__gpio__statistics__t_1af73fc56601cf47079be5eae7a1d64cbd" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>failedOperations</name></member>
+      <member refid="structhf__gpio__statistics__t_1a0b16ce8799372593d132e1f5e05523a9" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>hf_gpio_statistics_t</name></member>
+      <member refid="structhf__gpio__statistics__t_1a8877caff8731087eedab6b705864448e" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>interruptCount</name></member>
+      <member refid="structhf__gpio__statistics__t_1a90aa3a431f07be47b98aef4243f67ec2" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>maxOperationTimeUs</name></member>
+      <member refid="structhf__gpio__statistics__t_1a49c0133280e83c317fa1d258b3989b7b" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>minOperationTimeUs</name></member>
+      <member refid="structhf__gpio__statistics__t_1a2ef0b7f917094e424422c87466dca139" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>stateChanges</name></member>
+      <member refid="structhf__gpio__statistics__t_1ab96b549efa8bff1d464e1306db319493" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>successfulOperations</name></member>
+      <member refid="structhf__gpio__statistics__t_1a8e198df2ebf17df724cb68b5c76f64d3" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>totalOperations</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

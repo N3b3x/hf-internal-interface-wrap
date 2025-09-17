@@ -1,0 +1,9 @@
+<map id="hf_adc_unit_config_t" name="hf_adc_unit_config_t">
+<area shape="rect" id="Node000001" title="ADC unit configuration structure." alt="" coords="281,124,469,155"/>
+<area shape="rect" id="Node000002" href="$structhf__adc__channel__config__t.html" title="ADC channel configuration structure." alt="" coords="5,15,228,46"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="150,51,190,75,235,98,310,121,308,126,233,102,187,80,147,56"/>
+<area shape="rect" id="Node000003" href="$structhf__adc__continuous__config__t.html" title="ADC continuous mode configuration structure." alt="" coords="252,15,499,46"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="378,60,378,124,373,124,373,60"/>
+<area shape="rect" id="Node000004" href="$structhf__adc__calibration__config__t.html" title="ADC calibration configuration structure." alt="" coords="523,5,691,56"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="578,68,557,86,533,102,500,116,466,127,465,121,498,111,530,98,554,82,575,64"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="EspUart" name="EspUart">
+<area shape="rect" id="Node000001" title="ESP32 UART implementation class." alt="" coords="312,203,399,233"/>
+<area shape="rect" id="Node000002" href="$classBaseUart.html" title="Abstract base class for UART driver implementations." alt="" coords="181,104,279,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="261,141,338,200,335,205,258,145"/>
+<area shape="rect" id="Node000003" href="$structhf__uart__statistics__t.html" title="UART operation statistics." alt="" coords="5,5,177,36"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="83,49,75,92,77,114,85,133,100,146,122,158,182,179,251,196,312,207,311,213,250,201,181,184,120,163,97,150,81,136,71,115,69,92,78,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="108,46,121,63,137,78,159,91,182,102,180,107,156,96,134,82,117,66,104,49"/>
+<area shape="rect" id="Node000004" href="$structhf__uart__diagnostics__t.html" title="UART diagnostic information." alt="" coords="229,5,423,36"/>
+<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="337,49,339,60,351,140,357,202,352,203,346,141,334,60,332,50"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="251,45,234,61,227,82,229,104,224,104,222,82,229,59,248,41"/>
+<area shape="rect" id="Node000005" href="$classRtosMutex.html" title=" " alt="" coords="485,104,594,135"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="501,144,384,205,381,200,499,139"/>
+<area shape="rect" id="Node000006" href="$structhf__uart__config__t.html" title="ESP32 UART port configuration." alt="" coords="619,104,769,135"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="648,142,536,181,464,199,399,212,398,207,463,194,535,176,646,137"/>
+</map>

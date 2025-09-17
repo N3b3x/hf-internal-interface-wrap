@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__timer" kind="group">
+    <compoundname>timer</compoundname>
+    <title>Timer Module</title>
+    <innerfile refid="BasePeriodicTimer_8h">BasePeriodicTimer.h</innerfile>
+    <innerclass refid="classBasePeriodicTimer" prot="public">BasePeriodicTimer</innerclass>
+    <briefdescription>
+<para>All timer-related types, enums, and functions for periodic timer operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

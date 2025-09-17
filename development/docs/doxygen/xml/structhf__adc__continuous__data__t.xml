@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__adc__continuous__data__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_adc_continuous_data_t</compoundname>
+    <includes refid="EspTypes__ADC_8h" local="no">EspTypes_ADC.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__adc__continuous__data__t_1a905c3dc1e80356dec2a118b7d6788ecc" prot="public" static="no" mutable="no">
+        <type>uint8_t *</type>
+        <definition>uint8_t* hf_adc_continuous_data_t::buffer</definition>
+        <argsstring></argsstring>
+        <name>buffer</name>
+        <qualifiedname>hf_adc_continuous_data_t::buffer</qualifiedname>
+        <briefdescription>
+<para>Data buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="176" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__continuous__data__t_1a9ea7c24e238c3ed502c066385706a655" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_adc_continuous_data_t::size</definition>
+        <argsstring></argsstring>
+        <name>size</name>
+        <qualifiedname>hf_adc_continuous_data_t::size</qualifiedname>
+        <briefdescription>
+<para>Data size in bytes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="177" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__continuous__data__t_1af50bdeaa56dc69692872434a78ed2c4d" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_adc_continuous_data_t::conversion_count</definition>
+        <argsstring></argsstring>
+        <name>conversion_count</name>
+        <qualifiedname>hf_adc_continuous_data_t::conversion_count</qualifiedname>
+        <briefdescription>
+<para>Number of conversions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="178" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__adc__continuous__data__t_1a43cb986a8558ee76d4cbbefec9379fc2" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hf_adc_continuous_data_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_adc_continuous_data_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Timestamp in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="179" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__adc__continuous__data__t_1a4505ef0b20dc29b2cd9d595c7dcc8b57" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_adc_continuous_data_t::hf_adc_continuous_data_t</definition>
+        <argsstring>()</argsstring>
+        <name>hf_adc_continuous_data_t</name>
+        <qualifiedname>hf_adc_continuous_data_t::hf_adc_continuous_data_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="181" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="181" bodyend="181"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC continuous data structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_ADC.h" line="175" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_ADC.h" bodystart="175" bodyend="182"/>
+    <listofallmembers>
+      <member refid="structhf__adc__continuous__data__t_1a905c3dc1e80356dec2a118b7d6788ecc" prot="public" virt="non-virtual"><scope>hf_adc_continuous_data_t</scope><name>buffer</name></member>
+      <member refid="structhf__adc__continuous__data__t_1af50bdeaa56dc69692872434a78ed2c4d" prot="public" virt="non-virtual"><scope>hf_adc_continuous_data_t</scope><name>conversion_count</name></member>
+      <member refid="structhf__adc__continuous__data__t_1a4505ef0b20dc29b2cd9d595c7dcc8b57" prot="public" virt="non-virtual"><scope>hf_adc_continuous_data_t</scope><name>hf_adc_continuous_data_t</name></member>
+      <member refid="structhf__adc__continuous__data__t_1a9ea7c24e238c3ed502c066385706a655" prot="public" virt="non-virtual"><scope>hf_adc_continuous_data_t</scope><name>size</name></member>
+      <member refid="structhf__adc__continuous__data__t_1a43cb986a8558ee76d4cbbefec9379fc2" prot="public" virt="non-virtual"><scope>hf_adc_continuous_data_t</scope><name>timestamp_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

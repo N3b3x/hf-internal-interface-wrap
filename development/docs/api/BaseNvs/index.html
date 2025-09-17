@@ -1,0 +1,2841 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(10)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(10) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(10) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(10) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>💾 BaseNvs | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="💾 BaseNvs" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Non-Volatile Storage base class for configuration and data persistence" />
+<meta property="og:description" content="Non-Volatile Storage base class for configuration and data persistence" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseNvs/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseNvs/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="💾 BaseNvs" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Non-Volatile Storage base class for configuration and data persistence","headline":"💾 BaseNvs","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseNvs/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/">📋 API Reference</a></li>
+    <li class="breadcrumb-nav-list-item"><span>💾 BaseNvs</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="-basenvs-api-reference">
+  
+  
+    <a href="#-basenvs-api-reference" class="anchor-heading" aria-labelledby="-basenvs-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 💾 BaseNvs API Reference
+  
+  
+</h1>
+    
+<p><strong>🎯 Unified Non-Volatile Storage abstraction for all persistent data operations</strong></p>
+<h2 id="-table-of-contents">
+  
+  
+    <a href="#-table-of-contents" class="anchor-heading" aria-labelledby="-table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📚 <strong>Table of Contents</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="#-overview">🎯 <strong>Overview</strong></a></li>
+  <li><a href="#-class-hierarchy">🏗️ <strong>Class Hierarchy</strong></a></li>
+  <li><a href="#-error-codes">📋 <strong>Error Codes</strong></a></li>
+  <li><a href="#-core-api">🔧 <strong>Core API</strong></a></li>
+  <li><a href="#-data-structures">📊 <strong>Data Structures</strong></a></li>
+  <li><a href="#-usage-examples">📊 <strong>Usage Examples</strong></a></li>
+  <li><a href="#-best-practices">🧪 <strong>Best Practices</strong></a></li>
+</ul><hr />
+<h2 id="-overview">
+  
+  
+    <a href="#-overview" class="anchor-heading" aria-labelledby="-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Overview</strong>
+  
+  
+</h2>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">BaseNvs</code> class provides a comprehensive non-volatile storage abstraction that serves as the
+unified interface for all persistent data operations in the HardFOC system.
+It supports key-value storage, multiple data types, namespaces,
+and works across different storage implementations.</p>
+<h3 id="-key-features">
+  
+  
+    <a href="#-key-features" class="anchor-heading" aria-labelledby="-key-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✨ <strong>Key Features</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li>💾 <strong>Key-Value Storage</strong> - Simple and efficient key-value pairs</li>
+  <li>📝 <strong>Multiple Data Types</strong> - uint32_t, strings, binary blobs</li>
+  <li>🗂️ <strong>Namespace Support</strong> - Organized storage with namespaces</li>
+  <li>🔒 <strong>Atomic Operations</strong> - Safe concurrent access</li>
+  <li>🛡️ <strong>Robust Error Handling</strong> - Comprehensive validation and error reporting</li>
+  <li>🔌 <strong>Platform Agnostic</strong> - Works with flash, EEPROM, and other storage</li>
+  <li>📊 <strong>Statistics &amp; Diagnostics</strong> - Built-in monitoring and health reporting</li>
+  <li>🧵 <strong>Thread Safe</strong> - Designed for multi-threaded applications</li>
+</ul>
+<h3 id="-supported-hardware">
+  
+  
+    <a href="#-supported-hardware" class="anchor-heading" aria-labelledby="-supported-hardware"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Supported Hardware</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Implementation</td>
+      <td>Hardware Type</td>
+      <td>Capacity</td>
+      <td>Features</td>
+      <td>Use Cases</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|—————-|—————|———-|———-|———–|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EspNvs</code></td>
+      <td>ESP32-C6 Flash</td>
+      <td>Up to 1MB</td>
+      <td>Encryption, wear leveling</td>
+      <td>Configuration, logs</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="️-class-hierarchy">
+  
+  
+    <a href="#️-class-hierarchy" class="anchor-heading" aria-labelledby="️-class-hierarchy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ <strong>Class Hierarchy</strong>
+  
+  
+</h2>
+    
+
+<pre><code class="language-mermaid">classDiagram
+    class BaseNvs {
+        &lt;&lt;abstract&gt;&gt;
+        +Initialize() hf_nvs_err_t
+        +Deinitialize() hf_nvs_err_t
+        +SetU32(key, value) hf_nvs_err_t
+        +GetU32(key, value) hf_nvs_err_t
+        +SetString(key, value) hf_nvs_err_t
+        +GetString(key, buffer, size) hf_nvs_err_t
+        +SetBlob(key, data, size) hf_nvs_err_t
+        +GetBlob(key, buffer, size) hf_nvs_err_t
+        +EraseKey(key) hf_nvs_err_t
+        +EraseAll() hf_nvs_err_t
+        +GetSize(key, size) hf_nvs_err_t
+        +GetMaxKeyLength() size_t
+        +GetMaxValueSize() size_t
+        +GetStatistics(statistics) hf_nvs_err_t
+        +GetDiagnostics(diagnostics) hf_nvs_err_t
+    }
+    
+    class EspNvs {
+        +EspNvs(namespace)
+        +GetNamespace() const char*
+        +SetEncryption(enabled) hf_nvs_err_t
+    }
+    
+    BaseNvs &lt;|-- EspNvs
+</code></pre><hr />
+<h2 id="-error-codes">
+  
+  
+    <a href="#-error-codes" class="anchor-heading" aria-labelledby="-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📋 <strong>Error Codes</strong>
+  
+  
+</h2>
+    
+
+<p>The NVS system uses comprehensive error codes for robust error handling:</p>
+<h3 id="-success-codes">
+  
+  
+    <a href="#-success-codes" class="anchor-heading" aria-labelledby="-success-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✅ <strong>Success Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_SUCCESS</code></td>
+      <td>0</td>
+      <td>✅ Operation completed successfully</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-general-error-codes">
+  
+  
+    <a href="#-general-error-codes" class="anchor-heading" aria-labelledby="-general-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ❌ <strong>General Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_FAILURE</code></td>
+      <td>1</td>
+      <td>❌ General operation failure</td>
+      <td>Check hardware and configuration</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_NOT_INITIALIZED</code></td>
+      <td>2</td>
+      <td>⚠️ NVS not initialized</td>
+      <td>Call Initialize() first</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_ALREADY_INITIALIZED</code></td>
+      <td>3</td>
+      <td>⚠️ NVS already initialized</td>
+      <td>Check initialization state</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_INVALID_PARAMETER</code></td>
+      <td>4</td>
+      <td>🚫 Invalid parameter</td>
+      <td>Validate input parameters</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_NULL_POINTER</code></td>
+      <td>5</td>
+      <td>🚫 Null pointer provided</td>
+      <td>Check pointer validity</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_OUT_OF_MEMORY</code></td>
+      <td>6</td>
+      <td>💾 Memory allocation failed</td>
+      <td>Check system memory</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-storage-error-codes">
+  
+  
+    <a href="#-storage-error-codes" class="anchor-heading" aria-labelledby="-storage-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔑 <strong>Storage Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_KEY_NOT_FOUND</code></td>
+      <td>7</td>
+      <td>🔍 Key not found</td>
+      <td>Check key name or create key first</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_KEY_TOO_LONG</code></td>
+      <td>8</td>
+      <td>📏 Key too long</td>
+      <td>Use shorter key name</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_VALUE_TOO_LARGE</code></td>
+      <td>9</td>
+      <td>📊 Value too large</td>
+      <td>Check storage capacity</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_NAMESPACE_NOT_FOUND</code></td>
+      <td>10</td>
+      <td>🗂️ Namespace not found</td>
+      <td>Create namespace first</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_STORAGE_FULL</code></td>
+      <td>11</td>
+      <td>📦 Storage full</td>
+      <td>Free space or use larger storage</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_INVALID_DATA</code></td>
+      <td>12</td>
+      <td>❌ Invalid data</td>
+      <td>Check data format</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_READ_ONLY</code></td>
+      <td>13</td>
+      <td>📖 Read only mode</td>
+      <td>Check write permissions</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_CORRUPTED</code></td>
+      <td>14</td>
+      <td>💥 Data corrupted</td>
+      <td>Re-initialize storage</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-encryption-error-codes">
+  
+  
+    <a href="#-encryption-error-codes" class="anchor-heading" aria-labelledby="-encryption-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔐 <strong>Encryption Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_ENCRYPTION_FAILED</code></td>
+      <td>15</td>
+      <td>🔐 Encryption operation failed</td>
+      <td>Check encryption keys</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_DECRYPTION_FAILED</code></td>
+      <td>16</td>
+      <td>🔓 Decryption operation failed</td>
+      <td>Check encryption keys</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_ENCRYPTION_NOT_CONFIGURED</code></td>
+      <td>17</td>
+      <td>⚙️ Encryption not configured</td>
+      <td>Configure encryption</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_ENCRYPTION_NOT_SUPPORTED</code></td>
+      <td>18</td>
+      <td>🚫 Encryption not supported</td>
+      <td>Use different storage</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_KEY_PARTITION_CORRUPTED</code></td>
+      <td>19</td>
+      <td>💥 Key partition corrupted</td>
+      <td>Re-initialize encryption</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_WRONG_ENCRYPTION_SCHEME</code></td>
+      <td>20</td>
+      <td>🔐 Wrong encryption scheme</td>
+      <td>Use correct encryption</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-system-error-codes">
+  
+  
+    <a href="#-system-error-codes" class="anchor-heading" aria-labelledby="-system-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 <strong>System Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_VERSION_MISMATCH</code></td>
+      <td>21</td>
+      <td>📊 Version mismatch</td>
+      <td>Update storage format</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_NO_FREE_PAGES</code></td>
+      <td>22</td>
+      <td>📄 No free pages</td>
+      <td>Free space or reinitialize</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_PARTITION_NOT_FOUND</code></td>
+      <td>23</td>
+      <td>🗂️ Partition not found</td>
+      <td>Check partition configuration</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_ITERATOR_INVALID</code></td>
+      <td>24</td>
+      <td>🔄 Iterator invalid</td>
+      <td>Restart iteration</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_SECURITY_VIOLATION</code></td>
+      <td>25</td>
+      <td>🚫 Security policy violation</td>
+      <td>Check access permissions</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NVS_ERR_UNSUPPORTED_OPERATION</code></td>
+      <td>26</td>
+      <td>🚫 Unsupported operation</td>
+      <td>Check hardware capabilities</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="-core-api">
+  
+  
+    <a href="#-core-api" class="anchor-heading" aria-labelledby="-core-api"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 <strong>Core API</strong>
+  
+  
+</h2>
+    
+<h3 id="️-initialization-methods">
+  
+  
+    <a href="#️-initialization-methods" class="anchor-heading" aria-labelledby="️-initialization-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ <strong>Initialization Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Initialize the NVS storage system
+ * @return hf_nvs_err_t error code
+ * 
+ * 📝 Sets up storage hardware, opens namespace, and prepares for operations.
+ * Must be called before any storage operations.
+ * 
+ * @example
+ * EspNvs nvs("config");
+ * if (nvs.Initialize() == hf_nvs_err_t::NVS_SUCCESS) {
+ *     // NVS ready for use
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">Initialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Deinitialize the NVS storage system
+ * @return hf_nvs_err_t error code
+ * 
+ * 🧹 Cleanly shuts down storage and closes namespace.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">Deinitialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Check if NVS is initialized
+ * @return true if initialized, false otherwise
+ * 
+ * ❓ Query initialization status without side effects.
+ */</span>
+<span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Ensure NVS is initialized (lazy initialization)
+ * @return true if initialized successfully, false otherwise
+ * 
+ * 🔄 Automatically initializes NVS if not already initialized.
+ */</span>
+<span class="kt">bool</span> <span class="nf">EnsureInitialized</span><span class="p">();</span>
+
+<span class="cm">/**
+ * @brief Ensure NVS is deinitialized (lazy deinitialization)
+ * @return true if deinitialized successfully, false otherwise
+ * 
+ * 🔄 Automatically deinitializes NVS if currently initialized.
+ */</span>
+<span class="kt">bool</span> <span class="nf">EnsureDeinitialized</span><span class="p">();</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-integer-storage-methods">
+  
+  
+    <a href="#-integer-storage-methods" class="anchor-heading" aria-labelledby="-integer-storage-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔢 <strong>Integer Storage Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Store 32-bit unsigned integer
+ * @param key Storage key (null-terminated string)
+ * @param value Value to store
+ * @return hf_nvs_err_t error code
+ * 
+ * 💾 Stores a 32-bit unsigned integer value.
+ * 
+ * @example
+ * hf_nvs_err_t result = nvs.SetU32("boot_count", 42);
+ * if (result != hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("Store failed: %s\n", HfNvsErrToString(result));
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">SetU32</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">value</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Retrieve 32-bit unsigned integer
+ * @param key Storage key (null-terminated string)
+ * @param value Reference to store retrieved value
+ * @return hf_nvs_err_t error code
+ * 
+ * 📖 Retrieves a 32-bit unsigned integer value.
+ * 
+ * @example
+ * uint32_t boot_count;
+ * hf_nvs_err_t result = nvs.GetU32("boot_count", boot_count);
+ * if (result == hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("Boot count: %u\n", boot_count);
+ * } else if (result == hf_nvs_err_t::NVS_ERR_KEY_NOT_FOUND) {
+ *     printf("Boot count not found, using default\n");
+ *     boot_count = 0;
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">GetU32</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-string-storage-methods">
+  
+  
+    <a href="#-string-storage-methods" class="anchor-heading" aria-labelledby="-string-storage-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📝 <strong>String Storage Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Store string value
+ * @param key Storage key (null-terminated string)
+ * @param value String value to store
+ * @return hf_nvs_err_t error code
+ * 
+ * 💾 Stores a null-terminated string value.
+ * 
+ * @example
+ * hf_nvs_err_t result = nvs.SetString("device_name", "MyDevice");
+ * if (result != hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("String store failed: %s\n", HfNvsErrToString(result));
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">SetString</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">value</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Retrieve string value
+ * @param key Storage key (null-terminated string)
+ * @param buffer Buffer to store retrieved string
+ * @param buffer_size Size of the buffer in bytes
+ * @param actual_size Actual size of the string (optional)
+ * @return hf_nvs_err_t error code
+ * 
+ * 📖 Retrieves a string value.
+ * 
+ * @example
+ * char device_name[32];
+ * size_t actual_size;
+ * hf_nvs_err_t result = nvs.GetString("device_name", device_name, sizeof(device_name), &amp;actual_size);
+ * if (result == hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("Device name: %s (length: %zu)\n", device_name, actual_size);
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">GetString</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">buffer_size</span><span class="p">,</span>
+                             <span class="kt">size_t</span> <span class="o">*</span><span class="n">actual_size</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-binary-blob-storage-methods">
+  
+  
+    <a href="#-binary-blob-storage-methods" class="anchor-heading" aria-labelledby="-binary-blob-storage-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📦 <strong>Binary Blob Storage Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Store binary data (blob)
+ * @param key Storage key (null-terminated string)
+ * @param data Pointer to data to store
+ * @param data_size Size of data in bytes
+ * @return hf_nvs_err_t error code
+ * 
+ * 💾 Stores binary data of any size.
+ * 
+ * @example
+ * uint8_t config_data[] = {0x01, 0x02, 0x03, 0x04};
+ * hf_nvs_err_t result = nvs.SetBlob("config", config_data, sizeof(config_data));
+ * if (result != hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("Blob store failed: %s\n", HfNvsErrToString(result));
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">SetBlob</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">data_size</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Retrieve binary data (blob)
+ * @param key Storage key (null-terminated string)
+ * @param buffer Buffer to store retrieved data
+ * @param buffer_size Size of the buffer in bytes
+ * @param actual_size Actual size of the data (optional)
+ * @return hf_nvs_err_t error code
+ * 
+ * 📖 Retrieves binary data.
+ * 
+ * @example
+ * uint8_t config_data[64];
+ * size_t actual_size;
+ * hf_nvs_err_t result = nvs.GetBlob("config", config_data, sizeof(config_data), &amp;actual_size);
+ * if (result == hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("Config data size: %zu bytes\n", actual_size);
+ *     for (size_t i = 0; i &lt; actual_size; i++) {
+ *         printf("%02X ", config_data[i]);
+ *     }
+ *     printf("\n");
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">GetBlob</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="n">buffer</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">buffer_size</span><span class="p">,</span>
+                           <span class="kt">size_t</span> <span class="o">*</span><span class="n">actual_size</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="️-data-management-methods">
+  
+  
+    <a href="#️-data-management-methods" class="anchor-heading" aria-labelledby="️-data-management-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🗑️ <strong>Data Management Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Erase specific key
+ * @param key Storage key to erase
+ * @return hf_nvs_err_t error code
+ * 
+ * 🗑️ Removes a specific key-value pair from storage.
+ * 
+ * @example
+ * hf_nvs_err_t result = nvs.EraseKey("obsolete_config");
+ * if (result == hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("Key erased successfully\n");
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">EraseKey</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Erase all data in namespace
+ * @return hf_nvs_err_t error code
+ * 
+ * 🗑️ Removes all key-value pairs in the current namespace.
+ * 
+ * @example
+ * hf_nvs_err_t result = nvs.EraseAll();
+ * if (result == hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("All data erased successfully\n");
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">EraseAll</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get size of stored value
+ * @param key Storage key
+ * @param size Reference to store size
+ * @return hf_nvs_err_t error code
+ * 
+ * 📊 Gets the size of a stored value without reading it.
+ * 
+ * @example
+ * size_t value_size;
+ * hf_nvs_err_t result = nvs.GetSize("config", value_size);
+ * if (result == hf_nvs_err_t::NVS_SUCCESS) {
+ *     printf("Config size: %zu bytes\n", value_size);
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">GetSize</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="kt">size_t</span> <span class="o">&amp;</span><span class="n">size</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-information-methods">
+  
+  
+    <a href="#-information-methods" class="anchor-heading" aria-labelledby="-information-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Information Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Get maximum key length
+ * @return Maximum key length in characters
+ * 
+ * 📊 Returns the maximum allowed key length for this storage.
+ */</span>
+<span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">GetMaxKeyLength</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get maximum value size
+ * @return Maximum value size in bytes
+ * 
+ * 📊 Returns the maximum allowed value size for this storage.
+ */</span>
+<span class="k">virtual</span> <span class="kt">size_t</span> <span class="n">GetMaxValueSize</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-statistics-and-diagnostics">
+  
+  
+    <a href="#-statistics-and-diagnostics" class="anchor-heading" aria-labelledby="-statistics-and-diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 <strong>Statistics and Diagnostics</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Reset NVS operation statistics
+ * @return hf_nvs_err_t error code
+ * 
+ * 🔄 Clears all accumulated statistics counters.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">ResetStatistics</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Reset NVS diagnostic information
+ * @return hf_nvs_err_t error code
+ * 
+ * 🔄 Clears diagnostic information and error counters.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">ResetDiagnostics</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get NVS operation statistics
+ * @param statistics Reference to store statistics data
+ * @return hf_nvs_err_t error code
+ * 
+ * 📊 Retrieves comprehensive statistics about NVS operations.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">GetStatistics</span><span class="p">(</span><span class="n">hf_nvs_statistics_t</span> <span class="o">&amp;</span><span class="n">statistics</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get NVS diagnostic information
+ * @param diagnostics Reference to store diagnostics data
+ * @return hf_nvs_err_t error code
+ * 
+ * 🔍 Retrieves diagnostic information about NVS health and status.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_nvs_err_t</span> <span class="n">GetDiagnostics</span><span class="p">(</span><span class="n">hf_nvs_diagnostics_t</span> <span class="o">&amp;</span><span class="n">diagnostics</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-data-structures">
+  
+  
+    <a href="#-data-structures" class="anchor-heading" aria-labelledby="-data-structures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Data Structures</strong>
+  
+  
+</h2>
+    
+<h3 id="-nvs-statistics-structure">
+  
+  
+    <a href="#-nvs-statistics-structure" class="anchor-heading" aria-labelledby="-nvs-statistics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 <strong>NVS Statistics Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_nvs_statistics_t</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">total_operations</span><span class="p">;</span>      <span class="c1">///&lt; Total operations performed</span>
+    <span class="kt">uint32_t</span> <span class="n">total_errors</span><span class="p">;</span>          <span class="c1">///&lt; Total errors encountered</span>
+    <span class="kt">uint32_t</span> <span class="n">total_reads</span><span class="p">;</span>           <span class="c1">///&lt; Total read operations</span>
+    <span class="kt">uint32_t</span> <span class="n">total_writes</span><span class="p">;</span>          <span class="c1">///&lt; Total write operations</span>
+    <span class="kt">uint32_t</span> <span class="n">total_commits</span><span class="p">;</span>         <span class="c1">///&lt; Total commit operations</span>
+    <span class="kt">uint32_t</span> <span class="n">total_erases</span><span class="p">;</span>          <span class="c1">///&lt; Total erase operations</span>
+    <span class="n">hf_nvs_err_t</span> <span class="n">last_error</span><span class="p">;</span>        <span class="c1">///&lt; Last error encountered</span>
+    <span class="kt">uint32_t</span> <span class="n">last_operation_time_us</span><span class="p">;</span> <span class="c1">///&lt; Time of last operation</span>
+    <span class="kt">uint32_t</span> <span class="n">successful_ops</span><span class="p">;</span>        <span class="c1">///&lt; Successful operations</span>
+    <span class="kt">uint32_t</span> <span class="n">failed_ops</span><span class="p">;</span>            <span class="c1">///&lt; Failed operations</span>
+    <span class="kt">uint32_t</span> <span class="n">bytes_written</span><span class="p">;</span>         <span class="c1">///&lt; Total bytes written</span>
+    <span class="kt">uint32_t</span> <span class="n">bytes_read</span><span class="p">;</span>            <span class="c1">///&lt; Total bytes read</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-nvs-diagnostics-structure">
+  
+  
+    <a href="#-nvs-diagnostics-structure" class="anchor-heading" aria-labelledby="-nvs-diagnostics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔍 <strong>NVS Diagnostics Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_nvs_diagnostics_t</span> <span class="p">{</span>
+    <span class="n">hf_nvs_err_t</span> <span class="n">last_error</span><span class="p">;</span>        <span class="c1">///&lt; Last error encountered</span>
+    <span class="kt">uint32_t</span> <span class="n">consecutive_errors</span><span class="p">;</span>    <span class="c1">///&lt; Consecutive error count</span>
+    <span class="kt">bool</span> <span class="n">storage_healthy</span><span class="p">;</span>           <span class="c1">///&lt; Storage health status</span>
+    <span class="kt">uint32_t</span> <span class="n">system_uptime_ms</span><span class="p">;</span>      <span class="c1">///&lt; System uptime in milliseconds</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-usage-examples">
+  
+  
+    <a href="#-usage-examples" class="anchor-heading" aria-labelledby="-usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Usage Examples</strong>
+  
+  
+</h2>
+    
+<h3 id="-configuration-storage">
+  
+  
+    <a href="#-configuration-storage" class="anchor-heading" aria-labelledby="-configuration-storage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 <strong>Configuration Storage</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspNvs.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">ConfigurationManager</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspNvs</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">ConfigurationManager</span><span class="p">()</span> <span class="o">:</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">(</span><span class="s">"config"</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">save_device_config</span><span class="p">(</span><span class="k">const</span> <span class="n">DeviceConfig</span><span class="o">&amp;</span> <span class="n">config</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Store individual values</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetU32</span><span class="p">(</span><span class="s">"device_id"</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">device_id</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to save device_id: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetString</span><span class="p">(</span><span class="s">"device_name"</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">device_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to save device_name: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetU32</span><span class="p">(</span><span class="s">"baud_rate"</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">baud_rate</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to save baud_rate: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Device configuration saved successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">load_device_config</span><span class="p">(</span><span class="n">DeviceConfig</span><span class="o">&amp;</span> <span class="n">config</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Load individual values with defaults</span>
+        <span class="kt">uint32_t</span> <span class="n">device_id</span><span class="p">;</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetU32</span><span class="p">(</span><span class="s">"device_id"</span><span class="p">,</span> <span class="n">device_id</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="n">device_id</span> <span class="o">=</span> <span class="n">device_id</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_ERR_KEY_NOT_FOUND</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="n">device_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// Default value</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Using default device_id: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">device_id</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to load device_id: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="kt">char</span> <span class="n">device_name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>
+        <span class="kt">size_t</span> <span class="n">name_size</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="s">"device_name"</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">device_name</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">name_size</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="n">device_name</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">device_name</span><span class="p">,</span> <span class="n">name_size</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_ERR_KEY_NOT_FOUND</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="n">device_name</span> <span class="o">=</span> <span class="s">"DefaultDevice"</span><span class="p">;</span>  <span class="c1">// Default value</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Using default device_name: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">device_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to load device_name: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="kt">uint32_t</span> <span class="n">baud_rate</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetU32</span><span class="p">(</span><span class="s">"baud_rate"</span><span class="p">,</span> <span class="n">baud_rate</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="n">baud_rate</span> <span class="o">=</span> <span class="n">baud_rate</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_ERR_KEY_NOT_FOUND</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="n">baud_rate</span> <span class="o">=</span> <span class="mi">115200</span><span class="p">;</span>  <span class="c1">// Default value</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Using default baud_rate: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">config</span><span class="p">.</span><span class="n">baud_rate</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to load baud_rate: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Device configuration loaded successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">print_config_info</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"📊 Configuration Storage Info:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  Max key length: %zu characters</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetMaxKeyLength</span><span class="p">());</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  Max value size: %zu bytes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetMaxValueSize</span><span class="p">());</span>
+        
+        <span class="c1">// Print statistics</span>
+        <span class="n">hf_nvs_statistics_t</span> <span class="n">stats</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">config_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"  Total operations: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">total_operations</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"  Successful operations: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">successful_ops</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"  Failed operations: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">failed_ops</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"  Bytes written: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">bytes_written</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"  Bytes read: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">bytes_read</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">DeviceConfig</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">device_id</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">device_name</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">baud_rate</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-calibration-data-storage">
+  
+  
+    <a href="#-calibration-data-storage" class="anchor-heading" aria-labelledby="-calibration-data-storage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Calibration Data Storage</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspNvs.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">CalibrationManager</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspNvs</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">CalibrationManager</span><span class="p">()</span> <span class="o">:</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">(</span><span class="s">"calibration"</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">save_adc_calibration</span><span class="p">(</span><span class="k">const</span> <span class="n">AdcCalibration</span><span class="o">&amp;</span> <span class="n">calib</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Store calibration data as blob</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetBlob</span><span class="p">(</span><span class="s">"adc_calib"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">calib</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to save ADC calibration: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Store calibration timestamp</span>
+        <span class="kt">uint32_t</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">));</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetU32</span><span class="p">(</span><span class="s">"adc_calib_time"</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to save calibration timestamp: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ ADC calibration saved successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">load_adc_calibration</span><span class="p">(</span><span class="n">AdcCalibration</span><span class="o">&amp;</span> <span class="n">calib</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Check if calibration exists</span>
+        <span class="kt">size_t</span> <span class="n">calib_size</span><span class="p">;</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetSize</span><span class="p">(</span><span class="s">"adc_calib"</span><span class="p">,</span> <span class="n">calib_size</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Calibration not found</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">calib_size</span> <span class="o">!=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">AdcCalibration</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Calibration size mismatch: expected %zu, got %zu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+                   <span class="k">sizeof</span><span class="p">(</span><span class="n">AdcCalibration</span><span class="p">),</span> <span class="n">calib_size</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Load calibration data</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetBlob</span><span class="p">(</span><span class="s">"adc_calib"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">calib</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">calib</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to load ADC calibration: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Load and check timestamp</span>
+        <span class="kt">uint32_t</span> <span class="n">timestamp</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetU32</span><span class="p">(</span><span class="s">"adc_calib_time"</span><span class="p">,</span> <span class="n">timestamp</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">uint32_t</span> <span class="n">current_time</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint32_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">time</span><span class="p">(</span><span class="nb">nullptr</span><span class="p">));</span>
+            <span class="kt">uint32_t</span> <span class="n">age_days</span> <span class="o">=</span> <span class="p">(</span><span class="n">current_time</span> <span class="o">-</span> <span class="n">timestamp</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"✅ ADC calibration loaded (age: %u days)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">age_days</span><span class="p">);</span>
+            
+            <span class="k">if</span> <span class="p">(</span><span class="n">age_days</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Calibration is old (%u days), consider re-calibration</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">age_days</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">is_calibration_valid</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">size_t</span> <span class="n">calib_size</span><span class="p">;</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetSize</span><span class="p">(</span><span class="s">"adc_calib"</span><span class="p">,</span> <span class="n">calib_size</span><span class="p">);</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span> <span class="o">&amp;&amp;</span> <span class="n">calib_size</span> <span class="o">==</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">AdcCalibration</span><span class="p">));</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">clear_calibration</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EraseKey</span><span class="p">(</span><span class="s">"adc_calib"</span><span class="p">);</span>
+        <span class="n">calib_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EraseKey</span><span class="p">(</span><span class="s">"adc_calib_time"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🗑️ Calibration data cleared</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="nc">AdcCalibration</span> <span class="p">{</span>
+    <span class="kt">float</span> <span class="n">gain_coefficients</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="kt">float</span> <span class="n">offset_coefficients</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+    <span class="kt">float</span> <span class="n">temperature_coefficient</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">calibration_date</span><span class="p">;</span>
+    <span class="kt">uint16_t</span> <span class="n">checksum</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-log-storage">
+  
+  
+    <a href="#-log-storage" class="anchor-heading" aria-labelledby="-log-storage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📝 <strong>Log Storage</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspNvs.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">LogManager</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspNvs</span> <span class="n">log_nvs</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">log_index</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">LogManager</span><span class="p">()</span> <span class="o">:</span> <span class="n">log_nvs</span><span class="o">*</span><span class="p">(</span><span class="s">"logs"</span><span class="p">),</span> <span class="n">log_index</span><span class="o">*</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">log_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Load current log index</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">log_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetU32</span><span class="p">(</span><span class="s">"log_index"</span><span class="p">,</span> <span class="n">log_index</span><span class="o">*</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_ERR_KEY_NOT_FOUND</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">log_index</span><span class="o">*</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// Start from beginning</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to load log index: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">add_log_entry</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">key</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+        <span class="n">snprintf</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="s">"log*%u"</span><span class="p">,</span> <span class="n">log_index</span><span class="o">*</span><span class="p">);</span>
+        
+        <span class="c1">// Store log message</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">log_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetString</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to store log entry: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Increment and save log index</span>
+        <span class="n">log_index</span><span class="o">*++</span><span class="p">;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">log_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetU32</span><span class="p">(</span><span class="s">"log_index"</span><span class="p">,</span> <span class="n">log_index</span><span class="o">*</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to update log index: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Log entry %u stored: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">log_index</span><span class="o">*</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">print_recent_logs</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"📝 Recent Log Entries:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"=====================</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        
+        <span class="kt">uint32_t</span> <span class="n">start_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">log_index</span><span class="o">*</span> <span class="o">&gt;</span> <span class="n">count</span><span class="p">)</span> <span class="o">?</span> <span class="p">(</span><span class="n">log_index</span><span class="o">*</span> <span class="o">-</span> <span class="n">count</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">;</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="n">start_index</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">log_index</span><span class="o">*</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">char</span> <span class="n">key</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+            <span class="n">snprintf</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="s">"log*%u"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            
+            <span class="kt">char</span> <span class="n">message</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+            <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">log_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">message</span><span class="p">));</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"[%u] %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">message</span><span class="p">);</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"[%u] &lt;log entry not found&gt;</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">clear_logs</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Erase all log entries</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">uint32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">log_index</span><span class="o">*</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">char</span> <span class="n">key</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+            <span class="n">snprintf</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="s">"log*%u"</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+            <span class="n">log_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EraseKey</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Reset log index</span>
+        <span class="n">log_index</span><span class="o">*</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">log_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetU32</span><span class="p">(</span><span class="s">"log_index"</span><span class="p">,</span> <span class="n">log_index</span><span class="o">*</span><span class="p">);</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🗑️ All logs cleared</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kt">uint32_t</span> <span class="n">get_log_count</span><span class="p">()</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">log_index</span><span class="o">*</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-encrypted-storage-esp32">
+  
+  
+    <a href="#-encrypted-storage-esp32" class="anchor-heading" aria-labelledby="-encrypted-storage-esp32"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔐 <strong>Encrypted Storage (ESP32)</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspNvs.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">SecureStorage</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspNvs</span> <span class="n">secure_nvs</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">SecureStorage</span><span class="p">()</span> <span class="o">:</span> <span class="n">secure_nvs</span><span class="o">*</span><span class="p">(</span><span class="s">"secure"</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">secure_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Enable encryption if supported</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">secure_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetEncryption</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Encryption enabled</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_ERR_ENCRYPTION_NOT_SUPPORTED</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Encryption not supported on this storage</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to enable encryption: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">store_credentials</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">username</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">password</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Store username</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">secure_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetString</span><span class="p">(</span><span class="s">"username"</span><span class="p">,</span> <span class="n">username</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to store username: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Store password</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">secure_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">SetString</span><span class="p">(</span><span class="s">"password"</span><span class="p">,</span> <span class="n">password</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to store password: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Credentials stored securely</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">load_credentials</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">username</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">username_size</span><span class="p">,</span> 
+                         <span class="kt">char</span><span class="o">*</span> <span class="n">password</span><span class="p">,</span> <span class="kt">size_t</span> <span class="n">password_size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Load username</span>
+        <span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">secure_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="s">"username"</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">username_size</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to load username: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Load password</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">secure_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="s">"password"</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">password_size</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to load password: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Credentials loaded successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">clear_credentials</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">secure_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EraseKey</span><span class="p">(</span><span class="s">"username"</span><span class="p">);</span>
+        <span class="n">secure_nvs</span><span class="o">*</span><span class="p">.</span><span class="n">EraseKey</span><span class="p">(</span><span class="s">"password"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🗑️ Credentials cleared</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-best-practices">
+  
+  
+    <a href="#-best-practices" class="anchor-heading" aria-labelledby="-best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🧪 <strong>Best Practices</strong>
+  
+  
+</h2>
+    
+<h3 id="-recommended-patterns">
+  
+  
+    <a href="#-recommended-patterns" class="anchor-heading" aria-labelledby="-recommended-patterns"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✅ <strong>Recommended Patterns</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+</pre></td><td class="rouge-code"><pre><span class="c1">// ✅ Always check initialization</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">nvs</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"❌ NVS initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Use appropriate error handling</span>
+<span class="kt">uint32_t</span> <span class="n">value</span><span class="p">;</span>
+<span class="n">hf_nvs_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">nvs</span><span class="p">.</span><span class="n">GetU32</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Use the value</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_ERR_KEY_NOT_FOUND</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Key doesn't exist, use default</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">default_value</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"❌ NVS Error: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfNvsErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Check data sizes before operations</span>
+<span class="kt">size_t</span> <span class="n">required_size</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nvs</span><span class="p">.</span><span class="n">GetSize</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="n">required_size</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">required_size</span> <span class="o">&gt;</span> <span class="n">buffer_size</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Buffer too small, need %zu bytes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">required_size</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Use namespaces for organization</span>
+<span class="n">EspNvs</span> <span class="n">config_nvs</span><span class="p">(</span><span class="s">"config"</span><span class="p">);</span>
+<span class="n">EspNvs</span> <span class="n">calib_nvs</span><span class="p">(</span><span class="s">"calibration"</span><span class="p">);</span>
+<span class="n">EspNvs</span> <span class="n">logs_nvs</span><span class="p">(</span><span class="s">"logs"</span><span class="p">);</span>
+
+<span class="c1">// ✅ Validate data integrity</span>
+<span class="kt">uint16_t</span> <span class="n">stored_checksum</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nvs</span><span class="p">.</span><span class="n">GetU32</span><span class="p">(</span><span class="s">"checksum"</span><span class="p">,</span> <span class="n">stored_checksum</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">uint16_t</span> <span class="n">calculated_checksum</span> <span class="o">=</span> <span class="n">calculate_checksum</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stored_checksum</span> <span class="o">!=</span> <span class="n">calculated_checksum</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Data integrity check failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Monitor storage health</span>
+<span class="n">hf_nvs_statistics_t</span> <span class="n">stats</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">nvs</span><span class="p">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_nvs_err_t</span><span class="o">::</span><span class="n">NVS_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stats</span><span class="p">.</span><span class="n">failed_ops</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ High NVS failure rate detected</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-common-pitfalls">
+  
+  
+    <a href="#-common-pitfalls" class="anchor-heading" aria-labelledby="-common-pitfalls"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ❌ <strong>Common Pitfalls</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="c1">// ❌ Don't ignore initialization</span>
+<span class="n">nvs</span><span class="p">.</span><span class="n">SetU32</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>  <span class="c1">// May fail silently</span>
+
+<span class="c1">// ❌ Don't ignore error codes</span>
+<span class="n">nvs</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>  <span class="c1">// Error handling missing</span>
+
+<span class="c1">// ❌ Don't assume key exists</span>
+<span class="kt">uint32_t</span> <span class="n">value</span> <span class="o">=</span> <span class="n">nvs</span><span class="p">.</span><span class="n">GetU32</span><span class="p">(</span><span class="s">"key"</span><span class="p">);</span>  <span class="c1">// May return garbage</span>
+
+<span class="c1">// ❌ Don't use without checking buffer sizes</span>
+<span class="kt">char</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
+<span class="n">nvs</span><span class="p">.</span><span class="n">GetString</span><span class="p">(</span><span class="s">"key"</span><span class="p">,</span> <span class="n">buffer</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">));</span>  <span class="c1">// May truncate</span>
+
+<span class="c1">// ❌ Don't store sensitive data unencrypted</span>
+<span class="n">nvs</span><span class="p">.</span><span class="n">SetString</span><span class="p">(</span><span class="s">"password"</span><span class="p">,</span> <span class="s">"secret"</span><span class="p">);</span>  <span class="c1">// Use encrypted storage</span>
+
+<span class="c1">// ❌ Don't ignore storage capacity</span>
+<span class="c1">// Check available space before large writes</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-performance-optimization">
+  
+  
+    <a href="#-performance-optimization" class="anchor-heading" aria-labelledby="-performance-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Performance Optimization</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre><span class="c1">// 🚀 Use appropriate data types</span>
+<span class="c1">// Use uint32_t for small integers</span>
+<span class="c1">// Use blobs for large data structures</span>
+<span class="c1">// Use strings for text data</span>
+
+<span class="c1">// 🚀 Minimize write operations</span>
+<span class="c1">// Batch related data together</span>
+<span class="c1">// Use atomic operations where possible</span>
+
+<span class="c1">// 🚀 Use appropriate key names</span>
+<span class="c1">// Keep keys short but descriptive</span>
+<span class="c1">// Use consistent naming conventions</span>
+
+<span class="c1">// 🚀 Monitor storage usage</span>
+<span class="n">hf_nvs_statistics_t</span> <span class="n">stats</span><span class="p">;</span>
+<span class="n">nvs</span><span class="p">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="n">stats</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">stats</span><span class="p">.</span><span class="n">bytes_written</span> <span class="o">&gt;</span> <span class="n">max_storage_bytes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Storage usage high: %u bytes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">bytes_written</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// 🚀 Use encryption for sensitive data</span>
+<span class="c1">// Enable encryption when available</span>
+<span class="c1">// Store encryption keys securely</span>
+
+<span class="c1">// 🚀 Implement data validation</span>
+<span class="c1">// Use checksums for data integrity</span>
+<span class="c1">// Validate data ranges and formats</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-related-documentation">
+  
+  
+    <a href="#-related-documentation" class="anchor-heading" aria-labelledby="-related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔗 <strong>Related Documentation</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/">⚙️ <strong>EspNvs</strong></a> - ESP32-C6 implementation</li>
+  <li><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/">🎯 <strong>Hardware Types</strong></a> - Platform-agnostic types</li>
+</ul><hr />
+<p><strong>💾 BaseNvs - The Foundation of Persistent Storage in HardFOC</strong></p>
+
+<p><em>Part of the HardFOC Internal Interface Wrapper Documentation</em></p>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

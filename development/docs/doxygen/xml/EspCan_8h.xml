@@ -1,0 +1,564 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspCan_8h" kind="file" language="C++">
+    <compoundname>EspCan.h</compoundname>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includes local="yes">esp_twai.h</includes>
+    <includes local="yes">esp_twai_onchip.h</includes>
+    <includes refid="BaseCan_8h" local="yes">BaseCan.h</includes>
+    <includes refid="RtosMutex_8h" local="yes">RtosMutex.h</includes>
+    <includes refid="EspTypes__CAN_8h" local="yes">utils/EspTypes_CAN.h</includes>
+    <includes local="no">atomic</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">memory</includes>
+    <includedby refid="CanComprehensiveTest_8cpp" local="yes">examples/esp32/main/CanComprehensiveTest.cpp</includedby>
+    <includedby refid="EspCan_8cpp" local="yes">src/mcu/esp32/EspCan.cpp</includedby>
+    <incdepgraph>
+      <node id="5">
+        <label>BaseCan.h</label>
+        <link refid="BaseCan_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspCan.h</label>
+        <link refid="EspCan_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>utils/EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="12">
+        <label>RtosMutex.h</label>
+        <link refid="RtosMutex_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>atomic</label>
+      </node>
+      <node id="7">
+        <label>cstdint</label>
+      </node>
+      <node id="3">
+        <label>esp_twai.h</label>
+      </node>
+      <node id="4">
+        <label>esp_twai_onchip.h</label>
+      </node>
+      <node id="13">
+        <label>freertos/FreeRTOS.h</label>
+      </node>
+      <node id="14">
+        <label>freertos/semphr.h</label>
+      </node>
+      <node id="15">
+        <label>freertos/task.h</label>
+      </node>
+      <node id="10">
+        <label>functional</label>
+      </node>
+      <node id="8">
+        <label>limits</label>
+      </node>
+      <node id="18">
+        <label>memory</label>
+      </node>
+      <node id="11">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/CanComprehensiveTest.cpp</label>
+        <link refid="CanComprehensiveTest_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/EspCan.h</label>
+        <link refid="EspCan_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/mcu/esp32/EspCan.cpp</label>
+        <link refid="EspCan_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__esp__can__config__t" prot="public">hf_esp_can_config_t</innerclass>
+    <innerclass refid="structhf__esp__can__timing__config__t" prot="public">hf_esp_can_timing_config_t</innerclass>
+    <innerclass refid="structhf__esp__can__filter__config__t" prot="public">hf_esp_can_filter_config_t</innerclass>
+    <innerclass refid="structhf__esp__can__error__info__t" prot="public">hf_esp_can_error_info_t</innerclass>
+    <innerclass refid="structhf__esp__can__state__info__t" prot="public">hf_esp_can_state_info_t</innerclass>
+    <innerclass refid="structhf__esp__can__tx__info__t" prot="public">hf_esp_can_tx_info_t</innerclass>
+    <innerclass refid="classEspCan" prot="public">EspCan</innerclass>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref> &amp;message, void *user_data)&gt;</type>
+        <definition>using hf_esp_can_receive_callback_t = 
+    std::function&lt;void(const hf_can_message_t&amp; message, void* user_data)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_esp_can_receive_callback_t</name>
+        <briefdescription>
+<para>User callback function types with user data support. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="173" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="structhf__esp__can__error__info__t" kindref="compound">hf_esp_can_error_info_t</ref> &amp;error_info, void *user_data)&gt;</type>
+        <definition>using hf_esp_can_error_callback_t = 
+    std::function&lt;void(const hf_esp_can_error_info_t&amp; error_info, void* user_data)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_esp_can_error_callback_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="175" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="structhf__esp__can__state__info__t" kindref="compound">hf_esp_can_state_info_t</ref> &amp;state_info, void *user_data)&gt;</type>
+        <definition>using hf_esp_can_state_callback_t = 
+    std::function&lt;void(const hf_esp_can_state_info_t&amp; state_info, void* user_data)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_esp_can_state_callback_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="177" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" prot="public" static="no">
+        <type>std::function&lt; void(const <ref refid="structhf__esp__can__tx__info__t" kindref="compound">hf_esp_can_tx_info_t</ref> &amp;tx_info, void *user_data)&gt;</type>
+        <definition>using hf_esp_can_tx_callback_t = 
+    std::function&lt;void(const hf_esp_can_tx_info_t&amp; tx_info, void* user_data)&gt;</definition>
+        <argsstring></argsstring>
+        <name>hf_esp_can_tx_callback_t</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="179" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 CAN (TWAI) implementation for the HardFOC system - ESP-IDF v5.5 Compatible. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains the ESP32 CAN (TWAI) implementation that extends the <ref refid="classBaseCan" kindref="compound">BaseCan</ref> abstract class. It provides a clean, minimal, and robust CAN interface using the modern ESP-IDF v5.5+ handle-based TWAI node API with comprehensive testing support for ESP32-C6 with external SN65 transceiver.</para>
+<para>Key Features:<itemizedlist>
+<listitem><para>ESP-IDF v5.5+ handle-based TWAI node API</para>
+</listitem><listitem><para>ESP32-C6 compatible TWAI controller support</para>
+</listitem><listitem><para>Event-driven callback-based message reception</para>
+</listitem><listitem><para>Advanced acceptance filtering (single/dual mask modes)</para>
+</listitem><listitem><para>Comprehensive error detection and bus recovery</para>
+</listitem><listitem><para>Advanced bit timing configuration for various baud rates</para>
+</listitem><listitem><para>Thread-safe operations with proper resource management</para>
+</listitem><listitem><para>Support for external SN65 CAN transceivers</para>
+</listitem><listitem><para>Comprehensive diagnostics and performance monitoring</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This implementation requires ESP-IDF v5.5 or later </para>
+</simplesect>
+<simplesect kind="note"><para>Each <ref refid="classEspCan" kindref="compound">EspCan</ref> instance represents a single TWAI node </para>
+</simplesect>
+<simplesect kind="note"><para>Higher-level applications should instantiate multiple <ref refid="classEspCan" kindref="compound">EspCan</ref> objects for multi-controller boards </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>C<sp/>headers<sp/>must<sp/>be<sp/>wrapped<sp/>in<sp/>extern<sp/>&quot;C&quot;<sp/>for<sp/>C++<sp/>compatibility</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>v5.5<sp/>TWAI<sp/>node-based<sp/>API</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_twai.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;esp_twai_onchip.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseCan_8h" kindref="compound">BaseCan.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__CAN_8h" kindref="compound">utils/EspTypes_CAN.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>TWAI<sp/>NODE<sp/>CONFIGURATION<sp/>(ESP-IDF<sp/>v5.5)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="structhf__esp__can__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Core<sp/>GPIO<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="structhf__esp__can__config__t_1aed2cc188cee17a17b3d1d0b1957d8629" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__esp__can__config__t_1aed2cc188cee17a17b3d1d0b1957d8629" kindref="member">tx_pin</ref>;<sp/></highlight></codeline>
+<codeline lineno="67" refid="structhf__esp__can__config__t_1a7187094fce56f62b7e793ade504d3985" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__esp__can__config__t_1a7187094fce56f62b7e793ade504d3985" kindref="member">rx_pin</ref>;<sp/></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Timing<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="structhf__esp__can__config__t_1a095fd04a22638ba466d08a0592a27eb7" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__config__t_1a095fd04a22638ba466d08a0592a27eb7" kindref="member">baud_rate</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71" refid="structhf__esp__can__config__t_1a3fc23f7e02de25e15735f902fb8d9612" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__config__t_1a3fc23f7e02de25e15735f902fb8d9612" kindref="member">sample_point_permill</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72" refid="structhf__esp__can__config__t_1aaad7a0f20c8dd9c92561ebcfda6031cb" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__config__t_1aaad7a0f20c8dd9c92561ebcfda6031cb" kindref="member">secondary_sample_point</ref>;<sp/></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Queue<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="structhf__esp__can__config__t_1acf4da7f3d267dbcbd2fc1b01adaf12ec" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__config__t_1acf4da7f3d267dbcbd2fc1b01adaf12ec" kindref="member">tx_queue_depth</ref>;<sp/></highlight></codeline>
+<codeline lineno="76" refid="structhf__esp__can__config__t_1a1c21739fbe4c5ec52272e93fefcfeca0" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__config__t_1a1c21739fbe4c5ec52272e93fefcfeca0" kindref="member">rx_queue_depth</ref>;<sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Node<sp/>behavior<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6" kindref="member">hf_can_controller_id_t</ref><sp/><ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>;<sp/></highlight></codeline>
+<codeline lineno="80" refid="structhf__esp__can__config__t_1ae61a0e454e12c54a4e5bf233a7c98462" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7e" kindref="member">hf_can_mode_t</ref><sp/><ref refid="structhf__esp__can__config__t_1ae61a0e454e12c54a4e5bf233a7c98462" kindref="member">mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81" refid="structhf__esp__can__config__t_1a6c1b124297def32ddba7003f587e6c4a" refkind="member"><highlight class="normal"><sp/><sp/>int8_t<sp/><ref refid="structhf__esp__can__config__t_1a6c1b124297def32ddba7003f587e6c4a" kindref="member">fail_retry_cnt</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82" refid="structhf__esp__can__config__t_1a77ada3296173052baad6719e4bf1c01a" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__esp__can__config__t_1a77ada3296173052baad6719e4bf1c01a" kindref="member">intr_priority</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Advanced<sp/>features</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="structhf__esp__can__config__t_1a5779506abfcfa1e2befe143b6d80e32c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__config__t_1a5779506abfcfa1e2befe143b6d80e32c" kindref="member">enable_self_test</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86" refid="structhf__esp__can__config__t_1aa877c45912cb57a8e245ecfec1f484ef" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__config__t_1aa877c45912cb57a8e245ecfec1f484ef" kindref="member">enable_loopback</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87" refid="structhf__esp__can__config__t_1a1d3b817788e36549ad3b491e3a5dd81d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__config__t_1a1d3b817788e36549ad3b491e3a5dd81d" kindref="member">enable_listen_only</ref>;<sp/></highlight></codeline>
+<codeline lineno="88" refid="structhf__esp__can__config__t_1a3f57b97d55b34368fde640a3caf67dcd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__config__t_1a3f57b97d55b34368fde640a3caf67dcd" kindref="member">no_receive_rtr</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89" refid="structhf__esp__can__config__t_1a08fda25ef59f1a53f2ffa53c61650430" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__config__t_1a08fda25ef59f1a53f2ffa53c61650430" kindref="member">enable_alerts</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clock<sp/>source<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="structhf__esp__can__config__t_1adb5620fb14203fa2a6f06efe1cc457e6" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__config__t_1adb5620fb14203fa2a6f06efe1cc457e6" kindref="member">clk_flags</ref>;<sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="structhf__esp__can__config__t_1aebd9e47edb0f2ebc96649ea94c1e8b61" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__esp__can__config__t_1aebd9e47edb0f2ebc96649ea94c1e8b61" kindref="member">hf_esp_can_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__esp__can__config__t_1aed2cc188cee17a17b3d1d0b1957d8629" kindref="member">tx_pin</ref>(4),<sp/><ref refid="structhf__esp__can__config__t_1a7187094fce56f62b7e793ade504d3985" kindref="member">rx_pin</ref>(5),<sp/><ref refid="structhf__esp__can__config__t_1a095fd04a22638ba466d08a0592a27eb7" kindref="member">baud_rate</ref>(500000),<sp/><ref refid="structhf__esp__can__config__t_1a3fc23f7e02de25e15735f902fb8d9612" kindref="member">sample_point_permill</ref>(750),</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__esp__can__config__t_1aaad7a0f20c8dd9c92561ebcfda6031cb" kindref="member">secondary_sample_point</ref>(0),<sp/><ref refid="structhf__esp__can__config__t_1acf4da7f3d267dbcbd2fc1b01adaf12ec" kindref="member">tx_queue_depth</ref>(10),<sp/><ref refid="structhf__esp__can__config__t_1a1c21739fbe4c5ec52272e93fefcfeca0" kindref="member">rx_queue_depth</ref>(20),</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>(<ref refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6" kindref="member">hf_can_controller_id_t</ref>::<ref refid="EspTypes__CAN_8h_1ab7f2de3bbd0be41bdd4749610fd787f6a218ec6a4ce230d831e99e3c9b5963581" kindref="member">HF_CAN_CONTROLLER_0</ref>),</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__esp__can__config__t_1ae61a0e454e12c54a4e5bf233a7c98462" kindref="member">mode</ref>(<ref refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7e" kindref="member">hf_can_mode_t</ref>::<ref refid="EspTypes__CAN_8h_1ae4ef9e23b0f4abb1538d7eb8ea653e7eafa95589dd70ad5ad1c080a3aa1458c80" kindref="member">HF_CAN_MODE_NORMAL</ref>),<sp/><ref refid="structhf__esp__can__config__t_1a6c1b124297def32ddba7003f587e6c4a" kindref="member">fail_retry_cnt</ref>(-1),<sp/><ref refid="structhf__esp__can__config__t_1a77ada3296173052baad6719e4bf1c01a" kindref="member">intr_priority</ref>(1),</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__esp__can__config__t_1a5779506abfcfa1e2befe143b6d80e32c" kindref="member">enable_self_test</ref>(false),<sp/><ref refid="structhf__esp__can__config__t_1aa877c45912cb57a8e245ecfec1f484ef" kindref="member">enable_loopback</ref>(false),<sp/><ref refid="structhf__esp__can__config__t_1a1d3b817788e36549ad3b491e3a5dd81d" kindref="member">enable_listen_only</ref>(false),</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__esp__can__config__t_1a3f57b97d55b34368fde640a3caf67dcd" kindref="member">no_receive_rtr</ref>(false),<sp/><ref refid="structhf__esp__can__config__t_1a08fda25ef59f1a53f2ffa53c61650430" kindref="member">enable_alerts</ref>(true),<sp/><ref refid="structhf__esp__can__config__t_1adb5620fb14203fa2a6f06efe1cc457e6" kindref="member">clk_flags</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="structhf__esp__can__timing__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__esp__can__timing__config__t" kindref="compound">hf_esp_can_timing_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="107" refid="structhf__esp__can__timing__config__t_1a1eda91ba0c3f3725ce8c508c1315e828" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__timing__config__t_1a1eda91ba0c3f3725ce8c508c1315e828" kindref="member">brp</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108" refid="structhf__esp__can__timing__config__t_1aa2427cb06caec735ca900d9485a31e49" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__timing__config__t_1aa2427cb06caec735ca900d9485a31e49" kindref="member">prop_seg</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109" refid="structhf__esp__can__timing__config__t_1aa98d242b37b3da2655c639c8b7de74a6" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__timing__config__t_1aa98d242b37b3da2655c639c8b7de74a6" kindref="member">tseg_1</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110" refid="structhf__esp__can__timing__config__t_1a883463586954e5fa6a850c3844bac131" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__timing__config__t_1a883463586954e5fa6a850c3844bac131" kindref="member">tseg_2</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111" refid="structhf__esp__can__timing__config__t_1a1e31613cf98266e147cd883871f9000a" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__timing__config__t_1a1e31613cf98266e147cd883871f9000a" kindref="member">sjw</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112" refid="structhf__esp__can__timing__config__t_1a1a40d7471f775bcda423e0dcdcc6adec" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__timing__config__t_1a1a40d7471f775bcda423e0dcdcc6adec" kindref="member">ssp_offset</ref>;<sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="structhf__esp__can__timing__config__t_1ac0c60497f1f712729134bf9d75cbe150" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__esp__can__timing__config__t_1ac0c60497f1f712729134bf9d75cbe150" kindref="member">hf_esp_can_timing_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__esp__can__timing__config__t_1a1eda91ba0c3f3725ce8c508c1315e828" kindref="member">brp</ref>(8),<sp/><ref refid="structhf__esp__can__timing__config__t_1aa2427cb06caec735ca900d9485a31e49" kindref="member">prop_seg</ref>(10),<sp/><ref refid="structhf__esp__can__timing__config__t_1aa98d242b37b3da2655c639c8b7de74a6" kindref="member">tseg_1</ref>(4),<sp/><ref refid="structhf__esp__can__timing__config__t_1a883463586954e5fa6a850c3844bac131" kindref="member">tseg_2</ref>(5),<sp/><ref refid="structhf__esp__can__timing__config__t_1a1e31613cf98266e147cd883871f9000a" kindref="member">sjw</ref>(3),<sp/><ref refid="structhf__esp__can__timing__config__t_1a1a40d7471f775bcda423e0dcdcc6adec" kindref="member">ssp_offset</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="structhf__esp__can__filter__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__esp__can__filter__config__t" kindref="compound">hf_esp_can_filter_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="122" refid="structhf__esp__can__filter__config__t_1a714c587cf6ca14b1e59d2c09403d6c82" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__filter__config__t_1a714c587cf6ca14b1e59d2c09403d6c82" kindref="member">id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123" refid="structhf__esp__can__filter__config__t_1a457c38e26bbd3137793f28d03856a542" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__filter__config__t_1a457c38e26bbd3137793f28d03856a542" kindref="member">mask</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124" refid="structhf__esp__can__filter__config__t_1ab3643098ab53fb26bc1ec66cd1c27ad0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__filter__config__t_1ab3643098ab53fb26bc1ec66cd1c27ad0" kindref="member">is_extended</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125" refid="structhf__esp__can__filter__config__t_1abe6a19952410570b8be6ccdb2e2daf39" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__filter__config__t_1abe6a19952410570b8be6ccdb2e2daf39" kindref="member">is_dual_filter</ref>;<sp/></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Dual<sp/>filter<sp/>configuration<sp/>(when<sp/>is_dual_filter<sp/>=<sp/>true)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="structhf__esp__can__filter__config__t_1a275e899f3f7a6d7beaf9c82fd16d7509" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__filter__config__t_1a275e899f3f7a6d7beaf9c82fd16d7509" kindref="member">id2</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129" refid="structhf__esp__can__filter__config__t_1a736e5d38a1eb7e571879dbcbe69caaa6" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__filter__config__t_1a736e5d38a1eb7e571879dbcbe69caaa6" kindref="member">mask2</ref>;<sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="structhf__esp__can__filter__config__t_1a5748fdcbe3efb227d8875ca0d8c0b298" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__esp__can__filter__config__t_1a5748fdcbe3efb227d8875ca0d8c0b298" kindref="member">hf_esp_can_filter_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">(0),<sp/><ref refid="structhf__esp__can__filter__config__t_1a457c38e26bbd3137793f28d03856a542" kindref="member">mask</ref>(0),<sp/><ref refid="structhf__esp__can__filter__config__t_1ab3643098ab53fb26bc1ec66cd1c27ad0" kindref="member">is_extended</ref>(false),<sp/><ref refid="structhf__esp__can__filter__config__t_1abe6a19952410570b8be6ccdb2e2daf39" kindref="member">is_dual_filter</ref>(false),<sp/><ref refid="structhf__esp__can__filter__config__t_1a275e899f3f7a6d7beaf9c82fd16d7509" kindref="member">id2</ref>(0),<sp/><ref refid="structhf__esp__can__filter__config__t_1a736e5d38a1eb7e571879dbcbe69caaa6" kindref="member">mask2</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ENHANCED<sp/>USER<sp/>CALLBACK<sp/>SYSTEM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="structhf__esp__can__error__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__esp__can__error__info__t" kindref="compound">hf_esp_can_error_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="143" refid="structhf__esp__can__error__info__t_1a337f060887be746ba3aa514fc7ec94b6" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__error__info__t_1a337f060887be746ba3aa514fc7ec94b6" kindref="member">error_type</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144" refid="structhf__esp__can__error__info__t_1afc980c020d46591ec4734184ca4443c3" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__error__info__t_1afc980c020d46591ec4734184ca4443c3" kindref="member">tx_error_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="145" refid="structhf__esp__can__error__info__t_1a2b29a78d9d1b7fab17e42a2718b1ac40" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__error__info__t_1a2b29a78d9d1b7fab17e42a2718b1ac40" kindref="member">rx_error_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="146" refid="structhf__esp__can__error__info__t_1a0ff10456e35f6bea840201b935230fa7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__error__info__t_1a0ff10456e35f6bea840201b935230fa7" kindref="member">bus_off_state</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="147" refid="structhf__esp__can__error__info__t_1a2ddfc6bb399ed51efe47f6d630d1fe33" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__error__info__t_1a2ddfc6bb399ed51efe47f6d630d1fe33" kindref="member">error_warning</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="148" refid="structhf__esp__can__error__info__t_1acd2ebe7f3854cbbcf8e5f2e57fdde882" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__error__info__t_1acd2ebe7f3854cbbcf8e5f2e57fdde882" kindref="member">error_passive</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="149" refid="structhf__esp__can__error__info__t_1a54d9937e08e032a706473d042a8557d6" refkind="member"><highlight class="normal"><sp/><sp/>uint64_t<sp/><ref refid="structhf__esp__can__error__info__t_1a54d9937e08e032a706473d042a8557d6" kindref="member">timestamp_us</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="structhf__esp__can__state__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__esp__can__state__info__t" kindref="compound">hf_esp_can_state_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="156" refid="structhf__esp__can__state__info__t_1a6b249242fbf5f87041125dabef3ea042" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__state__info__t_1a6b249242fbf5f87041125dabef3ea042" kindref="member">previous_state</ref>;<sp/></highlight></codeline>
+<codeline lineno="157" refid="structhf__esp__can__state__info__t_1ab61756d0ff06c7f29da86ea07842b723" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__esp__can__state__info__t_1ab61756d0ff06c7f29da86ea07842b723" kindref="member">current_state</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="158" refid="structhf__esp__can__state__info__t_1af6ed3c280a8db31559bc2ebbeff3cfe4" refkind="member"><highlight class="normal"><sp/><sp/>uint64_t<sp/><ref refid="structhf__esp__can__state__info__t_1af6ed3c280a8db31559bc2ebbeff3cfe4" kindref="member">timestamp_us</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164" refid="structhf__esp__can__tx__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__esp__can__tx__info__t" kindref="compound">hf_esp_can_tx_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="165" refid="structhf__esp__can__tx__info__t_1a9adf7b89eb91027779ad3837efc71695" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref><sp/><ref refid="structhf__esp__can__tx__info__t_1a9adf7b89eb91027779ad3837efc71695" kindref="member">message</ref>;<sp/></highlight></codeline>
+<codeline lineno="166" refid="structhf__esp__can__tx__info__t_1a8cc21dcb52667cae68c81c781d46a0c2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__tx__info__t_1a8cc21dcb52667cae68c81c781d46a0c2" kindref="member">success</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="167" refid="structhf__esp__can__tx__info__t_1a3c647fd808e471906496542390b24dbb" refkind="member"><highlight class="normal"><sp/><sp/>uint64_t<sp/><ref refid="structhf__esp__can__tx__info__t_1a3c647fd808e471906496542390b24dbb" kindref="member">timestamp_us</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="168"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" kindref="member">hf_esp_can_receive_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>message,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)&gt;;</highlight></codeline>
+<codeline lineno="175" refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" kindref="member">hf_esp_can_error_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__error__info__t" kindref="compound">hf_esp_can_error_info_t</ref>&amp;<sp/>error_info,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)&gt;;</highlight></codeline>
+<codeline lineno="177" refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" kindref="member">hf_esp_can_state_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__state__info__t" kindref="compound">hf_esp_can_state_info_t</ref>&amp;<sp/>state_info,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)&gt;;</highlight></codeline>
+<codeline lineno="179" refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" kindref="member">hf_esp_can_tx_callback_t</ref><sp/>=</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__tx__info__t" kindref="compound">hf_esp_can_tx_info_t</ref>&amp;<sp/>tx_info,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)&gt;;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="classEspCan" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classEspCan" kindref="compound">EspCan</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseCan" kindref="compound">BaseCan</ref><sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CONSTRUCTOR<sp/>AND<sp/>DESTRUCTOR</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1ad254073ec0b39870dcc3f8d29806ed3b" kindref="member">EspCan</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1aa842144f61a6f969b270e6d194d40f5c" kindref="member">~EspCan</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CORE<sp/>CAN<sp/>OPERATIONS<sp/>(From<sp/>BaseCan<sp/>interface)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" kindref="member">Initialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a96ec0a7e2636ba9e99d651f21c4e9153" kindref="member">Deinitialize</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a3b9bfd81e512b835c89111b6cf0ced79" kindref="member">SendMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>message,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>timeout_ms<sp/>=<sp/>1000)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1ad33472b071ef5f1ab76efbdb58f3c855" kindref="member">ReceiveMessage</ref>(<ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>message,<sp/>uint32_t<sp/>timeout_ms<sp/>=<sp/>0)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a15ded2afcc3564560fa704e661546500" kindref="member">SetReceiveCallback</ref>(<ref refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" kindref="member">hf_can_receive_callback_t</ref><sp/>callback)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a6c7eea2a0ccea5125cafb3b26af6c5ff" kindref="member">ClearReceiveCallback</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>SINGLE-CALLBACK<sp/>PER<sp/>EVENT<sp/>MANAGEMENT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Receive</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1aacf7899068a281cb12144f913660aa49" kindref="member">SetReceiveCallbackEx</ref>(<ref refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" kindref="member">hf_esp_can_receive_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1af0cad1fa0e4c312eebcc5d1b938876df" kindref="member">ClearReceiveCallbackEx</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1ae49c30b2a556b92b8a8dbb12d1eec148" kindref="member">SetErrorCallback</ref>(<ref refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" kindref="member">hf_esp_can_error_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a077cc96263ea79483559055841d873d6" kindref="member">ClearErrorCallback</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>State<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" kindref="member">SetStateChangeCallback</ref>(<ref refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" kindref="member">hf_esp_can_state_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a86db68ed58d7c1791683151cb9a49260" kindref="member">ClearStateChangeCallback</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>TX<sp/>complete</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a774bf708978527bf71ecee26c5075c48" kindref="member">SetTxCompleteCallback</ref>(<ref refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" kindref="member">hf_esp_can_tx_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a335b99de3bbf289de667f843ba83d31d" kindref="member">ClearTxCompleteCallback</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1ab663edd5afb99a7ca95a9dd206d9ce85" kindref="member">GetStatus</ref>(<ref refid="structhf__can__status__t" kindref="compound">hf_can_status_t</ref>&amp;<sp/>status)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a38369430ccabfe4f339052590d5e4960" kindref="member">Reset</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a10e2f318110996d269ab9b4c550aa1c7" kindref="member">SetAcceptanceFilter</ref>(uint32_t<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>uint32_t<sp/>mask,</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>extended<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a8afcf00583c55f120bce0bdcd440cd29" kindref="member">ClearAcceptanceFilter</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>STATISTICS<sp/>AND<sp/>DIAGNOSTICS<sp/>(From<sp/>BaseCan)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a0b3a9a316c7fc7949d481de6f6ac9856" kindref="member">GetStatistics</ref>(<ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref>&amp;<sp/>stats)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a93f9301c2a7c54c29f4c115e41bd1c4e" kindref="member">ResetStatistics</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a56b08aacb4bdb4c440067e319593c013" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>v5.5<sp/>SPECIFIC<sp/>ADVANCED<sp/>FEATURES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a2b68a7ae3dfcda3bb81766a9b333c7fd" kindref="member">ConfigureAdvancedTiming</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__timing__config__t" kindref="compound">hf_esp_can_timing_config_t</ref>&amp;<sp/>timing_config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a2dceac78571417483299cfc7360e4cda" kindref="member">ConfigureAdvancedFilter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__filter__config__t" kindref="compound">hf_esp_can_filter_config_t</ref>&amp;<sp/>filter_config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a5e051944e810526770cc8533ec28e7cf" kindref="member">InitiateBusRecovery</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1aae5b5879e2700aad137e516be9edf1b7" kindref="member">GetNodeInfo</ref>(twai_node_record_t&amp;<sp/>node_info)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="classEspCan_1a1c80557f426bd1c1b78cd0a7e0bbb8ee" kindref="member">SendMessageBatch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>*<sp/>messages,<sp/>uint32_t<sp/>count,</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>timeout_ms<sp/>=<sp/>1000)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>INTERNAL<sp/>EVENT<sp/>CALLBACKS<sp/>(ESP-IDF<sp/>v5.5)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a105e73dbb299a49c55dd044b4a30587e" kindref="member">InternalReceiveCallback</ref>(twai_node_handle_t<sp/>handle,</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>twai_rx_done_event_data_t*<sp/>event_data,</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_ctx)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a47f76d6f0c8f8e313709d7a6eadaa70f" kindref="member">InternalErrorCallback</ref>(twai_node_handle_t<sp/>handle,</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>twai_error_event_data_t*<sp/>event_data,</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_ctx)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1aa6f1d7c5c5ad82b55ae5c83076ed0013" kindref="member">InternalStateChangeCallback</ref>(twai_node_handle_t<sp/>handle,</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>twai_state_change_event_data_t*<sp/>event_data,</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_ctx)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"></highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>INTERNAL<sp/>HELPER<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="normal"></highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1ae27d8b7560c7ce88f8a927dd2df94836" kindref="member">ConvertToTwaiFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>hf_message,</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>twai_frame_t&amp;<sp/>twai_frame)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a1b91c8ad9fd014b9eba4417e7abbbb1d" kindref="member">ConvertFromTwaiFrame</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>twai_frame_t&amp;<sp/>twai_frame,</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref>&amp;<sp/>hf_message)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" kindref="member">ConvertEspError</ref>(esp_err_t<sp/>esp_err)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1aac77cb4d9af633288fd60fad3fee474b" kindref="member">UpdateStatistics</ref>(<ref refid="EspTypes__CAN_8h_1a894b6951598567b73bc3ef3ae747070e" kindref="member">hf_can_operation_type_t</ref><sp/>operation_type,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>success)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a5c0fe05680907d926d0bacdc6cebd811" kindref="member">ProcessReceivedMessage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>twai_frame_t&amp;<sp/>frame)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a8fff536c8eae7799252dc4341bad7ba3" kindref="member">UpdateErrorStatistics</ref>(uint32_t<sp/>error_type)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CALLBACK<sp/>DISPATCH<sp/>HELPERS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="478"><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1aea03a2e1e72fe5e104c150e71f988083" kindref="member">DispatchReceiveCallbacks</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>twai_frame_t&amp;<sp/>frame)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a67fa247f0a5f007b0cb20e405ed1ed0c" kindref="member">DispatchErrorCallbacks</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__error__info__t" kindref="compound">hf_esp_can_error_info_t</ref>&amp;<sp/>error_info)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1abead43013dd161753d56006157679fe0" kindref="member">DispatchStateChangeCallbacks</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__state__info__t" kindref="compound">hf_esp_can_state_info_t</ref>&amp;<sp/>state_info)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1afbdb95ac14728f468847fae264b8f536" kindref="member">DispatchTxCompleteCallbacks</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__tx__info__t" kindref="compound">hf_esp_can_tx_info_t</ref>&amp;<sp/>tx_info)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>(no<sp/>registry<sp/>helpers<sp/>in<sp/>single-callback<sp/>design)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="505"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>MEMBER<sp/>VARIABLES<sp/>(ESP-IDF<sp/>v5.5<sp/>Compatible)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="508"><highlight class="normal"></highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configuration<sp/>(centralized)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="510" refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__esp__can__config__t" kindref="compound">hf_esp_can_config_t</ref><sp/><ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>;<sp/></highlight></codeline>
+<codeline lineno="511"><highlight class="normal"></highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>State<sp/>flags<sp/>(atomic)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="513" refid="classEspCan_1a8f4ec03bb515d5543808e3c3a076621e" refkind="member"><highlight class="normal"><sp/><sp/>std::atomic&lt;bool&gt;<sp/><ref refid="classEspCan_1a8f4ec03bb515d5543808e3c3a076621e" kindref="member">is_enabled_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="514" refid="classEspCan_1a9268e3542c090d15173658df7154e683" refkind="member"><highlight class="normal"><sp/><sp/>std::atomic&lt;bool&gt;<sp/><ref refid="classEspCan_1a9268e3542c090d15173658df7154e683" kindref="member">is_recovering_</ref>;<sp/></highlight></codeline>
+<codeline lineno="515"><highlight class="normal"></highlight></codeline>
+<codeline lineno="516"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Thread<sp/>safety<sp/>(RtosMutex)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="517" refid="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" kindref="member">config_mutex_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="518" refid="classEspCan_1a5558e66e04d7289fd79cc6d003ef29b6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspCan_1a5558e66e04d7289fd79cc6d003ef29b6" kindref="member">stats_mutex_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="519" refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>;<sp/></highlight></codeline>
+<codeline lineno="520"><highlight class="normal"></highlight></codeline>
+<codeline lineno="521"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>v5.5<sp/>TWAI<sp/>node<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="522" refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" refkind="member"><highlight class="normal"><sp/><sp/>twai_node_handle_t<sp/><ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>;<sp/></highlight></codeline>
+<codeline lineno="523"><highlight class="normal"></highlight></codeline>
+<codeline lineno="524"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Single<sp/>callbacks<sp/>+<sp/>user<sp/>data<sp/>per<sp/>event<sp/>type</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="525" refid="classEspCan_1a033c6357046c20596ec8c70d4315da07" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" kindref="member">hf_esp_can_receive_callback_t</ref><sp/><ref refid="classEspCan_1a033c6357046c20596ec8c70d4315da07" kindref="member">receive_cb_</ref>{};</highlight></codeline>
+<codeline lineno="526" refid="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" kindref="member">receive_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="527"><highlight class="normal"></highlight></codeline>
+<codeline lineno="528" refid="classEspCan_1ad310be0cce73339268d83a1c3744a970" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" kindref="member">hf_esp_can_error_callback_t</ref><sp/><ref refid="classEspCan_1ad310be0cce73339268d83a1c3744a970" kindref="member">error_cb_</ref>{};</highlight></codeline>
+<codeline lineno="529" refid="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" kindref="member">error_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"></highlight></codeline>
+<codeline lineno="531" refid="classEspCan_1a0283765650c36540b4a61fee2360d196" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" kindref="member">hf_esp_can_state_callback_t</ref><sp/><ref refid="classEspCan_1a0283765650c36540b4a61fee2360d196" kindref="member">state_cb_</ref>{};</highlight></codeline>
+<codeline lineno="532" refid="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" kindref="member">state_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="533"><highlight class="normal"></highlight></codeline>
+<codeline lineno="534" refid="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" kindref="member">hf_esp_can_tx_callback_t</ref><sp/><ref refid="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" kindref="member">tx_cb_</ref>{};</highlight></codeline>
+<codeline lineno="535" refid="classEspCan_1ab431b6af90e985b67e4cc2d8c5fbd0b4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspCan_1ab431b6af90e985b67e4cc2d8c5fbd0b4" kindref="member">tx_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"></highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Statistics<sp/>and<sp/>diagnostics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="538" refid="classEspCan_1a2598cfa17215039375d57ff8a0682873" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref><sp/><ref refid="classEspCan_1a2598cfa17215039375d57ff8a0682873" kindref="member">statistics_</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="539" refid="classEspCan_1a6f392c8538addd589e6bccb3ba53e0ab" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref><sp/><ref refid="classEspCan_1a6f392c8538addd589e6bccb3ba53e0ab" kindref="member">diagnostics_</ref>;<sp/></highlight></codeline>
+<codeline lineno="540"><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Advanced<sp/>features</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="542" refid="classEspCan_1a3cf21056f01a68e4d23cb6abc8c8d7c2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__esp__can__timing__config__t" kindref="compound">hf_esp_can_timing_config_t</ref><sp/><ref refid="classEspCan_1a3cf21056f01a68e4d23cb6abc8c8d7c2" kindref="member">advanced_timing_</ref>;<sp/></highlight></codeline>
+<codeline lineno="543" refid="classEspCan_1aa15ed2e4704f88bb924799628a305f7f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__esp__can__filter__config__t" kindref="compound">hf_esp_can_filter_config_t</ref><sp/><ref refid="classEspCan_1aa15ed2e4704f88bb924799628a305f7f" kindref="member">current_filter_</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="544" refid="classEspCan_1acb5ae2ddfce72a30d1bd14b721f1faab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1acb5ae2ddfce72a30d1bd14b721f1faab" kindref="member">filter_configured_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="545"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal"></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/EspCan.h"/>
+  </compounddef>
+</doxygen>

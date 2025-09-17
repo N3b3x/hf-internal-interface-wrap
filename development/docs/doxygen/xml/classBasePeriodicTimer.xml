@@ -1,0 +1,881 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBasePeriodicTimer" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BasePeriodicTimer</compoundname>
+    <derivedcompoundref refid="classEspPeriodicTimer" prot="public" virt="non-virtual">EspPeriodicTimer</derivedcompoundref>
+    <includes refid="BasePeriodicTimer_8h" local="no">BasePeriodicTimer.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" prot="protected" static="no" mutable="no">
+        <type><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref></type>
+        <definition>hf_timer_callback_t BasePeriodicTimer::callback_</definition>
+        <argsstring></argsstring>
+        <name>callback_</name>
+        <qualifiedname>BasePeriodicTimer::callback_</qualifiedname>
+        <briefdescription>
+<para>Timer callback function. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="393" column="23" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="393" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" prot="protected" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* BasePeriodicTimer::user_data_</definition>
+        <argsstring></argsstring>
+        <name>user_data_</name>
+        <qualifiedname>BasePeriodicTimer::user_data_</qualifiedname>
+        <briefdescription>
+<para>User data passed to callback. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="394" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="394" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BasePeriodicTimer::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BasePeriodicTimer::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization state flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="395" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="395" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BasePeriodicTimer::running_</definition>
+        <argsstring></argsstring>
+        <name>running_</name>
+        <qualifiedname>BasePeriodicTimer::running_</qualifiedname>
+        <briefdescription>
+<para>Running state flag. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="396" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="396" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref></type>
+        <definition>hf_timer_statistics_t BasePeriodicTimer::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BasePeriodicTimer::statistics_</qualifiedname>
+        <briefdescription>
+<para>Timer operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="397" column="25" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="397" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref></type>
+        <definition>hf_timer_diagnostics_t BasePeriodicTimer::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BasePeriodicTimer::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>Timer diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="398" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="398" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBasePeriodicTimer_1abee693abb22864122f36aff2f8d1c6ee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BasePeriodicTimer::~BasePeriodicTimer</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BasePeriodicTimer</name>
+        <qualifiedname>BasePeriodicTimer::~BasePeriodicTimer</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor to ensure proper cleanup. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="174" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1abe11f2c94d12cf1d658104f1280aa486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BasePeriodicTimer::BasePeriodicTimer</definition>
+        <argsstring>(const BasePeriodicTimer &amp;)=delete</argsstring>
+        <name>BasePeriodicTimer</name>
+        <qualifiedname>BasePeriodicTimer::BasePeriodicTimer</qualifiedname>
+        <param>
+          <type>const <ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="177" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a31392093e5d8a40c22f8b6a7b2507c4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> &amp;</type>
+        <definition>BasePeriodicTimer &amp; BasePeriodicTimer::operator=</definition>
+        <argsstring>(const BasePeriodicTimer &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BasePeriodicTimer::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="178" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1ab5e9c79c29dd4b5b0c581b3124c09907" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BasePeriodicTimer::Initialize</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a2d71348fe53d45612f586f7a81920adc">Initialize</reimplementedby>
+        <briefdescription>
+<para>Initialize the timer hardware/resources. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="188" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a832aec2c7b29459d585be24c2478857f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BasePeriodicTimer::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a7d27449fd8105d996b0d661708a1658a">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the timer and free resources. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="194" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1aedbfbbb79b85464d9c311bc7b42ba4a9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::Start</definition>
+        <argsstring>(hf_u64_t period_us) noexcept=0</argsstring>
+        <name>Start</name>
+        <qualifiedname>BasePeriodicTimer::Start</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1ac352033e596e27719ede7c11ec860d40">Start</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+          <declname>period_us</declname>
+        </param>
+        <briefdescription>
+<para>Start the periodic timer with specified period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>period_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer period in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="201" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a614629ba36264694b66baffe7e72ab08" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::Stop</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Stop</name>
+        <qualifiedname>BasePeriodicTimer::Stop</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1ab7916bb8965569cba0e5f2da171b2b5d">Stop</reimplementedby>
+        <briefdescription>
+<para>Stop the periodic timer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="207" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a22c103ed4866bb4f45eef55d77730a09" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::SetPeriod</definition>
+        <argsstring>(hf_u64_t period_us) noexcept=0</argsstring>
+        <name>SetPeriod</name>
+        <qualifiedname>BasePeriodicTimer::SetPeriod</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a2feb5be89d39cdaf1813cf82edb281a1">SetPeriod</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+          <declname>period_us</declname>
+        </param>
+        <briefdescription>
+<para>Change the timer period while running. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>period_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New timer period in microseconds </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="214" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a64307da70204c07096177c722c0aba41" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::GetPeriod</definition>
+        <argsstring>(hf_u64_t &amp;period_us) noexcept=0</argsstring>
+        <name>GetPeriod</name>
+        <qualifiedname>BasePeriodicTimer::GetPeriod</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1ac8255b99f1786bd785effa818c3db876">GetPeriod</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &amp;</type>
+          <declname>period_us</declname>
+        </param>
+        <briefdescription>
+<para>Get the current timer period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>period_us</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the current period </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="221" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a98d76a272ec805a75ec2c1cc9ab885fd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::GetStats</definition>
+        <argsstring>(hf_u64_t &amp;callback_count, hf_u64_t &amp;missed_callbacks, hf_timer_err_t &amp;last_error) noexcept=0</argsstring>
+        <name>GetStats</name>
+        <qualifiedname>BasePeriodicTimer::GetStats</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1af0c1a5e199fa8e75d484d575c02e815c">GetStats</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &amp;</type>
+          <declname>callback_count</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &amp;</type>
+          <declname>missed_callbacks</declname>
+        </param>
+        <param>
+          <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref> &amp;</type>
+          <declname>last_error</declname>
+        </param>
+        <briefdescription>
+<para>Get timer statistics and status information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback_count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of callbacks executed </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>missed_callbacks</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of missed callbacks (if supported) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>last_error</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Last error that occurred </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="230" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a6d418e90936077bd309b714cb4d646ad" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::ResetStats</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>ResetStats</name>
+        <qualifiedname>BasePeriodicTimer::ResetStats</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a074cc62783802fb12d95ca93edaf139e">ResetStats</reimplementedby>
+        <briefdescription>
+<para>Reset timer statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="237" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePeriodicTimer::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BasePeriodicTimer::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Check if timer is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="247" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="247" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePeriodicTimer::IsRunning</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsRunning</name>
+        <qualifiedname>BasePeriodicTimer::IsRunning</qualifiedname>
+        <briefdescription>
+<para>Check if timer is currently running. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if running, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="255" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="255" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1ae9bdfcba0669d72ec6e8ebac8bcf7042" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>const char *</type>
+        <definition>virtual const char * BasePeriodicTimer::GetDescription</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetDescription</name>
+        <qualifiedname>BasePeriodicTimer::GetDescription</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a1cd74060851211a103f5bfdc380a58a5">GetDescription</reimplementedby>
+        <briefdescription>
+<para>Get description of this timer implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Description string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="263" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1ab2bb6001034bca26edddca31e314b233" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>virtual hf_u64_t BasePeriodicTimer::GetMaxPeriod</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetMaxPeriod</name>
+        <qualifiedname>BasePeriodicTimer::GetMaxPeriod</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a24851bbc3359b261076ac7ce63175bc4">GetMaxPeriod</reimplementedby>
+        <briefdescription>
+<para>Get minimum supported timer period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Minimum period in microseconds </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="269" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1aec24a991610deca51f4623b5704ab8b3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>virtual hf_u64_t BasePeriodicTimer::GetMinPeriod</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetMinPeriod</name>
+        <qualifiedname>BasePeriodicTimer::GetMinPeriod</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a53bf8e1a7fe5da2ef9dfc5bd00aeca63">GetMinPeriod</reimplementedby>
+        <briefdescription>
+<para>Get maximum supported timer period. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum period in microseconds </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="275" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a4a55df2dbb3c7076fef5e413d9fd9ad4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>virtual hf_u64_t BasePeriodicTimer::GetResolution</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetResolution</name>
+        <qualifiedname>BasePeriodicTimer::GetResolution</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1afd6d7373e40fae8922117bd9dc7b6428">GetResolution</reimplementedby>
+        <briefdescription>
+<para>Get timer resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Timer resolution in microseconds </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="281" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>hf_timer_err_t BasePeriodicTimer::SetCallback</definition>
+        <argsstring>(hf_timer_callback_t callback, void *user_data=nullptr) noexcept</argsstring>
+        <name>SetCallback</name>
+        <qualifiedname>BasePeriodicTimer::SetCallback</qualifiedname>
+        <param>
+          <type><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Set new callback function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New callback function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New user data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="289" column="18" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="289" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a9490ab374ff3044157d97ecb1ae40760" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void *</type>
+        <definition>void * BasePeriodicTimer::GetUserData</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetUserData</name>
+        <qualifiedname>BasePeriodicTimer::GetUserData</qualifiedname>
+        <briefdescription>
+<para>Get current user data pointer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>User data pointer </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="302" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="302" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1acc1e7406989db6b2728038a465967162" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BasePeriodicTimer::ResetStatistics</qualifiedname>
+        <briefdescription>
+<para>Reset timer operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="315" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="315" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1aa284ad4ee8f3bde5d0e71ce1b0004d02" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BasePeriodicTimer::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset timer diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="325" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="325" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a04e87d17d4909a0bae0547bd9d2ca3f9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::GetStatistics</definition>
+        <argsstring>(hf_timer_statistics_t &amp;statistics) const noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BasePeriodicTimer::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a4fa8ad6a89cd1cc21ce5707926565eb2">GetStatistics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get timer operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store statistics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, TIMER_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="335" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="335" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a47bb724f0a6d31877aeca1c5afb053c7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
+        <definition>virtual hf_timer_err_t BasePeriodicTimer::GetDiagnostics</definition>
+        <argsstring>(hf_timer_diagnostics_t &amp;diagnostics) const noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BasePeriodicTimer::GetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspPeriodicTimer_1a29dc38189cc126d681a893baf2e2ff03">GetDiagnostics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get timer diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store diagnostics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa51f355232e842eec8885001660ce40a5" kindref="member">hf_timer_err_t::TIMER_SUCCESS</ref> if successful, TIMER_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="345" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="345" bodyend="348"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBasePeriodicTimer_1a251ae7cf73c7718069a2f1f9abb64311" prot="protected" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BasePeriodicTimer::BasePeriodicTimer</definition>
+        <argsstring>(hf_timer_callback_t callback, void *user_data=nullptr) noexcept</argsstring>
+        <name>BasePeriodicTimer</name>
+        <qualifiedname>BasePeriodicTimer::BasePeriodicTimer</qualifiedname>
+        <param>
+          <type><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref></type>
+          <declname>callback</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>user_data</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Protected constructor with callback specification. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>callback</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer callback function </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data passed to callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="356" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="356" bodyend="358"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BasePeriodicTimer::SetInitialized</definition>
+        <argsstring>(bool initialized) noexcept</argsstring>
+        <name>SetInitialized</name>
+        <qualifiedname>BasePeriodicTimer::SetInitialized</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>initialized</declname>
+        </param>
+        <briefdescription>
+<para>Set the initialized state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>initialized</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New initialization state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="364" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="364" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BasePeriodicTimer::SetRunning</definition>
+        <argsstring>(bool running) noexcept</argsstring>
+        <name>SetRunning</name>
+        <qualifiedname>BasePeriodicTimer::SetRunning</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>running</declname>
+        </param>
+        <briefdescription>
+<para>Set the running state. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>running</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New running state </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="372" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="372" bodyend="374"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1aae4a0926e98fdb58b4930ff91c479a2b" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void BasePeriodicTimer::ExecuteCallback</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ExecuteCallback</name>
+        <qualifiedname>BasePeriodicTimer::ExecuteCallback</qualifiedname>
+        <briefdescription>
+<para>Execute the timer callback (called by implementations). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="379" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="379" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BasePeriodicTimer::HasValidCallback</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>HasValidCallback</name>
+        <qualifiedname>BasePeriodicTimer::HasValidCallback</qualifiedname>
+        <briefdescription>
+<para>Check if callback is valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if callback is set, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePeriodicTimer.h" line="389" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="389" bodyend="391"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for periodic timer operations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a consistent interface for periodic timer functionality across different hardware platforms and timer implementations. It supports high-resolution timing, callback-based notifications, and precise period control.</para>
+<para>Key Features:<itemizedlist>
+<listitem><para>Microsecond resolution timing</para>
+</listitem><listitem><para>Callback-based event notification</para>
+</listitem><listitem><para>Start/stop control</para>
+</listitem><listitem><para>Period adjustment during operation</para>
+</listitem><listitem><para>Error handling and status reporting</para>
+</listitem><listitem><para>Platform-agnostic interface</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>Implementations should handle platform-specific details internally </para>
+</simplesect>
+<simplesect kind="note"><para>This class is designed to be thread-safe when properly implemented </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BasePeriodicTimer</label>
+        <link refid="classBasePeriodicTimer"/>
+      </node>
+      <node id="2">
+        <label>EspPeriodicTimer</label>
+        <link refid="classEspPeriodicTimer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BasePeriodicTimer</label>
+        <link refid="classBasePeriodicTimer"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_timer_diagnostics_t</label>
+        <link refid="structhf__timer__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_timer_statistics_t</label>
+        <link refid="structhf__timer__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BasePeriodicTimer.h" line="169" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="169" bodyend="399"/>
+    <listofallmembers>
+      <member refid="classBasePeriodicTimer_1abe11f2c94d12cf1d658104f1280aa486" prot="public" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>BasePeriodicTimer</name></member>
+      <member refid="classBasePeriodicTimer_1a251ae7cf73c7718069a2f1f9abb64311" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>BasePeriodicTimer</name></member>
+      <member refid="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>callback_</name></member>
+      <member refid="classBasePeriodicTimer_1a832aec2c7b29459d585be24c2478857f" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>Deinitialize</name></member>
+      <member refid="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>diagnostics_</name></member>
+      <member refid="classBasePeriodicTimer_1aae4a0926e98fdb58b4930ff91c479a2b" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>ExecuteCallback</name></member>
+      <member refid="classBasePeriodicTimer_1ae9bdfcba0669d72ec6e8ebac8bcf7042" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>GetDescription</name></member>
+      <member refid="classBasePeriodicTimer_1a47bb724f0a6d31877aeca1c5afb053c7" prot="public" virt="virtual"><scope>BasePeriodicTimer</scope><name>GetDiagnostics</name></member>
+      <member refid="classBasePeriodicTimer_1ab2bb6001034bca26edddca31e314b233" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>GetMaxPeriod</name></member>
+      <member refid="classBasePeriodicTimer_1aec24a991610deca51f4623b5704ab8b3" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>GetMinPeriod</name></member>
+      <member refid="classBasePeriodicTimer_1a64307da70204c07096177c722c0aba41" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>GetPeriod</name></member>
+      <member refid="classBasePeriodicTimer_1a4a55df2dbb3c7076fef5e413d9fd9ad4" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>GetResolution</name></member>
+      <member refid="classBasePeriodicTimer_1a04e87d17d4909a0bae0547bd9d2ca3f9" prot="public" virt="virtual"><scope>BasePeriodicTimer</scope><name>GetStatistics</name></member>
+      <member refid="classBasePeriodicTimer_1a98d76a272ec805a75ec2c1cc9ab885fd" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>GetStats</name></member>
+      <member refid="classBasePeriodicTimer_1a9490ab374ff3044157d97ecb1ae40760" prot="public" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>GetUserData</name></member>
+      <member refid="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>HasValidCallback</name></member>
+      <member refid="classBasePeriodicTimer_1ab5e9c79c29dd4b5b0c581b3124c09907" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>Initialize</name></member>
+      <member refid="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>initialized_</name></member>
+      <member refid="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" prot="public" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>IsInitialized</name></member>
+      <member refid="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" prot="public" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>IsRunning</name></member>
+      <member refid="classBasePeriodicTimer_1a31392093e5d8a40c22f8b6a7b2507c4c" prot="public" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>operator=</name></member>
+      <member refid="classBasePeriodicTimer_1aa284ad4ee8f3bde5d0e71ce1b0004d02" prot="public" virt="virtual"><scope>BasePeriodicTimer</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBasePeriodicTimer_1acc1e7406989db6b2728038a465967162" prot="public" virt="virtual"><scope>BasePeriodicTimer</scope><name>ResetStatistics</name></member>
+      <member refid="classBasePeriodicTimer_1a6d418e90936077bd309b714cb4d646ad" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>ResetStats</name></member>
+      <member refid="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>running_</name></member>
+      <member refid="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" prot="public" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>SetCallback</name></member>
+      <member refid="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>SetInitialized</name></member>
+      <member refid="classBasePeriodicTimer_1a22c103ed4866bb4f45eef55d77730a09" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>SetPeriod</name></member>
+      <member refid="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>SetRunning</name></member>
+      <member refid="classBasePeriodicTimer_1aedbfbbb79b85464d9c311bc7b42ba4a9" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>Start</name></member>
+      <member refid="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>statistics_</name></member>
+      <member refid="classBasePeriodicTimer_1a614629ba36264694b66baffe7e72ab08" prot="public" virt="pure-virtual"><scope>BasePeriodicTimer</scope><name>Stop</name></member>
+      <member refid="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>user_data_</name></member>
+      <member refid="classBasePeriodicTimer_1abee693abb22864122f36aff2f8d1c6ee" prot="public" virt="virtual"><scope>BasePeriodicTimer</scope><name>~BasePeriodicTimer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

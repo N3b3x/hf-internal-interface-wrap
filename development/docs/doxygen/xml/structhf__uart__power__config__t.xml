@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__uart__power__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_uart_power_config_t</compoundname>
+    <includes refid="EspTypes__UART_8h" local="no">EspTypes_UART.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__uart__power__config__t_1a6740faaace817d6ca3c1ff12b5f7c2e0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_power_config_t::sleep_retention_enable</definition>
+        <argsstring></argsstring>
+        <name>sleep_retention_enable</name>
+        <qualifiedname>hf_uart_power_config_t::sleep_retention_enable</qualifiedname>
+        <briefdescription>
+<para>Enable sleep retention. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="167" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__power__config__t_1a1329b491b3e5fd6ce964259024732fd9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_power_config_t::allow_pd_in_light_sleep</definition>
+        <argsstring></argsstring>
+        <name>allow_pd_in_light_sleep</name>
+        <qualifiedname>hf_uart_power_config_t::allow_pd_in_light_sleep</qualifiedname>
+        <briefdescription>
+<para>Allow power down in light sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="168" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__power__config__t_1a7ac138802375c29ee69321a39be9ef8c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_power_config_t::allow_pd_in_deep_sleep</definition>
+        <argsstring></argsstring>
+        <name>allow_pd_in_deep_sleep</name>
+        <qualifiedname>hf_uart_power_config_t::allow_pd_in_deep_sleep</qualifiedname>
+        <briefdescription>
+<para>Allow power down in deep sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="169" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__power__config__t_1afa945ba76e7b7bf7003b78cb06363884" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_uart_power_config_t::wakeup_enable</definition>
+        <argsstring></argsstring>
+        <name>wakeup_enable</name>
+        <qualifiedname>hf_uart_power_config_t::wakeup_enable</qualifiedname>
+        <briefdescription>
+<para>Enable UART wakeup capability. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="170" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__power__config__t_1a0cb50d5b0c2664f1c6e34778b2f1ef5b" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_uart_power_config_t::wakeup_threshold</definition>
+        <argsstring></argsstring>
+        <name>wakeup_threshold</name>
+        <qualifiedname>hf_uart_power_config_t::wakeup_threshold</qualifiedname>
+        <briefdescription>
+<para>Wakeup threshold character count. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="171" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__uart__power__config__t_1a404cdf8335c2f7dfb0752720d9f82e99" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_uart_power_config_t::wakeup_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>wakeup_timeout_ms</name>
+        <qualifiedname>hf_uart_power_config_t::wakeup_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Wakeup timeout in milliseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="172" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__uart__power__config__t_1a663eb9c459ad518dc6b1e64abe8a891f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_uart_power_config_t::hf_uart_power_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_uart_power_config_t</name>
+        <qualifiedname>hf_uart_power_config_t::hf_uart_power_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="174" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="174" bodyend="176"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 UART power management configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="166" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="166" bodyend="177"/>
+    <listofallmembers>
+      <member refid="structhf__uart__power__config__t_1a7ac138802375c29ee69321a39be9ef8c" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>allow_pd_in_deep_sleep</name></member>
+      <member refid="structhf__uart__power__config__t_1a1329b491b3e5fd6ce964259024732fd9" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>allow_pd_in_light_sleep</name></member>
+      <member refid="structhf__uart__power__config__t_1a663eb9c459ad518dc6b1e64abe8a891f" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>hf_uart_power_config_t</name></member>
+      <member refid="structhf__uart__power__config__t_1a6740faaace817d6ca3c1ff12b5f7c2e0" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>sleep_retention_enable</name></member>
+      <member refid="structhf__uart__power__config__t_1afa945ba76e7b7bf7003b78cb06363884" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>wakeup_enable</name></member>
+      <member refid="structhf__uart__power__config__t_1a0cb50d5b0c2664f1c6e34778b2f1ef5b" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>wakeup_threshold</name></member>
+      <member refid="structhf__uart__power__config__t_1a404cdf8335c2f7dfb0752720d9f82e99" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>wakeup_timeout_ms</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

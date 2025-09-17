@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__gpio__wakeup__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_gpio_wakeup_config_t</compoundname>
+    <includes refid="EspTypes__GPIO_8h" local="no">EspTypes_GPIO.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__gpio__wakeup__config__t_1af95025ba7bbc559c35f23d2eab2b8f72" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" kindref="member">hf_gpio_intr_type_t</ref></type>
+        <definition>hf_gpio_intr_type_t hf_gpio_wakeup_config_t::wake_trigger</definition>
+        <argsstring></argsstring>
+        <name>wake_trigger</name>
+        <qualifiedname>hf_gpio_wakeup_config_t::wake_trigger</qualifiedname>
+        <briefdescription>
+<para>Wake-up trigger type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="174" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__wakeup__config__t_1aa82b3549af7be9bbdd2319a84fdb44bc" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_wakeup_config_t::enable_rtc_wake</definition>
+        <argsstring></argsstring>
+        <name>enable_rtc_wake</name>
+        <qualifiedname>hf_gpio_wakeup_config_t::enable_rtc_wake</qualifiedname>
+        <briefdescription>
+<para>Enable RTC domain wake-up. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="175" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__wakeup__config__t_1a16ab90202bd111ad20524d7e65be0c72" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_wakeup_config_t::enable_ext1_wake</definition>
+        <argsstring></argsstring>
+        <name>enable_ext1_wake</name>
+        <qualifiedname>hf_gpio_wakeup_config_t::enable_ext1_wake</qualifiedname>
+        <briefdescription>
+<para>Enable EXT1 wake-up source (multiple pins) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="176" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__wakeup__config__t_1a0ca411b80947b9bcf808b840f8bf9cb3" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_gpio_wakeup_config_t::wake_level</definition>
+        <argsstring></argsstring>
+        <name>wake_level</name>
+        <qualifiedname>hf_gpio_wakeup_config_t::wake_level</qualifiedname>
+        <briefdescription>
+<para>Wake-up level (0=low, 1=high) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="177" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__wakeup__config__t_1ac4bed175df8779088c0df156964673ea" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_wakeup_config_t::internal_pullup_enable</definition>
+        <argsstring></argsstring>
+        <name>internal_pullup_enable</name>
+        <qualifiedname>hf_gpio_wakeup_config_t::internal_pullup_enable</qualifiedname>
+        <briefdescription>
+<para>Enable internal pull-up during sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="178" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__wakeup__config__t_1af2a5da2f0703a06ad72dee91b0a957dc" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_wakeup_config_t::internal_pulldown_enable</definition>
+        <argsstring></argsstring>
+        <name>internal_pulldown_enable</name>
+        <qualifiedname>hf_gpio_wakeup_config_t::internal_pulldown_enable</qualifiedname>
+        <briefdescription>
+<para>Enable internal pull-down during sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="179" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="179" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__wakeup__config__t_1ab88f5c7e7b327b5c39a4efc6749057c2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_gpio_wakeup_config_t::iso_en</definition>
+        <argsstring></argsstring>
+        <name>iso_en</name>
+        <qualifiedname>hf_gpio_wakeup_config_t::iso_en</qualifiedname>
+        <briefdescription>
+<para>Enable isolation during sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="180" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="180" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO wake-up configuration for deep sleep. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Configuration for GPIO-based wake-up from deep sleep modes. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="173" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="173" bodyend="181"/>
+    <listofallmembers>
+      <member refid="structhf__gpio__wakeup__config__t_1a16ab90202bd111ad20524d7e65be0c72" prot="public" virt="non-virtual"><scope>hf_gpio_wakeup_config_t</scope><name>enable_ext1_wake</name></member>
+      <member refid="structhf__gpio__wakeup__config__t_1aa82b3549af7be9bbdd2319a84fdb44bc" prot="public" virt="non-virtual"><scope>hf_gpio_wakeup_config_t</scope><name>enable_rtc_wake</name></member>
+      <member refid="structhf__gpio__wakeup__config__t_1af2a5da2f0703a06ad72dee91b0a957dc" prot="public" virt="non-virtual"><scope>hf_gpio_wakeup_config_t</scope><name>internal_pulldown_enable</name></member>
+      <member refid="structhf__gpio__wakeup__config__t_1ac4bed175df8779088c0df156964673ea" prot="public" virt="non-virtual"><scope>hf_gpio_wakeup_config_t</scope><name>internal_pullup_enable</name></member>
+      <member refid="structhf__gpio__wakeup__config__t_1ab88f5c7e7b327b5c39a4efc6749057c2" prot="public" virt="non-virtual"><scope>hf_gpio_wakeup_config_t</scope><name>iso_en</name></member>
+      <member refid="structhf__gpio__wakeup__config__t_1a0ca411b80947b9bcf808b840f8bf9cb3" prot="public" virt="non-virtual"><scope>hf_gpio_wakeup_config_t</scope><name>wake_level</name></member>
+      <member refid="structhf__gpio__wakeup__config__t_1af95025ba7bbc559c35f23d2eab2b8f72" prot="public" virt="non-virtual"><scope>hf_gpio_wakeup_config_t</scope><name>wake_trigger</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

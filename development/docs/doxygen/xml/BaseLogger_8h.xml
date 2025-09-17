@@ -1,0 +1,978 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="BaseLogger_8h" kind="file" language="C++">
+    <compoundname>BaseLogger.h</compoundname>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes local="no">cstdarg</includes>
+    <includes local="no">cstdint</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">string</includes>
+    <includes local="no">string_view</includes>
+    <includedby refid="LoggerComprehensiveTest_8cpp" local="yes">examples/esp32/main/LoggerComprehensiveTest.cpp</includedby>
+    <includedby refid="EspLogger_8h" local="yes">inc/mcu/esp32/EspLogger.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/base/BaseLogger.h</label>
+        <link refid="BaseLogger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>cstdarg</label>
+      </node>
+      <node id="3">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="4">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>string</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/LoggerComprehensiveTest.cpp</label>
+        <link refid="LoggerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/base/BaseLogger.h</label>
+        <link refid="BaseLogger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/EspLogger.h</label>
+        <link refid="EspLogger_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspLogger.cpp</label>
+        <link refid="EspLogger_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__logger__config__t" prot="public">hf_logger_config_t</innerclass>
+    <innerclass refid="structhf__logger__statistics__t" prot="public">hf_logger_statistics_t</innerclass>
+    <innerclass refid="structhf__logger__diagnostics__t" prot="public">hf_logger_diagnostics_t</innerclass>
+    <innerclass refid="structhf__log__message__t" prot="public">hf_log_message_t</innerclass>
+    <innerclass refid="classBaseLogger" prot="public">BaseLogger</innerclass>
+    <sectiondef kind="define">
+      <member refid="group__logger_1ga96295a40d903d6203369d5fa079590cf" kind="define"><name>HF_LOGGER_ERR_LIST</name></member>
+      <member refid="group__logger_1gae7be95310e82db3612e5a72dfa9aea72" kind="define"><name>HF_LOGGER_ERR_ENUM</name></member>
+      <memberdef kind="define" id="BaseLogger_8h_1a94b225babb1626cee0621f8312eb32d1" prot="public" static="no">
+        <name>X</name>
+        <param><defname>NAME</defname></param>
+        <param><defname>VALUE</defname></param>
+        <param><defname>DESC</defname></param>
+        <initializer>  case hf_logger_err_t::NAME:                                                                      \
+    return DESC;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="226" column="9"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseLogger_8h_1ac9ca09df36906a8b90c71f3cbc47bf04" prot="public" static="no">
+        <name>HF_LOG_ERROR</name>
+        <param><defname>tag</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>  LogWithLocation(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042abf7b6e7a0366b699e4259a7c5f836114" kindref="member">hf_log_level_t::LOG_LEVEL_ERROR</ref>, tag, __FILE__, __LINE__, __FUNCTION__, format,  \
+                  ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log at ERROR level with file and line information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="303" column="9" bodyfile="inc/base/BaseLogger.h" bodystart="303" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseLogger_8h_1a24ade4b9e8406f18d468e8db169a6f50" prot="public" static="no">
+        <name>HF_LOG_WARN</name>
+        <param><defname>tag</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>  LogWithLocation(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a726c7b1e8e76343b4e83fe61261fff7e" kindref="member">hf_log_level_t::LOG_LEVEL_WARN</ref>, tag, __FILE__, __LINE__, __FUNCTION__, format,   \
+                  ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log at WARN level with file and line information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="310" column="9" bodyfile="inc/base/BaseLogger.h" bodystart="310" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseLogger_8h_1a8cf86923ed907d05d9d5499b38498137" prot="public" static="no">
+        <name>HF_LOG_INFO</name>
+        <param><defname>tag</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>  LogWithLocation(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">hf_log_level_t::LOG_LEVEL_INFO</ref>, tag, __FILE__, __LINE__, __FUNCTION__, format,   \
+                  ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log at INFO level with file and line information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="317" column="9" bodyfile="inc/base/BaseLogger.h" bodystart="317" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseLogger_8h_1ace7494395ae88006b8994f7ac71a1ba6" prot="public" static="no">
+        <name>HF_LOG_DEBUG</name>
+        <param><defname>tag</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>  LogWithLocation(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042acf47268b6930f0f296d7b29b93093019" kindref="member">hf_log_level_t::LOG_LEVEL_DEBUG</ref>, tag, __FILE__, __LINE__, __FUNCTION__, format,  \
+                  ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log at DEBUG level with file and line information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="324" column="9" bodyfile="inc/base/BaseLogger.h" bodystart="324" bodyend="326"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseLogger_8h_1aa665446dc246b416b74bebb7428bcbb1" prot="public" static="no">
+        <name>HF_LOG_VERBOSE</name>
+        <param><defname>tag</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>  LogWithLocation(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a9faae2c149317da7ee66128d87a88e5f" kindref="member">hf_log_level_t::LOG_LEVEL_VERBOSE</ref>, tag, __FILE__, __LINE__, __FUNCTION__,        \
+                  format, ##__VA_ARGS__)</initializer>
+        <briefdescription>
+<para>Log at VERBOSE level with file and line information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="331" column="9" bodyfile="inc/base/BaseLogger.h" bodystart="331" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="define" id="BaseLogger_8h_1a17b3ea447b8b3997207e45b43625ce8d" prot="public" static="no">
+        <name>HF_LOG_IF</name>
+        <param><defname>condition</defname></param>
+        <param><defname>level</defname></param>
+        <param><defname>tag</defname></param>
+        <param><defname>format</defname></param>
+        <param><defname>...</defname></param>
+        <initializer>  do {                                                                                             \
+    if (condition) {                                                                               \
+      LogWithLocation(level, tag, __FILE__, __LINE__, __FUNCTION__, format, ##__VA_ARGS__);        \
+    }                                                                                              \
+  } while (0)</initializer>
+        <briefdescription>
+<para>Conditional logging macro. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="338" column="9" bodyfile="inc/base/BaseLogger.h" bodystart="338" bodyend="343"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <name>hf_logger_err_t</name>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" prot="public">
+          <name>LOGGER_SUCCESS</name>
+          <initializer>=  0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177aa0e54add0d56b4f94f4ddec0891fa0b8" prot="public">
+          <name>LOGGER_ERR_FAILURE</name>
+          <initializer>=  1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" prot="public">
+          <name>LOGGER_ERR_NOT_INITIALIZED</name>
+          <initializer>=  2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a812abf6ed9b7268786981c931a1e84b2" prot="public">
+          <name>LOGGER_ERR_ALREADY_INITIALIZED</name>
+          <initializer>=  3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177afb1d5fe18496410650b65ad2e9238cae" prot="public">
+          <name>LOGGER_ERR_INVALID_PARAMETER</name>
+          <initializer>=  4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a4a6be624b56a33df2c4ff30ab7f2462d" prot="public">
+          <name>LOGGER_ERR_NULL_POINTER</name>
+          <initializer>=  5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177ad6bd5dec8544145a9f07b45eadcc0e50" prot="public">
+          <name>LOGGER_ERR_OUT_OF_MEMORY</name>
+          <initializer>=  6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a276bf2706f81ef8467d59a5d6911e917" prot="public">
+          <name>LOGGER_ERR_INVALID_CONFIGURATION</name>
+          <initializer>=  7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a46d18f1e2dc7cb3a1f7f13f499e3bf6f" prot="public">
+          <name>LOGGER_ERR_UNSUPPORTED_OPERATION</name>
+          <initializer>=  8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a78d7cf403d7ae696935bd11c97b44573" prot="public">
+          <name>LOGGER_ERR_RESOURCE_BUSY</name>
+          <initializer>=  9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a6385bfb0d6b8b07b959752e1acaece2c" prot="public">
+          <name>LOGGER_ERR_RESOURCE_UNAVAILABLE</name>
+          <initializer>=  10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a0c0bf3d7483e88c3c994f53e5488e941" prot="public">
+          <name>LOGGER_ERR_WRITE_FAILURE</name>
+          <initializer>=  11</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a13e1f2ace163c2d152232069e56810a4" prot="public">
+          <name>LOGGER_ERR_OUTPUT_BUFFER_FULL</name>
+          <initializer>=  12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8540e7ac58c563464dc62b20cc39ce8d" prot="public">
+          <name>LOGGER_ERR_FORMAT_ERROR</name>
+          <initializer>=  13</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a6771899245a80c3caf75f8fd263f5c88" prot="public">
+          <name>LOGGER_ERR_ENCODING_ERROR</name>
+          <initializer>=  14</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177aa3e2b4f66414ed2d9430adf8bbcd3560" prot="public">
+          <name>LOGGER_ERR_SYSTEM_ERROR</name>
+          <initializer>=  15</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a3a379a10ec8f9dcd29bcb4dd46ed8796" prot="public">
+          <name>LOGGER_ERR_PERMISSION_DENIED</name>
+          <initializer>=  16</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a6cf1286ed512e4fb760205d4c92bc736" prot="public">
+          <name>LOGGER_ERR_OPERATION_ABORTED</name>
+          <initializer>=  17</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177adf30db73773323da98f1632e18d5ecf0" prot="public">
+          <name>LOGGER_ERR_NOT_SUPPORTED</name>
+          <initializer>=  18</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177aea3c871e6af2674856c9cc225cd74fce" prot="public">
+          <name>LOGGER_ERR_DRIVER_ERROR</name>
+          <initializer>=  19</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a3492e6ec517972d79a1fb4c62214f8d1" prot="public">
+          <name>LOGGER_ERR_INVALID_STATE</name>
+          <initializer>=  20</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177aaace57363e6cc5be237c604ed6233463" prot="public">
+          <name>LOGGER_ERR_INVALID_ARG</name>
+          <initializer>=  21</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a278790d6ccb47554bfdce7128ad70a89" prot="public">
+          <name>LOGGER_ERR_TIMEOUT</name>
+          <initializer>=  22</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177adf0c3d5323f22989d3cf63dc1a9bdeb8" prot="public">
+          <name>LOGGER_ERR_BUFFER_OVERFLOW</name>
+          <initializer>=  23</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177aa2fc621fa173aa97fb2226702d632f5e" prot="public">
+          <name>LOGGER_ERR_UNKNOWN</name>
+          <initializer>=  24</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="88" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <member refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kind="enum"><name>hf_log_level_t</name></member>
+      <member refid="group__logger_1ga1e55e86af9be6c9ac8b1c61560ac269c" kind="enum"><name>hf_log_output_t</name></member>
+      <member refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kind="enum"><name>hf_log_format_t</name></member>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="BaseLogger_8h_1a4b5114db4a88ed1eb860b1d1db858d14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+        <definition>hf_log_format_t operator|</definition>
+        <argsstring>(hf_log_format_t a, hf_log_format_t b)</argsstring>
+        <name>operator|</name>
+        <param>
+          <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="134" column="24" bodyfile="inc/base/BaseLogger.h" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="BaseLogger_8h_1a85959963bc0a69eed217a1a5ed560b3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+        <definition>hf_log_format_t operator&amp;</definition>
+        <argsstring>(hf_log_format_t a, hf_log_format_t b)</argsstring>
+        <name>operator&amp;</name>
+        <param>
+          <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="138" column="24" bodyfile="inc/base/BaseLogger.h" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="BaseLogger_8h_1ae95ab88f02a6fd83d36efd47b4578be6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+        <definition>hf_log_format_t operator^</definition>
+        <argsstring>(hf_log_format_t a, hf_log_format_t b)</argsstring>
+        <name>operator^</name>
+        <param>
+          <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="142" column="24" bodyfile="inc/base/BaseLogger.h" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="BaseLogger_8h_1ac5c9c4359cc4dec9db039cdec56bd52e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+        <definition>hf_log_format_t operator~</definition>
+        <argsstring>(hf_log_format_t a)</argsstring>
+        <name>operator~</name>
+        <param>
+          <type><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="146" column="24" bodyfile="inc/base/BaseLogger.h" bodystart="146" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="BaseLogger_8h_1af6a7ff494bd7bb45f00ec32155d7a479" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr std::string_view</type>
+        <definition>constexpr std::string_view HfLoggerErrToString</definition>
+        <argsstring>(hf_logger_err_t err) noexcept</argsstring>
+        <name>HfLoggerErrToString</name>
+        <param>
+          <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
+          <declname>err</declname>
+        </param>
+        <briefdescription>
+<para>Convert logger error code to string view. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>err</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The error code to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String view of the error description </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="224" column="28" bodyfile="inc/base/BaseLogger.h" bodystart="224" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="BaseLogger_8h_1accf97c1a21d237bea5365234a70cfad4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * HfLogLevelToString</definition>
+        <argsstring>(hf_log_level_t level) noexcept</argsstring>
+        <name>HfLogLevelToString</name>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Convert log level to string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>const char* Level string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="241" column="19" bodyfile="inc/base/BaseLogger.h" bodystart="241" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="BaseLogger_8h_1a2e58178fc70f86725c1699647c9112c0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * HfLogLevelToShortString</definition>
+        <argsstring>(hf_log_level_t level) noexcept</argsstring>
+        <name>HfLogLevelToShortString</name>
+        <param>
+          <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+<para>Convert log level to short string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>level</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Log level </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>const char* Short level string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="265" column="19" bodyfile="inc/base/BaseLogger.h" bodystart="265" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="function" id="BaseLogger_8h_1a6cbc8b9f35a2b8c039ca7a00f56cd9c1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>hf_u64_t HfLoggerGetTimestamp</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>HfLoggerGetTimestamp</name>
+        <briefdescription>
+<para>Get current timestamp in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_u64_t Timestamp in microseconds </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="288" column="10" declfile="inc/base/BaseLogger.h" declline="288" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="BaseLogger_8h_1a35e36af5332756b4fe8f8f83b5d9eef8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t HfLoggerGetThreadId</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>HfLoggerGetThreadId</name>
+        <briefdescription>
+<para>Get current thread ID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>hf_u32_t Thread ID </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseLogger.h" line="294" column="10" declfile="inc/base/BaseLogger.h" declline="294" declcolumn="10"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Unified logging base class for all logging implementations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains the declaration of the <ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> abstract class, which provides a comprehensive logging abstraction that serves as the base for all logging implementations in the HardFOC system. It supports multiple log levels, configurable output destinations, thread-safe operations, and works across different hardware platforms including ESP32, STM32, and other MCUs.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC</para>
+</simplesect>
+<simplesect kind="note"><para>This class is thread-safe and designed for concurrent access. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdarg&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="group__logger_1ga96295a40d903d6203369d5fa079590cf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_LOGGER_ERR_LIST(X)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="46"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Success<sp/>codes<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="47"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_SUCCESS,<sp/>0,<sp/>&quot;Success&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="48"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="49"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>General<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="50"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_FAILURE,<sp/>1,<sp/>&quot;General<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="51"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_NOT_INITIALIZED,<sp/>2,<sp/>&quot;Not<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="52"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_ALREADY_INITIALIZED,<sp/>3,<sp/>&quot;Already<sp/>initialized&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="53"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_INVALID_PARAMETER,<sp/>4,<sp/>&quot;Invalid<sp/>parameter&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="54"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_NULL_POINTER,<sp/>5,<sp/>&quot;Null<sp/>pointer&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="55"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_OUT_OF_MEMORY,<sp/>6,<sp/>&quot;Out<sp/>of<sp/>memory&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="56"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="57"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Configuration<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="58"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_INVALID_CONFIGURATION,<sp/>7,<sp/>&quot;Invalid<sp/>configuration&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="59"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_UNSUPPORTED_OPERATION,<sp/>8,<sp/>&quot;Unsupported<sp/>operation&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="60"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_RESOURCE_BUSY,<sp/>9,<sp/>&quot;Resource<sp/>busy&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="61"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_RESOURCE_UNAVAILABLE,<sp/>10,<sp/>&quot;Resource<sp/>unavailable&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="62"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="63"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Output<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="64"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_WRITE_FAILURE,<sp/>11,<sp/>&quot;Write<sp/>failure&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="65"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_OUTPUT_BUFFER_FULL,<sp/>12,<sp/>&quot;Output<sp/>buffer<sp/>full&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="66"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_FORMAT_ERROR,<sp/>13,<sp/>&quot;Format<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="67"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_ENCODING_ERROR,<sp/>14,<sp/>&quot;Encoding<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="68"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="69"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>System<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="70"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_SYSTEM_ERROR,<sp/>15,<sp/>&quot;System<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="71"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_PERMISSION_DENIED,<sp/>16,<sp/>&quot;Permission<sp/>denied&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="72"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_OPERATION_ABORTED,<sp/>17,<sp/>&quot;Operation<sp/>aborted&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="73"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="74"><highlight class="preprocessor"><sp/><sp/></highlight><highlight class="comment">/*<sp/>Extended<sp/>errors<sp/>*/</highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="75"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_NOT_SUPPORTED,<sp/>18,<sp/>&quot;Operation<sp/>not<sp/>supported&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="76"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_DRIVER_ERROR,<sp/>19,<sp/>&quot;Driver<sp/>error&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="77"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_INVALID_STATE,<sp/>20,<sp/>&quot;Invalid<sp/>state&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="78"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_INVALID_ARG,<sp/>21,<sp/>&quot;Invalid<sp/>argument&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="79"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_TIMEOUT,<sp/>22,<sp/>&quot;Timeout&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="80"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_BUFFER_OVERFLOW,<sp/>23,<sp/>&quot;Buffer<sp/>overflow&quot;)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="81"><highlight class="preprocessor"><sp/><sp/>X(LOGGER_ERR_UNKNOWN,<sp/>24,<sp/>&quot;Unknown<sp/>error&quot;)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="group__logger_1gae7be95310e82db3612e5a72dfa9aea72" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_LOGGER_ERR_ENUM(name,<sp/>value,<sp/>description)<sp/>name<sp/>=<sp/>value,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>{<sp/><ref refid="group__logger_1ga96295a40d903d6203369d5fa079590cf" kindref="member">HF_LOGGER_ERR_LIST</ref>(<ref refid="group__logger_1gae7be95310e82db3612e5a72dfa9aea72" kindref="member">HF_LOGGER_ERR_ENUM</ref>)<sp/>};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>HF_LOGGER_ERR_ENUM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042af34cbc33c8d3951b72b3faa73a41d6b6" kindref="member">LOG_LEVEL_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042abf7b6e7a0366b699e4259a7c5f836114" kindref="member">LOG_LEVEL_ERROR</ref><sp/>=<sp/>1,<sp/><sp/></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a726c7b1e8e76343b4e83fe61261fff7e" kindref="member">LOG_LEVEL_WARN</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">LOG_LEVEL_INFO</ref><sp/>=<sp/>3,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042acf47268b6930f0f296d7b29b93093019" kindref="member">LOG_LEVEL_DEBUG</ref><sp/>=<sp/>4,<sp/><sp/></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a9faae2c149317da7ee66128d87a88e5f" kindref="member">LOG_LEVEL_VERBOSE</ref><sp/>=<sp/>5<sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="group__logger_1ga1e55e86af9be6c9ac8b1c61560ac269c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ga1e55e86af9be6c9ac8b1c61560ac269c" kindref="member">hf_log_output_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca6caa993b9fab7e06b0e144c5f101e270" kindref="member">LOG_OUTPUT_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca21d7ee388a7b468ff899724685d98277" kindref="member">LOG_OUTPUT_UART</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca1f35e95cf10b5c88320ad8c8b10da24a" kindref="member">LOG_OUTPUT_USB</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca4706d100721abc95a816266a5511957c" kindref="member">LOG_OUTPUT_FILE</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca057451878f8d5976737c3246e5ff8c2e" kindref="member">LOG_OUTPUT_NETWORK</ref><sp/>=<sp/>4,<sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca676d90882c2d747bb6b115ef907afff9" kindref="member">LOG_OUTPUT_CUSTOM</ref><sp/>=<sp/>5<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/>:<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fadfc09b8c7e2de3d69553b298bdab2358" kindref="member">LOG_FORMAT_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2faf4f371add5e8bdfd60ac00623271f744" kindref="member">LOG_FORMAT_TIMESTAMP</ref><sp/>=<sp/>(1U<sp/>&lt;&lt;<sp/>0),<sp/></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fa936459e73807b6857ee39b5b8b31e7dd" kindref="member">LOG_FORMAT_LEVEL</ref><sp/>=<sp/>(1U<sp/>&lt;&lt;<sp/>1),<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2faf4c0cdc4d5652643ca8a022c467fbd3c" kindref="member">LOG_FORMAT_TAG</ref><sp/>=<sp/>(1U<sp/>&lt;&lt;<sp/>2),<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2faab5a26a380e6b5e09167a85c966a8a56" kindref="member">LOG_FORMAT_FILE_LINE</ref><sp/>=<sp/>(1U<sp/>&lt;&lt;<sp/>3),<sp/></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fa2ea17d88cd2c353fa7a41d984651d0fe" kindref="member">LOG_FORMAT_FUNCTION</ref><sp/>=<sp/>(1U<sp/>&lt;&lt;<sp/>4),<sp/><sp/></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2faec954ee8061cbf4c1d45a8f48071e507" kindref="member">LOG_FORMAT_THREAD_ID</ref><sp/>=<sp/>(1U<sp/>&lt;&lt;<sp/>5),<sp/></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fa8b4c7ea01528025497c33eb6b79c179b" kindref="member">LOG_FORMAT_COLORS</ref><sp/>=<sp/>(1U<sp/>&lt;&lt;<sp/>6),<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fa34c8ed59d52562dbc736f5c50b4e1d1d" kindref="member">LOG_FORMAT_DEFAULT</ref><sp/>=<sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2faf4f371add5e8bdfd60ac00623271f744" kindref="member">LOG_FORMAT_TIMESTAMP</ref><sp/>|<sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fa936459e73807b6857ee39b5b8b31e7dd" kindref="member">LOG_FORMAT_LEVEL</ref><sp/>|<sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2faf4c0cdc4d5652643ca8a022c467fbd3c" kindref="member">LOG_FORMAT_TAG</ref></highlight></codeline>
+<codeline lineno="131"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Bitwise<sp/>operators<sp/>for<sp/>hf_log_format_t<sp/>enum<sp/>class</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="BaseLogger_8h_1a4b5114db4a88ed1eb860b1d1db858d14" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/><ref refid="BaseLogger_8h_1a4b5114db4a88ed1eb860b1d1db858d14" kindref="member">operator|</ref>(<ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/>a,<sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(a)<sp/>|<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(b));</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="BaseLogger_8h_1a85959963bc0a69eed217a1a5ed560b3f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/><ref refid="BaseLogger_8h_1a85959963bc0a69eed217a1a5ed560b3f" kindref="member">operator&amp;</ref>(<ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/>a,<sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(a)<sp/>&amp;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(b));</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142" refid="BaseLogger_8h_1ae95ab88f02a6fd83d36efd47b4578be6" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/><ref refid="BaseLogger_8h_1ae95ab88f02a6fd83d36efd47b4578be6" kindref="member">operator^</ref>(<ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/>a,<sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(a)<sp/>^<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(b));</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="BaseLogger_8h_1ac5c9c4359cc4dec9db039cdec56bd52e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/><ref refid="BaseLogger_8h_1ac5c9c4359cc4dec9db039cdec56bd52e" kindref="member">operator~</ref>(<ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/>a)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(~static_cast&lt;hf_u32_t&gt;(a));</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="structhf__logger__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="155" refid="structhf__logger__config__t_1a0544221f8aeeccea37f4512cec656ebb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/><ref refid="structhf__logger__config__t_1a0544221f8aeeccea37f4512cec656ebb" kindref="member">default_level</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="156" refid="structhf__logger__config__t_1aea701908932be510a4b1e64e43528909" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1ga1e55e86af9be6c9ac8b1c61560ac269c" kindref="member">hf_log_output_t</ref><sp/><ref refid="structhf__logger__config__t_1aea701908932be510a4b1e64e43528909" kindref="member">output_destination</ref>;<sp/></highlight></codeline>
+<codeline lineno="157" refid="structhf__logger__config__t_1ad15d1c7a0acf2eaea8919823dfa29473" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1ga46e0958974ba5c45267d842a54148e2f" kindref="member">hf_log_format_t</ref><sp/><ref refid="structhf__logger__config__t_1ad15d1c7a0acf2eaea8919823dfa29473" kindref="member">format_options</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="158" refid="structhf__logger__config__t_1ae3fcbecb28d9835d881296d6a934b5cf" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__logger__config__t_1ae3fcbecb28d9835d881296d6a934b5cf" kindref="member">max_message_length</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159" refid="structhf__logger__config__t_1ad1a6d394808a12f5773a0575c23c3f0a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__logger__config__t_1ad1a6d394808a12f5773a0575c23c3f0a" kindref="member">buffer_size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160" refid="structhf__logger__config__t_1a68ff4dc59cc386debc230a69c2b842e6" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__logger__config__t_1a68ff4dc59cc386debc230a69c2b842e6" kindref="member">flush_interval_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="161" refid="structhf__logger__config__t_1a37cb39bba078b77ebda93c112f51c446" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__config__t_1a37cb39bba078b77ebda93c112f51c446" kindref="member">enable_thread_safety</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162" refid="structhf__logger__config__t_1a37b0e76820ae9a9800d3053cde8ecf89" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__config__t_1a37b0e76820ae9a9800d3053cde8ecf89" kindref="member">enable_performance_monitoring</ref>;<sp/></highlight></codeline>
+<codeline lineno="163" refid="structhf__logger__config__t_1a52ba248a018c6aaf368bdea56a67c447" refkind="member"><highlight class="normal"><sp/><sp/>std::function&lt;void(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>)&gt;<sp/><ref refid="structhf__logger__config__t_1a52ba248a018c6aaf368bdea56a67c447" kindref="member">custom_output_callback</ref>;<sp/></highlight></codeline>
+<codeline lineno="164"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170" refid="structhf__logger__statistics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__logger__statistics__t" kindref="compound">hf_logger_statistics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="171" refid="structhf__logger__statistics__t_1ad6de2a70394493e108c51ea0e26b873b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1ad6de2a70394493e108c51ea0e26b873b" kindref="member">total_messages</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172" refid="structhf__logger__statistics__t_1a5653355170f0031678b7110a1d7d8508" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1a5653355170f0031678b7110a1d7d8508" kindref="member">messages_by_level</ref>[6];<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="173" refid="structhf__logger__statistics__t_1a13db2ecce372067c4864b99ffc990d08" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1a13db2ecce372067c4864b99ffc990d08" kindref="member">total_bytes_written</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="174" refid="structhf__logger__statistics__t_1ad0b98afd9aa45cc49049b6b11f08daaa" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1ad0b98afd9aa45cc49049b6b11f08daaa" kindref="member">write_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="175" refid="structhf__logger__statistics__t_1ac7719556e89e7244fd511e59ebdddf10" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1ac7719556e89e7244fd511e59ebdddf10" kindref="member">format_errors</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="176" refid="structhf__logger__statistics__t_1a3287f0ec71c6bc082dd4baccc3617ef8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1a3287f0ec71c6bc082dd4baccc3617ef8" kindref="member">buffer_overflows</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="177" refid="structhf__logger__statistics__t_1a5c690ed89c197df02f384ada846c1ab9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1a5c690ed89c197df02f384ada846c1ab9" kindref="member">performance_monitor_calls</ref>;<sp/></highlight></codeline>
+<codeline lineno="178" refid="structhf__logger__statistics__t_1a0a0e53d5cf43f4b48e7746885653401f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1a0a0e53d5cf43f4b48e7746885653401f" kindref="member">last_message_timestamp</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="179" refid="structhf__logger__statistics__t_1a5bc425c32ac091d12f7fc0d18d192ab9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1a5bc425c32ac091d12f7fc0d18d192ab9" kindref="member">average_message_length</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="180" refid="structhf__logger__statistics__t_1a55bbd274f7b6705ed635217485370a78" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__statistics__t_1a55bbd274f7b6705ed635217485370a78" kindref="member">max_message_length_seen</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="181"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="structhf__logger__diagnostics__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__logger__diagnostics__t" kindref="compound">hf_logger_diagnostics_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="188" refid="structhf__logger__diagnostics__t_1a50e7c87e64f37a2fbeb55a3bb4b3f9f4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__diagnostics__t_1a50e7c87e64f37a2fbeb55a3bb4b3f9f4" kindref="member">is_initialized</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="189" refid="structhf__logger__diagnostics__t_1a6592e1cfc972ecb2fe31d399efcba081" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__diagnostics__t_1a6592e1cfc972ecb2fe31d399efcba081" kindref="member">is_healthy</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="190" refid="structhf__logger__diagnostics__t_1a05c5d1234a118c2ecfcf0a97d28bbefa" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="structhf__logger__diagnostics__t_1a05c5d1234a118c2ecfcf0a97d28bbefa" kindref="member">last_error</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="191" refid="structhf__logger__diagnostics__t_1aa136df42009e1c7afe40fe7de0e9ac3b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__diagnostics__t_1aa136df42009e1c7afe40fe7de0e9ac3b" kindref="member">last_error_timestamp</ref>;<sp/></highlight></codeline>
+<codeline lineno="192" refid="structhf__logger__diagnostics__t_1aa15ff8088d73ff83e0840bdb251bec0b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__logger__diagnostics__t_1aa15ff8088d73ff83e0840bdb251bec0b" kindref="member">consecutive_errors</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="193" refid="structhf__logger__diagnostics__t_1a17536cd32ffdf2888069b9a5e4504838" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__logger__diagnostics__t_1a17536cd32ffdf2888069b9a5e4504838" kindref="member">error_recovery_count</ref>;<sp/></highlight></codeline>
+<codeline lineno="194" refid="structhf__logger__diagnostics__t_1a91eb53511a5f01511f3fca72237ecce1" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__diagnostics__t_1a91eb53511a5f01511f3fca72237ecce1" kindref="member">uptime_seconds</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="195" refid="structhf__logger__diagnostics__t_1a29db39017ec60f3bbbd5c24249ab8d2c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__logger__diagnostics__t_1a29db39017ec60f3bbbd5c24249ab8d2c" kindref="member">last_health_check</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="196" refid="structhf__logger__diagnostics__t_1a0128d1c2ca591315a3ce99dec9ae647b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__diagnostics__t_1a0128d1c2ca591315a3ce99dec9ae647b" kindref="member">last_error_message</ref>[256];<sp/><sp/></highlight></codeline>
+<codeline lineno="197"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="structhf__log__message__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__log__message__t" kindref="compound">hf_log_message_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="204" refid="structhf__log__message__t_1a69e40af6b21ed062ecc9aaf1cef13841" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/><ref refid="structhf__log__message__t_1a69e40af6b21ed062ecc9aaf1cef13841" kindref="member">level</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="205" refid="structhf__log__message__t_1a6b5fd3140e501bb1ba3439d3f0a7d910" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__log__message__t_1a6b5fd3140e501bb1ba3439d3f0a7d910" kindref="member">tag</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="206" refid="structhf__log__message__t_1a743d4d26ae46e07e604ac5f781bae0c4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__log__message__t_1a743d4d26ae46e07e604ac5f781bae0c4" kindref="member">message</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="207" refid="structhf__log__message__t_1a0bef771ae26113ec182a599404acf4e6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__log__message__t_1a0bef771ae26113ec182a599404acf4e6" kindref="member">file</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="208" refid="structhf__log__message__t_1af359a0928238d210947879eeaf245762" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__log__message__t_1af359a0928238d210947879eeaf245762" kindref="member">line</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="209" refid="structhf__log__message__t_1a73678486868b2d22572af1703d3f8370" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__log__message__t_1a73678486868b2d22572af1703d3f8370" kindref="member">function</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="210" refid="structhf__log__message__t_1adb4c7eef4ccc5c5e5f9a52b426d8bcb6" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="structhf__log__message__t_1adb4c7eef4ccc5c5e5f9a52b426d8bcb6" kindref="member">timestamp</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211" refid="structhf__log__message__t_1a6288896e788bbac7d683396c4d4d08a4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__log__message__t_1a6288896e788bbac7d683396c4d4d08a4" kindref="member">thread_id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="212" refid="structhf__log__message__t_1aab5ee16089b2a088c2ccc99e9703063d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="structhf__log__message__t_1aab5ee16089b2a088c2ccc99e9703063d" kindref="member">message_length</ref>;<sp/></highlight></codeline>
+<codeline lineno="213"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UTILITY<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="BaseLogger_8h_1af6a7ff494bd7bb45f00ec32155d7a479" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="BaseLogger_8h_1af6a7ff494bd7bb45f00ec32155d7a479" kindref="member">HfLoggerErrToString</ref>(<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>err)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(err)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>X(NAME,<sp/>VALUE,<sp/>DESC)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="227"><highlight class="preprocessor"><sp/><sp/>case<sp/>hf_logger_err_t::NAME:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="228"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>return<sp/>DESC;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__logger_1ga96295a40d903d6203369d5fa079590cf" kindref="member">HF_LOGGER_ERR_LIST</ref>(<ref refid="BaseLogger_8h_1a94b225babb1626cee0621f8312eb32d1" kindref="member">X</ref>)</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>X</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1af6a7ff494bd7bb45f00ec32155d7a479" kindref="member">HfLoggerErrToString</ref>(<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177aa2fc621fa173aa97fb2226702d632f5e" kindref="member">hf_logger_err_t::LOGGER_ERR_UNKNOWN</ref>);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="BaseLogger_8h_1accf97c1a21d237bea5365234a70cfad4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="BaseLogger_8h_1accf97c1a21d237bea5365234a70cfad4" kindref="member">HfLogLevelToString</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(level)<sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042af34cbc33c8d3951b72b3faa73a41d6b6" kindref="member">hf_log_level_t::LOG_LEVEL_NONE</ref>:</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;NONE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042abf7b6e7a0366b699e4259a7c5f836114" kindref="member">hf_log_level_t::LOG_LEVEL_ERROR</ref>:</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;ERROR&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a726c7b1e8e76343b4e83fe61261fff7e" kindref="member">hf_log_level_t::LOG_LEVEL_WARN</ref>:</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;WARN&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">hf_log_level_t::LOG_LEVEL_INFO</ref>:</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;INFO&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042acf47268b6930f0f296d7b29b93093019" kindref="member">hf_log_level_t::LOG_LEVEL_DEBUG</ref>:</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;DEBUG&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a9faae2c149317da7ee66128d87a88e5f" kindref="member">hf_log_level_t::LOG_LEVEL_VERBOSE</ref>:</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;VERBOSE&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;UNKNOWN&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="BaseLogger_8h_1a2e58178fc70f86725c1699647c9112c0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="BaseLogger_8h_1a2e58178fc70f86725c1699647c9112c0" kindref="member">HfLogLevelToShortString</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(level)<sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042af34cbc33c8d3951b72b3faa73a41d6b6" kindref="member">hf_log_level_t::LOG_LEVEL_NONE</ref>:</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;N&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042abf7b6e7a0366b699e4259a7c5f836114" kindref="member">hf_log_level_t::LOG_LEVEL_ERROR</ref>:</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;E&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a726c7b1e8e76343b4e83fe61261fff7e" kindref="member">hf_log_level_t::LOG_LEVEL_WARN</ref>:</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;W&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">hf_log_level_t::LOG_LEVEL_INFO</ref>:</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;I&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042acf47268b6930f0f296d7b29b93093019" kindref="member">hf_log_level_t::LOG_LEVEL_DEBUG</ref>:</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;D&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a9faae2c149317da7ee66128d87a88e5f" kindref="member">hf_log_level_t::LOG_LEVEL_VERBOSE</ref>:</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;V&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;?&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288" refid="BaseLogger_8h_1a6cbc8b9f35a2b8c039ca7a00f56cd9c1" refkind="member"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="BaseLogger_8h_1a6cbc8b9f35a2b8c039ca7a00f56cd9c1" kindref="member">HfLoggerGetTimestamp</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="BaseLogger_8h_1a35e36af5332756b4fe8f8f83b5d9eef8" refkind="member"><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="BaseLogger_8h_1a35e36af5332756b4fe8f8f83b5d9eef8" kindref="member">HfLoggerGetThreadId</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONVENIENCE<sp/>MACROS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="BaseLogger_8h_1ac9ca09df36906a8b90c71f3cbc47bf04" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_LOG_ERROR(tag,<sp/>format,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="304"><highlight class="preprocessor"><sp/><sp/>LogWithLocation(hf_log_level_t::LOG_LEVEL_ERROR,<sp/>tag,<sp/>__FILE__,<sp/>__LINE__,<sp/>__FUNCTION__,<sp/>format,<sp/><sp/>\</highlight></codeline>
+<codeline lineno="305"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310" refid="BaseLogger_8h_1a24ade4b9e8406f18d468e8db169a6f50" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_LOG_WARN(tag,<sp/>format,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="311"><highlight class="preprocessor"><sp/><sp/>LogWithLocation(hf_log_level_t::LOG_LEVEL_WARN,<sp/>tag,<sp/>__FILE__,<sp/>__LINE__,<sp/>__FUNCTION__,<sp/>format,<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="312"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317" refid="BaseLogger_8h_1a8cf86923ed907d05d9d5499b38498137" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_LOG_INFO(tag,<sp/>format,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="318"><highlight class="preprocessor"><sp/><sp/>LogWithLocation(hf_log_level_t::LOG_LEVEL_INFO,<sp/>tag,<sp/>__FILE__,<sp/>__LINE__,<sp/>__FUNCTION__,<sp/>format,<sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="319"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324" refid="BaseLogger_8h_1ace7494395ae88006b8994f7ac71a1ba6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_LOG_DEBUG(tag,<sp/>format,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="325"><highlight class="preprocessor"><sp/><sp/>LogWithLocation(hf_log_level_t::LOG_LEVEL_DEBUG,<sp/>tag,<sp/>__FILE__,<sp/>__LINE__,<sp/>__FUNCTION__,<sp/>format,<sp/><sp/>\</highlight></codeline>
+<codeline lineno="326"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331" refid="BaseLogger_8h_1aa665446dc246b416b74bebb7428bcbb1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_LOG_VERBOSE(tag,<sp/>format,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="332"><highlight class="preprocessor"><sp/><sp/>LogWithLocation(hf_log_level_t::LOG_LEVEL_VERBOSE,<sp/>tag,<sp/>__FILE__,<sp/>__LINE__,<sp/>__FUNCTION__,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="333"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>format,<sp/>##__VA_ARGS__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338" refid="BaseLogger_8h_1a17b3ea447b8b3997207e45b43625ce8d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_LOG_IF(condition,<sp/>level,<sp/>tag,<sp/>format,<sp/>...)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="339"><highlight class="preprocessor"><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="340"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>if<sp/>(condition)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="341"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/>LogWithLocation(level,<sp/>tag,<sp/>__FILE__,<sp/>__LINE__,<sp/>__FUNCTION__,<sp/>format,<sp/>##__VA_ARGS__);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="342"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="343"><highlight class="preprocessor"><sp/><sp/>}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359" refid="classBaseLogger" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref><sp/>{</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="364" refid="classBaseLogger_1aaf8957e6554581ceb22692563f0925e9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classBaseLogger_1aaf8957e6554581ceb22692563f0925e9" kindref="member">~BaseLogger</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>INITIALIZATION<sp/>AND<sp/>CONFIGURATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375" refid="classBaseLogger_1ad0406cdacbade55f2911bf717e35c22c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1ad0406cdacbade55f2911bf717e35c22c" kindref="member">Initialize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381" refid="classBaseLogger_1a5c4e83d89a9039e336dfb9f13d2be9a5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a5c4e83d89a9039e336dfb9f13d2be9a5" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387" refid="classBaseLogger_1a9f14e4754c3840c59106db0670e90fca" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseLogger_1a9f14e4754c3840c59106db0670e90fca" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393" refid="classBaseLogger_1a14f30b5cd0922487a49b77ec9833a0bc" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseLogger_1a14f30b5cd0922487a49b77ec9833a0bc" kindref="member">EnsureInitialized</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401" refid="classBaseLogger_1a960f90f79007791d7129bd22be151a57" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a960f90f79007791d7129bd22be151a57" kindref="member">SetLogLevel</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="409" refid="classBaseLogger_1a7bab272b2ae8e5bf4a2d0c0c8a9ea203" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a7bab272b2ae8e5bf4a2d0c0c8a9ea203" kindref="member">GetLogLevel</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>&amp;<sp/>level)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>LOGGING<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="422" refid="classBaseLogger_1a4075d445b4199e72e9a0c09ba438c076" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a4075d445b4199e72e9a0c09ba438c076" kindref="member">Error</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"></highlight></codeline>
+<codeline lineno="431" refid="classBaseLogger_1ac1492294d1cc35697eaf02d6b617cce8" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1ac1492294d1cc35697eaf02d6b617cce8" kindref="member">Warn</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"></highlight></codeline>
+<codeline lineno="440" refid="classBaseLogger_1a79975dd958a7f1b10570474deb42637b" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a79975dd958a7f1b10570474deb42637b" kindref="member">Info</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="449" refid="classBaseLogger_1a15474a07a615cd39de6c2884b1035808" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a15474a07a615cd39de6c2884b1035808" kindref="member">Debug</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight></codeline>
+<codeline lineno="458" refid="classBaseLogger_1a7c108881b2bda1a6b938f0aebbe1b264" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a7c108881b2bda1a6b938f0aebbe1b264" kindref="member">Verbose</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight></codeline>
+<codeline lineno="468" refid="classBaseLogger_1ad0549df66e58b6726f8dee0792f73a45" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1ad0549df66e58b6726f8dee0792f73a45" kindref="member">Log</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight></codeline>
+<codeline lineno="479" refid="classBaseLogger_1a9e7c920256b418cf70d092ec5ad606cf" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a9e7c920256b418cf70d092ec5ad606cf" kindref="member">LogV</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_list<sp/>args)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"></highlight></codeline>
+<codeline lineno="493" refid="classBaseLogger_1a4c22f92b913379d3407426d7e4ce19dc" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a4c22f92b913379d3407426d7e4ce19dc" kindref="member">LogWithLocation</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>file,</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>line,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>function,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...)<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="497"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>UTILITY<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="500"><highlight class="normal"></highlight></codeline>
+<codeline lineno="505" refid="classBaseLogger_1a37a29d6d49c0a3ec7d5d6163c23aef39" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a37a29d6d49c0a3ec7d5d6163c23aef39" kindref="member">Flush</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="506"><highlight class="normal"></highlight></codeline>
+<codeline lineno="513" refid="classBaseLogger_1afb83c8e24e07a9bfb0874bf4c65e71e6" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseLogger_1afb83c8e24e07a9bfb0874bf4c65e71e6" kindref="member">IsLevelEnabled</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"></highlight></codeline>
+<codeline lineno="520" refid="classBaseLogger_1a3b030cfdc55beea0afd1f80b94bdc90f" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a3b030cfdc55beea0afd1f80b94bdc90f" kindref="member">GetStatistics</ref>(<ref refid="structhf__logger__statistics__t" kindref="compound">hf_logger_statistics_t</ref>&amp;<sp/>statistics)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"></highlight></codeline>
+<codeline lineno="527" refid="classBaseLogger_1ae7b732b376b7066214dec2c741dc9e1e" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1ae7b732b376b7066214dec2c741dc9e1e" kindref="member">GetDiagnostics</ref>(<ref refid="structhf__logger__diagnostics__t" kindref="compound">hf_logger_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="528"><highlight class="normal"></highlight></codeline>
+<codeline lineno="533" refid="classBaseLogger_1a3cf9119158fe0f18d7c04aec03c6449b" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a3cf9119158fe0f18d7c04aec03c6449b" kindref="member">ResetStatistics</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"></highlight></codeline>
+<codeline lineno="539" refid="classBaseLogger_1a24d1d4542ce03818617a6ca47c5cadf9" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a24d1d4542ce03818617a6ca47c5cadf9" kindref="member">ResetDiagnostics</ref>()<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="540"><highlight class="normal"></highlight></codeline>
+<codeline lineno="545" refid="classBaseLogger_1a5ada4c120460e66a3aa95d0d9d1f2688" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseLogger_1a5ada4c120460e66a3aa95d0d9d1f2688" kindref="member">IsHealthy</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"></highlight></codeline>
+<codeline lineno="551" refid="classBaseLogger_1a1065e8155fd78171bba853d64d3deeee" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a1065e8155fd78171bba853d64d3deeee" kindref="member">GetLastError</ref>()<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="552"><highlight class="normal"></highlight></codeline>
+<codeline lineno="559" refid="classBaseLogger_1ae1ce782666e43f19b3b4e59278398880" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1ae1ce782666e43f19b3b4e59278398880" kindref="member">GetLastErrorMessage</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message,</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>max_length)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="561"><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="563"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>DIAGNOSTIC<sp/>PRINTING<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="564"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="565"><highlight class="normal"></highlight></codeline>
+<codeline lineno="572" refid="classBaseLogger_1a7c7b4dd7579edbf83e3f3abe51d9605d" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a7c7b4dd7579edbf83e3f3abe51d9605d" kindref="member">PrintStatistics</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed<sp/>=<sp/>true)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"></highlight></codeline>
+<codeline lineno="581" refid="classBaseLogger_1abf400ef24cd83257f6c3ca6e5f905069" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1abf400ef24cd83257f6c3ca6e5f905069" kindref="member">PrintDiagnostics</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed<sp/>=<sp/>true)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"></highlight></codeline>
+<codeline lineno="590" refid="classBaseLogger_1a0fb33baa7231cd20d8ada51eb144e47c" refkind="member"><highlight class="normal"><sp/><sp/>virtual<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classBaseLogger_1a0fb33baa7231cd20d8ada51eb144e47c" kindref="member">PrintStatus</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="591"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed<sp/>=<sp/>true)<sp/>const<sp/>noexcept<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="592"><highlight class="normal"></highlight></codeline>
+<codeline lineno="593"><highlight class="normal">protected:</highlight></codeline>
+<codeline lineno="597" refid="classBaseLogger_1ad3174118bec359f399b89a7ca0c18881" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>()<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="598"><highlight class="normal"></highlight></codeline>
+<codeline lineno="602" refid="classBaseLogger_1a9bc13a6a2e51b915e049bef19458ab14" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>(const<sp/><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="603"><highlight class="normal"></highlight></codeline>
+<codeline lineno="607" refid="classBaseLogger_1a527c6cc4476270922f2a29b3714f95e2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>&amp;<sp/>operator=(const<sp/><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"></highlight></codeline>
+<codeline lineno="612" refid="classBaseLogger_1ad8074912949ec914c7ea50733e51f720" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>(<ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>&amp;&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="613"><highlight class="normal"></highlight></codeline>
+<codeline lineno="617" refid="classBaseLogger_1a576bbb9fc3ac85c96779a3cd041ecb04" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>&amp;<sp/>operator=(<ref refid="classBaseLogger" kindref="compound">BaseLogger</ref>&amp;&amp;)<sp/>=<sp/>delete;</highlight></codeline>
+<codeline lineno="618"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/base/BaseLogger.h"/>
+  </compounddef>
+</doxygen>

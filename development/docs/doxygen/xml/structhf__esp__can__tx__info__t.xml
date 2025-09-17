@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__esp__can__tx__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_esp_can_tx_info_t</compoundname>
+    <includes refid="EspCan_8h" local="no">EspCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__esp__can__tx__info__t_1a9adf7b89eb91027779ad3837efc71695" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__can__message__t" kindref="compound">hf_can_message_t</ref></type>
+        <definition>hf_can_message_t hf_esp_can_tx_info_t::message</definition>
+        <argsstring></argsstring>
+        <name>message</name>
+        <qualifiedname>hf_esp_can_tx_info_t::message</qualifiedname>
+        <briefdescription>
+<para>Message that was transmitted. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="165" column="20" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__tx__info__t_1a8cc21dcb52667cae68c81c781d46a0c2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_esp_can_tx_info_t::success</definition>
+        <argsstring></argsstring>
+        <name>success</name>
+        <qualifiedname>hf_esp_can_tx_info_t::success</qualifiedname>
+        <briefdescription>
+<para>Transmission success status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="166" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__tx__info__t_1a3c647fd808e471906496542390b24dbb" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hf_esp_can_tx_info_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_esp_can_tx_info_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Transmission timestamp in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="167" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="167" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Transmission completion information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>hf_can_message_t</label>
+        <link refid="structhf__can__message__t"/>
+      </node>
+      <node id="1">
+        <label>hf_esp_can_tx_info_t</label>
+        <link refid="structhf__esp__can__tx__info__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>message</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspCan.h" line="164" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="164" bodyend="168"/>
+    <listofallmembers>
+      <member refid="structhf__esp__can__tx__info__t_1a9adf7b89eb91027779ad3837efc71695" prot="public" virt="non-virtual"><scope>hf_esp_can_tx_info_t</scope><name>message</name></member>
+      <member refid="structhf__esp__can__tx__info__t_1a8cc21dcb52667cae68c81c781d46a0c2" prot="public" virt="non-virtual"><scope>hf_esp_can_tx_info_t</scope><name>success</name></member>
+      <member refid="structhf__esp__can__tx__info__t_1a3c647fd808e471906496542390b24dbb" prot="public" virt="non-virtual"><scope>hf_esp_can_tx_info_t</scope><name>timestamp_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

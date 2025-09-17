@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pio__channel__status__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pio_channel_status_t</compoundname>
+    <includes refid="BasePio_8h" local="no">BasePio.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pio__channel__status__t_1a8847fd7a4c69e2691d967f589af39bc9" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_channel_status_t::is_initialized</definition>
+        <argsstring></argsstring>
+        <name>is_initialized</name>
+        <qualifiedname>hf_pio_channel_status_t::is_initialized</qualifiedname>
+        <briefdescription>
+<para>Channel is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="169" column="8" bodyfile="inc/base/BasePio.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__status__t_1a41b5052180a3c2b03e429375b4c7418a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_channel_status_t::is_busy</definition>
+        <argsstring></argsstring>
+        <name>is_busy</name>
+        <qualifiedname>hf_pio_channel_status_t::is_busy</qualifiedname>
+        <briefdescription>
+<para>Channel is currently busy. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="170" column="8" bodyfile="inc/base/BasePio.h" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__status__t_1a72cc1ef228af64062151af537d7d110c" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_channel_status_t::is_transmitting</definition>
+        <argsstring></argsstring>
+        <name>is_transmitting</name>
+        <qualifiedname>hf_pio_channel_status_t::is_transmitting</qualifiedname>
+        <briefdescription>
+<para>Channel is transmitting. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="171" column="8" bodyfile="inc/base/BasePio.h" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__status__t_1a11aa619417eaaf4a277ff070bbbdaff2" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pio_channel_status_t::is_receiving</definition>
+        <argsstring></argsstring>
+        <name>is_receiving</name>
+        <qualifiedname>hf_pio_channel_status_t::is_receiving</qualifiedname>
+        <briefdescription>
+<para>Channel is receiving. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="172" column="8" bodyfile="inc/base/BasePio.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__status__t_1a52895a691261feb1ebeaeed4f6725b11" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_pio_channel_status_t::symbols_queued</definition>
+        <argsstring></argsstring>
+        <name>symbols_queued</name>
+        <qualifiedname>hf_pio_channel_status_t::symbols_queued</qualifiedname>
+        <briefdescription>
+<para>Number of symbols in queue. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="173" column="10" bodyfile="inc/base/BasePio.h" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__status__t_1aaa15caeaf32a5138a6f48f98d1c932db" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t hf_pio_channel_status_t::symbols_processed</definition>
+        <argsstring></argsstring>
+        <name>symbols_processed</name>
+        <qualifiedname>hf_pio_channel_status_t::symbols_processed</qualifiedname>
+        <briefdescription>
+<para>Number of symbols processed. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="174" column="10" bodyfile="inc/base/BasePio.h" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__status__t_1ac5e4e9c65599d6f8ba0fe33b07524316" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t hf_pio_channel_status_t::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>hf_pio_channel_status_t::last_error</qualifiedname>
+        <briefdescription>
+<para>Last error that occurred. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="175" column="16" bodyfile="inc/base/BasePio.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pio__channel__status__t_1a219cbc4ed703a89c713917cd65bd9d94" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_pio_channel_status_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_pio_channel_status_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>Timestamp of last operation. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePio.h" line="176" column="12" bodyfile="inc/base/BasePio.h" bodystart="176" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PIO channel status information. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BasePio.h" line="168" column="1" bodyfile="inc/base/BasePio.h" bodystart="168" bodyend="177"/>
+    <listofallmembers>
+      <member refid="structhf__pio__channel__status__t_1a41b5052180a3c2b03e429375b4c7418a" prot="public" virt="non-virtual"><scope>hf_pio_channel_status_t</scope><name>is_busy</name></member>
+      <member refid="structhf__pio__channel__status__t_1a8847fd7a4c69e2691d967f589af39bc9" prot="public" virt="non-virtual"><scope>hf_pio_channel_status_t</scope><name>is_initialized</name></member>
+      <member refid="structhf__pio__channel__status__t_1a11aa619417eaaf4a277ff070bbbdaff2" prot="public" virt="non-virtual"><scope>hf_pio_channel_status_t</scope><name>is_receiving</name></member>
+      <member refid="structhf__pio__channel__status__t_1a72cc1ef228af64062151af537d7d110c" prot="public" virt="non-virtual"><scope>hf_pio_channel_status_t</scope><name>is_transmitting</name></member>
+      <member refid="structhf__pio__channel__status__t_1ac5e4e9c65599d6f8ba0fe33b07524316" prot="public" virt="non-virtual"><scope>hf_pio_channel_status_t</scope><name>last_error</name></member>
+      <member refid="structhf__pio__channel__status__t_1aaa15caeaf32a5138a6f48f98d1c932db" prot="public" virt="non-virtual"><scope>hf_pio_channel_status_t</scope><name>symbols_processed</name></member>
+      <member refid="structhf__pio__channel__status__t_1a52895a691261feb1ebeaeed4f6725b11" prot="public" virt="non-virtual"><scope>hf_pio_channel_status_t</scope><name>symbols_queued</name></member>
+      <member refid="structhf__pio__channel__status__t_1a219cbc4ed703a89c713917cd65bd9d94" prot="public" virt="non-virtual"><scope>hf_pio_channel_status_t</scope><name>timestamp_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

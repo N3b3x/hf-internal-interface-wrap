@@ -1,0 +1,2089 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(4)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(4) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(4) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(4) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🔗 BaseI2c | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🔗 BaseI2c" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Inter-Integrated Circuit base class for I2C bus communication" />
+<meta property="og:description" content="Inter-Integrated Circuit base class for I2C bus communication" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseI2c/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseI2c/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🔗 BaseI2c" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Inter-Integrated Circuit base class for I2C bus communication","headline":"🔗 BaseI2c","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseI2c/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/">📋 API Reference</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🔗 BaseI2c</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="-basei2c-api-reference">
+  
+  
+    <a href="#-basei2c-api-reference" class="anchor-heading" aria-labelledby="-basei2c-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚌 BaseI2c API Reference
+  
+  
+</h1>
+    
+<h2 id="-overview">
+  
+  
+    <a href="#-overview" class="anchor-heading" aria-labelledby="-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🌟 Overview
+  
+  
+</h2>
+    
+
+<p><code class="language-plaintext highlighter-rouge">BaseI2c</code> is the abstract base class for I2C (Inter-Integrated Circuit) device communication in the
+HardFOC system.
+It provides a unified interface for communicating with sensors, displays, memory devices,
+and other I2C peripherals with comprehensive error handling and device management.</p>
+<h2 id="-features">
+  
+  
+    <a href="#-features" class="anchor-heading" aria-labelledby="-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✨ Features
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>🎯 Device-Centric Design</strong> - Each instance represents a single I2C device with pre-configured address</li>
+  <li><strong>🚀 Multi-Speed Support</strong> - Standard (100kHz), Fast (400kHz), and Fast+ (1MHz) modes</li>
+  <li><strong>📡 Register Operations</strong> - Convenient read/write register methods for easy sensor access</li>
+  <li><strong>🔍 Device Discovery</strong> - Built-in device scanning and presence detection</li>
+  <li><strong>⏰ Configurable Timeouts</strong> - Per-operation timeout control for reliable communication</li>
+  <li><strong>🛡️ Error Recovery</strong> - Automatic bus recovery and error handling mechanisms</li>
+  <li><strong>📊 Performance Monitoring</strong> - Comprehensive statistics and bus health diagnostics</li>
+  <li><strong>🔧 Lazy Initialization</strong> - Resources allocated only when needed</li>
+</ul>
+<h2 id="-header-file">
+  
+  
+    <a href="#-header-file" class="anchor-heading" aria-labelledby="-header-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📁 Header File
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/base/BaseI2c.h"</span><span class="cp">
+</span></pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="-type-definitions">
+  
+  
+    <a href="#-type-definitions" class="anchor-heading" aria-labelledby="-type-definitions"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 Type Definitions
+  
+  
+</h2>
+    
+<h3 id="-error-codes">
+  
+  
+    <a href="#-error-codes" class="anchor-heading" aria-labelledby="-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚨 Error Codes
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="k">enum</span> <span class="k">class</span> <span class="nc">hf_i2c_err_t</span> <span class="o">:</span> <span class="n">hf_u8_t</span> <span class="p">{</span>
+    <span class="n">I2C_SUCCESS</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>                    <span class="c1">// ✅ Success</span>
+    <span class="n">I2C_ERR_FAILURE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>                <span class="c1">// ❌ General failure</span>
+    <span class="n">I2C_ERR_NOT_INITIALIZED</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>        <span class="c1">// ⚠️ Not initialized</span>
+    <span class="n">I2C_ERR_ALREADY_INITIALIZED</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>    <span class="c1">// ⚠️ Already initialized</span>
+    <span class="n">I2C_ERR_INVALID_PARAMETER</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>      <span class="c1">// 🚫 Invalid parameter</span>
+    <span class="n">I2C_ERR_NULL_POINTER</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>           <span class="c1">// 🚫 Null pointer</span>
+    <span class="n">I2C_ERR_OUT_OF_MEMORY</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>          <span class="c1">// 💾 Out of memory</span>
+    <span class="n">I2C_ERR_BUS_BUSY</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>               <span class="c1">// 🔄 Bus busy</span>
+    <span class="n">I2C_ERR_BUS_ERROR</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>              <span class="c1">// 💥 Bus error</span>
+    <span class="n">I2C_ERR_BUS_ARBITRATION_LOST</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>   <span class="c1">// ⚔️ Arbitration lost</span>
+    <span class="n">I2C_ERR_BUS_NOT_AVAILABLE</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>     <span class="c1">// 🚫 Bus not available</span>
+    <span class="n">I2C_ERR_BUS_TIMEOUT</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>           <span class="c1">// ⏰ Bus timeout</span>
+    <span class="n">I2C_ERR_DEVICE_NOT_FOUND</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>      <span class="c1">// 🔍 Device not found</span>
+    <span class="n">I2C_ERR_DEVICE_NACK</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>           <span class="c1">// 🚫 Device NACK</span>
+    <span class="n">I2C_ERR_DEVICE_NOT_RESPONDING</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span> <span class="c1">// 🔇 Device not responding</span>
+    <span class="n">I2C_ERR_INVALID_ADDRESS</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>       <span class="c1">// 🏠 Invalid device address</span>
+    <span class="n">I2C_ERR_DATA_TOO_LONG</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>         <span class="c1">// 📏 Data too long</span>
+    <span class="n">I2C_ERR_READ_FAILURE</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>          <span class="c1">// 📖 Read failure</span>
+    <span class="n">I2C_ERR_WRITE_FAILURE</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span>         <span class="c1">// ✍️ Write failure</span>
+    <span class="n">I2C_ERR_TIMEOUT</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span>               <span class="c1">// ⏰ Operation timeout</span>
+    <span class="n">I2C_ERR_HARDWARE_FAULT</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>        <span class="c1">// 💥 Hardware fault</span>
+    <span class="n">I2C_ERR_COMMUNICATION_FAILURE</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span> <span class="c1">// 📡 Communication failure</span>
+    <span class="n">I2C_ERR_VOLTAGE_OUT_OF_RANGE</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span>  <span class="c1">// ⚡ Voltage out of range</span>
+    <span class="n">I2C_ERR_CLOCK_STRETCH_TIMEOUT</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span> <span class="c1">// ⏱️ Clock stretch timeout</span>
+    <span class="n">I2C_ERR_INVALID_CONFIGURATION</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span> <span class="c1">// ⚙️ Invalid configuration</span>
+    <span class="n">I2C_ERR_UNSUPPORTED_OPERATION</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="c1">// 🚫 Unsupported operation</span>
+    <span class="n">I2C_ERR_INVALID_CLOCK_SPEED</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>   <span class="c1">// 📻 Invalid clock speed</span>
+    <span class="n">I2C_ERR_PIN_CONFIGURATION_ERROR</span> <span class="o">=</span> <span class="mi">27</span><span class="p">,</span> <span class="c1">// 🔌 Pin configuration error</span>
+    <span class="n">I2C_ERR_SYSTEM_ERROR</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span>          <span class="c1">// 💻 System error</span>
+    <span class="n">I2C_ERR_PERMISSION_DENIED</span> <span class="o">=</span> <span class="mi">29</span><span class="p">,</span>     <span class="c1">// 🔒 Permission denied</span>
+    <span class="n">I2C_ERR_OPERATION_ABORTED</span> <span class="o">=</span> <span class="mi">30</span>      <span class="c1">// 🛑 Operation aborted</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-statistics-structure">
+  
+  
+    <a href="#-statistics-structure" class="anchor-heading" aria-labelledby="-statistics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 Statistics Structure
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_i2c_statistics_t</span> <span class="p">{</span>
+    <span class="n">hf_u32_t</span> <span class="n">total_transactions</span><span class="p">;</span>        <span class="c1">// 🔄 Total I2C transactions</span>
+    <span class="n">hf_u32_t</span> <span class="n">successful_transactions</span><span class="p">;</span>   <span class="c1">// ✅ Successful transactions</span>
+    <span class="n">hf_u32_t</span> <span class="n">failed_transactions</span><span class="p">;</span>       <span class="c1">// ❌ Failed transactions</span>
+    <span class="n">hf_u32_t</span> <span class="n">timeout_count</span><span class="p">;</span>             <span class="c1">// ⏰ Timeout occurrences</span>
+    <span class="n">hf_u32_t</span> <span class="n">nack_count</span><span class="p">;</span>                <span class="c1">// 🚫 NACK count</span>
+    <span class="n">hf_u32_t</span> <span class="n">arbitration_lost_count</span><span class="p">;</span>    <span class="c1">// ⚔️ Arbitration lost count</span>
+    <span class="n">hf_u32_t</span> <span class="n">bus_error_count</span><span class="p">;</span>           <span class="c1">// 💥 Bus error count</span>
+    <span class="n">hf_u32_t</span> <span class="n">bytes_transmitted</span><span class="p">;</span>         <span class="c1">// 📤 Total bytes transmitted</span>
+    <span class="n">hf_u32_t</span> <span class="n">bytes_received</span><span class="p">;</span>            <span class="c1">// 📥 Total bytes received</span>
+    <span class="n">hf_u32_t</span> <span class="n">average_transaction_time_us</span><span class="p">;</span> <span class="c1">// ⏱️ Average transaction time</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-diagnostics-structure">
+  
+  
+    <a href="#-diagnostics-structure" class="anchor-heading" aria-labelledby="-diagnostics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🩺 Diagnostics Structure
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_i2c_diagnostics_t</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">bus_healthy</span><span class="p">;</span>                   <span class="c1">// 🟢 Overall bus health</span>
+    <span class="kt">bool</span> <span class="n">sda_line_state</span><span class="p">;</span>                <span class="c1">// 📡 SDA line state (true = high)</span>
+    <span class="kt">bool</span> <span class="n">scl_line_state</span><span class="p">;</span>                <span class="c1">// 🕐 SCL line state (true = high)</span>
+    <span class="kt">bool</span> <span class="n">bus_locked</span><span class="p">;</span>                    <span class="c1">// 🔒 Bus lock status</span>
+    <span class="n">hf_i2c_err_t</span> <span class="n">last_error_code</span><span class="p">;</span>       <span class="c1">// ⚠️ Last error code</span>
+    <span class="n">hf_u32_t</span> <span class="n">last_error_timestamp_us</span><span class="p">;</span>   <span class="c1">// 🕐 Last error timestamp</span>
+    <span class="n">hf_u32_t</span> <span class="n">consecutive_errors</span><span class="p">;</span>        <span class="c1">// 📊 Consecutive error count</span>
+    <span class="n">hf_u32_t</span> <span class="n">error_recovery_attempts</span><span class="p">;</span>   <span class="c1">// 🔄 Error recovery attempts</span>
+    <span class="kt">float</span> <span class="n">bus_utilization_percent</span><span class="p">;</span>      <span class="c1">// 📈 Bus utilization percentage</span>
+    <span class="n">hf_u32_t</span> <span class="n">average_response_time_us</span><span class="p">;</span>  <span class="c1">// ⏱️ Average device response time</span>
+    <span class="n">hf_u32_t</span> <span class="n">clock_stretching_events</span><span class="p">;</span>   <span class="c1">// 🕐 Clock stretching events</span>
+    <span class="n">hf_u32_t</span> <span class="n">active_device_count</span><span class="p">;</span>       <span class="c1">// 📟 Active device count</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="️-class-interface">
+  
+  
+    <a href="#️-class-interface" class="anchor-heading" aria-labelledby="️-class-interface"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ Class Interface
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">BaseI2c</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="c1">// 🔧 Lifecycle management</span>
+    <span class="k">virtual</span> <span class="o">~</span><span class="n">BaseI2c</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="k">default</span><span class="p">;</span>
+    <span class="n">BaseI2c</span><span class="p">(</span><span class="k">const</span> <span class="n">BaseI2c</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+    <span class="n">BaseI2c</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="k">const</span> <span class="n">BaseI2c</span><span class="o">&amp;</span><span class="p">)</span> <span class="o">=</span> <span class="k">delete</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">EnsureInitialized</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">EnsureDeinitialized</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="c1">// 🚀 Core operations (pure virtual)</span>
+    <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">Initialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">Deinitialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="c1">// 📡 Basic I2C operations</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">Write</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">length</span><span class="p">,</span> 
+                              <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">Read</span><span class="p">(</span><span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">length</span><span class="p">,</span> 
+                             <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">WriteRead</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">write_data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">write_length</span><span class="p">,</span>
+                                  <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">read_data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">read_length</span><span class="p">,</span>
+                                  <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 📋 Register operations (convenience methods)</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">WriteRegister</span><span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">register_address</span><span class="p">,</span> <span class="n">hf_u8_t</span> <span class="n">value</span><span class="p">,</span>
+                                      <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">ReadRegister</span><span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">register_address</span><span class="p">,</span> <span class="n">hf_u8_t</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">,</span>
+                                     <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">WriteRegisters</span><span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">register_address</span><span class="p">,</span> <span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">length</span><span class="p">,</span>
+                                       <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">ReadRegisters</span><span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">register_address</span><span class="p">,</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">length</span><span class="p">,</span>
+                                      <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 🔍 Device information and management</span>
+    <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsDevicePresent</span><span class="p">(</span><span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_u8_t</span> <span class="n">GetDeviceAddress</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_frequency_hz_t</span> <span class="n">GetClockSpeed</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">SetClockSpeed</span><span class="p">(</span><span class="n">hf_frequency_hz_t</span> <span class="n">clock_speed_hz</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="c1">// 📊 Diagnostics and monitoring</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">GetStatistics</span><span class="p">(</span><span class="n">hf_i2c_statistics_t</span><span class="o">&amp;</span> <span class="n">statistics</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">GetDiagnostics</span><span class="p">(</span><span class="n">hf_i2c_diagnostics_t</span><span class="o">&amp;</span> <span class="n">diagnostics</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">ResetStatistics</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">virtual</span> <span class="n">hf_i2c_err_t</span> <span class="n">ResetDiagnostics</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="-core-methods">
+  
+  
+    <a href="#-core-methods" class="anchor-heading" aria-labelledby="-core-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 Core Methods
+  
+  
+</h2>
+    
+<h3 id="-initialization">
+  
+  
+    <a href="#-initialization" class="anchor-heading" aria-labelledby="-initialization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 Initialization
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="n">EnsureInitialized</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> 🚀 Lazy initialization - automatically initializes I2C if not already done<br />
+<strong>Returns:</strong> <code class="language-plaintext highlighter-rouge">true</code> if successful, <code class="language-plaintext highlighter-rouge">false</code> on failure<br />
+<strong>Usage:</strong> Call before any I2C operations</p>
+<h3 id="-basic-communication">
+  
+  
+    <a href="#-basic-communication" class="anchor-heading" aria-labelledby="-basic-communication"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📡 Basic Communication
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="n">hf_i2c_err_t</span> <span class="n">Write</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">length</span><span class="p">,</span> 
+                  <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_i2c_err_t</span> <span class="n">Read</span><span class="p">(</span><span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">length</span><span class="p">,</span> 
+                 <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_i2c_err_t</span> <span class="n">WriteRead</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">write_data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">write_length</span><span class="p">,</span>
+                      <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">read_data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">read_length</span><span class="p">,</span>
+                      <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> 📤📥 Basic I2C read/write operations<br />
+<strong>Parameters:</strong> Data buffers, lengths, and optional timeout<br />
+<strong>Returns:</strong> Error code indicating success or failure</p>
+<h3 id="-register-operations">
+  
+  
+    <a href="#-register-operations" class="anchor-heading" aria-labelledby="-register-operations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📋 Register Operations
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="n">hf_i2c_err_t</span> <span class="n">WriteRegister</span><span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">register_address</span><span class="p">,</span> <span class="n">hf_u8_t</span> <span class="n">value</span><span class="p">,</span>
+                          <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_i2c_err_t</span> <span class="n">ReadRegister</span><span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">register_address</span><span class="p">,</span> <span class="n">hf_u8_t</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">,</span>
+                         <span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> 📋 Convenient register read/write for sensor devices<br />
+<strong>Parameters:</strong> Register address, data value, optional timeout<br />
+<strong>Returns:</strong> Error code indicating success or failure</p>
+<h3 id="-device-management">
+  
+  
+    <a href="#-device-management" class="anchor-heading" aria-labelledby="-device-management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔍 Device Management
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="kt">bool</span> <span class="n">IsDevicePresent</span><span class="p">(</span><span class="n">hf_timeout_ms_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="n">HF_TIMEOUT_DEFAULT_MS</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_u8_t</span> <span class="n">GetDeviceAddress</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="n">hf_frequency_hz_t</span> <span class="n">GetClockSpeed</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<p><strong>Purpose:</strong> 🔍 Device detection and configuration query<br />
+<strong>Returns:</strong> Device presence, address, or clock speed information</p>
+<h2 id="-usage-examples">
+  
+  
+    <a href="#-usage-examples" class="anchor-heading" aria-labelledby="-usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 💡 Usage Examples
+  
+  
+</h2>
+    
+<h3 id="️-temperature-sensor-lm75a">
+  
+  
+    <a href="#️-temperature-sensor-lm75a" class="anchor-heading" aria-labelledby="️-temperature-sensor-lm75a"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🌡️ Temperature Sensor (LM75A)
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/mcu/esp32/EspI2c.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">LM75ATemperatureSensor</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspI2c</span> <span class="n">sensor</span><span class="o">*</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">LM75A_ADDRESS</span> <span class="o">=</span> <span class="mh">0x48</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">TEMP_REGISTER</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">CONFIG_REGISTER</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">LM75ATemperatureSensor</span><span class="p">()</span> <span class="o">:</span> <span class="n">sensor</span><span class="o">*</span><span class="p">(</span><span class="n">I2C_NUM_0</span><span class="p">,</span> <span class="n">LM75A_ADDRESS</span><span class="p">,</span> <span class="mi">400000</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 🚀 Initialize I2C communication</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sensor</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize LM75A I2C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 🔍 Check if device is present</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sensor</span><span class="o">*</span><span class="p">.</span><span class="n">IsDevicePresent</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ LM75A not found at address 0x%02X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">LM75A_ADDRESS</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// ⚙️ Configure sensor for normal operation</span>
+        <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">*</span><span class="p">.</span><span class="n">WriteRegister</span><span class="p">(</span><span class="n">CONFIG_REGISTER</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to configure LM75A: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ LM75A temperature sensor initialized</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">float</span> <span class="n">read_temperature</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 📖 Read temperature register (2 bytes)</span>
+        <span class="n">hf_u8_t</span> <span class="n">temp_data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">*</span><span class="p">.</span><span class="n">ReadRegisters</span><span class="p">(</span><span class="n">TEMP_REGISTER</span><span class="p">,</span> <span class="n">temp_data</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to read temperature: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mf">999.0</span><span class="n">f</span><span class="p">;</span>  <span class="c1">// Error value</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 🧮 Convert raw data to temperature (LM75A format: 9-bit, 0.5°C resolution)</span>
+        <span class="n">hf_i16_t</span> <span class="n">raw_temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">temp_data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="n">raw_temp</span> <span class="o">&gt;&gt;=</span> <span class="mi">7</span><span class="p">;</span>  <span class="c1">// Shift to get 9-bit value</span>
+        
+        <span class="kt">float</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">raw_temp</span> <span class="o">*</span> <span class="mf">0.5</span><span class="n">f</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🌡️ Temperature: %.1f°C</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">temperature</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">temperature</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">is_connected</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">sensor</span><span class="o">*</span><span class="p">.</span><span class="n">IsDevicePresent</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>  <span class="c1">// 100ms timeout</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-oled-display-ssd1306">
+  
+  
+    <a href="#-oled-display-ssd1306" class="anchor-heading" aria-labelledby="-oled-display-ssd1306"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📟 OLED Display (SSD1306)
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">SSD1306Display</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspI2c</span> <span class="n">display</span><span class="o">*</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">SSD1306_ADDRESS</span> <span class="o">=</span> <span class="mh">0x3C</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">COMMAND_MODE</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">DATA_MODE</span> <span class="o">=</span> <span class="mh">0x40</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">SSD1306Display</span><span class="p">()</span> <span class="o">:</span> <span class="n">display</span><span class="o">*</span><span class="p">(</span><span class="n">I2C_NUM_0</span><span class="p">,</span> <span class="n">SSD1306_ADDRESS</span><span class="p">,</span> <span class="mi">400000</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 🚀 Initialize display I2C</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">display</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize SSD1306 I2C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 🔍 Check if display is connected</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">display</span><span class="o">*</span><span class="p">.</span><span class="n">IsDevicePresent</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ SSD1306 not found at address 0x%02X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">SSD1306_ADDRESS</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 🎨 Initialize display with command sequence</span>
+        <span class="k">const</span> <span class="n">hf_u8_t</span> <span class="n">init_commands</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">COMMAND_MODE</span><span class="p">,</span>
+            <span class="mh">0xAE</span><span class="p">,</span>  <span class="c1">// Display OFF</span>
+            <span class="mh">0x20</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>  <span class="c1">// Memory addressing mode = horizontal</span>
+            <span class="mh">0xB0</span><span class="p">,</span>  <span class="c1">// Page start address = 0</span>
+            <span class="mh">0xC8</span><span class="p">,</span>  <span class="c1">// COM scan direction</span>
+            <span class="mh">0x00</span><span class="p">,</span>  <span class="c1">// Low column start address</span>
+            <span class="mh">0x10</span><span class="p">,</span>  <span class="c1">// High column start address</span>
+            <span class="mh">0x40</span><span class="p">,</span>  <span class="c1">// Display start line = 0</span>
+            <span class="mh">0x81</span><span class="p">,</span> <span class="mh">0x3F</span><span class="p">,</span>  <span class="c1">// Contrast control</span>
+            <span class="mh">0xA1</span><span class="p">,</span>  <span class="c1">// Segment re-map</span>
+            <span class="mh">0xA6</span><span class="p">,</span>  <span class="c1">// Normal display</span>
+            <span class="mh">0xA8</span><span class="p">,</span> <span class="mh">0x3F</span><span class="p">,</span>  <span class="c1">// Multiplex ratio</span>
+            <span class="mh">0xA4</span><span class="p">,</span>  <span class="c1">// Resume to RAM content display</span>
+            <span class="mh">0xD3</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span>  <span class="c1">// Display offset</span>
+            <span class="mh">0xD5</span><span class="p">,</span> <span class="mh">0xF0</span><span class="p">,</span>  <span class="c1">// Display clock divide ratio</span>
+            <span class="mh">0xD9</span><span class="p">,</span> <span class="mh">0x22</span><span class="p">,</span>  <span class="c1">// Pre-charge period</span>
+            <span class="mh">0xDA</span><span class="p">,</span> <span class="mh">0x12</span><span class="p">,</span>  <span class="c1">// COM pins hardware configuration</span>
+            <span class="mh">0xDB</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">,</span>  <span class="c1">// VCOM deselect level</span>
+            <span class="mh">0x8D</span><span class="p">,</span> <span class="mh">0x14</span><span class="p">,</span>  <span class="c1">// Charge pump setting = enable</span>
+            <span class="mh">0xAF</span>   <span class="c1">// Display ON</span>
+        <span class="p">};</span>
+        
+        <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">display</span><span class="o">*</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">init_commands</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">init_commands</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize SSD1306: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ SSD1306 OLED display initialized</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">clear_display</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 🧹 Clear display buffer</span>
+        <span class="n">hf_u8_t</span> <span class="n">clear_data</span><span class="p">[</span><span class="mi">129</span><span class="p">];</span>  <span class="c1">// Command byte + 128 data bytes</span>
+        <span class="n">clear_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">DATA_MODE</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">129</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">clear_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x00</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📝 Send clear command for each page (8 pages total)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">page</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">page</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">page</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Set page address</span>
+            <span class="n">hf_u8_t</span> <span class="n">page_cmd</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">COMMAND_MODE</span><span class="p">,</span> <span class="mh">0xB0</span> <span class="o">+</span> <span class="n">page</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">,</span> <span class="mh">0x10</span><span class="p">};</span>
+            <span class="n">display</span><span class="o">*</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">page_cmd</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">page_cmd</span><span class="p">));</span>
+            
+            <span class="c1">// Clear the page</span>
+            <span class="n">display</span><span class="o">*</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">clear_data</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">clear_data</span><span class="p">));</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🧹 Display cleared</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">write_pixel</span><span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">x</span><span class="p">,</span> <span class="n">hf_u8_t</span> <span class="n">y</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">on</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 📍 Write single pixel (simplified implementation)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">128</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">64</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        
+        <span class="n">hf_u8_t</span> <span class="n">page</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">8</span><span class="p">;</span>
+        <span class="n">hf_u8_t</span> <span class="n">bit</span> <span class="o">=</span> <span class="n">y</span> <span class="o">%</span> <span class="mi">8</span><span class="p">;</span>
+        
+        <span class="c1">// Set position</span>
+        <span class="n">hf_u8_t</span> <span class="n">pos_cmd</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">COMMAND_MODE</span><span class="p">,</span> <span class="mh">0xB0</span> <span class="o">+</span> <span class="n">page</span><span class="p">,</span> <span class="n">x</span> <span class="o">&amp;</span> <span class="mh">0x0F</span><span class="p">,</span> <span class="mh">0x10</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;&gt;</span> <span class="mi">4</span><span class="p">)};</span>
+        <span class="n">display</span><span class="o">*</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">pos_cmd</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">pos_cmd</span><span class="p">));</span>
+        
+        <span class="c1">// Write pixel data</span>
+        <span class="n">hf_u8_t</span> <span class="n">pixel_data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="n">DATA_MODE</span><span class="p">,</span> <span class="n">on</span> <span class="o">?</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">bit</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">};</span>
+        <span class="n">display</span><span class="o">*</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">pixel_data</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">pixel_data</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-eeprom-memory-24c256">
+  
+  
+    <a href="#-eeprom-memory-24c256" class="anchor-heading" aria-labelledby="-eeprom-memory-24c256"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 💾 EEPROM Memory (24C256)
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">EEPROM24C256</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspI2c</span> <span class="n">eeprom</span><span class="o">*</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">EEPROM_ADDRESS</span> <span class="o">=</span> <span class="mh">0x50</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u16_t</span> <span class="n">PAGE_SIZE</span> <span class="o">=</span> <span class="mi">64</span><span class="p">;</span>     <span class="c1">// 64-byte page size</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u16_t</span> <span class="n">TOTAL_SIZE</span> <span class="o">=</span> <span class="mi">32768</span><span class="p">;</span> <span class="c1">// 32KB total</span>
+    
+<span class="nl">public:</span>
+    <span class="n">EEPROM24C256</span><span class="p">()</span> <span class="o">:</span> <span class="n">eeprom</span><span class="o">*</span><span class="p">(</span><span class="n">I2C_NUM_0</span><span class="p">,</span> <span class="n">EEPROM_ADDRESS</span><span class="p">,</span> <span class="mi">400000</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 🚀 Initialize EEPROM I2C</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">eeprom</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to initialize EEPROM I2C</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 🔍 Test EEPROM presence by reading first byte</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">eeprom</span><span class="o">*</span><span class="p">.</span><span class="n">IsDevicePresent</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ EEPROM not found at address 0x%02X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">EEPROM_ADDRESS</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ 24C256 EEPROM initialized (32KB)</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">write_byte</span><span class="p">(</span><span class="n">hf_u16_t</span> <span class="n">address</span><span class="p">,</span> <span class="n">hf_u8_t</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">address</span> <span class="o">&gt;=</span> <span class="n">TOTAL_SIZE</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Address 0x%04X out of range</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📝 Write single byte (address + data)</span>
+        <span class="n">hf_u8_t</span> <span class="n">write_data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">hf_u8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">address</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">),</span>   <span class="c1">// High address byte</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">hf_u8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">address</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">),</span> <span class="c1">// Low address byte</span>
+            <span class="n">value</span>
+        <span class="p">};</span>
+        
+        <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">eeprom</span><span class="o">*</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">write_data</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">write_data</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to write EEPROM byte: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// ⏰ Wait for write cycle to complete (typical 5ms)</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">read_byte</span><span class="p">(</span><span class="n">hf_u16_t</span> <span class="n">address</span><span class="p">,</span> <span class="n">hf_u8_t</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">address</span> <span class="o">&gt;=</span> <span class="n">TOTAL_SIZE</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Address 0x%04X out of range</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📖 Set address then read data</span>
+        <span class="n">hf_u8_t</span> <span class="n">addr_data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">hf_u8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">address</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">),</span>   <span class="c1">// High address byte</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">hf_u8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">address</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>  <span class="c1">// Low address byte</span>
+        <span class="p">};</span>
+        
+        <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">eeprom</span><span class="o">*</span><span class="p">.</span><span class="n">WriteRead</span><span class="p">(</span><span class="n">addr_data</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr_data</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">value</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to read EEPROM byte: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">write_page</span><span class="p">(</span><span class="n">hf_u16_t</span> <span class="n">start_address</span><span class="p">,</span> <span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// ✅ Validate parameters</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">start_address</span> <span class="o">&gt;=</span> <span class="n">TOTAL_SIZE</span> <span class="o">||</span> <span class="n">length</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">length</span> <span class="o">&gt;</span> <span class="n">PAGE_SIZE</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Invalid page write parameters</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">((</span><span class="n">start_address</span> <span class="o">+</span> <span class="n">length</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">TOTAL_SIZE</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Page write would exceed EEPROM size</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📄 Check page boundary alignment</span>
+        <span class="n">hf_u16_t</span> <span class="n">page_start</span> <span class="o">=</span> <span class="n">start_address</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">PAGE_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">start_address</span> <span class="o">!=</span> <span class="n">page_start</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Warning: Write not page-aligned</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📝 Prepare write data (address + data)</span>
+        <span class="n">hf_u8_t</span> <span class="n">write_buffer</span><span class="p">[</span><span class="n">PAGE_SIZE</span> <span class="o">+</span> <span class="mi">2</span><span class="p">];</span>
+        <span class="n">write_buffer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">hf_u8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">start_address</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">);</span>
+        <span class="n">write_buffer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">hf_u8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">start_address</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">);</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="n">hf_u16_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">write_buffer</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        
+        <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">eeprom</span><span class="o">*</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="n">write_buffer</span><span class="p">,</span> <span class="n">length</span> <span class="o">+</span> <span class="mi">2</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to write EEPROM page: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// ⏰ Wait for write cycle to complete</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Wrote %u bytes to EEPROM at address 0x%04X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">start_address</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">read_sequential</span><span class="p">(</span><span class="n">hf_u16_t</span> <span class="n">start_address</span><span class="p">,</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span> <span class="n">hf_u16_t</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">start_address</span> <span class="o">&gt;=</span> <span class="n">TOTAL_SIZE</span> <span class="o">||</span> <span class="n">length</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">((</span><span class="n">start_address</span> <span class="o">+</span> <span class="n">length</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">TOTAL_SIZE</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">length</span> <span class="o">=</span> <span class="n">TOTAL_SIZE</span> <span class="o">-</span> <span class="n">start_address</span><span class="p">;</span>  <span class="c1">// Clamp to available space</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// 📖 Set starting address</span>
+        <span class="n">hf_u8_t</span> <span class="n">addr_data</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">hf_u8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">start_address</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">),</span>
+            <span class="k">static_cast</span><span class="o">&lt;</span><span class="n">hf_u8_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">start_address</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>
+        <span class="p">};</span>
+        
+        <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">eeprom</span><span class="o">*</span><span class="p">.</span><span class="n">WriteRead</span><span class="p">(</span><span class="n">addr_data</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">addr_data</span><span class="p">),</span> <span class="n">data</span><span class="p">,</span> <span class="n">length</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to read EEPROM sequence: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Read %u bytes from EEPROM starting at 0x%04X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="n">start_address</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-i2c-bus-scanner">
+  
+  
+    <a href="#-i2c-bus-scanner" class="anchor-heading" aria-labelledby="-i2c-bus-scanner"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔍 I2C Bus Scanner
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">I2CBusScanner</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspI2c</span> <span class="n">scanner</span><span class="o">*</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">SCAN_START</span> <span class="o">=</span> <span class="mh">0x08</span><span class="p">;</span>
+    <span class="k">static</span> <span class="k">constexpr</span> <span class="n">hf_u8_t</span> <span class="n">SCAN_END</span> <span class="o">=</span> <span class="mh">0x77</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">I2CBusScanner</span><span class="p">()</span> <span class="o">:</span> <span class="n">scanner</span><span class="o">*</span><span class="p">(</span><span class="n">I2C_NUM_0</span><span class="p">,</span> <span class="n">SCAN_START</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span> <span class="p">{}</span>  <span class="c1">// Any address for scanning</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">scanner</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">scan_bus</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🔍 Scanning I2C bus...</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"     0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        
+        <span class="n">hf_u16_t</span> <span class="n">found_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">row</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">row</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">row</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%02X: "</span><span class="p">,</span> <span class="n">row</span> <span class="o">*</span> <span class="mi">16</span><span class="p">);</span>
+            
+            <span class="k">for</span> <span class="p">(</span><span class="n">hf_u8_t</span> <span class="n">col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">col</span> <span class="o">&lt;</span> <span class="mi">16</span><span class="p">;</span> <span class="n">col</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">hf_u8_t</span> <span class="n">address</span> <span class="o">=</span> <span class="n">row</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">+</span> <span class="n">col</span><span class="p">;</span>
+                
+                <span class="k">if</span> <span class="p">(</span><span class="n">address</span> <span class="o">&lt;</span> <span class="n">SCAN_START</span> <span class="o">||</span> <span class="n">address</span> <span class="o">&gt;</span> <span class="n">SCAN_END</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">"   "</span><span class="p">);</span>
+                    <span class="k">continue</span><span class="p">;</span>
+                <span class="p">}</span>
+                
+                <span class="c1">// 🔍 Test device presence at this address</span>
+                <span class="n">EspI2c</span> <span class="n">test_device</span><span class="p">(</span><span class="n">I2C_NUM_0</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="mi">100000</span><span class="p">);</span>
+                <span class="n">test_device</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+                
+                <span class="k">if</span> <span class="p">(</span><span class="n">test_device</span><span class="p">.</span><span class="n">IsDevicePresent</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="p">{</span>  <span class="c1">// 50ms timeout</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">"%02X "</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
+                    <span class="n">found_count</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">"-- "</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">🎯 Found %u I2C device(s)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">found_count</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">found_count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">print_common_devices</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+<span class="nl">private:</span>
+    <span class="kt">void</span> <span class="n">print_common_devices</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">📋 Common I2C devices:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   0x20-0x27: PCF8574 I/O Expander</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   0x3C, 0x3D: SSD1306 OLED Display</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   0x48-0x4F: LM75A Temperature Sensor</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   0x50-0x57: 24C256 EEPROM</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   0x68: DS1307 RTC, MPU6050 IMU</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   0x76, 0x77: BMP280 Pressure Sensor</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="-performance-and-diagnostics">
+  
+  
+    <a href="#-performance-and-diagnostics" class="anchor-heading" aria-labelledby="-performance-and-diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 Performance and Diagnostics
+  
+  
+</h2>
+    
+<h3 id="-statistics-monitoring">
+  
+  
+    <a href="#-statistics-monitoring" class="anchor-heading" aria-labelledby="-statistics-monitoring"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 Statistics Monitoring
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">monitor_i2c_performance</span><span class="p">(</span><span class="n">BaseI2c</span><span class="o">&amp;</span> <span class="n">device</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">hf_i2c_statistics_t</span> <span class="n">stats</span><span class="p">;</span>
+    <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">device</span><span class="p">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="n">stats</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"📊 I2C Performance Statistics:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   🔄 Total Transactions: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">total_transactions</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   ✅ Successful: %u (%.1f%%)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+               <span class="n">stats</span><span class="p">.</span><span class="n">successful_transactions</span><span class="p">,</span> 
+               <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">stats</span><span class="p">.</span><span class="n">successful_transactions</span> <span class="o">/</span> <span class="n">stats</span><span class="p">.</span><span class="n">total_transactions</span> <span class="o">*</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   ❌ Failed: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">failed_transactions</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   ⏰ Timeouts: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">timeout_count</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   🚫 NACKs: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">nack_count</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   📤 Bytes TX: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">bytes_transmitted</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   📥 Bytes RX: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">bytes_received</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   ⏱️ Avg Time: %u μs</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">average_transaction_time_us</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">monitor_i2c_health</span><span class="p">(</span><span class="n">BaseI2c</span><span class="o">&amp;</span> <span class="n">device</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">hf_i2c_diagnostics_t</span> <span class="n">diag</span><span class="p">;</span>
+    <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">device</span><span class="p">.</span><span class="n">GetDiagnostics</span><span class="p">(</span><span class="n">diag</span><span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🩺 I2C Bus Health:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   🟢 Bus Healthy: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">diag</span><span class="p">.</span><span class="n">bus_healthy</span> <span class="o">?</span> <span class="s">"Yes"</span> <span class="o">:</span> <span class="s">"No"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   📡 SDA Line: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">diag</span><span class="p">.</span><span class="n">sda_line_state</span> <span class="o">?</span> <span class="s">"HIGH"</span> <span class="o">:</span> <span class="s">"LOW"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   🕐 SCL Line: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">diag</span><span class="p">.</span><span class="n">scl_line_state</span> <span class="o">?</span> <span class="s">"HIGH"</span> <span class="o">:</span> <span class="s">"LOW"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   🔒 Bus Locked: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">diag</span><span class="p">.</span><span class="n">bus_locked</span> <span class="o">?</span> <span class="s">"Yes"</span> <span class="o">:</span> <span class="s">"No"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   📈 Utilization: %.1f%%</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">diag</span><span class="p">.</span><span class="n">bus_utilization_percent</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   📟 Active Devices: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">diag</span><span class="p">.</span><span class="n">active_device_count</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   🔄 Recovery Attempts: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">diag</span><span class="p">.</span><span class="n">error_recovery_attempts</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">diag</span><span class="p">.</span><span class="n">consecutive_errors</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"   ⚠️ Consecutive Errors: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">diag</span><span class="p">.</span><span class="n">consecutive_errors</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"   ⚠️ Last Error: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">diag</span><span class="p">.</span><span class="n">last_error_code</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="️-error-handling-best-practices">
+  
+  
+    <a href="#️-error-handling-best-practices" class="anchor-heading" aria-labelledby="️-error-handling-best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🛡️ Error Handling Best Practices
+  
+  
+</h2>
+    
+<h3 id="-robust-communication">
+  
+  
+    <a href="#-robust-communication" class="anchor-heading" aria-labelledby="-robust-communication"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 Robust Communication
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre><span class="n">hf_i2c_err_t</span> <span class="nf">safe_i2c_read_with_retry</span><span class="p">(</span><span class="n">BaseI2c</span><span class="o">&amp;</span> <span class="n">device</span><span class="p">,</span> <span class="n">hf_u8_t</span> <span class="n">reg</span><span class="p">,</span> <span class="n">hf_u8_t</span><span class="o">&amp;</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">max_retries</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">retry_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">retry_count</span> <span class="o">&lt;</span> <span class="n">max_retries</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">hf_i2c_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">device</span><span class="p">.</span><span class="n">ReadRegister</span><span class="p">(</span><span class="n">reg</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>  <span class="c1">// 100ms timeout</span>
+        
+        <span class="k">switch</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_SUCCESS</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">result</span><span class="p">;</span>  <span class="c1">// Success!</span>
+                
+            <span class="k">case</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_ERR_BUS_BUSY</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_ERR_TIMEOUT</span><span class="p">:</span>
+                <span class="c1">// 🔄 Transient errors - retry after delay</span>
+                <span class="n">retry_count</span><span class="o">++</span><span class="p">;</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ I2C busy/timeout, retry %d/%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">retry_count</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">);</span>
+                <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span>
+                <span class="k">break</span><span class="p">;</span>
+                
+            <span class="k">case</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_ERR_DEVICE_NACK</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_ERR_DEVICE_NOT_RESPONDING</span><span class="p">:</span>
+                <span class="c1">// 🔍 Check device presence</span>
+                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">device</span><span class="p">.</span><span class="n">IsDevicePresent</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="p">{</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Device not present</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                    <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="n">retry_count</span><span class="o">++</span><span class="p">;</span>
+                <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+                <span class="k">break</span><span class="p">;</span>
+                
+            <span class="nl">default:</span>
+                <span class="c1">// 💥 Permanent error</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"❌ I2C Error: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfI2CErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">).</span><span class="n">data</span><span class="p">());</span>
+                <span class="k">return</span> <span class="n">result</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"❌ I2C operation failed after %d retries</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">max_retries</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">hf_i2c_err_t</span><span class="o">::</span><span class="n">I2C_ERR_TIMEOUT</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="️-performance-considerations">
+  
+  
+    <a href="#️-performance-considerations" class="anchor-heading" aria-labelledby="️-performance-considerations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏎️ Performance Considerations
+  
+  
+</h2>
+    
+<h3 id="-optimization-tips">
+  
+  
+    <a href="#-optimization-tips" class="anchor-heading" aria-labelledby="-optimization-tips"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⚡ Optimization Tips
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong>🚀 Clock Speed</strong> - Use highest speed supported by all devices (100kHz, 400kHz, 1MHz)</li>
+  <li><strong>📏 Transaction Size</strong> - Larger transactions are more efficient than many small ones</li>
+  <li><strong>⏰ Timeouts</strong> - Use appropriate timeouts based on device characteristics</li>
+  <li><strong>🔄 Retries</strong> - Implement retry logic for transient errors</li>
+  <li><strong>📊 Monitoring</strong> - Use statistics to identify performance bottlenecks</li>
+</ul>
+<h3 id="-typical-performance-ranges">
+  
+  
+    <a href="#-typical-performance-ranges" class="anchor-heading" aria-labelledby="-typical-performance-ranges"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 Typical Performance Ranges
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Clock Speed</strong></td>
+      <td><strong>Throughput</strong></td>
+      <td><strong>Use Cases</strong></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|—————–|—————-|—————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>100kHz (Standard)</strong></td>
+      <td>~10KB/s</td>
+      <td>Basic sensors, simple devices</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>400kHz (Fast)</strong></td>
+      <td>~40KB/s</td>
+      <td>Most sensors, displays, memory</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>1MHz (Fast+)</strong></td>
+      <td>~100KB/s</td>
+      <td>High-speed data acquisition</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="-thread-safety">
+  
+  
+    <a href="#-thread-safety" class="anchor-heading" aria-labelledby="-thread-safety"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🧵 Thread Safety
+  
+  
+</h2>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">BaseI2c</code> class is <strong>not thread-safe</strong>.
+For concurrent access from multiple tasks, use appropriate synchronization mechanisms.</p>
+<h2 id="-related-documentation">
+  
+  
+    <a href="#-related-documentation" class="anchor-heading" aria-labelledby="-related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔗 Related Documentation
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/">EspI2c API Reference</a></strong> - ESP32-C6 I2C implementation</li>
+  <li><strong><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/">BaseGpio API Reference</a></strong> - GPIO interface for I2C pins</li>
+  <li><strong><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/">HardwareTypes Reference</a></strong> - Platform-agnostic type definitions</li>
+</ul><hr />
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

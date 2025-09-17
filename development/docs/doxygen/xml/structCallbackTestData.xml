@@ -1,0 +1,272 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structCallbackTestData" kind="struct" language="C++" prot="public">
+    <compoundname>CallbackTestData</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structCallbackTestData_1a728e320a4eaa4a0f2712fe4fbc9bea20" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t CallbackTestData::channel_id</definition>
+        <argsstring></argsstring>
+        <name>channel_id</name>
+        <qualifiedname>CallbackTestData::channel_id</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="92" column="11" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a2c374cd0d87d0c7a6c0e2c6c46cc2d1b" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CallbackTestData::callback_count</definition>
+        <argsstring></argsstring>
+        <name>callback_count</name>
+        <qualifiedname>CallbackTestData::callback_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="93" column="10" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a6e3d1be1bc59207856e51e5f2de63e49" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CallbackTestData::last_callback_success</definition>
+        <argsstring></argsstring>
+        <name>last_callback_success</name>
+        <qualifiedname>CallbackTestData::last_callback_success</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="94" column="8" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1ac35e427a4fb61a5c98c24196f796e9f6" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
+        <definition>hf_pio_err_t CallbackTestData::last_error</definition>
+        <argsstring></argsstring>
+        <name>last_error</name>
+        <qualifiedname>CallbackTestData::last_error</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="95" column="16" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a8cbfdcf77588410cadfbbcc4b8d994ea" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* CallbackTestData::description</definition>
+        <argsstring></argsstring>
+        <name>description</name>
+        <qualifiedname>CallbackTestData::description</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="96" column="14" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a45a5ac895c4452d26a92db64c6d0896a" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CallbackTestData::symbols_sent</definition>
+        <argsstring></argsstring>
+        <name>symbols_sent</name>
+        <qualifiedname>CallbackTestData::symbols_sent</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="97" column="10" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a362b26fe4d9050cb750d8c41017a3527" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CallbackTestData::symbols_received</definition>
+        <argsstring></argsstring>
+        <name>symbols_received</name>
+        <qualifiedname>CallbackTestData::symbols_received</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="98" column="10" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a37cfcf401d976a9520d5b443078fb779" prot="public" static="no" mutable="no">
+        <type>volatile uint32_t</type>
+        <definition>volatile uint32_t CallbackTestData::call_count</definition>
+        <argsstring></argsstring>
+        <name>call_count</name>
+        <qualifiedname>CallbackTestData::call_count</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="46" column="21" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a2553a272ed1ebd48e5b61472275b2db9" prot="public" static="no" mutable="no">
+        <type>volatile uint64_t</type>
+        <definition>volatile uint64_t CallbackTestData::last_call_time_us</definition>
+        <argsstring></argsstring>
+        <name>last_call_time_us</name>
+        <qualifiedname>CallbackTestData::last_call_time_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="47" column="21" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a7758a4ae9595062848d3168fa7701882" prot="public" static="no" mutable="no">
+        <type>volatile uint64_t</type>
+        <definition>volatile uint64_t CallbackTestData::min_interval_us</definition>
+        <argsstring></argsstring>
+        <name>min_interval_us</name>
+        <qualifiedname>CallbackTestData::min_interval_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="48" column="21" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a199bae04c1d360c592f153c575afe6c1" prot="public" static="no" mutable="no">
+        <type>volatile uint64_t</type>
+        <definition>volatile uint64_t CallbackTestData::max_interval_us</definition>
+        <argsstring></argsstring>
+        <name>max_interval_us</name>
+        <qualifiedname>CallbackTestData::max_interval_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="49" column="21" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1abbdb695ddb1955f2b2291456e02f2b88" prot="public" static="no" mutable="no">
+        <type>volatile uint64_t</type>
+        <definition>volatile uint64_t CallbackTestData::total_interval_us</definition>
+        <argsstring></argsstring>
+        <name>total_interval_us</name>
+        <qualifiedname>CallbackTestData::total_interval_us</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="50" column="21" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1aa09dd0d4c9d9749c308bd5e31220f87d" prot="public" static="no" mutable="no">
+        <type>volatile bool</type>
+        <definition>volatile bool CallbackTestData::callback_executed</definition>
+        <argsstring></argsstring>
+        <name>callback_executed</name>
+        <qualifiedname>CallbackTestData::callback_executed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="51" column="17" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1aa7b34d7c1ce9c088697dabdb468f2eb6" prot="public" static="no" mutable="no">
+        <type>volatile bool</type>
+        <definition>volatile bool CallbackTestData::user_data_mismatch</definition>
+        <argsstring></argsstring>
+        <name>user_data_mismatch</name>
+        <qualifiedname>CallbackTestData::user_data_mismatch</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="52" column="17" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structCallbackTestData_1a9d4afded56aa6f560c47497f9294ae98" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* CallbackTestData::expected_user_data</definition>
+        <argsstring></argsstring>
+        <name>expected_user_data</name>
+        <qualifiedname>CallbackTestData::expected_user_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="53" column="8" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structCallbackTestData_1a71a2c9139b97cbe6186b07fd7230de26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CallbackTestData::CallbackTestData</definition>
+        <argsstring>()</argsstring>
+        <name>CallbackTestData</name>
+        <qualifiedname>CallbackTestData::CallbackTestData</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="55" column="3" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="55" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="structCallbackTestData_1ab13756c9c5ab967b9a78cb683975723f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CallbackTestData::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <qualifiedname>CallbackTestData::reset</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="examples/esp32/main/TimerComprehensiveTest.cpp" line="60" column="8" bodyfile="examples/esp32/main/TimerComprehensiveTest.cpp" bodystart="60" bodyend="68"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="91" column="1" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="91" bodyend="99"/>
+    <listofallmembers>
+      <member refid="structCallbackTestData_1a37cfcf401d976a9520d5b443078fb779" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>call_count</name></member>
+      <member refid="structCallbackTestData_1a2c374cd0d87d0c7a6c0e2c6c46cc2d1b" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>callback_count</name></member>
+      <member refid="structCallbackTestData_1aa09dd0d4c9d9749c308bd5e31220f87d" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>callback_executed</name></member>
+      <member refid="structCallbackTestData_1a71a2c9139b97cbe6186b07fd7230de26" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>CallbackTestData</name></member>
+      <member refid="structCallbackTestData_1a728e320a4eaa4a0f2712fe4fbc9bea20" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>channel_id</name></member>
+      <member refid="structCallbackTestData_1a8cbfdcf77588410cadfbbcc4b8d994ea" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>description</name></member>
+      <member refid="structCallbackTestData_1a9d4afded56aa6f560c47497f9294ae98" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>expected_user_data</name></member>
+      <member refid="structCallbackTestData_1a2553a272ed1ebd48e5b61472275b2db9" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>last_call_time_us</name></member>
+      <member refid="structCallbackTestData_1a6e3d1be1bc59207856e51e5f2de63e49" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>last_callback_success</name></member>
+      <member refid="structCallbackTestData_1ac35e427a4fb61a5c98c24196f796e9f6" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>last_error</name></member>
+      <member refid="structCallbackTestData_1a199bae04c1d360c592f153c575afe6c1" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>max_interval_us</name></member>
+      <member refid="structCallbackTestData_1a7758a4ae9595062848d3168fa7701882" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>min_interval_us</name></member>
+      <member refid="structCallbackTestData_1ab13756c9c5ab967b9a78cb683975723f" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>reset</name></member>
+      <member refid="structCallbackTestData_1a362b26fe4d9050cb750d8c41017a3527" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>symbols_received</name></member>
+      <member refid="structCallbackTestData_1a45a5ac895c4452d26a92db64c6d0896a" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>symbols_sent</name></member>
+      <member refid="structCallbackTestData_1abbdb695ddb1955f2b2291456e02f2b88" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>total_interval_us</name></member>
+      <member refid="structCallbackTestData_1aa7b34d7c1ce9c088697dabdb468f2eb6" prot="public" virt="non-virtual"><scope>CallbackTestData</scope><name>user_data_mismatch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

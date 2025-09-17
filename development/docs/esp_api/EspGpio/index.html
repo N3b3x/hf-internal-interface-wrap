@@ -1,0 +1,1673 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(1)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🔌 EspGpio | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🔌 EspGpio" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="ESP32-C6 GPIO implementation with hardware-optimized features and advanced configuration" />
+<meta property="og:description" content="ESP32-C6 GPIO implementation with hardware-optimized features and advanced configuration" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🔌 EspGpio" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"ESP32-C6 GPIO implementation with hardware-optimized features and advanced configuration","headline":"🔌 EspGpio","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/">🔧 ESP32 Implementations</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🔌 EspGpio</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="espgpio-api-reference">
+  
+  
+    <a href="#espgpio-api-reference" class="anchor-heading" aria-labelledby="espgpio-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> EspGpio API Reference
+  
+  
+</h1>
+    
+
+<p><strong>🎯 ESP32-C6 GPIO implementation with hardware-optimized features</strong></p><hr />
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p><code class="language-plaintext highlighter-rouge">EspGpio</code> is the ESP32-C6 implementation of the <code class="language-plaintext highlighter-rouge">BaseGpio</code> interface,
+providing comprehensive GPIO functionality specifically optimized for ESP32-C6 microcontrollers
+running ESP-IDF v5.5+.
+It offers both basic and advanced GPIO features with hardware-specific optimizations.</p>
+<h2 id="features">
+  
+  
+    <a href="#features" class="anchor-heading" aria-labelledby="features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features
+  
+  
+</h2>
+    
+
+<ul>
+  <li><strong>ESP32-C6 Optimized</strong> - Full support for ESP32-C6 GPIO capabilities</li>
+  <li><strong>Advanced Pin Configuration</strong> - Drive strength, slew rate, schmitt trigger control</li>
+  <li><strong>Hardware Interrupts</strong> - Edge and level triggered interrupts with ISR handling</li>
+  <li><strong>Power Management</strong> - Deep sleep compatibility and RTC GPIO support</li>
+  <li><strong>Glitch Filtering</strong> - Hardware-based input glitch filtering</li>
+  <li><strong>Open-Drain Support</strong> - True open-drain output with configurable pull-ups</li>
+  <li><strong>Performance Optimized</strong> - Direct register access for critical operations</li>
+</ul>
+<h2 id="header-file">
+  
+  
+    <a href="#header-file" class="anchor-heading" aria-labelledby="header-file"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Header File
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/mcu/esp32/EspGpio.h"</span><span class="cp">
+</span></pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="class-definition">
+  
+  
+    <a href="#class-definition" class="anchor-heading" aria-labelledby="class-definition"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Class Definition
+  
+  
+</h2>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">EspGpio</span> <span class="o">:</span> <span class="k">public</span> <span class="n">BaseGpio</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="c1">// Constructor with full configuration</span>
+    <span class="k">explicit</span> <span class="n">EspGpio</span><span class="p">(</span>
+        <span class="n">hf_pin_num_t</span> <span class="n">pin_num</span><span class="p">,</span>
+        <span class="n">hf_gpio_direction_t</span> <span class="n">direction</span> <span class="o">=</span> <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_INPUT</span><span class="p">,</span>
+        <span class="n">hf_gpio_active_state_t</span> <span class="n">active_state</span> <span class="o">=</span> <span class="n">hf_gpio_active_state_t</span><span class="o">::</span><span class="n">HF_GPIO_ACTIVE_HIGH</span><span class="p">,</span>
+        <span class="n">hf_gpio_output_mode_t</span> <span class="n">output_mode</span> <span class="o">=</span> <span class="n">hf_gpio_output_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_OUTPUT_MODE_PUSH_PULL</span><span class="p">,</span>
+        <span class="n">hf_gpio_pull_mode_t</span> <span class="n">pull_mode</span> <span class="o">=</span> <span class="n">hf_gpio_pull_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_PULL_MODE_FLOATING</span><span class="p">,</span>
+        <span class="n">hf_gpio_drive_cap_t</span> <span class="n">drive_capability</span> <span class="o">=</span> <span class="n">hf_gpio_drive_cap_t</span><span class="o">::</span><span class="n">HF_GPIO_DRIVE_CAP_MEDIUM</span>
+    <span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+
+    <span class="c1">// Destructor</span>
+    <span class="o">~</span><span class="n">EspGpio</span><span class="p">()</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="c1">// BaseGpio implementation</span>
+    <span class="kt">bool</span> <span class="n">Initialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">Deinitialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">IsPinAvailable</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_u8_t</span> <span class="n">GetMaxPins</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">GetDescription</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="c1">// Interrupt support</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">SupportsInterrupts</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">ConfigureInterrupt</span><span class="p">(</span><span class="n">hf_gpio_interrupt_trigger_t</span> <span class="n">trigger</span><span class="p">,</span>
+                                    <span class="n">InterruptCallback</span> <span class="n">callback</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">,</span>
+                                    <span class="kt">void</span><span class="o">*</span> <span class="n">user_data</span> <span class="o">=</span> <span class="nb">nullptr</span><span class="p">)</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">EnableInterrupt</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">DisableInterrupt</span><span class="p">()</span> <span class="k">noexcept</span> <span class="k">override</span><span class="p">;</span>
+
+    <span class="c1">// ESP32-specific advanced features</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">SetDriveCapability</span><span class="p">(</span><span class="n">hf_gpio_drive_cap_t</span> <span class="n">capability</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">GetDriveCapability</span><span class="p">(</span><span class="n">hf_gpio_drive_cap_t</span><span class="o">&amp;</span> <span class="n">capability</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">SetSlewRate</span><span class="p">(</span><span class="n">hf_gpio_slew_rate_t</span> <span class="n">slew_rate</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">GetSlewRate</span><span class="p">(</span><span class="n">hf_gpio_slew_rate_t</span><span class="o">&amp;</span> <span class="n">slew_rate</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+    
+    <span class="c1">// GPIO pin mapping</span>
+    <span class="n">gpio_num_t</span> <span class="n">GetEspGpioNum</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="esp32-c6-specific-types">
+  
+  
+    <a href="#esp32-c6-specific-types" class="anchor-heading" aria-labelledby="esp32-c6-specific-types"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Specific Types
+  
+  
+</h2>
+    
+<h3 id="drive-capability">
+  
+  
+    <a href="#drive-capability" class="anchor-heading" aria-labelledby="drive-capability"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Drive Capability
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">enum</span> <span class="k">class</span> <span class="nc">hf_gpio_drive_cap_t</span> <span class="o">:</span> <span class="n">hf_u8_t</span> <span class="p">{</span>
+    <span class="n">HF_GPIO_DRIVE_CAP_WEAK</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>     <span class="c1">// ~5mA drive strength</span>
+    <span class="n">HF_GPIO_DRIVE_CAP_MEDIUM</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>   <span class="c1">// ~10mA drive strength (default)</span>
+    <span class="n">HF_GPIO_DRIVE_CAP_STRONG</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>   <span class="c1">// ~20mA drive strength</span>
+    <span class="n">HF_GPIO_DRIVE_CAP_STRONGEST</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1">// ~40mA drive strength</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="slew-rate">
+  
+  
+    <a href="#slew-rate" class="anchor-heading" aria-labelledby="slew-rate"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Slew Rate
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">enum</span> <span class="k">class</span> <span class="nc">hf_gpio_slew_rate_t</span> <span class="o">:</span> <span class="n">hf_u8_t</span> <span class="p">{</span>
+    <span class="n">HF_GPIO_SLEW_RATE_SLOW</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>     <span class="c1">// Slower edge transitions, less EMI</span>
+    <span class="n">HF_GPIO_SLEW_RATE_FAST</span> <span class="o">=</span> <span class="mi">1</span>      <span class="c1">// Faster edge transitions, more EMI</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="constructor-parameters">
+  
+  
+    <a href="#constructor-parameters" class="anchor-heading" aria-labelledby="constructor-parameters"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Constructor Parameters
+  
+  
+</h2>
+    
+<h3 id="basic-parameters">
+  
+  
+    <a href="#basic-parameters" class="anchor-heading" aria-labelledby="basic-parameters"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic Parameters
+  
+  
+</h3>
+    
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">pin_num</code></strong> - ESP32-C6 GPIO pin number (0-30, depending on package)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">direction</code></strong> - Initial pin direction (input/output)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">active_state</code></strong> - Active polarity (high/low)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">output_mode</code></strong> - Push-pull or open-drain output</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">pull_mode</code></strong> - Pull resistor configuration</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">drive_capability</code></strong> - Output drive strength</li>
+</ul>
+<h2 id="usage-examples">
+  
+  
+    <a href="#usage-examples" class="anchor-heading" aria-labelledby="usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Usage Examples
+  
+  
+</h2>
+    
+<h3 id="basic-led-control">
+  
+  
+    <a href="#basic-led-control" class="anchor-heading" aria-labelledby="basic-led-control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Basic LED Control
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/mcu/esp32/EspGpio.h"</span><span class="cp">
+</span>
+<span class="c1">// Create output pin for LED (active low, strong drive)</span>
+<span class="n">EspGpio</span> <span class="nf">led_pin</span><span class="p">(</span><span class="n">GPIO_NUM_2</span><span class="p">,</span> 
+               <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_OUTPUT</span><span class="p">,</span>
+               <span class="n">hf_gpio_active_state_t</span><span class="o">::</span><span class="n">HF_GPIO_ACTIVE_LOW</span><span class="p">,</span>
+               <span class="n">hf_gpio_output_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_OUTPUT_MODE_PUSH_PULL</span><span class="p">,</span>
+               <span class="n">hf_gpio_pull_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_PULL_MODE_FLOATING</span><span class="p">,</span>
+               <span class="n">hf_gpio_drive_cap_t</span><span class="o">::</span><span class="n">HF_GPIO_DRIVE_CAP_STRONG</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup_led</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">led_pin</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to initialize LED pin</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// LED starts off</span>
+    <span class="n">led_pin</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">blink_led</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">led_pin</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span>    <span class="c1">// Turn on</span>
+    <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
+    <span class="n">led_pin</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>  <span class="c1">// Turn off</span>
+    <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="button-input-with-interrupt">
+  
+  
+    <a href="#button-input-with-interrupt" class="anchor-heading" aria-labelledby="button-input-with-interrupt"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Button Input with Interrupt
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+</pre></td><td class="rouge-code"><pre><span class="c1">// Global flag for button state</span>
+<span class="k">volatile</span> <span class="kt">bool</span> <span class="n">button_pressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+<span class="c1">// Interrupt callback function</span>
+<span class="kt">void</span> <span class="n">IRAM_ATTR</span> <span class="nf">button_isr_handler</span><span class="p">(</span><span class="n">BaseGpio</span><span class="o">*</span> <span class="n">gpio</span><span class="p">,</span> <span class="n">hf_gpio_interrupt_trigger_t</span> <span class="n">trigger</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span>
+<span class="n">user_data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">button_pressed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>  <span class="c1">// Set flag for main loop</span>
+<span class="p">}</span>
+
+<span class="c1">// Create input pin for button</span>
+<span class="n">EspGpio</span> <span class="n">button_pin</span><span class="p">(</span><span class="n">GPIO_NUM_0</span><span class="p">,</span>
+                  <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_INPUT</span><span class="p">,</span>
+                  <span class="n">hf_gpio_active_state_t</span><span class="o">::</span><span class="n">HF_GPIO_ACTIVE_LOW</span><span class="p">,</span>
+                  <span class="n">hf_gpio_output_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_OUTPUT_MODE_PUSH_PULL</span><span class="p">,</span>
+                  <span class="n">hf_gpio_pull_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_PULL_MODE_UP</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="n">setup_button</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize pin</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">button_pin</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">())</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to initialize button pin</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Configure interrupt</span>
+    <span class="n">hf_gpio_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">button_pin</span><span class="p">.</span><span class="n">ConfigureInterrupt</span><span class="p">(</span>
+        <span class="n">hf_gpio_interrupt_trigger_t</span><span class="o">::</span><span class="n">HF_GPIO_INTERRUPT_TRIGGER_FALLING_EDGE</span><span class="p">,</span>
+        <span class="n">button_isr_handler</span><span class="p">,</span>
+        <span class="nb">nullptr</span>
+    <span class="p">);</span>
+    
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_gpio_err_t</span><span class="o">::</span><span class="n">GPIO_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">button_pin</span><span class="p">.</span><span class="n">EnableInterrupt</span><span class="p">();</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Button interrupt configured</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Failed to configure button interrupt: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfGpioErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">check_button</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">button_pressed</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">button_pressed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>  <span class="c1">// Clear flag</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Button was pressed!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        
+        <span class="c1">// Debouncing - check if still pressed after delay</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">button_pin</span><span class="p">.</span><span class="n">IsActive</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Button press confirmed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="c1">// Handle button press action</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="high-performance-digital-output">
+  
+  
+    <a href="#high-performance-digital-output" class="anchor-heading" aria-labelledby="high-performance-digital-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> High-Performance Digital Output
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="c1">// High-speed digital output for motor control</span>
+<span class="n">EspGpio</span> <span class="nf">motor_step_pin</span><span class="p">(</span><span class="n">GPIO_NUM_4</span><span class="p">,</span>
+                      <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_OUTPUT</span><span class="p">,</span>
+                      <span class="n">hf_gpio_active_state_t</span><span class="o">::</span><span class="n">HF_GPIO_ACTIVE_HIGH</span><span class="p">,</span>
+                      <span class="n">hf_gpio_output_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_OUTPUT_MODE_PUSH_PULL</span><span class="p">,</span>
+                      <span class="n">hf_gpio_pull_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_PULL_MODE_FLOATING</span><span class="p">,</span>
+                      <span class="n">hf_gpio_drive_cap_t</span><span class="o">::</span><span class="n">HF_GPIO_DRIVE_CAP_STRONGEST</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup_motor_control</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">motor_step_pin</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+    
+    <span class="c1">// Configure for fastest switching</span>
+    <span class="n">motor_step_pin</span><span class="p">.</span><span class="n">SetSlewRate</span><span class="p">(</span><span class="n">hf_gpio_slew_rate_t</span><span class="o">::</span><span class="n">HF_GPIO_SLEW_RATE_FAST</span><span class="p">);</span>
+    <span class="n">motor_step_pin</span><span class="p">.</span><span class="n">SetDriveCapability</span><span class="p">(</span><span class="n">hf_gpio_drive_cap_t</span><span class="o">::</span><span class="n">HF_GPIO_DRIVE_CAP_STRONGEST</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">generate_step_pulses</span><span class="p">(</span><span class="kt">int</span> <span class="n">num_steps</span><span class="p">,</span> <span class="kt">int</span> <span class="n">delay_us</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">num_steps</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">motor_step_pin</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span>
+        <span class="n">esp_rom_delay_us</span><span class="p">(</span><span class="n">delay_us</span><span class="p">);</span>
+        <span class="n">motor_step_pin</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>
+        <span class="n">esp_rom_delay_us</span><span class="p">(</span><span class="n">delay_us</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="open-drain-communication-bus">
+  
+  
+    <a href="#open-drain-communication-bus" class="anchor-heading" aria-labelledby="open-drain-communication-bus"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Open-Drain Communication Bus
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="c1">// I2C-like open-drain communication</span>
+<span class="n">EspGpio</span> <span class="nf">sda_pin</span><span class="p">(</span><span class="n">GPIO_NUM_21</span><span class="p">,</span>
+               <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_OUTPUT</span><span class="p">,</span>
+               <span class="n">hf_gpio_active_state_t</span><span class="o">::</span><span class="n">HF_GPIO_ACTIVE_LOW</span><span class="p">,</span>
+               <span class="n">hf_gpio_output_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_OUTPUT_MODE_OPEN_DRAIN</span><span class="p">,</span>
+               <span class="n">hf_gpio_pull_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_PULL_MODE_UP</span><span class="p">);</span>
+
+<span class="n">EspGpio</span> <span class="nf">scl_pin</span><span class="p">(</span><span class="n">GPIO_NUM_22</span><span class="p">,</span>
+               <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_OUTPUT</span><span class="p">,</span>
+               <span class="n">hf_gpio_active_state_t</span><span class="o">::</span><span class="n">HF_GPIO_ACTIVE_LOW</span><span class="p">,</span>
+               <span class="n">hf_gpio_output_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_OUTPUT_MODE_OPEN_DRAIN</span><span class="p">,</span>
+               <span class="n">hf_gpio_pull_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_PULL_MODE_UP</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup_open_drain_bus</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">sda_pin</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+    <span class="n">scl_pin</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+    
+    <span class="c1">// Set both lines high (pulled up externally)</span>
+    <span class="n">sda_pin</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>  <span class="c1">// Release SDA (high via pull-up)</span>
+    <span class="n">scl_pin</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>  <span class="c1">// Release SCL (high via pull-up)</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">send_start_condition</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// I2C start condition: SDA low while SCL high</span>
+    <span class="n">scl_pin</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>  <span class="c1">// Ensure SCL high</span>
+    <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+    <span class="n">sda_pin</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span>    <span class="c1">// Pull SDA low</span>
+    <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+    <span class="n">scl_pin</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span>    <span class="c1">// Pull SCL low</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="multi-pin-control-system">
+  
+  
+    <a href="#multi-pin-control-system" class="anchor-heading" aria-labelledby="multi-pin-control-system"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Multi-Pin Control System
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+</pre></td><td class="rouge-code"><pre><span class="k">class</span> <span class="nc">MotorControlSystem</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspGpio</span> <span class="n">enable_pin</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">EspGpio</span> <span class="n">direction_pin</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">EspGpio</span> <span class="n">step_pin</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">EspGpio</span> <span class="n">limit_switch</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">MotorControlSystem</span><span class="p">()</span> 
+        <span class="o">:</span> <span class="n">enable_pin</span><span class="o">*</span><span class="p">(</span><span class="n">GPIO_NUM_2</span><span class="p">,</span> <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_OUTPUT</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">direction_pin</span><span class="o">*</span><span class="p">(</span><span class="n">GPIO_NUM_3</span><span class="p">,</span> <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_OUTPUT</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">step_pin</span><span class="o">*</span><span class="p">(</span><span class="n">GPIO_NUM_4</span><span class="p">,</span> <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_OUTPUT</span><span class="p">,</span> 
+                   <span class="n">hf_gpio_active_state_t</span><span class="o">::</span><span class="n">HF_GPIO_ACTIVE_HIGH</span><span class="p">,</span>
+                   <span class="n">hf_gpio_output_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_OUTPUT_MODE_PUSH_PULL</span><span class="p">,</span>
+                   <span class="n">hf_gpio_pull_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_PULL_MODE_FLOATING</span><span class="p">,</span>
+                   <span class="n">hf_gpio_drive_cap_t</span><span class="o">::</span><span class="n">HF_GPIO_DRIVE_CAP_STRONGEST</span><span class="p">)</span>
+        <span class="p">,</span> <span class="n">limit_switch</span><span class="o">*</span><span class="p">(</span><span class="n">GPIO_NUM_5</span><span class="p">,</span> <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_INPUT</span><span class="p">,</span>
+                       <span class="n">hf_gpio_active_state_t</span><span class="o">::</span><span class="n">HF_GPIO_ACTIVE_LOW</span><span class="p">,</span>
+                       <span class="n">hf_gpio_output_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_OUTPUT_MODE_PUSH_PULL</span><span class="p">,</span>
+                       <span class="n">hf_gpio_pull_mode_t</span><span class="o">::</span><span class="n">HF_GPIO_PULL_MODE_UP</span><span class="p">)</span>
+    <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kt">bool</span> <span class="n">success</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="n">success</span> <span class="o">&amp;=</span> <span class="n">enable_pin</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+        <span class="n">success</span> <span class="o">&amp;=</span> <span class="n">direction_pin</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+        <span class="n">success</span> <span class="o">&amp;=</span> <span class="n">step_pin</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+        <span class="n">success</span> <span class="o">&amp;=</span> <span class="n">limit_switch</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Set safe initial state</span>
+            <span class="n">enable_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>    <span class="c1">// Motor disabled</span>
+            <span class="n">direction_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span> <span class="c1">// Direction = forward</span>
+            <span class="n">step_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>      <span class="c1">// No step</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="n">success</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">move_motor</span><span class="p">(</span><span class="kt">int</span> <span class="n">steps</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">forward</span><span class="p">,</span> <span class="kt">int</span> <span class="n">speed_hz</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">limit_switch</span><span class="o">*</span><span class="p">.</span><span class="n">IsActive</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Limit switch activated - stopping</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">direction_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetState</span><span class="p">(</span><span class="n">forward</span> <span class="o">?</span> <span class="n">hf_gpio_state_t</span><span class="o">::</span><span class="n">HF_GPIO_STATE_INACTIVE</span> 
+                                       <span class="o">:</span> <span class="n">hf_gpio_state_t</span><span class="o">::</span><span class="n">HF_GPIO_STATE_ACTIVE</span><span class="p">);</span>
+        <span class="n">enable_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span>  <span class="c1">// Enable motor</span>
+        
+        <span class="kt">int</span> <span class="n">delay_us</span> <span class="o">=</span> <span class="mi">500000</span> <span class="o">/</span> <span class="n">speed_hz</span><span class="p">;</span>  <span class="c1">// Convert Hz to microseconds</span>
+        
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">steps</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">limit_switch</span><span class="o">*</span><span class="p">.</span><span class="n">IsActive</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">step_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetActive</span><span class="p">();</span>
+            <span class="n">esp_rom_delay_us</span><span class="p">(</span><span class="n">delay_us</span><span class="p">);</span>
+            <span class="n">step_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>
+            <span class="n">esp_rom_delay_us</span><span class="p">(</span><span class="n">delay_us</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="n">enable_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>  <span class="c1">// Disable motor</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">emergency_stop</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">enable_pin</span><span class="o">*</span><span class="p">.</span><span class="n">SetInactive</span><span class="p">();</span>  <span class="c1">// Immediately disable motor</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Emergency stop activated</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="esp32-c6-pin-mapping">
+  
+  
+    <a href="#esp32-c6-pin-mapping" class="anchor-heading" aria-labelledby="esp32-c6-pin-mapping"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Pin Mapping
+  
+  
+</h2>
+    
+<h3 id="available-gpio-pins">
+  
+  
+    <a href="#available-gpio-pins" class="anchor-heading" aria-labelledby="available-gpio-pins"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Available GPIO Pins
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Pin Number</td>
+      <td>Special Functions</td>
+      <td>Notes</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|————|——————|——-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO0</td>
+      <td>Boot mode, UART download</td>
+      <td>Pull-up recommended for normal operation</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO1</td>
+      <td>ADC1_CH0, UART0_TXD</td>
+      <td>Can be used as GPIO after UART disable</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO2</td>
+      <td>ADC1_CH1, FSPIQ</td>
+      <td>Available for general GPIO</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO3</td>
+      <td>ADC1_CH2, FSPIHD</td>
+      <td>Available for general GPIO</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO4</td>
+      <td>ADC1_CH3, FSPICS0</td>
+      <td>Available for general GPIO</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO5</td>
+      <td>ADC1_CH4, FSPIWP</td>
+      <td>Available for general GPIO</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO6</td>
+      <td>ADC1_CH5, FSPICLK</td>
+      <td>Available for general GPIO</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO7</td>
+      <td>ADC1_CH6, FSPID</td>
+      <td>Available for general GPIO</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO8-19</td>
+      <td>General GPIO</td>
+      <td>Fully available for GPIO operations</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO20</td>
+      <td>UART0_RXD</td>
+      <td>Can be used as GPIO after UART disable</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO21</td>
+      <td>UART1_TXD</td>
+      <td>Available for general GPIO</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO22</td>
+      <td>UART1_RXD</td>
+      <td>Available for general GPIO</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO23</td>
+      <td>USB_D+</td>
+      <td>Reserved for USB functionality</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO24</td>
+      <td>USB_D-</td>
+      <td>Reserved for USB functionality</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>GPIO25-30</td>
+      <td>General GPIO</td>
+      <td>Available (package dependent)</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="drive-strength-guidelines">
+  
+  
+    <a href="#drive-strength-guidelines" class="anchor-heading" aria-labelledby="drive-strength-guidelines"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Drive Strength Guidelines
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Application</td>
+      <td>Recommended Drive Strength</td>
+      <td>Notes</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|————-|—————————|——-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>LEDs</td>
+      <td>STRONG or STRONGEST</td>
+      <td>Higher current needed</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Logic Signals</td>
+      <td>MEDIUM</td>
+      <td>Balanced performance/EMI</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>I2C/SPI</td>
+      <td>MEDIUM</td>
+      <td>Standard digital communication</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>High-Speed Signals</td>
+      <td>STRONGEST + FAST slew</td>
+      <td>Maximum performance</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Low-EMI Applications</td>
+      <td>WEAK + SLOW slew</td>
+      <td>Minimized electromagnetic interference</td>
+    </tr>
+  </tbody>
+</table></div>
+<h2 id="advanced-features">
+  
+  
+    <a href="#advanced-features" class="anchor-heading" aria-labelledby="advanced-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced Features
+  
+  
+</h2>
+    
+<h3 id="power-management">
+  
+  
+    <a href="#power-management" class="anchor-heading" aria-labelledby="power-management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Power Management
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1">// Configure pin for deep sleep compatibility</span>
+<span class="n">EspGpio</span> <span class="nf">wake_pin</span><span class="p">(</span><span class="n">GPIO_NUM_0</span><span class="p">,</span> <span class="n">hf_gpio_direction_t</span><span class="o">::</span><span class="n">HF_GPIO_DIRECTION_INPUT</span><span class="p">);</span>
+<span class="n">wake_pin</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">();</span>
+
+<span class="c1">// Configure as wake source</span>
+<span class="n">esp_sleep_enable_ext0_wakeup</span><span class="p">(</span><span class="n">GPIO_NUM_0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>  <span class="c1">// Wake on low level</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="performance-optimization">
+  
+  
+    <a href="#performance-optimization" class="anchor-heading" aria-labelledby="performance-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Optimization
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1">// For time-critical applications, cache the ESP GPIO number</span>
+<span class="n">gpio_num_t</span> <span class="n">esp_pin</span> <span class="o">=</span> <span class="n">gpio_pin</span><span class="p">.</span><span class="n">GetEspGpioNum</span><span class="p">();</span>
+
+<span class="c1">// Use direct ESP-IDF calls for maximum speed (if needed)</span>
+<span class="n">gpio_set_level</span><span class="p">(</span><span class="n">esp_pin</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">// Direct register access</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h2 id="error-handling">
+  
+  
+    <a href="#error-handling" class="anchor-heading" aria-labelledby="error-handling"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Error Handling
+  
+  
+</h2>
+    
+
+<p>All <code class="language-plaintext highlighter-rouge">EspGpio</code> methods return appropriate error codes from the <code class="language-plaintext highlighter-rouge">hf_gpio_err_t</code> enumeration.
+Common ESP32-specific errors include:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GPIO_ERR_INVALID_PIN</code> - Pin number not available on ESP32-C6</li>
+  <li><code class="language-plaintext highlighter-rouge">GPIO_ERR_PIN_NOT_AVAILABLE</code> - Pin reserved for special functions</li>
+  <li><code class="language-plaintext highlighter-rouge">GPIO_ERR_HARDWARE_FAILURE</code> - ESP-IDF driver error</li>
+  <li><code class="language-plaintext highlighter-rouge">GPIO_ERR_INTERRUPT_NOT_SUPPORTED</code> - Interrupt configuration failed</li>
+</ul>
+<h2 id="thread-safety">
+  
+  
+    <a href="#thread-safety" class="anchor-heading" aria-labelledby="thread-safety"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Thread Safety
+  
+  
+</h2>
+    
+
+<p><code class="language-plaintext highlighter-rouge">EspGpio</code> is <strong>not thread-safe</strong>.
+Use appropriate synchronization when accessing from multiple tasks.</p>
+<h2 id="implementation-notes">
+  
+  
+    <a href="#implementation-notes" class="anchor-heading" aria-labelledby="implementation-notes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Implementation Notes
+  
+  
+</h2>
+    
+
+<!-- markdownlint-disable-next-line MD013 -->
+<ul>
+  <li><strong>Lazy Initialization</strong>: Hardware configuration occurs only when <code class="language-plaintext highlighter-rouge">Initialize()</code> or <code class="language-plaintext highlighter-rouge">EnsureInitialized()</code> is called</li>
+  <li><strong>ISR Compatibility</strong>: Interrupt callbacks must be marked with <code class="language-plaintext highlighter-rouge">IRAM_ATTR</code> for proper execution</li>
+  <li><strong>Memory Efficiency</strong>: Minimal RAM usage with static configuration</li>
+  <li><strong>Performance</strong>: Optimized for real-time motor control applications</li>
+</ul>
+<h2 id="related-documentation">
+  
+  
+    <a href="#related-documentation" class="anchor-heading" aria-labelledby="related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Related Documentation
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/">BaseGpio API Reference</a> - Base class interface</li>
+  <li><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/">HardwareTypes Reference</a> - Platform-agnostic type definitions
+<!-- markdownlint-disable-next-line MD013 --></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/gpio.html">ESP-IDF GPIO Driver</a> - ESP-IDF docs</li>
+</ul><hr />
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

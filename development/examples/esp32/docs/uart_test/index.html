@@ -1,0 +1,1808 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(5)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(5) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(5) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(5) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🧪 UART Test | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🧪 UART Test" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="UART Test Suite - Serial communication and flow control testing" />
+<meta property="og:description" content="UART Test Suite - Serial communication and flow control testing" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🧪 UART Test" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"UART Test Suite - Serial communication and flow control testing","headline":"🧪 UART Test","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/">🚀 ESP32 Examples</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/">🧪 Test Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🧪 UART Test</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="esp32-c6-uart-comprehensive-test-suite-documentation">
+  
+  
+    <a href="#esp32-c6-uart-comprehensive-test-suite-documentation" class="anchor-heading" aria-labelledby="esp32-c6-uart-comprehensive-test-suite-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 UART Comprehensive Test Suite Documentation
+  
+  
+</h1>
+    
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p>The UART Comprehensive Test Suite provides extensive validation of the <code class="language-plaintext highlighter-rouge">EspUart</code> class for ESP32
+platforms using ESP-IDF v5.5+.
+This comprehensive test suite demonstrates complete UART functionality including basic
+communication,
+baud rate configuration, flow control, advanced features, callbacks, statistics, diagnostics,
+printf support, error handling, ESP32-C6 specific features, performance testing,
+callback verification, user event tasks,
+and comprehensive pattern detection with a focus on embedded environments using <code class="language-plaintext highlighter-rouge">noexcept</code>
+functions.</p>
+
+<p><strong>✅ Status: Successfully tested on ESP32-C6-DevKitM-1 hardware with 19 comprehensive tests</strong></p>
+<h3 id="supported-esp32-variants">
+  
+  
+    <a href="#supported-esp32-variants" class="anchor-heading" aria-labelledby="supported-esp32-variants"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Supported ESP32 Variants
+  
+  
+</h3>
+    
+
+<p>The implementation automatically detects and adapts to different ESP32 variants with their specific
+UART port allocation constraints:</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32 Variant</td>
+      <td>Total UART Ports</td>
+      <td>Port Allocation</td>
+      <td>Special Notes</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|—————|——————|—————–|—————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32</td>
+      <td>3</td>
+      <td>UART0, UART1, UART2</td>
+      <td>UART0 is console/debug port</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-S2</td>
+      <td>3</td>
+      <td>UART0, UART1, UART2</td>
+      <td>UART0 is console/debug port</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-S3</td>
+      <td>3</td>
+      <td>UART0, UART1, UART2</td>
+      <td>UART0 is console/debug port</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-C3</td>
+      <td>2</td>
+      <td>UART0, UART1</td>
+      <td>UART0 is console/debug port</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-C6</td>
+      <td>3</td>
+      <td>UART0, UART1, UART2</td>
+      <td>UART0 is console/debug port</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>ESP32-H2</td>
+      <td>2</td>
+      <td>UART0, UART1</td>
+      <td>UART0 is console/debug port</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p><strong>⚠️ Important Note</strong>: UART0 is the default console/debug port on all ESP32 variants.
+For testing, use UART1 or UART2 to avoid debug output interference.</p>
+<h2 id="features-tested">
+  
+  
+    <a href="#features-tested" class="anchor-heading" aria-labelledby="features-tested"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features Tested
+  
+  
+</h2>
+    
+<h3 id="core-functionality">
+  
+  
+    <a href="#core-functionality" class="anchor-heading" aria-labelledby="core-functionality"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core Functionality
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Constructor/Destructor Behavior</strong>: Object lifecycle management and resource allocation</li>
+  <li><strong>Lifecycle Management</strong>: Initialize/Deinitialize operations with state validation</li>
+  <li><strong>Basic Communication</strong>: TX/RX operations with external loopback testing</li>
+  <li><strong>Baud Rate Configuration</strong>: Multi-baud rate testing and validation</li>
+  <li><strong>Flow Control</strong>: Hardware RTS/CTS and software XON/XOFF flow control</li>
+  <li><strong>Error Handling</strong>: Comprehensive error condition testing and recovery</li>
+</ul>
+<h3 id="advanced-uart-features">
+  
+  
+    <a href="#advanced-uart-features" class="anchor-heading" aria-labelledby="advanced-uart-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced UART Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Pattern Detection</strong>: ESP-IDF v5.5 pattern detection for AT commands and custom patterns</li>
+  <li><strong>Buffer Operations</strong>: ReadUntil, ReadLine, and buffer management</li>
+  <li><strong>Communication Modes</strong>: UART, RS485, and IrDA mode configuration</li>
+  <li><strong>Async Operations</strong>: Interrupt-driven operation with event queues</li>
+  <li><strong>Callbacks</strong>: Event-driven callback system with user data support</li>
+  <li><strong>Statistics and Diagnostics</strong>: Comprehensive performance metrics and error reporting</li>
+</ul>
+<h3 id="esp32-c6-specific-features">
+  
+  
+    <a href="#esp32-c6-specific-features" class="anchor-heading" aria-labelledby="esp32-c6-specific-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Specific Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Multi-Port Support</strong>: UART0, UART1, UART2 with independent configuration</li>
+  <li><strong>Hardware Flow Control</strong>: RTS/CTS pin configuration and control</li>
+  <li><strong>Break Signal Support</strong>: Break condition generation and detection</li>
+  <li><strong>Signal Inversion</strong>: TX/RX signal inversion capabilities</li>
+  <li><strong>Wakeup Configuration</strong>: UART wakeup from light sleep mode</li>
+  <li><strong>Printf Support</strong>: Formatted output with variable argument support</li>
+</ul>
+<h3 id="pattern-detection-testing">
+  
+  
+    <a href="#pattern-detection-testing" class="anchor-heading" aria-labelledby="pattern-detection-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern Detection Testing
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Line Pattern Detection</strong>: Newline (<code class="language-plaintext highlighter-rouge">\n</code>) character detection for line-oriented protocols</li>
+  <li><strong>AT Command Detection</strong>: Triple plus (<code class="language-plaintext highlighter-rouge">+++</code>) pattern detection for AT escape sequences</li>
+  <li><strong>Event-Driven Processing</strong>: Comprehensive event queue monitoring and processing</li>
+  <li><strong>Timing Optimization</strong>: Relaxed timing parameters for reliable pattern detection</li>
+  <li><strong>Position Tracking</strong>: Pattern position detection and data extraction</li>
+</ul>
+<h3 id="testing-infrastructure">
+  
+  
+    <a href="#testing-infrastructure" class="anchor-heading" aria-labelledby="testing-infrastructure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing Infrastructure
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>External Loopback Testing</strong>: TX→RX jumper wire testing for reliable validation</li>
+  <li><strong>Test Progression Indicator</strong>: GPIO14 visual feedback for test progress</li>
+  <li><strong>Comprehensive Event Monitoring</strong>: UART event queue analysis and validation</li>
+  <li><strong>User Event Tasks</strong>: FreeRTOS task creation for event handling</li>
+  <li><strong>Statistics Tracking</strong>: Performance metrics and operation counting</li>
+</ul>
+<h2 id="hardware-setup">
+  
+  
+    <a href="#hardware-setup" class="anchor-heading" aria-labelledby="hardware-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Setup
+  
+  
+</h2>
+    
+<h3 id="esp32-c6-devkitm-1-pin-configuration">
+  
+  
+    <a href="#esp32-c6-devkitm-1-pin-configuration" class="anchor-heading" aria-labelledby="esp32-c6-devkitm-1-pin-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6-DevKitM-1 Pin Configuration
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>GPIO4 (RX)</strong>: UART1 reception input</li>
+  <li><strong>GPIO5 (TX)</strong>: UART1 transmission output</li>
+  <li><strong>GPIO6 (RTS)</strong>: UART1 RTS flow control</li>
+  <li><strong>GPIO7 (CTS)</strong>: UART1 CTS flow control</li>
+  <li><strong>GPIO14</strong>: Test progression indicator (visual feedback)</li>
+</ul>
+<h3 id="external-loopback-testing-setup">
+  
+  
+    <a href="#external-loopback-testing-setup" class="anchor-heading" aria-labelledby="external-loopback-testing-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> External Loopback Testing Setup
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+ESP32-C6-DevKitM-1
+├── GPIO5 (UART1 TX) ──► Jumper Wire ──► GPIO4 (UART1 RX)
+├── GPIO6 (UART1 RTS) ──► Optional ──► GPIO7 (UART1 CTS)
+├── GPIO14 (Test Progress) ──► LED indicator for test progression
+└── External Loopback: Transmission/reception verification
+</code>text</p>
+
+<p><strong>For External Loopback Testing:</strong></p>
+<ul>
+  <li>Connect GPIO5 (TX) to GPIO4 (RX) with a jumper wire</li>
+  <li>This creates a loopback for transmission/reception verification</li>
+  <li>GPIO14 provides visual feedback of test progression</li>
+  <li>RTS/CTS pins can be connected for flow control testing</li>
+</ul>
+<h3 id="test-progression-indicator">
+  
+  
+    <a href="#test-progression-indicator" class="anchor-heading" aria-labelledby="test-progression-indicator"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Progression Indicator
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+ESP32-C6 GPIO14 ──► Visual LED Indicator
+                   │
+                   └──► Toggles HIGH/LOW for each completed test
+                   └──► Provides feedback for logic analyzer capture
+</code>text</p>
+
+<p><strong>Progression Indicator Features:</strong></p>
+<ul>
+  <li>✅ Visual feedback for test completion</li>
+  <li>✅ Logic analyzer triggering reference</li>
+  <li>✅ Automated test sequencing verification</li>
+  <li>✅ Real-time test progress monitoring</li>
+</ul>
+<h3 id="logic-analyzer-setup">
+  
+  
+    <a href="#logic-analyzer-setup" class="anchor-heading" aria-labelledby="logic-analyzer-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Setup
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+ESP32-C6 GPIO4  ──► Logic Analyzer Channel 0 (UART1 RX)
+ESP32-C6 GPIO5  ──► Logic Analyzer Channel 1 (UART1 TX)
+ESP32-C6 GPIO14 ──► Logic Analyzer Channel 2 (test progression)
+ESP32-C6 GND    ──► Logic Analyzer Ground
+</code>text</p>
+
+<p><strong>Logic Analyzer Settings:</strong></p>
+<ul>
+  <li>Sample rate: 1MHz or higher</li>
+  <li>Voltage threshold: 1.65V (3.3V logic)</li>
+  <li>Trigger: Rising edge on GPIO14 (test progression)</li>
+  <li>Capture: Multi-channel for comprehensive analysis</li>
+</ul>
+<h2 id="running-the-tests">
+  
+  
+    <a href="#running-the-tests" class="anchor-heading" aria-labelledby="running-the-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Running the Tests
+  
+  
+</h2>
+    
+<h3 id="prerequisites">
+  
+  
+    <a href="#prerequisites" class="anchor-heading" aria-labelledby="prerequisites"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Prerequisites
+  
+  
+</h3>
+    
+<ul>
+  <li>ESP-IDF v5.5 or later</li>
+  <li>ESP32-C6-DevKitM-1 development board</li>
+  <li>Jumper wire for loopback testing (GPIO5 → GPIO4)</li>
+  <li>Optional: Logic analyzer for signal verification</li>
+</ul>
+<h3 id="using-build-scripts-recommended">
+  
+  
+    <a href="#using-build-scripts-recommended" class="anchor-heading" aria-labelledby="using-build-scripts-recommended"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using Build Scripts (Recommended)
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="navigate-to-esp32-examples-directory">
+  
+  
+    <a href="#navigate-to-esp32-examples-directory" class="anchor-heading" aria-labelledby="navigate-to-esp32-examples-directory"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Navigate to ESP32 examples directory
+  
+  
+</h2>
+    
+<p>cd examples/esp32</p>
+<h2 id="build-uart-test">
+  
+  
+    <a href="#build-uart-test" class="anchor-heading" aria-labelledby="build-uart-test"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build UART test
+  
+  
+</h2>
+    
+<p>./scripts/build_example.sh uart_test Release</p>
+<h2 id="flash-to-device-and-monitor">
+  
+  
+    <a href="#flash-to-device-and-monitor" class="anchor-heading" aria-labelledby="flash-to-device-and-monitor"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash to device and monitor
+  
+  
+</h2>
+    
+<p>./scripts/flash_example.sh uart_test Release flash_monitor
+```text</p>
+<h3 id="direct-esp-idf-build-alternative">
+  
+  
+    <a href="#direct-esp-idf-build-alternative" class="anchor-heading" aria-labelledby="direct-esp-idf-build-alternative"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Direct ESP-IDF Build (Alternative)
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="set-target">
+  
+  
+    <a href="#set-target" class="anchor-heading" aria-labelledby="set-target"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set target
+  
+  
+</h2>
+    
+<p>export IDF_TARGET=esp32c6</p>
+<h2 id="build-uart-test-1">
+  
+  
+    <a href="#build-uart-test-1" class="anchor-heading" aria-labelledby="build-uart-test-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build UART test
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=uart_test</p>
+<h2 id="flash-to-device">
+  
+  
+    <a href="#flash-to-device" class="anchor-heading" aria-labelledby="flash-to-device"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash to device
+  
+  
+</h2>
+    
+<p>idf.py flash monitor
+```text</p>
+<h3 id="cicd-integration">
+  
+  
+    <a href="#cicd-integration" class="anchor-heading" aria-labelledby="cicd-integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> CI/CD Integration
+  
+  
+</h3>
+    
+<p>The test is automatically included in the CI pipeline and will run in both Release and Debug
+configurations:
+<code class="language-plaintext highlighter-rouge">yaml
+matrix:
+  example_type: [..., uart_test, ...]
+</code>text</p>
+<h2 id="test-categories">
+  
+  
+    <a href="#test-categories" class="anchor-heading" aria-labelledby="test-categories"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Categories
+  
+  
+</h2>
+    
+<h3 id="1-constructordestructor-tests">
+  
+  
+    <a href="#1-constructordestructor-tests" class="anchor-heading" aria-labelledby="1-constructordestructor-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Constructor/Destructor Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_construction</code>: Validates proper object initialization and multiple instance support</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_initialization</code>: Tests manual initialization/deinitialization with state validation</li>
+</ul>
+<h3 id="2-basic-communication-tests">
+  
+  
+    <a href="#2-basic-communication-tests" class="anchor-heading" aria-labelledby="2-basic-communication-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Basic Communication Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_basic_communication</code>: Basic TX/RX operations with external loopback</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_baud_rate_configuration</code>: Multi-baud rate testing (9600 to 230400)</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_flow_control</code>: Hardware RTS/CTS and software XON/XOFF flow control</li>
+</ul>
+<h3 id="3-advanced-features-tests">
+  
+  
+    <a href="#3-advanced-features-tests" class="anchor-heading" aria-labelledby="3-advanced-features-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Advanced Features Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_pattern_detection</code>: Comprehensive pattern detection testing including:
+    <ul>
+      <li>Line pattern detection (<code class="language-plaintext highlighter-rouge">\n</code>) with 3/3 patterns detected</li>
+      <li>AT command pattern detection (<code class="language-plaintext highlighter-rouge">+++</code>) with 2/2 patterns detected</li>
+      <li>Event-driven processing with proper timing optimization</li>
+      <li>Pattern position tracking and data extraction</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_buffer_operations</code>: ReadUntil, ReadLine, and buffer management</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_advanced_features</code>: Break signals, loopback mode, signal inversion, wakeup</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_communication_modes</code>: UART, RS485, and IrDA mode configuration</li>
+</ul>
+<h3 id="4-async-operations-tests">
+  
+  
+    <a href="#4-async-operations-tests" class="anchor-heading" aria-labelledby="4-async-operations-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Async Operations Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_async_operations</code>: Interrupt-driven operation with event queues</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_callbacks</code>: Event queue access and interrupt configuration</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_callback_verification</code>: Event-driven callback system validation</li>
+</ul>
+<h3 id="5-statistics-and-diagnostics-tests">
+  
+  
+    <a href="#5-statistics-and-diagnostics-tests" class="anchor-heading" aria-labelledby="5-statistics-and-diagnostics-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 5. Statistics and Diagnostics Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_statistics_diagnostics</code>: Comprehensive performance metrics and error reporting</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_printf_support</code>: Formatted output with variable argument support</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_error_handling</code>: Error condition testing and graceful failure handling</li>
+</ul>
+<h3 id="6-esp32-c6-specific-tests">
+  
+  
+    <a href="#6-esp32-c6-specific-tests" class="anchor-heading" aria-labelledby="6-esp32-c6-specific-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6. ESP32-C6 Specific Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_esp32c6_features</code>: ESP32-C6 specific UART capabilities</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_performance</code>: Performance testing and timing validation</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_user_event_task</code>: FreeRTOS task creation for event handling</li>
+</ul>
+<h3 id="7-event-driven-pattern-detection-tests">
+  
+  
+    <a href="#7-event-driven-pattern-detection-tests" class="anchor-heading" aria-labelledby="7-event-driven-pattern-detection-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 7. Event-Driven Pattern Detection Tests
+  
+  
+</h3>
+    
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_event_driven_pattern_detection</code>: Comprehensive event queue monitoring</li>
+  <li><code class="language-plaintext highlighter-rouge">test_uart_cleanup</code>: Resource cleanup and memory management</li>
+</ul>
+<h2 id="pattern-detection-specifications">
+  
+  
+    <a href="#pattern-detection-specifications" class="anchor-heading" aria-labelledby="pattern-detection-specifications"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern Detection Specifications
+  
+  
+</h2>
+    
+<h3 id="esp-idf-v55-pattern-detection">
+  
+  
+    <a href="#esp-idf-v55-pattern-detection" class="anchor-heading" aria-labelledby="esp-idf-v55-pattern-detection"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP-IDF v5.5 Pattern Detection
+  
+  
+</h3>
+    
+<p>The test suite uses the modern ESP-IDF v5.5 pattern detection API:</p>
+
+<p><code class="language-plaintext highlighter-rouge">cpp
+esp_err_t uart_enable_pattern_det_baud_intr(
+    uart_port_t uart_num, 
+    char pattern_chr,           // Character to detect
+    uint8_t chr_num,            // Number of consecutive characters
+    int chr_tout,               // Timeout between characters (baud cycles)
+    int post_idle,              // Idle time after last character
+    int pre_idle                 // Idle time before first character
+);
+</code>text</p>
+<h3 id="pattern-detection-parameters">
+  
+  
+    <a href="#pattern-detection-parameters" class="anchor-heading" aria-labelledby="pattern-detection-parameters"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern Detection Parameters
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Pattern Type</td>
+      <td>Character</td>
+      <td>Count</td>
+      <td>chr_tout</td>
+      <td>post_idle</td>
+      <td>pre_idle</td>
+      <td>Purpose</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|————–|———–|——-|———-|———–|———-|———|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Line Pattern</td>
+      <td><code class="language-plaintext highlighter-rouge">\n</code></td>
+      <td>1</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Line-oriented protocols</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>AT Escape</td>
+      <td><code class="language-plaintext highlighter-rouge">+</code></td>
+      <td>3</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>AT command escape sequences</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="timing-optimization">
+  
+  
+    <a href="#timing-optimization" class="anchor-heading" aria-labelledby="timing-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Timing Optimization
+  
+  
+</h3>
+    
+<p><strong>Relaxed Timing Parameters</strong> for reliable pattern detection:</p>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">chr_tout</code></strong>: Reduced from 9 to 5 baud cycles (more permissive)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">post_idle</code></strong>: Set to 0 (no idle requirement after pattern)</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">pre_idle</code></strong>: Set to 0 (no idle requirement before pattern)</li>
+</ul>
+
+<p><strong>Why Reduced Timing is Better:</strong></p>
+<ul>
+  <li><strong>More Permissive</strong>: Allows for slight timing variations in data transmission</li>
+  <li><strong>Better Reliability</strong>: Reduces false negatives from strict timing requirements</li>
+  <li><strong>Real-World Compatibility</strong>: Matches actual communication timing patterns</li>
+</ul>
+<h2 id="expected-test-results">
+  
+  
+    <a href="#expected-test-results" class="anchor-heading" aria-labelledby="expected-test-results"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Expected Test Results
+  
+  
+</h2>
+    
+<h3 id="successful-test-output">
+  
+  
+    <a href="#successful-test-output" class="anchor-heading" aria-labelledby="successful-test-output"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Successful Test Output
+  
+  
+</h3>
+    
+<p>```text
+[UART_Test] ╔════════════════════════════════════════════════════════════════════════════════╗
+[UART_Test] ║                   ESP32-C6 UART COMPREHENSIVE TEST SUITE                       ║
+[UART_Test] ║                         HardFOC Internal Interface                             ║
+[UART_Test] ╚════════════════════════════════════════════════════════════════════════════════╝
+[UART_Test] ║ Target: ESP32-C6 DevKit-M-1                                                    ║
+[UART_Test] ║ ESP-IDF: v5.5+                                                                 ║
+[UART_Test] ║ Features: UART, Baud Rate Configuration, Flow Control, Pattern Detection,      ║
+[UART_Test] ║ Buffer Operations, Advanced Features, Communication Modes, Async Operations,   ║
+[UART_Test] ║ Callbacks, Statistics and Diagnostics, printf Support, Error Handling,         ║
+[UART_Test] ║ ESP32-C6 Features, Performance, Callback Verification, User Event Task,        ║
+[UART_Test] ║ Event-Driven Pattern Detection, Cleanup                                        ║
+[UART_Test] ║ Architecture: noexcept (no exception handling)                                 ║
+[UART_Test] ╚════════════════════════════════════════════════════════════════════════════════╝</p>
+
+<p>[UART_Test] === CONSTRUCTOR/DESTRUCTOR TESTS ===
+[UART_Test] [SUCCESS] PASSED: test_uart_construction (31.04 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_initialization (65.99 ms)</p>
+
+<p>[UART_Test] === BASIC COMMUNICATION TESTS ===
+[UART_Test] [SUCCESS] PASSED: test_uart_basic_communication (74.25 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_baud_rate_configuration (126.07 ms)</p>
+
+<p>[UART_Test] === ADVANCED FEATURES TESTS ===
+[UART_Test] [SUCCESS] PASSED (task): test_uart_pattern_detection (444.76 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_buffer_operations (269.45 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_advanced_features (673.89 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_communication_modes (96.81 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_async_operations (181.19 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_callbacks (94.81 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_statistics_diagnostics (101.05 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_printf_support (75.37 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_error_handling (85.34 ms)</p>
+
+<p>[UART_Test] === ESP32-C6 SPECIFIC TESTS ===
+[UART_Test] [SUCCESS] PASSED: test_uart_esp32c6_features (135.87 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_performance (82.07 ms)
+[UART_Test] [SUCCESS] PASSED: test_uart_callback_verification (1404.49 ms)</p>
+
+<p>[UART_Test] === USER EVENT TASK TEST ===
+[UART_Test] [SUCCESS] PASSED: test_uart_user_event_task (1483.02 ms)</p>
+
+<p>[UART_Test] === COMPREHENSIVE EVENT-DRIVEN PATTERN DETECTION TEST ===
+[UART_Test] [SUCCESS] PASSED: test_uart_event_driven_pattern_detection (419.06 ms)</p>
+
+<p>[UART_Test] === CLEANUP TEST ===
+[UART_Test] [SUCCESS] PASSED: test_uart_cleanup (72.50 ms)</p>
+
+<p>[UART_Test] === UART TEST SUMMARY ===
+[UART_Test] Total: 19, Passed: 19, Failed: 0, Success: 100.00%, Time: 5917.04 ms
+[UART_Test] [SUCCESS] ALL UART TESTS PASSED!
+```text</p>
+<h3 id="pattern-detection-test-results">
+  
+  
+    <a href="#pattern-detection-test-results" class="anchor-heading" aria-labelledby="pattern-detection-test-results"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern Detection Test Results
+  
+  
+</h3>
+    
+<p><strong>Test 1: Line Pattern Detection (<code class="language-plaintext highlighter-rouge">\n</code>)</strong>
+<code class="language-plaintext highlighter-rouge">text
+[UART_Test] === Test 1: Line-oriented pattern detection ('\n') ===
+[UART_Test] Line pattern detection enabled
+[UART_Test] Test data sent: 'Line1\nLine2\nLine3\n' (length: 18)
+[UART_Test] UART_PATTERN_DET event received!
+[UART_Test] Pattern 1 detected at position: 5
+[UART_Test] UART_PATTERN_DET event received!
+[UART_Test] Pattern 2 detected at position: 11
+[UART_Test] UART_PATTERN_DET event received!
+[UART_Test] Pattern 3 detected at position: 17
+[UART_Test] Line pattern detection: 3/3 patterns detected. PASSED
+</code>text</p>
+
+<p><strong>Test 2: AT Pattern Detection (<code class="language-plaintext highlighter-rouge">+++</code>)</strong>
+<code class="language-plaintext highlighter-rouge">text
+[UART_Test] === Test 2: AT escape sequence pattern detection ('+++') ===
+[UART_Test] AT escape sequence pattern detection enabled
+[UART_Test] AT test data sent (length: 42)
+[UART_Test] UART_PATTERN_DET event received for +++!
+[UART_Test] AT Pattern 1 detected at position: 9
+[UART_Test] UART_PATTERN_DET event received for +++!
+[UART_Test] AT Pattern 2 detected at position: 30
+[UART_Test] AT pattern detection: 2/2 patterns detected. PASSED
+</code>text</p>
+<h3 id="event-driven-pattern-detection-results">
+  
+  
+    <a href="#event-driven-pattern-detection-results" class="anchor-heading" aria-labelledby="event-driven-pattern-detection-results"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Event-Driven Pattern Detection Results
+  
+  
+</h3>
+    
+<p><code class="language-plaintext highlighter-rouge">text
+[UART_Test] Event-driven pattern detection results:
+[UART_Test]   Total events received: 3
+[UART_Test]   Data events: 0
+[UART_Test]   Pattern events: 3
+[UART_Test]   Other events: 0
+[UART_Test]   Pattern detected: YES
+[UART_Test]   Pattern position: 8
+[UART_Test]   Expected patterns: 3
+[UART_Test] [SUCCESS] Event-driven pattern detection test completed successfully
+</code>text</p>
+<h2 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h2>
+    
+<h3 id="common-issues">
+  
+  
+    <a href="#common-issues" class="anchor-heading" aria-labelledby="common-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Issues
+  
+  
+</h3>
+    
+<h4 id="test-failures">
+  
+  
+    <a href="#test-failures" class="anchor-heading" aria-labelledby="test-failures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Failures
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Pattern Detection Issues</strong>: Verify timing parameters and interrupt configuration</li>
+  <li><strong>GPIO Conflicts</strong>: Check pin availability and external loopback connection</li>
+  <li><strong>Initialization Failures</strong>: Ensure ESP-IDF v5.5+ and proper hardware</li>
+  <li><strong>UART Port Conflicts</strong>: Use UART1 or UART2, avoid UART0 (console port)</li>
+</ul>
+<h4 id="pattern-detection-issues">
+  
+  
+    <a href="#pattern-detection-issues" class="anchor-heading" aria-labelledby="pattern-detection-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern Detection Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>No Pattern Events</strong>: Check interrupt configuration and timing parameters</li>
+  <li><strong>Timing Issues</strong>: Verify <code class="language-plaintext highlighter-rouge">chr_tout</code>, <code class="language-plaintext highlighter-rouge">post_idle</code>, and <code class="language-plaintext highlighter-rouge">pre_idle</code> values</li>
+  <li><strong>Buffer Overflow</strong>: Add delays between data transmission and event processing</li>
+  <li><strong>Event Queue Issues</strong>: Ensure event queue is properly configured and sized</li>
+</ul>
+<h4 id="external-loopback-issues">
+  
+  
+    <a href="#external-loopback-issues" class="anchor-heading" aria-labelledby="external-loopback-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> External Loopback Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>No Reception</strong>: Verify jumper wire connection GPIO5 → GPIO4</li>
+  <li><strong>Data Mismatch</strong>: Check for loose connections or interference</li>
+  <li><strong>Timing Issues</strong>: Ensure proper UART configuration and baud rate</li>
+  <li><strong>Flow Control</strong>: Verify RTS/CTS configuration if using hardware flow control</li>
+</ul>
+<h4 id="test-progression-indicator-issues">
+  
+  
+    <a href="#test-progression-indicator-issues" class="anchor-heading" aria-labelledby="test-progression-indicator-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Progression Indicator Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>No GPIO14 Activity</strong>: Check GPIO14 initialization and connectivity</li>
+  <li><strong>Irregular Toggle Pattern</strong>: Verify test sequence completion</li>
+  <li><strong>Logic Analyzer Sync</strong>: Use GPIO14 as trigger reference</li>
+</ul>
+<h4 id="uart-configuration-issues">
+  
+  
+    <a href="#uart-configuration-issues" class="anchor-heading" aria-labelledby="uart-configuration-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> UART Configuration Issues
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Port Selection</strong>: Use <code class="language-plaintext highlighter-rouge">TEST_UART_PORT_1</code> for testing (avoid UART0)</li>
+  <li><strong>Pin Configuration</strong>: Verify TX/RX/RTS/CTS pin assignments</li>
+  <li><strong>Baud Rate</strong>: Ensure consistent baud rate across all operations</li>
+  <li><strong>Buffer Sizes</strong>: Use appropriate buffer sizes for ESP32-C6 (256+ bytes)</li>
+</ul>
+<h3 id="debug-mode">
+  
+  
+    <a href="#debug-mode" class="anchor-heading" aria-labelledby="debug-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Debug Mode
+  
+  
+</h3>
+    
+<p>Enable detailed logging by building in Debug mode:
+```bash</p>
+<h2 id="using-build-scripts-recommended-1">
+  
+  
+    <a href="#using-build-scripts-recommended-1" class="anchor-heading" aria-labelledby="using-build-scripts-recommended-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using build scripts (recommended)
+  
+  
+</h2>
+    
+<p>./scripts/build_example.sh uart_test Debug</p>
+<h2 id="or-direct-esp-idf-build">
+  
+  
+    <a href="#or-direct-esp-idf-build" class="anchor-heading" aria-labelledby="or-direct-esp-idf-build"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Or direct ESP-IDF build
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=uart_test -DBUILD_TYPE=Debug
+```text</p>
+<h3 id="pattern-detection-debugging">
+  
+  
+    <a href="#pattern-detection-debugging" class="anchor-heading" aria-labelledby="pattern-detection-debugging"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern Detection Debugging
+  
+  
+</h3>
+    
+<p>```cpp
+// Enable debug logging for pattern detection
+ESP_LOGI(TAG, “Pattern detection enabled: ‘%c’ x%d (chr_tout=%d, post_idle=%d, pre_idle=%d)”,
+         pattern_chr, chr_num, chr_tout, post_idle, pre_idle);</p>
+
+<p>// Monitor event queue activity
+ESP_LOGI(TAG, “Event received: type=%d, size=%zu”, event.type, event.size);</p>
+
+<p>// Check pattern position
+int pattern_pos = uart-&gt;PopPatternPosition();
+ESP_LOGI(TAG, “Pattern detected at position: %d”, pattern_pos);
+```text</p>
+<h2 id="performance-metrics">
+  
+  
+    <a href="#performance-metrics" class="anchor-heading" aria-labelledby="performance-metrics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Metrics
+  
+  
+</h2>
+    
+<h3 id="build-information">
+  
+  
+    <a href="#build-information" class="anchor-heading" aria-labelledby="build-information"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build Information
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Build Status</strong>: ✅ SUCCESS</li>
+  <li><strong>Target</strong>: ESP32-C6</li>
+  <li><strong>Binary Size</strong>: Varies based on configuration</li>
+  <li><strong>ESP-IDF Version</strong>: v5.5+</li>
+  <li><strong>Test Count</strong>: 19 comprehensive tests</li>
+</ul>
+<h3 id="typical-results-esp32-c6--160mhz">
+  
+  
+    <a href="#typical-results-esp32-c6--160mhz" class="anchor-heading" aria-labelledby="typical-results-esp32-c6--160mhz"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Typical Results (ESP32-C6 @ 160MHz)
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Initialization Time</strong>: ~1ms</li>
+  <li><strong>UART Configuration</strong>: ~0.5ms</li>
+  <li><strong>Pattern Detection Setup</strong>: ~1ms</li>
+  <li><strong>Constructor/Destructor Tests</strong>: ~97ms total</li>
+  <li><strong>Basic Communication Tests</strong>: ~200ms total</li>
+  <li><strong>Advanced Features Tests</strong>: ~1.5s total</li>
+  <li><strong>Async Operations Tests</strong>: ~181ms</li>
+  <li><strong>Statistics and Diagnostics</strong>: ~101ms</li>
+  <li><strong>ESP32-C6 Specific Tests</strong>: ~1.6s total</li>
+  <li><strong>User Event Task Test</strong>: ~1.5s (comprehensive task testing)</li>
+  <li><strong>Event-Driven Pattern Detection</strong>: ~419ms (comprehensive monitoring)</li>
+  <li><strong>Complete Test Suite</strong>: ~5.9s (5917ms)</li>
+</ul>
+<h3 id="memory-usage">
+  
+  
+    <a href="#memory-usage" class="anchor-heading" aria-labelledby="memory-usage"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Memory Usage
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>RAM</strong>: ~4-6KB for enhanced test framework and event processing</li>
+  <li><strong>Flash</strong>: ~25-30KB for comprehensive test code</li>
+  <li><strong>Event Queue</strong>: 32 events (configurable, used extensively)</li>
+  <li><strong>Pattern Queue</strong>: 16-32 pattern positions (configurable)</li>
+  <li><strong>Task Stacks</strong>: 8KB for pattern detection test, 4KB for user event task</li>
+  <li><strong>Buffer Management</strong>: 256+ byte RX/TX buffers for reliable operation</li>
+</ul>
+<h2 id="integration-with-development-workflow">
+  
+  
+    <a href="#integration-with-development-workflow" class="anchor-heading" aria-labelledby="integration-with-development-workflow"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Integration with Development Workflow
+  
+  
+</h2>
+    
+<h3 id="continuous-integration">
+  
+  
+    <a href="#continuous-integration" class="anchor-heading" aria-labelledby="continuous-integration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Continuous Integration
+  
+  
+</h3>
+    
+<p>The test automatically runs in CI for:</p>
+<ul>
+  <li>Pull request validation</li>
+  <li>Main branch commits</li>
+  <li>Release candidate testing</li>
+  <li>ESP32 variant compatibility verification</li>
+</ul>
+<h3 id="hardware-in-the-loop-testing">
+  
+  
+    <a href="#hardware-in-the-loop-testing" class="anchor-heading" aria-labelledby="hardware-in-the-loop-testing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware-in-the-Loop Testing
+  
+  
+</h3>
+    
+<p>For production validation:</p>
+<ol>
+  <li>Use external loopback (GPIO5 → GPIO4) for reliable testing</li>
+  <li>Monitor GPIO14 for test progression verification</li>
+  <li>Use logic analyzer for signal verification</li>
+  <li>Run automated test suite (19 tests)</li>
+  <li>Validate pattern detection against specifications</li>
+  <li>Verify UART port independence and configuration</li>
+</ol>
+<h2 id="advanced-configuration">
+  
+  
+    <a href="#advanced-configuration" class="anchor-heading" aria-labelledby="advanced-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced Configuration
+  
+  
+</h2>
+    
+<h3 id="custom-uart-ports">
+  
+  
+    <a href="#custom-uart-ports" class="anchor-heading" aria-labelledby="custom-uart-ports"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Custom UART Ports
+  
+  
+</h3>
+    
+<p>Modify the test for different hardware:
+<code class="language-plaintext highlighter-rouge">cpp
+// UART1 configuration for testing (avoid UART0 - console port)
+static constexpr hf_u8_t TEST_UART_PORT_1 = 1;
+static constexpr hf_u8_t TEST_TX_PIN = 5;   // UART1 TX
+static constexpr hf_u8_t TEST_RX_PIN = 4;   // UART1 RX
+static constexpr hf_u8_t TEST_RTS_PIN = 6;  // UART1 RTS
+static constexpr hf_u8_t TEST_CTS_PIN = 7;  // UART1 CTS
+</code>text</p>
+<h3 id="pattern-detection-configuration">
+  
+  
+    <a href="#pattern-detection-configuration" class="anchor-heading" aria-labelledby="pattern-detection-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern Detection Configuration
+  
+  
+</h3>
+    
+<p>```cpp
+// Line pattern detection with optimized timing
+result = uart-&gt;EnablePatternDetection(‘\n’, 1, 9, 0, 0);</p>
+
+<p>// AT escape sequence with relaxed timing
+result = uart-&gt;EnablePatternDetection(‘+’, 3, 5, 0, 0);</p>
+
+<p>// Custom pattern with specific timing requirements
+result = uart-&gt;EnablePatternDetection(‘$’, 2, 10, 5, 5);
+```text</p>
+<h3 id="event-queue-configuration">
+  
+  
+    <a href="#event-queue-configuration" class="anchor-heading" aria-labelledby="event-queue-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Event Queue Configuration
+  
+  
+</h3>
+    
+<p>```cpp
+// Enhanced event queue for comprehensive testing
+config.event_queue_size = 32;  // Larger queue for pattern detection</p>
+
+<p>// Interrupt configuration for pattern detection
+result = uart-&gt;ConfigureInterrupts(
+    UART_RXFIFO_FULL_INT_ENA_M | UART_RXFIFO_TOUT_INT_ENA_M, 32, 5);
+```text</p>
+<h3 id="test-parameters">
+  
+  
+    <a href="#test-parameters" class="anchor-heading" aria-labelledby="test-parameters"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Parameters
+  
+  
+</h3>
+    
+<p>Customize test behavior:
+```cpp
+// Pattern detection timing optimization
+static constexpr int PATTERN_CHR_TIMEOUT = 5;    // Relaxed timing
+static constexpr int PATTERN_POST_IDLE = 0;      // No idle requirement
+static constexpr int PATTERN_PRE_IDLE = 0;       // No idle requirement</p>
+
+<p>// Test progression configuration
+static constexpr uint32_t TEST_PROGRESS_DELAY_MS = 100; // Progress indicator timing
+static constexpr uint32_t PATTERN_TEST_TIMEOUT_MS = 3000; // Pattern detection timeout
+```text</p>
+<h2 id="esp32-c6-specific-features-1">
+  
+  
+    <a href="#esp32-c6-specific-features-1" class="anchor-heading" aria-labelledby="esp32-c6-specific-features-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Specific Features
+  
+  
+</h2>
+    
+<h3 id="uart-peripheral">
+  
+  
+    <a href="#uart-peripheral" class="anchor-heading" aria-labelledby="uart-peripheral"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> UART Peripheral
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Ports</strong>: 3 UART ports (UART0, UART1, UART2)</li>
+  <li><strong>Clock Source</strong>: PLL_F80M (80 MHz) with automatic fallback</li>
+  <li><strong>FIFO Size</strong>: 128 bytes hardware FIFO</li>
+  <li><strong>Buffer Support</strong>: Configurable ring buffers (256+ bytes recommended)</li>
+  <li><strong>Interrupt Support</strong>: Comprehensive interrupt configuration</li>
+  <li><strong>Pattern Detection</strong>: Hardware pattern detection with ESP-IDF v5.5</li>
+</ul>
+<h3 id="pattern-detection-capabilities">
+  
+  
+    <a href="#pattern-detection-capabilities" class="anchor-heading" aria-labelledby="pattern-detection-capabilities"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Pattern Detection Capabilities
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Character Patterns</strong>: Single or multiple consecutive characters</li>
+  <li><strong>Timing Control</strong>: Configurable character timeout and idle periods</li>
+  <li><strong>Position Tracking</strong>: Pattern position detection and queue management</li>
+  <li><strong>Event Generation</strong>: Automatic UART_PATTERN_DET events</li>
+  <li><strong>Queue Management</strong>: Configurable pattern position queue</li>
+</ul>
+<h3 id="testing-advantages">
+  
+  
+    <a href="#testing-advantages" class="anchor-heading" aria-labelledby="testing-advantages"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Testing Advantages
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Port Independence</strong>: UART1/UART2 avoid console interference</li>
+  <li><strong>External Loopback</strong>: Simple jumper wire testing</li>
+  <li><strong>Visual Feedback</strong>: GPIO14 progression indicator</li>
+  <li><strong>Comprehensive Testing</strong>: 19 individual test cases</li>
+  <li><strong>Pattern Validation</strong>: Line and AT command pattern detection</li>
+  <li><strong>Event Monitoring</strong>: Complete event queue analysis</li>
+  <li><strong>Performance Metrics</strong>: Timing and statistics validation</li>
+</ul>
+<h3 id="esp32-c6-specific-observations">
+  
+  
+    <a href="#esp32-c6-specific-observations" class="anchor-heading" aria-labelledby="esp32-c6-specific-observations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32-C6 Specific Observations
+  
+  
+</h3>
+    
+<p>From the actual test output, several ESP32-C6 specific behaviors were observed:</p>
+
+<p><strong>Break Signal Handling:</strong>
+<code class="language-plaintext highlighter-rouge">text
+W (3456) EspUart: uart_write_bytes_with_break failed (ERROR), trying manual break via GPIO
+W (3556) EspUart: Break condition sent via manual GPIO control for 100 ms (ESP32-C6 fallback)
+</code>text</p>
+<ul>
+  <li>ESP32-C6 has limited break signal support in ESP-IDF v5.5</li>
+  <li>Automatic fallback to manual GPIO control for break signals</li>
+  <li>This is expected behavior for this MCU variant</li>
+</ul>
+
+<p><strong>Communication Mode Support:</strong>
+<code class="language-plaintext highlighter-rouge">text
+W (4276) EspUart: RS485 advanced features not supported in ESP-IDF v5.5
+W (4286) EspUart: IrDA not supported in ESP-IDF v5.5
+W (4286) UART_Test: IrDA not supported on ESP32-C6 (expected): 4
+</code>text</p>
+<ul>
+  <li>RS485 mode supported but with limited advanced features</li>
+  <li>IrDA mode not supported (expected limitation)</li>
+  <li>UART mode fully functional</li>
+</ul>
+
+<p><strong>Pattern Detection Performance:</strong></p>
+<ul>
+  <li><strong>Line Pattern Test</strong>: 3/3 patterns detected in ~445ms</li>
+  <li><strong>AT Pattern Test</strong>: 2/2 patterns detected in ~445ms</li>
+  <li><strong>Event-Driven Test</strong>: 3/3 patterns detected in ~419ms</li>
+  <li><strong>User Event Task</strong>: Comprehensive task testing in ~1.5s</li>
+</ul>
+<h2 id="references">
+  
+  
+    <a href="#references" class="anchor-heading" aria-labelledby="references"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> References
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/uart.html">ESP-IDF UART Documentation</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-reference/peripherals/uart.html#_CPPv429uart_enable_pattern_det_baud_intr">ESP-IDF Pattern Detection API</a></li>
+  <li><a href="https://www.espressif.com/sites/default/files/documentation/esp32-c6_technical_reference_manual_en.pdf">ESP32-C6 Technical Reference Manual</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/migration-guides/release-5.x/5.0/peripherals.html">ESP-IDF v5.5 Migration Guide</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/hw-reference/esp32c6/user-guide-devkitm-1.html">ESP32-C6-DevKitM-1 User Guide</a></li>
+  <li><a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32c6/api-guides/uart.html#uart-pattern-detection">UART Pattern Detection Best Practices</a></li>
+</ul>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

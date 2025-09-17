@@ -1,0 +1,333 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pwm__channel__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pwm_channel_config_t</compoundname>
+    <includes refid="EspTypes__PWM_8h" local="no">EspTypes_PWM.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></type>
+        <definition>hf_gpio_num_t hf_pwm_channel_config_t::gpio_pin</definition>
+        <argsstring></argsstring>
+        <name>gpio_pin</name>
+        <qualifiedname>hf_pwm_channel_config_t::gpio_pin</qualifiedname>
+        <briefdescription>
+<para>GPIO pin for PWM output (check pin matrix) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="306" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_channel_config_t::channel_id</definition>
+        <argsstring></argsstring>
+        <name>channel_id</name>
+        <qualifiedname>hf_pwm_channel_config_t::channel_id</qualifiedname>
+        <briefdescription>
+<para>Channel ID (0 to variant max) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="307" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a6a2e4e26bb3b33d74a96f73768195b87" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_channel_config_t::timer_id</definition>
+        <argsstring></argsstring>
+        <name>timer_id</name>
+        <qualifiedname>hf_pwm_channel_config_t::timer_id</qualifiedname>
+        <briefdescription>
+<para>Timer ID (0 to variant max) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="308" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1aa8d425a4003718321869192e7cf61845" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3fa" kindref="member">hf_pwm_mode_t</ref></type>
+        <definition>hf_pwm_mode_t hf_pwm_channel_config_t::speed_mode</definition>
+        <argsstring></argsstring>
+        <name>speed_mode</name>
+        <qualifiedname>hf_pwm_channel_config_t::speed_mode</qualifiedname>
+        <briefdescription>
+<para>Speed mode configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="309" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_channel_config_t::frequency_hz</definition>
+        <argsstring></argsstring>
+        <name>frequency_hz</name>
+        <qualifiedname>hf_pwm_channel_config_t::frequency_hz</qualifiedname>
+        <briefdescription>
+<para>PWM frequency in Hz (validated against clock source) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="312" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_channel_config_t::resolution_bits</definition>
+        <argsstring></argsstring>
+        <name>resolution_bits</name>
+        <qualifiedname>hf_pwm_channel_config_t::resolution_bits</qualifiedname>
+        <briefdescription>
+<para>PWM resolution in bits (4-14, validated) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="313" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a2dd704d7a0507d01b0464d176e264d4b" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
+        <definition>hf_pwm_clock_source_t hf_pwm_channel_config_t::clock_source</definition>
+        <argsstring></argsstring>
+        <name>clock_source</name>
+        <qualifiedname>hf_pwm_channel_config_t::clock_source</qualifiedname>
+        <briefdescription>
+<para>Preferred clock source for this channel. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="314" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ad2ddbd9698b451c8a02f9455686947e8" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_channel_config_t::duty_initial</definition>
+        <argsstring></argsstring>
+        <name>duty_initial</name>
+        <qualifiedname>hf_pwm_channel_config_t::duty_initial</qualifiedname>
+        <briefdescription>
+<para>Initial duty cycle value (RAW for specified resolution) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="316" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="316" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a0f289853bfbcf35b09a8e2244f62fbd7" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1a58935b1b2788129ca9d313445ab9e5b4" kindref="member">hf_pwm_intr_type_t</ref></type>
+        <definition>hf_pwm_intr_type_t hf_pwm_channel_config_t::intr_type</definition>
+        <argsstring></argsstring>
+        <name>intr_type</name>
+        <qualifiedname>hf_pwm_channel_config_t::intr_type</qualifiedname>
+        <briefdescription>
+<para>Interrupt type configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="317" column="22" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="317" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_channel_config_t::invert_output</definition>
+        <argsstring></argsstring>
+        <name>invert_output</name>
+        <qualifiedname>hf_pwm_channel_config_t::invert_output</qualifiedname>
+        <briefdescription>
+<para>Invert output signal polarity. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="318" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="318" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1aa34ec457627357c1c82ab1696ef2786e" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_channel_config_t::hpoint</definition>
+        <argsstring></argsstring>
+        <name>hpoint</name>
+        <qualifiedname>hf_pwm_channel_config_t::hpoint</qualifiedname>
+        <briefdescription>
+<para>High point timing for phase shift (0 to max_duty) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="321" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="321" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a7feb007616457c057dfa7b257aadce2e" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_channel_config_t::idle_level</definition>
+        <argsstring></argsstring>
+        <name>idle_level</name>
+        <qualifiedname>hf_pwm_channel_config_t::idle_level</qualifiedname>
+        <briefdescription>
+<para>Idle state level when disabled (0 or 1) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="322" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="322" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ad61ccb65c601b8310da94658089b633a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_channel_config_t::output_invert</definition>
+        <argsstring></argsstring>
+        <name>output_invert</name>
+        <qualifiedname>hf_pwm_channel_config_t::output_invert</qualifiedname>
+        <briefdescription>
+<para>Hardware output inversion (different from invert_output) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="323" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="323" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ac5f48dc824d8b32f7ab403dca3d8b0ce" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1ad8fbde8152ecafefd714f3a7eb8344c1" kindref="member">hf_pwm_channel_priority_t</ref></type>
+        <definition>hf_pwm_channel_priority_t hf_pwm_channel_config_t::priority</definition>
+        <argsstring></argsstring>
+        <name>priority</name>
+        <qualifiedname>hf_pwm_channel_config_t::priority</qualifiedname>
+        <briefdescription>
+<para>Channel priority for eviction decisions. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="326" column="29" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1aefd3b546b1a76f6c4e64c8166b4622a0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_channel_config_t::is_critical</definition>
+        <argsstring></argsstring>
+        <name>is_critical</name>
+        <qualifiedname>hf_pwm_channel_config_t::is_critical</qualifiedname>
+        <briefdescription>
+<para>Mark as critical (never evict) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="327" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a527f5098ffbb707a1c337c63d0d22c42" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_pwm_channel_config_t::description</definition>
+        <argsstring></argsstring>
+        <name>description</name>
+        <qualifiedname>hf_pwm_channel_config_t::description</qualifiedname>
+        <briefdescription>
+<para>Optional description for debugging/logging. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="328" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="328" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pwm__channel__config__t_1ad14b27ad6c2983284c8ff312f85ecea5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pwm_channel_config_t::hf_pwm_channel_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_pwm_channel_config_t</name>
+        <qualifiedname>hf_pwm_channel_config_t::hf_pwm_channel_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="330" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="330" bodyend="337"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 PWM channel configuration with comprehensive LEDC feature support. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This structure provides complete control over LEDC channel configuration, including advanced features like hardware fade, phase shifting, and resource protection. All parameters are validated against hardware constraints.</para>
+<sect2 id="structhf__pwm__channel__config__t_1autotoc_md13">
+<title>Core Configuration:</title><para><itemizedlist>
+<listitem><para><bold>GPIO Pin:</bold> Any valid GPIO pin (check ESP32 variant pin matrix)</para>
+</listitem><listitem><para><bold>Channel/Timer:</bold> Automatic assignment or manual control</para>
+</listitem><listitem><para><bold>Frequency/Resolution:</bold> Explicit control with validation</para>
+</listitem><listitem><para><bold>Clock Source:</bold> Per-channel preference (subject to variant constraints)</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="structhf__pwm__channel__config__t_1autotoc_md14">
+<title>Advanced Features:</title><para><itemizedlist>
+<listitem><para><bold>Phase Shift (hpoint):</bold> Delay PWM start within period (0 to max_duty)</para>
+</listitem><listitem><para><bold>Output Inversion:</bold> Hardware-level signal inversion</para>
+</listitem><listitem><para><bold>Idle Level:</bold> Output state when PWM is disabled</para>
+</listitem><listitem><para><bold>Priority System:</bold> Protection against resource eviction</para>
+</listitem></itemizedlist>
+</para>
+</sect2>
+<sect2 id="structhf__pwm__channel__config__t_1autotoc_md15">
+<title>Usage Examples:</title><para><programlisting filename=".cpp"><codeline><highlight class="comment">//<sp/>Basic<sp/>LED<sp/>dimming</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>led_config<sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal">led_config.<ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref><sp/>=<sp/>2;</highlight></codeline>
+<codeline><highlight class="normal">led_config.<ref refid="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" kindref="member">frequency_hz</ref><sp/>=<sp/>1000;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1kHz</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">led_config.<ref refid="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" kindref="member">resolution_bits</ref><sp/>=<sp/>10;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>10-bit<sp/>(0-1023)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">led_config.<ref refid="structhf__pwm__channel__config__t_1ad2ddbd9698b451c8a02f9455686947e8" kindref="member">duty_initial</ref><sp/>=<sp/>512;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>50%<sp/>brightness</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Motor<sp/>control<sp/>with<sp/>high<sp/>resolution</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>motor_config<sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref><sp/>=<sp/>4;</highlight></codeline>
+<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" kindref="member">frequency_hz</ref><sp/>=<sp/>20000;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>20kHz<sp/>(above<sp/>audible<sp/>range)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" kindref="member">resolution_bits</ref><sp/>=<sp/>12;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>12-bit<sp/>(0-4095)<sp/>for<sp/>smooth<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1aefd3b546b1a76f6c4e64c8166b4622a0" kindref="member">is_critical</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Protect<sp/>from<sp/>eviction</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">motor_config.<ref refid="structhf__pwm__channel__config__t_1a527f5098ffbb707a1c337c63d0d22c42" kindref="member">description</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Motor<sp/>PWM&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Servo<sp/>control<sp/>with<sp/>precise<sp/>timing</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>servo_config<sp/>=<sp/>{};</highlight></codeline>
+<codeline><highlight class="normal">servo_config.<ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref><sp/>=<sp/>18;</highlight></codeline>
+<codeline><highlight class="normal">servo_config.<ref refid="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" kindref="member">frequency_hz</ref><sp/>=<sp/>50;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>50Hz<sp/>(20ms<sp/>period)</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">servo_config.<ref refid="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" kindref="member">resolution_bits</ref><sp/>=<sp/>14;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>14-bit<sp/>for<sp/>microsecond<sp/>precision</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal">servo_config.<ref refid="structhf__pwm__channel__config__t_1a2dd704d7a0507d01b0464d176e264d4b" kindref="member">clock_source</ref><sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82a2fb4f97b7c1b78586a5f9f8365272822" kindref="member">HF_PWM_CLK_SRC_APB</ref>;<sp/></highlight><highlight class="comment">//<sp/>Stable<sp/>timing</highlight></codeline>
+</programlisting> </para>
+</sect2>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="305" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="305" bodyend="338"/>
+    <listofallmembers>
+      <member refid="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>channel_id</name></member>
+      <member refid="structhf__pwm__channel__config__t_1a2dd704d7a0507d01b0464d176e264d4b" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>clock_source</name></member>
+      <member refid="structhf__pwm__channel__config__t_1a527f5098ffbb707a1c337c63d0d22c42" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>description</name></member>
+      <member refid="structhf__pwm__channel__config__t_1ad2ddbd9698b451c8a02f9455686947e8" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>duty_initial</name></member>
+      <member refid="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>frequency_hz</name></member>
+      <member refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>gpio_pin</name></member>
+      <member refid="structhf__pwm__channel__config__t_1ad14b27ad6c2983284c8ff312f85ecea5" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>hf_pwm_channel_config_t</name></member>
+      <member refid="structhf__pwm__channel__config__t_1aa34ec457627357c1c82ab1696ef2786e" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>hpoint</name></member>
+      <member refid="structhf__pwm__channel__config__t_1a7feb007616457c057dfa7b257aadce2e" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>idle_level</name></member>
+      <member refid="structhf__pwm__channel__config__t_1a0f289853bfbcf35b09a8e2244f62fbd7" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>intr_type</name></member>
+      <member refid="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>invert_output</name></member>
+      <member refid="structhf__pwm__channel__config__t_1aefd3b546b1a76f6c4e64c8166b4622a0" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>is_critical</name></member>
+      <member refid="structhf__pwm__channel__config__t_1ad61ccb65c601b8310da94658089b633a" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>output_invert</name></member>
+      <member refid="structhf__pwm__channel__config__t_1ac5f48dc824d8b32f7ab403dca3d8b0ce" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>priority</name></member>
+      <member refid="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>resolution_bits</name></member>
+      <member refid="structhf__pwm__channel__config__t_1aa8d425a4003718321869192e7cf61845" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>speed_mode</name></member>
+      <member refid="structhf__pwm__channel__config__t_1a6a2e4e26bb3b33d74a96f73768195b87" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>timer_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,1865 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(3)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(3) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(2) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(2) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🧪 PWM Test | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🧪 PWM Test" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="PWM Test Suite - Pulse width modulation and frequency control testing" />
+<meta property="og:description" content="PWM Test Suite - Pulse width modulation and frequency control testing" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🧪 PWM Test" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"PWM Test Suite - Pulse width modulation and frequency control testing","headline":"🧪 PWM Test","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/">🚀 ESP32 Examples</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/">🧪 Test Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🧪 PWM Test</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="esp32-family-pwm-comprehensive-test-suite-documentation">
+  
+  
+    <a href="#esp32-family-pwm-comprehensive-test-suite-documentation" class="anchor-heading" aria-labelledby="esp32-family-pwm-comprehensive-test-suite-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32 Family PWM Comprehensive Test Suite Documentation
+  
+  
+</h1>
+    
+<h2 id="overview">
+  
+  
+    <a href="#overview" class="anchor-heading" aria-labelledby="overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Overview
+  
+  
+</h2>
+    
+
+<p>The PWM Comprehensive Test Suite provides extensive validation of the <code class="language-plaintext highlighter-rouge">EspPwm</code> class across the
+entire ESP32 family using ESP-IDF v5.5+.
+This test suite demonstrates complete PWM functionality including duty cycle control,
+frequency management, resolution control, hardware fade operations, timer management,
+LEDC peripheral validation,
+and advanced features with a focus on embedded environments using <code class="language-plaintext highlighter-rouge">noexcept</code> functions.</p>
+
+<p><strong>✅ Status: Successfully tested across ESP32 variants</strong>
+<strong>🎯 Focus: LEDC peripheral capabilities and constraints</strong>
+<strong>🔧 Updated: Comprehensive LEDC documentation and clock source validation</strong></p>
+<h2 id="features-tested">
+  
+  
+    <a href="#features-tested" class="anchor-heading" aria-labelledby="features-tested"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Features Tested
+  
+  
+</h2>
+    
+<h3 id="core-pwm-functionality">
+  
+  
+    <a href="#core-pwm-functionality" class="anchor-heading" aria-labelledby="core-pwm-functionality"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Core PWM Functionality
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>PWM Signal Generation</strong>: Basic square wave generation with configurable duty cycles</li>
+  <li><strong>Frequency Control</strong>: Dynamic frequency adjustment from 100Hz to 20kHz</li>
+  <li><strong>Duty Cycle Management</strong>: Precise duty cycle control from 0% to 100%</li>
+  <li><strong>Multiple Channel Support</strong>: Simultaneous operation of up to 8 PWM channels</li>
+</ul>
+<h3 id="advanced-pwm-features">
+  
+  
+    <a href="#advanced-pwm-features" class="anchor-heading" aria-labelledby="advanced-pwm-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Advanced PWM Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Phase Shift Control</strong>: Channel synchronization with phase relationships</li>
+  <li><strong>Hardware Fade Operations</strong>: Smooth transitions between duty cycle values</li>
+  <li><strong>Complementary Outputs</strong>: Deadtime-controlled complementary PWM pairs</li>
+  <li><strong>Synchronized Operations</strong>: Coordinated start/stop/update of multiple channels</li>
+</ul>
+<h3 id="ledc-peripheral-validation-esp32-family">
+  
+  
+    <a href="#ledc-peripheral-validation-esp32-family" class="anchor-heading" aria-labelledby="ledc-peripheral-validation-esp32-family"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> LEDC Peripheral Validation (ESP32 Family)
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Variant-Specific Testing</strong>: Automatic adaptation to ESP32 variant capabilities</li>
+  <li><strong>Clock Source Constraints</strong>: Validation of clock source limitations per variant</li>
+  <li><strong>Timer Resource Management</strong>: Dynamic allocation, sharing, and eviction policies</li>
+  <li><strong>Resolution/Frequency Validation</strong>: Hardware constraint verification</li>
+  <li><strong>Hardware Fade Integration</strong>: Native LEDC fade functionality testing</li>
+  <li><strong>Channel Protection</strong>: Critical channel protection and safe eviction</li>
+  <li><strong>Performance Optimization</strong>: Timer sharing and resource efficiency</li>
+</ul>
+<h3 id="esp32-variant-specific-features">
+  
+  
+    <a href="#esp32-variant-specific-features" class="anchor-heading" aria-labelledby="esp32-variant-specific-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP32 Variant-Specific Features
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Multi-Variant Support</strong>: ESP32, ESP32-S2/S3, ESP32-C3/C6, ESP32-H2</li>
+  <li><strong>LEDC Backend Integration</strong>: Full LEDC peripheral feature utilization</li>
+  <li><strong>Clock Source Selection</strong>: APB (80MHz), XTAL (40MHz), RC_FAST (~17.5MHz)</li>
+  <li><strong>Timer Allocation</strong>: Smart allocation with conflict resolution</li>
+  <li><strong>Idle Level Control</strong>: Output state configuration during idle periods</li>
+  <li><strong>Interrupt Integration</strong>: PWM period and fade completion callbacks</li>
+</ul>
+<h3 id="system-integration--diagnostics">
+  
+  
+    <a href="#system-integration--diagnostics" class="anchor-heading" aria-labelledby="system-integration--diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> System Integration &amp; Diagnostics
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Status Reporting</strong>: Real-time channel status and configuration monitoring</li>
+  <li><strong>Statistics Collection</strong>: Operation counters and performance metrics</li>
+  <li><strong>Error Handling</strong>: Comprehensive error condition testing and recovery</li>
+  <li><strong>Stress Testing</strong>: High-frequency updates and resource exhaustion scenarios</li>
+</ul>
+<h2 id="hardware-requirements">
+  
+  
+    <a href="#hardware-requirements" class="anchor-heading" aria-labelledby="hardware-requirements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Requirements
+  
+  
+</h2>
+    
+<h3 id="supported-platforms">
+  
+  
+    <a href="#supported-platforms" class="anchor-heading" aria-labelledby="supported-platforms"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Supported Platforms
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>ESP32 Classic</strong>: ESP32-DevKitC, ESP32-WROVER-KIT (16 channels, 8 timers)</li>
+  <li><strong>ESP32-S2</strong>: ESP32-S2-Saola, ESP32-S2-DevKitM (8 channels, 4 timers)</li>
+  <li><strong>ESP32-S3</strong>: ESP32-S3-DevKitC, ESP32-S3-DevKitM (8 channels, 4 timers)</li>
+  <li><strong>ESP32-C3</strong>: ESP32-C3-DevKitM, ESP32-C3-DevKitC (6 channels, 4 timers)</li>
+  <li><strong>ESP32-C6</strong>: ESP32-C6-DevKitM, ESP32-C6-DevKitC (6 channels, 4 timers)</li>
+  <li><strong>ESP32-H2</strong>: ESP32-H2-DevKitM (4 channels, 2 timers)</li>
+  <li><strong>ESP-IDF Version</strong>: v5.5 or later</li>
+  <li><strong>Minimum Flash</strong>: 4MB (2MB for basic testing)</li>
+  <li><strong>Minimum RAM</strong>: 256KB</li>
+</ul>
+<h3 id="pwm-output-pins">
+  
+  
+    <a href="#pwm-output-pins" class="anchor-heading" aria-labelledby="pwm-output-pins"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> PWM Output Pins
+  
+  
+</h3>
+    
+<p>The test suite uses the following safe GPIO pins on ESP32-C6 DevKit-M-1:</p>
+
+<p>```text
+PWM Test Pins Configuration (Based on Actual Test Code):
+┌─────────────────────────────────────────────────┐
+│ Function              │ GPIO Pin  │ Channel ID  │
+├───────────────────────┼───────────┼─────────────┤
+│ Primary PWM Channel   │ GPIO 2    │ Channel 0   │
+│ Secondary PWM Channel │ GPIO 6    │ Channel 1   │
+│ Third PWM Channel     │ GPIO 4    │ Channel 2   │
+│ Fourth PWM Channel    │ GPIO 5    │ Channel 3   │
+│ Additional Channels   │ GPIO 7-9* │ Channel 4-7 │
+│ Stress Test Channels  │ GPIO 2,6,4,5,7,8,9,10 │ All 8   │
+└───────────────────────┴───────────┴─────────────┘</p>
+
+<p>*Note: GPIO 3 is deliberately avoided in the test code and 
+replaced with GPIO 6 when the sequence would use it.</p>
+
+<p>Actual Pin Mapping from Test Code:</p>
+<ul>
+  <li>Most tests use: GPIO 2 (primary test pin)</li>
+  <li>Multi-channel tests use: GPIO 2, 6, 4, 5 (avoids GPIO 3)</li>
+  <li>Complementary tests use: GPIO 2 (primary) + GPIO 6 (complementary)</li>
+  <li>Timer management test uses: GPIO 2, 6, 4, 5</li>
+  <li>Stress tests use: GPIO 2, 6, 4, 5, 7, 8, 9, 10 (up to 8 channels)
+└───────────────────────┴───────────┴─────────────┘</li>
+</ul>
+
+<p>Pins to Avoid (ESP32-C6 Specific):
+┌─────────────────────────────────────┐
+│ GPIO 3              │ Flash voltage │
+│ GPIO 9              │ Boot strap    │
+│ GPIO 15             │ Boot strap    │
+│ GPIO 12, 13         │ USB-JTAG      │
+│ GPIO 18, 19         │ USB Serial    │
+│ GPIO 24-30          │ SPI Flash     │
+└─────────────────────┴───────────────┘
+```text</p>
+<h3 id="logic-analyzer-setup">
+  
+  
+    <a href="#logic-analyzer-setup" class="anchor-heading" aria-labelledby="logic-analyzer-setup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Setup
+  
+  
+</h3>
+    
+<p>For comprehensive testing and verification, connect logic analyzer probes to:</p>
+<ul>
+  <li><strong>Primary Channel</strong>: GPIO 2 (most test activity)</li>
+  <li><strong>Multi-Channel</strong>: GPIO 2, 6, 4, 5 (for synchronized operations)</li>
+  <li><strong>All Channels</strong>: GPIO 2, 6, 4, 5, 7, 8, 9, 10 (for stress testing)</li>
+  <li><strong>Sample Rate</strong>: Minimum 1MHz (recommended 10MHz for high-frequency tests)</li>
+  <li><strong>Trigger</strong>: Rising edge on GPIO 2 (primary channel)</li>
+  <li><strong>Time Base</strong>: 100μs/div for high freq, 1ms/div for duty cycle, 1s/div for fade</li>
+</ul>
+<h2 id="building-and-running">
+  
+  
+    <a href="#building-and-running" class="anchor-heading" aria-labelledby="building-and-running"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Building and Running
+  
+  
+</h2>
+    
+<h3 id="prerequisites">
+  
+  
+    <a href="#prerequisites" class="anchor-heading" aria-labelledby="prerequisites"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Prerequisites
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="esp-idf-v55-installation-required">
+  
+  
+    <a href="#esp-idf-v55-installation-required" class="anchor-heading" aria-labelledby="esp-idf-v55-installation-required"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ESP-IDF v5.5+ installation required
+  
+  
+</h2>
+    
+<p>. $IDF_PATH/export.sh</p>
+<h2 id="set-target-platform">
+  
+  
+    <a href="#set-target-platform" class="anchor-heading" aria-labelledby="set-target-platform"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Set target platform
+  
+  
+</h2>
+    
+<p>export IDF_TARGET=esp32c6
+```text</p>
+<h3 id="quick-start">
+  
+  
+    <a href="#quick-start" class="anchor-heading" aria-labelledby="quick-start"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Quick Start
+  
+  
+</h3>
+    
+<p>```bash</p>
+<h2 id="navigate-to-examples-directory">
+  
+  
+    <a href="#navigate-to-examples-directory" class="anchor-heading" aria-labelledby="navigate-to-examples-directory"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Navigate to examples directory
+  
+  
+</h2>
+    
+<p>cd examples/esp32</p>
+<h2 id="build-pwm-test-using-example-scripts-recommended">
+  
+  
+    <a href="#build-pwm-test-using-example-scripts-recommended" class="anchor-heading" aria-labelledby="build-pwm-test-using-example-scripts-recommended"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build PWM test using example scripts (Recommended)
+  
+  
+</h2>
+    
+<p>./scripts/build_example.sh pwm_test Release</p>
+<h2 id="flash-and-monitor-using-example-scripts-recommended">
+  
+  
+    <a href="#flash-and-monitor-using-example-scripts-recommended" class="anchor-heading" aria-labelledby="flash-and-monitor-using-example-scripts-recommended"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash and monitor using example scripts (Recommended)
+  
+  
+</h2>
+    
+<p>./scripts/flash_example.sh pwm_test Release flash_monitor
+```text</p>
+<h3 id="alternative-build-methods">
+  
+  
+    <a href="#alternative-build-methods" class="anchor-heading" aria-labelledby="alternative-build-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Alternative Build Methods
+  
+  
+</h3>
+    
+<h4 id="using-esp-idf-directly">
+  
+  
+    <a href="#using-esp-idf-directly" class="anchor-heading" aria-labelledby="using-esp-idf-directly"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Using ESP-IDF directly
+  
+  
+</h4>
+    
+<p>```bash</p>
+<h2 id="build-with-idfpy">
+  
+  
+    <a href="#build-with-idfpy" class="anchor-heading" aria-labelledby="build-with-idfpy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build with idf.py
+  
+  
+</h2>
+    
+<p>idf.py build -DEXAMPLE_TYPE=pwm_test -DBUILD_TYPE=Release</p>
+<h2 id="flash-and-monitor-with-idfpy">
+  
+  
+    <a href="#flash-and-monitor-with-idfpy" class="anchor-heading" aria-labelledby="flash-and-monitor-with-idfpy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash and monitor with idf.py
+  
+  
+</h2>
+    
+<p>idf.py -p /dev/ttyUSB0 flash monitor
+```text</p>
+<h4 id="debug-build-for-development">
+  
+  
+    <a href="#debug-build-for-development" class="anchor-heading" aria-labelledby="debug-build-for-development"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Debug Build for Development
+  
+  
+</h4>
+    
+<p>```bash</p>
+<h2 id="build-debug-version-using-example-scripts">
+  
+  
+    <a href="#build-debug-version-using-example-scripts" class="anchor-heading" aria-labelledby="build-debug-version-using-example-scripts"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build debug version using example scripts
+  
+  
+</h2>
+    
+<p>./scripts/build_example.sh pwm_test Debug –clean</p>
+<h2 id="flash-debug-build">
+  
+  
+    <a href="#flash-debug-build" class="anchor-heading" aria-labelledby="flash-debug-build"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash debug build
+  
+  
+</h2>
+    
+<p>./scripts/flash_example.sh pwm_test Debug flash_monitor
+```text</p>
+<h4 id="available-example-script-options">
+  
+  
+    <a href="#available-example-script-options" class="anchor-heading" aria-labelledby="available-example-script-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Available Example Script Options
+  
+  
+</h4>
+    
+<p>```bash</p>
+<h2 id="list-all-available-examples-and-build-types">
+  
+  
+    <a href="#list-all-available-examples-and-build-types" class="anchor-heading" aria-labelledby="list-all-available-examples-and-build-types"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> List all available examples and build types
+  
+  
+</h2>
+    
+<p>./scripts/build_example.sh list
+./scripts/flash_example.sh list</p>
+<h2 id="build-with-additional-options">
+  
+  
+    <a href="#build-with-additional-options" class="anchor-heading" aria-labelledby="build-with-additional-options"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Build with additional options
+  
+  
+</h2>
+    
+<p>./scripts/build_example.sh pwm_test Release –clean –no-cache</p>
+<h2 id="flash-operations">
+  
+  
+    <a href="#flash-operations" class="anchor-heading" aria-labelledby="flash-operations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Flash operations
+  
+  
+</h2>
+    
+<p>./scripts/flash_example.sh pwm_test Release flash      # Flash only
+./scripts/flash_example.sh pwm_test Release monitor   # Monitor only
+./scripts/flash_example.sh pwm_test Release flash_monitor  # Both (default)
+```text</p>
+<h2 id="test-categories">
+  
+  
+    <a href="#test-categories" class="anchor-heading" aria-labelledby="test-categories"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Test Categories
+  
+  
+</h2>
+    
+<h3 id="1-constructordestructor-tests">
+  
+  
+    <a href="#1-constructordestructor-tests" class="anchor-heading" aria-labelledby="1-constructordestructor-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 1. Constructor/Destructor Tests
+  
+  
+</h3>
+    
+<h4 id="test_constructor_default">
+  
+  
+    <a href="#test_constructor_default" class="anchor-heading" aria-labelledby="test_constructor_default"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_constructor_default()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates proper object construction and initialization</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Default constructor behavior</li>
+      <li>Constructor with unit configuration</li>
+      <li>Legacy constructor with clock frequency</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Clean object creation without initialization</li>
+  <li><strong>Logic Analyzer</strong>: No output expected (no PWM signals generated)</li>
+</ul>
+<h4 id="test_destructor_cleanup">
+  
+  
+    <a href="#test_destructor_cleanup" class="anchor-heading" aria-labelledby="test_destructor_cleanup"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_destructor_cleanup()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Ensures proper resource cleanup and deinitialization</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Automatic resource cleanup on object destruction</li>
+      <li>Hardware state restoration</li>
+      <li>Memory leak prevention</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: PWM signals stop when object is destroyed</li>
+  <li><strong>Logic Analyzer</strong>:
+    <ul>
+      <li>Signal on GPIO 2 during test</li>
+      <li>Signal goes LOW and stays LOW after destructor</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="2-lifecycle-management-tests">
+  
+  
+    <a href="#2-lifecycle-management-tests" class="anchor-heading" aria-labelledby="2-lifecycle-management-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 2. Lifecycle Management Tests
+  
+  
+</h3>
+    
+<h4 id="test_initialization_states">
+  
+  
+    <a href="#test_initialization_states" class="anchor-heading" aria-labelledby="test_initialization_states"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_initialization_states()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates PWM hardware initialization state management</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Initial uninitialized state</li>
+      <li>Manual initialization process</li>
+      <li>Double initialization protection</li>
+      <li>Proper deinitialization</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: State transitions match expected lifecycle</li>
+  <li><strong>Logic Analyzer</strong>: No output expected (initialization only)</li>
+</ul>
+<h4 id="test_lazy_initialization">
+  
+  
+    <a href="#test_lazy_initialization" class="anchor-heading" aria-labelledby="test_lazy_initialization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_lazy_initialization()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests automatic initialization on first use</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>EnsureInitialized() behavior</li>
+      <li>Automatic hardware setup</li>
+      <li>EnsureDeinitialized() cleanup</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Hardware initializes only when needed</li>
+  <li><strong>Logic Analyzer</strong>: No output expected (initialization only)</li>
+</ul>
+<h3 id="3-configuration-tests">
+  
+  
+    <a href="#3-configuration-tests" class="anchor-heading" aria-labelledby="3-configuration-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 3. Configuration Tests
+  
+  
+</h3>
+    
+<h4 id="test_mode_configuration">
+  
+  
+    <a href="#test_mode_configuration" class="anchor-heading" aria-labelledby="test_mode_configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_mode_configuration()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates PWM mode configuration capabilities</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Basic PWM mode setting</li>
+      <li>Fade mode configuration</li>
+      <li>Mode switching behavior</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Modes set correctly without errors</li>
+  <li><strong>Logic Analyzer</strong>: No output expected (configuration only)</li>
+</ul>
+<h4 id="test_clock_source_configuration">
+  
+  
+    <a href="#test_clock_source_configuration" class="anchor-heading" aria-labelledby="test_clock_source_configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_clock_source_configuration()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests different PWM clock source options</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Default clock source (APB_CLK: 80MHz)</li>
+      <li>XTAL clock source (40MHz)</li>
+      <li>RC_FAST clock source (~8MHz)</li>
+      <li>APB clock source (80MHz)</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: All clock sources configure successfully</li>
+  <li><strong>Logic Analyzer</strong>: No output expected (configuration only)</li>
+</ul>
+<h3 id="4-channel-management-tests">
+  
+  
+    <a href="#4-channel-management-tests" class="anchor-heading" aria-labelledby="4-channel-management-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 4. Channel Management Tests
+  
+  
+</h3>
+    
+<h4 id="test_channel_configuration">
+  
+  
+    <a href="#test_channel_configuration" class="anchor-heading" aria-labelledby="test_channel_configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_channel_configuration()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates multi-channel PWM configuration</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Configuration of channels 0-3 on GPIO 2, 4, 5, 6</li>
+      <li>Different initial duty cycles per channel</li>
+      <li>Invalid channel configuration rejection</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: All valid channels configure successfully</li>
+  <li><strong>Logic Analyzer</strong>: No output expected (configuration only)</li>
+</ul>
+<h4 id="test_channel_enable_disable">
+  
+  
+    <a href="#test_channel_enable_disable" class="anchor-heading" aria-labelledby="test_channel_enable_disable"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_channel_enable_disable()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests channel enable/disable functionality</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Initial disabled state</li>
+      <li>Channel enable operation</li>
+      <li>Channel disable operation</li>
+      <li>Invalid channel operations</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Channels enable/disable as commanded</li>
+  <li><strong>Logic Analyzer</strong>:
+    <ul>
+      <li>GPIO 2: HIGH pulses when enabled (50% duty cycle, ~1kHz)</li>
+      <li>GPIO 2: LOW constant when disabled</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="5-pwm-control-tests">
+  
+  
+    <a href="#5-pwm-control-tests" class="anchor-heading" aria-labelledby="5-pwm-control-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 5. PWM Control Tests
+  
+  
+</h3>
+    
+<h4 id="test_duty_cycle_control">
+  
+  
+    <a href="#test_duty_cycle_control" class="anchor-heading" aria-labelledby="test_duty_cycle_control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_duty_cycle_control()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates precise duty cycle control across the full range</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>Float duty cycles</strong>: 0.0, 0.25, 0.5, 0.75, 1.0 (0% to 100%)</li>
+      <li><strong>Raw duty cycle values</strong>: 0, 256, 512, 768, 1023 (10-bit resolution)</li>
+      <li><strong>Invalid input rejection</strong>: Negative values (-0.1) and over-range (1.1)</li>
+      <li><strong>Accuracy verification</strong>: Actual vs commanded duty cycle within ±1%</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>Clean square wave generation on GPIO 2</li>
+      <li>Duty cycle accuracy within tolerance</li>
+      <li>Proper rejection of invalid values</li>
+      <li>Both float and raw value interfaces work correctly</li>
+    </ul>
+  </li>
+</ul>
+<h4 id="test_frequency_control">
+  
+  
+    <a href="#test_frequency_control" class="anchor-heading" aria-labelledby="test_frequency_control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_frequency_control()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests dynamic frequency adjustment and accuracy validation</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>Frequency range</strong>: 100Hz, 500Hz, 1kHz, 5kHz, 10kHz, 20kHz</li>
+      <li><strong>Accuracy verification</strong>: Measured vs commanded frequency within ±5% tolerance</li>
+      <li><strong>Invalid frequency rejection</strong>: Zero frequency and values exceeding HF_PWM_MAX_FREQUENCY</li>
+      <li><strong>Real-time updates</strong>: Frequency changes while PWM is running</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>Accurate frequency generation across the full range</li>
+      <li>Proper error handling for invalid frequencies</li>
+      <li>Stable operation during frequency transitions</li>
+      <li>Expected periods: 10ms, 2ms, 1ms, 200μs, 100μs, 50μs respectively</li>
+    </ul>
+  </li>
+</ul>
+<h4 id="test_phase_shift_control">
+  
+  
+    <a href="#test_phase_shift_control" class="anchor-heading" aria-labelledby="test_phase_shift_control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_phase_shift_control()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests phase relationship capabilities between PWM channels</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>Phase values</strong>: 0°, 90°, 180°, 270° between channels 0, 1, 2</li>
+      <li><strong>Multi-channel coordination</strong>: Simultaneous phase-shifted operation</li>
+      <li><strong>Invalid input rejection</strong>: Phase values greater than 360°</li>
+      <li><strong>Hardware limitation detection</strong>: Graceful handling if unsupported</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li><strong>ESP32-C6 LEDC limitation</strong>: Test likely skipped with [SKIPPED] message</li>
+      <li><strong>If supported</strong>: Accurate phase relationships with time offsets</li>
+      <li><strong>Error handling</strong>: Proper rejection of invalid phase values</li>
+      <li><strong>Channels used</strong>: GPIO 2, 6, 4 for the three test channels</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="6-advanced-features-tests">
+  
+  
+    <a href="#6-advanced-features-tests" class="anchor-heading" aria-labelledby="6-advanced-features-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 6. Advanced Features Tests
+  
+  
+</h3>
+    
+<h4 id="test_synchronized_operations">
+  
+  
+    <a href="#test_synchronized_operations" class="anchor-heading" aria-labelledby="test_synchronized_operations"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_synchronized_operations()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates coordinated multi-channel operations and timing synchronization</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>StartAll()</strong>: Simultaneous activation of channels 0-3 (GPIO 2,6,4,5)</li>
+      <li><strong>UpdateAll()</strong>: Synchronized parameter updates across all active channels</li>
+      <li><strong>StopAll()</strong>: Coordinated shutdown of all PWM outputs</li>
+      <li><strong>Channel configuration</strong>: Each channel has different duty cycles (30%, 40%, 50%, 60%)</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>All channels start/stop within microseconds of each other</li>
+      <li>No visible timing skew between channels during synchronized operations</li>
+      <li>Clean transitions with minimal glitching</li>
+      <li>Proper channel isolation (no cross-talk between channels)</li>
+    </ul>
+  </li>
+</ul>
+<h4 id="test_complementary_outputs">
+  
+  
+    <a href="#test_complementary_outputs" class="anchor-heading" aria-labelledby="test_complementary_outputs"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_complementary_outputs()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests complementary PWM pair generation with deadtime control</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>Channel pairing</strong>: Primary channel (GPIO 2) paired with complementary (GPIO 6)</li>
+      <li><strong>Deadtime insertion</strong>: 1μs deadtime between complementary transitions</li>
+      <li><strong>Duty cycle testing</strong>: Multiple duty cycles (20%, 50%, 80%) with complementary behavior</li>
+      <li><strong>SetComplementaryOutput()</strong>: Configuration and validation of complementary relationship</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>Primary and complementary outputs are never high simultaneously</li>
+      <li>Deadtime gaps visible during all transitions (rising/falling edges)</li>
+      <li>Combined duty cycle ≈ 100% minus deadtime</li>
+      <li>Proper error handling for invalid deadtime values</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="7-esp32-specific-features-tests">
+  
+  
+    <a href="#7-esp32-specific-features-tests" class="anchor-heading" aria-labelledby="7-esp32-specific-features-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 7. ESP32-Specific Features Tests
+  
+  
+</h3>
+    
+<h4 id="test_hardware_fade">
+  
+  
+    <a href="#test_hardware_fade" class="anchor-heading" aria-labelledby="test_hardware_fade"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_hardware_fade()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates ESP32-C6 LEDC hardware fade functionality and smooth transitions</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>Fade sequences</strong>: 10%→80% (1000ms), 80%→20% (800ms), 20%→90% (1200ms), 90%→0% (500ms)</li>
+      <li><strong>SetHardwareFade()</strong>: Configure target duty cycle and fade duration</li>
+      <li><strong>IsFadeActive()</strong>: Monitor fade operation status during transitions</li>
+      <li><strong>StopHardwareFade()</strong>: Interrupt fade operation mid-transition</li>
+      <li><strong>Fade completion detection</strong>: Verify fade finishes within expected timeframe</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>Smooth, continuous duty cycle transitions (no stepping or glitching)</li>
+      <li>Accurate fade timing within ±10% of commanded duration</li>
+      <li>IsFadeActive() returns true during fade, false when complete</li>
+      <li>StopHardwareFade() immediately halts transition</li>
+      <li>Hardware-controlled operation (no CPU intervention during fade)</li>
+    </ul>
+  </li>
+</ul>
+<h4 id="test_idle_level_control">
+  
+  
+    <a href="#test_idle_level_control" class="anchor-heading" aria-labelledby="test_idle_level_control"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_idle_level_control()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests GPIO output state configuration when PWM channel is idle/disabled</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>SetIdleLevel(0)</strong>: Configure output to remain LOW when channel disabled</li>
+      <li><strong>SetIdleLevel(1)</strong>: Configure output to remain HIGH when channel disabled</li>
+      <li><strong>Invalid value rejection</strong>: Test SetIdleLevel(2) returns error</li>
+      <li><strong>State verification</strong>: Check actual GPIO state matches configured idle level</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>GPIO 2 maintains configured idle level when channel is disabled</li>
+      <li>Valid idle levels (0, 1) are accepted and applied correctly</li>
+      <li>Invalid idle levels are rejected with appropriate error codes</li>
+      <li>Idle level setting persists across enable/disable cycles</li>
+    </ul>
+  </li>
+</ul>
+<h4 id="test_timer_management">
+  
+  
+    <a href="#test_timer_management" class="anchor-heading" aria-labelledby="test_timer_management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_timer_management()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates ESP32-C6 timer resource allocation</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li>Automatic timer assignment for channels 0-3</li>
+      <li>Forced timer assignment to specific timer</li>
+      <li>Timer resource optimization</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>: Efficient timer resource usage</li>
+  <li><strong>Logic Analyzer</strong>: No specific output pattern (resource management)</li>
+</ul>
+<h3 id="8-status-and-diagnostics-tests">
+  
+  
+    <a href="#8-status-and-diagnostics-tests" class="anchor-heading" aria-labelledby="8-status-and-diagnostics-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 8. Status and Diagnostics Tests
+  
+  
+</h3>
+    
+<h4 id="test_status_reporting">
+  
+  
+    <a href="#test_status_reporting" class="anchor-heading" aria-labelledby="test_status_reporting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_status_reporting()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates PWM status monitoring and diagnostic capabilities</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>GetChannelStatus()</strong>: Retrieve channel state (enabled, configured, duty, frequency)</li>
+      <li><strong>GetCapabilities()</strong>: Query hardware capabilities and limitations</li>
+      <li><strong>GetLastError()</strong>: Error state tracking for individual channels</li>
+      <li><strong>Status accuracy</strong>: Verify reported values match actual configuration</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>Channel status correctly reports: enabled=true, configured=true</li>
+      <li>Current duty cycle and frequency match last set values</li>
+      <li>Capabilities structure contains valid hardware limits</li>
+      <li>Error tracking accurately reflects last operation result</li>
+    </ul>
+  </li>
+</ul>
+<h4 id="test_statistics_and_diagnostics">
+  
+  
+    <a href="#test_statistics_and_diagnostics" class="anchor-heading" aria-labelledby="test_statistics_and_diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_statistics_and_diagnostics()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests operational statistics collection and hardware diagnostics</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>Operation counting</strong>: 5 duty cycle updates, 5 frequency changes, enable/disable cycles</li>
+      <li><strong>GetStatistics()</strong>: Retrieve duty_updates_count, frequency_changes_count, enable/disable counters</li>
+      <li><strong>GetDiagnostics()</strong>: Hardware state (initialized, fade_ready, active_channels, active_timers)</li>
+      <li><strong>Counter accuracy</strong>: Verify statistics match actual performed operations</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>Statistics accurately reflect operations: 5 duty updates, 5 frequency changes</li>
+      <li>Enable/disable counters track channel state changes correctly</li>
+      <li>Diagnostics show hardware initialization status and resource usage</li>
+      <li>All counters increment properly during test execution</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="9-callback-tests">
+  
+  
+    <a href="#9-callback-tests" class="anchor-heading" aria-labelledby="9-callback-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 9. Callback Tests
+  
+  
+</h3>
+    
+<h4 id="test_callbacks">
+  
+  
+    <a href="#test_callbacks" class="anchor-heading" aria-labelledby="test_callbacks"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_callbacks()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Validates PWM interrupt-driven callback functionality</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>SetPeriodCallback()</strong>: Register callback for PWM period completion events</li>
+      <li><strong>SetFaultCallback()</strong>: Register callback for fault/error detection</li>
+      <li><strong>Callback triggering</strong>: Use low duty cycle (1%) to generate frequent period events</li>
+      <li><strong>Parameter passing</strong>: Verify channel ID and user data are passed correctly</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>Period callbacks may trigger based on ESP32-C6 LEDC interrupt capabilities</li>
+      <li>Fault callbacks trigger appropriately on error conditions</li>
+      <li>Callback functions receive correct channel ID and parameters</li>
+      <li>Test completion regardless of callback activity (hardware dependent)</li>
+    </ul>
+  </li>
+</ul>
+<h3 id="10-edge-cases-and-stress-tests">
+  
+  
+    <a href="#10-edge-cases-and-stress-tests" class="anchor-heading" aria-labelledby="10-edge-cases-and-stress-tests"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 10. Edge Cases and Stress Tests
+  
+  
+</h3>
+    
+<h4 id="test_edge_cases">
+  
+  
+    <a href="#test_edge_cases" class="anchor-heading" aria-labelledby="test_edge_cases"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_edge_cases()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests boundary conditions, limits, and error handling</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>Duty cycle boundaries</strong>: 0.0% (constant LOW) and 100.0% (constant HIGH)</li>
+      <li><strong>Frequency boundaries</strong>: HF_PWM_MIN_FREQUENCY and high frequency (20kHz)</li>
+      <li><strong>Invalid channel operations</strong>: Operations on non-existent channels</li>
+      <li><strong>Parameter validation</strong>: Verify proper rejection of out-of-range values</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>Boundary values are accepted and generate correct outputs</li>
+      <li>Invalid parameters return appropriate error codes</li>
+      <li>System remains stable under boundary conditions</li>
+      <li>No undefined behavior or crashes with invalid inputs</li>
+    </ul>
+  </li>
+</ul>
+<h4 id="test_stress_scenarios">
+  
+  
+    <a href="#test_stress_scenarios" class="anchor-heading" aria-labelledby="test_stress_scenarios"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <code class="language-plaintext highlighter-rouge">test_stress_scenarios()</code>
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Purpose</strong>: Tests system stability under maximum load and rapid operations</li>
+  <li><strong>Tests</strong>:
+    <ul>
+      <li><strong>Maximum channels</strong>: All 8 channels (GPIO 2,6,4,5,7,8,9,10) active simultaneously</li>
+      <li><strong>Rapid duty updates</strong>: 20 duty cycle changes per channel (every 10ms)</li>
+      <li><strong>Rapid frequency updates</strong>: 10 frequency changes per channel (every 50ms)</li>
+      <li><strong>Synchronized operations</strong>: StartAll/UpdateAll/StopAll under load</li>
+    </ul>
+  </li>
+  <li><strong>Expected Results</strong>:
+    <ul>
+      <li>System maintains stability throughout rapid update sequences</li>
+      <li>No channel interference or cross-talk between channels</li>
+      <li>Memory usage remains stable (no leaks)</li>
+      <li>All channels maintain independent operation despite high update rates</li>
+      <li>Timer resource allocation handles maximum channel load efficiently</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="logic-analyzer-analysis-guide">
+  
+  
+    <a href="#logic-analyzer-analysis-guide" class="anchor-heading" aria-labelledby="logic-analyzer-analysis-guide"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Analysis Guide
+  
+  
+</h2>
+    
+<h3 id="key-measurements">
+  
+  
+    <a href="#key-measurements" class="anchor-heading" aria-labelledby="key-measurements"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Key Measurements
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>Duty Cycle Accuracy</strong>:
+    <ul>
+      <li>Measure ON time vs total period</li>
+      <li>Should match commanded duty cycle ±1%</li>
+    </ul>
+  </li>
+  <li><strong>Frequency Accuracy</strong>:
+    <ul>
+      <li>Measure period between rising edges</li>
+      <li>Should match commanded frequency ±5%</li>
+    </ul>
+  </li>
+  <li><strong>Phase Relationships</strong>:
+    <ul>
+      <li>Measure time offset between channel rising edges</li>
+      <li>Calculate phase difference in degrees</li>
+    </ul>
+  </li>
+  <li><strong>Fade Operation</strong>:
+    <ul>
+      <li>Capture extended time base (1-2 seconds)</li>
+      <li>Verify smooth duty cycle transitions</li>
+    </ul>
+  </li>
+  <li><strong>Synchronization</strong>:
+    <ul>
+      <li>Verify simultaneous start/stop operations</li>
+      <li>Check for timing skew between channels</li>
+    </ul>
+  </li>
+</ol>
+<h3 id="logic-analyzer-measurement-guidelines">
+  
+  
+    <a href="#logic-analyzer-measurement-guidelines" class="anchor-heading" aria-labelledby="logic-analyzer-measurement-guidelines"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Logic Analyzer Measurement Guidelines
+  
+  
+</h3>
+    
+<h4 id="key-measurement-techniques">
+  
+  
+    <a href="#key-measurement-techniques" class="anchor-heading" aria-labelledby="key-measurement-techniques"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Key Measurement Techniques
+  
+  
+</h4>
+    
+<ul>
+  <li><strong>Duty Cycle</strong>: Measure pulse width (ON time) vs total period</li>
+  <li><strong>Frequency</strong>: Measure time between consecutive rising edges</li>
+  <li><strong>Phase Relationships</strong>: Measure time offset between channels (if supported)</li>
+  <li><strong>Fade Operations</strong>: Use extended time base to capture transitions</li>
+  <li><strong>Synchronization</strong>: Verify simultaneous channel operations</li>
+</ul>
+<h2 id="troubleshooting">
+  
+  
+    <a href="#troubleshooting" class="anchor-heading" aria-labelledby="troubleshooting"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Troubleshooting
+  
+  
+</h2>
+    
+<h3 id="common-issues">
+  
+  
+    <a href="#common-issues" class="anchor-heading" aria-labelledby="common-issues"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Common Issues
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>No PWM Output</strong>:
+    <ul>
+      <li>Check GPIO pin assignment</li>
+      <li>Verify channel configuration and enable status</li>
+      <li>Confirm PWM initialization</li>
+    </ul>
+  </li>
+  <li><strong>Incorrect Duty Cycle</strong>:
+    <ul>
+      <li>Check resolution settings (default: 10-bit = 1024 levels)</li>
+      <li>Verify raw duty value calculation</li>
+      <li>Test with different duty cycle values</li>
+    </ul>
+  </li>
+  <li><strong>Frequency Inaccuracy</strong>:
+    <ul>
+      <li>Verify clock source configuration</li>
+      <li>Check ESP32-C6 clock limitations</li>
+      <li>Consider timer resolution vs frequency trade-offs</li>
+    </ul>
+  </li>
+  <li><strong>Phase Shift Not Working</strong>:
+    <ul>
+      <li>ESP32-C6 LEDC may not support phase shift</li>
+      <li>Check for “SKIPPED” messages in test output</li>
+      <li>Consider using timer offsets for phase control</li>
+    </ul>
+  </li>
+</ol>
+<h3 id="performance-optimization">
+  
+  
+    <a href="#performance-optimization" class="anchor-heading" aria-labelledby="performance-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Performance Optimization
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>High Frequency Operation</strong>:
+    <ul>
+      <li>Use APB clock source (80MHz) for best resolution</li>
+      <li>Lower resolution for higher frequencies</li>
+      <li>Consider hardware limitations (~40kHz practical max)</li>
+    </ul>
+  </li>
+  <li><strong>Multiple Channel Efficiency</strong>:
+    <ul>
+      <li>Group channels with same frequency on same timer</li>
+      <li>Use synchronized operations for coordinated updates</li>
+      <li>Minimize individual channel updates</li>
+    </ul>
+  </li>
+  <li><strong>Memory Usage</strong>:
+    <ul>
+      <li>Configure only needed channels</li>
+      <li>Use appropriate resolution settings</li>
+      <li>Monitor stack usage in callback functions</li>
+    </ul>
+  </li>
+</ol>
+<h2 id="expected-test-results">
+  
+  
+    <a href="#expected-test-results" class="anchor-heading" aria-labelledby="expected-test-results"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Expected Test Results
+  
+  
+</h2>
+    
+<h3 id="success-criteria">
+  
+  
+    <a href="#success-criteria" class="anchor-heading" aria-labelledby="success-criteria"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Success Criteria
+  
+  
+</h3>
+    
+
+<p>All tests should pass with output similar to:
+<code class="language-plaintext highlighter-rouge">text
+[SUCCESS] PWM comprehensive testing completed.
+Total: 18, Passed: 18, Failed: 0, Success: 100.00%, Time: 15234.56 ms
+</code>text</p>
+<h3 id="typical-test-sequence-timing">
+  
+  
+    <a href="#typical-test-sequence-timing" class="anchor-heading" aria-labelledby="typical-test-sequence-timing"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Typical Test Sequence Timing
+  
+  
+</h3>
+    
+<ul>
+  <li><strong>Constructor/Destructor Tests</strong>: ~500ms</li>
+  <li><strong>Lifecycle Tests</strong>: ~1000ms</li>
+  <li><strong>Configuration Tests</strong>: ~800ms</li>
+  <li><strong>Channel Management</strong>: ~1200ms</li>
+  <li><strong>PWM Control Tests</strong>: ~3000ms (includes delays for observation)</li>
+  <li><strong>Advanced Features</strong>: ~2000ms</li>
+  <li><strong>ESP32-Specific</strong>: ~4000ms (includes fade operations)</li>
+  <li><strong>Status/Diagnostics</strong>: ~800ms</li>
+  <li><strong>Callbacks</strong>: ~1500ms</li>
+  <li><strong>Edge Cases/Stress</strong>: ~2000ms</li>
+</ul>
+
+<p><strong>Total Expected Runtime</strong>: ~15-20 seconds</p>
+<h3 id="hardware-validation">
+  
+  
+    <a href="#hardware-validation" class="anchor-heading" aria-labelledby="hardware-validation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Hardware Validation
+  
+  
+</h3>
+    
+
+<p>With logic analyzer connected, verify:</p>
+<ol>
+  <li>✅ Clean square wave generation</li>
+  <li>✅ Accurate duty cycle control</li>
+  <li>✅ Precise frequency generation</li>
+  <li>✅ Smooth hardware fade transitions</li>
+  <li>✅ Synchronized multi-channel operations</li>
+  <li>✅ Proper complementary output behavior</li>
+  <li>✅ Stable operation under stress conditions</li>
+</ol>
+<h2 id="conclusion">
+  
+  
+    <a href="#conclusion" class="anchor-heading" aria-labelledby="conclusion"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Conclusion
+  
+  
+</h2>
+    
+
+<p>The PWM Comprehensive Test Suite provides thorough validation of ESP32-C6 PWM capabilities through
+the EspPwm class.
+The combination of automated testing and logic analyzer verification ensures reliable PWM
+functionality for embedded applications.
+The test suite covers all essential PWM features while highlighting ESP32-C6 specific capabilities
+and limitations.</p>
+
+<p>For issues or improvements, refer to the main project documentation or contact the development team.</p>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespacehf_1_1utils" kind="namespace" language="C++">
+    <compoundname>hf::utils</compoundname>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacehf_1_1utils_1a8cc6a65bb150aad69866ad9c665487b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+          <param>
+            <type>typename...</type>
+            <declname>Args</declname>
+            <defname>Args</defname>
+          </param>
+        </templateparamlist>
+        <type>std::unique_ptr&lt; <ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">T</ref> &gt;</type>
+        <definition>std::unique_ptr&lt; T &gt; hf::utils::make_unique_nothrow</definition>
+        <argsstring>(Args &amp;&amp;... args)</argsstring>
+        <name>make_unique_nothrow</name>
+        <qualifiedname>hf::utils::make_unique_nothrow</qualifiedname>
+        <param>
+          <type><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">Args</ref> &amp;&amp;...</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+<para>Creates a unique_ptr using nothrow new for exception-free design. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function template provides a safe alternative to std::make_unique for environments that require no-exception guarantees. It uses nothrow new to allocate memory and returns nullptr on allocation failure instead of throwing std::bad_alloc.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type to create </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>Args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter pack for constructor arguments </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>args</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to forward to T&apos;s constructor </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::unique_ptr&lt;T&gt; Valid pointer on success, nullptr on allocation failure</para>
+</simplesect>
+<programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">ptr</ref><sp/>=<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">make_unique_nothrow&lt;MyClass&gt;</ref>(<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">arg1</ref>,<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">arg2</ref>);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">ptr</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>allocation<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>ptr<sp/>safely</highlight></codeline>
+</programlisting> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/memory_utils.h" line="33" column="17" bodyfile="inc/utils/memory_utils.h" bodystart="33" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::unique_ptr&lt; T[]&gt;</type>
+        <definition>std::unique_ptr&lt; T[]&gt; hf::utils::make_unique_array_nothrow</definition>
+        <argsstring>(size_t size)</argsstring>
+        <name>make_unique_array_nothrow</name>
+        <qualifiedname>hf::utils::make_unique_array_nothrow</qualifiedname>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Creates a unique_ptr for arrays using nothrow new. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Specialized version for creating arrays with nothrow allocation.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The array element type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of elements to allocate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>std::unique_ptr&lt;T[]&gt; Valid pointer on success, nullptr on allocation failure</para>
+</simplesect>
+<simplesect kind="par"><title>Array Allocation Example:</title><para><programlisting><codeline><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">arr</ref><sp/>=<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">make_unique_array_nothrow&lt;int&gt;</ref>(1000);</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">arr</ref>)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>allocation<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>arr<sp/>safely</highlight></codeline>
+</programlisting> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/memory_utils.h" line="61" column="17" bodyfile="inc/utils/memory_utils.h" bodystart="61" bodyend="67"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/utils/memory_utils.h" line="8" column="1"/>
+  </compounddef>
+</doxygen>

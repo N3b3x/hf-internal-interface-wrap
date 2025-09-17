@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_bfccd401955b95cf8c75461437045ac0" kind="dir">
+    <compoundname>inc</compoundname>
+    <innerdir refid="dir_af527b166bd0aeb318c4d06f73919cfb">inc/base</innerdir>
+    <innerdir refid="dir_a8fcf44594a21eb2fd60c83cfa0bc114">inc/mcu</innerdir>
+    <innerdir refid="dir_8f46c503ad4a32bd125d4189308369db">inc/utils</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/"/>
+  </compounddef>
+</doxygen>

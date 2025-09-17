@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__wifi__station__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_wifi_station_config_t</compoundname>
+    <includes refid="BaseWifi_8h" local="no">BaseWifi.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1a9bec5a9a39cf0f7827fa697c46ed338a" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string hf_wifi_station_config_t::ssid</definition>
+        <argsstring></argsstring>
+        <name>ssid</name>
+        <qualifiedname>hf_wifi_station_config_t::ssid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Target network SSID </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="194" column="15" bodyfile="inc/base/BaseWifi.h" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1a18939a056d90423a88c5f31412f93fce" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string hf_wifi_station_config_t::password</definition>
+        <argsstring></argsstring>
+        <name>password</name>
+        <qualifiedname>hf_wifi_station_config_t::password</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Network password </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="195" column="15" bodyfile="inc/base/BaseWifi.h" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1ac3fc454eb6e2d3c3892527984e6bfd23" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_wifi_station_config_t::bssid[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>bssid</name>
+        <qualifiedname>hf_wifi_station_config_t::bssid</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Target BSSID (optional, all zeros if not used) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="196" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1ae92c8cdb70a56a99ad11d433c18925e6" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_wifi_station_config_t::channel</definition>
+        <argsstring></argsstring>
+        <name>channel</name>
+        <qualifiedname>hf_wifi_station_config_t::channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Target channel (0 for any) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="197" column="11" bodyfile="inc/base/BaseWifi.h" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1ab17e16f345d3be419ac4635abcac681d" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_wifi_station_config_t::bssid_set</definition>
+        <argsstring></argsstring>
+        <name>bssid_set</name>
+        <qualifiedname>hf_wifi_station_config_t::bssid_set</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>True if BSSID should be used </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="198" column="8" bodyfile="inc/base/BaseWifi.h" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1a803122e9c77b8f5d4c026afc64b80efe" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_wifi_station_config_t::scan_method</definition>
+        <argsstring></argsstring>
+        <name>scan_method</name>
+        <qualifiedname>hf_wifi_station_config_t::scan_method</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Scan method </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="199" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1af9150571eac6a1dacf0f02bd9650f152" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_wifi_station_config_t::sort_method</definition>
+        <argsstring></argsstring>
+        <name>sort_method</name>
+        <qualifiedname>hf_wifi_station_config_t::sort_method</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sort method for AP list </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="200" column="8" bodyfile="inc/base/BaseWifi.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1a8fdad64ca7df7590d9e1a3a4c25fec56" prot="public" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t hf_wifi_station_config_t::threshold_rssi</definition>
+        <argsstring></argsstring>
+        <name>threshold_rssi</name>
+        <qualifiedname>hf_wifi_station_config_t::threshold_rssi</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Minimum RSSI threshold </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="201" column="12" bodyfile="inc/base/BaseWifi.h" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__wifi__station__config__t_1a0937e6645ec03df2c5ce62672e20971e" prot="public" static="no" mutable="no">
+        <type><ref refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kindref="member">hf_wifi_security_t</ref></type>
+        <definition>hf_wifi_security_t hf_wifi_station_config_t::threshold_authmode</definition>
+        <argsstring></argsstring>
+        <name>threshold_authmode</name>
+        <qualifiedname>hf_wifi_station_config_t::threshold_authmode</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Minimum auth mode threshold </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseWifi.h" line="202" column="22" bodyfile="inc/base/BaseWifi.h" bodystart="202" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>WiFi station configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseWifi.h" line="193" column="1" bodyfile="inc/base/BaseWifi.h" bodystart="193" bodyend="203"/>
+    <listofallmembers>
+      <member refid="structhf__wifi__station__config__t_1ac3fc454eb6e2d3c3892527984e6bfd23" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>bssid</name></member>
+      <member refid="structhf__wifi__station__config__t_1ab17e16f345d3be419ac4635abcac681d" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>bssid_set</name></member>
+      <member refid="structhf__wifi__station__config__t_1ae92c8cdb70a56a99ad11d433c18925e6" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>channel</name></member>
+      <member refid="structhf__wifi__station__config__t_1a18939a056d90423a88c5f31412f93fce" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>password</name></member>
+      <member refid="structhf__wifi__station__config__t_1a803122e9c77b8f5d4c026afc64b80efe" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>scan_method</name></member>
+      <member refid="structhf__wifi__station__config__t_1af9150571eac6a1dacf0f02bd9650f152" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>sort_method</name></member>
+      <member refid="structhf__wifi__station__config__t_1a9bec5a9a39cf0f7827fa697c46ed338a" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>ssid</name></member>
+      <member refid="structhf__wifi__station__config__t_1a0937e6645ec03df2c5ce62672e20971e" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>threshold_authmode</name></member>
+      <member refid="structhf__wifi__station__config__t_1a8fdad64ca7df7590d9e1a3a4c25fec56" prot="public" virt="non-virtual"><scope>hf_wifi_station_config_t</scope><name>threshold_rssi</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

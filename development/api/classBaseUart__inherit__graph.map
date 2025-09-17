@@ -1,0 +1,5 @@
+<map id="BaseUart" name="BaseUart">
+<area shape="rect" id="Node000001" title="Abstract base class for UART driver implementations." alt="" coords="5,5,103,36"/>
+<area shape="rect" id="Node000002" href="$classEspUart.html" title="ESP32 UART implementation class." alt="" coords="11,84,97,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,50,57,84,51,84,51,50"/>
+</map>

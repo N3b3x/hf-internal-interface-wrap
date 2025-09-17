@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__pwm__unit__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_pwm_unit_config_t</compoundname>
+    <includes refid="EspTypes__PWM_8h" local="no">EspTypes_PWM.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__pwm__unit__config__t_1aee1e74ef4f6da7c224819db84bc9d873" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_pwm_unit_config_t::unit_id</definition>
+        <argsstring></argsstring>
+        <name>unit_id</name>
+        <qualifiedname>hf_pwm_unit_config_t::unit_id</qualifiedname>
+        <briefdescription>
+<para>PWM unit ID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="203" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="203" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__unit__config__t_1ab6c9882bb8695dbdfd685af69dfdf35a" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3fa" kindref="member">hf_pwm_mode_t</ref></type>
+        <definition>hf_pwm_mode_t hf_pwm_unit_config_t::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <qualifiedname>hf_pwm_unit_config_t::mode</qualifiedname>
+        <briefdescription>
+<para>Operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="204" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__unit__config__t_1af2993dd547218552aad3ef5cfa324415" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_pwm_unit_config_t::base_clock_hz</definition>
+        <argsstring></argsstring>
+        <name>base_clock_hz</name>
+        <qualifiedname>hf_pwm_unit_config_t::base_clock_hz</qualifiedname>
+        <briefdescription>
+<para>Base clock frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="205" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__unit__config__t_1a00ac0384b3ff94e53be3f31e95a8e1c4" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
+        <definition>hf_pwm_clock_source_t hf_pwm_unit_config_t::clock_source</definition>
+        <argsstring></argsstring>
+        <name>clock_source</name>
+        <qualifiedname>hf_pwm_unit_config_t::clock_source</qualifiedname>
+        <briefdescription>
+<para>Clock source. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="206" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="206" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__unit__config__t_1a37b2e0c51eb2962a80131fefe9d64d58" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_unit_config_t::enable_fade</definition>
+        <argsstring></argsstring>
+        <name>enable_fade</name>
+        <qualifiedname>hf_pwm_unit_config_t::enable_fade</qualifiedname>
+        <briefdescription>
+<para>Enable fade functionality. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="207" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="207" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__pwm__unit__config__t_1acaf1bbe7d4fbe729846cd9e2f1ac7a85" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_pwm_unit_config_t::enable_interrupts</definition>
+        <argsstring></argsstring>
+        <name>enable_interrupts</name>
+        <qualifiedname>hf_pwm_unit_config_t::enable_interrupts</qualifiedname>
+        <briefdescription>
+<para>Enable interrupts. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="208" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__pwm__unit__config__t_1a2a48d516602ea672233c231f55404a74" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_pwm_unit_config_t::hf_pwm_unit_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_pwm_unit_config_t</name>
+        <qualifiedname>hf_pwm_unit_config_t::hf_pwm_unit_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="210" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="210" bodyend="213"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 PWM unit configuration. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="202" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="202" bodyend="214"/>
+    <listofallmembers>
+      <member refid="structhf__pwm__unit__config__t_1af2993dd547218552aad3ef5cfa324415" prot="public" virt="non-virtual"><scope>hf_pwm_unit_config_t</scope><name>base_clock_hz</name></member>
+      <member refid="structhf__pwm__unit__config__t_1a00ac0384b3ff94e53be3f31e95a8e1c4" prot="public" virt="non-virtual"><scope>hf_pwm_unit_config_t</scope><name>clock_source</name></member>
+      <member refid="structhf__pwm__unit__config__t_1a37b2e0c51eb2962a80131fefe9d64d58" prot="public" virt="non-virtual"><scope>hf_pwm_unit_config_t</scope><name>enable_fade</name></member>
+      <member refid="structhf__pwm__unit__config__t_1acaf1bbe7d4fbe729846cd9e2f1ac7a85" prot="public" virt="non-virtual"><scope>hf_pwm_unit_config_t</scope><name>enable_interrupts</name></member>
+      <member refid="structhf__pwm__unit__config__t_1a2a48d516602ea672233c231f55404a74" prot="public" virt="non-virtual"><scope>hf_pwm_unit_config_t</scope><name>hf_pwm_unit_config_t</name></member>
+      <member refid="structhf__pwm__unit__config__t_1ab6c9882bb8695dbdfd685af69dfdf35a" prot="public" virt="non-virtual"><scope>hf_pwm_unit_config_t</scope><name>mode</name></member>
+      <member refid="structhf__pwm__unit__config__t_1aee1e74ef4f6da7c224819db84bc9d873" prot="public" virt="non-virtual"><scope>hf_pwm_unit_config_t</scope><name>unit_id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

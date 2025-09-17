@@ -1,0 +1,14 @@
+<map id="inc/mcu/esp32/utils/EspTypes_Base.h" name="inc/mcu/esp32/utils/EspTypes_Base.h">
+<area shape="rect" id="Node000001" title="ESP32 base type definitions for hardware abstraction." alt="" coords="203,5,379,56"/>
+<area shape="rect" id="Node000002" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="5,104,195,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,59,145,101,143,96,236,54"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="269,104,432,135"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="310,55,335,91,331,94,306,58"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="208,183,283,213"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="279,58,260,105,249,170,244,169,255,103,275,56"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="457,104,533,135"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="349,54,450,96,448,101,347,59"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="332,137,278,177,274,172,329,133"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="319,183,383,213"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="353,135,353,169,348,169,348,135"/>
+</map>

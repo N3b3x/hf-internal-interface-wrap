@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_8f46c503ad4a32bd125d4189308369db" kind="dir">
+    <compoundname>inc/utils</compoundname>
+    <innerfile refid="AsciiArtGenerator_8h">AsciiArtGenerator.h</innerfile>
+    <innerfile refid="DigitalOutputGuard_8h">DigitalOutputGuard.h</innerfile>
+    <innerfile refid="McuSelect_8h">McuSelect.h</innerfile>
+    <innerfile refid="memory__utils_8h">memory_utils.h</innerfile>
+    <innerfile refid="RtosMutex_8h">RtosMutex.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/utils/"/>
+  </compounddef>
+</doxygen>

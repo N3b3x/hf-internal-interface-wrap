@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__i2c" kind="group">
+    <compoundname>i2c</compoundname>
+    <title>I2C Module</title>
+    <innerfile refid="BaseI2c_8h">BaseI2c.h</innerfile>
+    <innerclass refid="classBaseI2c" prot="public">BaseI2c</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__i2c_1gadf5f9ab06f84c2a0396e44a73475f609" prot="public" static="no">
+        <name>HF_I2C_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC I2C error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all I2C operations in the system. This enumeration is used across all I2C-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="43" column="9" bodyfile="inc/base/BaseI2c.h" bodystart="43" bodyend="84"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All I2C-related types, enums, and functions for Inter-Integrated Circuit operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

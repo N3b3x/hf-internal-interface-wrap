@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classRtosMutex" kind="class" language="C++" prot="public">
+    <compoundname>RtosMutex</compoundname>
+    <includes refid="RtosMutex_8h" local="no">RtosMutex.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classRtosMutex_1a2518867073aa7e5a4ba234509c62fe72" prot="private" static="no" mutable="no">
+        <type>SemaphoreHandle_t</type>
+        <definition>SemaphoreHandle_t RtosMutex::handle_</definition>
+        <argsstring></argsstring>
+        <name>handle_</name>
+        <qualifiedname>RtosMutex::handle_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="164" column="21" bodyfile="inc/utils/RtosMutex.h" bodystart="164" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classRtosMutex_1a43df3db03d2b669ad7d8767b28e1d85c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosMutex::RtosMutex</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>RtosMutex</name>
+        <qualifiedname>RtosMutex::RtosMutex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="79" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a9aa716386b8c8777135b933877581236" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosMutex::~RtosMutex</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~RtosMutex</name>
+        <qualifiedname>RtosMutex::~RtosMutex</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="81" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="81" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a266b12306d0f31994692eefa90bea9e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RtosMutex::RtosMutex</definition>
+        <argsstring>(const RtosMutex &amp;)=delete</argsstring>
+        <name>RtosMutex</name>
+        <qualifiedname>RtosMutex::RtosMutex</qualifiedname>
+        <param>
+          <type>const <ref refid="classRtosMutex" kindref="compound">RtosMutex</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="87" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a6b3293289431e14af4436448826c7db2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref> &amp;</type>
+        <definition>RtosMutex &amp; RtosMutex::operator=</definition>
+        <argsstring>(const RtosMutex &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RtosMutex::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classRtosMutex" kindref="compound">RtosMutex</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="88" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a8c8602dfb79d8a1fd7ba4deae96b0fd2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>RtosMutex::RtosMutex</definition>
+        <argsstring>(RtosMutex &amp;&amp;other) noexcept</argsstring>
+        <name>RtosMutex</name>
+        <qualifiedname>RtosMutex::RtosMutex</qualifiedname>
+        <param>
+          <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="90" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a4e13695b6995ecd5dbac5e2681b07945" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref> &amp;</type>
+        <definition>RtosMutex &amp; RtosMutex::operator=</definition>
+        <argsstring>(RtosMutex &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>RtosMutex::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="94" column="13" bodyfile="inc/utils/RtosMutex.h" bodystart="94" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1ad906e18270e6d663b1a7251cf014fd90" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosMutex::lock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>lock</name>
+        <qualifiedname>RtosMutex::lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="105" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="105" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a0a923da9285903c8fe090c6d489dc485" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosMutex::try_lock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>try_lock</name>
+        <qualifiedname>RtosMutex::try_lock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="111" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="111" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a504eb221268dbd671eeb01ea9e9d322d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosMutex::try_lock_for</definition>
+        <argsstring>(uint32_t timeout_ms) noexcept</argsstring>
+        <name>try_lock_for</name>
+        <qualifiedname>RtosMutex::try_lock_for</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="117" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="117" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1aa994fd43b2c205c871c86b4d95ff7c8d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RtosMutex::unlock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>unlock</name>
+        <qualifiedname>RtosMutex::unlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="124" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="124" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a3d33ecf3c5ad5a0b064c8b2db34a0c8c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>SemaphoreHandle_t</type>
+        <definition>SemaphoreHandle_t RtosMutex::native_handle</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>native_handle</name>
+        <qualifiedname>RtosMutex::native_handle</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="130" column="21" bodyfile="inc/utils/RtosMutex.h" bodystart="130" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a0fff80075d2a83f10e01ddfb21f5d1d0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosMutex::Take</definition>
+        <argsstring>(uint32_t timeout_ms=0) noexcept</argsstring>
+        <name>Take</name>
+        <qualifiedname>RtosMutex::Take</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="135" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="135" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1ae99adb7d809ad8f23c8ba1f4ff57439f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RtosMutex::Give</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Give</name>
+        <qualifiedname>RtosMutex::Give</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="142" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="142" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a45e2e0ed77e5f60e89a9ac8ade5d84e8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosMutex::lock_shared</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>lock_shared</name>
+        <qualifiedname>RtosMutex::lock_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="147" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1aa990ba1748147d20221964edb672a853" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosMutex::try_lock_shared</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>try_lock_shared</name>
+        <qualifiedname>RtosMutex::try_lock_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="151" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="151" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a73bb376a2bb9939ca285e15d3d0b1654" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool RtosMutex::try_lock_shared_for</definition>
+        <argsstring>(uint32_t timeout_ms) noexcept</argsstring>
+        <name>try_lock_shared_for</name>
+        <qualifiedname>RtosMutex::try_lock_shared_for</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="155" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="155" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classRtosMutex_1a1d1aa37f2fa497471320d92b96c76905" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void RtosMutex::unlock_shared</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>unlock_shared</name>
+        <qualifiedname>RtosMutex::unlock_shared</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/RtosMutex.h" line="159" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="159" bodyend="161"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/utils/RtosMutex.h" line="77" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="77" bodyend="165"/>
+    <listofallmembers>
+      <member refid="classRtosMutex_1ae99adb7d809ad8f23c8ba1f4ff57439f" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>Give</name></member>
+      <member refid="classRtosMutex_1a2518867073aa7e5a4ba234509c62fe72" prot="private" virt="non-virtual"><scope>RtosMutex</scope><name>handle_</name></member>
+      <member refid="classRtosMutex_1ad906e18270e6d663b1a7251cf014fd90" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>lock</name></member>
+      <member refid="classRtosMutex_1a45e2e0ed77e5f60e89a9ac8ade5d84e8" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>lock_shared</name></member>
+      <member refid="classRtosMutex_1a3d33ecf3c5ad5a0b064c8b2db34a0c8c" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>native_handle</name></member>
+      <member refid="classRtosMutex_1a6b3293289431e14af4436448826c7db2" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>operator=</name></member>
+      <member refid="classRtosMutex_1a4e13695b6995ecd5dbac5e2681b07945" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>operator=</name></member>
+      <member refid="classRtosMutex_1a43df3db03d2b669ad7d8767b28e1d85c" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>RtosMutex</name></member>
+      <member refid="classRtosMutex_1a266b12306d0f31994692eefa90bea9e6" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>RtosMutex</name></member>
+      <member refid="classRtosMutex_1a8c8602dfb79d8a1fd7ba4deae96b0fd2" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>RtosMutex</name></member>
+      <member refid="classRtosMutex_1a0fff80075d2a83f10e01ddfb21f5d1d0" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>Take</name></member>
+      <member refid="classRtosMutex_1a0a923da9285903c8fe090c6d489dc485" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>try_lock</name></member>
+      <member refid="classRtosMutex_1a504eb221268dbd671eeb01ea9e9d322d" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>try_lock_for</name></member>
+      <member refid="classRtosMutex_1aa990ba1748147d20221964edb672a853" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>try_lock_shared</name></member>
+      <member refid="classRtosMutex_1a73bb376a2bb9939ca285e15d3d0b1654" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>try_lock_shared_for</name></member>
+      <member refid="classRtosMutex_1aa994fd43b2c205c871c86b4d95ff7c8d" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>unlock</name></member>
+      <member refid="classRtosMutex_1a1d1aa37f2fa497471320d92b96c76905" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>unlock_shared</name></member>
+      <member refid="classRtosMutex_1a9aa716386b8c8777135b933877581236" prot="public" virt="non-virtual"><scope>RtosMutex</scope><name>~RtosMutex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

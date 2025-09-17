@@ -1,0 +1,2282 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(9)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(9) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(9) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(9) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>📲 BaseBluetooth | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="📲 BaseBluetooth" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Bluetooth base class for Classic and BLE wireless communication" />
+<meta property="og:description" content="Bluetooth base class for Classic and BLE wireless communication" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="📲 BaseBluetooth" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Bluetooth base class for Classic and BLE wireless communication","headline":"📲 BaseBluetooth","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/">📋 API Reference</a></li>
+    <li class="breadcrumb-nav-list-item"><span>📲 BaseBluetooth</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="-basebluetooth-api-reference">
+  
+  
+    <a href="#-basebluetooth-api-reference" class="anchor-heading" aria-labelledby="-basebluetooth-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📲 BaseBluetooth API Reference
+  
+  
+</h1>
+    
+<h2 id="-unified-bluetooth-abstraction-for-classic-and-ble-wireless-communication">
+  
+  
+    <a href="#-unified-bluetooth-abstraction-for-classic-and-ble-wireless-communication" class="anchor-heading" aria-labelledby="-unified-bluetooth-abstraction-for-classic-and-ble-wireless-communication"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 Unified Bluetooth abstraction for Classic and BLE wireless communication
+  
+  
+</h2>
+    
+<h2 id="-table-of-contents">
+  
+  
+    <a href="#-table-of-contents" class="anchor-heading" aria-labelledby="-table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📚 <strong>Table of Contents</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="#-overview">🎯 <strong>Overview</strong></a></li>
+  <li><a href="#-class-hierarchy">🏗️ <strong>Class Hierarchy</strong></a></li>
+  <li><a href="#-error-codes">📋 <strong>Error Codes</strong></a></li>
+  <li><a href="#-core-api">🔧 <strong>Core API</strong></a></li>
+  <li><a href="#-data-structures">📊 <strong>Data Structures</strong></a></li>
+  <li><a href="#-bluetooth-modes">📲 <strong>Bluetooth Modes</strong></a></li>
+  <li><a href="#-usage-examples">📊 <strong>Usage Examples</strong></a></li>
+  <li><a href="#-best-practices">🧪 <strong>Best Practices</strong></a></li>
+</ul><hr />
+<h2 id="-overview">
+  
+  
+    <a href="#-overview" class="anchor-heading" aria-labelledby="-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Overview</strong>
+  
+  
+</h2>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">BaseBluetooth</code> class provides a comprehensive Bluetooth abstraction
+that serves as the unified interface for all Bluetooth operations in the
+HardFOC system. It supports both Bluetooth Classic and Bluetooth Low Energy
+(BLE), device discovery, pairing, connection management, and data transfer
+across different hardware implementations.</p>
+<h3 id="-key-features">
+  
+  
+    <a href="#-key-features" class="anchor-heading" aria-labelledby="-key-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✨ <strong>Key Features</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li>📲 <strong>Dual Mode Support</strong> - Both Bluetooth Classic and BLE in a single interface</li>
+  <li>🔍 <strong>Device Discovery</strong> - Scan for and discover nearby Bluetooth devices</li>
+  <li>🤝 <strong>Pairing &amp; Bonding</strong> - Secure device pairing and credential management</li>
+  <li>📡 <strong>Connection Management</strong> - Robust connection handling with reconnection</li>
+  <li>📊 <strong>Service Discovery</strong> - BLE GATT service and characteristic discovery</li>
+  <li>🔐 <strong>Security Support</strong> - Encryption, authentication, and authorization</li>
+  <li>🛡️ <strong>Robust Error Handling</strong> - Comprehensive validation and error reporting</li>
+  <li>🏎️ <strong>Performance Optimized</strong> - Minimal overhead for real-time applications</li>
+  <li>🔌 <strong>Platform Agnostic</strong> - Works across different MCU platforms</li>
+</ul>
+<h3 id="-supported-hardware">
+  
+  
+    <a href="#-supported-hardware" class="anchor-heading" aria-labelledby="-supported-hardware"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Supported Hardware</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Implementation</td>
+      <td>Classic BT</td>
+      <td>BLE</td>
+      <td>Max Connections</td>
+      <td>Range</td>
+      <td>Power</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|—————-|————|—–|—————–|——-|——-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Esp32C6 Bluetooth</code></td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>7 connections</td>
+      <td>10-100m</td>
+      <td>Configurable</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">NrfBluetooth</code></td>
+      <td>✅</td>
+      <td>✅</td>
+      <td>20 connections</td>
+      <td>10-240m</td>
+      <td>Ultra-low power</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Ti2640Bluetooth</code></td>
+      <td>❌</td>
+      <td>✅</td>
+      <td>3 connections</td>
+      <td>10-50m</td>
+      <td>Low power</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="️-class-hierarchy">
+  
+  
+    <a href="#️-class-hierarchy" class="anchor-heading" aria-labelledby="️-class-hierarchy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ <strong>Class Hierarchy</strong>
+  
+  
+</h2>
+    
+
+<pre><code class="language-mermaid">classDiagram
+    class BaseBluetooth {
+        &lt;&lt;abstract&gt;&gt;
+        +EnsureInitialized() hf_bt_err_t
+        +StartDiscovery() hf_bt_err_t
+        +StopDiscovery() hf_bt_err_t
+        +ConnectToDevice(bt_addr_t) hf_bt_err_t
+        +DisconnectDevice(hf_u32_t) hf_bt_err_t
+        +SendData(hf_u32_t, data*, size) hf_bt_err_t
+        +ReceiveData(hf_u32_t, data*, size&amp;) hf_bt_err_t
+        +PairDevice(bt_addr_t) hf_bt_err_t
+        +SetMode(hf_bt_mode_t) hf_bt_err_t
+        +RegisterEventCallback(callback) hf_bt_err_t
+        +IsInitialized() bool
+        +GetStatistics(hf_bt_statistics_t&amp;) hf_bt_err_t
+        #DoInitialize() hf_bt_err_t*
+        #DoStartDiscovery() hf_bt_err_t*
+        #DoConnect(bt_addr_t) hf_bt_err_t*
+    }
+
+    class Esp32C6Bluetooth {
++Esp32C6Bluetooth()
+        +SetClassicConfig(hf_bt_classic_config_t) hf_bt_err_t
+        +SetBleConfig(hf_ble_config_t) hf_bt_err_t
+        +StartAdvertising() hf_bt_err_t
+        +StopAdvertising() hf_bt_err_t
+        +CreateGattService(hf_ble_service_t&amp;) hf_bt_err_t
+    }
+
+    class NrfBluetooth {
+        +NrfBluetooth()
+        +SetTxPower(hf_i8_t) hf_bt_err_t
+        +EnterLowPowerMode() hf_bt_err_t
+        +SetBondingMode(bool) hf_bt_err_t
+    }
+
+    BaseBluetooth &lt;|-- Esp32C6Bluetooth
+    BaseBluetooth &lt;|-- NrfBluetooth
+</code></pre><hr />
+<h2 id="-error-codes">
+  
+  
+    <a href="#-error-codes" class="anchor-heading" aria-labelledby="-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📋 <strong>Error Codes</strong>
+  
+  
+</h2>
+    
+<h3 id="-bluetooth-error-enumeration">
+  
+  
+    <a href="#-bluetooth-error-enumeration" class="anchor-heading" aria-labelledby="-bluetooth-error-enumeration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚨 <strong>Bluetooth Error Enumeration</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+</pre></td><td class="rouge-code"><pre><span class="k">enum</span> <span class="k">class</span> <span class="nc">hf_bt_err_t</span> <span class="o">:</span> <span class="n">hf_u32_t</span> <span class="p">{</span>
+    <span class="c1">// Success codes</span>
+    <span class="n">BT_SUCCESS</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    
+    <span class="c1">// General errors</span>
+    <span class="n">BT_ERR_FAILURE</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">BT_ERR_NOT_INITIALIZED</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">BT_ERR_ALREADY_INITIALIZED</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">BT_ERR_INVALID_PARAMETER</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">BT_ERR_NULL_POINTER</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">BT_ERR_OUT_OF_MEMORY</span> <span class="o">=</span> <span class="mi">6</span><span class="p">,</span>
+    
+    <span class="c1">// Connection errors</span>
+    <span class="n">BT_ERR_CONNECTION_FAILED</span> <span class="o">=</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="n">BT_ERR_CONNECTION_TIMEOUT</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="n">BT_ERR_CONNECTION_LOST</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+    <span class="n">BT_ERR_DEVICE_NOT_FOUND</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">BT_ERR_DEVICE_UNREACHABLE</span> <span class="o">=</span> <span class="mi">11</span><span class="p">,</span>
+    <span class="n">BT_ERR_MAX_CONNECTIONS_REACHED</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span>
+    
+    <span class="c1">// Pairing errors</span>
+    <span class="n">BT_ERR_PAIRING_FAILED</span> <span class="o">=</span> <span class="mi">13</span><span class="p">,</span>
+    <span class="n">BT_ERR_PAIRING_REJECTED</span> <span class="o">=</span> <span class="mi">14</span><span class="p">,</span>
+    <span class="n">BT_ERR_AUTHENTICATION_FAILED</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">BT_ERR_AUTHORIZATION_FAILED</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="n">BT_ERR_ENCRYPTION_FAILED</span> <span class="o">=</span> <span class="mi">17</span><span class="p">,</span>
+    
+    <span class="c1">// Discovery errors</span>
+    <span class="n">BT_ERR_DISCOVERY_FAILED</span> <span class="o">=</span> <span class="mi">18</span><span class="p">,</span>
+    <span class="n">BT_ERR_DISCOVERY_TIMEOUT</span> <span class="o">=</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="n">BT_ERR_SERVICE_NOT_FOUND</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">BT_ERR_CHARACTERISTIC_NOT_FOUND</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span>
+    
+    <span class="c1">// Data transfer errors</span>
+    <span class="n">BT_ERR_SEND_FAILED</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="n">BT_ERR_RECEIVE_FAILED</span> <span class="o">=</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="n">BT_ERR_BUFFER_OVERFLOW</span> <span class="o">=</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="n">BT_ERR_INVALID_DATA_SIZE</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span>
+    
+    <span class="c1">// BLE specific errors</span>
+    <span class="n">BLE_ERR_ADVERTISING_FAILED</span> <span class="o">=</span> <span class="mi">26</span><span class="p">,</span>
+    <span class="n">BLE_ERR_GATT_ERROR</span> <span class="o">=</span> <span class="mi">27</span><span class="p">,</span>
+    <span class="n">BLE_ERR_INVALID_ATT_SIZE</span> <span class="o">=</span> <span class="mi">28</span><span class="p">,</span>
+    <span class="n">BLE_ERR_INVALID_HANDLE</span> <span class="o">=</span> <span class="mi">29</span><span class="p">,</span>
+    
+    <span class="c1">// Classic specific errors</span>
+    <span class="n">BT_CLASSIC_ERR_SPP_FAILED</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">BT_CLASSIC_ERR_PROFILE_ERROR</span> <span class="o">=</span> <span class="mi">31</span><span class="p">,</span>
+    <span class="n">BT_CLASSIC_ERR_SDP_FAILED</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+    
+    <span class="c1">// System errors</span>
+    <span class="n">BT_ERR_SYSTEM_ERROR</span> <span class="o">=</span> <span class="mi">33</span><span class="p">,</span>
+    <span class="n">BT_ERR_PERMISSION_DENIED</span> <span class="o">=</span> <span class="mi">34</span><span class="p">,</span>
+    <span class="n">BT_ERR_OPERATION_ABORTED</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-error-code-categories">
+  
+  
+    <a href="#-error-code-categories" class="anchor-heading" aria-labelledby="-error-code-categories"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Error Code Categories</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Category</td>
+      <td>Range</td>
+      <td>Description</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|———-|——-|————-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Success</strong></td>
+      <td>0</td>
+      <td>Successful operation</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>General</strong></td>
+      <td>1-6</td>
+      <td>Basic initialization and parameter errors</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Connection</strong></td>
+      <td>7-12</td>
+      <td>Device connection and management errors</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Pairing</strong></td>
+      <td>13-17</td>
+      <td>Security and pairing errors</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Discovery</strong></td>
+      <td>18-21</td>
+      <td>Device and service discovery errors</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Data Transfer</strong></td>
+      <td>22-25</td>
+      <td>Data transmission errors</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>BLE Specific</strong></td>
+      <td>26-29</td>
+      <td>BLE protocol specific errors</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>Classic Specific</strong></td>
+      <td>30-32</td>
+      <td>Classic Bluetooth errors</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><strong>System</strong></td>
+      <td>33-35</td>
+      <td>System-level errors</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="-core-api">
+  
+  
+    <a href="#-core-api" class="anchor-heading" aria-labelledby="-core-api"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 <strong>Core API</strong>
+  
+  
+</h2>
+    
+<h3 id="-essential-methods">
+  
+  
+    <a href="#-essential-methods" class="anchor-heading" aria-labelledby="-essential-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Essential Methods</strong>
+  
+  
+</h3>
+    
+<h4 id="initialization--configuration">
+  
+  
+    <a href="#initialization--configuration" class="anchor-heading" aria-labelledby="initialization--configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Initialization &amp; Configuration</strong>
+  
+  
+</h4>
+    
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Ensure the Bluetooth controller is initialized
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">EnsureInitialized</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Set Bluetooth operating mode
+ * @param mode Bluetooth mode (Classic, BLE, or Dual)
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span> <span class="n">mode</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Check if Bluetooth is initialized
+ * @return bool True if initialized
+ */</span>
+<span class="k">virtual</span> <span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span> <span class="k">const</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h4 id="device-discovery">
+  
+  
+    <a href="#device-discovery" class="anchor-heading" aria-labelledby="device-discovery"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Device Discovery</strong>
+  
+  
+</h4>
+    
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Start device discovery/scanning
+ * @param discovery_time_s Discovery duration in seconds
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">StartDiscovery</span><span class="p">(</span><span class="n">hf_u32_t</span> <span class="n">discovery_time_s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Stop device discovery/scanning
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">StopDiscovery</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get discovered devices list
+ * @param devices Output array of discovered devices
+ * @param max_devices Maximum devices to return
+ * @param actual_count Actual number of devices found
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">GetDiscoveredDevices</span><span class="p">(</span><span class="n">hf_bt_device_t</span><span class="o">*</span> <span class="n">devices</span><span class="p">,</span>
+                                       <span class="n">hf_u32_t</span> <span class="n">max_devices</span><span class="p">,</span>
+                                       <span class="n">hf_u32_t</span><span class="o">&amp;</span> <span class="n">actual_count</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h4 id="connection-management">
+  
+  
+    <a href="#connection-management" class="anchor-heading" aria-labelledby="connection-management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Connection Management</strong>
+  
+  
+</h4>
+    
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Connect to a Bluetooth device
+ * @param device_addr Target device address
+ * @param connection_id Output connection ID
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">ConnectToDevice</span><span class="p">(</span><span class="k">const</span> <span class="n">bt_addr_t</span><span class="o">&amp;</span> <span class="n">device_addr</span><span class="p">,</span>
+                                  <span class="n">hf_u32_t</span><span class="o">&amp;</span> <span class="n">connection_id</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Disconnect from a device
+ * @param connection_id Connection ID to disconnect
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">DisconnectDevice</span><span class="p">(</span><span class="n">hf_u32_t</span> <span class="n">connection_id</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Check if device is connected
+ * @param connection_id Connection ID to check
+ * @param is_connected Output connection status
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">IsDeviceConnected</span><span class="p">(</span><span class="n">hf_u32_t</span> <span class="n">connection_id</span><span class="p">,</span>
+                                    <span class="kt">bool</span><span class="o">&amp;</span> <span class="n">is_connected</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h4 id="data-transfer">
+  
+  
+    <a href="#data-transfer" class="anchor-heading" aria-labelledby="data-transfer"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> <strong>Data Transfer</strong>
+  
+  
+</h4>
+    
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Send data to connected device
+ * @param connection_id Target connection ID
+ * @param data Data buffer to send
+ * @param data_size Size of data to send
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">SendData</span><span class="p">(</span><span class="n">hf_u32_t</span> <span class="n">connection_id</span><span class="p">,</span>
+                           <span class="k">const</span> <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span>
+                           <span class="n">hf_u32_t</span> <span class="n">data_size</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Receive data from connected device
+ * @param connection_id Source connection ID
+ * @param data Buffer to store received data
+ * @param buffer_size Size of receive buffer
+ * @param received_size Actual bytes received
+ * @return hf_bt_err_t Error code
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_bt_err_t</span> <span class="n">ReceiveData</span><span class="p">(</span><span class="n">hf_u32_t</span> <span class="n">connection_id</span><span class="p">,</span>
+                              <span class="n">hf_u8_t</span><span class="o">*</span> <span class="n">data</span><span class="p">,</span>
+                              <span class="n">hf_u32_t</span> <span class="n">buffer_size</span><span class="p">,</span>
+                              <span class="n">hf_u32_t</span><span class="o">&amp;</span> <span class="n">received_size</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-data-structures">
+  
+  
+    <a href="#-data-structures" class="anchor-heading" aria-labelledby="-data-structures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Data Structures</strong>
+  
+  
+</h2>
+    
+<h3 id="-bluetooth-mode-types">
+  
+  
+    <a href="#-bluetooth-mode-types" class="anchor-heading" aria-labelledby="-bluetooth-mode-types"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📲 <strong>Bluetooth Mode Types</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="k">enum</span> <span class="k">class</span> <span class="nc">hf_bt_mode_t</span> <span class="o">:</span> <span class="n">hf_u8_t</span> <span class="p">{</span>
+    <span class="n">BT_MODE_DISABLED</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>           <span class="c1">///&lt; Bluetooth disabled</span>
+    <span class="n">BT_MODE_CLASSIC</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>            <span class="c1">///&lt; Classic Bluetooth only</span>
+    <span class="n">BT_MODE_BLE</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>                <span class="c1">///&lt; BLE only</span>
+    <span class="n">BT_MODE_DUAL</span> <span class="o">=</span> <span class="mi">3</span>                <span class="c1">///&lt; Both Classic and BLE</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-device-information">
+  
+  
+    <a href="#-device-information" class="anchor-heading" aria-labelledby="-device-information"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📱 <strong>Device Information</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_bt_device_t</span> <span class="p">{</span>
+    <span class="n">bt_addr_t</span> <span class="n">address</span><span class="p">;</span>                      <span class="c1">///&lt; Device MAC address</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>                          <span class="c1">///&lt; Device name</span>
+    <span class="n">hf_u32_t</span> <span class="n">class_of_device</span><span class="p">;</span>               <span class="c1">///&lt; Class of device (Classic BT)</span>
+    <span class="n">hf_i8_t</span> <span class="n">rssi</span><span class="p">;</span>                           <span class="c1">///&lt; Signal strength (dBm)</span>
+    <span class="n">hf_bt_device_type_t</span> <span class="n">device_type</span><span class="p">;</span>        <span class="c1">///&lt; Device type (Classic/BLE/Dual)</span>
+    <span class="kt">bool</span> <span class="n">is_paired</span><span class="p">;</span>                         <span class="c1">///&lt; Pairing status</span>
+    <span class="kt">bool</span> <span class="n">is_bonded</span><span class="p">;</span>                         <span class="c1">///&lt; Bonding status</span>
+    <span class="n">hf_u32_t</span> <span class="n">last_seen_time_ms</span><span class="p">;</span>             <span class="c1">///&lt; Last discovery time</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-security-configuration">
+  
+  
+    <a href="#-security-configuration" class="anchor-heading" aria-labelledby="-security-configuration"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔐 <strong>Security Configuration</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_bt_security_config_t</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">require_pairing</span><span class="p">;</span>                   <span class="c1">///&lt; Require pairing for connections</span>
+    <span class="kt">bool</span> <span class="n">require_bonding</span><span class="p">;</span>                   <span class="c1">///&lt; Require bonding (stored keys)</span>
+    <span class="kt">bool</span> <span class="n">require_mitm_protection</span><span class="p">;</span>           <span class="c1">///&lt; Man-in-the-middle protection</span>
+    <span class="kt">bool</span> <span class="n">use_secure_connections</span><span class="p">;</span>            <span class="c1">///&lt; Use secure connections (if available)</span>
+    <span class="n">hf_u32_t</span> <span class="n">passkey</span><span class="p">;</span>                       <span class="c1">///&lt; Static passkey (if used)</span>
+    <span class="n">hf_bt_io_capabilities_t</span> <span class="n">io_cap</span><span class="p">;</span>         <span class="c1">///&lt; I/O capabilities for pairing</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-bluetooth-statistics">
+  
+  
+    <a href="#-bluetooth-statistics" class="anchor-heading" aria-labelledby="-bluetooth-statistics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 <strong>Bluetooth Statistics</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_bt_statistics_t</span> <span class="p">{</span>
+    <span class="n">hf_u32_t</span> <span class="n">total_connections</span><span class="p">;</span>             <span class="c1">///&lt; Total connection attempts</span>
+    <span class="n">hf_u32_t</span> <span class="n">successful_connections</span><span class="p">;</span>        <span class="c1">///&lt; Successful connections</span>
+    <span class="n">hf_u32_t</span> <span class="n">failed_connections</span><span class="p">;</span>            <span class="c1">///&lt; Failed connections</span>
+    <span class="n">hf_u32_t</span> <span class="n">total_bytes_sent</span><span class="p">;</span>              <span class="c1">///&lt; Total bytes transmitted</span>
+    <span class="n">hf_u32_t</span> <span class="n">total_bytes_received</span><span class="p">;</span>          <span class="c1">///&lt; Total bytes received</span>
+    <span class="n">hf_u32_t</span> <span class="n">pairing_attempts</span><span class="p">;</span>              <span class="c1">///&lt; Total pairing attempts</span>
+    <span class="n">hf_u32_t</span> <span class="n">successful_pairings</span><span class="p">;</span>           <span class="c1">///&lt; Successful pairings</span>
+    <span class="n">hf_u32_t</span> <span class="n">discovery_scans</span><span class="p">;</span>               <span class="c1">///&lt; Total discovery scans</span>
+    <span class="n">hf_u32_t</span> <span class="n">devices_discovered</span><span class="p">;</span>            <span class="c1">///&lt; Total devices discovered</span>
+    <span class="n">hf_u32_t</span> <span class="n">active_connections</span><span class="p">;</span>            <span class="c1">///&lt; Currently active connections</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-bluetooth-modes">
+  
+  
+    <a href="#-bluetooth-modes" class="anchor-heading" aria-labelledby="-bluetooth-modes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📲 <strong>Bluetooth Modes</strong>
+  
+  
+</h2>
+    
+<h3 id="-classic-bluetooth">
+  
+  
+    <a href="#-classic-bluetooth" class="anchor-heading" aria-labelledby="-classic-bluetooth"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📻 <strong>Classic Bluetooth</strong>
+  
+  
+</h3>
+    
+
+<p>Classic Bluetooth is ideal for:</p>
+<ul>
+  <li><strong>Audio streaming</strong> (A2DP profile)</li>
+  <li><strong>File transfers</strong> (OBEX/FTP profiles)</li>
+  <li><strong>Serial data</strong> (SPP profile)</li>
+  <li><strong>Human interface devices</strong> (HID profile)</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">// Configure for Classic Bluetooth</span>
+<span class="n">hf_bt_classic_config_t</span> <span class="n">classic_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">device_name</span> <span class="o">=</span> <span class="s">"HardFOC Controller"</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">discoverable</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">connectable</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">profiles</span> <span class="o">=</span> <span class="n">BT_PROFILE_SPP</span> <span class="o">|</span> <span class="n">BT_PROFILE_A2DP</span>
+<span class="p">};</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetClassicConfig</span><span class="p">(</span><span class="n">classic_config</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-bluetooth-low-energy-ble">
+  
+  
+    <a href="#-bluetooth-low-energy-ble" class="anchor-heading" aria-labelledby="-bluetooth-low-energy-ble"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📡 <strong>Bluetooth Low Energy (BLE)</strong>
+  
+  
+</h3>
+    
+
+<p>BLE is optimal for:</p>
+<ul>
+  <li><strong>Sensor data collection</strong> (low power, periodic data)</li>
+  <li><strong>IoT applications</strong> (battery-powered devices)</li>
+  <li><strong>Beacon applications</strong> (advertising-only mode)</li>
+  <li><strong>Mobile app integration</strong> (smartphones/tablets)</li>
+</ul>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="c1">// Configure for BLE</span>
+<span class="n">hf_ble_config_t</span> <span class="n">ble_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">device_name</span> <span class="o">=</span> <span class="s">"HardFOC BLE"</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">advertising_interval_ms</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">connection_interval_ms</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">slave_latency</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">supervision_timeout_ms</span> <span class="o">=</span> <span class="mi">4000</span>
+<span class="p">};</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetBleConfig</span><span class="p">(</span><span class="n">ble_config</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-dual-mode">
+  
+  
+    <a href="#-dual-mode" class="anchor-heading" aria-labelledby="-dual-mode"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔄 <strong>Dual Mode</strong>
+  
+  
+</h3>
+    
+
+<p>Dual mode enables both Classic and BLE simultaneously:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="c1">// Enable dual mode</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_DUAL</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-usage-examples">
+  
+  
+    <a href="#-usage-examples" class="anchor-heading" aria-labelledby="-usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Usage Examples</strong>
+  
+  
+</h2>
+    
+<h3 id="-basic-ble-sensor">
+  
+  
+    <a href="#-basic-ble-sensor" class="anchor-heading" aria-labelledby="-basic-ble-sensor"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📱 <strong>Basic BLE Sensor</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/base/BaseBluetooth.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">BleSensorBeacon</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="c1">// ESP32C6 implementation would inherit from BaseBluetooth</span>
+    <span class="c1">// class Esp32C6Bluetooth : public BaseBluetooth { ... };</span>
+    <span class="n">BaseBluetooth</span><span class="o">*</span> <span class="n">bluetooth</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">hf_u32_t</span> <span class="n">service_handle</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">hf_u32_t</span> <span class="n">characteristic_handle</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Initialize Bluetooth in BLE mode</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_BLE</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Create GATT service for sensor data</span>
+        <span class="n">hf_ble_service_t</span> <span class="n">sensor_service</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="p">.</span><span class="n">uuid</span> <span class="o">=</span> <span class="p">{</span><span class="mh">0x12</span><span class="p">,</span> <span class="mh">0x34</span><span class="p">,</span> <span class="mh">0x56</span><span class="p">,</span> <span class="mh">0x78</span><span class="p">},</span> <span class="c1">// Custom UUID</span>
+            <span class="p">.</span><span class="n">primary</span> <span class="o">=</span> <span class="nb">true</span>
+        <span class="p">};</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">CreateGattService</span><span class="p">(</span><span class="n">sensor_service</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Start advertising</span>
+        <span class="k">return</span> <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">StartAdvertising</span><span class="p">()</span> <span class="o">==</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">advertise_sensor_data</span><span class="p">(</span><span class="kt">float</span> <span class="n">temperature</span><span class="p">,</span> <span class="kt">float</span> <span class="n">humidity</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Pack sensor data</span>
+        <span class="k">struct</span> <span class="p">{</span>
+            <span class="kt">float</span> <span class="n">temperature</span><span class="p">;</span>
+            <span class="kt">float</span> <span class="n">humidity</span><span class="p">;</span>
+            <span class="n">hf_u32_t</span> <span class="n">timestamp</span><span class="p">;</span>
+        <span class="p">}</span> <span class="n">sensor_data</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="p">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">temperature</span><span class="p">,</span>
+            <span class="p">.</span><span class="n">humidity</span> <span class="o">=</span> <span class="n">humidity</span><span class="p">,</span>
+            <span class="p">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">esp_timer_get_time</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000</span>
+        <span class="p">};</span>
+        
+        <span class="c1">// Update characteristic value</span>
+        <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">UpdateCharacteristic</span><span class="p">(</span><span class="n">characteristic_handle</span><span class="o">*</span><span class="p">,</span>
+                                      <span class="p">(</span><span class="n">hf_u8_t</span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">sensor_data</span><span class="p">,</span>
+                                      <span class="k">sizeof</span><span class="p">(</span><span class="n">sensor_data</span><span class="p">));</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"📡 BLE: Broadcasting T=%.1f°C, H=%.1f%%</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+               <span class="n">temperature</span><span class="p">,</span> <span class="n">humidity</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-classic-bluetooth-serial-bridge">
+  
+  
+    <a href="#-classic-bluetooth-serial-bridge" class="anchor-heading" aria-labelledby="-classic-bluetooth-serial-bridge"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔗 <strong>Classic Bluetooth Serial Bridge</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/base/BaseBluetooth.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">BluetoothSerialBridge</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="c1">// ESP32C6 implementation would inherit from BaseBluetooth</span>
+    <span class="c1">// class Esp32C6Bluetooth : public BaseBluetooth { ... };</span>
+    <span class="n">BaseBluetooth</span><span class="o">*</span> <span class="n">bluetooth</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">hf_u32_t</span> <span class="n">spp_connection_id</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">is_connected</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">BluetoothSerialBridge</span><span class="p">()</span> <span class="o">:</span> <span class="n">spp_connection_id</span><span class="o">*</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">is_connected</span><span class="o">*</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Initialize Classic Bluetooth with SPP profile</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_CLASSIC</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Configure Classic Bluetooth</span>
+        <span class="n">hf_bt_classic_config_t</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="p">.</span><span class="n">device_name</span> <span class="o">=</span> <span class="s">"HardFOC Serial"</span><span class="p">,</span>
+            <span class="p">.</span><span class="n">discoverable</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+            <span class="p">.</span><span class="n">connectable</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+            <span class="p">.</span><span class="n">profiles</span> <span class="o">=</span> <span class="n">BT_PROFILE_SPP</span>
+        <span class="p">};</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">SetClassicConfig</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Register connection event callback</span>
+        <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">RegisterEventCallback</span><span class="p">([</span><span class="k">this</span><span class="p">](</span><span class="n">hf_bt_event_t</span><span class="o">&amp;</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="o">-&gt;</span><span class="n">handle_bluetooth_event</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+        <span class="p">});</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"📻 Classic Bluetooth SPP ready for connections</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">send_message</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_connected</span><span class="o">*</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ No Bluetooth connection active</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">hf_bt_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">SendData</span><span class="p">(</span><span class="n">spp_connection_id</span><span class="o">*</span><span class="p">,</span>
+                                                <span class="p">(</span><span class="n">hf_u8_t</span><span class="o">*</span><span class="p">)</span><span class="n">message</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span>
+                                                <span class="n">message</span><span class="p">.</span><span class="n">length</span><span class="p">());</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"📤 BT Sent: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">message</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ BT Send failed: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">check_for_messages</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">is_connected</span><span class="o">*</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+        
+        <span class="n">hf_u8_t</span> <span class="n">buffer</span><span class="p">[</span><span class="mi">256</span><span class="p">];</span>
+        <span class="n">hf_u32_t</span> <span class="n">received_size</span><span class="p">;</span>
+        
+        <span class="n">hf_bt_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">ReceiveData</span><span class="p">(</span><span class="n">spp_connection_id</span><span class="o">*</span><span class="p">,</span>
+                                                   <span class="n">buffer</span><span class="p">,</span>
+                                                   <span class="k">sizeof</span><span class="p">(</span><span class="n">buffer</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                                                   <span class="n">received_size</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span> <span class="o">&amp;&amp;</span> <span class="n">received_size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">buffer</span><span class="p">[</span><span class="n">received_size</span><span class="p">]</span> <span class="o">=</span> <span class="sc">'\0'</span><span class="p">;</span> <span class="c1">// Null terminate</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"📥 BT Received: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">(</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">);</span>
+            
+            <span class="c1">// Echo the message back</span>
+            <span class="n">send_message</span><span class="p">(</span><span class="s">"Echo: "</span> <span class="o">+</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">((</span><span class="kt">char</span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+<span class="nl">private:</span>
+    <span class="kt">void</span> <span class="n">handle_bluetooth_event</span><span class="p">(</span><span class="n">hf_bt_event_t</span><span class="o">&amp;</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">BT_EVENT_CONNECTION_ESTABLISHED</span><span class="p">:</span>
+                <span class="n">spp_connection_id</span><span class="o">*</span> <span class="o">=</span> <span class="n">event</span><span class="p">.</span><span class="n">connection_id</span><span class="p">;</span>
+                <span class="n">is_connected</span><span class="o">*</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Bluetooth device connected (ID: %lu)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">spp_connection_id</span><span class="o">*</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+                
+            <span class="k">case</span> <span class="n">BT_EVENT_CONNECTION_LOST</span><span class="p">:</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">connection_id</span> <span class="o">==</span> <span class="n">spp_connection_id</span><span class="o">*</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">is_connected</span><span class="o">*</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Bluetooth device disconnected</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+                
+            <span class="k">case</span> <span class="n">BT_EVENT_PAIRING_REQUEST</span><span class="p">:</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"🔐 Pairing request from device</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">AcceptPairing</span><span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">device_addr</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-device-scanner--manager">
+  
+  
+    <a href="#-device-scanner--manager" class="anchor-heading" aria-labelledby="-device-scanner--manager"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔍 <strong>Device Scanner &amp; Manager</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"inc/mcu/esp32/EspBluetooth.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">BluetoothDeviceManager</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspBluetooth</span> <span class="n">bluetooth</span><span class="o">*</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">hf_bt_device_t</span><span class="o">&gt;</span> <span class="n">discovered_devices</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">EnsureInitialized</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Enable dual mode for maximum compatibility</span>
+        <span class="k">return</span> <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_DUAL</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">scan_for_devices</span><span class="p">(</span><span class="n">hf_u32_t</span> <span class="n">scan_duration_s</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🔍 Starting Bluetooth device scan (%lu seconds)...</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">scan_duration_s</span><span class="p">);</span>
+        
+        <span class="c1">// Clear previous results</span>
+        <span class="n">discovered_devices</span><span class="o">*</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+        
+        <span class="c1">// Start discovery</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">StartDiscovery</span><span class="p">(</span><span class="n">scan_duration_s</span><span class="p">)</span> <span class="o">!=</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to start device discovery</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="c1">// Wait for scan to complete</span>
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="n">scan_duration_s</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">));</span>
+        
+        <span class="c1">// Get discovered devices</span>
+        <span class="n">hf_bt_device_t</span> <span class="n">devices</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+        <span class="n">hf_u32_t</span> <span class="n">device_count</span><span class="p">;</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">GetDiscoveredDevices</span><span class="p">(</span><span class="n">devices</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">device_count</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"📱 Found %lu Bluetooth devices:</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">device_count</span><span class="p">);</span>
+            
+            <span class="k">for</span> <span class="p">(</span><span class="n">hf_u32_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">device_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">discovered_devices</span><span class="o">*</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+                <span class="n">print_device_info</span><span class="p">(</span><span class="n">devices</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">StopDiscovery</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kt">bool</span> <span class="n">connect_to_device</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">device_name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Find device by name</span>
+        <span class="k">auto</span> <span class="n">device_it</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">find_if</span><span class="p">(</span><span class="n">discovered_devices</span><span class="o">*</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span>
+                                    <span class="n">discovered_devices</span><span class="o">*</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span>
+                                    <span class="p">[</span><span class="o">&amp;</span><span class="n">device_name</span><span class="p">](</span><span class="k">const</span> <span class="n">hf_bt_device_t</span><span class="o">&amp;</span> <span class="n">dev</span><span class="p">)</span> <span class="p">{</span>
+                                        <span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">dev</span><span class="p">.</span><span class="n">name</span><span class="p">)</span> <span class="o">==</span> <span class="n">device_name</span><span class="p">;</span>
+                                    <span class="p">});</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">device_it</span> <span class="o">==</span> <span class="n">discovered_devices</span><span class="o">*</span><span class="p">.</span><span class="n">end</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Device '%s' not found in scan results</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">device_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🔗 Connecting to device: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">device_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
+        
+        <span class="n">hf_u32_t</span> <span class="n">connection_id</span><span class="p">;</span>
+        <span class="n">hf_bt_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">ConnectToDevice</span><span class="p">(</span><span class="n">device_it</span><span class="o">-&gt;</span><span class="n">address</span><span class="p">,</span> <span class="n">connection_id</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Successfully connected to %s (ID: %lu)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+                   <span class="n">device_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="n">connection_id</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Failed to connect to %s: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+                   <span class="n">device_name</span><span class="p">.</span><span class="n">c_str</span><span class="p">(),</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+            <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">show_statistics</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">hf_bt_statistics_t</span> <span class="n">stats</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="o">*</span><span class="p">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_bt_err_t</span><span class="o">::</span><span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"📊 Bluetooth Statistics:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"   Total Connections: %lu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">total_connections</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"   Success Rate: %.1f%%</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+                   <span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">stats</span><span class="p">.</span><span class="n">successful_connections</span> <span class="o">/</span> <span class="n">stats</span><span class="p">.</span><span class="n">total_connections</span> <span class="o">*</span> <span class="mf">100.0</span><span class="n">f</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"   Data Sent: %lu bytes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">total_bytes_sent</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"   Data Received: %lu bytes</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">total_bytes_received</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"   Active Connections: %lu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">active_connections</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"   Devices Discovered: %lu</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">.</span><span class="n">devices_discovered</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+<span class="nl">private:</span>
+    <span class="kt">void</span> <span class="n">print_device_info</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_bt_device_t</span><span class="o">&amp;</span> <span class="n">device</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">type_str</span> <span class="o">=</span> <span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="n">device_type</span> <span class="o">==</span> <span class="n">BT_DEVICE_TYPE_CLASSIC</span><span class="p">)</span> <span class="o">?</span> <span class="s">"Classic"</span> <span class="o">:</span>
+                              <span class="p">(</span><span class="n">device</span><span class="p">.</span><span class="n">device_type</span> <span class="o">==</span> <span class="n">BT_DEVICE_TYPE_BLE</span><span class="p">)</span> <span class="o">?</span> <span class="s">"BLE"</span> <span class="o">:</span> <span class="s">"Dual"</span><span class="p">;</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"   📱 %s [%s] RSSI: %ddBm %s%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+               <span class="n">device</span><span class="p">.</span><span class="n">name</span><span class="p">,</span>
+               <span class="n">type_str</span><span class="p">,</span>
+               <span class="n">device</span><span class="p">.</span><span class="n">rssi</span><span class="p">,</span>
+               <span class="n">device</span><span class="p">.</span><span class="n">is_paired</span> <span class="o">?</span> <span class="s">"(Paired)"</span> <span class="o">:</span> <span class="s">""</span><span class="p">,</span>
+               <span class="n">device</span><span class="p">.</span><span class="n">is_bonded</span> <span class="o">?</span> <span class="s">"(Bonded)"</span> <span class="o">:</span> <span class="s">""</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-best-practices">
+  
+  
+    <a href="#-best-practices" class="anchor-heading" aria-labelledby="-best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🧪 <strong>Best Practices</strong>
+  
+  
+</h2>
+    
+<h3 id="-recommended-practices">
+  
+  
+    <a href="#-recommended-practices" class="anchor-heading" aria-labelledby="-recommended-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✅ <strong>Recommended Practices</strong>
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>🎯 Choose Appropriate Mode</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">// For low-power sensors</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_BLE</span><span class="p">);</span>
+   
+<span class="c1">// For audio/data streaming</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_CLASSIC</span><span class="p">);</span>
+   
+<span class="c1">// For maximum compatibility</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_DUAL</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+  <li><strong>🔐 Implement Proper Security</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="rouge-code"><pre><span class="n">hf_bt_security_config_t</span> <span class="n">security</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">require_pairing</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">require_bonding</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">require_mitm_protection</span> <span class="o">=</span> <span class="nb">true</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">use_secure_connections</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="p">};</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetSecurityConfig</span><span class="p">(</span><span class="n">security</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+  <li><strong>📡 Handle Connection Events</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="n">bluetooth</span><span class="p">.</span><span class="n">RegisterEventCallback</span><span class="p">([](</span><span class="n">hf_bt_event_t</span><span class="o">&amp;</span> <span class="n">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">event</span><span class="p">.</span><span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">BT_EVENT_CONNECTION_ESTABLISHED</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Device connected</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="n">BT_EVENT_CONNECTION_LOST</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Device disconnected</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="c1">// Implement reconnection logic</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+  <li><strong>📊 Monitor Performance</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1">// Regular statistics monitoring</span>
+<span class="n">hf_bt_statistics_t</span> <span class="n">stats</span><span class="p">;</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="n">stats</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">stats</span><span class="p">.</span><span class="n">successful_connections</span> <span class="o">&lt;</span> <span class="n">stats</span><span class="p">.</span><span class="n">total_connections</span> <span class="o">*</span> <span class="mf">0.9</span><span class="n">f</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Low Bluetooth connection success rate</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+</ol>
+<h3 id="-common-pitfalls">
+  
+  
+    <a href="#-common-pitfalls" class="anchor-heading" aria-labelledby="-common-pitfalls"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ❌ <strong>Common Pitfalls</strong>
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>🚫 Not Checking Connection Status</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">// BAD: Sending without checking connection</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SendData</span><span class="p">(</span><span class="n">connection_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+   
+<span class="c1">// GOOD: Always verify connection</span>
+<span class="kt">bool</span> <span class="n">connected</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="p">.</span><span class="n">IsDeviceConnected</span><span class="p">(</span><span class="n">connection_id</span><span class="p">,</span> <span class="n">connected</span><span class="p">)</span> <span class="o">==</span> <span class="n">BT_SUCCESS</span> <span class="o">&amp;&amp;</span> <span class="n">connected</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">bluetooth</span><span class="p">.</span><span class="n">SendData</span><span class="p">(</span><span class="n">connection_id</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+  <li><strong>🚫 Ignoring Power Management</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1">// BAD: Always on, drains battery</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_DUAL</span><span class="p">);</span>
+   
+<span class="c1">// GOOD: Use BLE for battery-powered applications</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetMode</span><span class="p">(</span><span class="n">hf_bt_mode_t</span><span class="o">::</span><span class="n">BT_MODE_BLE</span><span class="p">);</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetLowPowerMode</span><span class="p">(</span><span class="nb">true</span><span class="p">);</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+  <li><strong>🚫 Poor Error Handling</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="c1">// BAD: Ignoring connection failures</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">ConnectToDevice</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">connection_id</span><span class="p">);</span>
+   
+<span class="c1">// GOOD: Handle connection failures gracefully</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">bluetooth</span><span class="p">.</span><span class="n">ConnectToDevice</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">connection_id</span><span class="p">)</span> <span class="o">!=</span> <span class="n">BT_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Connection failed, will retry in 5 seconds</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="c1">// Implement retry logic</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+</ol>
+<h3 id="-performance-tips">
+  
+  
+    <a href="#-performance-tips" class="anchor-heading" aria-labelledby="-performance-tips"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Performance Tips</strong>
+  
+  
+</h3>
+    
+
+<ol>
+  <li><strong>⚡ Optimize BLE Connection Parameters</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="n">hf_ble_config_t</span> <span class="n">ble_config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">connection_interval_ms</span> <span class="o">=</span> <span class="mf">7.5</span><span class="n">f</span><span class="p">,</span>    <span class="c1">// Faster updates</span>
+    <span class="p">.</span><span class="n">slave_latency</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>                <span class="c1">// No latency</span>
+    <span class="p">.</span><span class="n">supervision_timeout_ms</span> <span class="o">=</span> <span class="mi">4000</span>     <span class="c1">// 4 second timeout</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+  <li><strong>📱 Use Appropriate Advertising Intervals</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="c1">// Fast connection establishment</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetAdvertisingInterval</span><span class="p">(</span><span class="mi">20</span><span class="p">);</span>  <span class="c1">// 20ms for quick discovery</span>
+   
+<span class="c1">// Battery conservation</span>
+<span class="n">bluetooth</span><span class="p">.</span><span class="n">SetAdvertisingInterval</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> <span class="c1">// 1s for low power</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+  <li><strong>🔄 Implement Connection Pooling</strong>
+    <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="rouge-code"><pre><span class="c1">// Manage multiple connections efficiently</span>
+<span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">hf_u32_t</span><span class="o">&gt;</span> <span class="n">active_connections</span><span class="p">;</span>
+<span class="c1">// Reuse connections instead of creating new ones</span>
+</pre></td></tr></tbody></table></div></code></pre></div>    </div>
+  </li>
+</ol><hr />
+<p><strong>📲 Professional Bluetooth Communication for Modern Applications</strong></p>
+
+<p><em>Enabling seamless wireless connectivity with robust security and optimal performance</em></p>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

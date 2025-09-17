@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__gpio__pin__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_gpio_pin_info_t</compoundname>
+    <includes refid="EspTypes__GPIO_8h" local="no">EspTypes_GPIO.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__gpio__pin__info__t_1ab1c39cccaa6171ce7aa79ee07b15bb6a" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t hf_gpio_pin_info_t::gpio_num</definition>
+        <argsstring></argsstring>
+        <name>gpio_num</name>
+        <qualifiedname>hf_gpio_pin_info_t::gpio_num</qualifiedname>
+        <briefdescription>
+<para>GPIO number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="352" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="352" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__pin__info__t_1ad275db128183dff243a91ce707f059ce" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_gpio_pin_info_t::pin_name</definition>
+        <argsstring></argsstring>
+        <name>pin_name</name>
+        <qualifiedname>hf_gpio_pin_info_t::pin_name</qualifiedname>
+        <briefdescription>
+<para>Human-readable pin name. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="353" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="353" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__pin__info__t_1a865484ee045c260bb70cc9c0848ca4a0" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_gpio_pin_info_t::alt_functions[4]</definition>
+        <argsstring>[4]</argsstring>
+        <name>alt_functions</name>
+        <qualifiedname>hf_gpio_pin_info_t::alt_functions</qualifiedname>
+        <briefdescription>
+<para>Alternative functions available. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="354" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="354" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__pin__info__t_1ad5b5c91e00bf1dcdeb07c9ac83324032" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__gpio__pin__capabilities__t" kindref="compound">hf_gpio_pin_capabilities_t</ref></type>
+        <definition>hf_gpio_pin_capabilities_t hf_gpio_pin_info_t::capabilities</definition>
+        <argsstring></argsstring>
+        <name>capabilities</name>
+        <qualifiedname>hf_gpio_pin_info_t::capabilities</qualifiedname>
+        <briefdescription>
+<para>Pin capabilities. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="355" column="30" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__gpio__pin__info__t_1a1c6197aa3a86633d42663343440f5fe0" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* hf_gpio_pin_info_t::usage_notes</definition>
+        <argsstring></argsstring>
+        <name>usage_notes</name>
+        <qualifiedname>hf_gpio_pin_info_t::usage_notes</qualifiedname>
+        <briefdescription>
+<para>Special usage notes or warnings. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="356" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="356" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Utility structure for GPIO pin information lookup. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>hf_gpio_pin_capabilities_t</label>
+        <link refid="structhf__gpio__pin__capabilities__t"/>
+      </node>
+      <node id="1">
+        <label>hf_gpio_pin_info_t</label>
+        <link refid="structhf__gpio__pin__info__t"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>capabilities</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="351" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="351" bodyend="357"/>
+    <listofallmembers>
+      <member refid="structhf__gpio__pin__info__t_1a865484ee045c260bb70cc9c0848ca4a0" prot="public" virt="non-virtual"><scope>hf_gpio_pin_info_t</scope><name>alt_functions</name></member>
+      <member refid="structhf__gpio__pin__info__t_1ad5b5c91e00bf1dcdeb07c9ac83324032" prot="public" virt="non-virtual"><scope>hf_gpio_pin_info_t</scope><name>capabilities</name></member>
+      <member refid="structhf__gpio__pin__info__t_1ab1c39cccaa6171ce7aa79ee07b15bb6a" prot="public" virt="non-virtual"><scope>hf_gpio_pin_info_t</scope><name>gpio_num</name></member>
+      <member refid="structhf__gpio__pin__info__t_1ad275db128183dff243a91ce707f059ce" prot="public" virt="non-virtual"><scope>hf_gpio_pin_info_t</scope><name>pin_name</name></member>
+      <member refid="structhf__gpio__pin__info__t_1a1c6197aa3a86633d42663343440f5fe0" prot="public" virt="non-virtual"><scope>hf_gpio_pin_info_t</scope><name>usage_notes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

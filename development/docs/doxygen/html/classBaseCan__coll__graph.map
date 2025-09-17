@@ -1,0 +1,7 @@
+<map id="BaseCan" name="BaseCan">
+<area shape="rect" id="Node000001" title="Abstract base class defining the unified CAN bus API." alt="" coords="145,104,241,135"/>
+<area shape="rect" id="Node000002" href="$structhf__can__statistics__t.html" title="CAN bus statistics structure for performance monitoring." alt="" coords="5,5,176,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,44,180,102,176,106,114,47"/>
+<area shape="rect" id="Node000003" href="$structhf__can__diagnostics__t.html" title="CAN diagnostics structure for detailed error analysis." alt="" coords="201,5,391,36"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="277,49,244,82,215,106,211,102,241,78,273,45"/>
+</map>

@@ -1,0 +1,945 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classBaseI2c" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>BaseI2c</compoundname>
+    <derivedcompoundref refid="classEspI2cDevice" prot="public" virt="non-virtual">EspI2cDevice</derivedcompoundref>
+    <includes refid="BaseI2c_8h" local="no">BaseI2c.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classBaseI2c_1a87bf0b1caa8c82523adc4e1816467232" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool BaseI2c::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>BaseI2c::initialized_</qualifiedname>
+        <briefdescription>
+<para>Initialization status. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="442" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="442" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseI2c_1a2caa8cbbbdda3f001603da5bc8bc5913" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref></type>
+        <definition>hf_i2c_statistics_t BaseI2c::statistics_</definition>
+        <argsstring></argsstring>
+        <name>statistics_</name>
+        <qualifiedname>BaseI2c::statistics_</qualifiedname>
+        <briefdescription>
+<para>I2C operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="443" column="23" bodyfile="inc/base/BaseI2c.h" bodystart="443" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classBaseI2c_1ac79fd093442994accf495c0731e40d30" prot="protected" static="no" mutable="no">
+        <type><ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref></type>
+        <definition>hf_i2c_diagnostics_t BaseI2c::diagnostics_</definition>
+        <argsstring></argsstring>
+        <name>diagnostics_</name>
+        <qualifiedname>BaseI2c::diagnostics_</qualifiedname>
+        <briefdescription>
+<para>I2C diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="444" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="444" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classBaseI2c_1a71fa2410d820fb183b835ddea09d444f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual BaseI2c::~BaseI2c</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~BaseI2c</name>
+        <qualifiedname>BaseI2c::~BaseI2c</qualifiedname>
+        <briefdescription>
+<para>Virtual destructor ensures proper cleanup in derived classes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="202" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a0ef4a4a50952a71b4c7be2f13660282d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseI2c::BaseI2c</definition>
+        <argsstring>(const BaseI2c &amp;)=delete</argsstring>
+        <name>BaseI2c</name>
+        <qualifiedname>BaseI2c::BaseI2c</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="205" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a9296811925c9010e889f85232dc58f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
+        <definition>BaseI2c &amp; BaseI2c::operator=</definition>
+        <argsstring>(const BaseI2c &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseI2c::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="206" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a092d769aa9bf48da2c730a6a27a4d93c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaseI2c::BaseI2c</definition>
+        <argsstring>(BaseI2c &amp;&amp;)=delete</argsstring>
+        <name>BaseI2c</name>
+        <qualifiedname>BaseI2c::BaseI2c</qualifiedname>
+        <param>
+          <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="207" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a9169f7ddc26ca7a620676615364fc283" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
+        <definition>BaseI2c &amp; BaseI2c::operator=</definition>
+        <argsstring>(BaseI2c &amp;&amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>BaseI2c::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="208" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1ab2ba276139755eda4f52d7f9a523ed4e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseI2c::EnsureInitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureInitialized</name>
+        <qualifiedname>BaseI2c::EnsureInitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the I2C bus is initialized (lazy initialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the I2C bus is initialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="214" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="214" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a35f3b7343c0e4ace25937060f39d44be" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseI2c::EnsureDeinitialized</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>EnsureDeinitialized</name>
+        <qualifiedname>BaseI2c::EnsureDeinitialized</qualifiedname>
+        <briefdescription>
+<para>Ensures that the I2C bus is deinitialized (lazy deinitialization). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if the I2C bus is deinitialized, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="225" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="225" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1aa0015d0aff3de7f30f7444935a50c094" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool BaseI2c::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>BaseI2c::IsInitialized</qualifiedname>
+        <briefdescription>
+<para>Checks if the bus is initialized. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialized, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="237" column="9" bodyfile="inc/base/BaseI2c.h" bodystart="237" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1adcdc753cf18e47cbc651cc608759bf32" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::Initialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>BaseI2c::Initialize</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1a6b441d54a4f47e124dd6e5f48a23c7f9">Initialize</reimplementedby>
+        <briefdescription>
+<para>Initialize the I2C bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="249" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a2a96e596e8d83320c7f8d943119eef38" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::Deinitialize</definition>
+        <argsstring>() noexcept=0</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>BaseI2c::Deinitialize</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1ac905c8cc4c142563e73380ffb6b679b3">Deinitialize</reimplementedby>
+        <briefdescription>
+<para>Deinitialize the I2C bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="255" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1abdfc7c1890423f993f1c9ca261e8a15d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>virtual hf_i2c_err_t BaseI2c::Write</definition>
+        <argsstring>(const hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms=0) noexcept=0</argsstring>
+        <name>Write</name>
+        <qualifiedname>BaseI2c::Write</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1acc62adb05de7e21b96f5a61df9c4bb65">Write</reimplementedby>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write data to the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data buffer to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_i2c_err_t result code </para>
+</simplesect>
+<simplesect kind="note"><para>Device address is configured during device creation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="265" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1ab28b2ede90a847b68eb14c4b7bad6bb0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>virtual hf_i2c_err_t BaseI2c::Read</definition>
+        <argsstring>(hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms=0) noexcept=0</argsstring>
+        <name>Read</name>
+        <qualifiedname>BaseI2c::Read</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1a2943185e69fabba6ed4b25f1671d6877">Read</reimplementedby>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read data from the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to buffer to store received data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_i2c_err_t result code </para>
+</simplesect>
+<simplesect kind="note"><para>Device address is configured during device creation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="276" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a58da16ee4e2762bed7b2541491b3147b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>virtual hf_i2c_err_t BaseI2c::WriteRead</definition>
+        <argsstring>(const hf_u8_t *tx_data, hf_u16_t tx_length, hf_u8_t *rx_data, hf_u16_t rx_length, hf_u32_t timeout_ms=0) noexcept=0</argsstring>
+        <name>WriteRead</name>
+        <qualifiedname>BaseI2c::WriteRead</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1ab0e1da7ee817f2ddfd2c0393b7fb6c99">WriteRead</reimplementedby>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>tx_data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>tx_length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>rx_data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>rx_length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write then read data from the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tx_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data buffer to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tx_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to buffer to store received data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_i2c_err_t result code </para>
+</simplesect>
+<simplesect kind="note"><para>Device address is configured during device creation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="288" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a99b912de8282d2d24bea723f841756db" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>virtual hf_u16_t BaseI2c::GetDeviceAddress</definition>
+        <argsstring>() const noexcept=0</argsstring>
+        <name>GetDeviceAddress</name>
+        <qualifiedname>BaseI2c::GetDeviceAddress</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1aab6bbd8d809f7723174dcbe3d94c660a">GetDeviceAddress</reimplementedby>
+        <briefdescription>
+<para>Get the device address for this I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The 7-bit I2C device address </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="295" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a9decd4d080fd5090a4f98892c2549a0a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::Open</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Open</name>
+        <qualifiedname>BaseI2c::Open</qualifiedname>
+        <briefdescription>
+<para>Open the I2C bus (alias for Initialize). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="305" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="305" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a53ffda673e3b0774c31da385b27a7c3f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::Close</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Close</name>
+        <qualifiedname>BaseI2c::Close</qualifiedname>
+        <briefdescription>
+<para>Close the I2C bus (alias for Deinitialize). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="313" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="313" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a0d8635db15272fc79947121fcec70850" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::IsDevicePresent</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>IsDevicePresent</name>
+        <qualifiedname>BaseI2c::IsDevicePresent</qualifiedname>
+        <briefdescription>
+<para>Check if this device is present on the bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if device responds, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="327" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="327" bodyend="331"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a1cf1876ffa812b77cbd56d7e714df1e5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::ProbeDevice</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ProbeDevice</name>
+        <qualifiedname>BaseI2c::ProbeDevice</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1a149a2fc81cf16627fba0c01853dfc0be">ProbeDevice</reimplementedby>
+        <briefdescription>
+<para>Probe if this device is present on the bus (alias for IsDevicePresent). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if device responds, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="337" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="337" bodyend="339"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1afe9cee66898c28c58ac7a146375e3a63" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::WriteByte</definition>
+        <argsstring>(hf_u8_t data) noexcept</argsstring>
+        <name>WriteByte</name>
+        <qualifiedname>BaseI2c::WriteByte</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Write a single byte to the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Byte to write </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="346" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="346" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1adb55bb052a4ee0d71f09623f88818fb2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::ReadByte</definition>
+        <argsstring>(hf_u8_t &amp;data) noexcept</argsstring>
+        <name>ReadByte</name>
+        <qualifiedname>BaseI2c::ReadByte</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Read a single byte from the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the read byte </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="355" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="355" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a68bbbd82d13bbe905659d10648843a5e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::WriteRegister</definition>
+        <argsstring>(hf_u8_t reg_addr, hf_u8_t data) noexcept</argsstring>
+        <name>WriteRegister</name>
+        <qualifiedname>BaseI2c::WriteRegister</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Write to a register on the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data to write to register </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="365" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="365" bodyend="368"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1aec25744c5d3ab1ec6c326950001949a0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::ReadRegister</definition>
+        <argsstring>(hf_u8_t reg_addr, hf_u8_t &amp;data) noexcept</argsstring>
+        <name>ReadRegister</name>
+        <qualifiedname>BaseI2c::ReadRegister</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Read from a register on the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Register address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the read data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="376" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="376" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1abf2a8df2ce9d012dbfa57180228e9789" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool BaseI2c::ReadRegisters</definition>
+        <argsstring>(hf_u8_t reg_addr, hf_u8_t *data, hf_u16_t length) noexcept</argsstring>
+        <name>ReadRegisters</name>
+        <qualifiedname>BaseI2c::ReadRegisters</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>reg_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Read multiple registers from the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>reg_addr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Starting register address </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to buffer to store read data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of registers to read </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="387" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="387" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a11d9d717f2176de6ceaa57b0f29bd2f9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>virtual hf_i2c_err_t BaseI2c::ResetStatistics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetStatistics</name>
+        <qualifiedname>BaseI2c::ResetStatistics</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1ab73f244d0b2696164597e24247aca689">ResetStatistics</reimplementedby>
+        <briefdescription>
+<para>Reset I2C operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific statistics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="400" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="400" bodyend="403"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1af4abdee0440286a09b39680211ed19a5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>virtual hf_i2c_err_t BaseI2c::ResetDiagnostics</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ResetDiagnostics</name>
+        <qualifiedname>BaseI2c::ResetDiagnostics</qualifiedname>
+        <briefdescription>
+<para>Reset I2C diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+<simplesect kind="note"><para>Override this method to provide platform-specific diagnostics reset </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="410" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="410" bodyend="413"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a211b5abbe37a9905cf74312799eca5d4" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>virtual hf_i2c_err_t BaseI2c::GetStatistics</definition>
+        <argsstring>(hf_i2c_statistics_t &amp;statistics) const noexcept</argsstring>
+        <name>GetStatistics</name>
+        <qualifiedname>BaseI2c::GetStatistics</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1a818577649bcedae0369942992049866f">GetStatistics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref> &amp;</type>
+          <declname>statistics</declname>
+        </param>
+        <briefdescription>
+<para>Get I2C operation statistics. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>statistics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store statistics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref> if successful, I2C_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="420" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="420" bodyend="423"/>
+      </memberdef>
+      <memberdef kind="function" id="classBaseI2c_1a6c002a6a3a2ab1d9616fd8dad1f9c8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>virtual hf_i2c_err_t BaseI2c::GetDiagnostics</definition>
+        <argsstring>(hf_i2c_diagnostics_t &amp;diagnostics) const noexcept</argsstring>
+        <name>GetDiagnostics</name>
+        <qualifiedname>BaseI2c::GetDiagnostics</qualifiedname>
+        <reimplementedby refid="classEspI2cDevice_1a7cc342b16f58e07dbd894f30b9df1e49">GetDiagnostics</reimplementedby>
+        <param>
+          <type><ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref> &amp;</type>
+          <declname>diagnostics</declname>
+        </param>
+        <briefdescription>
+<para>Get I2C diagnostic information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>diagnostics</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store diagnostics data </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref> if successful, I2C_ERR_NOT_SUPPORTED if not implemented </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="430" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="430" bodyend="433"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classBaseI2c_1af9b69abc680d2951321217d64e2eaa12" prot="protected" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>BaseI2c::BaseI2c</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>BaseI2c</name>
+        <qualifiedname>BaseI2c::BaseI2c</qualifiedname>
+        <briefdescription>
+<para>Protected default constructor. Initializes base I2C state with default values. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseI2c.h" line="440" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="440" bodyend="440"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Abstract base class for I2C device implementations. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class provides a comprehensive I2C device abstraction that serves as the base for all I2C device implementations in the HardFOC system. Each instance represents a single I2C device with a pre-configured address. It supports:<itemizedlist>
+<listitem><para>Master mode I2C communication</para>
+</listitem><listitem><para>Standard (100kHz) and Fast (400kHz) modes</para>
+</listitem><listitem><para>Read, write, and write-then-read operations</para>
+</listitem><listitem><para>Configurable timeouts and error handling</para>
+</listitem><listitem><para>Device presence detection</para>
+</listitem><listitem><para>Register-based communication utilities</para>
+</listitem><listitem><para>Lazy initialization pattern</para>
+</listitem></itemizedlist>
+</para>
+<para>Device address is configured during device creation and is not passed as a parameter to read/write operations, ensuring type safety and preventing accidental communication with wrong devices.</para>
+<para>Derived classes implement platform-specific details such as:<itemizedlist>
+<listitem><para>On-chip I2C controllers with device handles</para>
+</listitem><listitem><para>I2C bridge or adapter hardware</para>
+</listitem><listitem><para>Device-specific configurations</para>
+</listitem></itemizedlist>
+</para>
+<para><simplesect kind="note"><para>This is a header-only abstract base class - instantiate concrete implementations instead. </para>
+</simplesect>
+<simplesect kind="note"><para>This class is not inherently thread-safe. Use appropriate synchronization if accessed from multiple contexts. </para>
+</simplesect>
+<simplesect kind="note"><para>Each <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> instance represents a specific I2C device, not the I2C bus itself. </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>BaseI2c</label>
+        <link refid="classBaseI2c"/>
+      </node>
+      <node id="2">
+        <label>EspI2cDevice</label>
+        <link refid="classEspI2cDevice"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>BaseI2c</label>
+        <link refid="classBaseI2c"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>hf_i2c_diagnostics_t</label>
+        <link refid="structhf__i2c__diagnostics__t"/>
+      </node>
+      <node id="2">
+        <label>hf_i2c_statistics_t</label>
+        <link refid="structhf__i2c__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/base/BaseI2c.h" line="197" column="1" bodyfile="inc/base/BaseI2c.h" bodystart="197" bodyend="445"/>
+    <listofallmembers>
+      <member refid="classBaseI2c_1a0ef4a4a50952a71b4c7be2f13660282d" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>BaseI2c</name></member>
+      <member refid="classBaseI2c_1a092d769aa9bf48da2c730a6a27a4d93c" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>BaseI2c</name></member>
+      <member refid="classBaseI2c_1af9b69abc680d2951321217d64e2eaa12" prot="protected" virt="non-virtual"><scope>BaseI2c</scope><name>BaseI2c</name></member>
+      <member refid="classBaseI2c_1a53ffda673e3b0774c31da385b27a7c3f" prot="public" virt="virtual"><scope>BaseI2c</scope><name>Close</name></member>
+      <member refid="classBaseI2c_1a2a96e596e8d83320c7f8d943119eef38" prot="public" virt="pure-virtual"><scope>BaseI2c</scope><name>Deinitialize</name></member>
+      <member refid="classBaseI2c_1ac79fd093442994accf495c0731e40d30" prot="protected" virt="non-virtual"><scope>BaseI2c</scope><name>diagnostics_</name></member>
+      <member refid="classBaseI2c_1a35f3b7343c0e4ace25937060f39d44be" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseI2c_1ab2ba276139755eda4f52d7f9a523ed4e" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseI2c_1a99b912de8282d2d24bea723f841756db" prot="public" virt="pure-virtual"><scope>BaseI2c</scope><name>GetDeviceAddress</name></member>
+      <member refid="classBaseI2c_1a6c002a6a3a2ab1d9616fd8dad1f9c8e7" prot="public" virt="virtual"><scope>BaseI2c</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseI2c_1a211b5abbe37a9905cf74312799eca5d4" prot="public" virt="virtual"><scope>BaseI2c</scope><name>GetStatistics</name></member>
+      <member refid="classBaseI2c_1adcdc753cf18e47cbc651cc608759bf32" prot="public" virt="pure-virtual"><scope>BaseI2c</scope><name>Initialize</name></member>
+      <member refid="classBaseI2c_1a87bf0b1caa8c82523adc4e1816467232" prot="protected" virt="non-virtual"><scope>BaseI2c</scope><name>initialized_</name></member>
+      <member refid="classBaseI2c_1a0d8635db15272fc79947121fcec70850" prot="public" virt="virtual"><scope>BaseI2c</scope><name>IsDevicePresent</name></member>
+      <member refid="classBaseI2c_1aa0015d0aff3de7f30f7444935a50c094" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>IsInitialized</name></member>
+      <member refid="classBaseI2c_1a9decd4d080fd5090a4f98892c2549a0a" prot="public" virt="virtual"><scope>BaseI2c</scope><name>Open</name></member>
+      <member refid="classBaseI2c_1a9296811925c9010e889f85232dc58f58" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>operator=</name></member>
+      <member refid="classBaseI2c_1a9169f7ddc26ca7a620676615364fc283" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>operator=</name></member>
+      <member refid="classBaseI2c_1a1cf1876ffa812b77cbd56d7e714df1e5" prot="public" virt="virtual"><scope>BaseI2c</scope><name>ProbeDevice</name></member>
+      <member refid="classBaseI2c_1ab28b2ede90a847b68eb14c4b7bad6bb0" prot="public" virt="pure-virtual"><scope>BaseI2c</scope><name>Read</name></member>
+      <member refid="classBaseI2c_1adb55bb052a4ee0d71f09623f88818fb2" prot="public" virt="virtual"><scope>BaseI2c</scope><name>ReadByte</name></member>
+      <member refid="classBaseI2c_1aec25744c5d3ab1ec6c326950001949a0" prot="public" virt="virtual"><scope>BaseI2c</scope><name>ReadRegister</name></member>
+      <member refid="classBaseI2c_1abf2a8df2ce9d012dbfa57180228e9789" prot="public" virt="virtual"><scope>BaseI2c</scope><name>ReadRegisters</name></member>
+      <member refid="classBaseI2c_1af4abdee0440286a09b39680211ed19a5" prot="public" virt="virtual"><scope>BaseI2c</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseI2c_1a11d9d717f2176de6ceaa57b0f29bd2f9" prot="public" virt="virtual"><scope>BaseI2c</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseI2c_1a2caa8cbbbdda3f001603da5bc8bc5913" prot="protected" virt="non-virtual"><scope>BaseI2c</scope><name>statistics_</name></member>
+      <member refid="classBaseI2c_1abdfc7c1890423f993f1c9ca261e8a15d" prot="public" virt="pure-virtual"><scope>BaseI2c</scope><name>Write</name></member>
+      <member refid="classBaseI2c_1afe9cee66898c28c58ac7a146375e3a63" prot="public" virt="virtual"><scope>BaseI2c</scope><name>WriteByte</name></member>
+      <member refid="classBaseI2c_1a58da16ee4e2762bed7b2541491b3147b" prot="public" virt="pure-virtual"><scope>BaseI2c</scope><name>WriteRead</name></member>
+      <member refid="classBaseI2c_1a68bbbd82d13bbe905659d10648843a5e" prot="public" virt="virtual"><scope>BaseI2c</scope><name>WriteRegister</name></member>
+      <member refid="classBaseI2c_1a71fa2410d820fb183b835ddea09d444f" prot="public" virt="virtual"><scope>BaseI2c</scope><name>~BaseI2c</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

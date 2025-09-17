@@ -1,0 +1,5 @@
+<map id="hf_bluetooth_device_info_t" name="hf_bluetooth_device_info_t">
+<area shape="rect" id="Node000001" title="Bluetooth device information structure." alt="" coords="19,104,202,155"/>
+<area shape="rect" id="Node000002" href="$structhf__bluetooth__address__t.html" title="Bluetooth address structure (6 bytes)" alt="" coords="5,5,216,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,50,113,104,108,104,108,50"/>
+</map>

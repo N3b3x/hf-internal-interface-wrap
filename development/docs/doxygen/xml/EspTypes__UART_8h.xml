@@ -1,0 +1,1041 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspTypes__UART_8h" kind="file" language="C++">
+    <compoundname>EspTypes_UART.h</compoundname>
+    <includes refid="BaseUart_8h" local="yes">BaseUart.h</includes>
+    <includes refid="EspTypes__Base_8h" local="yes">EspTypes_Base.h</includes>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includedby refid="UartComprehensiveTest_8cpp" local="yes">examples/esp32/main/UartComprehensiveTest.cpp</includedby>
+    <includedby refid="EspTypes_8h" local="yes">inc/mcu/esp32/utils/EspTypes.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseUart.h</label>
+        <link refid="BaseUart_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>../../utils/McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="11">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>cstring</label>
+      </node>
+      <node id="7">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="8">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
+        <link refid="AdcComprehensiveTest_8cpp"/>
+      </node>
+      <node id="8">
+        <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
+        <link refid="I2cComprehensiveTest_8cpp"/>
+      </node>
+      <node id="14">
+        <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
+        <link refid="PioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="17">
+        <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
+        <link refid="SpiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="11">
+        <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
+        <link refid="TimerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="2">
+        <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
+        <link refid="UartComprehensiveTest_8cpp"/>
+      </node>
+      <node id="4">
+        <label>inc/mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>inc/mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>src/mcu/esp32/EspAdc.cpp</label>
+        <link refid="EspAdc_8cpp"/>
+      </node>
+      <node id="9">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="12">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="15">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="18">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/mcu/esp32/EspUart.cpp</label>
+        <link refid="EspUart_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__uart__config__t" prot="public">hf_uart_config_t</innerclass>
+    <innerclass refid="structhf__uart__flow__config__t" prot="public">hf_uart_flow_config_t</innerclass>
+    <innerclass refid="structhf__uart__power__config__t" prot="public">hf_uart_power_config_t</innerclass>
+    <innerclass refid="structhf__uart__pattern__config__t" prot="public">hf_uart_pattern_config_t</innerclass>
+    <innerclass refid="structhf__uart__rs485__config__t" prot="public">hf_uart_rs485_config_t</innerclass>
+    <innerclass refid="structhf__uart__irda__config__t" prot="public">hf_uart_irda_config_t</innerclass>
+    <innerclass refid="structhf__uart__wakeup__config__t" prot="public">hf_uart_wakeup_config_t</innerclass>
+    <innerclass refid="structhf__uart__event__t" prot="public">hf_uart_event_t</innerclass>
+    <innerclass refid="structhf__uart__pin__map__esp32c6__t" prot="public">hf_uart_pin_map_esp32c6_t</innerclass>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_uart_mode_t</name>
+        <enumvalue id="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4af5d5bcd53eab62a93d77f4c8db470c8c" prot="public">
+          <name>HF_UART_MODE_UART</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Standard UART mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4a7c6f7bf85dbe34b7cedf2d4f8336e721" prot="public">
+          <name>HF_UART_MODE_RS485</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>RS485 mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4a06a947c80ccd9904268ed4cdf9cba2e7" prot="public">
+          <name>HF_UART_MODE_IRDA</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>IrDA mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 UART operating modes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="53" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="53" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_uart_data_bits_t</name>
+        <enumvalue id="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8af2da6683209b0eeac57644eaadd3da83" prot="public">
+          <name>HF_UART_DATA_5_BITS</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>5 data bits </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8a481e16e3243e7966bda5596c47e47794" prot="public">
+          <name>HF_UART_DATA_6_BITS</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>6 data bits </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8a21410e6f4a66c91920e0f6bf85cc1e9d" prot="public">
+          <name>HF_UART_DATA_7_BITS</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>7 data bits </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8a60e80819b4c1b95edc8e68065625ffc4" prot="public">
+          <name>HF_UART_DATA_8_BITS</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>8 data bits </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 UART data bits configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="62" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="62" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_uart_parity_t</name>
+        <enumvalue id="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979af661db1916042126f73e0d7a34b2638c" prot="public">
+          <name>HF_UART_PARITY_DISABLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No parity. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979aef90161419b6ebe84ec312e81442e0b1" prot="public">
+          <name>HF_UART_PARITY_EVEN</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Even parity. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979a84338074ffcfe3cc2df73393cb2f6062" prot="public">
+          <name>HF_UART_PARITY_ODD</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Odd parity. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 UART parity configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="72" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="72" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_uart_stop_bits_t</name>
+        <enumvalue id="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4a71089f470a9566d9c6ffa8550da03958" prot="public">
+          <name>HF_UART_STOP_BITS_1</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>1 stop bit </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4a0940f3d2822f63b368a7ad53e674e7cc" prot="public">
+          <name>HF_UART_STOP_BITS_1_5</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>1.5 stop bits </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4a3405aef45e41cda2cd40387a4a5f4f6e" prot="public">
+          <name>HF_UART_STOP_BITS_2</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>2 stop bits </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 UART stop bits configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="81" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="81" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821b" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_uart_flow_ctrl_t</name>
+        <enumvalue id="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba01e22a272e9cb761bd23b07e7be5106a" prot="public">
+          <name>HF_UART_HW_FLOWCTRL_DISABLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No flow control. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba14ee9869003e244029637df334423cff" prot="public">
+          <name>HF_UART_HW_FLOWCTRL_RTS</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>RTS flow control. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba9d243c28e0716006cf0d9a821f19ab3f" prot="public">
+          <name>HF_UART_HW_FLOWCTRL_CTS</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>CTS flow control. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba827dfa7fccb74874b890a21f598a8a51" prot="public">
+          <name>HF_UART_HW_FLOWCTRL_CTS_RTS</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>CTS and RTS flow control. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 UART flow control configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="90" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="90" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_uart_operating_mode_t</name>
+        <enumvalue id="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a2cd9f37d7333a871e069363eea9744ac" prot="public">
+          <name>HF_UART_MODE_POLLING</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Polling mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a6b4c350c97dc7e89a794bddce128b1ce" prot="public">
+          <name>HF_UART_MODE_INTERRUPT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Interrupt mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a782abfd417f53545fb42e29345f9c64a" prot="public">
+          <name>HF_UART_MODE_DMA</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>DMA mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 UART operating mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="100" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="100" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aa" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_uart_event_type_t</name>
+        <enumvalue id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaad63e628b90f5cfcac9abbbfd1ead8610" prot="public">
+          <name>HF_UART_DATA</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Data received. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa87ca6d6086648c5d68eefe2ee60bb00b" prot="public">
+          <name>HF_UART_FIFO_OVF</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>FIFO overflow. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa73599f5b5f22d9ab4153e42149547ee8" prot="public">
+          <name>HF_UART_BUFFER_FULL</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Buffer full. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaadaafab574b062f4e166fef0e493398e1" prot="public">
+          <name>HF_UART_BREAK</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Break detected. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa2708b48c96f92449f7a260d6b105f03d" prot="public">
+          <name>HF_UART_PARITY_ERR</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Parity error. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa1c4b07127aaf20a5ca5d5b86e89cd84d" prot="public">
+          <name>HF_UART_FRAME_ERR</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Frame error. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa572eb009d72ee1a8c5b866f38637b373" prot="public">
+          <name>HF_UART_PATTERN_DET</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>Pattern detected. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaab69663203af3d449ec5982a0bf5cd2a1" prot="public">
+          <name>HF_UART_EVENT_MAX</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+<para>Maximum event type. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>HardFOC UART event types (mapped from ESP-IDF events). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="245" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="245" bodyend="254"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="EspTypes__UART_8h_1aee73930fd08eb700134cd999d86720c9" prot="public" static="no">
+        <type>bool(*)(const <ref refid="structhf__uart__event__t" kindref="compound">hf_uart_event_t</ref> *event, void *user_data)</type>
+        <definition>using hf_uart_event_callback_t =  bool (*)(const hf_uart_event_t* event, void* user_data)</definition>
+        <argsstring></argsstring>
+        <name>hf_uart_event_callback_t</name>
+        <briefdescription>
+<para>UART event callback function type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>event</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to HardFOC UART event </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data pointer </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true to yield to higher priority task, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="271" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="271" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__UART_8h_1ad0b52f2579edff296b44b4bd0df5d310" prot="public" static="no">
+        <type>bool(*)(uint32_t break_duration, void *user_data)</type>
+        <definition>using hf_uart_break_callback_t =  bool (*)(uint32_t break_duration, void* user_data)</definition>
+        <argsstring></argsstring>
+        <name>hf_uart_break_callback_t</name>
+        <briefdescription>
+<para>UART break detection callback function type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>break_duration</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Break duration in milliseconds </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User data pointer </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true to yield to higher priority task, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="279" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="EspTypes__UART_8h_1a5693c613e75a2e7e6f5ba0ae4d257d1a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t HF_UART_IO_UNUSED</definition>
+        <argsstring></argsstring>
+        <name>HF_UART_IO_UNUSED</name>
+        <initializer>= 0xFFFFFFFF</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="31" column="31" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__UART_8h_1a1a7429f9ba47374f4786d6b52263b403" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_UART_BREAK_MIN_DURATION</definition>
+        <argsstring></argsstring>
+        <name>HF_UART_BREAK_MIN_DURATION</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Minimum break duration (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="32" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__UART_8h_1ac4f2a2a3c7b1f521edbf20b051694487" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t HF_UART_BREAK_MAX_DURATION</definition>
+        <argsstring></argsstring>
+        <name>HF_UART_BREAK_MAX_DURATION</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+<para>Maximum break duration (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="33" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint8_t</type>
+        <definition>constexpr uint8_t HF_ESP32_UART_MAX_PORTS</definition>
+        <argsstring></argsstring>
+        <name>HF_ESP32_UART_MAX_PORTS</name>
+        <initializer>= 3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="37" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 UART type definitions for hardware abstraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines only the essential UART-specific types used by the <ref refid="classEspUart" kindref="compound">EspUart</ref> implementation. Clean and minimal approach.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseUart_8h" kindref="compound">BaseUart.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>hf_uart_err_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__Base_8h" kindref="compound">EspTypes_Base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>basic<sp/>hardware<sp/>types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Central<sp/>MCU<sp/>platform<sp/>selection<sp/>(includes<sp/>all<sp/>ESP-IDF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>TYPE<sp/>MAPPINGS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Direct<sp/>ESP-IDF<sp/>type<sp/>usage<sp/>-<sp/>no<sp/>unnecessary<sp/>aliases</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>These<sp/>types<sp/>are<sp/>used<sp/>internally<sp/>by<sp/>EspUart<sp/>implementation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="EspTypes__UART_8h_1a5693c613e75a2e7e6f5ba0ae4d257d1a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="EspTypes__UART_8h_1a5693c613e75a2e7e6f5ba0ae4d257d1a" kindref="member">HF_UART_IO_UNUSED</ref><sp/>=<sp/>0xFFFFFFFF;</highlight></codeline>
+<codeline lineno="32" refid="EspTypes__UART_8h_1a1a7429f9ba47374f4786d6b52263b403" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__UART_8h_1a1a7429f9ba47374f4786d6b52263b403" kindref="member">HF_UART_BREAK_MIN_DURATION</ref><sp/>=<sp/>1;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="33" refid="EspTypes__UART_8h_1ac4f2a2a3c7b1f521edbf20b051694487" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="EspTypes__UART_8h_1ac4f2a2a3c7b1f521edbf20b051694487" kindref="member">HF_UART_BREAK_MAX_DURATION</ref><sp/>=<sp/>1000;<sp/></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>port<sp/>limits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>3<sp/>UART<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32)<sp/>||<sp/>defined(HF_MCU_ESP32S2)<sp/>||<sp/>defined(HF_MCU_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic/S2/S3<sp/>have<sp/>3<sp/>UART<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32C3)<sp/>||<sp/>defined(HF_MCU_ESP32C2)<sp/>||<sp/>defined(HF_MCU_ESP32H2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>2;<sp/></highlight><highlight class="comment">//<sp/>ESP32-C3/C2/H2<sp/>have<sp/>2<sp/>UART<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>Default<sp/>fallback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>ENUMS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4af5d5bcd53eab62a93d77f4c8db470c8c" kindref="member">HF_UART_MODE_UART</ref><sp/>=<sp/>0,<sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4a7c6f7bf85dbe34b7cedf2d4f8336e721" kindref="member">HF_UART_MODE_RS485</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4a06a947c80ccd9904268ed4cdf9cba2e7" kindref="member">HF_UART_MODE_IRDA</ref><sp/>=<sp/>2<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8" kindref="member">hf_uart_data_bits_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8af2da6683209b0eeac57644eaadd3da83" kindref="member">HF_UART_DATA_5_BITS</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8a481e16e3243e7966bda5596c47e47794" kindref="member">HF_UART_DATA_6_BITS</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8a21410e6f4a66c91920e0f6bf85cc1e9d" kindref="member">HF_UART_DATA_7_BITS</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8a60e80819b4c1b95edc8e68065625ffc4" kindref="member">HF_UART_DATA_8_BITS</ref><sp/>=<sp/>3<sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979" kindref="member">hf_uart_parity_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979af661db1916042126f73e0d7a34b2638c" kindref="member">HF_UART_PARITY_DISABLE</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979aef90161419b6ebe84ec312e81442e0b1" kindref="member">HF_UART_PARITY_EVEN</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979a84338074ffcfe3cc2df73393cb2f6062" kindref="member">HF_UART_PARITY_ODD</ref><sp/>=<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81" refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4" kindref="member">hf_uart_stop_bits_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4a71089f470a9566d9c6ffa8550da03958" kindref="member">HF_UART_STOP_BITS_1</ref><sp/>=<sp/>1,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4a0940f3d2822f63b368a7ad53e674e7cc" kindref="member">HF_UART_STOP_BITS_1_5</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4a3405aef45e41cda2cd40387a4a5f4f6e" kindref="member">HF_UART_STOP_BITS_2</ref><sp/>=<sp/>3<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821b" kindref="member">hf_uart_flow_ctrl_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba01e22a272e9cb761bd23b07e7be5106a" kindref="member">HF_UART_HW_FLOWCTRL_DISABLE</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba14ee9869003e244029637df334423cff" kindref="member">HF_UART_HW_FLOWCTRL_RTS</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba9d243c28e0716006cf0d9a821f19ab3f" kindref="member">HF_UART_HW_FLOWCTRL_CTS</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba827dfa7fccb74874b890a21f598a8a51" kindref="member">HF_UART_HW_FLOWCTRL_CTS_RTS</ref><sp/>=<sp/>3<sp/><sp/></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100" refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a2cd9f37d7333a871e069363eea9744ac" kindref="member">HF_UART_MODE_POLLING</ref><sp/>=<sp/>0,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a6b4c350c97dc7e89a794bddce128b1ce" kindref="member">HF_UART_MODE_INTERRUPT</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a782abfd417f53545fb42e29345f9c64a" kindref="member">HF_UART_MODE_DMA</ref><sp/>=<sp/>2<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>CONFIGURATION<sp/>STRUCTURES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="structhf__uart__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="114" refid="structhf__uart__config__t_1afdc6f2316977e5a7a400ce2031e49c1c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/><ref refid="structhf__uart__config__t_1afdc6f2316977e5a7a400ce2031e49c1c" kindref="member">port_number</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115" refid="structhf__uart__config__t_1a1f63adb11ea6e211eeeb2898a8e89a58" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" kindref="member">hf_baud_rate_t</ref><sp/><ref refid="structhf__uart__config__t_1a1f63adb11ea6e211eeeb2898a8e89a58" kindref="member">baud_rate</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116" refid="structhf__uart__config__t_1a383ecf7d40d1f36e06cf3321e491c4cf" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8" kindref="member">hf_uart_data_bits_t</ref><sp/><ref refid="structhf__uart__config__t_1a383ecf7d40d1f36e06cf3321e491c4cf" kindref="member">data_bits</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="117" refid="structhf__uart__config__t_1a61cd78d7fcd061d2c9c8f37440bae1a8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979" kindref="member">hf_uart_parity_t</ref><sp/><ref refid="structhf__uart__config__t_1a61cd78d7fcd061d2c9c8f37440bae1a8" kindref="member">parity</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="118" refid="structhf__uart__config__t_1a7cec6d7832a7847af8b1eb20fb107bef" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4" kindref="member">hf_uart_stop_bits_t</ref><sp/><ref refid="structhf__uart__config__t_1a7cec6d7832a7847af8b1eb20fb107bef" kindref="member">stop_bits</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="119" refid="structhf__uart__config__t_1ab00b8ede5884c89c661f87fbfab049c4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821b" kindref="member">hf_uart_flow_ctrl_t</ref><sp/><ref refid="structhf__uart__config__t_1ab00b8ede5884c89c661f87fbfab049c4" kindref="member">flow_control</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="120" refid="structhf__uart__config__t_1a76ac681f25341a9eb9f96d5fbcee0ede" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__config__t_1a76ac681f25341a9eb9f96d5fbcee0ede" kindref="member">tx_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="121" refid="structhf__uart__config__t_1acca6c345efac84a616bc42c88efa0cf5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__config__t_1acca6c345efac84a616bc42c88efa0cf5" kindref="member">rx_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="122" refid="structhf__uart__config__t_1a55c9803976664245d373656ba64cf51d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__config__t_1a55c9803976664245d373656ba64cf51d" kindref="member">rts_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123" refid="structhf__uart__config__t_1a2958a92eeb0c1fbae55042773e807edc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__config__t_1a2958a92eeb0c1fbae55042773e807edc" kindref="member">cts_pin</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124" refid="structhf__uart__config__t_1a64891fef55888ddc1a6bd8657d8baaa8" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__uart__config__t_1a64891fef55888ddc1a6bd8657d8baaa8" kindref="member">tx_buffer_size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125" refid="structhf__uart__config__t_1ab4cfd06f761353a95f61a017ce34e58b" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__uart__config__t_1ab4cfd06f761353a95f61a017ce34e58b" kindref="member">rx_buffer_size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="126" refid="structhf__uart__config__t_1ac900846b55ea570c1dc09adf759492e1" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__uart__config__t_1ac900846b55ea570c1dc09adf759492e1" kindref="member">event_queue_size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="127" refid="structhf__uart__config__t_1acb58788a89ca522dba9b9507d2410a01" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref><sp/><ref refid="structhf__uart__config__t_1acb58788a89ca522dba9b9507d2410a01" kindref="member">operating_mode</ref>;<sp/></highlight></codeline>
+<codeline lineno="128" refid="structhf__uart__config__t_1a81763a86639f22bd295d61dd4b070f21" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/><ref refid="structhf__uart__config__t_1a81763a86639f22bd295d61dd4b070f21" kindref="member">timeout_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129" refid="structhf__uart__config__t_1a039cf02dfa0fe29334ca05c11ba5c272" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__config__t_1a039cf02dfa0fe29334ca05c11ba5c272" kindref="member">enable_pattern_detection</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130" refid="structhf__uart__config__t_1a86ddff3eb48856f1cf3aff181b3eb1ef" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__config__t_1a86ddff3eb48856f1cf3aff181b3eb1ef" kindref="member">enable_wakeup</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="131" refid="structhf__uart__config__t_1ae4808d8dfd4c046b7dd245e3a7eba4d2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__config__t_1ae4808d8dfd4c046b7dd245e3a7eba4d2" kindref="member">enable_loopback</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="structhf__uart__config__t_1af510baede31d9161aaa0865359c4d0a0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__config__t_1af510baede31d9161aaa0865359c4d0a0" kindref="member">hf_uart_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__uart__config__t_1afdc6f2316977e5a7a400ce2031e49c1c" kindref="member">port_number</ref>(0),<sp/><ref refid="structhf__uart__config__t_1a1f63adb11ea6e211eeeb2898a8e89a58" kindref="member">baud_rate</ref>(115200),<sp/><ref refid="structhf__uart__config__t_1a383ecf7d40d1f36e06cf3321e491c4cf" kindref="member">data_bits</ref>(<ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8" kindref="member">hf_uart_data_bits_t</ref>::<ref refid="EspTypes__UART_8h_1abde746b6c6a9bf11878d665ef32b70c8a60e80819b4c1b95edc8e68065625ffc4" kindref="member">HF_UART_DATA_8_BITS</ref>),</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__config__t_1a61cd78d7fcd061d2c9c8f37440bae1a8" kindref="member">parity</ref>(<ref refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979" kindref="member">hf_uart_parity_t</ref>::<ref refid="EspTypes__UART_8h_1ab79735070f96f3925e45f510b5e77979af661db1916042126f73e0d7a34b2638c" kindref="member">HF_UART_PARITY_DISABLE</ref>),</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__config__t_1a7cec6d7832a7847af8b1eb20fb107bef" kindref="member">stop_bits</ref>(<ref refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4" kindref="member">hf_uart_stop_bits_t</ref>::<ref refid="EspTypes__UART_8h_1a5f55ae5eced4442a60e8e9eb5c15cca4a71089f470a9566d9c6ffa8550da03958" kindref="member">HF_UART_STOP_BITS_1</ref>),</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__config__t_1ab00b8ede5884c89c661f87fbfab049c4" kindref="member">flow_control</ref>(<ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821b" kindref="member">hf_uart_flow_ctrl_t</ref>::<ref refid="EspTypes__UART_8h_1a7be6c31cb63b9bc439d5546ac067821ba01e22a272e9cb761bd23b07e7be5106a" kindref="member">HF_UART_HW_FLOWCTRL_DISABLE</ref>),<sp/><ref refid="structhf__uart__config__t_1a76ac681f25341a9eb9f96d5fbcee0ede" kindref="member">tx_pin</ref>(<ref refid="EspTypes__UART_8h_1a5693c613e75a2e7e6f5ba0ae4d257d1a" kindref="member">HF_UART_IO_UNUSED</ref>),</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__config__t_1acca6c345efac84a616bc42c88efa0cf5" kindref="member">rx_pin</ref>(<ref refid="EspTypes__UART_8h_1a5693c613e75a2e7e6f5ba0ae4d257d1a" kindref="member">HF_UART_IO_UNUSED</ref>),<sp/><ref refid="structhf__uart__config__t_1a55c9803976664245d373656ba64cf51d" kindref="member">rts_pin</ref>(<ref refid="EspTypes__UART_8h_1a5693c613e75a2e7e6f5ba0ae4d257d1a" kindref="member">HF_UART_IO_UNUSED</ref>),<sp/><ref refid="structhf__uart__config__t_1a2958a92eeb0c1fbae55042773e807edc" kindref="member">cts_pin</ref>(<ref refid="EspTypes__UART_8h_1a5693c613e75a2e7e6f5ba0ae4d257d1a" kindref="member">HF_UART_IO_UNUSED</ref>),</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__config__t_1a64891fef55888ddc1a6bd8657d8baaa8" kindref="member">tx_buffer_size</ref>(1024),<sp/><ref refid="structhf__uart__config__t_1ab4cfd06f761353a95f61a017ce34e58b" kindref="member">rx_buffer_size</ref>(1024),<sp/><ref refid="structhf__uart__config__t_1ac900846b55ea570c1dc09adf759492e1" kindref="member">event_queue_size</ref>(10),</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__config__t_1acb58788a89ca522dba9b9507d2410a01" kindref="member">operating_mode</ref>(<ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref>::<ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7a2cd9f37d7333a871e069363eea9744ac" kindref="member">HF_UART_MODE_POLLING</ref>),<sp/><ref refid="structhf__uart__config__t_1a81763a86639f22bd295d61dd4b070f21" kindref="member">timeout_ms</ref>(1000),</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__config__t_1a039cf02dfa0fe29334ca05c11ba5c272" kindref="member">enable_pattern_detection</ref>(false),<sp/><ref refid="structhf__uart__config__t_1a86ddff3eb48856f1cf3aff181b3eb1ef" kindref="member">enable_wakeup</ref>(false),<sp/><ref refid="structhf__uart__config__t_1ae4808d8dfd4c046b7dd245e3a7eba4d2" kindref="member">enable_loopback</ref>(false)<sp/>{}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="structhf__uart__flow__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__flow__config__t" kindref="compound">hf_uart_flow_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="148" refid="structhf__uart__flow__config__t_1a8b6d281f74d9f838090904f75efb4c88" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__flow__config__t_1a8b6d281f74d9f838090904f75efb4c88" kindref="member">enable_hw_flow_control</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="149" refid="structhf__uart__flow__config__t_1ac7e23050c2ef42391ccee0e4c6a09bce" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__flow__config__t_1ac7e23050c2ef42391ccee0e4c6a09bce" kindref="member">enable_sw_flow_control</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="150" refid="structhf__uart__flow__config__t_1a473eb6fb647091ebad60eb417d1e794d" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__uart__flow__config__t_1a473eb6fb647091ebad60eb417d1e794d" kindref="member">xon_char</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="151" refid="structhf__uart__flow__config__t_1a1ab77db177f6eeaf169e3736759a7ff0" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__uart__flow__config__t_1a1ab77db177f6eeaf169e3736759a7ff0" kindref="member">xoff_char</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="152" refid="structhf__uart__flow__config__t_1a20130cf5f4bfabb51f8f8a831f5863ea" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__uart__flow__config__t_1a20130cf5f4bfabb51f8f8a831f5863ea" kindref="member">rx_flow_ctrl_thresh</ref>;<sp/></highlight></codeline>
+<codeline lineno="153" refid="structhf__uart__flow__config__t_1ac804663a1b85286b2d36ce6a12c954bc" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__uart__flow__config__t_1ac804663a1b85286b2d36ce6a12c954bc" kindref="member">tx_flow_ctrl_thresh</ref>;<sp/></highlight></codeline>
+<codeline lineno="154" refid="structhf__uart__flow__config__t_1ab862a5acbf908953ad21e52c58de0ba5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__flow__config__t_1ab862a5acbf908953ad21e52c58de0ba5" kindref="member">auto_rts</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="155" refid="structhf__uart__flow__config__t_1ae28a9b34c306c4d888135506e5947fef" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__flow__config__t_1ae28a9b34c306c4d888135506e5947fef" kindref="member">auto_cts</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="structhf__uart__flow__config__t_1ae417f407dde36d36f13474bd4b23439c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__flow__config__t_1ae417f407dde36d36f13474bd4b23439c" kindref="member">hf_uart_flow_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__uart__flow__config__t_1a8b6d281f74d9f838090904f75efb4c88" kindref="member">enable_hw_flow_control</ref>(false),<sp/><ref refid="structhf__uart__flow__config__t_1ac7e23050c2ef42391ccee0e4c6a09bce" kindref="member">enable_sw_flow_control</ref>(false),<sp/><ref refid="structhf__uart__flow__config__t_1a473eb6fb647091ebad60eb417d1e794d" kindref="member">xon_char</ref>(0x11),</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__flow__config__t_1a1ab77db177f6eeaf169e3736759a7ff0" kindref="member">xoff_char</ref>(0x13),<sp/><ref refid="structhf__uart__flow__config__t_1a20130cf5f4bfabb51f8f8a831f5863ea" kindref="member">rx_flow_ctrl_thresh</ref>(122),<sp/><ref refid="structhf__uart__flow__config__t_1ac804663a1b85286b2d36ce6a12c954bc" kindref="member">tx_flow_ctrl_thresh</ref>(80),<sp/><ref refid="structhf__uart__flow__config__t_1ab862a5acbf908953ad21e52c58de0ba5" kindref="member">auto_rts</ref>(false),</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__flow__config__t_1ae28a9b34c306c4d888135506e5947fef" kindref="member">auto_cts</ref>(false)<sp/>{}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="structhf__uart__power__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__power__config__t" kindref="compound">hf_uart_power_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="167" refid="structhf__uart__power__config__t_1a6740faaace817d6ca3c1ff12b5f7c2e0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__power__config__t_1a6740faaace817d6ca3c1ff12b5f7c2e0" kindref="member">sleep_retention_enable</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="168" refid="structhf__uart__power__config__t_1a1329b491b3e5fd6ce964259024732fd9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__power__config__t_1a1329b491b3e5fd6ce964259024732fd9" kindref="member">allow_pd_in_light_sleep</ref>;<sp/></highlight></codeline>
+<codeline lineno="169" refid="structhf__uart__power__config__t_1a7ac138802375c29ee69321a39be9ef8c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__power__config__t_1a7ac138802375c29ee69321a39be9ef8c" kindref="member">allow_pd_in_deep_sleep</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="170" refid="structhf__uart__power__config__t_1afa945ba76e7b7bf7003b78cb06363884" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__power__config__t_1afa945ba76e7b7bf7003b78cb06363884" kindref="member">wakeup_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="171" refid="structhf__uart__power__config__t_1a0cb50d5b0c2664f1c6e34778b2f1ef5b" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__uart__power__config__t_1a0cb50d5b0c2664f1c6e34778b2f1ef5b" kindref="member">wakeup_threshold</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="172" refid="structhf__uart__power__config__t_1a404cdf8335c2f7dfb0752720d9f82e99" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__uart__power__config__t_1a404cdf8335c2f7dfb0752720d9f82e99" kindref="member">wakeup_timeout_ms</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174" refid="structhf__uart__power__config__t_1a663eb9c459ad518dc6b1e64abe8a891f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__power__config__t_1a663eb9c459ad518dc6b1e64abe8a891f" kindref="member">hf_uart_power_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__uart__power__config__t_1a6740faaace817d6ca3c1ff12b5f7c2e0" kindref="member">sleep_retention_enable</ref>(true),<sp/><ref refid="structhf__uart__power__config__t_1a1329b491b3e5fd6ce964259024732fd9" kindref="member">allow_pd_in_light_sleep</ref>(true),<sp/><ref refid="structhf__uart__power__config__t_1a7ac138802375c29ee69321a39be9ef8c" kindref="member">allow_pd_in_deep_sleep</ref>(false),</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__power__config__t_1afa945ba76e7b7bf7003b78cb06363884" kindref="member">wakeup_enable</ref>(false),<sp/><ref refid="structhf__uart__power__config__t_1a0cb50d5b0c2664f1c6e34778b2f1ef5b" kindref="member">wakeup_threshold</ref>(3),<sp/><ref refid="structhf__uart__power__config__t_1a404cdf8335c2f7dfb0752720d9f82e99" kindref="member">wakeup_timeout_ms</ref>(1000)<sp/>{}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182" refid="structhf__uart__pattern__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__pattern__config__t" kindref="compound">hf_uart_pattern_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="183" refid="structhf__uart__pattern__config__t_1a174f828af43ce0d50e9d550514d3b6ae" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__pattern__config__t_1a174f828af43ce0d50e9d550514d3b6ae" kindref="member">enable_pattern_detection</ref>;<sp/></highlight></codeline>
+<codeline lineno="184" refid="structhf__uart__pattern__config__t_1af58c48f247662ec2b774be4749a0d01e" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__pattern__config__t_1af58c48f247662ec2b774be4749a0d01e" kindref="member">pattern_char</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="185" refid="structhf__uart__pattern__config__t_1ab57dea918e79a141220ac6dc5a3d323c" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__uart__pattern__config__t_1ab57dea918e79a141220ac6dc5a3d323c" kindref="member">pattern_char_num</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="186" refid="structhf__uart__pattern__config__t_1a11842745ed8298d4d34c23d58f35e1f7" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__uart__pattern__config__t_1a11842745ed8298d4d34c23d58f35e1f7" kindref="member">char_timeout</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="187" refid="structhf__uart__pattern__config__t_1a0277bcf7ef024d676ad6eb6561bbe695" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__uart__pattern__config__t_1a0277bcf7ef024d676ad6eb6561bbe695" kindref="member">post_idle</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="188" refid="structhf__uart__pattern__config__t_1a089460cd2464ef296b2e81cef0aed6e1" refkind="member"><highlight class="normal"><sp/><sp/>uint16_t<sp/><ref refid="structhf__uart__pattern__config__t_1a089460cd2464ef296b2e81cef0aed6e1" kindref="member">pre_idle</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="structhf__uart__pattern__config__t_1a6dbe59d2d01916e4af80a9d0799afa36" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__pattern__config__t_1a6dbe59d2d01916e4af80a9d0799afa36" kindref="member">hf_uart_pattern_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__uart__pattern__config__t_1a174f828af43ce0d50e9d550514d3b6ae" kindref="member">enable_pattern_detection</ref>(false),<sp/><ref refid="structhf__uart__pattern__config__t_1af58c48f247662ec2b774be4749a0d01e" kindref="member">pattern_char</ref>(&apos;+&apos;),<sp/><ref refid="structhf__uart__pattern__config__t_1ab57dea918e79a141220ac6dc5a3d323c" kindref="member">pattern_char_num</ref>(1),<sp/><ref refid="structhf__uart__pattern__config__t_1a11842745ed8298d4d34c23d58f35e1f7" kindref="member">char_timeout</ref>(5),</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__pattern__config__t_1a0277bcf7ef024d676ad6eb6561bbe695" kindref="member">post_idle</ref>(5),<sp/><ref refid="structhf__uart__pattern__config__t_1a089460cd2464ef296b2e81cef0aed6e1" kindref="member">pre_idle</ref>(5)<sp/>{}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="structhf__uart__rs485__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__rs485__config__t" kindref="compound">hf_uart_rs485_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="199" refid="structhf__uart__rs485__config__t_1a2c2b7274f794e33ab23b7ae1a6ab3c9f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref><sp/><ref refid="structhf__uart__rs485__config__t_1a2c2b7274f794e33ab23b7ae1a6ab3c9f" kindref="member">mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200" refid="structhf__uart__rs485__config__t_1a818080c9397d34955b4232ef58258666" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__rs485__config__t_1a818080c9397d34955b4232ef58258666" kindref="member">enable_collision_detect</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="201" refid="structhf__uart__rs485__config__t_1a3601528cb25db0e361bea72eac49d9d6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__rs485__config__t_1a3601528cb25db0e361bea72eac49d9d6" kindref="member">enable_echo_suppression</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="202" refid="structhf__uart__rs485__config__t_1ab6b1b3c4a8b9fe0d3cd21e9fb64fcbff" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__rs485__config__t_1ab6b1b3c4a8b9fe0d3cd21e9fb64fcbff" kindref="member">auto_rts_control</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="203" refid="structhf__uart__rs485__config__t_1a4228b02c063ac124c6c10073c8fdada7" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__uart__rs485__config__t_1a4228b02c063ac124c6c10073c8fdada7" kindref="member">rts_delay_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="204" refid="structhf__uart__rs485__config__t_1a8e5f308519a6106c32dc5b6e6d967582" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__uart__rs485__config__t_1a8e5f308519a6106c32dc5b6e6d967582" kindref="member">rts_timeout_ms</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="205" refid="structhf__uart__rs485__config__t_1ac271b6dc597721d0a37548d9234f75f0" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__uart__rs485__config__t_1ac271b6dc597721d0a37548d9234f75f0" kindref="member">collision_timeout_ms</ref>;<sp/></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="structhf__uart__rs485__config__t_1a5fbdb79feb7f8f4272a6479752b96bcb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__rs485__config__t_1a5fbdb79feb7f8f4272a6479752b96bcb" kindref="member">hf_uart_rs485_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__uart__rs485__config__t_1a2c2b7274f794e33ab23b7ae1a6ab3c9f" kindref="member">mode</ref>(<ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref>::<ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4af5d5bcd53eab62a93d77f4c8db470c8c" kindref="member">HF_UART_MODE_UART</ref>),<sp/><ref refid="structhf__uart__rs485__config__t_1a818080c9397d34955b4232ef58258666" kindref="member">enable_collision_detect</ref>(false),</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__rs485__config__t_1a3601528cb25db0e361bea72eac49d9d6" kindref="member">enable_echo_suppression</ref>(false),<sp/><ref refid="structhf__uart__rs485__config__t_1ab6b1b3c4a8b9fe0d3cd21e9fb64fcbff" kindref="member">auto_rts_control</ref>(false),<sp/><ref refid="structhf__uart__rs485__config__t_1a4228b02c063ac124c6c10073c8fdada7" kindref="member">rts_delay_ms</ref>(0),<sp/><ref refid="structhf__uart__rs485__config__t_1a8e5f308519a6106c32dc5b6e6d967582" kindref="member">rts_timeout_ms</ref>(0),</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__uart__rs485__config__t_1ac271b6dc597721d0a37548d9234f75f0" kindref="member">collision_timeout_ms</ref>(0)<sp/>{}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216" refid="structhf__uart__irda__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__irda__config__t" kindref="compound">hf_uart_irda_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="217" refid="structhf__uart__irda__config__t_1a2e3ace6d1a0f3dd70638bee8aaae8b8f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__irda__config__t_1a2e3ace6d1a0f3dd70638bee8aaae8b8f" kindref="member">enable_irda</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218" refid="structhf__uart__irda__config__t_1a3dcfcc6d5e0ccc88d88af22818bec340" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__irda__config__t_1a3dcfcc6d5e0ccc88d88af22818bec340" kindref="member">invert_tx</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="219" refid="structhf__uart__irda__config__t_1aa8cdfbead9d674f0525ba236c10848c4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__irda__config__t_1aa8cdfbead9d674f0525ba236c10848c4" kindref="member">invert_rx</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="220" refid="structhf__uart__irda__config__t_1a17330d5b407ec971f1e5a0177c2927a5" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__uart__irda__config__t_1a17330d5b407ec971f1e5a0177c2927a5" kindref="member">duty_cycle</ref>;<sp/></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="structhf__uart__irda__config__t_1ad6610bdb4244e2a4cb41582ce70cc97e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__irda__config__t_1ad6610bdb4244e2a4cb41582ce70cc97e" kindref="member">hf_uart_irda_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__uart__irda__config__t_1a2e3ace6d1a0f3dd70638bee8aaae8b8f" kindref="member">enable_irda</ref>(false),<sp/><ref refid="structhf__uart__irda__config__t_1a3dcfcc6d5e0ccc88d88af22818bec340" kindref="member">invert_tx</ref>(false),<sp/><ref refid="structhf__uart__irda__config__t_1aa8cdfbead9d674f0525ba236c10848c4" kindref="member">invert_rx</ref>(false),<sp/><ref refid="structhf__uart__irda__config__t_1a17330d5b407ec971f1e5a0177c2927a5" kindref="member">duty_cycle</ref>(50)<sp/>{}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="structhf__uart__wakeup__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__wakeup__config__t" kindref="compound">hf_uart_wakeup_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="230" refid="structhf__uart__wakeup__config__t_1a76e8ea3fadb340e3a26b6d1cc1ace34b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__wakeup__config__t_1a76e8ea3fadb340e3a26b6d1cc1ace34b" kindref="member">enable_wakeup</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="231" refid="structhf__uart__wakeup__config__t_1a410bc7b8c1fcb3c69d71bd7e49f57229" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__uart__wakeup__config__t_1a410bc7b8c1fcb3c69d71bd7e49f57229" kindref="member">wakeup_threshold</ref>;<sp/></highlight></codeline>
+<codeline lineno="232" refid="structhf__uart__wakeup__config__t_1a4ac464ca640984d471f17defcf1a1784" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__wakeup__config__t_1a4ac464ca640984d471f17defcf1a1784" kindref="member">use_ref_tick</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="structhf__uart__wakeup__config__t_1aed7fc6d646fd59649eedc406b8e6169b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__uart__wakeup__config__t_1aed7fc6d646fd59649eedc406b8e6169b" kindref="member">hf_uart_wakeup_config_t</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__uart__wakeup__config__t_1a76e8ea3fadb340e3a26b6d1cc1ace34b" kindref="member">enable_wakeup</ref>(false),<sp/><ref refid="structhf__uart__wakeup__config__t_1a410bc7b8c1fcb3c69d71bd7e49f57229" kindref="member">wakeup_threshold</ref>(3),<sp/><ref refid="structhf__uart__wakeup__config__t_1a4ac464ca640984d471f17defcf1a1784" kindref="member">use_ref_tick</ref>(false)<sp/>{}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>CALLBACK<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aa" kindref="member">hf_uart_event_type_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaad63e628b90f5cfcac9abbbfd1ead8610" kindref="member">HF_UART_DATA</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa87ca6d6086648c5d68eefe2ee60bb00b" kindref="member">HF_UART_FIFO_OVF</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa73599f5b5f22d9ab4153e42149547ee8" kindref="member">HF_UART_BUFFER_FULL</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaadaafab574b062f4e166fef0e493398e1" kindref="member">HF_UART_BREAK</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa2708b48c96f92449f7a260d6b105f03d" kindref="member">HF_UART_PARITY_ERR</ref><sp/>=<sp/>4,<sp/><sp/></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa1c4b07127aaf20a5ca5d5b86e89cd84d" kindref="member">HF_UART_FRAME_ERR</ref><sp/>=<sp/>5,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaa572eb009d72ee1a8c5b866f38637b373" kindref="member">HF_UART_PATTERN_DET</ref><sp/>=<sp/>6,<sp/></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aaab69663203af3d449ec5982a0bf5cd2a1" kindref="member">HF_UART_EVENT_MAX</ref><sp/>=<sp/>7<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="254"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="structhf__uart__event__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__event__t" kindref="compound">hf_uart_event_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="260" refid="structhf__uart__event__t_1ad073f9713f20967f5027e85ab440abed" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__UART_8h_1ab92afb392c83820e94b9f343a7ddf3aa" kindref="member">hf_uart_event_type_t</ref><sp/><ref refid="structhf__uart__event__t_1ad073f9713f20967f5027e85ab440abed" kindref="member">type</ref>;<sp/></highlight></codeline>
+<codeline lineno="261" refid="structhf__uart__event__t_1ab767636a5abe68c979e61ace6da45a14" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__event__t_1ab767636a5abe68c979e61ace6da45a14" kindref="member">size</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="262" refid="structhf__uart__event__t_1a6a8642e30e8aa3174f501fadf0bf08b7" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__uart__event__t_1a6a8642e30e8aa3174f501fadf0bf08b7" kindref="member">timeout_flag</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="263"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271" refid="EspTypes__UART_8h_1aee73930fd08eb700134cd999d86720c9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__UART_8h_1aee73930fd08eb700134cd999d86720c9" kindref="member">hf_uart_event_callback_t</ref><sp/>=<sp/>bool<sp/>(*)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__uart__event__t" kindref="compound">hf_uart_event_t</ref>*<sp/>event,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279" refid="EspTypes__UART_8h_1ad0b52f2579edff296b44b4bd0df5d310" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__UART_8h_1ad0b52f2579edff296b44b4bd0df5d310" kindref="member">hf_uart_break_callback_t</ref><sp/>=<sp/>bool<sp/>(*)(uint32_t<sp/>break_duration,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data);</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>ESPUART<sp/>TYPES<sp/>-<sp/>MINIMAL<sp/>AND<sp/>ESSENTIAL<sp/>ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>PIN<sp/>MAP<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>UART<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291" refid="structhf__uart__pin__map__esp32c6__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__pin__map__esp32c6__t" kindref="compound">hf_uart_pin_map_esp32c6_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="292" refid="structhf__uart__pin__map__esp32c6__t_1a1c5d85274a14959188520d9330b085e8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a1c5d85274a14959188520d9330b085e8" kindref="member">UART0_TX_PIN</ref><sp/>=<sp/>21;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO21</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293" refid="structhf__uart__pin__map__esp32c6__t_1a35acdc03c24201e15fff340dfe7ffcd4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a35acdc03c24201e15fff340dfe7ffcd4" kindref="member">UART0_RX_PIN</ref><sp/>=<sp/>20;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="structhf__uart__pin__map__esp32c6__t_1a2bc9ed7a56b91a0159ea47ab76eb24ab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a2bc9ed7a56b91a0159ea47ab76eb24ab" kindref="member">UART0_RTS_PIN</ref><sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295" refid="structhf__uart__pin__map__esp32c6__t_1aeb17f1190f69070ba953bbc975c738c1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1aeb17f1190f69070ba953bbc975c738c1" kindref="member">UART0_CTS_PIN</ref><sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297" refid="structhf__uart__pin__map__esp32c6__t_1a26e8fd135074b27510536955e18649de" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a26e8fd135074b27510536955e18649de" kindref="member">UART1_TX_PIN</ref><sp/>=<sp/>6;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="structhf__uart__pin__map__esp32c6__t_1a918fa542b710dd5d77edf7a151699c52" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a918fa542b710dd5d77edf7a151699c52" kindref="member">UART1_RX_PIN</ref><sp/>=<sp/>7;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299" refid="structhf__uart__pin__map__esp32c6__t_1a85fa8ef047175cbc245b49c594a6ee51" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a85fa8ef047175cbc245b49c594a6ee51" kindref="member">UART1_RTS_PIN</ref><sp/>=<sp/>8;<sp/></highlight><highlight class="comment">//<sp/>GPIO8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="structhf__uart__pin__map__esp32c6__t_1a2965a280eb931771569a8f4739c4cc67" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a2965a280eb931771569a8f4739c4cc67" kindref="member">UART1_CTS_PIN</ref><sp/>=<sp/>9;<sp/></highlight><highlight class="comment">//<sp/>GPIO9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302" refid="structhf__uart__pin__map__esp32c6__t_1a271061a6ba9b6982d44aca9d84abc5df" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a271061a6ba9b6982d44aca9d84abc5df" kindref="member">UART2_TX_PIN</ref><sp/>=<sp/>16;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="structhf__uart__pin__map__esp32c6__t_1a9eda2c3427bde3099b34255a02639692" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a9eda2c3427bde3099b34255a02639692" kindref="member">UART2_RX_PIN</ref><sp/>=<sp/>17;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO17</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304" refid="structhf__uart__pin__map__esp32c6__t_1a04f152ae03c0c8456ebf26576571b5bf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a04f152ae03c0c8456ebf26576571b5bf" kindref="member">UART2_RTS_PIN</ref><sp/>=<sp/>14;<sp/></highlight><highlight class="comment">//<sp/>GPIO14</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="structhf__uart__pin__map__esp32c6__t_1af62c624a1b01cd4ab9714d2bec414233" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1af62c624a1b01cd4ab9714d2bec414233" kindref="member">UART2_CTS_PIN</ref><sp/>=<sp/>15;<sp/></highlight><highlight class="comment">//<sp/>GPIO15</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic<sp/>UART<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hf_uart_pin_map_esp32_t<sp/>{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_TX_PIN<sp/>=<sp/>1;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO1<sp/>(UART0_TXD)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RX_PIN<sp/>=<sp/>3;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO3<sp/>(UART0_RXD)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RTS_PIN<sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_CTS_PIN<sp/>=<sp/>22;<sp/></highlight><highlight class="comment">//<sp/>GPIO22</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_TX_PIN<sp/>=<sp/>10;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO10</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RX_PIN<sp/>=<sp/>9;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RTS_PIN<sp/>=<sp/>11;<sp/></highlight><highlight class="comment">//<sp/>GPIO11</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_CTS_PIN<sp/>=<sp/>6;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_TX_PIN<sp/>=<sp/>17;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO17</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_RX_PIN<sp/>=<sp/>16;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_RTS_PIN<sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_CTS_PIN<sp/>=<sp/>23;<sp/></highlight><highlight class="comment">//<sp/>GPIO23</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S2<sp/>UART<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32S2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hf_uart_pin_map_esp32s2_t<sp/>{</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_TX_PIN<sp/>=<sp/>43;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO43</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RX_PIN<sp/>=<sp/>44;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO44</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RTS_PIN<sp/>=<sp/>45;<sp/></highlight><highlight class="comment">//<sp/>GPIO45</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_CTS_PIN<sp/>=<sp/>46;<sp/></highlight><highlight class="comment">//<sp/>GPIO46</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_TX_PIN<sp/>=<sp/>17;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO17</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RX_PIN<sp/>=<sp/>18;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RTS_PIN<sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_CTS_PIN<sp/>=<sp/>20;<sp/></highlight><highlight class="comment">//<sp/>GPIO20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_TX_PIN<sp/>=<sp/>21;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO21</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_RX_PIN<sp/>=<sp/>22;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO22</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_RTS_PIN<sp/>=<sp/>23;<sp/></highlight><highlight class="comment">//<sp/>GPIO23</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_CTS_PIN<sp/>=<sp/>24;<sp/></highlight><highlight class="comment">//<sp/>GPIO24</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S3<sp/>UART<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32S3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hf_uart_pin_map_esp32s3_t<sp/>{</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_TX_PIN<sp/>=<sp/>43;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO43</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RX_PIN<sp/>=<sp/>44;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO44</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RTS_PIN<sp/>=<sp/>45;<sp/></highlight><highlight class="comment">//<sp/>GPIO45</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_CTS_PIN<sp/>=<sp/>46;<sp/></highlight><highlight class="comment">//<sp/>GPIO46</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_TX_PIN<sp/>=<sp/>17;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO17</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RX_PIN<sp/>=<sp/>18;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RTS_PIN<sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_CTS_PIN<sp/>=<sp/>20;<sp/></highlight><highlight class="comment">//<sp/>GPIO20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_TX_PIN<sp/>=<sp/>21;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO21</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_RX_PIN<sp/>=<sp/>22;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO22</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_RTS_PIN<sp/>=<sp/>23;<sp/></highlight><highlight class="comment">//<sp/>GPIO23</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_CTS_PIN<sp/>=<sp/>24;<sp/></highlight><highlight class="comment">//<sp/>GPIO24</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C3<sp/>UART<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hf_uart_pin_map_esp32c3_t<sp/>{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_TX_PIN<sp/>=<sp/>21;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO21</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RX_PIN<sp/>=<sp/>20;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RTS_PIN<sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_CTS_PIN<sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_TX_PIN<sp/>=<sp/>6;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RX_PIN<sp/>=<sp/>7;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RTS_PIN<sp/>=<sp/>8;<sp/></highlight><highlight class="comment">//<sp/>GPIO8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_CTS_PIN<sp/>=<sp/>9;<sp/></highlight><highlight class="comment">//<sp/>GPIO9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C2<sp/>UART<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hf_uart_pin_map_esp32c2_t<sp/>{</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_TX_PIN<sp/>=<sp/>21;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO21</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RX_PIN<sp/>=<sp/>20;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RTS_PIN<sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_CTS_PIN<sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="391"><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_TX_PIN<sp/>=<sp/>6;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RX_PIN<sp/>=<sp/>7;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RTS_PIN<sp/>=<sp/>8;<sp/></highlight><highlight class="comment">//<sp/>GPIO8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_CTS_PIN<sp/>=<sp/>9;<sp/></highlight><highlight class="comment">//<sp/>GPIO9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="396"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-H2<sp/>UART<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32H2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hf_uart_pin_map_esp32h2_t<sp/>{</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_TX_PIN<sp/>=<sp/>21;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO21</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RX_PIN<sp/>=<sp/>20;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RTS_PIN<sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_CTS_PIN<sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_TX_PIN<sp/>=<sp/>6;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RX_PIN<sp/>=<sp/>7;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RTS_PIN<sp/>=<sp/>8;<sp/></highlight><highlight class="comment">//<sp/>GPIO8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_CTS_PIN<sp/>=<sp/>9;<sp/></highlight><highlight class="comment">//<sp/>GPIO9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h"/>
+  </compounddef>
+</doxygen>

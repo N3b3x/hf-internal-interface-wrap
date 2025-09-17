@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structHfEspWifiStats" kind="struct" language="C++" prot="public">
+    <compoundname>HfEspWifiStats</compoundname>
+    <includes refid="EspTypes__WiFi_8h" local="no">EspTypes_WiFi.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structHfEspWifiStats_1a58a2a3caa026dd575e3dfb5bee297ab2" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HfEspWifiStats::tx_packets</definition>
+        <argsstring></argsstring>
+        <name>tx_packets</name>
+        <qualifiedname>HfEspWifiStats::tx_packets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Transmitted packets </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="142" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1aa1b17128088b88af45ede1ac2da0b4cc" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HfEspWifiStats::rx_packets</definition>
+        <argsstring></argsstring>
+        <name>rx_packets</name>
+        <qualifiedname>HfEspWifiStats::rx_packets</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Received packets </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="143" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="143" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1acbcbfc263951a746cc353fde04945e4f" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HfEspWifiStats::tx_bytes</definition>
+        <argsstring></argsstring>
+        <name>tx_bytes</name>
+        <qualifiedname>HfEspWifiStats::tx_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Transmitted bytes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="144" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1a8992f599c6de40d6604439be30d5adc3" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HfEspWifiStats::rx_bytes</definition>
+        <argsstring></argsstring>
+        <name>rx_bytes</name>
+        <qualifiedname>HfEspWifiStats::rx_bytes</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Received bytes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="145" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1af07c6a04c1c0d50ee9dd09feac8a94e2" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HfEspWifiStats::tx_errors</definition>
+        <argsstring></argsstring>
+        <name>tx_errors</name>
+        <qualifiedname>HfEspWifiStats::tx_errors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Transmission errors </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="146" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1a183e340f1a6c4b909070a95f75991687" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HfEspWifiStats::rx_errors</definition>
+        <argsstring></argsstring>
+        <name>rx_errors</name>
+        <qualifiedname>HfEspWifiStats::rx_errors</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Reception errors </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="147" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1aa996220a922cadacd9db89d6d106d1aa" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HfEspWifiStats::tx_retries</definition>
+        <argsstring></argsstring>
+        <name>tx_retries</name>
+        <qualifiedname>HfEspWifiStats::tx_retries</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Transmission retries </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="148" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1ad60b7629b753655b0ba2809a36c3f9cf" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t HfEspWifiStats::rx_missed</definition>
+        <argsstring></argsstring>
+        <name>rx_missed</name>
+        <qualifiedname>HfEspWifiStats::rx_missed</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Missed receptions </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="149" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1a74acd38b83fcb08be0fdbf6c416e13e9" prot="public" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t HfEspWifiStats::noise_floor</definition>
+        <argsstring></argsstring>
+        <name>noise_floor</name>
+        <qualifiedname>HfEspWifiStats::noise_floor</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Noise floor (dBm) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="150" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structHfEspWifiStats_1ab068e52ec8259f4a0b41ed15da8c9b37" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t HfEspWifiStats::channel_utilization</definition>
+        <argsstring></argsstring>
+        <name>channel_utilization</name>
+        <qualifiedname>HfEspWifiStats::channel_utilization</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Channel utilization (%) </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="151" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="151" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32-specific WiFi statistics structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_WiFi.h" line="141" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_WiFi.h" bodystart="141" bodyend="152"/>
+    <listofallmembers>
+      <member refid="structHfEspWifiStats_1ab068e52ec8259f4a0b41ed15da8c9b37" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>channel_utilization</name></member>
+      <member refid="structHfEspWifiStats_1a74acd38b83fcb08be0fdbf6c416e13e9" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>noise_floor</name></member>
+      <member refid="structHfEspWifiStats_1a8992f599c6de40d6604439be30d5adc3" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>rx_bytes</name></member>
+      <member refid="structHfEspWifiStats_1a183e340f1a6c4b909070a95f75991687" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>rx_errors</name></member>
+      <member refid="structHfEspWifiStats_1ad60b7629b753655b0ba2809a36c3f9cf" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>rx_missed</name></member>
+      <member refid="structHfEspWifiStats_1aa1b17128088b88af45ede1ac2da0b4cc" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>rx_packets</name></member>
+      <member refid="structHfEspWifiStats_1acbcbfc263951a746cc353fde04945e4f" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>tx_bytes</name></member>
+      <member refid="structHfEspWifiStats_1af07c6a04c1c0d50ee9dd09feac8a94e2" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>tx_errors</name></member>
+      <member refid="structHfEspWifiStats_1a58a2a3caa026dd575e3dfb5bee297ab2" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>tx_packets</name></member>
+      <member refid="structHfEspWifiStats_1aa996220a922cadacd9db89d6d106d1aa" prot="public" virt="non-virtual"><scope>HfEspWifiStats</scope><name>tx_retries</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__bluetooth__address__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_bluetooth_address_t</compoundname>
+    <includes refid="BaseBluetooth_8h" local="no">BaseBluetooth.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_bluetooth_address_t::addr[6]</definition>
+        <argsstring>[6]</argsstring>
+        <name>addr</name>
+        <qualifiedname>hf_bluetooth_address_t::addr</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Bluetooth address bytes </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="246" column="11" bodyfile="inc/base/BaseBluetooth.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <member refid="group__bluetooth_1ga16a952238c469abc6433c912341d7d81" kind="function"><name>ToString</name></member>
+      <memberdef kind="function" id="structhf__bluetooth__address__t_1a7c179cb878a03ff95c9b82f7354a8ea9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hf_bluetooth_address_t::FromString</definition>
+        <argsstring>(const std::string &amp;addr_str)</argsstring>
+        <name>FromString</name>
+        <qualifiedname>hf_bluetooth_address_t::FromString</qualifiedname>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>addr_str</declname>
+        </param>
+        <briefdescription>
+<para>Parse address from string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>addr_str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Address string in format &quot;XX:XX:XX:XX:XX:XX&quot; </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if parsed successfully, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="259" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="781" bodyend="822"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__bluetooth__address__t_1a3d7d7126836b26eeca117f25b12b12b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hf_bluetooth_address_t::IsValid</definition>
+        <argsstring>() const</argsstring>
+        <name>IsValid</name>
+        <qualifiedname>hf_bluetooth_address_t::IsValid</qualifiedname>
+        <briefdescription>
+<para>Check if address is valid (not all zeros) </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BaseBluetooth.h" line="265" column="8" bodyfile="inc/base/BaseBluetooth.h" bodystart="824" bodyend="830"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Bluetooth address structure (6 bytes) </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/base/BaseBluetooth.h" line="245" column="1" bodyfile="inc/base/BaseBluetooth.h" bodystart="245" bodyend="266"/>
+    <listofallmembers>
+      <member refid="structhf__bluetooth__address__t_1af99b9413033d40b925a813de4ad15321" prot="public" virt="non-virtual"><scope>hf_bluetooth_address_t</scope><name>addr</name></member>
+      <member refid="structhf__bluetooth__address__t_1a7c179cb878a03ff95c9b82f7354a8ea9" prot="public" virt="non-virtual"><scope>hf_bluetooth_address_t</scope><name>FromString</name></member>
+      <member refid="structhf__bluetooth__address__t_1a3d7d7126836b26eeca117f25b12b12b1" prot="public" virt="non-virtual"><scope>hf_bluetooth_address_t</scope><name>IsValid</name></member>
+      <member refid="group__bluetooth_1ga16a952238c469abc6433c912341d7d81" prot="public" virt="non-virtual"><scope>hf_bluetooth_address_t</scope><name>ToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

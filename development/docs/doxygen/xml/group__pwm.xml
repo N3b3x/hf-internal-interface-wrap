@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__pwm" kind="group">
+    <compoundname>pwm</compoundname>
+    <title>PWM Module</title>
+    <innerfile refid="BasePwm_8h">BasePwm.h</innerfile>
+    <innerclass refid="classBasePwm" prot="public">BasePwm</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="group__pwm_1gab9386ad48605d4f6211bd46be2fc2b41" prot="public" static="no">
+        <name>HF_PWM_ERR_LIST</name>
+        <param><defname>X</defname></param>
+        <briefdescription>
+<para>HardFOC PWM error codes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Comprehensive error enumeration for all PWM operations in the system. This enumeration is used across all PWM-related classes to provide consistent error reporting and handling. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/base/BasePwm.h" line="41" column="9" bodyfile="inc/base/BasePwm.h" bodystart="41" bodyend="74"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>All PWM-related types, enums, and functions for Pulse Width Modulation operations. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

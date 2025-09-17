@@ -1,0 +1,11 @@
+<map id="hf_gpio_advanced_config_t" name="hf_gpio_advanced_config_t">
+<area shape="rect" id="Node000001" title="Complete ESP32 GPIO configuration with all advanced features." alt="" coords="416,123,659,154"/>
+<area shape="rect" id="Node000002" href="$structhf__gpio__flex__filter__config__t.html" title="Flexible glitch filter configuration." alt="" coords="37,5,200,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="214,47,393,89,493,121,491,126,391,95,213,52"/>
+<area shape="rect" id="Node000003" href="$structhf__gpio__pin__filter__config__t.html" title="Pin glitch filter configuration." alt="" coords="39,80,198,131"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,110,416,126,416,132,212,115"/>
+<area shape="rect" id="Node000004" href="$structhf__gpio__sleep__config__t.html" title="GPIO sleep mode configuration." alt="" coords="15,155,222,186"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="235,163,392,152,416,150,416,155,392,157,236,168"/>
+<area shape="rect" id="Node000005" href="$structhf__gpio__wakeup__config__t.html" title="GPIO wake&#45;up configuration for deep sleep." alt="" coords="5,210,232,241"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="245,212,318,201,391,187,448,170,498,152,500,157,449,175,393,192,319,207,246,217"/>
+</map>

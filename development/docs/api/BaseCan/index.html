@@ -1,0 +1,3066 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-default.css">
+
+  <link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/just-the-docs-head-nav.css" id="jtd-head-nav-stylesheet">
+
+  <style id="jtd-nav-activation">
+  
+
+    .site-nav > ul.nav-list:first-child > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > a,
+    
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li:not(:nth-child(7)) > a,
+    .site-nav > ul.nav-list:first-child > li > ul > li > ul > li > ul > li > ul > li a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:not(:first-child) a,
+    .site-nav li.external a {
+      background-image: none;
+    }
+
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(7) > a {
+      font-weight: 600;
+      text-decoration: none;
+    }.site-nav > ul.nav-list:first-child > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > button svg,
+    .site-nav > ul.nav-list:first-child > li:nth-child(1) > ul > li:nth-child(1) > ul > li:nth-child(3) > ul > li:nth-child(7) > button svg {
+      transform: rotate(-90deg);
+    }.site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list,
+    .site-nav > ul.nav-list:first-child > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(1) > ul.nav-list > li.nav-list-item:nth-child(3) > ul.nav-list > li.nav-list-item:nth-child(7) > ul.nav-list {
+      display: block;
+    }
+  </style>
+
+  
+
+  
+    <script src="/hf-internal-interface-wrap/development/assets/js/vendor/lunr.min.js"></script>
+  
+
+  <script src="/hf-internal-interface-wrap/development/assets/js/just-the-docs.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+
+
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>🚌 BaseCan | HardFOC Interface Wrapper - development</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="🚌 BaseCan" />
+<meta name="author" content="N3b3x" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="Controller Area Network base class for automotive and industrial communication" />
+<meta property="og:description" content="Controller Area Network base class for automotive and industrial communication" />
+<link rel="canonical" href="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseCan/" />
+<meta property="og:url" content="https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseCan/" />
+<meta property="og:site_name" content="HardFOC Interface Wrapper - development" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="🚌 BaseCan" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"N3b3x","url":"https://github.com/n3b3x"},"description":"Controller Area Network base class for automotive and industrial communication","headline":"🚌 BaseCan","url":"https://n3b3x.github.io/hf-internal-interface-wrap/development/docs/api/BaseCan/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <!-- Custom head content for hf-internal-interface-wrap documentation -->
+<link rel="stylesheet" href="/hf-internal-interface-wrap/development/assets/css/custom.css">
+<script src="/hf-internal-interface-wrap/development/assets/js/custom.js" defer></script>
+
+<!-- Version selector for multi-version documentation -->
+<!-- Version Selector Component for Multi-Version Documentation -->
+<div class="version-selector">
+  <div class="version-dropdown">
+    <label for="version-select" class="version-label">
+      <span class="version-icon">📚</span>
+      Version:
+    </label>
+    <select id="version-select" class="version-select" onchange="switchVersion(this.value)">
+      <option value="latest" data-url="/hf-internal-interface-wrap/">Development (main)</option>
+      <option value="v2.1.0" data-url="/hf-internal-interface-wrap/v2.1.0/">v2.1.0 (Latest Stable)</option>
+      <option value="v2.0.3" data-url="/hf-internal-interface-wrap/v2.0.3/">v2.0.3 (Previous Stable)</option>
+      <option value="v2.1.0-rc1" data-url="/hf-internal-interface-wrap/v2.1.0-rc1/">v2.1.0-rc1 (Release Candidate)</option>
+      <option value="v1.0.0" data-url="/hf-internal-interface-wrap/v1.0.0/">v1.0.0 (Legacy)</option>
+    </select>
+  </div>
+  
+  <div class="version-info">
+    <span class="current-version" id="current-version">Latest (main)</span>
+    <span class="version-badge" id="version-badge">dev</span>
+  </div>
+</div>
+
+<script>
+// Version switching logic
+function switchVersion(version) {
+  const select = document.getElementById('version-select');
+  const selectedOption = select.options[select.selectedIndex];
+  const targetUrl = selectedOption.getAttribute('data-url');
+  
+  if (targetUrl) {
+    // Update current page URL to new version
+    const currentPath = window.location.pathname;
+    const baseUrl = window.location.origin;
+    
+    // Extract the path after the version prefix
+    let newPath = currentPath;
+    if (currentPath.includes('/hf-internal-interface-wrap/')) {
+      const pathParts = currentPath.split('/hf-internal-interface-wrap/');
+      if (pathParts.length > 1) {
+        newPath = pathParts[1];
+      }
+    }
+    
+    // Construct new URL
+    const newUrl = baseUrl + targetUrl + newPath;
+    window.location.href = newUrl;
+  }
+}
+
+// Set current version based on URL
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPath = window.location.pathname;
+  const versionSelect = document.getElementById('version-select');
+  const currentVersionSpan = document.getElementById('current-version');
+  const versionBadge = document.getElementById('version-badge');
+  
+  // Determine current version from URL
+  let currentVersion = 'latest';
+  let versionType = 'dev';
+  
+  if (currentPath.includes('/stable/')) {
+    currentVersion = 'stable';
+    versionType = 'stable';
+  } else if (currentPath.includes('/v1.0.0/')) {
+    currentVersion = 'v1.0.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.9.0/')) {
+    currentVersion = 'v0.9.0';
+    versionType = 'release';
+  } else if (currentPath.includes('/v0.8.0/')) {
+    currentVersion = 'v0.8.0';
+    versionType = 'release';
+  }
+  
+  // Update UI
+  versionSelect.value = currentVersion;
+  currentVersionSpan.textContent = currentVersion === 'latest' ? 'Latest (main)' : 
+                                  currentVersion === 'stable' ? 'Stable (latest release)' : 
+                                  currentVersion;
+  
+  // Update badge
+  versionBadge.textContent = versionType;
+  versionBadge.className = 'version-badge ' + versionType;
+});
+</script>
+
+<style>
+.version-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+.version-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.version-label {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-icon {
+  font-size: 1rem;
+}
+
+.version-select {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--body-bg);
+  color: var(--body-text-color);
+  font-size: 0.9rem;
+  min-width: 150px;
+}
+
+.version-select:focus {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.current-version {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.version-badge.dev {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+@media (max-width: 768px) {
+  .version-selector {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  
+  .version-info {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+</style>
+
+
+<!-- Version information display -->
+<!-- Version Information Display Component -->
+<div class="version-info-display">
+  <div class="version-details">
+    <span class="version-label">Version:</span>
+    <span class="version-value">1.0.0-dev</span>
+    <span class="version-badge version-development">development</span>
+  </div>
+  
+  <div class="version-meta">
+    <span class="branch-info">
+      <span class="branch-icon">🌿</span>
+      <span class="branch-name">main</span>
+    </span>
+    
+    <span class="build-info">
+      <span class="build-icon">🔨</span>
+      <span class="build-date">2025-09-17</span>
+    </span>
+  </div>
+</div>
+
+<style>
+.version-info-display {
+  background: var(--nav-child-link-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.version-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.version-label {
+  font-weight: 500;
+  color: var(--body-text-color);
+}
+
+.version-value {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 600;
+  color: var(--link-color);
+  background: var(--code-bg);
+  padding: 0.125rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.version-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.version-badge.development {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+.version-badge.stable {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.version-badge.release {
+  background: #fff3e0;
+  color: #f57c00;
+  border: 1px solid #ffcc02;
+}
+
+.version-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.branch-info,
+.build-info {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--body-text-color);
+  font-size: 0.85rem;
+}
+
+.branch-icon,
+.build-icon {
+  font-size: 0.9rem;
+}
+
+.branch-name {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+.build-date {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .version-info-display {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .version-details,
+  .version-meta {
+    justify-content: center;
+  }
+  
+  .version-meta {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+}
+</style>
+
+
+
+</head>
+
+<body>
+  <a class="skip-to-main" href="#main-content">Skip to main content</a>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol id="svg-link" viewBox="0 0 24 24">
+  <title>Link</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link">
+    <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+  </svg>
+</symbol>
+
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+  <title>Menu</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+    <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+</symbol>
+
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+  <title>Expand</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+    <polyline points="9 18 15 12 9 6"></polyline>
+  </svg>
+</symbol>
+
+  <!-- Feather. MIT License: https://github.com/feathericons/feather/blob/master/LICENSE -->
+<symbol id="svg-external-link" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link">
+  <title id="svg-external-link-title">(external link)</title>
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>
+</symbol>
+
+  
+    <symbol id="svg-doc" viewBox="0 0 24 24">
+  <title>Document</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file">
+    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline>
+  </svg>
+</symbol>
+
+    <symbol id="svg-search" viewBox="0 0 24 24">
+  <title>Search</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+    <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+</symbol>
+
+  
+  
+    <!-- Bootstrap Icons. MIT License: https://github.com/twbs/icons/blob/main/LICENSE.md -->
+<symbol id="svg-copy" viewBox="0 0 16 16">
+  <title>Copy</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+  </svg>
+</symbol>
+<symbol id="svg-copied" viewBox="0 0 16 16">
+  <title>Copied</title>
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-check-fill" viewBox="0 0 16 16">
+    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1Zm6.854 7.354-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708Z"/>
+  </svg>
+</symbol>
+
+  
+</svg>
+
+  
+    <div class="side-bar">
+  <div class="site-header" role="banner">
+    <a href="/hf-internal-interface-wrap/development/" class="site-title lh-tight">
+  HardFOC Interface Wrapper - development
+
+</a>
+    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+    </button>
+  </div>
+
+  <nav aria-label="Main" id="site-nav" class="site-nav">
+  
+  
+    <ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 HardFOC Internal Interface Layer category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/" class="nav-list-link">🔧 HardFOC Internal Interface Layer</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📚 Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/" class="nav-list-link">📚 Documentation</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🛠️ Utilities category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/utils/" class="nav-list-link">🛠️ Utilities</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/DigitalOutputGuard/" class="nav-list-link">🛡️ DigitalOutputGuard</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/utils/AsciiArtGenerator/" class="nav-list-link">🎨 AsciiArtGenerator</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🔧 ESP32 Implementations category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/esp_api/" class="nav-list-link">🔧 ESP32 Implementations</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspGpio/" class="nav-list-link">🔌 EspGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspAdc/" class="nav-list-link">📊 EspAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPwm/" class="nav-list-link">🎛️ EspPwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspI2c/" class="nav-list-link">🔗 EspI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspSpi/" class="nav-list-link">🔄 EspSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspUart/" class="nav-list-link">📡 EspUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/" class="nav-list-link">🚌 EspCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspWifi/" class="nav-list-link">📶 EspWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspBluetooth/" class="nav-list-link">📲 EspBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspNvs/" class="nav-list-link">💾 EspNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspLogger/" class="nav-list-link">📝 EspLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPeriodicTimer/" class="nav-list-link">⏰ EspPeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspPio/" class="nav-list-link">🎛️ EspPio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspTemperature/" class="nav-list-link">🌡️ EspTemperature</a></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 📋 API Reference category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/docs/api/" class="nav-list-link">📋 API Reference</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseGpio/" class="nav-list-link">🔌 BaseGpio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseAdc/" class="nav-list-link">📊 BaseAdc</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePwm/" class="nav-list-link">🎛️ BasePwm</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseI2c/" class="nav-list-link">🔗 BaseI2c</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseSpi/" class="nav-list-link">🔄 BaseSpi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseUart/" class="nav-list-link">📡 BaseUart</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseCan/" class="nav-list-link">🚌 BaseCan</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseWifi/" class="nav-list-link">📶 BaseWifi</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseBluetooth/" class="nav-list-link">📲 BaseBluetooth</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseNvs/" class="nav-list-link">💾 BaseNvs</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseLogger/" class="nav-list-link">📝 BaseLogger</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePeriodicTimer/" class="nav-list-link">⏰ BasePeriodicTimer</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BasePio/" class="nav-list-link">🎛️ BasePio</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/BaseTemperature/" class="nav-list-link">🌡️ BaseTemperature</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/" class="nav-list-link">🔧 HardwareTypes</a></li></ul></li></ul></li><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🚀 ESP32 Examples category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/" class="nav-list-link">🚀 ESP32 Examples</a><ul class="nav-list"><li class="nav-list-item"><button class="nav-list-expander btn-reset" aria-label="toggle items in 🧪 Test Documentation category" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use xlink:href="#svg-arrow-right"></use></svg>
+      </button><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/" class="nav-list-link">🧪 Test Documentation</a><ul class="nav-list"><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/gpio_test/" class="nav-list-link">🧪 GPIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/adc_test/" class="nav-list-link">🧪 ADC Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pwm_test/" class="nav-list-link">🧪 PWM Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/pio_test/" class="nav-list-link">🧪 PIO Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/uart_test/" class="nav-list-link">🧪 UART Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/spi_test/" class="nav-list-link">🧪 SPI Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/i2c_test/" class="nav-list-link">🧪 I2C Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/can_test/" class="nav-list-link">🧪 CAN Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/wifi_test/" class="nav-list-link">🧪 WiFi Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/nvs_test/" class="nav-list-link">🧪 NVS Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/temperature_test/" class="nav-list-link">🧪 Temperature Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/logger_test/" class="nav-list-link">🧪 Logger Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/ascii_art_test/" class="nav-list-link">🧪 ASCII Art Test</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/examples/esp32/docs/dog_test/" class="nav-list-link">🧪 DOG Test</a></li></ul></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/CONTRIBUTING/" class="nav-list-link">🤝 Contributing</a></li></ul></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/features/" class="nav-list-link">🚀 Features</a></li><li class="nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/doxygen-extensions.html" class="nav-list-link">📖 Doxygen Extensions</a></li></ul>
+  
+</nav>
+
+
+
+
+  
+  
+    <footer class="site-nav-footer">
+  <div class="nav-footer-links">
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="nav-footer-link" aria-label="GitHub Repository">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="nav-footer-link" aria-label="Report Issues">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      </svg>
+      Issues
+    </a>
+  </div>
+</footer>
+
+  
+</div>
+
+  
+  <div class="main" id="top">
+    <div id="main-header" class="main-header">
+  
+    
+
+<div class="search" role="search">
+  <div class="search-input-wrap">
+    <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search workflows, examples, and guides..." aria-label="Search workflows, examples, and guides..." autocomplete="off">
+    <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+
+  
+  
+  
+    <nav aria-label="Auxiliary" class="aux-nav">
+  <ul class="aux-nav-list">
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap" class="site-button"
+          
+        >
+          📚 GitHub Repository
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/issues" class="site-button"
+          
+        >
+          🐛 Report Issues
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="https://github.com/n3b3x/hf-internal-interface-wrap/stargazers" class="site-button"
+          
+        >
+          ⭐ Star on GitHub
+        </a>
+      </li>
+    
+      <li class="aux-nav-list-item">
+        <a href="/hf-internal-interface-wrap/api/index.html" class="site-button"
+          
+        >
+          📖 API Reference
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  
+</div>
+
+    <div class="main-content-wrap">
+      <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/">🔧 HardFOC Internal Interface Layer</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/">📚 Documentation</a></li>
+    <li class="breadcrumb-nav-list-item"><a href="/hf-internal-interface-wrap/development/docs/api/">📋 API Reference</a></li>
+    <li class="breadcrumb-nav-list-item"><span>🚌 BaseCan</span></li>
+  </ol>
+</nav>
+
+
+      <div id="main-content" class="main-content">
+        <main>
+          
+            <h1 id="-basecan-api-reference">
+  
+  
+    <a href="#-basecan-api-reference" class="anchor-heading" aria-labelledby="-basecan-api-reference"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚌 BaseCan API Reference
+  
+  
+</h1>
+    
+<p><strong>🎯 Unified CAN bus abstraction for all Controller Area Network operations</strong></p>
+<h2 id="-table-of-contents">
+  
+  
+    <a href="#-table-of-contents" class="anchor-heading" aria-labelledby="-table-of-contents"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📚 <strong>Table of Contents</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="#-overview">🎯 <strong>Overview</strong></a></li>
+  <li><a href="#-class-hierarchy">🏗️ <strong>Class Hierarchy</strong></a></li>
+  <li><a href="#-error-codes">📋 <strong>Error Codes</strong></a></li>
+  <li><a href="#-core-api">🔧 <strong>Core API</strong></a></li>
+  <li><a href="#-data-structures">📊 <strong>Data Structures</strong></a></li>
+  <li><a href="#-usage-examples">📊 <strong>Usage Examples</strong></a></li>
+  <li><a href="#-best-practices">🧪 <strong>Best Practices</strong></a></li>
+</ul><hr />
+<h2 id="-overview">
+  
+  
+    <a href="#-overview" class="anchor-heading" aria-labelledby="-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Overview</strong>
+  
+  
+</h2>
+    
+
+<p>The <code class="language-plaintext highlighter-rouge">BaseCan</code> class provides a comprehensive CAN bus abstraction that serves as the
+unified interface for all Controller Area Network operations in the HardFOC system.
+It supports both classic CAN and CAN-FD protocols, message filtering, error
+handling, and works across different CAN controller implementations.</p>
+<h3 id="-key-features">
+  
+  
+    <a href="#-key-features" class="anchor-heading" aria-labelledby="-key-features"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✨ <strong>Key Features</strong>
+  
+  
+</h3>
+    
+
+<ul>
+  <li>🚌 <strong>CAN 2.0A/2.0B Support</strong> - Classic CAN protocols (CAN-FD support varies by hardware)</li>
+  <li>📨 <strong>Message Filtering</strong> - Hardware-based acceptance filtering</li>
+  <li>🔄 <strong>Error Recovery</strong> - Automatic bus recovery and error handling</li>
+  <li>📊 <strong>Statistics &amp; Diagnostics</strong> - Comprehensive monitoring and reporting</li>
+  <li>⚡ <strong>High Performance</strong> - Optimized for real-time applications</li>
+  <li>🛡️ <strong>Robust Error Handling</strong> - Detailed error codes and recovery mechanisms</li>
+  <li>🔌 <strong>Platform Agnostic</strong> - Works with internal and external CAN controllers</li>
+  <li>🧵 <strong>Thread Safe</strong> - Designed for multi-threaded applications</li>
+</ul>
+<h3 id="-supported-hardware">
+  
+  
+    <a href="#-supported-hardware" class="anchor-heading" aria-labelledby="-supported-hardware"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Supported Hardware</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Implementation</td>
+      <td>Hardware Type</td>
+      <td>Protocol</td>
+      <td>Speed</td>
+      <td>Features</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|—————-|—————|———-|——-|———-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EspCan</code></td>
+      <td>ESP32-C6 Internal</td>
+      <td>CAN 2.0A/B</td>
+      <td>Up to 1 Mbps</td>
+      <td>Built-in error handling, no CAN-FD</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="️-class-hierarchy">
+  
+  
+    <a href="#️-class-hierarchy" class="anchor-heading" aria-labelledby="️-class-hierarchy"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ <strong>Class Hierarchy</strong>
+  
+  
+</h2>
+    
+
+<pre><code class="language-mermaid">classDiagram
+    class BaseCan {
+        &lt;&lt;abstract&gt;&gt;
+        +Initialize() hf_can_err_t
+        +Deinitialize() hf_can_err_t
+        +SendMessage(message, timeout) hf_can_err_t
+        +ReceiveMessage(message, timeout) hf_can_err_t
+        +SetReceiveCallback(callback) hf_can_err_t
+        +SetAcceptanceFilter(id, mask, extended) hf_can_err_t
+        +GetStatus(status) hf_can_err_t
+        +ResetStatistics() hf_can_err_t
+        +ResetDiagnostics() hf_can_err_t
+    }
+    
+    class EspCan {
+        +EspCan(config)
+        +GetControllerId() uint8_t
+        +SetBaudRate(baudrate) hf_can_err_t
+    }
+    
+    BaseCan &lt;|-- EspCan
+</code></pre><hr />
+<h2 id="-error-codes">
+  
+  
+    <a href="#-error-codes" class="anchor-heading" aria-labelledby="-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📋 <strong>Error Codes</strong>
+  
+  
+</h2>
+    
+
+<p>The CAN system uses comprehensive error codes for robust error handling:</p>
+<h3 id="-success-codes">
+  
+  
+    <a href="#-success-codes" class="anchor-heading" aria-labelledby="-success-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✅ <strong>Success Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_SUCCESS</code></td>
+      <td>0</td>
+      <td>✅ Operation completed successfully</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-general-error-codes">
+  
+  
+    <a href="#-general-error-codes" class="anchor-heading" aria-labelledby="-general-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ❌ <strong>General Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_FAILURE</code></td>
+      <td>1</td>
+      <td>❌ General operation failure</td>
+      <td>Check hardware and configuration</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_NOT_INITIALIZED</code></td>
+      <td>2</td>
+      <td>⚠️ CAN not initialized</td>
+      <td>Call Initialize() first</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_ALREADY_INITIALIZED</code></td>
+      <td>3</td>
+      <td>⚠️ CAN already initialized</td>
+      <td>Check initialization state</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_INVALID_PARAMETER</code></td>
+      <td>4</td>
+      <td>🚫 Invalid parameter</td>
+      <td>Validate input parameters</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_NULL_POINTER</code></td>
+      <td>5</td>
+      <td>🚫 Null pointer provided</td>
+      <td>Check pointer validity</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_OUT_OF_MEMORY</code></td>
+      <td>6</td>
+      <td>💾 Memory allocation failed</td>
+      <td>Check system memory</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-bus-error-codes">
+  
+  
+    <a href="#-bus-error-codes" class="anchor-heading" aria-labelledby="-bus-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚌 <strong>Bus Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_BUS_OFF</code></td>
+      <td>7</td>
+      <td>🚫 Bus off state</td>
+      <td>Restart CAN controller</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_BUS_ERROR</code></td>
+      <td>8</td>
+      <td>❌ Bus error</td>
+      <td>Check bus wiring and termination</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_BUS_BUSY</code></td>
+      <td>9</td>
+      <td>🔄 Bus busy</td>
+      <td>Wait for bus availability</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_BUS_NOT_AVAILABLE</code></td>
+      <td>10</td>
+      <td>🚫 Bus not available</td>
+      <td>Check bus configuration</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_BUS_RECOVERY_FAILED</code></td>
+      <td>11</td>
+      <td>❌ Bus recovery failed</td>
+      <td>Restart CAN controller</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_BUS_ARBITRATION_LOST</code></td>
+      <td>12</td>
+      <td>🔄 Bus arbitration lost</td>
+      <td>Normal in multi-node systems</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-message-error-codes">
+  
+  
+    <a href="#-message-error-codes" class="anchor-heading" aria-labelledby="-message-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📨 <strong>Message Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_MESSAGE_TIMEOUT</code></td>
+      <td>13</td>
+      <td>⏰ Message timeout</td>
+      <td>Check bus load and timing</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_MESSAGE_LOST</code></td>
+      <td>14</td>
+      <td>📤 Message lost</td>
+      <td>Check buffer sizes</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_MESSAGE_INVALID</code></td>
+      <td>15</td>
+      <td>❌ Invalid message</td>
+      <td>Check message format</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_MESSAGE_TOO_LONG</code></td>
+      <td>16</td>
+      <td>📏 Message too long</td>
+      <td>Check DLC value</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_MESSAGE_INVALID_ID</code></td>
+      <td>17</td>
+      <td>🆔 Invalid message ID</td>
+      <td>Check ID range</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_MESSAGE_INVALID_DLC</code></td>
+      <td>18</td>
+      <td>📊 Invalid DLC</td>
+      <td>Check data length</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_QUEUE_FULL</code></td>
+      <td>19</td>
+      <td>📦 Queue full</td>
+      <td>Increase queue size or process faster</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_QUEUE_EMPTY</code></td>
+      <td>20</td>
+      <td>📭 Queue empty</td>
+      <td>Check message reception</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-transmission-error-codes">
+  
+  
+    <a href="#-transmission-error-codes" class="anchor-heading" aria-labelledby="-transmission-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📤 <strong>Transmission Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_TX_FAILED</code></td>
+      <td>21</td>
+      <td>❌ Transmission failed</td>
+      <td>Check bus state and wiring</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_TX_ABORTED</code></td>
+      <td>22</td>
+      <td>🚫 Transmission aborted</td>
+      <td>Check bus errors</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_TX_ERROR_PASSIVE</code></td>
+      <td>23</td>
+      <td>⚠️ Transmit error passive</td>
+      <td>Check error counters</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_TX_ERROR_WARNING</code></td>
+      <td>24</td>
+      <td>⚠️ Transmit error warning</td>
+      <td>Monitor error counters</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-reception-error-codes">
+  
+  
+    <a href="#-reception-error-codes" class="anchor-heading" aria-labelledby="-reception-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📥 <strong>Reception Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_RX_OVERRUN</code></td>
+      <td>25</td>
+      <td>📈 Receive overrun</td>
+      <td>Process messages faster</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_RX_ERROR_PASSIVE</code></td>
+      <td>26</td>
+      <td>⚠️ Receive error passive</td>
+      <td>Check error counters</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_RX_ERROR_WARNING</code></td>
+      <td>27</td>
+      <td>⚠️ Receive error warning</td>
+      <td>Monitor error counters</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_RX_FIFO_FULL</code></td>
+      <td>28</td>
+      <td>📦 Receive FIFO full</td>
+      <td>Process messages faster</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-hardware-error-codes">
+  
+  
+    <a href="#-hardware-error-codes" class="anchor-heading" aria-labelledby="-hardware-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🌐 <strong>Hardware Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_HARDWARE_FAULT</code></td>
+      <td>29</td>
+      <td>💥 Hardware fault</td>
+      <td>Check power and connections</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_COMMUNICATION_FAILURE</code></td>
+      <td>30</td>
+      <td>📡 Communication failure</td>
+      <td>Check interface connections</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_DEVICE_NOT_RESPONDING</code></td>
+      <td>31</td>
+      <td>🔇 Device not responding</td>
+      <td>Check device power and address</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_VOLTAGE_OUT_OF_RANGE</code></td>
+      <td>32</td>
+      <td>⚡ Voltage out of range</td>
+      <td>Check power supply</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_CLOCK_ERROR</code></td>
+      <td>33</td>
+      <td>⏰ Clock error</td>
+      <td>Check clock configuration</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_TRANSCEIVER_ERROR</code></td>
+      <td>34</td>
+      <td>🔌 Transceiver error</td>
+      <td>Check transceiver connections</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="️-configuration-error-codes">
+  
+  
+    <a href="#️-configuration-error-codes" class="anchor-heading" aria-labelledby="️-configuration-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⚙️ <strong>Configuration Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_INVALID_CONFIGURATION</code></td>
+      <td>35</td>
+      <td>⚙️ Invalid configuration</td>
+      <td>Check configuration parameters</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_UNSUPPORTED_OPERATION</code></td>
+      <td>36</td>
+      <td>🚫 Unsupported operation</td>
+      <td>Check hardware capabilities</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_INVALID_BAUD_RATE</code></td>
+      <td>37</td>
+      <td>📊 Invalid baud rate</td>
+      <td>Use supported baud rate</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_INVALID_CONTROLLER_ID</code></td>
+      <td>38</td>
+      <td>🆔 Invalid controller ID</td>
+      <td>Use valid controller ID</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_FILTER_ERROR</code></td>
+      <td>39</td>
+      <td>🔍 Filter error</td>
+      <td>Check filter configuration</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_FILTER_FULL</code></td>
+      <td>40</td>
+      <td>📦 Filter table full</td>
+      <td>Reduce number of filters</td>
+    </tr>
+  </tbody>
+</table></div>
+<h3 id="-protocol-error-codes">
+  
+  
+    <a href="#-protocol-error-codes" class="anchor-heading" aria-labelledby="-protocol-error-codes"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 <strong>Protocol Error Codes</strong>
+  
+  
+</h3>
+    
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td>Code</td>
+      <td>Value</td>
+      <td>Description</td>
+      <td>Resolution</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>|——|——-|————-|————|</p>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_STUFF_ERROR</code></td>
+      <td>41</td>
+      <td>🔧 Bit stuffing error</td>
+      <td>Check bus quality</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_FORM_ERROR</code></td>
+      <td>42</td>
+      <td>📋 Frame format error</td>
+      <td>Check message format</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_CRC_ERROR</code></td>
+      <td>43</td>
+      <td>🔢 CRC error</td>
+      <td>Check bus integrity</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_ACK_ERROR</code></td>
+      <td>44</td>
+      <td>✅ Acknowledgment error</td>
+      <td>Check bus termination</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<div class="table-wrapper"><table>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CAN_ERR_BIT_ERROR</code></td>
+      <td>45</td>
+      <td>🔌 Bit error</td>
+      <td>Check bus quality</td>
+    </tr>
+  </tbody>
+</table></div><hr />
+<h2 id="-core-api">
+  
+  
+    <a href="#-core-api" class="anchor-heading" aria-labelledby="-core-api"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔧 <strong>Core API</strong>
+  
+  
+</h2>
+    
+<h3 id="️-initialization-methods">
+  
+  
+    <a href="#️-initialization-methods" class="anchor-heading" aria-labelledby="️-initialization-methods"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🏗️ <strong>Initialization Methods</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Initialize the CAN controller
+ * @return hf_can_err_t error code
+ * 
+ * 📝 Sets up CAN hardware, configures pins, and prepares for communication.
+ * Must be called before any CAN operations.
+ * 
+ * @example
+ * EspCan can(config);
+ * if (can.Initialize() == hf_can_err_t::CAN_SUCCESS) {
+ *     // CAN ready for use
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">Initialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Deinitialize the CAN controller
+ * @return hf_can_err_t error code
+ * 
+ * 🧹 Cleanly shuts down CAN hardware and releases resources.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">Deinitialize</span><span class="p">()</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Check if CAN is initialized
+ * @return true if initialized, false otherwise
+ * 
+ * ❓ Query initialization status without side effects.
+ */</span>
+<span class="p">[[</span><span class="n">nodiscard</span><span class="p">]]</span> <span class="kt">bool</span> <span class="n">IsInitialized</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Ensure CAN is initialized (lazy initialization)
+ * @return true if initialized successfully, false otherwise
+ * 
+ * 🔄 Automatically initializes CAN if not already initialized.
+ */</span>
+<span class="kt">bool</span> <span class="n">EnsureInitialized</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Ensure CAN is deinitialized (lazy deinitialization)
+ * @return true if deinitialized successfully, false otherwise
+ * 
+ * 🔄 Automatically deinitializes CAN if currently initialized.
+ */</span>
+<span class="kt">bool</span> <span class="n">EnsureDeinitialized</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-message-transmission">
+  
+  
+    <a href="#-message-transmission" class="anchor-heading" aria-labelledby="-message-transmission"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📨 <strong>Message Transmission</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Send a CAN message
+ * @param message CAN message to send
+ * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
+ * @return hf_can_err_t error code
+ * 
+ * 📤 Transmits a CAN message with optional timeout.
+ * Supports both classic CAN and CAN-FD messages.
+ * 
+ * @example
+ * hf_can_message_t msg;
+ * msg.id = 0x123;
+ * msg.dlc = 8;
+ * msg.data[0] = 0x01;
+ * msg.data[1] = 0x02;
+ * // ... set other data bytes
+ * 
+ * hf_can_err_t result = can.SendMessage(msg, 1000);
+ * if (result != hf_can_err_t::CAN_SUCCESS) {
+ *     printf("Send failed: %s\n", HfCanErrToString(result));
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">SendMessage</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_can_message_t</span> <span class="o">&amp;</span><span class="n">message</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Send multiple messages in batch
+ * @param messages Array of messages to send
+ * @param count Number of messages
+ * @param timeout_ms Timeout in milliseconds
+ * @return Number of messages successfully sent
+ * 
+ * 📦 Transmits multiple messages efficiently.
+ * Returns the number of messages actually sent.
+ * 
+ * @example
+ * hf_can_message_t messages[3];
+ * // ... populate messages
+ * uint32_t sent = can.SendMessageBatch(messages, 3, 1000);
+ * printf("Sent %u of 3 messages\n", sent);
+ */</span>
+<span class="k">virtual</span> <span class="kt">uint32_t</span> <span class="n">SendMessageBatch</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_can_message_t</span> <span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">count</span><span class="p">,</span>
+                                <span class="kt">uint32_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-message-reception">
+  
+  
+    <a href="#-message-reception" class="anchor-heading" aria-labelledby="-message-reception"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📥 <strong>Message Reception</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Receive a CAN message
+ * @param message Reference to store received message
+ * @param timeout_ms Timeout in milliseconds (0 = non-blocking)
+ * @return hf_can_err_t error code
+ * 
+ * 📥 Receives a CAN message with optional timeout.
+ * Returns CAN_ERR_QUEUE_EMPTY if no message available.
+ * 
+ * @example
+ * hf_can_message_t received_msg;
+ * hf_can_err_t result = can.ReceiveMessage(received_msg, 100);
+ * if (result == hf_can_err_t::CAN_SUCCESS) {
+ *     printf("Received ID: 0x%03X, Data: ", received_msg.id);
+ *     for (int i = 0; i &lt; received_msg.dlc; i++) {
+ *         printf("%02X ", received_msg.data[i]);
+ *     }
+ *     printf("\n");
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">ReceiveMessage</span><span class="p">(</span><span class="n">hf_can_message_t</span> <span class="o">&amp;</span><span class="n">message</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span>
+<span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Receive multiple messages in batch
+ * @param messages Array to store received messages
+ * @param max_count Maximum number of messages to receive
+ * @param timeout_ms Timeout in milliseconds
+ * @return Number of messages received
+ * 
+ * 📦 Receives multiple messages efficiently.
+ * Returns the number of messages actually received.
+ * 
+ * @example
+ * hf_can_message_t messages[10];
+ * uint32_t received = can.ReceiveMessageBatch(messages, 10, 100);
+ * printf("Received %u messages\n", received);
+ */</span>
+<span class="k">virtual</span> <span class="kt">uint32_t</span> <span class="n">ReceiveMessageBatch</span><span class="p">(</span><span class="n">hf_can_message_t</span> <span class="o">*</span><span class="n">messages</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">max_count</span><span class="p">,</span>
+                                   <span class="kt">uint32_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-message-filtering">
+  
+  
+    <a href="#-message-filtering" class="anchor-heading" aria-labelledby="-message-filtering"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔍 <strong>Message Filtering</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Set acceptance filter
+ * @param id Filter ID
+ * @param mask Filter mask
+ * @param extended Extended frame flag
+ * @return hf_can_err_t error code
+ * 
+ * 🔍 Configures hardware-based message filtering.
+ * Only messages matching the filter will be received.
+ * 
+ * @example
+ * // Accept only messages with ID 0x100-0x1FF
+ * can.SetAcceptanceFilter(0x100, 0x700, false);
+ * 
+ * // Accept only extended frame with ID 0x18FF0000
+ * can.SetAcceptanceFilter(0x18FF0000, 0x1FFFFFFF, true);
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">SetAcceptanceFilter</span><span class="p">(</span><span class="kt">uint32_t</span> <span class="n">id</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">mask</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">extended</span> <span class="o">=</span> <span class="nb">false</span><span class="p">)</span> <span class="k">noexcept</span>
+<span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Clear acceptance filter
+ * @return hf_can_err_t error code
+ * 
+ * 🔄 Removes all acceptance filters.
+ * All messages will be received.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">ClearAcceptanceFilter</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-callback-management">
+  
+  
+    <a href="#-callback-management" class="anchor-heading" aria-labelledby="-callback-management"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📞 <strong>Callback Management</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Set receive callback function
+ * @param callback Callback function
+ * @return hf_can_err_t error code
+ * 
+ * 📞 Sets callback function for asynchronous message reception.
+ * Callback is invoked when messages are received.
+ * 
+ * @example
+ * void on_can_message(const hf_can_message_t &amp;msg) {
+ *     printf("Async received ID: 0x%03X\n", msg.id);
+ * }
+ * 
+ * can.SetReceiveCallback(on_can_message);
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">SetReceiveCallback</span><span class="p">(</span><span class="n">hf_can_receive_callback_t</span> <span class="n">callback</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Clear receive callback
+ * 
+ * 🔄 Removes the receive callback function.
+ */</span>
+<span class="k">virtual</span> <span class="kt">void</span> <span class="n">ClearReceiveCallback</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Set CAN-FD receive callback
+ * @param callback CAN-FD callback function
+ * @return hf_can_err_t error code
+ * 
+ * 📞 Sets callback for CAN-FD messages with enhanced information.
+ * Only available if CAN-FD is supported by the hardware.
+ * ESP32-C6 TWAI controller does not support CAN-FD.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">SetReceiveCallbackFD</span><span class="p">(</span><span class="n">hf_can_fd_receive_callback_t</span> <span class="n">callback</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="️-configuration-and-status">
+  
+  
+    <a href="#️-configuration-and-status" class="anchor-heading" aria-labelledby="️-configuration-and-status"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎛️ <strong>Configuration and Status</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Check if CAN-FD is supported
+ * @return true if supported, false otherwise
+ * 
+ * ✅ Checks if the hardware supports CAN-FD protocol.
+ * ESP32-C6 TWAI controller returns false (no CAN-FD support).
+ */</span>
+<span class="k">virtual</span> <span class="kt">bool</span> <span class="n">SupportsCanFD</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Enable/disable CAN-FD mode
+ * @param enable Enable CAN-FD mode
+ * @param data_baudrate Data phase baudrate (for CAN-FD)
+ * @return true if successful, false otherwise
+ * 
+ * 🚀 Configures CAN-FD mode if supported.
+ * ESP32-C6 TWAI controller does not support CAN-FD - returns false.
+ * Requires re-initialization to take effect.
+ */</span>
+<span class="k">virtual</span> <span class="kt">bool</span> <span class="n">SetCanFDMode</span><span class="p">(</span><span class="kt">bool</span> <span class="n">enable</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">data_baudrate</span> <span class="o">=</span> <span class="mi">2000000</span><span class="p">,</span>
+                         <span class="kt">uint32_t</span> <span class="n">timeout_ms</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get CAN bus status
+ * @param status Reference to store status information
+ * @return hf_can_err_t error code
+ * 
+ * 📊 Retrieves comprehensive CAN bus status information.
+ * 
+ * @example
+ * hf_can_status_t status;
+ * if (can.GetStatus(status) == hf_can_err_t::CAN_SUCCESS) {
+ *     printf("TX errors: %u, RX errors: %u\n", 
+ *            status.tx_error_count, status.rx_error_count);
+ *     printf("Bus off: %s\n", status.bus_off ? "Yes" : "No");
+ * }
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">GetStatus</span><span class="p">(</span><span class="n">hf_can_status_t</span> <span class="o">&amp;</span><span class="n">status</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-statistics-and-diagnostics">
+  
+  
+    <a href="#-statistics-and-diagnostics" class="anchor-heading" aria-labelledby="-statistics-and-diagnostics"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 <strong>Statistics and Diagnostics</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+</pre></td><td class="rouge-code"><pre><span class="cm">/**
+ * @brief Reset CAN operation statistics
+ * @return hf_can_err_t error code
+ * 
+ * 🔄 Clears all accumulated statistics counters.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">ResetStatistics</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Reset CAN diagnostic information
+ * @return hf_can_err_t error code
+ * 
+ * 🔄 Clears diagnostic information and error counters.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">ResetDiagnostics</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get CAN operation statistics
+ * @param statistics Reference to store statistics data
+ * @return hf_can_err_t error code
+ * 
+ * 📊 Retrieves comprehensive statistics about CAN operations.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">GetStatistics</span><span class="p">(</span><span class="n">hf_can_statistics_t</span> <span class="o">&amp;</span><span class="n">statistics</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+
+<span class="cm">/**
+ * @brief Get CAN diagnostic information
+ * @param diagnostics Reference to store diagnostics data
+ * @return hf_can_err_t error code
+ * 
+ * 🔍 Retrieves diagnostic information about CAN health and status.
+ */</span>
+<span class="k">virtual</span> <span class="n">hf_can_err_t</span> <span class="n">GetDiagnostics</span><span class="p">(</span><span class="n">hf_can_diagnostics_t</span> <span class="o">&amp;</span><span class="n">diagnostics</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-data-structures">
+  
+  
+    <a href="#-data-structures" class="anchor-heading" aria-labelledby="-data-structures"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Data Structures</strong>
+  
+  
+</h2>
+    
+<h3 id="-can-message-structure">
+  
+  
+    <a href="#-can-message-structure" class="anchor-heading" aria-labelledby="-can-message-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📨 <strong>CAN Message Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_can_message_t</span> <span class="p">{</span>
+    <span class="c1">// === Core CAN Message Fields ===</span>
+    <span class="kt">uint32_t</span> <span class="n">id</span><span class="p">;</span>     <span class="c1">///&lt; Message ID (11 or 29-bit)</span>
+    <span class="kt">uint8_t</span> <span class="n">dlc</span><span class="p">;</span>     <span class="c1">///&lt; Data length code (0-8 for classic CAN)</span>
+    <span class="kt">uint8_t</span> <span class="n">data</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span> <span class="c1">///&lt; Message data (max 8 bytes for classic CAN)</span>
+
+    <span class="c1">// === Standard CAN Flags ===</span>
+    <span class="kt">bool</span> <span class="n">is_extended</span><span class="p">;</span>  <span class="c1">///&lt; Extended ID flag (29-bit vs 11-bit)</span>
+    <span class="kt">bool</span> <span class="n">is_rtr</span><span class="p">;</span>       <span class="c1">///&lt; Remote transmission request flag</span>
+    <span class="kt">bool</span> <span class="n">is_ss</span><span class="p">;</span>        <span class="c1">///&lt; Single shot flag (no retransmission)</span>
+    <span class="kt">bool</span> <span class="n">is_self</span><span class="p">;</span>      <span class="c1">///&lt; Self reception request flag</span>
+    <span class="kt">bool</span> <span class="n">dlc_non_comp</span><span class="p">;</span> <span class="c1">///&lt; DLC is non-compliant (&gt; 8 for classic CAN)</span>
+
+    <span class="c1">// === Metadata and Diagnostics ===</span>
+    <span class="kt">uint64_t</span> <span class="n">timestamp_us</span><span class="p">;</span>    <span class="c1">///&lt; Precise timestamp in microseconds</span>
+    <span class="kt">uint32_t</span> <span class="n">sequence_number</span><span class="p">;</span> <span class="c1">///&lt; Message sequence number</span>
+    <span class="kt">uint8_t</span> <span class="n">controller_id</span><span class="p">;</span>    <span class="c1">///&lt; Originating controller ID</span>
+    <span class="kt">uint8_t</span> <span class="n">retry_count</span><span class="p">;</span>      <span class="c1">///&lt; Number of transmission retries</span>
+    <span class="kt">uint8_t</span> <span class="n">error_count</span><span class="p">;</span>      <span class="c1">///&lt; Associated error count</span>
+
+    <span class="c1">// === CAN-FD Extended Fields ===</span>
+    <span class="kt">bool</span> <span class="n">is_canfd</span><span class="p">;</span>       <span class="c1">///&lt; CAN-FD frame flag</span>
+    <span class="kt">bool</span> <span class="n">is_brs</span><span class="p">;</span>         <span class="c1">///&lt; Bit Rate Switching flag (CAN-FD)</span>
+    <span class="kt">bool</span> <span class="n">is_esi</span><span class="p">;</span>         <span class="c1">///&lt; Error State Indicator flag (CAN-FD)</span>
+    <span class="kt">uint8_t</span> <span class="n">canfd_dlc</span><span class="p">;</span>   <span class="c1">///&lt; CAN-FD DLC (can be &gt; 8)</span>
+
+    <span class="c1">// === Helper Methods ===</span>
+    <span class="kt">uint8_t</span> <span class="n">GetMaxDataLength</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Get max data length for frame type</span>
+    <span class="kt">bool</span> <span class="n">IsValidDLC</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">dlc</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Validate DLC for frame type</span>
+    <span class="kt">uint8_t</span> <span class="n">GetEffectiveDLC</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Get effective DLC value</span>
+    <span class="kt">bool</span> <span class="n">SetDLC</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">dlc</span><span class="p">)</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set DLC for current frame type</span>
+    <span class="kt">void</span> <span class="n">SetStandardFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set standard frame format</span>
+    <span class="kt">void</span> <span class="n">SetExtendedFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set extended frame format</span>
+    <span class="kt">void</span> <span class="n">SetDataFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set data frame (not remote)</span>
+    <span class="kt">void</span> <span class="n">SetRemoteFrame</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set remote frame</span>
+    <span class="kt">void</span> <span class="n">SetSingleShot</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Set single shot transmission</span>
+    <span class="kt">void</span> <span class="n">SetSelfReception</span><span class="p">()</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Enable self reception</span>
+    <span class="kt">bool</span> <span class="n">IsValidId</span><span class="p">()</span> <span class="k">const</span> <span class="k">noexcept</span><span class="p">;</span>  <span class="c1">///&lt; Validate message ID</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="️-can-configuration-structure">
+  
+  
+    <a href="#️-can-configuration-structure" class="anchor-heading" aria-labelledby="️-can-configuration-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ⚙️ <strong>CAN Configuration Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_can_config_t</span> <span class="p">{</span>
+    <span class="n">hf_pin_num_t</span> <span class="n">tx_pin</span><span class="p">;</span>     <span class="c1">///&lt; CAN TX pin</span>
+    <span class="n">hf_pin_num_t</span> <span class="n">rx_pin</span><span class="p">;</span>     <span class="c1">///&lt; CAN RX pin</span>
+    <span class="n">hf_baud_rate_t</span> <span class="n">baudrate</span><span class="p">;</span> <span class="c1">///&lt; CAN baudrate (bps)</span>
+    <span class="kt">bool</span> <span class="n">loopback_mode</span><span class="p">;</span>      <span class="c1">///&lt; Enable loopback mode for testing</span>
+    <span class="kt">bool</span> <span class="n">silent_mode</span><span class="p">;</span>        <span class="c1">///&lt; Enable silent mode (listen-only)</span>
+    <span class="kt">uint16_t</span> <span class="n">tx_queue_size</span><span class="p">;</span>  <span class="c1">///&lt; TX queue size (implementation-dependent)</span>
+    <span class="kt">uint16_t</span> <span class="n">rx_queue_size</span><span class="p">;</span>  <span class="c1">///&lt; RX queue size (implementation-dependent)</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-can-status-structure">
+  
+  
+    <a href="#-can-status-structure" class="anchor-heading" aria-labelledby="-can-status-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>CAN Status Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_can_status_t</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">tx_error_count</span><span class="p">;</span>  <span class="c1">///&lt; Transmit error counter</span>
+    <span class="kt">uint32_t</span> <span class="n">rx_error_count</span><span class="p">;</span>  <span class="c1">///&lt; Receive error counter</span>
+    <span class="kt">uint32_t</span> <span class="n">tx_failed_count</span><span class="p">;</span> <span class="c1">///&lt; Failed transmission count</span>
+    <span class="kt">uint32_t</span> <span class="n">rx_missed_count</span><span class="p">;</span> <span class="c1">///&lt; Missed reception count</span>
+    <span class="kt">bool</span> <span class="n">bus_off</span><span class="p">;</span>             <span class="c1">///&lt; Bus-off state</span>
+    <span class="kt">bool</span> <span class="n">error_warning</span><span class="p">;</span>       <span class="c1">///&lt; Error warning state</span>
+    <span class="kt">bool</span> <span class="n">error_passive</span><span class="p">;</span>       <span class="c1">///&lt; Error passive state</span>
+
+    <span class="c1">// CAN-FD specific status</span>
+    <span class="kt">bool</span> <span class="n">canfd_enabled</span><span class="p">;</span>        <span class="c1">///&lt; CAN-FD mode is active</span>
+    <span class="kt">bool</span> <span class="n">canfd_brs_enabled</span><span class="p">;</span>    <span class="c1">///&lt; Bit Rate Switching is enabled</span>
+    <span class="kt">uint32_t</span> <span class="n">nominal_baudrate</span><span class="p">;</span> <span class="c1">///&lt; Nominal bit rate (arbitration phase)</span>
+    <span class="kt">uint32_t</span> <span class="n">data_baudrate</span><span class="p">;</span>    <span class="c1">///&lt; Data bit rate (data phase for CAN-FD)</span>
+    <span class="kt">uint32_t</span> <span class="n">canfd_tx_count</span><span class="p">;</span>   <span class="c1">///&lt; Number of CAN-FD frames transmitted</span>
+    <span class="kt">uint32_t</span> <span class="n">canfd_rx_count</span><span class="p">;</span>   <span class="c1">///&lt; Number of CAN-FD frames received</span>
+    <span class="kt">uint32_t</span> <span class="n">brs_tx_count</span><span class="p">;</span>     <span class="c1">///&lt; Number of BRS frames transmitted</span>
+    <span class="kt">uint32_t</span> <span class="n">brs_rx_count</span><span class="p">;</span>     <span class="c1">///&lt; Number of BRS frames received</span>
+    <span class="kt">uint32_t</span> <span class="n">form_errors</span><span class="p">;</span>      <span class="c1">///&lt; CAN-FD form errors</span>
+    <span class="kt">uint32_t</span> <span class="n">stuff_errors</span><span class="p">;</span>     <span class="c1">///&lt; Stuff errors</span>
+    <span class="kt">uint32_t</span> <span class="n">crc_errors</span><span class="p">;</span>       <span class="c1">///&lt; CRC errors</span>
+    <span class="kt">uint32_t</span> <span class="n">bit_errors</span><span class="p">;</span>       <span class="c1">///&lt; Bit errors</span>
+    <span class="kt">uint32_t</span> <span class="n">ack_errors</span><span class="p">;</span>       <span class="c1">///&lt; Acknowledgment errors</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-can-statistics-structure">
+  
+  
+    <a href="#-can-statistics-structure" class="anchor-heading" aria-labelledby="-can-statistics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📈 <strong>CAN Statistics Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_can_statistics_t</span> <span class="p">{</span>
+    <span class="c1">// Message counters</span>
+    <span class="kt">uint64_t</span> <span class="n">messages_sent</span><span class="p">;</span>          <span class="c1">///&lt; Total messages successfully sent</span>
+    <span class="kt">uint64_t</span> <span class="n">messages_received</span><span class="p">;</span>      <span class="c1">///&lt; Total messages successfully received</span>
+    <span class="kt">uint64_t</span> <span class="n">bytes_transmitted</span><span class="p">;</span>      <span class="c1">///&lt; Total bytes transmitted</span>
+    <span class="kt">uint64_t</span> <span class="n">bytes_received</span><span class="p">;</span>         <span class="c1">///&lt; Total bytes received</span>
+    
+    <span class="c1">// Error counters</span>
+    <span class="kt">uint32_t</span> <span class="n">send_failures</span><span class="p">;</span>          <span class="c1">///&lt; Failed send operations</span>
+    <span class="kt">uint32_t</span> <span class="n">receive_failures</span><span class="p">;</span>       <span class="c1">///&lt; Failed receive operations</span>
+    <span class="kt">uint32_t</span> <span class="n">bus_error_count</span><span class="p">;</span>        <span class="c1">///&lt; Total bus errors</span>
+    <span class="kt">uint32_t</span> <span class="n">arbitration_lost_count</span><span class="p">;</span> <span class="c1">///&lt; Arbitration lost events</span>
+    <span class="kt">uint32_t</span> <span class="n">tx_failed_count</span><span class="p">;</span>        <span class="c1">///&lt; Transmission failures</span>
+    <span class="kt">uint32_t</span> <span class="n">bus_off_events</span><span class="p">;</span>         <span class="c1">///&lt; Bus-off occurrences</span>
+    <span class="kt">uint32_t</span> <span class="n">error_warning_events</span><span class="p">;</span>   <span class="c1">///&lt; Error warning events</span>
+    
+    <span class="c1">// Performance metrics</span>
+    <span class="kt">uint64_t</span> <span class="n">uptime_seconds</span><span class="p">;</span>         <span class="c1">///&lt; Total uptime in seconds</span>
+    <span class="kt">uint32_t</span> <span class="n">last_activity_timestamp</span><span class="p">;</span><span class="c1">///&lt; Last activity timestamp</span>
+    <span class="n">hf_can_err_t</span> <span class="n">last_error</span><span class="p">;</span>         <span class="c1">///&lt; Last error encountered</span>
+    
+    <span class="c1">// Queue statistics</span>
+    <span class="kt">uint32_t</span> <span class="n">tx_queue_peak</span><span class="p">;</span>          <span class="c1">///&lt; Peak TX queue usage</span>
+    <span class="kt">uint32_t</span> <span class="n">rx_queue_peak</span><span class="p">;</span>          <span class="c1">///&lt; Peak RX queue usage</span>
+    <span class="kt">uint32_t</span> <span class="n">tx_queue_overflows</span><span class="p">;</span>     <span class="c1">///&lt; TX queue overflow count</span>
+    <span class="kt">uint32_t</span> <span class="n">rx_queue_overflows</span><span class="p">;</span>     <span class="c1">///&lt; RX queue overflow count</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-can-diagnostics-structure">
+  
+  
+    <a href="#-can-diagnostics-structure" class="anchor-heading" aria-labelledby="-can-diagnostics-structure"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔍 <strong>CAN Diagnostics Structure</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="k">struct</span> <span class="nc">hf_can_diagnostics_t</span> <span class="p">{</span>
+    <span class="kt">uint32_t</span> <span class="n">tx_error_count</span><span class="p">;</span>         <span class="c1">///&lt; Transmit error counter</span>
+    <span class="kt">uint32_t</span> <span class="n">rx_error_count</span><span class="p">;</span>         <span class="c1">///&lt; Receive error counter</span>
+    <span class="kt">uint32_t</span> <span class="n">tx_queue_peak</span><span class="p">;</span>          <span class="c1">///&lt; Peak TX queue usage</span>
+    <span class="kt">uint32_t</span> <span class="n">rx_queue_peak</span><span class="p">;</span>          <span class="c1">///&lt; Peak RX queue usage</span>
+    <span class="kt">uint32_t</span> <span class="n">last_error_timestamp</span><span class="p">;</span>   <span class="c1">///&lt; Timestamp of last error</span>
+    <span class="kt">uint32_t</span> <span class="n">controller_resets</span><span class="p">;</span>      <span class="c1">///&lt; Number of controller resets</span>
+    <span class="kt">uint32_t</span> <span class="n">bus_load_percentage</span><span class="p">;</span>    <span class="c1">///&lt; Current bus load percentage</span>
+    <span class="kt">float</span> <span class="n">bit_error_rate</span><span class="p">;</span>            <span class="c1">///&lt; Bit error rate (errors/bits)</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-usage-examples">
+  
+  
+    <a href="#-usage-examples" class="anchor-heading" aria-labelledby="-usage-examples"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📊 <strong>Usage Examples</strong>
+  
+  
+</h2>
+    
+<h3 id="-basic-message-transmission">
+  
+  
+    <a href="#-basic-message-transmission" class="anchor-heading" aria-labelledby="-basic-message-transmission"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📨 <strong>Basic Message Transmission</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspCan.h"</span><span class="cp">
+</span>
+<span class="c1">// Create CAN instance</span>
+<span class="n">hf_can_config_t</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">tx_pin</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">rx_pin</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">baudrate</span> <span class="o">=</span> <span class="mi">500000</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">loopback_mode</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">silent_mode</span> <span class="o">=</span> <span class="nb">false</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">tx_queue_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="p">.</span><span class="n">rx_queue_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="p">};</span>
+
+<span class="n">EspCan</span> <span class="n">can</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize CAN</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">can</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">==</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ CAN initialized successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">send_status_message</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">hf_can_message_t</span> <span class="n">msg</span><span class="p">;</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="mh">0x100</span><span class="p">;</span>  <span class="c1">// Status message ID</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">dlc</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>     <span class="c1">// 8 bytes of data</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">is_extended</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">is_rtr</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+    
+    <span class="c1">// Pack status data</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>  <span class="c1">// Status byte</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x02</span><span class="p">;</span>  <span class="c1">// Temperature</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x03</span><span class="p">;</span>  <span class="c1">// Voltage</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x04</span><span class="p">;</span>  <span class="c1">// Current</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x05</span><span class="p">;</span>  <span class="c1">// Speed</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x06</span><span class="p">;</span>  <span class="c1">// Position</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x07</span><span class="p">;</span>  <span class="c1">// Error flags</span>
+    <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x08</span><span class="p">;</span>  <span class="c1">// Checksum</span>
+    
+    <span class="n">hf_can_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">can</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Send failed: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfCanErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Message sent successfully</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-message-reception-1">
+  
+  
+    <a href="#-message-reception-1" class="anchor-heading" aria-labelledby="-message-reception-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📥 <strong>Message Reception</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspCan.h"</span><span class="cp">
+</span>
+<span class="n">EspCan</span> <span class="nf">can</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">receive_messages</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">hf_can_message_t</span> <span class="n">msg</span><span class="p">;</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">hf_can_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">can</span><span class="p">.</span><span class="n">ReceiveMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"📥 Received ID: 0x%03X, DLC: %u, Data: "</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">dlc</span><span class="p">);</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">msg</span><span class="p">.</span><span class="n">dlc</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"%02X "</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="p">}</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            
+            <span class="c1">// Process message based on ID</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="mh">0x100</span><span class="p">:</span>
+                    <span class="n">process_status_message</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="k">case</span> <span class="mh">0x200</span><span class="p">:</span>
+                    <span class="n">process_command_message</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="nl">default:</span>
+                    <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Unknown message ID: 0x%03X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+                    <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_ERR_QUEUE_EMPTY</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// No message available, continue</span>
+            <span class="k">continue</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Receive error: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfCanErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">process_status_message</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_can_message_t</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">dlc</span> <span class="o">&gt;=</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">uint8_t</span> <span class="n">status</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+        <span class="kt">uint8_t</span> <span class="n">temperature</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="kt">uint8_t</span> <span class="n">voltage</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="kt">uint8_t</span> <span class="n">current</span> <span class="o">=</span> <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+        
+        <span class="n">printf</span><span class="p">(</span><span class="s">"📊 Status - Temp: %u°C, V: %uV, I: %uA</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+               <span class="n">temperature</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="n">current</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-message-filtering-1">
+  
+  
+    <a href="#-message-filtering-1" class="anchor-heading" aria-labelledby="-message-filtering-1"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔍 <strong>Message Filtering</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspCan.h"</span><span class="cp">
+</span>
+<span class="n">EspCan</span> <span class="nf">can</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup_filtering</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize CAN</span>
+    <span class="n">can</span><span class="p">.</span><span class="n">Initialize</span><span class="p">();</span>
+    
+    <span class="c1">// Accept only status messages (0x100-0x1FF)</span>
+    <span class="n">can</span><span class="p">.</span><span class="n">SetAcceptanceFilter</span><span class="p">(</span><span class="mh">0x100</span><span class="p">,</span> <span class="mh">0x700</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+    
+    <span class="c1">// Accept only command messages (0x200-0x2FF)</span>
+    <span class="n">can</span><span class="p">.</span><span class="n">SetAcceptanceFilter</span><span class="p">(</span><span class="mh">0x200</span><span class="p">,</span> <span class="mh">0x700</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+    
+    <span class="c1">// Accept only diagnostic messages (0x7DF-0x7FF)</span>
+    <span class="n">can</span><span class="p">.</span><span class="n">SetAcceptanceFilter</span><span class="p">(</span><span class="mh">0x7DF</span><span class="p">,</span> <span class="mh">0x7E0</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Message filtering configured</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">receive_filtered_messages</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">hf_can_message_t</span> <span class="n">msg</span><span class="p">;</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">can</span><span class="p">.</span><span class="n">ReceiveMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// Only filtered messages will be received</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"📥 Filtered message ID: 0x%03X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-asynchronous-reception-with-callbacks">
+  
+  
+    <a href="#-asynchronous-reception-with-callbacks" class="anchor-heading" aria-labelledby="-asynchronous-reception-with-callbacks"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 📞 <strong>Asynchronous Reception with Callbacks</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspCan.h"</span><span class="cp">
+</span>
+<span class="n">EspCan</span> <span class="nf">can</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
+
+<span class="c1">// Callback function for received messages</span>
+<span class="kt">void</span> <span class="nf">on_can_message</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_can_message_t</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"📞 Async received ID: 0x%03X</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">msg</span><span class="p">.</span><span class="n">id</span><span class="p">);</span>
+    
+    <span class="c1">// Process message in callback context</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="mh">0x100</span><span class="p">:</span>
+            <span class="c1">// Handle status message</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mh">0x200</span><span class="p">:</span>
+            <span class="c1">// Handle command message</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">setup_async_reception</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// Initialize CAN</span>
+    <span class="n">can</span><span class="p">.</span><span class="n">Initialize</span><span class="p">();</span>
+    
+    <span class="c1">// Set receive callback</span>
+    <span class="n">can</span><span class="p">.</span><span class="n">SetReceiveCallback</span><span class="p">(</span><span class="n">on_can_message</span><span class="p">);</span>
+    
+    <span class="n">printf</span><span class="p">(</span><span class="s">"✅ Asynchronous reception enabled</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">main_loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Main application logic</span>
+        <span class="c1">// Messages will be handled automatically by callback</span>
+        
+        <span class="n">vTaskDelay</span><span class="p">(</span><span class="n">pdMS_TO_TICKS</span><span class="p">(</span><span class="mi">100</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-motor-control-system">
+  
+  
+    <a href="#-motor-control-system" class="anchor-heading" aria-labelledby="-motor-control-system"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🚌 <strong>Motor Control System</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+</pre></td><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">"mcu/esp32/EspCan.h"</span><span class="cp">
+</span>
+<span class="k">class</span> <span class="nc">MotorController</span> <span class="p">{</span>
+<span class="nl">private:</span>
+    <span class="n">EspCan</span> <span class="n">can</span><span class="o">*</span><span class="p">;</span>
+    <span class="kt">uint32_t</span> <span class="n">motor_id</span><span class="o">*</span><span class="p">;</span>
+    
+<span class="nl">public:</span>
+    <span class="n">MotorController</span><span class="p">(</span><span class="k">const</span> <span class="n">hf_can_config_t</span> <span class="o">&amp;</span><span class="n">config</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">motor_id</span><span class="p">)</span> 
+        <span class="o">:</span> <span class="n">can</span><span class="o">*</span><span class="p">(</span><span class="n">config</span><span class="p">),</span> <span class="n">motor_id</span><span class="o">*</span><span class="p">(</span><span class="n">motor_id</span><span class="p">)</span> <span class="p">{}</span>
+    
+    <span class="kt">bool</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">can</span><span class="o">*</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">==</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">set_speed</span><span class="p">(</span><span class="kt">float</span> <span class="n">speed_rpm</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">hf_can_message_t</span> <span class="n">msg</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="mh">0x200</span> <span class="o">+</span> <span class="n">motor_id</span><span class="o">*</span><span class="p">;</span>  <span class="c1">// Command message for this motor</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">dlc</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">is_extended</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">is_rtr</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        
+        <span class="c1">// Pack speed command</span>
+        <span class="kt">uint16_t</span> <span class="n">speed_raw</span> <span class="o">=</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">uint16_t</span><span class="o">&gt;</span><span class="p">(</span><span class="n">speed_rpm</span><span class="p">);</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>  <span class="c1">// Command type: set speed</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">speed_raw</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">speed_raw</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">calculate_checksum</span><span class="p">(</span><span class="n">msg</span><span class="p">.</span><span class="n">data</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+        
+        <span class="n">hf_can_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">can</span><span class="o">*</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"❌ Speed command failed: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfCanErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">request_status</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">hf_can_message_t</span> <span class="n">msg</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="mh">0x100</span> <span class="o">+</span> <span class="n">motor_id</span><span class="o">*</span><span class="p">;</span>  <span class="c1">// Status request for this motor</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">dlc</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">is_extended</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+        <span class="n">msg</span><span class="p">.</span><span class="n">is_rtr</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>  <span class="c1">// Remote frame</span>
+        
+        <span class="n">can</span><span class="o">*</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kt">void</span> <span class="n">monitor_status</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">hf_can_status_t</span> <span class="n">status</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">can</span><span class="o">*</span><span class="p">.</span><span class="n">GetStatus</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"📊 CAN Status - TX errors: %u, RX errors: %u, Bus off: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span>
+                   <span class="n">status</span><span class="p">.</span><span class="n">tx_error_count</span><span class="p">,</span> <span class="n">status</span><span class="p">.</span><span class="n">rx_error_count</span><span class="p">,</span>
+                   <span class="n">status</span><span class="p">.</span><span class="n">bus_off</span> <span class="o">?</span> <span class="s">"Yes"</span> <span class="o">:</span> <span class="s">"No"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+<span class="nl">private:</span>
+    <span class="kt">uint8_t</span> <span class="n">calculate_checksum</span><span class="p">(</span><span class="k">const</span> <span class="kt">uint8_t</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">uint8_t</span> <span class="n">checksum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">uint8_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">checksum</span> <span class="o">^=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">checksum</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-best-practices">
+  
+  
+    <a href="#-best-practices" class="anchor-heading" aria-labelledby="-best-practices"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🧪 <strong>Best Practices</strong>
+  
+  
+</h2>
+    
+<h3 id="-recommended-patterns">
+  
+  
+    <a href="#-recommended-patterns" class="anchor-heading" aria-labelledby="-recommended-patterns"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ✅ <strong>Recommended Patterns</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre></td><td class="rouge-code"><pre><span class="c1">// ✅ Always check initialization</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">can</span><span class="p">.</span><span class="n">Initialize</span><span class="p">()</span> <span class="o">!=</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"❌ CAN initialization failed</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Use appropriate timeouts</span>
+<span class="n">can</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>  <span class="c1">// 1 second timeout for critical messages</span>
+<span class="n">can</span><span class="p">.</span><span class="n">ReceiveMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>  <span class="c1">// 100ms timeout for non-blocking receive</span>
+
+<span class="c1">// ✅ Handle all error codes</span>
+<span class="n">hf_can_err_t</span> <span class="n">result</span> <span class="o">=</span> <span class="n">can</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">timeout</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ Send error: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">HfCanErrToString</span><span class="p">(</span><span class="n">result</span><span class="p">));</span>
+    <span class="c1">// Handle specific error types</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_ERR_BUS_OFF</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Bus off - restart controller</span>
+        <span class="n">can</span><span class="p">.</span><span class="n">Deinitialize</span><span class="p">();</span>
+        <span class="n">can</span><span class="p">.</span><span class="n">Initialize</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ✅ Use message filtering for efficiency</span>
+<span class="n">can</span><span class="p">.</span><span class="n">SetAcceptanceFilter</span><span class="p">(</span><span class="mh">0x100</span><span class="p">,</span> <span class="mh">0x700</span><span class="p">,</span> <span class="nb">false</span><span class="p">);</span>  <span class="c1">// Only accept status messages</span>
+
+<span class="c1">// ✅ Monitor bus health</span>
+<span class="n">hf_can_status_t</span> <span class="n">status</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">can</span><span class="p">.</span><span class="n">GetStatus</span><span class="p">(</span><span class="n">status</span><span class="p">)</span> <span class="o">==</span> <span class="n">hf_can_err_t</span><span class="o">::</span><span class="n">CAN_SUCCESS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">bus_off</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"🚨 Bus off detected!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">status</span><span class="p">.</span><span class="n">tx_error_count</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ High TX error count: %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">status</span><span class="p">.</span><span class="n">tx_error_count</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-common-pitfalls">
+  
+  
+    <a href="#-common-pitfalls" class="anchor-heading" aria-labelledby="-common-pitfalls"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> ❌ <strong>Common Pitfalls</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="c1">// ❌ Don't ignore initialization</span>
+<span class="n">can</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>  <span class="c1">// May fail silently</span>
+
+<span class="c1">// ❌ Don't use infinite timeouts in real-time systems</span>
+<span class="n">can</span><span class="p">.</span><span class="n">ReceiveMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">UINT32_MAX</span><span class="p">);</span>  <span class="c1">// May block forever</span>
+
+<span class="c1">// ❌ Don't ignore error codes</span>
+<span class="n">can</span><span class="p">.</span><span class="n">SendMessage</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>  <span class="c1">// Error handling missing</span>
+
+<span class="c1">// ❌ Don't assume message reception</span>
+<span class="c1">// Always check return values for receive operations</span>
+
+<span class="c1">// ❌ Don't use without proper bus termination</span>
+<span class="c1">// CAN bus requires proper termination resistors</span>
+
+<span class="c1">// ❌ Don't ignore bus-off state</span>
+<span class="c1">// Bus-off requires controller restart</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div>
+<h3 id="-performance-optimization">
+  
+  
+    <a href="#-performance-optimization" class="anchor-heading" aria-labelledby="-performance-optimization"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🎯 <strong>Performance Optimization</strong>
+  
+  
+</h3>
+    
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><div class="table-wrapper"><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre></td><td class="rouge-code"><pre><span class="c1">// 🚀 Use batch operations for multiple messages</span>
+<span class="n">hf_can_message_t</span> <span class="n">messages</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+<span class="c1">// ... populate messages</span>
+<span class="kt">uint32_t</span> <span class="n">sent</span> <span class="o">=</span> <span class="n">can</span><span class="p">.</span><span class="n">SendMessageBatch</span><span class="p">(</span><span class="n">messages</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">);</span>
+
+<span class="c1">// 🚀 Use callbacks for high-frequency reception</span>
+<span class="n">can</span><span class="p">.</span><span class="n">SetReceiveCallback</span><span class="p">(</span><span class="n">on_message</span><span class="p">);</span>  <span class="c1">// Non-blocking reception</span>
+
+<span class="c1">// 🚀 Use appropriate queue sizes</span>
+<span class="n">hf_can_config_t</span> <span class="n">config</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">.</span><span class="n">tx_queue_size</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>  <span class="c1">// Larger for high-frequency transmission</span>
+    <span class="p">.</span><span class="n">rx_queue_size</span> <span class="o">=</span> <span class="mi">50</span>   <span class="c1">// Larger for high-frequency reception</span>
+<span class="p">};</span>
+
+<span class="c1">// 🚀 Use message filtering to reduce CPU load</span>
+<span class="n">can</span><span class="p">.</span><span class="n">SetAcceptanceFilter</span><span class="p">(</span><span class="n">target_id</span><span class="p">,</span> <span class="n">mask</span><span class="p">,</span> <span class="n">extended</span><span class="p">);</span>
+
+<span class="c1">// 🚀 Monitor statistics for performance tuning</span>
+<span class="n">hf_can_statistics_t</span> <span class="n">stats</span><span class="p">;</span>
+<span class="n">can</span><span class="p">.</span><span class="n">GetStatistics</span><span class="p">(</span><span class="n">stats</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">stats</span><span class="p">.</span><span class="n">tx_queue_overflows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"⚠️ TX queue overflow - increase queue size</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></div></code></pre></div></div><hr />
+<h2 id="-related-documentation">
+  
+  
+    <a href="#-related-documentation" class="anchor-heading" aria-labelledby="-related-documentation"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> 🔗 <strong>Related Documentation</strong>
+  
+  
+</h2>
+    
+
+<ul>
+  <li><a href="/hf-internal-interface-wrap/development/docs/esp_api/EspCan/">⚙️ <strong>EspCan</strong></a> - ESP32-C6 implementation</li>
+  <li><a href="/hf-internal-interface-wrap/development/docs/api/HardwareTypes/">🎯 <strong>Hardware Types</strong></a> - Platform-agnostic types</li>
+</ul><hr />
+<p><strong>🚌 BaseCan - The Foundation of CAN Communication in HardFOC</strong></p>
+
+<p><em>Part of the HardFOC Internal Interface Wrapper Documentation</em></p>
+
+          
+
+          
+            
+          
+        </main>
+        
+
+  <hr>
+  <footer>
+    
+
+    <footer class="site-footer">
+  <div class="site-footer-credits">
+    <p>Built with ❤️ using <a href="https://just-the-docs.github.io/just-the-docs/">Just the Docs</a></p>
+    <p><a href="https://github.com/n3b3x/hf-internal-interface-wrap/blob/main/LICENSE">GPL v3 License</a> • <a href="https://github.com/n3b3x/hf-internal-interface-wrap">View on GitHub</a></p>
+  </div>
+</footer>
+
+
+    
+  </footer>
+
+
+      </div>
+    </div>
+    
+      
+<button id="search-button" class="search-button btn-reset" aria-label="Focus on search">
+  <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+</button>
+
+
+<div class="search-overlay"></div>
+
+    
+  </div>
+
+  
+</body>
+</html>
+

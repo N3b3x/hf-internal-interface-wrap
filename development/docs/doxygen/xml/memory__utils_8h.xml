@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="memory__utils_8h" kind="file" language="C++">
+    <compoundname>memory_utils.h</compoundname>
+    <includes local="no">memory</includes>
+    <includes local="no">new</includes>
+    <includes local="no">utility</includes>
+    <includedby refid="GpioComprehensiveTest_8cpp" local="yes">examples/esp32/main/GpioComprehensiveTest.cpp</includedby>
+    <includedby refid="LoggerComprehensiveTest_8cpp" local="yes">examples/esp32/main/LoggerComprehensiveTest.cpp</includedby>
+    <includedby refid="EspI2c_8cpp" local="yes">src/mcu/esp32/EspI2c.cpp</includedby>
+    <includedby refid="EspSpi_8cpp" local="yes">src/mcu/esp32/EspSpi.cpp</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>inc/utils/memory_utils.h</label>
+        <link refid="memory__utils_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>new</label>
+      </node>
+      <node id="4">
+        <label>utility</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>examples/esp32/main/GpioComprehensiveTest.cpp</label>
+        <link refid="GpioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="3">
+        <label>examples/esp32/main/LoggerComprehensiveTest.cpp</label>
+        <link refid="LoggerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="1">
+        <label>inc/utils/memory_utils.h</label>
+        <link refid="memory__utils_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespacehf">hf</innernamespace>
+    <innernamespace refid="namespacehf_1_1utils">hf::utils</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;new&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;utility&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="namespacehf" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacehf" kindref="compound">hf</ref><sp/>{</highlight></codeline>
+<codeline lineno="8" refid="namespacehf_1_1utils" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">utils<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">T</ref>,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal">...<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">Args</ref>&gt;</highlight></codeline>
+<codeline lineno="33" refid="namespacehf_1_1utils_1a8cc6a65bb150aad69866ad9c665487b9" refkind="member"><highlight class="normal">std::unique_ptr&lt;T&gt;<sp/><ref refid="namespacehf_1_1utils_1a8cc6a65bb150aad69866ad9c665487b9" kindref="member">make_unique_nothrow</ref>(<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">Args</ref>&amp;&amp;...<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">args</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">T</ref>*<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">raw_ptr</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>(std::nothrow)<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">T</ref>(std::forward&lt;Args&gt;(<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">args</ref>)...);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">raw_ptr</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;T&gt;(<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">raw_ptr</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="61" refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" refkind="member"><highlight class="normal">std::unique_ptr&lt;T[]&gt;<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">make_unique_array_nothrow</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">T</ref>*<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">raw_ptr</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>(std::nothrow)<sp/><ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">T</ref>[size];</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">raw_ptr</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;T[]&gt;(<ref refid="namespacehf_1_1utils_1af69771ffbe64d79f38a652012d5d7a93" kindref="member">raw_ptr</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>utils</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>hf</highlight></codeline>
+    </programlisting>
+    <location file="inc/utils/memory_utils.h"/>
+  </compounddef>
+</doxygen>

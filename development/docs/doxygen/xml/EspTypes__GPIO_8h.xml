@@ -1,0 +1,1770 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="EspTypes__GPIO_8h" kind="file" language="C++">
+    <compoundname>EspTypes_GPIO.h</compoundname>
+    <includes refid="BaseGpio_8h" local="yes">BaseGpio.h</includes>
+    <includes refid="EspTypes__Base_8h" local="yes">EspTypes_Base.h</includes>
+    <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
+    <includes refid="McuSelect_8h" local="yes">McuSelect.h</includes>
+    <includedby refid="GpioComprehensiveTest_8cpp" local="yes">examples/esp32/main/GpioComprehensiveTest.cpp</includedby>
+    <includedby refid="EspGpio_8h" local="yes">inc/mcu/esp32/EspGpio.h</includedby>
+    <includedby refid="EspTypes_8h" local="yes">inc/mcu/esp32/utils/EspTypes.h</includedby>
+    <includedby refid="EspTypes__PWM_8h" local="yes">inc/mcu/esp32/utils/EspTypes_PWM.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>../../utils/McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="10">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="6">
+        <label>functional</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="7">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9">
+        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
+        <link refid="AdcComprehensiveTest_8cpp"/>
+      </node>
+      <node id="10">
+        <label>examples/esp32/main/AsciiArtComprehensiveTest.cpp</label>
+        <link refid="AsciiArtComprehensiveTest_8cpp"/>
+      </node>
+      <node id="11">
+        <label>examples/esp32/main/BluetoothComprehensiveTest.cpp</label>
+        <link refid="BluetoothComprehensiveTest_8cpp"/>
+      </node>
+      <node id="12">
+        <label>examples/esp32/main/CanComprehensiveTest.cpp</label>
+        <link refid="CanComprehensiveTest_8cpp"/>
+      </node>
+      <node id="4">
+        <label>examples/esp32/main/DigitalOutputGuardComprehensiveTest.cpp</label>
+        <link refid="DigitalOutputGuardComprehensiveTest_8cpp"/>
+      </node>
+      <node id="2">
+        <label>examples/esp32/main/GpioComprehensiveTest.cpp</label>
+        <link refid="GpioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="5">
+        <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
+        <link refid="I2cComprehensiveTest_8cpp"/>
+      </node>
+      <node id="13">
+        <label>examples/esp32/main/LoggerComprehensiveTest.cpp</label>
+        <link refid="LoggerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="14">
+        <label>examples/esp32/main/NvsComprehensiveTest.cpp</label>
+        <link refid="NvsComprehensiveTest_8cpp"/>
+      </node>
+      <node id="6">
+        <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
+        <link refid="PioComprehensiveTest_8cpp"/>
+      </node>
+      <node id="7">
+        <label>examples/esp32/main/PwmComprehensiveTest.cpp</label>
+        <link refid="PwmComprehensiveTest_8cpp"/>
+      </node>
+      <node id="15">
+        <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
+        <link refid="SpiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="16">
+        <label>examples/esp32/main/TemperatureComprehensiveTest.cpp</label>
+        <link refid="TemperatureComprehensiveTest_8cpp"/>
+      </node>
+      <node id="8">
+        <label>examples/esp32/main/TestFramework.h</label>
+        <link refid="TestFramework_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
+        <link refid="TimerComprehensiveTest_8cpp"/>
+      </node>
+      <node id="18">
+        <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
+        <link refid="UartComprehensiveTest_8cpp"/>
+      </node>
+      <node id="19">
+        <label>examples/esp32/main/WifiComprehensiveTest.cpp</label>
+        <link refid="WifiComprehensiveTest_8cpp"/>
+      </node>
+      <node id="22">
+        <label>inc/mcu/esp32/EspAdc.h</label>
+        <link refid="EspAdc_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>inc/mcu/esp32/EspGpio.h</label>
+        <link refid="EspGpio_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="35">
+        <label>inc/mcu/esp32/EspPwm.h</label>
+        <link refid="EspPwm_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>inc/mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>inc/mcu/esp32/utils/EspTypes.h</label>
+        <link refid="EspTypes_8h"/>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/esp32/utils/EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>inc/mcu/esp32/utils/EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>src/mcu/esp32/EspAdc.cpp</label>
+        <link refid="EspAdc_8cpp"/>
+      </node>
+      <node id="20">
+        <label>src/mcu/esp32/EspGpio.cpp</label>
+        <link refid="EspGpio_8cpp"/>
+      </node>
+      <node id="25">
+        <label>src/mcu/esp32/EspI2c.cpp</label>
+        <link refid="EspI2c_8cpp"/>
+      </node>
+      <node id="27">
+        <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
+        <link refid="EspPeriodicTimer_8cpp"/>
+      </node>
+      <node id="29">
+        <label>src/mcu/esp32/EspPio.cpp</label>
+        <link refid="EspPio_8cpp"/>
+      </node>
+      <node id="36">
+        <label>src/mcu/esp32/EspPwm.cpp</label>
+        <link refid="EspPwm_8cpp"/>
+      </node>
+      <node id="31">
+        <label>src/mcu/esp32/EspSpi.cpp</label>
+        <link refid="EspSpi_8cpp"/>
+      </node>
+      <node id="33">
+        <label>src/mcu/esp32/EspUart.cpp</label>
+        <link refid="EspUart_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structhf__lp__io__config__t" prot="public">hf_lp_io_config_t</innerclass>
+    <innerclass refid="structhf__gpio__flex__filter__config__t" prot="public">hf_gpio_flex_filter_config_t</innerclass>
+    <innerclass refid="structhf__gpio__pin__filter__config__t" prot="public">hf_gpio_pin_filter_config_t</innerclass>
+    <innerclass refid="structhf__gpio__sleep__config__t" prot="public">hf_gpio_sleep_config_t</innerclass>
+    <innerclass refid="structhf__gpio__wakeup__config__t" prot="public">hf_gpio_wakeup_config_t</innerclass>
+    <innerclass refid="structhf__gpio__advanced__config__t" prot="public">hf_gpio_advanced_config_t</innerclass>
+    <innerclass refid="structhf__gpio__status__info__t" prot="public">hf_gpio_status_info_t</innerclass>
+    <innerclass refid="structhf__gpio__pin__capabilities__t" prot="public">hf_gpio_pin_capabilities_t</innerclass>
+    <innerclass refid="structhf__gpio__pin__info__t" prot="public">hf_gpio_pin_info_t</innerclass>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1ae8020cac40277fa6c3ba8c0761c0f194" prot="public" static="no">
+        <name>HF_GPIO_IS_ADC_CAPABLE</name>
+        <param><defname>pin</defname></param>
+        <initializer>(false)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="248" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="248" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1ac12cd2a8d9a1657859e5bcfab569f217" prot="public" static="no">
+        <name>HF_GPIO_IS_SPI_PIN</name>
+        <param><defname>pin</defname></param>
+        <initializer>(false)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="251" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="251" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1ae0f0b8bee595029cdac4395dfe6ab74f" prot="public" static="no">
+        <name>HF_GPIO_IS_RTC_GPIO</name>
+        <param><defname>pin</defname></param>
+        <initializer>(false)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="254" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="254" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a82f160ff85b7f87247c8543a3daffcb8" prot="public" static="no">
+        <name>HF_GPIO_IS_STRAPPING_PIN</name>
+        <param><defname>pin</defname></param>
+        <initializer>(false)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="257" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="257" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1ac1631752989bff41b5c0d820b59315cc" prot="public" static="no">
+        <name>HF_GPIO_IS_USB_JTAG_PIN</name>
+        <param><defname>pin</defname></param>
+        <initializer>(false)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="260" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="260" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a79089afb0a0f9cf924381db9fa2b13d1" prot="public" static="no">
+        <name>HF_GPIO_SUPPORTS_GLITCH_FILTER</name>
+        <param><defname>pin</defname></param>
+        <initializer>(false)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="263" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="263" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" prot="public" static="no">
+        <name>HF_GPIO_IS_VALID_GPIO</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>  ((gpio_num) &gt;= 0 &amp;&amp; (gpio_num) &lt;= <ref refid="McuSelect_8h_1a8b5ad2beab18ca74b6bb74718d512d7d" kindref="member">HF_MCU_GPIO_MAX_PIN_NUMBER</ref>)</initializer>
+        <briefdescription>
+<para>ESP32 GPIO pin capability validation macros. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>All hardware constants reference <ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref> directly for single source of truth. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="278" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="278" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1aa0b0367cdde453194c971d02ece05a8f" prot="public" static="no">
+        <name>HF_GPIO_IS_VALID_PIN</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer><ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(gpio_num)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="281" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a39248d12550eb4fc2c242577025a93f9" prot="public" static="no">
+        <name>HF_GPIO_IS_VALID_OUTPUT_GPIO</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>  (<ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(gpio_num) &amp;&amp; !<ref refid="EspTypes__GPIO_8h_1a935fd1aa93745bca2288c364ecea7148" kindref="member">HF_GPIO_IS_INPUT_ONLY_PIN</ref>(gpio_num))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="283" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="283" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a617269d4d523773b3e940e91648f73ef" prot="public" static="no">
+        <name>HF_GPIO_IS_VALID_RTC_GPIO</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>((gpio_num) &gt;= 0 &amp;&amp; (gpio_num) &lt;= 7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="286" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1aa983fd945ffe36c9f84ce070ed5612e1" prot="public" static="no">
+        <name>HF_GPIO_IS_VALID_LP_IO</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>((gpio_num) &gt;= 0 &amp;&amp; (gpio_num) &lt;= 7)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="288" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a26f0abc113550d1b744d3fb636bbfc69" prot="public" static="no">
+        <name>HF_GPIO_SUPPORTS_ADC</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>((gpio_num) &gt;= 0 &amp;&amp; (gpio_num) &lt;= 6)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="290" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a13ac197217e358e44201f0fd76de3fd9" prot="public" static="no">
+        <name>HF_GPIO_IS_SPI_FLASH_PIN</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>((gpio_num) &gt;= 24 &amp;&amp; (gpio_num) &lt;= 30)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="292" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a935fd1aa93745bca2288c364ecea7148" prot="public" static="no">
+        <name>HF_GPIO_IS_INPUT_ONLY_PIN</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>(false) /* ESP32 has no input-only pins */</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="294" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="294" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1aab96da9a794a20319296e689d58091b1" prot="public" static="no">
+        <name>HF_GPIO_SUPPORTS_PULL_UP</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>(<ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(gpio_num))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="296" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="296" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a3c5037a90f78f8b778293e746019a4f4" prot="public" static="no">
+        <name>HF_GPIO_SUPPORTS_PULL_DOWN</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>(<ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(gpio_num))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="298" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="298" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a866b824dc69be30c4c7b218223333386" prot="public" static="no">
+        <name>HF_GPIO_SUPPORTS_OPEN_DRAIN</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>(<ref refid="EspTypes__GPIO_8h_1a39248d12550eb4fc2c242577025a93f9" kindref="member">HF_GPIO_IS_VALID_OUTPUT_GPIO</ref>(gpio_num))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="300" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="300" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a68bcdc88e8e96c75286a73ece746cc70" prot="public" static="no">
+        <name>HF_GPIO_TO_ADC_UNIT</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>(<ref refid="EspTypes__GPIO_8h_1a26f0abc113550d1b744d3fb636bbfc69" kindref="member">HF_GPIO_SUPPORTS_ADC</ref>(gpio_num) ? 1 : 0xFF)</initializer>
+        <briefdescription>
+<para>ESP32 GPIO to ADC channel mapping. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="305" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a7895aadc8e2ce529425cdbc0265e796b" prot="public" static="no">
+        <name>HF_GPIO_TO_ADC_CHANNEL</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>(<ref refid="EspTypes__GPIO_8h_1a26f0abc113550d1b744d3fb636bbfc69" kindref="member">HF_GPIO_SUPPORTS_ADC</ref>(gpio_num) ? (gpio_num) : 0xFF)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="307" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1a73760cc9f022268e8163eafd181daaf9" prot="public" static="no">
+        <name>HF_GPIO_TO_RTC_GPIO</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>(<ref refid="EspTypes__GPIO_8h_1a617269d4d523773b3e940e91648f73ef" kindref="member">HF_GPIO_IS_VALID_RTC_GPIO</ref>(gpio_num) ? (gpio_num) : 0xFF)</initializer>
+        <briefdescription>
+<para>ESP32 GPIO to RTC mapping. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="312" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="312" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1acb890b08d427bc4dbd2d954ba2a45851" prot="public" static="no">
+        <name>HF_GPIO_TO_LP_IO</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>(<ref refid="EspTypes__GPIO_8h_1aa983fd945ffe36c9f84ce070ed5612e1" kindref="member">HF_GPIO_IS_VALID_LP_IO</ref>(gpio_num) ? (gpio_num) : 0xFF)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="314" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="EspTypes__GPIO_8h_1aa919f5e70c5ecca9e011db5991eaed51" prot="public" static="no">
+        <name>HF_GPIO_IS_SAFE_FOR_GENERAL_USE</name>
+        <param><defname>gpio_num</defname></param>
+        <initializer>  (<ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(gpio_num) &amp;&amp; !<ref refid="EspTypes__GPIO_8h_1a82f160ff85b7f87247c8543a3daffcb8" kindref="member">HF_GPIO_IS_STRAPPING_PIN</ref>(gpio_num) &amp;&amp;                       \
+   !<ref refid="EspTypes__GPIO_8h_1a13ac197217e358e44201f0fd76de3fd9" kindref="member">HF_GPIO_IS_SPI_FLASH_PIN</ref>(gpio_num) &amp;&amp; !<ref refid="EspTypes__GPIO_8h_1ac1631752989bff41b5c0d820b59315cc" kindref="member">HF_GPIO_IS_USB_JTAG_PIN</ref>(gpio_num))</initializer>
+        <briefdescription>
+<para>ESP32 pin safety classification. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="319" column="9" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="319" bodyend="321"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_gpio_mode_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a47f3b7385f22f7b182a586ed7950382b" prot="public">
+          <name>HF_GPIO_MODE_DISABLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>GPIO disabled (no input/output) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a55d5b159d8bdc33d251903173665bbcb" prot="public">
+          <name>HF_GPIO_MODE_INPUT</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Input only mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a485653dd5ea48cf54ea8c5a7c7f20d69" prot="public">
+          <name>HF_GPIO_MODE_OUTPUT</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Output only mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a0cc35af4afbe4485ed9cca7f9b851a51" prot="public">
+          <name>HF_GPIO_MODE_OUTPUT_OD</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Open-drain output mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a83b514e64acbbf4691f298a8b7deea3f" prot="public">
+          <name>HF_GPIO_MODE_INPUT_OUTPUT</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Bidirectional mode (input + output) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350abab74c13f0904ddf59eac51f79f372b2" prot="public">
+          <name>HF_GPIO_MODE_INPUT_OUTPUT_OD</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Bidirectional open-drain mode. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO mode configuration for ESP32. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>GPIO mode enumeration supporting ESP32 hardware capabilities. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="36" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="36" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_gpio_pull_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda39702e81499461c60cd275fece8819d3" prot="public">
+          <name>HF_GPIO_PULL_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No pull resistors (floating) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876ecedab87d55dea1d794e68a534d4f372714b4" prot="public">
+          <name>HF_GPIO_PULL_UP</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Pull-up resistor only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda7a12fb86ce14f509b153610cc759f6c5" prot="public">
+          <name>HF_GPIO_PULL_DOWN</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Pull-down resistor only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda3a6ed240223938383b82c831a4be1f8b" prot="public">
+          <name>HF_GPIO_PULL_UP_DOWN</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Both pull-up and pull-down (keeper mode) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO pull resistor configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Pull resistor combinations supported by ESP32 hardware. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="49" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="49" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_gpio_intr_type_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a92a9d795f9789e4c4fc59206116a160c" prot="public">
+          <name>HF_GPIO_INTR_DISABLE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Interrupt disabled. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a3cf08b08260a0d5f960742ff230a6708" prot="public">
+          <name>HF_GPIO_INTR_POSEDGE</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Rising edge trigger. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a70bae06350e656bc393c2d57b2251e82" prot="public">
+          <name>HF_GPIO_INTR_NEGEDGE</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Falling edge trigger. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a171315f59a861e3f3490a1937f14016a" prot="public">
+          <name>HF_GPIO_INTR_ANYEDGE</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Both edge trigger. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54aed091b2c365dfa1352fcd96f35c3019e" prot="public">
+          <name>HF_GPIO_INTR_LOW_LEVEL</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Low level trigger. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a03cd4b104c6b96cd86eed00c11546446" prot="public">
+          <name>HF_GPIO_INTR_HIGH_LEVEL</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>High level trigger. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO interrupt trigger configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Interrupt trigger types for ESP32. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="60" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="60" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_gpio_drive_cap_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fa6e8cc0febfa6ac679fde1d9c66d57337" prot="public">
+          <name>HF_GPIO_DRIVE_CAP_WEAK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>~5mA drive capability </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fac5e5b307d8a5361a3d27e2227c825d32" prot="public">
+          <name>HF_GPIO_DRIVE_CAP_STRONGER</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>~10mA drive capability </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03faa17918132458975f33a21b703a313b00" prot="public">
+          <name>HF_GPIO_DRIVE_CAP_MEDIUM</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>~20mA drive capability (default) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fade1fb233e62b1da7a89b6bad3b10f85e" prot="public">
+          <name>HF_GPIO_DRIVE_CAP_STRONGEST</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>~40mA drive capability </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO drive capability levels. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>ESP32 drive strength options for power optimization. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="73" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="73" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_rtc_gpio_mode_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a6fd1f4d43da2e112659778d3bdfae1a1" prot="public">
+          <name>HF_RTC_GPIO_MODE_INPUT_ONLY</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>RTC input only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a235a313d0730fc6d63d204742b5674c2" prot="public">
+          <name>HF_RTC_GPIO_MODE_OUTPUT_ONLY</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>RTC output only. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676aacff1f9583bbb9751a502c8cd1985420" prot="public">
+          <name>HF_RTC_GPIO_MODE_INPUT_OUTPUT</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>RTC bidirectional. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a1229b21ba503e6de502c29cd5d974f72" prot="public">
+          <name>HF_RTC_GPIO_MODE_DISABLED</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>RTC GPIO disabled. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a080ea898fb69e85fe3dea04a0a90ca1e" prot="public">
+          <name>HF_RTC_GPIO_MODE_OUTPUT_OD</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>RTC open-drain output. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a3c36b6ac79f8baa9c09b4420a4568474" prot="public">
+          <name>HF_RTC_GPIO_MODE_INPUT_OUTPUT_OD</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>RTC bidirectional open-drain. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>RTC GPIO mode configuration for low-power operation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>RTC domain GPIO modes for deep sleep and LP operations. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="84" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="84" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_gpio_glitch_filter_type_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fa070f0507f4a589f480cbd945821c29da" prot="public">
+          <name>HF_GPIO_GLITCH_FILTER_NONE</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>No glitch filter. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fabec0d73874806b2b5a086afb5dd47e26" prot="public">
+          <name>HF_GPIO_GLITCH_FILTER_PIN</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Pin glitch filter (2 clock cycles, fixed) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976faf05db471eceaa0c3bef5a7263626a7e5" prot="public">
+          <name>HF_GPIO_GLITCH_FILTER_FLEX</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Flexible glitch filter (configurable) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fafeac30eeab152156b1e3a5ea94c25be1" prot="public">
+          <name>HF_GPIO_GLITCH_FILTER_BOTH</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Both pin and flex filters active. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>ESP32 glitch filter types for noise immunity. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Hardware-based glitch filtering capabilities. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="101" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="101" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_gpio_glitch_filter_clk_src_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607a4eae1e486a9347b013298017ed222274" prot="public">
+          <name>HF_GLITCH_FILTER_CLK_SRC_APB</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>APB clock (80MHz typically) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607a7773fff21fff76b20e6961b92a67b2aa" prot="public">
+          <name>HF_GLITCH_FILTER_CLK_SRC_RC_FAST</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>RC_FAST clock (~17.5MHz) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607aea8dcf83abdd4fc5df70f55edce349e5" prot="public">
+          <name>HF_GLITCH_FILTER_CLK_SRC_XTAL</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>XTAL clock (40MHz typically) </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO clock source selection for glitch filters. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Clock sources available for timing glitch filter operations. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="112" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="112" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_gpio_config_result_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41ad960d3732ef867ad439549bad7147f51" prot="public">
+          <name>HF_GPIO_CONFIG_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Configuration is valid. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a87fea1bacce67c8eccf7ce1002ce7121" prot="public">
+          <name>HF_GPIO_CONFIG_INVALID_PIN</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Invalid pin number. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41ac38c238af83fc34b52dc5a8171a83f9f" prot="public">
+          <name>HF_GPIO_CONFIG_INVALID_MODE</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Invalid mode for this pin. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a3be2d3a8ce84cebfb443c6876d70932c" prot="public">
+          <name>HF_GPIO_CONFIG_INVALID_PULL</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Invalid pull configuration. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a0ef51789b78ebbe253491eee4caaecf1" prot="public">
+          <name>HF_GPIO_CONFIG_INVALID_DRIVE</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Invalid drive strength. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a443ca9648fedd7213eaf67eccb74ad42" prot="public">
+          <name>HF_GPIO_CONFIG_STRAPPING_WARNING</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Warning: strapping pin usage. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a3742a01f26a1dfcd6cc222cb2b31e0af" prot="public">
+          <name>HF_GPIO_CONFIG_FLASH_WARNING</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>Warning: SPI flash pin usage. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a74094b82166545528e008fb24f9aee7b" prot="public">
+          <name>HF_GPIO_CONFIG_JTAG_WARNING</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+<para>Warning: USB-JTAG pin usage. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO configuration validation result. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="337" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="337" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="enum" id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acc" prot="public" static="no" strong="yes">
+        <type>uint8_t</type>
+        <name>hf_gpio_result_t</name>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accadd3c39736c45edebcc198279b328cb47" prot="public">
+          <name>GPIO_OK</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Operation successful. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca88adf359e7e9360c9b7a03ca100ce46b" prot="public">
+          <name>GPIO_ERR_INVALID_ARG</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Invalid argument. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accaedd8db4c5482eb9b06a93f7686e7df5a" prot="public">
+          <name>GPIO_ERR_INVALID_STATE</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+<para>Invalid state for operation. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accad0dedbb315ad871e12c7da9e293a37dd" prot="public">
+          <name>GPIO_ERR_NOT_SUPPORTED</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+<para>Operation not supported. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca008147998d4474a9e748f9ef08d80fa9" prot="public">
+          <name>GPIO_ERR_NO_MEM</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Out of memory. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca60701f049c086b44b9b07455b31b32d4" prot="public">
+          <name>GPIO_ERR_TIMEOUT</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+<para>Operation timeout. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca80fe02fbf4e0c0de3da976dc7681dd20" prot="public">
+          <name>GPIO_ERR_HW_FAULT</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+<para>Hardware fault. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accaa79966d7debbf90498f6188f808b55cd" prot="public">
+          <name>GPIO_ERR_BUSY</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+<para>Resource busy. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca306202d797fdda067252b5f8b976893c" prot="public">
+          <name>GPIO_ERR_NOT_FOUND</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+<para>Resource not found. </para>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO operation result codes. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="409" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="409" bodyend="419"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" prot="public" static="no">
+        <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>using hf_gpio_num_t =  hf_pin_num_t</definition>
+        <argsstring></argsstring>
+        <name>hf_gpio_num_t</name>
+        <briefdescription>
+<para>GPIO pin number type for ESP32. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="30" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="EspTypes__GPIO_8h_1ad7a1ea802f4aa805f52d5781fc39c965" prot="public" static="no">
+        <type>void(*)(uint32_t gpio_num, void *user_data)</type>
+        <definition>using hf_gpio_isr_callback_t =  void (*)(uint32_t gpio_num, void* user_data)</definition>
+        <argsstring></argsstring>
+        <name>hf_gpio_isr_callback_t</name>
+        <briefdescription>
+<para>GPIO interrupt callback function type. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The GPIO number that triggered the interrupt </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User-provided data passed to the callback </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="332" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="332" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="EspTypes__GPIO_8h_1a4089a013a0f572c4ceb004421c614d74" prot="public" static="no" extern="yes" mutable="no">
+        <type>const <ref refid="structhf__gpio__pin__info__t" kindref="compound">hf_gpio_pin_info_t</ref></type>
+        <definition>const hf_gpio_pin_info_t HF_GPIO_PIN_INFO_TABLE[31]</definition>
+        <argsstring>[31]</argsstring>
+        <name>HF_GPIO_PIN_INFO_TABLE</name>
+        <briefdescription>
+<para>ESP32 GPIO pin information table. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Complete pin information for all ESP32 GPIO pins. <simplesect kind="note"><para>This table should be defined in the implementation file. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="364" column="33" declfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" declline="364" declcolumn="33"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="EspTypes__GPIO_8h_1a045f35d0daef75c1c91c0e1667536f64" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="structhf__gpio__pin__info__t" kindref="compound">hf_gpio_pin_info_t</ref> *</type>
+        <definition>const hf_gpio_pin_info_t * hf_gpio_get_pin_info</definition>
+        <argsstring>(uint8_t gpio_num)</argsstring>
+        <name>hf_gpio_get_pin_info</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>gpio_num</declname>
+        </param>
+        <briefdescription>
+<para>Get comprehensive pin information for a GPIO. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>gpio_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO number to query </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Pointer to pin information structure, nullptr if invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="371" column="33" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="371" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__GPIO_8h_1ada82527547536b649ab80a69b54be394" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41" kindref="member">hf_gpio_config_result_t</ref></type>
+        <definition>hf_gpio_config_result_t hf_gpio_validate_config</definition>
+        <argsstring>(const hf_gpio_advanced_config_t *config)</argsstring>
+        <name>hf_gpio_validate_config</name>
+        <param>
+          <type>const <ref refid="structhf__gpio__advanced__config__t" kindref="compound">hf_gpio_advanced_config_t</ref> *</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+<para>Validate GPIO configuration for ESP32. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>config</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO configuration to validate </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Validation result with details </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="383" column="25" declfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" declline="383" declcolumn="25"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__GPIO_8h_1a3beb6b04e44df22aa63447a9bf7ffb35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref></type>
+        <definition>hf_gpio_drive_cap_t hf_gpio_get_optimal_drive_strength</definition>
+        <argsstring>(uint32_t frequency_hz, uint8_t gpio_num)</argsstring>
+        <name>hf_gpio_get_optimal_drive_strength</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>frequency_hz</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>gpio_num</declname>
+        </param>
+        <briefdescription>
+<para>Get optimal drive strength for a given frequency. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>frequency_hz</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Target toggle frequency in Hz </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>gpio_num</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>GPIO number (for pin-specific limits) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Recommended drive strength </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="391" column="21" declfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" declline="391" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__GPIO_8h_1aeed4f3f75e80bf28d3717dcac6550877" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_gpio_calc_glitch_filter_window</definition>
+        <argsstring>(uint32_t noise_duration_ns, uint8_t safety_margin_percent)</argsstring>
+        <name>hf_gpio_calc_glitch_filter_window</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>noise_duration_ns</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>safety_margin_percent</declname>
+        </param>
+        <briefdescription>
+<para>Calculate glitch filter window for given noise duration. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>noise_duration_ns</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Maximum noise duration to filter (nanoseconds) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>safety_margin_percent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Safety margin percentage (typically 20-50%) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Recommended window width in nanoseconds </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="399" column="10" declfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" declline="399" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="EspTypes__GPIO_8h_1aa890e656415dbac8f1a2ebae3c04a4fa" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr const char *</type>
+        <definition>constexpr const char * hf_gpio_result_to_string</definition>
+        <argsstring>(hf_gpio_result_t result)</argsstring>
+        <name>hf_gpio_result_to_string</name>
+        <param>
+          <type><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acc" kindref="member">hf_gpio_result_t</ref></type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+<para>Convert GPIO result code to human-readable string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>result</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Result code to convert </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>String description of the result </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="426" column="22" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="426" bodyend="449"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ESP32 GPIO type definitions for hardware abstraction. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This header defines only the essential GPIO-specific types and constants used by the <ref refid="classEspGpio" kindref="compound">EspGpio</ref> implementation. It follows a clean, minimal pattern providing only necessary types without redundant or duplicate definitions.</para>
+<para><simplesect kind="author"><para>Nebiyu Tadesse </para>
+</simplesect>
+<simplesect kind="date"><para>2025 </para>
+</simplesect>
+<simplesect kind="copyright"><para>HardFOC </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseGpio_8h" kindref="compound">BaseGpio.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>For<sp/>hf_gpio_err_t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__Base_8h" kindref="compound">EspTypes_Base.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="HardwareTypes_8h" kindref="compound">HardwareTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="McuSelect_8h" kindref="compound">McuSelect.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>Central<sp/>MCU<sp/>platform<sp/>selection<sp/>(includes<sp/>all<sp/>ESP-IDF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESSENTIAL<sp/>GPIO<sp/>TYPES<sp/>(ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref>;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kindref="member">hf_gpio_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a47f3b7385f22f7b182a586ed7950382b" kindref="member">HF_GPIO_MODE_DISABLE</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a55d5b159d8bdc33d251903173665bbcb" kindref="member">HF_GPIO_MODE_INPUT</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a485653dd5ea48cf54ea8c5a7c7f20d69" kindref="member">HF_GPIO_MODE_OUTPUT</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a0cc35af4afbe4485ed9cca7f9b851a51" kindref="member">HF_GPIO_MODE_OUTPUT_OD</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a83b514e64acbbf4691f298a8b7deea3f" kindref="member">HF_GPIO_MODE_INPUT_OUTPUT</ref><sp/>=<sp/>4,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350abab74c13f0904ddf59eac51f79f372b2" kindref="member">HF_GPIO_MODE_INPUT_OUTPUT_OD</ref><sp/>=<sp/>5<sp/></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" kindref="member">hf_gpio_pull_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda39702e81499461c60cd275fece8819d3" kindref="member">HF_GPIO_PULL_NONE</ref><sp/>=<sp/>0,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876ecedab87d55dea1d794e68a534d4f372714b4" kindref="member">HF_GPIO_PULL_UP</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda7a12fb86ce14f509b153610cc759f6c5" kindref="member">HF_GPIO_PULL_DOWN</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda3a6ed240223938383b82c831a4be1f8b" kindref="member">HF_GPIO_PULL_UP_DOWN</ref><sp/>=<sp/>3<sp/></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" kindref="member">hf_gpio_intr_type_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a92a9d795f9789e4c4fc59206116a160c" kindref="member">HF_GPIO_INTR_DISABLE</ref><sp/>=<sp/>0,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a3cf08b08260a0d5f960742ff230a6708" kindref="member">HF_GPIO_INTR_POSEDGE</ref><sp/>=<sp/>1,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a70bae06350e656bc393c2d57b2251e82" kindref="member">HF_GPIO_INTR_NEGEDGE</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a171315f59a861e3f3490a1937f14016a" kindref="member">HF_GPIO_INTR_ANYEDGE</ref><sp/>=<sp/>3,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54aed091b2c365dfa1352fcd96f35c3019e" kindref="member">HF_GPIO_INTR_LOW_LEVEL</ref><sp/>=<sp/>4,<sp/></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a03cd4b104c6b96cd86eed00c11546446" kindref="member">HF_GPIO_INTR_HIGH_LEVEL</ref><sp/>=<sp/>5<sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fa6e8cc0febfa6ac679fde1d9c66d57337" kindref="member">HF_GPIO_DRIVE_CAP_WEAK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fac5e5b307d8a5361a3d27e2227c825d32" kindref="member">HF_GPIO_DRIVE_CAP_STRONGER</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03faa17918132458975f33a21b703a313b00" kindref="member">HF_GPIO_DRIVE_CAP_MEDIUM</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fade1fb233e62b1da7a89b6bad3b10f85e" kindref="member">HF_GPIO_DRIVE_CAP_STRONGEST</ref><sp/>=<sp/>3<sp/></highlight></codeline>
+<codeline lineno="78"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676" kindref="member">hf_rtc_gpio_mode_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a6fd1f4d43da2e112659778d3bdfae1a1" kindref="member">HF_RTC_GPIO_MODE_INPUT_ONLY</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a235a313d0730fc6d63d204742b5674c2" kindref="member">HF_RTC_GPIO_MODE_OUTPUT_ONLY</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676aacff1f9583bbb9751a502c8cd1985420" kindref="member">HF_RTC_GPIO_MODE_INPUT_OUTPUT</ref><sp/>=<sp/>2,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a1229b21ba503e6de502c29cd5d974f72" kindref="member">HF_RTC_GPIO_MODE_DISABLED</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a080ea898fb69e85fe3dea04a0a90ca1e" kindref="member">HF_RTC_GPIO_MODE_OUTPUT_OD</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a3c36b6ac79f8baa9c09b4420a4568474" kindref="member">HF_RTC_GPIO_MODE_INPUT_OUTPUT_OD</ref><sp/>=<sp/>5<sp/></highlight></codeline>
+<codeline lineno="91"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADVANCED<sp/>GPIO<sp/>FEATURES<sp/>(ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kindref="member">hf_gpio_glitch_filter_type_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fa070f0507f4a589f480cbd945821c29da" kindref="member">HF_GPIO_GLITCH_FILTER_NONE</ref><sp/>=<sp/>0,<sp/></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fabec0d73874806b2b5a086afb5dd47e26" kindref="member">HF_GPIO_GLITCH_FILTER_PIN</ref><sp/>=<sp/>1,<sp/><sp/></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976faf05db471eceaa0c3bef5a7263626a7e5" kindref="member">HF_GPIO_GLITCH_FILTER_FLEX</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fafeac30eeab152156b1e3a5ea94c25be1" kindref="member">HF_GPIO_GLITCH_FILTER_BOTH</ref><sp/>=<sp/>3<sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112" refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607" kindref="member">hf_gpio_glitch_filter_clk_src_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607a4eae1e486a9347b013298017ed222274" kindref="member">HF_GLITCH_FILTER_CLK_SRC_APB</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607a7773fff21fff76b20e6961b92a67b2aa" kindref="member">HF_GLITCH_FILTER_CLK_SRC_RC_FAST</ref><sp/>=<sp/>1,<sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607aea8dcf83abdd4fc5df70f55edce349e5" kindref="member">HF_GLITCH_FILTER_CLK_SRC_XTAL</ref><sp/>=<sp/>2<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="structhf__lp__io__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__lp__io__config__t" kindref="compound">hf_lp_io_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="123" refid="structhf__lp__io__config__t_1a618272fbcb49300c0a852a9117f6b7db" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kindref="member">hf_gpio_mode_t</ref><sp/><ref refid="structhf__lp__io__config__t_1a618272fbcb49300c0a852a9117f6b7db" kindref="member">mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="124" refid="structhf__lp__io__config__t_1aa4aac5c894c19f3623422aa43a528c7f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" kindref="member">hf_gpio_pull_t</ref><sp/><ref refid="structhf__lp__io__config__t_1aa4aac5c894c19f3623422aa43a528c7f" kindref="member">pull_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="125" refid="structhf__lp__io__config__t_1a8296ad225d266a7ff876e56818b818e5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/><ref refid="structhf__lp__io__config__t_1a8296ad225d266a7ff876e56818b818e5" kindref="member">drive_strength</ref>;<sp/></highlight></codeline>
+<codeline lineno="126" refid="structhf__lp__io__config__t_1a59745ba821e5a32a940d84931719f58a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__lp__io__config__t_1a59745ba821e5a32a940d84931719f58a" kindref="member">input_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="127" refid="structhf__lp__io__config__t_1ac7b9092b5faf9183bd134b5dec7125a7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__lp__io__config__t_1ac7b9092b5faf9183bd134b5dec7125a7" kindref="member">output_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="128" refid="structhf__lp__io__config__t_1a7d78f99c8f7a1542c8864d88b6ac248b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__lp__io__config__t_1a7d78f99c8f7a1542c8864d88b6ac248b" kindref="member">hold_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="129" refid="structhf__lp__io__config__t_1a45d0386e2cdc6ad8d3eda74ee71060e8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__lp__io__config__t_1a45d0386e2cdc6ad8d3eda74ee71060e8" kindref="member">force_hold</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136" refid="structhf__gpio__flex__filter__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="137" refid="structhf__gpio__flex__filter__config__t_1a1d2713b3410534bb131d7d9265c70759" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__gpio__flex__filter__config__t_1a1d2713b3410534bb131d7d9265c70759" kindref="member">window_width_ns</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="138" refid="structhf__gpio__flex__filter__config__t_1a00bc74702cdd052bd2b727ed2d4f5509" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__gpio__flex__filter__config__t_1a00bc74702cdd052bd2b727ed2d4f5509" kindref="member">window_threshold_ns</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139" refid="structhf__gpio__flex__filter__config__t_1acf6e27a34c318282f92e6a1849ac4e37" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607" kindref="member">hf_gpio_glitch_filter_clk_src_t</ref><sp/><ref refid="structhf__gpio__flex__filter__config__t_1acf6e27a34c318282f92e6a1849ac4e37" kindref="member">clk_src</ref>;<sp/></highlight></codeline>
+<codeline lineno="140" refid="structhf__gpio__flex__filter__config__t_1a6883d28ceb1b307fe8c079fb81504241" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__flex__filter__config__t_1a6883d28ceb1b307fe8c079fb81504241" kindref="member">enable_on_init</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147" refid="structhf__gpio__pin__filter__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__gpio__pin__filter__config__t" kindref="compound">hf_gpio_pin_filter_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="148" refid="structhf__gpio__pin__filter__config__t_1ad65bf352dcaad34e388016c6db349fa7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607" kindref="member">hf_gpio_glitch_filter_clk_src_t</ref><sp/><ref refid="structhf__gpio__pin__filter__config__t_1ad65bf352dcaad34e388016c6db349fa7" kindref="member">clk_src</ref>;<sp/></highlight></codeline>
+<codeline lineno="149" refid="structhf__gpio__pin__filter__config__t_1af31843f3bfd8daea982ed7a19aefd739" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__filter__config__t_1af31843f3bfd8daea982ed7a19aefd739" kindref="member">enable_on_init</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="150"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="structhf__gpio__sleep__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="157" refid="structhf__gpio__sleep__config__t_1a6d40e2b1b0e5fd9327d33966b8eef204" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kindref="member">hf_gpio_mode_t</ref><sp/><ref refid="structhf__gpio__sleep__config__t_1a6d40e2b1b0e5fd9327d33966b8eef204" kindref="member">sleep_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="158" refid="structhf__gpio__sleep__config__t_1a2493727745a0fabffbb0eee91522742f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kindref="member">hf_gpio_mode_t</ref><sp/><ref refid="structhf__gpio__sleep__config__t_1a2493727745a0fabffbb0eee91522742f" kindref="member">sleep_direction</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="159" refid="structhf__gpio__sleep__config__t_1ab5b3971c4fbd11f1678185a3e95357a7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" kindref="member">hf_gpio_pull_t</ref><sp/><ref refid="structhf__gpio__sleep__config__t_1ab5b3971c4fbd11f1678185a3e95357a7" kindref="member">sleep_pull_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="160" refid="structhf__gpio__sleep__config__t_1af92947d79b576ab39164f13fbe7dd40b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/><ref refid="structhf__gpio__sleep__config__t_1af92947d79b576ab39164f13fbe7dd40b" kindref="member">sleep_drive_strength</ref>;<sp/></highlight></codeline>
+<codeline lineno="161" refid="structhf__gpio__sleep__config__t_1a70b6942b44bcc28c070d4e7e71a450a2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__sleep__config__t_1a70b6942b44bcc28c070d4e7e71a450a2" kindref="member">sleep_output_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="162" refid="structhf__gpio__sleep__config__t_1a62d59e37b7e30d8f4de645d956ded140" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__sleep__config__t_1a62d59e37b7e30d8f4de645d956ded140" kindref="member">sleep_input_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="163" refid="structhf__gpio__sleep__config__t_1a046a30949252068ffe13515a3a2b0bfc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__sleep__config__t_1a046a30949252068ffe13515a3a2b0bfc" kindref="member">hold_during_sleep</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="164" refid="structhf__gpio__sleep__config__t_1a7478371caada488ee07c945f11b0105b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__sleep__config__t_1a7478371caada488ee07c945f11b0105b" kindref="member">rtc_domain_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="165" refid="structhf__gpio__sleep__config__t_1abf925110c8f4fc921621e6bc035c2392" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__sleep__config__t_1abf925110c8f4fc921621e6bc035c2392" kindref="member">slp_sel_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="166" refid="structhf__gpio__sleep__config__t_1aaa0de4668b0af98fbf700c75be4c9aae" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__sleep__config__t_1aaa0de4668b0af98fbf700c75be4c9aae" kindref="member">enable_sleep_retain</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="167"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="structhf__gpio__wakeup__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__gpio__wakeup__config__t" kindref="compound">hf_gpio_wakeup_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="174" refid="structhf__gpio__wakeup__config__t_1af95025ba7bbc559c35f23d2eab2b8f72" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" kindref="member">hf_gpio_intr_type_t</ref><sp/><ref refid="structhf__gpio__wakeup__config__t_1af95025ba7bbc559c35f23d2eab2b8f72" kindref="member">wake_trigger</ref>;<sp/></highlight></codeline>
+<codeline lineno="175" refid="structhf__gpio__wakeup__config__t_1aa82b3549af7be9bbdd2319a84fdb44bc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__wakeup__config__t_1aa82b3549af7be9bbdd2319a84fdb44bc" kindref="member">enable_rtc_wake</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="176" refid="structhf__gpio__wakeup__config__t_1a16ab90202bd111ad20524d7e65be0c72" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__wakeup__config__t_1a16ab90202bd111ad20524d7e65be0c72" kindref="member">enable_ext1_wake</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="177" refid="structhf__gpio__wakeup__config__t_1a0ca411b80947b9bcf808b840f8bf9cb3" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__gpio__wakeup__config__t_1a0ca411b80947b9bcf808b840f8bf9cb3" kindref="member">wake_level</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="178" refid="structhf__gpio__wakeup__config__t_1ac4bed175df8779088c0df156964673ea" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__wakeup__config__t_1ac4bed175df8779088c0df156964673ea" kindref="member">internal_pullup_enable</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="179" refid="structhf__gpio__wakeup__config__t_1af2a5da2f0703a06ad72dee91b0a957dc" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__wakeup__config__t_1af2a5da2f0703a06ad72dee91b0a957dc" kindref="member">internal_pulldown_enable</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="180" refid="structhf__gpio__wakeup__config__t_1ab88f5c7e7b327b5c39a4efc6749057c2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__wakeup__config__t_1ab88f5c7e7b327b5c39a4efc6749057c2" kindref="member">iso_en</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="181"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="structhf__gpio__advanced__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__gpio__advanced__config__t" kindref="compound">hf_gpio_advanced_config_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="188" refid="structhf__gpio__advanced__config__t_1ad7d9a0395f4520120d86c889bc77f228" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1ad7d9a0395f4520120d86c889bc77f228" kindref="member">gpio_num</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="189" refid="structhf__gpio__advanced__config__t_1a45a28747743de1a4bbd08f278c31f8ae" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kindref="member">hf_gpio_mode_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1a45a28747743de1a4bbd08f278c31f8ae" kindref="member">mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="190" refid="structhf__gpio__advanced__config__t_1ab61bbfb9af5600546d717dbebf451533" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" kindref="member">hf_gpio_pull_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1ab61bbfb9af5600546d717dbebf451533" kindref="member">pull_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="191" refid="structhf__gpio__advanced__config__t_1a969aa225347dbc8797b9dc1328276d08" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" kindref="member">hf_gpio_intr_type_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1a969aa225347dbc8797b9dc1328276d08" kindref="member">intr_type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="192" refid="structhf__gpio__advanced__config__t_1a0010bcef44f2124ffcbb7a1421a81103" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1a0010bcef44f2124ffcbb7a1421a81103" kindref="member">drive_strength</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="193" refid="structhf__gpio__advanced__config__t_1a8a0be4da7e2c5177796fc4ffe3b97d9a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kindref="member">hf_gpio_glitch_filter_type_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1a8a0be4da7e2c5177796fc4ffe3b97d9a" kindref="member">glitch_filter_type</ref>;<sp/></highlight></codeline>
+<codeline lineno="194" refid="structhf__gpio__advanced__config__t_1ac4f05c98c185801e39617296a5e0cc65" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1ac4f05c98c185801e39617296a5e0cc65" kindref="member">flex_filter_config</ref>;<sp/></highlight></codeline>
+<codeline lineno="195" refid="structhf__gpio__advanced__config__t_1a5795ed470af6a3e3f8feee338381a64b" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__gpio__pin__filter__config__t" kindref="compound">hf_gpio_pin_filter_config_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1a5795ed470af6a3e3f8feee338381a64b" kindref="member">pin_filter_config</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="196" refid="structhf__gpio__advanced__config__t_1ad189d1620ce263324d1a500850a1aee7" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1ad189d1620ce263324d1a500850a1aee7" kindref="member">sleep_config</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="197" refid="structhf__gpio__advanced__config__t_1a965d2df4aa102d12bc9f797cc530c8ac" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__gpio__wakeup__config__t" kindref="compound">hf_gpio_wakeup_config_t</ref><sp/><ref refid="structhf__gpio__advanced__config__t_1a965d2df4aa102d12bc9f797cc530c8ac" kindref="member">wakeup_config</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="198" refid="structhf__gpio__advanced__config__t_1aa7e515455e77197e4b7d2b1a9c86d941" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__advanced__config__t_1aa7e515455e77197e4b7d2b1a9c86d941" kindref="member">enable_hold_function</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="199" refid="structhf__gpio__advanced__config__t_1ae53b72ab0e89c9d6f255e1398ec90c98" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__advanced__config__t_1ae53b72ab0e89c9d6f255e1398ec90c98" kindref="member">enable_rtc_gpio</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="200"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="structhf__gpio__status__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__gpio__status__info__t" kindref="compound">hf_gpio_status_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="207" refid="structhf__gpio__status__info__t_1a7df919681975d84d4c92d22580407500" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__gpio__status__info__t_1a7df919681975d84d4c92d22580407500" kindref="member">pin_number</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="208" refid="structhf__gpio__status__info__t_1ab1b1d3636da0afeb647dea2ae59b86ac" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kindref="member">hf_gpio_mode_t</ref><sp/><ref refid="structhf__gpio__status__info__t_1ab1b1d3636da0afeb647dea2ae59b86ac" kindref="member">current_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="209" refid="structhf__gpio__status__info__t_1a47509a663ee6fc5877275ba354208234" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" kindref="member">hf_gpio_pull_t</ref><sp/><ref refid="structhf__gpio__status__info__t_1a47509a663ee6fc5877275ba354208234" kindref="member">current_pull_mode</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="210" refid="structhf__gpio__status__info__t_1aa220fc53a4c586080e01685b002ebbad" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/><ref refid="structhf__gpio__status__info__t_1aa220fc53a4c586080e01685b002ebbad" kindref="member">current_drive_cap</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="211" refid="structhf__gpio__status__info__t_1a3eeb5e3a5eee2c5e5441470ca3816f08" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" kindref="member">hf_gpio_intr_type_t</ref><sp/><ref refid="structhf__gpio__status__info__t_1a3eeb5e3a5eee2c5e5441470ca3816f08" kindref="member">interrupt_type</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="212" refid="structhf__gpio__status__info__t_1a1572c9db50b0a950e06e3e2d80d2db99" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1a1572c9db50b0a950e06e3e2d80d2db99" kindref="member">input_enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="213" refid="structhf__gpio__status__info__t_1a6c0b97dcd2c31b57a9f41c1af84b9212" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1a6c0b97dcd2c31b57a9f41c1af84b9212" kindref="member">output_enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="214" refid="structhf__gpio__status__info__t_1a4b64191329b4a454cd79d9ea7b528da7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1a4b64191329b4a454cd79d9ea7b528da7" kindref="member">open_drain</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="215" refid="structhf__gpio__status__info__t_1a9bac075c3bafe7daa43c4849af624a00" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1a9bac075c3bafe7daa43c4849af624a00" kindref="member">sleep_sel_enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="216" refid="structhf__gpio__status__info__t_1ada9c5a18767686774175ed9980f2c9b7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1ada9c5a18767686774175ed9980f2c9b7" kindref="member">hold_enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="217" refid="structhf__gpio__status__info__t_1a86482ca53ef6307e2e66fca220ad3921" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1a86482ca53ef6307e2e66fca220ad3921" kindref="member">rtc_enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="218" refid="structhf__gpio__status__info__t_1a97d47f44299688764ecf59d2ae9dc84c" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__gpio__status__info__t_1a97d47f44299688764ecf59d2ae9dc84c" kindref="member">function_select</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="219" refid="structhf__gpio__status__info__t_1af982b3b07cde2bd70808214bb389f1d4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kindref="member">hf_gpio_glitch_filter_type_t</ref><sp/><ref refid="structhf__gpio__status__info__t_1af982b3b07cde2bd70808214bb389f1d4" kindref="member">filter_type</ref>;<sp/></highlight></codeline>
+<codeline lineno="220" refid="structhf__gpio__status__info__t_1a743427ccb7f85a59e1d82ac462cdcbe7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1a743427ccb7f85a59e1d82ac462cdcbe7" kindref="member">glitch_filter_enabled</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="221" refid="structhf__gpio__status__info__t_1a681064a21b3309ba8fa02df2a05b81ee" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__gpio__status__info__t_1a681064a21b3309ba8fa02df2a05b81ee" kindref="member">interrupt_count</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="222" refid="structhf__gpio__status__info__t_1ac5bd29640d807e44cf1669213f3d0db9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1ac5bd29640d807e44cf1669213f3d0db9" kindref="member">is_wake_source</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="223" refid="structhf__gpio__status__info__t_1a24c51cb827bdf177bab18cca55d184ee" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__status__info__t_1a24c51cb827bdf177bab18cca55d184ee" kindref="member">sleep_hold_active</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="224" refid="structhf__gpio__status__info__t_1ab7d54427a230729db2bd2b04e7a5afa7" refkind="member"><highlight class="normal"><sp/><sp/>uint32_t<sp/><ref refid="structhf__gpio__status__info__t_1ab7d54427a230729db2bd2b04e7a5afa7" kindref="member">last_interrupt_time_us</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="225"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="structhf__gpio__pin__capabilities__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="232" refid="structhf__gpio__pin__capabilities__t_1a1aebbadb0592580dd56acabd768869f4" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__gpio__pin__capabilities__t_1a1aebbadb0592580dd56acabd768869f4" kindref="member">pin_number</ref>;</highlight></codeline>
+<codeline lineno="233" refid="structhf__gpio__pin__capabilities__t_1a693cf76982fc8759ee5f968ef56ffef0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1a693cf76982fc8759ee5f968ef56ffef0" kindref="member">is_valid_gpio</ref>;</highlight></codeline>
+<codeline lineno="234" refid="structhf__gpio__pin__capabilities__t_1a143a4d6a1eb3556d84fa938bba318e67" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1a143a4d6a1eb3556d84fa938bba318e67" kindref="member">supports_input</ref>;</highlight></codeline>
+<codeline lineno="235" refid="structhf__gpio__pin__capabilities__t_1a07262f7a59a1e80307993ad12e9e7251" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1a07262f7a59a1e80307993ad12e9e7251" kindref="member">supports_output</ref>;</highlight></codeline>
+<codeline lineno="236" refid="structhf__gpio__pin__capabilities__t_1aa6a401582464522da163e9e2a8ce2bba" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1aa6a401582464522da163e9e2a8ce2bba" kindref="member">supports_pullup</ref>;</highlight></codeline>
+<codeline lineno="237" refid="structhf__gpio__pin__capabilities__t_1a2f0451bd1217d5dbc0d704e6b002798f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1a2f0451bd1217d5dbc0d704e6b002798f" kindref="member">supports_pulldown</ref>;</highlight></codeline>
+<codeline lineno="238" refid="structhf__gpio__pin__capabilities__t_1a9983b022d44d4431d487743cf0e11cd4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1a9983b022d44d4431d487743cf0e11cd4" kindref="member">supports_adc</ref>;</highlight></codeline>
+<codeline lineno="239" refid="structhf__gpio__pin__capabilities__t_1af965c74aebac83d9a2432ab01527bae4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1af965c74aebac83d9a2432ab01527bae4" kindref="member">supports_rtc</ref>;</highlight></codeline>
+<codeline lineno="240" refid="structhf__gpio__pin__capabilities__t_1a9ce0f5f96e212b677e7e72fa5d76c636" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1a9ce0f5f96e212b677e7e72fa5d76c636" kindref="member">is_strapping_pin</ref>;</highlight></codeline>
+<codeline lineno="241" refid="structhf__gpio__pin__capabilities__t_1ab46f741b3bd1130bfe69ea910a996aa9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1ab46f741b3bd1130bfe69ea910a996aa9" kindref="member">is_usb_jtag_pin</ref>;</highlight></codeline>
+<codeline lineno="242" refid="structhf__gpio__pin__capabilities__t_1a1454f24b3ac4dbbfe9d1a7db3f79bfcf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1a1454f24b3ac4dbbfe9d1a7db3f79bfcf" kindref="member">is_spi_pin</ref>;</highlight></codeline>
+<codeline lineno="243" refid="structhf__gpio__pin__capabilities__t_1ae2ec8d2c6874492d1bd4ab79a858c9a9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__capabilities__t_1ae2ec8d2c6874492d1bd4ab79a858c9a9" kindref="member">supports_glitch_filter</ref>;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal">}<sp/><ref refid="structhf__gpio__pin__capabilities__t" kindref="compound">hf_gpio_pin_capabilities_t</ref>;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Only<sp/>define<sp/>each<sp/>macro<sp/>once,<sp/>use<sp/>&apos;pin&apos;<sp/>as<sp/>the<sp/>parameter<sp/>name</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_GPIO_IS_ADC_CAPABLE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="EspTypes__GPIO_8h_1ae8020cac40277fa6c3ba8c0761c0f194" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_ADC_CAPABLE(pin)<sp/>(false)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_GPIO_IS_SPI_PIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="EspTypes__GPIO_8h_1ac12cd2a8d9a1657859e5bcfab569f217" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_SPI_PIN(pin)<sp/>(false)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_GPIO_IS_RTC_GPIO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254" refid="EspTypes__GPIO_8h_1ae0f0b8bee595029cdac4395dfe6ab74f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_RTC_GPIO(pin)<sp/>(false)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_GPIO_IS_STRAPPING_PIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257" refid="EspTypes__GPIO_8h_1a82f160ff85b7f87247c8543a3daffcb8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_STRAPPING_PIN(pin)<sp/>(false)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_GPIO_IS_USB_JTAG_PIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="EspTypes__GPIO_8h_1ac1631752989bff41b5c0d820b59315cc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_USB_JTAG_PIN(pin)<sp/>(false)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_GPIO_SUPPORTS_GLITCH_FILTER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263" refid="EspTypes__GPIO_8h_1a79089afb0a0f9cf924381db9fa2b13d1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_SUPPORTS_GLITCH_FILTER(pin)<sp/>(false)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>ESPGPIO<sp/>TYPES<sp/>-<sp/>MINIMAL<sp/>AND<sp/>ESSENTIAL<sp/>ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>GPIO<sp/>VALIDATION<sp/>MACROS<sp/>AND<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278" refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_VALID_GPIO(gpio_num)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="279"><highlight class="preprocessor"><sp/><sp/>((gpio_num)<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>(gpio_num)<sp/>&lt;=<sp/>HF_MCU_GPIO_MAX_PIN_NUMBER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281" refid="EspTypes__GPIO_8h_1aa0b0367cdde453194c971d02ece05a8f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_VALID_PIN(gpio_num)<sp/>HF_GPIO_IS_VALID_GPIO(gpio_num)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283" refid="EspTypes__GPIO_8h_1a39248d12550eb4fc2c242577025a93f9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="284"><highlight class="preprocessor"><sp/><sp/>(HF_GPIO_IS_VALID_GPIO(gpio_num)<sp/>&amp;&amp;<sp/>!HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="EspTypes__GPIO_8h_1a617269d4d523773b3e940e91648f73ef" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_VALID_RTC_GPIO(gpio_num)<sp/>((gpio_num)<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>(gpio_num)<sp/>&lt;=<sp/>7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288" refid="EspTypes__GPIO_8h_1aa983fd945ffe36c9f84ce070ed5612e1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_VALID_LP_IO(gpio_num)<sp/>((gpio_num)<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>(gpio_num)<sp/>&lt;=<sp/>7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290" refid="EspTypes__GPIO_8h_1a26f0abc113550d1b744d3fb636bbfc69" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_SUPPORTS_ADC(gpio_num)<sp/>((gpio_num)<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>(gpio_num)<sp/>&lt;=<sp/>6)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292" refid="EspTypes__GPIO_8h_1a13ac197217e358e44201f0fd76de3fd9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_SPI_FLASH_PIN(gpio_num)<sp/>((gpio_num)<sp/>&gt;=<sp/>24<sp/>&amp;&amp;<sp/>(gpio_num)<sp/>&lt;=<sp/>30)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294" refid="EspTypes__GPIO_8h_1a935fd1aa93745bca2288c364ecea7148" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num)<sp/>(false)<sp/></highlight><highlight class="comment">/*<sp/>ESP32<sp/>has<sp/>no<sp/>input-only<sp/>pins<sp/>*/</highlight><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296" refid="EspTypes__GPIO_8h_1aab96da9a794a20319296e689d58091b1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_SUPPORTS_PULL_UP(gpio_num)<sp/>(HF_GPIO_IS_VALID_GPIO(gpio_num))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="EspTypes__GPIO_8h_1a3c5037a90f78f8b778293e746019a4f4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_SUPPORTS_PULL_DOWN(gpio_num)<sp/>(HF_GPIO_IS_VALID_GPIO(gpio_num))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300" refid="EspTypes__GPIO_8h_1a866b824dc69be30c4c7b218223333386" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_SUPPORTS_OPEN_DRAIN(gpio_num)<sp/>(HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305" refid="EspTypes__GPIO_8h_1a68bcdc88e8e96c75286a73ece746cc70" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_TO_ADC_UNIT(gpio_num)<sp/>(HF_GPIO_SUPPORTS_ADC(gpio_num)<sp/>?<sp/>1<sp/>:<sp/>0xFF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307" refid="EspTypes__GPIO_8h_1a7895aadc8e2ce529425cdbc0265e796b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_TO_ADC_CHANNEL(gpio_num)<sp/>(HF_GPIO_SUPPORTS_ADC(gpio_num)<sp/>?<sp/>(gpio_num)<sp/>:<sp/>0xFF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312" refid="EspTypes__GPIO_8h_1a73760cc9f022268e8163eafd181daaf9" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_TO_RTC_GPIO(gpio_num)<sp/>(HF_GPIO_IS_VALID_RTC_GPIO(gpio_num)<sp/>?<sp/>(gpio_num)<sp/>:<sp/>0xFF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314" refid="EspTypes__GPIO_8h_1acb890b08d427bc4dbd2d954ba2a45851" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_TO_LP_IO(gpio_num)<sp/>(HF_GPIO_IS_VALID_LP_IO(gpio_num)<sp/>?<sp/>(gpio_num)<sp/>:<sp/>0xFF)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319" refid="EspTypes__GPIO_8h_1aa919f5e70c5ecca9e011db5991eaed51" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_GPIO_IS_SAFE_FOR_GENERAL_USE(gpio_num)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="320"><highlight class="preprocessor"><sp/><sp/>(HF_GPIO_IS_VALID_GPIO(gpio_num)<sp/>&amp;&amp;<sp/>!HF_GPIO_IS_STRAPPING_PIN(gpio_num)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="321"><highlight class="preprocessor"><sp/><sp/><sp/>!HF_GPIO_IS_SPI_FLASH_PIN(gpio_num)<sp/>&amp;&amp;<sp/>!HF_GPIO_IS_USB_JTAG_PIN(gpio_num))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONVENIENCE<sp/>TYPES<sp/>AND<sp/>UTILITY<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332" refid="EspTypes__GPIO_8h_1ad7a1ea802f4aa805f52d5781fc39c965" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="EspTypes__GPIO_8h_1ad7a1ea802f4aa805f52d5781fc39c965" kindref="member">hf_gpio_isr_callback_t</ref><sp/>=<sp/>void<sp/>(*)(uint32_t<sp/>gpio_num,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data);</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337" refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41" kindref="member">hf_gpio_config_result_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41ad960d3732ef867ad439549bad7147f51" kindref="member">HF_GPIO_CONFIG_OK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a87fea1bacce67c8eccf7ce1002ce7121" kindref="member">HF_GPIO_CONFIG_INVALID_PIN</ref><sp/>=<sp/>1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41ac38c238af83fc34b52dc5a8171a83f9f" kindref="member">HF_GPIO_CONFIG_INVALID_MODE</ref><sp/>=<sp/>2,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a3be2d3a8ce84cebfb443c6876d70932c" kindref="member">HF_GPIO_CONFIG_INVALID_PULL</ref><sp/>=<sp/>3,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a0ef51789b78ebbe253491eee4caaecf1" kindref="member">HF_GPIO_CONFIG_INVALID_DRIVE</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a443ca9648fedd7213eaf67eccb74ad42" kindref="member">HF_GPIO_CONFIG_STRAPPING_WARNING</ref><sp/>=<sp/>5,<sp/></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a3742a01f26a1dfcd6cc222cb2b31e0af" kindref="member">HF_GPIO_CONFIG_FLASH_WARNING</ref><sp/>=<sp/>6,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a74094b82166545528e008fb24f9aee7b" kindref="member">HF_GPIO_CONFIG_JTAG_WARNING</ref><sp/>=<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="346"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="351" refid="structhf__gpio__pin__info__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__gpio__pin__info__t" kindref="compound">hf_gpio_pin_info_t</ref><sp/>{</highlight></codeline>
+<codeline lineno="352" refid="structhf__gpio__pin__info__t_1ab1c39cccaa6171ce7aa79ee07b15bb6a" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__gpio__pin__info__t_1ab1c39cccaa6171ce7aa79ee07b15bb6a" kindref="member">gpio_num</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="353" refid="structhf__gpio__pin__info__t_1ad275db128183dff243a91ce707f059ce" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__gpio__pin__info__t_1ad275db128183dff243a91ce707f059ce" kindref="member">pin_name</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="354" refid="structhf__gpio__pin__info__t_1a865484ee045c260bb70cc9c0848ca4a0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__gpio__pin__info__t_1a865484ee045c260bb70cc9c0848ca4a0" kindref="member">alt_functions</ref>[4];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="355" refid="structhf__gpio__pin__info__t_1ad5b5c91e00bf1dcdeb07c9ac83324032" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__gpio__pin__capabilities__t" kindref="compound">hf_gpio_pin_capabilities_t</ref><sp/><ref refid="structhf__gpio__pin__info__t_1ad5b5c91e00bf1dcdeb07c9ac83324032" kindref="member">capabilities</ref>;<sp/></highlight></codeline>
+<codeline lineno="356" refid="structhf__gpio__pin__info__t_1a1c6197aa3a86633d42663343440f5fe0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__gpio__pin__info__t_1a1c6197aa3a86633d42663343440f5fe0" kindref="member">usage_notes</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="357"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__info__t" kindref="compound">hf_gpio_pin_info_t</ref><sp/><ref refid="EspTypes__GPIO_8h_1a4089a013a0f572c4ceb004421c614d74" kindref="member">HF_GPIO_PIN_INFO_TABLE</ref>[<ref refid="McuSelect_8h_1a302eb1ea34953a1037bfbf9d0ebc6a5c" kindref="member">HF_MCU_GPIO_PIN_COUNT</ref>];</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="371" refid="EspTypes__GPIO_8h_1a045f35d0daef75c1c91c0e1667536f64" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__pin__info__t" kindref="compound">hf_gpio_pin_info_t</ref>*<sp/><ref refid="EspTypes__GPIO_8h_1a045f35d0daef75c1c91c0e1667536f64" kindref="member">hf_gpio_get_pin_info</ref>(uint8_t<sp/>gpio_num)<sp/>{</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(gpio_num))<sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>&amp;<ref refid="EspTypes__GPIO_8h_1a4089a013a0f572c4ceb004421c614d74" kindref="member">HF_GPIO_PIN_INFO_TABLE</ref>[gpio_num];</highlight></codeline>
+<codeline lineno="376"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383" refid="EspTypes__GPIO_8h_1ada82527547536b649ab80a69b54be394" refkind="member"><highlight class="normal"><ref refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41" kindref="member">hf_gpio_config_result_t</ref><sp/><ref refid="EspTypes__GPIO_8h_1ada82527547536b649ab80a69b54be394" kindref="member">hf_gpio_validate_config</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__gpio__advanced__config__t" kindref="compound">hf_gpio_advanced_config_t</ref>*<sp/>config);</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight></codeline>
+<codeline lineno="391" refid="EspTypes__GPIO_8h_1a3beb6b04e44df22aa63447a9bf7ffb35" refkind="member"><highlight class="normal"><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref><sp/><ref refid="EspTypes__GPIO_8h_1a3beb6b04e44df22aa63447a9bf7ffb35" kindref="member">hf_gpio_get_optimal_drive_strength</ref>(uint32_t<sp/>frequency_hz,<sp/>uint8_t<sp/>gpio_num);</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"></highlight></codeline>
+<codeline lineno="399" refid="EspTypes__GPIO_8h_1aeed4f3f75e80bf28d3717dcac6550877" refkind="member"><highlight class="normal">uint32_t<sp/><ref refid="EspTypes__GPIO_8h_1aeed4f3f75e80bf28d3717dcac6550877" kindref="member">hf_gpio_calc_glitch_filter_window</ref>(uint32_t<sp/>noise_duration_ns,</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>safety_margin_percent);</highlight></codeline>
+<codeline lineno="401"><highlight class="normal"></highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ERROR<sp/>HANDLING<sp/>AND<sp/>DEBUGGING<sp/>SUPPORT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight></codeline>
+<codeline lineno="409" refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acc" kindref="member">hf_gpio_result_t</ref><sp/>:<sp/>uint8_t<sp/>{</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accadd3c39736c45edebcc198279b328cb47" kindref="member">GPIO_OK</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca88adf359e7e9360c9b7a03ca100ce46b" kindref="member">GPIO_ERR_INVALID_ARG</ref><sp/>=<sp/>1,<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accaedd8db4c5482eb9b06a93f7686e7df5a" kindref="member">GPIO_ERR_INVALID_STATE</ref><sp/>=<sp/>2,<sp/></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accad0dedbb315ad871e12c7da9e293a37dd" kindref="member">GPIO_ERR_NOT_SUPPORTED</ref><sp/>=<sp/>3,<sp/></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca008147998d4474a9e748f9ef08d80fa9" kindref="member">GPIO_ERR_NO_MEM</ref><sp/>=<sp/>4,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca60701f049c086b44b9b07455b31b32d4" kindref="member">GPIO_ERR_TIMEOUT</ref><sp/>=<sp/>5,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca80fe02fbf4e0c0de3da976dc7681dd20" kindref="member">GPIO_ERR_HW_FAULT</ref><sp/>=<sp/>6,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accaa79966d7debbf90498f6188f808b55cd" kindref="member">GPIO_ERR_BUSY</ref><sp/>=<sp/>7,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca306202d797fdda067252b5f8b976893c" kindref="member">GPIO_ERR_NOT_FOUND</ref><sp/>=<sp/>8<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="419"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"></highlight></codeline>
+<codeline lineno="426" refid="EspTypes__GPIO_8h_1aa890e656415dbac8f1a2ebae3c04a4fa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="EspTypes__GPIO_8h_1aa890e656415dbac8f1a2ebae3c04a4fa" kindref="member">hf_gpio_result_to_string</ref>(<ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acc" kindref="member">hf_gpio_result_t</ref><sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(result)<sp/>{</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accadd3c39736c45edebcc198279b328cb47" kindref="member">hf_gpio_result_t::GPIO_OK</ref>:</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Success&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca88adf359e7e9360c9b7a03ca100ce46b" kindref="member">hf_gpio_result_t::GPIO_ERR_INVALID_ARG</ref>:</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>argument&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accaedd8db4c5482eb9b06a93f7686e7df5a" kindref="member">hf_gpio_result_t::GPIO_ERR_INVALID_STATE</ref>:</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>state&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accad0dedbb315ad871e12c7da9e293a37dd" kindref="member">hf_gpio_result_t::GPIO_ERR_NOT_SUPPORTED</ref>:</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>supported&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca008147998d4474a9e748f9ef08d80fa9" kindref="member">hf_gpio_result_t::GPIO_ERR_NO_MEM</ref>:</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Out<sp/>of<sp/>memory&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca60701f049c086b44b9b07455b31b32d4" kindref="member">hf_gpio_result_t::GPIO_ERR_TIMEOUT</ref>:</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Timeout&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca80fe02fbf4e0c0de3da976dc7681dd20" kindref="member">hf_gpio_result_t::GPIO_ERR_HW_FAULT</ref>:</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Hardware<sp/>fault&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accaa79966d7debbf90498f6188f808b55cd" kindref="member">hf_gpio_result_t::GPIO_ERR_BUSY</ref>:</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Resource<sp/>busy&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca306202d797fdda067252b5f8b976893c" kindref="member">hf_gpio_result_t::GPIO_ERR_NOT_FOUND</ref>:</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Resource<sp/>not<sp/>found&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>error&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="449"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"></highlight><highlight class="comment">//<sp/>COMPILE-TIME<sp/>CONFIGURATION<sp/>VALIDATION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Compile-time<sp/>assertions<sp/>to<sp/>ensure<sp/>configuration<sp/>consistency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<ref refid="McuSelect_8h_1a302eb1ea34953a1037bfbf9d0ebc6a5c" kindref="member">HF_MCU_GPIO_PIN_COUNT</ref><sp/>==<sp/>31,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>should<sp/>have<sp/>31<sp/>GPIO<sp/>pins&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<ref refid="McuSelect_8h_1a8b5ad2beab18ca74b6bb74718d512d7d" kindref="member">HF_MCU_GPIO_MAX_PIN_NUMBER</ref><sp/>==<sp/>30,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>max<sp/>GPIO<sp/>should<sp/>be<sp/>30&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<ref refid="McuSelect_8h_1a75a2045e65dd2daef4515640f228f4f3" kindref="member">HF_MCU_GPIO_RTC_PIN_COUNT</ref><sp/>==<sp/>8,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>should<sp/>have<sp/>8<sp/>RTC<sp/>GPIO<sp/>pins&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<ref refid="McuSelect_8h_1a7350f7923aa8bdf8c0705558f13132ff" kindref="member">HF_MCU_GPIO_ADC_PIN_COUNT</ref><sp/>==<sp/>7,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>should<sp/>have<sp/>7<sp/>ADC<sp/>channels&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(<ref refid="McuSelect_8h_1a02d97606e500251c389b700b5d15f3a6" kindref="member">HF_MCU_GPIO_FLEX_FILTER_COUNT</ref><sp/>==<sp/>8,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>should<sp/>have<sp/>8<sp/>flex<sp/>filters&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"></highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>GPIO_MODE_INPUT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="463"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a55d5b159d8bdc33d251903173665bbcb" kindref="member">hf_gpio_mode_t::HF_GPIO_MODE_INPUT</ref>)<sp/>==<sp/>GPIO_MODE_INPUT,</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>mode<sp/>values<sp/>must<sp/>match<sp/>ESP-IDF&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="466"><highlight class="normal"></highlight></codeline>
+<codeline lineno="467"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>GPIO_PULLUP_ONLY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight><highlight class="keyword">static_assert</highlight><highlight class="normal">(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876ecedab87d55dea1d794e68a534d4f372714b4" kindref="member">hf_gpio_pull_t::HF_GPIO_PULL_UP</ref>)<sp/>==<sp/>GPIO_PULLUP_ONLY,</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>pull<sp/>mode<sp/>values<sp/>must<sp/>match<sp/>ESP-IDF&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal"></highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HF_MCU_FAMILY_ESP32</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h"/>
+  </compounddef>
+</doxygen>

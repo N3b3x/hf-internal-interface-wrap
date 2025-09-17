@@ -1,0 +1,404 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structEspPio_1_1ChannelState" kind="struct" language="C++" prot="private">
+    <compoundname>EspPio::ChannelState</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a6bdc2a6f5ee79308b8a691ca6c914f4e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPio::ChannelState::configured</definition>
+        <argsstring></argsstring>
+        <name>configured</name>
+        <qualifiedname>EspPio::ChannelState::configured</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="325" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="325" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1ae227a6367a4e594d3241549c896bad17" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPio::ChannelState::busy</definition>
+        <argsstring></argsstring>
+        <name>busy</name>
+        <qualifiedname>EspPio::ChannelState::busy</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="326" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1ac265c25b47f5804ee5ac387d8b7ae8ac" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref></type>
+        <definition>hf_pio_channel_config_t EspPio::ChannelState::config</definition>
+        <argsstring></argsstring>
+        <name>config</name>
+        <qualifiedname>EspPio::ChannelState::config</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="327" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a8818461d1b2f31924a3ad472573fc8d4" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__pio__channel__status__t" kindref="compound">hf_pio_channel_status_t</ref></type>
+        <definition>hf_pio_channel_status_t EspPio::ChannelState::status</definition>
+        <argsstring></argsstring>
+        <name>status</name>
+        <qualifiedname>EspPio::ChannelState::status</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="328" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="328" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1ac6000ad8168d0bb531f1353ca27444bd" prot="public" static="no" mutable="no">
+        <type>rmt_channel_handle_t</type>
+        <definition>rmt_channel_handle_t EspPio::ChannelState::tx_channel</definition>
+        <argsstring></argsstring>
+        <name>tx_channel</name>
+        <qualifiedname>EspPio::ChannelState::tx_channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="331" column="26" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a81f2871c5e6cd9e846fd4f4794187ba1" prot="public" static="no" mutable="no">
+        <type>rmt_channel_handle_t</type>
+        <definition>rmt_channel_handle_t EspPio::ChannelState::rx_channel</definition>
+        <argsstring></argsstring>
+        <name>rx_channel</name>
+        <qualifiedname>EspPio::ChannelState::rx_channel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="332" column="26" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a31ab779d4b2f7fe2d727500570e0c225" prot="public" static="no" mutable="no">
+        <type>rmt_encoder_handle_t</type>
+        <definition>rmt_encoder_handle_t EspPio::ChannelState::encoder</definition>
+        <argsstring></argsstring>
+        <name>encoder</name>
+        <qualifiedname>EspPio::ChannelState::encoder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="333" column="26" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="333" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a606c6915332b5358f83649cb79b9b969" prot="public" static="no" mutable="no">
+        <type>rmt_encoder_handle_t</type>
+        <definition>rmt_encoder_handle_t EspPio::ChannelState::bytes_encoder</definition>
+        <argsstring></argsstring>
+        <name>bytes_encoder</name>
+        <qualifiedname>EspPio::ChannelState::bytes_encoder</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="334" column="26" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="334" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a6201b425584214725e2f6c81cff9a25c" prot="public" static="no" mutable="no">
+        <type><ref refid="structhf__pio__symbol__t" kindref="compound">hf_pio_symbol_t</ref> *</type>
+        <definition>hf_pio_symbol_t* EspPio::ChannelState::rx_buffer</definition>
+        <argsstring></argsstring>
+        <name>rx_buffer</name>
+        <qualifiedname>EspPio::ChannelState::rx_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="337" column="21" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1ab8ea931d6508b8dd0e8728b82dcb4697" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t EspPio::ChannelState::rx_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>rx_buffer_size</name>
+        <qualifiedname>EspPio::ChannelState::rx_buffer_size</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="338" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="338" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a44ff89dd92035b8a9d3f9386892e2045" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t EspPio::ChannelState::rx_symbols_received</definition>
+        <argsstring></argsstring>
+        <name>rx_symbols_received</name>
+        <qualifiedname>EspPio::ChannelState::rx_symbols_received</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="339" column="12" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="339" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a846d9b9f6c690f65cfb52907b8ce4545" prot="public" static="no" mutable="no">
+        <type>rmt_symbol_word_t *</type>
+        <definition>rmt_symbol_word_t* EspPio::ChannelState::rmt_rx_buffer</definition>
+        <argsstring></argsstring>
+        <name>rmt_rx_buffer</name>
+        <qualifiedname>EspPio::ChannelState::rmt_rx_buffer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="340" column="23" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a2b6b7171c5477b5646394295761f06cc" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t EspPio::ChannelState::last_operation_time</definition>
+        <argsstring></argsstring>
+        <name>last_operation_time</name>
+        <qualifiedname>EspPio::ChannelState::last_operation_time</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="343" column="14" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a5d7710275e5b7570c6842dd4234bfd60" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPio::ChannelState::actual_resolution_ns</definition>
+        <argsstring></argsstring>
+        <name>actual_resolution_ns</name>
+        <qualifiedname>EspPio::ChannelState::actual_resolution_ns</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="344" column="14" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a85db0030071a59d3b0ecaf568f7c5ad1" prot="public" static="no" mutable="no">
+        <type>rmt_clock_source_t</type>
+        <definition>rmt_clock_source_t EspPio::ChannelState::selected_clk_src</definition>
+        <argsstring></argsstring>
+        <name>selected_clk_src</name>
+        <qualifiedname>EspPio::ChannelState::selected_clk_src</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="345" column="24" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a9a314ac007120b3b36eee4c9fac74254" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t EspPio::ChannelState::source_clock_hz</definition>
+        <argsstring></argsstring>
+        <name>source_clock_hz</name>
+        <qualifiedname>EspPio::ChannelState::source_clock_hz</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="346" column="14" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1af3b5d576273d0edb1bbf3249810312e8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool EspPio::ChannelState::idle_level</definition>
+        <argsstring></argsstring>
+        <name>idle_level</name>
+        <qualifiedname>EspPio::ChannelState::idle_level</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="349" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="349" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1af931c86b00255f46bdefb8c647f8367a" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePio_8h_1ab8c62aa676888a6756a3ea726b24d64c" kindref="member">hf_pio_transmit_callback_t</ref></type>
+        <definition>hf_pio_transmit_callback_t EspPio::ChannelState::transmit_callback</definition>
+        <argsstring></argsstring>
+        <name>transmit_callback</name>
+        <qualifiedname>EspPio::ChannelState::transmit_callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="352" column="32" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="352" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a7a28b7e6ed0cd90f53c82a08c3705f4f" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspPio::ChannelState::transmit_user_data</definition>
+        <argsstring></argsstring>
+        <name>transmit_user_data</name>
+        <qualifiedname>EspPio::ChannelState::transmit_user_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="353" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="353" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1af9be8cff3303a3874c08c039967194e6" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePio_8h_1a8e55d16268bbfd30ee876df3ee4561ed" kindref="member">hf_pio_receive_callback_t</ref></type>
+        <definition>hf_pio_receive_callback_t EspPio::ChannelState::receive_callback</definition>
+        <argsstring></argsstring>
+        <name>receive_callback</name>
+        <qualifiedname>EspPio::ChannelState::receive_callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="354" column="31" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="354" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a5b7b44120ef8a37524444a723d61d87a" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspPio::ChannelState::receive_user_data</definition>
+        <argsstring></argsstring>
+        <name>receive_user_data</name>
+        <qualifiedname>EspPio::ChannelState::receive_user_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="355" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="355" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a9f0685a3dfd883474fd288256c3ee127" prot="public" static="no" mutable="no">
+        <type><ref refid="BasePio_8h_1a03aa7b5372a89dbdf0770488fbb6f824" kindref="member">hf_pio_error_callback_t</ref></type>
+        <definition>hf_pio_error_callback_t EspPio::ChannelState::error_callback</definition>
+        <argsstring></argsstring>
+        <name>error_callback</name>
+        <qualifiedname>EspPio::ChannelState::error_callback</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="356" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="356" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a623299f94fd7ba16e6fa691c04266929" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* EspPio::ChannelState::error_user_data</definition>
+        <argsstring></argsstring>
+        <name>error_user_data</name>
+        <qualifiedname>EspPio::ChannelState::error_user_data</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="357" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="357" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structEspPio_1_1ChannelState_1a2b569f282be1e6daf7dd32ede6b2581e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>EspPio::ChannelState::ChannelState</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>ChannelState</name>
+        <qualifiedname>EspPio::ChannelState::ChannelState</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspPio.h" line="359" column="5" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="359" bodyend="366"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>EspPio::ChannelState</label>
+        <link refid="structEspPio_1_1ChannelState"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config</edgelabel>
+        </childnode>
+        <childnode refid="3" relation="usage">
+          <edgelabel>status</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>rx_buffer</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hf_pio_channel_config_t</label>
+        <link refid="structhf__pio__channel__config__t"/>
+      </node>
+      <node id="3">
+        <label>hf_pio_channel_status_t</label>
+        <link refid="structhf__pio__channel__status__t"/>
+      </node>
+      <node id="4">
+        <label>hf_pio_symbol_t</label>
+        <link refid="structhf__pio__symbol__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/esp32/EspPio.h" line="324" column="3" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="324" bodyend="367"/>
+    <listofallmembers>
+      <member refid="structEspPio_1_1ChannelState_1a5d7710275e5b7570c6842dd4234bfd60" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>actual_resolution_ns</name></member>
+      <member refid="structEspPio_1_1ChannelState_1ae227a6367a4e594d3241549c896bad17" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>busy</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a606c6915332b5358f83649cb79b9b969" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>bytes_encoder</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a2b569f282be1e6daf7dd32ede6b2581e" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>ChannelState</name></member>
+      <member refid="structEspPio_1_1ChannelState_1ac265c25b47f5804ee5ac387d8b7ae8ac" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>config</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a6bdc2a6f5ee79308b8a691ca6c914f4e" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>configured</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a31ab779d4b2f7fe2d727500570e0c225" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>encoder</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a9f0685a3dfd883474fd288256c3ee127" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>error_callback</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a623299f94fd7ba16e6fa691c04266929" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>error_user_data</name></member>
+      <member refid="structEspPio_1_1ChannelState_1af3b5d576273d0edb1bbf3249810312e8" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>idle_level</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a2b6b7171c5477b5646394295761f06cc" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>last_operation_time</name></member>
+      <member refid="structEspPio_1_1ChannelState_1af9be8cff3303a3874c08c039967194e6" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>receive_callback</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a5b7b44120ef8a37524444a723d61d87a" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>receive_user_data</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a846d9b9f6c690f65cfb52907b8ce4545" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>rmt_rx_buffer</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a6201b425584214725e2f6c81cff9a25c" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>rx_buffer</name></member>
+      <member refid="structEspPio_1_1ChannelState_1ab8ea931d6508b8dd0e8728b82dcb4697" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>rx_buffer_size</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a81f2871c5e6cd9e846fd4f4794187ba1" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>rx_channel</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a44ff89dd92035b8a9d3f9386892e2045" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>rx_symbols_received</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a85db0030071a59d3b0ecaf568f7c5ad1" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>selected_clk_src</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a9a314ac007120b3b36eee4c9fac74254" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>source_clock_hz</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a8818461d1b2f31924a3ad472573fc8d4" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>status</name></member>
+      <member refid="structEspPio_1_1ChannelState_1af931c86b00255f46bdefb8c647f8367a" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>transmit_callback</name></member>
+      <member refid="structEspPio_1_1ChannelState_1a7a28b7e6ed0cd90f53c82a08c3705f4f" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>transmit_user_data</name></member>
+      <member refid="structEspPio_1_1ChannelState_1ac6000ad8168d0bb531f1353ca27444bd" prot="public" virt="non-virtual"><scope>EspPio::ChannelState</scope><name>tx_channel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_7751913d9073a449937b5bcfd50bf3a6" kind="dir">
+    <compoundname>examples/esp32/main</compoundname>
+    <innerfile refid="AdcComprehensiveTest_8cpp">AdcComprehensiveTest.cpp</innerfile>
+    <innerfile refid="AsciiArtComprehensiveTest_8cpp">AsciiArtComprehensiveTest.cpp</innerfile>
+    <innerfile refid="BluetoothComprehensiveTest_8cpp">BluetoothComprehensiveTest.cpp</innerfile>
+    <innerfile refid="CanComprehensiveTest_8cpp">CanComprehensiveTest.cpp</innerfile>
+    <innerfile refid="DigitalOutputGuardComprehensiveTest_8cpp">DigitalOutputGuardComprehensiveTest.cpp</innerfile>
+    <innerfile refid="GpioComprehensiveTest_8cpp">GpioComprehensiveTest.cpp</innerfile>
+    <innerfile refid="I2cComprehensiveTest_8cpp">I2cComprehensiveTest.cpp</innerfile>
+    <innerfile refid="LoggerComprehensiveTest_8cpp">LoggerComprehensiveTest.cpp</innerfile>
+    <innerfile refid="NvsComprehensiveTest_8cpp">NvsComprehensiveTest.cpp</innerfile>
+    <innerfile refid="PioComprehensiveTest_8cpp">PioComprehensiveTest.cpp</innerfile>
+    <innerfile refid="PwmComprehensiveTest_8cpp">PwmComprehensiveTest.cpp</innerfile>
+    <innerfile refid="SpiComprehensiveTest_8cpp">SpiComprehensiveTest.cpp</innerfile>
+    <innerfile refid="TemperatureComprehensiveTest_8cpp">TemperatureComprehensiveTest.cpp</innerfile>
+    <innerfile refid="TestFramework_8h">TestFramework.h</innerfile>
+    <innerfile refid="TimerComprehensiveTest_8cpp">TimerComprehensiveTest.cpp</innerfile>
+    <innerfile refid="UartComprehensiveTest_8cpp">UartComprehensiveTest.cpp</innerfile>
+    <innerfile refid="WifiComprehensiveTest_8cpp">WifiComprehensiveTest.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="examples/esp32/main/"/>
+  </compounddef>
+</doxygen>

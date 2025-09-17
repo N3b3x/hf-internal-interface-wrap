@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__lp__io__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_lp_io_config_t</compoundname>
+    <includes refid="EspTypes__GPIO_8h" local="no">EspTypes_GPIO.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__lp__io__config__t_1a618272fbcb49300c0a852a9117f6b7db" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kindref="member">hf_gpio_mode_t</ref></type>
+        <definition>hf_gpio_mode_t hf_lp_io_config_t::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <qualifiedname>hf_lp_io_config_t::mode</qualifiedname>
+        <briefdescription>
+<para>LP IO mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="123" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__lp__io__config__t_1aa4aac5c894c19f3623422aa43a528c7f" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" kindref="member">hf_gpio_pull_t</ref></type>
+        <definition>hf_gpio_pull_t hf_lp_io_config_t::pull_mode</definition>
+        <argsstring></argsstring>
+        <name>pull_mode</name>
+        <qualifiedname>hf_lp_io_config_t::pull_mode</qualifiedname>
+        <briefdescription>
+<para>Pull resistor configuration. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="124" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__lp__io__config__t_1a8296ad225d266a7ff876e56818b818e5" prot="public" static="no" mutable="no">
+        <type><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref></type>
+        <definition>hf_gpio_drive_cap_t hf_lp_io_config_t::drive_strength</definition>
+        <argsstring></argsstring>
+        <name>drive_strength</name>
+        <qualifiedname>hf_lp_io_config_t::drive_strength</qualifiedname>
+        <briefdescription>
+<para>Output drive capability. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="125" column="23" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__lp__io__config__t_1a59745ba821e5a32a940d84931719f58a" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_lp_io_config_t::input_enable</definition>
+        <argsstring></argsstring>
+        <name>input_enable</name>
+        <qualifiedname>hf_lp_io_config_t::input_enable</qualifiedname>
+        <briefdescription>
+<para>Enable input buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="126" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__lp__io__config__t_1ac7b9092b5faf9183bd134b5dec7125a7" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_lp_io_config_t::output_enable</definition>
+        <argsstring></argsstring>
+        <name>output_enable</name>
+        <qualifiedname>hf_lp_io_config_t::output_enable</qualifiedname>
+        <briefdescription>
+<para>Enable output buffer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="127" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__lp__io__config__t_1a7d78f99c8f7a1542c8864d88b6ac248b" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_lp_io_config_t::hold_enable</definition>
+        <argsstring></argsstring>
+        <name>hold_enable</name>
+        <qualifiedname>hf_lp_io_config_t::hold_enable</qualifiedname>
+        <briefdescription>
+<para>Hold configuration during sleep. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="128" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__lp__io__config__t_1a45d0386e2cdc6ad8d3eda74ee71060e8" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_lp_io_config_t::force_hold</definition>
+        <argsstring></argsstring>
+        <name>force_hold</name>
+        <qualifiedname>hf_lp_io_config_t::force_hold</qualifiedname>
+        <briefdescription>
+<para>Force hold regardless of sleep state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="129" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Low-Power IO configuration for ultra-low power operation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Configuration for LP_IO domain operations during deep sleep. </para>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="122" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="122" bodyend="130"/>
+    <listofallmembers>
+      <member refid="structhf__lp__io__config__t_1a8296ad225d266a7ff876e56818b818e5" prot="public" virt="non-virtual"><scope>hf_lp_io_config_t</scope><name>drive_strength</name></member>
+      <member refid="structhf__lp__io__config__t_1a45d0386e2cdc6ad8d3eda74ee71060e8" prot="public" virt="non-virtual"><scope>hf_lp_io_config_t</scope><name>force_hold</name></member>
+      <member refid="structhf__lp__io__config__t_1a7d78f99c8f7a1542c8864d88b6ac248b" prot="public" virt="non-virtual"><scope>hf_lp_io_config_t</scope><name>hold_enable</name></member>
+      <member refid="structhf__lp__io__config__t_1a59745ba821e5a32a940d84931719f58a" prot="public" virt="non-virtual"><scope>hf_lp_io_config_t</scope><name>input_enable</name></member>
+      <member refid="structhf__lp__io__config__t_1a618272fbcb49300c0a852a9117f6b7db" prot="public" virt="non-virtual"><scope>hf_lp_io_config_t</scope><name>mode</name></member>
+      <member refid="structhf__lp__io__config__t_1ac7b9092b5faf9183bd134b5dec7125a7" prot="public" virt="non-virtual"><scope>hf_lp_io_config_t</scope><name>output_enable</name></member>
+      <member refid="structhf__lp__io__config__t_1aa4aac5c894c19f3623422aa43a528c7f" prot="public" virt="non-virtual"><scope>hf_lp_io_config_t</scope><name>pull_mode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

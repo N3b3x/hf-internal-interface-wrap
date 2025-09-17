@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__esp__can__state__info__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_esp_can_state_info_t</compoundname>
+    <includes refid="EspCan_8h" local="no">EspCan.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__esp__can__state__info__t_1a6b249242fbf5f87041125dabef3ea042" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_state_info_t::previous_state</definition>
+        <argsstring></argsstring>
+        <name>previous_state</name>
+        <qualifiedname>hf_esp_can_state_info_t::previous_state</qualifiedname>
+        <briefdescription>
+<para>Previous bus state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="156" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__state__info__t_1ab61756d0ff06c7f29da86ea07842b723" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_esp_can_state_info_t::current_state</definition>
+        <argsstring></argsstring>
+        <name>current_state</name>
+        <qualifiedname>hf_esp_can_state_info_t::current_state</qualifiedname>
+        <briefdescription>
+<para>Current bus state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="157" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__esp__can__state__info__t_1af6ed3c280a8db31559bc2ebbeff3cfe4" prot="public" static="no" mutable="no">
+        <type>uint64_t</type>
+        <definition>uint64_t hf_esp_can_state_info_t::timestamp_us</definition>
+        <argsstring></argsstring>
+        <name>timestamp_us</name>
+        <qualifiedname>hf_esp_can_state_info_t::timestamp_us</qualifiedname>
+        <briefdescription>
+<para>State change timestamp in microseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/EspCan.h" line="158" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Bus state information for state change callbacks. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/EspCan.h" line="155" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="155" bodyend="159"/>
+    <listofallmembers>
+      <member refid="structhf__esp__can__state__info__t_1ab61756d0ff06c7f29da86ea07842b723" prot="public" virt="non-virtual"><scope>hf_esp_can_state_info_t</scope><name>current_state</name></member>
+      <member refid="structhf__esp__can__state__info__t_1a6b249242fbf5f87041125dabef3ea042" prot="public" virt="non-virtual"><scope>hf_esp_can_state_info_t</scope><name>previous_state</name></member>
+      <member refid="structhf__esp__can__state__info__t_1af6ed3c280a8db31559bc2ebbeff3cfe4" prot="public" virt="non-virtual"><scope>hf_esp_can_state_info_t</scope><name>timestamp_us</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

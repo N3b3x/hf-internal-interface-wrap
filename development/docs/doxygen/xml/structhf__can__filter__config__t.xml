@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__can__filter__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_can_filter_config_t</compoundname>
+    <includes refid="EspTypes__CAN_8h" local="no">EspTypes_CAN.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__can__filter__config__t_1a2091ca1a431ea58b179919e4fb4d3021" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_can_filter_config_t::acceptance_code</definition>
+        <argsstring></argsstring>
+        <name>acceptance_code</name>
+        <qualifiedname>hf_can_filter_config_t::acceptance_code</qualifiedname>
+        <briefdescription>
+<para>Acceptance code. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="68" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__filter__config__t_1a1d0a313b0c1c9b15afb3f71c9b05cdf0" prot="public" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t hf_can_filter_config_t::acceptance_mask</definition>
+        <argsstring></argsstring>
+        <name>acceptance_mask</name>
+        <qualifiedname>hf_can_filter_config_t::acceptance_mask</qualifiedname>
+        <briefdescription>
+<para>Acceptance mask. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="69" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__can__filter__config__t_1a457d961a4cd803ba506753c910067711" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_can_filter_config_t::single_filter</definition>
+        <argsstring></argsstring>
+        <name>single_filter</name>
+        <qualifiedname>hf_can_filter_config_t::single_filter</qualifiedname>
+        <briefdescription>
+<para>Use single filter mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="70" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__can__filter__config__t_1aa30646ff215f94e89592fb13c15252e5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_can_filter_config_t::hf_can_filter_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_can_filter_config_t</name>
+        <qualifiedname>hf_can_filter_config_t::hf_can_filter_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="72" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="72" bodyend="73"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CAN filter configuration structure. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="67" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="67" bodyend="74"/>
+    <listofallmembers>
+      <member refid="structhf__can__filter__config__t_1a2091ca1a431ea58b179919e4fb4d3021" prot="public" virt="non-virtual"><scope>hf_can_filter_config_t</scope><name>acceptance_code</name></member>
+      <member refid="structhf__can__filter__config__t_1a1d0a313b0c1c9b15afb3f71c9b05cdf0" prot="public" virt="non-virtual"><scope>hf_can_filter_config_t</scope><name>acceptance_mask</name></member>
+      <member refid="structhf__can__filter__config__t_1aa30646ff215f94e89592fb13c15252e5" prot="public" virt="non-virtual"><scope>hf_can_filter_config_t</scope><name>hf_can_filter_config_t</name></member>
+      <member refid="structhf__can__filter__config__t_1a457d961a4cd803ba506753c910067711" prot="public" virt="non-virtual"><scope>hf_can_filter_config_t</scope><name>single_filter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
