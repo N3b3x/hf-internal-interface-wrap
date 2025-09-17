@@ -1,0 +1,8 @@
+{
+  "version": "preview",
+  "type": "preview",
+  "deployed_at": "2025-09-17T02:01:25Z",
+  "commit": "60c3f1dce06b31182d3c2f0a7bd77094b396ec34",
+  "ref": "refs/pull/186/merge",
+  "doxygen_version": "0.1.0-preview"
+}
