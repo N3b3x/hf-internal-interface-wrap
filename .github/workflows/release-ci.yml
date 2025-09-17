@@ -88,7 +88,7 @@ jobs:
         run: |
           # Create release directory
           mkdir -p release-package
-          
+
           # Copy source code (excluding build artifacts and CI files)
           rsync -av --exclude='.git' \
             --exclude='build-*' \
@@ -98,80 +98,80 @@ jobs:
             --exclude='node_modules' \
             --exclude='.DS_Store' \
             . release-package/
-          
+
           # Copy firmware binaries to a dedicated folder
           mkdir -p release-package/firmware-binaries
           if [ -d "artifacts" ]; then
             cp -r artifacts/* release-package/firmware-binaries/ 2>/dev/null || true
           fi
-          
+
           # Create comprehensive README for release
           cat > release-package/RELEASE_README.md << 'EOF'
           # HardFOC ESP32 Interface Wrapper - Release ${{ env.RELEASE_VERSION }}
-          
+
           ## 📦 Package Contents
-          
+
           ### 🔧 Source Code
           - `src/` - Core source code implementation
           - `inc/` - Header files and interfaces
           - `examples/esp32/` - ESP32 example applications
           - `components/` - ESP-IDF components
-          
+
           ### 📚 Documentation
           - `docs/` - Complete API documentation
           - `examples/esp32/docs/` - Example-specific documentation
           - `README.md` - Project overview and setup
-          
+
           ### 🏗️ Build System
           - `CMakeLists.txt` - CMake configuration
           - `examples/esp32/CMakeLists.txt` - ESP32 project configuration
           - `examples/esp32/sdkconfig` - ESP-IDF configuration
           - `examples/esp32/app_config.yml` - Application configuration
-          
+
           ### 🚀 Firmware Binaries
           - `firmware-binaries/` - Pre-built ESP32 firmware for all applications
           - Built with ESP-IDF v5.5
           - Target: ESP32-C6
           - Debug and Release configurations available
-          
+
           ## 🛠️ Quick Start
-          
+
           1. **For ESP32 Development:**
              ```bash
              cd examples/esp32
              ./scripts/setup_repo.sh
              ./scripts/build_app.sh gpio_test Release
              ```
-          
+
           2. **For Library Integration:**
              ```bash
              # Include src/ and inc/ in your project
              # Link against the provided CMakeLists.txt
              ```
-          
+
           ## 📋 Release Information
-          
+
           - **Version:** ${{ env.RELEASE_VERSION }}
           - **ESP-IDF Version:** v5.5
           - **Target:** ESP32-C6
           - **Build Date:** $(date -u)
           - **Security:** Full audit completed, no known vulnerabilities
-          
+
           ## 🔗 Additional Resources
-          
+
           - [Online Documentation](https://${{ github.repository_owner }}.github.io/\
             ${{ github.event.repository.name }}/)
           - [GitHub Repository](https://github.com/${{ github.repository }})
           - [Issue Tracker](https://github.com/${{ github.repository }}/issues)
-          
+
           EOF
-          
+
           # Create changelog
           echo "# Changelog for ${{ env.RELEASE_VERSION }}" > release-package/CHANGELOG.md
           echo "" >> release-package/CHANGELOG.md
           echo "## Changes since last release:" >> release-package/CHANGELOG.md
           echo "" >> release-package/CHANGELOG.md
-          
+
           # Get commits since last tag (if any)
           if git describe --tags --abbrev=0 HEAD~1 2>/dev/null; then
             LAST_TAG=$(git describe --tags --abbrev=0 HEAD~1)
@@ -181,12 +181,12 @@ jobs:
             echo "### Initial release" >> release-package/CHANGELOG.md
             git log --oneline --no-merges >> release-package/CHANGELOG.md
           fi
-          
+
           # Create the final package
           cd release-package
           zip -r ../hardfoc-esp32-${{ env.RELEASE_VERSION }}-complete.zip .
           cd ..
-          
+
           # Create firmware-only package for quick deployment
           if [ -d "artifacts" ]; then
             cd artifacts
@@ -203,26 +203,26 @@ jobs:
           release_name: Release ${{ env.RELEASE_VERSION }}
           body: |
             ## 🚀 HardFOC ESP32 Release ${{ env.RELEASE_VERSION }}
-            
+
             ### 📦 Complete Software Package
             - **Source Code**: Full C++ implementation with ESP32 examples
             - **Documentation**: Complete API docs and usage examples
             - **Firmware Binaries**: Pre-built ESP32-C6 firmware for all applications
             - **Build System**: Ready-to-use CMake and ESP-IDF configuration
-            
+
             ### 🎯 What's Included
             - **HardFOC Interface Wrapper**: Core C++ library for ESP32
             - **ESP32 Examples**: 16 comprehensive test applications
             - **Documentation**: API reference and usage guides
             - **Firmware Binaries**: Debug and Release builds for ESP32-C6
             - **Build Tools**: Automated build and flash scripts
-            
+
             ### 🛠️ Quick Start
             1. Download the complete package
             2. Extract and navigate to `examples/esp32/`
             3. Run `./scripts/setup_repo.sh` for development
             4. Use `./scripts/build_app.sh <app_name> <build_type>` to build
-            
+
             ### 📚 Documentation
             - [Online Documentation](https://${{ github.repository_owner }}.github.io/\
               ${{ github.event.repository.name }}/)
@@ -230,13 +230,13 @@ jobs:
               ${{ github.event.repository.name }}/api/)
             - [ESP32 Examples](https://${{ github.repository_owner }}.github.io/\
               ${{ github.event.repository.name }}/esp_api/)
-            
+
             ### 🛡️ Security & Quality
             - Full security audit completed
             - CodeQL analysis: ${{ needs.wait-for-advanced-ci.result == 'success' && '✅ Passed' || '⚠️ Issues found' }}
             - Comprehensive test suite
             - No known vulnerabilities
-            
+
             ### 📋 Technical Details
             - **ESP-IDF Version**: v5.5
             - **Target**: ESP32-C6

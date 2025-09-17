@@ -41,6 +41,29 @@ rules:
   octal-values:
     forbid-implicit-octal: true
   
-  # Quoted strings
-  quoted-strings:
-    quote-type: single
+  # Braces
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+
+  # Brackets
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 1
+
+  # Colons
+  colons:
+    max-spaces-before: 0
+    max-spaces-after: 1
+
+  # Commas
+  commas:
+    max-spaces-before: 0
+    max-spaces-after: 1
+
+  # Hyphens
+  hyphens:
+    max-spaces-after: 1
+
+  # Comments indentation
+  comments-indentation: disable
