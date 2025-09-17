@@ -1,6 +1,7 @@
 var group__spi =
 [
     [ "BaseSpi.h", "BaseSpi_8h.html", null ],
+    [ "EspSpi.h", "EspSpi_8h.html", null ],
     [ "BaseSpi", "classBaseSpi.html", [
       [ "~BaseSpi", "classBaseSpi.html#a00d984807a767a1b3de27d3ce0a61fd8", null ],
       [ "BaseSpi", "classBaseSpi.html#abf33121948481f9001f6d18042da61bb", null ],

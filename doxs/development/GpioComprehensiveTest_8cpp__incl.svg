@@ -121,7 +121,7 @@ var sectionId = 'dynsection-0';
 <!-- Node7 -->
 <g id="Node000007" class="node">
 <title>Node7</title>
-<g id="a_Node000007"><a xlink:href="memory__utils_8h.html" target="_top" xlink:title=" ">
+<g id="a_Node000007"><a xlink:href="memory__utils_8h.html" target="_top" xlink:title="Memory management utilities for exception&#45;free design.">
 <polygon fill="white" stroke="#666666" points="144,-318 7,-318 7,-295 144,-295 144,-318"/>
 <text text-anchor="middle" x="75.5" y="-302.8" font-family="Arial" font-size="14.00">utils/memory_utils.h</text>
 </a>

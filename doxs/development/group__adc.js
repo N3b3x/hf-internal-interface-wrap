@@ -1,6 +1,7 @@
 var group__adc =
 [
     [ "BaseAdc.h", "BaseAdc_8h.html", null ],
+    [ "EspAdc.h", "EspAdc_8h.html", null ],
     [ "BaseAdc", "classBaseAdc.html", [
       [ "~BaseAdc", "classBaseAdc.html#a33e66d850746427789319566e201e6b9", null ],
       [ "BaseAdc", "classBaseAdc.html#afa09240c509104a18d40aa2dbbbc5e9d", null ],

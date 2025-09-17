@@ -504,5 +504,6 @@ var searchData=
   ['tx_5fud_5f_501',['tx_ud_',['../classEspCan.html#ab431b6af90e985b67e4cc2d8c5fbd0b4',1,'EspCan']]],
   ['txbyteswaiting_502',['TxBytesWaiting',['../classEspUart.html#a95d705a9febfd27db46df2520f669692',1,'EspUart']]],
   ['type_503',['type',['../structhf__bluetooth__device__info__t.html#aa4e7cdd7df30a77dccb53486d671603d',1,'hf_bluetooth_device_info_t::type'],['../structhf__nvs__iterator__config__t.html#a679b91e6c7e1b8bf721564040be56b3a',1,'hf_nvs_iterator_config_t::type'],['../structhf__nvs__entry__info__t.html#a251ce88b08f259a47a3245cc728b6e21',1,'hf_nvs_entry_info_t::type'],['../structhf__uart__event__t.html#ad073f9713f20967f5027e85ab440abed',1,'hf_uart_event_t::type']]],
-  ['types_504',['Hardware Types',['../index.html#autotoc_md30',1,'']]]
+  ['type_20definitions_504',['ESP32 Type Definitions',['../group__esp32__types.html',1,'']]],
+  ['types_505',['Hardware Types',['../index.html#autotoc_md30',1,'']]]
 ];

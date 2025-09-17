@@ -13,5 +13,8 @@ var topics =
     [ "SPI Module", "group__spi.html", "group__spi" ],
     [ "Temperature Module", "group__temperature.html", "group__temperature" ],
     [ "UART Module", "group__uart.html", "group__uart" ],
-    [ "WiFi Module", "group__wifi.html", "group__wifi" ]
+    [ "WiFi Module", "group__wifi.html", "group__wifi" ],
+    [ "Core Module", "group__core.html", "group__core" ],
+    [ "ESP32 Type Definitions", "group__esp32__types.html", "group__esp32__types" ],
+    [ "Utility Module", "group__utils.html", "group__utils" ]
 ];

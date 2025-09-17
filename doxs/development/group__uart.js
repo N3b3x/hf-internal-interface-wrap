@@ -1,6 +1,7 @@
 var group__uart =
 [
     [ "BaseUart.h", "BaseUart_8h.html", null ],
+    [ "EspUart.h", "EspUart_8h.html", null ],
     [ "BaseUart", "classBaseUart.html", [
       [ "~BaseUart", "classBaseUart.html#aeaf29070491a7ba9a8fdab4d57f88552", null ],
       [ "BaseUart", "classBaseUart.html#a5bd0243a3f6c1e242a5a867f6aebf928", null ],

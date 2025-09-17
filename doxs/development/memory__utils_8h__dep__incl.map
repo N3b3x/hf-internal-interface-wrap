@@ -1,5 +1,5 @@
 <map id="inc/utils/memory_utils.h" name="inc/utils/memory_utils.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="463,5,674,36"/>
+<area shape="rect" id="Node000001" title="Memory management utilities for exception&#45;free design." alt="" coords="463,5,674,36"/>
 <area shape="rect" id="Node000002" href="$GpioComprehensiveTest_8cpp.html" title="Comprehensive GPIO testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,84,265,135"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="485,41,257,87,256,81,484,36"/>
 <area shape="rect" id="Node000003" href="$LoggerComprehensiveTest_8cpp.html" title="Comprehensive Logger testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="290,84,567,135"/>

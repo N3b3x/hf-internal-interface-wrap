@@ -1,6 +1,7 @@
 var group__temperature =
 [
     [ "BaseTemperature.h", "BaseTemperature_8h.html", null ],
+    [ "EspTemperature.h", "EspTemperature_8h.html", null ],
     [ "BaseTemperature", "classBaseTemperature.html", [
       [ "BaseTemperature", "classBaseTemperature.html#a115e5a44b15a1f507cb7c9163d262a5a", null ],
       [ "~BaseTemperature", "classBaseTemperature.html#a89a1c053462cbf314098834f7045ae74", null ],

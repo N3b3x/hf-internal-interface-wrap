@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['spi_20module_0',['SPI Module',['../group__spi.html',1,'']]]
+  ['nvs_20module_0',['NVS Module',['../group__nvs.html',1,'']]]
 ];
