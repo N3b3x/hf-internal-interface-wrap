@@ -1341,8 +1341,8 @@ HTML_STYLESHEET        =
 # documentation.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_STYLESHEET  = docs/doxygen-extensions/doxygen-awesome-css/doxygen-awesome.css \
-                        docs/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-sidebar-only.css
+HTML_EXTRA_STYLESHEET  = _config/doxygen-extensions/doxygen-awesome-css/doxygen-awesome.css \
+                        _config/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-sidebar-only.css
 
 # The HTML_EXTRA_FILES tag can be used to specify one or more extra images or
 # other source files which should be copied to the HTML output directory. Note
@@ -1352,11 +1352,11 @@ HTML_EXTRA_STYLESHEET  = docs/doxygen-extensions/doxygen-awesome-css/doxygen-awe
 # files will be copied as-is; there are no commands or markers available.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_EXTRA_FILES       = docs/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
-                         docs/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
-                         docs/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
-                         docs/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-interactive-toc.js \
-                         docs/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-tabs.js
+HTML_EXTRA_FILES       = _config/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-darkmode-toggle.js \
+                         _config/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-fragment-copy-button.js \
+                         _config/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-paragraph-link.js \
+                         _config/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-interactive-toc.js \
+                         _config/doxygen-extensions/doxygen-awesome-css/doxygen-awesome-tabs.js
 
 # The HTML_COLORSTYLE tag can be used to specify if the generated HTML output
 # should be rendered with a dark or light theme.

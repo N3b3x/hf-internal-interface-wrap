@@ -2,9 +2,9 @@
 # Jekyll configuration for hf-internal-interface-wrap documentation
 title: "HardFOC Interface Wrapper"
 description: >
-  A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API across 
+  A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API across
   multiple MCU platforms, supporting ESP32 family and planned STM32 support
-  
+
 baseurl: "/hf-internal-interface-wrap"  # GitHub Pages subpath
 url: "https://n3b3x.github.io"
 
@@ -17,6 +17,8 @@ author:
 # Directory configuration
 layouts_dir: docs/_layouts
 includes_dir: docs/_includes
+# sass:
+#   sass_dir: _config/_sass
 
 # Theme and plugins
 remote_theme: just-the-docs/just-the-docs
@@ -171,7 +173,7 @@ seo:
   type: "Organization"
   name: "HardFOC Interface Wrapper"
   description: >
-    Multi-MCU hardware abstraction layer for HardFOC systems with unified API across 
+    Multi-MCU hardware abstraction layer for HardFOC systems with unified API across
     multiple MCU platforms, supporting ESP32 family and planned STM32 support
   url: "https://n3b3x.github.io/hf-internal-interface-wrap"
   twitter:
@@ -197,7 +199,9 @@ compress_html:
 
 # HardFOC Interface Wrapper specific settings
 hardfoc:
-  version: "1.0.0"
+  version: "1.0.0-dev"
+  branch: "main"
+  version_type: "development"
   mcu_support:
     current:
       - "ESP32"
