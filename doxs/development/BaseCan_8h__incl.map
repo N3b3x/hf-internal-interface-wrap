@@ -1,0 +1,16 @@
+<map id="inc/base/BaseCan.h" name="inc/base/BaseCan.h">
+<area shape="rect" id="Node000001" title="Abstract base class for CAN bus implementations in the HardFOC system." alt="" coords="201,5,383,36"/>
+<area shape="rect" id="Node000002" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="67,84,229,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="266,38,188,80,185,75,264,34"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,163,80,193"/>
+<area shape="poly" id="edge5_Node000001_Node000003" title=" " alt="" coords="201,38,114,58,79,71,57,86,48,100,43,116,41,149,36,149,38,115,43,98,53,82,76,66,112,53,200,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="254,84,330,115"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="295,36,295,70,289,70,289,36"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="355,84,453,115"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="315,34,373,74,370,78,312,39"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="477,84,589,115"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="338,34,476,77,475,82,336,39"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="130,117,75,157,72,152,127,113"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="116,163,180,193"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="151,115,151,149,145,149,145,115"/>
+</map>

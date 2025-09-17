@@ -1,0 +1,19 @@
+<map id="src/utils/DigitalOutputGuard.cpp" name="src/utils/DigitalOutputGuard.cpp">
+<area shape="rect" id="Node000001" title="Implementation of the DigitalOutputGuard class for unified DigitalGpio." alt="" coords="6,5,285,36"/>
+<area shape="rect" id="Node000002" href="$DigitalOutputGuard_8h.html" title="Header file for the DigitalOutputGuard class." alt="" coords="30,84,261,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,36,148,70,143,70,143,36"/>
+<area shape="rect" id="Node000003" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="125,163,286,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="159,113,188,150,184,154,155,117"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,241,168,272"/>
+<area shape="poly" id="edge9_Node000002_Node000004" title=" " alt="" coords="139,116,116,164,96,229,91,227,111,162,134,114"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="184,196,122,236,119,231,182,191"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="155,320,229,351"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="207,194,197,306,192,306,201,193"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="243,241,341,272"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="223,192,267,230,264,234,220,196"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="365,241,477,272"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="246,191,369,234,368,239,245,196"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="108,270,163,310,160,314,105,274"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="55,320,119,351"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="89,272,89,306,84,306,84,272"/>
+</map>

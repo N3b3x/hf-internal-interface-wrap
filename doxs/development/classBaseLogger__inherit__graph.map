@@ -1,0 +1,5 @@
+<map id="BaseLogger" name="BaseLogger">
+<area shape="rect" id="Node000001" title="Base logger abstract class." alt="" coords="5,5,124,36"/>
+<area shape="rect" id="Node000002" href="$classEspLogger.html" title="ESP32 logger implementation using ESP&#45;IDF logging system (Log V1/V2)." alt="" coords="10,84,119,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,50,67,84,62,84,62,50"/>
+</map>

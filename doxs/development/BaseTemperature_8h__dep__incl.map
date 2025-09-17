@@ -1,0 +1,10 @@
+<map id="inc/base/BaseTemperature.h" name="inc/base/BaseTemperature.h">
+<area shape="rect" id="Node000001" title="Abstract base class for temperature sensor implementations in the HardFOC system." alt="" coords="133,5,385,36"/>
+<area shape="rect" id="Node000002" href="$TemperatureComprehensiveTest_8cpp.html" title="Comprehensive Temperature sensor testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,163,328,213"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="230,47,211,64,196,85,180,125,172,163,167,162,174,123,191,83,207,61,226,43"/>
+<area shape="rect" id="Node000003" href="$EspTemperature_8h.html" title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system." alt="" coords="205,84,497,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="288,43,335,82,332,86,285,47"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="310,123,219,165,217,160,307,118"/>
+<area shape="rect" id="Node000004" href="$EspTemperature_8cpp.html" title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system." alt="" coords="352,173,664,203"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="389,119,484,170,481,175,387,123"/>
+</map>

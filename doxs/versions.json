@@ -1,5 +1,5 @@
 {
-  "versions": ["preview"],
-  "current": "preview",
-  "latest": "preview"
+  "versions": ["development"],
+  "current": "development",
+  "latest": "development"
 }

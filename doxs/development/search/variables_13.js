@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['uart0_5fcts_5fpin_0',['UART0_CTS_PIN',['../structhf__uart__pin__map__esp32c6__t.html#aeb17f1190f69070ba953bbc975c738c1',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart0_5frts_5fpin_1',['UART0_RTS_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a2bc9ed7a56b91a0159ea47ab76eb24ab',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart0_5frx_5fpin_2',['UART0_RX_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a35acdc03c24201e15fff340dfe7ffcd4',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart0_5ftx_5fpin_3',['UART0_TX_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a1c5d85274a14959188520d9330b085e8',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart1_5fcts_5fpin_4',['UART1_CTS_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a2965a280eb931771569a8f4739c4cc67',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart1_5frts_5fpin_5',['UART1_RTS_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a85fa8ef047175cbc245b49c594a6ee51',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart1_5frx_5fpin_6',['UART1_RX_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a918fa542b710dd5d77edf7a151699c52',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart1_5ftx_5fpin_7',['UART1_TX_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a26e8fd135074b27510536955e18649de',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart2_5fcts_5fpin_8',['UART2_CTS_PIN',['../structhf__uart__pin__map__esp32c6__t.html#af62c624a1b01cd4ab9714d2bec414233',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart2_5frts_5fpin_9',['UART2_RTS_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a04f152ae03c0c8456ebf26576571b5bf',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart2_5frx_5fpin_10',['UART2_RX_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a9eda2c3427bde3099b34255a02639692',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart2_5ftx_5fpin_11',['UART2_TX_PIN',['../structhf__uart__pin__map__esp32c6__t.html#a271061a6ba9b6982d44aca9d84abc5df',1,'hf_uart_pin_map_esp32c6_t']]],
+  ['uart_5fport_5f_12',['uart_port_',['../classEspUart.html#a758a727337eac39b8d8b0d7b920dffff',1,'EspUart']]],
+  ['unit_5fconfig_5f_13',['unit_config_',['../classEspPwm.html#ac2592dd4dbe1e99213a7d1d4c69e67fd',1,'EspPwm']]],
+  ['unit_5fid_14',['unit_id',['../structhf__adc__unit__config__t.html#a913ab26a613a66311a1ff5e98e45541d',1,'hf_adc_unit_config_t::unit_id'],['../structhf__pwm__unit__config__t.html#aee1e74ef4f6da7c224819db84bc9d873',1,'hf_pwm_unit_config_t::unit_id']]],
+  ['uptime_5fseconds_15',['uptime_seconds',['../structhf__can__statistics__t.html#a89b6fd61e6c03625a7f9b0ff81139b83',1,'hf_can_statistics_t::uptime_seconds'],['../structhf__logger__diagnostics__t.html#a91eb53511a5f01511f3fca72237ecce1',1,'hf_logger_diagnostics_t::uptime_seconds']]],
+  ['usage_5fnotes_16',['usage_notes',['../structhf__gpio__pin__info__t.html#a1c6197aa3a86633d42663343440f5fe0',1,'hf_gpio_pin_info_t']]],
+  ['use_5fiomux_17',['use_iomux',['../structhf__spi__bus__config__t.html#a30a9804cc4b3799a4207e669243135ab',1,'hf_spi_bus_config_t']]],
+  ['use_5fref_5ftick_18',['use_ref_tick',['../structhf__uart__wakeup__config__t.html#a4ac464ca640984d471f17defcf1a1784',1,'hf_uart_wakeup_config_t']]],
+  ['user_5fctx_19',['user_ctx',['../structhf__spi__device__config__t.html#afb8e5f293876b8ebe47ee365ed3ddc31',1,'hf_spi_device_config_t']]],
+  ['user_5fdata_20',['user_data',['../structEspAdc_1_1MonitorContext.html#a5722733ce224dd0d960c6c40385f5d37',1,'EspAdc::MonitorContext']]],
+  ['user_5fdata_5f_21',['user_data_',['../classBasePeriodicTimer.html#aee2e35d2b7143181770d86f72fa631f2',1,'BasePeriodicTimer']]],
+  ['user_5fdata_5fmismatch_22',['user_data_mismatch',['../structCallbackTestData.html#aa7b34d7c1ce9c088697dabdb468f2eb6',1,'CallbackTestData']]],
+  ['uuid_23',['uuid',['../structhf__bluetooth__gatt__service__t.html#ab31b88eaafd54e7d616d1735e97863cd',1,'hf_bluetooth_gatt_service_t::uuid'],['../structhf__bluetooth__gatt__characteristic__t.html#abb8ce02be19d55f0dd8a4e0d78374a6a',1,'hf_bluetooth_gatt_characteristic_t::uuid']]],
+  ['uuids_24',['uuids',['../structhf__bluetooth__device__info__t.html#ac1b435de54e204fc372f301d22bceb58',1,'hf_bluetooth_device_info_t']]]
+];

@@ -1,0 +1,5 @@
+<map id="hf_gpio_pin_info_t" name="hf_gpio_pin_info_t">
+<area shape="rect" id="Node000001" title="Utility structure for GPIO pin information lookup." alt="" coords="35,104,205,135"/>
+<area shape="rect" id="Node000002" href="$structhf__gpio__pin__capabilities__t.html" title="ESP32 GPIO pin capabilities and limitations." alt="" coords="5,5,235,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="123,50,123,104,117,104,117,50"/>
+</map>

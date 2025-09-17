@@ -1,0 +1,7 @@
+<map id="inc/mcu/esp32/EspCan.h" name="inc/mcu/esp32/EspCan.h">
+<area shape="rect" id="Node000001" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="157,5,380,36"/>
+<area shape="rect" id="Node000002" href="$CanComprehensiveTest_8cpp.html" title="Comprehensive CAN testing suite for ESP32&#45;C6 with ESP&#45;IDF v5.5 TWAI API and SN65 transceiver." alt="" coords="5,84,260,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="236,46,173,86,170,81,233,41"/>
+<area shape="rect" id="Node000003" href="$EspCan_8cpp.html" title="ESP32 CAN (TWAI) implementation for the HardFOC system &#45; ESP&#45;IDF v5.5 Compatible." alt="" coords="285,94,527,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="304,41,385,92,382,96,302,46"/>
+</map>

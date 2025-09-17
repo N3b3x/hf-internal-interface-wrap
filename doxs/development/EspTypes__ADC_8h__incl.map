@@ -1,0 +1,30 @@
+<map id="inc/mcu/esp32/utils/EspTypes_ADC.h" name="inc/mcu/esp32/utils/EspTypes_ADC.h">
+<area shape="rect" id="Node000001" title="ESP32 ADC type definitions for hardware abstraction." alt="" coords="489,5,665,56"/>
+<area shape="rect" id="Node000002" href="$BaseAdc_8h.html" title="Abstract base class for ADC implementations in the HardFOC system." alt="" coords="223,104,332,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="494,59,341,103,339,98,493,54"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="315,183,477,213"/>
+<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="492,58,455,78,423,106,407,136,400,169,395,168,402,135,419,102,452,74,490,54"/>
+<area shape="rect" id="Node000008" href="$EspTypes__Base_8h.html" title="ESP32 base type definitions for hardware abstraction." alt="" coords="434,104,601,135"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="562,58,537,94,533,91,558,55"/>
+<area shape="rect" id="Node000009" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="653,183,843,213"/>
+<area shape="poly" id="edge14_Node000001_Node000009" title=" " alt="" coords="597,55,628,93,666,133,717,173,713,177,662,137,624,96,593,58"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="675,104,911,135"/>
+<area shape="poly" id="edge15_Node000001_Node000011" title=" " alt="" coords="639,54,746,96,745,101,637,59"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="936,104,1149,135"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="666,46,954,99,953,104,665,51"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="301,133,363,173,361,177,298,137"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="312,261,387,292"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="282,135,290,171,305,212,330,249,325,252,300,215,285,172,277,136"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="5,183,104,213"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="237,137,109,181,108,176,235,132"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="128,183,240,213"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="261,137,214,176,210,172,258,133"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="389,215,367,251,363,248,385,212"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="411,261,475,292"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="407,212,429,248,425,251,403,215"/>
+<area shape="poly" id="edge10_Node000008_Node000003" title=" " alt="" coords="496,137,432,178,429,173,493,133"/>
+<area shape="poly" id="edge12_Node000008_Node000004" title=" " alt="" coords="519,135,512,174,504,196,491,215,476,227,454,239,401,261,399,256,452,234,473,222,487,212,499,193,507,172,514,135"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="561,132,694,176,692,181,559,137"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="553,183,629,213"/>
+<area shape="poly" id="edge11_Node000008_Node000010" title=" " alt="" coords="533,133,569,171,566,175,529,137"/>
+</map>
