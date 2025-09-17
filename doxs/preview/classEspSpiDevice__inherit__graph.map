@@ -1,0 +1,5 @@
+<map id="EspSpiDevice" name="EspSpiDevice">
+<area shape="rect" id="Node000001" title="Represents a single SPI device on a bus (CS/config/handle)." alt="" coords="5,84,140,115"/>
+<area shape="rect" id="Node000002" href="$classBaseSpi.html" title="Abstract base class for SPI device implementations." alt="" coords="28,5,117,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,50,75,84,70,84,70,50"/>
+</map>

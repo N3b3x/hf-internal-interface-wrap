@@ -1,0 +1,37 @@
+var group__uart =
+[
+    [ "BaseUart.h", "BaseUart_8h.html", null ],
+    [ "BaseUart", "classBaseUart.html", [
+      [ "~BaseUart", "classBaseUart.html#aeaf29070491a7ba9a8fdab4d57f88552", null ],
+      [ "BaseUart", "classBaseUart.html#a5bd0243a3f6c1e242a5a867f6aebf928", null ],
+      [ "BaseUart", "classBaseUart.html#aefd61298d23c892de11fce7404c909e9", null ],
+      [ "BaseUart", "classBaseUart.html#af78039653dc8c846d3f90dc48f50b33d", null ],
+      [ "BytesAvailable", "classBaseUart.html#a9666c49827901f9a511c4fd824648eb0", null ],
+      [ "Close", "classBaseUart.html#aec851bc0079da79a3cbc617fafad7432", null ],
+      [ "Deinitialize", "classBaseUart.html#a6778f2da517273aa1a51c0658ec0a2c0", null ],
+      [ "EnsureDeinitialized", "classBaseUart.html#a0775104a12d8e7b418246ed53b660e55", null ],
+      [ "EnsureInitialized", "classBaseUart.html#a3551794eb6e958cbdf8c15aec49c4433", null ],
+      [ "FlushRx", "classBaseUart.html#a2361728845801eb4356bdaa560ba0315", null ],
+      [ "FlushTx", "classBaseUart.html#a97a3d02d570669c9c463b99916fdef2c", null ],
+      [ "GetDiagnostics", "classBaseUart.html#a68ce0319cba173ccdf90812fd7ad8ee5", null ],
+      [ "GetPort", "classBaseUart.html#ac3cbd2017d912e1ef8a1c64627bdcbf4", null ],
+      [ "GetStatistics", "classBaseUart.html#a6698396f98eb9f438f91999142b5cbdf", null ],
+      [ "Initialize", "classBaseUart.html#ac5f93b4f75c229d2e0ec04196f5cb844", null ],
+      [ "IsInitialized", "classBaseUart.html#aa01db7402b20038f979b9073281bb430", null ],
+      [ "Open", "classBaseUart.html#a75cbb2ce81d78f722874184878433249", null ],
+      [ "operator=", "classBaseUart.html#ab823b270624288541db2a44305249b75", null ],
+      [ "operator=", "classBaseUart.html#a21412c6c2f4479149d6c25337a0af7aa", null ],
+      [ "Printf", "classBaseUart.html#a9d071b6aa4fb1fe97b33cadf47b8ad7b", null ],
+      [ "Read", "classBaseUart.html#a9ddc416f533c776cf879790c8cb10b57", null ],
+      [ "ResetDiagnostics", "classBaseUart.html#abed0a5b5b2f852ea41b3133fb260aaf7", null ],
+      [ "ResetStatistics", "classBaseUart.html#aa85590c6a17563a3ddcf2d6084210725", null ],
+      [ "Write", "classBaseUart.html#a5de6a79ad512480a12f757ce73fa46a6", null ],
+      [ "WriteByte", "classBaseUart.html#a9c42866eb7d966a138755e5b71c725cf", null ],
+      [ "WriteString", "classBaseUart.html#aacddae116924093dc2d45a894772a9a6", null ],
+      [ "diagnostics_", "classBaseUart.html#af0bff6e1b9e465bfecec2139ff113e11", null ],
+      [ "initialized_", "classBaseUart.html#a79a571b629da5ad6a3675619eb25903f", null ],
+      [ "port_", "classBaseUart.html#ab49dfeb03b7a9f8cbf81460ebb711c38", null ],
+      [ "statistics_", "classBaseUart.html#a27d6cf918e8a0ff9bdc345d3871d0876", null ]
+    ] ],
+    [ "HF_UART_ERR_LIST", "group__uart.html#ga8b05a6d56824281551272e94ab130dc7", null ]
+];

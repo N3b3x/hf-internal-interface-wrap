@@ -1,0 +1,7 @@
+<map id="inc/mcu/esp32/EspLogger.h" name="inc/mcu/esp32/EspLogger.h">
+<area shape="rect" id="Node000001" title="ESP32&#45;specific logger implementation for the HardFOC system." alt="" coords="169,5,415,36"/>
+<area shape="rect" id="Node000002" href="$LoggerComprehensiveTest_8cpp.html" title="Comprehensive Logger testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,84,283,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="257,45,187,86,185,81,255,41"/>
+<area shape="rect" id="Node000003" href="$EspLogger_8cpp.html" title="Implementation of ESP32 logger for the HardFOC system." alt="" coords="307,94,573,125"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="330,41,417,91,414,96,327,45"/>
+</map>
