@@ -686,7 +686,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="31" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="31" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="40" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="40" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" prot="public" static="no">
         <type>uint16_t</type>
@@ -701,7 +701,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="37" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="37" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="46" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="46" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" prot="public" static="no">
         <type>uint32_t</type>
@@ -716,7 +716,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="43" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="43" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="52" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="52" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" prot="public" static="no">
         <type>uint64_t</type>
@@ -731,7 +731,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="49" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="49" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="58" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="58" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" prot="public" static="no">
         <type>int8_t</type>
@@ -746,7 +746,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="55" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="55" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="64" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="64" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" prot="public" static="no">
         <type>int16_t</type>
@@ -761,7 +761,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="61" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="61" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="70" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" prot="public" static="no">
         <type>int32_t</type>
@@ -776,7 +776,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="67" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="67" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="76" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="76" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" prot="public" static="no">
         <type>int64_t</type>
@@ -791,7 +791,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="73" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="73" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="82" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="82" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" prot="public" static="no">
         <type>bool</type>
@@ -806,7 +806,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="79" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="79" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="88" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="88" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref></type>
@@ -821,7 +821,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="90" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="90" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="99" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="99" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -836,7 +836,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="111" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="111" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="120" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -851,7 +851,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="122" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="122" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="131" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="131" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -865,7 +865,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="136" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="136" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="145" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="145" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a0aaf0cae92e0cfdf445fbfdc6fea9e1e" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
@@ -879,7 +879,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="139" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="139" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="148" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -893,7 +893,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="144" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="144" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="153" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="153" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -908,7 +908,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="154" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="154" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="163" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="163" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -922,7 +922,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="164" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="164" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="173" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="173" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
@@ -936,7 +936,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="169" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="169" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="178" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="178" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1a74e30c5bd28b83d076801d5bfd46e36f" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
@@ -950,7 +950,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="174" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="174" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="183" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="183" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="HardwareTypes_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" prot="public" static="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -964,7 +964,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="179" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="179" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="188" column="1" bodyfile="inc/base/HardwareTypes.h" bodystart="188" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="var">
@@ -981,7 +981,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="95" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="95" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="104" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
@@ -996,7 +996,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="100" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="100" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="109" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref></type>
@@ -1011,7 +1011,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="116" column="25" bodyfile="inc/base/HardwareTypes.h" bodystart="116" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="125" column="25" bodyfile="inc/base/HardwareTypes.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref></type>
@@ -1026,7 +1026,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="127" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="127" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="136" column="24" bodyfile="inc/base/HardwareTypes.h" bodystart="136" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
@@ -1041,7 +1041,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="159" column="27" bodyfile="inc/base/HardwareTypes.h" bodystart="159" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="168" column="27" bodyfile="inc/base/HardwareTypes.h" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="HardwareTypes_8h_1a154ea09cf44df6d1e2345636c076c2c0" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
@@ -1056,7 +1056,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="188" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="188" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="197" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="HardwareTypes_8h_1a2e55b662f257ca97264dcde7eab37a3e" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
@@ -1071,7 +1071,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="193" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="193" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="202" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="202" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="HardwareTypes_8h_1a309d52c7fb38e56ee2dfafa363248a76" prot="public" static="no" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref></type>
@@ -1086,7 +1086,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="198" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="198" bodyend="-1"/>
+        <location file="inc/base/HardwareTypes.h" line="207" column="21" bodyfile="inc/base/HardwareTypes.h" bodystart="207" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -1118,7 +1118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="209" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="209" bodyend="211"/>
+        <location file="inc/base/HardwareTypes.h" line="218" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="218" bodyend="220"/>
       </memberdef>
       <memberdef kind="function" id="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -1148,7 +1148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="218" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="218" bodyend="220"/>
+        <location file="inc/base/HardwareTypes.h" line="227" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="227" bodyend="229"/>
       </memberdef>
       <memberdef kind="function" id="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -1178,7 +1178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="227" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="227" bodyend="229"/>
+        <location file="inc/base/HardwareTypes.h" line="236" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="236" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -1208,7 +1208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/HardwareTypes.h" line="236" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="236" bodyend="238"/>
+        <location file="inc/base/HardwareTypes.h" line="245" column="16" bodyfile="inc/base/HardwareTypes.h" bodystart="245" bodyend="247"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1228,110 +1228,110 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight></codeline>
-<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>TYPE<sp/>WRAPPING</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31" refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>=<sp/>uint8_t;</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="37" refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>=<sp/>uint16_t;</highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="43" refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>=<sp/>uint32_t;</highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49" refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>=<sp/>uint64_t;</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="55" refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref><sp/>=<sp/>int8_t;</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="61" refid="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" kindref="member">hf_i16_t</ref><sp/>=<sp/>int16_t;</highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="67" refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref><sp/>=<sp/>int32_t;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73" refid="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" kindref="member">hf_i64_t</ref><sp/>=<sp/>int64_t;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79" refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>=<sp/>bool;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>GPIO<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90" refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref>;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95" refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref><sp/>=<sp/>-1;</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100" refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" kindref="member">HF_MAX_PIN_NUMBER</ref><sp/>=<sp/>255;</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>PORT/CONTROLLER<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdint&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;limits&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>TYPE<sp/>WRAPPING</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>=<sp/>uint8_t;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>=<sp/>uint16_t;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>=<sp/>uint32_t;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>=<sp/>uint64_t;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref><sp/>=<sp/>int8_t;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a13afc13c9b02814b3b34a38049d48fd2" kindref="member">hf_i16_t</ref><sp/>=<sp/>int16_t;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref><sp/>=<sp/>int32_t;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82" refid="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ac755e76ae3da1d695793ce88e9c88c35" kindref="member">hf_i64_t</ref><sp/>=<sp/>int64_t;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref><sp/>=<sp/>bool;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>GPIO<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99" refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a6f35fb1148845d5b0f16b81aa58ac150" kindref="member">hf_i32_t</ref>;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104" refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref><sp/>=<sp/>-1;</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111" refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116" refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/><ref refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" kindref="member">HF_INVALID_PORT</ref><sp/>=<sp/>std::numeric_limits&lt;hf_port_num_t&gt;::max();</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122" refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127" refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/><ref refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" kindref="member">HF_INVALID_HOST</ref><sp/>=<sp/>std::numeric_limits&lt;hf_host_id_t&gt;::max();</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/>COMMUNICATION<sp/>FREQUENCY<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" kindref="member">HF_MAX_PIN_NUMBER</ref><sp/>=<sp/>255;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM-AGNOSTIC<sp/>PORT/CONTROLLER<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/><ref refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" kindref="member">HF_INVALID_PORT</ref><sp/>=<sp/>std::numeric_limits&lt;hf_port_num_t&gt;::max();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136" refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="136" refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/><ref refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" kindref="member">HF_INVALID_HOST</ref><sp/>=<sp/>std::numeric_limits&lt;hf_host_id_t&gt;::max();</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139" refid="HardwareTypes_8h_1a0aaf0cae92e0cfdf445fbfdc6fea9e1e" refkind="member"><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0aaf0cae92e0cfdf445fbfdc6fea9e1e" kindref="member">hf_frequency_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref>;</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144" refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" kindref="member">hf_baud_rate_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CHANNEL<sp/>AND<sp/>TIMING<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//<sp/>COMMUNICATION<sp/>FREQUENCY<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="HardwareTypes_8h_1a0aaf0cae92e0cfdf445fbfdc6fea9e1e" refkind="member"><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0aaf0cae92e0cfdf445fbfdc6fea9e1e" kindref="member">hf_frequency_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref>;</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154" refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159" refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/><ref refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" kindref="member">HF_INVALID_CHANNEL</ref><sp/>=<sp/>std::numeric_limits&lt;hf_channel_id_t&gt;::max();</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164" refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169" refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref>;</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174" refid="HardwareTypes_8h_1a74e30c5bd28b83d076801d5bfd46e36f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a74e30c5bd28b83d076801d5bfd46e36f" kindref="member">hf_timeout_us_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref>;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight></codeline>
-<codeline lineno="179" refid="HardwareTypes_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" kindref="member">hf_timestamp_us_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>;</highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TIMEOUT<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153" refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" kindref="member">hf_baud_rate_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CHANNEL<sp/>AND<sp/>TIMING<sp/>TYPES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163" refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/><ref refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" kindref="member">HF_INVALID_CHANNEL</ref><sp/>=<sp/>std::numeric_limits&lt;hf_channel_id_t&gt;::max();</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173" refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178" refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0cee3b9b361b164ca1a9c4fb94d4fbaa" kindref="member">hf_timeout_ms_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref>;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183" refid="HardwareTypes_8h_1a74e30c5bd28b83d076801d5bfd46e36f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a74e30c5bd28b83d076801d5bfd46e36f" kindref="member">hf_timeout_us_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref>;</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="188" refid="HardwareTypes_8h_1a154ea09cf44df6d1e2345636c076c2c0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a154ea09cf44df6d1e2345636c076c2c0" kindref="member">HF_TIMEOUT_DEFAULT_MS</ref><sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="188" refid="HardwareTypes_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" kindref="member">hf_timestamp_us_t</ref><sp/>=<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>;</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193" refid="HardwareTypes_8h_1a2e55b662f257ca97264dcde7eab37a3e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a2e55b662f257ca97264dcde7eab37a3e" kindref="member">HF_TIMEOUT_NONE</ref><sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"></highlight></codeline>
-<codeline lineno="198" refid="HardwareTypes_8h_1a309d52c7fb38e56ee2dfafa363248a76" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a309d52c7fb38e56ee2dfafa363248a76" kindref="member">HF_TIMEOUT_MAX</ref><sp/>=<sp/>std::numeric_limits&lt;hf_time_t&gt;::max();</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"></highlight></codeline>
-<codeline lineno="200"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="201"><highlight class="normal"></highlight><highlight class="comment">//<sp/>VALIDATION<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="202"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight><highlight class="comment">//<sp/>TIMEOUT<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="HardwareTypes_8h_1a154ea09cf44df6d1e2345636c076c2c0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a154ea09cf44df6d1e2345636c076c2c0" kindref="member">HF_TIMEOUT_DEFAULT_MS</ref><sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="HardwareTypes_8h_1a2e55b662f257ca97264dcde7eab37a3e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a2e55b662f257ca97264dcde7eab37a3e" kindref="member">HF_TIMEOUT_NONE</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="209" refid="HardwareTypes_8h_1abaf046a86ed01ee84670bfab0bacbda0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1abaf046a86ed01ee84670bfab0bacbda0" kindref="member">IsValidPin</ref>(<ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>pin)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pin<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>pin<sp/>&lt;=<sp/><ref refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" kindref="member">HF_MAX_PIN_NUMBER</ref>;</highlight></codeline>
-<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207" refid="HardwareTypes_8h_1a309d52c7fb38e56ee2dfafa363248a76" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a27a508352782b33586da5be2f528d0e9" kindref="member">hf_time_t</ref><sp/><ref refid="HardwareTypes_8h_1a309d52c7fb38e56ee2dfafa363248a76" kindref="member">HF_TIMEOUT_MAX</ref><sp/>=<sp/>std::numeric_limits&lt;hf_time_t&gt;::max();</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight><highlight class="comment">//<sp/>VALIDATION<sp/>FUNCTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="212"><highlight class="normal"></highlight></codeline>
-<codeline lineno="218" refid="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" kindref="member">IsValidPort</ref>(<ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>port)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port<sp/>!=<sp/><ref refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" kindref="member">HF_INVALID_PORT</ref>;</highlight></codeline>
+<codeline lineno="218" refid="HardwareTypes_8h_1abaf046a86ed01ee84670bfab0bacbda0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1abaf046a86ed01ee84670bfab0bacbda0" kindref="member">IsValidPin</ref>(<ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>pin)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pin<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>pin<sp/>&lt;=<sp/><ref refid="HardwareTypes_8h_1a909aa3a014a7353c382f69d1707a72d8" kindref="member">HF_MAX_PIN_NUMBER</ref>;</highlight></codeline>
 <codeline lineno="220"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="221"><highlight class="normal"></highlight></codeline>
-<codeline lineno="227" refid="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" kindref="member">IsValidHost</ref>(<ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/>host)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>host<sp/>!=<sp/><ref refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" kindref="member">HF_INVALID_HOST</ref>;</highlight></codeline>
+<codeline lineno="227" refid="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1acbdc463a3d9f62d1e53e745345053c14" kindref="member">IsValidPort</ref>(<ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref><sp/>port)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>port<sp/>!=<sp/><ref refid="HardwareTypes_8h_1adacf11d73033d641ab570e7944a6b8e1" kindref="member">HF_INVALID_PORT</ref>;</highlight></codeline>
 <codeline lineno="229"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"></highlight></codeline>
-<codeline lineno="236" refid="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" kindref="member">IsValidChannel</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>channel<sp/>!=<sp/><ref refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" kindref="member">HF_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="236" refid="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a50184ef4582378754c08ef6682ec7121" kindref="member">IsValidHost</ref>(<ref refid="HardwareTypes_8h_1a9ae8d2dd0a150205395ab179f14739a8" kindref="member">hf_host_id_t</ref><sp/>host)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>host<sp/>!=<sp/><ref refid="HardwareTypes_8h_1a83677633154f5703eaf13d4907429171" kindref="member">HF_INVALID_HOST</ref>;</highlight></codeline>
 <codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245" refid="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" kindref="member">IsValidChannel</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>channel<sp/>!=<sp/><ref refid="HardwareTypes_8h_1af5d64ca3788d96b0cdbebb65ea79fc66" kindref="member">HF_INVALID_CHANNEL</ref>;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="inc/base/HardwareTypes.h"/>
   </compounddef>

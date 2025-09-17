@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="358" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="358" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="359" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="359" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1adb31106309d33af5ce16e90e46906939" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="359" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="359" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="360" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="360" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a545838e3b8d960377c122e753db8cf47" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="360" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="360" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="361" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="361" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a0d89e54dd5537c34d49da6bda7c74c4c" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref> &gt;</type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="361" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="361" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="362" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="362" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kindref="member">hf_wifi_state_t</ref> &gt;</type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="362" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="362" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="363" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="363" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a4a996c672bdce9931dfdea768d84179d" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref></type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="365" column="28" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="365" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="366" column="28" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="366" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ae403782c7db21e828d909f147cd8713b" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref></type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="366" column="23" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="366" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="367" column="23" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="367" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a979f148264a16344c727a705baeb1414" prot="private" static="no" mutable="no">
         <type><ref refid="structEspWifiAdvancedConfig" kindref="compound">EspWifiAdvancedConfig</ref></type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="367" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="367" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="368" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="368" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ab07e9f6a54a566842081cb9e437f8c10" prot="private" static="no" mutable="no">
         <type>esp_netif_t *</type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="370" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="370" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="371" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="371" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a1cc51a8850a5a1c8fdf4bcada04bde90" prot="private" static="no" mutable="no">
         <type>esp_netif_t *</type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="371" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="371" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="372" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="372" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1adbfa09b39eb14ed286bd28b04cff7d98" prot="private" static="no" mutable="no">
         <type>EventGroupHandle_t</type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="372" column="22" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="372" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="373" column="22" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="373" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a9f8dedfb68e0d7b6acf46ccdf231c798" prot="private" static="no" mutable="no">
         <type>esp_event_handler_instance_t</type>
@@ -183,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="373" column="32" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="373" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="374" column="32" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="374" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ae01a87adacafedea6f333196683bfe27" prot="private" static="no" mutable="no">
         <type>esp_event_handler_instance_t</type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="374" column="32" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="374" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="375" column="32" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="375" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ab1c6e03ad971d611da51fcdf3eed5cf8" prot="private" static="no" mutable="no">
         <type><ref refid="group__wifi_1gafc36eb4cdfaf0c2ea45afeaac3ad13c9" kindref="member">hf_wifi_event_callback_t</ref></type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="377" column="28" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="377" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="378" column="28" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="378" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a2c6d455345af43e9d7fbac62b7ccc71c" prot="private" static="no" mutable="no">
         <type><ref refid="group__wifi_1ga427cf6c849ca99b6624e9106cefd0d60" kindref="member">hf_wifi_scan_callback_t</ref></type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="378" column="27" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="378" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="379" column="27" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="379" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a3a1a88d567809ce53ce3d5575755b453" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="379" column="8" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="379" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="380" column="8" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="380" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a8667062fa9debd9273cdd2480636259f" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="380" column="8" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="380" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="381" column="8" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="381" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ab362b3836b671682f5789ca2e9fad4d6" prot="private" static="no" mutable="no">
         <type>std::queue&lt; std::pair&lt; <ref refid="group__wifi_1ga0fc5cd83d2820476528dba010f9ccfbb" kindref="member">hf_wifi_event_t</ref>, void * &gt; &gt;</type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="381" column="14" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="381" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="382" column="14" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="382" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a3d42ddd9a7a2790eeeec94c1519c0995" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -288,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="382" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="382" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="383" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="383" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a5d96729fa9dac2b05153578461f1e781" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt;</type>
@@ -303,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="385" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="385" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="386" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="386" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a7035508c06cc3cd794c3c0baec151f30" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -318,7 +318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="386" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="386" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="387" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="387" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a06558cebbce99692087713ec7985ae31" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -333,7 +333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="387" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="387" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="388" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="388" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -348,7 +348,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="390" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="390" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="391" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="391" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -363,7 +363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="391" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="391" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="392" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="392" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1acf74e0cf81678090bfd6217dbfc5d0ad" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; int8_t &gt;</type>
@@ -378,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="392" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="392" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="393" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="393" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1ad9bcdfee7deaa0fd3bd1c41378e359dc" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; uint8_t &gt;</type>
@@ -393,7 +393,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="393" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="393" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="394" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="394" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1acf463caaf71fcae20d22a391a0e66250" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -408,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="396" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="396" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="397" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="397" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a54eddd362c8341bba3715f70a68dbd86" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -423,7 +423,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="398" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="398" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="399" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="399" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -455,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="148" column="12" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="206" bodyend="221"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="149" column="12" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="206" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ad68fd60e9409c00ca010c613b97885ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -470,7 +470,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="153" column="11" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="223" bodyend="225"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="154" column="11" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="223" bodyend="225"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1aba6a1fd280dbcd23fee9281eaaef7a20" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -502,7 +502,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="158" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="227" bodyend="358"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="159" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="227" bodyend="358"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a08a5f89824b7d4f845cecabc4278f356" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -521,7 +521,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="159" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="360" bodyend="447"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="160" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="360" bodyend="447"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a8ac15d4e7a8156eafa7b2850495c3083" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -540,7 +540,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="160" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="449" bodyend="451"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="161" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="449" bodyend="451"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ad572aec1ea4575004b5639a386948c04" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -572,7 +572,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="161" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="453" bodyend="486"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="162" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="453" bodyend="486"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a916f331fe7258222a58f213dec3e3a0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref></type>
@@ -591,7 +591,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="162" column="18" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="992" bodyend="1006"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="163" column="18" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="992" bodyend="1006"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1af9d85df22e5b2f7f0e4a9f083a68e27b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -623,7 +623,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="165" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="488" bodyend="518"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="166" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="488" bodyend="518"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ac4dc5a2ff0d3699cb5dfc7dabe2e4522" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -656,7 +656,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="166" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="520" bodyend="544"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="167" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="520" bodyend="544"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1af8511154338b1285cb386ba2cde71158" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -675,7 +675,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="167" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1104" bodyend="1113"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="168" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1104" bodyend="1113"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ae3418e13e9da9cbe0b0b68656233847a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -694,7 +694,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="168" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1115" bodyend="1118"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="169" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1115" bodyend="1118"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1accc189589995ac17cd27a9ba60d63c9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int8_t</type>
@@ -713,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="169" column="10" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1120" bodyend="1134"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="170" column="10" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1120" bodyend="1134"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a91b02d2cc3f0a1bc3a93bef5ac1767f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -745,7 +745,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="170" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="546" bodyend="565"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="171" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="546" bodyend="565"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a2a2b0ecff30d6d953da490565c8ca0b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -777,7 +777,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="173" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="567" bodyend="592"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="174" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="567" bodyend="592"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a1f140a31ef650411478818c285aef64b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -796,7 +796,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="174" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="594" bodyend="619"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="175" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="594" bodyend="619"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1aeec25630ed35de561df39b358418e566" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -815,7 +815,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="175" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="621" bodyend="661"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="176" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="621" bodyend="661"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a5a1d456000d644dfd8282673ba4f5009" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -834,7 +834,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="176" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="663" bodyend="666"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="177" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="663" bodyend="666"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1abf1bc4660bcef2ae9d213b5f93f3ca8c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>int</type>
@@ -853,7 +853,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="177" column="7" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="668" bodyend="682"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="178" column="7" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="668" bodyend="682"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1af8eb0906128aeb938eb5822a910d7d63" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -912,7 +912,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="180" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="684" bodyend="734"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="181" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="684" bodyend="734"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a5397db2984b1531639511dee9c013a9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -957,7 +957,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="182" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="736" bodyend="811"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="183" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="736" bodyend="811"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a43e97cdf4af2c05b2e68031add87d782" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
@@ -976,7 +976,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="184" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="813" bodyend="816"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="185" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="813" bodyend="816"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1abaa4ac07b9ef057964dfd07dd2948e47" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kindref="member">hf_wifi_state_t</ref></type>
@@ -995,7 +995,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="187" column="19" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="818" bodyend="821"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="188" column="19" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="818" bodyend="821"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1af65c3becf925791207bc7333be78d3ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
@@ -1014,7 +1014,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="188" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="823" bodyend="837"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="189" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="823" bodyend="837"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ac35856636ff6281693e9ce57dc13d162" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1047,7 +1047,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="189" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="839" bodyend="854"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="190" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="839" bodyend="854"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a3d22fc24922e5e4d08531fdeaacfe371" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1079,7 +1079,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="192" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="856" bodyend="880"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="193" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="856" bodyend="880"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1acc350fad8c7d5563b6dcff4fdbc3c8a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kindref="member">hf_wifi_power_save_t</ref></type>
@@ -1098,7 +1098,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="193" column="24" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="882" bodyend="905"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="194" column="24" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="882" bodyend="905"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a3fb1805a09d9f9ff00bd15a9af693d88" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1130,7 +1130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="196" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="907" bodyend="911"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="197" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="907" bodyend="911"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a9cd11cd1acebc5455ca6b7357987daa9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1149,7 +1149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="197" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="913" bodyend="917"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="198" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="913" bodyend="917"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a98c82d71b4bf54dfaa20c305fae750d2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1195,7 +1195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="200" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="919" bodyend="940"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="201" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="919" bodyend="940"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a91ddbfd6b2f471e1ed5329ad32833401" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1241,7 +1241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="201" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="942" bodyend="963"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="202" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="942" bodyend="963"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a3807a44527938991f110f33e70ab0caa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>uint8_t</type>
@@ -1260,7 +1260,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="202" column="11" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="965" bodyend="979"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="203" column="11" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="965" bodyend="979"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1aa24463dc5e86cc6c851044213ce711d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1292,7 +1292,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="203" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="981" bodyend="990"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="204" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="981" bodyend="990"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a14f566033c19a84722983c1d5888cf4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1323,7 +1323,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="212" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="213" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a74e97d6fb2a28c6af5b73a27977c5789" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1354,7 +1354,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="219" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1319" bodyend="1328"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="220" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1319" bodyend="1328"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a3358bcb3cae09e022d3343eff09f69b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1385,7 +1385,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="226" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="227" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a481a3cefdcae5362c5314e3ec50e1efc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1440,7 +1440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="235" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="236" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a92f3b8669675d2c6735e71987f4cfb4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1522,7 +1522,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="246" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="247" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a7a84d3d76c4d53344b418da4b53f7433" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1567,7 +1567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="257" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="258" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a385c3e3f99d1fb65cae8e194ccdd0dba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1585,7 +1585,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="264" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="265" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a1a9932ca927536ee20c8cea6074b1b8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1643,7 +1643,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="288" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="289" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a2bdcc63c1e0be76c5172d2b968738fae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1661,7 +1661,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="295" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="296" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a9e5c92a07f6b5adbc9dfb18102321b81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1679,7 +1679,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="301" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="302" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a4fc6b2c0a4eca9a2160641815a573a56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1697,7 +1697,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="307" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="308" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a9047ef32fc68f930803768a071c9198f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1728,7 +1728,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="314" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="315" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a5633082de37e5cbec30a83797f1b07b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1759,7 +1759,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="321" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1330" bodyend="1347"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="322" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1330" bodyend="1347"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ae5e01cbadeb8020b87dff80abf89d474" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>int8_t</type>
@@ -1777,7 +1777,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="327" column="10" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1349" bodyend="1357"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="328" column="10" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1349" bodyend="1357"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a8a1834e3fa7ee01a5cab72d28e1ccfa6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1808,7 +1808,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="334" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1359" bodyend="1368"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="335" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1359" bodyend="1368"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ae11fb0318c3118264269ed8c3f0f0190" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>wifi_bandwidth_t</type>
@@ -1826,7 +1826,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="340" column="20" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1370" bodyend="1378"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="341" column="20" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1370" bodyend="1378"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a695a29d07e81253c872c6e74f3ec2063" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1844,7 +1844,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="346" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="347" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a5e18ef2bcb49785dab2233210ff78d2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1875,7 +1875,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="353" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="354" column="17"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1895,7 +1895,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="406" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="407" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ad654b6954920eef0906b3d4439e39c8c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1913,7 +1913,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="412" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1091" bodyend="1098"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="413" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1091" bodyend="1098"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a02a9ff4c16b5096b2912bd1e4a93056e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1931,7 +1931,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="418" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="419" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a219d3df4683abcdfa67b05cf28578bcf" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -1949,7 +1949,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="424" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="425" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a02d8d51377fc2b7c74b040bd2b376a81" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>wifi_mode_t</type>
@@ -1980,7 +1980,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="431" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1008" bodyend="1010"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="432" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1008" bodyend="1010"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1abd1b5b7ed9c18fe3f6731e125c78e385" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref></type>
@@ -2011,7 +2011,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="438" column="18" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1244" bodyend="1257"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="439" column="18" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1244" bodyend="1257"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a85184affd47380dc4c18243c52695aff" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>wifi_auth_mode_t</type>
@@ -2042,7 +2042,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="445" column="20" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1259" bodyend="1285"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="446" column="20" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1259" bodyend="1285"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ab9b25f64fc30d6f86d4cb3e701eee2c5" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__wifi_1gaa433fd9116606cbe69d1feeb748f41f7" kindref="member">hf_wifi_security_t</ref></type>
@@ -2073,7 +2073,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="452" column="22" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1287" bodyend="1313"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="453" column="22" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1287" bodyend="1313"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a51a8bcf4f7e88ff33930b878333c0453" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -2104,7 +2104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="459" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1038" bodyend="1089"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="460" column="17" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1038" bodyend="1089"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a53e8186fcd0b012235228f62264d616c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2145,7 +2145,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="496" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1136" bodyend="1200"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="497" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1136" bodyend="1200"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a080e6d8828cc502fe12217cb8702ceb1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2186,7 +2186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="503" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1202" bodyend="1227"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="504" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1202" bodyend="1227"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ae6ab0e3f8f9ce7a8a0c2710b3069e52e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2227,7 +2227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="510" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1229" bodyend="1242"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="511" column="8" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1229" bodyend="1242"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a77de796e68ddc5176f8d9d7ec5c16188" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2268,7 +2268,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="517" column="8"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="518" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1ac0a0787613efaf1d60a90904ff0c055a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2297,7 +2297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="523" column="8"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="524" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a9d784a26c3ea531c17112e0e3465b3ad" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref></type>
@@ -2315,7 +2315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="529" column="17"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="530" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1aabc702294956cafe64737dee7a463d77" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -2346,7 +2346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="536" column="8"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="537" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a961be99b2a602814d89231be57006f71" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -2377,7 +2377,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="543" column="8"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="544" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a2f3b9b5a7e2cc5997508835e9b997163" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -2394,7 +2394,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="546" column="3"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="547" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a0118baa225037dd065107956fbef81a2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspWifi" kindref="compound">EspWifi</ref> &amp;</type>
@@ -2411,7 +2411,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="547" column="11"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="548" column="11"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -2478,7 +2478,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="468" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1016" bodyend="1020"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="469" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1016" bodyend="1020"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a23bfa099193ab347fbe7022193e6ff47" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2543,7 +2543,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="478" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1022" bodyend="1026"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="479" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1022" bodyend="1026"/>
       </memberdef>
       <memberdef kind="function" id="classEspWifi_1a096aada913999e7bfbd3ec2c1b8d570f" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -2608,7 +2608,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="488" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1028" bodyend="1032"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="489" column="15" bodyfile="src/mcu/esp32/EspWifi.cpp" bodystart="1028" bodyend="1032"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -2706,7 +2706,7 @@
         <link refid="structhf__wifi__station__config__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspWifi.h" line="142" column="1" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="142" bodyend="548"/>
+    <location file="inc/mcu/esp32/EspWifi.h" line="143" column="1" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="143" bodyend="549"/>
     <listofallmembers>
       <member refid="classEspWifi_1a9d784a26c3ea531c17112e0e3465b3ad" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>ApplyAdvancedConfig</name></member>
       <member refid="classBaseWifi_1a150dc952c7f2336aa1ba5dbf53fe2f9d" prot="protected" virt="non-virtual"><scope>EspWifi</scope><name>BaseWifi</name></member>

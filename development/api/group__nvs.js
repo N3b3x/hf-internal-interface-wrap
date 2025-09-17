@@ -1,6 +1,7 @@
 var group__nvs =
 [
     [ "BaseNvs.h", "BaseNvs_8h.html", null ],
+    [ "EspNvs.h", "EspNvs_8h.html", null ],
     [ "BaseNvs", "classBaseNvs.html", [
       [ "~BaseNvs", "classBaseNvs.html#a34a0f5777eaeabb861b0bef15c31a11b", null ],
       [ "BaseNvs", "classBaseNvs.html#abc92e07335f490e560ea1a1513ea63fc", null ],

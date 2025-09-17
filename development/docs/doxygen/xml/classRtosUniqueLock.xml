@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="386" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="386" bodyend="-1"/>
+        <location file="inc/utils/RtosMutex.h" line="387" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="387" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classRtosUniqueLock_1a89ad89a30e33c3e6a43d0bfeac1422de" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="387" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="387" bodyend="-1"/>
+        <location file="inc/utils/RtosMutex.h" line="388" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="388" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="338" column="12" bodyfile="inc/utils/RtosMutex.h" bodystart="338" bodyend="345"/>
+        <location file="inc/utils/RtosMutex.h" line="339" column="12" bodyfile="inc/utils/RtosMutex.h" bodystart="339" bodyend="346"/>
       </memberdef>
       <memberdef kind="function" id="classRtosUniqueLock_1a59124b82120bbe0b1b98fa5087a9317f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="347" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="347" bodyend="351"/>
+        <location file="inc/utils/RtosMutex.h" line="348" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="348" bodyend="352"/>
       </memberdef>
       <memberdef kind="function" id="classRtosUniqueLock_1a36f86e2cdda6d07844f07244fdf0f4b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="353" column="3"/>
+        <location file="inc/utils/RtosMutex.h" line="354" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classRtosUniqueLock_1ad5abbbb94f3e8fa10ff48e8ef505e712" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock</ref> &amp;</type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="354" column="18"/>
+        <location file="inc/utils/RtosMutex.h" line="355" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classRtosUniqueLock_1aceef150d143e7a1f76e6f4dc4f4fee1d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="356" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="356" bodyend="359"/>
+        <location file="inc/utils/RtosMutex.h" line="357" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="357" bodyend="360"/>
       </memberdef>
       <memberdef kind="function" id="classRtosUniqueLock_1a8c9bb127ad2d5e4e2a0790c57c0d91de" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock</ref> &amp;</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="361" column="18" bodyfile="inc/utils/RtosMutex.h" bodystart="361" bodyend="372"/>
+        <location file="inc/utils/RtosMutex.h" line="362" column="18" bodyfile="inc/utils/RtosMutex.h" bodystart="362" bodyend="373"/>
       </memberdef>
       <memberdef kind="function" id="classRtosUniqueLock_1a5c85f4016f0a1cbdaa3cdb4134774d25" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="374" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="374" bodyend="376"/>
+        <location file="inc/utils/RtosMutex.h" line="375" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="375" bodyend="377"/>
       </memberdef>
       <memberdef kind="function" id="classRtosUniqueLock_1a128c64f4cb86d7735dbf4fd0d471d82b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -172,14 +172,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="378" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="378" bodyend="383"/>
+        <location file="inc/utils/RtosMutex.h" line="379" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="379" bodyend="384"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/utils/RtosMutex.h" line="336" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="336" bodyend="388"/>
+    <location file="inc/utils/RtosMutex.h" line="337" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="337" bodyend="389"/>
     <listofallmembers>
       <member refid="classRtosUniqueLock_1a5c85f4016f0a1cbdaa3cdb4134774d25" prot="public" virt="non-virtual"><scope>RtosUniqueLock</scope><name>IsLocked</name></member>
       <member refid="classRtosUniqueLock_1a89ad89a30e33c3e6a43d0bfeac1422de" prot="private" virt="non-virtual"><scope>RtosUniqueLock</scope><name>locked_</name></member>

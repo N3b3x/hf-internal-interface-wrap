@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['temperature_20module_0',['Temperature Module',['../group__temperature.html',1,'']]],
-  ['timer_20module_1',['Timer Module',['../group__timer.html',1,'']]]
+  ['pio_20module_0',['PIO Module',['../group__pio.html',1,'']]],
+  ['pwm_20module_1',['PWM Module',['../group__pwm.html',1,'']]]
 ];

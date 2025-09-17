@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="441" column="15" bodyfile="inc/utils/RtosMutex.h" bodystart="441" bodyend="-1"/>
+        <location file="inc/utils/RtosMutex.h" line="442" column="15" bodyfile="inc/utils/RtosMutex.h" bodystart="442" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classRtosSharedLock_1acc180e528b0a6b5158fbc7fba0a0acc5" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -35,7 +35,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="442" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="442" bodyend="-1"/>
+        <location file="inc/utils/RtosMutex.h" line="443" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="443" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -60,7 +60,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="393" column="12" bodyfile="inc/utils/RtosMutex.h" bodystart="393" bodyend="400"/>
+        <location file="inc/utils/RtosMutex.h" line="394" column="12" bodyfile="inc/utils/RtosMutex.h" bodystart="394" bodyend="401"/>
       </memberdef>
       <memberdef kind="function" id="classRtosSharedLock_1ad31862716385d2d71a8f23281e629c93" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -74,7 +74,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="402" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="402" bodyend="406"/>
+        <location file="inc/utils/RtosMutex.h" line="403" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="403" bodyend="407"/>
       </memberdef>
       <memberdef kind="function" id="classRtosSharedLock_1a5a63852868aa8518d2efb8001839c327" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="408" column="3"/>
+        <location file="inc/utils/RtosMutex.h" line="409" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classRtosSharedLock_1a811dd689ed2e3d32890f52c50ef06a8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classRtosSharedLock" kindref="compound">RtosSharedLock</ref> &amp;</type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="409" column="18"/>
+        <location file="inc/utils/RtosMutex.h" line="410" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classRtosSharedLock_1a49bee38b554b8225dd7c9765f1ce25d4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="411" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="411" bodyend="414"/>
+        <location file="inc/utils/RtosMutex.h" line="412" column="3" bodyfile="inc/utils/RtosMutex.h" bodystart="412" bodyend="415"/>
       </memberdef>
       <memberdef kind="function" id="classRtosSharedLock_1a9ec74266ec258bba6b08b19c900ed607" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="classRtosSharedLock" kindref="compound">RtosSharedLock</ref> &amp;</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="416" column="18" bodyfile="inc/utils/RtosMutex.h" bodystart="416" bodyend="427"/>
+        <location file="inc/utils/RtosMutex.h" line="417" column="18" bodyfile="inc/utils/RtosMutex.h" bodystart="417" bodyend="428"/>
       </memberdef>
       <memberdef kind="function" id="classRtosSharedLock_1a31f008907ddb7a710b118d834b4cd4bb" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="429" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="429" bodyend="431"/>
+        <location file="inc/utils/RtosMutex.h" line="430" column="9" bodyfile="inc/utils/RtosMutex.h" bodystart="430" bodyend="432"/>
       </memberdef>
       <memberdef kind="function" id="classRtosSharedLock_1a5b7a636663f8073680e3477629f097c6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -172,14 +172,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="433" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="433" bodyend="438"/>
+        <location file="inc/utils/RtosMutex.h" line="434" column="8" bodyfile="inc/utils/RtosMutex.h" bodystart="434" bodyend="439"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/utils/RtosMutex.h" line="391" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="391" bodyend="443"/>
+    <location file="inc/utils/RtosMutex.h" line="392" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="392" bodyend="444"/>
     <listofallmembers>
       <member refid="classRtosSharedLock_1a31f008907ddb7a710b118d834b4cd4bb" prot="public" virt="non-virtual"><scope>RtosSharedLock</scope><name>IsLocked</name></member>
       <member refid="classRtosSharedLock_1acc180e528b0a6b5158fbc7fba0a0acc5" prot="private" virt="non-virtual"><scope>RtosSharedLock</scope><name>locked_</name></member>

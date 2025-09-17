@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="108" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="108" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="109" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1ae47180670acbbc7ca5c67264d8f53108" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="109" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="109" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="110" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1a35ad86193e5214b4cd0fd228ca79d508" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="110" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="110" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="111" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1ac797bf5d2d0ad433ecb41332c87fb8a4" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="111" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="111" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="112" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1a96ddf04bb913e0967df0ba28c4371ad2" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="112" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="112" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="113" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1a0db73ea48c19f9f62383d9ced6ef2e7e" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="113" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="113" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="114" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1aed25a4381da34ed61f41496eae77b8fc" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="114" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="114" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="115" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1a56c576b20942aea101189f90471a1288" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="115" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="115" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="116" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1ab9b752d6daf7d3899375846747ebd2fe" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="116" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="116" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="117" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__nvs__capabilities__t_1a9141725a7918dc37664bcb87b19b447c" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="117" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="117" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="118" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="118" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="119" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="119" bodyend="124"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="120" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="120" bodyend="125"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -176,7 +176,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="107" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="107" bodyend="125"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_NVS.h" line="108" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_NVS.h" bodystart="108" bodyend="126"/>
     <listofallmembers>
       <member refid="structhf__nvs__capabilities__t_1a96ddf04bb913e0967df0ba28c4371ad2" prot="public" virt="non-virtual"><scope>hf_nvs_capabilities_t</scope><name>flash_sector_size</name></member>
       <member refid="structhf__nvs__capabilities__t_1aade4d0e7880b1d69f0691b2188410522" prot="public" virt="non-virtual"><scope>hf_nvs_capabilities_t</scope><name>hf_nvs_capabilities_t</name></member>

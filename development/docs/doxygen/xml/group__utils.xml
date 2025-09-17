@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="group__utils" kind="group">
+    <compoundname>utils</compoundname>
+    <title>Utility Module</title>
+    <innerfile refid="AsciiArtGenerator_8h">AsciiArtGenerator.h</innerfile>
+    <innerfile refid="DigitalOutputGuard_8h">DigitalOutputGuard.h</innerfile>
+    <innerfile refid="McuSelect_8h">McuSelect.h</innerfile>
+    <innerfile refid="memory__utils_8h">memory_utils.h</innerfile>
+    <innerfile refid="RtosMutex_8h">RtosMutex.h</innerfile>
+    <briefdescription>
+<para>Utility classes and helper functions for the HardFOC system. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This module provides various utility classes and functions including:<itemizedlist>
+<listitem><para>ASCII art generation</para>
+</listitem><listitem><para>GPIO output guards and RAII patterns</para>
+</listitem><listitem><para>MCU platform selection and configuration</para>
+</listitem><listitem><para>Memory management utilities</para>
+</listitem><listitem><para>RTOS synchronization primitives </para>
+</listitem></itemizedlist>
+</para>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

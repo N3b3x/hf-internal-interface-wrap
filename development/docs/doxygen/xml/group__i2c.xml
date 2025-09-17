@@ -4,6 +4,7 @@
     <compoundname>i2c</compoundname>
     <title>I2C Module</title>
     <innerfile refid="BaseI2c_8h">BaseI2c.h</innerfile>
+    <innerfile refid="EspI2c_8h">EspI2c.h</innerfile>
     <innerclass refid="classBaseI2c" prot="public">BaseI2c</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__i2c_1gadf5f9ab06f84c2a0396e44a73475f609" prot="public" static="no">

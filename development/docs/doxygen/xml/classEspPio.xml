@@ -19,7 +19,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="373" column="28" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="373" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="374" column="28" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="374" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a03675432b6a1a0d67ba0a87d8782d854" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="374" column="27" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="374" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="375" column="27" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="375" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a98997f966da26af47b3c6259dbaeb07b" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -49,7 +49,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="375" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="375" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="376" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="376" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr uint32_t</type>
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="380" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="380" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="381" column="29" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="381" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a6961547bda9a07105b8a285b884922c1" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *</type>
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="512" column="31" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="512" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="513" column="31" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="513" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -96,7 +96,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="383" column="14" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="383" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="384" column="14" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="384" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a72c959369a34be8c3d02fc5e91e1ba27" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="384" column="21" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="384" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="385" column="21" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="385" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1a83171490adbcc59ea168e231a436cf8d" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__pio__statistics__t" kindref="compound">hf_pio_statistics_t</ref></type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="387" column="23" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="387" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="388" column="23" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="388" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPio_1affc852df7d0de8a4c89fbbd5f0b3e1ef" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__pio__diagnostics__t" kindref="compound">hf_pio_diagnostics_t</ref></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="388" column="24" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="388" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="389" column="24" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="389" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -155,7 +155,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="115" column="3" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="47" bodyend="47"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="116" column="3" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="47" bodyend="47"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a416698fd3ef86febfc2e1d3609747f02" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -170,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="120" column="3" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="49" bodyend="53"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="121" column="3" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="49" bodyend="53"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1acc7644cbdce0120b621080d2e3fae5af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="123" column="3"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="124" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ac16811c00bc008cd087bd4dc3435b8f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
@@ -204,7 +204,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="124" column="10"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="125" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a5bd79a12ccad8576ee09958f32f214f3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -221,7 +221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="127" column="3"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="128" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a07e1b13b98206a15e5c829aa29b692d4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classEspPio" kindref="compound">EspPio</ref> &amp;</type>
@@ -238,7 +238,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="128" column="10"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="129" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a548c78074900963154c241557be714f4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -257,7 +257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="133" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="59" bodyend="75"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="134" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="59" bodyend="75"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1aea1fbac9dab51ce76924462ebc5dba9f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="134" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="77" bodyend="100"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="135" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="77" bodyend="100"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ab47d5c83365810530384b0c40b70e00a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -320,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="136" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="106" bodyend="148"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="137" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="106" bodyend="148"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a1c50e6baeb6ca6934d4893b3bb3c62f5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -389,7 +389,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="139" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="154" bodyend="269"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="140" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="154" bodyend="269"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a22647a7f9153379ea2225d6456298a0b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -458,7 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="142" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="275" bodyend="421"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="143" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="275" bodyend="421"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1afd21f639f1bee483981e76e6d2618d18" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -502,7 +502,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="144" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="423" bodyend="455"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="145" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="423" bodyend="455"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a9763ed6befd9ce2928a9710116f4d84d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -534,7 +534,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="146" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="461" bodyend="469"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="147" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="461" bodyend="469"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ac5d85469fb40223718d0a4b9d3fe13de" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -578,7 +578,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="147" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="471" bodyend="484"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="148" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="471" bodyend="484"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1aebeafb537cc85f4b715b93a70982e5d9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -610,7 +610,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="149" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="486" bodyend="497"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="150" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="486" bodyend="497"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ac24f012073be0c9e406724cadd1c9788" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>void</type>
@@ -665,7 +665,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="151" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="503" bodyend="530"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="152" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="503" bodyend="530"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a80cc3f6b0def51b6d46dfb15d9ab4d95" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>void</type>
@@ -720,7 +720,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="153" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="532" bodyend="559"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="154" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="532" bodyend="559"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a5c5371ff00a9b3f4c8f753907d8a40ff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>void</type>
@@ -775,7 +775,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="155" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="561" bodyend="583"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="156" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="561" bodyend="583"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a07ad6ee8046e03dc6f224d5b219c392f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>void</type>
@@ -805,7 +805,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="157" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="585" bodyend="610"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="158" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="585" bodyend="610"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a6bfe58b6673ae3aa9d1cd0f54ebb6901" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>void</type>
@@ -821,7 +821,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="158" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="612" bodyend="626"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="159" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="612" bodyend="626"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1aa8c961670e551b3a959aa819f09a1460" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -865,7 +865,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="166" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1881" bodyend="1891"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="167" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1881" bodyend="1891"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a54071f5511944e0a0be19052e421749f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -909,7 +909,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="175" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1893" bodyend="1917"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="176" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1893" bodyend="1917"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1adec787e469920ae4dca1302c31940b55" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -979,7 +979,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="192" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1001" bodyend="1078"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="193" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1001" bodyend="1078"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a7f8dc96e595d8832df3bb1f5f45dc7f8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1061,7 +1061,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="205" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1080" bodyend="1174"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="206" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1080" bodyend="1174"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a93a977f86b70a0e074e75fc68156d7e6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1131,7 +1131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="216" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="686" bodyend="838"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="217" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="686" bodyend="838"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ac063aea086f17b16c12b3e04e90c9ade" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1186,7 +1186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="230" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="632" bodyend="668"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="231" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="632" bodyend="668"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a3cbd9ff6fc01e7f00df0fa0b0889aad8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1229,7 +1229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="239" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="670" bodyend="680"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="240" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="670" bodyend="680"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1aa5050a7a117545e320540581461d2c08" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>size_t</type>
@@ -1247,7 +1247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="245" column="10" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1176" bodyend="1179"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="246" column="10" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1176" bodyend="1179"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a78667ac6a809d1c275b01086b3bfaf7b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1265,7 +1265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="251" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1786" bodyend="1875"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="252" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1786" bodyend="1875"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ad8d0504aa345ad65f1d8e041136504f3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1320,7 +1320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="260" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="844" bodyend="896"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="261" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="844" bodyend="896"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1afbb6990ea342a5aa31b341d60ed889ae" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1363,7 +1363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="269" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="898" bodyend="917"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="270" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="898" bodyend="917"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ad3052314d71664513acb1df7aceddc6d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1406,7 +1406,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="277" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="919" bodyend="940"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="278" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="919" bodyend="940"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a3212d7cf5fc428046ff3eb4ca0c4f5a8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1437,7 +1437,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="285" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="942" bodyend="947"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="286" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="942" bodyend="947"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1acfb058f34a7e0cf21c7a037c5b198621" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1482,7 +1482,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="295" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="949" bodyend="962"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="296" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="949" bodyend="962"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a5c58bbc45366736bd54f043cf39fc9a1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1527,7 +1527,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="307" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1310" bodyend="1322"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="308" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1310" bodyend="1322"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a028d9993a803fac3f16bfd650bef3aff" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1550,7 +1550,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="312" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1324" bodyend="1332"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="313" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1324" bodyend="1332"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1adcdcad3a021a42f84cc978c5ac8b81aa" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1573,7 +1573,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="317" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1334" bodyend="1341"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="318" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1334" bodyend="1341"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1594,7 +1594,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="397" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1185" bodyend="1187"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="398" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1185" bodyend="1187"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a4ac66d796bb5d5087cd20d49e26c4b49" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1625,7 +1625,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="401" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1189" bodyend="1221"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="402" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1189" bodyend="1221"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a9941024800163ea0fa4c06a7a5131046" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1702,7 +1702,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="413" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1223" bodyend="1308"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="414" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1223" bodyend="1308"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a321173563822b4e43519bce2b297b26c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1721,7 +1721,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="428" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1595" bodyend="1725"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="429" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1595" bodyend="1725"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1aebbd89059a4217c14677900a62b6969c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1740,7 +1740,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="433" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1727" bodyend="1771"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="434" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1727" bodyend="1771"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a7052de443a7a277407f2bbe1655354e6" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1763,7 +1763,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="438" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1773" bodyend="1784"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="439" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1773" bodyend="1784"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a508b7579bd404e0c839f3a698ac6f01a" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -1820,7 +1820,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="449" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="964" bodyend="978"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="450" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="964" bodyend="978"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a4db79fdbd7ec5c9123d89689015a24be" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>uint32_t</type>
@@ -1877,7 +1877,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="461" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1385" bodyend="1406"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="462" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1385" bodyend="1406"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a45cde70f88c3c21f89bffe86998f87c6" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>uint32_t</type>
@@ -1920,7 +1920,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="470" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1408" bodyend="1415"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="471" column="12" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1408" bodyend="1415"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1acdbed7a7dadd9633292e9d9cb10a65ea" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -1975,7 +1975,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="480" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="980" bodyend="995"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="481" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="980" bodyend="995"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ac693c8e37d5b7f84b5ebcd79f01a10d4" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -2006,7 +2006,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="486" column="16"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="487" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1ae5dfb88e6d41e82b2a728a6c18a90d2b" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref></type>
@@ -2049,7 +2049,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="502" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1417" bodyend="1471"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="503" column="16" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1417" bodyend="1471"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a6e9a1caf693efaa2f0c7f3b71fe2d02c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -2090,7 +2090,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="510" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1473" bodyend="1488"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="511" column="8" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1473" bodyend="1488"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -2118,7 +2118,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="419" column="15" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1490" bodyend="1528"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="420" column="15" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1490" bodyend="1528"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a37d0c4aec852b04b3bb5b290fa06a408" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
@@ -2144,7 +2144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="421" column="15" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1530" bodyend="1593"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="422" column="15" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1530" bodyend="1593"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a6eef1b3a7a795f668318302142e0cef2" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -2163,7 +2163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="493" column="26" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1372" bodyend="1383"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="494" column="26" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1372" bodyend="1383"/>
       </memberdef>
       <memberdef kind="function" id="classEspPio_1a0fe47f2b5447e648470f0f0e68841cf2" prot="private" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -2181,7 +2181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPio.h" line="494" column="26" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1343" bodyend="1369"/>
+        <location file="inc/mcu/esp32/EspPio.h" line="495" column="26" bodyfile="src/mcu/esp32/EspPio.cpp" bodystart="1343" bodyend="1369"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -2281,7 +2281,7 @@
         <link refid="structhf__pio__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspPio.h" line="110" column="1" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="110" bodyend="513"/>
+    <location file="inc/mcu/esp32/EspPio.h" line="111" column="1" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="111" bodyend="514"/>
     <listofallmembers>
       <member refid="classBasePio_1a9d3dfc822fc2be86f8184af210aa6703" prot="public" virt="non-virtual"><scope>EspPio</scope><name>BasePio</name></member>
       <member refid="classBasePio_1abae3c0afca5d357c8d481c97b27d38f4" prot="public" virt="non-virtual"><scope>EspPio</scope><name>BasePio</name></member>

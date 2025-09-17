@@ -4,6 +4,7 @@
     <compoundname>pio</compoundname>
     <title>PIO Module</title>
     <innerfile refid="BasePio_8h">BasePio.h</innerfile>
+    <innerfile refid="EspPio_8h">EspPio.h</innerfile>
     <innerclass refid="classBasePio" prot="public">BasePio</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__pio_1ga78769f14dfef18368b2668dd1c535e80" prot="public" static="no">

@@ -1,6 +1,7 @@
 var group__wifi =
 [
     [ "BaseWifi.h", "BaseWifi_8h.html", null ],
+    [ "EspWifi.h", "EspWifi_8h.html", null ],
     [ "hf_wifi_network_info_t", "structhf__wifi__network__info__t.html", [
       [ "bssid", "structhf__wifi__network__info__t.html#a0481ba5eed30bb73d24553520001bb23", null ],
       [ "channel", "structhf__wifi__network__info__t.html#af78d42c4c2f82438155d9e55fc204810", null ],

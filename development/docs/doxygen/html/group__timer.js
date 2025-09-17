@@ -1,6 +1,7 @@
 var group__timer =
 [
     [ "BasePeriodicTimer.h", "BasePeriodicTimer_8h.html", null ],
+    [ "EspPeriodicTimer.h", "EspPeriodicTimer_8h.html", null ],
     [ "BasePeriodicTimer", "classBasePeriodicTimer.html", [
       [ "~BasePeriodicTimer", "classBasePeriodicTimer.html#abee693abb22864122f36aff2f8d1c6ee", null ],
       [ "BasePeriodicTimer", "classBasePeriodicTimer.html#abe11f2c94d12cf1d658104f1280aa486", null ],

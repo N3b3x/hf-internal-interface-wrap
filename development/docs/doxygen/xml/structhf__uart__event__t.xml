@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="260" column="24" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="260" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="261" column="24" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__event__t_1ab767636a5abe68c979e61ace6da45a14" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="261" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="261" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="262" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="262" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__event__t_1a6a8642e30e8aa3174f501fadf0bf08b7" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="262" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="262" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="263" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="263" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -55,7 +55,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="259" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="259" bodyend="263"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="260" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="260" bodyend="264"/>
     <listofallmembers>
       <member refid="structhf__uart__event__t_1ab767636a5abe68c979e61ace6da45a14" prot="public" virt="non-virtual"><scope>hf_uart_event_t</scope><name>size</name></member>
       <member refid="structhf__uart__event__t_1a6a8642e30e8aa3174f501fadf0bf08b7" prot="public" virt="non-virtual"><scope>hf_uart_event_t</scope><name>timeout_flag</name></member>

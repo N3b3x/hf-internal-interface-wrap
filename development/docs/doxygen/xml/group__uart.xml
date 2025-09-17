@@ -4,6 +4,7 @@
     <compoundname>uart</compoundname>
     <title>UART Module</title>
     <innerfile refid="BaseUart_8h">BaseUart.h</innerfile>
+    <innerfile refid="EspUart_8h">EspUart.h</innerfile>
     <innerclass refid="classBaseUart" prot="public">BaseUart</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__uart_1ga8b05a6d56824281551272e94ab130dc7" prot="public" static="no">

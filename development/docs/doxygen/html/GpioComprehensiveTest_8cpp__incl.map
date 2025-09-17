@@ -6,7 +6,7 @@
 <area shape="poly" id="edge32_Node000001_Node000004" title=" " alt="" coords="422,41,380,49,338,62,298,81,262,106,251,120,242,136,231,170,226,168,237,134,246,117,259,102,295,76,336,57,378,44,421,35"/>
 <area shape="rect" id="Node000006" title=" " alt="" coords="468,183,539,213"/>
 <area shape="poly" id="edge33_Node000001_Node000006" title=" " alt="" coords="547,57,514,170,509,169,542,56"/>
-<area shape="rect" id="Node000007" href="$memory__utils_8h.html" title=" " alt="" coords="15,104,197,135"/>
+<area shape="rect" id="Node000007" href="$memory__utils_8h.html" title="Memory management utilities for exception&#45;free design." alt="" coords="15,104,197,135"/>
 <area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="427,59,193,104,192,99,426,53"/>
 <area shape="rect" id="Node000010" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="1504,340,1665,371"/>
 <area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="682,29,967,36,1141,44,1320,57,1496,76,1655,102,1726,118,1789,137,1842,157,1885,180,1916,204,1939,232,1945,247,1947,262,1943,278,1933,294,1917,307,1892,319,1828,336,1753,347,1680,353,1679,348,1753,341,1827,331,1891,314,1914,303,1929,290,1938,276,1942,262,1940,248,1934,234,1912,208,1882,185,1840,162,1787,142,1725,124,1654,108,1495,82,1320,63,1140,49,967,41,682,35"/>

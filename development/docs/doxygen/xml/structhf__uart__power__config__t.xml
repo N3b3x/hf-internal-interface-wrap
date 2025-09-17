@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="167" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="167" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="168" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="168" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__power__config__t_1a1329b491b3e5fd6ce964259024732fd9" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="168" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="168" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="169" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="169" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__power__config__t_1a7ac138802375c29ee69321a39be9ef8c" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="169" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="169" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="170" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="170" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__power__config__t_1afa945ba76e7b7bf7003b78cb06363884" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="170" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="170" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="171" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="171" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__power__config__t_1a0cb50d5b0c2664f1c6e34778b2f1ef5b" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="171" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="171" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="172" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="172" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__power__config__t_1a404cdf8335c2f7dfb0752720d9f82e99" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="172" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="172" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="173" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="173" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="174" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="174" bodyend="176"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="175" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="175" bodyend="177"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -116,7 +116,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="166" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="166" bodyend="177"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="167" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="167" bodyend="178"/>
     <listofallmembers>
       <member refid="structhf__uart__power__config__t_1a7ac138802375c29ee69321a39be9ef8c" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>allow_pd_in_deep_sleep</name></member>
       <member refid="structhf__uart__power__config__t_1a1329b491b3e5fd6ce964259024732fd9" prot="public" virt="non-virtual"><scope>hf_uart_power_config_t</scope><name>allow_pd_in_light_sleep</name></member>

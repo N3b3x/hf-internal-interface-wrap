@@ -4,6 +4,7 @@
     <compoundname>nvs</compoundname>
     <title>NVS Module</title>
     <innerfile refid="BaseNvs_8h">BaseNvs.h</innerfile>
+    <innerfile refid="EspNvs_8h">EspNvs.h</innerfile>
     <innerclass refid="classBaseNvs" prot="public">BaseNvs</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__nvs_1ga39e87a409abc82e8e5c93b26adb86245" prot="public" static="no">

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="710" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="710" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="711" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="711" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a6d8fcca202029b029e059b4fb1d621e3" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="711" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="711" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="712" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="712" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a112d659cecbd8b30b61f91a13bc764aa" prot="public" static="no" mutable="no">
         <type><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref></type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="712" column="29" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="712" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="713" column="29" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="713" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a99945d94a37ce581c6209a09015b9f03" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="713" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="713" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="714" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="714" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1af2c99f44a16647eae21270eeedd125ab" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="714" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="714" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="715" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="715" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a096e08c26d43bf17132f2e7f06fa9be6" prot="public" static="no" mutable="no">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="715" column="18" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="715" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="716" column="18" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="716" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a6fe68bb974541877f3c6947ca3b9f8ab" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="716" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="716" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="717" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="717" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a9dcd4d475588c89b0812cbd814e0bf7e" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -121,7 +121,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="717" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="717" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="718" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="718" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a57726643efaa3815f53a50595ada52fd" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1ad8fbde8152ecafefd714f3a7eb8344c1" kindref="member">hf_pwm_channel_priority_t</ref></type>
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="720" column="31" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="720" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="721" column="31" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="721" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a8c101fbd0e7dcca25c6624ae98b12efa" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="721" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="721" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="722" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="722" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a09ce373d96d3849a879fcfd622953997" prot="public" static="no" mutable="no">
         <type>const char *</type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="722" column="16" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="722" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="723" column="16" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="723" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ChannelState_1a0159dc9f0dfbf6eef133aa27070a2b3c" prot="public" static="no" mutable="no">
         <type>std::function&lt; void(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>)&gt;</type>
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="725" column="19" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="725" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="726" column="19" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="726" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -197,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="727" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="727" bodyend="731"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="728" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="728" bodyend="732"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -218,7 +218,7 @@
         <link refid="structhf__pwm__channel__config__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspPwm.h" line="709" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="709" bodyend="732"/>
+    <location file="inc/mcu/esp32/EspPwm.h" line="710" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="710" bodyend="733"/>
     <listofallmembers>
       <member refid="structEspPwm_1_1ChannelState_1a99945d94a37ce581c6209a09015b9f03" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>assigned_timer</name></member>
       <member refid="structEspPwm_1_1ChannelState_1a8607beb52006f48c76dd9c5fc7d532f0" prot="public" virt="non-virtual"><scope>EspPwm::ChannelState</scope><name>ChannelState</name></member>

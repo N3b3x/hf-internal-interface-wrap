@@ -5380,6 +5380,12 @@
     <member refid="group__wifi_1ga94b225babb1626cee0621f8312eb32d1" kind="define"><name>X</name></member>
     <member refid="group__wifi_1gafbf3f04fa35349e183adb88ae6d03874" kind="define"><name>X</name></member>
   </compound>
+  <compound refid="group__core" kind="group"><name>core</name>
+  </compound>
+  <compound refid="group__esp32__types" kind="group"><name>esp32_types</name>
+  </compound>
+  <compound refid="group__utils" kind="group"><name>utils</name>
+  </compound>
   <compound refid="dir_af527b166bd0aeb318c4d06f73919cfb" kind="dir"><name>inc/base</name>
   </compound>
   <compound refid="dir_49e56c817e5e54854c35e136979f97ca" kind="dir"><name>docs</name>

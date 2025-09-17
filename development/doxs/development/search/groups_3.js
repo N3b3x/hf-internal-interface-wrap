@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gpio_20module_0',['GPIO Module',['../group__gpio.html',1,'']]]
+  ['definitions_0',['ESP32 Type Definitions',['../group__esp32__types.html',1,'']]]
 ];

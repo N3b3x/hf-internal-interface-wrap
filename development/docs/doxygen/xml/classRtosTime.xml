@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="64" column="19" bodyfile="inc/utils/RtosMutex.h" bodystart="64" bodyend="66"/>
+        <location file="inc/utils/RtosMutex.h" line="65" column="19" bodyfile="inc/utils/RtosMutex.h" bodystart="65" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classRtosTime_1af80ef0a2aa094dea670d7806c9e6e5fc" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>TickType_t</type>
@@ -34,14 +34,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/RtosMutex.h" line="68" column="21" bodyfile="inc/utils/RtosMutex.h" bodystart="68" bodyend="74"/>
+        <location file="inc/utils/RtosMutex.h" line="69" column="21" bodyfile="inc/utils/RtosMutex.h" bodystart="69" bodyend="75"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/utils/RtosMutex.h" line="62" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="62" bodyend="75"/>
+    <location file="inc/utils/RtosMutex.h" line="63" column="1" bodyfile="inc/utils/RtosMutex.h" bodystart="63" bodyend="76"/>
     <listofallmembers>
       <member refid="classRtosTime_1a9d76a41e42d89424eac5b99cada0269f" prot="public" virt="non-virtual"><scope>RtosTime</scope><name>GetCurrentTimeUs</name></member>
       <member refid="classRtosTime_1af80ef0a2aa094dea670d7806c9e6e5fc" prot="public" virt="non-virtual"><scope>RtosTime</scope><name>MsToTicks</name></member>

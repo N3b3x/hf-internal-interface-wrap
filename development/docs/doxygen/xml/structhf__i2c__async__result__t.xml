@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="184" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="184" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="185" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="185" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__async__result__t_1a48f766f41df8f6b54cd6793b236c7a50" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="185" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="185" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="186" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__async__result__t_1a40646d396e1aa0bd4e897a7cc950dc8e" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="186" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="186" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="187" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="187" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__async__result__t_1a7c063352d82996d1aa22e341c8d6de7a" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="187" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="187" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="188" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="188" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__async__result__t_1a4106738a985a9ac5ed73c09631e49867" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__I2C_8h_1a9cdf05180b96f551b50382e9a6344870" kindref="member">hf_i2c_transaction_type_t</ref></type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="188" column="29" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="188" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="189" column="29" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="189" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -86,7 +86,7 @@
     <detaileddescription>
 <para>Contains the result of an asynchronous I2C operation. </para>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="183" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="183" bodyend="189"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="184" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="184" bodyend="190"/>
     <listofallmembers>
       <member refid="structhf__i2c__async__result__t_1a48f766f41df8f6b54cd6793b236c7a50" prot="public" virt="non-virtual"><scope>hf_i2c_async_result_t</scope><name>bytes_transferred</name></member>
       <member refid="structhf__i2c__async__result__t_1a7c063352d82996d1aa22e341c8d6de7a" prot="public" virt="non-virtual"><scope>hf_i2c_async_result_t</scope><name>completion_time_us</name></member>

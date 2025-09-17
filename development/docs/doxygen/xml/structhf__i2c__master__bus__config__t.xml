@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="196" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="196" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="197" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1a49a9dd202058114f460dc717b8628240" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="197" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="197" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="198" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="198" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1a7bb7bf1b37dd8e03233fae19f0ca8dd3" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="198" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="198" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="199" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="199" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1aabb20df37d5975254ef8cb0946fcd07d" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="199" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="199" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="200" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="200" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1a645ea75d55581ef349963060db1ce03d" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="200" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="200" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="201" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="201" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1ab051aa24c962c4cea2a3cfabc5d60681" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__I2C_8h_1ad7608886f1256b486962da79dab16eec" kindref="member">hf_i2c_clock_source_t</ref></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="201" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="201" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="202" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="202" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1aefb3a9fa60b6135f4a5219531ba6c7d0" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__I2C_8h_1a1bca585ef574f1ff6a207499044e1896" kindref="member">hf_i2c_glitch_filter_t</ref></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="202" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="202" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="203" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="203" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1abc0be5bb2c7a52d8295de7fdd4e20d1f" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="203" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="203" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="204" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="204" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1ae59d13c305b94ab55270bc9b7e48b4a8" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -136,7 +136,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="205" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="205" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="206" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="206" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1a54a8fbac5ee4a38e1e454f86d02c0fe4" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="206" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="206" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="207" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="207" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__master__bus__config__t_1a5247921d68a6fa5cb8323f4d4c05ab47" prot="public" static="no" mutable="no">
         <type>struct <ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref></type>
@@ -164,7 +164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="207" column="9"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="208" column="9"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -181,7 +181,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="212" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="212" bodyend="218"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="213" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="213" bodyend="219"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -190,7 +190,7 @@
     <detaileddescription>
 <para>Configuration for creating an I2C master bus. </para>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="195" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="195" bodyend="219"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="196" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="196" bodyend="220"/>
     <listofallmembers>
       <member refid="structhf__i2c__master__bus__config__t_1a54a8fbac5ee4a38e1e454f86d02c0fe4" prot="public" virt="non-virtual"><scope>hf_i2c_master_bus_config_t</scope><name>allow_pd</name></member>
       <member refid="structhf__i2c__master__bus__config__t_1ab051aa24c962c4cea2a3cfabc5d60681" prot="public" virt="non-virtual"><scope>hf_i2c_master_bus_config_t</scope><name>clk_source</name></member>

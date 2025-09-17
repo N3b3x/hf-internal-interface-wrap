@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="924" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="924" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="925" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="925" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ValidationContext_1a3be5447a556a9303c0dbe10c874d708a" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="925" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="925" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="926" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="926" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ValidationContext_1aee5c005648e24deeeda0e0c2b8e97768" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="926" column="27" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="926" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="927" column="27" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="927" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ValidationContext_1a569ea7ce6a7519d199e90433bbefe8e9" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref></type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="927" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="927" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="928" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="928" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -95,7 +95,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="929" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="929" bodyend="932"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="930" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="930" bodyend="933"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -103,7 +103,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/EspPwm.h" line="923" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="923" bodyend="933"/>
+    <location file="inc/mcu/esp32/EspPwm.h" line="924" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="924" bodyend="934"/>
     <listofallmembers>
       <member refid="structEspPwm_1_1ValidationContext_1aee5c005648e24deeeda0e0c2b8e97768" prot="public" virt="non-virtual"><scope>EspPwm::ValidationContext</scope><name>clock_source</name></member>
       <member refid="structEspPwm_1_1ValidationContext_1a7f13cfef94f7d070e003e4bf7d750de6" prot="public" virt="non-virtual"><scope>EspPwm::ValidationContext</scope><name>frequency_hz</name></member>

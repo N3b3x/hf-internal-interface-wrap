@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="738" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="738" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="739" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="739" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1TimerState_1a4a5fd2e0e4c91bf4953052d05bec6474" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="739" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="739" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="740" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="740" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1TimerState_1afa55f582ffc63989ba94dc8087dea26b" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="740" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="740" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="741" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="741" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1TimerState_1a16f7e95099ad216e9f93fc1a7525c0f3" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="741" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="741" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="742" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="742" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1TimerState_1a7c1bcfda27eb7be35fbb843252ad80e5" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
@@ -76,7 +76,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="742" column="27" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="742" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="743" column="27" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="743" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1TimerState_1affc9adf387692d7829aca3fd9f14e1bc" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -91,7 +91,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="743" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="743" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="744" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="744" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="745" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="745" bodyend="748"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="746" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="746" bodyend="749"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -115,7 +115,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/EspPwm.h" line="737" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="737" bodyend="749"/>
+    <location file="inc/mcu/esp32/EspPwm.h" line="738" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="738" bodyend="750"/>
     <listofallmembers>
       <member refid="structEspPwm_1_1TimerState_1a16f7e95099ad216e9f93fc1a7525c0f3" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>channel_count</name></member>
       <member refid="structEspPwm_1_1TimerState_1a7c1bcfda27eb7be35fbb843252ad80e5" prot="public" virt="non-virtual"><scope>EspPwm::TimerState</scope><name>clock_source</name></member>

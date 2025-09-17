@@ -1,6 +1,7 @@
 var group__pwm =
 [
     [ "BasePwm.h", "BasePwm_8h.html", null ],
+    [ "EspPwm.h", "EspPwm_8h.html", null ],
     [ "BasePwm", "classBasePwm.html", [
       [ "~BasePwm", "classBasePwm.html#a7481b15d121d631a59d1605780085d0e", null ],
       [ "BasePwm", "classBasePwm.html#acd8c699abcc77062da2e26319dafcb0b", null ],

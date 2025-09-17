@@ -21,7 +21,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="290" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="290" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="291" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="291" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a290c2aea8eabeff58d069c845d00af54" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -38,7 +38,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="292" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="292" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="293" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="293" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1aa348b52181cff17770ecc4f30c83a281" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -55,7 +55,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="294" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="294" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="295" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="295" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="296" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="296" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="297" column="28" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="297" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a654a79dd9b9995b5212e3774801af713" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -89,7 +89,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="298" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="298" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="299" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="299" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1aaa5e88282ea20316303cacadcc48e194" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -106,7 +106,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="300" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="300" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="301" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="301" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1af56e5ffd8f329983d4dccd5faed97588" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="302" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="302" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="303" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="303" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1ae331601ad9c6323ac82674ed3522e2c3" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="304" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="304" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="305" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="305" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a751617ee185376fa0d6ab36192d3bd21" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="306" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="306" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="307" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="307" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a4681252972a0ff3e5d7a4ad30e8129bc" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -174,7 +174,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="308" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="308" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="309" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="309" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a8e86a890fef42cf2df860aab0e7232c9" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -191,7 +191,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="310" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="310" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="311" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="311" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a4f3041f636ac945e80c729950dba0c36" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr size_t</type>
@@ -208,7 +208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="312" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="312" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="313" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="313" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a12abe097f1e7355cdb6b0954a703e1d4" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr adc_oneshot_clk_src_t</type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="315" column="42" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="315" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="316" column="42" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="316" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a74a01c81453e5a592a42d9dbf6822ca9" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr adc_continuous_clk_src_t</type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="317" column="45" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="317" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="318" column="45" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="318" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1ae9c8c79e7e3b4e99a1265c8262c09771" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr adc_ulp_mode_t</type>
@@ -259,7 +259,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="319" column="35" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="319" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="320" column="35" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="320" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="709" column="24" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="709" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="710" column="24" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="710" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1ae7327d528b6bcd71aa6d4364a9b61a8f" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref> &gt;</type>
@@ -291,7 +291,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="710" column="15" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="710" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="711" column="15" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="711" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a73204df6c563d802757b27188b644b5e" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref> &gt;</type>
@@ -306,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="711" column="15" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="711" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="712" column="15" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="712" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a2de8a2dae650ab29adce6821a639e28c" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -321,7 +321,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="714" column="21" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="714" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="715" column="21" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="715" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a75d7e5963af45c0a975ac428344b096d" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -336,7 +336,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="715" column="21" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="715" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="716" column="21" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="716" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1aee946b33ba3816292c7a7e82babf57ec" prot="private" static="no" mutable="no">
         <type>adc_oneshot_unit_handle_t</type>
@@ -351,7 +351,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="718" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="718" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="719" column="29" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="719" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1ab88a971087cd83f541f906af6deda056" prot="private" static="no" mutable="no">
         <type>adc_continuous_handle_t</type>
@@ -366,7 +366,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="719" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="719" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="720" column="27" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="720" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a57582feb18bd008a49768d5539348e57" prot="private" static="no" mutable="no">
         <type>std::array&lt; adc_cali_handle_t, 4 &gt;</type>
@@ -381,7 +381,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="721" column="7" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="721" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="722" column="7" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="722" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a2b24c60b289769e1baff7421ac4a614a" prot="private" static="no" mutable="no">
         <type>std::array&lt; adc_iir_filter_handle_t, <ref refid="classEspAdc_1aa348b52181cff17770ecc4f30c83a281" kindref="member">HF_ADC_MAX_FILTERS</ref> &gt;</type>
@@ -396,7 +396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="722" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="722" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="723" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="723" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a1c76bfd433fc8685330cc866650c1b4b" prot="private" static="no" mutable="no">
         <type>std::array&lt; adc_monitor_handle_t, <ref refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kindref="member">HF_ADC_MAX_MONITORS</ref> &gt;</type>
@@ -411,7 +411,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="723" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="723" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="724" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="724" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a4a81d64afb4455f9f5ebbffa402c8fe4" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__ADC_8h_1a0e2d23199837f1a7cf8ca9c555bcf367" kindref="member">hf_adc_continuous_callback_t</ref></type>
@@ -426,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="726" column="32" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="726" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="727" column="32" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="727" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a8223af54ab4b28b80ff73b7e1b42b3ba" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -441,7 +441,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="727" column="8" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="727" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="728" column="8" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="728" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a1beefdaee72af0353b6bca259d7acc34" prot="private" static="no" mutable="no">
         <type>std::array&lt; <ref refid="EspTypes__ADC_8h_1afb37bea53ade46ebbac1eba5eb604cda" kindref="member">hf_adc_monitor_callback_t</ref>, <ref refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kindref="member">HF_ADC_MAX_MONITORS</ref> &gt;</type>
@@ -456,7 +456,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="729" column="7" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="729" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="730" column="7" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="730" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1ac296b19dfe33ff8b5d7d6eec9dd18df2" prot="private" static="no" mutable="no">
         <type>std::array&lt; void *, <ref refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kindref="member">HF_ADC_MAX_MONITORS</ref> &gt;</type>
@@ -471,7 +471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="730" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="730" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="731" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="731" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a67f977b364fddbd45aa4d4abdae9be7b" prot="private" static="no" mutable="no">
         <type>std::array&lt; <ref refid="structEspAdc_1_1MonitorContext" kindref="compound">MonitorContext</ref>, <ref refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kindref="member">HF_ADC_MAX_MONITORS</ref> &gt;</type>
@@ -486,7 +486,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="731" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="731" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="732" column="14" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="732" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a455883a7cc0f32cd205451d79c444c57" prot="private" static="no" mutable="yes">
         <type><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref></type>
@@ -501,7 +501,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="734" column="31" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="734" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="735" column="31" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="735" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspAdc_1a91c329fe7f1e0abaf44ede88ed3590c9" prot="private" static="no" mutable="yes">
         <type><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref></type>
@@ -516,7 +516,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="735" column="32" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="735" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="736" column="32" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="736" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -547,7 +547,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="268" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="89" bodyend="104"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="269" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="89" bodyend="104"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a7c57e4e693144146542be1218cd929aa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -562,7 +562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="273" column="3" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="106" bodyend="109"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="274" column="3" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="106" bodyend="109"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a040a8174fe3df5f7b3eeb79e6e0e4eac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -579,7 +579,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="277" column="3"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="278" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1aa9b02a740c72d5064613a3b9bb6a6249" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;</type>
@@ -596,7 +596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="278" column="10"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="279" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a176689eaf3ffc30a447dc292960922d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -614,7 +614,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="282" column="3"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="283" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a1c46e8dce3bb9de8c59ce1b2408ac92c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;</type>
@@ -632,7 +632,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="283" column="10"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="284" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a3e0aba56249e205578cbe92541554b08" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
@@ -651,7 +651,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="330" column="13" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="115" bodyend="178"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="331" column="13" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="115" bodyend="178"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a3763c67c9ca0ecfd8feda1d44b22d1e0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
@@ -670,7 +670,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="336" column="13" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="180" bodyend="226"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="337" column="13" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="180" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1ac234759d85da10db28bb2773daeec9e1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -689,7 +689,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="342" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="939" bodyend="941"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="343" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="939" bodyend="941"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a8d37e2e11fac48019803f6260a1b39cc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
@@ -721,7 +721,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="349" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="943" bodyend="945"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="350" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="943" bodyend="945"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a41dd2c15efe312397d72b9e803741318" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -791,7 +791,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="359" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="947" bodyend="984"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="360" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="947" bodyend="984"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1aee902d7623f92e1a64b6708b41c63b3b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -861,7 +861,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="371" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="986" bodyend="994"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="372" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="986" bodyend="994"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a4a1844e4b8add43b1f83c1bd59c430f8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -943,7 +943,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="384" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="996" bodyend="1030"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="385" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="996" bodyend="1030"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1ae78a280905f09634070c9ce624002cb7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1011,7 +1011,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="396" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1032" bodyend="1050"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="397" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1032" bodyend="1050"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1aa5565e8cc60dc1c8c38ef1416ceb9eee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1042,7 +1042,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="408" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="439" bodyend="478"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="409" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="439" bodyend="478"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a90c2d7e6e1f828fbde16b861d82e08c4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044" kindref="member">hf_adc_mode_t</ref></type>
@@ -1060,7 +1060,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="414" column="18" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="480" bodyend="483"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="415" column="18" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="480" bodyend="483"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a8761809a54d41ff5bbe428a1bf26876b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1116,7 +1116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="423" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="228" bodyend="270"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="424" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="228" bodyend="270"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a82197660e2697e83a75dcec82715edea" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1159,7 +1159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="433" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="489" bodyend="495"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="434" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="489" bodyend="495"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1aa2dbbca1008b19554050fb3d61d4efbc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1190,7 +1190,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="440" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="272" bodyend="291"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="441" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="272" bodyend="291"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a8d7f0c758314d5d2335228ae089a411a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1221,7 +1221,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="447" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="293" bodyend="304"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="448" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="293" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1abc6f77bdd3c2148174e25f6cb4fef6b9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1264,7 +1264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="455" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="310" bodyend="329"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="456" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="310" bodyend="329"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1aaf1ab6e5fc8f3dd1d98adb58217c7999" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1307,7 +1307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="463" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="331" bodyend="361"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="464" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="331" bodyend="361"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a3a4746635880b676e2539a57e03019e5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1362,7 +1362,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="472" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="363" bodyend="381"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="473" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="363" bodyend="381"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a9a485efe16e4c4cffd8430e93b50abdc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1417,7 +1417,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="482" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="383" bodyend="401"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="483" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="383" bodyend="401"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a8536b9fb3f4501f0ae3904a69be7d89e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1472,7 +1472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="492" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="403" bodyend="433"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="493" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="403" bodyend="433"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a5fec22227de2002dd6eee83d7a3d71b3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
@@ -1503,7 +1503,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="500" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="497" bodyend="504"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="501" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="497" bodyend="504"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a45ad33cf12b52f2f2ef2f49631b79cdf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1534,7 +1534,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="511" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="510" bodyend="548"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="512" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="510" bodyend="548"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a15e521d7b7f7999350c92f7324163a44" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1578,7 +1578,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="519" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="550" bodyend="558"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="520" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="550" bodyend="558"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a557503781b6750e588f294d5335f38c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1596,7 +1596,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="526" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="560" bodyend="584"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="527" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="560" bodyend="584"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a7fc0aa8f5824bbbc5e822cc54376a104" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1614,7 +1614,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="532" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="586" bodyend="606"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="533" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="586" bodyend="606"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a53adaf2491145413c52c99047bd489ee" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
@@ -1632,7 +1632,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="538" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="608" bodyend="610"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="539" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="608" bodyend="610"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1ab01214748f53f27d55d434455882a6bf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1699,7 +1699,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="548" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="612" bodyend="641"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="549" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="612" bodyend="641"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a8ebd0d0a3003612f510c2083115bf6ed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1743,7 +1743,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="561" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="647" bodyend="683"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="562" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="647" bodyend="683"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a4b6578a771f9719df0aba7a483c42797" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref></type>
@@ -1774,7 +1774,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="570" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="685" bodyend="693"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="571" column="14" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="685" bodyend="693"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a57368d9056bbb8ad629f45b4f4d38380" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1829,7 +1829,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="579" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="695" bodyend="720"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="580" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="695" bodyend="720"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1aa01f372706dc5b9c7c2030c6f519c1e9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1860,7 +1860,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="591" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="726" bodyend="762"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="592" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="726" bodyend="762"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a4cd4f281d8522e923efffa875b0f4ad2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1903,7 +1903,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="599" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="764" bodyend="789"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="600" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="764" bodyend="789"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a751df10d4361e34b8204bc8758b24e04" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1934,7 +1934,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="610" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="795" bodyend="857"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="611" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="795" bodyend="857"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a5d311547b6f8db4b91b5c43496588e1a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -1990,7 +1990,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="619" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="859" bodyend="876"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="620" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="859" bodyend="876"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1adb665aed1dce9777b004839ff2f354a7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2033,7 +2033,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="628" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="878" bodyend="903"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="629" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="878" bodyend="903"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a6dbc06099ca66dc4c577c4a844b0f1cd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2065,7 +2065,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="639" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="909" bodyend="913"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="640" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="909" bodyend="913"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1ac65647338df854681584bc1efc6bb88d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2097,7 +2097,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="646" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="915" bodyend="919"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="647" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="915" bodyend="919"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1addd7719b17eb884fa6f81dc9174b1b91" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2113,7 +2113,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="651" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="921" bodyend="925"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="652" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="921" bodyend="925"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a5f62c857a09e625de27e74a83573a0f1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2131,7 +2131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="657" column="17" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="927" bodyend="929"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="658" column="17" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="927" bodyend="929"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1abf2663c3ab8440f0e2fa307995a6adfb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref> &amp;</type>
@@ -2149,7 +2149,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="663" column="31" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="931" bodyend="933"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="664" column="31" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="931" bodyend="933"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -2165,7 +2165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="682" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1132" bodyend="1172"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="683" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1132" bodyend="1172"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a0333cae3bf2014e1ae13df604b7be2c9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2179,7 +2179,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="683" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1174" bodyend="1257"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="684" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1174" bodyend="1257"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a2cbcd4128df1547b8a4f09a82234aa77" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2193,7 +2193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="684" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1259" bodyend="1275"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="685" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1259" bodyend="1275"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a9e25cd7222d7331d085e1eebf433f552" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2207,7 +2207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="685" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1277" bodyend="1299"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="686" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1277" bodyend="1299"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1aab7320c2f32db76f75e9841d7104f96c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2229,7 +2229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="686" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1301" bodyend="1326"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="687" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1301" bodyend="1326"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1aa291093348a844eaab107b0a71113074" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2247,7 +2247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="687" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1328" bodyend="1333"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="688" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1328" bodyend="1333"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a363cb73973674e2bc825ded4fd5626d4" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2261,7 +2261,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="688" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1335" bodyend="1396"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="689" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1335" bodyend="1396"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1ae95ea4a7a416b0dc4bad321a2c1ac40b" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -2283,7 +2283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="689" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1398" bodyend="1431"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="690" column="16" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1398" bodyend="1431"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a662613228626db068d20291afdd4872d" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>uint64_t</type>
@@ -2297,7 +2297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="690" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1433" bodyend="1435"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="691" column="12" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1433" bodyend="1435"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a8f3eb3aba7e2e740f50e82653c6193d3" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -2315,7 +2315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="691" column="8" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1437" bodyend="1460"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="692" column="8" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1437" bodyend="1460"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -2343,7 +2343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="694" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1053" bodyend="1076"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="695" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1053" bodyend="1076"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a2d566599e1f11e2f38bde8235e66177a" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref> IRAM_ATTR</type>
@@ -2369,7 +2369,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="697" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1078" bodyend="1101"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="698" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1078" bodyend="1101"/>
       </memberdef>
       <memberdef kind="function" id="classEspAdc_1a25d9e8a2f953312b3b2019a1c3d74c49" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a9986e3ac7705b215b439b4ebf595e7b0" kindref="member">hf_bool_t</ref> IRAM_ATTR</type>
@@ -2395,7 +2395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspAdc.h" line="700" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1103" bodyend="1126"/>
+        <location file="inc/mcu/esp32/EspAdc.h" line="701" column="30" bodyfile="src/mcu/esp32/EspAdc.cpp" bodystart="1103" bodyend="1126"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -2534,7 +2534,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspAdc.h" line="258" column="1" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="258" bodyend="736"/>
+    <location file="inc/mcu/esp32/EspAdc.h" line="259" column="1" bodyfile="inc/mcu/esp32/EspAdc.h" bodystart="259" bodyend="737"/>
     <listofallmembers>
       <member refid="classBaseAdc_1afa09240c509104a18d40aa2dbbbc5e9d" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>BaseAdc</name></member>
       <member refid="classBaseAdc_1a37498a3ef03c848856290a4846c87dd7" prot="public" virt="non-virtual"><scope>EspAdc</scope><name>BaseAdc</name></member>

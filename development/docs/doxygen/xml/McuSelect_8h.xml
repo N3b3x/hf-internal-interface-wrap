@@ -505,7 +505,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="40" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="40" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="41" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="41" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ab450ad4ee6d96c0a1f19723992004a41" prot="public" static="no">
         <name>HF_THREAD_SAFE</name>
@@ -515,7 +515,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="56" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="56" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="57" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="57" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ab71328905c36e55e3085ddeda2a0391b" prot="public" static="no">
         <name>HF_MCU_ESP32C6</name>
@@ -525,7 +525,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="66" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="66" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="67" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="67" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1af09d5cdf20a6926e03923ad5efc9f774" prot="public" static="no">
         <name>HF_MCU_FAMILY_ESP32</name>
@@ -535,7 +535,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="69" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="69" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="70" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1affcd472dd5e22e4e8aa957d29da0572f" prot="public" static="no">
         <name>HF_MCU_NAME</name>
@@ -546,7 +546,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="71" column="10" bodyfile="inc/utils/McuSelect.h" bodystart="71" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="72" column="10" bodyfile="inc/utils/McuSelect.h" bodystart="72" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a39573867174a649ac525f65a7387fd31" prot="public" static="no">
         <name>HF_MCU_ARCHITECTURE</name>
@@ -557,7 +557,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="72" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="72" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="73" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="73" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a6e87fa9aef714f7c0bd733c68ca9578f" prot="public" static="no">
         <name>HF_MCU_VARIANT_C6</name>
@@ -567,7 +567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="73" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="73" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="74" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a04be44d00bd93f9f6501cfde0060d834" prot="public" static="no">
         <name>HF_MCU_HAS_GPIO</name>
@@ -578,7 +578,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="186" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="186" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="187" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="187" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a7b69b1756fcf7fe37598661f3cc69a1a" prot="public" static="no">
         <name>HF_MCU_GPIO_MAX_PINS</name>
@@ -589,7 +589,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="187" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="187" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="188" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="188" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aeb28fc476b0471c9004b383b2713a919" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_PULLUP</name>
@@ -600,7 +600,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="188" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="188" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="189" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="189" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ad522b821943c4ea6b3f2a7ff9e0f04cf" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_PULLDOWN</name>
@@ -611,7 +611,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="189" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="189" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="190" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="190" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ad300657fa8f272130040d07283257dc3" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_INTERRUPTS</name>
@@ -622,7 +622,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="190" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="190" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="191" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="191" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a302eb1ea34953a1037bfbf9d0ebc6a5c" prot="public" static="no">
         <name>HF_MCU_GPIO_PIN_COUNT</name>
@@ -634,7 +634,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="193" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="193" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="194" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="194" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a8b5ad2beab18ca74b6bb74718d512d7d" prot="public" static="no">
         <name>HF_MCU_GPIO_MAX_PIN_NUMBER</name>
@@ -646,7 +646,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="194" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="194" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="195" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="195" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a75a2045e65dd2daef4515640f228f4f3" prot="public" static="no">
         <name>HF_MCU_GPIO_RTC_PIN_COUNT</name>
@@ -658,7 +658,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="195" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="195" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="196" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="196" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aa353a450b143aefcdf0c6dbf6f1eb4bf" prot="public" static="no">
         <name>HF_MCU_GPIO_LP_IO_PIN_COUNT</name>
@@ -670,7 +670,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="196" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="196" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="197" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a7350f7923aa8bdf8c0705558f13132ff" prot="public" static="no">
         <name>HF_MCU_GPIO_ADC_PIN_COUNT</name>
@@ -682,7 +682,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="197" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="197" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="198" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="198" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a02d97606e500251c389b700b5d15f3a6" prot="public" static="no">
         <name>HF_MCU_GPIO_FLEX_FILTER_COUNT</name>
@@ -694,7 +694,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="198" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="198" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="199" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="199" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a41487709dd21420136cffa73c269ac02" prot="public" static="no">
         <name>HF_MCU_GPIO_TOUCH_PIN_COUNT</name>
@@ -706,7 +706,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="199" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="199" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="200" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="200" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a62c5c456bff1082a381140cc97ba5336" prot="public" static="no">
         <name>HF_MCU_GPIO_DAC_PIN_COUNT</name>
@@ -718,7 +718,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="200" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="200" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="201" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="201" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a7d3a44af8343d25d54a3ab0b6429e246" prot="public" static="no">
         <name>HF_MCU_GPIO_ETM_CHANNEL_COUNT</name>
@@ -730,7 +730,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="201" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="201" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="202" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="202" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aaaff5b50c642d6be50e8037b99c712bc" prot="public" static="no">
         <name>HF_MCU_GPIO_ETM_EVENT_COUNT_MAX</name>
@@ -742,7 +742,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="202" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="202" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="203" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="203" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a1de2ca0a5577ff97fc02d16c0c49e6e5" prot="public" static="no">
         <name>HF_MCU_GPIO_ETM_TASK_COUNT_MAX</name>
@@ -754,7 +754,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="203" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="203" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="204" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="204" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ae2256add6fae8bb97c9cf9534f07927a" prot="public" static="no">
         <name>HF_MCU_GPIO_APB_CLK_FREQ_HZ</name>
@@ -766,7 +766,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="206" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="206" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="207" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="207" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ac15f95ae9cb547018dac6b0187681500" prot="public" static="no">
         <name>HF_MCU_GPIO_RC_FAST_CLK_FREQ_HZ</name>
@@ -778,7 +778,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="207" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="207" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="208" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="208" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a9fdab6797471e3b90e47211f60548f14" prot="public" static="no">
         <name>HF_MCU_GPIO_XTAL_CLK_FREQ_HZ</name>
@@ -790,7 +790,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="208" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="208" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="209" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="209" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a50c0aeece5c75be7579d646b5a9c9bdd" prot="public" static="no">
         <name>HF_MCU_GPIO_MAX_TOGGLE_FREQ_HZ</name>
@@ -802,7 +802,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="211" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="211" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="212" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="212" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a77568d505a858a3ba95af6b7c53ab55d" prot="public" static="no">
         <name>HF_MCU_GPIO_MIN_GLITCH_FILTER_NS</name>
@@ -814,7 +814,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="212" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="212" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="213" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="213" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aa563e215b251a2633ce317370073e43e" prot="public" static="no">
         <name>HF_MCU_GPIO_MAX_GLITCH_FILTER_NS</name>
@@ -826,7 +826,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="213" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="213" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="214" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="214" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aeb41fe85cdc75af96b674ef3640407f1" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_GLITCH_FILTER</name>
@@ -838,7 +838,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="216" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="216" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="217" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="217" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a51c24f6a0807430f36e7e6acbe42271c" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_RTC_GPIO</name>
@@ -850,7 +850,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="217" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="217" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="218" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="218" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aef039a18abad72bc06ff30b03bc2eb4c" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_LP_IO</name>
@@ -862,7 +862,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="218" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="218" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="219" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="219" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a448c3d12d072a5bb0f583f8a58688008" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_ETM</name>
@@ -874,7 +874,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="219" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="219" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="220" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="220" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a8a1b55079a88a58b2834e9d7fc16ea97" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_HOLD_FUNCTION</name>
@@ -886,7 +886,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="220" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="220" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="221" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ac3fd2a737f65ba32bdbdb577665da49b" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_SLEEP_CONFIG</name>
@@ -898,7 +898,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="221" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="221" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="222" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="222" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a328513ae9e8a7a14e94f67fa491f69ab" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_WAKEUP_CONFIG</name>
@@ -910,7 +910,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="222" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="222" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="223" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="223" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ab4a5b5909c53948c3eb1ab4ffd53d64e" prot="public" static="no">
         <name>HF_MCU_GPIO_HAS_DRIVE_STRENGTH</name>
@@ -922,7 +922,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="223" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="223" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="224" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="224" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a38805d11cab71d167819477aa45928a4" prot="public" static="no">
         <name>HF_MCU_HAS_ADC</name>
@@ -933,7 +933,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="226" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="226" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="227" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="227" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a7f555b55b55a788dad8c357bd9988778" prot="public" static="no">
         <name>HF_MCU_ADC_MAX_CHANNELS</name>
@@ -944,7 +944,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="227" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="227" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="228" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="228" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a404f6fafd0a07c9ba5bb5e344a941294" prot="public" static="no">
         <name>HF_MCU_ADC_MAX_RESOLUTION</name>
@@ -955,7 +955,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="228" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="228" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="229" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="229" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a9eb514655b6d53b8ad6d7509ddce9dfb" prot="public" static="no">
         <name>HF_MCU_ADC_HAS_ATTENUATION</name>
@@ -966,7 +966,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="229" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="229" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="230" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="230" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1acae7337d714b1f1e76e5964adb794971" prot="public" static="no">
         <name>HF_MCU_ADC_NUM_UNITS</name>
@@ -977,7 +977,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="230" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="230" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="231" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="231" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a9a287ef347eda0bfb759064a176851d8" prot="public" static="no">
         <name>HF_MCU_HAS_I2C</name>
@@ -988,7 +988,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="233" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="233" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="234" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="234" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a942587d6cb833b760d2256c49eb5ebaf" prot="public" static="no">
         <name>HF_MCU_I2C_MAX_PORTS</name>
@@ -999,7 +999,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="234" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="234" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="235" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="235" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a7d8622a6f633e1c782d3451ff226ea5a" prot="public" static="no">
         <name>HF_MCU_I2C_MAX_FREQ_HZ</name>
@@ -1010,7 +1010,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="235" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="235" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="236" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1acb6c5a3eed346ee09ba2d971c7486055" prot="public" static="no">
         <name>HF_MCU_I2C_HAS_SLAVE_MODE</name>
@@ -1021,7 +1021,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="236" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="236" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="237" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="237" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a98b64efa7f02df1c467827a0e2709ace" prot="public" static="no">
         <name>HF_MCU_HAS_SPI</name>
@@ -1032,7 +1032,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="239" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="239" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="240" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="240" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a4c1bb49caa954c13d1d0f4e9fe32332c" prot="public" static="no">
         <name>HF_MCU_SPI_MAX_HOSTS</name>
@@ -1043,7 +1043,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="240" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="240" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="241" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="241" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aeea8ff6c7946c4b6ffbd958dea488903" prot="public" static="no">
         <name>HF_MCU_SPI_MAX_FREQ_HZ</name>
@@ -1054,7 +1054,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="241" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="241" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="242" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="242" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a3a4f29162086213efd965c3a7f595207" prot="public" static="no">
         <name>HF_MCU_SPI_HAS_DMA</name>
@@ -1065,7 +1065,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="242" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="242" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="243" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="243" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aa2ee54f0889ea94da4d2de75d5b6c82e" prot="public" static="no">
         <name>HF_MCU_HAS_UART</name>
@@ -1076,7 +1076,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="245" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="245" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="246" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="246" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a6464f77ee9888413ccd1ed7e17a762c7" prot="public" static="no">
         <name>HF_MCU_UART_MAX_PORTS</name>
@@ -1087,7 +1087,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="246" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="246" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="247" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="247" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a9c8a1d645d159f0306aad8b5144568a2" prot="public" static="no">
         <name>HF_MCU_UART_MAX_BAUDRATE</name>
@@ -1098,7 +1098,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="247" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="247" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="248" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="248" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aeb1a92ad672db8f2bcb2edf96678db47" prot="public" static="no">
         <name>HF_MCU_UART_HAS_FLOW_CONTROL</name>
@@ -1109,7 +1109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="248" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="248" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="249" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="249" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a650a21c7d1f6d4ae3e6090eb6aba76d4" prot="public" static="no">
         <name>HF_MCU_HAS_CAN</name>
@@ -1120,7 +1120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="251" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="251" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="252" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="252" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aa2e30b542b1e685219e40e009964beb0" prot="public" static="no">
         <name>HF_MCU_CAN_MAX_CONTROLLERS</name>
@@ -1131,7 +1131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="252" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="252" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="253" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="253" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ae1648a5ce5a0e230b17869d8ee2c96f0" prot="public" static="no">
         <name>HF_MCU_CAN_HAS_LISTEN_ONLY</name>
@@ -1142,7 +1142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="253" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="253" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="254" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="254" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1aad809895f49ba2b809781455e73cd91c" prot="public" static="no">
         <name>HF_MCU_CAN_HAS_SELF_TEST</name>
@@ -1153,7 +1153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="254" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="254" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="255" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="255" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a971e836251baf3977802d400d19b7e7e" prot="public" static="no">
         <name>HF_MCU_CAN_PROTOCOL</name>
@@ -1164,7 +1164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="255" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="255" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="256" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="256" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a8fbe8bc73c6556bb9acebfffd136491b" prot="public" static="no">
         <name>HF_MCU_HAS_PWM</name>
@@ -1175,7 +1175,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="258" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="258" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="259" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="259" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a3c6ad889f4396e5207e78752a3472be3" prot="public" static="no">
         <name>HF_MCU_PWM_MAX_CHANNELS</name>
@@ -1186,7 +1186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="259" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="259" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="260" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ac86fdffbbffc1d662f03640ab6b9da43" prot="public" static="no">
         <name>HF_MCU_PWM_MAX_FREQ_HZ</name>
@@ -1197,7 +1197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="260" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="260" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="261" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a9a0dced621f2f453f83f1de9224dc101" prot="public" static="no">
         <name>HF_MCU_PWM_MAX_RESOLUTION</name>
@@ -1208,7 +1208,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="261" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="261" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="262" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="262" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1abf0f9630145e0d2a6cefdbfa3506c8b1" prot="public" static="no">
         <name>HF_MCU_HAS_PIO</name>
@@ -1219,7 +1219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="264" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="264" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="265" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="265" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a5cff026a4dfb35a19f3b7dffe476086b" prot="public" static="no">
         <name>HF_MCU_HAS_RMT</name>
@@ -1230,7 +1230,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="265" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="265" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="266" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="266" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a8cd97664c45b01b305b3a57396bc2803" prot="public" static="no">
         <name>HF_MCU_RMT_MAX_CHANNELS</name>
@@ -1241,7 +1241,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="266" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="266" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="267" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="267" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a559f7d3c3eadf7a5d6f693fbe2a71d45" prot="public" static="no">
         <name>HF_MCU_DEFAULT_TIMEOUT_MS</name>
@@ -1252,7 +1252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="329" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="329" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="330" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="330" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1acaf99aedce51580d034ed33d1c4e67d6" prot="public" static="no">
         <name>HF_MCU_I2C_TIMEOUT_MS</name>
@@ -1263,7 +1263,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="330" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="330" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="331" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="331" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ab01a04152e46d243d8b6dfe700ab84fa" prot="public" static="no">
         <name>HF_MCU_SPI_TIMEOUT_MS</name>
@@ -1274,7 +1274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="331" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="331" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="332" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="332" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ad3d0806d641e947f0bef3f31c7b598c4" prot="public" static="no">
         <name>HF_MCU_UART_TIMEOUT_MS</name>
@@ -1285,7 +1285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="332" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="332" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="333" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="333" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ade908c1229fc75559d8425287121013b" prot="public" static="no">
         <name>HF_MCU_CAN_TIMEOUT_MS</name>
@@ -1296,7 +1296,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="333" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="333" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="334" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="334" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ac69aebb08f757595334e2839bb5f2804" prot="public" static="no">
         <name>HF_MCU_UART_RX_BUFFER_SIZE</name>
@@ -1307,7 +1307,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="336" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="336" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="337" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="337" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a177f9c2f6901a31c8f692750e351b781" prot="public" static="no">
         <name>HF_MCU_UART_TX_BUFFER_SIZE</name>
@@ -1318,7 +1318,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="337" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="337" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="338" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="338" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ae498f1d9889e8618e711b91338f80b29" prot="public" static="no">
         <name>HF_MCU_I2C_BUFFER_SIZE</name>
@@ -1329,7 +1329,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="338" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="338" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="339" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="339" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a39c70445579b9b422bf75213532aae5a" prot="public" static="no">
         <name>HF_MCU_SPI_BUFFER_SIZE</name>
@@ -1340,7 +1340,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="339" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="339" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="340" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="340" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a59a92cb4f2d7c199ca129855c6f1acc2" prot="public" static="no">
         <name>HF_MCU_CAN_RX_QUEUE_SIZE</name>
@@ -1351,7 +1351,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="340" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="340" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="341" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="341" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1ae0834a57d29022511a427dc93e58c960" prot="public" static="no">
         <name>HF_MCU_CAN_TX_QUEUE_SIZE</name>
@@ -1362,7 +1362,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="341" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="341" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="342" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="342" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a8e9425fbf5e10201a5b5c085766537a3" prot="public" static="no">
         <name>HF_MCU_TASK_STACK_SIZE</name>
@@ -1373,7 +1373,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="344" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="344" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="345" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="345" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1af255c41afe8127d90843a9cad5cf5153" prot="public" static="no">
         <name>HF_MCU_TASK_PRIORITY</name>
@@ -1384,7 +1384,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="345" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="345" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="346" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="346" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1afb3af08385918b69764ca737d66cbf0a" prot="public" static="no">
         <name>HF_MCU_ADC_DEFAULT_VREF</name>
@@ -1395,7 +1395,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="348" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="348" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="349" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="349" bodyend="-1"/>
       </memberdef>
       <memberdef kind="define" id="McuSelect_8h_1a2cdf914ecb9e0662a18b066a698103c3" prot="public" static="no">
         <name>HF_MCU_ADC_MAX_VOLTAGE</name>
@@ -1406,7 +1406,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/McuSelect.h" line="349" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="349" bodyend="-1"/>
+        <location file="inc/utils/McuSelect.h" line="350" column="9" bodyfile="inc/utils/McuSelect.h" bodystart="350" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1424,371 +1424,371 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>USAGE<sp/>INSTRUCTIONS<sp/>-<sp/>HOW<sp/>TO<sp/>SELECT<sp/>YOUR<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
-<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>STEP<sp/>1:<sp/>Select<sp/>your<sp/>target<sp/>MCU<sp/>by<sp/>uncommenting<sp/>exactly<sp/>ONE<sp/>define<sp/>below</highlight></codeline>
-<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>STEP<sp/>2:<sp/>Comment<sp/>out<sp/>all<sp/>other<sp/>MCU<sp/>defines<sp/>(they<sp/>should<sp/>have<sp/>//<sp/>in<sp/>front)</highlight></codeline>
-<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>STEP<sp/>3:<sp/>Build<sp/>your<sp/>project<sp/>-<sp/>all<sp/>platform-specific<sp/>code<sp/>will<sp/>be<sp/>configured<sp/>automatically</highlight></codeline>
-<codeline lineno="24"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>EXAMPLES:</highlight></codeline>
-<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>-<sp/>For<sp/>ESP32-C6:<sp/><sp/>uncomment<sp/>&quot;#define<sp/>HF_TARGET_MCU_ESP32C6&quot;</highlight></codeline>
-<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>For<sp/>ESP32:<sp/><sp/><sp/><sp/><sp/><sp/>uncomment<sp/>&quot;#define<sp/>HF_TARGET_MCU_ESP32&quot;</highlight></codeline>
-<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>For<sp/>STM32F4:<sp/><sp/><sp/><sp/>uncomment<sp/>&quot;#define<sp/>HF_TARGET_MCU_STM32F4&quot;</highlight></codeline>
-<codeline lineno="29"><highlight class="comment"><sp/>*</highlight></codeline>
-<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>NOTE:<sp/>If<sp/>you<sp/>get<sp/>&quot;Multiple<sp/>target<sp/>MCUs&quot;<sp/>error,<sp/>you<sp/>have<sp/>more<sp/>than<sp/>one<sp/>uncommented.</highlight></codeline>
-<codeline lineno="31"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>If<sp/>you<sp/>get<sp/>&quot;No<sp/>target<sp/>MCU&quot;<sp/>error,<sp/>you<sp/>need<sp/>to<sp/>uncomment<sp/>exactly<sp/>one.</highlight></codeline>
-<codeline lineno="32"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CENTRAL<sp/>MCU<sp/>SELECTION<sp/>-<sp/>SELECT<sp/>EXACTLY<sp/>ONE<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Uncomment<sp/>exactly<sp/>ONE<sp/>of<sp/>the<sp/>following<sp/>lines<sp/>to<sp/>select<sp/>your<sp/>target<sp/>MCU:</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_TARGET_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="40" refid="McuSelect_8h_1a0ccdea2d0df335e3c7c10a423510f298" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_TARGET_MCU_ESP32C6<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>RISC-V<sp/>MCU<sp/>(Primary<sp/>target)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32<sp/>Classic<sp/>Xtensa<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32S2<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-S2<sp/>Xtensa<sp/>LX7<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32S3<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-S3<sp/>Xtensa<sp/>LX7<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32C3<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-C3<sp/>RISC-V<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32C2<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-C2<sp/>RISC-V<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32H2<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-H2<sp/>RISC-V<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_STM32F4<sp/><sp/><sp/><sp/><sp/>//<sp/>STM32F4<sp/>series<sp/>ARM<sp/>Cortex-M4</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_STM32H7<sp/><sp/><sp/><sp/><sp/>//<sp/>STM32H7<sp/>series<sp/>ARM<sp/>Cortex-M7</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_RP2040<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Raspberry<sp/>Pi<sp/>Pico<sp/>RP2040</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Optional<sp/>thread<sp/>safety<sp/>support<sp/>using<sp/>RTOS-based<sp/>mutexes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Uncomment<sp/>to<sp/>enable<sp/>mutex<sp/>protection<sp/>in<sp/>MCU<sp/>drivers</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_THREAD_SAFE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56" refid="McuSelect_8h_1ab450ad4ee6d96c0a1f19723992004a41" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_THREAD_SAFE<sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>thread<sp/>safety<sp/>for<sp/>SPI,<sp/>I2C,<sp/>UART<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AUTOMATIC<sp/>PLATFORM<sp/>CONFIGURATION<sp/>BASED<sp/>ON<sp/>SELECTION</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"></highlight></codeline>
-<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="64"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_TARGET_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="66" refid="McuSelect_8h_1ab71328905c36e55e3085ddeda2a0391b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="69" refid="McuSelect_8h_1af09d5cdf20a6926e03923ad5efc9f774" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="71" refid="McuSelect_8h_1affcd472dd5e22e4e8aa957d29da0572f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-C6&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72" refid="McuSelect_8h_1a39573867174a649ac525f65a7387fd31" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;RISC-V<sp/>RV32IMAC&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73" refid="McuSelect_8h_1a6e87fa9aef714f7c0bd733c68ca9578f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;Xtensa<sp/>LX6&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_CLASSIC</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32S2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-S2&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;Xtensa<sp/>LX7&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_S2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S3<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32S3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-S3&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;Xtensa<sp/>LX7&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_S3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C3<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32C3)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32C3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-C3&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;RISC-V<sp/>RV32IMC&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_C3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32C2)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32C2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-C2&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;RISC-V<sp/>RV32IMC&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_C2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-H2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32H2)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32H2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-H2&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;RISC-V<sp/>RV32IMC&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_H2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STM32F4<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_STM32F4)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_STM32F4</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_STM32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;STM32F4&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;ARM<sp/>Cortex-M4&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;STM32F4<sp/>platform<sp/>not<sp/>yet<sp/>implemented<sp/>-<sp/>please<sp/>implement<sp/>STM32F4<sp/>support&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STM32H7<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_STM32H7)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_STM32H7</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_STM32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;STM32H7&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;ARM<sp/>Cortex-M7&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;STM32H7<sp/>platform<sp/>not<sp/>yet<sp/>implemented<sp/>-<sp/>please<sp/>implement<sp/>STM32H7<sp/>support&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//<sp/>RP2040<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_RP2040)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_RP2040</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_RP2040</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;RP2040&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;ARM<sp/>Cortex-M0+&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;RP2040<sp/>platform<sp/>not<sp/>yet<sp/>implemented<sp/>-<sp/>please<sp/>implement<sp/>RP2040<sp/>support&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">//<sp/>No<sp/>MCU<sp/>Selected<sp/>-<sp/>Error</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;No<sp/>MCU<sp/>selected!<sp/>Please<sp/>uncomment<sp/>exactly<sp/>one<sp/>HF_TARGET_MCU_*<sp/>define<sp/>in<sp/>McuSelect.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM<sp/>VALIDATION<sp/>-<sp/>ENSURE<sp/>ONLY<sp/>ONE<sp/>TARGET<sp/>IS<sp/>SELECTED</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Count<sp/>the<sp/>number<sp/>of<sp/>selected<sp/>target<sp/>MCUs<sp/>(portable<sp/>version)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(HF_TARGET_MCU_ESP32C6)<sp/>+<sp/>defined(HF_TARGET_MCU_ESP32)<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="158"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defined(HF_TARGET_MCU_ESP32S2)<sp/>+<sp/>defined(HF_TARGET_MCU_ESP32S3)<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="159"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defined(HF_TARGET_MCU_ESP32C3)<sp/>+<sp/>defined(HF_TARGET_MCU_ESP32C2)<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="160"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defined(HF_TARGET_MCU_ESP32H2)<sp/>+<sp/>defined(HF_TARGET_MCU_STM32F4)<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="161"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defined(HF_TARGET_MCU_STM32H7)<sp/>+<sp/>defined(HF_TARGET_MCU_RP2040)<sp/>&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="162"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="164"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&quot;Multiple<sp/>target<sp/>MCUs<sp/>are<sp/>selected.<sp/>Please<sp/>uncomment<sp/>exactly<sp/>ONE<sp/>HF_TARGET_MCU_*<sp/>define<sp/>in<sp/>McuSelect.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>!defined(HF_TARGET_MCU_ESP32C6)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_ESP32)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="166"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined(HF_TARGET_MCU_ESP32S2)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_ESP32S3)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="167"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined(HF_TARGET_MCU_ESP32C3)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_ESP32C2)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="168"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined(HF_TARGET_MCU_ESP32H2)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_STM32F4)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="169"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined(HF_TARGET_MCU_STM32H7)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_RP2040)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
-<codeline lineno="171"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&quot;No<sp/>target<sp/>MCU<sp/>is<sp/>selected.<sp/>Please<sp/>uncomment<sp/>exactly<sp/>ONE<sp/>HF_TARGET_MCU_*<sp/>define<sp/>in<sp/>McuSelect.h&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Validate<sp/>that<sp/>the<sp/>selected<sp/>MCU<sp/>has<sp/>a<sp/>corresponding<sp/>platform<sp/>family<sp/>defined</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(HF_MCU_FAMILY_ESP32)<sp/>&amp;&amp;<sp/>!defined(HF_MCU_FAMILY_STM32)<sp/>&amp;&amp;<sp/>!defined(HF_MCU_FAMILY_RP2040)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;No<sp/>MCU<sp/>family<sp/>is<sp/>defined.<sp/>This<sp/>indicates<sp/>an<sp/>error<sp/>in<sp/>McuSelect.h<sp/>configuration.&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MCU<sp/>CAPABILITY<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Specific<sp/>Capabilities<sp/>(Primary<sp/>Target)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="184"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GPIO<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="186" refid="McuSelect_8h_1a04be44d00bd93f9f6501cfde0060d834" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_GPIO<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="187" refid="McuSelect_8h_1a7b69b1756fcf7fe37598661f3cc69a1a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_PINS<sp/>31<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>31<sp/>GPIO<sp/>pins<sp/>(0-30)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188" refid="McuSelect_8h_1aeb28fc476b0471c9004b383b2713a919" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_PULLUP<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="189" refid="McuSelect_8h_1ad522b821943c4ea6b3f2a7ff9e0f04cf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_PULLDOWN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="190" refid="McuSelect_8h_1ad300657fa8f272130040d07283257dc3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_INTERRUPTS<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Advanced<sp/>GPIO<sp/>Hardware<sp/>Constants<sp/>(ESP-IDF<sp/>v5.5+)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="193" refid="McuSelect_8h_1a302eb1ea34953a1037bfbf9d0ebc6a5c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_PIN_COUNT<sp/>31<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="194" refid="McuSelect_8h_1a8b5ad2beab18ca74b6bb74718d512d7d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_PIN_NUMBER<sp/>30<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="195" refid="McuSelect_8h_1a75a2045e65dd2daef4515640f228f4f3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_RTC_PIN_COUNT<sp/>8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="196" refid="McuSelect_8h_1aa353a450b143aefcdf0c6dbf6f1eb4bf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_LP_IO_PIN_COUNT<sp/>8<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="197" refid="McuSelect_8h_1a7350f7923aa8bdf8c0705558f13132ff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_ADC_PIN_COUNT<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="198" refid="McuSelect_8h_1a02d97606e500251c389b700b5d15f3a6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_FLEX_FILTER_COUNT<sp/>8<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="199" refid="McuSelect_8h_1a41487709dd21420136cffa73c269ac02" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_TOUCH_PIN_COUNT<sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="200" refid="McuSelect_8h_1a62c5c456bff1082a381140cc97ba5336" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_DAC_PIN_COUNT<sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="201" refid="McuSelect_8h_1a7d3a44af8343d25d54a3ab0b6429e246" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_ETM_CHANNEL_COUNT<sp/>50<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="202" refid="McuSelect_8h_1aaaff5b50c642d6be50e8037b99c712bc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_ETM_EVENT_COUNT_MAX<sp/>100<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="203" refid="McuSelect_8h_1a1de2ca0a5577ff97fc02d16c0c49e6e5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_ETM_TASK_COUNT_MAX<sp/>100<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="204"><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Clock<sp/>frequencies<sp/>for<sp/>glitch<sp/>filter<sp/>timing<sp/>calculations</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="206" refid="McuSelect_8h_1ae2256add6fae8bb97c9cf9534f07927a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_APB_CLK_FREQ_HZ<sp/>80000000UL<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="207" refid="McuSelect_8h_1ac15f95ae9cb547018dac6b0187681500" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_RC_FAST_CLK_FREQ_HZ<sp/>17500000UL<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="208" refid="McuSelect_8h_1a9fdab6797471e3b90e47211f60548f14" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_XTAL_CLK_FREQ_HZ<sp/>40000000UL<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal"></highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>GPIO<sp/>timing<sp/>limits<sp/>and<sp/>characteristics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="211" refid="McuSelect_8h_1a50c0aeece5c75be7579d646b5a9c9bdd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_TOGGLE_FREQ_HZ<sp/>40000000UL<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="212" refid="McuSelect_8h_1a77568d505a858a3ba95af6b7c53ab55d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MIN_GLITCH_FILTER_NS<sp/>25UL<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="213" refid="McuSelect_8h_1aa563e215b251a2633ce317370073e43e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_GLITCH_FILTER_NS<sp/>1000000UL<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="214"><highlight class="normal"></highlight></codeline>
-<codeline lineno="215"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>GPIO<sp/>Feature<sp/>Support<sp/>Flags</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="216" refid="McuSelect_8h_1aeb41fe85cdc75af96b674ef3640407f1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_GLITCH_FILTER<sp/>1<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="217" refid="McuSelect_8h_1a51c24f6a0807430f36e7e6acbe42271c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_RTC_GPIO<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="218" refid="McuSelect_8h_1aef039a18abad72bc06ff30b03bc2eb4c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_LP_IO<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="219" refid="McuSelect_8h_1a448c3d12d072a5bb0f583f8a58688008" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_ETM<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="220" refid="McuSelect_8h_1a8a1b55079a88a58b2834e9d7fc16ea97" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_HOLD_FUNCTION<sp/>1<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="221" refid="McuSelect_8h_1ac3fd2a737f65ba32bdbdb577665da49b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_SLEEP_CONFIG<sp/>1<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="222" refid="McuSelect_8h_1a328513ae9e8a7a14e94f67fa491f69ab" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_WAKEUP_CONFIG<sp/>1<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="223" refid="McuSelect_8h_1ab4a5b5909c53948c3eb1ab4ffd53d64e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_DRIVE_STRENGTH<sp/>1<sp/></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="224"><highlight class="normal"></highlight></codeline>
-<codeline lineno="225"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADC<sp/>capabilities<sp/>(ESP32-C6<sp/>specific)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="226" refid="McuSelect_8h_1a38805d11cab71d167819477aa45928a4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_ADC<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="227" refid="McuSelect_8h_1a7f555b55b55a788dad8c357bd9988778" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_CHANNELS<sp/>7<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>7<sp/>ADC<sp/>channels<sp/>(0-6)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="228" refid="McuSelect_8h_1a404f6fafd0a07c9ba5bb5e344a941294" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_RESOLUTION<sp/>12</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="229" refid="McuSelect_8h_1a9eb514655b6d53b8ad6d7509ddce9dfb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_HAS_ATTENUATION<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="230" refid="McuSelect_8h_1acae7337d714b1f1e76e5964adb794971" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_NUM_UNITS<sp/>1<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>only<sp/>ADC1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="231"><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="normal"></highlight><highlight class="comment">//<sp/>I2C<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="233" refid="McuSelect_8h_1a9a287ef347eda0bfb759064a176851d8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_I2C<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="234" refid="McuSelect_8h_1a942587d6cb833b760d2256c49eb5ebaf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_MAX_PORTS<sp/>1<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>1<sp/>I2C<sp/>port</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="235" refid="McuSelect_8h_1a7d8622a6f633e1c782d3451ff226ea5a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_MAX_FREQ_HZ<sp/>1000000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="236" refid="McuSelect_8h_1acb6c5a3eed346ee09ba2d971c7486055" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_HAS_SLAVE_MODE<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPI<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="239" refid="McuSelect_8h_1a98b64efa7f02df1c467827a0e2709ace" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_SPI<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="240" refid="McuSelect_8h_1a4c1bb49caa954c13d1d0f4e9fe32332c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_MAX_HOSTS<sp/>2<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>SPI2<sp/>and<sp/>SPI3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="241" refid="McuSelect_8h_1aeea8ff6c7946c4b6ffbd958dea488903" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_MAX_FREQ_HZ<sp/>60000000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="242" refid="McuSelect_8h_1a3a4f29162086213efd965c3a7f595207" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_HAS_DMA<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="243"><highlight class="normal"></highlight></codeline>
-<codeline lineno="244"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UART<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="245" refid="McuSelect_8h_1aa2ee54f0889ea94da4d2de75d5b6c82e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_UART<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="246" refid="McuSelect_8h_1a6464f77ee9888413ccd1ed7e17a762c7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_MAX_PORTS<sp/>2<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>UART0<sp/>and<sp/>UART1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="247" refid="McuSelect_8h_1a9c8a1d645d159f0306aad8b5144568a2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_MAX_BAUDRATE<sp/>5000000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="248" refid="McuSelect_8h_1aeb1a92ad672db8f2bcb2edf96678db47" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_HAS_FLOW_CONTROL<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"></highlight></codeline>
-<codeline lineno="250"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CAN<sp/>capabilities<sp/>(TWAI)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="251" refid="McuSelect_8h_1a650a21c7d1f6d4ae3e6090eb6aba76d4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_CAN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="252" refid="McuSelect_8h_1aa2e30b542b1e685219e40e009964beb0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_MAX_CONTROLLERS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="253" refid="McuSelect_8h_1ae1648a5ce5a0e230b17869d8ee2c96f0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_HAS_LISTEN_ONLY<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="254" refid="McuSelect_8h_1aad809895f49ba2b809781455e73cd91c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_HAS_SELF_TEST<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="255" refid="McuSelect_8h_1a971e836251baf3977802d400d19b7e7e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_PROTOCOL<sp/>&quot;TWAI&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PWM<sp/>capabilities<sp/>(LEDC)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="258" refid="McuSelect_8h_1a8fbe8bc73c6556bb9acebfffd136491b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_PWM<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="259" refid="McuSelect_8h_1a3c6ad889f4396e5207e78752a3472be3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_CHANNELS<sp/>6<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>6<sp/>LEDC<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="260" refid="McuSelect_8h_1ac86fdffbbffc1d662f03640ab6b9da43" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_FREQ_HZ<sp/>40000000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="261" refid="McuSelect_8h_1a9a0dced621f2f453f83f1de9224dc101" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_RESOLUTION<sp/>14<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>max<sp/>is<sp/>14-bit</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"></highlight><highlight class="comment">//<sp/>RMT<sp/>capabilities<sp/>(not<sp/>PIO)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="264" refid="McuSelect_8h_1abf0f9630145e0d2a6cefdbfa3506c8b1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_PIO<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="265" refid="McuSelect_8h_1a5cff026a4dfb35a19f3b7dffe476086b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_RMT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="266" refid="McuSelect_8h_1a8cd97664c45b01b305b3a57396bc2803" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_RMT_MAX_CHANNELS<sp/>4<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>4<sp/>RMT<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="267"><highlight class="normal"></highlight></codeline>
-<codeline lineno="268"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic<sp/>Capabilities<sp/>(Secondary<sp/>Support)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="270"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GPIO<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="271"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_GPIO<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_PINS<sp/>40<sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>has<sp/>40<sp/>GPIO<sp/>pins</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_PULLUP<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="274"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_PULLDOWN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="275"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_INTERRUPTS<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="276"><highlight class="normal"></highlight></codeline>
-<codeline lineno="277"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADC<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_ADC<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_CHANNELS<sp/>18</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="280"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_RESOLUTION<sp/>12</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="281"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_HAS_ATTENUATION<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_NUM_UNITS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="283"><highlight class="normal"></highlight></codeline>
-<codeline lineno="284"><highlight class="normal"></highlight><highlight class="comment">//<sp/>I2C<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="285"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_I2C<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="286"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_MAX_PORTS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="287"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_MAX_FREQ_HZ<sp/>1000000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="288"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_HAS_SLAVE_MODE<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="289"><highlight class="normal"></highlight></codeline>
-<codeline lineno="290"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPI<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="291"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_SPI<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="292"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_MAX_HOSTS<sp/>3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="293"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_MAX_FREQ_HZ<sp/>80000000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="294"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_HAS_DMA<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"></highlight></codeline>
-<codeline lineno="296"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UART<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="297"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_UART<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="298"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_MAX_PORTS<sp/>3</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_MAX_BAUDRATE<sp/>5000000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_HAS_FLOW_CONTROL<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="301"><highlight class="normal"></highlight></codeline>
-<codeline lineno="302"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CAN<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="303"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_CAN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="304"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_MAX_CONTROLLERS<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="305"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_HAS_LISTEN_ONLY<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="306"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_HAS_SELF_TEST<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="307"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_PROTOCOL<sp/>&quot;CAN&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="308"><highlight class="normal"></highlight></codeline>
-<codeline lineno="309"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PWM<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="310"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_PWM<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="311"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_CHANNELS<sp/>16</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="312"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_FREQ_HZ<sp/>40000000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_RESOLUTION<sp/>20</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="314"><highlight class="normal"></highlight></codeline>
-<codeline lineno="315"><highlight class="normal"></highlight><highlight class="comment">//<sp/>RMT<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="316"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_PIO<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="317"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_RMT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="318"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_RMT_MAX_CHANNELS<sp/>8</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="319"><highlight class="normal"></highlight></codeline>
-<codeline lineno="320"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="321"><highlight class="normal"></highlight></codeline>
-<codeline lineno="322"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="323"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MCU<sp/>CONFIGURATION<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="324"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="325"><highlight class="normal"></highlight></codeline>
-<codeline lineno="326"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Configuration<sp/>Constants</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="327"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="328"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Default<sp/>timeout<sp/>values</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="329" refid="McuSelect_8h_1a559f7d3c3eadf7a5d6f693fbe2a71d45" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_DEFAULT_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="330" refid="McuSelect_8h_1acaf99aedce51580d034ed33d1c4e67d6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_TIMEOUT_MS<sp/>500<sp/></highlight><highlight class="comment">//<sp/>Reduced<sp/>for<sp/>faster<sp/>response</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="331" refid="McuSelect_8h_1ab01a04152e46d243d8b6dfe700ab84fa" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="332" refid="McuSelect_8h_1ad3d0806d641e947f0bef3f31c7b598c4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="333" refid="McuSelect_8h_1ade908c1229fc75559d8425287121013b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_TIMEOUT_MS<sp/>500</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="334"><highlight class="normal"></highlight></codeline>
-<codeline lineno="335"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Buffer<sp/>sizes<sp/>(optimized<sp/>for<sp/>ESP32-C6)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="336" refid="McuSelect_8h_1ac69aebb08f757595334e2839bb5f2804" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_RX_BUFFER_SIZE<sp/>512<sp/></highlight><highlight class="comment">//<sp/>Increased<sp/>for<sp/>motor<sp/>control</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="337" refid="McuSelect_8h_1a177f9c2f6901a31c8f692750e351b781" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_TX_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="338" refid="McuSelect_8h_1ae498f1d9889e8618e711b91338f80b29" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_BUFFER_SIZE<sp/>64<sp/></highlight><highlight class="comment">//<sp/>Reduced<sp/>for<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="339" refid="McuSelect_8h_1a39c70445579b9b422bf75213532aae5a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="340" refid="McuSelect_8h_1a59a92cb4f2d7c199ca129855c6f1acc2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_RX_QUEUE_SIZE<sp/>16<sp/></highlight><highlight class="comment">//<sp/>Optimized<sp/>for<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="341" refid="McuSelect_8h_1ae0834a57d29022511a427dc93e58c960" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_TX_QUEUE_SIZE<sp/>16</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="342"><highlight class="normal"></highlight></codeline>
-<codeline lineno="343"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Stack<sp/>sizes<sp/>for<sp/>tasks<sp/>(optimized<sp/>for<sp/>RISC-V)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="344" refid="McuSelect_8h_1a8e9425fbf5e10201a5b5c085766537a3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_TASK_STACK_SIZE<sp/>3072<sp/></highlight><highlight class="comment">//<sp/>Reduced<sp/>for<sp/>RISC-V<sp/>efficiency</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="345" refid="McuSelect_8h_1af255c41afe8127d90843a9cad5cf5153" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_TASK_PRIORITY<sp/>5</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="346"><highlight class="normal"></highlight></codeline>
-<codeline lineno="347"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADC<sp/>specific<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="348" refid="McuSelect_8h_1afb3af08385918b69764ca737d66cbf0a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_DEFAULT_VREF<sp/>1100<sp/></highlight><highlight class="comment">//<sp/>mV,<sp/>ESP32-C6<sp/>default</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="349" refid="McuSelect_8h_1a2cdf914ecb9e0662a18b066a698103c3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_VOLTAGE<sp/>3300<sp/><sp/></highlight><highlight class="comment">//<sp/>mV,<sp/>with<sp/>11dB<sp/>attenuation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="350"><highlight class="normal"></highlight></codeline>
-<codeline lineno="351"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic<sp/>Configuration<sp/>Constants</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="352"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="353"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Default<sp/>timeout<sp/>values</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="354"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_DEFAULT_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="355"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="356"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="357"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="358"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="359"><highlight class="normal"></highlight></codeline>
-<codeline lineno="360"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Buffer<sp/>sizes</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="361"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_RX_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="362"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_TX_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="363"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_BUFFER_SIZE<sp/>128</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="364"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="365"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_RX_QUEUE_SIZE<sp/>32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="366"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_TX_QUEUE_SIZE<sp/>32</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="367"><highlight class="normal"></highlight></codeline>
-<codeline lineno="368"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Stack<sp/>sizes<sp/>for<sp/>tasks</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="369"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_TASK_STACK_SIZE<sp/>4096</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="370"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_TASK_PRIORITY<sp/>5</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="371"><highlight class="normal"></highlight></codeline>
-<codeline lineno="372"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADC<sp/>specific<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="373"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_DEFAULT_VREF<sp/>1100<sp/></highlight><highlight class="comment">//<sp/>mV</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="374"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_VOLTAGE<sp/>3900<sp/><sp/></highlight><highlight class="comment">//<sp/>mV,<sp/>with<sp/>11dB<sp/>attenuation</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="375"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="376"><highlight class="normal"></highlight></codeline>
-<codeline lineno="377"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="378"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>MCU<sp/>SELECT<sp/>HEADER</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="379"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>USAGE<sp/>INSTRUCTIONS<sp/>-<sp/>HOW<sp/>TO<sp/>SELECT<sp/>YOUR<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>STEP<sp/>1:<sp/>Select<sp/>your<sp/>target<sp/>MCU<sp/>by<sp/>uncommenting<sp/>exactly<sp/>ONE<sp/>define<sp/>below</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>STEP<sp/>2:<sp/>Comment<sp/>out<sp/>all<sp/>other<sp/>MCU<sp/>defines<sp/>(they<sp/>should<sp/>have<sp/>//<sp/>in<sp/>front)</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>STEP<sp/>3:<sp/>Build<sp/>your<sp/>project<sp/>-<sp/>all<sp/>platform-specific<sp/>code<sp/>will<sp/>be<sp/>configured<sp/>automatically</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>EXAMPLES:</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*<sp/>-<sp/>For<sp/>ESP32-C6:<sp/><sp/>uncomment<sp/>&quot;#define<sp/>HF_TARGET_MCU_ESP32C6&quot;</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>-<sp/>For<sp/>ESP32:<sp/><sp/><sp/><sp/><sp/><sp/>uncomment<sp/>&quot;#define<sp/>HF_TARGET_MCU_ESP32&quot;</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>-<sp/>For<sp/>STM32F4:<sp/><sp/><sp/><sp/>uncomment<sp/>&quot;#define<sp/>HF_TARGET_MCU_STM32F4&quot;</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>NOTE:<sp/>If<sp/>you<sp/>get<sp/>&quot;Multiple<sp/>target<sp/>MCUs&quot;<sp/>error,<sp/>you<sp/>have<sp/>more<sp/>than<sp/>one<sp/>uncommented.</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/>If<sp/>you<sp/>get<sp/>&quot;No<sp/>target<sp/>MCU&quot;<sp/>error,<sp/>you<sp/>need<sp/>to<sp/>uncomment<sp/>exactly<sp/>one.</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CENTRAL<sp/>MCU<sp/>SELECTION<sp/>-<sp/>SELECT<sp/>EXACTLY<sp/>ONE<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Uncomment<sp/>exactly<sp/>ONE<sp/>of<sp/>the<sp/>following<sp/>lines<sp/>to<sp/>select<sp/>your<sp/>target<sp/>MCU:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_TARGET_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="McuSelect_8h_1a0ccdea2d0df335e3c7c10a423510f298" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_TARGET_MCU_ESP32C6<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>RISC-V<sp/>MCU<sp/>(Primary<sp/>target)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32<sp/>Classic<sp/>Xtensa<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32S2<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-S2<sp/>Xtensa<sp/>LX7<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32S3<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-S3<sp/>Xtensa<sp/>LX7<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32C3<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-C3<sp/>RISC-V<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32C2<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-C2<sp/>RISC-V<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_ESP32H2<sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32-H2<sp/>RISC-V<sp/>MCU</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_STM32F4<sp/><sp/><sp/><sp/><sp/>//<sp/>STM32F4<sp/>series<sp/>ARM<sp/>Cortex-M4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_STM32H7<sp/><sp/><sp/><sp/><sp/>//<sp/>STM32H7<sp/>series<sp/>ARM<sp/>Cortex-M7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>#define<sp/>HF_TARGET_MCU_RP2040<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Raspberry<sp/>Pi<sp/>Pico<sp/>RP2040</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Optional<sp/>thread<sp/>safety<sp/>support<sp/>using<sp/>RTOS-based<sp/>mutexes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Uncomment<sp/>to<sp/>enable<sp/>mutex<sp/>protection<sp/>in<sp/>MCU<sp/>drivers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_THREAD_SAFE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="McuSelect_8h_1ab450ad4ee6d96c0a1f19723992004a41" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_THREAD_SAFE<sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>thread<sp/>safety<sp/>for<sp/>SPI,<sp/>I2C,<sp/>UART<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>AUTOMATIC<sp/>PLATFORM<sp/>CONFIGURATION<sp/>BASED<sp/>ON<sp/>SELECTION</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_TARGET_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="McuSelect_8h_1ab71328905c36e55e3085ddeda2a0391b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="McuSelect_8h_1af09d5cdf20a6926e03923ad5efc9f774" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72" refid="McuSelect_8h_1affcd472dd5e22e4e8aa957d29da0572f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-C6&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="McuSelect_8h_1a39573867174a649ac525f65a7387fd31" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;RISC-V<sp/>RV32IMAC&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="McuSelect_8h_1a6e87fa9aef714f7c0bd733c68ca9578f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;Xtensa<sp/>LX6&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_CLASSIC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32S2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32S2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-S2&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;Xtensa<sp/>LX7&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_S2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-S3<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32S3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-S3&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;Xtensa<sp/>LX7&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_S3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C3<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32C3)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32C3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-C3&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;RISC-V<sp/>RV32IMC&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_C3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32C2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32C2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-C2&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;RISC-V<sp/>RV32IMC&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_C2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-H2<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_ESP32H2)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ESP32H2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_ESP32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;ESP32-H2&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;RISC-V<sp/>RV32IMC&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_VARIANT_H2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STM32F4<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_STM32F4)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_STM32F4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_STM32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;STM32F4&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;ARM<sp/>Cortex-M4&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;STM32F4<sp/>platform<sp/>not<sp/>yet<sp/>implemented<sp/>-<sp/>please<sp/>implement<sp/>STM32F4<sp/>support&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/>STM32H7<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_STM32H7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_STM32H7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_STM32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;STM32H7&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;ARM<sp/>Cortex-M7&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;STM32H7<sp/>platform<sp/>not<sp/>yet<sp/>implemented<sp/>-<sp/>please<sp/>implement<sp/>STM32H7<sp/>support&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">//<sp/>RP2040<sp/>Configuration</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_TARGET_MCU_RP2040)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_RP2040</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_FAMILY_RP2040</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_NAME<sp/>&quot;RP2040&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ARCHITECTURE<sp/>&quot;ARM<sp/>Cortex-M0+&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;RP2040<sp/>platform<sp/>not<sp/>yet<sp/>implemented<sp/>-<sp/>please<sp/>implement<sp/>RP2040<sp/>support&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//<sp/>No<sp/>MCU<sp/>Selected<sp/>-<sp/>Error</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;No<sp/>MCU<sp/>selected!<sp/>Please<sp/>uncomment<sp/>exactly<sp/>one<sp/>HF_TARGET_MCU_*<sp/>define<sp/>in<sp/>McuSelect.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PLATFORM<sp/>VALIDATION<sp/>-<sp/>ENSURE<sp/>ONLY<sp/>ONE<sp/>TARGET<sp/>IS<sp/>SELECTED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Count<sp/>the<sp/>number<sp/>of<sp/>selected<sp/>target<sp/>MCUs<sp/>(portable<sp/>version)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(HF_TARGET_MCU_ESP32C6)<sp/>+<sp/>defined(HF_TARGET_MCU_ESP32)<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="159"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defined(HF_TARGET_MCU_ESP32S2)<sp/>+<sp/>defined(HF_TARGET_MCU_ESP32S3)<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="160"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defined(HF_TARGET_MCU_ESP32C3)<sp/>+<sp/>defined(HF_TARGET_MCU_ESP32C2)<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="161"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defined(HF_TARGET_MCU_ESP32H2)<sp/>+<sp/>defined(HF_TARGET_MCU_STM32F4)<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="162"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>defined(HF_TARGET_MCU_STM32H7)<sp/>+<sp/>defined(HF_TARGET_MCU_RP2040)<sp/>&gt;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="163"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="165"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&quot;Multiple<sp/>target<sp/>MCUs<sp/>are<sp/>selected.<sp/>Please<sp/>uncomment<sp/>exactly<sp/>ONE<sp/>HF_TARGET_MCU_*<sp/>define<sp/>in<sp/>McuSelect.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>!defined(HF_TARGET_MCU_ESP32C6)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_ESP32)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="167"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined(HF_TARGET_MCU_ESP32S2)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_ESP32S3)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="168"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined(HF_TARGET_MCU_ESP32C3)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_ESP32C2)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="169"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined(HF_TARGET_MCU_ESP32H2)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_STM32F4)<sp/>&amp;&amp;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="170"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>!defined(HF_TARGET_MCU_STM32H7)<sp/>&amp;&amp;<sp/>!defined(HF_TARGET_MCU_RP2040)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="172"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>&quot;No<sp/>target<sp/>MCU<sp/>is<sp/>selected.<sp/>Please<sp/>uncomment<sp/>exactly<sp/>ONE<sp/>HF_TARGET_MCU_*<sp/>define<sp/>in<sp/>McuSelect.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Validate<sp/>that<sp/>the<sp/>selected<sp/>MCU<sp/>has<sp/>a<sp/>corresponding<sp/>platform<sp/>family<sp/>defined</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(HF_MCU_FAMILY_ESP32)<sp/>&amp;&amp;<sp/>!defined(HF_MCU_FAMILY_STM32)<sp/>&amp;&amp;<sp/>!defined(HF_MCU_FAMILY_RP2040)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#error<sp/>&quot;No<sp/>MCU<sp/>family<sp/>is<sp/>defined.<sp/>This<sp/>indicates<sp/>an<sp/>error<sp/>in<sp/>McuSelect.h<sp/>configuration.&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MCU<sp/>CAPABILITY<sp/>DEFINITIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Specific<sp/>Capabilities<sp/>(Primary<sp/>Target)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GPIO<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187" refid="McuSelect_8h_1a04be44d00bd93f9f6501cfde0060d834" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_GPIO<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188" refid="McuSelect_8h_1a7b69b1756fcf7fe37598661f3cc69a1a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_PINS<sp/>31<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>31<sp/>GPIO<sp/>pins<sp/>(0-30)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189" refid="McuSelect_8h_1aeb28fc476b0471c9004b383b2713a919" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_PULLUP<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="McuSelect_8h_1ad522b821943c4ea6b3f2a7ff9e0f04cf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_PULLDOWN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="McuSelect_8h_1ad300657fa8f272130040d07283257dc3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_INTERRUPTS<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Advanced<sp/>GPIO<sp/>Hardware<sp/>Constants<sp/>(ESP-IDF<sp/>v5.5+)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="McuSelect_8h_1a302eb1ea34953a1037bfbf9d0ebc6a5c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_PIN_COUNT<sp/>31<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="195" refid="McuSelect_8h_1a8b5ad2beab18ca74b6bb74718d512d7d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_PIN_NUMBER<sp/>30<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196" refid="McuSelect_8h_1a75a2045e65dd2daef4515640f228f4f3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_RTC_PIN_COUNT<sp/>8<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197" refid="McuSelect_8h_1aa353a450b143aefcdf0c6dbf6f1eb4bf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_LP_IO_PIN_COUNT<sp/>8<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198" refid="McuSelect_8h_1a7350f7923aa8bdf8c0705558f13132ff" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_ADC_PIN_COUNT<sp/>7<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199" refid="McuSelect_8h_1a02d97606e500251c389b700b5d15f3a6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_FLEX_FILTER_COUNT<sp/>8<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200" refid="McuSelect_8h_1a41487709dd21420136cffa73c269ac02" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_TOUCH_PIN_COUNT<sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="McuSelect_8h_1a62c5c456bff1082a381140cc97ba5336" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_DAC_PIN_COUNT<sp/>0<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202" refid="McuSelect_8h_1a7d3a44af8343d25d54a3ab0b6429e246" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_ETM_CHANNEL_COUNT<sp/>50<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203" refid="McuSelect_8h_1aaaff5b50c642d6be50e8037b99c712bc" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_ETM_EVENT_COUNT_MAX<sp/>100<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="McuSelect_8h_1a1de2ca0a5577ff97fc02d16c0c49e6e5" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_ETM_TASK_COUNT_MAX<sp/>100<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Clock<sp/>frequencies<sp/>for<sp/>glitch<sp/>filter<sp/>timing<sp/>calculations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="McuSelect_8h_1ae2256add6fae8bb97c9cf9534f07927a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_APB_CLK_FREQ_HZ<sp/>80000000UL<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208" refid="McuSelect_8h_1ac15f95ae9cb547018dac6b0187681500" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_RC_FAST_CLK_FREQ_HZ<sp/>17500000UL<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="McuSelect_8h_1a9fdab6797471e3b90e47211f60548f14" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_XTAL_CLK_FREQ_HZ<sp/>40000000UL<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>GPIO<sp/>timing<sp/>limits<sp/>and<sp/>characteristics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="McuSelect_8h_1a50c0aeece5c75be7579d646b5a9c9bdd" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_TOGGLE_FREQ_HZ<sp/>40000000UL<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213" refid="McuSelect_8h_1a77568d505a858a3ba95af6b7c53ab55d" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MIN_GLITCH_FILTER_NS<sp/>25UL<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="McuSelect_8h_1aa563e215b251a2633ce317370073e43e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_GLITCH_FILTER_NS<sp/>1000000UL<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>GPIO<sp/>Feature<sp/>Support<sp/>Flags</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="McuSelect_8h_1aeb41fe85cdc75af96b674ef3640407f1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_GLITCH_FILTER<sp/>1<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="McuSelect_8h_1a51c24f6a0807430f36e7e6acbe42271c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_RTC_GPIO<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219" refid="McuSelect_8h_1aef039a18abad72bc06ff30b03bc2eb4c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_LP_IO<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="McuSelect_8h_1a448c3d12d072a5bb0f583f8a58688008" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_ETM<sp/>1<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221" refid="McuSelect_8h_1a8a1b55079a88a58b2834e9d7fc16ea97" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_HOLD_FUNCTION<sp/>1<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222" refid="McuSelect_8h_1ac3fd2a737f65ba32bdbdb577665da49b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_SLEEP_CONFIG<sp/>1<sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223" refid="McuSelect_8h_1a328513ae9e8a7a14e94f67fa491f69ab" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_WAKEUP_CONFIG<sp/>1<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224" refid="McuSelect_8h_1ab4a5b5909c53948c3eb1ab4ffd53d64e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_DRIVE_STRENGTH<sp/>1<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADC<sp/>capabilities<sp/>(ESP32-C6<sp/>specific)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227" refid="McuSelect_8h_1a38805d11cab71d167819477aa45928a4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_ADC<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228" refid="McuSelect_8h_1a7f555b55b55a788dad8c357bd9988778" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_CHANNELS<sp/>7<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>7<sp/>ADC<sp/>channels<sp/>(0-6)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229" refid="McuSelect_8h_1a404f6fafd0a07c9ba5bb5e344a941294" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_RESOLUTION<sp/>12</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230" refid="McuSelect_8h_1a9eb514655b6d53b8ad6d7509ddce9dfb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_HAS_ATTENUATION<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231" refid="McuSelect_8h_1acae7337d714b1f1e76e5964adb794971" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_NUM_UNITS<sp/>1<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>only<sp/>ADC1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight><highlight class="comment">//<sp/>I2C<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234" refid="McuSelect_8h_1a9a287ef347eda0bfb759064a176851d8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_I2C<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235" refid="McuSelect_8h_1a942587d6cb833b760d2256c49eb5ebaf" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_MAX_PORTS<sp/>1<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>1<sp/>I2C<sp/>port</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236" refid="McuSelect_8h_1a7d8622a6f633e1c782d3451ff226ea5a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_MAX_FREQ_HZ<sp/>1000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237" refid="McuSelect_8h_1acb6c5a3eed346ee09ba2d971c7486055" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_HAS_SLAVE_MODE<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPI<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240" refid="McuSelect_8h_1a98b64efa7f02df1c467827a0e2709ace" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_SPI<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="McuSelect_8h_1a4c1bb49caa954c13d1d0f4e9fe32332c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_MAX_HOSTS<sp/>2<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>SPI2<sp/>and<sp/>SPI3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242" refid="McuSelect_8h_1aeea8ff6c7946c4b6ffbd958dea488903" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_MAX_FREQ_HZ<sp/>60000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243" refid="McuSelect_8h_1a3a4f29162086213efd965c3a7f595207" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_HAS_DMA<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UART<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="McuSelect_8h_1aa2ee54f0889ea94da4d2de75d5b6c82e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_UART<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="McuSelect_8h_1a6464f77ee9888413ccd1ed7e17a762c7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_MAX_PORTS<sp/>2<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>UART0<sp/>and<sp/>UART1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="248" refid="McuSelect_8h_1a9c8a1d645d159f0306aad8b5144568a2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_MAX_BAUDRATE<sp/>5000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249" refid="McuSelect_8h_1aeb1a92ad672db8f2bcb2edf96678db47" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_HAS_FLOW_CONTROL<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CAN<sp/>capabilities<sp/>(TWAI)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252" refid="McuSelect_8h_1a650a21c7d1f6d4ae3e6090eb6aba76d4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_CAN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253" refid="McuSelect_8h_1aa2e30b542b1e685219e40e009964beb0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_MAX_CONTROLLERS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254" refid="McuSelect_8h_1ae1648a5ce5a0e230b17869d8ee2c96f0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_HAS_LISTEN_ONLY<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255" refid="McuSelect_8h_1aad809895f49ba2b809781455e73cd91c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_HAS_SELF_TEST<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256" refid="McuSelect_8h_1a971e836251baf3977802d400d19b7e7e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_PROTOCOL<sp/>&quot;TWAI&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PWM<sp/>capabilities<sp/>(LEDC)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259" refid="McuSelect_8h_1a8fbe8bc73c6556bb9acebfffd136491b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_PWM<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="McuSelect_8h_1a3c6ad889f4396e5207e78752a3472be3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_CHANNELS<sp/>6<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>6<sp/>LEDC<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261" refid="McuSelect_8h_1ac86fdffbbffc1d662f03640ab6b9da43" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_FREQ_HZ<sp/>40000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="262" refid="McuSelect_8h_1a9a0dced621f2f453f83f1de9224dc101" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_RESOLUTION<sp/>14<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>max<sp/>is<sp/>14-bit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight><highlight class="comment">//<sp/>RMT<sp/>capabilities<sp/>(not<sp/>PIO)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="McuSelect_8h_1abf0f9630145e0d2a6cefdbfa3506c8b1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_PIO<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="McuSelect_8h_1a5cff026a4dfb35a19f3b7dffe476086b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_RMT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267" refid="McuSelect_8h_1a8cd97664c45b01b305b3a57396bc2803" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_RMT_MAX_CHANNELS<sp/>4<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>4<sp/>RMT<sp/>channels</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic<sp/>Capabilities<sp/>(Secondary<sp/>Support)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GPIO<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_GPIO<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_MAX_PINS<sp/>40<sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>has<sp/>40<sp/>GPIO<sp/>pins</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_PULLUP<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_PULLDOWN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_GPIO_HAS_INTERRUPTS<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADC<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_ADC<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_CHANNELS<sp/>18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_RESOLUTION<sp/>12</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_HAS_ATTENUATION<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_NUM_UNITS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight><highlight class="comment">//<sp/>I2C<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_I2C<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_MAX_PORTS<sp/>2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_MAX_FREQ_HZ<sp/>1000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_HAS_SLAVE_MODE<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SPI<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_SPI<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_MAX_HOSTS<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_MAX_FREQ_HZ<sp/>80000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_HAS_DMA<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UART<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_UART<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_MAX_PORTS<sp/>3</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_MAX_BAUDRATE<sp/>5000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_HAS_FLOW_CONTROL<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CAN<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_CAN<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_MAX_CONTROLLERS<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_HAS_LISTEN_ONLY<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_HAS_SELF_TEST<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_PROTOCOL<sp/>&quot;CAN&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PWM<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_PWM<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_CHANNELS<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_FREQ_HZ<sp/>40000000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_PWM_MAX_RESOLUTION<sp/>20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="comment">//<sp/>RMT<sp/>capabilities</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_PIO<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_HAS_RMT<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_RMT_MAX_CHANNELS<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MCU<sp/>CONFIGURATION<sp/>CONSTANTS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>Configuration<sp/>Constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Default<sp/>timeout<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="330" refid="McuSelect_8h_1a559f7d3c3eadf7a5d6f693fbe2a71d45" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_DEFAULT_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="331" refid="McuSelect_8h_1acaf99aedce51580d034ed33d1c4e67d6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_TIMEOUT_MS<sp/>500<sp/></highlight><highlight class="comment">//<sp/>Reduced<sp/>for<sp/>faster<sp/>response</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332" refid="McuSelect_8h_1ab01a04152e46d243d8b6dfe700ab84fa" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333" refid="McuSelect_8h_1ad3d0806d641e947f0bef3f31c7b598c4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="334" refid="McuSelect_8h_1ade908c1229fc75559d8425287121013b" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_TIMEOUT_MS<sp/>500</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Buffer<sp/>sizes<sp/>(optimized<sp/>for<sp/>ESP32-C6)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="337" refid="McuSelect_8h_1ac69aebb08f757595334e2839bb5f2804" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_RX_BUFFER_SIZE<sp/>512<sp/></highlight><highlight class="comment">//<sp/>Increased<sp/>for<sp/>motor<sp/>control</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338" refid="McuSelect_8h_1a177f9c2f6901a31c8f692750e351b781" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_TX_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339" refid="McuSelect_8h_1ae498f1d9889e8618e711b91338f80b29" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_BUFFER_SIZE<sp/>64<sp/></highlight><highlight class="comment">//<sp/>Reduced<sp/>for<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340" refid="McuSelect_8h_1a39c70445579b9b422bf75213532aae5a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341" refid="McuSelect_8h_1a59a92cb4f2d7c199ca129855c6f1acc2" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_RX_QUEUE_SIZE<sp/>16<sp/></highlight><highlight class="comment">//<sp/>Optimized<sp/>for<sp/>ESP32-C6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="342" refid="McuSelect_8h_1ae0834a57d29022511a427dc93e58c960" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_TX_QUEUE_SIZE<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Stack<sp/>sizes<sp/>for<sp/>tasks<sp/>(optimized<sp/>for<sp/>RISC-V)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="McuSelect_8h_1a8e9425fbf5e10201a5b5c085766537a3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_TASK_STACK_SIZE<sp/>3072<sp/></highlight><highlight class="comment">//<sp/>Reduced<sp/>for<sp/>RISC-V<sp/>efficiency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="346" refid="McuSelect_8h_1af255c41afe8127d90843a9cad5cf5153" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_TASK_PRIORITY<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADC<sp/>specific<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349" refid="McuSelect_8h_1afb3af08385918b69764ca737d66cbf0a" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_DEFAULT_VREF<sp/>1100<sp/></highlight><highlight class="comment">//<sp/>mV,<sp/>ESP32-C6<sp/>default</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350" refid="McuSelect_8h_1a2cdf914ecb9e0662a18b066a698103c3" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_VOLTAGE<sp/>3300<sp/><sp/></highlight><highlight class="comment">//<sp/>mV,<sp/>with<sp/>11dB<sp/>attenuation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic<sp/>Configuration<sp/>Constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Default<sp/>timeout<sp/>values</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_DEFAULT_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_TIMEOUT_MS<sp/>1000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Buffer<sp/>sizes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_RX_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_UART_TX_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_I2C_BUFFER_SIZE<sp/>128</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_SPI_BUFFER_SIZE<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_RX_QUEUE_SIZE<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_CAN_TX_QUEUE_SIZE<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Stack<sp/>sizes<sp/>for<sp/>tasks</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_TASK_STACK_SIZE<sp/>4096</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_TASK_PRIORITY<sp/>5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ADC<sp/>specific<sp/>constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_DEFAULT_VREF<sp/>1100<sp/></highlight><highlight class="comment">//<sp/>mV</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_MCU_ADC_MAX_VOLTAGE<sp/>3900<sp/><sp/></highlight><highlight class="comment">//<sp/>mV,<sp/>with<sp/>11dB<sp/>attenuation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight><highlight class="comment">//<sp/>END<sp/>OF<sp/>MCU<sp/>SELECT<sp/>HEADER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="inc/utils/McuSelect.h"/>
   </compounddef>

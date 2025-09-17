@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="100" column="31" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="100" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="101" column="31" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1aa27ed92ce9a8ac860496978b0a41f614" prot="public" static="no" mutable="no">
         <type><ref refid="EspTemperature_8h_1ac20464eaa276aa198cb03d0fc5a6e679" kindref="member">esp_temp_range_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="101" column="20" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="101" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="102" column="20" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1a7ea6386f0990755a7e6569081a701bfa" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="102" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="102" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="103" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1a88f1b850e2b1a619dd9e87a246c26eda" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="103" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="103" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="104" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1a2a7e449e9494d084491b6a02682a407c" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="104" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="104" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="105" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1ad9f8009a7018aa3365717afffdd4839c" prot="public" static="no" mutable="no">
         <type>esp_timer_handle_t</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="105" column="22" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="105" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="106" column="22" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="106" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1ab8a38c3e4b46c890de26651536f7ee8e" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="106" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="106" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="107" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="107" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1ac83da7adf4796080727845ea6edb8bca" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="107" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="107" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="108" column="12" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="108" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1a0bd9df15c3eadb5793ecdf9829ad1bab" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="108" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="108" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="109" column="9" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="109" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structesp__temp__state__t_1ae3ff4b7eb1a7c86c3c083bdc7d46ca1c" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="109" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="109" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="110" column="8" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="110" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -160,7 +160,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/EspTemperature.h" line="99" column="1" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="99" bodyend="110"/>
+    <location file="inc/mcu/esp32/EspTemperature.h" line="100" column="1" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="100" bodyend="111"/>
     <listofallmembers>
       <member refid="structesp__temp__state__t_1ae3ff4b7eb1a7c86c3c083bdc7d46ca1c" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>allow_power_down</name></member>
       <member refid="structesp__temp__state__t_1a7ea6386f0990755a7e6569081a701bfa" prot="public" virt="non-virtual"><scope>esp_temp_state_t</scope><name>calibration_offset</name></member>

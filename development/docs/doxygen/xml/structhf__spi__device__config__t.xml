@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="210" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="210" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="211" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="211" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a7f5737b1045c78fc5ed7d8f2b6c9c0cf" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__SPI_8h_1aea114d5b636b95dfd58a30f6ad69b776" kindref="member">hf_spi_mode_t</ref></type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="211" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="211" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="212" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="212" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="212" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="212" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="213" column="16" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="213" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a4e2b6297c1a88eb94af71239c806d1b1" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="213" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="213" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="214" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="214" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a6d75b53df639f8885a6221d68037ac1e" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="214" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="214" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="215" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="215" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1af95eb7849459ba72587a96fc39fadcbf" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="215" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="215" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="216" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="216" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1ac245192b5300dbc44412bc94dfc8a952" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="216" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="216" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="217" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="217" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a02d8f3e893f9064d1454d3ec2f12ac7e" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="217" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="217" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="218" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="218" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a2a20e5df64efa366a8d70073638f19f8" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="218" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="218" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="219" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="219" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a3b942a5ea356a4a69924c0b11c390d54" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="219" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="219" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="220" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="220" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a040077484b67765d25fa936a47c4848c" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="220" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="220" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="221" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="221" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a44d47408b4e672d262e9f1f263a93f1f" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -194,7 +194,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="221" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="221" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="222" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="222" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1a14b1dd2e7f8dfd85c5c95207bdd0f5bd" prot="public" static="no" mutable="no">
         <type>void(*</type>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="222" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="222" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="223" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="223" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1aef5e3c25eff3b4ab346f894ec3c1556b" prot="public" static="no" mutable="no">
         <type>void(*</type>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="223" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="223" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="224" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="224" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1afb8e5f293876b8ebe47ee365ed3ddc31" prot="public" static="no" mutable="no">
         <type>void *</type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="224" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="224" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="225" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="225" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1aea1017f02ac9424ddaeeb926cb87ed87" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__SPI_8h_1afdce37f383d86c376b9386fde36e497a" kindref="member">hf_spi_clock_source_t</ref></type>
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="225" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="225" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="226" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="226" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__spi__device__config__t_1aad6fdd431b2279d736a773950b4d62d3" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__SPI_8h_1a19e19f7c27d521de0245cb11fd095c64" kindref="member">hf_spi_sampling_point_t</ref></type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="226" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="226" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="227" column="27" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="227" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -289,7 +289,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="228" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="228" bodyend="239"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="229" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="229" bodyend="240"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -298,7 +298,7 @@
     <detaileddescription>
 <para>This structure provides all configuration options for registering a device on an SPI bus, including clock, mode, CS, queue, DMA, callbacks, and advanced ESP-IDF v5.5+ features. All fields use project types for portability. </para>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="209" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="209" bodyend="240"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="210" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="210" bodyend="241"/>
     <listofallmembers>
       <member refid="structhf__spi__device__config__t_1af95eb7849459ba72587a96fc39fadcbf" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>address_bits</name></member>
       <member refid="structhf__spi__device__config__t_1aea1017f02ac9424ddaeeb926cb87ed87" prot="public" virt="non-virtual"><scope>hf_spi_device_config_t</scope><name>clock_source</name></member>

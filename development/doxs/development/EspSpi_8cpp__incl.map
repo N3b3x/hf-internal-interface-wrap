@@ -8,7 +8,7 @@
 <area shape="poly" id="edge118_Node000001_Node000013" title=" " alt="" coords="3824,37,3755,229,3750,227,3819,35"/>
 <area shape="rect" id="Node000039" title=" " alt="" coords="3300,477,3375,508"/>
 <area shape="poly" id="edge115_Node000001_Node000039" title=" " alt="" coords="3834,36,3845,79,3853,141,3853,175,3850,209,3840,243,3825,273,3782,326,3729,369,3670,405,3608,433,3546,454,3486,470,3389,488,3388,483,3485,465,3544,449,3606,428,3668,400,3726,365,3778,322,3821,271,3835,241,3844,208,3848,175,3848,141,3840,80,3829,37"/>
-<area shape="rect" id="Node000043" href="$memory__utils_8h.html" title=" " alt="" coords="3865,84,4047,115"/>
+<area shape="rect" id="Node000043" href="$memory__utils_8h.html" title="Memory management utilities for exception&#45;free design." alt="" coords="3865,84,4047,115"/>
 <area shape="poly" id="edge111_Node000001_Node000043" title=" " alt="" coords="3852,34,3922,75,3919,79,3850,39"/>
 <area shape="rect" id="Node000046" title=" " alt="" coords="4071,84,4169,115"/>
 <area shape="poly" id="edge116_Node000001_Node000046" title=" " alt="" coords="3882,33,4059,79,4057,84,3880,39"/>

@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="755" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="755" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="756" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="756" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ComplementaryPair_1aae03a85660f3487b99c392fbf375181f" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="756" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="756" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="757" column="13" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="757" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ComplementaryPair_1a5dbc194af325a8533a2cd1acbc78c9c7" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -46,7 +46,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="757" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="757" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="758" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="758" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPwm_1_1ComplementaryPair_1a390304b940ca626fdaba6b55c61f5bf9" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -61,7 +61,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="758" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="758" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="759" column="10" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="759" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="760" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="760" bodyend="761"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="761" column="5" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="761" bodyend="762"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -85,7 +85,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/EspPwm.h" line="754" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="754" bodyend="762"/>
+    <location file="inc/mcu/esp32/EspPwm.h" line="755" column="3" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="755" bodyend="763"/>
     <listofallmembers>
       <member refid="structEspPwm_1_1ComplementaryPair_1a390304b940ca626fdaba6b55c61f5bf9" prot="public" virt="non-virtual"><scope>EspPwm::ComplementaryPair</scope><name>active</name></member>
       <member refid="structEspPwm_1_1ComplementaryPair_1aae03a85660f3487b99c392fbf375181f" prot="public" virt="non-virtual"><scope>EspPwm::ComplementaryPair</scope><name>complementary_channel</name></member>

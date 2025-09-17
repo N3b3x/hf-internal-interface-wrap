@@ -4,6 +4,7 @@
     <compoundname>gpio</compoundname>
     <title>GPIO Module</title>
     <innerfile refid="BaseGpio_8h">BaseGpio.h</innerfile>
+    <innerfile refid="EspGpio_8h">EspGpio.h</innerfile>
     <innerclass refid="structInterruptStatus" prot="public">InterruptStatus</innerclass>
     <innerclass refid="structhf__gpio__statistics__t" prot="public">hf_gpio_statistics_t</innerclass>
     <innerclass refid="structhf__gpio__diagnostics__t" prot="public">hf_gpio_diagnostics_t</innerclass>

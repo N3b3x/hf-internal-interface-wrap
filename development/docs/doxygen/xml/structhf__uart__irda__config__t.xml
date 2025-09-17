@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="217" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="217" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="218" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="218" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__irda__config__t_1a3dcfcc6d5e0ccc88d88af22818bec340" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="218" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="218" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="219" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="219" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__irda__config__t_1aa8cdfbead9d674f0525ba236c10848c4" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="219" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="219" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="220" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="220" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__irda__config__t_1a17330d5b407ec971f1e5a0177c2927a5" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="220" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="220" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="221" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="221" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="222" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="222" bodyend="223"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="223" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="223" bodyend="224"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -86,7 +86,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="216" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="216" bodyend="224"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="217" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="217" bodyend="225"/>
     <listofallmembers>
       <member refid="structhf__uart__irda__config__t_1a17330d5b407ec971f1e5a0177c2927a5" prot="public" virt="non-virtual"><scope>hf_uart_irda_config_t</scope><name>duty_cycle</name></member>
       <member refid="structhf__uart__irda__config__t_1a2e3ace6d1a0f3dd70638bee8aaae8b8f" prot="public" virt="non-virtual"><scope>hf_uart_irda_config_t</scope><name>enable_irda</name></member>

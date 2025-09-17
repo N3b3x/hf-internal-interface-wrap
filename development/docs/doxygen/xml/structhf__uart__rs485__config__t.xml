@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="199" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="199" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="200" column="18" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="200" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a818080c9397d34955b4232ef58258666" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="200" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="200" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="201" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="201" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a3601528cb25db0e361bea72eac49d9d6" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="201" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="201" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="202" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="202" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__rs485__config__t_1ab6b1b3c4a8b9fe0d3cd21e9fb64fcbff" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="202" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="202" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="203" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="203" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a4228b02c063ac124c6c10073c8fdada7" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="203" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="203" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="204" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="204" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__rs485__config__t_1a8e5f308519a6106c32dc5b6e6d967582" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="204" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="204" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="205" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="205" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__uart__rs485__config__t_1ac271b6dc597721d0a37548d9234f75f0" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="205" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="205" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="206" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="206" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="207" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="207" bodyend="210"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="208" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="208" bodyend="211"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -131,7 +131,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="198" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="198" bodyend="211"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="199" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="199" bodyend="212"/>
     <listofallmembers>
       <member refid="structhf__uart__rs485__config__t_1ab6b1b3c4a8b9fe0d3cd21e9fb64fcbff" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>auto_rts_control</name></member>
       <member refid="structhf__uart__rs485__config__t_1ac271b6dc597721d0a37548d9234f75f0" prot="public" virt="non-virtual"><scope>hf_uart_rs485_config_t</scope><name>collision_timeout_ms</name></member>

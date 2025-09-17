@@ -20,7 +20,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="109" column="28" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="109" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="110" column="28" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="110" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a7baee03689e53568439f4a68d6662d35" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -36,7 +36,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="110" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="110" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="111" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="111" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a7e8194c9094761e4ca34160410faaeeb" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -52,7 +52,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="111" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="111" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="112" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a5d640d851b6a3ed29abd338d392a395d" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -68,7 +68,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="112" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="112" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="113" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a2cc0ffbcf5d94cc1be9640a0bb394eb6" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -84,7 +84,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="113" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="113" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="114" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a23b68168facceed1638156facf258ada" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="114" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="114" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="115" column="29" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="115" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="589" column="21" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="589" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="590" column="21" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="590" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a00c20e249bbd100eedbf4c0c54c3c42e" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref></type>
@@ -132,7 +132,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="590" column="20" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="590" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="591" column="20" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="591" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1af13b21c3d90975c02a4f0197ffe2eaf3" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -147,7 +147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="591" column="15" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="591" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="592" column="15" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="592" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" prot="private" static="no" mutable="no">
         <type>uart_port_t</type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="592" column="15" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="592" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="593" column="15" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="593" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a6326f118fdd27a670e60ecb79d028292" prot="private" static="no" mutable="no">
         <type>QueueHandle_t</type>
@@ -177,7 +177,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="595" column="17" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="595" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="596" column="17" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="596" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1af2370e22ff6ab5da54137adbcd91ad7d" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref></type>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="598" column="28" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="598" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="599" column="28" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="599" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a27bb89d203912b998a84e3c9f51b45e8" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref></type>
@@ -207,7 +207,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="599" column="18" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="599" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="600" column="18" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="600" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a8919e3c9d6a7f2f4e0dc81915b77b491" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -222,7 +222,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="600" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="600" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="601" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="601" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a4c04605b7e7105b001de8af91bf80880" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -237,7 +237,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="601" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="601" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="602" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="602" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a98492b72377d7a4ee98260071a0996ff" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -252,7 +252,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="602" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="602" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="603" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="603" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1aba216cdada564969d39e4799eb2765eb" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -267,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="603" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="603" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="604" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="604" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a05c3b59cfdc9bb7f61d5bf875daf2100" prot="private" static="no" mutable="no">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -282,7 +282,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="606" column="17" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="606" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="607" column="17" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="607" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a22e961a9c6a2396d310552e1ff23c60d" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref></type>
@@ -297,7 +297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="609" column="24" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="609" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="610" column="24" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="610" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a1f8de6c645555ce6d656244488bee463" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref></type>
@@ -312,7 +312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="610" column="25" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="610" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="611" column="25" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="611" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a203c1f13b4888ba1f4ede0d5a5289a2d" prot="private" static="no" mutable="no">
         <type>char</type>
@@ -327,7 +327,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="613" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="613" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="614" column="8" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="614" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -360,7 +360,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="125" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="43" bodyend="59"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="126" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="43" bodyend="59"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1aa0c468b08a8888a37ebbf9aad04ec4bf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type></type>
@@ -375,7 +375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="130" column="11" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="61" bodyend="67"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="131" column="11" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="61" bodyend="67"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a76957621a7abd9663dbcb64abcf4ce35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -392,7 +392,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="133" column="3"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="134" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1aa8d8c4af95c460694f765d119d8916c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
@@ -409,7 +409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="134" column="11"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="135" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a9eec6d898a062782872da2c2f28f9cad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -426,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="135" column="3"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="136" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a4674e0c876fc15203b194ce2d271e69b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspUart" kindref="compound">EspUart</ref> &amp;</type>
@@ -443,7 +443,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="136" column="11"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="137" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1aae3b52313f5bcf520d34457140a23112" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -500,7 +500,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="156" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="139" bodyend="190"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="157" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="139" bodyend="190"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a85b041ba28cc9309f7ddf2852f899364" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -557,7 +557,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="166" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="192" bodyend="227"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="167" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="192" bodyend="227"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a6f40abc9001709ac5ee91c4383b95f2f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -589,7 +589,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="173" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="229" bodyend="245"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="174" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="229" bodyend="245"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1ad0d639fbd3ff5f8ced77af29f13a081d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -620,7 +620,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="180" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="416" bodyend="439"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="181" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="416" bodyend="439"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a9fce2787e7b457164702660ce5f762d0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -651,7 +651,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="187" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="441" bodyend="465"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="188" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="441" bodyend="465"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a28ef91e6eff98941eada61b22ad61ce4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -682,7 +682,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="194" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="467" bodyend="483"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="195" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="467" bodyend="483"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a0e8ee47992f3d875c2e65fb61ce20449" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -713,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="201" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="485" bodyend="555"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="202" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="485" bodyend="555"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a7508989a3ffb01571ae8cfb0cc61b6b6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -744,7 +744,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="208" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="557" bodyend="574"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="209" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="557" bodyend="574"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1abda8a2fd4c91670cd1325d4a04c33112" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -775,7 +775,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="215" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="273" bodyend="291"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="216" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="273" bodyend="291"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1ab43e1c7aead219b7df960710d2e8782e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -806,7 +806,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="226" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="402" bodyend="414"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="227" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="402" bodyend="414"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a91d0e2bae14b427a5c1daeb75927852f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>uint16_t</type>
@@ -873,7 +873,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="236" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="350" bodyend="394"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="237" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="350" bodyend="394"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a7490b8f55321824cb14c156a32d677ec" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>uint16_t</type>
@@ -928,7 +928,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="246" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="578" bodyend="620"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="247" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="578" bodyend="620"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a19b04e570d86170dfa65a03c9555977f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -959,7 +959,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="253" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="622" bodyend="661"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="254" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="622" bodyend="661"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a2822adcf8f5c9e7068ec3ec0e44680cd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -990,7 +990,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="260" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="663" bodyend="682"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="261" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="663" bodyend="682"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a123c264aa665cb991daa9dc48a171ecf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1021,7 +1021,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="267" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="684" bodyend="700"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="268" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="684" bodyend="700"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a91ef024e3a23fd33449ca60339790461" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1078,7 +1078,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="276" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="702" bodyend="734"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="277" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="702" bodyend="734"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1af323dbe85b7e6af3328e4b63f8c8d577" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1109,7 +1109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="284" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="736" bodyend="771"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="285" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="736" bodyend="771"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1adb38ee06131726c32e151679ca277875" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1140,7 +1140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="291" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="773" bodyend="789"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="292" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="773" bodyend="789"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a613c2456e38881c8c70d43c65b051415" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>QueueHandle_t</type>
@@ -1162,7 +1162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="303" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="795" bodyend="798"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="304" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="795" bodyend="798"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a840292dc9845514c4b0ecc7ca7c477e6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1180,7 +1180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="309" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="800" bodyend="803"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="310" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="800" bodyend="803"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a64fac40cd1b92d1c3f0c4ca2d79bb9d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1239,7 +1239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="319" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="805" bodyend="832"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="320" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="805" bodyend="832"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a092e5195e9d01b58592ba73fa84b4fee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1257,7 +1257,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="326" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="834" bodyend="845"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="327" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="834" bodyend="845"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1af5e4768bcbdb44ca149f891c34240eea" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1343,7 +1343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="342" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="851" bodyend="872"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="343" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="851" bodyend="872"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a41b46b421647bc6181d207651590375f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1361,7 +1361,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="349" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="874" bodyend="891"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="350" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="874" bodyend="891"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a15bd8e2881fa195b4e4cdb6b07267c87" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1393,7 +1393,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="356" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="893" bodyend="910"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="357" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="893" bodyend="910"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1aebf9c60f56ae3b5190d89a3f0c1aa7be" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -1413,7 +1413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="363" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="912" bodyend="928"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="364" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="912" bodyend="928"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a6cf9f54490dde0cfb1fc85436e473c6e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -1431,7 +1431,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="369" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="930" bodyend="943"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="370" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="930" bodyend="943"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a0a5c6da9b4a45ce29d7c8f2f1caf21a4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1463,7 +1463,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="380" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="949" bodyend="953"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="381" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="949" bodyend="953"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a1c8b46105334d76c54879d7f8c901f14" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1495,7 +1495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="387" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="955" bodyend="959"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="388" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="955" bodyend="959"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1abef393dfa54e48c2b0f91ac1380793bb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1513,7 +1513,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="393" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="961" bodyend="964"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="394" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="961" bodyend="964"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a39bdd60fac079d2e53e6cc3f7a453b98" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref> &amp;</type>
@@ -1531,7 +1531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="399" column="26" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="966" bodyend="969"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="400" column="26" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="966" bodyend="969"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1abe35b4b6532a107b5bdb679ac6acba5b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__UART_8h_1a66b9afbf91e5292af86d57cebb1425e7" kindref="member">hf_uart_operating_mode_t</ref></type>
@@ -1549,7 +1549,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="405" column="28" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="971" bodyend="974"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="406" column="28" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="971" bodyend="974"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1aca26466026e95d128039fb6e4eddbbbb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" kindref="member">hf_uart_mode_t</ref></type>
@@ -1567,7 +1567,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="411" column="18" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="976" bodyend="979"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="412" column="18" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="976" bodyend="979"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a95486cae642a80ebfe3d24b9c9e75b37" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1585,7 +1585,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="417" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="981" bodyend="984"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="418" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="981" bodyend="984"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a471a8ae57098f62044b83b80e75ef953" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1603,7 +1603,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="423" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="986" bodyend="989"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="424" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="986" bodyend="989"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1acb5ffee8689974b00aa792b6f865e3d2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1621,7 +1621,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="429" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="991" bodyend="994"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="430" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="991" bodyend="994"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a4fa0a9981052db00829f5daa2ca67c4e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1639,7 +1639,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="435" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="996" bodyend="999"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="436" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="996" bodyend="999"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a95d705a9febfd27db46df2520f669692" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>uint16_t</type>
@@ -1657,7 +1657,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="441" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="340" bodyend="348"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="442" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="340" bodyend="348"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1ad507db496e86a84d3a5ed5d6d2d8eb38" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>int</type>
@@ -1700,7 +1700,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="453" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1005" bodyend="1015"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="454" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1005" bodyend="1015"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a487fb3d13b6644bce75f6e657ab1d357" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -1743,7 +1743,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="461" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1017" bodyend="1024"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="462" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1017" bodyend="1024"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a3138eae9161daf1be1a04655798287e1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>uint16_t</type>
@@ -1762,7 +1762,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="617" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="298" bodyend="314"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="618" column="12" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="298" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1ae9d2e920c127672adf65cc4a7f0b58b5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1781,7 +1781,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="618" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="247" bodyend="256"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="619" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="247" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a0d4beb1af47d1581fd753a0ade58378b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1800,7 +1800,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="619" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="258" bodyend="267"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="620" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="258" bodyend="267"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a8249177a7af1c167b4dfe867848e0fbf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1814,7 +1814,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="620" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="315" bodyend="338"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="621" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="315" bodyend="338"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1837,7 +1837,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="473" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="73" bodyend="110"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="474" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="73" bodyend="110"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a8868b70653a14f3d895904086ec16db5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -1856,7 +1856,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="479" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="112" bodyend="133"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="480" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="112" bodyend="133"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a02142e3d8db8c85f811b60601fae1b81" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1874,7 +1874,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="511" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1030" bodyend="1053"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="512" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1030" bodyend="1053"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a5372fc06c5807c82d24b3a3c321cfe07" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1892,7 +1892,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="517" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1055" bodyend="1080"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="518" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1055" bodyend="1080"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1ab6ae69978fa27490732f6df32b75ee02" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1910,7 +1910,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="523" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1082" bodyend="1086"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="524" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1082" bodyend="1086"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a42cee776787269a8b0ec70ddd83c0550" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1928,7 +1928,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="529" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1088" bodyend="1173"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="530" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1088" bodyend="1173"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a1d8e25acc0da8b0b8eaca35cb37c45e4" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1946,7 +1946,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="535" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1175" bodyend="1185"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="536" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1175" bodyend="1185"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1aef25ff9dcf01d1b8e3d0458f0e5cef9f" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1964,7 +1964,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="541" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1187" bodyend="1191"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="542" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1187" bodyend="1191"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a47ec0e9a213b109f33aaf0049b0654af" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -1982,7 +1982,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="547" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1193" bodyend="1204"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="548" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1193" bodyend="1204"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a55983273a666678ced3622dbb9bf0797" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -2013,7 +2013,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="554" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1206" bodyend="1225"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="555" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1206" bodyend="1225"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a32fadfcb18de0f2ea62d3824b889aea5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -2056,7 +2056,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="562" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1227" bodyend="1237"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="563" column="17" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1227" bodyend="1237"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a7e5c7137cc708d66db15e3a5dcffac7a" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -2085,7 +2085,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="568" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1239" bodyend="1249"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="569" column="8" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1239" bodyend="1249"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1adf012fed8c99c93c19dde0cbb821709c" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>uint32_t</type>
@@ -2116,7 +2116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="575" column="13" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1251" bodyend="1256"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="576" column="13" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1251" bodyend="1256"/>
       </memberdef>
       <memberdef kind="function" id="classEspUart_1a1eacc6fc2880d22e444a29a48de2d628" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -2159,7 +2159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="583" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1258" bodyend="1268"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="584" column="7" bodyfile="src/mcu/esp32/EspUart.cpp" bodystart="1258" bodyend="1268"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -2268,7 +2268,7 @@
         <link refid="structhf__uart__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspUart.h" line="103" column="1" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="103" bodyend="621"/>
+    <location file="inc/mcu/esp32/EspUart.h" line="104" column="1" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="104" bodyend="622"/>
     <listofallmembers>
       <member refid="classBaseUart_1a5bd0243a3f6c1e242a5a867f6aebf928" prot="public" virt="non-virtual"><scope>EspUart</scope><name>BaseUart</name></member>
       <member refid="classBaseUart_1aefd61298d23c892de11fce7404c909e9" prot="public" virt="non-virtual"><scope>EspUart</scope><name>BaseUart</name></member>

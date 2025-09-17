@@ -4,6 +4,7 @@
     <compoundname>pwm</compoundname>
     <title>PWM Module</title>
     <innerfile refid="BasePwm_8h">BasePwm.h</innerfile>
+    <innerfile refid="EspPwm_8h">EspPwm.h</innerfile>
     <innerclass refid="classBasePwm" prot="public">BasePwm</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__pwm_1gab9386ad48605d4f6211bd46be2fc2b41" prot="public" static="no">

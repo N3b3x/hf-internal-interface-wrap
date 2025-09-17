@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="517" column="13" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="517" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="518" column="13" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="518" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a4b297354625e4370cbdef30ffc695ae4" prot="private" static="no" mutable="no">
         <type>i2c_master_dev_handle_t</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="518" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="518" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="519" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="519" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="519" column="26" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="519" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="520" column="26" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="520" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="520" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="520" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="521" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="521" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1afd4fa9c207eaa593ead720c7579e5bcd" prot="private" static="no" mutable="yes">
         <type><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref></type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="521" column="31" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="521" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="522" column="31" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="522" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" prot="private" static="no" mutable="yes">
         <type><ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref></type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="522" column="32" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="522" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="523" column="32" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="523" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="523" column="21" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="523" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="524" column="21" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="524" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1aa116b27cfa358a26202cd43c3375f5b4" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref></type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="524" column="17" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="524" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="525" column="17" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="525" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a5a95a7beb1f7b4ba80419d5ac1df9d7c" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="529" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="529" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="530" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="530" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a179d9dd56630947e64204720a1e27bd6" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="530" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="530" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="531" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="531" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1ae5d3bffbe307541766e6387b025ea91d" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="531" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="531" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="532" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="532" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1ab8f8ebf1900fe0e383b373bd88a46b67" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -183,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="532" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="532" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="533" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="533" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1ac514c3f936ff92c94b8c337ea6eb5e73" prot="private" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="533" column="12" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="533" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="534" column="12" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="534" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a9a656f88421734bec4f6f3ea165df07f" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__I2C_8h_1a9cdf05180b96f551b50382e9a6344870" kindref="member">hf_i2c_transaction_type_t</ref></type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="534" column="29" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="534" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="535" column="29" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="535" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1aba14908906e873f48c67a768eb2a0044" prot="private" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="535" column="12" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="535" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="536" column="12" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="536" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1a29cb76beb00541817d8e3d309e703255" prot="private" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="536" column="12" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="536" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="537" column="12" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="537" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -286,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="170" column="3" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="841" bodyend="890"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="171" column="3" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="841" bodyend="890"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1af8a169703da9511e1ee20957ff4062ab" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -301,7 +301,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="175" column="3" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="892" bodyend="908"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="176" column="3" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="892" bodyend="908"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a6b441d54a4f47e124dd6e5f48a23c7f9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -320,7 +320,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="181" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="910" bodyend="969"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="182" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="910" bodyend="969"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a073b10cf1253684d9c0d54bc5063aec7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -338,7 +338,7 @@ This method is called by the bus when it handles ESP-IDF cleanup. The device sho
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="190" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="971" bodyend="992"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="191" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="971" bodyend="992"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ac905c8cc4c142563e73380ffb6b679b3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -357,7 +357,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="199" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="994" bodyend="1040"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="200" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="994" bodyend="1040"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1acc62adb05de7e21b96f5a61df9c4bb65" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -416,7 +416,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="209" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1042" bodyend="1103"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="210" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1042" bodyend="1103"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a2943185e69fabba6ed4b25f1671d6877" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -475,7 +475,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="220" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1105" bodyend="1166"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="221" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1105" bodyend="1166"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ab0e1da7ee817f2ddfd2c0393b7fb6c99" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -558,7 +558,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="232" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1168" bodyend="1235"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="233" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1168" bodyend="1235"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1aec34c1a94944595c127ff91e51e8f134" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -647,7 +647,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="252" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1241" bodyend="1298"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="253" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1241" bodyend="1298"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1adf418ca0a9111d9832fb8863f918cc40" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -736,7 +736,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="268" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1300" bodyend="1357"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="269" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1300" bodyend="1357"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ad00a9f2e229eb0fa2f4d39baa663dc58" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -849,7 +849,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="286" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1359" bodyend="1421"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="287" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1359" bodyend="1421"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1acb1a17d5c492b23e89b95dc0c8b65805" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -867,7 +867,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="294" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1423" bodyend="1433"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="295" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1423" bodyend="1433"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a2f955ffd3265a24686a07737e21f6f10" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -885,7 +885,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="300" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1435" bodyend="1446"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="301" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1435" bodyend="1446"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a076db192440e992ad956f082b291d704" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -903,7 +903,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="306" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1448" bodyend="1459"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="307" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1448" bodyend="1459"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a0ab62985e51dd5aeca053f45d1ffafed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -935,7 +935,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="313" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1461" bodyend="1505"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="314" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1461" bodyend="1505"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a818577649bcedae0369942992049866f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -967,7 +967,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="320" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1507" bodyend="1519"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="321" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1507" bodyend="1519"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a7cc342b16f58e07dbd894f30b9df1e49" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -999,7 +999,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="327" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1521" bodyend="1533"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="328" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1521" bodyend="1533"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ab73f244d0b2696164597e24247aca689" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -1018,7 +1018,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="333" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1541" bodyend="1554"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="334" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1541" bodyend="1554"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ab97f4a636f97a71c3031f56f0614ed5b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>i2c_master_dev_handle_t</type>
@@ -1036,7 +1036,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="339" column="27" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1556" bodyend="1566"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="340" column="27" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1556" bodyend="1566"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a513abd8cbc808cd83cf7eeb395a164a3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
@@ -1054,7 +1054,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="345" column="32" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1568" bodyend="1572"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="346" column="32" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1568" bodyend="1572"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1aab6bbd8d809f7723174dcbe3d94c660a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -1073,7 +1073,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="351" column="12" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1535" bodyend="1539"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="352" column="12" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1535" bodyend="1539"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ae6b946adfab6d0a38cac6e5543bf8d26" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -1104,7 +1104,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="358" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1574" bodyend="1587"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="359" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1574" bodyend="1587"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a149a2fc81cf16627fba0c01853dfc0be" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -1123,7 +1123,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="364" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1589" bodyend="1609"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="365" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1589" bodyend="1609"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1afae4c530b1e9aa88a5b1a4a82d34413b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>i2c_master_dev_handle_t</type>
@@ -1141,7 +1141,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="370" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="370" bodyend="372"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="371" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="371" bodyend="373"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a03cadbb382abea958a0707bd45547d7c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
@@ -1159,7 +1159,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="378" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="378" bodyend="380"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="379" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="379" bodyend="381"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1aef94bae927c59091257d7c387d594936" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void *</type>
@@ -1177,7 +1177,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="386" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="386" bodyend="388"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="387" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="387" bodyend="389"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1aae4ad5e8f1bb7e70f0b2fdc4cab2fd72" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1195,7 +1195,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="394" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1777" bodyend="1781"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="395" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1777" bodyend="1781"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1ae9baf54704dc71dd71b92ace0574fba8" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref></type>
@@ -1213,7 +1213,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="404" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1894" bodyend="1904"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="405" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1894" bodyend="1904"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a7f50af31fcd62980b9f9dfa8b71074b6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1231,7 +1231,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="410" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1906" bodyend="1916"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="411" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1906" bodyend="1916"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a0bfcc2a37b5ae6fb09ec6e72b4003569" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1249,7 +1249,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="416" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1918" bodyend="1928"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="417" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1918" bodyend="1928"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -1308,7 +1308,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="431" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1829" bodyend="1891"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="432" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1829" bodyend="1891"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1365,7 +1365,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="441" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1817" bodyend="1822"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="442" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1817" bodyend="1822"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a9f233650bcc027aa9f4bd43899184fce" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1380,7 +1380,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="447" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1824" bodyend="1827"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="448" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1824" bodyend="1827"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a5f0c9dae9c6fbbd45b41f02156240e9f" prot="private" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1395,7 +1395,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="452" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1933" bodyend="1937"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="453" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1933" bodyend="1937"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a7a20da56a36e479ec4103d6a07f57e53" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1448,7 +1448,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="460" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1698" bodyend="1747"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="461" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1698" bodyend="1747"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a404a5600a6155e83db2636a3c6f03e7d" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1477,7 +1477,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="467" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1750" bodyend="1774"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="468" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1750" bodyend="1774"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a4f7ed845e16a820356d2f9ff95b881b0" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -1508,7 +1508,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="474" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1783" bodyend="1811"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="475" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1783" bodyend="1811"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a03de619d3ed917f5ef8a62aa26ce3e36" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1563,7 +1563,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="483" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1615" bodyend="1629"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="484" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1615" bodyend="1629"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a595ab2ac6ddd7156b30577a36f7af3c5" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1594,7 +1594,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="491" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1631" bodyend="1658"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="492" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1631" bodyend="1658"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a857c105f3758b172dcec082f14638158" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1609,7 +1609,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="496" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1660" bodyend="1668"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="497" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1660" bodyend="1668"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a4b330a20eb141cb533f0f7b93fc3d4e4" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1624,7 +1624,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="501" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1942" bodyend="1951"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="502" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1942" bodyend="1951"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a37d7ea5eb281d4c4cfef058294e34714" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1679,7 +1679,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="510" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1670" bodyend="1692"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="511" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="1670" bodyend="1692"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1778,7 +1778,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <link refid="structhf__i2c__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspI2c.h" line="163" column="1" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="163" bodyend="537"/>
+    <location file="inc/mcu/esp32/EspI2c.h" line="164" column="1" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="164" bodyend="538"/>
     <listofallmembers>
       <member refid="classEspI2cDevice_1a5a95a7beb1f7b4ba80419d5ac1df9d7c" prot="private" virt="non-virtual"><scope>EspI2cDevice</scope><name>async_operation_in_progress_</name></member>
       <member refid="classEspI2cDevice_1ac514c3f936ff92c94b8c337ea6eb5e73" prot="private" virt="non-virtual"><scope>EspI2cDevice</scope><name>async_start_time_</name></member>

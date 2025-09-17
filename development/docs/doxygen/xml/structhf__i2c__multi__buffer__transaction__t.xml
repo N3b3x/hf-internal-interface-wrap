@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="303" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="303" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="304" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="304" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__multi__buffer__transaction__t_1aedb859f77b5e7d789d91cbfdcc36d7ac" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structhf__i2c__transaction__buffer__t" kindref="compound">hf_i2c_transaction_buffer_t</ref> &gt;</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="304" column="15" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="304" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="305" column="15" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="305" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__multi__buffer__transaction__t_1add9884a93fe8a9def556d7e48441c03f" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="305" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="305" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="306" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="306" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__multi__buffer__transaction__t_1a36077bc042c70d27b13f5c224a941cfa" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="306" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="306" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="307" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="307" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -79,7 +79,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="311" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="311" bodyend="311"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="312" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="312" bodyend="312"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -88,7 +88,7 @@
     <detaileddescription>
 <para>Allows complex I2C protocols with multiple read/write sequences. </para>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="302" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="302" bodyend="312"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="303" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="303" bodyend="313"/>
     <listofallmembers>
       <member refid="structhf__i2c__multi__buffer__transaction__t_1aedb859f77b5e7d789d91cbfdcc36d7ac" prot="public" virt="non-virtual"><scope>hf_i2c_multi_buffer_transaction_t</scope><name>buffers</name></member>
       <member refid="structhf__i2c__multi__buffer__transaction__t_1a3ded975159c8af3f5517138faa9f0ae8" prot="public" virt="non-virtual"><scope>hf_i2c_multi_buffer_transaction_t</scope><name>device_address</name></member>

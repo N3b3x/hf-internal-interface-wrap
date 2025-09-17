@@ -4,6 +4,7 @@
     <compoundname>wifi</compoundname>
     <title>WiFi Module</title>
     <innerfile refid="BaseWifi_8h">BaseWifi.h</innerfile>
+    <innerfile refid="EspWifi_8h">EspWifi.h</innerfile>
     <innerclass refid="structhf__wifi__network__info__t" prot="public">hf_wifi_network_info_t</innerclass>
     <innerclass refid="structhf__wifi__station__config__t" prot="public">hf_wifi_station_config_t</innerclass>
     <innerclass refid="structhf__wifi__ap__config__t" prot="public">hf_wifi_ap_config_t</innerclass>

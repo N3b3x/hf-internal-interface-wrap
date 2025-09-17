@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_20module_0',['Logger Module',['../group__logger.html',1,'']]]
+  ['gpio_20module_0',['GPIO Module',['../group__gpio.html',1,'']]]
 ];

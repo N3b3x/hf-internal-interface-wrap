@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="118" column="12" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="118" bodyend="-1"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="119" column="12" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDigitalOutputGuard_1aee20e95f884029b17d08eaff68156304" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="119" column="8" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="119" bodyend="-1"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="120" column="8" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDigitalOutputGuard_1a17b9cdad4008b79d15935976d29dd730" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="120" column="8" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="120" bodyend="-1"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="121" column="8" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classDigitalOutputGuard_1a2028b30c270bc8dfd8f55fb442528c74" prot="private" static="no" mutable="no">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="121" column="17" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="121" bodyend="-1"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="122" column="17" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="122" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -106,7 +106,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="51" column="12" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="21" bodyend="25"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="52" column="12" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="21" bodyend="25"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1ade1b9042577a41e2a4dcd2d1e2bd2f3f" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -148,7 +148,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="60" column="12" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="27" bodyend="37"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="61" column="12" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="27" bodyend="37"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a80f27ca652a17ee6faf46f50614b5925" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -164,7 +164,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="67" column="3" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="43" bodyend="54"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="68" column="3" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="43" bodyend="54"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1acf7b9e415cd2bef1214a50a6f8bf4e37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -181,7 +181,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="70" column="3"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="71" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a9510e46288cc16957397aed8615eb36e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classDigitalOutputGuard" kindref="compound">DigitalOutputGuard</ref> &amp;</type>
@@ -198,7 +198,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="71" column="22"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="72" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a7fcc798ecd368c7a44a905bd65d6a48b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -215,7 +215,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="74" column="3"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="75" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a260659b0c951b0cc733a2a7071ea3521" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classDigitalOutputGuard" kindref="compound">DigitalOutputGuard</ref> &amp;</type>
@@ -232,7 +232,7 @@ Configures the GPIO as output (if needed) and sets it to active state. If the GP
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="75" column="22"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="76" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a848c506b63971c715801b44192cc0ce9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -250,7 +250,7 @@ Returns false if there were errors during construction or if the GPIO pointer is
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="83" column="9" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="83" bodyend="85"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="84" column="9" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="84" bodyend="86"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a1e9f2d8542dd81c7210335ae89a42ba3" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -268,7 +268,7 @@ Returns false if there were errors during construction or if the GPIO pointer is
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="91" column="18" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="91" bodyend="93"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="92" column="18" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="92" bodyend="94"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a1ec6a7a545175077da4bb7efa2c90f34" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -286,7 +286,7 @@ Allows manual control while the guard is active. The destructor will still set t
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="101" column="17" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="60" bodyend="77"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="102" column="17" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="60" bodyend="77"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a67bacfef3a6249f4bf0cccbd908bbd8e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -304,7 +304,7 @@ Allows manual control while the guard is active. The destructor will still attem
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="109" column="17" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="79" bodyend="96"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="110" column="17" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="79" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classDigitalOutputGuard_1a4602903caa7df15bd0c14ff1b709595e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
@@ -322,7 +322,7 @@ Allows manual control while the guard is active. The destructor will still attem
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="115" column="20" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="98" bodyend="104"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="116" column="20" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="98" bodyend="104"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -355,7 +355,7 @@ Allows manual control while the guard is active. The destructor will still attem
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/utils/DigitalOutputGuard.h" line="128" column="8" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="110" bodyend="144"/>
+        <location file="inc/utils/DigitalOutputGuard.h" line="129" column="8" bodyfile="src/utils/DigitalOutputGuard.cpp" bodystart="110" bodyend="144"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -405,7 +405,7 @@ Allows manual control while the guard is active. The destructor will still attem
         <link refid="structhf__gpio__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/utils/DigitalOutputGuard.h" line="42" column="1" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="42" bodyend="129"/>
+    <location file="inc/utils/DigitalOutputGuard.h" line="43" column="1" bodyfile="inc/utils/DigitalOutputGuard.h" bodystart="43" bodyend="130"/>
     <listofallmembers>
       <member refid="classDigitalOutputGuard_1af9c1cd53f50d499b69017b857813c9e6" prot="public" virt="non-virtual"><scope>DigitalOutputGuard</scope><name>DigitalOutputGuard</name></member>
       <member refid="classDigitalOutputGuard_1ade1b9042577a41e2a4dcd2d1e2bd2f3f" prot="public" virt="non-virtual"><scope>DigitalOutputGuard</scope><name>DigitalOutputGuard</name></member>

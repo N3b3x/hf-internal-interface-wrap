@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="232" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="232" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="233" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="233" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1a693cf76982fc8759ee5f968ef56ffef0" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="233" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="233" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="234" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="234" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1a143a4d6a1eb3556d84fa938bba318e67" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="234" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="234" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="235" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="235" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1a07262f7a59a1e80307993ad12e9e7251" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="235" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="235" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="236" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="236" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1aa6a401582464522da163e9e2a8ce2bba" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="236" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="236" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="237" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="237" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1a2f0451bd1217d5dbc0d704e6b002798f" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="237" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="237" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="238" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="238" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1a9983b022d44d4431d487743cf0e11cd4" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -100,7 +100,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="238" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="238" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="239" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="239" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1af965c74aebac83d9a2432ab01527bae4" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="239" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="239" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="240" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="240" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1a9ce0f5f96e212b677e7e72fa5d76c636" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -128,7 +128,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="240" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="240" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="241" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="241" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1ab46f741b3bd1130bfe69ea910a996aa9" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -142,7 +142,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="241" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="241" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="242" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="242" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1a1454f24b3ac4dbbfe9d1a7db3f79bfcf" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -156,7 +156,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="242" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="242" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="243" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="243" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__capabilities__t_1ae2ec8d2c6874492d1bd4ab79a858c9a9" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -170,7 +170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="243" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="243" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="244" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="244" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -179,7 +179,7 @@
     <detaileddescription>
 <para>Complete capability information for each GPIO pin. </para>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="231" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="231" bodyend="244"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="232" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="232" bodyend="245"/>
     <listofallmembers>
       <member refid="structhf__gpio__pin__capabilities__t_1a1454f24b3ac4dbbfe9d1a7db3f79bfcf" prot="public" virt="non-virtual"><scope>hf_gpio_pin_capabilities_t</scope><name>is_spi_pin</name></member>
       <member refid="structhf__gpio__pin__capabilities__t_1a9ce0f5f96e212b677e7e72fa5d76c636" prot="public" virt="non-virtual"><scope>hf_gpio_pin_capabilities_t</scope><name>is_strapping_pin</name></member>

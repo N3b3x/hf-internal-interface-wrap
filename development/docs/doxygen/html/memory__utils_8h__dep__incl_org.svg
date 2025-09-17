@@ -11,7 +11,7 @@
 <!-- Node1 -->
 <g id="Node000001" class="node">
 <title>Node1</title>
-<g id="a_Node000001"><a xlink:title=" ">
+<g id="a_Node000001"><a xlink:title="Memory management utilities for exception&#45;free design.">
 <polygon fill="#999999" stroke="#666666" points="501.5,-97 343.5,-97 343.5,-74 501.5,-74 501.5,-97"/>
 <text text-anchor="middle" x="422.5" y="-81.8" font-family="Arial" font-size="14.00">inc/utils/memory_utils.h</text>
 </a>

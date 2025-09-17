@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="287" column="8" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="287" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="288" column="8" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="288" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspNvs_1ab85e421f5801e575ad96ad971bb6fa37" prot="private" static="no" mutable="yes">
         <type>int</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="288" column="15" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="288" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="289" column="15" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="289" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspNvs_1a4d851eb75d04a90ec7b25e77e1db6de5" prot="private" static="no" mutable="yes">
         <type><ref refid="structhf__nvs__statistics__t" kindref="compound">hf_nvs_statistics_t</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="291" column="31" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="291" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="292" column="31" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="292" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspNvs_1a28022b4a28a1934cebe2e10d5099fe54" prot="private" static="no" mutable="yes">
         <type><ref refid="structhf__nvs__diagnostics__t" kindref="compound">hf_nvs_diagnostics_t</ref></type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="292" column="32" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="292" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="293" column="32" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="293" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspNvs_1a233a141b6079192b95864431b0df9c60" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="295" column="21" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="295" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="296" column="21" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="296" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -109,7 +109,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="110" column="12" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="93" bodyend="120"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="111" column="12" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="93" bodyend="120"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a8a408fee8b8edec22adbcebade3bf3e2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -124,7 +124,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="115" column="3" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="122" bodyend="141"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="116" column="3" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="122" bodyend="141"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a1f1f5efa535235c16318008d08328f76" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="125" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="147" bodyend="224"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="126" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="147" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a685e74c68591ad27fa0280a1f5244702" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="131" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="226" bodyend="239"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="132" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="226" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a1d18927cd799f168d9fa38bc86438427" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="139" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="241" bodyend="309"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="140" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="241" bodyend="309"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a78016e40f65ad0ea03cda37b2cf05dfa" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -250,7 +250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="147" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="311" bodyend="333"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="148" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="311" bodyend="333"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a97988762e90b76b94962a3d1758109c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -294,7 +294,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="155" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="335" bodyend="368"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="156" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="335" bodyend="368"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1ac3813f7d3fd39f5493f1a8042fddcf1b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -363,7 +363,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="165" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="370" bodyend="403"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="166" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="370" bodyend="403"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a1aa18744b55b8b15dcc9c35b7867635f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -419,7 +419,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="175" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="405" bodyend="431"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="176" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="405" bodyend="431"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1aba531704bb6f31154c298342853b715c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -488,7 +488,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="185" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="433" bodyend="466"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="186" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="433" bodyend="466"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a980345dc9dc0d96627b6ed26581f7cf8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -520,7 +520,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="193" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="468" bodyend="493"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="194" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="468" bodyend="493"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a2ac83396eb5f21034a028331c600ad9f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -539,7 +539,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="199" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="495" bodyend="512"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="200" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="495" bodyend="512"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a709425e0f37afdeb516447e43d000974" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -571,7 +571,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="206" column="8" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="514" bodyend="550"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="207" column="8" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="514" bodyend="550"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a35a38c5e3ef8287b1122c78b2580cf2b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -615,7 +615,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="214" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="552" bodyend="593"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="215" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="552" bodyend="593"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1acf2acb4e099ddff5b25dd1bde8fecff5" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const char *</type>
@@ -634,7 +634,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="220" column="14" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="595" bodyend="597"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="221" column="14" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="595" bodyend="597"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1ae6cb25d9c1e5e90b6701f49e9a6bd884" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>size_t</type>
@@ -653,7 +653,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="226" column="10" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="599" bodyend="601"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="227" column="10" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="599" bodyend="601"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1ab0816ed77b7f1e54f645c45a001b17be" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>size_t</type>
@@ -672,7 +672,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="232" column="10" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="603" bodyend="605"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="233" column="10" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="603" bodyend="605"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1aac27c74c4373d1bc15d313ff6d8c7555" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -704,7 +704,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="243" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="607" bodyend="614"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="244" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="607" bodyend="614"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a73f32618e8863f25bf70ffed650da20b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
@@ -736,7 +736,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="250" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="616" bodyend="623"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="251" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="616" bodyend="623"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -771,7 +771,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="266" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="629" bodyend="690"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="267" column="16" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="629" bodyend="690"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a9247a33fe05b9a43bf4922bf99e4bdd2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -800,7 +800,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="274" column="8" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="696" bodyend="723"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="275" column="8" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="696" bodyend="723"/>
       </memberdef>
       <memberdef kind="function" id="classEspNvs_1a48fa06f0cf583f10c9d9a430754d664e" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -831,7 +831,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspNvs.h" line="281" column="8" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="725" bodyend="757"/>
+        <location file="inc/mcu/esp32/EspNvs.h" line="282" column="8" bodyfile="src/mcu/esp32/EspNvs.cpp" bodystart="725" bodyend="757"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -944,7 +944,7 @@
         <link refid="structhf__nvs__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspNvs.h" line="104" column="1" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="104" bodyend="296"/>
+    <location file="inc/mcu/esp32/EspNvs.h" line="105" column="1" bodyfile="inc/mcu/esp32/EspNvs.h" bodystart="105" bodyend="297"/>
     <listofallmembers>
       <member refid="classBaseNvs_1abc92e07335f490e560ea1a1513ea63fc" prot="public" virt="non-virtual"><scope>EspNvs</scope><name>BaseNvs</name></member>
       <member refid="classBaseNvs_1abfe625b5e099d438f744514728de9674" prot="protected" virt="non-virtual"><scope>EspNvs</scope><name>BaseNvs</name></member>

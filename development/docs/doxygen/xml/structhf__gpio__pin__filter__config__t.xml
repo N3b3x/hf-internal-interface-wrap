@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="148" column="35" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="148" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="149" column="35" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__pin__filter__config__t_1af31843f3bfd8daea982ed7a19aefd739" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="149" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="149" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="150" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="150" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -41,7 +41,7 @@
     <detaileddescription>
 <para>Fixed-duration pin glitch filter configuration. </para>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="147" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="147" bodyend="150"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_GPIO.h" line="148" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_GPIO.h" bodystart="148" bodyend="151"/>
     <listofallmembers>
       <member refid="structhf__gpio__pin__filter__config__t_1ad65bf352dcaad34e388016c6db349fa7" prot="public" virt="non-virtual"><scope>hf_gpio_pin_filter_config_t</scope><name>clk_src</name></member>
       <member refid="structhf__gpio__pin__filter__config__t_1af31843f3bfd8daea982ed7a19aefd739" prot="public" virt="non-virtual"><scope>hf_gpio_pin_filter_config_t</scope><name>enable_on_init</name></member>

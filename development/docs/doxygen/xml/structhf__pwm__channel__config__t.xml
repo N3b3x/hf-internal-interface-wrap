@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="306" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="306" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="307" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="307" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="307" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="307" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="308" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="308" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a6a2e4e26bb3b33d74a96f73768195b87" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="308" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="308" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="309" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="309" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1aa8d425a4003718321869192e7cf61845" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3fa" kindref="member">hf_pwm_mode_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="309" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="309" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="310" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="310" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="312" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="312" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="313" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="313" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="313" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="313" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="314" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="314" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a2dd704d7a0507d01b0464d176e264d4b" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="314" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="314" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="315" column="25" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="315" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ad2ddbd9698b451c8a02f9455686947e8" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="316" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="316" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="317" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="317" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a0f289853bfbcf35b09a8e2244f62fbd7" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1a58935b1b2788129ca9d313445ab9e5b4" kindref="member">hf_pwm_intr_type_t</ref></type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="317" column="22" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="317" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="318" column="22" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="318" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a730bf242f726cb01055534f8de47b826" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="318" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="318" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="319" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="319" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1aa34ec457627357c1c82ab1696ef2786e" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -167,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="321" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="321" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="322" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="322" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a7feb007616457c057dfa7b257aadce2e" prot="public" static="no" mutable="no">
         <type>uint8_t</type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="322" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="322" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="323" column="11" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="323" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ad61ccb65c601b8310da94658089b633a" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -197,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="323" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="323" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="324" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="324" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1ac5f48dc824d8b32f7ab403dca3d8b0ce" prot="public" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1ad8fbde8152ecafefd714f3a7eb8344c1" kindref="member">hf_pwm_channel_priority_t</ref></type>
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="326" column="29" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="326" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="327" column="29" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="327" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1aefd3b546b1a76f6c4e64c8166b4622a0" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -227,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="327" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="327" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="328" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="328" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__pwm__channel__config__t_1a527f5098ffbb707a1c337c63d0d22c42" prot="public" static="no" mutable="no">
         <type>const char *</type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="328" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="328" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="329" column="14" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="329" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="330" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="330" bodyend="337"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="331" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="331" bodyend="338"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -309,7 +309,7 @@
 </programlisting> </para>
 </sect2>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="305" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="305" bodyend="338"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="306" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="306" bodyend="339"/>
     <listofallmembers>
       <member refid="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>channel_id</name></member>
       <member refid="structhf__pwm__channel__config__t_1a2dd704d7a0507d01b0464d176e264d4b" prot="public" virt="non-virtual"><scope>hf_pwm_channel_config_t</scope><name>clock_source</name></member>

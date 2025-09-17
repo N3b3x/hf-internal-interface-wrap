@@ -4,6 +4,7 @@
     <compoundname>temperature</compoundname>
     <title>Temperature Module</title>
     <innerfile refid="BaseTemperature_8h">BaseTemperature.h</innerfile>
+    <innerfile refid="EspTemperature_8h">EspTemperature.h</innerfile>
     <innerclass refid="classBaseTemperature" prot="public">BaseTemperature</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__temperature_1ga8a7530bfdd1cefbda07bfa02bac456d0" prot="public" static="no">

@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="510" column="29" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="510" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="511" column="29" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="511" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a8f4ec03bb515d5543808e3c3a076621e" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="513" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="513" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="514" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="514" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a9268e3542c090d15173658df7154e683" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="514" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="514" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="515" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="515" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="517" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="517" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="518" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="518" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a5558e66e04d7289fd79cc6d003ef29b6" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="518" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="518" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="519" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="519" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="519" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="519" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="520" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="520" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" prot="private" static="no" mutable="no">
         <type>twai_node_handle_t</type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="522" column="22" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="522" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="523" column="22" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="523" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a033c6357046c20596ec8c70d4315da07" prot="private" static="no" mutable="no">
         <type><ref refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" kindref="member">hf_esp_can_receive_callback_t</ref></type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="525" column="33" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="525" bodyend="525"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="526" column="33" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="526" bodyend="526"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="526" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="526" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="527" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="527" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1ad310be0cce73339268d83a1c3744a970" prot="private" static="no" mutable="no">
         <type><ref refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" kindref="member">hf_esp_can_error_callback_t</ref></type>
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="528" column="31" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="528" bodyend="528"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="529" column="31" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="529" bodyend="529"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="529" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="529" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="530" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="530" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a0283765650c36540b4a61fee2360d196" prot="private" static="no" mutable="no">
         <type><ref refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" kindref="member">hf_esp_can_state_callback_t</ref></type>
@@ -183,7 +183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="531" column="31" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="531" bodyend="531"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="532" column="31" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="532" bodyend="532"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -198,7 +198,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="532" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="532" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="533" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="533" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" prot="private" static="no" mutable="no">
         <type><ref refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" kindref="member">hf_esp_can_tx_callback_t</ref></type>
@@ -213,7 +213,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="534" column="28" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="534" bodyend="534"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="535" column="28" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="535" bodyend="535"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1ab431b6af90e985b67e4cc2d8c5fbd0b4" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -228,7 +228,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="535" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="535" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="536" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="536" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a2598cfa17215039375d57ff8a0682873" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref></type>
@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="538" column="23" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="538" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="539" column="23" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="539" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a6f392c8538addd589e6bccb3ba53e0ab" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref></type>
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="539" column="24" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="539" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="540" column="24" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="540" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a3cf21056f01a68e4d23cb6abc8c8d7c2" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__esp__can__timing__config__t" kindref="compound">hf_esp_can_timing_config_t</ref></type>
@@ -273,7 +273,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="542" column="30" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="542" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="543" column="30" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="543" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1aa15ed2e4704f88bb924799628a305f7f" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__esp__can__filter__config__t" kindref="compound">hf_esp_can_filter_config_t</ref></type>
@@ -288,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="543" column="30" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="543" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="544" column="30" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="544" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1acb5ae2ddfce72a30d1bd14b721f1faab" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -303,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="544" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="544" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="545" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="545" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="216" column="12" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="55" bodyend="65"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="217" column="12" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="55" bodyend="65"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aa842144f61a6f969b270e6d194d40f5c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -349,7 +349,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="221" column="3" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="67" bodyend="81"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="222" column="3" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="67" bodyend="81"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -370,7 +370,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="232" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="87" bodyend="166"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="233" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="87" bodyend="166"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a96ec0a7e2636ba9e99d651f21c4e9153" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -391,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="239" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="168" bodyend="204"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="240" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="168" bodyend="204"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a3b9bfd81e512b835c89111b6cf0ced79" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -436,7 +436,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="247" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="210" bodyend="280"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="248" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="210" bodyend="280"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1ad33472b071ef5f1ab76efbdb58f3c855" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -483,7 +483,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="257" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="282" bodyend="294"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="258" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="282" bodyend="294"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a15ded2afcc3564560fa704e661546500" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -515,7 +515,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="265" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="296" bodyend="299"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="266" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="296" bodyend="299"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a6c7eea2a0ccea5125cafb3b26af6c5ff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>void</type>
@@ -531,7 +531,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="270" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="301" bodyend="304"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="271" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="301" bodyend="304"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aacf7899068a281cb12144f913660aa49" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -554,7 +554,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="277" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="310" bodyend="318"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="278" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="310" bodyend="318"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1af0cad1fa0e4c312eebcc5d1b938876df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -568,7 +568,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="279" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="319" bodyend="323"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="280" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="319" bodyend="323"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1ae49c30b2a556b92b8a8dbb12d1eec148" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -591,7 +591,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="282" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="325" bodyend="332"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="283" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="325" bodyend="332"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a077cc96263ea79483559055841d873d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -605,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="283" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="333" bodyend="337"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="284" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="333" bodyend="337"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -628,7 +628,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="286" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="339" bodyend="347"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="287" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="339" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a86db68ed58d7c1791683151cb9a49260" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -642,7 +642,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="288" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="348" bodyend="352"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="289" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="348" bodyend="352"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a774bf708978527bf71ecee26c5075c48" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -665,7 +665,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="291" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="354" bodyend="361"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="292" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="354" bodyend="361"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a335b99de3bbf289de667f843ba83d31d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -679,7 +679,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="293" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="362" bodyend="366"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="294" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="362" bodyend="366"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1ab663edd5afb99a7ca95a9dd206d9ce85" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -711,7 +711,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="300" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="368" bodyend="417"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="301" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="368" bodyend="417"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a38369430ccabfe4f339052590d5e4960" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -730,7 +730,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="306" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="419" bodyend="471"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="307" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="419" bodyend="471"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a10e2f318110996d269ab9b4c550aa1c7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -787,7 +787,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="315" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="473" bodyend="485"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="316" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="473" bodyend="485"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a8afcf00583c55f120bce0bdcd440cd29" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -806,7 +806,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="322" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="487" bodyend="494"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="323" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="487" bodyend="494"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a0b3a9a316c7fc7949d481de6f6ac9856" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -838,7 +838,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="333" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="500" bodyend="521"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="334" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="500" bodyend="521"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a93f9301c2a7c54c29f4c115e41bd1c4e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -857,7 +857,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="339" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="523" bodyend="544"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="340" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="523" bodyend="544"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a56b08aacb4bdb4c440067e319593c013" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -889,7 +889,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="346" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="546" bodyend="565"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="347" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="546" bodyend="565"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a2b68a7ae3dfcda3bb81766a9b333c7fd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -920,7 +920,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="357" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="571" bodyend="627"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="358" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="571" bodyend="627"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a2dceac78571417483299cfc7360e4cda" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -951,7 +951,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="364" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="629" bodyend="687"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="365" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="629" bodyend="687"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a5e051944e810526770cc8533ec28e7cf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -969,7 +969,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="370" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="689" bodyend="725"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="371" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="689" bodyend="725"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aae5b5879e2700aad137e516be9edf1b7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -1000,7 +1000,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="377" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="727" bodyend="740"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="378" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="727" bodyend="740"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a1c80557f426bd1c1b78cd0a7e0bbb8ee" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>uint32_t</type>
@@ -1057,7 +1057,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="386" column="12" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="742" bodyend="760"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="387" column="12" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="742" bodyend="760"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -1114,7 +1114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="401" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="766" bodyend="801"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="402" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="766" bodyend="801"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a47f76d6f0c8f8e313709d7a6eadaa70f" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1169,7 +1169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="412" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="803" bodyend="817"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="413" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="803" bodyend="817"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aa6f1d7c5c5ad82b55ae5c83076ed0013" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1224,7 +1224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="423" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="819" bodyend="844"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="424" column="15" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="819" bodyend="844"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1269,7 +1269,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="437" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="850" bodyend="874"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="438" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="850" bodyend="874"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a1b91c8ad9fd014b9eba4417e7abbbb1d" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -1312,7 +1312,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="446" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="876" bodyend="896"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="447" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="876" bodyend="896"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -1343,7 +1343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="454" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="898" bodyend="917"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="455" column="16" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="898" bodyend="917"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aac77cb4d9af633288fd60fad3fee474b" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1384,7 +1384,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="461" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="919" bodyend="941"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="462" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="919" bodyend="941"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a5c0fe05680907d926d0bacdc6cebd811" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1413,7 +1413,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="467" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="947" bodyend="950"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="468" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="947" bodyend="950"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a8fff536c8eae7799252dc4341bad7ba3" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1442,7 +1442,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="473" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="985" bodyend="1016"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="474" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="985" bodyend="1016"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1aea03a2e1e72fe5e104c150e71f988083" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1471,7 +1471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="483" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="952" bodyend="963"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="484" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="952" bodyend="963"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1a67fa247f0a5f007b0cb20e405ed1ed0c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1500,7 +1500,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="489" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="965" bodyend="969"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="490" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="965" bodyend="969"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1abead43013dd161753d56006157679fe0" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1529,7 +1529,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="495" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="971" bodyend="975"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="496" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="971" bodyend="975"/>
       </memberdef>
       <memberdef kind="function" id="classEspCan_1afbdb95ac14728f468847fae264b8f536" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1558,7 +1558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="501" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="977" bodyend="981"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="502" column="8" bodyfile="src/mcu/esp32/EspCan.cpp" bodystart="977" bodyend="981"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1658,7 +1658,7 @@
         <link refid="structhf__esp__can__timing__config__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspCan.h" line="204" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="204" bodyend="545"/>
+    <location file="inc/mcu/esp32/EspCan.h" line="205" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="205" bodyend="546"/>
     <listofallmembers>
       <member refid="classEspCan_1a3cf21056f01a68e4d23cb6abc8c8d7c2" prot="private" virt="non-virtual"><scope>EspCan</scope><name>advanced_timing_</name></member>
       <member refid="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" prot="public" virt="non-virtual"><scope>EspCan</scope><name>BaseCan</name></member>

@@ -24,7 +24,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="101" column="28" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="101" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="102" column="28" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a625133f35c2449a53e048f63df138a89" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -40,7 +40,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="102" column="28" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="102" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="103" column="28" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a5ebf53a209f25236bafcb52fe0564d2a" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -56,7 +56,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="103" column="28" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="103" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="104" column="28" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="104" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1af03e7350d2c885bbca5358ee3a183d10" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="104" column="29" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="104" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="105" column="29" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="105" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a9028b609b50b17802ce3b8da3ec39899" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="105" column="29" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="105" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="106" column="29" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="106" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
@@ -105,7 +105,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1080" column="21" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1080" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1081" column="21" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1081" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a62f5455c00a2bf6bee32c4edeb5b90d0" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1081" column="15" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1081" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1082" column="15" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1082" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1adb2698a4d9441132c4f9ba23a4dc4678" prot="private" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -135,7 +135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1082" column="12" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1082" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1083" column="12" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1083" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1ac4da347398a044e97ecfd586a65d4470" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref></type>
@@ -150,7 +150,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1083" column="25" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1083" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1084" column="25" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1084" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1ab3341c72b5f1d413999dfc44fd8d80d2" prot="private" static="no" mutable="no">
         <type>std::array&lt; <ref refid="structEspPwm_1_1ChannelState" kindref="compound">ChannelState</ref>, <ref refid="classEspPwm_1a1595caab94f2f77924d128115eab0be2" kindref="member">MAX_CHANNELS</ref> &gt;</type>
@@ -165,7 +165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1085" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1085" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1086" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1086" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1ad569f2cfbea460323ab5847717019d75" prot="private" static="no" mutable="no">
         <type>std::array&lt; <ref refid="structEspPwm_1_1TimerState" kindref="compound">TimerState</ref>, <ref refid="classEspPwm_1a625133f35c2449a53e048f63df138a89" kindref="member">MAX_TIMERS</ref> &gt;</type>
@@ -180,7 +180,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1086" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1086" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1087" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1087" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1afdfcaf9396528e32f648a403fd4fb075" prot="private" static="no" mutable="no">
         <type>std::array&lt; <ref refid="structEspPwm_1_1ComplementaryPair" kindref="compound">ComplementaryPair</ref>, <ref refid="classEspPwm_1a1595caab94f2f77924d128115eab0be2" kindref="member">MAX_CHANNELS</ref>/2 &gt;</type>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1087" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1087" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1088" column="14" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1088" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1ad1b06777e74eedca37e5023ec23fc4ce" prot="private" static="no" mutable="no">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1089" column="16" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1089" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1090" column="16" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1090" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1ab200d2d51794d3c3f6c18945132bc7e4" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1090" column="8" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1090" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1091" column="8" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1091" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1ac2592dd4dbe1e99213a7d1d4c69e67fd" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__pwm__unit__config__t" kindref="compound">hf_pwm_unit_config_t</ref></type>
@@ -240,7 +240,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1093" column="24" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1093" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1094" column="24" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1094" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a364fe8d01eaea5c9664f43c8c2bd2dcb" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3fa" kindref="member">hf_pwm_mode_t</ref></type>
@@ -255,7 +255,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1094" column="17" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1094" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1095" column="17" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1095" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1aefe4a2dfe1bccd062a299b1febb8aef8" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref></type>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1095" column="23" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1095" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1096" column="23" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1096" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a825cbef48b32048590def430ae108584" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref></type>
@@ -285,7 +285,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1096" column="24" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1096" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1097" column="24" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1097" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a1f3b42702956b65454339f9a61458806" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -300,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1097" column="8" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1097" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1098" column="8" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1098" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a1f1584998723762eec8692090592650f" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1ac87a4c9f233c95c6036c956aa21fdf72" kindref="member">hf_pwm_eviction_policy_t</ref></type>
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1101" column="7" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1101" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1102" column="7" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1102" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1ac60137ac8d1bee195299fd6b2fa88431" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__PWM_8h_1aa88988c1a4ef6005d3f20421ecba42ed" kindref="member">hf_pwm_eviction_callback_t</ref></type>
@@ -330,7 +330,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1102" column="30" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1102" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1103" column="30" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1103" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspPwm_1a2ae786082f476290ff5907881989d986" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -345,7 +345,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1103" column="8" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1103" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1104" column="8" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="1104" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -379,7 +379,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="116" column="12" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="63" bodyend="72"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="117" column="12" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="63" bodyend="72"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aaac5ce3f95ae8c5fb96312ad9a779ce6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type></type>
@@ -394,7 +394,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="121" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="74" bodyend="79"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="122" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="74" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1adda6756a1158a4cb37194c0690ac412f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -411,7 +411,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="124" column="3"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="125" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1ae46e009618632e0db573912f71c94f9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
@@ -428,7 +428,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="125" column="10"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="126" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a0523ebf8e643c95ad9b3ced6ff077fc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -445,7 +445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="126" column="3"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="127" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aecba3137a0ead8abc259ab199648148b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspPwm" kindref="compound">EspPwm</ref> &amp;</type>
@@ -462,7 +462,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="127" column="10"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="128" column="10"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aedb8649c68e856258d6278bf399aab05" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -494,7 +494,7 @@ Performs comprehensive LEDC peripheral initialization:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="150" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="85" bodyend="126"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="151" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="85" bodyend="126"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a28c857a39efec61ad79770770fca878c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -527,7 +527,7 @@ Performs comprehensive cleanup and resource release:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="170" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="128" bodyend="205"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="171" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="128" bodyend="205"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a848d38996b427bf51215bf0c0147a328" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -558,7 +558,7 @@ Performs comprehensive cleanup and resource release:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="177" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="207" bodyend="226"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="178" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="207" bodyend="226"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a620e13937a4213f8c44219272302a1a7" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3fa" kindref="member">hf_pwm_mode_t</ref></type>
@@ -576,7 +576,7 @@ Performs comprehensive cleanup and resource release:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="183" column="17" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="228" bodyend="230"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="184" column="17" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="228" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a4dc265e040617403e718d4d28ff66e56" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -634,7 +634,7 @@ This method configures a PWM channel with full LEDC peripheral integration:<item
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="207" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="236" bodyend="340"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="208" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="236" bodyend="340"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a416e064052b50ac0175651a5e191adc4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -673,7 +673,7 @@ This method configures a PWM channel with full LEDC peripheral integration:<item
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="220" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2773" bodyend="2841"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="221" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2773" bodyend="2841"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a3bd515c8685db84d5ff92a475063d663" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -710,7 +710,7 @@ Activates PWM signal generation on the specified channel using the LEDC peripher
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="233" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="342" bodyend="410"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="234" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="342" bodyend="410"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a8ff1addad40e1a81afa83a975b136e89" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -745,7 +745,7 @@ Stops PWM signal generation and sets output to configured idle level. Timer reso
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="245" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="412" bodyend="461"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="246" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="412" bodyend="461"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a07c737787080435a486d47ad3c6803e9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -779,7 +779,7 @@ Stops PWM signal generation and sets output to configured idle level. Timer reso
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="254" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="463" bodyend="470"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="255" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="463" bodyend="470"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1ae4170c3b4661c0d4b9646eb3d775c88c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -828,7 +828,7 @@ Converts percentage to raw value based on channel&apos;s current resolution and 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="272" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="476" bodyend="530"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="273" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="476" bodyend="530"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a6bc8906d106762d5c9b1bcfd68ff0636" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -877,7 +877,7 @@ Directly sets LEDC timer compare value for maximum precision. Value is validated
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="286" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="532" bodyend="583"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="287" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="532" bodyend="583"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a185108e6adbaaa23bcef4fbd8bda1b91" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -930,7 +930,7 @@ Automatically manages timer allocation and sharing for efficient resource usage.
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="303" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="585" bodyend="770"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="304" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="585" bodyend="770"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a6096fdc1d06345204c8062d2f86bd0c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -979,7 +979,7 @@ The ESP32 LEDC peripheral does not support hardware phase shifting. This method 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="321" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="772" bodyend="788"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="322" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="772" bodyend="788"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aa1e2001e94083e72e12e0bf1a6f34d77" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1043,7 +1043,7 @@ This method allows precise control over both frequency and resolution. The combi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="346" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="794" bodyend="867"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="347" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="794" bodyend="867"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1abe00eaeddf0a329994bdebf61d3439f9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1100,7 +1100,7 @@ This method allows precise control over both frequency and resolution. The combi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="358" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="869" bodyend="921"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="359" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="869" bodyend="921"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1ae2795158cb647453ec43de6f9848417b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1145,7 +1145,7 @@ This method allows precise control over both frequency and resolution. The combi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="369" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="958" bodyend="988"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="370" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="958" bodyend="988"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a038775414699ae7a63277c2050ff7545" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -1176,7 +1176,7 @@ This method allows precise control over both frequency and resolution. The combi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="376" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="990" bodyend="1003"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="377" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="990" bodyend="1003"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aa98797ac6975b2f6ec3c297113bbf99d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1233,7 +1233,7 @@ This method allows precise control over both frequency and resolution. The combi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="386" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1005" bodyend="1114"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="387" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1005" bodyend="1114"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a23cb19b3d0030bf788c976f05c4bd6e9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1253,7 +1253,7 @@ This method allows precise control over both frequency and resolution. The combi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="394" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="927" bodyend="936"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="395" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="927" bodyend="936"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aeda4cc0ceb6d711d81989a66d2fe3596" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1273,7 +1273,7 @@ This method allows precise control over both frequency and resolution. The combi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="401" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="938" bodyend="947"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="402" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="938" bodyend="947"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1adb0842868ea3508b65542b2b3c46b155" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1291,7 +1291,7 @@ This method allows precise control over both frequency and resolution. The combi
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="407" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="949" bodyend="952"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="408" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="949" bodyend="952"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a130153d9f4bdaee4219736cb248d78f6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1315,7 +1315,7 @@ Enables all configured channels in a coordinated manner for synchronized startup
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="423" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1120" bodyend="1139"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="424" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1120" bodyend="1139"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a8be25ecab27ff61499a66535f303df2e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1337,7 +1337,7 @@ Disables all enabled channels in a coordinated manner for synchronized shutdown.
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="434" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1141" bodyend="1160"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="435" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1141" bodyend="1160"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a5681d5ceb230b6dc0a459f3ef9630b8b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1359,7 +1359,7 @@ Forces a synchronized update of all active LEDC channels to ensure any pending d
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="445" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1162" bodyend="1183"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="446" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1162" bodyend="1183"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a6c4cc0b3c19e7258a063b1900f9d291a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1422,7 +1422,7 @@ Creates a complementary PWM pair where outputs are never high simultaneously. De
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="465" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1185" bodyend="1228"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="466" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1185" bodyend="1228"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aeb3eda73cca25d298a3c7e3cbf133f03" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>float</type>
@@ -1457,7 +1457,7 @@ Reads the current LEDC timer compare value and converts to percentage based on t
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="483" column="9" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1234" bodyend="1244"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="484" column="9" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1234" bodyend="1244"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a4687559ad8744ece1ef578796b21eb02" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
@@ -1492,7 +1492,7 @@ Returns the frequency of the timer assigned to this channel. Multiple channels s
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="495" column="21" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1246" bodyend="1255"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="496" column="21" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1246" bodyend="1255"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a7cf9c46011b383820a588a9f153dfc52" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1538,7 +1538,7 @@ Provides complete channel state including enabled status, current settings, reso
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="508" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1257" bodyend="1289"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="509" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1257" bodyend="1289"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1af92695b9e07458d6280489d1ce3d8bdd" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1572,7 +1572,7 @@ Returns hardware-specific limits including channel count, timer count, maximum r
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="521" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1291" bodyend="1302"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="522" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1291" bodyend="1302"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a1e5a6eaafc83ba4ac56718fcded72d81" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1606,7 +1606,7 @@ Each channel maintains its own error state for detailed error tracking. Useful f
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="533" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1304" bodyend="1312"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="534" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1304" bodyend="1312"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a543f85cebac06d91b5ac4fe7d6f325d6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1673,7 +1673,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="573" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1353" bodyend="1390"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="574" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1353" bodyend="1390"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a9fb67c853d1d7d042a047fbc22ae67c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1728,7 +1728,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="587" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1396" bodyend="1460"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="588" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1396" bodyend="1460"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1ab3d06a21a6eda6c081f660895d81bbb1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1759,7 +1759,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="595" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1462" bodyend="1492"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="596" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1462" bodyend="1492"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a7006101d1efdbfa70c2b65604ded7b85" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1790,7 +1790,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="602" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1494" bodyend="1502"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="603" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1494" bodyend="1502"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a1d72b937ecff8d06181a2a0e7c7cb314" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1833,7 +1833,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="610" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1504" bodyend="1535"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="611" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1504" bodyend="1535"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a4437f86f7dfc052c9abd0cd633c10e71" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int8_t</type>
@@ -1864,7 +1864,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="617" column="10" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1537" bodyend="1545"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="618" column="10" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1537" bodyend="1545"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a38358269d437372bb72805e76fc151ed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1909,7 +1909,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="626" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1547" bodyend="1618"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="627" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1547" bodyend="1618"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a57006756d21e8f6b6c6c65c919b991e0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -1942,7 +1942,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="638" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1624" bodyend="1637"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="639" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1624" bodyend="1637"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a6bf8969af578c46e95a7b16552c3442a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__PWM_8h_1ac87a4c9f233c95c6036c956aa21fdf72" kindref="member">hf_pwm_eviction_policy_t</ref></type>
@@ -1960,7 +1960,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="644" column="28" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1639" bodyend="1642"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="645" column="28" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1639" bodyend="1642"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a90f27ca6f4deb563c66b584604bee706" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2006,7 +2006,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="653" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1644" bodyend="1656"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="654" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1644" bodyend="1656"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a77340b2ecd211629ea79e7d9f151e063" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2049,7 +2049,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="662" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1658" bodyend="1683"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="663" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1658" bodyend="1683"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a572bf6e4c5628fb5996353922417c4bc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__PWM_8h_1ad8fbde8152ecafefd714f3a7eb8344c1" kindref="member">hf_pwm_channel_priority_t</ref></type>
@@ -2080,7 +2080,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="670" column="29" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1685" bodyend="1693"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="671" column="29" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1685" bodyend="1693"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a7b222f44fa892e931bda82929f123d54" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2123,7 +2123,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="678" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1695" bodyend="1724"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="679" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1695" bodyend="1724"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a85c715fe2272e8c1dc93e47f44ab56ac" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -2154,7 +2154,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="685" column="9" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1726" bodyend="1734"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="686" column="9" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1726" bodyend="1734"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a9ff4ddc5a06060a4b7194154a7d28617" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2186,7 +2186,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="692" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1314" bodyend="1318"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="693" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1314" bodyend="1318"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a81bc4616d9447ad43ec6d6c732049b59" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2218,7 +2218,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="699" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1320" bodyend="1347"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="700" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1320" bodyend="1347"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -2251,7 +2251,7 @@ Registers a per-channel callback function that is triggered when a hardware fade
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="773" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1740" bodyend="1742"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="774" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1740" bodyend="1742"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a8f782916b4f7d5dabe48e2c913ea98e9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref></type>
@@ -2318,7 +2318,7 @@ Implements a multi-phase allocation strategy:<orderedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="792" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1744" bodyend="1862"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="793" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1744" bodyend="1862"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aecd0e9059cb48af8c52140ff2ac7cf8c" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -2347,7 +2347,7 @@ Implements a multi-phase allocation strategy:<orderedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="799" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1864" bodyend="1894"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="800" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1864" bodyend="1894"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a362d7335d05a027efd2a9429bf4d8e40" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2425,7 +2425,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="818" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1896" bodyend="1947"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="819" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1896" bodyend="1947"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a023bc718f864eb1e2b887c4de5013fa9" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2480,7 +2480,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="829" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1949" bodyend="2002"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="830" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="1949" bodyend="2002"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aeb62a6be326c25671cc8780618902cd4" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2523,7 +2523,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="839" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2004" bodyend="2044"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="840" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2004" bodyend="2044"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a6b4f2fafd78318e313ced753414f11d2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -2564,7 +2564,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="846" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2046" bodyend="2052"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="847" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2046" bodyend="2052"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1af0c248eb7f9a03bf23e992c4f75b46fc" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -2593,7 +2593,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="859" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2061" bodyend="2071"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="860" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2061" bodyend="2071"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a3189d43f89c413fbf2b047339b9d8eed" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2624,7 +2624,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="866" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2077" bodyend="2115"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="867" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2077" bodyend="2115"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a51e0799a5758dd6159e417fcf00c5d31" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2655,7 +2655,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="873" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2117" bodyend="2147"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="874" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2117" bodyend="2147"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1abfd65e0509706ecefd541b8546596469" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2673,7 +2673,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="887" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2181" bodyend="2200"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="888" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2181" bodyend="2200"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1ae9e920ee5ebeced7fbe9dd8a80622605" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2691,7 +2691,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="893" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2422" bodyend="2432"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="894" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2422" bodyend="2432"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1ab8ee8dcae85c2b59b80dbc996522a7b2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2709,7 +2709,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="899" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2434" bodyend="2449"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="900" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2434" bodyend="2449"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a9192ec3aa26d9acac2c0e6ec30c6bed1" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -2727,7 +2727,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="905" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2451" bodyend="2471"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="906" column="16" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2451" bodyend="2471"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a6a19207d3326cb8f660670a6fa46035c" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -2770,7 +2770,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="913" column="13" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2202" bodyend="2210"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="914" column="13" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2202" bodyend="2210"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1abd81092951838b5058abd3db6ad7a0af" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="structEspPwm_1_1ValidationResult" kindref="compound">ValidationResult</ref></type>
@@ -2803,7 +2803,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="959" column="21" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2333" bodyend="2416"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="960" column="21" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2333" bodyend="2416"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1ab9124b114f15aa018720cff258fe4bda" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -2834,7 +2834,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="967" column="13" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2216" bodyend="2228"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="968" column="13" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2216" bodyend="2228"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1af5a2e6d7bd1a18b68089d5f3bdea2e34" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -2878,7 +2878,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="975" column="12" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2230" bodyend="2246"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="976" column="12" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2230" bodyend="2246"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a1fa0af5ac18437a6235fcbdfca39b222" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -2922,7 +2922,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="985" column="13" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2248" bodyend="2263"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="986" column="13" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2248" bodyend="2263"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aa3662ff3251aebe8026b16bef3773420" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -2967,7 +2967,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="996" column="9" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2265" bodyend="2274"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="997" column="9" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2265" bodyend="2274"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a0e5f74505d1c596936c02d9f2c465158" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -3012,7 +3012,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1006" column="9" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2276" bodyend="2286"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1007" column="9" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2276" bodyend="2286"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1ad352f2f3a014631f98d996814c806163" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -3068,7 +3068,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1016" column="12" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2288" bodyend="2331"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1017" column="12" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2288" bodyend="2331"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a6da40e9d83cc49cbf26f5ac4e4c3f665" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -3121,7 +3121,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1027" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2473" bodyend="2495"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1028" column="8" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2473" bodyend="2495"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a981f330beac42c81c414ccc57606a894" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::string</type>
@@ -3152,7 +3152,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1035" column="15" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2497" bodyend="2526"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1036" column="15" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2497" bodyend="2526"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a4836d32ff7c987bf03f403fa3f7ee660" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -3170,7 +3170,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1041" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2727" bodyend="2771"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1042" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2727" bodyend="2771"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a0b455ad1230974f857a6cf89cc1598fb" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref></type>
@@ -3213,7 +3213,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1049" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2532" bodyend="2557"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1050" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2532" bodyend="2557"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a351d6b815860b91b7ed60d59cf00cb39" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref></type>
@@ -3256,7 +3256,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1057" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2559" bodyend="2635"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1058" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2559" bodyend="2635"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a6278208d17f1ae7c3dcc2c94abdc6dbd" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref></type>
@@ -3299,7 +3299,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1065" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2637" bodyend="2691"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1066" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2637" bodyend="2691"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1a3a3e5e9d0cf58e8c9aa9e912a5e18bb2" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref></type>
@@ -3344,7 +3344,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="1074" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2693" bodyend="2725"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="1075" column="11" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2693" bodyend="2725"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
@@ -3387,7 +3387,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="853" column="25" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2054" bodyend="2059"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="854" column="25" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2054" bodyend="2059"/>
       </memberdef>
       <memberdef kind="function" id="classEspPwm_1aa2f60f5e67b3db043af66624f022e7b2" prot="private" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool IRAM_ATTR</type>
@@ -3430,7 +3430,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspPwm.h" line="881" column="25" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2150" bodyend="2179"/>
+        <location file="inc/mcu/esp32/EspPwm.h" line="882" column="25" bodyfile="src/mcu/esp32/EspPwm.cpp" bodystart="2150" bodyend="2179"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -3571,7 +3571,7 @@ Configures an LEDC timer with specified parameters:<itemizedlist>
         <link refid="structhf__pwm__unit__config__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspPwm.h" line="95" column="1" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="95" bodyend="1104"/>
+    <location file="inc/mcu/esp32/EspPwm.h" line="96" column="1" bodyfile="inc/mcu/esp32/EspPwm.h" bodystart="96" bodyend="1105"/>
     <listofallmembers>
       <member refid="classEspPwm_1a6278208d17f1ae7c3dcc2c94abdc6dbd" prot="private" virt="non-virtual"><scope>EspPwm</scope><name>AttemptEvictionNonCritical</name></member>
       <member refid="classEspPwm_1a351d6b815860b91b7ed60d59cf00cb39" prot="private" virt="non-virtual"><scope>EspPwm</scope><name>AttemptEvictionWithConsent</name></member>

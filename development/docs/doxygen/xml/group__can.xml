@@ -4,6 +4,7 @@
     <compoundname>can</compoundname>
     <title>CAN Module</title>
     <innerfile refid="BaseCan_8h">BaseCan.h</innerfile>
+    <innerfile refid="EspCan_8h">EspCan.h</innerfile>
     <innerclass refid="classBaseCan" prot="public">BaseCan</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__can_1gab1d5cdd9fb2d30563cc88f9ca31988ef" prot="public" static="no">

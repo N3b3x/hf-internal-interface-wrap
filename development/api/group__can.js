@@ -1,6 +1,7 @@
 var group__can =
 [
     [ "BaseCan.h", "BaseCan_8h.html", null ],
+    [ "EspCan.h", "EspCan_8h.html", null ],
     [ "BaseCan", "classBaseCan.html", [
       [ "~BaseCan", "classBaseCan.html#a95fbffe100ce79e6551fbfd113e9a874", null ],
       [ "BaseCan", "classBaseCan.html#ad55a7de8ac46821ff5584b73de4c6a5d", null ],

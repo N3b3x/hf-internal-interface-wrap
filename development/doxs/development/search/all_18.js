@@ -82,6 +82,7 @@ var searchData=
   ['user_5fdata_5fmismatch_79',['user_data_mismatch',['../structCallbackTestData.html#aa7b34d7c1ce9c088697dabdb468f2eb6',1,'CallbackTestData']]],
   ['user_5fuart_5fevent_5ftask_80',['user_uart_event_task',['../UartComprehensiveTest_8cpp.html#adbdbd4300e13490f7d2251d21ae89a00',1,'UartComprehensiveTest.cpp']]],
   ['utility_20classes_81',['Utility Classes',['../index.html#autotoc_md29',1,'']]],
-  ['uuid_82',['uuid',['../structhf__bluetooth__gatt__service__t.html#ab31b88eaafd54e7d616d1735e97863cd',1,'hf_bluetooth_gatt_service_t::uuid'],['../structhf__bluetooth__gatt__characteristic__t.html#abb8ce02be19d55f0dd8a4e0d78374a6a',1,'hf_bluetooth_gatt_characteristic_t::uuid']]],
-  ['uuids_83',['uuids',['../structhf__bluetooth__device__info__t.html#ac1b435de54e204fc372f301d22bceb58',1,'hf_bluetooth_device_info_t']]]
+  ['utility_20module_82',['Utility Module',['../group__utils.html',1,'']]],
+  ['uuid_83',['uuid',['../structhf__bluetooth__gatt__service__t.html#ab31b88eaafd54e7d616d1735e97863cd',1,'hf_bluetooth_gatt_service_t::uuid'],['../structhf__bluetooth__gatt__characteristic__t.html#abb8ce02be19d55f0dd8a4e0d78374a6a',1,'hf_bluetooth_gatt_characteristic_t::uuid']]],
+  ['uuids_84',['uuids',['../structhf__bluetooth__device__info__t.html#ac1b435de54e204fc372f301d22bceb58',1,'hf_bluetooth_device_info_t']]]
 ];

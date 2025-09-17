@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="258" column="23" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="258" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="259" column="23" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="259" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspSpiBus_1a697d0f6da659676a7506145ebbec98f5" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="259" column="8" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="259" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="260" column="8" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="260" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspSpiBus_1a9c42c64731d332892f30ecb2e262dd2d" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="260" column="21" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="260" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="261" column="21" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspSpiBus_1a4f89488fce018ca532e6753d6f864280" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classEspSpiDevice" kindref="compound">EspSpiDevice</ref> &gt; &gt;</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="261" column="15" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="261" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="262" column="15" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="262" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="174" column="12" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="54" bodyend="55"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="175" column="12" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="54" bodyend="55"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1aa6c27620fbe0b014e6c20ad95d06e5b4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="178" column="3" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="56" bodyend="58"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="179" column="3" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="56" bodyend="58"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1a6bfcf437a03ca71293499558973ca750" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -126,7 +126,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="184" column="8" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="60" bodyend="98"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="185" column="8" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="60" bodyend="98"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1ac0f954dce3fa54452afc0d48b4542f33" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="190" column="8" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="100" bodyend="103"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="191" column="8" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="100" bodyend="103"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1af1b10e1d4105c450fc0c20d0ef134ddb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="196" column="8" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="105" bodyend="131"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="197" column="8" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="105" bodyend="131"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1a53555ddb858bd9e9957d2faf30d9c19e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="203" column="7" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="133" bodyend="149"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="204" column="7" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="133" bodyend="149"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1aa9cf3395ff959ca06d4955bbc64b5c6a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> *</type>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="210" column="11" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="151" bodyend="157"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="211" column="11" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="151" bodyend="157"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1ae74c1cdb60d440e4b308bded6324fbf7" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> *</type>
@@ -255,7 +255,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="217" column="17" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="159" bodyend="165"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="218" column="17" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="159" bodyend="165"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1a474a4980339555fa7087c02c695069c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classEspSpiDevice" kindref="compound">EspSpiDevice</ref> *</type>
@@ -286,7 +286,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="224" column="16" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="167" bodyend="173"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="225" column="16" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="167" bodyend="173"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1a75493835cb349608c794cc709d436141" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classEspSpiDevice" kindref="compound">EspSpiDevice</ref> *</type>
@@ -317,7 +317,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="231" column="22" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="175" bodyend="181"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="232" column="22" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="175" bodyend="181"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1af0ed4cee7a894357f16e6e6befc31755" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::size_t</type>
@@ -335,7 +335,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="237" column="15" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="183" bodyend="186"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="238" column="15" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="183" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1aa7d4c40e6567f8cf67a280807d6f2095" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -366,7 +366,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="244" column="8" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="188" bodyend="197"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="245" column="8" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="188" bodyend="197"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1a55e6ea75454e132acece8a337bc4b16d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref> &amp;</type>
@@ -384,7 +384,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="250" column="29" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="199" bodyend="201"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="251" column="29" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="199" bodyend="201"/>
       </memberdef>
       <memberdef kind="function" id="classEspSpiBus_1a61699b15fb8f109b10084e824ec6f3df" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>spi_host_device_t</type>
@@ -402,7 +402,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="255" column="21" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="203" bodyend="205"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="256" column="21" bodyfile="src/mcu/esp32/EspSpi.cpp" bodystart="203" bodyend="205"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -431,7 +431,7 @@
         <link refid="structhf__spi__bus__config__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspSpi.h" line="168" column="1" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="168" bodyend="262"/>
+    <location file="inc/mcu/esp32/EspSpi.h" line="169" column="1" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="169" bodyend="263"/>
     <listofallmembers>
       <member refid="classEspSpiBus_1a066b8df253bffacf1e21d729850bf99e" prot="private" virt="non-virtual"><scope>EspSpiBus</scope><name>config_</name></member>
       <member refid="classEspSpiBus_1a53555ddb858bd9e9957d2faf30d9c19e" prot="public" virt="non-virtual"><scope>EspSpiBus</scope><name>CreateDevice</name></member>

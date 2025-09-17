@@ -1,6 +1,7 @@
 var group__gpio =
 [
     [ "BaseGpio.h", "BaseGpio_8h.html", null ],
+    [ "EspGpio.h", "EspGpio_8h.html", null ],
     [ "InterruptStatus", "structInterruptStatus.html", [
       [ "has_callback", "structInterruptStatus.html#a55d2170d02fd159469846fac43c5b15d", null ],
       [ "interrupt_count", "structInterruptStatus.html#a64629d99731ed513155bebd9fd11a3c1", null ],

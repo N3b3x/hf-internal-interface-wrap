@@ -1,6 +1,7 @@
 var group__i2c =
 [
     [ "BaseI2c.h", "BaseI2c_8h.html", null ],
+    [ "EspI2c.h", "EspI2c_8h.html", null ],
     [ "BaseI2c", "classBaseI2c.html", [
       [ "~BaseI2c", "classBaseI2c.html#a71fa2410d820fb183b835ddea09d444f", null ],
       [ "BaseI2c", "classBaseI2c.html#a0ef4a4a50952a71b4c7be2f13660282d", null ],

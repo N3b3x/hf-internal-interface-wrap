@@ -75,44 +75,44 @@
     </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
-<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49" refid="classAsciiArtGenerator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classAsciiArtGenerator" kindref="compound">AsciiArtGenerator</ref><sp/>{</highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classAsciiArtGenerator_1a90b8da25407accbe12ed5fa67346e98a" kindref="member">AsciiArtGenerator</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="59" refid="classAsciiArtGenerator_1aeab9a32548c2fefbda9c345c402b99c4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classAsciiArtGenerator_1aeab9a32548c2fefbda9c345c402b99c4" kindref="member">~AsciiArtGenerator</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
-<codeline lineno="60"><highlight class="normal"></highlight></codeline>
-<codeline lineno="66"><highlight class="normal"><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a5fbd853ebc4fcd647c90c307d4b09eaa" kindref="member">Generate</ref>(const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>input)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classAsciiArtGenerator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classAsciiArtGenerator" kindref="compound">AsciiArtGenerator</ref><sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><ref refid="classAsciiArtGenerator_1a90b8da25407accbe12ed5fa67346e98a" kindref="member">AsciiArtGenerator</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a8c964526be3777137b7178e0c5899256" kindref="member">AddCustomCharacter</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>character,<sp/>const<sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;&amp;<sp/>art_lines)<sp/>noexcept;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a8c389f7e432f659b2f0e188f69ec7474" kindref="member">RemoveCustomCharacter</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>character)<sp/>noexcept;</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a3c7febff5e83919dc6088971d1be2dc9" kindref="member">ClearCustomCharacters</ref>()<sp/>noexcept;</highlight></codeline>
-<codeline lineno="85"><highlight class="normal"></highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a623a5ea7b217aa2d20fbfc85b4fd0b61" kindref="member">IsCharacterSupported</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>character)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="71" refid="classAsciiArtGenerator_1aeab9a32548c2fefbda9c345c402b99c4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classAsciiArtGenerator_1aeab9a32548c2fefbda9c345c402b99c4" kindref="member">~AsciiArtGenerator</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a5fbd853ebc4fcd647c90c307d4b09eaa" kindref="member">Generate</ref>(const<sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>input)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a8c964526be3777137b7178e0c5899256" kindref="member">AddCustomCharacter</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>character,<sp/>const<sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;&amp;<sp/>art_lines)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a8c389f7e432f659b2f0e188f69ec7474" kindref="member">RemoveCustomCharacter</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>character)<sp/>noexcept;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1ab42dc9fb7f379e7ba51431295a207258" kindref="member">GetSupportedCharacters</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal">private:</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>MEMBERS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104" refid="classAsciiArtGenerator_1a3c0a763b63befc2fec4113db17968a03" refkind="member"><highlight class="normal"><sp/><sp/>std::map&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">,<sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;&gt;<sp/><ref refid="classAsciiArtGenerator_1a3c0a763b63befc2fec4113db17968a03" kindref="member">custom_characters_</ref>;<sp/></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;<sp/><ref refid="classAsciiArtGenerator_1ad4b133fd0762afa26339bb2650eab228" kindref="member">GetCharacterArt</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>character)<sp/>const<sp/>noexcept;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a3c7febff5e83919dc6088971d1be2dc9" kindref="member">ClearCustomCharacters</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1a623a5ea7b217aa2d20fbfc85b4fd0b61" kindref="member">IsCharacterSupported</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>character)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="classAsciiArtGenerator_1ab42dc9fb7f379e7ba51431295a207258" kindref="member">GetSupportedCharacters</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>MEMBERS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="classAsciiArtGenerator_1a3c0a763b63befc2fec4113db17968a03" refkind="member"><highlight class="normal"><sp/><sp/>std::map&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">,<sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;&gt;<sp/><ref refid="classAsciiArtGenerator_1a3c0a763b63befc2fec4113db17968a03" kindref="member">custom_characters_</ref>;<sp/></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>std::vector&lt;std::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&gt;<sp/><ref refid="classAsciiArtGenerator_1ad4b133fd0762afa26339bb2650eab228" kindref="member">GetCharacterArt</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>character)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">};</highlight></codeline>
     </programlisting>
     <location file="inc/utils/AsciiArtGenerator.h"/>
   </compounddef>

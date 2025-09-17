@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="281" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="281" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="282" column="17" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="282" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__transaction__buffer__t_1a2decc5d9f2823c44301f2d390bf6650f" prot="public" static="no" mutable="no">
         <type>size_t</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="282" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="282" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="283" column="10" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="283" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__transaction__buffer__t_1a70a6fc5a5243b88f3381262de09cdb24" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="283" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="283" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="284" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="284" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="288" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="288" bodyend="289"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="289" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="289" bodyend="290"/>
       </memberdef>
       <memberdef kind="function" id="structhf__i2c__transaction__buffer__t_1afcc1caf0fb01943f2c138ec3dc7a398a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="294" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="294" bodyend="295"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="295" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="295" bodyend="296"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -108,7 +108,7 @@
     <detaileddescription>
 <para>Represents a single buffer in a multi-buffer transaction. </para>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="280" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="280" bodyend="296"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_I2C.h" line="281" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_I2C.h" bodystart="281" bodyend="297"/>
     <listofallmembers>
       <member refid="structhf__i2c__transaction__buffer__t_1aed0cb464084e5cd90bd1c586e3e5332a" prot="public" virt="non-virtual"><scope>hf_i2c_transaction_buffer_t</scope><name>buffer</name></member>
       <member refid="structhf__i2c__transaction__buffer__t_1a0fbe63290170efa730f6ff4378da4c69" prot="public" virt="non-virtual"><scope>hf_i2c_transaction_buffer_t</scope><name>hf_i2c_transaction_buffer_t</name></member>

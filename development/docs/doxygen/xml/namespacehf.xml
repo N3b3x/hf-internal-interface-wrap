@@ -7,6 +7,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/utils/memory_utils.h" line="7" column="1"/>
+    <location file="inc/utils/memory_utils.h" line="13" column="1"/>
   </compounddef>
 </doxygen>

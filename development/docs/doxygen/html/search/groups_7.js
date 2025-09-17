@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['nvs_20module_0',['NVS Module',['../group__nvs.html',1,'']]]
+  ['logger_20module_0',['Logger Module',['../group__logger.html',1,'']]]
 ];

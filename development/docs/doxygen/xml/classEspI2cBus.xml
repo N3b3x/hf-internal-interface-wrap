@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="881" column="30" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="881" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="882" column="30" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="882" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" prot="private" static="no" mutable="no">
         <type>i2c_master_bus_handle_t</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="882" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="882" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="883" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="883" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="883" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="883" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="884" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="884" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="884" column="21" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="884" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="885" column="21" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="885" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> &gt; &gt;</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="885" column="15" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="885" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="886" column="15" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="886" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" prot="private" static="no" mutable="no">
         <type><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="886" column="17" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="886" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="887" column="17" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="887" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cBus_1a8206592fe0beaf37815e03efd162527d" prot="private" static="no" mutable="yes">
         <type><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="889" column="31" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="889" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="890" column="31" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="890" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cBus_1a2ab6b00eef84d1ae0e97fcf75f20eb24" prot="private" static="no" mutable="yes">
         <type><ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref></type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="890" column="32" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="890" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="891" column="32" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="891" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="553" column="12" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="84" bodyend="96"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="554" column="12" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="84" bodyend="96"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1af387e087bc25f527bfede2222e830fed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -168,7 +168,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="558" column="3" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="98" bodyend="101"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="559" column="3" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="98" bodyend="101"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a7f02893ec64ac76767d1303af6d98343" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -185,7 +185,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="561" column="3"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="562" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a6a93e7a215e14bef1fd1cb0042420b98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> &amp;</type>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="562" column="13"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="563" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a98a8b554bb5d0b04b214661f3b3c0dec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -219,7 +219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="563" column="3"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="564" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a3ab0c633ce258424585cf19f89d8cb52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref> &amp;</type>
@@ -236,7 +236,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="564" column="13"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="565" column="13"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a4ac590e55ca816e06b5e6749781ad1de" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -254,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="570" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="103" bodyend="186"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="571" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="103" bodyend="186"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a3f9a9142733743906449d119a25c3cf1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -272,7 +272,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="576" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="188" bodyend="233"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="577" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="188" bodyend="233"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a578c36e975b01c96fe15a492de148e51" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -303,7 +303,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="583" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="269" bodyend="316"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="584" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="269" bodyend="316"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a185a28a9e32b8ebb22d72e19318bcd02" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -334,7 +334,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="590" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="318" bodyend="327"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="591" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="318" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1aa871503a0126efc9c5f28503fd19b47c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -365,7 +365,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="597" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="329" bodyend="337"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="598" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="329" bodyend="337"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1aeaec58a5ab33498346eec68f5caa56a3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> *</type>
@@ -396,7 +396,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="604" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="339" bodyend="347"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="605" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="339" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a40c5b3910dc38f33d15a956af36ba2e7" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> *</type>
@@ -427,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="611" column="22" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="349" bodyend="357"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="612" column="22" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="349" bodyend="357"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a007e11c4560179ac0a5d8989a43d4733" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -458,7 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="618" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="359" bodyend="368"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="619" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="359" bodyend="368"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1ad96d7e4b8693fdad686c134bada1034b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::size_t</type>
@@ -476,7 +476,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="624" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="370" bodyend="373"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="625" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="370" bodyend="373"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1af6c29fb3e4e40662a32cd9aa3fc0eace" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -507,7 +507,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="631" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="469" bodyend="510"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="632" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="469" bodyend="510"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1ae029e38875a64d1ca4c5ec590a1cb3ff" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -538,7 +538,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="638" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="512" bodyend="521"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="639" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="512" bodyend="521"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1ad493703939f8fe4981cc42d8c19d1115" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -571,7 +571,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="650" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="683" bodyend="685"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="651" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="683" bodyend="685"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1abe684259ab88b5027fd59b446146bdb3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -604,7 +604,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="658" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="687" bodyend="689"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="659" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="687" bodyend="689"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a978c7722c8d5b224c3423f8acf542620" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> *</type>
@@ -637,7 +637,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="666" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="691" bodyend="693"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="667" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="691" bodyend="693"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1afb26ac6de7b7ff526dfb97d9eecf00fb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> *</type>
@@ -670,7 +670,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="674" column="22" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="695" bodyend="697"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="675" column="22" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="695" bodyend="697"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1aa948bf6a1ab715e03dafda66f4335817" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -701,7 +701,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="681" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="699" bodyend="702"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="682" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="699" bodyend="702"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a052f50385b702e1bdb1d4ccab41123a2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -719,7 +719,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="687" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="704" bodyend="710"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="688" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="704" bodyend="710"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a8d857550064529b5c0dfee2f9680bc52" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -737,7 +737,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="693" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="712" bodyend="718"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="694" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="712" bodyend="718"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1ab96cb9eee00e8192a499fa7e86c24d21" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -755,7 +755,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="699" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="720" bodyend="726"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="700" column="11" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="720" bodyend="726"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a01d63e0786c9b28da60fc2fc5a072f2e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> *</type>
@@ -773,7 +773,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="705" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="728" bodyend="734"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="706" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="728" bodyend="734"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1ae3d92db5473c43f90534fb2dfebc6036" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> * &gt;</type>
@@ -793,7 +793,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="712" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="736" bodyend="744"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="713" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="736" bodyend="744"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a4b5e06d30e87f72e66eb1de2923ad8f7" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::vector&lt; const <ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> * &gt;</type>
@@ -813,7 +813,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="719" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="746" bodyend="754"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="720" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="746" bodyend="754"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a3bea9a78bea25be04a153ae4c8403992" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> * &gt;</type>
@@ -833,7 +833,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="726" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="756" bodyend="764"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="727" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="756" bodyend="764"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a89ddcc5867c86139287e4d09ea83c796" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::vector&lt; const <ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref> * &gt;</type>
@@ -853,7 +853,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="733" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="766" bodyend="774"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="734" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="766" bodyend="774"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1af4e84bb45a0d8795d4a8b6c16f8a02d1" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -884,7 +884,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="740" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="776" bodyend="778"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="741" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="776" bodyend="778"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a955deee620e981e723feb2102783fafa" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref> &gt;</type>
@@ -904,7 +904,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="747" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="780" bodyend="788"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="748" column="15" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="780" bodyend="788"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a99765c2acdbe285f42a93254543b0011" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -922,7 +922,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="753" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="790" bodyend="793"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="754" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="790" bodyend="793"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a6f8dd3bc3713e4377f727a658000d334" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -940,7 +940,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="759" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="795" bodyend="798"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="760" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="795" bodyend="798"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1ace282f4e828034cda3498762fc6fe47f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -960,7 +960,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="766" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="800" bodyend="814"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="767" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="800" bodyend="814"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1aaf11e8ab91b3e06ee1ccae192397aceb" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>const <ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref> &amp;</type>
@@ -978,7 +978,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="772" column="36" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="523" bodyend="525"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="773" column="36" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="523" bodyend="525"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a39671c0d8d5ae9aa4cf34814cda7fe52" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>i2c_master_bus_handle_t</type>
@@ -996,7 +996,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="778" column="27" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="527" bodyend="529"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="779" column="27" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="527" bodyend="529"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1addc8bd3b1e92d4cf94e0b6895b18930e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>int</type>
@@ -1014,7 +1014,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="784" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="531" bodyend="533"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="785" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="531" bodyend="533"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1ab5ab97f8ed52a4c33f6ddf248b1b67a2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1032,7 +1032,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="790" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="535" bodyend="538"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="791" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="535" bodyend="538"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a1e151fdee4c15afd34b0b5cba49d09ba" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>size_t</type>
@@ -1102,7 +1102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="800" column="10" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="540" bodyend="577"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="801" column="10" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="540" bodyend="577"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1aa1ce51043fdff12290ae8ce4faa04719" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1146,7 +1146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="809" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="579" bodyend="631"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="810" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="579" bodyend="631"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1ada599f9418ee55133905049270d08163" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1164,7 +1164,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="815" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="633" bodyend="668"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="816" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="633" bodyend="668"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a3b9dc4528ba496f4b3b949b2cf18af25" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref></type>
@@ -1182,7 +1182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="825" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="236" bodyend="239"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="826" column="17" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="236" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a0ffb6779431ab728bc58c44c1c2455f0" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1200,7 +1200,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="831" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="241" bodyend="243"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="832" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="241" bodyend="243"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a4f76b56523c72f8cfd9d7ecbc817e0da" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1218,7 +1218,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="837" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="245" bodyend="247"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="838" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="245" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1af2af2c027dee720ff88038004104bc2d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1264,7 +1264,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="846" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="249" bodyend="267"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="847" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="249" bodyend="267"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1297,7 +1297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="858" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="670" bodyend="677"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="859" column="7" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="670" bodyend="677"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a38441634852078aeb598cf204e239637" prot="private" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -1328,7 +1328,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="865" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="816" bodyend="835"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="866" column="16" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="816" bodyend="835"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cBus_1a7c12d7a9b61f69cf5e581ad40b9a3ff6" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1375,7 +1375,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspI2c.h" line="875" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="387" bodyend="467"/>
+        <location file="inc/mcu/esp32/EspI2c.h" line="876" column="8" bodyfile="src/mcu/esp32/EspI2c.cpp" bodystart="387" bodyend="467"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1418,7 +1418,7 @@
         <link refid="structhf__i2c__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspI2c.h" line="547" column="1" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="547" bodyend="891"/>
+    <location file="inc/mcu/esp32/EspI2c.h" line="548" column="1" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="548" bodyend="892"/>
     <listofallmembers>
       <member refid="classEspI2cBus_1a978c7722c8d5b224c3423f8acf542620" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>At</name></member>
       <member refid="classEspI2cBus_1afb26ac6de7b7ff526dfb97d9eecf00fb" prot="public" virt="non-virtual"><scope>EspI2cBus</scope><name>At</name></member>

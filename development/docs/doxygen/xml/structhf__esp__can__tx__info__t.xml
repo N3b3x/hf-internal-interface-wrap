@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="165" column="20" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="165" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="166" column="20" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="166" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__tx__info__t_1a8cc21dcb52667cae68c81c781d46a0c2" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="166" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="166" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="167" column="8" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="167" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__esp__can__tx__info__t_1a3c647fd808e471906496542390b24dbb" prot="public" static="no" mutable="no">
         <type>uint64_t</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="167" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="167" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="168" column="12" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="168" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -68,7 +68,7 @@
         </childnode>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspCan.h" line="164" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="164" bodyend="168"/>
+    <location file="inc/mcu/esp32/EspCan.h" line="165" column="1" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="165" bodyend="169"/>
     <listofallmembers>
       <member refid="structhf__esp__can__tx__info__t_1a9adf7b89eb91027779ad3837efc71695" prot="public" virt="non-virtual"><scope>hf_esp_can_tx_info_t</scope><name>message</name></member>
       <member refid="structhf__esp__can__tx__info__t_1a8cc21dcb52667cae68c81c781d46a0c2" prot="public" virt="non-virtual"><scope>hf_esp_can_tx_info_t</scope><name>success</name></member>

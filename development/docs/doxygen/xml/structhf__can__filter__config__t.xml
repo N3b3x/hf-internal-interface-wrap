@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="68" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="68" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="69" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="69" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__filter__config__t_1a1d0a313b0c1c9b15afb3f71c9b05cdf0" prot="public" static="no" mutable="no">
         <type>uint32_t</type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="69" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="69" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="70" column="12" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="70" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__filter__config__t_1a457d961a4cd803ba506753c910067711" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="70" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="70" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="71" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="71" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="72" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="72" bodyend="73"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="73" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="73" bodyend="74"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -71,7 +71,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="67" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="67" bodyend="74"/>
+    <location file="inc/mcu/esp32/utils/EspTypes_CAN.h" line="68" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_CAN.h" bodystart="68" bodyend="75"/>
     <listofallmembers>
       <member refid="structhf__can__filter__config__t_1a2091ca1a431ea58b179919e4fb4d3021" prot="public" virt="non-virtual"><scope>hf_can_filter_config_t</scope><name>acceptance_code</name></member>
       <member refid="structhf__can__filter__config__t_1a1d0a313b0c1c9b15afb3f71c9b05cdf0" prot="public" virt="non-virtual"><scope>hf_can_filter_config_t</scope><name>acceptance_mask</name></member>

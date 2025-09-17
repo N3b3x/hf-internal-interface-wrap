@@ -4,6 +4,7 @@
     <compoundname>spi</compoundname>
     <title>SPI Module</title>
     <innerfile refid="BaseSpi_8h">BaseSpi.h</innerfile>
+    <innerfile refid="EspSpi_8h">EspSpi.h</innerfile>
     <innerclass refid="classBaseSpi" prot="public">BaseSpi</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__spi_1gaa5e0c8e903e4cbb2dec8d69a27aa670a" prot="public" static="no">

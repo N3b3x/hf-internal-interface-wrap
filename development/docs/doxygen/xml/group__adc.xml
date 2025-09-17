@@ -4,6 +4,7 @@
     <compoundname>adc</compoundname>
     <title>ADC Module</title>
     <innerfile refid="BaseAdc_8h">BaseAdc.h</innerfile>
+    <innerfile refid="EspAdc_8h">EspAdc.h</innerfile>
     <innerclass refid="classBaseAdc" prot="public">BaseAdc</innerclass>
     <sectiondef kind="define">
       <memberdef kind="define" id="group__adc_1ga891102c18cebf84f4f4da96bb6110bb7" prot="public" static="no">

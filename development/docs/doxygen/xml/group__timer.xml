@@ -4,6 +4,7 @@
     <compoundname>timer</compoundname>
     <title>Timer Module</title>
     <innerfile refid="BasePeriodicTimer_8h">BasePeriodicTimer.h</innerfile>
+    <innerfile refid="EspPeriodicTimer_8h">EspPeriodicTimer.h</innerfile>
     <innerclass refid="classBasePeriodicTimer" prot="public">BasePeriodicTimer</innerclass>
     <briefdescription>
 <para>All timer-related types, enums, and functions for periodic timer operations. </para>
