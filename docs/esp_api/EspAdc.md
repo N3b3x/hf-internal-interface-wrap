@@ -251,7 +251,7 @@ adc.SetContinuousCallback(adc_continuous_callback, nullptr);
 // Start continuous sampling
 adc.StartContinuous();
 
-// Process data in main loop
+// Process data in main loop (have enough buffer size)
 uint8_t buffer[256];
 uint32_t bytes_read;
 while (true) {
