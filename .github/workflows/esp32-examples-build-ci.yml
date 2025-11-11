@@ -78,12 +78,13 @@ jobs:
   # 🔧 Lint and format code (runs in parallel)
   lint:
     needs: validate
-    uses: N3b3x/hf-general-ci-tools/.github/workflows/c-cpp-lint.yml@main
+    uses: N3b3x/hf-general-ci-tools/.github/workflows/ru-cpp-lint.yml@v1
     with:
-      style: "file"
+      clang_version: "20"
+      clang_format_config: "_config/.clang-format"
+      clang_tidy_config: "_config/.clang-tidy"
       extensions: "c,cpp,cc,cxx,h,hpp"
-      tidy_checks: "readability-*,performance-*,modernize-*"
-      ignore: "build|.git|third_party|vendor"
+      ignore: "build|.git|third_party|vendor|examples"
       files_changed_only: true
       step_summary: true
       file_annotations: true
@@ -103,7 +104,7 @@ jobs:
   # 🔍 Static analysis (runs in parallel)
   static-analysis:
     needs: validate
-    uses: N3b3x/hf-general-ci-tools/.github/workflows/c-cpp-static-analysis.yml@main
+    uses: N3b3x/hf-general-ci-tools/.github/workflows/ru-cpp-analysis.yml@v1
     with:
       paths: "src inc examples components"
       std: "c++17"
