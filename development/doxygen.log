@@ -1,7 +1,7 @@
-warning: Tag 'DOT_FONTNAME' at line 2694 of file '/tmp/doxyfile.GYl7Kk' has become obsolete.
+warning: Tag 'DOT_FONTNAME' at line 2694 of file '/tmp/doxyfile.sdeQr7' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_FONTSIZE' at line 2695 of file '/tmp/doxyfile.GYl7Kk' has become obsolete.
+warning: Tag 'DOT_FONTSIZE' at line 2695 of file '/tmp/doxyfile.sdeQr7' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_TRANSPARENT' at line 2698 of file '/tmp/doxyfile.GYl7Kk' has become obsolete.
+warning: Tag 'DOT_TRANSPARENT' at line 2698 of file '/tmp/doxyfile.sdeQr7' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 error: Project logo 'assets/images/logo.png' specified by PROJECT_LOGO does not exist!
