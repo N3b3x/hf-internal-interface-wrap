@@ -1,3 +1,4 @@
+---
 name: 🚀 ESP32 Examples Build CI
 
 on:
@@ -64,7 +65,8 @@ jobs:
           cd ${{ steps.vars.outputs.tools_dir }}
           MATRIX=$(python3 generate_matrix.py)
           echo "matrix=${MATRIX}" >> "$GITHUB_OUTPUT"
-          echo "Generated matrix with $(echo "$MATRIX" | jq '.include | length') build combinations"
+          echo "Generated matrix with $(echo "$MATRIX" | \
+            jq '.include | length') build combinations"
 
   # 🏗️ Build firmware (parallel matrix)
   build:
@@ -98,7 +100,9 @@ jobs:
       project_dir: ${{ needs.validate.outputs.project_dir }}
       project_tools_dir: ${{ needs.validate.outputs.tools_dir }}
       scan_type: "all"
-      run_codeql: ${{ startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/tags/') }}
+      run_codeql: >
+        ${{ startsWith(github.ref, 'refs/heads/release/') ||
+        startsWith(github.ref, 'refs/tags/') }}
       codeql_languages: "cpp,python"
 
   # 🔍 Static analysis (runs in parallel)
@@ -122,11 +126,15 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| 🏗️ Build | ${{ needs.build.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+          echo "| 🏗️ Build | \
+            ${{ needs.build.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY
-          echo "| 🔧 Lint | ${{ needs.lint.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+          echo "| 🔧 Lint | \
+            ${{ needs.lint.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY
-          echo "| 🛡️ Security | ${{ needs.security.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+          echo "| 🛡️ Security | \
+            ${{ needs.security.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY
-          echo "| 🔍 Static Analysis | ${{ needs.static-analysis.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
+          echo "| 🔍 Static Analysis | \
+            ${{ needs.static-analysis.result == 'success' && '✅ Success' || '❌ Failed' }} |" \
             >> $GITHUB_STEP_SUMMARY

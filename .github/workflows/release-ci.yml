@@ -1,3 +1,4 @@
+---
 name: 📦 Release CI
 
 on:
@@ -45,7 +46,9 @@ jobs:
   # Wait for Advanced CI to complete successfully
   wait-for-advanced-ci:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/heads/release/')
+    if: >
+      github.event_name == 'push' &&
+      startsWith(github.ref, 'refs/heads/release/')
     steps:
       - name: Wait for ESP32 Examples Build CI
         uses: lewagon/wait-on-check-action@v1.3.1
@@ -102,7 +105,8 @@ jobs:
           # Copy firmware binaries to a dedicated folder
           mkdir -p release-package/firmware-binaries
           if [ -d "artifacts" ]; then
-            cp -r artifacts/* release-package/firmware-binaries/ 2>/dev/null || true
+            cp -r artifacts/* release-package/firmware-binaries/ \
+              2>/dev/null || true
           fi
 
           # Create comprehensive README for release
@@ -159,15 +163,18 @@ jobs:
 
           ## 🔗 Additional Resources
 
-          - [Online Documentation](https://${{ github.repository_owner }}.github.io/\
-            ${{ github.event.repository.name }}/)
-          - [GitHub Repository](https://github.com/${{ github.repository }})
+          - [Online Documentation](
+              https://${{ github.repository_owner }}.github.io/\
+              ${{ github.event.repository.name }}/)
+          - [GitHub Repository](
+              https://github.com/${{ github.repository }})
           - [Issue Tracker](https://github.com/${{ github.repository }}/issues)
 
           EOF
 
           # Create changelog
-          echo "# Changelog for ${{ env.RELEASE_VERSION }}" > release-package/CHANGELOG.md
+          echo "# Changelog for ${{ env.RELEASE_VERSION }}" \
+            > release-package/CHANGELOG.md
           echo "" >> release-package/CHANGELOG.md
           echo "## Changes since last release:" >> release-package/CHANGELOG.md
           echo "" >> release-package/CHANGELOG.md
