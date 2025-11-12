@@ -78,7 +78,7 @@ jobs:
   # 🔧 Lint and format code (runs in parallel)
   lint:
     needs: validate
-    uses: N3b3x/hf-general-ci-tools/.github/workflows/ru-cpp-lint.yml@v1
+    uses: N3b3x/hf-general-ci-tools/.github/workflows/ru-cpp-lint.yml@main
     with:
       clang_version: "20"
       clang_format_config: "_config/.clang-format"
@@ -104,7 +104,7 @@ jobs:
   # 🔍 Static analysis (runs in parallel)
   static-analysis:
     needs: validate
-    uses: N3b3x/hf-general-ci-tools/.github/workflows/ru-cpp-analysis.yml@v1
+    uses: N3b3x/hf-general-ci-tools/.github/workflows/ru-cpp-analysis.yml@main
     with:
       paths: "src inc examples components"
       std: "c++17"
