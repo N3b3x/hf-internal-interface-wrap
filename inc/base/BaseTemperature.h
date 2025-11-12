@@ -376,7 +376,7 @@ using hf_temp_error_callback_t =
  * @param max_temp Maximum temperature
  * @return true if within range, false otherwise
  */
- inline bool IsTempInRange(float temperature, float min_temp, float max_temp) noexcept {
+inline bool IsTempInRange(float temperature, float min_temp, float max_temp) noexcept {
   return (temperature >= min_temp) && (temperature <= max_temp);
 }
 //--------------------------------------

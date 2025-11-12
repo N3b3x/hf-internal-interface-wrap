@@ -342,7 +342,6 @@ hf_u32_t HfLoggerGetThreadId() noexcept;
     }                                                                                              \
   } while (0)
 
-
 /**
  * @ingroup logger
  * @brief Base logger abstract class

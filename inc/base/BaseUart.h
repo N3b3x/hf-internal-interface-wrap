@@ -26,7 +26,7 @@
 
 /**
  * @defgroup uart UART Module
- * @brief All UART-related types, enums, and functions for Universal Asynchronous Receiver-Transmitter operations.
+ * @brief All UART-related types, enums, and functions.
  */
 
 //--------------------------------------
