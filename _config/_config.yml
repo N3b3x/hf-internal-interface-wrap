@@ -155,7 +155,6 @@ exclude:
   - .jekyll-metadata
   - examples/esp32/scripts/
   - docs/doxygen-extensions/
-  - docs/doxygen-mainpage.md
   - inc/
   - src/
 
