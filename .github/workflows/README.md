@@ -289,7 +289,7 @@ All workflows leverage the custom ESP-IDF CI tools:
 
 ```yaml
 # Build workflow
-uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@main
+uses: N3b3x/hf-espidf-ci-tools/.github/workflows/ru-build.yml@main
 
 # Lint workflow
 uses: N3b3x/hf-espidf-ci-tools/.github/workflows/lint.yml@main

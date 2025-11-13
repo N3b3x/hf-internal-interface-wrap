@@ -71,7 +71,7 @@ jobs:
   # 🏗️ Build firmware (parallel matrix)
   build:
     needs: validate
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/build.yml@main
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/ru-build.yml@main
     with:
       project_dir: ${{ needs.validate.outputs.project_dir }}
       project_tools_dir: ${{ needs.validate.outputs.tools_dir }}
@@ -95,7 +95,7 @@ jobs:
   security:
     needs: validate
     if: ${{ github.event.inputs.run_security != 'false' }}
-    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/security.yml@main
+    uses: N3b3x/hf-espidf-ci-tools/.github/workflows/ci-security.yml@main
     with:
       project_dir: ${{ needs.validate.outputs.project_dir }}
       project_tools_dir: ${{ needs.validate.outputs.tools_dir }}
