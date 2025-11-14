@@ -63,6 +63,3 @@ rules:
   # Hyphens
   hyphens:
     max-spaces-after: 1
-
-  # Comments indentation
-  comments-indentation: disable
