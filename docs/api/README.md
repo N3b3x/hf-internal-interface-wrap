@@ -395,7 +395,6 @@ Comprehensive test suites for validating hardware interface implementations:
 
 ### **Related Resources**
 
-- **[Contributing Guidelines](../../CONTRIBUTING.md)** - How to contribute
 - **[Hardware Types](HardwareTypes.md)** - Type definitions and validation
 
 ---

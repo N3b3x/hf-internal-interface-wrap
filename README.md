@@ -852,7 +852,7 @@ See [LICENSE](LICENSE) for full details.
 - 📊 [Configuration](examples/esp32/app_config.yml) - Application and build settings
 
 ### **Community**
-- 🤝 [Contributing](https://github.com/hardfoc/org-discussions/blob/main/CONTRIBUTING.md) - HardFOC community contribution guidelines
+- 🤝 Contributing - Please refer to the HardFOC community for contribution guidelines
 
 ---
 
