@@ -1,8 +1,8 @@
-warning: Tag 'DOT_FONTNAME' at line 2695 of file '/tmp/doxyfile.WknUwy' has become obsolete.
+warning: Tag 'DOT_FONTNAME' at line 2695 of file '/tmp/doxyfile.ITqsBM' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_FONTSIZE' at line 2696 of file '/tmp/doxyfile.WknUwy' has become obsolete.
+warning: Tag 'DOT_FONTSIZE' at line 2696 of file '/tmp/doxyfile.ITqsBM' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
-warning: Tag 'DOT_TRANSPARENT' at line 2699 of file '/tmp/doxyfile.WknUwy' has become obsolete.
+warning: Tag 'DOT_TRANSPARENT' at line 2699 of file '/tmp/doxyfile.ITqsBM' has become obsolete.
          To avoid this warning please remove this line from your configuration file or upgrade it using "doxygen -u"
 error: Project logo 'assets/images/logo.png' specified by PROJECT_LOGO does not exist!
 /home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/README.md:226: warning: unable to resolve reference to '/home/runner/work/hf-internal-interface-wrap/hf-internal-interface-wrap/examples/esp32/docs/README.md' for \ref command

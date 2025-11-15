@@ -6420,7 +6420,7 @@
   },"917": {
     "doc": "📋 API Reference",
     "title": "Related Resources",
-    "content": ". | Contributing Guidelines - How to contribute | Hardware Types - Type definitions and validation | . 🚀 HardFOC Interface Wrapper . Part of the HardFOC Ecosystem . ",
+    "content": ". | Hardware Types - Type definitions and validation | . 🚀 HardFOC Interface Wrapper . Part of the HardFOC Ecosystem . ",
     "url": "/hf-internal-interface-wrap/development/docs/api/#related-resources",
     
     "relUrl": "/docs/api/#related-resources"
@@ -6623,7 +6623,7 @@
   },"946": {
     "doc": "🛠️ Utilities",
     "title": "Related Resources",
-    "content": ". | Contributing Guidelines - How to contribute | Hardware Types - Type definitions and validation | Base Classes - Core interface documentation | . ",
+    "content": ". | Hardware Types - Type definitions and validation | Base Classes - Core interface documentation | . ",
     "url": "/hf-internal-interface-wrap/development/docs/utils/#related-resources",
     
     "relUrl": "/docs/utils/#related-resources"
@@ -7204,7 +7204,7 @@
   },"1029": {
     "doc": "📚 Documentation",
     "title": "🤝 Contributing",
-    "content": "We welcome contributions to improve multi-MCU support! Please see the HardFOC community contribution guidelines. ",
+    "content": "We welcome contributions to improve multi-MCU support! Please refer to the HardFOC community for contribution guidelines. ",
     "url": "/hf-internal-interface-wrap/development/docs/#-contributing",
     
     "relUrl": "/docs/#-contributing"
@@ -7526,7 +7526,7 @@
   },"1075": {
     "doc": "🔧 HardFOC Internal Interface Layer",
     "title": "Community",
-    "content": ". | 🤝 Contributing - HardFOC community contribution guidelines | . Built for the HardFOC ecosystem - Enabling seamless MCU portability . Hardware abstraction that just works™ . ",
+    "content": ". | 🤝 Contributing - Please refer to the HardFOC community for contribution guidelines | . Built for the HardFOC ecosystem - Enabling seamless MCU portability . Hardware abstraction that just works™ . ",
     "url": "/hf-internal-interface-wrap/development/#community",
     
     "relUrl": "/#community"
