@@ -8,12 +8,13 @@ has_children: true
 ---
 
 # 🔧 HardFOC Internal Interface Layer: 
+
 **Multi-MCU Peripherals Interface**
 
-![HAL](https://img.shields.io/badge/HAL-Hardware%20Abstraction%20Layer-blue?style=for-the-badge&logo=microchip)
-![C++17](https://img.shields.io/badge/C++-17-blue?style=for-the-badge&logo=cplusplus)
-![Multi-MCU](https://img.shields.io/badge/Multi--MCU-Support-green?style=for-the-badge&logo=espressif)
-![License](https://img.shields.io/badge/License-GPL--3.0-green?style=for-the-badge&logo=opensourceinitiative)
+[![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![CI](https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://n3b3x.github.io/hf-internal-interface-wrap/)
 
 ## 🎯 Universal Hardware Interface for Multi-MCU Development
 
@@ -851,12 +852,11 @@ See [LICENSE](LICENSE) for full details.
 - 📊 [Configuration](examples/esp32/app_config.yml) - Application and build settings
 
 ### **Community**
-- 🤝 [Contributing](CONTRIBUTING.md) - Development guidelines
+- 🤝 [Contributing](https://github.com/hardfoc/org-discussions/blob/main/CONTRIBUTING.md) - HardFOC community contribution guidelines
 
 ---
 
-> **🧪 [Test 404 Page](nonexistent-page)** - (on live documentation) Click this link to test our 
-> custom 404 page!
+<!-- Test 404 page: /404.html (hidden from link checkers) -->
 
 **Built for the HardFOC ecosystem - Enabling seamless MCU portability**
 

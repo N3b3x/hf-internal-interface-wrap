@@ -607,7 +607,7 @@ Configure specific features for your target MCU platform:
 ## 🤝 **Contributing**
 
 We welcome contributions to improve multi-MCU support!
-Please see our [Contributing Guidelines](../CONTRIBUTING.md).
+Please see the [HardFOC community contribution guidelines](https://github.com/hardfoc/org-discussions/blob/main/CONTRIBUTING.md).
 
 ### 🎯 **Areas for Multi-MCU Development**
 - **New MCU Support** - Additional MCU platform implementations (STM32, etc.)

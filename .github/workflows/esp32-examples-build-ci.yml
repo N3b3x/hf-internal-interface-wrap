@@ -100,9 +100,8 @@ jobs:
       project_dir: ${{ needs.validate.outputs.project_dir }}
       project_tools_dir: ${{ needs.validate.outputs.tools_dir }}
       scan_type: "all"
-      run_codeql: >
-        ${{ startsWith(github.ref, 'refs/heads/release/') ||
-        startsWith(github.ref, 'refs/tags/') }}
+      run_codeql: >-
+        ${{ startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/tags/') }}
       codeql_languages: "cpp,python"
 
   # 🔍 Static analysis (runs in parallel)

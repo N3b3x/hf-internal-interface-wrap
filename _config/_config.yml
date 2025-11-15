@@ -164,6 +164,7 @@ include:
   - ../README.md
   - ../LICENSE
   - assets/
+  - _config/404.html                  # 404 error page
 
 # Enhanced SEO settings
 seo:

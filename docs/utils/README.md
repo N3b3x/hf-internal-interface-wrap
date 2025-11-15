@@ -382,7 +382,7 @@ void setup_led_tasks() {
 
 ### **Related Resources**
 
-- **[Contributing Guidelines](../../CONTRIBUTING.md)** - How to contribute
+- **[Contributing Guidelines](https://github.com/hardfoc/org-discussions/blob/main/CONTRIBUTING.md)** - How to contribute
 - **[Hardware Types](../api/HardwareTypes.md)** - Type definitions and validation
 - **[Base Classes](../api/README.md)** - Core interface documentation
 
