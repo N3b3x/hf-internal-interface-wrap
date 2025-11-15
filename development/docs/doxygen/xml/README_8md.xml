@@ -1,0 +1,876 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline><highlight class="normal">layout:<sp/>default</highlight></codeline>
+<codeline><highlight class="normal">title:<sp/>&quot;🔧<sp/>HardFOC<sp/>Internal<sp/>Interface<sp/>Layer&quot;</highlight></codeline>
+<codeline><highlight class="normal">description:<sp/>&quot;Multi-MCU<sp/>Peripheral<sp/>Interface<sp/>-<sp/>Universal<sp/>hardware<sp/>abstraction<sp/>layer<sp/>enabling<sp/>seamless<sp/>MCU<sp/>portability<sp/>through<sp/>unified<sp/>peripheral<sp/>APIs&quot;</highlight></codeline>
+<codeline><highlight class="normal">nav_order:<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">permalink:<sp/>/</highlight></codeline>
+<codeline><highlight class="normal">has_children:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>🔧<sp/>HardFOC<sp/>Internal<sp/>Interface<sp/>Layer:<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Multi-MCU<sp/>Peripherals<sp/>Interface**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">[![C++](https://img.shields.io/badge/C%2B%2B-17-blue.svg)](https://en.cppreference.com/w/cpp/17)</highlight></codeline>
+<codeline><highlight class="normal">[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)</highlight></codeline>
+<codeline><highlight class="normal">[![CI](https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main)](https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml)</highlight></codeline>
+<codeline><highlight class="normal">[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://n3b3x.github.io/hf-internal-interface-wrap/)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🎯<sp/>Universal<sp/>Hardware<sp/>Interface<sp/>for<sp/>Multi-MCU<sp/>Development</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*A<sp/>professional<sp/>hardware<sp/>abstraction<sp/>layer<sp/>enabling<sp/>seamless<sp/>MCU<sp/>portability<sp/>through<sp/>unified</highlight></codeline>
+<codeline><highlight class="normal">peripheral<sp/>APIs<sp/>-<sp/>designed<sp/>for<sp/>the<sp/>HardFOC<sp/>board<sp/>ecosystem*</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>📚<sp/>**Table<sp/>of<sp/>Contents**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>[🎯<sp/>**Overview**](#-overview)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[🏗️<sp/>**Architecture**](#-architecture)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[🔌<sp/>**Peripheral<sp/>Interfaces**](#-peripheral-interfaces)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[🖥️<sp/>**MCU<sp/>Support**](#-mcu-support)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[🚀<sp/>**Quick<sp/>Start**](#-quick-start)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[📖<sp/>**API<sp/>Documentation**](#-api-documentation)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[🔧<sp/>**Building**](#-building)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[📊<sp/>**Examples**](#-examples)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[🤝<sp/>**Contributing**](#-contributing)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[📄<sp/>**License**](#-license)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🎯<sp/>**Overview**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**📖<sp/>[📚🌐<sp/>Live<sp/>Complete<sp/>Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)**<sp/>-<sp/></highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Interactive<sp/>guides,<sp/>examples,<sp/>and<sp/>step-by-step<sp/>tutorials</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>**Internal<sp/>Interface<sp/>Wrap<sp/>(IID)**<sp/>provides<sp/>a<sp/>unified<sp/>interface<sp/>for<sp/>common<sp/>MCU<sp/>peripherals,</highlight></codeline>
+<codeline><highlight class="normal">enabling<sp/>seamless<sp/>portability<sp/>between<sp/>different<sp/>microcontroller<sp/>platforms.</highlight></codeline>
+<codeline><highlight class="normal">Originally<sp/>designed<sp/>for<sp/>the<sp/>**HardFOC<sp/>board**<sp/>which<sp/>needs<sp/>to<sp/>support<sp/>multiple<sp/>MCU<sp/>types,</highlight></codeline>
+<codeline><highlight class="normal">this<sp/>abstraction<sp/>layer<sp/>allows<sp/>developers<sp/>to<sp/>write<sp/>hardware-agnostic<sp/>code<sp/>while<sp/>maintaining<sp/>optimal</highlight></codeline>
+<codeline><highlight class="normal">performance.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>🏆<sp/>**Core<sp/>Benefits**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**🔄<sp/>MCU<sp/>Portability**<sp/>-<sp/>Write<sp/>once,<sp/>run<sp/>on<sp/>multiple<sp/>MCU<sp/>platforms</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**🎯<sp/>Unified<sp/>APIs**<sp/>-<sp/>Consistent<sp/>interface<sp/>across<sp/>all<sp/>peripheral<sp/>types</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**⚡<sp/>Performance**<sp/>-<sp/>Zero-cost<sp/>abstractions<sp/>with<sp/>compile-time<sp/>optimization</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**🛡️<sp/>Type<sp/>Safety**<sp/>-<sp/>Strong<sp/>typing<sp/>with<sp/>project-specific<sp/>type<sp/>system</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**📈<sp/>Extensible**<sp/>-<sp/>Easy<sp/>to<sp/>add<sp/>new<sp/>MCUs<sp/>and<sp/>peripheral<sp/>drivers</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**🔌<sp/>Complete<sp/>Coverage**<sp/>-<sp/>14+<sp/>peripheral<sp/>interfaces<sp/>for<sp/>comprehensive<sp/>hardware<sp/>control</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>🎨<sp/>**Design<sp/>Philosophy**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Write<sp/>hardware-agnostic<sp/>code</highlight></codeline>
+<codeline><highlight class="normal">BaseGpio*<sp/>led<sp/>=<sp/>GpioFactory::Create(GPIO_PIN_2,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal">led-&gt;SetHigh();</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Same<sp/>code<sp/>works<sp/>on<sp/>ESP32,<sp/>STM32,<sp/>or<sp/>any<sp/>supported<sp/>MCU</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>The<sp/>factory<sp/>handles<sp/>MCU-specific<sp/>implementation<sp/>selection</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🏗️<sp/>**Architecture**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Two-Layer<sp/>Design**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```text</highlight></codeline>
+<codeline><highlight class="normal">📦<sp/>Hardware<sp/>Abstraction<sp/>Layer</highlight></codeline>
+<codeline><highlight class="normal">├──<sp/>🎯<sp/>Base<sp/>Layer<sp/>(inc/base/)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Abstract<sp/>interfaces</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseGpio.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>GPIO<sp/>operations</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseAdc.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Analog-to-digital<sp/>conversion</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BasePwm.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Pulse<sp/>width<sp/>modulation</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseUart.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Serial<sp/>communication</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseI2c.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>I2C<sp/>bus<sp/>operations</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseSpi.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>SPI<sp/>bus<sp/>operations</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseCan.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>CAN<sp/>bus<sp/>communication</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseWifi.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>WiFi<sp/>networking</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseBluetooth.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Bluetooth<sp/>connectivity</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseNvs.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Non-volatile<sp/>storage</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseLogger.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Unified<sp/>logging<sp/>system</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BaseTemperature.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Temperature<sp/>sensing</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>├──<sp/>BasePeriodicTimer.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Timer<sp/>operations</highlight></codeline>
+<codeline><highlight class="normal">│<sp/><sp/><sp/>└──<sp/>BasePio.h<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Programmable<sp/>I/O<sp/>(advanced<sp/>GPIO)</highlight></codeline>
+<codeline><highlight class="normal">│</highlight></codeline>
+<codeline><highlight class="normal">└──<sp/>🔧<sp/>MCU<sp/>Layer<sp/>(inc/mcu/<sp/>&amp;<sp/>src/mcu/)<sp/><sp/>#<sp/>Platform<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>esp32/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>ESP32<sp/>family<sp/>support</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>EspGpio.h/.cpp<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>ESP32<sp/>GPIO<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>EspAdc.h/.cpp<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>ESP32<sp/>ADC<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>├──<sp/>EspPwm.h/.cpp<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>ESP32<sp/>PWM<sp/>implementation</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>...<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>All<sp/>other<sp/>ESP32<sp/>peripherals</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>├──<sp/>stm32/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>STM32<sp/>family<sp/>(future)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│<sp/><sp/><sp/>└──<sp/>...<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>STM32<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>│</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>└──<sp/>nrf/<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>Nordic<sp/>nRF<sp/>(future)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>└──<sp/>...<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#<sp/>nRF<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Abstraction<sp/>Benefits**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**1.<sp/>MCU<sp/>Independence**</highlight></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Application<sp/>code<sp/>remains<sp/>the<sp/>same<sp/>across<sp/>MCUs</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>MotorController<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>enable_pin;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BasePwm*<sp/>speed_control;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseAdc*<sp/>current_sensor;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>Initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>enable_pin<sp/>=<sp/>GpioFactory::Create(MOTOR_ENABLE_PIN,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>speed_control<sp/>=<sp/>PwmFactory::Create(PWM_CHANNEL_1,<sp/>1000);<sp/>//<sp/>1kHz</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_sensor<sp/>=<sp/>AdcFactory::Create(ADC_CHANNEL_1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>SetSpeed(hf_u16_t<sp/>speed_percent)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>speed_control-&gt;SetDutyCycle(speed_percent);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**2.<sp/>External<sp/>Driver<sp/>Support**</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>base<sp/>classes<sp/>can<sp/>be<sp/>extended<sp/>for<sp/>external<sp/>chips:</highlight></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>External<sp/>motor<sp/>driver<sp/>chip</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>DRV8302_Driver<sp/>:<sp/>public<sp/>BasePwm<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseI2c*<sp/>i2c_bus;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseSpi*<sp/>spi_bus;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Implement<sp/>BasePwm<sp/>interface<sp/>using<sp/>external<sp/>chip</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>SetDutyCycle(hf_u16_t<sp/>duty)<sp/>override<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Send<sp/>PWM<sp/>command<sp/>to<sp/>DRV8302<sp/>via<sp/>SPI/I2C</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🔌<sp/>**Peripheral<sp/>Interfaces**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&gt;<sp/>**📖<sp/>[📚🌐<sp/>Live<sp/>Complete<sp/>Documentation](https://n3b3x.github.io/hf-internal-interface-wrap/)**<sp/>-<sp/></highlight></codeline>
+<codeline><highlight class="normal">&gt;<sp/>Interactive<sp/>guides,<sp/>examples,<sp/>and<sp/>step-by-step<sp/>tutorials</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Core<sp/>Peripherals**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**Interface**<sp/>|<sp/>**Purpose**<sp/>|<sp/>**Key<sp/>Features**<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|---------------|-------------|------------------|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseGpio**<sp/>|<sp/>Digital<sp/>I/O<sp/>control<sp/>|<sp/>Input/output,<sp/>interrupts,<sp/>pull-up/down<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseAdc**<sp/>|<sp/>Analog<sp/>measurement<sp/>|<sp/>Multi-channel,<sp/>calibration,<sp/>DMA<sp/>support<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BasePwm**<sp/>|<sp/>Motor/servo<sp/>control<sp/>|<sp/>Frequency<sp/>control,<sp/>duty<sp/>cycle,<sp/>phase<sp/>alignment<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseUart**<sp/>|<sp/>Serial<sp/>communication<sp/>|<sp/>Async<sp/>I/O,<sp/>flow<sp/>control,<sp/>custom<sp/>baud<sp/>rates<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Communication<sp/>Buses**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**Interface**<sp/>|<sp/>**Purpose**<sp/>|<sp/>**Key<sp/>Features**<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|---------------|-------------|------------------|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseI2c**<sp/>|<sp/>Sensor<sp/>communication<sp/>|<sp/>Master/slave,<sp/>clock<sp/>stretching,<sp/>error<sp/>recovery<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseSpi**<sp/>|<sp/>High-speed<sp/>data<sp/>|<sp/>Full/half<sp/>duplex,<sp/>DMA,<sp/>chip<sp/>select<sp/>management<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseCan**<sp/>|<sp/>Automotive/industrial<sp/>|<sp/>Message<sp/>filtering,<sp/>error<sp/>handling,<sp/>bus<sp/>monitoring<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Wireless<sp/>Connectivity**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**Interface**<sp/>|<sp/>**Purpose**<sp/>|<sp/>**Key<sp/>Features**<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|---------------|-------------|------------------|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseWifi**<sp/>|<sp/>Network<sp/>connectivity<sp/>|<sp/>STA/AP<sp/>modes,<sp/>WPA3<sp/>security,<sp/>power<sp/>management<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseBluetooth**<sp/>|<sp/>Short-range<sp/>wireless<sp/>|<sp/>Classic/BLE,<sp/>pairing,<sp/>service<sp/>discovery<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**System<sp/>Services**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**Interface**<sp/>|<sp/>**Purpose**<sp/>|<sp/>**Key<sp/>Features**<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|---------------|-------------|------------------|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseNvs**<sp/>|<sp/>Configuration<sp/>storage<sp/>|<sp/>Key-value<sp/>pairs,<sp/>encryption,<sp/>wear<sp/>leveling<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseLogger**<sp/>|<sp/>Debug/monitoring<sp/>|<sp/>Multiple<sp/>levels,<sp/>async<sp/>logging,<sp/>filtering<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BaseTemperature**<sp/>|<sp/>Thermal<sp/>monitoring<sp/>|<sp/>Internal/external<sp/>sensors,<sp/>calibration<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BasePeriodicTimer**<sp/>|<sp/>Task<sp/>scheduling<sp/>|<sp/>Precise<sp/>timing,<sp/>ISR-safe<sp/>callbacks<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**BasePio**<sp/>|<sp/>Advanced<sp/>GPIO<sp/>|<sp/>State<sp/>machines,<sp/>DMA,<sp/>complex<sp/>protocols<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🖥️<sp/>**MCU<sp/>Support**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Currently<sp/>Supported**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**ESP32<sp/>Family**<sp/>✅</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**ESP32**<sp/>-<sp/>Original<sp/>dual-core<sp/>WiFi/BT</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**ESP32-C6**<sp/>-<sp/>RISC-V<sp/>with<sp/>WiFi<sp/>6<sp/>+<sp/>Zigbee</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**ESP32-S3**<sp/>-<sp/>Dual-core<sp/>with<sp/>AI<sp/>acceleration</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**ESP32-C3**<sp/>-<sp/>Single-core<sp/>RISC-V<sp/>WiFi/BT</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Implementation<sp/>Status**:<sp/>All<sp/>14<sp/>peripheral<sp/>interfaces<sp/>fully<sp/>implemented</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Planned<sp/>Support**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**STM32<sp/>Family**<sp/>🚧</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**STM32F4**<sp/>-<sp/>High-performance<sp/>ARM<sp/>Cortex-M4</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**STM32H7**<sp/>-<sp/>Dual-core<sp/>ARM<sp/>Cortex-M7</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**STM32G4**<sp/>-<sp/>Motor<sp/>control<sp/>optimized</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**Nordic<sp/>nRF**<sp/>🚧</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**nRF52840**<sp/>-<sp/>Bluetooth<sp/>5.0<sp/>+<sp/>Thread/Zigbee</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**nRF5340**<sp/>-<sp/>Dual-core<sp/>Bluetooth<sp/>5.2</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Adding<sp/>New<sp/>MCUs**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>**Create<sp/>MCU<sp/>directory**:<sp/>`inc/mcu/your_mcu/`<sp/>and<sp/>`src/mcu/your_mcu/`</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>**Implement<sp/>base<sp/>interfaces**:<sp/>Inherit<sp/>from<sp/>base<sp/>classes</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>**Add<sp/>factory<sp/>support**:<sp/>Register<sp/>your<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>**Update<sp/>build<sp/>system**:<sp/>Add<sp/>MCU-specific<sp/>compilation<sp/>flags</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Example:<sp/>Adding<sp/>STM32<sp/>GPIO<sp/>support</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>Stm32Gpio<sp/>:<sp/>public<sp/>BaseGpio<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GPIO_TypeDef*<sp/>gpio_port;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>hf_u16_t<sp/>gpio_pin;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>SetHigh()<sp/>override<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_GPIO_WritePin(gpio_port,<sp/>gpio_pin,<sp/>GPIO_PIN_SET);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>SetLow()<sp/>override<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>HAL_GPIO_WritePin(gpio_port,<sp/>gpio_pin,<sp/>GPIO_PIN_RESET);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🚀<sp/>**Quick<sp/>Start**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**1.<sp/>Clone<sp/>Repository**</highlight></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>&lt;repository-url&gt;</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>hf-internal-interface-wrap</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**2.<sp/>Setup<sp/>Development<sp/>Environment**</highlight></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>For<sp/>ESP32<sp/>development</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>examples/esp32</highlight></codeline>
+<codeline><highlight class="normal">./scripts/setup_repo.sh</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**3.<sp/>Build<sp/>Example**</highlight></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Build<sp/>GPIO<sp/>test<sp/>for<sp/>ESP32</highlight></codeline>
+<codeline><highlight class="normal">./scripts/build_app.sh<sp/>gpio_test<sp/>Release<sp/>esp32</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**4.<sp/>Flash<sp/>and<sp/>Monitor**</highlight></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Flash<sp/>to<sp/>connected<sp/>ESP32</highlight></codeline>
+<codeline><highlight class="normal">./scripts/flash_app.sh<sp/>gpio_test<sp/>Release<sp/>flash</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Monitor<sp/>serial<sp/>output</highlight></codeline>
+<codeline><highlight class="normal">./scripts/flash_app.sh<sp/>gpio_test<sp/>Release<sp/>monitor</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**5.<sp/>Basic<sp/>Usage**</highlight></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;base/BaseGpio.h&quot;</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&quot;mcu/esp32/EspGpio.h&quot;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">void<sp/>setup()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Create<sp/>GPIO<sp/>instance<sp/>for<sp/>built-in<sp/>LED</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>led<sp/>=<sp/>new<sp/>EspGpio(GPIO_NUM_2,<sp/>GPIO_MODE_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Blink<sp/>LED</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led-&gt;SetHigh();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led-&gt;SetLow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>📖<sp/>**API<sp/>Documentation**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Generated<sp/>Documentation**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**[API<sp/>Reference](docs/api/)**<sp/>-<sp/>Complete<sp/>base<sp/>api<sp/>interface<sp/>documentation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**[ESP32<sp/>Implementation](docs/esp_api/)**<sp/>-<sp/>ESP32-specific<sp/>details</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Key<sp/>Concepts**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**Type<sp/>System**</highlight></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Project<sp/>uses<sp/>consistent<sp/>type<sp/>definitions</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>uint8_t<sp/><sp/>hf_u8_t;</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>uint16_t<sp/>hf_u16_t;</highlight></codeline>
+<codeline><highlight class="normal">typedef<sp/>uint32_t<sp/>hf_u32_t;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Enums<sp/>use<sp/>snake_case<sp/>with<sp/>*t<sp/>suffix</highlight></codeline>
+<codeline><highlight class="normal">enum<sp/>class<sp/>hf_gpio_state_t<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>LOW<sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HIGH<sp/>=<sp/>1</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**Error<sp/>Handling**</highlight></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>All<sp/>operations<sp/>return<sp/>status<sp/>codes</highlight></codeline>
+<codeline><highlight class="normal">enum<sp/>class<sp/>hf_gpio_err_t<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>SUCCESS<sp/>=<sp/>0,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>INVALID_PIN,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>ALREADY_CONFIGURED,</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HARDWARE_ERROR</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">hf_gpio_err_t<sp/>result<sp/>=<sp/>gpio-&gt;Configure(GPIO_MODE_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal">if<sp/>(result<sp/>!=<sp/>hf_gpio_err_t::SUCCESS)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Logger::GetInstance().LogError(&quot;GPIO<sp/>configuration<sp/>failed&quot;);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**Factory<sp/>Pattern**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>factory<sp/>pattern<sp/>enables<sp/>completely<sp/>MCU-agnostic<sp/>code<sp/>by<sp/>automatically<sp/>selecting<sp/>the<sp/>correct</highlight></codeline>
+<codeline><highlight class="normal">implementation<sp/>at<sp/>compile<sp/>time.</highlight></codeline>
+<codeline><highlight class="normal">Factories<sp/>support<sp/>both<sp/>**dynamic<sp/>allocation**<sp/>(heap-based)<sp/>and<sp/>**static<sp/>allocation**<sp/>(stack-based)</highlight></codeline>
+<codeline><highlight class="normal">patterns:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>inc/utils/GpioFactory.h<sp/>-<sp/>MCU-agnostic<sp/>factory<sp/>interface</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>GpioFactory<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>BaseGpio*<sp/>Create(hf_u8_t<sp/>pin,<sp/>gpio_mode_t<sp/>mode);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>BaseGpio*<sp/>CreateWithInterrupt(hf_u8_t<sp/>pin,<sp/>gpio_isr_t<sp/>callback);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>void<sp/>Destroy(BaseGpio*<sp/>gpio);</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>src/utils/GpioFactory.cpp<sp/>-<sp/>Automatic<sp/>MCU<sp/>selection</highlight></codeline>
+<codeline><highlight class="normal">BaseGpio*<sp/>GpioFactory::Create(hf_u8_t<sp/>pin,<sp/>gpio_mode_t<sp/>mode)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">#ifdef<sp/>MCU_ESP32</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>new<sp/>EspGpio(static_cast&lt;gpio_num_t&gt;(pin),<sp/>mode);</highlight></codeline>
+<codeline><highlight class="normal">#elif<sp/>defined(MCU_STM32)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>new<sp/>Stm32Gpio(pin,<sp/>mode);</highlight></codeline>
+<codeline><highlight class="normal">#elif<sp/>defined(MCU_NRF)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>new<sp/>NrfGpio(pin,<sp/>mode);</highlight></codeline>
+<codeline><highlight class="normal">#else</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#error<sp/>&quot;Unsupported<sp/>MCU<sp/>platform&quot;</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Application<sp/>code<sp/>-<sp/>same<sp/>across<sp/>all<sp/>MCUs</highlight></codeline>
+<codeline><highlight class="normal">BaseGpio*<sp/>led<sp/>=<sp/>GpioFactory::Create(GPIO_PIN_2,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal">BaseGpio*<sp/>button<sp/>=<sp/>GpioFactory::CreateWithInterrupt(GPIO_PIN_0,<sp/>button_callback);</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Static<sp/>Allocation<sp/>Alternative:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>systems<sp/>requiring<sp/>deterministic<sp/>memory<sp/>usage<sp/>or<sp/>avoiding<sp/>heap<sp/>allocation:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>inc/utils/StaticGpioFactory.h<sp/>-<sp/>Stack-based<sp/>allocation<sp/>(C++23<sp/>compatible)</highlight></codeline>
+<codeline><highlight class="normal">template&lt;size_t<sp/>MAX_GPIOS<sp/>=<sp/>16&gt;</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>StaticGpioFactory<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">private:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Modern<sp/>C++23<sp/>approach:<sp/>alignas<sp/>+<sp/>std::byte<sp/>array<sp/>instead<sp/>of<sp/>deprecated<sp/>std::aligned_storage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>std::array&lt;alignas(BaseGpio)<sp/>std::byte[sizeof(EspGpio)],<sp/>MAX_GPIOS&gt;<sp/>gpio_storage;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>std::array&lt;bool,<sp/>MAX_GPIOS&gt;<sp/>gpio_used;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>size_t<sp/>next_index;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>BaseGpio*<sp/>Create(hf_u8_t<sp/>pin,<sp/>gpio_mode_t<sp/>mode)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(next_index<sp/>&gt;=<sp/>MAX_GPIOS)<sp/>return<sp/>nullptr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Construct<sp/>in-place<sp/>in<sp/>pre-allocated<sp/>storage<sp/>using<sp/>placement<sp/>new</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>void*<sp/>storage<sp/>=<sp/>&amp;gpio_storage[next_index];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BaseGpio*<sp/>gpio<sp/>=<sp/>nullptr;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">#ifdef<sp/>MCU_ESP32</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio<sp/>=<sp/>new(storage)<sp/>EspGpio(static_cast&lt;gpio_num_t&gt;(pin),<sp/>mode);</highlight></codeline>
+<codeline><highlight class="normal">#elif<sp/>defined(MCU_STM32)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio<sp/>=<sp/>new(storage)<sp/>Stm32Gpio(pin,<sp/>mode);</highlight></codeline>
+<codeline><highlight class="normal">#elif<sp/>defined(MCU_NRF)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio<sp/>=<sp/>new(storage)<sp/>NrfGpio(pin,<sp/>mode);</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_used[next_index]<sp/>=<sp/>true;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>next_index++;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>gpio;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>void<sp/>DestroyAll()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>(size_t<sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>next_index;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(gpio_used[i])<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Use<sp/>std::launder<sp/>for<sp/>safe<sp/>pointer<sp/>conversion<sp/>(C++17+)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BaseGpio*<sp/>gpio<sp/>=<sp/>std::launder(reinterpret_cast&lt;BaseGpio*&gt;(&amp;gpio_storage[i]));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio-&gt;~BaseGpio();<sp/><sp/>//<sp/>Call<sp/>destructor<sp/>explicitly</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_used[i]<sp/>=<sp/>false;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>next_index<sp/>=<sp/>0;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Pre-allocated<sp/>object<sp/>pool<sp/>for<sp/>known<sp/>hardware<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>HardwarePool<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">private:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Modern<sp/>C++23<sp/>approach:<sp/>alignas<sp/>+<sp/>std::byte<sp/>arrays<sp/>instead<sp/>of<sp/>deprecated<sp/>std::aligned_storage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>alignas(BaseGpio)<sp/>std::byte<sp/>motor_enable_storage[sizeof(EspGpio)];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>alignas(BaseGpio)<sp/>std::byte<sp/>fault_pin_storage[sizeof(EspGpio)];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>alignas(BasePwm)<sp/>std::byte<sp/>motor_pwm_storage[sizeof(EspPwm)];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>alignas(BaseAdc)<sp/>std::byte<sp/>current_adc_storage[sizeof(EspAdc)];</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>motor_enable;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>fault_pin;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BasePwm*<sp/>motor_pwm;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseAdc*<sp/>current_adc;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Constructor<sp/>creates<sp/>all<sp/>objects<sp/>in<sp/>pre-allocated<sp/>storage</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HardwarePool()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">#ifdef<sp/>MCU_ESP32</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_enable<sp/>=<sp/>new(&amp;motor_enable_storage)<sp/>EspGpio(GPIO_NUM_5,<sp/>GPIO_MODE_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fault_pin<sp/>=<sp/>new(&amp;fault_pin_storage)<sp/>EspGpio(GPIO_NUM_4,<sp/>GPIO_MODE_INPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_pwm<sp/>=<sp/>new(&amp;motor_pwm_storage)<sp/>EspPwm(LEDC_CHANNEL_0,<sp/>20000,<sp/>12,<sp/>GPIO_NUM_18);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_adc<sp/>=<sp/>new(&amp;current_adc_storage)<sp/>EspAdc(ADC1_CHANNEL_0);</highlight></codeline>
+<codeline><highlight class="normal">#elif<sp/>defined(MCU_STM32)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_enable<sp/>=<sp/>new(&amp;motor_enable_storage)<sp/>Stm32Gpio(5,<sp/>GPIO_MODE_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fault_pin<sp/>=<sp/>new(&amp;fault_pin_storage)<sp/>Stm32Gpio(4,<sp/>GPIO_MODE_INPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_pwm<sp/>=<sp/>new(&amp;motor_pwm_storage)<sp/>Stm32Pwm(TIM1,<sp/>20000,<sp/>5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_adc<sp/>=<sp/>new(&amp;current_adc_storage)<sp/>Stm32Adc(ADC1,<sp/>0);</highlight></codeline>
+<codeline><highlight class="normal">#endif</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Destructor<sp/>calls<sp/>destructors<sp/>explicitly</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>~HardwarePool()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(motor_enable)<sp/>motor_enable-&gt;~BaseGpio();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(fault_pin)<sp/>fault_pin-&gt;~BaseGpio();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(motor_pwm)<sp/>motor_pwm-&gt;~BasePwm();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(current_adc)<sp/>current_adc-&gt;~BaseAdc();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Usage<sp/>Comparison:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Dynamic<sp/>allocation<sp/>(heap-based)</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>DynamicController<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>motor_enable;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BasePwm*<sp/>motor_speed;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>Initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_enable<sp/>=<sp/>GpioFactory::Create(GPIO_PIN_5,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_speed<sp/>=<sp/>PwmFactory::CreateMotorControl(PWM_CH_0,<sp/>GPIO_PIN_18);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>~DynamicController()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GpioFactory::Destroy(motor_enable);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PwmFactory::Destroy(motor_speed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Static<sp/>allocation<sp/>(stack-based,<sp/>deterministic<sp/>memory)</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>StaticController<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>HardwarePool<sp/>hardware;<sp/><sp/>//<sp/>All<sp/>objects<sp/>created<sp/>in<sp/>constructor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>Initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Objects<sp/>already<sp/>created<sp/>in<sp/>hardware<sp/>pool<sp/>constructor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Just<sp/>configure<sp/>them</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hardware.motor_enable-&gt;SetHigh();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hardware.motor_pwm-&gt;SetDutyCycle(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>RunMotor(hf_u16_t<sp/>speed)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hardware.motor_pwm-&gt;SetDutyCycle(speed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hf_u16_t<sp/>current<sp/>=<sp/>hardware.current_adc-&gt;ReadRaw();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Logger::GetInstance().LogInfo(&quot;Motor<sp/>speed:<sp/>%d%%,<sp/>Current:<sp/>%d&quot;,<sp/>speed,<sp/>current);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Destructor<sp/>automatically<sp/>called,<sp/>no<sp/>manual<sp/>cleanup<sp/>needed</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Real-time<sp/>system<sp/>with<sp/>pre-allocated<sp/>pool</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>RealTimeTask()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>StaticGpioFactory&lt;8&gt;<sp/>gpio_pool;<sp/><sp/>//<sp/>Max<sp/>8<sp/>GPIOs,<sp/>stack<sp/>allocated</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>led1<sp/>=<sp/>gpio_pool.Create(GPIO_PIN_2,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>led2<sp/>=<sp/>gpio_pool.Create(GPIO_PIN_3,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>button<sp/>=<sp/>gpio_pool.Create(GPIO_PIN_0,<sp/>GPIO_INPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>No<sp/>heap<sp/>allocation,<sp/>deterministic<sp/>timing</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(button-&gt;Read()<sp/>==<sp/>GPIO_HIGH)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led1-&gt;SetHigh();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led2-&gt;SetLow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/>else<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led1-&gt;SetLow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led2-&gt;SetHigh();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(10));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Memory<sp/>Allocation<sp/>Benefits:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**Allocation<sp/>Type**<sp/>|<sp/>**Use<sp/>Case**<sp/>|<sp/>**Benefits**<sp/>|<sp/>**Trade-offs**<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|---------------------|--------------|--------------|----------------|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>markdownlint-disable-next-line<sp/>MD013<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Dynamic<sp/>(Heap)**<sp/>|<sp/>Flexible<sp/>systems<sp/>|<sp/>Easy<sp/>to<sp/>use,<sp/>unlimited<sp/>objects<sp/>|<sp/>Runtime<sp/>allocation,<sp/>fragmentation<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>markdownlint-disable-next-line<sp/>MD013<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Static<sp/>Pool**<sp/>|<sp/>Known<sp/>hardware<sp/>count<sp/>|<sp/>Deterministic<sp/>memory,<sp/>no<sp/>fragmentation<sp/>|<sp/>Fixed<sp/>object<sp/>count,<sp/>more<sp/>setup<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>markdownlint-disable-next-line<sp/>MD013<sp/>--&gt;</highlight></codeline>
+<codeline><highlight class="normal">|<sp/>**Pre-allocated**<sp/>|<sp/>Real-time<sp/>systems<sp/>|<sp/>Constructor-based,<sp/>automatic<sp/>cleanup<sp/>|<sp/>Compile-time<sp/>definition<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**When<sp/>to<sp/>Use<sp/>Each:**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Dynamic**:<sp/>Prototyping,<sp/>flexible<sp/>configurations,<sp/>plenty<sp/>of<sp/>RAM</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Static<sp/>Pool**:<sp/>Real-time<sp/>systems,<sp/>safety-critical<sp/>applications<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Pre-allocated**:<sp/>Known<sp/>hardware<sp/>layout,<sp/>maximum<sp/>determinism</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**C++23<sp/>Compatibility<sp/>Note:**</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>examples<sp/>above<sp/>use<sp/>modern<sp/>C++23<sp/>syntax<sp/>with<sp/>`alignas()`<sp/>and<sp/>`std::byte`<sp/>arrays<sp/>instead<sp/>of<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">deprecated<sp/>`std::aligned_storage`.</highlight></codeline>
+<codeline><highlight class="normal">As<sp/>noted<sp/>in</highlight></codeline>
+<codeline><highlight class="normal">[P1413R3](https://stackoverflow.com/questions/71828288/why-is-stdaligned-storage-to-be-deprecated-in-c23-and-what-to-use-instead),</highlight></codeline>
+<codeline><highlight class="normal">`std::aligned_storage`<sp/>is<sp/>deprecated<sp/>due<sp/>to<sp/>API<sp/>issues<sp/>and<sp/>potential<sp/>undefined<sp/>behavior.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>replacement<sp/>pattern<sp/>`alignas(T)<sp/>std::byte[sizeof(T)]`<sp/>provides<sp/>the<sp/>same<sp/>functionality<sp/>with</highlight></codeline>
+<codeline><highlight class="normal">better<sp/>type<sp/>safety<sp/>and<sp/>constexpr<sp/>compatibility.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Advanced<sp/>Factory<sp/>Examples:**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>PWM<sp/>Factory<sp/>with<sp/>motor<sp/>control<sp/>optimization</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>PwmFactory<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>BasePwm*<sp/>CreateMotorControl(hf_u8_t<sp/>channel,<sp/>hf_u8_t<sp/>gpio_pin)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Automatically<sp/>configures<sp/>optimal<sp/>settings<sp/>for<sp/>motor<sp/>control</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32:<sp/>20kHz,<sp/>12-bit<sp/>resolution</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>STM32:<sp/>20kHz,<sp/>16-bit<sp/>resolution<sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>nRF:<sp/>20kHz,<sp/>10-bit<sp/>resolution</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>BasePwm*<sp/>CreateServoControl(hf_u8_t<sp/>channel,<sp/>hf_u8_t<sp/>gpio_pin)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Automatically<sp/>configures<sp/>for<sp/>servo<sp/>control<sp/>(50Hz,<sp/>precise<sp/>timing)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Communication<sp/>Factory<sp/>with<sp/>bus<sp/>management</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>CommFactory<sp/>{</highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>BaseI2c*<sp/>CreateSensorBus(hf_u8_t<sp/>bus_num)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Optimized<sp/>I2C<sp/>settings<sp/>for<sp/>sensor<sp/>communication</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Handles<sp/>MCU-specific<sp/>pin<sp/>assignments<sp/>automatically</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>static<sp/>BaseUart*<sp/>CreateDebugPort()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Creates<sp/>standard<sp/>debug<sp/>UART<sp/>on<sp/>each<sp/>MCU&apos;s<sp/>debug<sp/>pins</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>ESP32:<sp/>UART0<sp/>on<sp/>GPIO1/3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>STM32:<sp/>USART2<sp/>on<sp/>PA2/PA3</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>nRF:<sp/>UART0<sp/>on<sp/>P0.06/P0.08</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🔧<sp/>**Building**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Build<sp/>System<sp/>Features**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Multi-MCU<sp/>Support**<sp/>-<sp/>Single<sp/>build<sp/>system<sp/>for<sp/>all<sp/>platforms</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Automated<sp/>Testing**<sp/>-<sp/>Comprehensive<sp/>test<sp/>suites</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**CI/CD<sp/>Integration**<sp/>-<sp/>Automated<sp/>builds<sp/>and<sp/>validation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Build<sp/>Commands**</highlight></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">##<sp/>Build<sp/>specific<sp/>application</highlight></codeline>
+<codeline><highlight class="normal">./scripts/build_app.sh<sp/>&lt;app_name&gt;<sp/>&lt;build_type&gt;<sp/>&lt;target&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Examples:</highlight></codeline>
+<codeline><highlight class="normal">./scripts/build_app.sh<sp/>gpio_test<sp/>Debug<sp/>esp32</highlight></codeline>
+<codeline><highlight class="normal">./scripts/build_app.sh<sp/>pwm_test<sp/>Release<sp/>esp32c6</highlight></codeline>
+<codeline><highlight class="normal">./scripts/build_app.sh<sp/>uart_test<sp/>Debug<sp/>esp32s3</highlight></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Configuration**</highlight></codeline>
+<codeline><highlight class="normal">Applications<sp/>are<sp/>configured<sp/>in<sp/>`examples/esp32/app_config.yml`:</highlight></codeline>
+<codeline><highlight class="normal">```yaml</highlight></codeline>
+<codeline><highlight class="normal">applications:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>gpio_test:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>source_file:<sp/>&quot;GpioComprehensiveTest.cpp&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>description:<sp/>&quot;GPIO<sp/>interface<sp/>testing&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>enabled:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>pwm_test:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>source_file:<sp/>&quot;PwmComprehensiveTest.cpp&quot;<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>description:<sp/>&quot;PWM<sp/>interface<sp/>testing&quot;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>enabled:<sp/>true</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>📊<sp/>**Examples**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Available<sp/>Test<sp/>Applications**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**Application**<sp/>|<sp/>**Tests**<sp/>|<sp/>**Purpose**<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|-----------------|-----------|-------------|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**gpio_test**<sp/>|<sp/>Digital<sp/>I/O,<sp/>interrupts<sp/>|<sp/>GPIO<sp/>interface<sp/>validation<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**adc_test**<sp/>|<sp/>Multi-channel<sp/>sampling<sp/>|<sp/>ADC<sp/>accuracy<sp/>and<sp/>performance<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**pwm_test**<sp/>|<sp/>Frequency/duty<sp/>control<sp/>|<sp/>Motor<sp/>control<sp/>applications<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**uart_test**<sp/>|<sp/>Serial<sp/>communication<sp/>|<sp/>Data<sp/>transmission<sp/>testing<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**i2c_test**<sp/>|<sp/>Sensor<sp/>communication<sp/>|<sp/>I2C<sp/>bus<sp/>operations<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**spi_test**<sp/>|<sp/>High-speed<sp/>data<sp/>|<sp/>SPI<sp/>protocol<sp/>testing<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**wifi_test**<sp/>|<sp/>Network<sp/>connectivity<sp/>|<sp/>WiFi<sp/>stack<sp/>validation<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">|<sp/>**bluetooth_test**<sp/>|<sp/>Wireless<sp/>pairing<sp/>|<sp/>Bluetooth<sp/>functionality<sp/>|</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Factory<sp/>Usage<sp/>Examples**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**Basic<sp/>Factory<sp/>Usage**</highlight></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Simple<sp/>GPIO<sp/>control<sp/>-<sp/>works<sp/>on<sp/>any<sp/>MCU</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>BlinkLED()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>led<sp/>=<sp/>GpioFactory::Create(GPIO_PIN_2,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>while(true)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led-&gt;SetHigh();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>led-&gt;SetLow();<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(500));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>GpioFactory::Destroy(led);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>PWM<sp/>motor<sp/>control<sp/>-<sp/>MCU-optimized<sp/>automatically</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>ControlMotor()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BasePwm*<sp/>motor<sp/>=<sp/>PwmFactory::CreateMotorControl(PWM_CH_0,<sp/>GPIO_PIN_5);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseAdc*<sp/>current<sp/>=<sp/>AdcFactory::Create(ADC_CHANNEL_1);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>motor-&gt;SetDutyCycle(75);<sp/><sp/>//<sp/>75%<sp/>speed</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>hf_u16_t<sp/>current_ma<sp/>=<sp/>current-&gt;ReadMillivolts()<sp/>/<sp/>10;<sp/><sp/>//<sp/>Convert<sp/>to<sp/>mA</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Logger::GetInstance().LogInfo(&quot;Motor<sp/>current:<sp/>%d<sp/>mA&quot;,<sp/>current_ma);</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**Multi-Peripheral<sp/>Application**</highlight></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>HardFOCController<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>//<sp/>Hardware<sp/>interfaces<sp/>-<sp/>MCU<sp/>agnostic</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>motor_enable;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseGpio*<sp/>fault_pin;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BasePwm*<sp/>motor_speed;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseAdc*<sp/>current_sensor;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseAdc*<sp/>voltage_sensor;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseUart*<sp/>debug_port;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseI2c*<sp/>sensor_bus;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseWifi*<sp/>telemetry;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_err_t<sp/>Initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Factory<sp/>creates<sp/>MCU-specific<sp/>implementations<sp/>automatically</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_enable<sp/>=<sp/>GpioFactory::Create(MOTOR_EN_PIN,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fault_pin<sp/>=<sp/>GpioFactory::CreateWithInterrupt(FAULT_PIN,<sp/>fault_callback);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_speed<sp/>=<sp/>PwmFactory::CreateMotorControl(PWM_CH_0,<sp/>MOTOR_PWM_PIN);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current_sensor<sp/>=<sp/>AdcFactory::Create(CURRENT_ADC_CH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>voltage_sensor<sp/>=<sp/>AdcFactory::Create(VOLTAGE_ADC_CH);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debug_port<sp/>=<sp/>CommFactory::CreateDebugPort();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sensor_bus<sp/>=<sp/>CommFactory::CreateSensorBus(I2C_BUS_0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>telemetry<sp/>=<sp/>WifiFactory::Create();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Validate<sp/>all<sp/>interfaces<sp/>created<sp/>successfully</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!motor_enable<sp/>||<sp/>!motor_speed<sp/>||<sp/>!current_sensor)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>hf_gpio_err_t::HARDWARE_ERROR;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debug_port-&gt;Printf(&quot;HardFOC<sp/>Controller<sp/>initialized<sp/>on<sp/>%s\n&quot;,<sp/>MCU_NAME);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>hf_gpio_err_t::SUCCESS;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>RunMotor(hf_u16_t<sp/>speed_percent)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Enable<sp/>motor<sp/>driver</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_enable-&gt;SetHigh();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Set<sp/>motor<sp/>speed</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_speed-&gt;SetDutyCycle(speed_percent);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Read<sp/>diagnostics</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hf_u16_t<sp/>current_ma<sp/>=<sp/>current_sensor-&gt;ReadMillivolts()<sp/>/<sp/>10;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hf_u16_t<sp/>voltage_mv<sp/>=<sp/>voltage_sensor-&gt;ReadMillivolts();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Log<sp/>locally</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debug_port-&gt;Printf(&quot;Speed:<sp/>%d%%,<sp/>Current:<sp/>%dmA,<sp/>Voltage:<sp/>%dmV\n&quot;,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>speed_percent,<sp/>current_ma,<sp/>voltage_mv);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Send<sp/>telemetry<sp/>if<sp/>connected</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(telemetry<sp/>&amp;&amp;<sp/>telemetry-&gt;IsConnected())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>telemetry-&gt;SendData(&quot;motor_speed&quot;,<sp/>speed_percent);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>telemetry-&gt;SendData(&quot;motor_current&quot;,<sp/>current_ma);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>telemetry-&gt;SendData(&quot;bus_voltage&quot;,<sp/>voltage_mv);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>EmergencyStop()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_enable-&gt;SetLow();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>motor_speed-&gt;SetDutyCycle(0);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>debug_port-&gt;Printf(&quot;EMERGENCY<sp/>STOP<sp/>-<sp/>Motor<sp/>disabled\n&quot;);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>~HardFOCController()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Clean<sp/>up<sp/>all<sp/>resources</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>EmergencyStop();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GpioFactory::Destroy(motor_enable);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GpioFactory::Destroy(fault_pin);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PwmFactory::Destroy(motor_speed);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>AdcFactory::Destroy(current_sensor);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>AdcFactory::Destroy(voltage_sensor);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CommFactory::DestroyComm(debug_port);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CommFactory::DestroyComm(sensor_bus);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WifiFactory::Destroy(telemetry);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//<sp/>Same<sp/>code<sp/>compiles<sp/>and<sp/>runs<sp/>on<sp/>ESP32,<sp/>STM32,<sp/>nRF!</highlight></codeline>
+<codeline><highlight class="normal">HardFOCController<sp/>controller;</highlight></codeline>
+<codeline><highlight class="normal">controller.Initialize();</highlight></codeline>
+<codeline><highlight class="normal">controller.RunMotor(50);<sp/><sp/>//<sp/>50%<sp/>speed</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">####<sp/>**External<sp/>Sensor<sp/>Integration**</highlight></codeline>
+<codeline><highlight class="normal">```cpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Factories<sp/>can<sp/>create<sp/>drivers<sp/>for<sp/>external<sp/>chips<sp/>too</highlight></codeline>
+<codeline><highlight class="normal">class<sp/>EnvironmentalMonitor<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseTemperature*<sp/>internal_temp;<sp/><sp/><sp/><sp/>//<sp/>MCU<sp/>internal<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseTemperature*<sp/>external_temp;<sp/><sp/><sp/><sp/>//<sp/>DS18B20<sp/>external<sp/>sensor</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>BaseAdc*<sp/>external_adc;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>MCP3208<sp/>external<sp/>ADC</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal">public:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>Initialize()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Internal<sp/>MCU<sp/>sensors</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_temp<sp/>=<sp/>SensorFactory::CreateInternalTemp();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>External<sp/>sensors<sp/>using<sp/>base<sp/>interfaces</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BaseGpio*<sp/>ds18b20_pin<sp/>=<sp/>GpioFactory::Create(GPIO_PIN_4,<sp/>GPIO_INPUT_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>external_temp<sp/>=<sp/>SensorFactory::CreateDS18B20(ds18b20_pin);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BaseSpi*<sp/>spi_bus<sp/>=<sp/>CommFactory::CreateSpi(SPI_BUS_1,<sp/>1000000);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BaseGpio*<sp/>cs_pin<sp/>=<sp/>GpioFactory::Create(GPIO_PIN_10,<sp/>GPIO_OUTPUT);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>external_adc<sp/>=<sp/>SensorFactory::CreateMCP3208(spi_bus,<sp/>cs_pin);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>void<sp/>ReadAllSensors()<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>internal_celsius<sp/>=<sp/>internal_temp-&gt;ReadCelsius();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>float<sp/>external_celsius<sp/>=<sp/>external_temp-&gt;ReadCelsius();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hf_u16_t<sp/>external_raw<sp/>=<sp/>external_adc-&gt;ReadRaw();</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Logger::GetInstance().LogInfo(&quot;Temps:<sp/>Internal=%.1f°C,<sp/>External=%.1f°C,<sp/>ADC=%d&quot;,<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>internal_celsius,<sp/>external_celsius,<sp/>external_raw);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🤝<sp/>**Contributing**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Development<sp/>Workflow**</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>**Fork**<sp/>the<sp/>repository</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>**Create**<sp/>feature<sp/>branch<sp/>(`feature/new-mcu-support`)</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>**Implement**<sp/>following<sp/>coding<sp/>standards</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>**Test**<sp/>with<sp/>existing<sp/>applications</highlight></codeline>
+<codeline><highlight class="normal">5.<sp/>**Document**<sp/>your<sp/>changes</highlight></codeline>
+<codeline><highlight class="normal">6.<sp/>**Submit**<sp/>pull<sp/>request</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Adding<sp/>New<sp/>Peripherals**</highlight></codeline>
+<codeline><highlight class="normal">1.<sp/>**Create<sp/>base<sp/>interface**<sp/>in<sp/>`inc/base/BaseYourPeripheral.h`</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>**Implement<sp/>for<sp/>ESP32**<sp/>in<sp/>`inc/mcu/esp32/EspYourPeripheral.h`</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>**Add<sp/>comprehensive<sp/>tests**<sp/>in<sp/>`examples/esp32/main/`</highlight></codeline>
+<codeline><highlight class="normal">4.<sp/>**Update<sp/>documentation**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Coding<sp/>Standards**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Functions**:<sp/>CamelCase<sp/>(`SetDutyCycle`,<sp/>`ReadValue`)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Types**:<sp/>snake_case<sp/>with<sp/>`*t`<sp/>suffix<sp/>(`hf_gpio_state_t`)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Enums**:<sp/>snake_case<sp/>enum<sp/>class<sp/>(`hf_adc_err_t`)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Logging**:<sp/>Use<sp/>`Logger::GetInstance()`<sp/>for<sp/>all<sp/>output</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>📄<sp/>**License**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>project<sp/>is<sp/>licensed<sp/>under<sp/>the<sp/>**GNU<sp/>General<sp/>Public<sp/>License<sp/>v3.0**.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">See<sp/>[LICENSE](LICENSE)<sp/>for<sp/>full<sp/>details.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>🔗<sp/>**Quick<sp/>Links**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Documentation**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>📚<sp/>[API<sp/>Reference](docs/api/)<sp/>-<sp/>Complete<sp/>interface<sp/>documentation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>🔧<sp/>[ESP32<sp/>Implementations](docs/esp_api/)<sp/>-<sp/>Hardware-specific<sp/>implementations</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>🛠️<sp/>[Utility<sp/>Classes](docs/utils/)<sp/>-<sp/>Advanced<sp/>utility<sp/>classes<sp/>and<sp/>helpers</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[McuSelect.h](inc/utils/McuSelect.h)<sp/>-<sp/>Centralized<sp/>MCU<sp/>platform<sp/>selection<sp/>and<sp/>configuration</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>🔧<sp/>[Build<sp/>System](examples/esp32/)<sp/>-<sp/>Build<sp/>and<sp/>deployment<sp/>guides</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>🛡️<sp/>[CI/CD<sp/>Pipeline](.github/workflows/)<sp/>-<sp/>Advanced<sp/>automated<sp/>workflows<sp/>and<sp/>testing</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Development**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>🚀<sp/>[Examples](examples/esp32/)<sp/>-<sp/>Test<sp/>applications<sp/>and<sp/>usage<sp/>examples</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>🧪<sp/>[Test<sp/>Documentation](examples/esp32/docs/README.md)<sp/>-<sp/>Comprehensive<sp/>test<sp/>documentation</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>🔧<sp/>[Scripts](examples/esp32/scripts/)<sp/>-<sp/>Build,<sp/>flash,<sp/>and<sp/>development<sp/>tools</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>📊<sp/>[Configuration](examples/esp32/app_config.yml)<sp/>-<sp/>Application<sp/>and<sp/>build<sp/>settings</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>**Community**</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>🤝<sp/>[Contributing](https://github.com/hardfoc/org-discussions/blob/main/CONTRIBUTING.md)<sp/>-<sp/>HardFOC<sp/>community<sp/>contribution<sp/>guidelines</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">&lt;!--<sp/>Test<sp/>404<sp/>page:<sp/>/404.html<sp/>(hidden<sp/>from<sp/>link<sp/>checkers)<sp/>--&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Built<sp/>for<sp/>the<sp/>HardFOC<sp/>ecosystem<sp/>-<sp/>Enabling<sp/>seamless<sp/>MCU<sp/>portability**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">*Hardware<sp/>abstraction<sp/>that<sp/>just<sp/>works™*</highlight></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

@@ -624,11 +624,11 @@
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>esp_err_t<sp/><ref refid="EspAdc_8cpp_1ab880627fb65669504bc48ca4ca9ba844" kindref="member">GpioToAdcChannel</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gpio_num,<sp/>adc_unit_t<sp/>unit_id,<sp/>adc_channel_t*<sp/>channel)<sp/>{</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>adc_continuous_io_to_channel(gpio_num,<sp/>&amp;unit_id,<sp/>channel);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>adc_continuous_io_to_channel(gpio_num,<sp/>&amp;unit_id,<sp/>channel);</highlight></codeline>
 <codeline lineno="62"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"></highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>esp_err_t<sp/><ref refid="EspAdc_8cpp_1a77ee8f60a2146f595b45453a5018c0e5" kindref="member">AdcChannelToGpio</ref>(adc_unit_t<sp/>unit_id,<sp/>adc_channel_t<sp/>channel,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>gpio_num)<sp/>{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>adc_continuous_channel_to_io(unit_id,<sp/>channel,<sp/>gpio_num);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>adc_continuous_channel_to_io(unit_id,<sp/>channel,<sp/>gpio_num);</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>

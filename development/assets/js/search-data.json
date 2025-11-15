@@ -7204,7 +7204,7 @@
   },"1029": {
     "doc": "📚 Documentation",
     "title": "🤝 Contributing",
-    "content": "We welcome contributions to improve multi-MCU support! Please see our Contributing Guidelines. ",
+    "content": "We welcome contributions to improve multi-MCU support! Please see the HardFOC community contribution guidelines. ",
     "url": "/hf-internal-interface-wrap/development/docs/#-contributing",
     
     "relUrl": "/docs/#-contributing"
@@ -7526,7 +7526,7 @@
   },"1075": {
     "doc": "🔧 HardFOC Internal Interface Layer",
     "title": "Community",
-    "content": ". | 🤝 Contributing - Development guidelines | . 🧪 Test 404 Page - (on live documentation) Click this link to test our custom 404 page! . Built for the HardFOC ecosystem - Enabling seamless MCU portability . Hardware abstraction that just works™ . ",
+    "content": ". | 🤝 Contributing - HardFOC community contribution guidelines | . Built for the HardFOC ecosystem - Enabling seamless MCU portability . Hardware abstraction that just works™ . ",
     "url": "/hf-internal-interface-wrap/development/#community",
     
     "relUrl": "/#community"

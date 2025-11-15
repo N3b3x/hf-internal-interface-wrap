@@ -125,7 +125,7 @@
     <value><![CDATA[inc/]]></value>
     <value><![CDATA[src/]]></value>
     <value><![CDATA[examples/esp32/main/]]></value>
-    <value><![CDATA[docs/doxygen-mainpage.md]]></value>
+    <value><![CDATA[README.md]]></value>
   </option>
   <option  id='INPUT_ENCODING' default='yes' type='string'><value><![CDATA[UTF-8]]></value></option>
   <option  id='INPUT_FILE_ENCODING' default='yes' type='stringlist'>
@@ -171,12 +171,13 @@
   <option  id='IMAGE_PATH' default='yes' type='stringlist'>
   </option>
   <option  id='INPUT_FILTER' default='yes' type='string'><value><![CDATA[]]></value></option>
-  <option  id='FILTER_PATTERNS' default='yes' type='stringlist'>
+  <option  id='FILTER_PATTERNS' default='no' type='stringlist'>
+    <value><![CDATA["*.md=sed -e '/^---$/,/^---$/d'"]]></value>
   </option>
   <option  id='FILTER_SOURCE_FILES' default='yes' type='bool'><value>NO</value></option>
   <option  id='FILTER_SOURCE_PATTERNS' default='yes' type='stringlist'>
   </option>
-  <option  id='USE_MDFILE_AS_MAINPAGE' default='no' type='string'><value><![CDATA[docs/doxygen-mainpage.md]]></value></option>
+  <option  id='USE_MDFILE_AS_MAINPAGE' default='no' type='string'><value><![CDATA[README.md]]></value></option>
   <option  id='FORTRAN_COMMENT_AFTER' default='yes' type='int'><value>72</value></option>
   <option  id='SOURCE_BROWSER' default='yes' type='bool'><value>NO</value></option>
   <option  id='INLINE_SOURCES' default='yes' type='bool'><value>NO</value></option>

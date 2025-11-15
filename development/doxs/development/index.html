@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.10.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>HF Interface Wrapper: HardFOC Interface Wrapper</title>
+<title>HF Interface Wrapper: 🔧 HardFOC Internal Interface Layer:</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -93,98 +93,202 @@ $(function(){initNavTree('index.html',''); initResizable(); });
 </div>
 
 <div><div class="header">
-  <div class="headertitle"><div class="title">HardFOC Interface Wrapper </div></div>
+  <div class="headertitle"><div class="title">🔧 HardFOC Internal Interface Layer: </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="md_docs_2doxygen-mainpage"></a> A comprehensive multi-MCU hardware abstraction layer for HardFOC systems with unified API across multiple MCU platforms.</p>
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <b>Multi-MCU Peripherals Interface</b></p>
+<p><a href="https://en.cppreference.com/w/cpp/17"><img src="https://img.shields.io/badge/C%2B%2B-17-blue.svg" alt="C++" style="pointer-events: none;" class="inline"/></a> <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml"><img src="https://github.com/N3b3x/hf-internal-interface-wrap/actions/workflows/esp32-examples-build-ci.yml/badge.svg?branch=main" alt="CI" style="pointer-events: none;" class="inline"/></a> <a href="https://n3b3x.github.io/hf-internal-interface-wrap/"><img src="https://img.shields.io/badge/docs-GitHub%20Pages-blue" alt="Docs" class="inline"/></a></p>
+<h1><a class="anchor" id="autotoc_md25"></a>
+🎯 Universal Hardware Interface for Multi-MCU Development</h1>
+<p><em>A professional hardware abstraction layer enabling seamless MCU portability through unified peripheral APIs - designed for the HardFOC board ecosystem</em></p>
+<h1><a class="anchor" id="autotoc_md26"></a>
+🎯 <b>Overview</b></h1>
 <blockquote class="doxtable">
 <p>&zwj;<b>📖 <a href="https://n3b3x.github.io/hf-internal-interface-wrap/">📚🌐 Live Complete Documentation</a></b> - Interactive guides, examples, and step-by-step tutorials </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md25"></a>
-Supported MCUs</h1>
-<ul>
-<li><b>ESP32 Family</b>: ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6, ESP32-H2</li>
-<li><b>Planned</b>: STM32F4, STM32H7, STM32G4, nRF52840, nRF5340</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md26"></a>
-Core Interfaces</h1>
+<p>This <b>Internal Interface Wrap (IID)</b> provides a unified interface for common MCU peripherals, enabling seamless portability between different microcontroller platforms. Originally designed for the <b>HardFOC board</b> which needs to support multiple MCU types, this abstraction layer allows developers to write hardware-agnostic code while maintaining optimal performance.</p>
 <h2><a class="anchor" id="autotoc_md27"></a>
-Base Classes</h2>
+🏆 <b>Core Benefits</b></h2>
 <ul>
-<li><a class="el" href="classBaseAdc.html">BaseAdc</a> - Analog-to-Digital Converter interface</li>
-<li><a class="el" href="classBaseBluetooth.html">BaseBluetooth</a> - Bluetooth communication interface</li>
-<li><a class="el" href="classBaseCan.html">BaseCan</a> - Controller Area Network interface</li>
-<li><a class="el" href="classBaseGpio.html">BaseGpio</a> - General Purpose Input/Output interface</li>
-<li><a class="el" href="classBaseI2c.html">BaseI2c</a> - Inter-Integrated Circuit interface</li>
-<li><a class="el" href="classBaseLogger.html">BaseLogger</a> - Logging system interface</li>
-<li><a class="el" href="classBaseNvs.html">BaseNvs</a> - Non-Volatile Storage interface</li>
-<li><a class="el" href="classBasePeriodicTimer.html">BasePeriodicTimer</a> - Periodic timer interface</li>
-<li><a class="el" href="classBasePio.html">BasePio</a> - Programmable Input/Output interface</li>
-<li><a class="el" href="classBasePwm.html">BasePwm</a> - Pulse Width Modulation interface</li>
-<li><a class="el" href="classBaseSpi.html">BaseSpi</a> - Serial Peripheral Interface</li>
-<li><a class="el" href="classBaseTemperature.html">BaseTemperature</a> - Temperature sensor interface</li>
-<li><a class="el" href="classBaseUart.html">BaseUart</a> - Universal Asynchronous Receiver-Transmitter</li>
-<li><a class="el" href="classBaseWifi.html">BaseWifi</a> - WiFi communication interface</li>
+<li><b>🔄 MCU Portability</b> - Write once, run on multiple MCU platforms</li>
+<li><b>🎯 Unified APIs</b> - Consistent interface across all peripheral types</li>
+<li><b>⚡ Performance</b> - Zero-cost abstractions with compile-time optimization</li>
+<li><b>🛡️ Type Safety</b> - Strong typing with project-specific type system</li>
+<li><b>📈 Extensible</b> - Easy to add new MCUs and peripheral drivers</li>
+<li><b>🔌 Complete Coverage</b> - 14+ peripheral interfaces for comprehensive hardware control</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md28"></a>
-ESP32 Implementations</h2>
-<ul>
-<li><a class="el" href="classEspAdc.html">EspAdc</a> - ESP32 ADC implementation</li>
-<li><a class="el" href="classEspBluetooth.html">EspBluetooth</a> - ESP32 Bluetooth implementation</li>
-<li><a class="el" href="classEspCan.html">EspCan</a> - ESP32 CAN implementation</li>
-<li><a class="el" href="classEspGpio.html">EspGpio</a> - ESP32 GPIO implementation</li>
-<li><a class="el" href="classEspI2cDevice.html">EspI2cDevice</a> - ESP32 I2C device implementation</li>
-<li><a class="el" href="classEspI2cBus.html">EspI2cBus</a> - ESP32 I2C bus implementation</li>
-<li><a class="el" href="classEspLogger.html">EspLogger</a> - ESP32 Logger implementation</li>
-<li><a class="el" href="classEspNvs.html">EspNvs</a> - ESP32 NVS implementation</li>
-<li><a class="el" href="classEspPeriodicTimer.html">EspPeriodicTimer</a> - ESP32 Periodic Timer implementation</li>
-<li><a class="el" href="classEspPio.html">EspPio</a> - ESP32 PIO implementation</li>
-<li><a class="el" href="classEspPwm.html">EspPwm</a> - ESP32 PWM implementation</li>
-<li><a class="el" href="classEspSpiDevice.html">EspSpiDevice</a> - ESP32 SPI device implementation</li>
-<li><a class="el" href="classEspSpiBus.html">EspSpiBus</a> - ESP32 SPI bus implementation</li>
-<li><a class="el" href="classEspTemperature.html">EspTemperature</a> - ESP32 Temperature implementation</li>
-<li><a class="el" href="classEspUart.html">EspUart</a> - ESP32 UART implementation</li>
-<li><a class="el" href="classEspWifi.html">EspWifi</a> - ESP32 WiFi implementation</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md29"></a>
-Utility Classes</h2>
-<ul>
-<li><a class="el" href="classAsciiArtGenerator.html">AsciiArtGenerator</a> - ASCII art generation utility</li>
-<li><a class="el" href="classDigitalOutputGuard.html">DigitalOutputGuard</a> - Digital output protection utility</li>
-<li>McuSelect - MCU platform selection utilities</li>
-<li><a class="el" href="classRtosMutex.html">RtosMutex</a> - RTOS mutex wrapper utilities</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md30"></a>
-Hardware Types</h1>
-<ul>
-<li>HardwareTypes - Common hardware type definitions</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md31"></a>
-Features</h1>
-<ul>
-<li><b>Unified API</b> - Consistent interface across different MCU platforms</li>
-<li><b>Type Safety</b> - Strong typing with project-specific typedefs</li>
-<li><b>Error Handling</b> - Comprehensive error reporting and handling</li>
-<li><b>Thread Safety</b> - RTOS-aware implementations</li>
-<li><b>Memory Management</b> - Safe memory operations and guards</li>
-<li><b>Logging</b> - Integrated logging system</li>
-<li><b>Testing</b> - Comprehensive test suites for all modules</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md32"></a>
-Architecture</h1>
-<p>The HardFOC Interface Wrapper follows a layered architecture:</p>
-<ol type="1">
-<li><b>Base Layer</b> - Abstract interfaces defining the API contract</li>
-<li><b>Implementation Layer</b> - MCU-specific implementations</li>
-<li><b>Utility Layer</b> - Common utilities and helpers</li>
-<li><b>Application Layer</b> - Example applications and tests</li>
-</ol>
-<h1><a class="anchor" id="autotoc_md33"></a>
-License</h1>
-<p>This project is licensed under the GPL v3 License. See the LICENSE file for details.</p>
+🎨 <b>Design Philosophy</b></h2>
+<div class="fragment"><div class="line"><span class="comment">// Write hardware-agnostic code</span></div>
+<div class="line"><a class="code hl_class" href="classBaseGpio.html">BaseGpio</a>* led = GpioFactory::Create(GPIO_PIN_2, GPIO_OUTPUT);</div>
+<div class="line">led-&gt;SetHigh();</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Same code works on ESP32, STM32, or any supported MCU</span></div>
+<div class="line"><span class="comment">// The factory handles MCU-specific implementation selection</span></div>
+<div class="ttc" id="aclassBaseGpio_html"><div class="ttname"><a href="classBaseGpio.html">BaseGpio</a></div><div class="ttdoc">Unified GPIO base class for all digital GPIO implementations.</div><div class="ttdef"><b>Definition</b> BaseGpio.h:295</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md29"></a>
+🔌 <b>Peripheral Interfaces</b></h1>
+<blockquote class="doxtable">
+<p>&zwj;<b>📖 <a href="https://n3b3x.github.io/hf-internal-interface-wrap/">📚🌐 Live Complete Documentation</a></b> - Interactive guides, examples, and step-by-step tutorials </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md30"></a>
+<b>Core Peripherals</b></h2>
+<p>| <b>Interface</b> | <b>Purpose</b> | <b>Key Features</b> |</p>
+<p>|------------&mdash;|----------&mdash;|---------------&mdash;|</p>
+<p>| <b><a class="el" href="classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations.">BaseGpio</a></b> | Digital I/O control | Input/output, interrupts, pull-up/down |</p>
+<p>| <b><a class="el" href="classBaseAdc.html" title="Base class for ADCs.">BaseAdc</a></b> | Analog measurement | Multi-channel, calibration, DMA support |</p>
+<p>| <b><a class="el" href="classBasePwm.html" title="Abstract base class for PWM implementations.">BasePwm</a></b> | Motor/servo control | Frequency control, duty cycle, phase alignment |</p>
+<p>| <b><a class="el" href="classBaseUart.html" title="Abstract base class for UART driver implementations.">BaseUart</a></b> | Serial communication | Async I/O, flow control, custom baud rates |</p>
+<h2><a class="anchor" id="autotoc_md31"></a>
+<b>Communication Buses</b></h2>
+<p>| <b>Interface</b> | <b>Purpose</b> | <b>Key Features</b> |</p>
+<p>|------------&mdash;|----------&mdash;|---------------&mdash;|</p>
+<p>| <b><a class="el" href="classBaseI2c.html" title="Abstract base class for I2C device implementations.">BaseI2c</a></b> | Sensor communication | Master/slave, clock stretching, error recovery |</p>
+<p>| <b><a class="el" href="classBaseSpi.html" title="Abstract base class for SPI device implementations.">BaseSpi</a></b> | High-speed data | Full/half duplex, DMA, chip select management |</p>
+<p>| <b><a class="el" href="classBaseCan.html" title="Abstract base class defining the unified CAN bus API.">BaseCan</a></b> | Automotive/industrial | Message filtering, error handling, bus monitoring |</p>
+<h2><a class="anchor" id="autotoc_md32"></a>
+<b>Wireless Connectivity</b></h2>
+<p>| <b>Interface</b> | <b>Purpose</b> | <b>Key Features</b> |</p>
+<p>|------------&mdash;|----------&mdash;|---------------&mdash;|</p>
+<p>| <b><a class="el" href="classBaseWifi.html" title="Abstract base class for WiFi functionality.">BaseWifi</a></b> | Network connectivity | STA/AP modes, WPA3 security, power management |</p>
+<p>| <b><a class="el" href="classBaseBluetooth.html" title="Abstract base class for Bluetooth functionality.">BaseBluetooth</a></b> | Short-range wireless | Classic/BLE, pairing, service discovery |</p>
+<h2><a class="anchor" id="autotoc_md33"></a>
+<b>System Services</b></h2>
+<p>| <b>Interface</b> | <b>Purpose</b> | <b>Key Features</b> |</p>
+<p>|------------&mdash;|----------&mdash;|---------------&mdash;|</p>
+<p>| <b><a class="el" href="classBaseNvs.html" title="Abstract base class for non-volatile storage operations.">BaseNvs</a></b> | Configuration storage | Key-value pairs, encryption, wear leveling |</p>
+<p>| <b><a class="el" href="classBaseLogger.html" title="Base logger abstract class.">BaseLogger</a></b> | Debug/monitoring | Multiple levels, async logging, filtering |</p>
+<p>| <b><a class="el" href="classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations.">BaseTemperature</a></b> | Thermal monitoring | Internal/external sensors, calibration |</p>
+<p>| <b><a class="el" href="classBasePeriodicTimer.html" title="Abstract base class for periodic timer operations.">BasePeriodicTimer</a></b> | Task scheduling | Precise timing, ISR-safe callbacks |</p>
+<p>| <b><a class="el" href="classBasePio.html" title="Abstract base class for Programmable IO Channel implementations.">BasePio</a></b> | Advanced GPIO | State machines, DMA, complex protocols |</p>
 <h1><a class="anchor" id="autotoc_md34"></a>
-Contributing</h1>
-<p>Please see the main project repository for contributing guidelines and code of conduct. </p>
+🚀 <b>Quick Start</b></h1>
+<h2><a class="anchor" id="autotoc_md35"></a>
+<b>1. Clone Repository</b></h2>
+<div class="fragment"><div class="line">git clone &lt;repository-url&gt;</div>
+<div class="line">cd hf-internal-interface-wrap</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md36"></a>
+<b>2. Setup Development Environment</b></h2>
+<div class="fragment"><div class="line">## For ESP32 development</div>
+<div class="line">cd examples/esp32</div>
+<div class="line">./scripts/setup_repo.sh</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md37"></a>
+<b>3. Build Example</b></h2>
+<div class="fragment"><div class="line">## Build GPIO test for ESP32</div>
+<div class="line">./scripts/build_app.sh gpio_test Release esp32</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md38"></a>
+<b>4. Flash and Monitor</b></h2>
+<div class="fragment"><div class="line">## Flash to connected ESP32</div>
+<div class="line">./scripts/flash_app.sh gpio_test Release flash</div>
+<div class="line"> </div>
+<div class="line">## Monitor serial output</div>
+<div class="line">./scripts/flash_app.sh gpio_test Release monitor</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md39"></a>
+<b>5. Basic Usage</b></h2>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="BaseGpio_8h.html">base/BaseGpio.h</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="EspGpio_8h.html">mcu/esp32/EspGpio.h</a>&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup() {</div>
+<div class="line">    <span class="comment">// Create GPIO instance for built-in LED</span></div>
+<div class="line">    <a class="code hl_class" href="classBaseGpio.html">BaseGpio</a>* led = <span class="keyword">new</span> <a class="code hl_class" href="classEspGpio.html">EspGpio</a>(GPIO_NUM_2, GPIO_MODE_OUTPUT);</div>
+<div class="line">    </div>
+<div class="line">    <span class="comment">// Blink LED</span></div>
+<div class="line">    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
+<div class="line">        led-&gt;SetHigh();</div>
+<div class="line">        vTaskDelay(pdMS_TO_TICKS(500));</div>
+<div class="line">        led-&gt;SetLow();</div>
+<div class="line">        vTaskDelay(pdMS_TO_TICKS(500));</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="aBaseGpio_8h_html"><div class="ttname"><a href="BaseGpio_8h.html">BaseGpio.h</a></div><div class="ttdoc">Unified GPIO base class for all digital GPIO implementations.</div></div>
+<div class="ttc" id="aEspGpio_8h_html"><div class="ttname"><a href="EspGpio_8h.html">EspGpio.h</a></div><div class="ttdoc">Advanced MCU-specific implementation of the unified BaseGpio class with ESP32C6/ESP-IDF v5....</div></div>
+<div class="ttc" id="aclassEspGpio_html"><div class="ttname"><a href="classEspGpio.html">EspGpio</a></div><div class="ttdoc">Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+ features.</div><div class="ttdef"><b>Definition</b> EspGpio.h:65</div></div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md40"></a>
+🔧 <b>Building</b></h1>
+<h2><a class="anchor" id="autotoc_md41"></a>
+<b>Build System Features</b></h2>
+<ul>
+<li><b>Multi-MCU Support</b> - Single build system for all platforms</li>
+<li><b>Automated Testing</b> - Comprehensive test suites</li>
+<li><b>CI/CD Integration</b> - Automated builds and validation</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md42"></a>
+<b>Build Commands</b></h2>
+<div class="fragment"><div class="line">## Build specific application</div>
+<div class="line">./scripts/build_app.sh &lt;app_name&gt; &lt;build_type&gt; &lt;target&gt;</div>
+<div class="line"> </div>
+<div class="line">## Examples:</div>
+<div class="line">./scripts/build_app.sh gpio_test Debug esp32</div>
+<div class="line">./scripts/build_app.sh pwm_test Release esp32c6</div>
+<div class="line">./scripts/build_app.sh uart_test Debug esp32s3</div>
+</div><!-- fragment --><p> yaml</p>
+<h2><a class="anchor" id="autotoc_md43"></a>
+<b>Configuration</b></h2>
+<p>Applications are configured in <code>examples/esp32/app_config.yml</code>: </p><div class="fragment"><div class="line">applications:</div>
+<div class="line">  gpio_test:</div>
+<div class="line">    source_file: &quot;GpioComprehensiveTest.cpp&quot;</div>
+<div class="line">    description: &quot;GPIO interface testing&quot;</div>
+<div class="line">    enabled: true</div>
+<div class="line">    </div>
+<div class="line">  pwm_test:</div>
+<div class="line">    source_file: &quot;PwmComprehensiveTest.cpp&quot; </div>
+<div class="line">    description: &quot;PWM interface testing&quot;</div>
+<div class="line">    enabled: true</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md44"></a>
+🤝 <b>Contributing</b></h1>
+<h2><a class="anchor" id="autotoc_md45"></a>
+<b>Development Workflow</b></h2>
+<ol type="1">
+<li><b>Fork</b> the repository</li>
+<li><b>Create</b> feature branch (<code>feature/new-mcu-support</code>)</li>
+<li><b>Implement</b> following coding standards</li>
+<li><b>Test</b> with existing applications</li>
+<li><b>Document</b> your changes</li>
+<li><b>Submit</b> pull request</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md46"></a>
+<b>Adding New Peripherals</b></h2>
+<ol type="1">
+<li><b>Create base interface</b> in <code>inc/base/BaseYourPeripheral.h</code></li>
+<li><b>Implement for ESP32</b> in <code>inc/mcu/esp32/EspYourPeripheral.h</code></li>
+<li><b>Add comprehensive tests</b> in <code>examples/esp32/main/</code></li>
+<li><b>Update documentation</b></li>
+</ol>
+<h2><a class="anchor" id="autotoc_md47"></a>
+<b>Coding Standards</b></h2>
+<ul>
+<li><b>Functions</b>: CamelCase (<code>SetDutyCycle</code>, <code>ReadValue</code>)</li>
+<li><b>Types</b>: snake_case with <code>*t</code> suffix (<code>hf_gpio_state_t</code>)</li>
+<li><b>Enums</b>: snake_case enum class (<code>hf_adc_err_t</code>)</li>
+<li><b>Logging</b>: Use <code>Logger::GetInstance()</code> for all output</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md48"></a>
+🔗 <b>Quick Links</b></h1>
+<h2><a class="anchor" id="autotoc_md49"></a>
+<b>Documentation</b></h2>
+<ul>
+<li>📚 <a href="docs/api/">API Reference</a> - Complete interface documentation</li>
+<li>🔧 <a href="docs/esp_api/">ESP32 Implementations</a> - Hardware-specific implementations</li>
+<li>🛠️ <a href="docs/utils/">Utility Classes</a> - Advanced utility classes and helpers<ul>
+<li><a href="inc/utils/McuSelect.h">McuSelect.h</a> - Centralized MCU platform selection and configuration</li>
+</ul>
+</li>
+<li>🔧 <a href="examples/esp32/">Build System</a> - Build and deployment guides</li>
+<li>🛡️ <a href=".github/workflows/">CI/CD Pipeline</a> - Advanced automated workflows and testing</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md50"></a>
+<b>Development</b></h2>
+<ul>
+<li>🚀 <a href="examples/esp32/">Examples</a> - Test applications and usage examples</li>
+<li>🧪 Test Documentation - Comprehensive test documentation</li>
+<li>🔧 <a href="examples/esp32/scripts/">Scripts</a> - Build, flash, and development tools</li>
+<li>📊 <a href="examples/esp32/app_config.yml">Configuration</a> - Application and build settings</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md51"></a>
+<b>Community</b></h2>
+<ul>
+<li>🤝 <a href="https://github.com/hardfoc/org-discussions/blob/main/CONTRIBUTING.md">Contributing</a> - HardFOC community contribution guidelines </li>
+</ul>
 </div></div><!-- PageDoc -->
 <a href="doxygen_crawl.html"/>
 </div><!-- contents -->

@@ -1170,7 +1170,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="379" column="14" bodyfile="inc/base/BaseTemperature.h" bodystart="379" bodyend="381"/>
+        <location file="inc/base/BaseTemperature.h" line="379" column="13" bodyfile="inc/base/BaseTemperature.h" bodystart="379" bodyend="381"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1457,7 +1457,7 @@
 <codeline lineno="369"><highlight class="preprocessor"><sp/><sp/><sp/>.sensor_type<sp/>=<sp/>HF_TEMP_SENSOR_TYPE_UNKNOWN,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
 <codeline lineno="370"><highlight class="preprocessor"><sp/><sp/><sp/>.capabilities<sp/>=<sp/>HF_TEMP_CAP_NONE}</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="371"><highlight class="normal"></highlight></codeline>
-<codeline lineno="379" refid="BaseTemperature_8h_1a267cc85b0dbf5006670db21b9e4410dc" refkind="member"><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="BaseTemperature_8h_1a267cc85b0dbf5006670db21b9e4410dc" kindref="member">IsTempInRange</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>temperature,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_temp,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_temp)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="379" refid="BaseTemperature_8h_1a267cc85b0dbf5006670db21b9e4410dc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="BaseTemperature_8h_1a267cc85b0dbf5006670db21b9e4410dc" kindref="member">IsTempInRange</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>temperature,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>min_temp,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>max_temp)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="380"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(temperature<sp/>&gt;=<sp/>min_temp)<sp/>&amp;&amp;<sp/>(temperature<sp/>&lt;=<sp/>max_temp);</highlight></codeline>
 <codeline lineno="381"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="382"><highlight class="normal"></highlight><highlight class="comment">//--------------------------------------</highlight><highlight class="normal"></highlight></codeline>

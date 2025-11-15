@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "HF Interface Wrapper", "index.html", [
-    [ "HardFOC Interface Wrapper", "index.html", "index" ],
+    [ "🔧 HardFOC Internal Interface Layer:", "index.html", "index" ],
     [ "Topics", "topics.html", "topics" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -72,13 +72,13 @@ var NAVTREEINDEX =
 "classEspLogger.html#a666cd0894691948bf449fb7e325d222f",
 "classEspPwm.html#adb0842868ea3508b65542b2b3c46b155",
 "classEspWifi.html#a54eddd362c8341bba3715f70a68dbd86",
-"globals_func_s.html",
-"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba5775f2e8785a9f89d250576fb58c25bd",
-"structesp__temp__config__t.html",
-"structhf__esp__can__config__t.html#aa877c45912cb57a8e245ecfec1f484ef",
-"structhf__logger__config__t.html#a68ff4dc59cc386debc230a69c2b842e6",
-"structhf__rmt__carrier__config__t.html#ae84054ef4008da890a853cd7e6e8aa16",
-"structhf__uart__statistics__t.html#a6321d5527cc622fd86a7aced8118484a"
+"globals_func_t.html",
+"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba68770d9ff5da66a64a48c22305c5e116",
+"structTestResults.html#a0acef46f38f27f0fbb8fa822bb218b3a",
+"structhf__can__status__t.html#ae3dff4d5f9bebe7e35489cfc58d50c6a",
+"structhf__i2c__transaction__buffer__t.html#afcc1caf0fb01943f2c138ec3dc7a398a",
+"structhf__pwm__timing__config__t.html#a4f2e1844b48330ed4037a53abe45de61",
+"structhf__uart__power__config__t.html#a7ac138802375c29ee69321a39be9ef8c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

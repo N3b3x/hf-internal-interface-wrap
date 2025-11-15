@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="364" column="11"/>
+        <location file="inc/base/BaseLogger.h" line="363" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1ad0406cdacbade55f2911bf717e35c22c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="375" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="374" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a5c4e83d89a9039e336dfb9f13d2be9a5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -69,7 +69,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="381" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="380" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a9f14e4754c3840c59106db0670e90fca" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -88,7 +88,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="387" column="16"/>
+        <location file="inc/base/BaseLogger.h" line="386" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a14f30b5cd0922487a49b77ec9833a0bc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="393" column="16"/>
+        <location file="inc/base/BaseLogger.h" line="392" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a960f90f79007791d7129bd22be151a57" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="401" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="400" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a7bab272b2ae8e5bf4a2d0c0c8a9ea203" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -195,7 +195,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="409" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="408" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a4075d445b4199e72e9a0c09ba438c076" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -250,7 +250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="422" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="421" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1ac1492294d1cc35697eaf02d6b617cce8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -305,7 +305,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="431" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="430" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a79975dd958a7f1b10570474deb42637b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -360,7 +360,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="440" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="439" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a15474a07a615cd39de6c2884b1035808" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -415,7 +415,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="449" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="448" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a7c108881b2bda1a6b938f0aebbe1b264" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -470,7 +470,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="458" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="457" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1ad0549df66e58b6726f8dee0792f73a45" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -537,7 +537,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="468" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="467" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a9e7c920256b418cf70d092ec5ad606cf" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -605,7 +605,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="479" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="478" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a4c22f92b913379d3407426d7e4ce19dc" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -708,7 +708,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="493" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="492" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a37a29d6d49c0a3ec7d5d6163c23aef39" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -727,7 +727,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="505" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="504" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1afb83c8e24e07a9bfb0874bf4c65e71e6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -772,7 +772,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="513" column="16"/>
+        <location file="inc/base/BaseLogger.h" line="512" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a3b030cfdc55beea0afd1f80b94bdc90f" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -804,7 +804,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="520" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="519" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1ae7b732b376b7066214dec2c741dc9e1e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -836,7 +836,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="527" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="526" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a3cf9119158fe0f18d7c04aec03c6449b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -855,7 +855,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="533" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="532" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a24d1d4542ce03818617a6ca47c5cadf9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -874,7 +874,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="539" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="538" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a5ada4c120460e66a3aa95d0d9d1f2688" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -893,7 +893,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="545" column="16"/>
+        <location file="inc/base/BaseLogger.h" line="544" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a1065e8155fd78171bba853d64d3deeee" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -912,7 +912,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="551" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="550" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1ae1ce782666e43f19b3b4e59278398880" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -956,7 +956,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="559" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="558" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a7c7b4dd7579edbf83e3f3abe51d9605d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1002,7 +1002,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="572" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="571" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1abf400ef24cd83257f6c3ca6e5f905069" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1048,7 +1048,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="581" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="580" column="27"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a0fb33baa7231cd20d8ada51eb144e47c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref></type>
@@ -1094,7 +1094,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="590" column="27"/>
+        <location file="inc/base/BaseLogger.h" line="589" column="27"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -1111,7 +1111,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="597" column="3"/>
+        <location file="inc/base/BaseLogger.h" line="596" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a9bc13a6a2e51b915e049bef19458ab14" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1129,7 +1129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="602" column="3"/>
+        <location file="inc/base/BaseLogger.h" line="601" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a527c6cc4476270922f2a29b3714f95e2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> &amp;</type>
@@ -1147,7 +1147,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="607" column="14"/>
+        <location file="inc/base/BaseLogger.h" line="606" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1ad8074912949ec914c7ea50733e51f720" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1165,7 +1165,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="612" column="3"/>
+        <location file="inc/base/BaseLogger.h" line="611" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseLogger_1a576bbb9fc3ac85c96779a3cd041ecb04" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseLogger" kindref="compound">BaseLogger</ref> &amp;</type>
@@ -1183,7 +1183,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseLogger.h" line="617" column="14"/>
+        <location file="inc/base/BaseLogger.h" line="616" column="14"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1213,7 +1213,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="inc/base/BaseLogger.h" line="359" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="359" bodyend="618"/>
+    <location file="inc/base/BaseLogger.h" line="358" column="1" bodyfile="inc/base/BaseLogger.h" bodystart="358" bodyend="617"/>
     <listofallmembers>
       <member refid="classBaseLogger_1ad3174118bec359f399b89a7ca0c18881" prot="protected" virt="non-virtual"><scope>BaseLogger</scope><name>BaseLogger</name></member>
       <member refid="classBaseLogger_1a9bc13a6a2e51b915e049bef19458ab14" prot="protected" virt="non-virtual"><scope>BaseLogger</scope><name>BaseLogger</name></member>

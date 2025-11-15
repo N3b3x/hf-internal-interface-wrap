@@ -3035,8 +3035,6 @@
     <member refid="namespaceTestPins_1a657b9be2e38d85aa02d37cbab63a8555" kind="variable"><name>LOOPBACK_IN</name></member>
     <member refid="namespaceTestPins_1a0673d81301ec96330979a32b654bd237" kind="variable"><name>STRESS_TEST_PIN</name></member>
   </compound>
-  <compound refid="doxygen-mainpage_8md" kind="file"><name>doxygen-mainpage.md</name>
-  </compound>
   <compound refid="AdcComprehensiveTest_8cpp" kind="file"><name>AdcComprehensiveTest.cpp</name>
     <member refid="AdcComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
     <member refid="AdcComprehensiveTest_8cpp_1aaff89257c54366921eebb8ec1348b1fd" kind="variable"><name>g_test_results</name></member>
@@ -5040,6 +5038,8 @@
     <member refid="RtosMutex_8h_1a78c3b693325e0a899165cc97f332ddb8" kind="typedef"><name>RtosLockGuard</name></member>
     <member refid="RtosMutex_8h_1a9852fe87ecd89837ccabec2c340780e9" kind="typedef"><name>MutexLockGuard</name></member>
   </compound>
+  <compound refid="README_8md" kind="file"><name>README.md</name>
+  </compound>
   <compound refid="EspAdc_8cpp" kind="file"><name>EspAdc.cpp</name>
     <member refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
     <member refid="EspAdc_8cpp_1a6f867bc58ef80a935f62b4724d533d0a" kind="variable"><name>ADC_MAX_RAW_VALUE</name></member>
@@ -5387,8 +5387,6 @@
   <compound refid="group__utils" kind="group"><name>utils</name>
   </compound>
   <compound refid="dir_af527b166bd0aeb318c4d06f73919cfb" kind="dir"><name>inc/base</name>
-  </compound>
-  <compound refid="dir_49e56c817e5e54854c35e136979f97ca" kind="dir"><name>docs</name>
   </compound>
   <compound refid="dir_74be4f6a8c360206df72b1bb4057fb39" kind="dir"><name>examples/esp32</name>
   </compound>

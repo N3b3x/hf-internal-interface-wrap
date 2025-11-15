@@ -22,7 +22,7 @@
       </memberdef>
     </sectiondef>
     <briefdescription>
-<para>All UART-related types, enums, and functions for Universal Asynchronous Receiver-Transmitter operations. </para>
+<para>All UART-related types, enums, and functions. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>

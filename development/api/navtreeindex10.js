@@ -1,6 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"globals_func_s.html":[4,1,1,12],
 "globals_func_t.html":[4,1,1,13],
 "globals_func_u.html":[4,1,1,14],
 "globals_func_v.html":[4,1,1,15],
@@ -56,8 +55,8 @@ var NAVTREEINDEX10 =
 "group__bluetooth.html#gaeb49a17c65e01fa9236e9ab0b4994f77":[1,1,16],
 "group__bluetooth.html#gaf4d7f320ef7ffa2ef26966adc8facb67":[1,1,20],
 "group__bluetooth.html#gaf5e48b9d9196063d4218a713d3e4d26c":[1,1,23],
-"group__bluetooth.html#gafbf3f04fa35349e183adb88ae6d03874":[1,1,12],
 "group__bluetooth.html#gafbf3f04fa35349e183adb88ae6d03874":[1,1,14],
+"group__bluetooth.html#gafbf3f04fa35349e183adb88ae6d03874":[1,1,12],
 "group__bluetooth.html#gafd55018d995cc8e2cc0add725d960aad":[1,1,24],
 "group__bluetooth.html#gafda17a08e5002454a03b6839af565482":[1,1,19],
 "group__bluetooth.html#gga279cc9e07f3b51e087d70eeb3f439003a0f8e31e0daf99afa513c3c0d359f1885":[1,1,18,1],
@@ -249,5 +248,6 @@ var NAVTREEINDEX10 =
 "group__wifi.html#gafde1b68efc0648ef58ccb0ee5d3d9644":[1,13,18],
 "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba1cab8dc185607ed0f259c7cf686a8427":[1,13,13,8],
 "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba27de53db7c725407fb155c33377b8346":[1,13,13,11],
-"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba31e6ab269d63cd2fe261a5f9377c217e":[1,13,13,5]
+"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba31e6ab269d63cd2fe261a5f9377c217e":[1,13,13,5],
+"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba5775f2e8785a9f89d250576fb58c25bd":[1,13,13,2]
 };
