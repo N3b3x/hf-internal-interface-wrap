@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hardfoc_20interface_20wrapper_0',['HardFOC Interface Wrapper',['../index.html',1,'']]]
+  ['hardfoc_20internal_20interface_20layer_3a_0',['🔧 HardFOC Internal Interface Layer:',['../index.html',1,'']]]
 ];
