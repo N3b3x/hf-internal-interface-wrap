@@ -217,7 +217,7 @@
         <name>HF_ADC_ONESHOT_CLK_SRC</name>
         <qualifiedname>EspAdc::HF_ADC_ONESHOT_CLK_SRC</qualifiedname>
         <initializer>=
-       ADC_DIGI_CLK_SRC_DEFAULT</initializer>
+       ADC_RTC_CLK_SRC_DEFAULT</initializer>
         <briefdescription>
 <para>Clock source for one-shot mode. </para>
         </briefdescription>

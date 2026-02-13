@@ -587,7 +587,7 @@
       </memberdef>
       <memberdef kind="define" id="EspAdc_8h_1a22377434b77e3414362b24d49a6856b7" prot="public" static="no">
         <name>HF_ESP32_ADC_ONESHOT_CLK_SRC</name>
-        <initializer>ADC_DIGI_CLK_SRC_DEFAULT</initializer>
+        <initializer>ADC_RTC_CLK_SRC_DEFAULT</initializer>
         <briefdescription>
 <para>Chosen clock source for ADC. </para>
         </briefdescription>
@@ -711,7 +711,7 @@
 <codeline lineno="80" refid="EspAdc_8h_1a579d0692d0d4868ba6df2571373bff91" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81" refid="EspAdc_8h_1a90636607bfa6d816d903ac6bccb6320f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83" refid="EspAdc_8h_1a22377434b77e3414362b24d49a6856b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="EspAdc_8h_1a22377434b77e3414362b24d49a6856b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_RTC_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="84" refid="EspAdc_8h_1a5e6193d77a2bb02f2065498c7b1c23d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="85" refid="EspAdc_8h_1a7dca42f353013f3bf20c4c2e73293a97" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
@@ -730,7 +730,7 @@
 <codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_RTC_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
@@ -749,7 +749,7 @@
 <codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_RTC_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="124"><highlight class="normal"></highlight></codeline>
@@ -768,7 +768,7 @@
 <codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="139"><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_RTC_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
@@ -787,7 +787,7 @@
 <codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_RTC_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
@@ -806,7 +806,7 @@
 <codeline lineno="175"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_RTC_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="181"><highlight class="normal"></highlight></codeline>
@@ -825,7 +825,7 @@
 <codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_RTC_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="200"><highlight class="normal"></highlight></codeline>

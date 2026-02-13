@@ -1,0 +1,37 @@
+---
+name: hf-internal-interface-wrap
+version: "1.0.0"
+description: |
+  HardFOC Internal Interface Wrapper – comprehensive hardware abstraction layer
+  with abstract base classes and ESP32 implementations for ADC, CAN, GPIO, I2C,
+  PWM, SPI, UART, timers, PIO, and wireless peripherals.
+
+maintainers:
+  - "HardFOC"
+license: "GPL-3.0"
+
+url: https://github.com/N3b3x/hf-internal-interface-wrap
+repository: https://github.com/N3b3x/hf-internal-interface-wrap
+issues: https://github.com/N3b3x/hf-internal-interface-wrap/issues
+
+targets:
+  - esp32
+  - esp32c6
+  - esp32s3
+  - esp32c3
+
+dependencies:
+  idf: ">=5.0.0"
+
+tags:
+  - "hardfoc"
+  - "hal"
+  - "interface"
+  - "driver"
+  - "gpio"
+  - "spi"
+  - "i2c"
+  - "uart"
+  - "can"
+  - "adc"
+  - "pwm"

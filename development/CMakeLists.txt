@@ -1,24 +1,51 @@
+# =============================================================================
+# HF Internal Interface Wrap - Root Component CMakeLists.txt
+# =============================================================================
+# This CMakeLists.txt configures the HardFOC Internal Interface Wrapper as an
+# ESP-IDF component when consumed directly (outside examples/esp32/).
+# It provides comprehensive hardware abstraction for HardFOC boards.
+# =============================================================================
+
 cmake_minimum_required(VERSION 3.16)
 
-# HardFOC Internal Interface Wrapper Component
-# This component provides comprehensive hardware abstraction layer for HardFOC motor controller boards
-# Currently supports ESP32-C6 with complete peripheral implementations
+# =============================================================================
+# Source File Discovery
+# =============================================================================
+# Discover all ESP32 implementation source files
+file(GLOB_RECURSE ESP32_SOURCES "src/mcu/esp32/*.cpp")
+file(GLOB_RECURSE UTIL_SOURCES "src/utils/*.cpp")
 
-set(COMPONENT_SRCDIR "src/mcu/esp32")
-set(COMPONENT_INCLUDE_DIRS "inc" "inc/base" "inc/mcu/esp32" "inc/utils" "inc/mcu/esp32/utils")
-
-# Source files
-set(COMPONENT_SRCS
-    # Base classes are header-only abstract interfaces
-    # ESP32 implementations are added automatically below via GLOB_RECURSE
+set(DRIVER_SRCS
+    ${ESP32_SOURCES}
+    ${UTIL_SOURCES}
 )
 
-# Add all available source files from the ESP32 directory
-file(GLOB_RECURSE ESP32_SOURCES "src/mcu/esp32/*.cpp")
-list(APPEND COMPONENT_SRCS ${ESP32_SOURCES})
+# Check which source files actually exist and add them
+set(EXISTING_SRCS "")
+foreach(src_file ${DRIVER_SRCS})
+    if(EXISTS "${src_file}")
+        list(APPEND EXISTING_SRCS "${src_file}")
+        message(STATUS "Found source: ${src_file}")
+    else()
+        message(WARNING "Source file not found: ${src_file}")
+    endif()
+endforeach()
 
-# Component dependencies
-set(COMPONENT_REQUIRES
+# =============================================================================
+# Include Directories Configuration
+# =============================================================================
+set(DRIVER_INCLUDE_DIRS
+    "inc"
+    "inc/base"
+    "inc/mcu/esp32"
+    "inc/mcu/esp32/utils"
+    "inc/utils"
+)
+
+# =============================================================================
+# Component Dependencies
+# =============================================================================
+set(DRIVER_REQUIRES
     freertos
     esp_common
     esp_hw_support
@@ -32,33 +59,30 @@ set(COMPONENT_REQUIRES
     esp_driver_i2c
 )
 
-# Optional dependencies
-set(COMPONENT_PRIV_REQUIRES
+set(DRIVER_PRIV_REQUIRES
     esp_netif
     esp_event
     esp_timer
     lwip
 )
 
-# Register the component
+# =============================================================================
+# Component Registration
+# =============================================================================
 idf_component_register(
-    SRCS ${COMPONENT_SRCS}
-    INCLUDE_DIRS ${COMPONENT_INCLUDE_DIRS}
-    REQUIRES ${COMPONENT_REQUIRES}
-    PRIV_REQUIRES ${COMPONENT_PRIV_REQUIRES}
+    SRCS ${EXISTING_SRCS}
+    INCLUDE_DIRS ${DRIVER_INCLUDE_DIRS}
+    REQUIRES ${DRIVER_REQUIRES}
+    PRIV_REQUIRES ${DRIVER_PRIV_REQUIRES}
 )
 
-# Set C++ standard
+# =============================================================================
+# Compiler Configuration
+# =============================================================================
 target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_17)
 
-# Add compiler flags for better C++ support
 target_compile_options(${COMPONENT_LIB} PRIVATE
     $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
     $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
-    $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++17>
-    # Suppress ESP-IDF specific warnings in C++ builds
     $<$<COMPILE_LANGUAGE:CXX>:-Wno-pedantic>
 )
-
-# Define component version (optional)
-set_property(TARGET ${COMPONENT_LIB} PROPERTY VERSION "1.0.0")
