@@ -80,7 +80,7 @@ extern "C" {
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_RTC_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
@@ -99,7 +99,7 @@ extern "C" {
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_RTC_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
@@ -118,7 +118,7 @@ extern "C" {
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_RTC_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
@@ -137,7 +137,7 @@ extern "C" {
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_RTC_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
@@ -156,7 +156,7 @@ extern "C" {
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_RTC_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
@@ -175,7 +175,7 @@ extern "C" {
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_RTC_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 
@@ -194,7 +194,7 @@ extern "C" {
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX 4096     ///< Maximum DMA buffer
 #define HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT 1024 ///< Default DMA buffer
 
-#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
+#define HF_ESP32_ADC_ONESHOT_CLK_SRC ADC_RTC_CLK_SRC_DEFAULT    ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_CONTINUOUS_CLK_SRC ADC_DIGI_CLK_SRC_DEFAULT ///< Chosen clock source for ADC
 #define HF_ESP32_ADC_ULP_MODE ADC_ULP_MODE_DISABLE               ///< ULP mode disabled by default
 

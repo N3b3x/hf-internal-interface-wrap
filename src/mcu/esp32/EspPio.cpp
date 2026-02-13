@@ -731,7 +731,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-      tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M (80 MHz)
+      tx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses PLL_F80M (80 MHz)
 #else
       tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
 #endif
@@ -802,7 +802,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-      rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M (80 MHz)
+      rx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses PLL_F80M (80 MHz)
 #else
       rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
 #endif
@@ -1344,7 +1344,7 @@ inline hf_u32_t EspPio::ResolveClockSourceHz(rmt_clock_source_t clk_src) noexcep
 #if SOC_CLK_TREE_SUPPORTED
   uint32_t freq = 0;
   switch (clk_src) {
-  case RMT_CLK_SRC_PLL_F80M:
+  case RMT_CLK_SRC_APB:
     // PLL_F80M is fixed 80 MHz
     return 80000000UL;
   case RMT_CLK_SRC_XTAL:
@@ -1371,7 +1371,7 @@ inline hf_u32_t EspPio::ResolveClockSourceHz(rmt_clock_source_t clk_src) noexcep
 // Legacy alias retained for internal calls
 inline hf_u32_t EspPio::GetClockSourceFrequency(rmt_clock_source_t clk_src) noexcept {
   switch (clk_src) {
-  case RMT_CLK_SRC_PLL_F80M:
+  case RMT_CLK_SRC_APB:
     return 80000000UL;
   case RMT_CLK_SRC_XTAL:
     return 40000000UL;
@@ -1598,7 +1598,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
 
   // Choose clock source: use user-selected if set, otherwise target default
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-  rmt_clock_source_t default_src = RMT_CLK_SRC_PLL_F80M;
+  rmt_clock_source_t default_src = RMT_CLK_SRC_APB;
 #else
   rmt_clock_source_t default_src = RMT_CLK_SRC_DEFAULT;
 #endif
@@ -1620,7 +1620,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-    tx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M (80 MHz)
+    tx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses PLL_F80M (80 MHz)
 #else
     tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
 #endif
@@ -1679,7 +1679,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
 // ESP32-C6 specific clock source configuration
 #if defined(CONFIG_IDF_TARGET_ESP32C6)
-    rx_config.clk_src = RMT_CLK_SRC_PLL_F80M; // ESP32-C6 uses PLL_F80M (80 MHz)
+    rx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses PLL_F80M (80 MHz)
 #else
     rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
 #endif

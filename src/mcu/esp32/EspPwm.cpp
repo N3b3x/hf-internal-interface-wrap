@@ -1906,7 +1906,7 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
   ledc_clk_cfg_t clk_cfg = LEDC_AUTO_CLK;
   switch (clock_source) {
   case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-    clk_cfg = LEDC_USE_PLL_DIV_CLK; // Use PLL_F80M clock (80MHz) explicitly
+    clk_cfg = LEDC_USE_APB_CLK; // Use APB clock (80MHz) explicitly
     break;
   case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
     clk_cfg = LEDC_USE_XTAL_CLK;
