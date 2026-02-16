@@ -79,7 +79,7 @@ idf_component_register(
 # =============================================================================
 # Compiler Configuration
 # =============================================================================
-target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_17)
+target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_20)
 
 target_compile_options(${COMPONENT_LIB} PRIVATE
     $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
