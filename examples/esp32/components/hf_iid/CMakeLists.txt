@@ -118,7 +118,7 @@ idf_component_register(
 )
 
 # Set C++ standard
-target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_17)
+target_compile_features(${COMPONENT_LIB} PRIVATE cxx_std_20)
 
 # Add ESP32 family definitions based on target
 if(CONFIG_IDF_TARGET_ESP32)
@@ -204,7 +204,7 @@ target_compile_options(${COMPONENT_LIB} PRIVATE
 
 # Add specific flags for C++ files
 target_compile_options(${COMPONENT_LIB} PRIVATE
-    $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++17>
+    $<$<COMPILE_LANGUAGE:CXX>:-std=gnu++20>
     $<$<COMPILE_LANGUAGE:CXX>:-fno-rtti>
     $<$<COMPILE_LANGUAGE:CXX>:-fno-exceptions>
     $<$<COMPILE_LANGUAGE:CXX>:-Wno-error=pedantic>
