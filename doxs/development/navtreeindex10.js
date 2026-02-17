@@ -1,9 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"globals_func_t.html":[4,1,1,13],
-"globals_func_u.html":[4,1,1,14],
-"globals_func_v.html":[4,1,1,15],
-"globals_func_w.html":[4,1,1,16],
 "globals_g.html":[4,1,0,6],
 "globals_h.html":[4,1,0,7],
 "globals_i.html":[4,1,0,8],
@@ -18,8 +14,8 @@ var NAVTREEINDEX10 =
 "globals_type.html":[4,1,3],
 "globals_u.html":[4,1,0,17],
 "globals_v.html":[4,1,0,18],
-"globals_vars.html":[4,1,2,0],
 "globals_vars.html":[4,1,2],
+"globals_vars.html":[4,1,2,0],
 "globals_vars_b.html":[4,1,2,1],
 "globals_vars_c.html":[4,1,2,2],
 "globals_vars_d.html":[4,1,2,3],
@@ -118,13 +114,13 @@ var NAVTREEINDEX10 =
 "group__esp32__types.html":[1,15],
 "group__gpio.html":[1,3],
 "group__gpio.html#ga04d416163750773ac08d092bd0d4038e":[1,3,12],
-"group__gpio.html#ga1327f68d8287dd473a8c6cf0333a989f":[1,3,7],
 "group__gpio.html#ga2632aac2351807c35e790ec20bda305d":[1,3,10],
 "group__gpio.html#ga49490004a4935c1f8f727fcbfba7f887":[1,3,15],
 "group__gpio.html#ga6b3450e1c9d6cba3355cc3567bb0cce3":[1,3,9],
 "group__gpio.html#ga7830c017a6fb46b8478c7ca44940c3c1":[1,3,11],
 "group__gpio.html#ga7d27555a7050f5d9d9006c96b841e335":[1,3,14],
 "group__gpio.html#ga825412a54660defc9ecbf8ad1ea1cf7b":[1,3,13],
+"group__gpio.html#ga9a7aef9fbdf0b553981712baf9a4223a":[1,3,7],
 "group__gpio.html#gacdef61b325fdcc83f9974bc7c3c6d800":[1,3,6],
 "group__gpio.html#gaf02cdaf150fa829e4a871e58ed772c6d":[1,3,8],
 "group__gpio.html#gafc39fe16e57bc415f05e1f8bf7c4e0be":[1,3,16],
@@ -249,5 +245,9 @@ var NAVTREEINDEX10 =
 "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba1cab8dc185607ed0f259c7cf686a8427":[1,13,13,8],
 "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba27de53db7c725407fb155c33377b8346":[1,13,13,11],
 "group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba31e6ab269d63cd2fe261a5f9377c217e":[1,13,13,5],
-"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba5775f2e8785a9f89d250576fb58c25bd":[1,13,13,2]
+"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba5775f2e8785a9f89d250576fb58c25bd":[1,13,13,2],
+"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba68770d9ff5da66a64a48c22305c5e116":[1,13,13,6],
+"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbba75ced5f060962b871bcaa5656d919b60":[1,13,13,10],
+"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbaa17d26945a91804f98acb719c5670b6d":[1,13,13,7],
+"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbaa6134af7fa2f1cb9dd5c073dfdda79f9":[1,13,13,1]
 };

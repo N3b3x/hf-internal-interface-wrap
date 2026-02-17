@@ -107,13 +107,6 @@ $(function(){initNavTree('EspBluetooth_8h.html',''); initResizable(); });
 <code>#include &quot;<a class="el" href="HardwareTypes_8h_source.html">HardwareTypes.h</a>&quot;</code><br />
 <code>#include &quot;esp_log.h&quot;</code><br />
 <code>#include &quot;nvs_flash.h&quot;</code><br />
-<code>#include &quot;esp_bt.h&quot;</code><br />
-<code>#include &quot;esp_bt_defs.h&quot;</code><br />
-<code>#include &quot;esp_bt_main.h&quot;</code><br />
-<code>#include &quot;esp_gap_ble_api.h&quot;</code><br />
-<code>#include &quot;esp_gatt_common_api.h&quot;</code><br />
-<code>#include &quot;esp_gattc_api.h&quot;</code><br />
-<code>#include &quot;esp_gatts_api.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="RtosMutex_8h_source.html">RtosMutex.h</a>&quot;</code><br />
 <code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
@@ -155,6 +148,8 @@ Macros</h2></td></tr>
 <tr class="separator:a5e3d4a9ebca2766708769c6f2b857f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a706379c09a6d581a67862ffb30b056f6" id="r_a706379c09a6d581a67862ffb30b056f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a706379c09a6d581a67862ffb30b056f6">NIMBLE_HEADERS_AVAILABLE</a>&#160;&#160;&#160;0</td></tr>
 <tr class="separator:a706379c09a6d581a67862ffb30b056f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00271c60b092271e35031c49445e1cf7" id="r_a00271c60b092271e35031c49445e1cf7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00271c60b092271e35031c49445e1cf7">BLUEDROID_HEADERS_AVAILABLE</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a00271c60b092271e35031c49445e1cf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -182,6 +177,20 @@ For ESP32C3/H2, BLE-only using Bluedroid </dd>
 <dd>
 ESP32S2 has no Bluetooth support </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a00271c60b092271e35031c49445e1cf7" name="a00271c60b092271e35031c49445e1cf7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00271c60b092271e35031c49445e1cf7">&#9670;&#160;</a></span>BLUEDROID_HEADERS_AVAILABLE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BLUEDROID_HEADERS_AVAILABLE&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a88b5b08391942cbdae0e341ac304ee85" name="a88b5b08391942cbdae0e341ac304ee85"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a88b5b08391942cbdae0e341ac304ee85">&#9670;&#160;</a></span>HAS_A2DP_SUPPORT</h2>
 

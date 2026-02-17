@@ -114,99 +114,99 @@ Inheritance diagram for BaseWifi:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a564fef8c0ffdd4f1d69b367bb58cbf73" id="r_a564fef8c0ffdd4f1d69b367bb58cbf73"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a564fef8c0ffdd4f1d69b367bb58cbf73">~BaseWifi</a> ()=default</td></tr>
-<tr class="memdesc:a564fef8c0ffdd4f1d69b367bb58cbf73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
-<tr class="separator:a564fef8c0ffdd4f1d69b367bb58cbf73"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb3f364e100cf74087b65c8529bda6da" id="r_afb3f364e100cf74087b65c8529bda6da"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afb3f364e100cf74087b65c8529bda6da">Initialize</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode)=0</td></tr>
-<tr class="memdesc:afb3f364e100cf74087b65c8529bda6da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the WiFi subsystem.  <br /></td></tr>
-<tr class="separator:afb3f364e100cf74087b65c8529bda6da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaf483e98b1f98467356bdfed5071069" id="r_afaf483e98b1f98467356bdfed5071069"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaf483e98b1f98467356bdfed5071069">Deinitialize</a> ()=0</td></tr>
-<tr class="memdesc:afaf483e98b1f98467356bdfed5071069"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the WiFi subsystem.  <br /></td></tr>
-<tr class="separator:afaf483e98b1f98467356bdfed5071069"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f9a5bb5a9fbee7af3412385286baf59" id="r_a0f9a5bb5a9fbee7af3412385286baf59"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f9a5bb5a9fbee7af3412385286baf59">IsInitialized</a> () const =0</td></tr>
-<tr class="memdesc:a0f9a5bb5a9fbee7af3412385286baf59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if WiFi is initialized.  <br /></td></tr>
-<tr class="separator:a0f9a5bb5a9fbee7af3412385286baf59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd648ddba6ad1f2e10941318dcb0dfab" id="r_afd648ddba6ad1f2e10941318dcb0dfab"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd648ddba6ad1f2e10941318dcb0dfab">SetMode</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode)=0</td></tr>
-<tr class="memdesc:afd648ddba6ad1f2e10941318dcb0dfab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set WiFi operating mode.  <br /></td></tr>
-<tr class="separator:afd648ddba6ad1f2e10941318dcb0dfab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a849f44352adf62aab5d07cb9f4666b8e" id="r_a849f44352adf62aab5d07cb9f4666b8e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a849f44352adf62aab5d07cb9f4666b8e">GetMode</a> () const =0</td></tr>
-<tr class="memdesc:a849f44352adf62aab5d07cb9f4666b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current WiFi operating mode.  <br /></td></tr>
-<tr class="separator:a849f44352adf62aab5d07cb9f4666b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed3ba55f847bb8de043fc794394e85d9" id="r_aed3ba55f847bb8de043fc794394e85d9"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aed3ba55f847bb8de043fc794394e85d9">ConfigureStation</a> (const <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;config)=0</td></tr>
-<tr class="memdesc:aed3ba55f847bb8de043fc794394e85d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure station parameters.  <br /></td></tr>
-<tr class="separator:aed3ba55f847bb8de043fc794394e85d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada2eadb6792ac79148a0e2c4fccab27d" id="r_ada2eadb6792ac79148a0e2c4fccab27d"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ada2eadb6792ac79148a0e2c4fccab27d">Connect</a> (uint32_t timeout_ms=0)=0</td></tr>
-<tr class="memdesc:ada2eadb6792ac79148a0e2c4fccab27d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a WiFi network (station mode)  <br /></td></tr>
-<tr class="separator:ada2eadb6792ac79148a0e2c4fccab27d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a116ea68e8e5e29ed87b3a3ab60df164e" id="r_a116ea68e8e5e29ed87b3a3ab60df164e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a116ea68e8e5e29ed87b3a3ab60df164e">Disconnect</a> ()=0</td></tr>
-<tr class="memdesc:a116ea68e8e5e29ed87b3a3ab60df164e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from WiFi network.  <br /></td></tr>
-<tr class="separator:a116ea68e8e5e29ed87b3a3ab60df164e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d913dc24e648f770066873000af4d1e" id="r_a7d913dc24e648f770066873000af4d1e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d913dc24e648f770066873000af4d1e">IsConnected</a> () const =0</td></tr>
-<tr class="memdesc:a7d913dc24e648f770066873000af4d1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if connected to a network.  <br /></td></tr>
-<tr class="separator:a7d913dc24e648f770066873000af4d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a314875b45ef4198c7b69ccc0660066" id="r_a3a314875b45ef4198c7b69ccc0660066"><td class="memItemLeft" align="right" valign="top">virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a314875b45ef4198c7b69ccc0660066">GetRssi</a> () const =0</td></tr>
-<tr class="memdesc:a3a314875b45ef4198c7b69ccc0660066"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get signal strength (RSSI)  <br /></td></tr>
-<tr class="separator:a3a314875b45ef4198c7b69ccc0660066"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f92e5e27c043ea1d5cc90ed3d473bec" id="r_a2f92e5e27c043ea1d5cc90ed3d473bec"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f92e5e27c043ea1d5cc90ed3d473bec">GetIpInfo</a> (<a class="el" href="structhf__wifi__ip__info__t.html">hf_wifi_ip_info_t</a> &amp;ip_info) const =0</td></tr>
-<tr class="memdesc:a2f92e5e27c043ea1d5cc90ed3d473bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current IP information.  <br /></td></tr>
-<tr class="separator:a2f92e5e27c043ea1d5cc90ed3d473bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5e8e2fc7f09be74b034260b4e499d96" id="r_ab5e8e2fc7f09be74b034260b4e499d96"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5e8e2fc7f09be74b034260b4e499d96">ConfigureAccessPoint</a> (const <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;config)=0</td></tr>
-<tr class="memdesc:ab5e8e2fc7f09be74b034260b4e499d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Access Point parameters.  <br /></td></tr>
-<tr class="separator:ab5e8e2fc7f09be74b034260b4e499d96"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab038bcdbce9651c4c3b0305805cbd7f3" id="r_ab038bcdbce9651c4c3b0305805cbd7f3"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab038bcdbce9651c4c3b0305805cbd7f3">StartAccessPoint</a> ()=0</td></tr>
-<tr class="memdesc:ab038bcdbce9651c4c3b0305805cbd7f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start Access Point.  <br /></td></tr>
-<tr class="separator:ab038bcdbce9651c4c3b0305805cbd7f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8671f5c88289bc48f1dbdbf109d5e4d0" id="r_a8671f5c88289bc48f1dbdbf109d5e4d0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8671f5c88289bc48f1dbdbf109d5e4d0">StopAccessPoint</a> ()=0</td></tr>
-<tr class="memdesc:a8671f5c88289bc48f1dbdbf109d5e4d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop Access Point.  <br /></td></tr>
-<tr class="separator:a8671f5c88289bc48f1dbdbf109d5e4d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0b198b02ca774d1ca2fe0ac9b468c61" id="r_ab0b198b02ca774d1ca2fe0ac9b468c61"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0b198b02ca774d1ca2fe0ac9b468c61">IsAccessPointActive</a> () const =0</td></tr>
-<tr class="memdesc:ab0b198b02ca774d1ca2fe0ac9b468c61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if Access Point is running.  <br /></td></tr>
-<tr class="separator:ab0b198b02ca774d1ca2fe0ac9b468c61"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf5439db72fa1f93e0d37ac8ccaffef8" id="r_abf5439db72fa1f93e0d37ac8ccaffef8"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abf5439db72fa1f93e0d37ac8ccaffef8">GetConnectedStationCount</a> () const =0</td></tr>
-<tr class="memdesc:abf5439db72fa1f93e0d37ac8ccaffef8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of connected stations.  <br /></td></tr>
-<tr class="separator:abf5439db72fa1f93e0d37ac8ccaffef8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a309f30f05a1b4e26687ca19e55a12667" id="r_a309f30f05a1b4e26687ca19e55a12667"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a309f30f05a1b4e26687ca19e55a12667">StartScan</a> (bool show_hidden=false, bool passive=false, uint32_t max_scan_time_ms=0)=0</td></tr>
-<tr class="memdesc:a309f30f05a1b4e26687ca19e55a12667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start network scan.  <br /></td></tr>
-<tr class="separator:a309f30f05a1b4e26687ca19e55a12667"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8d71d17477b03d2775f5c8d89aecbf52" id="r_a8d71d17477b03d2775f5c8d89aecbf52"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d71d17477b03d2775f5c8d89aecbf52">GetScanResults</a> (std::vector&lt; <a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a> &gt; &amp;networks, uint16_t max_networks=0)=0</td></tr>
-<tr class="memdesc:a8d71d17477b03d2775f5c8d89aecbf52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get scan results.  <br /></td></tr>
-<tr class="separator:a8d71d17477b03d2775f5c8d89aecbf52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3470b0cf542ca2aed0cf2fa36674edb2" id="r_a3470b0cf542ca2aed0cf2fa36674edb2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3470b0cf542ca2aed0cf2fa36674edb2">IsScanning</a> () const =0</td></tr>
-<tr class="memdesc:a3470b0cf542ca2aed0cf2fa36674edb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if scan is in progress.  <br /></td></tr>
-<tr class="separator:a3470b0cf542ca2aed0cf2fa36674edb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add13affb5f6071fc54a24f25545f8098" id="r_add13affb5f6071fc54a24f25545f8098"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#add13affb5f6071fc54a24f25545f8098">GetState</a> () const =0</td></tr>
-<tr class="memdesc:add13affb5f6071fc54a24f25545f8098"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current WiFi state.  <br /></td></tr>
-<tr class="separator:add13affb5f6071fc54a24f25545f8098"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afcbe903d63da73d424ecd932ca038b08" id="r_afcbe903d63da73d424ecd932ca038b08"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afcbe903d63da73d424ecd932ca038b08">GetConnectedSsid</a> () const =0</td></tr>
-<tr class="memdesc:afcbe903d63da73d424ecd932ca038b08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get connected network SSID.  <br /></td></tr>
-<tr class="separator:afcbe903d63da73d424ecd932ca038b08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02b0af73b308b92b8cc8ad2ce0f27bc8" id="r_a02b0af73b308b92b8cc8ad2ce0f27bc8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02b0af73b308b92b8cc8ad2ce0f27bc8">GetConnectedBssid</a> (uint8_t bssid[6]) const =0</td></tr>
-<tr class="memdesc:a02b0af73b308b92b8cc8ad2ce0f27bc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get connected network BSSID.  <br /></td></tr>
-<tr class="separator:a02b0af73b308b92b8cc8ad2ce0f27bc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab17695fd4b2f50230451d82ac8c746e4" id="r_ab17695fd4b2f50230451d82ac8c746e4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab17695fd4b2f50230451d82ac8c746e4">SetPowerSave</a> (<a class="el" href="group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760">hf_wifi_power_save_t</a> mode)=0</td></tr>
-<tr class="memdesc:ab17695fd4b2f50230451d82ac8c746e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set power save mode.  <br /></td></tr>
-<tr class="separator:ab17695fd4b2f50230451d82ac8c746e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b1b27bfd6843ed21e3d9220ddaad908" id="r_a0b1b27bfd6843ed21e3d9220ddaad908"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760">hf_wifi_power_save_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b1b27bfd6843ed21e3d9220ddaad908">GetPowerSave</a> () const =0</td></tr>
-<tr class="memdesc:a0b1b27bfd6843ed21e3d9220ddaad908"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current power save mode.  <br /></td></tr>
-<tr class="separator:a0b1b27bfd6843ed21e3d9220ddaad908"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46ce6ae5f1b9193941c1e3daaf88ae0c" id="r_a46ce6ae5f1b9193941c1e3daaf88ae0c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a46ce6ae5f1b9193941c1e3daaf88ae0c">RegisterEventCallback</a> (<a class="el" href="group__wifi.html#gafc36eb4cdfaf0c2ea45afeaac3ad13c9">hf_wifi_event_callback_t</a> callback)=0</td></tr>
-<tr class="memdesc:a46ce6ae5f1b9193941c1e3daaf88ae0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register event callback.  <br /></td></tr>
-<tr class="separator:a46ce6ae5f1b9193941c1e3daaf88ae0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b722385f7ca418d40f17c853f1483b4" id="r_a6b722385f7ca418d40f17c853f1483b4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b722385f7ca418d40f17c853f1483b4">UnregisterEventCallback</a> ()=0</td></tr>
-<tr class="memdesc:a6b722385f7ca418d40f17c853f1483b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister event callback.  <br /></td></tr>
-<tr class="separator:a6b722385f7ca418d40f17c853f1483b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87af382a1139b74961f048b094e60cb5" id="r_a87af382a1139b74961f048b094e60cb5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a87af382a1139b74961f048b094e60cb5">GetMacAddress</a> (uint8_t mac[6], uint8_t interface=0) const =0</td></tr>
-<tr class="memdesc:a87af382a1139b74961f048b094e60cb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get MAC address.  <br /></td></tr>
-<tr class="separator:a87af382a1139b74961f048b094e60cb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aace6973de51aaa1b7157f15cf677f0f2" id="r_aace6973de51aaa1b7157f15cf677f0f2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aace6973de51aaa1b7157f15cf677f0f2">SetMacAddress</a> (const uint8_t mac[6], uint8_t interface=0)=0</td></tr>
-<tr class="memdesc:aace6973de51aaa1b7157f15cf677f0f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MAC address.  <br /></td></tr>
-<tr class="separator:aace6973de51aaa1b7157f15cf677f0f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b10843cc30b6e3aac4f81db0ab03cb0" id="r_a2b10843cc30b6e3aac4f81db0ab03cb0"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b10843cc30b6e3aac4f81db0ab03cb0">GetChannel</a> () const =0</td></tr>
-<tr class="memdesc:a2b10843cc30b6e3aac4f81db0ab03cb0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get WiFi channel.  <br /></td></tr>
-<tr class="separator:a2b10843cc30b6e3aac4f81db0ab03cb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8b157a985ffb062418456b66d523f92" id="r_ab8b157a985ffb062418456b66d523f92"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8b157a985ffb062418456b66d523f92">SetChannel</a> (uint8_t channel)=0</td></tr>
-<tr class="memdesc:ab8b157a985ffb062418456b66d523f92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set WiFi channel.  <br /></td></tr>
-<tr class="separator:ab8b157a985ffb062418456b66d523f92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ece5610228558420ddb84fe1045619d" id="r_a3ece5610228558420ddb84fe1045619d"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ece5610228558420ddb84fe1045619d">~BaseWifi</a> () noexcept=default</td></tr>
+<tr class="memdesc:a3ece5610228558420ddb84fe1045619d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
+<tr class="separator:a3ece5610228558420ddb84fe1045619d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dcbf03e298b35c171d94dd753167603" id="r_a7dcbf03e298b35c171d94dd753167603"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dcbf03e298b35c171d94dd753167603">Initialize</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode) noexcept=0</td></tr>
+<tr class="memdesc:a7dcbf03e298b35c171d94dd753167603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the WiFi subsystem.  <br /></td></tr>
+<tr class="separator:a7dcbf03e298b35c171d94dd753167603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaab55d675fbf45a1983933978136512" id="r_aeaab55d675fbf45a1983933978136512"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeaab55d675fbf45a1983933978136512">Deinitialize</a> () noexcept=0</td></tr>
+<tr class="memdesc:aeaab55d675fbf45a1983933978136512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the WiFi subsystem.  <br /></td></tr>
+<tr class="separator:aeaab55d675fbf45a1983933978136512"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4964418eea67a60db032ded6def5867e" id="r_a4964418eea67a60db032ded6def5867e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4964418eea67a60db032ded6def5867e">IsInitialized</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a4964418eea67a60db032ded6def5867e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if WiFi is initialized.  <br /></td></tr>
+<tr class="separator:a4964418eea67a60db032ded6def5867e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f70dc5650c3ec118b167ff28d796ef2" id="r_a5f70dc5650c3ec118b167ff28d796ef2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f70dc5650c3ec118b167ff28d796ef2">SetMode</a> (<a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a> mode) noexcept=0</td></tr>
+<tr class="memdesc:a5f70dc5650c3ec118b167ff28d796ef2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set WiFi operating mode.  <br /></td></tr>
+<tr class="separator:a5f70dc5650c3ec118b167ff28d796ef2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6aca0f4a9d018f2674210115953335e1" id="r_a6aca0f4a9d018f2674210115953335e1"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__wifi.html#ga90ab2c8a51fc7cb116b659df115407b9">hf_wifi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6aca0f4a9d018f2674210115953335e1">GetMode</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a6aca0f4a9d018f2674210115953335e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current WiFi operating mode.  <br /></td></tr>
+<tr class="separator:a6aca0f4a9d018f2674210115953335e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7edf6961ded18919b607bb271527e617" id="r_a7edf6961ded18919b607bb271527e617"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7edf6961ded18919b607bb271527e617">ConfigureStation</a> (const <a class="el" href="structhf__wifi__station__config__t.html">hf_wifi_station_config_t</a> &amp;config) noexcept=0</td></tr>
+<tr class="memdesc:a7edf6961ded18919b607bb271527e617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure station parameters.  <br /></td></tr>
+<tr class="separator:a7edf6961ded18919b607bb271527e617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafb382c35a7a955c4817a150eac99abe" id="r_aafb382c35a7a955c4817a150eac99abe"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aafb382c35a7a955c4817a150eac99abe">Connect</a> (uint32_t timeout_ms=0) noexcept=0</td></tr>
+<tr class="memdesc:aafb382c35a7a955c4817a150eac99abe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a WiFi network (station mode)  <br /></td></tr>
+<tr class="separator:aafb382c35a7a955c4817a150eac99abe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67e69fdc5023cb59fcaf5769443c384a" id="r_a67e69fdc5023cb59fcaf5769443c384a"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a67e69fdc5023cb59fcaf5769443c384a">Disconnect</a> () noexcept=0</td></tr>
+<tr class="memdesc:a67e69fdc5023cb59fcaf5769443c384a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from WiFi network.  <br /></td></tr>
+<tr class="separator:a67e69fdc5023cb59fcaf5769443c384a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accff1c8c0f300e4d7c5fd9091bb8e68c" id="r_accff1c8c0f300e4d7c5fd9091bb8e68c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accff1c8c0f300e4d7c5fd9091bb8e68c">IsConnected</a> () const noexcept=0</td></tr>
+<tr class="memdesc:accff1c8c0f300e4d7c5fd9091bb8e68c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if connected to a network.  <br /></td></tr>
+<tr class="separator:accff1c8c0f300e4d7c5fd9091bb8e68c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a03d4ae5cae9731abda44ead5b1a740" id="r_a4a03d4ae5cae9731abda44ead5b1a740"><td class="memItemLeft" align="right" valign="top">virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a03d4ae5cae9731abda44ead5b1a740">GetRssi</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a4a03d4ae5cae9731abda44ead5b1a740"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get signal strength (RSSI)  <br /></td></tr>
+<tr class="separator:a4a03d4ae5cae9731abda44ead5b1a740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21bae9b1ecfd52f3f20262eb67b6b8cc" id="r_a21bae9b1ecfd52f3f20262eb67b6b8cc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21bae9b1ecfd52f3f20262eb67b6b8cc">GetIpInfo</a> (<a class="el" href="structhf__wifi__ip__info__t.html">hf_wifi_ip_info_t</a> &amp;ip_info) const noexcept=0</td></tr>
+<tr class="memdesc:a21bae9b1ecfd52f3f20262eb67b6b8cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current IP information.  <br /></td></tr>
+<tr class="separator:a21bae9b1ecfd52f3f20262eb67b6b8cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ab63d13615654924cfd13934d6d0c24" id="r_a6ab63d13615654924cfd13934d6d0c24"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ab63d13615654924cfd13934d6d0c24">ConfigureAccessPoint</a> (const <a class="el" href="structhf__wifi__ap__config__t.html">hf_wifi_ap_config_t</a> &amp;config) noexcept=0</td></tr>
+<tr class="memdesc:a6ab63d13615654924cfd13934d6d0c24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Access Point parameters.  <br /></td></tr>
+<tr class="separator:a6ab63d13615654924cfd13934d6d0c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991becb698084ea2a2f808dd62608a9e" id="r_a991becb698084ea2a2f808dd62608a9e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a991becb698084ea2a2f808dd62608a9e">StartAccessPoint</a> () noexcept=0</td></tr>
+<tr class="memdesc:a991becb698084ea2a2f808dd62608a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start Access Point.  <br /></td></tr>
+<tr class="separator:a991becb698084ea2a2f808dd62608a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac23900e794081ad63752108f36943fac" id="r_ac23900e794081ad63752108f36943fac"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac23900e794081ad63752108f36943fac">StopAccessPoint</a> () noexcept=0</td></tr>
+<tr class="memdesc:ac23900e794081ad63752108f36943fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop Access Point.  <br /></td></tr>
+<tr class="separator:ac23900e794081ad63752108f36943fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55e73947f3b8b9171b6cc8f9eae32070" id="r_a55e73947f3b8b9171b6cc8f9eae32070"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55e73947f3b8b9171b6cc8f9eae32070">IsAccessPointActive</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a55e73947f3b8b9171b6cc8f9eae32070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if Access Point is running.  <br /></td></tr>
+<tr class="separator:a55e73947f3b8b9171b6cc8f9eae32070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3660009955722f75aff996acdfa6c03" id="r_ad3660009955722f75aff996acdfa6c03"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad3660009955722f75aff996acdfa6c03">GetConnectedStationCount</a> () const noexcept=0</td></tr>
+<tr class="memdesc:ad3660009955722f75aff996acdfa6c03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of connected stations.  <br /></td></tr>
+<tr class="separator:ad3660009955722f75aff996acdfa6c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa96710ea88c9287acd7aa0135b2615" id="r_a9aa96710ea88c9287acd7aa0135b2615"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9aa96710ea88c9287acd7aa0135b2615">StartScan</a> (bool show_hidden=false, bool passive=false, uint32_t max_scan_time_ms=0) noexcept=0</td></tr>
+<tr class="memdesc:a9aa96710ea88c9287acd7aa0135b2615"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start network scan.  <br /></td></tr>
+<tr class="separator:a9aa96710ea88c9287acd7aa0135b2615"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a171cdfdb4d87bae65d8c5642559ebcfc" id="r_a171cdfdb4d87bae65d8c5642559ebcfc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a171cdfdb4d87bae65d8c5642559ebcfc">GetScanResults</a> (std::vector&lt; <a class="el" href="structhf__wifi__network__info__t.html">hf_wifi_network_info_t</a> &gt; &amp;networks, uint16_t max_networks=0) noexcept=0</td></tr>
+<tr class="memdesc:a171cdfdb4d87bae65d8c5642559ebcfc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get scan results.  <br /></td></tr>
+<tr class="separator:a171cdfdb4d87bae65d8c5642559ebcfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c47f0dd5b537b221d09583de9462c5" id="r_a99c47f0dd5b537b221d09583de9462c5"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a99c47f0dd5b537b221d09583de9462c5">IsScanning</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a99c47f0dd5b537b221d09583de9462c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if scan is in progress.  <br /></td></tr>
+<tr class="separator:a99c47f0dd5b537b221d09583de9462c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac86631e9af130d8fb7e016b1650249e0" id="r_ac86631e9af130d8fb7e016b1650249e0"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__wifi.html#ga45e751432d70ba4ee36c1369914ee419">hf_wifi_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac86631e9af130d8fb7e016b1650249e0">GetState</a> () const noexcept=0</td></tr>
+<tr class="memdesc:ac86631e9af130d8fb7e016b1650249e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current WiFi state.  <br /></td></tr>
+<tr class="separator:ac86631e9af130d8fb7e016b1650249e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e00e7224b68c1d450b3f359842f5352" id="r_a0e00e7224b68c1d450b3f359842f5352"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e00e7224b68c1d450b3f359842f5352">GetConnectedSsid</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a0e00e7224b68c1d450b3f359842f5352"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get connected network SSID.  <br /></td></tr>
+<tr class="separator:a0e00e7224b68c1d450b3f359842f5352"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1867093f6857b178292f6107a0799397" id="r_a1867093f6857b178292f6107a0799397"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1867093f6857b178292f6107a0799397">GetConnectedBssid</a> (uint8_t bssid[6]) const noexcept=0</td></tr>
+<tr class="memdesc:a1867093f6857b178292f6107a0799397"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get connected network BSSID.  <br /></td></tr>
+<tr class="separator:a1867093f6857b178292f6107a0799397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a833f86dcbf72369e30120d1f86973086" id="r_a833f86dcbf72369e30120d1f86973086"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a833f86dcbf72369e30120d1f86973086">SetPowerSave</a> (<a class="el" href="group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760">hf_wifi_power_save_t</a> mode) noexcept=0</td></tr>
+<tr class="memdesc:a833f86dcbf72369e30120d1f86973086"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set power save mode.  <br /></td></tr>
+<tr class="separator:a833f86dcbf72369e30120d1f86973086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a231152b9b0c982d8a03ab4a8fdcbd09b" id="r_a231152b9b0c982d8a03ab4a8fdcbd09b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="group__wifi.html#gafd37336bb8e3a8528795ddfdbd9d5760">hf_wifi_power_save_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a231152b9b0c982d8a03ab4a8fdcbd09b">GetPowerSave</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a231152b9b0c982d8a03ab4a8fdcbd09b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current power save mode.  <br /></td></tr>
+<tr class="separator:a231152b9b0c982d8a03ab4a8fdcbd09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6233e0fedcc7df952c2716782644e1ad" id="r_a6233e0fedcc7df952c2716782644e1ad"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6233e0fedcc7df952c2716782644e1ad">RegisterEventCallback</a> (<a class="el" href="group__wifi.html#gafc36eb4cdfaf0c2ea45afeaac3ad13c9">hf_wifi_event_callback_t</a> callback) noexcept=0</td></tr>
+<tr class="memdesc:a6233e0fedcc7df952c2716782644e1ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register event callback.  <br /></td></tr>
+<tr class="separator:a6233e0fedcc7df952c2716782644e1ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedb321d904ff91a7b30a6a9fdd481903" id="r_aedb321d904ff91a7b30a6a9fdd481903"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedb321d904ff91a7b30a6a9fdd481903">UnregisterEventCallback</a> () noexcept=0</td></tr>
+<tr class="memdesc:aedb321d904ff91a7b30a6a9fdd481903"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister event callback.  <br /></td></tr>
+<tr class="separator:aedb321d904ff91a7b30a6a9fdd481903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bc97f10cc20824db4d2a71f5bd599e6" id="r_a1bc97f10cc20824db4d2a71f5bd599e6"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1bc97f10cc20824db4d2a71f5bd599e6">GetMacAddress</a> (uint8_t mac[6], uint8_t interface=0) const noexcept=0</td></tr>
+<tr class="memdesc:a1bc97f10cc20824db4d2a71f5bd599e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get MAC address.  <br /></td></tr>
+<tr class="separator:a1bc97f10cc20824db4d2a71f5bd599e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4000a9838ec51affceaea83fb8402c0c" id="r_a4000a9838ec51affceaea83fb8402c0c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4000a9838ec51affceaea83fb8402c0c">SetMacAddress</a> (const uint8_t mac[6], uint8_t interface=0) noexcept=0</td></tr>
+<tr class="memdesc:a4000a9838ec51affceaea83fb8402c0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set MAC address.  <br /></td></tr>
+<tr class="separator:a4000a9838ec51affceaea83fb8402c0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a5fb31b7b32ef15240c7d88b974b334" id="r_a3a5fb31b7b32ef15240c7d88b974b334"><td class="memItemLeft" align="right" valign="top">virtual uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3a5fb31b7b32ef15240c7d88b974b334">GetChannel</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a3a5fb31b7b32ef15240c7d88b974b334"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get WiFi channel.  <br /></td></tr>
+<tr class="separator:a3a5fb31b7b32ef15240c7d88b974b334"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa79383d99aa5aa88a4802e8bd724dba7" id="r_aa79383d99aa5aa88a4802e8bd724dba7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8">hf_wifi_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa79383d99aa5aa88a4802e8bd724dba7">SetChannel</a> (uint8_t channel) noexcept=0</td></tr>
+<tr class="memdesc:aa79383d99aa5aa88a4802e8bd724dba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set WiFi channel.  <br /></td></tr>
+<tr class="separator:aa79383d99aa5aa88a4802e8bd724dba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -237,8 +237,8 @@ Protected Member Functions</h2></td></tr>
 <li>Power management </li>
 </ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a564fef8c0ffdd4f1d69b367bb58cbf73" name="a564fef8c0ffdd4f1d69b367bb58cbf73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a564fef8c0ffdd4f1d69b367bb58cbf73">&#9670;&#160;</a></span>~BaseWifi()</h2>
+<a id="a3ece5610228558420ddb84fe1045619d" name="a3ece5610228558420ddb84fe1045619d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ece5610228558420ddb84fe1045619d">&#9670;&#160;</a></span>~BaseWifi()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,7 +255,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -319,8 +319,8 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab5e8e2fc7f09be74b034260b4e499d96" name="ab5e8e2fc7f09be74b034260b4e499d96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5e8e2fc7f09be74b034260b4e499d96">&#9670;&#160;</a></span>ConfigureAccessPoint()</h2>
+<a id="a6ab63d13615654924cfd13934d6d0c24" name="a6ab63d13615654924cfd13934d6d0c24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ab63d13615654924cfd13934d6d0c24">&#9670;&#160;</a></span>ConfigureAccessPoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -337,7 +337,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -351,12 +351,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a2a2b0ecff30d6d953da490565c8ca0b9">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a723c96c78ce26eaf2574569778b02037">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="aed3ba55f847bb8de043fc794394e85d9" name="aed3ba55f847bb8de043fc794394e85d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aed3ba55f847bb8de043fc794394e85d9">&#9670;&#160;</a></span>ConfigureStation()</h2>
+<a id="a7edf6961ded18919b607bb271527e617" name="a7edf6961ded18919b607bb271527e617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7edf6961ded18919b607bb271527e617">&#9670;&#160;</a></span>ConfigureStation()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,7 +373,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -387,12 +387,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#af9d85df22e5b2f7f0e4a9f083a68e27b">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a7e332cf059c274f217c66637c7670e80">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="ada2eadb6792ac79148a0e2c4fccab27d" name="ada2eadb6792ac79148a0e2c4fccab27d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada2eadb6792ac79148a0e2c4fccab27d">&#9670;&#160;</a></span>Connect()</h2>
+<a id="aafb382c35a7a955c4817a150eac99abe" name="aafb382c35a7a955c4817a150eac99abe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafb382c35a7a955c4817a150eac99abe">&#9670;&#160;</a></span>Connect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -409,7 +409,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -423,12 +423,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#ac4dc5a2ff0d3699cb5dfc7dabe2e4522">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a32c2b5e2a1fe51ee264e2b439dc11911">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="afaf483e98b1f98467356bdfed5071069" name="afaf483e98b1f98467356bdfed5071069"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afaf483e98b1f98467356bdfed5071069">&#9670;&#160;</a></span>Deinitialize()</h2>
+<a id="aeaab55d675fbf45a1983933978136512" name="aeaab55d675fbf45a1983933978136512"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaab55d675fbf45a1983933978136512">&#9670;&#160;</a></span>Deinitialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -445,7 +445,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -453,12 +453,12 @@ Protected Member Functions</h2></td></tr>
 <p>Deinitialize the WiFi subsystem. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a08a5f89824b7d4f845cecabc4278f356">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#ac97375ee76c569f3c121464bcd891462">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a116ea68e8e5e29ed87b3a3ab60df164e" name="a116ea68e8e5e29ed87b3a3ab60df164e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a116ea68e8e5e29ed87b3a3ab60df164e">&#9670;&#160;</a></span>Disconnect()</h2>
+<a id="a67e69fdc5023cb59fcaf5769443c384a" name="a67e69fdc5023cb59fcaf5769443c384a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67e69fdc5023cb59fcaf5769443c384a">&#9670;&#160;</a></span>Disconnect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -475,7 +475,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -483,12 +483,12 @@ Protected Member Functions</h2></td></tr>
 <p>Disconnect from WiFi network. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#af8511154338b1285cb386ba2cde71158">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a23b7c4332258ddf8e390e28fda9f781c">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a2b10843cc30b6e3aac4f81db0ab03cb0" name="a2b10843cc30b6e3aac4f81db0ab03cb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2b10843cc30b6e3aac4f81db0ab03cb0">&#9670;&#160;</a></span>GetChannel()</h2>
+<a id="a3a5fb31b7b32ef15240c7d88b974b334" name="a3a5fb31b7b32ef15240c7d88b974b334"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a5fb31b7b32ef15240c7d88b974b334">&#9670;&#160;</a></span>GetChannel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -505,7 +505,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -513,12 +513,12 @@ Protected Member Functions</h2></td></tr>
 <p>Get WiFi channel. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current channel, or 0 on error </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a3807a44527938991f110f33e70ab0caa">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a7cf0530f49174b55d7c5f3180a24e917">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a02b0af73b308b92b8cc8ad2ce0f27bc8" name="a02b0af73b308b92b8cc8ad2ce0f27bc8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a02b0af73b308b92b8cc8ad2ce0f27bc8">&#9670;&#160;</a></span>GetConnectedBssid()</h2>
+<a id="a1867093f6857b178292f6107a0799397" name="a1867093f6857b178292f6107a0799397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1867093f6857b178292f6107a0799397">&#9670;&#160;</a></span>GetConnectedBssid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -535,7 +535,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -549,12 +549,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#ac35856636ff6281693e9ce57dc13d162">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#aa3dbcac838731cd2cedee82c5a046bf0">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="afcbe903d63da73d424ecd932ca038b08" name="afcbe903d63da73d424ecd932ca038b08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afcbe903d63da73d424ecd932ca038b08">&#9670;&#160;</a></span>GetConnectedSsid()</h2>
+<a id="a0e00e7224b68c1d450b3f359842f5352" name="a0e00e7224b68c1d450b3f359842f5352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e00e7224b68c1d450b3f359842f5352">&#9670;&#160;</a></span>GetConnectedSsid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -571,7 +571,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -579,12 +579,12 @@ Protected Member Functions</h2></td></tr>
 <p>Get connected network SSID. </p>
 <dl class="section return"><dt>Returns</dt><dd>SSID string, empty if not connected </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#af65c3becf925791207bc7333be78d3ef">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#ac55ce93c135b56d2a5ba7826c2563a1d">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="abf5439db72fa1f93e0d37ac8ccaffef8" name="abf5439db72fa1f93e0d37ac8ccaffef8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abf5439db72fa1f93e0d37ac8ccaffef8">&#9670;&#160;</a></span>GetConnectedStationCount()</h2>
+<a id="ad3660009955722f75aff996acdfa6c03" name="ad3660009955722f75aff996acdfa6c03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3660009955722f75aff996acdfa6c03">&#9670;&#160;</a></span>GetConnectedStationCount()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -601,7 +601,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -609,12 +609,12 @@ Protected Member Functions</h2></td></tr>
 <p>Get number of connected stations. </p>
 <dl class="section return"><dt>Returns</dt><dd>Number of connected stations, or -1 on error </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#abf1bc4660bcef2ae9d213b5f93f3ca8c">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a937edac1c632616c615df47e88c62efd">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a2f92e5e27c043ea1d5cc90ed3d473bec" name="a2f92e5e27c043ea1d5cc90ed3d473bec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f92e5e27c043ea1d5cc90ed3d473bec">&#9670;&#160;</a></span>GetIpInfo()</h2>
+<a id="a21bae9b1ecfd52f3f20262eb67b6b8cc" name="a21bae9b1ecfd52f3f20262eb67b6b8cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21bae9b1ecfd52f3f20262eb67b6b8cc">&#9670;&#160;</a></span>GetIpInfo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -631,7 +631,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -645,12 +645,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a91b02d2cc3f0a1bc3a93bef5ac1767f0">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#afce7893e0f0b8a91cdc080d03a6394a7">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a87af382a1139b74961f048b094e60cb5" name="a87af382a1139b74961f048b094e60cb5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87af382a1139b74961f048b094e60cb5">&#9670;&#160;</a></span>GetMacAddress()</h2>
+<a id="a1bc97f10cc20824db4d2a71f5bd599e6" name="a1bc97f10cc20824db4d2a71f5bd599e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bc97f10cc20824db4d2a71f5bd599e6">&#9670;&#160;</a></span>GetMacAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -671,7 +671,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -686,12 +686,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a98c82d71b4bf54dfaa20c305fae750d2">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a360cec168e895a34b8e0435dbb60097c">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a849f44352adf62aab5d07cb9f4666b8e" name="a849f44352adf62aab5d07cb9f4666b8e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a849f44352adf62aab5d07cb9f4666b8e">&#9670;&#160;</a></span>GetMode()</h2>
+<a id="a6aca0f4a9d018f2674210115953335e1" name="a6aca0f4a9d018f2674210115953335e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aca0f4a9d018f2674210115953335e1">&#9670;&#160;</a></span>GetMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -708,7 +708,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -716,12 +716,12 @@ Protected Member Functions</h2></td></tr>
 <p>Get current WiFi operating mode. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current WiFi mode </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a916f331fe7258222a58f213dec3e3a0b">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a4ed8be700f5167def252ec9c59b48f71">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a0b1b27bfd6843ed21e3d9220ddaad908" name="a0b1b27bfd6843ed21e3d9220ddaad908"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b1b27bfd6843ed21e3d9220ddaad908">&#9670;&#160;</a></span>GetPowerSave()</h2>
+<a id="a231152b9b0c982d8a03ab4a8fdcbd09b" name="a231152b9b0c982d8a03ab4a8fdcbd09b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a231152b9b0c982d8a03ab4a8fdcbd09b">&#9670;&#160;</a></span>GetPowerSave()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -738,7 +738,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -746,12 +746,12 @@ Protected Member Functions</h2></td></tr>
 <p>Get current power save mode. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current power save mode </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#acc350fad8c7d5563b6dcff4fdbc3c8a6">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#ab99c2470f6d2b38a8da263c72a112440">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a3a314875b45ef4198c7b69ccc0660066" name="a3a314875b45ef4198c7b69ccc0660066"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a314875b45ef4198c7b69ccc0660066">&#9670;&#160;</a></span>GetRssi()</h2>
+<a id="a4a03d4ae5cae9731abda44ead5b1a740" name="a4a03d4ae5cae9731abda44ead5b1a740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a03d4ae5cae9731abda44ead5b1a740">&#9670;&#160;</a></span>GetRssi()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -768,7 +768,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -776,12 +776,12 @@ Protected Member Functions</h2></td></tr>
 <p>Get signal strength (RSSI) </p>
 <dl class="section return"><dt>Returns</dt><dd>Signal strength in dBm, or INT8_MIN on error </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#accc189589995ac17cd27a9ba60d63c9a">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#aaa1f6c1334ff7cdfcfe3c42b4610ef4a">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a8d71d17477b03d2775f5c8d89aecbf52" name="a8d71d17477b03d2775f5c8d89aecbf52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d71d17477b03d2775f5c8d89aecbf52">&#9670;&#160;</a></span>GetScanResults()</h2>
+<a id="a171cdfdb4d87bae65d8c5642559ebcfc" name="a171cdfdb4d87bae65d8c5642559ebcfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a171cdfdb4d87bae65d8c5642559ebcfc">&#9670;&#160;</a></span>GetScanResults()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -802,7 +802,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -817,12 +817,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a5397db2984b1531639511dee9c013a9f">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#adb271e342e2bb2a6f823b2ed79232c5a">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="add13affb5f6071fc54a24f25545f8098" name="add13affb5f6071fc54a24f25545f8098"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add13affb5f6071fc54a24f25545f8098">&#9670;&#160;</a></span>GetState()</h2>
+<a id="ac86631e9af130d8fb7e016b1650249e0" name="ac86631e9af130d8fb7e016b1650249e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac86631e9af130d8fb7e016b1650249e0">&#9670;&#160;</a></span>GetState()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -839,7 +839,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -847,12 +847,12 @@ Protected Member Functions</h2></td></tr>
 <p>Get current WiFi state. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current WiFi state </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#abaa4ac07b9ef057964dfd07dd2948e47">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#ab6dcbf4805a1091cd0d317f5b7046c25">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="afb3f364e100cf74087b65c8529bda6da" name="afb3f364e100cf74087b65c8529bda6da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb3f364e100cf74087b65c8529bda6da">&#9670;&#160;</a></span>Initialize()</h2>
+<a id="a7dcbf03e298b35c171d94dd753167603" name="a7dcbf03e298b35c171d94dd753167603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7dcbf03e298b35c171d94dd753167603">&#9670;&#160;</a></span>Initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -869,7 +869,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -883,12 +883,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#aba6a1fd280dbcd23fee9281eaaef7a20">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a4739eb071f6852d7013458c45494e6ca">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="ab0b198b02ca774d1ca2fe0ac9b468c61" name="ab0b198b02ca774d1ca2fe0ac9b468c61"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0b198b02ca774d1ca2fe0ac9b468c61">&#9670;&#160;</a></span>IsAccessPointActive()</h2>
+<a id="a55e73947f3b8b9171b6cc8f9eae32070" name="a55e73947f3b8b9171b6cc8f9eae32070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55e73947f3b8b9171b6cc8f9eae32070">&#9670;&#160;</a></span>IsAccessPointActive()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -905,7 +905,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -913,12 +913,12 @@ Protected Member Functions</h2></td></tr>
 <p>Check if Access Point is running. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if AP is active, false otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a5a1d456000d644dfd8282673ba4f5009">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a1d267eba2944b8e911c10897ce953e92">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a7d913dc24e648f770066873000af4d1e" name="a7d913dc24e648f770066873000af4d1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d913dc24e648f770066873000af4d1e">&#9670;&#160;</a></span>IsConnected()</h2>
+<a id="accff1c8c0f300e4d7c5fd9091bb8e68c" name="accff1c8c0f300e4d7c5fd9091bb8e68c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accff1c8c0f300e4d7c5fd9091bb8e68c">&#9670;&#160;</a></span>IsConnected()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -935,7 +935,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -943,12 +943,12 @@ Protected Member Functions</h2></td></tr>
 <p>Check if connected to a network. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if connected, false otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#ae3418e13e9da9cbe0b0b68656233847a">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a1acc04aee004b91ba8329c43d3ba8f09">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a0f9a5bb5a9fbee7af3412385286baf59" name="a0f9a5bb5a9fbee7af3412385286baf59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0f9a5bb5a9fbee7af3412385286baf59">&#9670;&#160;</a></span>IsInitialized()</h2>
+<a id="a4964418eea67a60db032ded6def5867e" name="a4964418eea67a60db032ded6def5867e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4964418eea67a60db032ded6def5867e">&#9670;&#160;</a></span>IsInitialized()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -965,7 +965,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -973,12 +973,12 @@ Protected Member Functions</h2></td></tr>
 <p>Check if WiFi is initialized. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if initialized, false otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a8ac15d4e7a8156eafa7b2850495c3083">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#adc3d8d89148cf2eb1814d1170df8769d">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a3470b0cf542ca2aed0cf2fa36674edb2" name="a3470b0cf542ca2aed0cf2fa36674edb2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3470b0cf542ca2aed0cf2fa36674edb2">&#9670;&#160;</a></span>IsScanning()</h2>
+<a id="a99c47f0dd5b537b221d09583de9462c5" name="a99c47f0dd5b537b221d09583de9462c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99c47f0dd5b537b221d09583de9462c5">&#9670;&#160;</a></span>IsScanning()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -995,7 +995,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1003,7 +1003,7 @@ Protected Member Functions</h2></td></tr>
 <p>Check if scan is in progress. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if scanning, false otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a43e97cdf4af2c05b2e68031add87d782">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a8ef0a3c1147e6de6e06ebead18de288d">EspWifi</a>.</p>
 
 </div>
 </div>
@@ -1034,8 +1034,8 @@ Protected Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a46ce6ae5f1b9193941c1e3daaf88ae0c" name="a46ce6ae5f1b9193941c1e3daaf88ae0c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46ce6ae5f1b9193941c1e3daaf88ae0c">&#9670;&#160;</a></span>RegisterEventCallback()</h2>
+<a id="a6233e0fedcc7df952c2716782644e1ad" name="a6233e0fedcc7df952c2716782644e1ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6233e0fedcc7df952c2716782644e1ad">&#9670;&#160;</a></span>RegisterEventCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1052,7 +1052,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1066,12 +1066,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a3fb1805a09d9f9ff00bd15a9af693d88">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a14161044786f3cc1f58a7c37582a67fa">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="ab8b157a985ffb062418456b66d523f92" name="ab8b157a985ffb062418456b66d523f92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8b157a985ffb062418456b66d523f92">&#9670;&#160;</a></span>SetChannel()</h2>
+<a id="aa79383d99aa5aa88a4802e8bd724dba7" name="aa79383d99aa5aa88a4802e8bd724dba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa79383d99aa5aa88a4802e8bd724dba7">&#9670;&#160;</a></span>SetChannel()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1088,7 +1088,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1102,12 +1102,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#aa24463dc5e86cc6c851044213ce711d3">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a5b8740b211b5cc982dd341a3a3cf5e5b">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="aace6973de51aaa1b7157f15cf677f0f2" name="aace6973de51aaa1b7157f15cf677f0f2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aace6973de51aaa1b7157f15cf677f0f2">&#9670;&#160;</a></span>SetMacAddress()</h2>
+<a id="a4000a9838ec51affceaea83fb8402c0c" name="a4000a9838ec51affceaea83fb8402c0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4000a9838ec51affceaea83fb8402c0c">&#9670;&#160;</a></span>SetMacAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1128,7 +1128,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1143,12 +1143,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a91ddbfd6b2f471e1ed5329ad32833401">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a17b9ce5961c9e8cab2eb5057b881ac27">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="afd648ddba6ad1f2e10941318dcb0dfab" name="afd648ddba6ad1f2e10941318dcb0dfab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd648ddba6ad1f2e10941318dcb0dfab">&#9670;&#160;</a></span>SetMode()</h2>
+<a id="a5f70dc5650c3ec118b167ff28d796ef2" name="a5f70dc5650c3ec118b167ff28d796ef2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f70dc5650c3ec118b167ff28d796ef2">&#9670;&#160;</a></span>SetMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1165,7 +1165,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1179,12 +1179,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#ad572aec1ea4575004b5639a386948c04">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a661961c515743640072b1e1002438610">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="ab17695fd4b2f50230451d82ac8c746e4" name="ab17695fd4b2f50230451d82ac8c746e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab17695fd4b2f50230451d82ac8c746e4">&#9670;&#160;</a></span>SetPowerSave()</h2>
+<a id="a833f86dcbf72369e30120d1f86973086" name="a833f86dcbf72369e30120d1f86973086"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a833f86dcbf72369e30120d1f86973086">&#9670;&#160;</a></span>SetPowerSave()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1201,7 +1201,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1215,12 +1215,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a3d22fc24922e5e4d08531fdeaacfe371">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#abc2b87f78fb769ad1a6cbf653bbb6ff8">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="ab038bcdbce9651c4c3b0305805cbd7f3" name="ab038bcdbce9651c4c3b0305805cbd7f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab038bcdbce9651c4c3b0305805cbd7f3">&#9670;&#160;</a></span>StartAccessPoint()</h2>
+<a id="a991becb698084ea2a2f808dd62608a9e" name="a991becb698084ea2a2f808dd62608a9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a991becb698084ea2a2f808dd62608a9e">&#9670;&#160;</a></span>StartAccessPoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1237,7 +1237,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1245,12 +1245,12 @@ Protected Member Functions</h2></td></tr>
 <p>Start Access Point. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a1f140a31ef650411478818c285aef64b">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a6675c88804049307415424d9f37f8c9e">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a309f30f05a1b4e26687ca19e55a12667" name="a309f30f05a1b4e26687ca19e55a12667"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a309f30f05a1b4e26687ca19e55a12667">&#9670;&#160;</a></span>StartScan()</h2>
+<a id="a9aa96710ea88c9287acd7aa0135b2615" name="a9aa96710ea88c9287acd7aa0135b2615"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aa96710ea88c9287acd7aa0135b2615">&#9670;&#160;</a></span>StartScan()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1276,7 +1276,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1292,12 +1292,12 @@ Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#af8eb0906128aeb938eb5822a910d7d63">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a09181f6382ed6d42797b652cacf8be5e">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a8671f5c88289bc48f1dbdbf109d5e4d0" name="a8671f5c88289bc48f1dbdbf109d5e4d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8671f5c88289bc48f1dbdbf109d5e4d0">&#9670;&#160;</a></span>StopAccessPoint()</h2>
+<a id="ac23900e794081ad63752108f36943fac" name="ac23900e794081ad63752108f36943fac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac23900e794081ad63752108f36943fac">&#9670;&#160;</a></span>StopAccessPoint()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1314,7 +1314,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1322,12 +1322,12 @@ Protected Member Functions</h2></td></tr>
 <p>Stop Access Point. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#aeec25630ed35de561df39b358418e566">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#ada59d1e26730024d5aec32ff04c4b351">EspWifi</a>.</p>
 
 </div>
 </div>
-<a id="a6b722385f7ca418d40f17c853f1483b4" name="a6b722385f7ca418d40f17c853f1483b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b722385f7ca418d40f17c853f1483b4">&#9670;&#160;</a></span>UnregisterEventCallback()</h2>
+<a id="aedb321d904ff91a7b30a6a9fdd481903" name="aedb321d904ff91a7b30a6a9fdd481903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedb321d904ff91a7b30a6a9fdd481903">&#9670;&#160;</a></span>UnregisterEventCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1344,7 +1344,7 @@ Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1352,7 +1352,7 @@ Protected Member Functions</h2></td></tr>
 <p>Unregister event callback. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseWifi_8h.html#a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78">hf_wifi_err_t::WIFI_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implemented in <a class="el" href="classEspWifi.html#a9cd11cd1acebc5455ca6b7357987daa9">EspWifi</a>.</p>
+<p>Implemented in <a class="el" href="classEspWifi.html#a78c4c8eb576df747e478bb663365b593">EspWifi</a>.</p>
 
 </div>
 </div>

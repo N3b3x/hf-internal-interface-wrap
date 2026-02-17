@@ -120,9 +120,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aadc767ae37c6b15cbdc9571f688ebe97" id="r_aadc767ae37c6b15cbdc9571f688ebe97"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBaseTemperature.html">BaseTemperature</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aadc767ae37c6b15cbdc9571f688ebe97">operator=</a> (const <a class="el" href="classBaseTemperature.html">BaseTemperature</a> &amp;)=delete</td></tr>
 <tr class="memdesc:aadc767ae37c6b15cbdc9571f688ebe97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assignment operator is deleted to avoid copying instances.  <br /></td></tr>
 <tr class="separator:aadc767ae37c6b15cbdc9571f688ebe97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89a1c053462cbf314098834f7045ae74" id="r_a89a1c053462cbf314098834f7045ae74"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89a1c053462cbf314098834f7045ae74">~BaseTemperature</a> ()=default</td></tr>
-<tr class="memdesc:a89a1c053462cbf314098834f7045ae74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
-<tr class="separator:a89a1c053462cbf314098834f7045ae74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21ac791e357874874cf1a8be97ed2291" id="r_a21ac791e357874874cf1a8be97ed2291"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21ac791e357874874cf1a8be97ed2291">~BaseTemperature</a> () noexcept=default</td></tr>
+<tr class="memdesc:a21ac791e357874874cf1a8be97ed2291"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
+<tr class="separator:a21ac791e357874874cf1a8be97ed2291"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25b8ade43d75916d0d48464cfdcaa6c2" id="r_a25b8ade43d75916d0d48464cfdcaa6c2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a25b8ade43d75916d0d48464cfdcaa6c2">IsInitialized</a> () const noexcept</td></tr>
 <tr class="memdesc:a25b8ade43d75916d0d48464cfdcaa6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the temperature sensor is initialized.  <br /></td></tr>
 <tr class="separator:a25b8ade43d75916d0d48464cfdcaa6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,13 +177,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a692b8120d0ceb3ae699cd2bd0981b993" id="r_a692b8120d0ceb3ae699cd2bd0981b993"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a692b8120d0ceb3ae699cd2bd0981b993">GetThresholds</a> (float *low_threshold_celsius, float *high_threshold_celsius) const noexcept</td></tr>
 <tr class="memdesc:a692b8120d0ceb3ae699cd2bd0981b993"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get temperature thresholds (advanced feature)  <br /></td></tr>
 <tr class="separator:a692b8120d0ceb3ae699cd2bd0981b993"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a210f2f34d7f356d8ff7f0531031f7856" id="r_a210f2f34d7f356d8ff7f0531031f7856"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a210f2f34d7f356d8ff7f0531031f7856">EnableThresholdMonitoring</a> (<a class="el" href="BaseTemperature_8h.html#a2672848972ed3dbd28859299c8862f6b">hf_temp_threshold_callback_t</a> callback, void *user_data) noexcept</td></tr>
+<tr class="memitem:a210f2f34d7f356d8ff7f0531031f7856" id="r_a210f2f34d7f356d8ff7f0531031f7856"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a210f2f34d7f356d8ff7f0531031f7856">EnableThresholdMonitoring</a> (<a class="el" href="BaseTemperature_8h.html#aeee4f575e7ed653aeea21a73e9ed893c">hf_temp_threshold_callback_t</a> callback, void *user_data) noexcept</td></tr>
 <tr class="memdesc:a210f2f34d7f356d8ff7f0531031f7856"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable threshold monitoring (advanced feature)  <br /></td></tr>
 <tr class="separator:a210f2f34d7f356d8ff7f0531031f7856"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad0326eb2b71271b06e2eccffe79561cd" id="r_ad0326eb2b71271b06e2eccffe79561cd"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad0326eb2b71271b06e2eccffe79561cd">DisableThresholdMonitoring</a> () noexcept</td></tr>
 <tr class="memdesc:ad0326eb2b71271b06e2eccffe79561cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable threshold monitoring (advanced feature)  <br /></td></tr>
 <tr class="separator:ad0326eb2b71271b06e2eccffe79561cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd5288a4ce54793f06fab19960b38253" id="r_afd5288a4ce54793f06fab19960b38253"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd5288a4ce54793f06fab19960b38253">StartContinuousMonitoring</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> sample_rate_hz, <a class="el" href="BaseTemperature_8h.html#ab15b84e22c00839c9e87a3f363efae2d">hf_temp_reading_callback_t</a> callback, void *user_data) noexcept</td></tr>
+<tr class="memitem:afd5288a4ce54793f06fab19960b38253" id="r_afd5288a4ce54793f06fab19960b38253"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd5288a4ce54793f06fab19960b38253">StartContinuousMonitoring</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> sample_rate_hz, <a class="el" href="BaseTemperature_8h.html#ad737845bbb5b213ca89ccac3902fd112">hf_temp_reading_callback_t</a> callback, void *user_data) noexcept</td></tr>
 <tr class="memdesc:afd5288a4ce54793f06fab19960b38253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start continuous temperature monitoring (advanced feature)  <br /></td></tr>
 <tr class="separator:afd5288a4ce54793f06fab19960b38253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30f3527c16c76f65e2deb4a89412e231" id="r_a30f3527c16c76f65e2deb4a89412e231"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30f3527c16c76f65e2deb4a89412e231">StopContinuousMonitoring</a> () noexcept</td></tr>
@@ -306,8 +306,8 @@ Advanced features return TEMP_ERR_UNSUPPORTED_OPERATION if not supported </dd></
 
 </div>
 </div>
-<a id="a89a1c053462cbf314098834f7045ae74" name="a89a1c053462cbf314098834f7045ae74"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89a1c053462cbf314098834f7045ae74">&#9670;&#160;</a></span>~BaseTemperature()</h2>
+<a id="a21ac791e357874874cf1a8be97ed2291" name="a21ac791e357874874cf1a8be97ed2291"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21ac791e357874874cf1a8be97ed2291">&#9670;&#160;</a></span>~BaseTemperature()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,7 +324,7 @@ Advanced features return TEMP_ERR_UNSUPPORTED_OPERATION if not supported </dd></
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -497,7 +497,7 @@ Advanced features return TEMP_ERR_UNSUPPORTED_OPERATION if not supported </dd></
         <tr>
           <td class="memname">virtual <a class="el" href="BaseTemperature_8h.html#a9107d93f48c1ae86146f7d60e6226a20">hf_temp_err_t</a> BaseTemperature::EnableThresholdMonitoring </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="BaseTemperature_8h.html#a2672848972ed3dbd28859299c8862f6b">hf_temp_threshold_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
+          <td class="paramtype"><a class="el" href="BaseTemperature_8h.html#aeee4f575e7ed653aeea21a73e9ed893c">hf_temp_threshold_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1641,7 +1641,7 @@ Advanced features return TEMP_ERR_UNSUPPORTED_OPERATION if not supported </dd></
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="BaseTemperature_8h.html#ab15b84e22c00839c9e87a3f363efae2d">hf_temp_reading_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
+          <td class="paramtype"><a class="el" href="BaseTemperature_8h.html#ad737845bbb5b213ca89ccac3902fd112">hf_temp_reading_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>

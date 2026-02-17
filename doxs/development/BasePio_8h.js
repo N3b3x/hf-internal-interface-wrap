@@ -9,9 +9,9 @@ var BasePio_8h =
     [ "HF_PIO_ERR_LIST", "group__pio.html#ga78769f14dfef18368b2668dd1c535e80", null ],
     [ "X", "BasePio_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
     [ "X", "BasePio_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
-    [ "hf_pio_error_callback_t", "BasePio_8h.html#a03aa7b5372a89dbdf0770488fbb6f824", null ],
-    [ "hf_pio_receive_callback_t", "BasePio_8h.html#a8e55d16268bbfd30ee876df3ee4561ed", null ],
-    [ "hf_pio_transmit_callback_t", "BasePio_8h.html#ab8c62aa676888a6756a3ea726b24d64c", null ],
+    [ "hf_pio_error_callback_t", "BasePio_8h.html#ae4f0c3580aa320f9259c2ab55d864e5f", null ],
+    [ "hf_pio_receive_callback_t", "BasePio_8h.html#ab3c84107f96800c1d8c45464040a5b0a", null ],
+    [ "hf_pio_transmit_callback_t", "BasePio_8h.html#afe89b7df6613717bc40b3d9ec87ee89a", null ],
     [ "hf_pio_direction_t", "BasePio_8h.html#a4f686da1410313a12d85e6ae3d7af655", [
       [ "Transmit", "BasePio_8h.html#a4f686da1410313a12d85e6ae3d7af655a6c2958de5e2295b8cb67bac908244879", null ],
       [ "Receive", "BasePio_8h.html#a4f686da1410313a12d85e6ae3d7af655a5639d3df5aea3d9e78027b843ee3cbb2", null ],

@@ -7,8 +7,8 @@ var EspTypes__I2C_8h =
     [ "hf_i2c_transaction_buffer_t", "structhf__i2c__transaction__buffer__t.html", "structhf__i2c__transaction__buffer__t" ],
     [ "hf_i2c_multi_buffer_transaction_t", "structhf__i2c__multi__buffer__transaction__t.html", "structhf__i2c__multi__buffer__transaction__t" ],
     [ "hf_i2c_custom_command_t", "structhf__i2c__custom__command__t.html", "structhf__i2c__custom__command__t" ],
-    [ "hf_i2c_async_callback_t", "EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7", null ],
-    [ "hf_i2c_event_callback_t", "EspTypes__I2C_8h.html#a6b29190914045a542e26b5cd05909dd9", null ],
+    [ "hf_i2c_async_callback_t", "EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855", null ],
+    [ "hf_i2c_event_callback_t", "EspTypes__I2C_8h.html#a85a7ffc558f186fa35e7bc947d005616", null ],
     [ "hf_i2c_address_bits_t", "EspTypes__I2C_8h.html#ada5c1c4b9978d9458ddf062c6c07c7c5", [
       [ "HF_I2C_ADDR_7_BIT", "EspTypes__I2C_8h.html#ada5c1c4b9978d9458ddf062c6c07c7c5aa828ccf42a365ffba5559eefcdd37f01", null ],
       [ "HF_I2C_ADDR_10_BIT", "EspTypes__I2C_8h.html#ada5c1c4b9978d9458ddf062c6c07c7c5a45df569b9197ddad13bf019e52a66cb5", null ]

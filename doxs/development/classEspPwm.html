@@ -244,9 +244,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e5a6eaafc83ba4ac56718fcded72d81" id="r_a1e5a6eaafc83ba4ac56718fcded72d81"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BasePwm_8h.html#aba623d248c49dd773e0866ea7c6d7ac9">hf_pwm_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1e5a6eaafc83ba4ac56718fcded72d81">GetLastError</a> (<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a> channel_id) const noexcept</td></tr>
 <tr class="memdesc:a1e5a6eaafc83ba4ac56718fcded72d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the last error code for a specific channel.  <br /></td></tr>
 <tr class="separator:a1e5a6eaafc83ba4ac56718fcded72d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a543f85cebac06d91b5ac4fe7d6f325d6" id="r_a543f85cebac06d91b5ac4fe7d6f325d6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BasePwm_8h.html#aba623d248c49dd773e0866ea7c6d7ac9">hf_pwm_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a543f85cebac06d91b5ac4fe7d6f325d6">SetChannelFadeCallback</a> (<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a> channel_id, std::function&lt; void(<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a>)&gt; callback) noexcept</td></tr>
-<tr class="memdesc:a543f85cebac06d91b5ac4fe7d6f325d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set per-channel callback for PWM fade completion events.  <br /></td></tr>
-<tr class="separator:a543f85cebac06d91b5ac4fe7d6f325d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1260137483dff53307d01592d2df624f" id="r_a1260137483dff53307d01592d2df624f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BasePwm_8h.html#aba623d248c49dd773e0866ea7c6d7ac9">hf_pwm_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1260137483dff53307d01592d2df624f">SetChannelFadeCallback</a> (<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a> channel_id, void(*callback)(<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a>)) noexcept</td></tr>
+<tr class="memdesc:a1260137483dff53307d01592d2df624f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set per-channel callback for PWM fade completion events.  <br /></td></tr>
+<tr class="separator:a1260137483dff53307d01592d2df624f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fb67c853d1d7d042a047fbc22ae67c5" id="r_a9fb67c853d1d7d042a047fbc22ae67c5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BasePwm_8h.html#aba623d248c49dd773e0866ea7c6d7ac9">hf_pwm_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9fb67c853d1d7d042a047fbc22ae67c5">SetHardwareFade</a> (<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a> channel_id, float target_duty_cycle, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> fade_time_ms) noexcept</td></tr>
 <tr class="memdesc:a9fb67c853d1d7d042a047fbc22ae67c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set hardware fade for smooth duty cycle transitions.  <br /></td></tr>
 <tr class="separator:a9fb67c853d1d7d042a047fbc22ae67c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2711,8 +2711,8 @@ Key Design Features:</h2>
 
 </div>
 </div>
-<a id="a543f85cebac06d91b5ac4fe7d6f325d6" name="a543f85cebac06d91b5ac4fe7d6f325d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a543f85cebac06d91b5ac4fe7d6f325d6">&#9670;&#160;</a></span>SetChannelFadeCallback()</h2>
+<a id="a1260137483dff53307d01592d2df624f" name="a1260137483dff53307d01592d2df624f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1260137483dff53307d01592d2df624f">&#9670;&#160;</a></span>SetChannelFadeCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2728,7 +2728,7 @@ Key Design Features:</h2>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::function&lt; void(<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a>)&gt;</td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
+          <td class="paramtype">void(*)(<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a>)</td>          <td class="paramname"><span class="paramname"><em>callback</em></span>&#160;)</td>
         </tr>
       </table>
   </td>

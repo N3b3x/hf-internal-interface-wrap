@@ -9,8 +9,8 @@ var BaseCan_8h =
     [ "HF_CAN_ERR_LIST", "group__can.html#gab1d5cdd9fb2d30563cc88f9ca31988ef", null ],
     [ "X", "BaseCan_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
     [ "X", "BaseCan_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
-    [ "hf_can_fd_receive_callback_t", "BaseCan_8h.html#a5cf16e5a5639a262f899cde995da6f45", null ],
-    [ "hf_can_receive_callback_t", "BaseCan_8h.html#af02a5addf5896402a59198a9d8295e40", null ],
+    [ "hf_can_fd_receive_callback_t", "BaseCan_8h.html#ac243f46599a2b6bfb5fc822017e3e051", null ],
+    [ "hf_can_receive_callback_t", "BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f", null ],
     [ "hf_can_err_t", "BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb", [
       [ "X", "BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fba4edf38c36b44ec6289313be3dbff3bd1", null ],
       [ "CAN_SUCCESS", "BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a", null ],

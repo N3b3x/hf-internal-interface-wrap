@@ -108,12 +108,11 @@ $(function(){initNavTree('BaseCan_8h.html',''); initResizable(); });
 <div class="textblock"><code>#include &quot;<a class="el" href="HardwareTypes_8h_source.html">HardwareTypes.h</a>&quot;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for BaseCan.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="BaseCan_8h__incl.svg" width="595" height="199"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="BaseCan_8h__incl.svg" width="472" height="199"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -159,11 +158,11 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:af02a5addf5896402a59198a9d8295e40" id="r_af02a5addf5896402a59198a9d8295e40"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af02a5addf5896402a59198a9d8295e40">hf_can_receive_callback_t</a> = std::function&lt;void(const <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message)&gt;</td></tr>
-<tr class="memdesc:af02a5addf5896402a59198a9d8295e40"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN message receive callback function type.  <br /></td></tr>
-<tr class="separator:af02a5addf5896402a59198a9d8295e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cf16e5a5639a262f899cde995da6f45" id="r_a5cf16e5a5639a262f899cde995da6f45"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5cf16e5a5639a262f899cde995da6f45">hf_can_fd_receive_callback_t</a></td></tr>
-<tr class="separator:a5cf16e5a5639a262f899cde995da6f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3581a1b02d6350ac14ca81b7c60cdc6f" id="r_a3581a1b02d6350ac14ca81b7c60cdc6f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a> = void (*)(const <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message)</td></tr>
+<tr class="memdesc:a3581a1b02d6350ac14ca81b7c60cdc6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">CAN message receive callback function type.  <br /></td></tr>
+<tr class="separator:a3581a1b02d6350ac14ca81b7c60cdc6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac243f46599a2b6bfb5fc822017e3e051" id="r_ac243f46599a2b6bfb5fc822017e3e051"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a></td></tr>
+<tr class="separator:ac243f46599a2b6bfb5fc822017e3e051"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -320,32 +319,32 @@ All legacy camelCase types and bool-returning methods have been removed. </dd></
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a5cf16e5a5639a262f899cde995da6f45" name="a5cf16e5a5639a262f899cde995da6f45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5cf16e5a5639a262f899cde995da6f45">&#9670;&#160;</a></span>hf_can_fd_receive_callback_t</h2>
+<a id="ac243f46599a2b6bfb5fc822017e3e051" name="ac243f46599a2b6bfb5fc822017e3e051"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac243f46599a2b6bfb5fc822017e3e051">&#9670;&#160;</a></span>hf_can_fd_receive_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a5cf16e5a5639a262f899cde995da6f45">hf_can_fd_receive_callback_t</a></td>
+          <td class="memname">using <a class="el" href="#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    std::function&lt;void(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message, <span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__reception__info__t.html">hf_can_reception_info_t</a>&amp; info)&gt;</div>
-<div class="ttc" id="astructhf__can__message__t_html"><div class="ttname"><a href="structhf__can__message__t.html">hf_can_message_t</a></div><div class="ttdoc">Platform-agnostic CAN message structure.</div><div class="ttdef"><b>Definition</b> BaseCan.h:166</div></div>
-<div class="ttc" id="astructhf__can__reception__info__t_html"><div class="ttname"><a href="structhf__can__reception__info__t.html">hf_can_reception_info_t</a></div><div class="ttdoc">CAN-FD specific receive callback with enhanced information.</div><div class="ttdef"><b>Definition</b> BaseCan.h:341</div></div>
+<div class="line">    void (*)(<span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message, <span class="keyword">const</span> <a class="code hl_struct" href="structhf__can__reception__info__t.html">hf_can_reception_info_t</a>&amp; info)</div>
+<div class="ttc" id="astructhf__can__message__t_html"><div class="ttname"><a href="structhf__can__message__t.html">hf_can_message_t</a></div><div class="ttdoc">Platform-agnostic CAN message structure.</div><div class="ttdef"><b>Definition</b> BaseCan.h:165</div></div>
+<div class="ttc" id="astructhf__can__reception__info__t_html"><div class="ttname"><a href="structhf__can__reception__info__t.html">hf_can_reception_info_t</a></div><div class="ttdoc">CAN-FD specific receive callback with enhanced information.</div><div class="ttdef"><b>Definition</b> BaseCan.h:340</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="af02a5addf5896402a59198a9d8295e40" name="af02a5addf5896402a59198a9d8295e40"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af02a5addf5896402a59198a9d8295e40">&#9670;&#160;</a></span>hf_can_receive_callback_t</h2>
+<a id="a3581a1b02d6350ac14ca81b7c60cdc6f" name="a3581a1b02d6350ac14ca81b7c60cdc6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3581a1b02d6350ac14ca81b7c60cdc6f">&#9670;&#160;</a></span>hf_can_receive_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#af02a5addf5896402a59198a9d8295e40">hf_can_receive_callback_t</a> = std::function&lt;void(const <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message)&gt;</td>
+          <td class="memname">using <a class="el" href="#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a> = void (*)(const <a class="el" href="structhf__can__message__t.html">hf_can_message_t</a>&amp; message)</td>
         </tr>
       </table>
 </div><div class="memdoc">

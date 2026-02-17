@@ -108,7 +108,6 @@ $(function(){initNavTree('EspTypes__I2C_8h.html',''); initResizable(); });
 <code>#include &quot;<a class="el" href="EspTypes__Base_8h_source.html">EspTypes_Base.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="HardwareTypes_8h_source.html">HardwareTypes.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="McuSelect_8h_source.html">McuSelect.h</a>&quot;</code><br />
-<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 <code>#include &quot;driver/i2c.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -150,12 +149,12 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ab3a6dbdba186b26abd9d9960f42673e7" id="r_ab3a6dbdba186b26abd9d9960f42673e7"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a></td></tr>
-<tr class="memdesc:ab3a6dbdba186b26abd9d9960f42673e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function signature for asynchronous I2C operations.  <br /></td></tr>
-<tr class="separator:ab3a6dbdba186b26abd9d9960f42673e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b29190914045a542e26b5cd05909dd9" id="r_a6b29190914045a542e26b5cd05909dd9"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b29190914045a542e26b5cd05909dd9">hf_i2c_event_callback_t</a></td></tr>
-<tr class="memdesc:a6b29190914045a542e26b5cd05909dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function signature for I2C event notifications.  <br /></td></tr>
-<tr class="separator:a6b29190914045a542e26b5cd05909dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2ca4d8b86b7cfd6349f3ffdde0a2855" id="r_af2ca4d8b86b7cfd6349f3ffdde0a2855"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a></td></tr>
+<tr class="memdesc:af2ca4d8b86b7cfd6349f3ffdde0a2855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function signature for asynchronous I2C operations.  <br /></td></tr>
+<tr class="separator:af2ca4d8b86b7cfd6349f3ffdde0a2855"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85a7ffc558f186fa35e7bc947d005616" id="r_a85a7ffc558f186fa35e7bc947d005616"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85a7ffc558f186fa35e7bc947d005616">hf_i2c_event_callback_t</a></td></tr>
+<tr class="memdesc:a85a7ffc558f186fa35e7bc947d005616"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback function signature for I2C event notifications.  <br /></td></tr>
+<tr class="separator:a85a7ffc558f186fa35e7bc947d005616"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -262,20 +261,20 @@ Variables</h2></td></tr>
 <dl class="section date"><dt>Date</dt><dd>2025 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>HardFOC </dd></dl>
 </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="ab3a6dbdba186b26abd9d9960f42673e7" name="ab3a6dbdba186b26abd9d9960f42673e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab3a6dbdba186b26abd9d9960f42673e7">&#9670;&#160;</a></span>hf_i2c_async_callback_t</h2>
+<a id="af2ca4d8b86b7cfd6349f3ffdde0a2855" name="af2ca4d8b86b7cfd6349f3ffdde0a2855"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2ca4d8b86b7cfd6349f3ffdde0a2855">&#9670;&#160;</a></span>hf_i2c_async_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a></td>
+          <td class="memname">using <a class="el" href="#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    std::function&lt;void(<a class="code hl_enumeration" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a> result, <span class="keywordtype">size_t</span> bytes_transferred, <span class="keywordtype">void</span>* user_data)&gt;</div>
-<div class="ttc" id="aBaseI2c_8h_html_a24a50f7ee1f8c547cfa287c285fe7fb9"><div class="ttname"><a href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a></div><div class="ttdeci">hf_i2c_err_t</div><div class="ttdef"><b>Definition</b> BaseI2c.h:86</div></div>
+<div class="line">    void(*)(<a class="code hl_enumeration" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a> result, <span class="keywordtype">size_t</span> bytes_transferred, <span class="keywordtype">void</span>* user_data)</div>
+<div class="ttc" id="aBaseI2c_8h_html_a24a50f7ee1f8c547cfa287c285fe7fb9"><div class="ttname"><a href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a></div><div class="ttdeci">hf_i2c_err_t</div><div class="ttdef"><b>Definition</b> BaseI2c.h:85</div></div>
 </div><!-- fragment -->
 <p>Callback function signature for asynchronous I2C operations. </p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -294,20 +293,20 @@ Use FreeRTOS queue/semaphore mechanisms to communicate with tasks. </dd></dl>
 
 </div>
 </div>
-<a id="a6b29190914045a542e26b5cd05909dd9" name="a6b29190914045a542e26b5cd05909dd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6b29190914045a542e26b5cd05909dd9">&#9670;&#160;</a></span>hf_i2c_event_callback_t</h2>
+<a id="a85a7ffc558f186fa35e7bc947d005616" name="a85a7ffc558f186fa35e7bc947d005616"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85a7ffc558f186fa35e7bc947d005616">&#9670;&#160;</a></span>hf_i2c_event_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a6b29190914045a542e26b5cd05909dd9">hf_i2c_event_callback_t</a></td>
+          <td class="memname">using <a class="el" href="#a85a7ffc558f186fa35e7bc947d005616">hf_i2c_event_callback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    std::function&lt;void(<a class="code hl_enumeration" href="#a02c3031bc44ca85dff4ad7f483bc4dde">hf_i2c_event_type_t</a> event_type, <span class="keywordtype">void</span>* event_data, <span class="keywordtype">void</span>* user_data)&gt;</div>
-<div class="ttc" id="aEspTypes__I2C_8h_html_a02c3031bc44ca85dff4ad7f483bc4dde"><div class="ttname"><a href="#a02c3031bc44ca85dff4ad7f483bc4dde">hf_i2c_event_type_t</a></div><div class="ttdeci">hf_i2c_event_type_t</div><div class="ttdoc">ESP32 I2C event types.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:99</div></div>
+<div class="line">    void(*)(<a class="code hl_enumeration" href="#a02c3031bc44ca85dff4ad7f483bc4dde">hf_i2c_event_type_t</a> event_type, <span class="keywordtype">void</span>* event_data, <span class="keywordtype">void</span>* user_data)</div>
+<div class="ttc" id="aEspTypes__I2C_8h_html_a02c3031bc44ca85dff4ad7f483bc4dde"><div class="ttname"><a href="#a02c3031bc44ca85dff4ad7f483bc4dde">hf_i2c_event_type_t</a></div><div class="ttdeci">hf_i2c_event_type_t</div><div class="ttdoc">ESP32 I2C event types.</div><div class="ttdef"><b>Definition</b> EspTypes_I2C.h:98</div></div>
 </div><!-- fragment -->
 <p>Callback function signature for I2C event notifications. </p>
 <dl class="params"><dt>Parameters</dt><dd>

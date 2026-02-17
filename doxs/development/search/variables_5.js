@@ -1,7 +1,7 @@
 var searchData=
 [
   ['fade_5factive_0',['fade_active',['../structEspPwm_1_1ChannelState.html#a6fe68bb974541877f3c6947ca3b9f8ab',1,'EspPwm::ChannelState::fade_active'],['../structhf__pwm__channel__status__t.html#a2103191f9ce6fbc7683fe9016b320daa',1,'hf_pwm_channel_status_t::fade_active']]],
-  ['fade_5fcallback_1',['fade_callback',['../structEspPwm_1_1ChannelState.html#a0159dc9f0dfbf6eef133aa27070a2b3c',1,'EspPwm::ChannelState']]],
+  ['fade_5fcallback_1',['fade_callback',['../structEspPwm_1_1ChannelState.html#ab5cc36c9cd4297730d6fd8e381e351b1',1,'EspPwm::ChannelState']]],
   ['fade_5ffunctionality_5finstalled_5f_2',['fade_functionality_installed_',['../classEspPwm.html#ab200d2d51794d3c3f6c18945132bc7e4',1,'EspPwm']]],
   ['fade_5ffunctionality_5fready_3',['fade_functionality_ready',['../structhf__pwm__diagnostics__t.html#a2cb06f85138f6abb317379fbba33e0f1',1,'hf_pwm_diagnostics_t']]],
   ['fade_5fmode_4',['fade_mode',['../structhf__pwm__fade__config__t.html#a2a39950a7094a5d9f0727dc3ae3db7c1',1,'hf_pwm_fade_config_t']]],

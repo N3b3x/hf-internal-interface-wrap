@@ -1,9 +1,5 @@
 var NAVTREEINDEX14 =
 {
-"structhf__i2c__transaction__buffer__t.html#afcc1caf0fb01943f2c138ec3dc7a398a":[3,0,85,1],
-"structhf__log__message__t.html":[1,5,5],
-"structhf__log__message__t.html#a0bef771ae26113ec182a599404acf4e6":[1,5,5,0],
-"structhf__log__message__t.html#a6288896e788bbac7d683396c4d4d08a4":[1,5,5,7],
 "structhf__log__message__t.html#a69e40af6b21ed062ecc9aaf1cef13841":[1,5,5,2],
 "structhf__log__message__t.html#a6b5fd3140e501bb1ba3439d3f0a7d910":[1,5,5,6],
 "structhf__log__message__t.html#a73678486868b2d22572af1703d3f8370":[1,5,5,1],
@@ -249,5 +245,9 @@ var NAVTREEINDEX14 =
 "structhf__pwm__timing__config__t.html#a2098aa2b7c6f3d22df0b8d910cd266e7":[3,0,111,6],
 "structhf__pwm__timing__config__t.html#a3b91fddab1d7de64f985a41b79ad9c0e":[3,0,111,5],
 "structhf__pwm__timing__config__t.html#a412e798b9860ba9b1b226e83af9f3bfd":[3,0,111,7],
-"structhf__pwm__timing__config__t.html#a44e7ddaf7a8817030da3eb1b83f7cff5":[3,0,111,8]
+"structhf__pwm__timing__config__t.html#a44e7ddaf7a8817030da3eb1b83f7cff5":[3,0,111,8],
+"structhf__pwm__timing__config__t.html#a4f2e1844b48330ed4037a53abe45de61":[3,0,111,3],
+"structhf__pwm__timing__config__t.html#ad5dd45b1c9fe71cb0309eebb2c32fb55":[3,0,111,4],
+"structhf__pwm__timing__config__t.html#af3dbf084f22b6ed41190dac318a2a8c1":[3,0,111,1],
+"structhf__pwm__unit__config__t.html":[3,0,112]
 };
