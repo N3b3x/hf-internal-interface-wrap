@@ -566,7 +566,7 @@
       </memberdef>
       <memberdef kind="define" id="EspAdc_8h_1a22377434b77e3414362b24d49a6856b7" prot="public" static="no">
         <name>HF_ESP32_ADC_ONESHOT_CLK_SRC</name>
-        <initializer>ADC_RTC_CLK_SRC_DEFAULT</initializer>
+        <initializer>ADC_DIGI_CLK_SRC_DEFAULT</initializer>
         <briefdescription>
 <para>Chosen clock source for ADC. </para>
         </briefdescription>
@@ -690,7 +690,7 @@
 <codeline lineno="80" refid="EspAdc_8h_1a579d0692d0d4868ba6df2571373bff91" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX<sp/>4096<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81" refid="EspAdc_8h_1a90636607bfa6d816d903ac6bccb6320f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT<sp/>1024<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83" refid="EspAdc_8h_1a22377434b77e3414362b24d49a6856b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_RTC_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="EspAdc_8h_1a22377434b77e3414362b24d49a6856b7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ONESHOT_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="84" refid="EspAdc_8h_1a5e6193d77a2bb02f2065498c7b1c23d0" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_CONTINUOUS_CLK_SRC<sp/>ADC_DIGI_CLK_SRC_DEFAULT<sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="85" refid="EspAdc_8h_1a7dca42f353013f3bf20c4c2e73293a97" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>HF_ESP32_ADC_ULP_MODE<sp/>ADC_ULP_MODE_DISABLE<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
