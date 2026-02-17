@@ -1351,7 +1351,7 @@ hf_pwm_err_t EspPwm::GetDiagnostics(hf_pwm_diagnostics_t& diagnostics) const noe
 //==============================================================================
 
 hf_pwm_err_t EspPwm::SetChannelFadeCallback(
-    hf_channel_id_t channel_id, std::function<void(hf_channel_id_t)> callback) noexcept {
+    hf_channel_id_t channel_id, void(*callback)(hf_channel_id_t)) noexcept {
   if (!EnsureInitialized()) {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
@@ -1906,7 +1906,12 @@ hf_pwm_err_t EspPwm::ConfigurePlatformTimer(hf_u8_t timer_id, hf_u32_t frequency
   ledc_clk_cfg_t clk_cfg = LEDC_AUTO_CLK;
   switch (clock_source) {
   case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_APB:
-    clk_cfg = LEDC_USE_APB_CLK; // Use APB clock (80MHz) explicitly
+    // APB clock on ESP32/S2/S3/C3, PLL divider clock on C2/C6/H2 (both ~80MHz)
+#if defined(CONFIG_IDF_TARGET_ESP32) || defined(CONFIG_IDF_TARGET_ESP32S2) || defined(CONFIG_IDF_TARGET_ESP32S3) || defined(CONFIG_IDF_TARGET_ESP32C3)
+    clk_cfg = LEDC_USE_APB_CLK;
+#else
+    clk_cfg = LEDC_USE_PLL_DIV_CLK;
+#endif
     break;
   case hf_pwm_clock_source_t::HF_PWM_CLK_SRC_XTAL:
     clk_cfg = LEDC_USE_XTAL_CLK;

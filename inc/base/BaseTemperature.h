@@ -20,7 +20,6 @@
 
 #include "HardwareTypes.h"
 #include <cstdint>
-#include <functional>
 #include <string_view>
 
 /**
@@ -297,8 +296,8 @@ class BaseTemperature;
  * @param user_data User-provided data pointer
  */
 using hf_temp_threshold_callback_t =
-    std::function<void(BaseTemperature* temp_sensor, float temperature_celsius,
-                       hf_u32_t threshold_type, void* user_data)>;
+    void(*)(BaseTemperature* temp_sensor, float temperature_celsius,
+            hf_u32_t threshold_type, void* user_data);
 
 /**
  * @brief Temperature reading callback function type (for continuous monitoring)
@@ -306,8 +305,7 @@ using hf_temp_threshold_callback_t =
  * @param reading Temperature reading structure
  * @param user_data User-provided data pointer
  */
-using hf_temp_reading_callback_t = std::function<void(
-    BaseTemperature* temp_sensor, const hf_temp_reading_t* reading, void* user_data)>;
+using hf_temp_reading_callback_t = void(*)(BaseTemperature* temp_sensor, const hf_temp_reading_t* reading, void* user_data);
 
 /**
  * @brief Temperature error callback function type
@@ -317,8 +315,8 @@ using hf_temp_reading_callback_t = std::function<void(
  * @param user_data User-provided data pointer
  */
 using hf_temp_error_callback_t =
-    std::function<void(BaseTemperature* temp_sensor, hf_temp_err_t error,
-                       const char* error_description, void* user_data)>;
+    void(*)(BaseTemperature* temp_sensor, hf_temp_err_t error,
+            const char* error_description, void* user_data);
 
 //--------------------------------------
 //  Utility Functions and Macros
@@ -425,7 +423,7 @@ public:
   /**
    * @brief Virtual destructor for proper cleanup of derived classes.
    */
-  virtual ~BaseTemperature() = default;
+  virtual ~BaseTemperature() noexcept = default;
 
   //==============================================================//
   // INITIALIZATION AND STATUS

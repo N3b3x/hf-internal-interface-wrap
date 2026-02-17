@@ -21,7 +21,6 @@
 #include "HardwareTypes.h"
 #include <cstdint>
 #include <cstring>
-#include <functional>
 #include <string_view>
 
 /**

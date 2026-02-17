@@ -19,7 +19,6 @@
 
 #include "HardwareTypes.h"
 #include <cstdint>
-#include <functional>
 #include <string_view>
 
 /**
@@ -146,7 +145,7 @@ struct hf_pwm_diagnostics_t {
  * @param channel_id Channel that completed a period
  * @param user_data User-provided data
  */
-using hf_pwm_period_callback_t = std::function<void(hf_channel_id_t channel_id, void* user_data)>;
+using hf_pwm_period_callback_t = void (*)(hf_channel_id_t channel_id, void* user_data);
 
 /**
  * @brief Callback for PWM fault/error events
@@ -155,7 +154,7 @@ using hf_pwm_period_callback_t = std::function<void(hf_channel_id_t channel_id, 
  * @param user_data User-provided data
  */
 using hf_pwm_fault_callback_t =
-    std::function<void(hf_channel_id_t channel_id, hf_pwm_err_t error, void* user_data)>;
+    void (*)(hf_channel_id_t channel_id, hf_pwm_err_t error, void* user_data);
 
 //--------------------------------------
 //  Abstract Base Class

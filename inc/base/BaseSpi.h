@@ -22,7 +22,6 @@
 
 #include "HardwareTypes.h"
 #include <cstdint>
-#include <functional>
 #include <string_view>
 
 /**

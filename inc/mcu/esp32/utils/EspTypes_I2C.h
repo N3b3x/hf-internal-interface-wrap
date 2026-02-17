@@ -17,7 +17,6 @@
 #include "EspTypes_Base.h"
 #include "HardwareTypes.h" // For basic hardware types
 #include "McuSelect.h"     // Central MCU platform selection (includes all ESP-IDF)
-#include <functional>
 #include <vector>
 
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
@@ -158,7 +157,7 @@ enum class hf_i2c_mode_t : uint8_t {
  * @note Use FreeRTOS queue/semaphore mechanisms to communicate with tasks.
  */
 using hf_i2c_async_callback_t =
-    std::function<void(hf_i2c_err_t result, size_t bytes_transferred, void* user_data)>;
+    void(*)(hf_i2c_err_t result, size_t bytes_transferred, void* user_data);
 
 /**
  * @brief Callback function signature for I2C event notifications.
@@ -171,7 +170,7 @@ using hf_i2c_async_callback_t =
  * @note Use FreeRTOS queue/semaphore mechanisms to communicate with tasks.
  */
 using hf_i2c_event_callback_t =
-    std::function<void(hf_i2c_event_type_t event_type, void* event_data, void* user_data)>;
+    void(*)(hf_i2c_event_type_t event_type, void* event_data, void* user_data);
 
 //==============================================================================
 // ESP32 I2C CONFIGURATION STRUCTURES

@@ -312,13 +312,13 @@ hf_can_err_t EspCan::SetReceiveCallbackEx(hf_esp_can_receive_callback_t cb,
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   MutexLockGuard lock(callback_mutex_);
-  receive_cb_ = std::move(cb);
+  receive_cb_ = cb;
   receive_ud_ = user_data;
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearReceiveCallbackEx() noexcept {
   MutexLockGuard lock(callback_mutex_);
-  receive_cb_ = {};
+  receive_cb_ = nullptr;
   receive_ud_ = nullptr;
 }
 
@@ -326,13 +326,13 @@ hf_can_err_t EspCan::SetErrorCallback(hf_esp_can_error_callback_t cb, void* user
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   MutexLockGuard lock(callback_mutex_);
-  error_cb_ = std::move(cb);
+  error_cb_ = cb;
   error_ud_ = user_data;
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearErrorCallback() noexcept {
   MutexLockGuard lock(callback_mutex_);
-  error_cb_ = {};
+  error_cb_ = nullptr;
   error_ud_ = nullptr;
 }
 
@@ -341,13 +341,13 @@ hf_can_err_t EspCan::SetStateChangeCallback(hf_esp_can_state_callback_t cb,
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   MutexLockGuard lock(callback_mutex_);
-  state_cb_ = std::move(cb);
+  state_cb_ = cb;
   state_ud_ = user_data;
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearStateChangeCallback() noexcept {
   MutexLockGuard lock(callback_mutex_);
-  state_cb_ = {};
+  state_cb_ = nullptr;
   state_ud_ = nullptr;
 }
 
@@ -355,13 +355,13 @@ hf_can_err_t EspCan::SetTxCompleteCallback(hf_esp_can_tx_callback_t cb, void* us
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
   MutexLockGuard lock(callback_mutex_);
-  tx_cb_ = std::move(cb);
+  tx_cb_ = cb;
   tx_ud_ = user_data;
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearTxCompleteCallback() noexcept {
   MutexLockGuard lock(callback_mutex_);
-  tx_cb_ = {};
+  tx_cb_ = nullptr;
   tx_ud_ = nullptr;
 }
 

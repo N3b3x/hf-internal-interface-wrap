@@ -432,7 +432,7 @@ private:
   hf_logger_statistics_t statistics_;   ///< Statistics tracking
   hf_logger_diagnostics_t diagnostics_; ///< Diagnostics information
 
-  std::map<std::string, hf_log_level_t> tag_levels_; ///< Tag-specific log levels
+  std::map<std::string, hf_log_level_t, std::less<>> tag_levels_; ///< Tag-specific log levels
   std::vector<char> message_buffer_;                 ///< Message formatting buffer
 
   hf_logger_err_t last_error_;   ///< Last error code

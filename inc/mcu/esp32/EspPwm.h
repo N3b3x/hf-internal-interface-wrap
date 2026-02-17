@@ -572,7 +572,7 @@ public:
    * @see SetHardwareFade() for hardware fade operations
    */
   hf_pwm_err_t SetChannelFadeCallback(hf_channel_id_t channel_id,
-                                      std::function<void(hf_channel_id_t)> callback) noexcept;
+                                      void(*callback)(hf_channel_id_t)) noexcept;
 
   //==============================================================================
   // ESP32C6-SPECIFIC FEATURES
@@ -723,7 +723,7 @@ private:
     const char* description;            ///< Optional description for debugging
 
     // Per-channel fade callback support (ESP-IDF LEDC native support)
-    std::function<void(hf_channel_id_t)> fade_callback; ///< Per-channel fade completion callback
+    void(*fade_callback)(hf_channel_id_t); ///< Per-channel fade completion callback (raw fn ptr for ISR safety)
 
     ChannelState() noexcept
         : configured(false), enabled(false), assigned_timer(0xFF), raw_duty_value(0),

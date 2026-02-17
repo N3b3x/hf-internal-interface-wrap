@@ -20,7 +20,6 @@
 
 #include "HardwareTypes.h"
 #include <cstdint>
-#include <functional>
 #include <string_view>
 
 /**
@@ -245,7 +244,7 @@ struct hf_pio_diagnostics_t {
  * @param user_data User-provided data
  */
 using hf_pio_transmit_callback_t =
-    std::function<void(hf_u8_t channel_id, size_t symbols_sent, void* user_data)>;
+    void(*)(hf_u8_t channel_id, size_t symbols_sent, void* user_data);
 
 /**
  * @brief Callback for PIO reception complete events
@@ -254,8 +253,7 @@ using hf_pio_transmit_callback_t =
  * @param symbol_count Number of symbols received
  * @param user_data User-provided data
  */
-using hf_pio_receive_callback_t = std::function<void(
-    hf_u8_t channel_id, const hf_pio_symbol_t* symbols, size_t symbol_count, void* user_data)>;
+using hf_pio_receive_callback_t = void(*)(    hf_u8_t channel_id, const hf_pio_symbol_t* symbols, size_t symbol_count, void* user_data);
 
 /**
  * @brief Callback for PIO error events
@@ -264,7 +262,7 @@ using hf_pio_receive_callback_t = std::function<void(
  * @param user_data User-provided data
  */
 using hf_pio_error_callback_t =
-    std::function<void(hf_u8_t channel_id, hf_pio_err_t error, void* user_data)>;
+    void(*)(hf_u8_t channel_id, hf_pio_err_t error, void* user_data);
 
 //--------------------------------------
 //  Abstract Base Class

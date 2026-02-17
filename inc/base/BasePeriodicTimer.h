@@ -20,7 +20,6 @@
 
 #include "HardwareTypes.h"
 #include <cstdint>
-#include <functional>
 #include <string_view>
 
 #ifndef HF_TIMESTAMP_US_T_DEFINED
@@ -144,7 +143,7 @@ struct hf_timer_diagnostics_t {
  * @brief Timer callback function type.
  * @param user_data User-provided data passed to callback
  */
-using hf_timer_callback_t = std::function<void(void* user_data)>;
+using hf_timer_callback_t = void (*)(void* user_data);
 
 /**
  * @class BasePeriodicTimer

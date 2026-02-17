@@ -22,7 +22,6 @@
 
 #include "HardwareTypes.h"
 #include <cstdint>
-#include <functional>
 #include <string_view>
 
 /**
@@ -219,7 +218,7 @@ class BaseGpio;
  * @param user_data User-provided data passed to callback
  */
 using InterruptCallback =
-    std::function<void(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* user_data)>;
+    void(*)(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* user_data);
 
 /**
  * @ingroup gpio
@@ -311,7 +310,7 @@ public:
   /**
    * @brief Virtual destructor for proper cleanup of derived classes.
    */
-  virtual ~BaseGpio() = default;
+  virtual ~BaseGpio() noexcept = default;
 
   //==============================================================//
   // INITIALIZATION AND STATUS

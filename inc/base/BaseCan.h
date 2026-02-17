@@ -27,7 +27,6 @@
 #include "HardwareTypes.h"
 #include <atomic>
 #include <cstdint>
-#include <functional>
 #include <string_view>
 
 /**
@@ -331,7 +330,7 @@ struct hf_can_status_t {
  * @brief CAN message receive callback function type.
  * @note Updated to use new hf_can_message_t structure
  */
-using hf_can_receive_callback_t = std::function<void(const hf_can_message_t& message)>;
+using hf_can_receive_callback_t = void (*)(const hf_can_message_t& message);
 
 /**
  * @brief CAN-FD specific receive callback with enhanced information
@@ -346,7 +345,7 @@ struct hf_can_reception_info_t {
   float bit_timing_tolerance; ///< Measured bit timing tolerance
 };
 using hf_can_fd_receive_callback_t =
-    std::function<void(const hf_can_message_t& message, const hf_can_reception_info_t& info)>;
+    void (*)(const hf_can_message_t& message, const hf_can_reception_info_t& info);
 
 /**
  * @brief CAN bus statistics structure for performance monitoring.

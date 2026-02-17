@@ -51,7 +51,6 @@ extern "C" {
 #include "utils/EspTypes_CAN.h"
 
 #include <atomic>
-#include <functional>
 #include <memory>
 
 //==============================================================================
@@ -172,13 +171,13 @@ struct hf_esp_can_tx_info_t {
  * @brief User callback function types with user data support
  */
 using hf_esp_can_receive_callback_t =
-    std::function<void(const hf_can_message_t& message, void* user_data)>;
+    void (*)(const hf_can_message_t& message, void* user_data);
 using hf_esp_can_error_callback_t =
-    std::function<void(const hf_esp_can_error_info_t& error_info, void* user_data)>;
+    void (*)(const hf_esp_can_error_info_t& error_info, void* user_data);
 using hf_esp_can_state_callback_t =
-    std::function<void(const hf_esp_can_state_info_t& state_info, void* user_data)>;
+    void (*)(const hf_esp_can_state_info_t& state_info, void* user_data);
 using hf_esp_can_tx_callback_t =
-    std::function<void(const hf_esp_can_tx_info_t& tx_info, void* user_data)>;
+    void (*)(const hf_esp_can_tx_info_t& tx_info, void* user_data);
 
 /**
  * @class EspCan
@@ -523,16 +522,16 @@ private:
   twai_node_handle_t twai_node_handle_; ///< Native TWAI node handle
 
   // Single callbacks + user data per event type
-  hf_esp_can_receive_callback_t receive_cb_{};
+  hf_esp_can_receive_callback_t receive_cb_{nullptr};
   void* receive_ud_ = nullptr;
 
-  hf_esp_can_error_callback_t error_cb_{};
+  hf_esp_can_error_callback_t error_cb_{nullptr};
   void* error_ud_ = nullptr;
 
-  hf_esp_can_state_callback_t state_cb_{};
+  hf_esp_can_state_callback_t state_cb_{nullptr};
   void* state_ud_ = nullptr;
 
-  hf_esp_can_tx_callback_t tx_cb_{};
+  hf_esp_can_tx_callback_t tx_cb_{nullptr};
   void* tx_ud_ = nullptr;
 
   // Statistics and diagnostics

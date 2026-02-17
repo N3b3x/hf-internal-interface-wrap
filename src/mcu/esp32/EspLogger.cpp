@@ -245,7 +245,7 @@ hf_logger_err_t EspLogger::GetLogLevel(const char* tag, hf_log_level_t& level) c
   if (!tag) {
     level = config_.default_level;
   } else {
-    auto it = tag_levels_.find(std::string(tag));
+    auto it = tag_levels_.find(tag);
     if (it != tag_levels_.end()) {
       level = it->second;
     } else {

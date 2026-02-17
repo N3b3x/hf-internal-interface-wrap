@@ -360,7 +360,7 @@ public:
   /**
    * @brief Virtual destructor
    */
-  virtual ~BaseLogger() = default;
+  virtual ~BaseLogger() noexcept = default;
 
   //==============================================================================
   // INITIALIZATION AND CONFIGURATION
