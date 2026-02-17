@@ -249,9 +249,9 @@ bool test_i2c_configuration_validation() noexcept {
   }
 
   // Test glitch filter settings
-  for (auto filter : {hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_0_CYCLES,
-                      hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_3_CYCLES,
-                      hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_7_CYCLES}) {
+  for ([[maybe_unused]] auto filter : {hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_0_CYCLES,
+                                       hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_3_CYCLES,
+                                       hf_i2c_glitch_filter_t::HF_I2C_GLITCH_FILTER_7_CYCLES}) {
     CREATE_TEST_BUS_INLINE(test_bus, hf_i2c_mode_t::HF_I2C_MODE_SYNC)
     test_bus->Deinitialize();
   }
@@ -1162,20 +1162,26 @@ bool test_i2c_async_operations() noexcept {
 
   // Test async write operation
   uint8_t test_data[] = {0x01, 0x02, 0x03, 0x04};
-  bool async_completed = false;
-  hf_i2c_err_t async_result = hf_i2c_err_t::I2C_ERR_FAILURE;
-  size_t async_bytes = 0;
+  
+  // Structure to hold async operation state
+  struct AsyncState {
+    bool completed = false;
+    hf_i2c_err_t result = hf_i2c_err_t::I2C_ERR_FAILURE;
+    size_t bytes = 0;
+  };
+  AsyncState async_state;
 
-  auto async_callback = [&async_completed, &async_result, &async_bytes](
-                            hf_i2c_err_t result, size_t bytes, void* user_data) {
-    async_completed = true;
-    async_result = result;
-    async_bytes = bytes;
+  // Non-capturing lambda that uses user_data
+  auto async_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {
+    AsyncState* state = static_cast<AsyncState*>(user_data);
+    state->completed = true;
+    state->result = result;
+    state->bytes = bytes;
   };
 
   // Try async operation
   hf_i2c_err_t result = esp_device->WriteAsync(test_data, sizeof(test_data), async_callback,
-                                               nullptr, TIMEOUT_LONG_MS);
+                                               &async_state, TIMEOUT_LONG_MS);
 
   ESP_LOGI(TAG, "Async write result: %s", HfI2CErrToString(result).data());
 
@@ -1183,11 +1189,11 @@ bool test_i2c_async_operations() noexcept {
   uint32_t wait_timeout = TIMEOUT_VERY_LONG_MS; // 2 seconds
   uint32_t start_time = esp_timer_get_time() / 1000;
 
-  while (!async_completed && ((esp_timer_get_time() / 1000) - start_time < wait_timeout)) {
+  while (!async_state.completed && ((esp_timer_get_time() / 1000) - start_time < wait_timeout)) {
     vTaskDelay(pdMS_TO_TICKS(TIMEOUT_VERY_FAST_MS));
   }
 
-  if (async_completed) {
+  if (async_state.completed) {
     ESP_LOGI(TAG, "Async operation completed successfully");
   } else {
     ESP_LOGI(TAG, "Async operation did not complete (expected for non-existent device)");
@@ -1230,19 +1236,28 @@ bool test_i2c_async_timeout_handling() noexcept {
   }
 
   // Test timeout when trying to start async operation while another is in progress
-  bool first_completed = false;
-  auto first_callback = [&first_completed](hf_i2c_err_t result, size_t bytes, void* user_data) {
+  struct TimeoutTestState {
+    bool completed = false;
+  };
+  TimeoutTestState first_state;
+
+  auto first_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {
     vTaskDelay(pdMS_TO_TICKS(TIMEOUT_STANDARD_MS)); // Simulate slow callback
-    first_completed = true;
+    TimeoutTestState* state = static_cast<TimeoutTestState*>(user_data);
+    state->completed = true;
   };
 
-  auto second_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {};
+  auto second_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {
+    (void)result;   // Mark as intentionally unused
+    (void)bytes;    // Mark as intentionally unused
+    (void)user_data; // Mark as intentionally unused
+  };
 
   uint8_t test_data[] = {0xAA, 0xBB};
 
   // Start first async operation
   hf_i2c_err_t result1 = esp_device->WriteAsync(test_data, sizeof(test_data), first_callback,
-                                                nullptr, TIMEOUT_LONG_MS);
+                                                &first_state, TIMEOUT_LONG_MS);
 
   if (result1 == hf_i2c_err_t::I2C_SUCCESS) {
     // Try second async operation with short timeout (should timeout)
@@ -1293,28 +1308,29 @@ bool test_i2c_async_multiple_operations() noexcept {
   }
 
   // Test sequential async operations
-  int completed_operations = 0;
-  auto completion_callback = [&completed_operations](hf_i2c_err_t result, size_t bytes,
-                                                     void* user_data) {
-    completed_operations++;
-    int operation_id = *static_cast<int*>(user_data);
+  struct MultiOperationState {
+    int completed_operations = 0;
+  };
+  MultiOperationState async_state;
+
+  auto completion_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {
+    (void)result; // Mark as intentionally unused
+    (void)bytes;  // Mark as intentionally unused
+    MultiOperationState* state = static_cast<MultiOperationState*>(user_data);
+    state->completed_operations++;
   };
 
   uint8_t test_data[] = {0x10, 0x20, 0x30};
 
   // Start multiple async operations sequentially
   for (int i = 0; i < 3; ++i) {
-    int* operation_id = new int(i); // Note: In real code, manage memory properly
-
     hf_i2c_err_t result = esp_device->WriteAsync(test_data, sizeof(test_data), completion_callback,
-                                                 operation_id, TIMEOUT_VERY_LONG_MS);
+                                                 &async_state, TIMEOUT_VERY_LONG_MS);
 
     ESP_LOGI(TAG, "Async operation %d start result: %s", i, HfI2CErrToString(result).data());
 
     // Wait for this operation to complete before starting next
     esp_device->WaitAsyncOperationComplete(TIMEOUT_LONG_MS);
-
-    delete operation_id; // Clean up
   }
 
   ESP_LOGI(TAG, "[SUCCESS] Async multiple operations tests passed");
