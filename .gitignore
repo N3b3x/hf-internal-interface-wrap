@@ -134,3 +134,4 @@ Thumbs.db
 # Backup files
 **/*.bak*
 *.bak
+_codeql_detected_source_root
