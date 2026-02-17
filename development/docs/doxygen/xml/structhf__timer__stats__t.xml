@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="93" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="93" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="92" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="92" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__timer__stats__t_1aca0212566a23961dfcc8699937286bd4" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -30,7 +30,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="94" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="94" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="93" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="93" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__timer__stats__t_1a977dcba9736902b37278714f0331a82e" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -44,7 +44,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="95" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="95" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="94" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="94" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__timer__stats__t_1add75c8ed7d4a168c9eeb0cb456ed6f12" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -58,7 +58,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="96" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="96" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="95" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="95" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__timer__stats__t_1a4b2fe9fa66b6b3741e624d522a617fee" prot="public" static="no" mutable="no">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -72,7 +72,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="97" column="18" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="97" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="96" column="18" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="96" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__timer__stats__t_1afabb2c1ab96803fefa546b602f1187f2" prot="public" static="no" mutable="no">
         <type><ref refid="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" kindref="member">hf_timestamp_us_t</ref></type>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="98" column="21" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="98" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="97" column="21" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="97" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="100" column="3" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="100" bodyend="102"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="99" column="3" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="99" bodyend="101"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -110,7 +110,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/base/BasePeriodicTimer.h" line="92" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="92" bodyend="103"/>
+    <location file="inc/base/BasePeriodicTimer.h" line="91" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="91" bodyend="102"/>
     <listofallmembers>
       <member refid="structhf__timer__stats__t_1a977dcba9736902b37278714f0331a82e" prot="public" virt="non-virtual"><scope>hf_timer_stats_t</scope><name>callback_count</name></member>
       <member refid="structhf__timer__stats__t_1a05633536091d34426b4381e984dc3708" prot="public" virt="non-virtual"><scope>hf_timer_stats_t</scope><name>hf_timer_stats_t</name></member>

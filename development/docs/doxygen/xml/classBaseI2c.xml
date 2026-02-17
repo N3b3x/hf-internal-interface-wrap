@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="442" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="442" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="441" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="441" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseI2c_1a2caa8cbbbdda3f001603da5bc8bc5913" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="443" column="23" bodyfile="inc/base/BaseI2c.h" bodystart="443" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="442" column="23" bodyfile="inc/base/BaseI2c.h" bodystart="442" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseI2c_1ac79fd093442994accf495c0731e40d30" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="444" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="444" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="443" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="443" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="202" column="11"/>
+        <location file="inc/base/BaseI2c.h" line="201" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a0ef4a4a50952a71b4c7be2f13660282d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="205" column="3"/>
+        <location file="inc/base/BaseI2c.h" line="204" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a9296811925c9010e889f85232dc58f58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="206" column="11"/>
+        <location file="inc/base/BaseI2c.h" line="205" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a092d769aa9bf48da2c730a6a27a4d93c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="207" column="3"/>
+        <location file="inc/base/BaseI2c.h" line="206" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a9169f7ddc26ca7a620676615364fc283" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref> &amp;</type>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="208" column="11"/>
+        <location file="inc/base/BaseI2c.h" line="207" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1ab2ba276139755eda4f52d7f9a523ed4e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="214" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="214" bodyend="219"/>
+        <location file="inc/base/BaseI2c.h" line="213" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="213" bodyend="218"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a35f3b7343c0e4ace25937060f39d44be" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="225" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="225" bodyend="231"/>
+        <location file="inc/base/BaseI2c.h" line="224" column="8" bodyfile="inc/base/BaseI2c.h" bodystart="224" bodyend="230"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1aa0015d0aff3de7f30f7444935a50c094" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="237" column="9" bodyfile="inc/base/BaseI2c.h" bodystart="237" bodyend="239"/>
+        <location file="inc/base/BaseI2c.h" line="236" column="9" bodyfile="inc/base/BaseI2c.h" bodystart="236" bodyend="238"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1adcdc753cf18e47cbc651cc608759bf32" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="249" column="16"/>
+        <location file="inc/base/BaseI2c.h" line="248" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a2a96e596e8d83320c7f8d943119eef38" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="255" column="16"/>
+        <location file="inc/base/BaseI2c.h" line="254" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1abdfc7c1890423f993f1c9ca261e8a15d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -284,7 +284,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="265" column="24"/>
+        <location file="inc/base/BaseI2c.h" line="264" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1ab28b2ede90a847b68eb14c4b7bad6bb0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -343,7 +343,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="276" column="24"/>
+        <location file="inc/base/BaseI2c.h" line="275" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a58da16ee4e2762bed7b2541491b3147b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -426,7 +426,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="288" column="24"/>
+        <location file="inc/base/BaseI2c.h" line="287" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a99b912de8282d2d24bea723f841756db" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -445,7 +445,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="295" column="20"/>
+        <location file="inc/base/BaseI2c.h" line="294" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a9decd4d080fd5090a4f98892c2549a0a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -463,7 +463,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="305" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="305" bodyend="307"/>
+        <location file="inc/base/BaseI2c.h" line="304" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="304" bodyend="306"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a53ffda673e3b0774c31da385b27a7c3f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -481,7 +481,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="313" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="313" bodyend="315"/>
+        <location file="inc/base/BaseI2c.h" line="312" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="312" bodyend="314"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a0d8635db15272fc79947121fcec70850" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -499,7 +499,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="327" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="327" bodyend="331"/>
+        <location file="inc/base/BaseI2c.h" line="326" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="326" bodyend="330"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a1cf1876ffa812b77cbd56d7e714df1e5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -518,7 +518,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="337" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="337" bodyend="339"/>
+        <location file="inc/base/BaseI2c.h" line="336" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="336" bodyend="338"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1afe9cee66898c28c58ac7a146375e3a63" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -549,7 +549,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="346" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="346" bodyend="348"/>
+        <location file="inc/base/BaseI2c.h" line="345" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="345" bodyend="347"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1adb55bb052a4ee0d71f09623f88818fb2" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -580,7 +580,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="355" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="355" bodyend="357"/>
+        <location file="inc/base/BaseI2c.h" line="354" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="354" bodyend="356"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a68bbbd82d13bbe905659d10648843a5e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -623,7 +623,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="365" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="365" bodyend="368"/>
+        <location file="inc/base/BaseI2c.h" line="364" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="364" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1aec25744c5d3ab1ec6c326950001949a0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -666,7 +666,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="376" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="376" bodyend="378"/>
+        <location file="inc/base/BaseI2c.h" line="375" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="375" bodyend="377"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1abf2a8df2ce9d012dbfa57180228e9789" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -721,7 +721,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="387" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="387" bodyend="389"/>
+        <location file="inc/base/BaseI2c.h" line="386" column="16" bodyfile="inc/base/BaseI2c.h" bodystart="386" bodyend="388"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a11d9d717f2176de6ceaa57b0f29bd2f9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -742,7 +742,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="400" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="400" bodyend="403"/>
+        <location file="inc/base/BaseI2c.h" line="399" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="399" bodyend="402"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1af4abdee0440286a09b39680211ed19a5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -762,7 +762,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="410" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="410" bodyend="413"/>
+        <location file="inc/base/BaseI2c.h" line="409" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="409" bodyend="412"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a211b5abbe37a9905cf74312799eca5d4" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -794,7 +794,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="420" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="420" bodyend="423"/>
+        <location file="inc/base/BaseI2c.h" line="419" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="419" bodyend="422"/>
       </memberdef>
       <memberdef kind="function" id="classBaseI2c_1a6c002a6a3a2ab1d9616fd8dad1f9c8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
@@ -826,7 +826,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="430" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="430" bodyend="433"/>
+        <location file="inc/base/BaseI2c.h" line="429" column="24" bodyfile="inc/base/BaseI2c.h" bodystart="429" bodyend="432"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -843,7 +843,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="440" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="440" bodyend="440"/>
+        <location file="inc/base/BaseI2c.h" line="439" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="439" bodyend="439"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -907,7 +907,7 @@
         <link refid="structhf__i2c__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BaseI2c.h" line="197" column="1" bodyfile="inc/base/BaseI2c.h" bodystart="197" bodyend="445"/>
+    <location file="inc/base/BaseI2c.h" line="196" column="1" bodyfile="inc/base/BaseI2c.h" bodystart="196" bodyend="444"/>
     <listofallmembers>
       <member refid="classBaseI2c_1a0ef4a4a50952a71b4c7be2f13660282d" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>BaseI2c</name></member>
       <member refid="classBaseI2c_1a092d769aa9bf48da2c730a6a27a4d93c" prot="public" virt="non-virtual"><scope>BaseI2c</scope><name>BaseI2c</name></member>

@@ -16,8 +16,6 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
       <node id="4">
         <label>HardwareTypes.h</label>
@@ -32,7 +30,9 @@
         <link refid="EspTemperature_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -40,24 +40,24 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="9">
         <label>McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="9">
+      <node id="8">
         <label>utils/RtosMutex.h</label>
         <link refid="RtosMutex_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
@@ -65,8 +65,6 @@
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -86,7 +84,7 @@
       <node id="19">
         <label>algorithm</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>atomic</label>
       </node>
       <node id="20">
@@ -98,34 +96,34 @@
       <node id="21">
         <label>cstring</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>driver/temperature_sensor.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>esp_err.h</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>esp_log.h</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>esp_timer.h</label>
       </node>
-      <node id="11">
+      <node id="10">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="13">
+      <node id="12">
         <label>freertos/task.h</label>
       </node>
-      <node id="7">
+      <node id="18">
         <label>functional</label>
       </node>
       <node id="6">
         <label>limits</label>
       </node>
-      <node id="8">
+      <node id="7">
         <label>string_view</label>
       </node>
     </incdepgraph>
@@ -630,7 +628,7 @@
 <codeline lineno="499"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20aa9f97b2af246741135f6475e1c8f36b7" kindref="member">hf_temp_err_t::TEMP_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="500"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="501"><highlight class="normal"></highlight></codeline>
-<codeline lineno="502"><highlight class="normal"><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1a1b34d89cb1cc7b03100674bea303ab5a" kindref="member">EspTemperature::EnableThresholdMonitoring</ref>(<ref refid="BaseTemperature_8h_1a2672848972ed3dbd28859299c8862f6b" kindref="member">hf_temp_threshold_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1a1b34d89cb1cc7b03100674bea303ab5a" kindref="member">EspTemperature::EnableThresholdMonitoring</ref>(<ref refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kindref="member">hf_temp_threshold_callback_t</ref><sp/>callback,</highlight></codeline>
 <codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="504"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="505"><highlight class="normal"></highlight></codeline>
@@ -666,7 +664,7 @@
 <codeline lineno="535"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="536"><highlight class="normal"></highlight></codeline>
 <codeline lineno="537"><highlight class="normal"><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1acc1ea9c3a109b70bd67e4f285594e474" kindref="member">EspTemperature::StartContinuousMonitoring</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>sample_rate_hz,</highlight></codeline>
-<codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1ab15b84e22c00839c9e87a3f363efae2d" kindref="member">hf_temp_reading_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1ad737845bbb5b213ca89ccac3902fd112" kindref="member">hf_temp_reading_callback_t</ref><sp/>callback,</highlight></codeline>
 <codeline lineno="539"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="540"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="541"><highlight class="normal"></highlight></codeline>

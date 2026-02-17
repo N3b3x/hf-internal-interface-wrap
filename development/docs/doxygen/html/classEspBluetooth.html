@@ -96,7 +96,6 @@ $(function(){initNavTree('classEspBluetooth.html',''); initResizable(); });
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
-<a href="#pri-static-methods">Static Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classEspBluetooth-members.html">List of all members</a>  </div>
   <div class="headertitle"><div class="title">EspBluetooth Class Reference<div class="ingroups"><a class="el" href="group__bluetooth.html">Bluetooth Module</a></div></div></div>
@@ -126,141 +125,141 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae72bc5e95c2e45a02f85ff8194b36842" id="r_ae72bc5e95c2e45a02f85ff8194b36842"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae72bc5e95c2e45a02f85ff8194b36842">~EspBluetooth</a> ()</td></tr>
 <tr class="memdesc:ae72bc5e95c2e45a02f85ff8194b36842"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <br /></td></tr>
 <tr class="separator:ae72bc5e95c2e45a02f85ff8194b36842"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1b73541ee07d1797eb1ed151eb65799" id="r_ad1b73541ee07d1797eb1ed151eb65799"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1b73541ee07d1797eb1ed151eb65799">Initialize</a> (<a class="el" href="group__bluetooth.html#ga6625c9f718627e0ecc95952f757a445b">hf_bluetooth_mode_t</a> mode) override</td></tr>
-<tr class="memdesc:ad1b73541ee07d1797eb1ed151eb65799"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the Bluetooth subsystem.  <br /></td></tr>
-<tr class="separator:ad1b73541ee07d1797eb1ed151eb65799"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c2487161a2d769d6ee8aba326099c26" id="r_a2c2487161a2d769d6ee8aba326099c26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2c2487161a2d769d6ee8aba326099c26">Deinitialize</a> () override</td></tr>
-<tr class="memdesc:a2c2487161a2d769d6ee8aba326099c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the Bluetooth subsystem.  <br /></td></tr>
-<tr class="separator:a2c2487161a2d769d6ee8aba326099c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a355b62ef036e3212dc888c72fc6ff503" id="r_a355b62ef036e3212dc888c72fc6ff503"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a355b62ef036e3212dc888c72fc6ff503">IsInitialized</a> () const override</td></tr>
-<tr class="memdesc:a355b62ef036e3212dc888c72fc6ff503"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if Bluetooth is initialized.  <br /></td></tr>
-<tr class="separator:a355b62ef036e3212dc888c72fc6ff503"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c8e9f1e44d21cc4ad5e789ee5f3dbce" id="r_a1c8e9f1e44d21cc4ad5e789ee5f3dbce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c8e9f1e44d21cc4ad5e789ee5f3dbce">Enable</a> () override</td></tr>
-<tr class="memdesc:a1c8e9f1e44d21cc4ad5e789ee5f3dbce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable Bluetooth.  <br /></td></tr>
-<tr class="separator:a1c8e9f1e44d21cc4ad5e789ee5f3dbce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8aabdb4cdfcc466168664cecea0b5730" id="r_a8aabdb4cdfcc466168664cecea0b5730"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8aabdb4cdfcc466168664cecea0b5730">Disable</a> () override</td></tr>
-<tr class="memdesc:a8aabdb4cdfcc466168664cecea0b5730"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable Bluetooth.  <br /></td></tr>
-<tr class="separator:a8aabdb4cdfcc466168664cecea0b5730"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39f39ac36e8cb1405d63e7df3f14c813" id="r_a39f39ac36e8cb1405d63e7df3f14c813"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a39f39ac36e8cb1405d63e7df3f14c813">IsEnabled</a> () const override</td></tr>
-<tr class="memdesc:a39f39ac36e8cb1405d63e7df3f14c813"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if Bluetooth is enabled.  <br /></td></tr>
-<tr class="separator:a39f39ac36e8cb1405d63e7df3f14c813"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a374d6abb835b46146f08fc112b95f3cc" id="r_a374d6abb835b46146f08fc112b95f3cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a374d6abb835b46146f08fc112b95f3cc">SetMode</a> (<a class="el" href="group__bluetooth.html#ga6625c9f718627e0ecc95952f757a445b">hf_bluetooth_mode_t</a> mode) override</td></tr>
-<tr class="memdesc:a374d6abb835b46146f08fc112b95f3cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set Bluetooth operating mode.  <br /></td></tr>
-<tr class="separator:a374d6abb835b46146f08fc112b95f3cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a786d4e2567bfcbe2f9df4f61e7a686ff" id="r_a786d4e2567bfcbe2f9df4f61e7a686ff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__bluetooth.html#ga6625c9f718627e0ecc95952f757a445b">hf_bluetooth_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a786d4e2567bfcbe2f9df4f61e7a686ff">GetMode</a> () const override</td></tr>
-<tr class="memdesc:a786d4e2567bfcbe2f9df4f61e7a686ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current Bluetooth operating mode.  <br /></td></tr>
-<tr class="separator:a786d4e2567bfcbe2f9df4f61e7a686ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0608e60d9a74a7fa7f8c5b49b155981" id="r_aa0608e60d9a74a7fa7f8c5b49b155981"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0608e60d9a74a7fa7f8c5b49b155981">GetLocalAddress</a> (<a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const override</td></tr>
-<tr class="memdesc:aa0608e60d9a74a7fa7f8c5b49b155981"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get local Bluetooth address.  <br /></td></tr>
-<tr class="separator:aa0608e60d9a74a7fa7f8c5b49b155981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6e080c3c051d20db369a9a4947f97a34" id="r_a6e080c3c051d20db369a9a4947f97a34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e080c3c051d20db369a9a4947f97a34">SetDeviceName</a> (const std::string &amp;name) override</td></tr>
-<tr class="memdesc:a6e080c3c051d20db369a9a4947f97a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set local device name.  <br /></td></tr>
-<tr class="separator:a6e080c3c051d20db369a9a4947f97a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52323a4f04d001da2b506db298f651dd" id="r_a52323a4f04d001da2b506db298f651dd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52323a4f04d001da2b506db298f651dd">GetDeviceName</a> () const override</td></tr>
-<tr class="memdesc:a52323a4f04d001da2b506db298f651dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get local device name.  <br /></td></tr>
-<tr class="separator:a52323a4f04d001da2b506db298f651dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6a8a49f8ba193ca87faed9686dc45e8" id="r_aa6a8a49f8ba193ca87faed9686dc45e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa6a8a49f8ba193ca87faed9686dc45e8">StartScan</a> (uint32_t duration_ms=0, <a class="el" href="group__bluetooth.html#gaf5e48b9d9196063d4218a713d3e4d26c">hf_bluetooth_scan_type_t</a> type=<a class="el" href="group__bluetooth.html#ggaf5e48b9d9196063d4218a713d3e4d26cada5deb1cd60bb274cb388226795304aa">hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE</a>) override</td></tr>
-<tr class="memdesc:aa6a8a49f8ba193ca87faed9686dc45e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start device discovery/scanning.  <br /></td></tr>
-<tr class="separator:aa6a8a49f8ba193ca87faed9686dc45e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b00eaad02fa60c18ad8f9553bb4a180" id="r_a5b00eaad02fa60c18ad8f9553bb4a180"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5b00eaad02fa60c18ad8f9553bb4a180">StopScan</a> () override</td></tr>
-<tr class="memdesc:a5b00eaad02fa60c18ad8f9553bb4a180"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop device discovery/scanning.  <br /></td></tr>
-<tr class="separator:a5b00eaad02fa60c18ad8f9553bb4a180"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aba032c11551997dca218bd8162a44f8b" id="r_aba032c11551997dca218bd8162a44f8b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba032c11551997dca218bd8162a44f8b">IsScanning</a> () const override</td></tr>
-<tr class="memdesc:aba032c11551997dca218bd8162a44f8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if currently scanning.  <br /></td></tr>
-<tr class="separator:aba032c11551997dca218bd8162a44f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bfb7b848bb93452373e060d5748a436" id="r_a4bfb7b848bb93452373e060d5748a436"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bfb7b848bb93452373e060d5748a436">GetDiscoveredDevices</a> (std::vector&lt; <a class="el" href="structhf__bluetooth__device__info__t.html">hf_bluetooth_device_info_t</a> &gt; &amp;devices) override</td></tr>
-<tr class="memdesc:a4bfb7b848bb93452373e060d5748a436"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of discovered devices.  <br /></td></tr>
-<tr class="separator:a4bfb7b848bb93452373e060d5748a436"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8461a03c45119319321f6a391a0a5135" id="r_a8461a03c45119319321f6a391a0a5135"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8461a03c45119319321f6a391a0a5135">ClearDiscoveredDevices</a> () override</td></tr>
-<tr class="memdesc:a8461a03c45119319321f6a391a0a5135"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear discovered devices list.  <br /></td></tr>
-<tr class="separator:a8461a03c45119319321f6a391a0a5135"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d3ee543b288d47f005555a6297f784e" id="r_a2d3ee543b288d47f005555a6297f784e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d3ee543b288d47f005555a6297f784e">StartAdvertising</a> () override</td></tr>
-<tr class="memdesc:a2d3ee543b288d47f005555a6297f784e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start BLE advertising.  <br /></td></tr>
-<tr class="separator:a2d3ee543b288d47f005555a6297f784e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5599daf444f735cf9d68492d9b4ef765" id="r_a5599daf444f735cf9d68492d9b4ef765"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5599daf444f735cf9d68492d9b4ef765">StopAdvertising</a> () override</td></tr>
-<tr class="memdesc:a5599daf444f735cf9d68492d9b4ef765"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop BLE advertising.  <br /></td></tr>
-<tr class="separator:a5599daf444f735cf9d68492d9b4ef765"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af08b9be8919f12f20a1ec975f69cd8bd" id="r_af08b9be8919f12f20a1ec975f69cd8bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af08b9be8919f12f20a1ec975f69cd8bd">IsAdvertising</a> () const override</td></tr>
-<tr class="memdesc:af08b9be8919f12f20a1ec975f69cd8bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if currently advertising.  <br /></td></tr>
-<tr class="separator:af08b9be8919f12f20a1ec975f69cd8bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a409cc44a82b415ff5abc311aef9ed165" id="r_a409cc44a82b415ff5abc311aef9ed165"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a409cc44a82b415ff5abc311aef9ed165">Connect</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, uint32_t timeout_ms=0) override</td></tr>
-<tr class="memdesc:a409cc44a82b415ff5abc311aef9ed165"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a remote device.  <br /></td></tr>
-<tr class="separator:a409cc44a82b415ff5abc311aef9ed165"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1737908361424529d735fdfbe552b6f7" id="r_a1737908361424529d735fdfbe552b6f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1737908361424529d735fdfbe552b6f7">Disconnect</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) override</td></tr>
-<tr class="memdesc:a1737908361424529d735fdfbe552b6f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from a remote device.  <br /></td></tr>
-<tr class="separator:a1737908361424529d735fdfbe552b6f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae96a09bbf25506f65e49b71ef0fb4bbb" id="r_ae96a09bbf25506f65e49b71ef0fb4bbb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae96a09bbf25506f65e49b71ef0fb4bbb">IsConnected</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const override</td></tr>
-<tr class="memdesc:ae96a09bbf25506f65e49b71ef0fb4bbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if connected to a device.  <br /></td></tr>
-<tr class="separator:ae96a09bbf25506f65e49b71ef0fb4bbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00f5c601bce68d612ecbd8cc0bb3d78b" id="r_a00f5c601bce68d612ecbd8cc0bb3d78b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00f5c601bce68d612ecbd8cc0bb3d78b">GetConnectedDevices</a> (std::vector&lt; <a class="el" href="structhf__bluetooth__device__info__t.html">hf_bluetooth_device_info_t</a> &gt; &amp;devices) override</td></tr>
-<tr class="memdesc:a00f5c601bce68d612ecbd8cc0bb3d78b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of connected devices.  <br /></td></tr>
-<tr class="separator:a00f5c601bce68d612ecbd8cc0bb3d78b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad54e4f2b9434ea7f84cfdfa392d9141" id="r_aad54e4f2b9434ea7f84cfdfa392d9141"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad54e4f2b9434ea7f84cfdfa392d9141">Pair</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;pin=&quot;&quot;) override</td></tr>
-<tr class="memdesc:aad54e4f2b9434ea7f84cfdfa392d9141"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pair with a remote device.  <br /></td></tr>
-<tr class="separator:aad54e4f2b9434ea7f84cfdfa392d9141"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73de0eb96a8261c23e7d21862535d4c9" id="r_a73de0eb96a8261c23e7d21862535d4c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a73de0eb96a8261c23e7d21862535d4c9">Unpair</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) override</td></tr>
-<tr class="memdesc:a73de0eb96a8261c23e7d21862535d4c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpair from a remote device.  <br /></td></tr>
-<tr class="separator:a73de0eb96a8261c23e7d21862535d4c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fb00e110f247ed8a86bd7c7a0885dd9" id="r_a0fb00e110f247ed8a86bd7c7a0885dd9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fb00e110f247ed8a86bd7c7a0885dd9">IsPaired</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const override</td></tr>
-<tr class="memdesc:a0fb00e110f247ed8a86bd7c7a0885dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if paired with a device.  <br /></td></tr>
-<tr class="separator:a0fb00e110f247ed8a86bd7c7a0885dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8d945185adbccb25093f59f758cd8f3" id="r_ab8d945185adbccb25093f59f758cd8f3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8d945185adbccb25093f59f758cd8f3">SendData</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::vector&lt; uint8_t &gt; &amp;data) override</td></tr>
-<tr class="memdesc:ab8d945185adbccb25093f59f758cd8f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to a connected device.  <br /></td></tr>
-<tr class="separator:ab8d945185adbccb25093f59f758cd8f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49346d4f535119cfdf1c7a44592e2ec0" id="r_a49346d4f535119cfdf1c7a44592e2ec0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49346d4f535119cfdf1c7a44592e2ec0">GetAvailableData</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const override</td></tr>
-<tr class="memdesc:a49346d4f535119cfdf1c7a44592e2ec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if data is available to read.  <br /></td></tr>
-<tr class="separator:a49346d4f535119cfdf1c7a44592e2ec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a372f9249278b7aa12070aa908c9f224b" id="r_a372f9249278b7aa12070aa908c9f224b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a372f9249278b7aa12070aa908c9f224b">ReadData</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, std::vector&lt; uint8_t &gt; &amp;data, size_t max_bytes=0) override</td></tr>
-<tr class="memdesc:a372f9249278b7aa12070aa908c9f224b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read available data from a connected device.  <br /></td></tr>
-<tr class="separator:a372f9249278b7aa12070aa908c9f224b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb84527d0adb3262fef210ce29c9a84e" id="r_aeb84527d0adb3262fef210ce29c9a84e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb84527d0adb3262fef210ce29c9a84e">DiscoverServices</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, std::vector&lt; <a class="el" href="structhf__bluetooth__gatt__service__t.html">hf_bluetooth_gatt_service_t</a> &gt; &amp;services) override</td></tr>
-<tr class="memdesc:aeb84527d0adb3262fef210ce29c9a84e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discover GATT services on a connected device.  <br /></td></tr>
-<tr class="separator:aeb84527d0adb3262fef210ce29c9a84e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04191edbe3f209b1ec4d20c359e0943d" id="r_a04191edbe3f209b1ec4d20c359e0943d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04191edbe3f209b1ec4d20c359e0943d">DiscoverCharacteristics</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;service_uuid, std::vector&lt; <a class="el" href="structhf__bluetooth__gatt__characteristic__t.html">hf_bluetooth_gatt_characteristic_t</a> &gt; &amp;characteristics) override</td></tr>
-<tr class="memdesc:a04191edbe3f209b1ec4d20c359e0943d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discover GATT characteristics for a service.  <br /></td></tr>
-<tr class="separator:a04191edbe3f209b1ec4d20c359e0943d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6fd71931ee339bdb4a66e2837dc6983" id="r_ad6fd71931ee339bdb4a66e2837dc6983"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6fd71931ee339bdb4a66e2837dc6983">ReadCharacteristic</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, std::vector&lt; uint8_t &gt; &amp;value) override</td></tr>
-<tr class="memdesc:ad6fd71931ee339bdb4a66e2837dc6983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read GATT characteristic value.  <br /></td></tr>
-<tr class="separator:ad6fd71931ee339bdb4a66e2837dc6983"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6cd33f01012e6db7e1f340c516f9521f" id="r_a6cd33f01012e6db7e1f340c516f9521f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6cd33f01012e6db7e1f340c516f9521f">WriteCharacteristic</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, const std::vector&lt; uint8_t &gt; &amp;value, bool with_response=true) override</td></tr>
-<tr class="memdesc:a6cd33f01012e6db7e1f340c516f9521f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write GATT characteristic value.  <br /></td></tr>
-<tr class="separator:a6cd33f01012e6db7e1f340c516f9521f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acb1256113dabf1b44584bf34c25c7574" id="r_acb1256113dabf1b44584bf34c25c7574"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb1256113dabf1b44584bf34c25c7574">SubscribeCharacteristic</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, bool enable) override</td></tr>
-<tr class="memdesc:acb1256113dabf1b44584bf34c25c7574"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to GATT characteristic notifications.  <br /></td></tr>
-<tr class="separator:acb1256113dabf1b44584bf34c25c7574"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a900bdf9f92cd5bc4259d2360171f9cf4" id="r_a900bdf9f92cd5bc4259d2360171f9cf4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__bluetooth.html#gac451db000ab6ee8c0a80c938da26a738">hf_bluetooth_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a900bdf9f92cd5bc4259d2360171f9cf4">GetState</a> () const override</td></tr>
-<tr class="memdesc:a900bdf9f92cd5bc4259d2360171f9cf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current Bluetooth state.  <br /></td></tr>
-<tr class="separator:a900bdf9f92cd5bc4259d2360171f9cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9090b878e33958b109e5b53af48308fa" id="r_a9090b878e33958b109e5b53af48308fa"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9090b878e33958b109e5b53af48308fa">GetRssi</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const override</td></tr>
-<tr class="memdesc:a9090b878e33958b109e5b53af48308fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get signal strength for a connected device.  <br /></td></tr>
-<tr class="separator:a9090b878e33958b109e5b53af48308fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20201cde03378f0f1bad5ee9c0899ae6" id="r_a20201cde03378f0f1bad5ee9c0899ae6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a20201cde03378f0f1bad5ee9c0899ae6">RegisterEventCallback</a> (<a class="el" href="group__bluetooth.html#gaeb49a17c65e01fa9236e9ab0b4994f77">hf_bluetooth_event_callback_t</a> callback) override</td></tr>
-<tr class="memdesc:a20201cde03378f0f1bad5ee9c0899ae6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register event callback function.  <br /></td></tr>
-<tr class="separator:a20201cde03378f0f1bad5ee9c0899ae6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe72fcb5f77f9183c803144a480ecdad" id="r_afe72fcb5f77f9183c803144a480ecdad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe72fcb5f77f9183c803144a480ecdad">RegisterDataCallback</a> (<a class="el" href="group__bluetooth.html#ga65e5bf89736f8023fe4cf15163655f6a">hf_bluetooth_data_callback_t</a> callback) override</td></tr>
-<tr class="memdesc:afe72fcb5f77f9183c803144a480ecdad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register data callback function.  <br /></td></tr>
-<tr class="separator:afe72fcb5f77f9183c803144a480ecdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90f435461e1114cfd01b9091c88ffa47" id="r_a90f435461e1114cfd01b9091c88ffa47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a90f435461e1114cfd01b9091c88ffa47">UnregisterEventCallback</a> () override</td></tr>
-<tr class="memdesc:a90f435461e1114cfd01b9091c88ffa47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister event callback function.  <br /></td></tr>
-<tr class="separator:a90f435461e1114cfd01b9091c88ffa47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af84094c238583d06251f4fb7c5aee803" id="r_af84094c238583d06251f4fb7c5aee803"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af84094c238583d06251f4fb7c5aee803">UnregisterDataCallback</a> () override</td></tr>
-<tr class="memdesc:af84094c238583d06251f4fb7c5aee803"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister data callback function.  <br /></td></tr>
-<tr class="separator:af84094c238583d06251f4fb7c5aee803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa86e9aaf05af6672d9c68408e9039dde" id="r_aa86e9aaf05af6672d9c68408e9039dde"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa86e9aaf05af6672d9c68408e9039dde">ConfigureClassic</a> (const <a class="el" href="structhf__bluetooth__classic__config__t.html">hf_bluetooth_classic_config_t</a> &amp;config) override</td></tr>
-<tr class="memdesc:aa86e9aaf05af6672d9c68408e9039dde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Bluetooth Classic parameters.  <br /></td></tr>
-<tr class="separator:aa86e9aaf05af6672d9c68408e9039dde"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b4ed0a4e8fadcc14b2bbd99fd302034" id="r_a9b4ed0a4e8fadcc14b2bbd99fd302034"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b4ed0a4e8fadcc14b2bbd99fd302034">SetDiscoverable</a> (bool discoverable, uint32_t timeout_ms=0) override</td></tr>
-<tr class="memdesc:a9b4ed0a4e8fadcc14b2bbd99fd302034"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make device discoverable.  <br /></td></tr>
-<tr class="separator:a9b4ed0a4e8fadcc14b2bbd99fd302034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea05b74fe7af2a8cfc7ebc9b9d23525a" id="r_aea05b74fe7af2a8cfc7ebc9b9d23525a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea05b74fe7af2a8cfc7ebc9b9d23525a">IsDiscoverable</a> () const override</td></tr>
-<tr class="memdesc:aea05b74fe7af2a8cfc7ebc9b9d23525a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if device is discoverable.  <br /></td></tr>
-<tr class="separator:aea05b74fe7af2a8cfc7ebc9b9d23525a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a21f34c8693086a3ff6a522be67e45394" id="r_a21f34c8693086a3ff6a522be67e45394"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a21f34c8693086a3ff6a522be67e45394">ConfigureBle</a> (const <a class="el" href="structhf__bluetooth__ble__config__t.html">hf_bluetooth_ble_config_t</a> &amp;config) override</td></tr>
-<tr class="memdesc:a21f34c8693086a3ff6a522be67e45394"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Bluetooth Low Energy parameters.  <br /></td></tr>
-<tr class="separator:a21f34c8693086a3ff6a522be67e45394"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71ed4973e6db54cf9b3a22a96f66f4e8" id="r_a71ed4973e6db54cf9b3a22a96f66f4e8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a71ed4973e6db54cf9b3a22a96f66f4e8">GetPairedDevices</a> (std::vector&lt; <a class="el" href="structhf__bluetooth__device__info__t.html">hf_bluetooth_device_info_t</a> &gt; &amp;devices) override</td></tr>
-<tr class="memdesc:a71ed4973e6db54cf9b3a22a96f66f4e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of paired devices.  <br /></td></tr>
-<tr class="separator:a71ed4973e6db54cf9b3a22a96f66f4e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd8bea96514732371c58be26a3b44747" id="r_afd8bea96514732371c58be26a3b44747"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd8bea96514732371c58be26a3b44747">Initialize</a> (<a class="el" href="group__bluetooth.html#ga6625c9f718627e0ecc95952f757a445b">hf_bluetooth_mode_t</a> mode) noexcept override</td></tr>
+<tr class="memdesc:afd8bea96514732371c58be26a3b44747"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the Bluetooth subsystem.  <br /></td></tr>
+<tr class="separator:afd8bea96514732371c58be26a3b44747"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4074f5333e5612a4af439a278891e05d" id="r_a4074f5333e5612a4af439a278891e05d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4074f5333e5612a4af439a278891e05d">Deinitialize</a> () noexcept override</td></tr>
+<tr class="memdesc:a4074f5333e5612a4af439a278891e05d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deinitialize the Bluetooth subsystem.  <br /></td></tr>
+<tr class="separator:a4074f5333e5612a4af439a278891e05d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3614348f32fdffd9ecafc94609c13c7d" id="r_a3614348f32fdffd9ecafc94609c13c7d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3614348f32fdffd9ecafc94609c13c7d">IsInitialized</a> () const noexcept override</td></tr>
+<tr class="memdesc:a3614348f32fdffd9ecafc94609c13c7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if Bluetooth is initialized.  <br /></td></tr>
+<tr class="separator:a3614348f32fdffd9ecafc94609c13c7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98ea9a7262bf49c703156f478b82c122" id="r_a98ea9a7262bf49c703156f478b82c122"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98ea9a7262bf49c703156f478b82c122">Enable</a> () noexcept override</td></tr>
+<tr class="memdesc:a98ea9a7262bf49c703156f478b82c122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable Bluetooth.  <br /></td></tr>
+<tr class="separator:a98ea9a7262bf49c703156f478b82c122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a38102299b8c7de84b23dc1f84b892b" id="r_a4a38102299b8c7de84b23dc1f84b892b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a38102299b8c7de84b23dc1f84b892b">Disable</a> () noexcept override</td></tr>
+<tr class="memdesc:a4a38102299b8c7de84b23dc1f84b892b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable Bluetooth.  <br /></td></tr>
+<tr class="separator:a4a38102299b8c7de84b23dc1f84b892b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dbe05f9ae739562f8d79017c6a2613a" id="r_a8dbe05f9ae739562f8d79017c6a2613a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8dbe05f9ae739562f8d79017c6a2613a">IsEnabled</a> () const noexcept override</td></tr>
+<tr class="memdesc:a8dbe05f9ae739562f8d79017c6a2613a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if Bluetooth is enabled.  <br /></td></tr>
+<tr class="separator:a8dbe05f9ae739562f8d79017c6a2613a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52735f7b1bbb0b3736c0dcb4c1a6e1a0" id="r_a52735f7b1bbb0b3736c0dcb4c1a6e1a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52735f7b1bbb0b3736c0dcb4c1a6e1a0">SetMode</a> (<a class="el" href="group__bluetooth.html#ga6625c9f718627e0ecc95952f757a445b">hf_bluetooth_mode_t</a> mode) noexcept override</td></tr>
+<tr class="memdesc:a52735f7b1bbb0b3736c0dcb4c1a6e1a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set Bluetooth operating mode.  <br /></td></tr>
+<tr class="separator:a52735f7b1bbb0b3736c0dcb4c1a6e1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c139c76f416d0ee82b050613521beb8" id="r_a6c139c76f416d0ee82b050613521beb8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__bluetooth.html#ga6625c9f718627e0ecc95952f757a445b">hf_bluetooth_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c139c76f416d0ee82b050613521beb8">GetMode</a> () const noexcept override</td></tr>
+<tr class="memdesc:a6c139c76f416d0ee82b050613521beb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current Bluetooth operating mode.  <br /></td></tr>
+<tr class="separator:a6c139c76f416d0ee82b050613521beb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a302917757fb9ec1c7c9499bd672a9859" id="r_a302917757fb9ec1c7c9499bd672a9859"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a302917757fb9ec1c7c9499bd672a9859">GetLocalAddress</a> (<a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const noexcept override</td></tr>
+<tr class="memdesc:a302917757fb9ec1c7c9499bd672a9859"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get local Bluetooth address.  <br /></td></tr>
+<tr class="separator:a302917757fb9ec1c7c9499bd672a9859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d7f45a579ce77fd3d19ea5bd1b8ac15" id="r_a4d7f45a579ce77fd3d19ea5bd1b8ac15"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d7f45a579ce77fd3d19ea5bd1b8ac15">SetDeviceName</a> (const std::string &amp;name) noexcept override</td></tr>
+<tr class="memdesc:a4d7f45a579ce77fd3d19ea5bd1b8ac15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set local device name.  <br /></td></tr>
+<tr class="separator:a4d7f45a579ce77fd3d19ea5bd1b8ac15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62271ef1873ae263b2046a0445d077da" id="r_a62271ef1873ae263b2046a0445d077da"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a62271ef1873ae263b2046a0445d077da">GetDeviceName</a> () const noexcept override</td></tr>
+<tr class="memdesc:a62271ef1873ae263b2046a0445d077da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get local device name.  <br /></td></tr>
+<tr class="separator:a62271ef1873ae263b2046a0445d077da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ae28ad6c3af195ad97eea9cac4096c3" id="r_a5ae28ad6c3af195ad97eea9cac4096c3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5ae28ad6c3af195ad97eea9cac4096c3">StartScan</a> (uint32_t duration_ms=0, <a class="el" href="group__bluetooth.html#gaf5e48b9d9196063d4218a713d3e4d26c">hf_bluetooth_scan_type_t</a> type=<a class="el" href="group__bluetooth.html#ggaf5e48b9d9196063d4218a713d3e4d26cada5deb1cd60bb274cb388226795304aa">hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE</a>) noexcept override</td></tr>
+<tr class="memdesc:a5ae28ad6c3af195ad97eea9cac4096c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start device discovery/scanning.  <br /></td></tr>
+<tr class="separator:a5ae28ad6c3af195ad97eea9cac4096c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a492b094f5ed477aa73f40395771df35d" id="r_a492b094f5ed477aa73f40395771df35d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a492b094f5ed477aa73f40395771df35d">StopScan</a> () noexcept override</td></tr>
+<tr class="memdesc:a492b094f5ed477aa73f40395771df35d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop device discovery/scanning.  <br /></td></tr>
+<tr class="separator:a492b094f5ed477aa73f40395771df35d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5fa0f11be5c7e1e5194ecc12818251b" id="r_ac5fa0f11be5c7e1e5194ecc12818251b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac5fa0f11be5c7e1e5194ecc12818251b">IsScanning</a> () const noexcept override</td></tr>
+<tr class="memdesc:ac5fa0f11be5c7e1e5194ecc12818251b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if currently scanning.  <br /></td></tr>
+<tr class="separator:ac5fa0f11be5c7e1e5194ecc12818251b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d5405c42ed4af6c74bdaa487f8a238e" id="r_a8d5405c42ed4af6c74bdaa487f8a238e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d5405c42ed4af6c74bdaa487f8a238e">GetDiscoveredDevices</a> (std::vector&lt; <a class="el" href="structhf__bluetooth__device__info__t.html">hf_bluetooth_device_info_t</a> &gt; &amp;devices) noexcept override</td></tr>
+<tr class="memdesc:a8d5405c42ed4af6c74bdaa487f8a238e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of discovered devices.  <br /></td></tr>
+<tr class="separator:a8d5405c42ed4af6c74bdaa487f8a238e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47e325ffa5b21fbc275e7d03e0da391f" id="r_a47e325ffa5b21fbc275e7d03e0da391f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47e325ffa5b21fbc275e7d03e0da391f">ClearDiscoveredDevices</a> () noexcept override</td></tr>
+<tr class="memdesc:a47e325ffa5b21fbc275e7d03e0da391f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear discovered devices list.  <br /></td></tr>
+<tr class="separator:a47e325ffa5b21fbc275e7d03e0da391f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05a308e2fb973a28ea7e24a62e59dd6c" id="r_a05a308e2fb973a28ea7e24a62e59dd6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a05a308e2fb973a28ea7e24a62e59dd6c">StartAdvertising</a> () noexcept override</td></tr>
+<tr class="memdesc:a05a308e2fb973a28ea7e24a62e59dd6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start BLE advertising.  <br /></td></tr>
+<tr class="separator:a05a308e2fb973a28ea7e24a62e59dd6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b1a24c6ce5b17f1f29de6a2d81dad37" id="r_a0b1a24c6ce5b17f1f29de6a2d81dad37"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0b1a24c6ce5b17f1f29de6a2d81dad37">StopAdvertising</a> () noexcept override</td></tr>
+<tr class="memdesc:a0b1a24c6ce5b17f1f29de6a2d81dad37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stop BLE advertising.  <br /></td></tr>
+<tr class="separator:a0b1a24c6ce5b17f1f29de6a2d81dad37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf0cc8ea815792cff6cf2be61c819ed3" id="r_acf0cc8ea815792cff6cf2be61c819ed3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acf0cc8ea815792cff6cf2be61c819ed3">IsAdvertising</a> () const noexcept override</td></tr>
+<tr class="memdesc:acf0cc8ea815792cff6cf2be61c819ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if currently advertising.  <br /></td></tr>
+<tr class="separator:acf0cc8ea815792cff6cf2be61c819ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95b4099eb2de6b28976c36a3344e85f4" id="r_a95b4099eb2de6b28976c36a3344e85f4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a95b4099eb2de6b28976c36a3344e85f4">Connect</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, uint32_t timeout_ms=0) noexcept override</td></tr>
+<tr class="memdesc:a95b4099eb2de6b28976c36a3344e85f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Connect to a remote device.  <br /></td></tr>
+<tr class="separator:a95b4099eb2de6b28976c36a3344e85f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a348bebc38b00b6c0e47c2b12bf856d60" id="r_a348bebc38b00b6c0e47c2b12bf856d60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a348bebc38b00b6c0e47c2b12bf856d60">Disconnect</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) noexcept override</td></tr>
+<tr class="memdesc:a348bebc38b00b6c0e47c2b12bf856d60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disconnect from a remote device.  <br /></td></tr>
+<tr class="separator:a348bebc38b00b6c0e47c2b12bf856d60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbcf453657dd1c372bc45c9e0cca302a" id="r_adbcf453657dd1c372bc45c9e0cca302a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbcf453657dd1c372bc45c9e0cca302a">IsConnected</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const noexcept override</td></tr>
+<tr class="memdesc:adbcf453657dd1c372bc45c9e0cca302a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if connected to a device.  <br /></td></tr>
+<tr class="separator:adbcf453657dd1c372bc45c9e0cca302a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a157e5082fb3aae39dbdcabcae0c0042b" id="r_a157e5082fb3aae39dbdcabcae0c0042b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a157e5082fb3aae39dbdcabcae0c0042b">GetConnectedDevices</a> (std::vector&lt; <a class="el" href="structhf__bluetooth__device__info__t.html">hf_bluetooth_device_info_t</a> &gt; &amp;devices) noexcept override</td></tr>
+<tr class="memdesc:a157e5082fb3aae39dbdcabcae0c0042b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of connected devices.  <br /></td></tr>
+<tr class="separator:a157e5082fb3aae39dbdcabcae0c0042b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fdeba3ee4d28fce11a530e058fe46c2" id="r_a1fdeba3ee4d28fce11a530e058fe46c2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fdeba3ee4d28fce11a530e058fe46c2">Pair</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;pin=&quot;&quot;) noexcept override</td></tr>
+<tr class="memdesc:a1fdeba3ee4d28fce11a530e058fe46c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pair with a remote device.  <br /></td></tr>
+<tr class="separator:a1fdeba3ee4d28fce11a530e058fe46c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae61bc8f3f2201767874379c1671adec0" id="r_ae61bc8f3f2201767874379c1671adec0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae61bc8f3f2201767874379c1671adec0">Unpair</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) noexcept override</td></tr>
+<tr class="memdesc:ae61bc8f3f2201767874379c1671adec0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unpair from a remote device.  <br /></td></tr>
+<tr class="separator:ae61bc8f3f2201767874379c1671adec0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdf4674571e946491fc166e0f6cfeee8" id="r_acdf4674571e946491fc166e0f6cfeee8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acdf4674571e946491fc166e0f6cfeee8">IsPaired</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const noexcept override</td></tr>
+<tr class="memdesc:acdf4674571e946491fc166e0f6cfeee8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if paired with a device.  <br /></td></tr>
+<tr class="separator:acdf4674571e946491fc166e0f6cfeee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58b807e84ea7ad6634530fb83f410750" id="r_a58b807e84ea7ad6634530fb83f410750"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a58b807e84ea7ad6634530fb83f410750">SendData</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::vector&lt; uint8_t &gt; &amp;data) noexcept override</td></tr>
+<tr class="memdesc:a58b807e84ea7ad6634530fb83f410750"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send data to a connected device.  <br /></td></tr>
+<tr class="separator:a58b807e84ea7ad6634530fb83f410750"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9b72feec623b72121fd7dc903980205" id="r_ad9b72feec623b72121fd7dc903980205"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9b72feec623b72121fd7dc903980205">GetAvailableData</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const noexcept override</td></tr>
+<tr class="memdesc:ad9b72feec623b72121fd7dc903980205"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if data is available to read.  <br /></td></tr>
+<tr class="separator:ad9b72feec623b72121fd7dc903980205"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d606a628a2d01182eb1e268a3d3ec8a" id="r_a2d606a628a2d01182eb1e268a3d3ec8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d606a628a2d01182eb1e268a3d3ec8a">ReadData</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, std::vector&lt; uint8_t &gt; &amp;data, size_t max_bytes=0) noexcept override</td></tr>
+<tr class="memdesc:a2d606a628a2d01182eb1e268a3d3ec8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read available data from a connected device.  <br /></td></tr>
+<tr class="separator:a2d606a628a2d01182eb1e268a3d3ec8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a20a5079a33372536b771e1689e7cf9" id="r_a1a20a5079a33372536b771e1689e7cf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1a20a5079a33372536b771e1689e7cf9">DiscoverServices</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, std::vector&lt; <a class="el" href="structhf__bluetooth__gatt__service__t.html">hf_bluetooth_gatt_service_t</a> &gt; &amp;services) noexcept override</td></tr>
+<tr class="memdesc:a1a20a5079a33372536b771e1689e7cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discover GATT services on a connected device.  <br /></td></tr>
+<tr class="separator:a1a20a5079a33372536b771e1689e7cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89528b9dbb1a5660e1c607c5ff518f8a" id="r_a89528b9dbb1a5660e1c607c5ff518f8a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89528b9dbb1a5660e1c607c5ff518f8a">DiscoverCharacteristics</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;service_uuid, std::vector&lt; <a class="el" href="structhf__bluetooth__gatt__characteristic__t.html">hf_bluetooth_gatt_characteristic_t</a> &gt; &amp;characteristics) noexcept override</td></tr>
+<tr class="memdesc:a89528b9dbb1a5660e1c607c5ff518f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discover GATT characteristics for a service.  <br /></td></tr>
+<tr class="separator:a89528b9dbb1a5660e1c607c5ff518f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d4f13f2b7cf499284a2095b088a9cfd" id="r_a4d4f13f2b7cf499284a2095b088a9cfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d4f13f2b7cf499284a2095b088a9cfd">ReadCharacteristic</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, std::vector&lt; uint8_t &gt; &amp;value) noexcept override</td></tr>
+<tr class="memdesc:a4d4f13f2b7cf499284a2095b088a9cfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read GATT characteristic value.  <br /></td></tr>
+<tr class="separator:a4d4f13f2b7cf499284a2095b088a9cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd3cd517a0c8cb03fdeb90343a761eed" id="r_afd3cd517a0c8cb03fdeb90343a761eed"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd3cd517a0c8cb03fdeb90343a761eed">WriteCharacteristic</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, const std::vector&lt; uint8_t &gt; &amp;value, bool with_response=true) noexcept override</td></tr>
+<tr class="memdesc:afd3cd517a0c8cb03fdeb90343a761eed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write GATT characteristic value.  <br /></td></tr>
+<tr class="separator:afd3cd517a0c8cb03fdeb90343a761eed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a323dcb58fb5d65901378cdee70e8a2b8" id="r_a323dcb58fb5d65901378cdee70e8a2b8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a323dcb58fb5d65901378cdee70e8a2b8">SubscribeCharacteristic</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, bool enable) noexcept override</td></tr>
+<tr class="memdesc:a323dcb58fb5d65901378cdee70e8a2b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subscribe to GATT characteristic notifications.  <br /></td></tr>
+<tr class="separator:a323dcb58fb5d65901378cdee70e8a2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acae7ac63df21a71a53b65de3a3693a29" id="r_acae7ac63df21a71a53b65de3a3693a29"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__bluetooth.html#gac451db000ab6ee8c0a80c938da26a738">hf_bluetooth_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acae7ac63df21a71a53b65de3a3693a29">GetState</a> () const noexcept override</td></tr>
+<tr class="memdesc:acae7ac63df21a71a53b65de3a3693a29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current Bluetooth state.  <br /></td></tr>
+<tr class="separator:acae7ac63df21a71a53b65de3a3693a29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad59ff6490e87be4dfa9f1191e402fd2b" id="r_ad59ff6490e87be4dfa9f1191e402fd2b"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad59ff6490e87be4dfa9f1191e402fd2b">GetRssi</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const noexcept override</td></tr>
+<tr class="memdesc:ad59ff6490e87be4dfa9f1191e402fd2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get signal strength for a connected device.  <br /></td></tr>
+<tr class="separator:ad59ff6490e87be4dfa9f1191e402fd2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a137a8a03227be55f429a09a8e1da2757" id="r_a137a8a03227be55f429a09a8e1da2757"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a137a8a03227be55f429a09a8e1da2757">RegisterEventCallback</a> (<a class="el" href="group__bluetooth.html#gaeb49a17c65e01fa9236e9ab0b4994f77">hf_bluetooth_event_callback_t</a> callback) noexcept override</td></tr>
+<tr class="memdesc:a137a8a03227be55f429a09a8e1da2757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register event callback function.  <br /></td></tr>
+<tr class="separator:a137a8a03227be55f429a09a8e1da2757"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addfcf15e96b15910af24de8870f0b2cb" id="r_addfcf15e96b15910af24de8870f0b2cb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addfcf15e96b15910af24de8870f0b2cb">RegisterDataCallback</a> (<a class="el" href="group__bluetooth.html#ga65e5bf89736f8023fe4cf15163655f6a">hf_bluetooth_data_callback_t</a> callback) noexcept override</td></tr>
+<tr class="memdesc:addfcf15e96b15910af24de8870f0b2cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register data callback function.  <br /></td></tr>
+<tr class="separator:addfcf15e96b15910af24de8870f0b2cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35e79432888a19309a9cf8329c24b504" id="r_a35e79432888a19309a9cf8329c24b504"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35e79432888a19309a9cf8329c24b504">UnregisterEventCallback</a> () noexcept override</td></tr>
+<tr class="memdesc:a35e79432888a19309a9cf8329c24b504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister event callback function.  <br /></td></tr>
+<tr class="separator:a35e79432888a19309a9cf8329c24b504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91c92be8ddf002f304fe598c2edc7758" id="r_a91c92be8ddf002f304fe598c2edc7758"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a91c92be8ddf002f304fe598c2edc7758">UnregisterDataCallback</a> () noexcept override</td></tr>
+<tr class="memdesc:a91c92be8ddf002f304fe598c2edc7758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unregister data callback function.  <br /></td></tr>
+<tr class="separator:a91c92be8ddf002f304fe598c2edc7758"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff74b61fc7cc7ec7da326cadbc2774d7" id="r_aff74b61fc7cc7ec7da326cadbc2774d7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aff74b61fc7cc7ec7da326cadbc2774d7">ConfigureClassic</a> (const <a class="el" href="structhf__bluetooth__classic__config__t.html">hf_bluetooth_classic_config_t</a> &amp;config) noexcept override</td></tr>
+<tr class="memdesc:aff74b61fc7cc7ec7da326cadbc2774d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Bluetooth Classic parameters.  <br /></td></tr>
+<tr class="separator:aff74b61fc7cc7ec7da326cadbc2774d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7672c3765524c2f179cd7b127ab708f" id="r_ad7672c3765524c2f179cd7b127ab708f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad7672c3765524c2f179cd7b127ab708f">SetDiscoverable</a> (bool discoverable, uint32_t timeout_ms=0) noexcept override</td></tr>
+<tr class="memdesc:ad7672c3765524c2f179cd7b127ab708f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make device discoverable.  <br /></td></tr>
+<tr class="separator:ad7672c3765524c2f179cd7b127ab708f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37a10b193de4105734f148a7d8cd9c26" id="r_a37a10b193de4105734f148a7d8cd9c26"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37a10b193de4105734f148a7d8cd9c26">IsDiscoverable</a> () const noexcept override</td></tr>
+<tr class="memdesc:a37a10b193de4105734f148a7d8cd9c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if device is discoverable.  <br /></td></tr>
+<tr class="separator:a37a10b193de4105734f148a7d8cd9c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29df037a2e0bb46a29bde4a4ed589e89" id="r_a29df037a2e0bb46a29bde4a4ed589e89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a29df037a2e0bb46a29bde4a4ed589e89">ConfigureBle</a> (const <a class="el" href="structhf__bluetooth__ble__config__t.html">hf_bluetooth_ble_config_t</a> &amp;config) noexcept override</td></tr>
+<tr class="memdesc:a29df037a2e0bb46a29bde4a4ed589e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure Bluetooth Low Energy parameters.  <br /></td></tr>
+<tr class="separator:a29df037a2e0bb46a29bde4a4ed589e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1964d48b1acd5eccce38da02166e7d90" id="r_a1964d48b1acd5eccce38da02166e7d90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1964d48b1acd5eccce38da02166e7d90">GetPairedDevices</a> (std::vector&lt; <a class="el" href="structhf__bluetooth__device__info__t.html">hf_bluetooth_device_info_t</a> &gt; &amp;devices) noexcept override</td></tr>
+<tr class="memdesc:a1964d48b1acd5eccce38da02166e7d90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get list of paired devices.  <br /></td></tr>
+<tr class="separator:a1964d48b1acd5eccce38da02166e7d90"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea62727908de168c5694694596b3bc04" id="r_aea62727908de168c5694694596b3bc04"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea62727908de168c5694694596b3bc04">GetImplementationInfo</a> () const</td></tr>
 <tr class="memdesc:aea62727908de168c5694694596b3bc04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get implementation-specific information.  <br /></td></tr>
 <tr class="separator:aea62727908de168c5694694596b3bc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -268,16 +267,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a25a1cdbecb847dbd24b65d83642bd90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get supported features for current target.  <br /></td></tr>
 <tr class="separator:a25a1cdbecb847dbd24b65d83642bd90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBaseBluetooth"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBaseBluetooth')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBaseBluetooth.html">BaseBluetooth</a></td></tr>
-<tr class="memitem:ae77e7b8c64bfdfcdc5563d14f0f23472 inherit pub_methods_classBaseBluetooth" id="r_ae77e7b8c64bfdfcdc5563d14f0f23472"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseBluetooth.html#ae77e7b8c64bfdfcdc5563d14f0f23472">~BaseBluetooth</a> ()=default</td></tr>
-<tr class="memdesc:ae77e7b8c64bfdfcdc5563d14f0f23472 inherit pub_methods_classBaseBluetooth"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
-<tr class="separator:ae77e7b8c64bfdfcdc5563d14f0f23472 inherit pub_methods_classBaseBluetooth"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b0363e029dbd3f3dda7065a0712e39a inherit pub_methods_classBaseBluetooth" id="r_a8b0363e029dbd3f3dda7065a0712e39a"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseBluetooth.html#a8b0363e029dbd3f3dda7065a0712e39a">~BaseBluetooth</a> () noexcept=default</td></tr>
+<tr class="memdesc:a8b0363e029dbd3f3dda7065a0712e39a inherit pub_methods_classBaseBluetooth"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor for proper cleanup of derived classes.  <br /></td></tr>
+<tr class="separator:a8b0363e029dbd3f3dda7065a0712e39a inherit pub_methods_classBaseBluetooth"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a8b0f66e0b935be4f29c8a4a5aed6d652" id="r_a8b0f66e0b935be4f29c8a4a5aed6d652"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b0f66e0b935be4f29c8a4a5aed6d652">InitializeBluedroid</a> ()</td></tr>
-<tr class="separator:a8b0f66e0b935be4f29c8a4a5aed6d652"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a383a2fc753705da60c13eba177c13af1" id="r_a383a2fc753705da60c13eba177c13af1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a383a2fc753705da60c13eba177c13af1">DeinitializeBluedroid</a> ()</td></tr>
-<tr class="separator:a383a2fc753705da60c13eba177c13af1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba97116a09dbb885c55d3f503fe34433" id="r_aba97116a09dbb885c55d3f503fe34433"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aba97116a09dbb885c55d3f503fe34433">TriggerEvent</a> (<a class="el" href="group__bluetooth.html#gaf4d7f320ef7ffa2ef26966adc8facb67">hf_bluetooth_event_t</a> event, const void *data=nullptr)</td></tr>
 <tr class="separator:aba97116a09dbb885c55d3f503fe34433"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0686079fd72561fd9110e586c146649" id="r_aa0686079fd72561fd9110e586c146649"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa0686079fd72561fd9110e586c146649">ValidateAddress</a> (const <a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a> &amp;address) const</td></tr>
@@ -286,15 +281,6 @@ Private Member Functions</h2></td></tr>
 <tr class="separator:ac6ca2eab7f75aeb09e6a227dca39195b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb38ae9cbc07b03d365fdd11a9cd1180" id="r_acb38ae9cbc07b03d365fdd11a9cd1180"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__bluetooth__address__t.html">hf_bluetooth_address_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb38ae9cbc07b03d365fdd11a9cd1180">StringToAddress</a> (const std::string &amp;address_str) const</td></tr>
 <tr class="separator:acb38ae9cbc07b03d365fdd11a9cd1180"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-static-methods" name="pri-static-methods"></a>
-Static Private Member Functions</h2></td></tr>
-<tr class="memitem:abc89b97fd26c1656561a6bb3b244cd90" id="r_abc89b97fd26c1656561a6bb3b244cd90"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc89b97fd26c1656561a6bb3b244cd90">GapEventHandler</a> (esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t *param)</td></tr>
-<tr class="separator:abc89b97fd26c1656561a6bb3b244cd90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92edd646687b8897675cea649f6fcd68" id="r_a92edd646687b8897675cea649f6fcd68"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a92edd646687b8897675cea649f6fcd68">GattcEventHandler</a> (esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp_ble_gattc_cb_param_t *param)</td></tr>
-<tr class="separator:a92edd646687b8897675cea649f6fcd68"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf3338ba2f2d3fd8c5d07607cccfc56c" id="r_aaf3338ba2f2d3fd8c5d07607cccfc56c"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf3338ba2f2d3fd8c5d07607cccfc56c">GattsEventHandler</a> (esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if, esp_ble_gatts_cb_param_t *param)</td></tr>
-<tr class="separator:aaf3338ba2f2d3fd8c5d07607cccfc56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -421,8 +407,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a8461a03c45119319321f6a391a0a5135" name="a8461a03c45119319321f6a391a0a5135"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8461a03c45119319321f6a391a0a5135">&#9670;&#160;</a></span>ClearDiscoveredDevices()</h2>
+<a id="a47e325ffa5b21fbc275e7d03e0da391f" name="a47e325ffa5b21fbc275e7d03e0da391f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47e325ffa5b21fbc275e7d03e0da391f">&#9670;&#160;</a></span>ClearDiscoveredDevices()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -439,7 +425,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -447,12 +433,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Clear discovered devices list. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#ad996e7aa11d766792e31d9b8b402500c">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a0c635ad8d4b4b561d9d6f197f85d8cd7">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a21f34c8693086a3ff6a522be67e45394" name="a21f34c8693086a3ff6a522be67e45394"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a21f34c8693086a3ff6a522be67e45394">&#9670;&#160;</a></span>ConfigureBle()</h2>
+<a id="a29df037a2e0bb46a29bde4a4ed589e89" name="a29df037a2e0bb46a29bde4a4ed589e89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29df037a2e0bb46a29bde4a4ed589e89">&#9670;&#160;</a></span>ConfigureBle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,7 +455,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -483,12 +469,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a6cfce1df3b1dbd1267154de7d957a525">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ac5cb25b01043f0aada11b7073702dd76">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="aa86e9aaf05af6672d9c68408e9039dde" name="aa86e9aaf05af6672d9c68408e9039dde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa86e9aaf05af6672d9c68408e9039dde">&#9670;&#160;</a></span>ConfigureClassic()</h2>
+<a id="aff74b61fc7cc7ec7da326cadbc2774d7" name="aff74b61fc7cc7ec7da326cadbc2774d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff74b61fc7cc7ec7da326cadbc2774d7">&#9670;&#160;</a></span>ConfigureClassic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -505,7 +491,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -519,12 +505,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#adcd47674624cf1c692c88d96391b9024">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a05c3be910231f2f62b907353444b57a3">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a409cc44a82b415ff5abc311aef9ed165" name="a409cc44a82b415ff5abc311aef9ed165"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a409cc44a82b415ff5abc311aef9ed165">&#9670;&#160;</a></span>Connect()</h2>
+<a id="a95b4099eb2de6b28976c36a3344e85f4" name="a95b4099eb2de6b28976c36a3344e85f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95b4099eb2de6b28976c36a3344e85f4">&#9670;&#160;</a></span>Connect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -545,7 +531,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -560,12 +546,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a491ab1503e8860ab5550a6eba81c3ad8">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a617291c44633b686263c240181ae3cea">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a2c2487161a2d769d6ee8aba326099c26" name="a2c2487161a2d769d6ee8aba326099c26"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2c2487161a2d769d6ee8aba326099c26">&#9670;&#160;</a></span>Deinitialize()</h2>
+<a id="a4074f5333e5612a4af439a278891e05d" name="a4074f5333e5612a4af439a278891e05d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4074f5333e5612a4af439a278891e05d">&#9670;&#160;</a></span>Deinitialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -582,7 +568,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -590,37 +576,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Deinitialize the Bluetooth subsystem. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a3b78e495412b0c58e9f1d34b0d6b0584">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a7b83a94014337dabe22933cf0f3c6a7e">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a383a2fc753705da60c13eba177c13af1" name="a383a2fc753705da60c13eba177c13af1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a383a2fc753705da60c13eba177c13af1">&#9670;&#160;</a></span>DeinitializeBluedroid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a> EspBluetooth::DeinitializeBluedroid </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a8aabdb4cdfcc466168664cecea0b5730" name="a8aabdb4cdfcc466168664cecea0b5730"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8aabdb4cdfcc466168664cecea0b5730">&#9670;&#160;</a></span>Disable()</h2>
+<a id="a4a38102299b8c7de84b23dc1f84b892b" name="a4a38102299b8c7de84b23dc1f84b892b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a38102299b8c7de84b23dc1f84b892b">&#9670;&#160;</a></span>Disable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -637,7 +598,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -645,12 +606,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Disable Bluetooth. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#af9488d4b6303ae3f72462e6919e08e97">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a304a301886bf38cfe878b53dcde596ae">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a1737908361424529d735fdfbe552b6f7" name="a1737908361424529d735fdfbe552b6f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1737908361424529d735fdfbe552b6f7">&#9670;&#160;</a></span>Disconnect()</h2>
+<a id="a348bebc38b00b6c0e47c2b12bf856d60" name="a348bebc38b00b6c0e47c2b12bf856d60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a348bebc38b00b6c0e47c2b12bf856d60">&#9670;&#160;</a></span>Disconnect()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -667,7 +628,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -681,12 +642,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#afccb08941b4fafb6d0899242e15b2920">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a7bead8aef6793700b27cbf09f9067056">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a04191edbe3f209b1ec4d20c359e0943d" name="a04191edbe3f209b1ec4d20c359e0943d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04191edbe3f209b1ec4d20c359e0943d">&#9670;&#160;</a></span>DiscoverCharacteristics()</h2>
+<a id="a89528b9dbb1a5660e1c607c5ff518f8a" name="a89528b9dbb1a5660e1c607c5ff518f8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89528b9dbb1a5660e1c607c5ff518f8a">&#9670;&#160;</a></span>DiscoverCharacteristics()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -712,7 +673,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -728,12 +689,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#ad37958dc6328f4152af8ce7d4dacb542">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a71dbea977b9400ae1be9358df7161a41">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="aeb84527d0adb3262fef210ce29c9a84e" name="aeb84527d0adb3262fef210ce29c9a84e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb84527d0adb3262fef210ce29c9a84e">&#9670;&#160;</a></span>DiscoverServices()</h2>
+<a id="a1a20a5079a33372536b771e1689e7cf9" name="a1a20a5079a33372536b771e1689e7cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a20a5079a33372536b771e1689e7cf9">&#9670;&#160;</a></span>DiscoverServices()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -754,7 +715,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -769,12 +730,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#afc5629fe0b63c4c113a545b5eacf6f7a">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a1ba1c8b0f8825bb6fca5b157466b263a">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a1c8e9f1e44d21cc4ad5e789ee5f3dbce" name="a1c8e9f1e44d21cc4ad5e789ee5f3dbce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c8e9f1e44d21cc4ad5e789ee5f3dbce">&#9670;&#160;</a></span>Enable()</h2>
+<a id="a98ea9a7262bf49c703156f478b82c122" name="a98ea9a7262bf49c703156f478b82c122"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98ea9a7262bf49c703156f478b82c122">&#9670;&#160;</a></span>Enable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -791,7 +752,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -799,109 +760,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Enable Bluetooth. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#ae3f0672a639f4ae1eb87887d866fc584">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ac00fdcd427c9983e6671fe8876afe0b1">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="abc89b97fd26c1656561a6bb3b244cd90" name="abc89b97fd26c1656561a6bb3b244cd90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc89b97fd26c1656561a6bb3b244cd90">&#9670;&#160;</a></span>GapEventHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void EspBluetooth::GapEventHandler </td>
-          <td>(</td>
-          <td class="paramtype">esp_gap_ble_cb_event_t</td>          <td class="paramname"><span class="paramname"><em>event</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">esp_ble_gap_cb_param_t *</td>          <td class="paramname"><span class="paramname"><em>param</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a92edd646687b8897675cea649f6fcd68" name="a92edd646687b8897675cea649f6fcd68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92edd646687b8897675cea649f6fcd68">&#9670;&#160;</a></span>GattcEventHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void EspBluetooth::GattcEventHandler </td>
-          <td>(</td>
-          <td class="paramtype">esp_gattc_cb_event_t</td>          <td class="paramname"><span class="paramname"><em>event</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">esp_gatt_if_t</td>          <td class="paramname"><span class="paramname"><em>gattc_if</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">esp_ble_gattc_cb_param_t *</td>          <td class="paramname"><span class="paramname"><em>param</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aaf3338ba2f2d3fd8c5d07607cccfc56c" name="aaf3338ba2f2d3fd8c5d07607cccfc56c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf3338ba2f2d3fd8c5d07607cccfc56c">&#9670;&#160;</a></span>GattsEventHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void EspBluetooth::GattsEventHandler </td>
-          <td>(</td>
-          <td class="paramtype">esp_gatts_cb_event_t</td>          <td class="paramname"><span class="paramname"><em>event</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">esp_gatt_if_t</td>          <td class="paramname"><span class="paramname"><em>gatts_if</em>, </span></td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">esp_ble_gatts_cb_param_t *</td>          <td class="paramname"><span class="paramname"><em>param</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a49346d4f535119cfdf1c7a44592e2ec0" name="a49346d4f535119cfdf1c7a44592e2ec0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49346d4f535119cfdf1c7a44592e2ec0">&#9670;&#160;</a></span>GetAvailableData()</h2>
+<a id="ad9b72feec623b72121fd7dc903980205" name="ad9b72feec623b72121fd7dc903980205"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9b72feec623b72121fd7dc903980205">&#9670;&#160;</a></span>GetAvailableData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -918,7 +782,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -932,12 +796,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number of bytes available, or -1 on error </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a3c9c4e3e4ff5d70f646c328df340a959">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a817f50486c8cc2d8fb90e5e02cee730c">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a00f5c601bce68d612ecbd8cc0bb3d78b" name="a00f5c601bce68d612ecbd8cc0bb3d78b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00f5c601bce68d612ecbd8cc0bb3d78b">&#9670;&#160;</a></span>GetConnectedDevices()</h2>
+<a id="a157e5082fb3aae39dbdcabcae0c0042b" name="a157e5082fb3aae39dbdcabcae0c0042b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a157e5082fb3aae39dbdcabcae0c0042b">&#9670;&#160;</a></span>GetConnectedDevices()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -954,7 +818,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -968,12 +832,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#ab42108b4a596b6ff15b93fd6c5c06cab">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a60f462a47b67c139f8be15ed632bafb3">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a52323a4f04d001da2b506db298f651dd" name="a52323a4f04d001da2b506db298f651dd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52323a4f04d001da2b506db298f651dd">&#9670;&#160;</a></span>GetDeviceName()</h2>
+<a id="a62271ef1873ae263b2046a0445d077da" name="a62271ef1873ae263b2046a0445d077da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62271ef1873ae263b2046a0445d077da">&#9670;&#160;</a></span>GetDeviceName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -990,7 +854,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -998,12 +862,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Get local device name. </p>
 <dl class="section return"><dt>Returns</dt><dd>Device name string </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a226554f64e1cba76d0b021077f81088f">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a0578c85504ad9b33d842d54f25af2f19">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a4bfb7b848bb93452373e060d5748a436" name="a4bfb7b848bb93452373e060d5748a436"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bfb7b848bb93452373e060d5748a436">&#9670;&#160;</a></span>GetDiscoveredDevices()</h2>
+<a id="a8d5405c42ed4af6c74bdaa487f8a238e" name="a8d5405c42ed4af6c74bdaa487f8a238e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d5405c42ed4af6c74bdaa487f8a238e">&#9670;&#160;</a></span>GetDiscoveredDevices()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1020,7 +884,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1034,7 +898,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#ae680e1a6ea8aa510a3d8a6e66b33f4e6">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a6eb10b728e86c6347d78db68d9daca38">BaseBluetooth</a>.</p>
 
 </div>
 </div>
@@ -1058,8 +922,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="aa0608e60d9a74a7fa7f8c5b49b155981" name="aa0608e60d9a74a7fa7f8c5b49b155981"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0608e60d9a74a7fa7f8c5b49b155981">&#9670;&#160;</a></span>GetLocalAddress()</h2>
+<a id="a302917757fb9ec1c7c9499bd672a9859" name="a302917757fb9ec1c7c9499bd672a9859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a302917757fb9ec1c7c9499bd672a9859">&#9670;&#160;</a></span>GetLocalAddress()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1076,7 +940,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1090,12 +954,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#aff3d25b5192168951bbf844459d25014">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ad9826db41723a9d8a22633ccc3296e63">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a786d4e2567bfcbe2f9df4f61e7a686ff" name="a786d4e2567bfcbe2f9df4f61e7a686ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a786d4e2567bfcbe2f9df4f61e7a686ff">&#9670;&#160;</a></span>GetMode()</h2>
+<a id="a6c139c76f416d0ee82b050613521beb8" name="a6c139c76f416d0ee82b050613521beb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c139c76f416d0ee82b050613521beb8">&#9670;&#160;</a></span>GetMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1112,7 +976,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1120,12 +984,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Get current Bluetooth operating mode. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current Bluetooth mode </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a029b3ca472e6c048ea98db766e361f19">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a9c402552e6d2a17e8ad96cf05c48c5dc">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a71ed4973e6db54cf9b3a22a96f66f4e8" name="a71ed4973e6db54cf9b3a22a96f66f4e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71ed4973e6db54cf9b3a22a96f66f4e8">&#9670;&#160;</a></span>GetPairedDevices()</h2>
+<a id="a1964d48b1acd5eccce38da02166e7d90" name="a1964d48b1acd5eccce38da02166e7d90"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1964d48b1acd5eccce38da02166e7d90">&#9670;&#160;</a></span>GetPairedDevices()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1142,7 +1006,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1156,12 +1020,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a1eea76b41ba09697e53099c075d51787">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a89d0044ec124c5ef2d2737462a22df9e">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a9090b878e33958b109e5b53af48308fa" name="a9090b878e33958b109e5b53af48308fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9090b878e33958b109e5b53af48308fa">&#9670;&#160;</a></span>GetRssi()</h2>
+<a id="ad59ff6490e87be4dfa9f1191e402fd2b" name="ad59ff6490e87be4dfa9f1191e402fd2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad59ff6490e87be4dfa9f1191e402fd2b">&#9670;&#160;</a></span>GetRssi()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1178,7 +1042,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1192,12 +1056,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Signal strength in dBm, or INT8_MIN on error </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a99a5b02e2f3a0bccd554a692340fa64d">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ae2e305a568401408da0c317e4b6a2040">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a900bdf9f92cd5bc4259d2360171f9cf4" name="a900bdf9f92cd5bc4259d2360171f9cf4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a900bdf9f92cd5bc4259d2360171f9cf4">&#9670;&#160;</a></span>GetState()</h2>
+<a id="acae7ac63df21a71a53b65de3a3693a29" name="acae7ac63df21a71a53b65de3a3693a29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acae7ac63df21a71a53b65de3a3693a29">&#9670;&#160;</a></span>GetState()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1214,7 +1078,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1222,7 +1086,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Get current Bluetooth state. </p>
 <dl class="section return"><dt>Returns</dt><dd>Current Bluetooth state </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a49aadef553ed72baa4d7bc5e96f0c95e">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ab333ba8a81a224770998910a56d5c7ba">BaseBluetooth</a>.</p>
 
 </div>
 </div>
@@ -1246,8 +1110,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="ad1b73541ee07d1797eb1ed151eb65799" name="ad1b73541ee07d1797eb1ed151eb65799"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad1b73541ee07d1797eb1ed151eb65799">&#9670;&#160;</a></span>Initialize()</h2>
+<a id="afd8bea96514732371c58be26a3b44747" name="afd8bea96514732371c58be26a3b44747"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd8bea96514732371c58be26a3b44747">&#9670;&#160;</a></span>Initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1264,7 +1128,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1279,37 +1143,12 @@ Additional Inherited Members</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>For ESP32C6, only BLE mode is supported </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a196c07d346d5433ec07cd130002abef6">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a63ecb221a9578ec16a931664ddcb727a">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a8b0f66e0b935be4f29c8a4a5aed6d652" name="a8b0f66e0b935be4f29c8a4a5aed6d652"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8b0f66e0b935be4f29c8a4a5aed6d652">&#9670;&#160;</a></span>InitializeBluedroid()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bc">hf_bluetooth_err_t</a> EspBluetooth::InitializeBluedroid </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af08b9be8919f12f20a1ec975f69cd8bd" name="af08b9be8919f12f20a1ec975f69cd8bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af08b9be8919f12f20a1ec975f69cd8bd">&#9670;&#160;</a></span>IsAdvertising()</h2>
+<a id="acf0cc8ea815792cff6cf2be61c819ed3" name="acf0cc8ea815792cff6cf2be61c819ed3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf0cc8ea815792cff6cf2be61c819ed3">&#9670;&#160;</a></span>IsAdvertising()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1326,7 +1165,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1334,12 +1173,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Check if currently advertising. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if advertising, false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a6806e3ecd8d83530c8bfb101099f2fd4">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a493573d82cfe67773aaedd028a9cec4b">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="ae96a09bbf25506f65e49b71ef0fb4bbb" name="ae96a09bbf25506f65e49b71ef0fb4bbb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae96a09bbf25506f65e49b71ef0fb4bbb">&#9670;&#160;</a></span>IsConnected()</h2>
+<a id="adbcf453657dd1c372bc45c9e0cca302a" name="adbcf453657dd1c372bc45c9e0cca302a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbcf453657dd1c372bc45c9e0cca302a">&#9670;&#160;</a></span>IsConnected()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1356,7 +1195,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1370,12 +1209,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if connected, false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a8b4f8e6d6bc7fc2ad1274018eb83f984">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#aaaa1fe08e98f160ad26c1285fa027ae4">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="aea05b74fe7af2a8cfc7ebc9b9d23525a" name="aea05b74fe7af2a8cfc7ebc9b9d23525a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea05b74fe7af2a8cfc7ebc9b9d23525a">&#9670;&#160;</a></span>IsDiscoverable()</h2>
+<a id="a37a10b193de4105734f148a7d8cd9c26" name="a37a10b193de4105734f148a7d8cd9c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a37a10b193de4105734f148a7d8cd9c26">&#9670;&#160;</a></span>IsDiscoverable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1392,7 +1231,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1400,12 +1239,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Check if device is discoverable. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if discoverable, false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a1cff8c3db74ba4776f3ca4a550eaa2f4">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ad7fd4fbee258da62570426885255b2cf">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a39f39ac36e8cb1405d63e7df3f14c813" name="a39f39ac36e8cb1405d63e7df3f14c813"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39f39ac36e8cb1405d63e7df3f14c813">&#9670;&#160;</a></span>IsEnabled()</h2>
+<a id="a8dbe05f9ae739562f8d79017c6a2613a" name="a8dbe05f9ae739562f8d79017c6a2613a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8dbe05f9ae739562f8d79017c6a2613a">&#9670;&#160;</a></span>IsEnabled()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1422,7 +1261,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1430,12 +1269,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Check if Bluetooth is enabled. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if enabled, false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a626da2b0e75af05bccae77dae40f47ae">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a4ed2e7e27416c8103aa84a43503e1f96">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a355b62ef036e3212dc888c72fc6ff503" name="a355b62ef036e3212dc888c72fc6ff503"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a355b62ef036e3212dc888c72fc6ff503">&#9670;&#160;</a></span>IsInitialized()</h2>
+<a id="a3614348f32fdffd9ecafc94609c13c7d" name="a3614348f32fdffd9ecafc94609c13c7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3614348f32fdffd9ecafc94609c13c7d">&#9670;&#160;</a></span>IsInitialized()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1452,7 +1291,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1460,12 +1299,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Check if Bluetooth is initialized. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if initialized, false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#af8e1ecb1d4e3e6f31e14d9b152e812a0">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ab2790a83b12faa88d3e3e45c4e87ec07">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a0fb00e110f247ed8a86bd7c7a0885dd9" name="a0fb00e110f247ed8a86bd7c7a0885dd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fb00e110f247ed8a86bd7c7a0885dd9">&#9670;&#160;</a></span>IsPaired()</h2>
+<a id="acdf4674571e946491fc166e0f6cfeee8" name="acdf4674571e946491fc166e0f6cfeee8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdf4674571e946491fc166e0f6cfeee8">&#9670;&#160;</a></span>IsPaired()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1482,7 +1321,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1496,12 +1335,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if paired, false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a0886a8faae0cfe0f69330c0efcdf226f">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#af2e91ee25f4f133566544895cbe9ccc1">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="aba032c11551997dca218bd8162a44f8b" name="aba032c11551997dca218bd8162a44f8b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aba032c11551997dca218bd8162a44f8b">&#9670;&#160;</a></span>IsScanning()</h2>
+<a id="ac5fa0f11be5c7e1e5194ecc12818251b" name="ac5fa0f11be5c7e1e5194ecc12818251b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5fa0f11be5c7e1e5194ecc12818251b">&#9670;&#160;</a></span>IsScanning()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1518,7 +1357,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1526,12 +1365,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Check if currently scanning. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if scanning, false otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a4a7eca3f951cd2847965dc0eaaf1aa67">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#af8583dad6a3fb4ff18987bb2f9502a2d">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="aad54e4f2b9434ea7f84cfdfa392d9141" name="aad54e4f2b9434ea7f84cfdfa392d9141"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad54e4f2b9434ea7f84cfdfa392d9141">&#9670;&#160;</a></span>Pair()</h2>
+<a id="a1fdeba3ee4d28fce11a530e058fe46c2" name="a1fdeba3ee4d28fce11a530e058fe46c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fdeba3ee4d28fce11a530e058fe46c2">&#9670;&#160;</a></span>Pair()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1552,7 +1391,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1567,12 +1406,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a7462b4aef22ddd43203e44214f5536c2">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a50efd732485a32e6accd1f51e9fc58f6">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="ad6fd71931ee339bdb4a66e2837dc6983" name="ad6fd71931ee339bdb4a66e2837dc6983"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6fd71931ee339bdb4a66e2837dc6983">&#9670;&#160;</a></span>ReadCharacteristic()</h2>
+<a id="a4d4f13f2b7cf499284a2095b088a9cfd" name="a4d4f13f2b7cf499284a2095b088a9cfd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d4f13f2b7cf499284a2095b088a9cfd">&#9670;&#160;</a></span>ReadCharacteristic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1603,7 +1442,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1620,12 +1459,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a7e191af8a19ddb52181c853c27f26eeb">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a7a6fcf0460f5d2454fac81851457ea9d">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a372f9249278b7aa12070aa908c9f224b" name="a372f9249278b7aa12070aa908c9f224b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a372f9249278b7aa12070aa908c9f224b">&#9670;&#160;</a></span>ReadData()</h2>
+<a id="a2d606a628a2d01182eb1e268a3d3ec8a" name="a2d606a628a2d01182eb1e268a3d3ec8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d606a628a2d01182eb1e268a3d3ec8a">&#9670;&#160;</a></span>ReadData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1651,7 +1490,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1667,12 +1506,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a0ef42af7a494714ed851eca3fec124cc">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#aaeda8dabc23f43f7b034d9ea5b710aa3">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="afe72fcb5f77f9183c803144a480ecdad" name="afe72fcb5f77f9183c803144a480ecdad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe72fcb5f77f9183c803144a480ecdad">&#9670;&#160;</a></span>RegisterDataCallback()</h2>
+<a id="addfcf15e96b15910af24de8870f0b2cb" name="addfcf15e96b15910af24de8870f0b2cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addfcf15e96b15910af24de8870f0b2cb">&#9670;&#160;</a></span>RegisterDataCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1689,7 +1528,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1703,12 +1542,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a7d6eb7a09b4185eb9de0ebbaadcddec1">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ab463a72df3ed5155a22551fd9adf1867">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a20201cde03378f0f1bad5ee9c0899ae6" name="a20201cde03378f0f1bad5ee9c0899ae6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20201cde03378f0f1bad5ee9c0899ae6">&#9670;&#160;</a></span>RegisterEventCallback()</h2>
+<a id="a137a8a03227be55f429a09a8e1da2757" name="a137a8a03227be55f429a09a8e1da2757"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a137a8a03227be55f429a09a8e1da2757">&#9670;&#160;</a></span>RegisterEventCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1725,7 +1564,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1739,12 +1578,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a393db49fdbbb0db872262b0b12ad25ea">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a575415fe3e0f3f3bba31013d6cfb0e0c">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="ab8d945185adbccb25093f59f758cd8f3" name="ab8d945185adbccb25093f59f758cd8f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8d945185adbccb25093f59f758cd8f3">&#9670;&#160;</a></span>SendData()</h2>
+<a id="a58b807e84ea7ad6634530fb83f410750" name="a58b807e84ea7ad6634530fb83f410750"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58b807e84ea7ad6634530fb83f410750">&#9670;&#160;</a></span>SendData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1765,7 +1604,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1780,12 +1619,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a4c5f73a535305f072f5bdf096efd19ce">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#aeb6a2808eba39d846234d4daa5e7721a">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a6e080c3c051d20db369a9a4947f97a34" name="a6e080c3c051d20db369a9a4947f97a34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6e080c3c051d20db369a9a4947f97a34">&#9670;&#160;</a></span>SetDeviceName()</h2>
+<a id="a4d7f45a579ce77fd3d19ea5bd1b8ac15" name="a4d7f45a579ce77fd3d19ea5bd1b8ac15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d7f45a579ce77fd3d19ea5bd1b8ac15">&#9670;&#160;</a></span>SetDeviceName()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1802,7 +1641,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1816,12 +1655,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a1792bf9086c8db3951bd1f01a934771e">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a4fb3e215a996b0d5adba08851ef6902b">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a9b4ed0a4e8fadcc14b2bbd99fd302034" name="a9b4ed0a4e8fadcc14b2bbd99fd302034"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b4ed0a4e8fadcc14b2bbd99fd302034">&#9670;&#160;</a></span>SetDiscoverable()</h2>
+<a id="ad7672c3765524c2f179cd7b127ab708f" name="ad7672c3765524c2f179cd7b127ab708f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7672c3765524c2f179cd7b127ab708f">&#9670;&#160;</a></span>SetDiscoverable()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1842,7 +1681,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1857,12 +1696,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#ae16b5e49487dd2b010802c0fefa3cf95">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#af19e222b1e62772e76669918d4ecacb5">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a374d6abb835b46146f08fc112b95f3cc" name="a374d6abb835b46146f08fc112b95f3cc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a374d6abb835b46146f08fc112b95f3cc">&#9670;&#160;</a></span>SetMode()</h2>
+<a id="a52735f7b1bbb0b3736c0dcb4c1a6e1a0" name="a52735f7b1bbb0b3736c0dcb4c1a6e1a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52735f7b1bbb0b3736c0dcb4c1a6e1a0">&#9670;&#160;</a></span>SetMode()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1879,7 +1718,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1893,12 +1732,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a62c7bb7ccccfa4b8d920f7001e9899f4">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a1da91dd265112b3c25a51f2f086e0389">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a2d3ee543b288d47f005555a6297f784e" name="a2d3ee543b288d47f005555a6297f784e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d3ee543b288d47f005555a6297f784e">&#9670;&#160;</a></span>StartAdvertising()</h2>
+<a id="a05a308e2fb973a28ea7e24a62e59dd6c" name="a05a308e2fb973a28ea7e24a62e59dd6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05a308e2fb973a28ea7e24a62e59dd6c">&#9670;&#160;</a></span>StartAdvertising()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1915,7 +1754,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1923,12 +1762,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Start BLE advertising. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a2bef4ad7b3b531bd42c342b85ea27772">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a3e3e5cc0fb48993075b7b17345a75e7b">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="aa6a8a49f8ba193ca87faed9686dc45e8" name="aa6a8a49f8ba193ca87faed9686dc45e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa6a8a49f8ba193ca87faed9686dc45e8">&#9670;&#160;</a></span>StartScan()</h2>
+<a id="a5ae28ad6c3af195ad97eea9cac4096c3" name="a5ae28ad6c3af195ad97eea9cac4096c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ae28ad6c3af195ad97eea9cac4096c3">&#9670;&#160;</a></span>StartScan()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1949,7 +1788,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1964,12 +1803,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a7cbef9bcb0a02d8d4129c5063f182542">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a7ed30dacabc311649b462d809b9ba3c9">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a5599daf444f735cf9d68492d9b4ef765" name="a5599daf444f735cf9d68492d9b4ef765"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5599daf444f735cf9d68492d9b4ef765">&#9670;&#160;</a></span>StopAdvertising()</h2>
+<a id="a0b1a24c6ce5b17f1f29de6a2d81dad37" name="a0b1a24c6ce5b17f1f29de6a2d81dad37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b1a24c6ce5b17f1f29de6a2d81dad37">&#9670;&#160;</a></span>StopAdvertising()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1986,7 +1825,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1994,12 +1833,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Stop BLE advertising. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a3014d71e82d9d0ed7082a84b432025f1">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ad325001eb59f7db35f1ac71d4fddfdfc">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a5b00eaad02fa60c18ad8f9553bb4a180" name="a5b00eaad02fa60c18ad8f9553bb4a180"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5b00eaad02fa60c18ad8f9553bb4a180">&#9670;&#160;</a></span>StopScan()</h2>
+<a id="a492b094f5ed477aa73f40395771df35d" name="a492b094f5ed477aa73f40395771df35d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a492b094f5ed477aa73f40395771df35d">&#9670;&#160;</a></span>StopScan()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2016,7 +1855,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2024,7 +1863,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Stop device discovery/scanning. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#aa284375eca6ab3cf746b00f4b92a1d21">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ad446feb70a30194198dbfecaa383e0f2">BaseBluetooth</a>.</p>
 
 </div>
 </div>
@@ -2053,8 +1892,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="acb1256113dabf1b44584bf34c25c7574" name="acb1256113dabf1b44584bf34c25c7574"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb1256113dabf1b44584bf34c25c7574">&#9670;&#160;</a></span>SubscribeCharacteristic()</h2>
+<a id="a323dcb58fb5d65901378cdee70e8a2b8" name="a323dcb58fb5d65901378cdee70e8a2b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a323dcb58fb5d65901378cdee70e8a2b8">&#9670;&#160;</a></span>SubscribeCharacteristic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2085,7 +1924,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2102,7 +1941,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#ab93a81eda5ea79f516d548ab7266016c">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a28375008b15506311fae513f01d793a7">BaseBluetooth</a>.</p>
 
 </div>
 </div>
@@ -2135,8 +1974,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a73de0eb96a8261c23e7d21862535d4c9" name="a73de0eb96a8261c23e7d21862535d4c9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a73de0eb96a8261c23e7d21862535d4c9">&#9670;&#160;</a></span>Unpair()</h2>
+<a id="ae61bc8f3f2201767874379c1671adec0" name="ae61bc8f3f2201767874379c1671adec0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae61bc8f3f2201767874379c1671adec0">&#9670;&#160;</a></span>Unpair()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2153,7 +1992,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2167,12 +2006,12 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#accbd6d7ae7676023638e7e4f651467b5">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#ac86df1a77e652a46ff4a05516c53dd90">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="af84094c238583d06251f4fb7c5aee803" name="af84094c238583d06251f4fb7c5aee803"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af84094c238583d06251f4fb7c5aee803">&#9670;&#160;</a></span>UnregisterDataCallback()</h2>
+<a id="a91c92be8ddf002f304fe598c2edc7758" name="a91c92be8ddf002f304fe598c2edc7758"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91c92be8ddf002f304fe598c2edc7758">&#9670;&#160;</a></span>UnregisterDataCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2189,7 +2028,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2197,12 +2036,12 @@ Additional Inherited Members</h2></td></tr>
 <p>Unregister data callback function. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#ad01c053e5b9d41f8c60f63f2b7d2642c">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a5d7ec79705f083bb1867a403084e5321">BaseBluetooth</a>.</p>
 
 </div>
 </div>
-<a id="a90f435461e1114cfd01b9091c88ffa47" name="a90f435461e1114cfd01b9091c88ffa47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90f435461e1114cfd01b9091c88ffa47">&#9670;&#160;</a></span>UnregisterEventCallback()</h2>
+<a id="a35e79432888a19309a9cf8329c24b504" name="a35e79432888a19309a9cf8329c24b504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35e79432888a19309a9cf8329c24b504">&#9670;&#160;</a></span>UnregisterEventCallback()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2219,7 +2058,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2227,7 +2066,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Unregister event callback function. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a799e4cdc54f8256ae0f80cf3a2caf52c">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#af7571a9f90a4829e6c728a53c6a1cab7">BaseBluetooth</a>.</p>
 
 </div>
 </div>
@@ -2256,8 +2095,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a6cd33f01012e6db7e1f340c516f9521f" name="a6cd33f01012e6db7e1f340c516f9521f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6cd33f01012e6db7e1f340c516f9521f">&#9670;&#160;</a></span>WriteCharacteristic()</h2>
+<a id="afd3cd517a0c8cb03fdeb90343a761eed" name="afd3cd517a0c8cb03fdeb90343a761eed"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd3cd517a0c8cb03fdeb90343a761eed">&#9670;&#160;</a></span>WriteCharacteristic()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2293,7 +2132,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -2311,7 +2150,7 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="BaseBluetooth_8h.html#ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</a> on success, error code otherwise </dd></dl>
 
-<p>Implements <a class="el" href="classBaseBluetooth.html#a5775d0876c891ce57f7e5da1499be4cd">BaseBluetooth</a>.</p>
+<p>Implements <a class="el" href="classBaseBluetooth.html#a355e1dc5a888deede264cbb0a0cada01">BaseBluetooth</a>.</p>
 
 </div>
 </div>

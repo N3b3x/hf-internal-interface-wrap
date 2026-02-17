@@ -12,7 +12,7 @@
     <includedby refid="PioComprehensiveTest_8cpp" local="yes">examples/esp32/main/PioComprehensiveTest.cpp</includedby>
     <includedby refid="EspPio_8cpp" local="yes">src/mcu/esp32/EspPio.cpp</includedby>
     <incdepgraph>
-      <node id="11">
+      <node id="10">
         <label>BaseAdc.h</label>
         <link refid="BaseAdc_8h"/>
         <childnode refid="3" relation="include">
@@ -21,24 +21,20 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="17">
+      <node id="16">
         <label>BaseCan.h</label>
         <link refid="BaseCan_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="19">
+      <node id="18">
         <label>BaseGpio.h</label>
         <link refid="BaseGpio_8h"/>
         <childnode refid="3" relation="include">
@@ -47,10 +43,8 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="21">
+      <node id="20">
         <label>BaseI2c.h</label>
         <link refid="BaseI2c_8h"/>
         <childnode refid="3" relation="include">
@@ -58,8 +52,6 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -71,10 +63,8 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="26">
+      <node id="25">
         <label>../../../base/BasePwm.h</label>
         <link refid="BasePwm_8h"/>
         <childnode refid="3" relation="include">
@@ -83,10 +73,8 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="28">
+      <node id="27">
         <label>BaseSpi.h</label>
         <link refid="BaseSpi_8h"/>
         <childnode refid="3" relation="include">
@@ -95,21 +83,17 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
-      <node id="33">
+      <node id="32">
         <label>BaseUart.h</label>
         <link refid="BaseUart_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -125,9 +109,11 @@
         <link refid="EspPio_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="39" relation="include">
         </childnode>
@@ -135,246 +121,239 @@
         </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
       </node>
-      <node id="8">
+      <node id="7">
         <label>EspTypes.h</label>
         <link refid="EspTypes_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>EspTypes_ADC.h</label>
-        <link refid="EspTypes__ADC_8h"/>
         <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-      </node>
-      <node id="12">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>EspTypes_CAN.h</label>
-        <link refid="EspTypes__CAN_8h"/>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>EspTypes_GPIO.h</label>
-        <link refid="EspTypes__GPIO_8h"/>
         <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>EspTypes_I2C.h</label>
-        <link refid="EspTypes__I2C_8h"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-      </node>
-      <node id="24">
-        <label>EspTypes_PIO.h</label>
-        <link refid="EspTypes__PIO_8h"/>
-        <childnode refid="2" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="25">
-        <label>EspTypes_PWM.h</label>
-        <link refid="EspTypes__PWM_8h"/>
         <childnode refid="26" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="27">
-        <label>EspTypes_SPI.h</label>
-        <link refid="EspTypes__SPI_8h"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
         <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>EspTypes_Timer.h</label>
-        <link refid="EspTypes__Timer_8h"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
       </node>
-      <node id="32">
-        <label>EspTypes_UART.h</label>
-        <link refid="EspTypes__UART_8h"/>
-        <childnode refid="33" relation="include">
+      <node id="9">
+        <label>EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="11">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
         <label>McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="35">
+      <node id="34">
         <label>RtosMutex.h</label>
         <link refid="RtosMutex_8h"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="38">
         <label>array</label>
       </node>
-      <node id="13">
+      <node id="12">
         <label>atomic</label>
       </node>
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="34">
+      <node id="33">
         <label>cstring</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>driver/i2c.h</label>
       </node>
-      <node id="40">
+      <node id="39">
         <label>driver/rmt_encoder.h</label>
       </node>
-      <node id="41">
+      <node id="40">
         <label>driver/rmt_rx.h</label>
       </node>
-      <node id="42">
+      <node id="41">
         <label>driver/rmt_tx.h</label>
       </node>
-      <node id="29">
+      <node id="28">
         <label>driver/spi_master.h</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>esp_adc/adc_continuous.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>esp_adc/adc_oneshot.h</label>
       </node>
-      <node id="31">
+      <node id="30">
         <label>esp_timer.h</label>
       </node>
-      <node id="36">
+      <node id="35">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="37">
+      <node id="36">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="38">
+      <node id="37">
         <label>freertos/task.h</label>
-      </node>
-      <node id="6">
-        <label>functional</label>
       </node>
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="7">
+      <node id="6">
         <label>string_view</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -504,11 +483,11 @@
 <codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pio__channel__status__t" kindref="compound">hf_pio_channel_status_t</ref>&amp;<sp/>status)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="BasePio_8h_1ade576ec4d2f6bb2cc4e011ee31e1d48e" kindref="member">hf_pio_err_t</ref><sp/><ref refid="classEspPio_1aebeafb537cc85f4b715b93a70982e5d9" kindref="member">GetCapabilities</ref>(<ref refid="structhf__pio__capabilities__t" kindref="compound">hf_pio_capabilities_t</ref>&amp;<sp/>capabilities)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1ac24f012073be0c9e406724cadd1c9788" kindref="member">SetTransmitCallback</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/><ref refid="BasePio_8h_1ab8c62aa676888a6756a3ea726b24d64c" kindref="member">hf_pio_transmit_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1ac24f012073be0c9e406724cadd1c9788" kindref="member">SetTransmitCallback</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/><ref refid="BasePio_8h_1afe89b7df6613717bc40b3d9ec87ee89a" kindref="member">hf_pio_transmit_callback_t</ref><sp/>callback,</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>override;</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1a80cc3f6b0def51b6d46dfb15d9ab4d95" kindref="member">SetReceiveCallback</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/><ref refid="BasePio_8h_1a8e55d16268bbfd30ee876df3ee4561ed" kindref="member">hf_pio_receive_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1a80cc3f6b0def51b6d46dfb15d9ab4d95" kindref="member">SetReceiveCallback</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/><ref refid="BasePio_8h_1ab3c84107f96800c1d8c45464040a5b0a" kindref="member">hf_pio_receive_callback_t</ref><sp/>callback,</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>override;</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1a5c5371ff00a9b3f4c8f753907d8a40ff" kindref="member">SetErrorCallback</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/><ref refid="BasePio_8h_1a03aa7b5372a89dbdf0770488fbb6f824" kindref="member">hf_pio_error_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1a5c5371ff00a9b3f4c8f753907d8a40ff" kindref="member">SetErrorCallback</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id,<sp/><ref refid="BasePio_8h_1ae4f0c3580aa320f9259c2ab55d864e5f" kindref="member">hf_pio_error_callback_t</ref><sp/>callback,</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keywordtype">nullptr</highlight><highlight class="normal">)<sp/>noexcept<sp/>override;</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1a07ad6ee8046e03dc6f224d5b219c392f" kindref="member">ClearChannelCallbacks</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>channel_id)<sp/>noexcept<sp/>override;</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspPio_1a6bfe58b6673ae3aa9d1cd0f54ebb6901" kindref="member">ClearCallbacks</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
@@ -598,11 +577,11 @@
 <codeline lineno="350" refid="structEspPio_1_1ChannelState_1af3b5d576273d0edb1bbf3249810312e8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="structEspPio_1_1ChannelState_1af3b5d576273d0edb1bbf3249810312e8" kindref="member">idle_level</ref>;</highlight></codeline>
 <codeline lineno="351"><highlight class="normal"></highlight></codeline>
 <codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Callbacks</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="353" refid="structEspPio_1_1ChannelState_1af931c86b00255f46bdefb8c647f8367a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePio_8h_1ab8c62aa676888a6756a3ea726b24d64c" kindref="member">hf_pio_transmit_callback_t</ref><sp/><ref refid="structEspPio_1_1ChannelState_1af931c86b00255f46bdefb8c647f8367a" kindref="member">transmit_callback</ref>;</highlight></codeline>
+<codeline lineno="353" refid="structEspPio_1_1ChannelState_1af931c86b00255f46bdefb8c647f8367a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePio_8h_1afe89b7df6613717bc40b3d9ec87ee89a" kindref="member">hf_pio_transmit_callback_t</ref><sp/><ref refid="structEspPio_1_1ChannelState_1af931c86b00255f46bdefb8c647f8367a" kindref="member">transmit_callback</ref>;</highlight></codeline>
 <codeline lineno="354" refid="structEspPio_1_1ChannelState_1a7a28b7e6ed0cd90f53c82a08c3705f4f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structEspPio_1_1ChannelState_1a7a28b7e6ed0cd90f53c82a08c3705f4f" kindref="member">transmit_user_data</ref>;</highlight></codeline>
-<codeline lineno="355" refid="structEspPio_1_1ChannelState_1af9be8cff3303a3874c08c039967194e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePio_8h_1a8e55d16268bbfd30ee876df3ee4561ed" kindref="member">hf_pio_receive_callback_t</ref><sp/><ref refid="structEspPio_1_1ChannelState_1af9be8cff3303a3874c08c039967194e6" kindref="member">receive_callback</ref>;</highlight></codeline>
+<codeline lineno="355" refid="structEspPio_1_1ChannelState_1af9be8cff3303a3874c08c039967194e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePio_8h_1ab3c84107f96800c1d8c45464040a5b0a" kindref="member">hf_pio_receive_callback_t</ref><sp/><ref refid="structEspPio_1_1ChannelState_1af9be8cff3303a3874c08c039967194e6" kindref="member">receive_callback</ref>;</highlight></codeline>
 <codeline lineno="356" refid="structEspPio_1_1ChannelState_1a5b7b44120ef8a37524444a723d61d87a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structEspPio_1_1ChannelState_1a5b7b44120ef8a37524444a723d61d87a" kindref="member">receive_user_data</ref>;</highlight></codeline>
-<codeline lineno="357" refid="structEspPio_1_1ChannelState_1a9f0685a3dfd883474fd288256c3ee127" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePio_8h_1a03aa7b5372a89dbdf0770488fbb6f824" kindref="member">hf_pio_error_callback_t</ref><sp/><ref refid="structEspPio_1_1ChannelState_1a9f0685a3dfd883474fd288256c3ee127" kindref="member">error_callback</ref>;</highlight></codeline>
+<codeline lineno="357" refid="structEspPio_1_1ChannelState_1a9f0685a3dfd883474fd288256c3ee127" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePio_8h_1ae4f0c3580aa320f9259c2ab55d864e5f" kindref="member">hf_pio_error_callback_t</ref><sp/><ref refid="structEspPio_1_1ChannelState_1a9f0685a3dfd883474fd288256c3ee127" kindref="member">error_callback</ref>;</highlight></codeline>
 <codeline lineno="358" refid="structEspPio_1_1ChannelState_1a623299f94fd7ba16e6fa691c04266929" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="structEspPio_1_1ChannelState_1a623299f94fd7ba16e6fa691c04266929" kindref="member">error_user_data</ref>;</highlight></codeline>
 <codeline lineno="359"><highlight class="normal"></highlight></codeline>
 <codeline lineno="360" refid="structEspPio_1_1ChannelState_1a2b569f282be1e6daf7dd32ede6b2581e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structEspPio_1_1ChannelState_1a2b569f282be1e6daf7dd32ede6b2581e" kindref="member">ChannelState</ref>()<sp/>noexcept</highlight></codeline>

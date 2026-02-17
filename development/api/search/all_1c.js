@@ -73,7 +73,7 @@ var searchData=
   ['write_5ferrors_70',['write_errors',['../structhf__logger__statistics__t.html#ad0b98afd9aa45cc49049b6b11f08daaa',1,'hf_logger_statistics_t']]],
   ['writeasync_71',['WriteAsync',['../classEspI2cDevice.html#aec34c1a94944595c127ff91e51e8f134',1,'EspI2cDevice']]],
   ['writebyte_72',['WriteByte',['../classBaseI2c.html#afe9cee66898c28c58ac7a146375e3a63',1,'BaseI2c::WriteByte()'],['../classBaseSpi.html#a31a33d8d816ce7189982455bed742905',1,'BaseSpi::WriteByte()'],['../classBaseUart.html#a9c42866eb7d966a138755e5b71c725cf',1,'BaseUart::WriteByte()'],['../classEspUart.html#a6f40abc9001709ac5ee91c4383b95f2f',1,'EspUart::WriteByte()']]],
-  ['writecharacteristic_73',['WriteCharacteristic',['../classBaseBluetooth.html#a5775d0876c891ce57f7e5da1499be4cd',1,'BaseBluetooth::WriteCharacteristic()'],['../classEspBluetooth.html#a6cd33f01012e6db7e1f340c516f9521f',1,'EspBluetooth::WriteCharacteristic()']]],
+  ['writecharacteristic_73',['WriteCharacteristic',['../classBaseBluetooth.html#a355e1dc5a888deede264cbb0a0cada01',1,'BaseBluetooth::WriteCharacteristic()'],['../classEspBluetooth.html#afd3cd517a0c8cb03fdeb90343a761eed',1,'EspBluetooth::WriteCharacteristic()']]],
   ['writeimpl_74',['WriteImpl',['../classEspGpio.html#ab1a2c40c2fc4896c58392592e39e6d06',1,'EspGpio']]],
   ['writemessage_75',['WriteMessage',['../classEspLogger.html#aa1e94f68b56c5235064f5882b6d4223a',1,'EspLogger']]],
   ['writemessagev_76',['WriteMessageV',['../classEspLogger.html#a79e75fcc3fae3624038e611cc8180437',1,'EspLogger']]],

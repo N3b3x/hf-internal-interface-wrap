@@ -3,7 +3,7 @@ var BaseGpio_8h =
     [ "HF_GPIO_ERR_LIST", "group__gpio.html#gacdef61b325fdcc83f9974bc7c3c6d800", null ],
     [ "X", "BaseGpio_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
     [ "X", "BaseGpio_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
-    [ "InterruptCallback", "group__gpio.html#ga1327f68d8287dd473a8c6cf0333a989f", null ],
+    [ "InterruptCallback", "group__gpio.html#ga9a7aef9fbdf0b553981712baf9a4223a", null ],
     [ "hf_gpio_active_state_t", "group__gpio.html#gaf02cdaf150fa829e4a871e58ed772c6d", [
       [ "HF_GPIO_ACTIVE_LOW", "group__gpio.html#ggaf02cdaf150fa829e4a871e58ed772c6da450278e3db6a65478bdb5a456f824c42", null ],
       [ "HF_GPIO_ACTIVE_HIGH", "group__gpio.html#ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356", null ]

@@ -14,29 +14,29 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="28">
+      <node id="21">
         <label>TestFramework.h</label>
         <link refid="TestFramework_8h"/>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -57,14 +57,12 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="27">
         <label>BaseGpio.h</label>
         <link refid="BaseGpio_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
@@ -90,6 +88,58 @@
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="24">
+        <label>mcu/esp32/EspGpio.h</label>
+        <link refid="EspGpio_8h"/>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="14">
+        <label>RtosMutex.h</label>
+        <link refid="RtosMutex_8h"/>
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
@@ -100,76 +150,10 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>mcu/esp32/EspGpio.h</label>
-        <link refid="EspGpio_8h"/>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="35">
-        <label>EspTypes_GPIO.h</label>
-        <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>McuSelect.h</label>
-        <link refid="McuSelect_8h"/>
-      </node>
-      <node id="21">
-        <label>RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
+      <node id="19">
         <label>atomic</label>
       </node>
       <node id="6">
@@ -178,49 +162,28 @@
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="32">
+      <node id="25">
         <label>driver/gpio.h</label>
       </node>
-      <node id="33">
+      <node id="26">
         <label>esp_attr.h</label>
-      </node>
-      <node id="14">
-        <label>esp_bt.h</label>
-      </node>
-      <node id="15">
-        <label>esp_bt_defs.h</label>
-      </node>
-      <node id="16">
-        <label>esp_bt_main.h</label>
-      </node>
-      <node id="17">
-        <label>esp_gap_ble_api.h</label>
-      </node>
-      <node id="18">
-        <label>esp_gatt_common_api.h</label>
-      </node>
-      <node id="19">
-        <label>esp_gattc_api.h</label>
-      </node>
-      <node id="20">
-        <label>esp_gatts_api.h</label>
       </node>
       <node id="12">
         <label>esp_log.h</label>
       </node>
-      <node id="29">
+      <node id="22">
         <label>esp_timer.h</label>
       </node>
-      <node id="23">
+      <node id="16">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="30">
+      <node id="23">
         <label>freertos/queue.h</label>
       </node>
-      <node id="24">
+      <node id="17">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="25">
+      <node id="18">
         <label>freertos/task.h</label>
       </node>
       <node id="7">
@@ -229,13 +192,13 @@
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="27">
+      <node id="20">
         <label>map</label>
       </node>
       <node id="13">
         <label>nvs_flash.h</label>
       </node>
-      <node id="37">
+      <node id="30">
         <label>stdio.h</label>
       </node>
       <node id="8">
@@ -527,14 +490,14 @@
 <codeline lineno="89"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>Bluetooth<sp/>initialization...&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Register<sp/>event<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a20201cde03378f0f1bad5ee9c0899ae6" kindref="member">RegisterEventCallback</ref>(<ref refid="BluetoothComprehensiveTest_8cpp_1aa3667a254a7545961f380771f2131f4c" kindref="member">bluetooth_event_callback</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a137a8a03227be55f429a09a8e1da2757" kindref="member">RegisterEventCallback</ref>(<ref refid="BluetoothComprehensiveTest_8cpp_1aa3667a254a7545961f380771f2131f4c" kindref="member">bluetooth_event_callback</ref>);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>register<sp/>event<sp/>callback&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>Bluetooth<sp/>in<sp/>BLE<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1ad1b73541ee07d1797eb1ed151eb65799" kindref="member">Initialize</ref>(<ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba0f798dc93d69a080a82aaeca55cd90b1" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE</ref>);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1afd8bea96514732371c58be26a3b44747" kindref="member">Initialize</ref>(<ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba0f798dc93d69a080a82aaeca55cd90b1" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE</ref>);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>Bluetooth:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(ret));</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -542,7 +505,7 @@
 <codeline lineno="104"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Bluetooth<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a355b62ef036e3212dc888c72fc6ff503" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a3614348f32fdffd9ecafc94609c13c7d" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bluetooth<sp/>not<sp/>showing<sp/>as<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -555,7 +518,7 @@
 <codeline lineno="117"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>Bluetooth<sp/>basic<sp/>operations...&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="118"><highlight class="normal"></highlight></codeline>
 <codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>Bluetooth</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a1c8e9f1e44d21cc4ad5e789ee5f3dbce" kindref="member">Enable</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a98ea9a7262bf49c703156f478b82c122" kindref="member">Enable</ref>();</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>Bluetooth:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(ret));</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -563,7 +526,7 @@
 <codeline lineno="125"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Bluetooth<sp/>enabled<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a39f39ac36e8cb1405d63e7df3f14c813" kindref="member">IsEnabled</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a8dbe05f9ae739562f8d79017c6a2613a" kindref="member">IsEnabled</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bluetooth<sp/>not<sp/>showing<sp/>as<sp/>enabled&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -571,7 +534,7 @@
 <codeline lineno="133"><highlight class="normal"></highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>local<sp/>address</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref><sp/>local_addr;</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1aa0608e60d9a74a7fa7f8c5b49b155981" kindref="member">GetLocalAddress</ref>(local_addr);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a302917757fb9ec1c7c9499bd672a9859" kindref="member">GetLocalAddress</ref>(local_addr);</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Local<sp/>BLE<sp/>address:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>local_addr.<ref refid="group__bluetooth_1ga16a952238c469abc6433c912341d7d81" kindref="member">ToString</ref>().c_str());</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -579,7 +542,7 @@
 <codeline lineno="141"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>device<sp/>name</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a6e080c3c051d20db369a9a4947f97a34" kindref="member">SetDeviceName</ref>(</highlight><highlight class="stringliteral">&quot;ESP32C6-HardFOC-Test&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a4d7f45a579ce77fd3d19ea5bd1b8ac15" kindref="member">SetDeviceName</ref>(</highlight><highlight class="stringliteral">&quot;ESP32C6-HardFOC-Test&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Device<sp/>name<sp/>set<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -587,7 +550,7 @@
 <codeline lineno="149"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"></highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>device<sp/>name</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/>std::string<sp/>device_name<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a52323a4f04d001da2b506db298f651dd" kindref="member">GetDeviceName</ref>();</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>std::string<sp/>device_name<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a62271ef1873ae263b2046a0445d077da" kindref="member">GetDeviceName</ref>();</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!device_name.empty())<sp/>{</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Device<sp/>name:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>device_name.c_str());</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -608,19 +571,19 @@
 <codeline lineno="170"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="BluetoothComprehensiveTest_8cpp_1afbbd578a7638823a9cb803e1883315b9" kindref="member">test_bluetooth_scanning</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>Bluetooth<sp/>scanning...&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a39f39ac36e8cb1405d63e7df3f14c813" kindref="member">IsEnabled</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a8dbe05f9ae739562f8d79017c6a2613a" kindref="member">IsEnabled</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bluetooth<sp/>not<sp/>enabled,<sp/>cannot<sp/>test<sp/>scanning&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"></highlight></codeline>
 <codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>previously<sp/>discovered<sp/>devices</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a8461a03c45119319321f6a391a0a5135" kindref="member">ClearDiscoveredDevices</ref>();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a47e325ffa5b21fbc275e7d03e0da391f" kindref="member">ClearDiscoveredDevices</ref>();</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Cleared<sp/>discovered<sp/>devices<sp/>list&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"></highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Start<sp/>scanning<sp/>with<sp/>5<sp/>second<sp/>duration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1aa6a8a49f8ba193ca87faed9686dc45e8" kindref="member">StartScan</ref>(5000,<sp/><ref refid="group__bluetooth_1ggaf5e48b9d9196063d4218a713d3e4d26cada5deb1cd60bb274cb388226795304aa" kindref="member">hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE</ref>);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a5ae28ad6c3af195ad97eea9cac4096c3" kindref="member">StartScan</ref>(5000,<sp/><ref refid="group__bluetooth_1ggaf5e48b9d9196063d4218a713d3e4d26cada5deb1cd60bb274cb388226795304aa" kindref="member">hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE</ref>);</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>start<sp/>scanning:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(ret));</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -628,7 +591,7 @@
 <codeline lineno="190"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>BLE<sp/>scanning<sp/>started<sp/>for<sp/>5<sp/>seconds&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="191"><highlight class="normal"></highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>scanning<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1aba032c11551997dca218bd8162a44f8b" kindref="member">IsScanning</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1ac5fa0f11be5c7e1e5194ecc12818251b" kindref="member">IsScanning</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Scanning<sp/>state<sp/>confirmed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Scanning<sp/>state<sp/>not<sp/>confirmed&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -638,16 +601,16 @@
 <codeline lineno="200"><highlight class="normal"><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(6000));<sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>6<sp/>seconds</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="201"><highlight class="normal"></highlight></codeline>
 <codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>scanning<sp/>stopped<sp/>automatically</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1aba032c11551997dca218bd8162a44f8b" kindref="member">IsScanning</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1ac5fa0f11be5c7e1e5194ecc12818251b" kindref="member">IsScanning</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Scanning<sp/>stopped<sp/>automatically<sp/>after<sp/>timeout&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Scanning<sp/>still<sp/>active,<sp/>stopping<sp/>manually&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a5b00eaad02fa60c18ad8f9553bb4a180" kindref="member">StopScan</ref>();</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a492b094f5ed477aa73f40395771df35d" kindref="member">StopScan</ref>();</highlight></codeline>
 <codeline lineno="208"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"></highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>discovered<sp/>devices</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/>std::vector&lt;hf_bluetooth_device_info_t&gt;<sp/>discovered_devices;</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a4bfb7b848bb93452373e060d5748a436" kindref="member">GetDiscoveredDevices</ref>(discovered_devices);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a8d5405c42ed4af6c74bdaa487f8a238e" kindref="member">GetDiscoveredDevices</ref>(discovered_devices);</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Found<sp/>%zu<sp/>BLE<sp/>devices:&quot;</highlight><highlight class="normal">,<sp/>discovered_devices.size());</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"></highlight></codeline>
@@ -676,16 +639,16 @@
 <codeline lineno="238"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>Bluetooth<sp/>state<sp/>management...&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="239"><highlight class="normal"></highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>state<sp/>retrieval</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" kindref="member">hf_bluetooth_state_t</ref><sp/>state<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a900bdf9f92cd5bc4259d2360171f9cf4" kindref="member">GetState</ref>();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" kindref="member">hf_bluetooth_state_t</ref><sp/>state<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1acae7ac63df21a71a53b65de3a3693a29" kindref="member">GetState</ref>();</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Current<sp/>Bluetooth<sp/>state:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(state));</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"></highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>mode<sp/>retrieval</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="245"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref><sp/>mode<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a786d4e2567bfcbe2f9df4f61e7a686ff" kindref="member">GetMode</ref>();</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref><sp/>mode<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a6c139c76f416d0ee82b050613521beb8" kindref="member">GetMode</ref>();</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Current<sp/>Bluetooth<sp/>mode:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(mode));</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"></highlight></codeline>
 <codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>mode<sp/>setting<sp/>(should<sp/>remain<sp/>BLE<sp/>for<sp/>ESP32C6)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="249"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a374d6abb835b46146f08fc112b95f3cc" kindref="member">SetMode</ref>(<ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba6697341cbd54a4a120aedcafdd64540b" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC</ref>);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a52735f7b1bbb0b3736c0dcb4c1a6e1a0" kindref="member">SetMode</ref>(<ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba6697341cbd54a4a120aedcafdd64540b" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_CLASSIC</ref>);</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Correctly<sp/>rejected<sp/>Classic<sp/>mode<sp/>for<sp/>ESP32C6&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="253"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -693,7 +656,7 @@
 <codeline lineno="255"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="256"><highlight class="normal"></highlight></codeline>
 <codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Verify<sp/>mode<sp/>is<sp/>still<sp/>BLE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="258"><highlight class="normal"><sp/><sp/>mode<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a786d4e2567bfcbe2f9df4f61e7a686ff" kindref="member">GetMode</ref>();</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/>mode<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a6c139c76f416d0ee82b050613521beb8" kindref="member">GetMode</ref>();</highlight></codeline>
 <codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/><ref refid="group__bluetooth_1gga6625c9f718627e0ecc95952f757a445ba0f798dc93d69a080a82aaeca55cd90b1" kindref="member">hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Mode<sp/>correctly<sp/>maintained<sp/>as<sp/>BLE&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -708,7 +671,7 @@
 <codeline lineno="270"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>Bluetooth<sp/>cleanup...&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="271"><highlight class="normal"></highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>Bluetooth</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a8aabdb4cdfcc466168664cecea0b5730" kindref="member">Disable</ref>();</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a4a38102299b8c7de84b23dc1f84b892b" kindref="member">Disable</ref>();</highlight></codeline>
 <codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Bluetooth<sp/>disabled<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -717,7 +680,7 @@
 <codeline lineno="279"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="280"><highlight class="normal"></highlight></codeline>
 <codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>disabled<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a39f39ac36e8cb1405d63e7df3f14c813" kindref="member">IsEnabled</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a8dbe05f9ae739562f8d79017c6a2613a" kindref="member">IsEnabled</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Bluetooth<sp/>disable<sp/>state<sp/>confirmed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bluetooth<sp/>still<sp/>showing<sp/>as<sp/>enabled&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -725,7 +688,7 @@
 <codeline lineno="287"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"></highlight></codeline>
 <codeline lineno="289"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Deinitialize<sp/>Bluetooth</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a2c2487161a2d769d6ee8aba326099c26" kindref="member">Deinitialize</ref>();</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a4074f5333e5612a4af439a278891e05d" kindref="member">Deinitialize</ref>();</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Bluetooth<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="293"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -734,7 +697,7 @@
 <codeline lineno="296"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"></highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>deinitialized<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a355b62ef036e3212dc888c72fc6ff503" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a3614348f32fdffd9ecafc94609c13c7d" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Bluetooth<sp/>deinitialization<sp/>confirmed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bluetooth<sp/>still<sp/>showing<sp/>as<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -742,7 +705,7 @@
 <codeline lineno="304"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="305"><highlight class="normal"></highlight></codeline>
 <codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Unregister<sp/>event<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a90f435461e1114cfd01b9091c88ffa47" kindref="member">UnregisterEventCallback</ref>();</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>ret<sp/>=<sp/><ref refid="BluetoothComprehensiveTest_8cpp_1a8c54b50cbcc3e25075ef3992b1412ced" kindref="member">bluetooth_instance</ref>.<ref refid="classEspBluetooth_1a35e79432888a19309a9cf8329c24b504" kindref="member">UnregisterEventCallback</ref>();</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bcaf613b1d2ac3e912d8bf7a1998b868c74" kindref="member">hf_bluetooth_err_t::BLUETOOTH_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="BluetoothComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;[SUCCESS]<sp/>Event<sp/>callback<sp/>unregistered<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="310"><highlight class="normal"><sp/><sp/>}</highlight></codeline>

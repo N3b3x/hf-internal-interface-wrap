@@ -12,7 +12,7 @@
     <includedby refid="PwmComprehensiveTest_8cpp" local="yes">examples/esp32/main/PwmComprehensiveTest.cpp</includedby>
     <includedby refid="EspPwm_8cpp" local="yes">src/mcu/esp32/EspPwm.cpp</includedby>
     <incdepgraph>
-      <node id="17">
+      <node id="16">
         <label>BaseGpio.h</label>
         <link refid="BaseGpio_8h"/>
         <childnode refid="3" relation="include">
@@ -20,8 +20,6 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -32,8 +30,6 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -49,64 +45,66 @@
         <link refid="EspPwm_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
       </node>
-      <node id="15">
+      <node id="14">
         <label>EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="15">
         <label>EspTypes_GPIO.h</label>
         <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="13">
         <label>utils/EspTypes_PWM.h</label>
         <link refid="EspTypes__PWM_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="8">
+      <node id="7">
         <label>RtosMutex.h</label>
         <link refid="RtosMutex_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -115,42 +113,37 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="17">
         <label>array</label>
       </node>
-      <node id="13">
+      <node id="12">
         <label>atomic</label>
       </node>
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>driver/ledc.h</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="11">
+      <node id="10">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>freertos/task.h</label>
-      </node>
-      <node id="6">
-        <label>functional</label>
       </node>
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>string</label>
       </node>
-      <node id="7">
+      <node id="6">
         <label>string_view</label>
       </node>
     </incdepgraph>
@@ -335,8 +328,8 @@
 <codeline lineno="537"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>CALLBACKS<sp/>(BasePwm<sp/>Interface)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="538"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="539"><highlight class="normal"></highlight></codeline>
-<codeline lineno="574"><highlight class="normal"><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1a543f85cebac06d91b5ac4fe7d6f325d6" kindref="member">SetChannelFadeCallback</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,</highlight></codeline>
-<codeline lineno="575"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::function&lt;</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>)&gt;<sp/>callback)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1a1260137483dff53307d01592d2df624f" kindref="member">SetChannelFadeCallback</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">(*callback)(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>))<sp/>noexcept;</highlight></codeline>
 <codeline lineno="576"><highlight class="normal"></highlight></codeline>
 <codeline lineno="577"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="578"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP32C6-SPECIFIC<sp/>FEATURES</highlight><highlight class="normal"></highlight></codeline>
@@ -400,7 +393,7 @@
 <codeline lineno="723" refid="structEspPwm_1_1ChannelState_1a09ce373d96d3849a879fcfd622953997" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structEspPwm_1_1ChannelState_1a09ce373d96d3849a879fcfd622953997" kindref="member">description</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="724"><highlight class="normal"></highlight></codeline>
 <codeline lineno="725"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Per-channel<sp/>fade<sp/>callback<sp/>support<sp/>(ESP-IDF<sp/>LEDC<sp/>native<sp/>support)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="726" refid="structEspPwm_1_1ChannelState_1a0159dc9f0dfbf6eef133aa27070a2b3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::function&lt;void(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>)&gt;<sp/><ref refid="structEspPwm_1_1ChannelState_1a0159dc9f0dfbf6eef133aa27070a2b3c" kindref="member">fade_callback</ref>;<sp/></highlight></codeline>
+<codeline lineno="726" refid="structEspPwm_1_1ChannelState_1ab5cc36c9cd4297730d6fd8e381e351b1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>void(*fade_callback)(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref>);<sp/></highlight></codeline>
 <codeline lineno="727"><highlight class="normal"></highlight></codeline>
 <codeline lineno="728" refid="structEspPwm_1_1ChannelState_1a8607beb52006f48c76dd9c5fc7d532f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structEspPwm_1_1ChannelState_1a8607beb52006f48c76dd9c5fc7d532f0" kindref="member">ChannelState</ref>()<sp/>noexcept</highlight></codeline>
 <codeline lineno="729"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>configured(false),<sp/>enabled(false),<sp/>assigned_timer(0xFF),<sp/>raw_duty_value(0),</highlight></codeline>

@@ -21,7 +21,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="524" column="31" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="524" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a63dee710d1d84cd56e8c50d3e20d8370" prot="private" static="no" mutable="no">
-        <type><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref></type>
+        <type><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref></type>
         <definition>InterruptCallback EspGpio::interrupt_callback_</definition>
         <argsstring></argsstring>
         <name>interrupt_callback_</name>
@@ -530,7 +530,7 @@ Validates that the pin number is valid and not reserved for special functions li
           <declname>trigger</declname>
         </param>
         <param>
-          <type><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref></type>
+          <type><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref></type>
           <declname>callback</declname>
           <defval>nullptr</defval>
         </param>
@@ -1841,6 +1841,9 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         <link refid="classEspGpio"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>interrupt_callback_</edgelabel>
+        </childnode>
         <childnode refid="5" relation="usage">
           <edgelabel>flex_filter_config_</edgelabel>
         </childnode>
@@ -1994,7 +1997,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
       <member refid="classEspGpio_1ae518911cc7720b8ba4f7e854b3018a6f" prot="public" virt="virtual"><scope>EspGpio</scope><name>WaitForInterrupt</name></member>
       <member refid="classEspGpio_1a5ff67c40d3adaa6183167b4beeda00be" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>wakeup_config_</name></member>
       <member refid="classEspGpio_1ab1a2c40c2fc4896c58392592e39e6d06" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>WriteImpl</name></member>
-      <member refid="classBaseGpio_1a042ea8f01b96fe5641258e8b662d4d78" prot="public" virt="virtual"><scope>EspGpio</scope><name>~BaseGpio</name></member>
+      <member refid="classBaseGpio_1a882c3e3be74c5efb0ee4b3768d864462" prot="public" virt="virtual"><scope>EspGpio</scope><name>~BaseGpio</name></member>
       <member refid="classEspGpio_1ae0e709e0e5748f81116fb9f15425fd78" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>~EspGpio</name></member>
     </listofallmembers>
   </compounddef>

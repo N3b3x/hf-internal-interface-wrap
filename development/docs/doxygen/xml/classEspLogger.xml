@@ -95,9 +95,9 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/EspLogger.h" line="433" column="27" bodyfile="inc/mcu/esp32/EspLogger.h" bodystart="433" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspLogger_1a390db49b839f78cf444e96391a5d1967" prot="private" static="no" mutable="no">
-        <type>std::map&lt; std::string, <ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref> &gt;</type>
-        <definition>std::map&lt;std::string, hf_log_level_t&gt; EspLogger::tag_levels_</definition>
+      <memberdef kind="variable" id="classEspLogger_1ac517102fc069ee19de9157f0fb217fdb" prot="private" static="no" mutable="no">
+        <type>std::map&lt; std::string, <ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>, std::less&lt;&gt; &gt;</type>
+        <definition>std::map&lt;std::string, hf_log_level_t, std::less&lt;&gt; &gt; EspLogger::tag_levels_</definition>
         <argsstring></argsstring>
         <name>tag_levels_</name>
         <qualifiedname>EspLogger::tag_levels_</qualifiedname>
@@ -2406,7 +2406,7 @@
       <member refid="classEspLogger_1a0c8b15b05c28dc619ebf777c870bd2ec" prot="public" virt="virtual"><scope>EspLogger</scope><name>ResetStatistics</name></member>
       <member refid="classEspLogger_1a2ba313925a91c912e926af982b1f99df" prot="public" virt="virtual"><scope>EspLogger</scope><name>SetLogLevel</name></member>
       <member refid="classEspLogger_1ad943622faa174b6c4f44ced1527e3927" prot="private" virt="non-virtual"><scope>EspLogger</scope><name>statistics_</name></member>
-      <member refid="classEspLogger_1a390db49b839f78cf444e96391a5d1967" prot="private" virt="non-virtual"><scope>EspLogger</scope><name>tag_levels_</name></member>
+      <member refid="classEspLogger_1ac517102fc069ee19de9157f0fb217fdb" prot="private" virt="non-virtual"><scope>EspLogger</scope><name>tag_levels_</name></member>
       <member refid="classEspLogger_1aff52ecfa69d725c164cbcd01460aa6bb" prot="private" virt="non-virtual"><scope>EspLogger</scope><name>UpdateDiagnostics</name></member>
       <member refid="classEspLogger_1aa80b1fe39bc3c543fca65744d834e168" prot="private" virt="non-virtual"><scope>EspLogger</scope><name>UpdateStatistics</name></member>
       <member refid="classEspLogger_1a2740f86e01f57ee1ab99661a011c2d31" prot="private" virt="non-virtual"><scope>EspLogger</scope><name>ValidateConfiguration</name></member>
@@ -2414,7 +2414,7 @@
       <member refid="classEspLogger_1a097cbcffbb54f838cddab0e20abff8ac" prot="public" virt="virtual"><scope>EspLogger</scope><name>Warn</name></member>
       <member refid="classEspLogger_1aa1e94f68b56c5235064f5882b6d4223a" prot="private" virt="non-virtual"><scope>EspLogger</scope><name>WriteMessage</name></member>
       <member refid="classEspLogger_1a79e75fcc3fae3624038e611cc8180437" prot="private" virt="non-virtual"><scope>EspLogger</scope><name>WriteMessageV</name></member>
-      <member refid="classBaseLogger_1aaf8957e6554581ceb22692563f0925e9" prot="public" virt="virtual"><scope>EspLogger</scope><name>~BaseLogger</name></member>
+      <member refid="classBaseLogger_1a5f705b3c7b590a8427e78a77ade3925c" prot="public" virt="virtual"><scope>EspLogger</scope><name>~BaseLogger</name></member>
       <member refid="classEspLogger_1af3689ffc89aa801c754b78989ec306ab" prot="public" virt="non-virtual"><scope>EspLogger</scope><name>~EspLogger</name></member>
     </listofallmembers>
   </compounddef>

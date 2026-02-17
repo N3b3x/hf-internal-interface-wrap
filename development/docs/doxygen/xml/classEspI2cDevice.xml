@@ -156,7 +156,7 @@
         <location file="inc/mcu/esp32/EspI2c.h" line="531" column="8" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="531" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspI2cDevice_1ae5d3bffbe307541766e6387b025ea91d" prot="private" static="no" mutable="no">
-        <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
+        <type><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref></type>
         <definition>hf_i2c_async_callback_t EspI2cDevice::current_callback_</definition>
         <argsstring></argsstring>
         <name>current_callback_</name>
@@ -575,7 +575,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
           <declname>length</declname>
         </param>
         <param>
-          <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
+          <type><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -664,7 +664,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
           <declname>length</declname>
         </param>
         <param>
-          <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
+          <type><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -761,7 +761,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
           <declname>rx_length</declname>
         </param>
         <param>
-          <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
+          <type><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -1144,7 +1144,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <location file="inc/mcu/esp32/EspI2c.h" line="371" column="27" bodyfile="inc/mcu/esp32/EspI2c.h" bodystart="371" bodyend="373"/>
       </memberdef>
       <memberdef kind="function" id="classEspI2cDevice_1a03cadbb382abea958a0707bd45547d7c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
+        <type><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref></type>
         <definition>hf_i2c_async_callback_t EspI2cDevice::GetCurrentCallback</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetCurrentCallback</name>
@@ -1319,7 +1319,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <name>RegisterTemporaryCallback</name>
         <qualifiedname>EspI2cDevice::RegisterTemporaryCallback</qualifiedname>
         <param>
-          <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
+          <type><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -1633,7 +1633,7 @@ This method only handles internal device cleanup. ESP-IDF cleanup is handled by 
         <name>SetupAsyncOperation</name>
         <qualifiedname>EspI2cDevice::SetupAsyncOperation</qualifiedname>
         <param>
-          <type><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref></type>
+          <type><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>

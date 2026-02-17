@@ -107,12 +107,11 @@ $(function(){initNavTree('BasePeriodicTimer_8h.html',''); initResizable(); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="HardwareTypes_8h_source.html">HardwareTypes.h</a>&quot;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for BasePeriodicTimer.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="BasePeriodicTimer_8h__incl.svg" width="494" height="199"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="BasePeriodicTimer_8h__incl.svg" width="371" height="199"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -153,9 +152,9 @@ Macros</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:aeb396ad1ef3b4a08174b33b0a6290c24" id="r_aeb396ad1ef3b4a08174b33b0a6290c24"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aeb396ad1ef3b4a08174b33b0a6290c24">hf_timestamp_us_t</a> = <a class="el" href="HardwareTypes_8h.html#ac4515282abcfccf45fc8855452098d0b">hf_u64_t</a></td></tr>
 <tr class="separator:aeb396ad1ef3b4a08174b33b0a6290c24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af39d5f0d35241a03d7589feda9692321" id="r_af39d5f0d35241a03d7589feda9692321"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af39d5f0d35241a03d7589feda9692321">hf_timer_callback_t</a> = std::function&lt;void(void* user_data)&gt;</td></tr>
-<tr class="memdesc:af39d5f0d35241a03d7589feda9692321"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback function type.  <br /></td></tr>
-<tr class="separator:af39d5f0d35241a03d7589feda9692321"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40c3b2f30d4492b879e2939cd3ac713d" id="r_a40c3b2f30d4492b879e2939cd3ac713d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a40c3b2f30d4492b879e2939cd3ac713d">hf_timer_callback_t</a> = void (*)(void* user_data)</td></tr>
+<tr class="memdesc:a40c3b2f30d4492b879e2939cd3ac713d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer callback function type.  <br /></td></tr>
+<tr class="separator:a40c3b2f30d4492b879e2939cd3ac713d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -318,14 +317,14 @@ Users should program against this interface, not specific implementations. </dd>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="af39d5f0d35241a03d7589feda9692321" name="af39d5f0d35241a03d7589feda9692321"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af39d5f0d35241a03d7589feda9692321">&#9670;&#160;</a></span>hf_timer_callback_t</h2>
+<a id="a40c3b2f30d4492b879e2939cd3ac713d" name="a40c3b2f30d4492b879e2939cd3ac713d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40c3b2f30d4492b879e2939cd3ac713d">&#9670;&#160;</a></span>hf_timer_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#af39d5f0d35241a03d7589feda9692321">hf_timer_callback_t</a> = std::function&lt;void(void* user_data)&gt;</td>
+          <td class="memname">using <a class="el" href="#a40c3b2f30d4492b879e2939cd3ac713d">hf_timer_callback_t</a> = void (*)(void* user_data)</td>
         </tr>
       </table>
 </div><div class="memdoc">

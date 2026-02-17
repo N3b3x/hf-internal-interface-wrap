@@ -25,8 +25,6 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
       </node>
       <node id="5">
         <label>HardwareTypes.h</label>
@@ -45,40 +43,40 @@
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
       </node>
       <node id="10">
-        <label>EspTypes_GPIO.h</label>
-        <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="4" relation="include">
-        </childnode>
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
-      <node id="12">
+      <node id="9">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
         <label>../../utils/McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="13">
+      <node id="12">
         <label>atomic</label>
       </node>
       <node id="6">
@@ -90,16 +88,13 @@
       <node id="3">
         <label>esp_attr.h</label>
       </node>
-      <node id="8">
-        <label>functional</label>
-      </node>
       <node id="7">
         <label>limits</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>stdio.h</label>
       </node>
-      <node id="9">
+      <node id="8">
         <label>string_view</label>
       </node>
     </incdepgraph>
@@ -302,7 +297,7 @@
 <codeline lineno="144"><highlight class="normal"><sp/><sp/>[[nodiscard]]<sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1af0b68c0d1b3fda915803ba602ddab7fe" kindref="member">SupportsInterrupts</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a385ff46f95432183be7cd52d4a69fde4" kindref="member">ConfigureInterrupt</ref>(<ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref><sp/>trigger,</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref><sp/>callback<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref><sp/>callback<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a378b48a5c96c8c55313a354db5b673ca" kindref="member">EnableInterrupt</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
@@ -439,7 +434,7 @@
 <codeline lineno="522"><highlight class="normal"></highlight></codeline>
 <codeline lineno="523"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Interrupt<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="524" refid="classEspGpio_1a4d98e2c42bc3c236ca80fa7569909157" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref><sp/><ref refid="classEspGpio_1a4d98e2c42bc3c236ca80fa7569909157" kindref="member">interrupt_trigger_</ref>;<sp/></highlight></codeline>
-<codeline lineno="525" refid="classEspGpio_1a63dee710d1d84cd56e8c50d3e20d8370" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref><sp/><ref refid="classEspGpio_1a63dee710d1d84cd56e8c50d3e20d8370" kindref="member">interrupt_callback_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="525" refid="classEspGpio_1a63dee710d1d84cd56e8c50d3e20d8370" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref><sp/><ref refid="classEspGpio_1a63dee710d1d84cd56e8c50d3e20d8370" kindref="member">interrupt_callback_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="526" refid="classEspGpio_1a78b0811f7be9f554d6b91f7de07b422d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspGpio_1a78b0811f7be9f554d6b91f7de07b422d" kindref="member">interrupt_user_data_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="527" refid="classEspGpio_1a1fe4de0ad5e20fc200115cd4bb52ecf0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspGpio_1a1fe4de0ad5e20fc200115cd4bb52ecf0" kindref="member">interrupt_enabled_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="528" refid="classEspGpio_1a72b2184392d57af209598c1b42065e5c" refkind="member"><highlight class="normal"><sp/><sp/>std::atomic&lt;<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>&gt;<sp/><ref refid="classEspGpio_1a72b2184392d57af209598c1b42065e5c" kindref="member">interrupt_count_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>

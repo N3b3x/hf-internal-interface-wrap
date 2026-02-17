@@ -22,7 +22,7 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
       </node>
       <node id="6">
@@ -54,8 +54,6 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
       </node>
       <node id="13">
         <label>HardwareTypes.h</label>
@@ -74,55 +72,55 @@
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
       </node>
       <node id="22">
-        <label>EspTypes_GPIO.h</label>
-        <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="19" relation="include">
-        </childnode>
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
         <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="24" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
       </node>
-      <node id="27">
+      <node id="21">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
         <label>utils/AsciiArtGenerator.h</label>
         <link refid="AsciiArtGenerator_8h"/>
-        <childnode refid="28" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="29" relation="include">
+        <childnode refid="28" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="23">
         <label>../../utils/McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
       <node id="2">
         <label>algorithm</label>
       </node>
-      <node id="25">
+      <node id="24">
         <label>atomic</label>
       </node>
       <node id="14">
@@ -155,25 +153,22 @@
       <node id="12">
         <label>freertos/task.h</label>
       </node>
-      <node id="20">
-        <label>functional</label>
-      </node>
       <node id="15">
         <label>limits</label>
       </node>
-      <node id="28">
+      <node id="27">
         <label>map</label>
       </node>
-      <node id="29">
+      <node id="28">
         <label>memory</label>
       </node>
-      <node id="26">
+      <node id="25">
         <label>stdio.h</label>
       </node>
       <node id="4">
         <label>string</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>string_view</label>
       </node>
       <node id="5">

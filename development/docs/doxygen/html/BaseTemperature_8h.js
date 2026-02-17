@@ -13,9 +13,9 @@ var BaseTemperature_8h =
     [ "HF_TEMP_KELVIN_TO_CELSIUS", "BaseTemperature_8h.html#a613e199871d481246a3877e9fa095e0b", null ],
     [ "TEMP_ERROR_ENUM", "BaseTemperature_8h.html#aec3962a5e781e238ed9e93e931aaecf2", null ],
     [ "X", "BaseTemperature_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
-    [ "hf_temp_error_callback_t", "BaseTemperature_8h.html#a41cbc88dcb70288864ccbccba375fce7", null ],
-    [ "hf_temp_reading_callback_t", "BaseTemperature_8h.html#ab15b84e22c00839c9e87a3f363efae2d", null ],
-    [ "hf_temp_threshold_callback_t", "BaseTemperature_8h.html#a2672848972ed3dbd28859299c8862f6b", null ],
+    [ "hf_temp_error_callback_t", "BaseTemperature_8h.html#a9c5c6d7251a66d58f0768729eab24821", null ],
+    [ "hf_temp_reading_callback_t", "BaseTemperature_8h.html#ad737845bbb5b213ca89ccac3902fd112", null ],
+    [ "hf_temp_threshold_callback_t", "BaseTemperature_8h.html#aeee4f575e7ed653aeea21a73e9ed893c", null ],
     [ "hf_temp_capabilities_t", "BaseTemperature_8h.html#a5bfe096967aceddcf8232f8c4458b2cb", [
       [ "HF_TEMP_CAP_NONE", "BaseTemperature_8h.html#a5bfe096967aceddcf8232f8c4458b2cba59d058871153c9da908c09801738c147", null ],
       [ "HF_TEMP_CAP_THRESHOLD_MONITORING", "BaseTemperature_8h.html#a5bfe096967aceddcf8232f8c4458b2cba4a9af9dc4358e43a9f17ee00d53a11ff", null ],

@@ -1,9 +1,5 @@
 var NAVTREEINDEX13 =
 {
-"structhf__can__status__t.html#ae3dff4d5f9bebe7e35489cfc58d50c6a":[3,0,60,18],
-"structhf__can__status__t.html#aed91b1c0a81cd06d31b79d2a6f53baf5":[3,0,60,7],
-"structhf__can__status__t.html#aefae2fe147ec849eb9ce8ee8c19efd35":[3,0,60,16],
-"structhf__can__status__t.html#afdfd60084afe727c77376167f09091eb":[3,0,60,0],
 "structhf__esp__can__config__t.html":[3,0,61],
 "structhf__esp__can__config__t.html#a08fda25ef59f1a53f2ffa53c61650430":[3,0,61,4],
 "structhf__esp__can__config__t.html#a095fd04a22638ba466d08a0592a27eb7":[3,0,61,1],
@@ -249,5 +245,9 @@ var NAVTREEINDEX13 =
 "structhf__i2c__transaction__buffer__t.html#a0fbe63290170efa730f6ff4378da4c69":[3,0,85,0],
 "structhf__i2c__transaction__buffer__t.html#a2decc5d9f2823c44301f2d390bf6650f":[3,0,85,4],
 "structhf__i2c__transaction__buffer__t.html#a70a6fc5a5243b88f3381262de09cdb24":[3,0,85,3],
-"structhf__i2c__transaction__buffer__t.html#aed0cb464084e5cd90bd1c586e3e5332a":[3,0,85,2]
+"structhf__i2c__transaction__buffer__t.html#aed0cb464084e5cd90bd1c586e3e5332a":[3,0,85,2],
+"structhf__i2c__transaction__buffer__t.html#afcc1caf0fb01943f2c138ec3dc7a398a":[3,0,85,1],
+"structhf__log__message__t.html":[1,5,5],
+"structhf__log__message__t.html#a0bef771ae26113ec182a599404acf4e6":[1,5,5,0],
+"structhf__log__message__t.html#a6288896e788bbac7d683396c4d4d08a4":[1,5,5,7]
 };

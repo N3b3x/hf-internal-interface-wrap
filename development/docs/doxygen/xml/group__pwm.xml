@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="41" column="9" bodyfile="inc/base/BasePwm.h" bodystart="41" bodyend="74"/>
+        <location file="inc/base/BasePwm.h" line="40" column="9" bodyfile="inc/base/BasePwm.h" bodystart="40" bodyend="73"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

@@ -242,7 +242,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="350" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="350" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPio_1_1ChannelState_1af931c86b00255f46bdefb8c647f8367a" prot="public" static="no" mutable="no">
-        <type><ref refid="BasePio_8h_1ab8c62aa676888a6756a3ea726b24d64c" kindref="member">hf_pio_transmit_callback_t</ref></type>
+        <type><ref refid="BasePio_8h_1afe89b7df6613717bc40b3d9ec87ee89a" kindref="member">hf_pio_transmit_callback_t</ref></type>
         <definition>hf_pio_transmit_callback_t EspPio::ChannelState::transmit_callback</definition>
         <argsstring></argsstring>
         <name>transmit_callback</name>
@@ -270,7 +270,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="354" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="354" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPio_1_1ChannelState_1af9be8cff3303a3874c08c039967194e6" prot="public" static="no" mutable="no">
-        <type><ref refid="BasePio_8h_1a8e55d16268bbfd30ee876df3ee4561ed" kindref="member">hf_pio_receive_callback_t</ref></type>
+        <type><ref refid="BasePio_8h_1ab3c84107f96800c1d8c45464040a5b0a" kindref="member">hf_pio_receive_callback_t</ref></type>
         <definition>hf_pio_receive_callback_t EspPio::ChannelState::receive_callback</definition>
         <argsstring></argsstring>
         <name>receive_callback</name>
@@ -298,7 +298,7 @@
         <location file="inc/mcu/esp32/EspPio.h" line="356" column="10" bodyfile="inc/mcu/esp32/EspPio.h" bodystart="356" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structEspPio_1_1ChannelState_1a9f0685a3dfd883474fd288256c3ee127" prot="public" static="no" mutable="no">
-        <type><ref refid="BasePio_8h_1a03aa7b5372a89dbdf0770488fbb6f824" kindref="member">hf_pio_error_callback_t</ref></type>
+        <type><ref refid="BasePio_8h_1ae4f0c3580aa320f9259c2ab55d864e5f" kindref="member">hf_pio_error_callback_t</ref></type>
         <definition>hf_pio_error_callback_t EspPio::ChannelState::error_callback</definition>
         <argsstring></argsstring>
         <name>error_callback</name>
@@ -357,6 +357,7 @@
           <edgelabel>status</edgelabel>
         </childnode>
         <childnode refid="4" relation="usage">
+          <edgelabel>receive_callback</edgelabel>
           <edgelabel>rx_buffer</edgelabel>
         </childnode>
       </node>

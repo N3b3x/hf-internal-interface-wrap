@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="176" column="8" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="176" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="179" column="8" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="179" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a887d8aec908d8d0157e78df04b1a1b65" prot="private" static="no" mutable="no">
         <type>bool</type>
@@ -31,7 +31,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="177" column="8" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="177" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="180" column="8" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="180" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a581f22e02f93b4db159d360f47e0abef" prot="private" static="no" mutable="no">
         <type><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref></type>
@@ -45,7 +45,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="178" column="23" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="178" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="181" column="23" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="181" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1af693e9b5b58e1a3a68cf9edf39e7bda4" prot="private" static="no" mutable="no">
         <type><ref refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" kindref="member">hf_bluetooth_state_t</ref></type>
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="179" column="24" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="179" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="182" column="24" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="182" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1aaaadf2899fec6782cb774f942aa18c98" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt;</type>
@@ -73,7 +73,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="182" column="15" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="182" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="185" column="15" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="185" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1adb7ac39e03c55983d3ab3d992d80dd64" prot="private" static="no" mutable="no">
         <type>std::map&lt; std::string, <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt;</type>
@@ -87,7 +87,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="183" column="12" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="183" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="186" column="12" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="186" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a7943a74af6826e0dde0a0a7c40214697" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref></type>
@@ -101,7 +101,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="186" column="29" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="186" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="189" column="29" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="189" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1af0a5dbcfb9a7b51387cc22a655f4475b" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -115,7 +115,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="189" column="21" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="189" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="192" column="21" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="192" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a381b0e07f4f75410be9d9affa18b40be" prot="private" static="no" mutable="yes">
         <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="190" column="21" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="190" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="193" column="21" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="193" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" prot="private" static="no" mutable="no">
         <type><ref refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" kindref="member">hf_bluetooth_event_callback_t</ref></type>
@@ -143,7 +143,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="193" column="33" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="193" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="196" column="33" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="196" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a18919e69523d667a5e3f47e992ab9816" prot="private" static="no" mutable="no">
         <type><ref refid="group__bluetooth_1ga65e5bf89736f8023fe4cf15163655f6a" kindref="member">hf_bluetooth_data_callback_t</ref></type>
@@ -157,7 +157,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="194" column="32" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="194" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="197" column="32" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="197" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1a7143aa7604d8fb3d70d2ce725fb888b9" prot="private" static="no" mutable="no">
         <type>void *</type>
@@ -171,38 +171,10 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="195" column="8" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="195" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="198" column="8" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="198" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
-      <memberdef kind="function" id="classEspBluetooth_1a8b0f66e0b935be4f29c8a4a5aed6d652" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
-        <definition>hf_bluetooth_err_t EspBluetooth::InitializeBluedroid</definition>
-        <argsstring>()</argsstring>
-        <name>InitializeBluedroid</name>
-        <qualifiedname>EspBluetooth::InitializeBluedroid</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="221" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="516" bodyend="561"/>
-      </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a383a2fc753705da60c13eba177c13af1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
-        <definition>hf_bluetooth_err_t EspBluetooth::DeinitializeBluedroid</definition>
-        <argsstring>()</argsstring>
-        <name>DeinitializeBluedroid</name>
-        <qualifiedname>EspBluetooth::DeinitializeBluedroid</qualifiedname>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="222" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="563" bodyend="590"/>
-      </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1aba97116a09dbb885c55d3f503fe34433" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void EspBluetooth::TriggerEvent</definition>
@@ -224,7 +196,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="243" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1028" bodyend="1032"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="246" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1028" bodyend="1032"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1aa0686079fd72561fd9110e586c146649" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
@@ -242,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="244" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1034" bodyend="1049"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="247" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1034" bodyend="1049"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1ac6ca2eab7f75aeb09e6a227dca39195b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -260,7 +232,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="245" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1051" bodyend="1060"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="248" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1051" bodyend="1060"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1acb38ae9cbc07b03d365fdd11a9cd1180" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref></type>
@@ -278,83 +250,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="246" column="26" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1062" bodyend="1076"/>
-      </memberdef>
-    </sectiondef>
-    <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classEspBluetooth_1abc89b97fd26c1656561a6bb3b244cd90" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>static void EspBluetooth::GapEventHandler</definition>
-        <argsstring>(esp_gap_ble_cb_event_t event, esp_ble_gap_cb_param_t *param)</argsstring>
-        <name>GapEventHandler</name>
-        <qualifiedname>EspBluetooth::GapEventHandler</qualifiedname>
-        <param>
-          <type>esp_gap_ble_cb_event_t</type>
-          <declname>event</declname>
-        </param>
-        <param>
-          <type>esp_ble_gap_cb_param_t *</type>
-          <declname>param</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="225" column="15"/>
-      </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a92edd646687b8897675cea649f6fcd68" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>static void EspBluetooth::GattcEventHandler</definition>
-        <argsstring>(esp_gattc_cb_event_t event, esp_gatt_if_t gattc_if, esp_ble_gattc_cb_param_t *param)</argsstring>
-        <name>GattcEventHandler</name>
-        <qualifiedname>EspBluetooth::GattcEventHandler</qualifiedname>
-        <param>
-          <type>esp_gattc_cb_event_t</type>
-          <declname>event</declname>
-        </param>
-        <param>
-          <type>esp_gatt_if_t</type>
-          <declname>gattc_if</declname>
-        </param>
-        <param>
-          <type>esp_ble_gattc_cb_param_t *</type>
-          <declname>param</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="226" column="15"/>
-      </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1aaf3338ba2f2d3fd8c5d07607cccfc56c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>static void EspBluetooth::GattsEventHandler</definition>
-        <argsstring>(esp_gatts_cb_event_t event, esp_gatt_if_t gatts_if, esp_ble_gatts_cb_param_t *param)</argsstring>
-        <name>GattsEventHandler</name>
-        <qualifiedname>EspBluetooth::GattsEventHandler</qualifiedname>
-        <param>
-          <type>esp_gatts_cb_event_t</type>
-          <declname>event</declname>
-        </param>
-        <param>
-          <type>esp_gatt_if_t</type>
-          <declname>gatts_if</declname>
-        </param>
-        <param>
-          <type>esp_ble_gatts_cb_param_t *</type>
-          <declname>param</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="228" column="15"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="249" column="26" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1062" bodyend="1076"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -371,7 +267,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="252" column="3" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="56" bodyend="79"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="255" column="3" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="56" bodyend="79"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1ae72bc5e95c2e45a02f85ff8194b36842" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -386,15 +282,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="257" column="11" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="82" bodyend="92"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="260" column="11" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="82" bodyend="92"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1ad1b73541ee07d1797eb1ed151eb65799" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1afd8bea96514732371c58be26a3b44747" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::Initialize</definition>
-        <argsstring>(hf_bluetooth_mode_t mode) override</argsstring>
+        <argsstring>(hf_bluetooth_mode_t mode) noexcept override</argsstring>
         <name>Initialize</name>
         <qualifiedname>EspBluetooth::Initialize</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a196c07d346d5433ec07cd130002abef6">Initialize</reimplements>
+        <reimplements refid="classBaseBluetooth_1a63ecb221a9578ec16a931664ddcb727a">Initialize</reimplements>
         <param>
           <type><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref></type>
           <declname>mode</declname>
@@ -420,15 +316,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="268" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="96" bodyend="150"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="271" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="96" bodyend="150"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a2c2487161a2d769d6ee8aba326099c26" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a4074f5333e5612a4af439a278891e05d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::Deinitialize</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>Deinitialize</name>
         <qualifiedname>EspBluetooth::Deinitialize</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a3b78e495412b0c58e9f1d34b0d6b0584">Deinitialize</reimplements>
+        <reimplements refid="classBaseBluetooth_1a7b83a94014337dabe22933cf0f3c6a7e">Deinitialize</reimplements>
         <briefdescription>
 <para>Deinitialize the Bluetooth subsystem. </para>
         </briefdescription>
@@ -439,15 +335,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="274" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="152" bodyend="183"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="277" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="152" bodyend="183"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a355b62ef036e3212dc888c72fc6ff503" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a3614348f32fdffd9ecafc94609c13c7d" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
         <definition>bool EspBluetooth::IsInitialized</definition>
-        <argsstring>() const override</argsstring>
+        <argsstring>() const noexcept override</argsstring>
         <name>IsInitialized</name>
         <qualifiedname>EspBluetooth::IsInitialized</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1af8e1ecb1d4e3e6f31e14d9b152e812a0">IsInitialized</reimplements>
+        <reimplements refid="classBaseBluetooth_1ab2790a83b12faa88d3e3e45c4e87ec07">IsInitialized</reimplements>
         <briefdescription>
 <para>Check if Bluetooth is initialized. </para>
         </briefdescription>
@@ -458,15 +354,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="280" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="185" bodyend="188"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="283" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="185" bodyend="188"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a1c8e9f1e44d21cc4ad5e789ee5f3dbce" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a98ea9a7262bf49c703156f478b82c122" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::Enable</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>Enable</name>
         <qualifiedname>EspBluetooth::Enable</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1ae3f0672a639f4ae1eb87887d866fc584">Enable</reimplements>
+        <reimplements refid="classBaseBluetooth_1ac00fdcd427c9983e6671fe8876afe0b1">Enable</reimplements>
         <briefdescription>
 <para>Enable Bluetooth. </para>
         </briefdescription>
@@ -477,15 +373,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="286" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="200" bodyend="247"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="289" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="200" bodyend="247"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a8aabdb4cdfcc466168664cecea0b5730" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a4a38102299b8c7de84b23dc1f84b892b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::Disable</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>Disable</name>
         <qualifiedname>EspBluetooth::Disable</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1af9488d4b6303ae3f72462e6919e08e97">Disable</reimplements>
+        <reimplements refid="classBaseBluetooth_1a304a301886bf38cfe878b53dcde596ae">Disable</reimplements>
         <briefdescription>
 <para>Disable Bluetooth. </para>
         </briefdescription>
@@ -496,15 +392,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="292" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="249" bodyend="286"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="295" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="249" bodyend="286"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a39f39ac36e8cb1405d63e7df3f14c813" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a8dbe05f9ae739562f8d79017c6a2613a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
         <definition>bool EspBluetooth::IsEnabled</definition>
-        <argsstring>() const override</argsstring>
+        <argsstring>() const noexcept override</argsstring>
         <name>IsEnabled</name>
         <qualifiedname>EspBluetooth::IsEnabled</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a626da2b0e75af05bccae77dae40f47ae">IsEnabled</reimplements>
+        <reimplements refid="classBaseBluetooth_1a4ed2e7e27416c8103aa84a43503e1f96">IsEnabled</reimplements>
         <briefdescription>
 <para>Check if Bluetooth is enabled. </para>
         </briefdescription>
@@ -515,15 +411,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="298" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="288" bodyend="291"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="301" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="288" bodyend="291"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a374d6abb835b46146f08fc112b95f3cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a52735f7b1bbb0b3736c0dcb4c1a6e1a0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::SetMode</definition>
-        <argsstring>(hf_bluetooth_mode_t mode) override</argsstring>
+        <argsstring>(hf_bluetooth_mode_t mode) noexcept override</argsstring>
         <name>SetMode</name>
         <qualifiedname>EspBluetooth::SetMode</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a62c7bb7ccccfa4b8d920f7001e9899f4">SetMode</reimplements>
+        <reimplements refid="classBaseBluetooth_1a1da91dd265112b3c25a51f2f086e0389">SetMode</reimplements>
         <param>
           <type><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref></type>
           <declname>mode</declname>
@@ -547,15 +443,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="305" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="293" bodyend="309"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="308" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="293" bodyend="309"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a786d4e2567bfcbe2f9df4f61e7a686ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a6c139c76f416d0ee82b050613521beb8" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__bluetooth_1ga6625c9f718627e0ecc95952f757a445b" kindref="member">hf_bluetooth_mode_t</ref></type>
         <definition>hf_bluetooth_mode_t EspBluetooth::GetMode</definition>
-        <argsstring>() const override</argsstring>
+        <argsstring>() const noexcept override</argsstring>
         <name>GetMode</name>
         <qualifiedname>EspBluetooth::GetMode</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a029b3ca472e6c048ea98db766e361f19">GetMode</reimplements>
+        <reimplements refid="classBaseBluetooth_1a9c402552e6d2a17e8ad96cf05c48c5dc">GetMode</reimplements>
         <briefdescription>
 <para>Get current Bluetooth operating mode. </para>
         </briefdescription>
@@ -566,15 +462,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="311" column="23" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="311" bodyend="314"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="314" column="23" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="311" bodyend="314"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1aa0608e60d9a74a7fa7f8c5b49b155981" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a302917757fb9ec1c7c9499bd672a9859" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::GetLocalAddress</definition>
-        <argsstring>(hf_bluetooth_address_t &amp;address) const override</argsstring>
+        <argsstring>(hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>GetLocalAddress</name>
         <qualifiedname>EspBluetooth::GetLocalAddress</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1aff3d25b5192168951bbf844459d25014">GetLocalAddress</reimplements>
+        <reimplements refid="classBaseBluetooth_1ad9826db41723a9d8a22633ccc3296e63">GetLocalAddress</reimplements>
         <param>
           <type><ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -598,15 +494,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="320" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="596" bodyend="626"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="323" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="596" bodyend="626"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a6e080c3c051d20db369a9a4947f97a34" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a4d7f45a579ce77fd3d19ea5bd1b8ac15" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::SetDeviceName</definition>
-        <argsstring>(const std::string &amp;name) override</argsstring>
+        <argsstring>(const std::string &amp;name) noexcept override</argsstring>
         <name>SetDeviceName</name>
         <qualifiedname>EspBluetooth::SetDeviceName</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a1792bf9086c8db3951bd1f01a934771e">SetDeviceName</reimplements>
+        <reimplements refid="classBaseBluetooth_1a4fb3e215a996b0d5adba08851ef6902b">SetDeviceName</reimplements>
         <param>
           <type>const std::string &amp;</type>
           <declname>name</declname>
@@ -630,15 +526,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="327" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="628" bodyend="654"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="330" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="628" bodyend="654"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a52323a4f04d001da2b506db298f651dd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a62271ef1873ae263b2046a0445d077da" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>std::string</type>
         <definition>std::string EspBluetooth::GetDeviceName</definition>
-        <argsstring>() const override</argsstring>
+        <argsstring>() const noexcept override</argsstring>
         <name>GetDeviceName</name>
         <qualifiedname>EspBluetooth::GetDeviceName</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a226554f64e1cba76d0b021077f81088f">GetDeviceName</reimplements>
+        <reimplements refid="classBaseBluetooth_1a0578c85504ad9b33d842d54f25af2f19">GetDeviceName</reimplements>
         <briefdescription>
 <para>Get local device name. </para>
         </briefdescription>
@@ -649,15 +545,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="333" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="656" bodyend="677"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="336" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="656" bodyend="677"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1aa6a8a49f8ba193ca87faed9686dc45e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a5ae28ad6c3af195ad97eea9cac4096c3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::StartScan</definition>
-        <argsstring>(uint32_t duration_ms=0, hf_bluetooth_scan_type_t type=hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) override</argsstring>
+        <argsstring>(uint32_t duration_ms=0, hf_bluetooth_scan_type_t type=hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) noexcept override</argsstring>
         <name>StartScan</name>
         <qualifiedname>EspBluetooth::StartScan</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a7cbef9bcb0a02d8d4129c5063f182542">StartScan</reimplements>
+        <reimplements refid="classBaseBluetooth_1a7ed30dacabc311649b462d809b9ba3c9">StartScan</reimplements>
         <param>
           <type>uint32_t</type>
           <declname>duration_ms</declname>
@@ -695,15 +591,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="343" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="681" bodyend="723"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="346" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="681" bodyend="723"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a5b00eaad02fa60c18ad8f9553bb4a180" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a492b094f5ed477aa73f40395771df35d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::StopScan</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>StopScan</name>
         <qualifiedname>EspBluetooth::StopScan</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1aa284375eca6ab3cf746b00f4b92a1d21">StopScan</reimplements>
+        <reimplements refid="classBaseBluetooth_1ad446feb70a30194198dbfecaa383e0f2">StopScan</reimplements>
         <briefdescription>
 <para>Stop device discovery/scanning. </para>
         </briefdescription>
@@ -714,15 +610,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="352" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="770" bodyend="791"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="355" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="770" bodyend="791"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1aba032c11551997dca218bd8162a44f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1ac5fa0f11be5c7e1e5194ecc12818251b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
         <definition>bool EspBluetooth::IsScanning</definition>
-        <argsstring>() const override</argsstring>
+        <argsstring>() const noexcept override</argsstring>
         <name>IsScanning</name>
         <qualifiedname>EspBluetooth::IsScanning</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a4a7eca3f951cd2847965dc0eaaf1aa67">IsScanning</reimplements>
+        <reimplements refid="classBaseBluetooth_1af8583dad6a3fb4ff18987bb2f9502a2d">IsScanning</reimplements>
         <briefdescription>
 <para>Check if currently scanning. </para>
         </briefdescription>
@@ -733,15 +629,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="358" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="793" bodyend="796"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="361" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="793" bodyend="796"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a4bfb7b848bb93452373e060d5748a436" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a8d5405c42ed4af6c74bdaa487f8a238e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::GetDiscoveredDevices</definition>
-        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices) override</argsstring>
+        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices) noexcept override</argsstring>
         <name>GetDiscoveredDevices</name>
         <qualifiedname>EspBluetooth::GetDiscoveredDevices</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1ae680e1a6ea8aa510a3d8a6e66b33f4e6">GetDiscoveredDevices</reimplements>
+        <reimplements refid="classBaseBluetooth_1a6eb10b728e86c6347d78db68d9daca38">GetDiscoveredDevices</reimplements>
         <param>
           <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
           <declname>devices</declname>
@@ -765,15 +661,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="365" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="798" bodyend="803"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="368" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="798" bodyend="803"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a8461a03c45119319321f6a391a0a5135" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a47e325ffa5b21fbc275e7d03e0da391f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::ClearDiscoveredDevices</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>ClearDiscoveredDevices</name>
         <qualifiedname>EspBluetooth::ClearDiscoveredDevices</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1ad996e7aa11d766792e31d9b8b402500c">ClearDiscoveredDevices</reimplements>
+        <reimplements refid="classBaseBluetooth_1a0c635ad8d4b4b561d9d6f197f85d8cd7">ClearDiscoveredDevices</reimplements>
         <briefdescription>
 <para>Clear discovered devices list. </para>
         </briefdescription>
@@ -784,15 +680,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="372" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="805" bodyend="809"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="375" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="805" bodyend="809"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a2d3ee543b288d47f005555a6297f784e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a05a308e2fb973a28ea7e24a62e59dd6c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::StartAdvertising</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>StartAdvertising</name>
         <qualifiedname>EspBluetooth::StartAdvertising</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a2bef4ad7b3b531bd42c342b85ea27772">StartAdvertising</reimplements>
+        <reimplements refid="classBaseBluetooth_1a3e3e5cc0fb48993075b7b17345a75e7b">StartAdvertising</reimplements>
         <briefdescription>
 <para>Start BLE advertising. </para>
         </briefdescription>
@@ -803,15 +699,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="380" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="814" bodyend="817"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="383" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="814" bodyend="817"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a5599daf444f735cf9d68492d9b4ef765" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a0b1a24c6ce5b17f1f29de6a2d81dad37" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::StopAdvertising</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>StopAdvertising</name>
         <qualifiedname>EspBluetooth::StopAdvertising</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a3014d71e82d9d0ed7082a84b432025f1">StopAdvertising</reimplements>
+        <reimplements refid="classBaseBluetooth_1ad325001eb59f7db35f1ac71d4fddfdfc">StopAdvertising</reimplements>
         <briefdescription>
 <para>Stop BLE advertising. </para>
         </briefdescription>
@@ -822,15 +718,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="386" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="819" bodyend="822"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="389" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="819" bodyend="822"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1af08b9be8919f12f20a1ec975f69cd8bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1acf0cc8ea815792cff6cf2be61c819ed3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
         <definition>bool EspBluetooth::IsAdvertising</definition>
-        <argsstring>() const override</argsstring>
+        <argsstring>() const noexcept override</argsstring>
         <name>IsAdvertising</name>
         <qualifiedname>EspBluetooth::IsAdvertising</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a6806e3ecd8d83530c8bfb101099f2fd4">IsAdvertising</reimplements>
+        <reimplements refid="classBaseBluetooth_1a493573d82cfe67773aaedd028a9cec4b">IsAdvertising</reimplements>
         <briefdescription>
 <para>Check if currently advertising. </para>
         </briefdescription>
@@ -841,15 +737,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="392" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="824" bodyend="826"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="395" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="824" bodyend="826"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a409cc44a82b415ff5abc311aef9ed165" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a95b4099eb2de6b28976c36a3344e85f4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::Connect</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, uint32_t timeout_ms=0) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, uint32_t timeout_ms=0) noexcept override</argsstring>
         <name>Connect</name>
         <qualifiedname>EspBluetooth::Connect</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a491ab1503e8860ab5550a6eba81c3ad8">Connect</reimplements>
+        <reimplements refid="classBaseBluetooth_1a617291c44633b686263c240181ae3cea">Connect</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -886,15 +782,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="402" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="828" bodyend="832"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="405" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="828" bodyend="832"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a1737908361424529d735fdfbe552b6f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a348bebc38b00b6c0e47c2b12bf856d60" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::Disconnect</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) noexcept override</argsstring>
         <name>Disconnect</name>
         <qualifiedname>EspBluetooth::Disconnect</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1afccb08941b4fafb6d0899242e15b2920">Disconnect</reimplements>
+        <reimplements refid="classBaseBluetooth_1a7bead8aef6793700b27cbf09f9067056">Disconnect</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -918,15 +814,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="410" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="834" bodyend="837"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="413" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="834" bodyend="837"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1ae96a09bbf25506f65e49b71ef0fb4bbb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1adbcf453657dd1c372bc45c9e0cca302a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
         <definition>bool EspBluetooth::IsConnected</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address) const override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>IsConnected</name>
         <qualifiedname>EspBluetooth::IsConnected</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a8b4f8e6d6bc7fc2ad1274018eb83f984">IsConnected</reimplements>
+        <reimplements refid="classBaseBluetooth_1aaaa1fe08e98f160ad26c1285fa027ae4">IsConnected</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -950,15 +846,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="417" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="839" bodyend="841"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="420" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="839" bodyend="841"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a00f5c601bce68d612ecbd8cc0bb3d78b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a157e5082fb3aae39dbdcabcae0c0042b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::GetConnectedDevices</definition>
-        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices) override</argsstring>
+        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices) noexcept override</argsstring>
         <name>GetConnectedDevices</name>
         <qualifiedname>EspBluetooth::GetConnectedDevices</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1ab42108b4a596b6ff15b93fd6c5c06cab">GetConnectedDevices</reimplements>
+        <reimplements refid="classBaseBluetooth_1a60f462a47b67c139f8be15ed632bafb3">GetConnectedDevices</reimplements>
         <param>
           <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
           <declname>devices</declname>
@@ -982,15 +878,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="424" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="843" bodyend="851"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="427" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="843" bodyend="851"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1aad54e4f2b9434ea7f84cfdfa392d9141" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a1fdeba3ee4d28fce11a530e058fe46c2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::Pair</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;pin=&quot;&quot;) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;pin=&quot;&quot;) noexcept override</argsstring>
         <name>Pair</name>
         <qualifiedname>EspBluetooth::Pair</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a7462b4aef22ddd43203e44214f5536c2">Pair</reimplements>
+        <reimplements refid="classBaseBluetooth_1a50efd732485a32e6accd1f51e9fc58f6">Pair</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1027,15 +923,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="434" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="853" bodyend="857"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="437" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="853" bodyend="857"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a73de0eb96a8261c23e7d21862535d4c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1ae61bc8f3f2201767874379c1671adec0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::Unpair</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) noexcept override</argsstring>
         <name>Unpair</name>
         <qualifiedname>EspBluetooth::Unpair</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1accbd6d7ae7676023638e7e4f651467b5">Unpair</reimplements>
+        <reimplements refid="classBaseBluetooth_1ac86df1a77e652a46ff4a05516c53dd90">Unpair</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1059,15 +955,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="442" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="859" bodyend="862"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="445" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="859" bodyend="862"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a0fb00e110f247ed8a86bd7c7a0885dd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1acdf4674571e946491fc166e0f6cfeee8" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
         <definition>bool EspBluetooth::IsPaired</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address) const override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>IsPaired</name>
         <qualifiedname>EspBluetooth::IsPaired</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a0886a8faae0cfe0f69330c0efcdf226f">IsPaired</reimplements>
+        <reimplements refid="classBaseBluetooth_1af2e91ee25f4f133566544895cbe9ccc1">IsPaired</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1091,15 +987,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="449" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="864" bodyend="866"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="452" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="864" bodyend="866"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1ab8d945185adbccb25093f59f758cd8f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a58b807e84ea7ad6634530fb83f410750" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::SendData</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::vector&lt; uint8_t &gt; &amp;data) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::vector&lt; uint8_t &gt; &amp;data) noexcept override</argsstring>
         <name>SendData</name>
         <qualifiedname>EspBluetooth::SendData</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a4c5f73a535305f072f5bdf096efd19ce">SendData</reimplements>
+        <reimplements refid="classBaseBluetooth_1aeb6a2808eba39d846234d4daa5e7721a">SendData</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1135,15 +1031,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="459" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="868" bodyend="872"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="462" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="868" bodyend="872"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a49346d4f535119cfdf1c7a44592e2ec0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1ad9b72feec623b72121fd7dc903980205" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>int</type>
         <definition>int EspBluetooth::GetAvailableData</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address) const override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>GetAvailableData</name>
         <qualifiedname>EspBluetooth::GetAvailableData</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a3c9c4e3e4ff5d70f646c328df340a959">GetAvailableData</reimplements>
+        <reimplements refid="classBaseBluetooth_1a817f50486c8cc2d8fb90e5e02cee730c">GetAvailableData</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1167,15 +1063,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="467" column="7" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="874" bodyend="876"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="470" column="7" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="874" bodyend="876"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a372f9249278b7aa12070aa908c9f224b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a2d606a628a2d01182eb1e268a3d3ec8a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::ReadData</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, std::vector&lt; uint8_t &gt; &amp;data, size_t max_bytes=0) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, std::vector&lt; uint8_t &gt; &amp;data, size_t max_bytes=0) noexcept override</argsstring>
         <name>ReadData</name>
         <qualifiedname>EspBluetooth::ReadData</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a0ef42af7a494714ed851eca3fec124cc">ReadData</reimplements>
+        <reimplements refid="classBaseBluetooth_1aaeda8dabc23f43f7b034d9ea5b710aa3">ReadData</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1224,15 +1120,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="476" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="878" bodyend="882"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="479" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="878" bodyend="882"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1aeb84527d0adb3262fef210ce29c9a84e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a1a20a5079a33372536b771e1689e7cf9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::DiscoverServices</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, std::vector&lt; hf_bluetooth_gatt_service_t &gt; &amp;services) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, std::vector&lt; hf_bluetooth_gatt_service_t &gt; &amp;services) noexcept override</argsstring>
         <name>DiscoverServices</name>
         <qualifiedname>EspBluetooth::DiscoverServices</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1afc5629fe0b63c4c113a545b5eacf6f7a">DiscoverServices</reimplements>
+        <reimplements refid="classBaseBluetooth_1a1ba1c8b0f8825bb6fca5b157466b263a">DiscoverServices</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1268,15 +1164,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="487" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="884" bodyend="888"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="490" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="884" bodyend="888"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a04191edbe3f209b1ec4d20c359e0943d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a89528b9dbb1a5660e1c607c5ff518f8a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::DiscoverCharacteristics</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, std::vector&lt; hf_bluetooth_gatt_characteristic_t &gt; &amp;characteristics) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, std::vector&lt; hf_bluetooth_gatt_characteristic_t &gt; &amp;characteristics) noexcept override</argsstring>
         <name>DiscoverCharacteristics</name>
         <qualifiedname>EspBluetooth::DiscoverCharacteristics</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1ad37958dc6328f4152af8ce7d4dacb542">DiscoverCharacteristics</reimplements>
+        <reimplements refid="classBaseBluetooth_1a71dbea977b9400ae1be9358df7161a41">DiscoverCharacteristics</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1324,15 +1220,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="497" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="890" bodyend="895"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="500" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="890" bodyend="895"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1ad6fd71931ee339bdb4a66e2837dc6983" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a4d4f13f2b7cf499284a2095b088a9cfd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::ReadCharacteristic</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, std::vector&lt; uint8_t &gt; &amp;value) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, std::vector&lt; uint8_t &gt; &amp;value) noexcept override</argsstring>
         <name>ReadCharacteristic</name>
         <qualifiedname>EspBluetooth::ReadCharacteristic</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a7e191af8a19ddb52181c853c27f26eeb">ReadCharacteristic</reimplements>
+        <reimplements refid="classBaseBluetooth_1a7a6fcf0460f5d2454fac81851457ea9d">ReadCharacteristic</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1392,15 +1288,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="509" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="897" bodyend="903"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="512" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="897" bodyend="903"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a6cd33f01012e6db7e1f340c516f9521f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1afd3cd517a0c8cb03fdeb90343a761eed" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::WriteCharacteristic</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, const std::vector&lt; uint8_t &gt; &amp;value, bool with_response=true) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, const std::vector&lt; uint8_t &gt; &amp;value, bool with_response=true) noexcept override</argsstring>
         <name>WriteCharacteristic</name>
         <qualifiedname>EspBluetooth::WriteCharacteristic</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a5775d0876c891ce57f7e5da1499be4cd">WriteCharacteristic</reimplements>
+        <reimplements refid="classBaseBluetooth_1a355e1dc5a888deede264cbb0a0cada01">WriteCharacteristic</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1473,15 +1369,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="523" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="905" bodyend="912"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="526" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="905" bodyend="912"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1acb1256113dabf1b44584bf34c25c7574" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a323dcb58fb5d65901378cdee70e8a2b8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::SubscribeCharacteristic</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, bool enable) override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address, const std::string &amp;service_uuid, const std::string &amp;characteristic_uuid, bool enable) noexcept override</argsstring>
         <name>SubscribeCharacteristic</name>
         <qualifiedname>EspBluetooth::SubscribeCharacteristic</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1ab93a81eda5ea79f516d548ab7266016c">SubscribeCharacteristic</reimplements>
+        <reimplements refid="classBaseBluetooth_1a28375008b15506311fae513f01d793a7">SubscribeCharacteristic</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1541,15 +1437,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="537" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="914" bodyend="920"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="540" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="914" bodyend="920"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a900bdf9f92cd5bc4259d2360171f9cf4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1acae7ac63df21a71a53b65de3a3693a29" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__bluetooth_1gac451db000ab6ee8c0a80c938da26a738" kindref="member">hf_bluetooth_state_t</ref></type>
         <definition>hf_bluetooth_state_t EspBluetooth::GetState</definition>
-        <argsstring>() const override</argsstring>
+        <argsstring>() const noexcept override</argsstring>
         <name>GetState</name>
         <qualifiedname>EspBluetooth::GetState</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a49aadef553ed72baa4d7bc5e96f0c95e">GetState</reimplements>
+        <reimplements refid="classBaseBluetooth_1ab333ba8a81a224770998910a56d5c7ba">GetState</reimplements>
         <briefdescription>
 <para>Get current Bluetooth state. </para>
         </briefdescription>
@@ -1560,15 +1456,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="548" column="24" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="922" bodyend="925"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="551" column="24" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="922" bodyend="925"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a9090b878e33958b109e5b53af48308fa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1ad59ff6490e87be4dfa9f1191e402fd2b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>int8_t</type>
         <definition>int8_t EspBluetooth::GetRssi</definition>
-        <argsstring>(const hf_bluetooth_address_t &amp;address) const override</argsstring>
+        <argsstring>(const hf_bluetooth_address_t &amp;address) const noexcept override</argsstring>
         <name>GetRssi</name>
         <qualifiedname>EspBluetooth::GetRssi</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a99a5b02e2f3a0bccd554a692340fa64d">GetRssi</reimplements>
+        <reimplements refid="classBaseBluetooth_1ae2e305a568401408da0c317e4b6a2040">GetRssi</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__address__t" kindref="compound">hf_bluetooth_address_t</ref> &amp;</type>
           <declname>address</declname>
@@ -1592,15 +1488,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="555" column="10" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="927" bodyend="929"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="558" column="10" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="927" bodyend="929"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a20201cde03378f0f1bad5ee9c0899ae6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a137a8a03227be55f429a09a8e1da2757" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::RegisterEventCallback</definition>
-        <argsstring>(hf_bluetooth_event_callback_t callback) override</argsstring>
+        <argsstring>(hf_bluetooth_event_callback_t callback) noexcept override</argsstring>
         <name>RegisterEventCallback</name>
         <qualifiedname>EspBluetooth::RegisterEventCallback</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a393db49fdbbb0db872262b0b12ad25ea">RegisterEventCallback</reimplements>
+        <reimplements refid="classBaseBluetooth_1a575415fe3e0f3f3bba31013d6cfb0e0c">RegisterEventCallback</reimplements>
         <param>
           <type><ref refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" kindref="member">hf_bluetooth_event_callback_t</ref></type>
           <declname>callback</declname>
@@ -1624,15 +1520,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="564" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="931" bodyend="935"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="567" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="931" bodyend="935"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1afe72fcb5f77f9183c803144a480ecdad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1addfcf15e96b15910af24de8870f0b2cb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::RegisterDataCallback</definition>
-        <argsstring>(hf_bluetooth_data_callback_t callback) override</argsstring>
+        <argsstring>(hf_bluetooth_data_callback_t callback) noexcept override</argsstring>
         <name>RegisterDataCallback</name>
         <qualifiedname>EspBluetooth::RegisterDataCallback</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a7d6eb7a09b4185eb9de0ebbaadcddec1">RegisterDataCallback</reimplements>
+        <reimplements refid="classBaseBluetooth_1ab463a72df3ed5155a22551fd9adf1867">RegisterDataCallback</reimplements>
         <param>
           <type><ref refid="group__bluetooth_1ga65e5bf89736f8023fe4cf15163655f6a" kindref="member">hf_bluetooth_data_callback_t</ref></type>
           <declname>callback</declname>
@@ -1656,15 +1552,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="571" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="943" bodyend="947"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="574" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="943" bodyend="947"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a90f435461e1114cfd01b9091c88ffa47" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a35e79432888a19309a9cf8329c24b504" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::UnregisterEventCallback</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>UnregisterEventCallback</name>
         <qualifiedname>EspBluetooth::UnregisterEventCallback</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a799e4cdc54f8256ae0f80cf3a2caf52c">UnregisterEventCallback</reimplements>
+        <reimplements refid="classBaseBluetooth_1af7571a9f90a4829e6c728a53c6a1cab7">UnregisterEventCallback</reimplements>
         <briefdescription>
 <para>Unregister event callback function. </para>
         </briefdescription>
@@ -1675,15 +1571,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="577" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="937" bodyend="941"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="580" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="937" bodyend="941"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1af84094c238583d06251f4fb7c5aee803" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a91c92be8ddf002f304fe598c2edc7758" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::UnregisterDataCallback</definition>
-        <argsstring>() override</argsstring>
+        <argsstring>() noexcept override</argsstring>
         <name>UnregisterDataCallback</name>
         <qualifiedname>EspBluetooth::UnregisterDataCallback</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1ad01c053e5b9d41f8c60f63f2b7d2642c">UnregisterDataCallback</reimplements>
+        <reimplements refid="classBaseBluetooth_1a5d7ec79705f083bb1867a403084e5321">UnregisterDataCallback</reimplements>
         <briefdescription>
 <para>Unregister data callback function. </para>
         </briefdescription>
@@ -1694,15 +1590,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="583" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="949" bodyend="953"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="586" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="949" bodyend="953"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1aa86e9aaf05af6672d9c68408e9039dde" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1aff74b61fc7cc7ec7da326cadbc2774d7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::ConfigureClassic</definition>
-        <argsstring>(const hf_bluetooth_classic_config_t &amp;config) override</argsstring>
+        <argsstring>(const hf_bluetooth_classic_config_t &amp;config) noexcept override</argsstring>
         <name>ConfigureClassic</name>
         <qualifiedname>EspBluetooth::ConfigureClassic</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1adcd47674624cf1c692c88d96391b9024">ConfigureClassic</reimplements>
+        <reimplements refid="classBaseBluetooth_1a05c3be910231f2f62b907353444b57a3">ConfigureClassic</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__classic__config__t" kindref="compound">hf_bluetooth_classic_config_t</ref> &amp;</type>
           <declname>config</declname>
@@ -1726,15 +1622,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="592" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="957" bodyend="960"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="595" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="957" bodyend="960"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a9b4ed0a4e8fadcc14b2bbd99fd302034" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1ad7672c3765524c2f179cd7b127ab708f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::SetDiscoverable</definition>
-        <argsstring>(bool discoverable, uint32_t timeout_ms=0) override</argsstring>
+        <argsstring>(bool discoverable, uint32_t timeout_ms=0) noexcept override</argsstring>
         <name>SetDiscoverable</name>
         <qualifiedname>EspBluetooth::SetDiscoverable</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1ae16b5e49487dd2b010802c0fefa3cf95">SetDiscoverable</reimplements>
+        <reimplements refid="classBaseBluetooth_1af19e222b1e62772e76669918d4ecacb5">SetDiscoverable</reimplements>
         <param>
           <type>bool</type>
           <declname>discoverable</declname>
@@ -1771,15 +1667,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="600" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="962" bodyend="965"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="603" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="962" bodyend="965"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1aea05b74fe7af2a8cfc7ebc9b9d23525a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a37a10b193de4105734f148a7d8cd9c26" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
         <definition>bool EspBluetooth::IsDiscoverable</definition>
-        <argsstring>() const override</argsstring>
+        <argsstring>() const noexcept override</argsstring>
         <name>IsDiscoverable</name>
         <qualifiedname>EspBluetooth::IsDiscoverable</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a1cff8c3db74ba4776f3ca4a550eaa2f4">IsDiscoverable</reimplements>
+        <reimplements refid="classBaseBluetooth_1ad7fd4fbee258da62570426885255b2cf">IsDiscoverable</reimplements>
         <briefdescription>
 <para>Check if device is discoverable. </para>
         </briefdescription>
@@ -1790,15 +1686,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="606" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="967" bodyend="969"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="609" column="8" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="967" bodyend="969"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a21f34c8693086a3ff6a522be67e45394" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a29df037a2e0bb46a29bde4a4ed589e89" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::ConfigureBle</definition>
-        <argsstring>(const hf_bluetooth_ble_config_t &amp;config) override</argsstring>
+        <argsstring>(const hf_bluetooth_ble_config_t &amp;config) noexcept override</argsstring>
         <name>ConfigureBle</name>
         <qualifiedname>EspBluetooth::ConfigureBle</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a6cfce1df3b1dbd1267154de7d957a525">ConfigureBle</reimplements>
+        <reimplements refid="classBaseBluetooth_1ac5cb25b01043f0aada11b7073702dd76">ConfigureBle</reimplements>
         <param>
           <type>const <ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref> &amp;</type>
           <declname>config</declname>
@@ -1822,15 +1718,15 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="615" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="971" bodyend="974"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="618" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="971" bodyend="974"/>
       </memberdef>
-      <memberdef kind="function" id="classEspBluetooth_1a71ed4973e6db54cf9b3a22a96f66f4e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classEspBluetooth_1a1964d48b1acd5eccce38da02166e7d90" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="BaseBluetooth_8h_1ae493803dda9d9c9523f3e11b488507bc" kindref="member">hf_bluetooth_err_t</ref></type>
         <definition>hf_bluetooth_err_t EspBluetooth::GetPairedDevices</definition>
-        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices) override</argsstring>
+        <argsstring>(std::vector&lt; hf_bluetooth_device_info_t &gt; &amp;devices) noexcept override</argsstring>
         <name>GetPairedDevices</name>
         <qualifiedname>EspBluetooth::GetPairedDevices</qualifiedname>
-        <reimplements refid="classBaseBluetooth_1a1eea76b41ba09697e53099c075d51787">GetPairedDevices</reimplements>
+        <reimplements refid="classBaseBluetooth_1a89d0044ec124c5ef2d2737462a22df9e">GetPairedDevices</reimplements>
         <param>
           <type>std::vector&lt; <ref refid="structhf__bluetooth__device__info__t" kindref="compound">hf_bluetooth_device_info_t</ref> &gt; &amp;</type>
           <declname>devices</declname>
@@ -1854,7 +1750,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="624" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="976" bodyend="981"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="627" column="22" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="976" bodyend="981"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1aea62727908de168c5694694596b3bc04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::string</type>
@@ -1872,7 +1768,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="632" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="983" bodyend="1005"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="635" column="15" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="983" bodyend="1005"/>
       </memberdef>
       <memberdef kind="function" id="classEspBluetooth_1a25a1cdbecb847dbd24b65d83642bd90a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>uint32_t</type>
@@ -1890,7 +1786,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="638" column="12" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1007" bodyend="1024"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="641" column="12" bodyfile="src/mcu/esp32/EspBluetooth.cpp" bodystart="1007" bodyend="1024"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1944,47 +1840,42 @@
         <link refid="structhf__bluetooth__ble__config__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/mcu/esp32/EspBluetooth.h" line="173" column="1" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="173" bodyend="639"/>
+    <location file="inc/mcu/esp32/EspBluetooth.h" line="176" column="1" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="176" bodyend="642"/>
     <listofallmembers>
       <member refid="classEspBluetooth_1ac6ca2eab7f75aeb09e6a227dca39195b" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>AddressToString</name></member>
       <member refid="classBaseBluetooth_1a0f1d6deaa05381c5643fa5034beca274" prot="protected" virt="non-virtual"><scope>EspBluetooth</scope><name>BaseBluetooth</name></member>
       <member refid="classBaseBluetooth_1a372ad20c5010431efbdc08bfa3222a26" prot="protected" virt="non-virtual"><scope>EspBluetooth</scope><name>BaseBluetooth</name></member>
-      <member refid="classEspBluetooth_1a8461a03c45119319321f6a391a0a5135" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ClearDiscoveredDevices</name></member>
-      <member refid="classEspBluetooth_1a21f34c8693086a3ff6a522be67e45394" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ConfigureBle</name></member>
-      <member refid="classEspBluetooth_1aa86e9aaf05af6672d9c68408e9039dde" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ConfigureClassic</name></member>
-      <member refid="classEspBluetooth_1a409cc44a82b415ff5abc311aef9ed165" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Connect</name></member>
-      <member refid="classEspBluetooth_1a2c2487161a2d769d6ee8aba326099c26" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Deinitialize</name></member>
-      <member refid="classEspBluetooth_1a383a2fc753705da60c13eba177c13af1" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>DeinitializeBluedroid</name></member>
-      <member refid="classEspBluetooth_1a8aabdb4cdfcc466168664cecea0b5730" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Disable</name></member>
-      <member refid="classEspBluetooth_1a1737908361424529d735fdfbe552b6f7" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Disconnect</name></member>
-      <member refid="classEspBluetooth_1a04191edbe3f209b1ec4d20c359e0943d" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>DiscoverCharacteristics</name></member>
-      <member refid="classEspBluetooth_1aeb84527d0adb3262fef210ce29c9a84e" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>DiscoverServices</name></member>
-      <member refid="classEspBluetooth_1a1c8e9f1e44d21cc4ad5e789ee5f3dbce" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Enable</name></member>
+      <member refid="classEspBluetooth_1a47e325ffa5b21fbc275e7d03e0da391f" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ClearDiscoveredDevices</name></member>
+      <member refid="classEspBluetooth_1a29df037a2e0bb46a29bde4a4ed589e89" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ConfigureBle</name></member>
+      <member refid="classEspBluetooth_1aff74b61fc7cc7ec7da326cadbc2774d7" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ConfigureClassic</name></member>
+      <member refid="classEspBluetooth_1a95b4099eb2de6b28976c36a3344e85f4" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Connect</name></member>
+      <member refid="classEspBluetooth_1a4074f5333e5612a4af439a278891e05d" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Deinitialize</name></member>
+      <member refid="classEspBluetooth_1a4a38102299b8c7de84b23dc1f84b892b" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Disable</name></member>
+      <member refid="classEspBluetooth_1a348bebc38b00b6c0e47c2b12bf856d60" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Disconnect</name></member>
+      <member refid="classEspBluetooth_1a89528b9dbb1a5660e1c607c5ff518f8a" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>DiscoverCharacteristics</name></member>
+      <member refid="classEspBluetooth_1a1a20a5079a33372536b771e1689e7cf9" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>DiscoverServices</name></member>
+      <member refid="classEspBluetooth_1a98ea9a7262bf49c703156f478b82c122" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Enable</name></member>
       <member refid="classEspBluetooth_1a9cd95cb129e38d8f5fa2fe5cbef8f4c2" prot="public" virt="non-virtual"><scope>EspBluetooth</scope><name>EspBluetooth</name></member>
-      <member refid="classEspBluetooth_1abc89b97fd26c1656561a6bb3b244cd90" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>GapEventHandler</name></member>
-      <member refid="classEspBluetooth_1a92edd646687b8897675cea649f6fcd68" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>GattcEventHandler</name></member>
-      <member refid="classEspBluetooth_1aaf3338ba2f2d3fd8c5d07607cccfc56c" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>GattsEventHandler</name></member>
-      <member refid="classEspBluetooth_1a49346d4f535119cfdf1c7a44592e2ec0" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetAvailableData</name></member>
-      <member refid="classEspBluetooth_1a00f5c601bce68d612ecbd8cc0bb3d78b" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetConnectedDevices</name></member>
-      <member refid="classEspBluetooth_1a52323a4f04d001da2b506db298f651dd" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetDeviceName</name></member>
-      <member refid="classEspBluetooth_1a4bfb7b848bb93452373e060d5748a436" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetDiscoveredDevices</name></member>
+      <member refid="classEspBluetooth_1ad9b72feec623b72121fd7dc903980205" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetAvailableData</name></member>
+      <member refid="classEspBluetooth_1a157e5082fb3aae39dbdcabcae0c0042b" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetConnectedDevices</name></member>
+      <member refid="classEspBluetooth_1a62271ef1873ae263b2046a0445d077da" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetDeviceName</name></member>
+      <member refid="classEspBluetooth_1a8d5405c42ed4af6c74bdaa487f8a238e" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetDiscoveredDevices</name></member>
       <member refid="group__bluetooth_1gab088db30edcbbd9875e9381f9b8cbe8d" prot="public" virt="non-virtual"><scope>EspBluetooth</scope><name>GetErrorString</name></member>
       <member refid="classEspBluetooth_1aea62727908de168c5694694596b3bc04" prot="public" virt="non-virtual"><scope>EspBluetooth</scope><name>GetImplementationInfo</name></member>
-      <member refid="classEspBluetooth_1aa0608e60d9a74a7fa7f8c5b49b155981" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetLocalAddress</name></member>
-      <member refid="classEspBluetooth_1a786d4e2567bfcbe2f9df4f61e7a686ff" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetMode</name></member>
-      <member refid="classEspBluetooth_1a71ed4973e6db54cf9b3a22a96f66f4e8" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetPairedDevices</name></member>
-      <member refid="classEspBluetooth_1a9090b878e33958b109e5b53af48308fa" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetRssi</name></member>
-      <member refid="classEspBluetooth_1a900bdf9f92cd5bc4259d2360171f9cf4" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetState</name></member>
+      <member refid="classEspBluetooth_1a302917757fb9ec1c7c9499bd672a9859" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetLocalAddress</name></member>
+      <member refid="classEspBluetooth_1a6c139c76f416d0ee82b050613521beb8" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetMode</name></member>
+      <member refid="classEspBluetooth_1a1964d48b1acd5eccce38da02166e7d90" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetPairedDevices</name></member>
+      <member refid="classEspBluetooth_1ad59ff6490e87be4dfa9f1191e402fd2b" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetRssi</name></member>
+      <member refid="classEspBluetooth_1acae7ac63df21a71a53b65de3a3693a29" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>GetState</name></member>
       <member refid="classEspBluetooth_1a25a1cdbecb847dbd24b65d83642bd90a" prot="public" virt="non-virtual"><scope>EspBluetooth</scope><name>GetSupportedFeatures</name></member>
-      <member refid="classEspBluetooth_1ad1b73541ee07d1797eb1ed151eb65799" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Initialize</name></member>
-      <member refid="classEspBluetooth_1a8b0f66e0b935be4f29c8a4a5aed6d652" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>InitializeBluedroid</name></member>
-      <member refid="classEspBluetooth_1af08b9be8919f12f20a1ec975f69cd8bd" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsAdvertising</name></member>
-      <member refid="classEspBluetooth_1ae96a09bbf25506f65e49b71ef0fb4bbb" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsConnected</name></member>
-      <member refid="classEspBluetooth_1aea05b74fe7af2a8cfc7ebc9b9d23525a" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsDiscoverable</name></member>
-      <member refid="classEspBluetooth_1a39f39ac36e8cb1405d63e7df3f14c813" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsEnabled</name></member>
-      <member refid="classEspBluetooth_1a355b62ef036e3212dc888c72fc6ff503" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsInitialized</name></member>
-      <member refid="classEspBluetooth_1a0fb00e110f247ed8a86bd7c7a0885dd9" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsPaired</name></member>
-      <member refid="classEspBluetooth_1aba032c11551997dca218bd8162a44f8b" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsScanning</name></member>
+      <member refid="classEspBluetooth_1afd8bea96514732371c58be26a3b44747" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Initialize</name></member>
+      <member refid="classEspBluetooth_1acf0cc8ea815792cff6cf2be61c819ed3" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsAdvertising</name></member>
+      <member refid="classEspBluetooth_1adbcf453657dd1c372bc45c9e0cca302a" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsConnected</name></member>
+      <member refid="classEspBluetooth_1a37a10b193de4105734f148a7d8cd9c26" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsDiscoverable</name></member>
+      <member refid="classEspBluetooth_1a8dbe05f9ae739562f8d79017c6a2613a" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsEnabled</name></member>
+      <member refid="classEspBluetooth_1a3614348f32fdffd9ecafc94609c13c7d" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsInitialized</name></member>
+      <member refid="classEspBluetooth_1acdf4674571e946491fc166e0f6cfeee8" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsPaired</name></member>
+      <member refid="classEspBluetooth_1ac5fa0f11be5c7e1e5194ecc12818251b" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>IsScanning</name></member>
       <member refid="classEspBluetooth_1a7943a74af6826e0dde0a0a7c40214697" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_ble_config</name></member>
       <member refid="classEspBluetooth_1a7143aa7604d8fb3d70d2ce725fb888b9" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_callback_context</name></member>
       <member refid="classEspBluetooth_1adb7ac39e03c55983d3ab3d992d80dd64" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_connected_devices</name></member>
@@ -1998,28 +1889,28 @@
       <member refid="classEspBluetooth_1af693e9b5b58e1a3a68cf9edf39e7bda4" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_state</name></member>
       <member refid="classEspBluetooth_1a381b0e07f4f75410be9d9affa18b40be" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_state_mutex</name></member>
       <member refid="classBaseBluetooth_1a30639bf1607e6a95e8127a3ec810227f" prot="protected" virt="non-virtual"><scope>EspBluetooth</scope><name>operator=</name></member>
-      <member refid="classEspBluetooth_1aad54e4f2b9434ea7f84cfdfa392d9141" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Pair</name></member>
-      <member refid="classEspBluetooth_1ad6fd71931ee339bdb4a66e2837dc6983" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ReadCharacteristic</name></member>
-      <member refid="classEspBluetooth_1a372f9249278b7aa12070aa908c9f224b" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ReadData</name></member>
-      <member refid="classEspBluetooth_1afe72fcb5f77f9183c803144a480ecdad" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>RegisterDataCallback</name></member>
-      <member refid="classEspBluetooth_1a20201cde03378f0f1bad5ee9c0899ae6" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>RegisterEventCallback</name></member>
-      <member refid="classEspBluetooth_1ab8d945185adbccb25093f59f758cd8f3" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SendData</name></member>
-      <member refid="classEspBluetooth_1a6e080c3c051d20db369a9a4947f97a34" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SetDeviceName</name></member>
-      <member refid="classEspBluetooth_1a9b4ed0a4e8fadcc14b2bbd99fd302034" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SetDiscoverable</name></member>
-      <member refid="classEspBluetooth_1a374d6abb835b46146f08fc112b95f3cc" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SetMode</name></member>
-      <member refid="classEspBluetooth_1a2d3ee543b288d47f005555a6297f784e" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>StartAdvertising</name></member>
-      <member refid="classEspBluetooth_1aa6a8a49f8ba193ca87faed9686dc45e8" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>StartScan</name></member>
-      <member refid="classEspBluetooth_1a5599daf444f735cf9d68492d9b4ef765" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>StopAdvertising</name></member>
-      <member refid="classEspBluetooth_1a5b00eaad02fa60c18ad8f9553bb4a180" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>StopScan</name></member>
+      <member refid="classEspBluetooth_1a1fdeba3ee4d28fce11a530e058fe46c2" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Pair</name></member>
+      <member refid="classEspBluetooth_1a4d4f13f2b7cf499284a2095b088a9cfd" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ReadCharacteristic</name></member>
+      <member refid="classEspBluetooth_1a2d606a628a2d01182eb1e268a3d3ec8a" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ReadData</name></member>
+      <member refid="classEspBluetooth_1addfcf15e96b15910af24de8870f0b2cb" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>RegisterDataCallback</name></member>
+      <member refid="classEspBluetooth_1a137a8a03227be55f429a09a8e1da2757" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>RegisterEventCallback</name></member>
+      <member refid="classEspBluetooth_1a58b807e84ea7ad6634530fb83f410750" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SendData</name></member>
+      <member refid="classEspBluetooth_1a4d7f45a579ce77fd3d19ea5bd1b8ac15" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SetDeviceName</name></member>
+      <member refid="classEspBluetooth_1ad7672c3765524c2f179cd7b127ab708f" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SetDiscoverable</name></member>
+      <member refid="classEspBluetooth_1a52735f7b1bbb0b3736c0dcb4c1a6e1a0" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SetMode</name></member>
+      <member refid="classEspBluetooth_1a05a308e2fb973a28ea7e24a62e59dd6c" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>StartAdvertising</name></member>
+      <member refid="classEspBluetooth_1a5ae28ad6c3af195ad97eea9cac4096c3" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>StartScan</name></member>
+      <member refid="classEspBluetooth_1a0b1a24c6ce5b17f1f29de6a2d81dad37" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>StopAdvertising</name></member>
+      <member refid="classEspBluetooth_1a492b094f5ed477aa73f40395771df35d" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>StopScan</name></member>
       <member refid="classEspBluetooth_1acb38ae9cbc07b03d365fdd11a9cd1180" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>StringToAddress</name></member>
-      <member refid="classEspBluetooth_1acb1256113dabf1b44584bf34c25c7574" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SubscribeCharacteristic</name></member>
+      <member refid="classEspBluetooth_1a323dcb58fb5d65901378cdee70e8a2b8" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>SubscribeCharacteristic</name></member>
       <member refid="classEspBluetooth_1aba97116a09dbb885c55d3f503fe34433" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>TriggerEvent</name></member>
-      <member refid="classEspBluetooth_1a73de0eb96a8261c23e7d21862535d4c9" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Unpair</name></member>
-      <member refid="classEspBluetooth_1af84094c238583d06251f4fb7c5aee803" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>UnregisterDataCallback</name></member>
-      <member refid="classEspBluetooth_1a90f435461e1114cfd01b9091c88ffa47" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>UnregisterEventCallback</name></member>
+      <member refid="classEspBluetooth_1ae61bc8f3f2201767874379c1671adec0" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Unpair</name></member>
+      <member refid="classEspBluetooth_1a91c92be8ddf002f304fe598c2edc7758" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>UnregisterDataCallback</name></member>
+      <member refid="classEspBluetooth_1a35e79432888a19309a9cf8329c24b504" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>UnregisterEventCallback</name></member>
       <member refid="classEspBluetooth_1aa0686079fd72561fd9110e586c146649" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>ValidateAddress</name></member>
-      <member refid="classEspBluetooth_1a6cd33f01012e6db7e1f340c516f9521f" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>WriteCharacteristic</name></member>
-      <member refid="classBaseBluetooth_1ae77e7b8c64bfdfcdc5563d14f0f23472" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>~BaseBluetooth</name></member>
+      <member refid="classEspBluetooth_1afd3cd517a0c8cb03fdeb90343a761eed" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>WriteCharacteristic</name></member>
+      <member refid="classBaseBluetooth_1a8b0363e029dbd3f3dda7065a0712e39a" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>~BaseBluetooth</name></member>
       <member refid="classEspBluetooth_1ae72bc5e95c2e45a02f85ff8194b36842" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>~EspBluetooth</name></member>
     </listofallmembers>
   </compounddef>

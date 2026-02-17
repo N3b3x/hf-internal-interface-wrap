@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="771" column="22" bodyfile="inc/base/BaseGpio.h" bodystart="771" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="770" column="22" bodyfile="inc/base/BaseGpio.h" bodystart="770" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1ac5c36e8f02f1483820a15c7dbcdc8e6c" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="772" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="772" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="771" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="771" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1a42e5fe390af4b700cbd861237fcef37e" prot="protected" static="no" mutable="no">
         <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="773" column="23" bodyfile="inc/base/BaseGpio.h" bodystart="773" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="772" column="23" bodyfile="inc/base/BaseGpio.h" bodystart="772" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1aa521b7b75306b4a53b6c726fa07406e9" prot="protected" static="no" mutable="no">
         <type><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref></type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="774" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="774" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="773" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="773" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1a009b41614328663508a6dfccdd1bfa8e" prot="protected" static="no" mutable="no">
         <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="775" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="775" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="774" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="774" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1a47fd29eb70c7eb4f7ea6ff00782539a5" prot="protected" static="no" mutable="no">
         <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="776" column="23" bodyfile="inc/base/BaseGpio.h" bodystart="776" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="775" column="23" bodyfile="inc/base/BaseGpio.h" bodystart="775" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1a69461140f1f8e9717926235118bae0b9" prot="protected" static="no" mutable="no">
         <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
@@ -108,7 +108,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="777" column="19" bodyfile="inc/base/BaseGpio.h" bodystart="777" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="776" column="19" bodyfile="inc/base/BaseGpio.h" bodystart="776" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1acc7b7575c32b77a766adf3e275bd1973" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__gpio__statistics__t" kindref="compound">hf_gpio_statistics_t</ref></type>
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="778" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="778" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="777" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="777" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseGpio_1a82ac9df6b2e7c01355b72ccbc007b201" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__gpio__diagnostics__t" kindref="compound">hf_gpio_diagnostics_t</ref></type>
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="779" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="779" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="778" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="778" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -159,7 +159,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="304" column="3"/>
+        <location file="inc/base/BaseGpio.h" line="303" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a80f934a9f41ef0315bae75ba3883c426" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> &amp;</type>
@@ -178,12 +178,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="309" column="12"/>
+        <location file="inc/base/BaseGpio.h" line="308" column="12"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseGpio_1a042ea8f01b96fe5641258e8b662d4d78" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classBaseGpio_1a882c3e3be74c5efb0ee4b3768d864462" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type></type>
         <definition>virtual BaseGpio::~BaseGpio</definition>
-        <argsstring>()=default</argsstring>
+        <argsstring>() noexcept=default</argsstring>
         <name>~BaseGpio</name>
         <qualifiedname>BaseGpio::~BaseGpio</qualifiedname>
         <briefdescription>
@@ -193,7 +193,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="314" column="11"/>
+        <location file="inc/base/BaseGpio.h" line="313" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a2c654042248121cefac7e79590b35ec6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -211,7 +211,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="324" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="787" bodyend="789"/>
+        <location file="inc/base/BaseGpio.h" line="323" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="786" bodyend="788"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a363769239e2d658315215af324ee5aba" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -229,7 +229,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="330" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="791" bodyend="796"/>
+        <location file="inc/base/BaseGpio.h" line="329" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="790" bodyend="795"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a33c01186a67211b905c9efd8a64af2b1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -247,7 +247,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="336" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="798" bodyend="804"/>
+        <location file="inc/base/BaseGpio.h" line="335" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="797" bodyend="803"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a33f1c7b8d1ab1f2d2d1bcb3ccb1860d3" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
@@ -265,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="342" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="806" bodyend="808"/>
+        <location file="inc/base/BaseGpio.h" line="341" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="805" bodyend="807"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a962ee940c181b782f4612f913fb352a7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
@@ -283,7 +283,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="418" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="811" bodyend="813"/>
+        <location file="inc/base/BaseGpio.h" line="417" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="810" bodyend="812"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a54987f95debcc8faef0a7ecd38447031" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -314,7 +314,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="425" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="815" bodyend="826"/>
+        <location file="inc/base/BaseGpio.h" line="424" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="814" bodyend="825"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a33f91a55c88f95d12f651a08c2175f9e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -332,7 +332,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="431" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="834" bodyend="836"/>
+        <location file="inc/base/BaseGpio.h" line="430" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="833" bodyend="835"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1ae6daa5410a578598b694320cdc1997e0" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -350,7 +350,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="437" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="838" bodyend="840"/>
+        <location file="inc/base/BaseGpio.h" line="436" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="837" bodyend="839"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1af619dacf07dd2b15e40c0f5bfb1c5cb7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
@@ -368,7 +368,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="443" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="842" bodyend="844"/>
+        <location file="inc/base/BaseGpio.h" line="442" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="841" bodyend="843"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1aa33e02658b1a9eb41851c723b236758c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -399,7 +399,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="450" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="846" bodyend="857"/>
+        <location file="inc/base/BaseGpio.h" line="449" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="845" bodyend="856"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1aa5786db64ba7dc4114de02ae2b91483c" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
@@ -417,7 +417,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="460" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="860" bodyend="862"/>
+        <location file="inc/base/BaseGpio.h" line="459" column="24" bodyfile="inc/base/BaseGpio.h" bodystart="859" bodyend="861"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a7493f384bf9965b89632ce86fbab82ab" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -448,7 +448,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="467" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="864" bodyend="875"/>
+        <location file="inc/base/BaseGpio.h" line="466" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="863" bodyend="874"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a0a9b9db4afeedbd326fad93037717337" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
@@ -466,7 +466,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="477" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="878" bodyend="880"/>
+        <location file="inc/base/BaseGpio.h" line="476" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="877" bodyend="879"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a9d5e847076559bec0fdd3724eb3a6e31" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -497,7 +497,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="484" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="882" bodyend="895"/>
+        <location file="inc/base/BaseGpio.h" line="483" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="881" bodyend="894"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a3bf8b64e2c0cdc440540f1b81e347952" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref></type>
@@ -515,7 +515,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="490" column="27" bodyfile="inc/base/BaseGpio.h" bodystart="897" bodyend="899"/>
+        <location file="inc/base/BaseGpio.h" line="489" column="27" bodyfile="inc/base/BaseGpio.h" bodystart="896" bodyend="898"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a17782f317993dcb800ba05411f157d70" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -544,7 +544,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="496" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="901" bodyend="903"/>
+        <location file="inc/base/BaseGpio.h" line="495" column="8" bodyfile="inc/base/BaseGpio.h" bodystart="900" bodyend="902"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1aa2a7854a7829455131113f059f498af0" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -562,7 +562,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="506" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="906" bodyend="919"/>
+        <location file="inc/base/BaseGpio.h" line="505" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="905" bodyend="918"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a3178fb8f082369d79c699453bbb707ee" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -580,7 +580,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="512" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="921" bodyend="934"/>
+        <location file="inc/base/BaseGpio.h" line="511" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="920" bodyend="933"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a7defeeabf3fbb66f820178a668a62148" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -598,7 +598,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="518" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="936" bodyend="958"/>
+        <location file="inc/base/BaseGpio.h" line="517" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="935" bodyend="957"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a7f2adc44918574595986177767494092" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -629,7 +629,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="525" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="960" bodyend="974"/>
+        <location file="inc/base/BaseGpio.h" line="524" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="959" bodyend="973"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a3448c7f18d22d58055554dc79f2babf9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -662,7 +662,7 @@ Reads the actual direction configuration from hardware registers for fault detec
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="539" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1098" bodyend="1116"/>
+        <location file="inc/base/BaseGpio.h" line="538" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1097" bodyend="1115"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a21fe3e0c3a8f2c6a78803e986b195ef6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -695,7 +695,7 @@ Reads the actual output mode configuration from hardware registers for fault det
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="549" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1118" bodyend="1136"/>
+        <location file="inc/base/BaseGpio.h" line="548" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1117" bodyend="1135"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a81ba9758d36f8d7955d5808069ff99af" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -713,7 +713,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="558" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1138" bodyend="1166"/>
+        <location file="inc/base/BaseGpio.h" line="557" column="17" bodyfile="inc/base/BaseGpio.h" bodystart="1137" bodyend="1165"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a5fa43d23d2049a40d1235de202ccc935" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -732,7 +732,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="568" column="17"/>
+        <location file="inc/base/BaseGpio.h" line="567" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1adc93269f341ba2ec1a2b35dc32f4f31a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -751,7 +751,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="574" column="20"/>
+        <location file="inc/base/BaseGpio.h" line="573" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a36d5613164945ed0d1fdd121bb47bff3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>const char *</type>
@@ -770,7 +770,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="579" column="23"/>
+        <location file="inc/base/BaseGpio.h" line="578" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a90af5a4646e3d15940bf2604a705233d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -789,7 +789,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="589" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="589" bodyend="591"/>
+        <location file="inc/base/BaseGpio.h" line="588" column="26" bodyfile="inc/base/BaseGpio.h" bodystart="588" bodyend="590"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1aa3e94ea07ff15dc719cdf5de7c2d1a46" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -803,7 +803,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
           <declname>trigger</declname>
         </param>
         <param>
-          <type><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref></type>
+          <type><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref></type>
           <declname>callback</declname>
           <defval>nullptr</defval>
         </param>
@@ -847,7 +847,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="600" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="600" bodyend="604"/>
+        <location file="inc/base/BaseGpio.h" line="599" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="599" bodyend="603"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a379720946db91ef301fe14d8385d8208" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -866,7 +866,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="610" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="610" bodyend="612"/>
+        <location file="inc/base/BaseGpio.h" line="609" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="609" bodyend="611"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1ab2a4153923e1411a7abd5e7a0e406018" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -885,7 +885,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="618" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="618" bodyend="620"/>
+        <location file="inc/base/BaseGpio.h" line="617" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="617" bodyend="619"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a38643a8949be75f6944f15f140904d25" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -918,7 +918,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="627" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="627" bodyend="629"/>
+        <location file="inc/base/BaseGpio.h" line="626" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="626" bodyend="628"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1aa6ea99f5b6bfc64f0e94c50f9e91f2e1" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -950,7 +950,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="636" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="636" bodyend="638"/>
+        <location file="inc/base/BaseGpio.h" line="635" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="635" bodyend="637"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a850ba260aec4cda209a53136c9c270b9" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -969,7 +969,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="644" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="644" bodyend="646"/>
+        <location file="inc/base/BaseGpio.h" line="643" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="643" bodyend="645"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1ab90fba65d84dd0249076b89052568bcb" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -989,7 +989,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="657" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="657" bodyend="660"/>
+        <location file="inc/base/BaseGpio.h" line="656" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="656" bodyend="659"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a3d3400ff38b0f0531ecce0a432b25367" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1009,7 +1009,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="667" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="667" bodyend="670"/>
+        <location file="inc/base/BaseGpio.h" line="666" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="666" bodyend="669"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1aeb544b838a8508af37bc8e6d40b056da" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1041,7 +1041,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="677" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="677" bodyend="680"/>
+        <location file="inc/base/BaseGpio.h" line="676" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="676" bodyend="679"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a53728ff73bade39aa3ed6c34cff93023" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1073,7 +1073,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="687" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="687" bodyend="690"/>
+        <location file="inc/base/BaseGpio.h" line="686" column="25" bodyfile="inc/base/BaseGpio.h" bodystart="686" bodyend="689"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a74b7105774c1a992884e332d9ebf6979" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -1092,7 +1092,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="711" column="16"/>
+        <location file="inc/base/BaseGpio.h" line="710" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a10393bd9b8eeacc40bc2e643be69576d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -1111,7 +1111,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="717" column="16" bodyfile="inc/base/BaseGpio.h" bodystart="717" bodyend="720"/>
+        <location file="inc/base/BaseGpio.h" line="716" column="16" bodyfile="inc/base/BaseGpio.h" bodystart="716" bodyend="719"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -1145,7 +1145,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="354" column="25"/>
+        <location file="inc/base/BaseGpio.h" line="353" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a29eadd1af0b5bef23fec17a47d9f1347" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1179,7 +1179,7 @@ Reads the actual direction configuration from hardware registers. Useful for fau
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="363" column="25"/>
+        <location file="inc/base/BaseGpio.h" line="362" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a868d9c20441512c174d66f4ceabfcfd6" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1211,7 +1211,7 @@ Reads the actual direction configuration from hardware registers. Useful for fau
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="370" column="25"/>
+        <location file="inc/base/BaseGpio.h" line="369" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a49e2cbb2ec9837fc6a3130f4417961e5" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1245,7 +1245,7 @@ Reads the actual output mode configuration from hardware registers. Useful for f
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="379" column="25"/>
+        <location file="inc/base/BaseGpio.h" line="378" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1ae48e68b2c746371a64d1ffea39d7fe13" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1277,7 +1277,7 @@ Reads the actual output mode configuration from hardware registers. Useful for f
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="386" column="25"/>
+        <location file="inc/base/BaseGpio.h" line="385" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1aeadd79fe67b4e747f072f51ab28459bb" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
@@ -1298,7 +1298,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="394" column="31"/>
+        <location file="inc/base/BaseGpio.h" line="393" column="31"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a6571c0de7f07268d4dcb6c2e175573d5" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1330,7 +1330,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="401" column="25"/>
+        <location file="inc/base/BaseGpio.h" line="400" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a9b7158d667fb6950bb00a45fd3ba2a19" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1362,7 +1362,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="407" column="25"/>
+        <location file="inc/base/BaseGpio.h" line="406" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a1b95b3797bcf47cb2f27b3fbf65d0563" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1380,7 +1380,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="731" column="18" bodyfile="inc/base/BaseGpio.h" bodystart="977" bodyend="985"/>
+        <location file="inc/base/BaseGpio.h" line="730" column="18" bodyfile="inc/base/BaseGpio.h" bodystart="976" bodyend="984"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1ade6e9755735a8eb9f08db59396dbecc4" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref></type>
@@ -1411,7 +1411,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="738" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="987" bodyend="992"/>
+        <location file="inc/base/BaseGpio.h" line="737" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="986" bodyend="991"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1aeaf2282b59e4b9d06c5af433eab74953" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" kindref="member">hf_gpio_state_t</ref></type>
@@ -1442,7 +1442,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="745" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="994" bodyend="999"/>
+        <location file="inc/base/BaseGpio.h" line="744" column="20" bodyfile="inc/base/BaseGpio.h" bodystart="993" bodyend="998"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a1a1c7695af0b0dcb1d3f0fb745673b72" prot="protected" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -1523,7 +1523,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="757" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="757" bodyend="765"/>
+        <location file="inc/base/BaseGpio.h" line="756" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="756" bodyend="764"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -1543,7 +1543,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="695" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1005" bodyend="1014"/>
+        <location file="inc/base/BaseGpio.h" line="694" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1004" bodyend="1013"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a2eda1258440e5533133c3b19fe616673" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1561,7 +1561,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="696" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1016" bodyend="1025"/>
+        <location file="inc/base/BaseGpio.h" line="695" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1015" bodyend="1024"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a2362c8606c31008f0687640df813dee8" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1579,7 +1579,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="697" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1027" bodyend="1036"/>
+        <location file="inc/base/BaseGpio.h" line="696" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1026" bodyend="1035"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a51484809ee69e5742cb5130aead62fb4" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1597,7 +1597,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="698" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1038" bodyend="1047"/>
+        <location file="inc/base/BaseGpio.h" line="697" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1037" bodyend="1046"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a191e85e652bd5133968d0f3d7bb21b0e" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1615,7 +1615,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="699" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1049" bodyend="1058"/>
+        <location file="inc/base/BaseGpio.h" line="698" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1048" bodyend="1057"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a61bd63d0e7a6dc373a22856e9b90ef7c" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1633,7 +1633,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="700" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1060" bodyend="1073"/>
+        <location file="inc/base/BaseGpio.h" line="699" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1059" bodyend="1072"/>
       </memberdef>
       <memberdef kind="function" id="classBaseGpio_1a28828756e1f8fffe36628ec3cc7979bd" prot="public" static="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>const char *</type>
@@ -1651,7 +1651,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="701" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1075" bodyend="1092"/>
+        <location file="inc/base/BaseGpio.h" line="700" column="21" bodyfile="inc/base/BaseGpio.h" bodystart="1074" bodyend="1091"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1707,7 +1707,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
         <link refid="structhf__gpio__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BaseGpio.h" line="295" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="295" bodyend="780"/>
+    <location file="inc/base/BaseGpio.h" line="294" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="294" bodyend="779"/>
     <listofallmembers>
       <member refid="classBaseGpio_1aa521b7b75306b4a53b6c726fa07406e9" prot="protected" virt="non-virtual"><scope>BaseGpio</scope><name>active_state_</name></member>
       <member refid="classBaseGpio_1a182759a9452aa9b39f6ec0bcfdc1827f" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>BaseGpio</name></member>
@@ -1778,7 +1778,7 @@ Initializes the GPIO with specified configuration. The pin is not physically con
       <member refid="classBaseGpio_1a81ba9758d36f8d7955d5808069ff99af" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>VerifyHardwareConfiguration</name></member>
       <member refid="classBaseGpio_1a21fe3e0c3a8f2c6a78803e986b195ef6" prot="public" virt="non-virtual"><scope>BaseGpio</scope><name>VerifyOutputMode</name></member>
       <member refid="classBaseGpio_1a38643a8949be75f6944f15f140904d25" prot="public" virt="virtual"><scope>BaseGpio</scope><name>WaitForInterrupt</name></member>
-      <member refid="classBaseGpio_1a042ea8f01b96fe5641258e8b662d4d78" prot="public" virt="virtual"><scope>BaseGpio</scope><name>~BaseGpio</name></member>
+      <member refid="classBaseGpio_1a882c3e3be74c5efb0ee4b3768d864462" prot="public" virt="virtual"><scope>BaseGpio</scope><name>~BaseGpio</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

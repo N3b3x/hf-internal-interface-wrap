@@ -7,7 +7,7 @@ var structEspPwm_1_1ChannelState =
     [ "description", "structEspPwm_1_1ChannelState.html#a09ce373d96d3849a879fcfd622953997", null ],
     [ "enabled", "structEspPwm_1_1ChannelState.html#a6d8fcca202029b029e059b4fb1d621e3", null ],
     [ "fade_active", "structEspPwm_1_1ChannelState.html#a6fe68bb974541877f3c6947ca3b9f8ab", null ],
-    [ "fade_callback", "structEspPwm_1_1ChannelState.html#a0159dc9f0dfbf6eef133aa27070a2b3c", null ],
+    [ "fade_callback", "structEspPwm_1_1ChannelState.html#ab5cc36c9cd4297730d6fd8e381e351b1", null ],
     [ "is_critical", "structEspPwm_1_1ChannelState.html#a8c101fbd0e7dcca25c6624ae98b12efa", null ],
     [ "last_error", "structEspPwm_1_1ChannelState.html#a096e08c26d43bf17132f2e7f06fa9be6", null ],
     [ "needs_reconfiguration", "structEspPwm_1_1ChannelState.html#a9dcd4d475588c89b0812cbd814e0bf7e", null ],

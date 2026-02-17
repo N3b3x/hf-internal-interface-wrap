@@ -31,12 +31,12 @@
         <link refid="TimerComprehensiveTest_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>BaseAdc.h</label>
         <link refid="BaseAdc_8h"/>
         <childnode refid="9" relation="include">
@@ -45,21 +45,17 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
-      <node id="31">
+      <node id="30">
         <label>BaseCan.h</label>
         <link refid="BaseCan_8h"/>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -71,10 +67,8 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
-      <node id="33">
+      <node id="32">
         <label>BaseI2c.h</label>
         <link refid="BaseI2c_8h"/>
         <childnode refid="9" relation="include">
@@ -83,10 +77,8 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
-      <node id="23">
+      <node id="22">
         <label>base/BasePeriodicTimer.h</label>
         <link refid="BasePeriodicTimer_8h"/>
         <childnode refid="9" relation="include">
@@ -95,10 +87,8 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
-      <node id="37">
+      <node id="36">
         <label>BasePio.h</label>
         <link refid="BasePio_8h"/>
         <childnode refid="9" relation="include">
@@ -107,10 +97,8 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
-      <node id="39">
+      <node id="38">
         <label>../../../base/BasePwm.h</label>
         <link refid="BasePwm_8h"/>
         <childnode refid="9" relation="include">
@@ -119,10 +107,8 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
-      <node id="41">
+      <node id="40">
         <label>BaseSpi.h</label>
         <link refid="BaseSpi_8h"/>
         <childnode refid="9" relation="include">
@@ -131,21 +117,17 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
       </node>
-      <node id="45">
+      <node id="44">
         <label>BaseUart.h</label>
         <link refid="BaseUart_8h"/>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -165,209 +147,207 @@
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="24">
+      <node id="23">
         <label>mcu/esp32/EspPeriodicTimer.h</label>
         <link refid="EspPeriodicTimer_8h"/>
-        <childnode refid="23" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="25">
+      <node id="24">
         <label>EspTypes.h</label>
         <link refid="EspTypes_8h"/>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="29" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
       </node>
-      <node id="26">
+      <node id="25">
         <label>EspTypes_ADC.h</label>
         <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="27" relation="include">
         </childnode>
+        <childnode refid="28" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="30">
+      <node id="29">
         <label>EspTypes_CAN.h</label>
         <link refid="EspTypes__CAN_8h"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="17">
         <label>EspTypes_GPIO.h</label>
         <link refid="EspTypes__GPIO_8h"/>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="31">
         <label>EspTypes_I2C.h</label>
         <link refid="EspTypes__I2C_8h"/>
-        <childnode refid="33" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="33" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
       </node>
-      <node id="36">
+      <node id="35">
         <label>EspTypes_PIO.h</label>
         <link refid="EspTypes__PIO_8h"/>
-        <childnode refid="37" relation="include">
+        <childnode refid="36" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
       </node>
-      <node id="38">
+      <node id="37">
         <label>EspTypes_PWM.h</label>
         <link refid="EspTypes__PWM_8h"/>
-        <childnode refid="39" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
-      <node id="40">
+      <node id="39">
         <label>EspTypes_SPI.h</label>
         <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
       </node>
-      <node id="43">
+      <node id="42">
         <label>EspTypes_Timer.h</label>
         <link refid="EspTypes__Timer_8h"/>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="43">
         <label>EspTypes_UART.h</label>
         <link refid="EspTypes__UART_8h"/>
-        <childnode refid="45" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="19">
         <label>../../utils/McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="21">
+      <node id="20">
         <label>atomic</label>
       </node>
       <node id="10">
         <label>cstdint</label>
       </node>
-      <node id="46">
+      <node id="45">
         <label>cstring</label>
       </node>
       <node id="13">
         <label>driver/gpio.h</label>
       </node>
-      <node id="35">
+      <node id="34">
         <label>driver/i2c.h</label>
       </node>
-      <node id="42">
+      <node id="41">
         <label>driver/spi_master.h</label>
       </node>
-      <node id="28">
+      <node id="27">
         <label>esp_adc/adc_continuous.h</label>
       </node>
-      <node id="29">
+      <node id="28">
         <label>esp_adc/adc_oneshot.h</label>
       </node>
       <node id="14">
@@ -391,19 +371,16 @@
       <node id="8">
         <label>freertos/task.h</label>
       </node>
-      <node id="16">
-        <label>functional</label>
-      </node>
       <node id="11">
         <label>limits</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>stdio.h</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>string_view</label>
       </node>
-      <node id="34">
+      <node id="33">
         <label>vector</label>
       </node>
     </incdepgraph>

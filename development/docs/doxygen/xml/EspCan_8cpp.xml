@@ -21,8 +21,6 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
       </node>
       <node id="7">
         <label>HardwareTypes.h</label>
@@ -43,18 +41,16 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="17">
         <label>EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
         <childnode refid="3" relation="include">
@@ -66,12 +62,12 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="16">
         <label>utils/EspTypes_CAN.h</label>
         <link refid="EspTypes__CAN_8h"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -82,16 +78,16 @@
         <label>McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="13">
+      <node id="12">
         <label>RtosMutex.h</label>
         <link refid="RtosMutex_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -103,20 +99,20 @@
         <link refid="EspCan_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="20">
+      <node id="19">
         <label>algorithm</label>
       </node>
       <node id="10">
@@ -125,13 +121,13 @@
       <node id="8">
         <label>cstdint</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>cstring</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>esp_log.h</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>esp_timer.h</label>
       </node>
       <node id="4">
@@ -140,25 +136,22 @@
       <node id="5">
         <label>esp_twai_onchip.h</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>freertos/task.h</label>
-      </node>
-      <node id="11">
-        <label>functional</label>
       </node>
       <node id="9">
         <label>limits</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>memory</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>string_view</label>
       </node>
     </incdepgraph>
@@ -477,7 +470,7 @@
 <codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbaebc29e4eccb8de0556d22418b14bc930" kindref="member">hf_can_err_t::CAN_ERR_UNSUPPORTED_OPERATION</ref>;</highlight></codeline>
 <codeline lineno="294"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="295"><highlight class="normal"></highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a15ded2afcc3564560fa704e661546500" kindref="member">EspCan::SetReceiveCallback</ref>(<ref refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" kindref="member">hf_can_receive_callback_t</ref><sp/>callback)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a15ded2afcc3564560fa704e661546500" kindref="member">EspCan::SetReceiveCallback</ref>(<ref refid="BaseCan_8h_1a3581a1b02d6350ac14ca81b7c60cdc6f" kindref="member">hf_can_receive_callback_t</ref><sp/>callback)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspCan_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;SetReceiveCallback<sp/>(BaseCan)<sp/>is<sp/>deprecated<sp/>-<sp/>use<sp/>SetReceiveCallbackEx<sp/>instead&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbac6826689e9756b15d3cad7f54cb66d07" kindref="member">hf_can_err_t::CAN_ERR_NOT_SUPPORTED</ref>;</highlight></codeline>
 <codeline lineno="299"><highlight class="normal">}</highlight></codeline>
@@ -491,61 +484,61 @@
 <codeline lineno="307"><highlight class="normal"></highlight><highlight class="comment">//<sp/>SINGLE-CALLBACK<sp/>PER<sp/>EVENT<sp/>MANAGEMENT</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="309"><highlight class="normal"></highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1aacf7899068a281cb12144f913660aa49" kindref="member">EspCan::SetReceiveCallbackEx</ref>(<ref refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" kindref="member">hf_esp_can_receive_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1aacf7899068a281cb12144f913660aa49" kindref="member">EspCan::SetReceiveCallbackEx</ref>(<ref refid="EspCan_8h_1a837c184d4539ef6fd1a61acdb66f7149" kindref="member">hf_esp_can_receive_callback_t</ref><sp/>cb,</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cb)</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" kindref="member">hf_can_err_t::CAN_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/>receive_cb_<sp/>=<sp/>std::move(cb);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/>receive_cb_<sp/>=<sp/>cb;</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"><sp/><sp/>receive_ud_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="318"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1af0cad1fa0e4c312eebcc5d1b938876df" kindref="member">EspCan::ClearReceiveCallbackEx</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>);</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a033c6357046c20596ec8c70d4315da07" kindref="member">receive_cb_</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a033c6357046c20596ec8c70d4315da07" kindref="member">receive_cb_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" kindref="member">receive_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="323"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="324"><highlight class="normal"></highlight></codeline>
-<codeline lineno="325"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1ae49c30b2a556b92b8a8dbb12d1eec148" kindref="member">EspCan::SetErrorCallback</ref>(<ref refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" kindref="member">hf_esp_can_error_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1ae49c30b2a556b92b8a8dbb12d1eec148" kindref="member">EspCan::SetErrorCallback</ref>(<ref refid="EspCan_8h_1a076a16ddd28094881c20009e0617cdaa" kindref="member">hf_esp_can_error_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="326"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cb)</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" kindref="member">hf_can_err_t::CAN_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
-<codeline lineno="329"><highlight class="normal"><sp/><sp/>error_cb_<sp/>=<sp/>std::move(cb);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/>error_cb_<sp/>=<sp/>cb;</highlight></codeline>
 <codeline lineno="330"><highlight class="normal"><sp/><sp/>error_ud_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="331"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="332"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="333"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a077cc96263ea79483559055841d873d6" kindref="member">EspCan::ClearErrorCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>);</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1ad310be0cce73339268d83a1c3744a970" kindref="member">error_cb_</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1ad310be0cce73339268d83a1c3744a970" kindref="member">error_cb_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" kindref="member">error_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="337"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="338"><highlight class="normal"></highlight></codeline>
-<codeline lineno="339"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" kindref="member">EspCan::SetStateChangeCallback</ref>(<ref refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" kindref="member">hf_esp_can_state_callback_t</ref><sp/>cb,</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" kindref="member">EspCan::SetStateChangeCallback</ref>(<ref refid="EspCan_8h_1a825b77c282f2132954ab50789a51a98b" kindref="member">hf_esp_can_state_callback_t</ref><sp/>cb,</highlight></codeline>
 <codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cb)</highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" kindref="member">hf_can_err_t::CAN_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
-<codeline lineno="344"><highlight class="normal"><sp/><sp/>state_cb_<sp/>=<sp/>std::move(cb);</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/>state_cb_<sp/>=<sp/>cb;</highlight></codeline>
 <codeline lineno="345"><highlight class="normal"><sp/><sp/>state_ud_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="346"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="347"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="348"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a86db68ed58d7c1791683151cb9a49260" kindref="member">EspCan::ClearStateChangeCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="349"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>);</highlight></codeline>
-<codeline lineno="350"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a0283765650c36540b4a61fee2360d196" kindref="member">state_cb_</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a0283765650c36540b4a61fee2360d196" kindref="member">state_cb_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" kindref="member">state_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="352"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"></highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a774bf708978527bf71ecee26c5075c48" kindref="member">EspCan::SetTxCompleteCallback</ref>(<ref refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" kindref="member">hf_esp_can_tx_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a774bf708978527bf71ecee26c5075c48" kindref="member">EspCan::SetTxCompleteCallback</ref>(<ref refid="EspCan_8h_1aeb3672dcbe405ded46e6f974338ed765" kindref="member">hf_esp_can_tx_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="355"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cb)</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" kindref="member">hf_can_err_t::CAN_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
-<codeline lineno="358"><highlight class="normal"><sp/><sp/>tx_cb_<sp/>=<sp/>std::move(cb);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/>tx_cb_<sp/>=<sp/>cb;</highlight></codeline>
 <codeline lineno="359"><highlight class="normal"><sp/><sp/>tx_ud_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="360"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="361"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a335b99de3bbf289de667f843ba83d31d" kindref="member">EspCan::ClearTxCompleteCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="363"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>);</highlight></codeline>
-<codeline lineno="364"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" kindref="member">tx_cb_</ref><sp/>=<sp/>{};</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" kindref="member">tx_cb_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1ab431b6af90e985b67e4cc2d8c5fbd0b4" kindref="member">tx_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="366"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="367"><highlight class="normal"></highlight></codeline>

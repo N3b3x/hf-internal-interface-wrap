@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="399" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="399" bodyend="-1"/>
+        <location file="inc/base/BaseAdc.h" line="398" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="398" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseAdc_1a0b37c5f9bbeb2dfdd81a879570abe58d" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="400" column="23" bodyfile="inc/base/BaseAdc.h" bodystart="400" bodyend="-1"/>
+        <location file="inc/base/BaseAdc.h" line="399" column="23" bodyfile="inc/base/BaseAdc.h" bodystart="399" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseAdc_1a25dc8f1131a75e21d463f60fc4bad79f" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="401" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="401" bodyend="-1"/>
+        <location file="inc/base/BaseAdc.h" line="400" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="400" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="206" column="11"/>
+        <location file="inc/base/BaseAdc.h" line="205" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1afa09240c509104a18d40aa2dbbbc5e9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="209" column="3"/>
+        <location file="inc/base/BaseAdc.h" line="208" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1aa1a7284050fe28d87413a452f1dfe24a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="210" column="11"/>
+        <location file="inc/base/BaseAdc.h" line="209" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a37498a3ef03c848856290a4846c87dd7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="213" column="3"/>
+        <location file="inc/base/BaseAdc.h" line="212" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a50784bdbb7ce352301cbab76bb4ac887" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="classBaseAdc" kindref="compound">BaseAdc</ref> &amp;</type>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="214" column="11"/>
+        <location file="inc/base/BaseAdc.h" line="213" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a7a0ce14e616b94b41b7f5f3103c75b61" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="224" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="224" bodyend="229"/>
+        <location file="inc/base/BaseAdc.h" line="223" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="223" bodyend="228"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1ac97e5b49f3e9705bcdd0d9a500532e2f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="235" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="235" bodyend="240"/>
+        <location file="inc/base/BaseAdc.h" line="234" column="8" bodyfile="inc/base/BaseAdc.h" bodystart="234" bodyend="239"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a475764935a2e741538cfc643e0837653" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="246" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="246" bodyend="248"/>
+        <location file="inc/base/BaseAdc.h" line="245" column="9" bodyfile="inc/base/BaseAdc.h" bodystart="245" bodyend="247"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1ab783a31b8adb7af4b4d53226ffff375c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="258" column="16"/>
+        <location file="inc/base/BaseAdc.h" line="257" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a16019ba36f14e8579be74e4849e59e72" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="264" column="16"/>
+        <location file="inc/base/BaseAdc.h" line="263" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a0de6eca0aa2acd37a375a8a9a918f388" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -244,7 +244,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="270" column="20"/>
+        <location file="inc/base/BaseAdc.h" line="269" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a33d37384396674c31531994d77991965" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -276,7 +276,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="277" column="17"/>
+        <location file="inc/base/BaseAdc.h" line="276" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a7ad8ff099f8cd48d20c2cbbd6d45cf64" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -346,7 +346,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="287" column="24"/>
+        <location file="inc/base/BaseAdc.h" line="286" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1afd66aefd959c4be0267a2a605ff18525" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -416,7 +416,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="299" column="24"/>
+        <location file="inc/base/BaseAdc.h" line="298" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1abe791fa4f5d6e834578e7222dc8f9618" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -498,7 +498,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="312" column="24"/>
+        <location file="inc/base/BaseAdc.h" line="311" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a7757f481ae8ab250b7df876e0370ef5a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -568,7 +568,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="329" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="329" bodyend="343"/>
+        <location file="inc/base/BaseAdc.h" line="328" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="328" bodyend="342"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a10742f7d342d53682b6d3cec14176f0f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -589,7 +589,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="352" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="352" bodyend="355"/>
+        <location file="inc/base/BaseAdc.h" line="351" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="351" bodyend="354"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1ab7b9a99f3eaa4fc36dae5ec9fcb0571d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -609,7 +609,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="362" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="362" bodyend="365"/>
+        <location file="inc/base/BaseAdc.h" line="361" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="361" bodyend="364"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1ae0c135b27c4cb07a5ff357f7c5e1be50" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -643,7 +643,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="373" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="373" bodyend="376"/>
+        <location file="inc/base/BaseAdc.h" line="372" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="372" bodyend="375"/>
       </memberdef>
       <memberdef kind="function" id="classBaseAdc_1a1c15d97ea32b60ab3472744ca9a99ffd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref></type>
@@ -677,7 +677,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="384" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="384" bodyend="387"/>
+        <location file="inc/base/BaseAdc.h" line="383" column="24" bodyfile="inc/base/BaseAdc.h" bodystart="383" bodyend="386"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -694,7 +694,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseAdc.h" line="393" column="3" bodyfile="inc/base/BaseAdc.h" bodystart="393" bodyend="393"/>
+        <location file="inc/base/BaseAdc.h" line="392" column="3" bodyfile="inc/base/BaseAdc.h" bodystart="392" bodyend="392"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -735,7 +735,7 @@
         <link refid="structhf__adc__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BaseAdc.h" line="197" column="1" bodyfile="inc/base/BaseAdc.h" bodystart="197" bodyend="406"/>
+    <location file="inc/base/BaseAdc.h" line="196" column="1" bodyfile="inc/base/BaseAdc.h" bodystart="196" bodyend="405"/>
     <listofallmembers>
       <member refid="classBaseAdc_1afa09240c509104a18d40aa2dbbbc5e9d" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>BaseAdc</name></member>
       <member refid="classBaseAdc_1a37498a3ef03c848856290a4846c87dd7" prot="public" virt="non-virtual"><scope>BaseAdc</scope><name>BaseAdc</name></member>

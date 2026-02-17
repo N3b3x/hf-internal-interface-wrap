@@ -347,7 +347,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="109" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="109" bodyend="114"/>
+        <location file="inc/base/BaseGpio.h" line="108" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="108" bodyend="113"/>
       </memberdef>
       <memberdef kind="enum" id="group__gpio_1ga49490004a4935c1f8f727fcbfba7f887" prot="public" static="no" strong="yes">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -378,7 +378,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="139" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="139" bodyend="142"/>
+        <location file="inc/base/BaseGpio.h" line="138" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="138" bodyend="141"/>
       </memberdef>
       <memberdef kind="enum" id="group__gpio_1ga04d416163750773ac08d092bd0d4038e" prot="public" static="no" strong="yes">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -409,7 +409,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="149" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="149" bodyend="152"/>
+        <location file="inc/base/BaseGpio.h" line="148" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="148" bodyend="151"/>
       </memberdef>
       <memberdef kind="enum" id="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" prot="public" static="no" strong="yes">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -440,7 +440,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="159" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="159" bodyend="162"/>
+        <location file="inc/base/BaseGpio.h" line="158" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="158" bodyend="161"/>
       </memberdef>
       <memberdef kind="enum" id="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" prot="public" static="no" strong="yes">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -471,7 +471,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="169" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="169" bodyend="172"/>
+        <location file="inc/base/BaseGpio.h" line="168" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="168" bodyend="171"/>
       </memberdef>
       <memberdef kind="enum" id="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" prot="public" static="no" strong="yes">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -502,7 +502,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="179" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="179" bodyend="182"/>
+        <location file="inc/base/BaseGpio.h" line="178" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="178" bodyend="181"/>
       </memberdef>
       <memberdef kind="enum" id="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" prot="public" static="no" strong="yes">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -551,7 +551,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="189" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="189" bodyend="194"/>
+        <location file="inc/base/BaseGpio.h" line="188" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="188" bodyend="193"/>
       </memberdef>
       <memberdef kind="enum" id="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" prot="public" static="no" strong="yes">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -618,14 +618,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="201" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="201" bodyend="208"/>
+        <location file="inc/base/BaseGpio.h" line="200" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="200" bodyend="207"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" prot="public" static="no">
-        <type>std::function&lt; void(<ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> *gpio, <ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref> trigger, void *user_data)&gt;</type>
+      <memberdef kind="typedef" id="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" prot="public" static="no">
+        <type>void(*)(<ref refid="classBaseGpio" kindref="compound">BaseGpio</ref> *gpio, <ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref> trigger, void *user_data)</type>
         <definition>using InterruptCallback = 
-    std::function&lt;void(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* user_data)&gt;</definition>
+    void(*)(BaseGpio* gpio, hf_gpio_interrupt_trigger_t trigger, void* user_data)</definition>
         <argsstring></argsstring>
         <name>InterruptCallback</name>
         <briefdescription>
@@ -661,7 +661,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="221" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="221" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="220" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="220" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="func">
@@ -693,7 +693,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="122" column="28" bodyfile="inc/base/BaseGpio.h" bodystart="122" bodyend="132"/>
+        <location file="inc/base/BaseGpio.h" line="121" column="28" bodyfile="inc/base/BaseGpio.h" bodystart="121" bodyend="131"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="define">
@@ -708,7 +708,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="46" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="46" bodyend="102"/>
+        <location file="inc/base/BaseGpio.h" line="45" column="9" bodyfile="inc/base/BaseGpio.h" bodystart="45" bodyend="101"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

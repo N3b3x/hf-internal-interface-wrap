@@ -4,7 +4,7 @@ var group__temperature =
     [ "EspTemperature.h", "EspTemperature_8h.html", null ],
     [ "BaseTemperature", "classBaseTemperature.html", [
       [ "BaseTemperature", "classBaseTemperature.html#a115e5a44b15a1f507cb7c9163d262a5a", null ],
-      [ "~BaseTemperature", "classBaseTemperature.html#a89a1c053462cbf314098834f7045ae74", null ],
+      [ "~BaseTemperature", "classBaseTemperature.html#a21ac791e357874874cf1a8be97ed2291", null ],
       [ "BaseTemperature", "classBaseTemperature.html#a7570da5a5b76362a826c760c10bac847", null ],
       [ "Calibrate", "classBaseTemperature.html#a4d84a21b7f330d3bc80accbd9f26b1c7", null ],
       [ "CheckHealth", "classBaseTemperature.html#a201bfff0c78242bec04cadd6363d7b5d", null ],

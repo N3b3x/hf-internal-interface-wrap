@@ -1,5 +1,6 @@
 var EspBluetooth_8h =
 [
+    [ "BLUEDROID_HEADERS_AVAILABLE", "EspBluetooth_8h.html#a00271c60b092271e35031c49445e1cf7", null ],
     [ "HAS_A2DP_SUPPORT", "EspBluetooth_8h.html#a88b5b08391942cbdae0e341ac304ee85", null ],
     [ "HAS_AVRCP_SUPPORT", "EspBluetooth_8h.html#a750af07a6860ae685920f5601501b785", null ],
     [ "HAS_BLE_SUPPORT", "EspBluetooth_8h.html#ab6d4a85e7c7283f57afb83555625f1af", null ],

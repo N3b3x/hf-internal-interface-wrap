@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="770" column="8" bodyfile="inc/base/BaseCan.h" bodystart="770" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="769" column="8" bodyfile="inc/base/BaseCan.h" bodystart="769" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseCan_1a20b7f5289833676f369d33616fd2b05b" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__can__statistics__t" kindref="compound">hf_can_statistics_t</ref></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="771" column="23" bodyfile="inc/base/BaseCan.h" bodystart="771" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="770" column="23" bodyfile="inc/base/BaseCan.h" bodystart="770" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseCan_1a6de6c09dd8b68a3d07ab804967e34782" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__can__diagnostics__t" kindref="compound">hf_can_diagnostics_t</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="772" column="24" bodyfile="inc/base/BaseCan.h" bodystart="772" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="771" column="24" bodyfile="inc/base/BaseCan.h" bodystart="771" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -65,7 +65,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="434" column="11"/>
+        <location file="inc/base/BaseCan.h" line="433" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="437" column="3"/>
+        <location file="inc/base/BaseCan.h" line="436" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1ad9dc7b9f27d9909273f077baaf00df33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseCan" kindref="compound">BaseCan</ref> &amp;</type>
@@ -99,7 +99,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="438" column="11"/>
+        <location file="inc/base/BaseCan.h" line="437" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a530bc9bf147c4e0df1fa0ee38bb22e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -116,7 +116,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="439" column="3"/>
+        <location file="inc/base/BaseCan.h" line="438" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a01c7dbf06a7c24a0608ab1998d91827c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseCan" kindref="compound">BaseCan</ref> &amp;</type>
@@ -133,7 +133,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="440" column="11"/>
+        <location file="inc/base/BaseCan.h" line="439" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a3c372c570cb93abf33e2de4f05970d36" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -151,7 +151,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="446" column="8" bodyfile="inc/base/BaseCan.h" bodystart="446" bodyend="451"/>
+        <location file="inc/base/BaseCan.h" line="445" column="8" bodyfile="inc/base/BaseCan.h" bodystart="445" bodyend="450"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a03daa6284ad75c2bbd335077141ea9d7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -169,7 +169,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="457" column="8" bodyfile="inc/base/BaseCan.h" bodystart="457" bodyend="462"/>
+        <location file="inc/base/BaseCan.h" line="456" column="8" bodyfile="inc/base/BaseCan.h" bodystart="456" bodyend="461"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a1c8f9099b9cd860c3e8196768f51651b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -187,7 +187,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="468" column="9" bodyfile="inc/base/BaseCan.h" bodystart="468" bodyend="470"/>
+        <location file="inc/base/BaseCan.h" line="467" column="9" bodyfile="inc/base/BaseCan.h" bodystart="467" bodyend="469"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a7a32156d471b1d44b1cff68cd3024bb2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -206,7 +206,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="480" column="24"/>
+        <location file="inc/base/BaseCan.h" line="479" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a9d207d69485c479ab68c5396ce3d814c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -225,7 +225,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="486" column="24"/>
+        <location file="inc/base/BaseCan.h" line="485" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1ac3ec4c6e8a5d45cbcbb4266d58f0faf8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -270,7 +270,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="494" column="24"/>
+        <location file="inc/base/BaseCan.h" line="493" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a300b5b097246fd7b9575050eb7eb239c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="503" column="24"/>
+        <location file="inc/base/BaseCan.h" line="502" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a9cef56fa208f09304bbd7129914a51a8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -325,7 +325,7 @@
         <qualifiedname>BaseCan::SetReceiveCallback</qualifiedname>
         <reimplementedby refid="classEspCan_1a15ded2afcc3564560fa704e661546500">SetReceiveCallback</reimplementedby>
         <param>
-          <type><ref refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" kindref="member">hf_can_receive_callback_t</ref></type>
+          <type><ref refid="BaseCan_8h_1a3581a1b02d6350ac14ca81b7c60cdc6f" kindref="member">hf_can_receive_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <briefdescription>
@@ -347,7 +347,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="511" column="24"/>
+        <location file="inc/base/BaseCan.h" line="510" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1addc8594d5ac480f4aa2ac03b6f08d06c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -404,7 +404,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="520" column="24"/>
+        <location file="inc/base/BaseCan.h" line="519" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1ac39ec574726318ccb010c87bcea0ed0d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -436,7 +436,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="528" column="24"/>
+        <location file="inc/base/BaseCan.h" line="527" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1ab51e96a8d84616a1f2fdabd8452c0665" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -455,7 +455,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="534" column="24"/>
+        <location file="inc/base/BaseCan.h" line="533" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a372729e0eeb758ba624aecfd07ef918c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>void</type>
@@ -474,7 +474,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="544" column="16" bodyfile="inc/base/BaseCan.h" bodystart="544" bodyend="544"/>
+        <location file="inc/base/BaseCan.h" line="543" column="16" bodyfile="inc/base/BaseCan.h" bodystart="543" bodyend="543"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a523000694cee960aa8eee19bbd74c408" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -495,7 +495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="551" column="24" bodyfile="inc/base/BaseCan.h" bodystart="551" bodyend="553"/>
+        <location file="inc/base/BaseCan.h" line="550" column="24" bodyfile="inc/base/BaseCan.h" bodystart="550" bodyend="552"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a44753662096232f45e49ad752e8f68e4" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -504,7 +504,7 @@
         <name>SetReceiveCallbackFD</name>
         <qualifiedname>BaseCan::SetReceiveCallbackFD</qualifiedname>
         <param>
-          <type><ref refid="BaseCan_8h_1a5cf16e5a5639a262f899cde995da6f45" kindref="member">hf_can_fd_receive_callback_t</ref></type>
+          <type><ref refid="BaseCan_8h_1ac243f46599a2b6bfb5fc822017e3e051" kindref="member">hf_can_fd_receive_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <briefdescription>
@@ -528,7 +528,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="561" column="24" bodyfile="inc/base/BaseCan.h" bodystart="561" bodyend="564"/>
+        <location file="inc/base/BaseCan.h" line="560" column="24" bodyfile="inc/base/BaseCan.h" bodystart="560" bodyend="563"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a5af808724133b48742ebdcd448e93515" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -548,7 +548,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="571" column="16" bodyfile="inc/base/BaseCan.h" bodystart="571" bodyend="573"/>
+        <location file="inc/base/BaseCan.h" line="570" column="16" bodyfile="inc/base/BaseCan.h" bodystart="570" bodyend="572"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a2148e9e19a394699809d6e4592df5b5c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -607,7 +607,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="583" column="16" bodyfile="inc/base/BaseCan.h" bodystart="583" bodyend="589"/>
+        <location file="inc/base/BaseCan.h" line="582" column="16" bodyfile="inc/base/BaseCan.h" bodystart="582" bodyend="588"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a67d60cd1fe9783de6f335948af385158" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -713,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="603" column="16" bodyfile="inc/base/BaseCan.h" bodystart="603" bodyend="615"/>
+        <location file="inc/base/BaseCan.h" line="602" column="16" bodyfile="inc/base/BaseCan.h" bodystart="602" bodyend="614"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1acdab43f967e641b0566a7f851ea37114" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -758,7 +758,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="624" column="16" bodyfile="inc/base/BaseCan.h" bodystart="624" bodyend="628"/>
+        <location file="inc/base/BaseCan.h" line="623" column="16" bodyfile="inc/base/BaseCan.h" bodystart="623" bodyend="627"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a6aa06ee8540daad6ffef529802cb2334" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -817,7 +817,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="638" column="20" bodyfile="inc/base/BaseCan.h" bodystart="638" bodyend="651"/>
+        <location file="inc/base/BaseCan.h" line="637" column="20" bodyfile="inc/base/BaseCan.h" bodystart="637" bodyend="650"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a06981fc040b040418551f79eafea295d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -875,7 +875,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="661" column="20" bodyfile="inc/base/BaseCan.h" bodystart="661" bodyend="676"/>
+        <location file="inc/base/BaseCan.h" line="660" column="20" bodyfile="inc/base/BaseCan.h" bodystart="660" bodyend="675"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1ac6924ccef37360dd48ed18f128c8a17e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -896,7 +896,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="687" column="24" bodyfile="inc/base/BaseCan.h" bodystart="687" bodyend="708"/>
+        <location file="inc/base/BaseCan.h" line="686" column="24" bodyfile="inc/base/BaseCan.h" bodystart="686" bodyend="707"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a6e26f72d55472f7dd825063abaa87ebc" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -916,7 +916,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="715" column="24" bodyfile="inc/base/BaseCan.h" bodystart="715" bodyend="718"/>
+        <location file="inc/base/BaseCan.h" line="714" column="24" bodyfile="inc/base/BaseCan.h" bodystart="714" bodyend="717"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a938484f6f54bef73a04b5698214df442" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -950,7 +950,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="726" column="24" bodyfile="inc/base/BaseCan.h" bodystart="726" bodyend="747"/>
+        <location file="inc/base/BaseCan.h" line="725" column="24" bodyfile="inc/base/BaseCan.h" bodystart="725" bodyend="746"/>
       </memberdef>
       <memberdef kind="function" id="classBaseCan_1a0c05b53922dafb9c544f1e1fa6977397" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref></type>
@@ -984,7 +984,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="755" column="24" bodyfile="inc/base/BaseCan.h" bodystart="755" bodyend="758"/>
+        <location file="inc/base/BaseCan.h" line="754" column="24" bodyfile="inc/base/BaseCan.h" bodystart="754" bodyend="757"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -1001,7 +1001,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="764" column="3" bodyfile="inc/base/BaseCan.h" bodystart="764" bodyend="764"/>
+        <location file="inc/base/BaseCan.h" line="763" column="3" bodyfile="inc/base/BaseCan.h" bodystart="763" bodyend="763"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1057,7 +1057,7 @@
         <link refid="structhf__can__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BaseCan.h" line="429" column="1" bodyfile="inc/base/BaseCan.h" bodystart="429" bodyend="773"/>
+    <location file="inc/base/BaseCan.h" line="428" column="1" bodyfile="inc/base/BaseCan.h" bodystart="428" bodyend="772"/>
     <listofallmembers>
       <member refid="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>BaseCan</name></member>
       <member refid="classBaseCan_1a530bc9bf147c4e0df1fa0ee38bb22e39" prot="public" virt="non-virtual"><scope>BaseCan</scope><name>BaseCan</name></member>

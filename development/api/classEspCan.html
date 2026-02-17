@@ -138,25 +138,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ad33472b071ef5f1ab76efbdb58f3c855" id="r_ad33472b071ef5f1ab76efbdb58f3c855"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad33472b071ef5f1ab76efbdb58f3c855">ReceiveMessage</a> (<a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;message, uint32_t timeout_ms=0) noexcept override</td></tr>
 <tr class="memdesc:ad33472b071ef5f1ab76efbdb58f3c855"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a CAN message (legacy polling interface).  <br /></td></tr>
 <tr class="separator:ad33472b071ef5f1ab76efbdb58f3c855"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15ded2afcc3564560fa704e661546500" id="r_a15ded2afcc3564560fa704e661546500"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15ded2afcc3564560fa704e661546500">SetReceiveCallback</a> (<a class="el" href="BaseCan_8h.html#af02a5addf5896402a59198a9d8295e40">hf_can_receive_callback_t</a> callback) noexcept override</td></tr>
+<tr class="memitem:a15ded2afcc3564560fa704e661546500" id="r_a15ded2afcc3564560fa704e661546500"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15ded2afcc3564560fa704e661546500">SetReceiveCallback</a> (<a class="el" href="BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a> callback) noexcept override</td></tr>
 <tr class="memdesc:a15ded2afcc3564560fa704e661546500"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set callback for received messages (legacy support removed - use RegisterReceiveCallback).  <br /></td></tr>
 <tr class="separator:a15ded2afcc3564560fa704e661546500"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6c7eea2a0ccea5125cafb3b26af6c5ff" id="r_a6c7eea2a0ccea5125cafb3b26af6c5ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c7eea2a0ccea5125cafb3b26af6c5ff">ClearReceiveCallback</a> () noexcept override</td></tr>
 <tr class="memdesc:a6c7eea2a0ccea5125cafb3b26af6c5ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the receive callback (legacy support removed - use UnregisterCallback).  <br /></td></tr>
 <tr class="separator:a6c7eea2a0ccea5125cafb3b26af6c5ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacf7899068a281cb12144f913660aa49" id="r_aacf7899068a281cb12144f913660aa49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf7899068a281cb12144f913660aa49">SetReceiveCallbackEx</a> (<a class="el" href="EspCan_8h.html#a0e8e52e37edef4bfc2e4f874a7df1941">hf_esp_can_receive_callback_t</a> cb, void *user_data=nullptr) noexcept</td></tr>
+<tr class="memitem:aacf7899068a281cb12144f913660aa49" id="r_aacf7899068a281cb12144f913660aa49"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aacf7899068a281cb12144f913660aa49">SetReceiveCallbackEx</a> (<a class="el" href="EspCan_8h.html#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a> cb, void *user_data=nullptr) noexcept</td></tr>
 <tr class="separator:aacf7899068a281cb12144f913660aa49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0cad1fa0e4c312eebcc5d1b938876df" id="r_af0cad1fa0e4c312eebcc5d1b938876df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af0cad1fa0e4c312eebcc5d1b938876df">ClearReceiveCallbackEx</a> () noexcept</td></tr>
 <tr class="separator:af0cad1fa0e4c312eebcc5d1b938876df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae49c30b2a556b92b8a8dbb12d1eec148" id="r_ae49c30b2a556b92b8a8dbb12d1eec148"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae49c30b2a556b92b8a8dbb12d1eec148">SetErrorCallback</a> (<a class="el" href="EspCan_8h.html#acbb56c4f56595294590c3be9410d82a0">hf_esp_can_error_callback_t</a> cb, void *user_data=nullptr) noexcept</td></tr>
+<tr class="memitem:ae49c30b2a556b92b8a8dbb12d1eec148" id="r_ae49c30b2a556b92b8a8dbb12d1eec148"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae49c30b2a556b92b8a8dbb12d1eec148">SetErrorCallback</a> (<a class="el" href="EspCan_8h.html#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a> cb, void *user_data=nullptr) noexcept</td></tr>
 <tr class="separator:ae49c30b2a556b92b8a8dbb12d1eec148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a077cc96263ea79483559055841d873d6" id="r_a077cc96263ea79483559055841d873d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a077cc96263ea79483559055841d873d6">ClearErrorCallback</a> () noexcept</td></tr>
 <tr class="separator:a077cc96263ea79483559055841d873d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" id="r_a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8">SetStateChangeCallback</a> (<a class="el" href="EspCan_8h.html#ae36d9a7ad18ade3236d00009ecb1e76c">hf_esp_can_state_callback_t</a> cb, void *user_data=nullptr) noexcept</td></tr>
+<tr class="memitem:a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8" id="r_a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8">SetStateChangeCallback</a> (<a class="el" href="EspCan_8h.html#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a> cb, void *user_data=nullptr) noexcept</td></tr>
 <tr class="separator:a49f3ea9b23aa9b7ffcc1a0e7ab3dfda8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86db68ed58d7c1791683151cb9a49260" id="r_a86db68ed58d7c1791683151cb9a49260"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86db68ed58d7c1791683151cb9a49260">ClearStateChangeCallback</a> () noexcept</td></tr>
 <tr class="separator:a86db68ed58d7c1791683151cb9a49260"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a774bf708978527bf71ecee26c5075c48" id="r_a774bf708978527bf71ecee26c5075c48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a774bf708978527bf71ecee26c5075c48">SetTxCompleteCallback</a> (<a class="el" href="EspCan_8h.html#a07391fe28e5afa137b9a93f038ae2827">hf_esp_can_tx_callback_t</a> cb, void *user_data=nullptr) noexcept</td></tr>
+<tr class="memitem:a774bf708978527bf71ecee26c5075c48" id="r_a774bf708978527bf71ecee26c5075c48"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a774bf708978527bf71ecee26c5075c48">SetTxCompleteCallback</a> (<a class="el" href="EspCan_8h.html#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a> cb, void *user_data=nullptr) noexcept</td></tr>
 <tr class="separator:a774bf708978527bf71ecee26c5075c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a335b99de3bbf289de667f843ba83d31d" id="r_a335b99de3bbf289de667f843ba83d31d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a335b99de3bbf289de667f843ba83d31d">ClearTxCompleteCallback</a> () noexcept</td></tr>
 <tr class="separator:a335b99de3bbf289de667f843ba83d31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -217,7 +217,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1c8f9099b9cd860c3e8196768f51651b inherit pub_methods_classBaseCan" id="r_a1c8f9099b9cd860c3e8196768f51651b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a1c8f9099b9cd860c3e8196768f51651b">IsInitialized</a> () const noexcept</td></tr>
 <tr class="memdesc:a1c8f9099b9cd860c3e8196768f51651b inherit pub_methods_classBaseCan"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the class is initialized.  <br /></td></tr>
 <tr class="separator:a1c8f9099b9cd860c3e8196768f51651b inherit pub_methods_classBaseCan"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44753662096232f45e49ad752e8f68e4 inherit pub_methods_classBaseCan" id="r_a44753662096232f45e49ad752e8f68e4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a44753662096232f45e49ad752e8f68e4">SetReceiveCallbackFD</a> (<a class="el" href="BaseCan_8h.html#a5cf16e5a5639a262f899cde995da6f45">hf_can_fd_receive_callback_t</a> callback) noexcept</td></tr>
+<tr class="memitem:a44753662096232f45e49ad752e8f68e4 inherit pub_methods_classBaseCan" id="r_a44753662096232f45e49ad752e8f68e4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a44753662096232f45e49ad752e8f68e4">SetReceiveCallbackFD</a> (<a class="el" href="BaseCan_8h.html#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a> callback) noexcept</td></tr>
 <tr class="memdesc:a44753662096232f45e49ad752e8f68e4 inherit pub_methods_classBaseCan"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set CAN-FD receive callback with enhanced information.  <br /></td></tr>
 <tr class="separator:a44753662096232f45e49ad752e8f68e4 inherit pub_methods_classBaseCan"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5af808724133b48742ebdcd448e93515 inherit pub_methods_classBaseCan" id="r_a5af808724133b48742ebdcd448e93515"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseCan.html#a5af808724133b48742ebdcd448e93515">SupportsCanFD</a> () const noexcept</td></tr>
@@ -307,19 +307,19 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a836c7bd0fe611a5d232929a3c21b3995" id="r_a836c7bd0fe611a5d232929a3c21b3995"><td class="memItemLeft" align="right" valign="top">twai_node_handle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a836c7bd0fe611a5d232929a3c21b3995">twai_node_handle_</a></td></tr>
 <tr class="memdesc:a836c7bd0fe611a5d232929a3c21b3995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Native TWAI node handle.  <br /></td></tr>
 <tr class="separator:a836c7bd0fe611a5d232929a3c21b3995"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a033c6357046c20596ec8c70d4315da07" id="r_a033c6357046c20596ec8c70d4315da07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a0e8e52e37edef4bfc2e4f874a7df1941">hf_esp_can_receive_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a033c6357046c20596ec8c70d4315da07">receive_cb_</a> {}</td></tr>
+<tr class="memitem:a033c6357046c20596ec8c70d4315da07" id="r_a033c6357046c20596ec8c70d4315da07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a033c6357046c20596ec8c70d4315da07">receive_cb_</a> {nullptr}</td></tr>
 <tr class="separator:a033c6357046c20596ec8c70d4315da07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2b72b11c02ef567f4e37915ad452dbf2" id="r_a2b72b11c02ef567f4e37915ad452dbf2"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2b72b11c02ef567f4e37915ad452dbf2">receive_ud_</a> = nullptr</td></tr>
 <tr class="separator:a2b72b11c02ef567f4e37915ad452dbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad310be0cce73339268d83a1c3744a970" id="r_ad310be0cce73339268d83a1c3744a970"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#acbb56c4f56595294590c3be9410d82a0">hf_esp_can_error_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad310be0cce73339268d83a1c3744a970">error_cb_</a> {}</td></tr>
+<tr class="memitem:ad310be0cce73339268d83a1c3744a970" id="r_ad310be0cce73339268d83a1c3744a970"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad310be0cce73339268d83a1c3744a970">error_cb_</a> {nullptr}</td></tr>
 <tr class="separator:ad310be0cce73339268d83a1c3744a970"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4df3001f2b8ab4366f0fa38ca3ec47a8" id="r_a4df3001f2b8ab4366f0fa38ca3ec47a8"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4df3001f2b8ab4366f0fa38ca3ec47a8">error_ud_</a> = nullptr</td></tr>
 <tr class="separator:a4df3001f2b8ab4366f0fa38ca3ec47a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0283765650c36540b4a61fee2360d196" id="r_a0283765650c36540b4a61fee2360d196"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#ae36d9a7ad18ade3236d00009ecb1e76c">hf_esp_can_state_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0283765650c36540b4a61fee2360d196">state_cb_</a> {}</td></tr>
+<tr class="memitem:a0283765650c36540b4a61fee2360d196" id="r_a0283765650c36540b4a61fee2360d196"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0283765650c36540b4a61fee2360d196">state_cb_</a> {nullptr}</td></tr>
 <tr class="separator:a0283765650c36540b4a61fee2360d196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d0e83f62935d29002249184cdcb5d02" id="r_a5d0e83f62935d29002249184cdcb5d02"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d0e83f62935d29002249184cdcb5d02">state_ud_</a> = nullptr</td></tr>
 <tr class="separator:a5d0e83f62935d29002249184cdcb5d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b8504de99b6a2c5ef2b9a9311ff17fd" id="r_a9b8504de99b6a2c5ef2b9a9311ff17fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#a07391fe28e5afa137b9a93f038ae2827">hf_esp_can_tx_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b8504de99b6a2c5ef2b9a9311ff17fd">tx_cb_</a> {}</td></tr>
+<tr class="memitem:a9b8504de99b6a2c5ef2b9a9311ff17fd" id="r_a9b8504de99b6a2c5ef2b9a9311ff17fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspCan_8h.html#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9b8504de99b6a2c5ef2b9a9311ff17fd">tx_cb_</a> {nullptr}</td></tr>
 <tr class="separator:a9b8504de99b6a2c5ef2b9a9311ff17fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab431b6af90e985b67e4cc2d8c5fbd0b4" id="r_ab431b6af90e985b67e4cc2d8c5fbd0b4"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab431b6af90e985b67e4cc2d8c5fbd0b4">tx_ud_</a> = nullptr</td></tr>
 <tr class="separator:ab431b6af90e985b67e4cc2d8c5fbd0b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1556,7 +1556,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetErrorCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspCan_8h.html#acbb56c4f56595294590c3be9410d82a0">hf_esp_can_error_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspCan_8h.html#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1585,7 +1585,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetReceiveCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="BaseCan_8h.html#af02a5addf5896402a59198a9d8295e40">hf_can_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1621,7 +1621,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetReceiveCallbackEx </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspCan_8h.html#a0e8e52e37edef4bfc2e4f874a7df1941">hf_esp_can_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspCan_8h.html#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1650,7 +1650,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetStateChangeCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspCan_8h.html#ae36d9a7ad18ade3236d00009ecb1e76c">hf_esp_can_state_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspCan_8h.html#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1679,7 +1679,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
         <tr>
           <td class="memname"><a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> EspCan::SetTxCompleteCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspCan_8h.html#a07391fe28e5afa137b9a93f038ae2827">hf_esp_can_tx_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspCan_8h.html#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>cb</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1922,7 +1922,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspCan_8h.html#acbb56c4f56595294590c3be9410d82a0">hf_esp_can_error_callback_t</a> EspCan::error_cb_ {}</td>
+          <td class="memname"><a class="el" href="EspCan_8h.html#a076a16ddd28094881c20009e0617cdaa">hf_esp_can_error_callback_t</a> EspCan::error_cb_ {nullptr}</td>
         </tr>
       </table>
   </td>
@@ -2038,7 +2038,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspCan_8h.html#a0e8e52e37edef4bfc2e4f874a7df1941">hf_esp_can_receive_callback_t</a> EspCan::receive_cb_ {}</td>
+          <td class="memname"><a class="el" href="EspCan_8h.html#a837c184d4539ef6fd1a61acdb66f7149">hf_esp_can_receive_callback_t</a> EspCan::receive_cb_ {nullptr}</td>
         </tr>
       </table>
   </td>
@@ -2082,7 +2082,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspCan_8h.html#ae36d9a7ad18ade3236d00009ecb1e76c">hf_esp_can_state_callback_t</a> EspCan::state_cb_ {}</td>
+          <td class="memname"><a class="el" href="EspCan_8h.html#a825b77c282f2132954ab50789a51a98b">hf_esp_can_state_callback_t</a> EspCan::state_cb_ {nullptr}</td>
         </tr>
       </table>
   </td>
@@ -2198,7 +2198,7 @@ Each <a class="el" href="classEspCan.html" title="ESP32 CAN (TWAI) implementatio
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspCan_8h.html#a07391fe28e5afa137b9a93f038ae2827">hf_esp_can_tx_callback_t</a> EspCan::tx_cb_ {}</td>
+          <td class="memname"><a class="el" href="EspCan_8h.html#aeb3672dcbe405ded46e6f974338ed765">hf_esp_can_tx_callback_t</a> EspCan::tx_cb_ {nullptr}</td>
         </tr>
       </table>
   </td>

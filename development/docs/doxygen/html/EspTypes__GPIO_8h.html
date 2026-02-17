@@ -182,7 +182,7 @@ Macros</h2></td></tr>
 <tr class="separator:a26f0abc113550d1b744d3fb636bbfc69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a13ac197217e358e44201f0fd76de3fd9" id="r_a13ac197217e358e44201f0fd76de3fd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13ac197217e358e44201f0fd76de3fd9">HF_GPIO_IS_SPI_FLASH_PIN</a>(gpio_num)&#160;&#160;&#160;((gpio_num) &gt;= 24 &amp;&amp; (gpio_num) &lt;= 30)</td></tr>
 <tr class="separator:a13ac197217e358e44201f0fd76de3fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a935fd1aa93745bca2288c364ecea7148" id="r_a935fd1aa93745bca2288c364ecea7148"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a935fd1aa93745bca2288c364ecea7148">HF_GPIO_IS_INPUT_ONLY_PIN</a>(gpio_num)&#160;&#160;&#160;(false) /* ESP32 has no input-only pins */</td></tr>
+<tr class="memitem:a935fd1aa93745bca2288c364ecea7148" id="r_a935fd1aa93745bca2288c364ecea7148"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a935fd1aa93745bca2288c364ecea7148">HF_GPIO_IS_INPUT_ONLY_PIN</a>(gpio_num)&#160;&#160;&#160;(false)</td></tr>
 <tr class="separator:a935fd1aa93745bca2288c364ecea7148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab96da9a794a20319296e689d58091b1" id="r_aab96da9a794a20319296e689d58091b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab96da9a794a20319296e689d58091b1">HF_GPIO_SUPPORTS_PULL_UP</a>(gpio_num)&#160;&#160;&#160;(<a class="el" href="#a9514ff9811d7e04eaacbb29de5528ec1">HF_GPIO_IS_VALID_GPIO</a>(gpio_num))</td></tr>
 <tr class="separator:aab96da9a794a20319296e689d58091b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -367,7 +367,7 @@ Variables</h2></td></tr>
           <td class="memname">#define HF_GPIO_IS_INPUT_ONLY_PIN</td>
           <td>(</td>
           <td class="paramtype"></td>          <td class="paramname"><span class="paramname">gpio_num</span></td><td>)</td>
-          <td>&#160;&#160;&#160;(false) /* ESP32 has no input-only pins */</td>
+          <td>&#160;&#160;&#160;(false)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -407,7 +407,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line">  (<a class="code hl_define" href="#a9514ff9811d7e04eaacbb29de5528ec1">HF_GPIO_IS_VALID_GPIO</a>(gpio_num) &amp;&amp; !<a class="code hl_define" href="#a82f160ff85b7f87247c8543a3daffcb8">HF_GPIO_IS_STRAPPING_PIN</a>(gpio_num) &amp;&amp;                       \</div>
 <div class="line">   !<a class="code hl_define" href="#a13ac197217e358e44201f0fd76de3fd9">HF_GPIO_IS_SPI_FLASH_PIN</a>(gpio_num) &amp;&amp; !<a class="code hl_define" href="#ac1631752989bff41b5c0d820b59315cc">HF_GPIO_IS_USB_JTAG_PIN</a>(gpio_num))</div>
-<div class="ttc" id="aEspTypes__GPIO_8h_html_a13ac197217e358e44201f0fd76de3fd9"><div class="ttname"><a href="#a13ac197217e358e44201f0fd76de3fd9">HF_GPIO_IS_SPI_FLASH_PIN</a></div><div class="ttdeci">#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num)</div><div class="ttdef"><b>Definition</b> EspTypes_GPIO.h:293</div></div>
+<div class="ttc" id="aEspTypes__GPIO_8h_html_a13ac197217e358e44201f0fd76de3fd9"><div class="ttname"><a href="#a13ac197217e358e44201f0fd76de3fd9">HF_GPIO_IS_SPI_FLASH_PIN</a></div><div class="ttdeci">#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num)</div><div class="ttdef"><b>Definition</b> EspTypes_GPIO.h:292</div></div>
 <div class="ttc" id="aEspTypes__GPIO_8h_html_a82f160ff85b7f87247c8543a3daffcb8"><div class="ttname"><a href="#a82f160ff85b7f87247c8543a3daffcb8">HF_GPIO_IS_STRAPPING_PIN</a></div><div class="ttdeci">#define HF_GPIO_IS_STRAPPING_PIN(pin)</div><div class="ttdef"><b>Definition</b> EspTypes_GPIO.h:258</div></div>
 <div class="ttc" id="aEspTypes__GPIO_8h_html_a9514ff9811d7e04eaacbb29de5528ec1"><div class="ttname"><a href="#a9514ff9811d7e04eaacbb29de5528ec1">HF_GPIO_IS_VALID_GPIO</a></div><div class="ttdeci">#define HF_GPIO_IS_VALID_GPIO(gpio_num)</div><div class="ttdoc">ESP32 GPIO pin capability validation macros.</div><div class="ttdef"><b>Definition</b> EspTypes_GPIO.h:279</div></div>
 <div class="ttc" id="aEspTypes__GPIO_8h_html_ac1631752989bff41b5c0d820b59315cc"><div class="ttname"><a href="#ac1631752989bff41b5c0d820b59315cc">HF_GPIO_IS_USB_JTAG_PIN</a></div><div class="ttdeci">#define HF_GPIO_IS_USB_JTAG_PIN(pin)</div><div class="ttdef"><b>Definition</b> EspTypes_GPIO.h:261</div></div>

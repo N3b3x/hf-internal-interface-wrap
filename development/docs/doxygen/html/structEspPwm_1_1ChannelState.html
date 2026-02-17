@@ -149,9 +149,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a09ce373d96d3849a879fcfd622953997" id="r_a09ce373d96d3849a879fcfd622953997"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09ce373d96d3849a879fcfd622953997">description</a></td></tr>
 <tr class="memdesc:a09ce373d96d3849a879fcfd622953997"><td class="mdescLeft">&#160;</td><td class="mdescRight">Optional description for debugging.  <br /></td></tr>
 <tr class="separator:a09ce373d96d3849a879fcfd622953997"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0159dc9f0dfbf6eef133aa27070a2b3c" id="r_a0159dc9f0dfbf6eef133aa27070a2b3c"><td class="memItemLeft" align="right" valign="top">std::function&lt; void(<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a>)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0159dc9f0dfbf6eef133aa27070a2b3c">fade_callback</a></td></tr>
-<tr class="memdesc:a0159dc9f0dfbf6eef133aa27070a2b3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-channel fade completion callback.  <br /></td></tr>
-<tr class="separator:a0159dc9f0dfbf6eef133aa27070a2b3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5cc36c9cd4297730d6fd8e381e351b1" id="r_ab5cc36c9cd4297730d6fd8e381e351b1"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab5cc36c9cd4297730d6fd8e381e351b1">fade_callback</a> )(<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a>)</td></tr>
+<tr class="memdesc:ab5cc36c9cd4297730d6fd8e381e351b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-channel fade completion callback (raw fn ptr for ISR safety)  <br /></td></tr>
+<tr class="separator:ab5cc36c9cd4297730d6fd8e381e351b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Internal channel state with per-channel callback support. </p>
@@ -278,19 +278,19 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0159dc9f0dfbf6eef133aa27070a2b3c" name="a0159dc9f0dfbf6eef133aa27070a2b3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0159dc9f0dfbf6eef133aa27070a2b3c">&#9670;&#160;</a></span>fade_callback</h2>
+<a id="ab5cc36c9cd4297730d6fd8e381e351b1" name="ab5cc36c9cd4297730d6fd8e381e351b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5cc36c9cd4297730d6fd8e381e351b1">&#9670;&#160;</a></span>fade_callback</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::function&lt;void(<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a>)&gt; EspPwm::ChannelState::fade_callback</td>
+          <td class="memname">void(* EspPwm::ChannelState::fade_callback) (<a class="el" href="HardwareTypes_8h.html#ae0889610252306068bb566d31b5494c7">hf_channel_id_t</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Per-channel fade completion callback. </p>
+<p>Per-channel fade completion callback (raw fn ptr for ISR safety) </p>
 
 </div>
 </div>

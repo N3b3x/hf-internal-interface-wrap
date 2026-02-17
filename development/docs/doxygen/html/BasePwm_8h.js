@@ -5,8 +5,8 @@ var BasePwm_8h =
     [ "HF_PWM_ERR_LIST", "group__pwm.html#gab9386ad48605d4f6211bd46be2fc2b41", null ],
     [ "X", "BasePwm_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
     [ "X", "BasePwm_8h.html#a2f282216b942e9a8c8a1439eb062bef5", null ],
-    [ "hf_pwm_fault_callback_t", "BasePwm_8h.html#a163caf8da7d3569fee40d394f35d4ffe", null ],
-    [ "hf_pwm_period_callback_t", "BasePwm_8h.html#a945db454a91740660bc4e6a68e4c4136", null ],
+    [ "hf_pwm_fault_callback_t", "BasePwm_8h.html#a1626bf1d31d413583a518dba7dd8a663", null ],
+    [ "hf_pwm_period_callback_t", "BasePwm_8h.html#adb273791d1d4361b7c371e55f6a75aca", null ],
     [ "hf_pwm_err_t", "BasePwm_8h.html#aba623d248c49dd773e0866ea7c6d7ac9", [
       [ "X", "BasePwm_8h.html#aba623d248c49dd773e0866ea7c6d7ac9adfea2358b6e04a4322f67571392b54de", null ],
       [ "PWM_SUCCESS", "BasePwm_8h.html#aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74", null ],

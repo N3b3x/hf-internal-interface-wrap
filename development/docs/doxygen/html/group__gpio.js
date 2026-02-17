@@ -33,7 +33,7 @@ var group__gpio =
     ] ],
     [ "BaseGpio", "classBaseGpio.html", [
       [ "BaseGpio", "classBaseGpio.html#a182759a9452aa9b39f6ec0bcfdc1827f", null ],
-      [ "~BaseGpio", "classBaseGpio.html#a042ea8f01b96fe5641258e8b662d4d78", null ],
+      [ "~BaseGpio", "classBaseGpio.html#a882c3e3be74c5efb0ee4b3768d864462", null ],
       [ "BaseGpio", "classBaseGpio.html#a1a1c7695af0b0dcb1d3f0fb745673b72", null ],
       [ "ClearInterruptStats", "classBaseGpio.html#a850ba260aec4cda209a53136c9c270b9", null ],
       [ "ConfigureInterrupt", "classBaseGpio.html#aa3e94ea07ff15dc719cdf5de7c2d1a46", null ],
@@ -104,7 +104,7 @@ var group__gpio =
       [ "statistics_", "classBaseGpio.html#acc7b7575c32b77a766adf3e275bd1973", null ]
     ] ],
     [ "HF_GPIO_ERR_LIST", "group__gpio.html#gacdef61b325fdcc83f9974bc7c3c6d800", null ],
-    [ "InterruptCallback", "group__gpio.html#ga1327f68d8287dd473a8c6cf0333a989f", null ],
+    [ "InterruptCallback", "group__gpio.html#ga9a7aef9fbdf0b553981712baf9a4223a", null ],
     [ "hf_gpio_active_state_t", "group__gpio.html#gaf02cdaf150fa829e4a871e58ed772c6d", [
       [ "hf_gpio_active_state_t::HF_GPIO_ACTIVE_LOW", "group__gpio.html#ggaf02cdaf150fa829e4a871e58ed772c6da450278e3db6a65478bdb5a456f824c42", null ],
       [ "hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH", "group__gpio.html#ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356", null ]

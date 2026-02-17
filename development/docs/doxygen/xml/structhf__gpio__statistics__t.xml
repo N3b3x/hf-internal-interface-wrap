@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="240" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="240" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="239" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="239" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__statistics__t_1ab96b549efa8bff1d464e1306db319493" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="241" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="241" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="240" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="240" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__statistics__t_1af73fc56601cf47079be5eae7a1d64cbd" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="242" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="242" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="241" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="241" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__statistics__t_1a2ef0b7f917094e424422c87466dca139" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="243" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="243" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="242" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="242" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__statistics__t_1ab39ba2239a68f6c146bab88cdaf0ea92" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="244" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="244" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="243" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="243" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__statistics__t_1a8877caff8731087eedab6b705864448e" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="245" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="245" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="244" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="244" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__statistics__t_1a430f14e6e90d9f4b0ecd31c01ab9188b" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="246" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="246" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="245" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="245" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__statistics__t_1a90aa3a431f07be47b98aef4243f67ec2" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="247" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="247" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="246" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="246" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__gpio__statistics__t_1a49c0133280e83c317fa1d258b3989b7b" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="248" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="248" bodyend="-1"/>
+        <location file="inc/base/BaseGpio.h" line="247" column="12" bodyfile="inc/base/BaseGpio.h" bodystart="247" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -153,7 +153,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseGpio.h" line="250" column="3" bodyfile="inc/base/BaseGpio.h" bodystart="250" bodyend="253"/>
+        <location file="inc/base/BaseGpio.h" line="249" column="3" bodyfile="inc/base/BaseGpio.h" bodystart="249" bodyend="252"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -161,7 +161,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/base/BaseGpio.h" line="239" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="239" bodyend="254"/>
+    <location file="inc/base/BaseGpio.h" line="238" column="1" bodyfile="inc/base/BaseGpio.h" bodystart="238" bodyend="253"/>
     <listofallmembers>
       <member refid="structhf__gpio__statistics__t_1a430f14e6e90d9f4b0ecd31c01ab9188b" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>averageOperationTimeUs</name></member>
       <member refid="structhf__gpio__statistics__t_1ab39ba2239a68f6c146bab88cdaf0ea92" prot="public" virt="non-virtual"><scope>hf_gpio_statistics_t</scope><name>directionChanges</name></member>

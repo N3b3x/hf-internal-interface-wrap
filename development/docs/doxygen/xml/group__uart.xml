@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="43" column="9" bodyfile="inc/base/BaseUart.h" bodystart="43" bodyend="83"/>
+        <location file="inc/base/BaseUart.h" line="42" column="9" bodyfile="inc/base/BaseUart.h" bodystart="42" bodyend="82"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

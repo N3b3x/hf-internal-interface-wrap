@@ -24,8 +24,6 @@
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
       <node id="3">
         <label>HardwareTypes.h</label>
@@ -40,7 +38,9 @@
         <link refid="EspTemperature_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -48,24 +48,24 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="8">
+      <node id="7">
         <label>utils/RtosMutex.h</label>
         <link refid="RtosMutex_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
@@ -74,45 +74,43 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="12">
         <label>atomic</label>
       </node>
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>driver/temperature_sensor.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>esp_err.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>esp_log.h</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>esp_timer.h</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="11">
+      <node id="10">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="12">
+      <node id="11">
         <label>freertos/task.h</label>
       </node>
-      <node id="6">
+      <node id="17">
         <label>functional</label>
       </node>
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="7">
+      <node id="6">
         <label>string_view</label>
       </node>
     </incdepgraph>
@@ -581,13 +579,13 @@
 <codeline lineno="308"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1ae122e823c11b55550cb91af01e26461e" kindref="member">GetThresholds</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>low_threshold_celsius,</highlight></codeline>
 <codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>high_threshold_celsius)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
 <codeline lineno="310"><highlight class="normal"></highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1a1b34d89cb1cc7b03100674bea303ab5a" kindref="member">EnableThresholdMonitoring</ref>(<ref refid="BaseTemperature_8h_1a2672848972ed3dbd28859299c8862f6b" kindref="member">hf_temp_threshold_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1a1b34d89cb1cc7b03100674bea303ab5a" kindref="member">EnableThresholdMonitoring</ref>(<ref refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kindref="member">hf_temp_threshold_callback_t</ref><sp/>callback,</highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept<sp/>override;</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"></highlight></codeline>
 <codeline lineno="324"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1a4e1ee5a920aa4caaa151d036b79db369" kindref="member">DisableThresholdMonitoring</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
 <codeline lineno="325"><highlight class="normal"></highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1acc1ea9c3a109b70bd67e4f285594e474" kindref="member">StartContinuousMonitoring</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>sample_rate_hz,</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1ab15b84e22c00839c9e87a3f363efae2d" kindref="member">hf_temp_reading_callback_t</ref><sp/>callback,</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1ad737845bbb5b213ca89ccac3902fd112" kindref="member">hf_temp_reading_callback_t</ref><sp/>callback,</highlight></codeline>
 <codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept<sp/>override;</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"></highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1aa34b741f4daf7a52dc832e65dc58e34f" kindref="member">StopContinuousMonitoring</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
@@ -656,8 +654,8 @@
 <codeline lineno="507" refid="classEspTemperature_1a02f93520cdb56054ca7853f9ced82ec9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classEspTemperature_1a02f93520cdb56054ca7853f9ced82ec9" kindref="member">last_error_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="508"><highlight class="normal"></highlight></codeline>
 <codeline lineno="509"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Callback<sp/>storage</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="510" refid="classEspTemperature_1af98b41d1d3d44f8f1fe71878d2ecc7bb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1a2672848972ed3dbd28859299c8862f6b" kindref="member">hf_temp_threshold_callback_t</ref><sp/><ref refid="classEspTemperature_1af98b41d1d3d44f8f1fe71878d2ecc7bb" kindref="member">threshold_callback_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="511" refid="classEspTemperature_1af516eb1e27cb63a70b6517752f1323fd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1ab15b84e22c00839c9e87a3f363efae2d" kindref="member">hf_temp_reading_callback_t</ref><sp/><ref refid="classEspTemperature_1af516eb1e27cb63a70b6517752f1323fd" kindref="member">monitoring_callback_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="510" refid="classEspTemperature_1af98b41d1d3d44f8f1fe71878d2ecc7bb" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kindref="member">hf_temp_threshold_callback_t</ref><sp/><ref refid="classEspTemperature_1af98b41d1d3d44f8f1fe71878d2ecc7bb" kindref="member">threshold_callback_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="511" refid="classEspTemperature_1af516eb1e27cb63a70b6517752f1323fd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="BaseTemperature_8h_1ad737845bbb5b213ca89ccac3902fd112" kindref="member">hf_temp_reading_callback_t</ref><sp/><ref refid="classEspTemperature_1af516eb1e27cb63a70b6517752f1323fd" kindref="member">monitoring_callback_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="512" refid="classEspTemperature_1ac6dc56a81910c0c1d02c32119f0afd05" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTemperature_8h_1a3c15ed66b8b2a3114dceb69bfbc0bd4b" kindref="member">esp_temp_threshold_callback_t</ref><sp/><ref refid="classEspTemperature_1ac6dc56a81910c0c1d02c32119f0afd05" kindref="member">esp_threshold_callback_</ref>;<sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="513" refid="classEspTemperature_1adba4d867f07dbbe733e55c16a3f05637" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTemperature_8h_1acf7521a526f974ab3bdd42de4d70aad5" kindref="member">esp_temp_monitoring_callback_t</ref><sp/><ref refid="classEspTemperature_1adba4d867f07dbbe733e55c16a3f05637" kindref="member">esp_monitoring_callback_</ref>;<sp/></highlight></codeline>
 <codeline lineno="514" refid="classEspTemperature_1a64679e2522454245be7bdba622ef8176" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classEspTemperature_1a64679e2522454245be7bdba622ef8176" kindref="member">threshold_user_data_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>

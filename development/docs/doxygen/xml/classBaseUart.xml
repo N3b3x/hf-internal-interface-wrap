@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="403" column="17" bodyfile="inc/base/BaseUart.h" bodystart="403" bodyend="-1"/>
+        <location file="inc/base/BaseUart.h" line="402" column="17" bodyfile="inc/base/BaseUart.h" bodystart="402" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseUart_1a79a571b629da5ad6a3675619eb25903f" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="404" column="8" bodyfile="inc/base/BaseUart.h" bodystart="404" bodyend="-1"/>
+        <location file="inc/base/BaseUart.h" line="403" column="8" bodyfile="inc/base/BaseUart.h" bodystart="403" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseUart_1a27d6cf918e8a0ff9bdc345d3871d0876" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__uart__statistics__t" kindref="compound">hf_uart_statistics_t</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="405" column="24" bodyfile="inc/base/BaseUart.h" bodystart="405" bodyend="-1"/>
+        <location file="inc/base/BaseUart.h" line="404" column="24" bodyfile="inc/base/BaseUart.h" bodystart="404" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseUart_1af0bff6e1b9e465bfecec2139ff113e11" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__uart__diagnostics__t" kindref="compound">hf_uart_diagnostics_t</ref></type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="406" column="25" bodyfile="inc/base/BaseUart.h" bodystart="406" bodyend="-1"/>
+        <location file="inc/base/BaseUart.h" line="405" column="25" bodyfile="inc/base/BaseUart.h" bodystart="405" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -80,7 +80,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="197" column="11"/>
+        <location file="inc/base/BaseUart.h" line="196" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a5bd0243a3f6c1e242a5a867f6aebf928" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -97,7 +97,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="200" column="3"/>
+        <location file="inc/base/BaseUart.h" line="199" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a21412c6c2f4479149d6c25337a0af7aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="201" column="12"/>
+        <location file="inc/base/BaseUart.h" line="200" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1aefd61298d23c892de11fce7404c909e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -131,7 +131,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="202" column="3"/>
+        <location file="inc/base/BaseUart.h" line="201" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1ab823b270624288541db2a44305249b75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseUart" kindref="compound">BaseUart</ref> &amp;</type>
@@ -148,7 +148,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="203" column="12"/>
+        <location file="inc/base/BaseUart.h" line="202" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a3551794eb6e958cbdf8c15aec49c4433" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -166,7 +166,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="209" column="8" bodyfile="inc/base/BaseUart.h" bodystart="209" bodyend="214"/>
+        <location file="inc/base/BaseUart.h" line="208" column="8" bodyfile="inc/base/BaseUart.h" bodystart="208" bodyend="213"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a0775104a12d8e7b418246ed53b660e55" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -184,7 +184,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="220" column="8" bodyfile="inc/base/BaseUart.h" bodystart="220" bodyend="225"/>
+        <location file="inc/base/BaseUart.h" line="219" column="8" bodyfile="inc/base/BaseUart.h" bodystart="219" bodyend="224"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1aa01db7402b20038f979b9073281bb430" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -202,7 +202,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="231" column="9" bodyfile="inc/base/BaseUart.h" bodystart="231" bodyend="233"/>
+        <location file="inc/base/BaseUart.h" line="230" column="9" bodyfile="inc/base/BaseUart.h" bodystart="230" bodyend="232"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1ac3cbd2017d912e1ef8a1c64627bdcbf4" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a5ae8212050d5f285c3c001078e3be3aa" kindref="member">hf_port_num_t</ref></type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="239" column="18" bodyfile="inc/base/BaseUart.h" bodystart="239" bodyend="241"/>
+        <location file="inc/base/BaseUart.h" line="238" column="18" bodyfile="inc/base/BaseUart.h" bodystart="238" bodyend="240"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1ac5f93b4f75c229d2e0ec04196f5cb844" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -239,7 +239,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="251" column="16"/>
+        <location file="inc/base/BaseUart.h" line="250" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a6778f2da517273aa1a51c0658ec0a2c0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="257" column="16"/>
+        <location file="inc/base/BaseUart.h" line="256" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a5de6a79ad512480a12f757ce73fa46a6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -315,7 +315,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="266" column="25"/>
+        <location file="inc/base/BaseUart.h" line="265" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a9ddc416f533c776cf879790c8cb10b57" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -372,7 +372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="276" column="25"/>
+        <location file="inc/base/BaseUart.h" line="275" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a9666c49827901f9a511c4fd824648eb0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -391,7 +391,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="282" column="20"/>
+        <location file="inc/base/BaseUart.h" line="281" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a97a3d02d570669c9c463b99916fdef2c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -410,7 +410,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="288" column="25"/>
+        <location file="inc/base/BaseUart.h" line="287" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a2361728845801eb4356bdaa560ba0315" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -429,7 +429,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="294" column="25"/>
+        <location file="inc/base/BaseUart.h" line="293" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a9d071b6aa4fb1fe97b33cadf47b8ad7b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>int</type>
@@ -472,7 +472,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="302" column="15"/>
+        <location file="inc/base/BaseUart.h" line="301" column="15"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a75cbb2ce81d78f722874184878433249" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -490,7 +490,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="312" column="16" bodyfile="inc/base/BaseUart.h" bodystart="312" bodyend="314"/>
+        <location file="inc/base/BaseUart.h" line="311" column="16" bodyfile="inc/base/BaseUart.h" bodystart="311" bodyend="313"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1aec851bc0079da79a3cbc617fafad7432" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -508,7 +508,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="320" column="16" bodyfile="inc/base/BaseUart.h" bodystart="320" bodyend="322"/>
+        <location file="inc/base/BaseUart.h" line="319" column="16" bodyfile="inc/base/BaseUart.h" bodystart="319" bodyend="321"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1aacddae116924093dc2d45a894772a9a6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -539,7 +539,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="333" column="16" bodyfile="inc/base/BaseUart.h" bodystart="333" bodyend="338"/>
+        <location file="inc/base/BaseUart.h" line="332" column="16" bodyfile="inc/base/BaseUart.h" bodystart="332" bodyend="337"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a9c42866eb7d966a138755e5b71c725cf" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -571,7 +571,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="345" column="16" bodyfile="inc/base/BaseUart.h" bodystart="345" bodyend="347"/>
+        <location file="inc/base/BaseUart.h" line="344" column="16" bodyfile="inc/base/BaseUart.h" bodystart="344" bodyend="346"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1aa85590c6a17563a3ddcf2d6084210725" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -591,7 +591,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="360" column="25" bodyfile="inc/base/BaseUart.h" bodystart="360" bodyend="363"/>
+        <location file="inc/base/BaseUart.h" line="359" column="25" bodyfile="inc/base/BaseUart.h" bodystart="359" bodyend="362"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1abed0a5b5b2f852ea41b3133fb260aaf7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -611,7 +611,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="370" column="25" bodyfile="inc/base/BaseUart.h" bodystart="370" bodyend="373"/>
+        <location file="inc/base/BaseUart.h" line="369" column="25" bodyfile="inc/base/BaseUart.h" bodystart="369" bodyend="372"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a6698396f98eb9f438f91999142b5cbdf" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -643,7 +643,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="380" column="25" bodyfile="inc/base/BaseUart.h" bodystart="380" bodyend="383"/>
+        <location file="inc/base/BaseUart.h" line="379" column="25" bodyfile="inc/base/BaseUart.h" bodystart="379" bodyend="382"/>
       </memberdef>
       <memberdef kind="function" id="classBaseUart_1a68ce0319cba173ccdf90812fd7ad8ee5" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseUart_8h_1a2d1602c74bec15db56875b8f2925c5b6" kindref="member">hf_uart_err_t</ref></type>
@@ -675,7 +675,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="390" column="25" bodyfile="inc/base/BaseUart.h" bodystart="390" bodyend="393"/>
+        <location file="inc/base/BaseUart.h" line="389" column="25" bodyfile="inc/base/BaseUart.h" bodystart="389" bodyend="392"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -706,7 +706,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseUart.h" line="400" column="3" bodyfile="inc/base/BaseUart.h" bodystart="400" bodyend="401"/>
+        <location file="inc/base/BaseUart.h" line="399" column="3" bodyfile="inc/base/BaseUart.h" bodystart="399" bodyend="400"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -769,7 +769,7 @@
         <link refid="structhf__uart__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BaseUart.h" line="192" column="1" bodyfile="inc/base/BaseUart.h" bodystart="192" bodyend="407"/>
+    <location file="inc/base/BaseUart.h" line="191" column="1" bodyfile="inc/base/BaseUart.h" bodystart="191" bodyend="406"/>
     <listofallmembers>
       <member refid="classBaseUart_1a5bd0243a3f6c1e242a5a867f6aebf928" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>BaseUart</name></member>
       <member refid="classBaseUart_1aefd61298d23c892de11fce7404c909e9" prot="public" virt="non-virtual"><scope>BaseUart</scope><name>BaseUart</name></member>

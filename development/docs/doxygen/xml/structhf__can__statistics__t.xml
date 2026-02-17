@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="358" column="15" bodyfile="inc/base/BaseCan.h" bodystart="358" bodyend="358"/>
+        <location file="inc/base/BaseCan.h" line="357" column="15" bodyfile="inc/base/BaseCan.h" bodystart="357" bodyend="357"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1acb5e2a142071e386f62468ffb3be2a78" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
@@ -34,7 +34,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="359" column="15" bodyfile="inc/base/BaseCan.h" bodystart="359" bodyend="359"/>
+        <location file="inc/base/BaseCan.h" line="358" column="15" bodyfile="inc/base/BaseCan.h" bodystart="358" bodyend="358"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a7259bc7c4bcbb390d68a1f9f34c11055" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
@@ -50,7 +50,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="360" column="15" bodyfile="inc/base/BaseCan.h" bodystart="360" bodyend="360"/>
+        <location file="inc/base/BaseCan.h" line="359" column="15" bodyfile="inc/base/BaseCan.h" bodystart="359" bodyend="359"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a3e1c67e6d1ae31cf16f98310d9b092fa" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
@@ -66,7 +66,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="361" column="15" bodyfile="inc/base/BaseCan.h" bodystart="361" bodyend="361"/>
+        <location file="inc/base/BaseCan.h" line="360" column="15" bodyfile="inc/base/BaseCan.h" bodystart="360" bodyend="360"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a6fa2a6fc5344b483c30049aacc0ce429" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -82,7 +82,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="364" column="15" bodyfile="inc/base/BaseCan.h" bodystart="364" bodyend="364"/>
+        <location file="inc/base/BaseCan.h" line="363" column="15" bodyfile="inc/base/BaseCan.h" bodystart="363" bodyend="363"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1ac7c444ee891d0d34e547d540d6b3a81d" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -98,7 +98,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="365" column="15" bodyfile="inc/base/BaseCan.h" bodystart="365" bodyend="365"/>
+        <location file="inc/base/BaseCan.h" line="364" column="15" bodyfile="inc/base/BaseCan.h" bodystart="364" bodyend="364"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a436e292e3f594cb51b7e3e2c795c391c" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -114,7 +114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="366" column="15" bodyfile="inc/base/BaseCan.h" bodystart="366" bodyend="366"/>
+        <location file="inc/base/BaseCan.h" line="365" column="15" bodyfile="inc/base/BaseCan.h" bodystart="365" bodyend="365"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a531fe1f8cea7bf0300c5ac0cf3d75af9" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -130,7 +130,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="367" column="15" bodyfile="inc/base/BaseCan.h" bodystart="367" bodyend="367"/>
+        <location file="inc/base/BaseCan.h" line="366" column="15" bodyfile="inc/base/BaseCan.h" bodystart="366" bodyend="366"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a818f6e7eb7f728a7f0bbf882496d1307" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -146,7 +146,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="368" column="15" bodyfile="inc/base/BaseCan.h" bodystart="368" bodyend="368"/>
+        <location file="inc/base/BaseCan.h" line="367" column="15" bodyfile="inc/base/BaseCan.h" bodystart="367" bodyend="367"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1adabf2819712bc6d5cfaf74e893c8d449" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -162,7 +162,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="369" column="15" bodyfile="inc/base/BaseCan.h" bodystart="369" bodyend="369"/>
+        <location file="inc/base/BaseCan.h" line="368" column="15" bodyfile="inc/base/BaseCan.h" bodystart="368" bodyend="368"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a48b1a2d1150d29f3ea3d2ec0caee6727" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -178,7 +178,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="370" column="15" bodyfile="inc/base/BaseCan.h" bodystart="370" bodyend="370"/>
+        <location file="inc/base/BaseCan.h" line="369" column="15" bodyfile="inc/base/BaseCan.h" bodystart="369" bodyend="369"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a89b6fd61e6c03625a7f9b0ff81139b83" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &gt;</type>
@@ -194,7 +194,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="373" column="15" bodyfile="inc/base/BaseCan.h" bodystart="373" bodyend="373"/>
+        <location file="inc/base/BaseCan.h" line="372" column="15" bodyfile="inc/base/BaseCan.h" bodystart="372" bodyend="372"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a80c80945f20c50cb7d9ab4b9b9e4df10" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -210,7 +210,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="374" column="15" bodyfile="inc/base/BaseCan.h" bodystart="374" bodyend="374"/>
+        <location file="inc/base/BaseCan.h" line="373" column="15" bodyfile="inc/base/BaseCan.h" bodystart="373" bodyend="373"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a8c261516730e47d445d56df9049d697b" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref> &gt;</type>
@@ -226,7 +226,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="375" column="15" bodyfile="inc/base/BaseCan.h" bodystart="375" bodyend="375"/>
+        <location file="inc/base/BaseCan.h" line="374" column="15" bodyfile="inc/base/BaseCan.h" bodystart="374" bodyend="374"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1aba07602085a2ec81ecdd65f53c1ca96f" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -242,7 +242,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="378" column="15" bodyfile="inc/base/BaseCan.h" bodystart="378" bodyend="378"/>
+        <location file="inc/base/BaseCan.h" line="377" column="15" bodyfile="inc/base/BaseCan.h" bodystart="377" bodyend="377"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a7c64556d630c51f04a7e97d5beca155c" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -258,7 +258,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="379" column="15" bodyfile="inc/base/BaseCan.h" bodystart="379" bodyend="379"/>
+        <location file="inc/base/BaseCan.h" line="378" column="15" bodyfile="inc/base/BaseCan.h" bodystart="378" bodyend="378"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a2c259e2b8a42178625a2bc9ee248c91c" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -274,7 +274,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="380" column="15" bodyfile="inc/base/BaseCan.h" bodystart="380" bodyend="380"/>
+        <location file="inc/base/BaseCan.h" line="379" column="15" bodyfile="inc/base/BaseCan.h" bodystart="379" bodyend="379"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__statistics__t_1a66c9eac0c22489e6c56ea266fa537857" prot="public" static="no" mutable="no">
         <type>std::atomic&lt; <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &gt;</type>
@@ -290,7 +290,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="381" column="15" bodyfile="inc/base/BaseCan.h" bodystart="381" bodyend="381"/>
+        <location file="inc/base/BaseCan.h" line="380" column="15" bodyfile="inc/base/BaseCan.h" bodystart="380" bodyend="380"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -306,7 +306,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="384" column="3"/>
+        <location file="inc/base/BaseCan.h" line="383" column="3"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -315,7 +315,7 @@
     <detaileddescription>
 <para>Provides comprehensive statistics for monitoring CAN bus performance and identifying potential issues. </para>
     </detaileddescription>
-    <location file="inc/base/BaseCan.h" line="356" column="1" bodyfile="inc/base/BaseCan.h" bodystart="356" bodyend="385"/>
+    <location file="inc/base/BaseCan.h" line="355" column="1" bodyfile="inc/base/BaseCan.h" bodystart="355" bodyend="384"/>
     <listofallmembers>
       <member refid="structhf__can__statistics__t_1a531fe1f8cea7bf0300c5ac0cf3d75af9" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>arbitration_lost_count</name></member>
       <member refid="structhf__can__statistics__t_1a436e292e3f594cb51b7e3e2c795c391c" prot="public" virt="non-virtual"><scope>hf_can_statistics_t</scope><name>bus_error_count</name></member>

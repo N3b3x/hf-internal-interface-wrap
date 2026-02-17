@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="273" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="273" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="272" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="272" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a4f109fb8787513ce1183f120142aca59" prot="public" static="no" mutable="no">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="274" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="274" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="273" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="273" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1aad5ca4942fc98b8411c59df073eb4e22" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="275" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="275" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="274" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="274" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a8a645c1a12d2ad97175ef7b83e8cca2e" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="276" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="276" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="275" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="275" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a76b07c86189bda15f081ebdafbc1dadd" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="277" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="277" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="276" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="276" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1adbc1dbc8f83af3ce7ecb5bfc9a91dad9" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="278" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="278" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="277" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="277" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a744b9f72ba155602c86667c63d9a329b" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="279" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="279" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="278" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="278" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a7fee07809400edb66e2070c976262c44" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="280" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="280" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="279" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="279" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1a877f57e7534b15b28bbb690f895e5435" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="281" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="281" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="280" column="12" bodyfile="inc/base/BaseTemperature.h" bodystart="280" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__temp__diagnostics__t_1accd373a9d9b312fa88be3b857ffc94ea" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="282" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="282" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="281" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="281" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -160,7 +160,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/base/BaseTemperature.h" line="272" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="272" bodyend="283"/>
+    <location file="inc/base/BaseTemperature.h" line="271" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="271" bodyend="282"/>
     <listofallmembers>
       <member refid="structhf__temp__diagnostics__t_1accd373a9d9b312fa88be3b857ffc94ea" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>calibration_valid</name></member>
       <member refid="structhf__temp__diagnostics__t_1a8a645c1a12d2ad97175ef7b83e8cca2e" prot="public" virt="non-virtual"><scope>hf_temp_diagnostics_t</scope><name>consecutive_errors</name></member>

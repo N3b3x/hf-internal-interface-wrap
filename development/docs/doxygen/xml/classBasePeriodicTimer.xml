@@ -6,7 +6,7 @@
     <includes refid="BasePeriodicTimer_8h" local="no">BasePeriodicTimer.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" prot="protected" static="no" mutable="no">
-        <type><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref></type>
+        <type><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref></type>
         <definition>hf_timer_callback_t BasePeriodicTimer::callback_</definition>
         <argsstring></argsstring>
         <name>callback_</name>
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="393" column="23" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="393" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="392" column="23" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="392" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePeriodicTimer_1aee2e35d2b7143181770d86f72fa631f2" prot="protected" static="no" mutable="no">
         <type>void *</type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="394" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="394" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="393" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="393" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePeriodicTimer_1a4931919b4fc300c566777f0ad98ab908" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="395" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="395" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="394" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="394" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePeriodicTimer_1a92fb79b47b18c0511d19823d1ae5e1cb" prot="protected" static="no" mutable="no">
         <type>bool</type>
@@ -63,7 +63,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="396" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="396" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="395" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="395" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePeriodicTimer_1a8d311b0b20ea0785d63ad24a074180ae" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__timer__statistics__t" kindref="compound">hf_timer_statistics_t</ref></type>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="397" column="25" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="397" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="396" column="25" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="396" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePeriodicTimer_1a3ea254861b3ac5c2dd807a7751d78c5c" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__timer__diagnostics__t" kindref="compound">hf_timer_diagnostics_t</ref></type>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="398" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="398" bodyend="-1"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="397" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="397" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -110,7 +110,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="174" column="11"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="173" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1abe11f2c94d12cf1d658104f1280aa486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -127,7 +127,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="177" column="3"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="176" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a31392093e5d8a40c22f8b6a7b2507c4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref> &amp;</type>
@@ -144,7 +144,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="178" column="21"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="177" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1ab5e9c79c29dd4b5b0c581b3124c09907" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -163,7 +163,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="188" column="26"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="187" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a832aec2c7b29459d585be24c2478857f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="194" column="26"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="193" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1aedbfbbb79b85464d9c311bc7b42ba4a9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -214,7 +214,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="201" column="26"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="200" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a614629ba36264694b66baffe7e72ab08" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -233,7 +233,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="207" column="26"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="206" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a22c103ed4866bb4f45eef55d77730a09" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -265,7 +265,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="214" column="26"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="213" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a64307da70204c07096177c722c0aba41" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -297,7 +297,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="221" column="26"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="220" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a98d76a272ec805a75ec2c1cc9ab885fd" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -353,7 +353,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="230" column="26"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="229" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a6d418e90936077bd309b714cb4d646ad" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -372,7 +372,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="237" column="26"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="236" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a7e4b0f10c13abc297b73ba2436d26318" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -390,7 +390,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="247" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="247" bodyend="249"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="246" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="246" bodyend="248"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a4f4d9e85eb508bf12dc0dbd2cbc14d68" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -408,7 +408,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="255" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="255" bodyend="257"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="254" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="254" bodyend="256"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1ae9bdfcba0669d72ec6e8ebac8bcf7042" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>const char *</type>
@@ -427,7 +427,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="263" column="22"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="262" column="22"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1ab2bb6001034bca26edddca31e314b233" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -446,7 +446,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="269" column="20"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="268" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1aec24a991610deca51f4623b5704ab8b3" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -465,7 +465,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="275" column="20"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="274" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a4a55df2dbb3c7076fef5e413d9fd9ad4" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -484,7 +484,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="281" column="20"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="280" column="20"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a08f803dc4610824e48525474e163ec3a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -493,7 +493,7 @@
         <name>SetCallback</name>
         <qualifiedname>BasePeriodicTimer::SetCallback</qualifiedname>
         <param>
-          <type><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref></type>
+          <type><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -528,7 +528,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="289" column="18" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="289" bodyend="296"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="288" column="18" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="288" bodyend="295"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a9490ab374ff3044157d97ecb1ae40760" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void *</type>
@@ -546,7 +546,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="302" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="302" bodyend="304"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="301" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="301" bodyend="303"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1acc1e7406989db6b2728038a465967162" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -566,7 +566,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="315" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="315" bodyend="318"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="314" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="314" bodyend="317"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1aa284ad4ee8f3bde5d0e71ce1b0004d02" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -586,7 +586,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="325" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="325" bodyend="328"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="324" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="324" bodyend="327"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a04e87d17d4909a0bae0547bd9d2ca3f9" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -618,7 +618,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="335" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="335" bodyend="338"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="334" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="334" bodyend="337"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a47bb724f0a6d31877aeca1c5afb053c7" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref></type>
@@ -650,7 +650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="345" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="345" bodyend="348"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="344" column="26" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="344" bodyend="347"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -661,7 +661,7 @@
         <name>BasePeriodicTimer</name>
         <qualifiedname>BasePeriodicTimer::BasePeriodicTimer</qualifiedname>
         <param>
-          <type><ref refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kindref="member">hf_timer_callback_t</ref></type>
+          <type><ref refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kindref="member">hf_timer_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -694,7 +694,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="356" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="356" bodyend="358"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="355" column="12" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="355" bodyend="357"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a5611256d7efd4c86a25f94dd0d46f251" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -723,7 +723,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="364" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="364" bodyend="366"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="363" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="363" bodyend="365"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1a3dc1ee8a18e2904083e743530734e16b" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -752,7 +752,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="372" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="372" bodyend="374"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="371" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="371" bodyend="373"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1aae4a0926e98fdb58b4930ff91c479a2b" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -767,7 +767,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="379" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="379" bodyend="383"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="378" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="378" bodyend="382"/>
       </memberdef>
       <memberdef kind="function" id="classBasePeriodicTimer_1af116318ea0e9856c64ba1bdc0df8ae12" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -785,7 +785,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePeriodicTimer.h" line="389" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="389" bodyend="391"/>
+        <location file="inc/base/BasePeriodicTimer.h" line="388" column="8" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="388" bodyend="390"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -840,7 +840,7 @@
         <link refid="structhf__timer__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BasePeriodicTimer.h" line="169" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="169" bodyend="399"/>
+    <location file="inc/base/BasePeriodicTimer.h" line="168" column="1" bodyfile="inc/base/BasePeriodicTimer.h" bodystart="168" bodyend="398"/>
     <listofallmembers>
       <member refid="classBasePeriodicTimer_1abe11f2c94d12cf1d658104f1280aa486" prot="public" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>BasePeriodicTimer</name></member>
       <member refid="classBasePeriodicTimer_1a251ae7cf73c7718069a2f1f9abb64311" prot="protected" virt="non-virtual"><scope>BasePeriodicTimer</scope><name>BasePeriodicTimer</name></member>

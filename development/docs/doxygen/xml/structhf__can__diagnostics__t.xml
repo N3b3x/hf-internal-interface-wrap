@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="393" column="12" bodyfile="inc/base/BaseCan.h" bodystart="393" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="392" column="12" bodyfile="inc/base/BaseCan.h" bodystart="392" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__diagnostics__t_1a6a05dc4da5c01eeb0c8859a67ed340dd" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="394" column="12" bodyfile="inc/base/BaseCan.h" bodystart="394" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="393" column="12" bodyfile="inc/base/BaseCan.h" bodystart="393" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__diagnostics__t_1a7202c43eb0711f461312f587699ca65b" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="395" column="12" bodyfile="inc/base/BaseCan.h" bodystart="395" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="394" column="12" bodyfile="inc/base/BaseCan.h" bodystart="394" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__diagnostics__t_1a47c883cd6d20eb17e362bf159f2923c0" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="396" column="12" bodyfile="inc/base/BaseCan.h" bodystart="396" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="395" column="12" bodyfile="inc/base/BaseCan.h" bodystart="395" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__diagnostics__t_1a7016ab5baee260911740fe6884ecbf2c" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="397" column="12" bodyfile="inc/base/BaseCan.h" bodystart="397" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="396" column="12" bodyfile="inc/base/BaseCan.h" bodystart="396" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__diagnostics__t_1aa0b01f50e590b49d44883b27cbb64f84" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="398" column="12" bodyfile="inc/base/BaseCan.h" bodystart="398" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="397" column="12" bodyfile="inc/base/BaseCan.h" bodystart="397" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__diagnostics__t_1ad49c809ce27fdd1bc1d657afd06c3aba" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="399" column="12" bodyfile="inc/base/BaseCan.h" bodystart="399" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="398" column="12" bodyfile="inc/base/BaseCan.h" bodystart="398" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__diagnostics__t_1a62b089cb719ffe2728c1c86d8eaccbbf" prot="public" static="no" mutable="no">
         <type>float</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="400" column="9" bodyfile="inc/base/BaseCan.h" bodystart="400" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="399" column="9" bodyfile="inc/base/BaseCan.h" bodystart="399" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -138,7 +138,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="402" column="3" bodyfile="inc/base/BaseCan.h" bodystart="402" bodyend="405"/>
+        <location file="inc/base/BaseCan.h" line="401" column="3" bodyfile="inc/base/BaseCan.h" bodystart="401" bodyend="404"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -147,7 +147,7 @@
     <detaileddescription>
 <para>Provides detailed diagnostic information for troubleshooting and monitoring CAN bus health and performance. </para>
     </detaileddescription>
-    <location file="inc/base/BaseCan.h" line="392" column="1" bodyfile="inc/base/BaseCan.h" bodystart="392" bodyend="406"/>
+    <location file="inc/base/BaseCan.h" line="391" column="1" bodyfile="inc/base/BaseCan.h" bodystart="391" bodyend="405"/>
     <listofallmembers>
       <member refid="structhf__can__diagnostics__t_1a62b089cb719ffe2728c1c86d8eaccbbf" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>bit_error_rate</name></member>
       <member refid="structhf__can__diagnostics__t_1ad49c809ce27fdd1bc1d657afd06c3aba" prot="public" virt="non-virtual"><scope>hf_can_diagnostics_t</scope><name>bus_load_percentage</name></member>

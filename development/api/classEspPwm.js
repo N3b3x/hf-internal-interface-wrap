@@ -64,7 +64,7 @@ var classEspPwm =
     [ "ReleaseTimerIfUnused", "classEspPwm.html#aecd0e9059cb48af8c52140ff2ac7cf8c", null ],
     [ "SetChannelCritical", "classEspPwm.html#a7b222f44fa892e931bda82929f123d54", null ],
     [ "SetChannelError", "classEspPwm.html#a6b4f2fafd78318e313ced753414f11d2", null ],
-    [ "SetChannelFadeCallback", "classEspPwm.html#a543f85cebac06d91b5ac4fe7d6f325d6", null ],
+    [ "SetChannelFadeCallback", "classEspPwm.html#a1260137483dff53307d01592d2df624f", null ],
     [ "SetChannelPriority", "classEspPwm.html#a77340b2ecd211629ea79e7d9f151e063", null ],
     [ "SetComplementaryOutput", "classEspPwm.html#a6c4cc0b3c19e7258a063b1900f9d291a", null ],
     [ "SetDutyCycle", "classEspPwm.html#ae4170c3b4661c0d4b9646eb3d775c88c", null ],

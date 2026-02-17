@@ -7,7 +7,7 @@ var BasePeriodicTimer_8h =
     [ "HF_TIMESTAMP_US_T_DEFINED", "BasePeriodicTimer_8h.html#a3ed884bb593dc7b15813c492111d782f", null ],
     [ "X", "BasePeriodicTimer_8h.html#afbf3f04fa35349e183adb88ae6d03874", null ],
     [ "X", "BasePeriodicTimer_8h.html#a94b225babb1626cee0621f8312eb32d1", null ],
-    [ "hf_timer_callback_t", "BasePeriodicTimer_8h.html#af39d5f0d35241a03d7589feda9692321", null ],
+    [ "hf_timer_callback_t", "BasePeriodicTimer_8h.html#a40c3b2f30d4492b879e2939cd3ac713d", null ],
     [ "hf_timestamp_us_t", "BasePeriodicTimer_8h.html#aeb396ad1ef3b4a08174b33b0a6290c24", null ],
     [ "hf_timer_err_t", "BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59a", [
       [ "X", "BasePeriodicTimer_8h.html#a1c0d6f452734f65b6537650f26f5e59aa37324e52a31667f6ab80c89f2cd5ce01", null ],

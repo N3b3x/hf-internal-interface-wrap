@@ -28,8 +28,6 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
       </node>
       <node id="6">
         <label>HardwareTypes.h</label>
@@ -48,36 +46,36 @@
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
       </node>
       <node id="11">
-        <label>EspTypes_GPIO.h</label>
-        <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="5" relation="include">
-        </childnode>
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
-      <node id="13">
+      <node id="10">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
         <label>../../utils/McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
@@ -86,13 +84,15 @@
         <link refid="EspGpio_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -114,70 +114,65 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
       </node>
-      <node id="16">
+      <node id="15">
         <label>algorithm</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>atomic</label>
       </node>
       <node id="7">
         <label>cstdint</label>
       </node>
-      <node id="17">
+      <node id="16">
         <label>cstring</label>
       </node>
       <node id="3">
         <label>driver/gpio.h</label>
       </node>
-      <node id="18">
+      <node id="17">
         <label>driver/gpio_filter.h</label>
       </node>
-      <node id="19">
+      <node id="18">
         <label>driver/rtc_io.h</label>
       </node>
       <node id="4">
         <label>esp_attr.h</label>
       </node>
-      <node id="20">
+      <node id="19">
         <label>esp_log.h</label>
       </node>
-      <node id="21">
+      <node id="20">
         <label>esp_sleep.h</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>esp_timer.h</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="24">
+      <node id="23">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="9">
-        <label>functional</label>
-      </node>
-      <node id="25">
+      <node id="24">
         <label>hal/gpio_types.h</label>
       </node>
-      <node id="26">
+      <node id="25">
         <label>hal/rtc_io_types.h</label>
       </node>
       <node id="8">
         <label>limits</label>
       </node>
-      <node id="27">
+      <node id="26">
         <label>soc/clk_tree_defs.h</label>
       </node>
-      <node id="28">
+      <node id="27">
         <label>soc/gpio_sig_map.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>stdio.h</label>
       </node>
-      <node id="10">
+      <node id="9">
         <label>string_view</label>
       </node>
     </incdepgraph>
@@ -593,7 +588,7 @@
 <codeline lineno="375"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="376"><highlight class="normal"></highlight></codeline>
 <codeline lineno="377"><highlight class="normal"><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classEspGpio_1a385ff46f95432183be7cd52d4a69fde4" kindref="member">EspGpio::ConfigureInterrupt</ref>(<ref refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kindref="member">hf_gpio_interrupt_trigger_t</ref><sp/>trigger,</highlight></codeline>
-<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kindref="member">InterruptCallback</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kindref="member">InterruptCallback</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="379"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!EnsureInitialized())<sp/>{</highlight></codeline>
 <codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__gpio_1gga2632aac2351807c35e790ec20bda305dab04683ad857b2517e5793490e3568bce" kindref="member">hf_gpio_err_t::GPIO_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="381"><highlight class="normal"><sp/><sp/>}</highlight></codeline>

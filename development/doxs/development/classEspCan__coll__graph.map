@@ -1,19 +1,28 @@
 <map id="EspCan" name="EspCan">
-<area shape="rect" id="Node000001" title="ESP32 CAN (TWAI) implementation using ESP&#45;IDF v5.5+ node&#45;based API." alt="" coords="797,194,884,225"/>
-<area shape="rect" id="Node000002" href="$classBaseCan.html" title="Abstract base class defining the unified CAN bus API." alt="" coords="425,94,521,125"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="535,105,588,107,649,113,713,126,775,148,805,169,828,192,825,195,802,173,772,153,712,132,648,119,587,112,534,110"/>
-<area shape="rect" id="Node000003" href="$structhf__can__statistics__t.html" title="CAN bus statistics structure for performance monitoring." alt="" coords="15,47,186,78"/>
-<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="187,42,311,27,385,23,464,24,545,32,625,47,703,73,775,111,796,129,813,151,836,193,831,195,809,154,792,133,772,116,701,78,624,53,544,37,463,29,385,28,311,32,188,48"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="200,72,425,101,424,106,199,78"/>
-<area shape="rect" id="Node000004" href="$structhf__can__diagnostics__t.html" title="CAN diagnostics structure for detailed error analysis." alt="" coords="5,122,196,153"/>
-<area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="210,143,774,187,798,192,796,198,773,192,210,148"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="209,129,325,121,424,112,424,117,326,127,210,134"/>
-<area shape="rect" id="Node000005" href="$structhf__esp__can__config__t.html" title="ESP32 TWAI node configuration structure for ESP&#45;IDF v5.5." alt="" coords="379,218,567,249"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="581,224,797,209,797,215,581,229"/>
-<area shape="rect" id="Node000006" href="$classRtosMutex.html" title=" " alt="" coords="418,282,527,313"/>
-<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="541,308,594,314,653,314,714,306,772,287,791,274,807,258,829,224,834,227,811,261,794,278,775,292,716,312,653,320,593,319,541,313"/>
-<area shape="rect" id="Node000007" href="$structhf__esp__can__timing__config__t.html" title="Advanced bit timing configuration for fine&#45;tuning." alt="" coords="349,337,596,367"/>
-<area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="547,367,601,374,659,375,718,365,746,356,772,342,798,316,817,284,828,251,834,224,840,225,833,253,821,286,802,320,775,346,748,360,719,370,660,380,600,379,547,373"/>
-<area shape="rect" id="Node000008" href="$structhf__esp__can__filter__config__t.html" title="CAN message filter configuration for hardware filtering." alt="" coords="357,391,589,422"/>
-<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="537,423,592,432,654,436,685,433,716,427,745,416,772,401,791,383,806,361,826,311,835,262,837,225,842,225,840,263,831,313,811,364,795,386,775,405,747,421,717,432,686,438,654,441,592,438,536,428"/>
+<area shape="rect" id="Node000001" title="ESP32 CAN (TWAI) implementation using ESP&#45;IDF v5.5+ node&#45;based API." alt="" coords="797,354,884,385"/>
+<area shape="rect" id="Node000002" href="$classBaseCan.html" title="Abstract base class defining the unified CAN bus API." alt="" coords="425,115,521,146"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="534,119,590,117,654,121,718,137,748,151,775,170,794,190,810,214,830,265,839,315,842,353,837,354,834,316,825,267,805,216,790,193,772,174,745,156,716,142,653,126,590,122,535,124"/>
+<area shape="rect" id="Node000003" href="$structhf__can__statistics__t.html" title="CAN bus statistics structure for performance monitoring." alt="" coords="15,61,186,91"/>
+<area shape="poly" id="edge11_Node000001_Node000003" title=" " alt="" coords="170,55,297,31,375,23,458,22,543,29,627,47,667,60,705,78,741,100,775,126,788,143,800,168,818,234,840,353,835,354,813,235,795,170,783,146,771,130,738,104,703,83,665,65,625,52,543,34,458,27,375,29,298,37,171,60"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="200,89,220,92,425,122,424,127,220,97,199,94"/>
+<area shape="rect" id="Node000004" href="$structhf__can__diagnostics__t.html" title="CAN diagnostics structure for detailed error analysis." alt="" coords="5,154,196,185"/>
+<area shape="poly" id="edge12_Node000001_Node000004" title=" " alt="" coords="210,170,552,185,702,195,751,201,775,207,792,222,806,240,825,281,836,322,841,353,836,354,831,323,820,283,801,243,788,226,772,212,750,206,701,200,552,190,210,175"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="209,155,424,133,425,138,210,161"/>
+<area shape="rect" id="Node000005" href="$structhf__esp__can__config__t.html" title="ESP32 TWAI node configuration structure for ESP&#45;IDF v5.5." alt="" coords="379,239,567,270"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="560,235,611,231,667,232,723,242,775,263,798,282,816,307,837,353,832,355,811,309,794,286,772,268,721,247,666,237,611,236,561,240"/>
+<area shape="rect" id="Node000006" href="$classRtosMutex.html" title=" " alt="" coords="418,294,527,325"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="541,316,774,352,798,357,797,362,773,357,541,321"/>
+<area shape="rect" id="Node000007" href="$structhf__can__message__t.html" title="Platform&#45;agnostic CAN message structure." alt="" coords="13,374,188,405"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="201,384,797,368,797,373,201,389"/>
+<area shape="rect" id="Node000010" href="$structhf__esp__can__tx__info__t.html" title="Transmission completion information." alt="" coords="376,418,569,449"/>
+<area shape="poly" id="edge10_Node000010_Node000007" title=" " alt="" coords="202,403,220,405,376,422,375,428,220,411,201,408"/>
+<area shape="rect" id="Node000008" href="$structhf__esp__can__error__info__t.html" title="Comprehensive error information structure for error callbacks." alt="" coords="364,473,581,503"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="595,496,639,494,685,488,730,476,772,458,792,442,809,422,831,383,835,386,813,425,796,446,775,462,732,481,686,493,640,500,595,502"/>
+<area shape="rect" id="Node000009" href="$structhf__esp__can__state__info__t.html" title="Bus state information for state change callbacks." alt="" coords="363,527,582,558"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="560,557,612,561,668,558,722,546,748,536,772,522,787,508,800,491,819,453,830,415,835,384,841,385,835,416,824,455,805,494,791,512,775,526,750,541,724,552,668,564,612,566,560,563"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="583,433,677,426,725,418,772,405,796,395,817,383,820,387,799,400,774,411,727,423,677,431,583,438"/>
+<area shape="rect" id="Node000011" href="$structhf__esp__can__timing__config__t.html" title="Advanced bit timing configuration for fine&#45;tuning." alt="" coords="349,582,596,613"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="610,606,707,605,746,598,772,587,793,566,809,541,821,513,829,483,837,427,838,385,843,385,842,427,834,484,826,514,814,543,797,570,775,592,747,604,707,610,610,611"/>
+<area shape="rect" id="Node000012" href="$structhf__esp__can__filter__config__t.html" title="CAN message filter configuration for hardware filtering." alt="" coords="357,637,589,667"/>
+<area shape="poly" id="edge14_Node000001_Node000012" title=" " alt="" coords="547,667,602,674,661,673,720,661,747,649,772,633,785,615,797,588,816,516,828,441,835,384,841,385,834,441,821,517,802,590,789,618,775,637,750,654,722,666,662,679,602,679,547,673"/>
 </map>

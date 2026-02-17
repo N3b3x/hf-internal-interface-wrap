@@ -14,7 +14,7 @@
     <includes local="yes">freertos/FreeRTOS.h</includes>
     <includes local="yes">freertos/task.h</includes>
     <incdepgraph>
-      <node id="12">
+      <node id="11">
         <label>BaseAdc.h</label>
         <link refid="BaseAdc_8h"/>
         <childnode refid="4" relation="include">
@@ -23,24 +23,20 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="18">
+      <node id="17">
         <label>BaseCan.h</label>
         <link refid="BaseCan_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="20">
+      <node id="19">
         <label>BaseGpio.h</label>
         <link refid="BaseGpio_8h"/>
         <childnode refid="4" relation="include">
@@ -48,8 +44,6 @@
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -61,10 +55,8 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="25">
+      <node id="24">
         <label>BasePio.h</label>
         <link refid="BasePio_8h"/>
         <childnode refid="4" relation="include">
@@ -73,10 +65,8 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="27">
+      <node id="26">
         <label>../../../base/BasePwm.h</label>
         <link refid="BasePwm_8h"/>
         <childnode refid="4" relation="include">
@@ -85,10 +75,8 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="29">
+      <node id="28">
         <label>BaseSpi.h</label>
         <link refid="BaseSpi_8h"/>
         <childnode refid="4" relation="include">
@@ -97,21 +85,17 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
-      <node id="34">
+      <node id="33">
         <label>BaseUart.h</label>
         <link refid="BaseUart_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="4">
@@ -127,209 +111,207 @@
         <link refid="EspI2c_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="35" relation="include">
+        </childnode>
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
         <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
       </node>
-      <node id="9">
+      <node id="8">
         <label>utils/EspTypes.h</label>
         <link refid="EspTypes_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>EspTypes_ADC.h</label>
-        <link refid="EspTypes__ADC_8h"/>
         <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-      </node>
-      <node id="13">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>EspTypes_CAN.h</label>
-        <link refid="EspTypes__CAN_8h"/>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>EspTypes_GPIO.h</label>
-        <link refid="EspTypes__GPIO_8h"/>
         <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>EspTypes_I2C.h</label>
-        <link refid="EspTypes__I2C_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-      </node>
-      <node id="24">
-        <label>EspTypes_PIO.h</label>
-        <link refid="EspTypes__PIO_8h"/>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>EspTypes_PWM.h</label>
-        <link refid="EspTypes__PWM_8h"/>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
-        <label>EspTypes_SPI.h</label>
-        <link refid="EspTypes__SPI_8h"/>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
         <childnode refid="30" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>EspTypes_Timer.h</label>
-        <link refid="EspTypes__Timer_8h"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
       </node>
-      <node id="33">
-        <label>EspTypes_UART.h</label>
-        <link refid="EspTypes__UART_8h"/>
-        <childnode refid="34" relation="include">
+      <node id="10">
+        <label>EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="10">
+      <node id="12">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>EspTypes_CAN.h</label>
+        <link refid="EspTypes__CAN_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>EspTypes_I2C.h</label>
+        <link refid="EspTypes__I2C_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+      </node>
+      <node id="23">
+        <label>EspTypes_PIO.h</label>
+        <link refid="EspTypes__PIO_8h"/>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>EspTypes_PWM.h</label>
+        <link refid="EspTypes__PWM_8h"/>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>EspTypes_SPI.h</label>
+        <link refid="EspTypes__SPI_8h"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>EspTypes_Timer.h</label>
+        <link refid="EspTypes__Timer_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="31" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>EspTypes_UART.h</label>
+        <link refid="EspTypes__UART_8h"/>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
         <label>McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="36">
+      <node id="35">
         <label>utils/RtosMutex.h</label>
         <link refid="RtosMutex_8h"/>
-        <childnode refid="10" relation="include">
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="38" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="42">
         <label>utils/memory_utils.h</label>
         <link refid="memory__utils_8h"/>
-        <childnode refid="40" relation="include">
+        <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -337,97 +319,94 @@
         <link refid="EspI2c_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="47" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
         <childnode refid="48" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
-      <node id="46">
+      <node id="45">
         <label>algorithm</label>
       </node>
-      <node id="14">
+      <node id="13">
         <label>atomic</label>
       </node>
       <node id="5">
         <label>cstdint</label>
       </node>
-      <node id="35">
+      <node id="34">
         <label>cstring</label>
       </node>
-      <node id="47">
+      <node id="46">
         <label>driver/gpio.h</label>
       </node>
-      <node id="23">
+      <node id="22">
         <label>driver/i2c.h</label>
       </node>
-      <node id="41">
+      <node id="40">
         <label>driver/i2c_master.h</label>
       </node>
-      <node id="48">
+      <node id="47">
         <label>driver/i2c_types.h</label>
       </node>
-      <node id="30">
+      <node id="29">
         <label>driver/spi_master.h</label>
       </node>
-      <node id="15">
+      <node id="14">
         <label>esp_adc/adc_continuous.h</label>
       </node>
-      <node id="16">
+      <node id="15">
         <label>esp_adc/adc_oneshot.h</label>
       </node>
-      <node id="49">
+      <node id="48">
         <label>esp_err.h</label>
       </node>
-      <node id="42">
+      <node id="41">
         <label>esp_log.h</label>
       </node>
-      <node id="32">
+      <node id="31">
         <label>esp_timer.h</label>
       </node>
-      <node id="37">
+      <node id="36">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="38">
+      <node id="37">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="39">
+      <node id="38">
         <label>freertos/task.h</label>
-      </node>
-      <node id="7">
-        <label>functional</label>
       </node>
       <node id="6">
         <label>limits</label>
       </node>
-      <node id="40">
+      <node id="39">
         <label>memory</label>
       </node>
-      <node id="44">
+      <node id="43">
         <label>new</label>
       </node>
-      <node id="8">
+      <node id="7">
         <label>string_view</label>
       </node>
-      <node id="45">
+      <node id="44">
         <label>utility</label>
       </node>
-      <node id="22">
+      <node id="21">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -1729,7 +1708,7 @@
 <codeline lineno="1239"><highlight class="normal"></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1240"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1241"><highlight class="normal"><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1aec34c1a94944595c127ff91e51e8f134" kindref="member">EspI2cDevice::WriteAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>data,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>length,</highlight></codeline>
-<codeline lineno="1242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
+<codeline lineno="1242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
 <codeline lineno="1243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="1244"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_)<sp/>{</highlight></codeline>
@@ -1788,7 +1767,7 @@
 <codeline lineno="1298"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1299"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1300"><highlight class="normal"><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1adf418ca0a9111d9832fb8863f918cc40" kindref="member">EspI2cDevice::ReadAsync</ref>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>data,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>length,</highlight></codeline>
-<codeline lineno="1301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
+<codeline lineno="1301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
 <codeline lineno="1302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="1303"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1304"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_)<sp/>{</highlight></codeline>
@@ -1848,7 +1827,7 @@
 <codeline lineno="1358"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1359"><highlight class="normal"><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1ad00a9f2e229eb0fa2f4d39baa663dc58" kindref="member">EspI2cDevice::WriteReadAsync</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>tx_data,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>tx_length,</highlight></codeline>
 <codeline lineno="1360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>rx_data,<sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>rx_length,</highlight></codeline>
-<codeline lineno="1361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
+<codeline lineno="1361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
 <codeline lineno="1362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="1363"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1364"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_)<sp/>{</highlight></codeline>
@@ -2157,7 +2136,7 @@
 <codeline lineno="1667"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Sync<sp/>operation<sp/>cleanup<sp/>complete&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1668"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1669"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1670"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a37d7ea5eb281d4c4cfef058294e34714" kindref="member">EspI2cDevice::SetupAsyncOperation</ref>(<ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
+<codeline lineno="1670"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a37d7ea5eb281d4c4cfef058294e34714" kindref="member">EspI2cDevice::SetupAsyncOperation</ref>(<ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
 <codeline lineno="1671"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="1672"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>callback</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1673"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!callback)<sp/>{</highlight></codeline>
@@ -2304,7 +2283,7 @@
 <codeline lineno="1814"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ASYNC<sp/>CALLBACK<sp/>BRIDGE<sp/>SYSTEM<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1815"><highlight class="normal"></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1816"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1817"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a830bd3bab73ba5bd41db5ceeab2435e0" kindref="member">EspI2cDevice::RegisterTemporaryCallback</ref>(<ref refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
+<codeline lineno="1817"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a830bd3bab73ba5bd41db5ceeab2435e0" kindref="member">EspI2cDevice::RegisterTemporaryCallback</ref>(<ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
 <codeline lineno="1818"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="1819"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>function<sp/>is<sp/>no<sp/>longer<sp/>used<sp/>-<sp/>async<sp/>callbacks<sp/>are<sp/>handled<sp/>directly</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1820"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;RegisterTemporaryCallback<sp/>called<sp/>but<sp/>is<sp/>deprecated&quot;</highlight><highlight class="normal">);</highlight></codeline>

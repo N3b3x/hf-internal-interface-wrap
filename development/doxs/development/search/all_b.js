@@ -1,7 +1,7 @@
 var searchData=
 [
   ['efficient_20option_0',['XTAL_CLK (40MHz) - Power-efficient option',['../EspTypes__PWM_8h.html#autotoc_md11',1,'']]],
-  ['enable_1',['Enable',['../classBaseBluetooth.html#ae3f0672a639f4ae1eb87887d866fc584',1,'BaseBluetooth::Enable()'],['../classEspBluetooth.html#a1c8e9f1e44d21cc4ad5e789ee5f3dbce',1,'EspBluetooth::Enable()']]],
+  ['enable_1',['Enable',['../classBaseBluetooth.html#ac00fdcd427c9983e6671fe8876afe0b1',1,'BaseBluetooth::Enable()'],['../classEspBluetooth.html#a98ea9a7262bf49c703156f478b82c122',1,'EspBluetooth::Enable()']]],
   ['enable_5f11k_2',['enable_11k',['../structEspWifiAdvancedConfig.html#a43255aa1401cd585ebaedf078418c0a0',1,'EspWifiAdvancedConfig']]],
   ['enable_5f11r_3',['enable_11r',['../structEspWifiAdvancedConfig.html#accff74a0b5f3012513dcd8efe92c74f8',1,'EspWifiAdvancedConfig']]],
   ['enable_5f11v_4',['enable_11v',['../structEspWifiAdvancedConfig.html#ae5113461b081c5528eeb4e92c2891d99',1,'EspWifiAdvancedConfig']]],

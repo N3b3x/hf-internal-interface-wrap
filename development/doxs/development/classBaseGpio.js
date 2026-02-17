@@ -1,7 +1,7 @@
 var classBaseGpio =
 [
     [ "BaseGpio", "classBaseGpio.html#a182759a9452aa9b39f6ec0bcfdc1827f", null ],
-    [ "~BaseGpio", "classBaseGpio.html#a042ea8f01b96fe5641258e8b662d4d78", null ],
+    [ "~BaseGpio", "classBaseGpio.html#a882c3e3be74c5efb0ee4b3768d864462", null ],
     [ "BaseGpio", "classBaseGpio.html#a1a1c7695af0b0dcb1d3f0fb745673b72", null ],
     [ "ClearInterruptStats", "classBaseGpio.html#a850ba260aec4cda209a53136c9c270b9", null ],
     [ "ConfigureInterrupt", "classBaseGpio.html#aa3e94ea07ff15dc719cdf5de7c2d1a46", null ],

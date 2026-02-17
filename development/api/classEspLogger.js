@@ -62,5 +62,5 @@ var classEspLogger =
     [ "message_buffer_", "classEspLogger.html#a1414db646e36b29340503445ad287296", null ],
     [ "mutex_", "classEspLogger.html#aeb9e653897acb963156107a51796c9ea", null ],
     [ "statistics_", "classEspLogger.html#ad943622faa174b6c4f44ced1527e3927", null ],
-    [ "tag_levels_", "classEspLogger.html#a390db49b839f78cf444e96391a5d1967", null ]
+    [ "tag_levels_", "classEspLogger.html#ac517102fc069ee19de9157f0fb217fdb", null ]
 ];

@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="490" column="8" bodyfile="inc/base/BasePwm.h" bodystart="490" bodyend="-1"/>
+        <location file="inc/base/BasePwm.h" line="489" column="8" bodyfile="inc/base/BasePwm.h" bodystart="489" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePwm_1ae8107794611a82a5cceedbaaa2b61c78" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="491" column="23" bodyfile="inc/base/BasePwm.h" bodystart="491" bodyend="-1"/>
+        <location file="inc/base/BasePwm.h" line="490" column="23" bodyfile="inc/base/BasePwm.h" bodystart="490" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBasePwm_1a0deb2d047f9df776ac3b6f0f246fc3ca" prot="protected" static="no" mutable="no">
         <type><ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref></type>
@@ -48,7 +48,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="492" column="24" bodyfile="inc/base/BasePwm.h" bodystart="492" bodyend="-1"/>
+        <location file="inc/base/BasePwm.h" line="491" column="24" bodyfile="inc/base/BasePwm.h" bodystart="491" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -64,7 +64,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="189" column="11"/>
+        <location file="inc/base/BasePwm.h" line="188" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a4dba77ec0b1d096f85af2288f121f7f7" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -83,7 +83,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="195" column="24"/>
+        <location file="inc/base/BasePwm.h" line="194" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a7d3dbe67ab0c23c738e2507f915137fb" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -102,7 +102,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="201" column="24"/>
+        <location file="inc/base/BasePwm.h" line="200" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1ab75191deb5eec96c9d1f99c7c981467d" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -120,7 +120,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="207" column="9" bodyfile="inc/base/BasePwm.h" bodystart="207" bodyend="209"/>
+        <location file="inc/base/BasePwm.h" line="206" column="9" bodyfile="inc/base/BasePwm.h" bodystart="206" bodyend="208"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1aa084e73274f2f1d1d67cff793eda1956" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="217" column="8" bodyfile="inc/base/BasePwm.h" bodystart="217" bodyend="222"/>
+        <location file="inc/base/BasePwm.h" line="216" column="8" bodyfile="inc/base/BasePwm.h" bodystart="216" bodyend="221"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a8d407e46dff5f6c1f9ae2b7d68ea674c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -160,7 +160,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="229" column="8" bodyfile="inc/base/BasePwm.h" bodystart="229" bodyend="235"/>
+        <location file="inc/base/BasePwm.h" line="228" column="8" bodyfile="inc/base/BasePwm.h" bodystart="228" bodyend="234"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1af1c19d6ae43e3711a2a16dc39d8dbfa6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -192,7 +192,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="245" column="24"/>
+        <location file="inc/base/BasePwm.h" line="244" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a88b6b8a4d9ea7c9172846aa4e9cc572d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -224,7 +224,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="252" column="24"/>
+        <location file="inc/base/BasePwm.h" line="251" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1af2f490b963644ca04d4750b7d947b543" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -256,7 +256,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="259" column="16"/>
+        <location file="inc/base/BasePwm.h" line="258" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a4883325ace0e9fd9d096fc87a24317c3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -300,7 +300,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="271" column="24"/>
+        <location file="inc/base/BasePwm.h" line="270" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1aa9f97e6e7c9af42aae99b8aeae5e7c67" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -344,7 +344,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="279" column="24"/>
+        <location file="inc/base/BasePwm.h" line="278" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1ad192230babf2e4dc7a37477b4a0153b8" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -388,7 +388,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="287" column="24"/>
+        <location file="inc/base/BasePwm.h" line="286" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1ad2d69c4057b84358f120f1c27fb3e2c1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -432,7 +432,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="296" column="24"/>
+        <location file="inc/base/BasePwm.h" line="295" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a02e791636c4d544d702b06014695ed31" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -451,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="307" column="24"/>
+        <location file="inc/base/BasePwm.h" line="306" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a0dc5b8704b7f3107745224441d7b3a5b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -470,7 +470,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="313" column="24"/>
+        <location file="inc/base/BasePwm.h" line="312" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a9cb4de783416fab169872c9250d30089" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -489,7 +489,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="319" column="24"/>
+        <location file="inc/base/BasePwm.h" line="318" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a4b7f8834e3f06fbf5995b3bfd3e7aa71" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -545,7 +545,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="328" column="24"/>
+        <location file="inc/base/BasePwm.h" line="327" column="24"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a7d04dac1cdbfc50884b24b912a52b877" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>float</type>
@@ -577,7 +577,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="341" column="17"/>
+        <location file="inc/base/BasePwm.h" line="340" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a9be813122b797d0a45c3248f0c203063" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref></type>
@@ -609,7 +609,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="348" column="29"/>
+        <location file="inc/base/BasePwm.h" line="347" column="29"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a7802bfabb7ac9430764bce70cbf03758" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -641,7 +641,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="355" column="24" bodyfile="inc/base/BasePwm.h" bodystart="355" bodyend="358"/>
+        <location file="inc/base/BasePwm.h" line="354" column="24" bodyfile="inc/base/BasePwm.h" bodystart="354" bodyend="357"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a752841609c8cd458ee658579dd7f60c6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -673,7 +673,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="365" column="24" bodyfile="inc/base/BasePwm.h" bodystart="365" bodyend="368"/>
+        <location file="inc/base/BasePwm.h" line="364" column="24" bodyfile="inc/base/BasePwm.h" bodystart="364" bodyend="367"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1afb7176a7fbb46fa45a5a2521060ef9c7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -693,7 +693,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="375" column="24" bodyfile="inc/base/BasePwm.h" bodystart="375" bodyend="378"/>
+        <location file="inc/base/BasePwm.h" line="374" column="24" bodyfile="inc/base/BasePwm.h" bodystart="374" bodyend="377"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1abef55c8bbd0a0fe57f2b21f286fc91dd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref></type>
@@ -713,7 +713,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="385" column="24" bodyfile="inc/base/BasePwm.h" bodystart="385" bodyend="388"/>
+        <location file="inc/base/BasePwm.h" line="384" column="24" bodyfile="inc/base/BasePwm.h" bodystart="384" bodyend="387"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
@@ -758,7 +758,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="400" column="29" bodyfile="inc/base/BasePwm.h" bodystart="400" bodyend="406"/>
+        <location file="inc/base/BasePwm.h" line="399" column="29" bodyfile="inc/base/BasePwm.h" bodystart="399" bodyend="405"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a4a6d82b9da888f91bd66e91b24121add" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>constexpr float</type>
@@ -801,7 +801,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="414" column="26" bodyfile="inc/base/BasePwm.h" bodystart="414" bodyend="419"/>
+        <location file="inc/base/BasePwm.h" line="413" column="26" bodyfile="inc/base/BasePwm.h" bodystart="413" bodyend="418"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a352f6ddcf05ff0e0ed5c606098b24987" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -832,7 +832,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="426" column="25" bodyfile="inc/base/BasePwm.h" bodystart="426" bodyend="428"/>
+        <location file="inc/base/BasePwm.h" line="425" column="25" bodyfile="inc/base/BasePwm.h" bodystart="425" bodyend="427"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1afab866dbce084437c35b3189f4e2952e" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -887,7 +887,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="437" column="25" bodyfile="inc/base/BasePwm.h" bodystart="437" bodyend="440"/>
+        <location file="inc/base/BasePwm.h" line="436" column="25" bodyfile="inc/base/BasePwm.h" bodystart="436" bodyend="439"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a4aae2c9b79963e8648c9cf9e6e22bc11" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>constexpr bool</type>
@@ -930,7 +930,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="448" column="25" bodyfile="inc/base/BasePwm.h" bodystart="448" bodyend="453"/>
+        <location file="inc/base/BasePwm.h" line="447" column="25" bodyfile="inc/base/BasePwm.h" bodystart="447" bodyend="452"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a1cbbc012f5c178e574e2fbb3bee3baf3" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>constexpr float</type>
@@ -973,7 +973,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="461" column="26" bodyfile="inc/base/BasePwm.h" bodystart="461" bodyend="468"/>
+        <location file="inc/base/BasePwm.h" line="460" column="26" bodyfile="inc/base/BasePwm.h" bodystart="460" bodyend="467"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a675192d0ee597e7603a8d6831a3c227c" prot="public" static="yes" constexpr="yes" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>constexpr float</type>
@@ -1004,7 +1004,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="475" column="26" bodyfile="inc/base/BasePwm.h" bodystart="475" bodyend="481"/>
+        <location file="inc/base/BasePwm.h" line="474" column="26" bodyfile="inc/base/BasePwm.h" bodystart="474" bodyend="480"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -1020,7 +1020,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="484" column="3" bodyfile="inc/base/BasePwm.h" bodystart="484" bodyend="484"/>
+        <location file="inc/base/BasePwm.h" line="483" column="3" bodyfile="inc/base/BasePwm.h" bodystart="483" bodyend="483"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1aaf342e2451aa841522e07bc84c86a0a7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1037,7 +1037,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="485" column="3"/>
+        <location file="inc/base/BasePwm.h" line="484" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1afa73dc6b8bc3028f3848e0f470dec48d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
@@ -1054,7 +1054,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="486" column="11"/>
+        <location file="inc/base/BasePwm.h" line="485" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a98809c8d18cca38549c10e1a8616021c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -1071,7 +1071,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="487" column="3"/>
+        <location file="inc/base/BasePwm.h" line="486" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBasePwm_1a61a64fe3584550862c40531d576211b3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBasePwm" kindref="compound">BasePwm</ref> &amp;</type>
@@ -1088,7 +1088,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BasePwm.h" line="488" column="11"/>
+        <location file="inc/base/BasePwm.h" line="487" column="11"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1142,7 +1142,7 @@
         <link refid="structhf__pwm__statistics__t"/>
       </node>
     </collaborationgraph>
-    <location file="inc/base/BasePwm.h" line="183" column="1" bodyfile="inc/base/BasePwm.h" bodystart="183" bodyend="493"/>
+    <location file="inc/base/BasePwm.h" line="182" column="1" bodyfile="inc/base/BasePwm.h" bodystart="182" bodyend="492"/>
     <listofallmembers>
       <member refid="classBasePwm_1acd8c699abcc77062da2e26319dafcb0b" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>BasePwm</name></member>
       <member refid="classBasePwm_1aaf342e2451aa841522e07bc84c86a0a7" prot="protected" virt="non-virtual"><scope>BasePwm</scope><name>BasePwm</name></member>

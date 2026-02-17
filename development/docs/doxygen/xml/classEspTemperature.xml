@@ -111,7 +111,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="507" column="17" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="507" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1af98b41d1d3d44f8f1fe71878d2ecc7bb" prot="private" static="no" mutable="no">
-        <type><ref refid="BaseTemperature_8h_1a2672848972ed3dbd28859299c8862f6b" kindref="member">hf_temp_threshold_callback_t</ref></type>
+        <type><ref refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kindref="member">hf_temp_threshold_callback_t</ref></type>
         <definition>hf_temp_threshold_callback_t EspTemperature::threshold_callback_</definition>
         <argsstring></argsstring>
         <name>threshold_callback_</name>
@@ -126,7 +126,7 @@
         <location file="inc/mcu/esp32/EspTemperature.h" line="510" column="32" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="510" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1af516eb1e27cb63a70b6517752f1323fd" prot="private" static="no" mutable="no">
-        <type><ref refid="BaseTemperature_8h_1ab15b84e22c00839c9e87a3f363efae2d" kindref="member">hf_temp_reading_callback_t</ref></type>
+        <type><ref refid="BaseTemperature_8h_1ad737845bbb5b213ca89ccac3902fd112" kindref="member">hf_temp_reading_callback_t</ref></type>
         <definition>hf_temp_reading_callback_t EspTemperature::monitoring_callback_</definition>
         <argsstring></argsstring>
         <name>monitoring_callback_</name>
@@ -652,7 +652,7 @@
         <qualifiedname>EspTemperature::EnableThresholdMonitoring</qualifiedname>
         <reimplements refid="classBaseTemperature_1a210f2f34d7f356d8ff7f0531031f7856">EnableThresholdMonitoring</reimplements>
         <param>
-          <type><ref refid="BaseTemperature_8h_1a2672848972ed3dbd28859299c8862f6b" kindref="member">hf_temp_threshold_callback_t</ref></type>
+          <type><ref refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kindref="member">hf_temp_threshold_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -719,7 +719,7 @@
           <declname>sample_rate_hz</declname>
         </param>
         <param>
-          <type><ref refid="BaseTemperature_8h_1ab15b84e22c00839c9e87a3f363efae2d" kindref="member">hf_temp_reading_callback_t</ref></type>
+          <type><ref refid="BaseTemperature_8h_1ad737845bbb5b213ca89ccac3902fd112" kindref="member">hf_temp_reading_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -1906,6 +1906,10 @@
         <childnode refid="8" relation="usage">
           <edgelabel>diagnostics_</edgelabel>
         </childnode>
+        <childnode refid="2" relation="usage">
+          <edgelabel>monitoring_callback_</edgelabel>
+          <edgelabel>threshold_callback_</edgelabel>
+        </childnode>
         <childnode refid="9" relation="usage">
           <edgelabel>RANGE_INFO</edgelabel>
         </childnode>
@@ -2029,7 +2033,7 @@
       <member refid="classBaseTemperature_1ae37d98256e55529d9d78622db0c34019" prot="protected" virt="non-virtual"><scope>EspTemperature</scope><name>ValidateBasicOperation</name></member>
       <member refid="classEspTemperature_1ad10997e1e06993de46d71471dd89109e" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>ValidateConfig</name></member>
       <member refid="classEspTemperature_1ad60606f6b5e963940ac5184bdcd70296" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>ValidateEspConfig</name></member>
-      <member refid="classBaseTemperature_1a89a1c053462cbf314098834f7045ae74" prot="public" virt="virtual"><scope>EspTemperature</scope><name>~BaseTemperature</name></member>
+      <member refid="classBaseTemperature_1a21ac791e357874874cf1a8be97ed2291" prot="public" virt="virtual"><scope>EspTemperature</scope><name>~BaseTemperature</name></member>
       <member refid="classEspTemperature_1a5d4b044be19bc62da664d76b1b6207b6" prot="public" virt="virtual"><scope>EspTemperature</scope><name>~EspTemperature</name></member>
     </listofallmembers>
   </compounddef>

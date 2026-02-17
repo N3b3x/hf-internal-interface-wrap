@@ -1,6 +1,6 @@
 var classBaseLogger =
 [
-    [ "~BaseLogger", "classBaseLogger.html#aaf8957e6554581ceb22692563f0925e9", null ],
+    [ "~BaseLogger", "classBaseLogger.html#a5f705b3c7b590a8427e78a77ade3925c", null ],
     [ "BaseLogger", "classBaseLogger.html#ad3174118bec359f399b89a7ca0c18881", null ],
     [ "BaseLogger", "classBaseLogger.html#a9bc13a6a2e51b915e049bef19458ab14", null ],
     [ "BaseLogger", "classBaseLogger.html#ad8074912949ec914c7ea50733e51f720", null ],

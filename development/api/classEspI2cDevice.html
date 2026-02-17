@@ -144,13 +144,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab0e1da7ee817f2ddfd2c0393b7fb6c99" id="r_ab0e1da7ee817f2ddfd2c0393b7fb6c99"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab0e1da7ee817f2ddfd2c0393b7fb6c99">WriteRead</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *tx_data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> tx_length, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *rx_data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> rx_length, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) noexcept override</td></tr>
 <tr class="memdesc:ab0e1da7ee817f2ddfd2c0393b7fb6c99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write then read data from the I2C device.  <br /></td></tr>
 <tr class="separator:ab0e1da7ee817f2ddfd2c0393b7fb6c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec34c1a94944595c127ff91e51e8f134" id="r_aec34c1a94944595c127ff91e51e8f134"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec34c1a94944595c127ff91e51e8f134">WriteAsync</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a> callback, void *user_data=nullptr, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=1000) noexcept</td></tr>
+<tr class="memitem:aec34c1a94944595c127ff91e51e8f134" id="r_aec34c1a94944595c127ff91e51e8f134"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec34c1a94944595c127ff91e51e8f134">WriteAsync</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a> callback, void *user_data=nullptr, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=1000) noexcept</td></tr>
 <tr class="memdesc:aec34c1a94944595c127ff91e51e8f134"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data to the I2C device asynchronously.  <br /></td></tr>
 <tr class="separator:aec34c1a94944595c127ff91e51e8f134"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adf418ca0a9111d9832fb8863f918cc40" id="r_adf418ca0a9111d9832fb8863f918cc40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf418ca0a9111d9832fb8863f918cc40">ReadAsync</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a> callback, void *user_data=nullptr, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=1000) noexcept</td></tr>
+<tr class="memitem:adf418ca0a9111d9832fb8863f918cc40" id="r_adf418ca0a9111d9832fb8863f918cc40"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adf418ca0a9111d9832fb8863f918cc40">ReadAsync</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> length, <a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a> callback, void *user_data=nullptr, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=1000) noexcept</td></tr>
 <tr class="memdesc:adf418ca0a9111d9832fb8863f918cc40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data from the I2C device asynchronously.  <br /></td></tr>
 <tr class="separator:adf418ca0a9111d9832fb8863f918cc40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad00a9f2e229eb0fa2f4d39baa663dc58" id="r_ad00a9f2e229eb0fa2f4d39baa663dc58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad00a9f2e229eb0fa2f4d39baa663dc58">WriteReadAsync</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *tx_data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> tx_length, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *rx_data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> rx_length, <a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a> callback, void *user_data=nullptr, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=1000) noexcept</td></tr>
+<tr class="memitem:ad00a9f2e229eb0fa2f4d39baa663dc58" id="r_ad00a9f2e229eb0fa2f4d39baa663dc58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="BaseI2c_8h.html#a24a50f7ee1f8c547cfa287c285fe7fb9">hf_i2c_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad00a9f2e229eb0fa2f4d39baa663dc58">WriteReadAsync</a> (const <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *tx_data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> tx_length, <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> *rx_data, <a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> rx_length, <a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a> callback, void *user_data=nullptr, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=1000) noexcept</td></tr>
 <tr class="memdesc:ad00a9f2e229eb0fa2f4d39baa663dc58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write then read data from the I2C device asynchronously.  <br /></td></tr>
 <tr class="separator:ad00a9f2e229eb0fa2f4d39baa663dc58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb1a17d5c492b23e89b95dc0c8b65805" id="r_acb1a17d5c492b23e89b95dc0c8b65805"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb1a17d5c492b23e89b95dc0c8b65805">IsAsyncModeSupported</a> () const noexcept</td></tr>
@@ -192,7 +192,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afae4c530b1e9aa88a5b1a4a82d34413b" id="r_afae4c530b1e9aa88a5b1a4a82d34413b"><td class="memItemLeft" align="right" valign="top">i2c_master_dev_handle_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afae4c530b1e9aa88a5b1a4a82d34413b">GetDeviceHandle</a> () const noexcept</td></tr>
 <tr class="memdesc:afae4c530b1e9aa88a5b1a4a82d34413b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the ESP-IDF device handle for internal operations.  <br /></td></tr>
 <tr class="separator:afae4c530b1e9aa88a5b1a4a82d34413b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03cadbb382abea958a0707bd45547d7c" id="r_a03cadbb382abea958a0707bd45547d7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03cadbb382abea958a0707bd45547d7c">GetCurrentCallback</a> () const noexcept</td></tr>
+<tr class="memitem:a03cadbb382abea958a0707bd45547d7c" id="r_a03cadbb382abea958a0707bd45547d7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03cadbb382abea958a0707bd45547d7c">GetCurrentCallback</a> () const noexcept</td></tr>
 <tr class="memdesc:a03cadbb382abea958a0707bd45547d7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get current async callback (for static callback bridge).  <br /></td></tr>
 <tr class="separator:a03cadbb382abea958a0707bd45547d7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef94bae927c59091257d7c387d594936" id="r_aef94bae927c59091257d7c387d594936"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef94bae927c59091257d7c387d594936">GetCurrentUserData</a> () const noexcept</td></tr>
@@ -261,7 +261,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
-<tr class="memitem:a830bd3bab73ba5bd41db5ceeab2435e0" id="r_a830bd3bab73ba5bd41db5ceeab2435e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a830bd3bab73ba5bd41db5ceeab2435e0">RegisterTemporaryCallback</a> (<a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a> callback, void *user_data, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms) noexcept</td></tr>
+<tr class="memitem:a830bd3bab73ba5bd41db5ceeab2435e0" id="r_a830bd3bab73ba5bd41db5ceeab2435e0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a830bd3bab73ba5bd41db5ceeab2435e0">RegisterTemporaryCallback</a> (<a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a> callback, void *user_data, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms) noexcept</td></tr>
 <tr class="memdesc:a830bd3bab73ba5bd41db5ceeab2435e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register temporary async callback for single operation.  <br /></td></tr>
 <tr class="separator:a830bd3bab73ba5bd41db5ceeab2435e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f233650bcc027aa9f4bd43899184fce" id="r_a9f233650bcc027aa9f4bd43899184fce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f233650bcc027aa9f4bd43899184fce">UnregisterTemporaryCallback</a> () noexcept</td></tr>
@@ -291,7 +291,7 @@ Private Member Functions</h2></td></tr>
 <tr class="memitem:a4b330a20eb141cb533f0f7b93fc3d4e4" id="r_a4b330a20eb141cb533f0f7b93fc3d4e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4b330a20eb141cb533f0f7b93fc3d4e4">CleanupAsyncOperation</a> () noexcept</td></tr>
 <tr class="memdesc:a4b330a20eb141cb533f0f7b93fc3d4e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common async operation cleanup.  <br /></td></tr>
 <tr class="separator:a4b330a20eb141cb533f0f7b93fc3d4e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37d7ea5eb281d4c4cfef058294e34714" id="r_a37d7ea5eb281d4c4cfef058294e34714"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37d7ea5eb281d4c4cfef058294e34714">SetupAsyncOperation</a> (<a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a> callback, void *user_data, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms) noexcept</td></tr>
+<tr class="memitem:a37d7ea5eb281d4c4cfef058294e34714" id="r_a37d7ea5eb281d4c4cfef058294e34714"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a37d7ea5eb281d4c4cfef058294e34714">SetupAsyncOperation</a> (<a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a> callback, void *user_data, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms) noexcept</td></tr>
 <tr class="memdesc:a37d7ea5eb281d4c4cfef058294e34714"><td class="mdescLeft">&#160;</td><td class="mdescRight">Common async operation setup.  <br /></td></tr>
 <tr class="separator:a37d7ea5eb281d4c4cfef058294e34714"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -333,7 +333,7 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a179d9dd56630947e64204720a1e27bd6" id="r_a179d9dd56630947e64204720a1e27bd6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a179d9dd56630947e64204720a1e27bd6">sync_operation_in_progress_</a></td></tr>
 <tr class="memdesc:a179d9dd56630947e64204720a1e27bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is sync operation active (mutual exclusion)  <br /></td></tr>
 <tr class="separator:a179d9dd56630947e64204720a1e27bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5d3bffbe307541766e6387b025ea91d" id="r_ae5d3bffbe307541766e6387b025ea91d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5d3bffbe307541766e6387b025ea91d">current_callback_</a></td></tr>
+<tr class="memitem:ae5d3bffbe307541766e6387b025ea91d" id="r_ae5d3bffbe307541766e6387b025ea91d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae5d3bffbe307541766e6387b025ea91d">current_callback_</a></td></tr>
 <tr class="memdesc:ae5d3bffbe307541766e6387b025ea91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current user callback.  <br /></td></tr>
 <tr class="separator:ae5d3bffbe307541766e6387b025ea91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8f8ebf1900fe0e383b373bd88a46b67" id="r_ab8f8ebf1900fe0e383b373bd88a46b67"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8f8ebf1900fe0e383b373bd88a46b67">current_user_data_</a></td></tr>
@@ -628,7 +628,7 @@ Supports both synchronous and asynchronous operations. </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a> EspI2cDevice::GetCurrentCallback </td>
+          <td class="memname"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a> EspI2cDevice::GetCurrentCallback </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"></span></td><td>)</td>
           <td> const</td>
@@ -1205,7 +1205,7 @@ Supports both synchronous and asynchronous operations. </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1257,7 +1257,7 @@ Completion is reported via callback </dd></dl>
         <tr>
           <td class="memname">bool EspI2cDevice::RegisterTemporaryCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1332,7 +1332,7 @@ Completion is reported via callback </dd></dl>
         <tr>
           <td class="memname">bool EspI2cDevice::SetupAsyncOperation </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1707,7 +1707,7 @@ Completion is reported via callback </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1839,7 +1839,7 @@ Completion is reported via callback </dd></dl>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
+          <td class="paramtype"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1964,7 +1964,7 @@ Completion is reported via callback </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="EspTypes__I2C_8h.html#ab3a6dbdba186b26abd9d9960f42673e7">hf_i2c_async_callback_t</a> EspI2cDevice::current_callback_</td>
+          <td class="memname"><a class="el" href="EspTypes__I2C_8h.html#af2ca4d8b86b7cfd6349f3ffdde0a2855">hf_i2c_async_callback_t</a> EspI2cDevice::current_callback_</td>
         </tr>
       </table>
   </td>

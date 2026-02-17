@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="42" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="42" bodyend="105"/>
+        <location file="inc/base/BaseTemperature.h" line="41" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="41" bodyend="104"/>
       </memberdef>
     </sectiondef>
     <briefdescription>

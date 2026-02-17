@@ -1,9 +1,5 @@
 var NAVTREEINDEX16 =
 {
-"structhf__uart__power__config__t.html#a7ac138802375c29ee69321a39be9ef8c":[3,0,135,1],
-"structhf__uart__power__config__t.html#afa945ba76e7b7bf7003b78cb06363884":[3,0,135,4],
-"structhf__uart__rs485__config__t.html":[3,0,136],
-"structhf__uart__rs485__config__t.html#a2c2b7274f794e33ab23b7ae1a6ab3c9f":[3,0,136,5],
 "structhf__uart__rs485__config__t.html#a3601528cb25db0e361bea72eac49d9d6":[3,0,136,4],
 "structhf__uart__rs485__config__t.html#a4228b02c063ac124c6c10073c8fdada7":[3,0,136,6],
 "structhf__uart__rs485__config__t.html#a5fbdb79feb7f8f4272a6479752b96bcb":[3,0,136,0],

@@ -107,12 +107,11 @@ $(function(){initNavTree('BasePio_8h.html',''); initResizable(); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="HardwareTypes_8h_source.html">HardwareTypes.h</a>&quot;</code><br />
 <code>#include &lt;cstdint&gt;</code><br />
-<code>#include &lt;functional&gt;</code><br />
 <code>#include &lt;string_view&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for BasePio.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="BasePio_8h__incl.svg" width="494" height="199"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="BasePio_8h__incl.svg" width="371" height="199"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -158,15 +157,15 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ab8c62aa676888a6756a3ea726b24d64c" id="r_ab8c62aa676888a6756a3ea726b24d64c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab8c62aa676888a6756a3ea726b24d64c">hf_pio_transmit_callback_t</a></td></tr>
-<tr class="memdesc:ab8c62aa676888a6756a3ea726b24d64c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for PIO transmission complete events.  <br /></td></tr>
-<tr class="separator:ab8c62aa676888a6756a3ea726b24d64c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e55d16268bbfd30ee876df3ee4561ed" id="r_a8e55d16268bbfd30ee876df3ee4561ed"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e55d16268bbfd30ee876df3ee4561ed">hf_pio_receive_callback_t</a></td></tr>
-<tr class="memdesc:a8e55d16268bbfd30ee876df3ee4561ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for PIO reception complete events.  <br /></td></tr>
-<tr class="separator:a8e55d16268bbfd30ee876df3ee4561ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03aa7b5372a89dbdf0770488fbb6f824" id="r_a03aa7b5372a89dbdf0770488fbb6f824"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03aa7b5372a89dbdf0770488fbb6f824">hf_pio_error_callback_t</a></td></tr>
-<tr class="memdesc:a03aa7b5372a89dbdf0770488fbb6f824"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for PIO error events.  <br /></td></tr>
-<tr class="separator:a03aa7b5372a89dbdf0770488fbb6f824"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe89b7df6613717bc40b3d9ec87ee89a" id="r_afe89b7df6613717bc40b3d9ec87ee89a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe89b7df6613717bc40b3d9ec87ee89a">hf_pio_transmit_callback_t</a></td></tr>
+<tr class="memdesc:afe89b7df6613717bc40b3d9ec87ee89a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for PIO transmission complete events.  <br /></td></tr>
+<tr class="separator:afe89b7df6613717bc40b3d9ec87ee89a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3c84107f96800c1d8c45464040a5b0a" id="r_ab3c84107f96800c1d8c45464040a5b0a"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3c84107f96800c1d8c45464040a5b0a">hf_pio_receive_callback_t</a> = void(*)( <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> channel_id, const <a class="el" href="structhf__pio__symbol__t.html">hf_pio_symbol_t</a>* symbols, size_t symbol_count, void* user_data)</td></tr>
+<tr class="memdesc:ab3c84107f96800c1d8c45464040a5b0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for PIO reception complete events.  <br /></td></tr>
+<tr class="separator:ab3c84107f96800c1d8c45464040a5b0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4f0c3580aa320f9259c2ab55d864e5f" id="r_ae4f0c3580aa320f9259c2ab55d864e5f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae4f0c3580aa320f9259c2ab55d864e5f">hf_pio_error_callback_t</a></td></tr>
+<tr class="memdesc:ae4f0c3580aa320f9259c2ab55d864e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for PIO error events.  <br /></td></tr>
+<tr class="separator:ae4f0c3580aa320f9259c2ab55d864e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -303,20 +302,20 @@ Users should program against this interface, not specific implementations. </dd>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a03aa7b5372a89dbdf0770488fbb6f824" name="a03aa7b5372a89dbdf0770488fbb6f824"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03aa7b5372a89dbdf0770488fbb6f824">&#9670;&#160;</a></span>hf_pio_error_callback_t</h2>
+<a id="ae4f0c3580aa320f9259c2ab55d864e5f" name="ae4f0c3580aa320f9259c2ab55d864e5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4f0c3580aa320f9259c2ab55d864e5f">&#9670;&#160;</a></span>hf_pio_error_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a03aa7b5372a89dbdf0770488fbb6f824">hf_pio_error_callback_t</a></td>
+          <td class="memname">using <a class="el" href="#ae4f0c3580aa320f9259c2ab55d864e5f">hf_pio_error_callback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    std::function&lt;void(<a class="code hl_typedef" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> channel_id, <a class="code hl_enumeration" href="#ade576ec4d2f6bb2cc4e011ee31e1d48e">hf_pio_err_t</a> error, <span class="keywordtype">void</span>* user_data)&gt;</div>
-<div class="ttc" id="aBasePio_8h_html_ade576ec4d2f6bb2cc4e011ee31e1d48e"><div class="ttname"><a href="#ade576ec4d2f6bb2cc4e011ee31e1d48e">hf_pio_err_t</a></div><div class="ttdeci">hf_pio_err_t</div><div class="ttdef"><b>Definition</b> BasePio.h:84</div></div>
+<div class="line">    void(*)(<a class="code hl_typedef" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> channel_id, <a class="code hl_enumeration" href="#ade576ec4d2f6bb2cc4e011ee31e1d48e">hf_pio_err_t</a> error, <span class="keywordtype">void</span>* user_data)</div>
+<div class="ttc" id="aBasePio_8h_html_ade576ec4d2f6bb2cc4e011ee31e1d48e"><div class="ttname"><a href="#ade576ec4d2f6bb2cc4e011ee31e1d48e">hf_pio_err_t</a></div><div class="ttdeci">hf_pio_err_t</div><div class="ttdef"><b>Definition</b> BasePio.h:83</div></div>
 <div class="ttc" id="aHardwareTypes_8h_html_a3aa2692c73b4cca0adc7139bd18ff613"><div class="ttname"><a href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a></div><div class="ttdeci">uint8_t hf_u8_t</div><div class="ttdoc">Platform-agnostic 8-bit unsigned integer type.</div><div class="ttdef"><b>Definition</b> HardwareTypes.h:40</div></div>
 </div><!-- fragment -->
 <p>Callback for PIO error events. </p>
@@ -331,21 +330,18 @@ Users should program against this interface, not specific implementations. </dd>
 
 </div>
 </div>
-<a id="a8e55d16268bbfd30ee876df3ee4561ed" name="a8e55d16268bbfd30ee876df3ee4561ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e55d16268bbfd30ee876df3ee4561ed">&#9670;&#160;</a></span>hf_pio_receive_callback_t</h2>
+<a id="ab3c84107f96800c1d8c45464040a5b0a" name="ab3c84107f96800c1d8c45464040a5b0a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3c84107f96800c1d8c45464040a5b0a">&#9670;&#160;</a></span>hf_pio_receive_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#a8e55d16268bbfd30ee876df3ee4561ed">hf_pio_receive_callback_t</a></td>
+          <td class="memname">using <a class="el" href="#ab3c84107f96800c1d8c45464040a5b0a">hf_pio_receive_callback_t</a> = void(*)( <a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> channel_id, const <a class="el" href="structhf__pio__symbol__t.html">hf_pio_symbol_t</a>* symbols, size_t symbol_count, void* user_data)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line"> std::function&lt;void(</div>
-<div class="line">    <a class="code hl_typedef" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> channel_id, <span class="keyword">const</span> <a class="code hl_struct" href="structhf__pio__symbol__t.html">hf_pio_symbol_t</a>* symbols, <span class="keywordtype">size_t</span> symbol_count, <span class="keywordtype">void</span>* user_data)&gt;</div>
-<div class="ttc" id="astructhf__pio__symbol__t_html"><div class="ttname"><a href="structhf__pio__symbol__t.html">hf_pio_symbol_t</a></div><div class="ttdoc">PIO symbol structure for precise timing.</div><div class="ttdef"><b>Definition</b> BasePio.h:157</div></div>
-</div><!-- fragment -->
+
 <p>Callback for PIO reception complete events. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -359,19 +355,19 @@ Users should program against this interface, not specific implementations. </dd>
 
 </div>
 </div>
-<a id="ab8c62aa676888a6756a3ea726b24d64c" name="ab8c62aa676888a6756a3ea726b24d64c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab8c62aa676888a6756a3ea726b24d64c">&#9670;&#160;</a></span>hf_pio_transmit_callback_t</h2>
+<a id="afe89b7df6613717bc40b3d9ec87ee89a" name="afe89b7df6613717bc40b3d9ec87ee89a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe89b7df6613717bc40b3d9ec87ee89a">&#9670;&#160;</a></span>hf_pio_transmit_callback_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="#ab8c62aa676888a6756a3ea726b24d64c">hf_pio_transmit_callback_t</a></td>
+          <td class="memname">using <a class="el" href="#afe89b7df6613717bc40b3d9ec87ee89a">hf_pio_transmit_callback_t</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line"> </div>
-<div class="line">    std::function&lt;void(<a class="code hl_typedef" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> channel_id, <span class="keywordtype">size_t</span> symbols_sent, <span class="keywordtype">void</span>* user_data)&gt;</div>
+<div class="line">    void(*)(<a class="code hl_typedef" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> channel_id, <span class="keywordtype">size_t</span> symbols_sent, <span class="keywordtype">void</span>* user_data)</div>
 </div><!-- fragment -->
 <p>Callback for PIO transmission complete events. </p>
 <dl class="params"><dt>Parameters</dt><dd>

@@ -43,52 +43,52 @@
     <member refid="classBaseAdc_1aebc6e018b001afd845543708c1b3cb86" kind="function"><name>BaseAdc</name></member>
   </compound>
   <compound refid="classBaseBluetooth" kind="class"><name>BaseBluetooth</name>
-    <member refid="classBaseBluetooth_1ae77e7b8c64bfdfcdc5563d14f0f23472" kind="function"><name>~BaseBluetooth</name></member>
-    <member refid="classBaseBluetooth_1a196c07d346d5433ec07cd130002abef6" kind="function"><name>Initialize</name></member>
-    <member refid="classBaseBluetooth_1a3b78e495412b0c58e9f1d34b0d6b0584" kind="function"><name>Deinitialize</name></member>
-    <member refid="classBaseBluetooth_1af8e1ecb1d4e3e6f31e14d9b152e812a0" kind="function"><name>IsInitialized</name></member>
-    <member refid="classBaseBluetooth_1ae3f0672a639f4ae1eb87887d866fc584" kind="function"><name>Enable</name></member>
-    <member refid="classBaseBluetooth_1af9488d4b6303ae3f72462e6919e08e97" kind="function"><name>Disable</name></member>
-    <member refid="classBaseBluetooth_1a626da2b0e75af05bccae77dae40f47ae" kind="function"><name>IsEnabled</name></member>
-    <member refid="classBaseBluetooth_1a62c7bb7ccccfa4b8d920f7001e9899f4" kind="function"><name>SetMode</name></member>
-    <member refid="classBaseBluetooth_1a029b3ca472e6c048ea98db766e361f19" kind="function"><name>GetMode</name></member>
-    <member refid="classBaseBluetooth_1aff3d25b5192168951bbf844459d25014" kind="function"><name>GetLocalAddress</name></member>
-    <member refid="classBaseBluetooth_1a1792bf9086c8db3951bd1f01a934771e" kind="function"><name>SetDeviceName</name></member>
-    <member refid="classBaseBluetooth_1a226554f64e1cba76d0b021077f81088f" kind="function"><name>GetDeviceName</name></member>
-    <member refid="classBaseBluetooth_1adcd47674624cf1c692c88d96391b9024" kind="function"><name>ConfigureClassic</name></member>
-    <member refid="classBaseBluetooth_1ae16b5e49487dd2b010802c0fefa3cf95" kind="function"><name>SetDiscoverable</name></member>
-    <member refid="classBaseBluetooth_1a1cff8c3db74ba4776f3ca4a550eaa2f4" kind="function"><name>IsDiscoverable</name></member>
-    <member refid="classBaseBluetooth_1a6cfce1df3b1dbd1267154de7d957a525" kind="function"><name>ConfigureBle</name></member>
-    <member refid="classBaseBluetooth_1a2bef4ad7b3b531bd42c342b85ea27772" kind="function"><name>StartAdvertising</name></member>
-    <member refid="classBaseBluetooth_1a3014d71e82d9d0ed7082a84b432025f1" kind="function"><name>StopAdvertising</name></member>
-    <member refid="classBaseBluetooth_1a6806e3ecd8d83530c8bfb101099f2fd4" kind="function"><name>IsAdvertising</name></member>
-    <member refid="classBaseBluetooth_1a7cbef9bcb0a02d8d4129c5063f182542" kind="function"><name>StartScan</name></member>
-    <member refid="classBaseBluetooth_1aa284375eca6ab3cf746b00f4b92a1d21" kind="function"><name>StopScan</name></member>
-    <member refid="classBaseBluetooth_1a4a7eca3f951cd2847965dc0eaaf1aa67" kind="function"><name>IsScanning</name></member>
-    <member refid="classBaseBluetooth_1ae680e1a6ea8aa510a3d8a6e66b33f4e6" kind="function"><name>GetDiscoveredDevices</name></member>
-    <member refid="classBaseBluetooth_1ad996e7aa11d766792e31d9b8b402500c" kind="function"><name>ClearDiscoveredDevices</name></member>
-    <member refid="classBaseBluetooth_1a491ab1503e8860ab5550a6eba81c3ad8" kind="function"><name>Connect</name></member>
-    <member refid="classBaseBluetooth_1afccb08941b4fafb6d0899242e15b2920" kind="function"><name>Disconnect</name></member>
-    <member refid="classBaseBluetooth_1a8b4f8e6d6bc7fc2ad1274018eb83f984" kind="function"><name>IsConnected</name></member>
-    <member refid="classBaseBluetooth_1ab42108b4a596b6ff15b93fd6c5c06cab" kind="function"><name>GetConnectedDevices</name></member>
-    <member refid="classBaseBluetooth_1a7462b4aef22ddd43203e44214f5536c2" kind="function"><name>Pair</name></member>
-    <member refid="classBaseBluetooth_1accbd6d7ae7676023638e7e4f651467b5" kind="function"><name>Unpair</name></member>
-    <member refid="classBaseBluetooth_1a0886a8faae0cfe0f69330c0efcdf226f" kind="function"><name>IsPaired</name></member>
-    <member refid="classBaseBluetooth_1a1eea76b41ba09697e53099c075d51787" kind="function"><name>GetPairedDevices</name></member>
-    <member refid="classBaseBluetooth_1a4c5f73a535305f072f5bdf096efd19ce" kind="function"><name>SendData</name></member>
-    <member refid="classBaseBluetooth_1a3c9c4e3e4ff5d70f646c328df340a959" kind="function"><name>GetAvailableData</name></member>
-    <member refid="classBaseBluetooth_1a0ef42af7a494714ed851eca3fec124cc" kind="function"><name>ReadData</name></member>
-    <member refid="classBaseBluetooth_1afc5629fe0b63c4c113a545b5eacf6f7a" kind="function"><name>DiscoverServices</name></member>
-    <member refid="classBaseBluetooth_1ad37958dc6328f4152af8ce7d4dacb542" kind="function"><name>DiscoverCharacteristics</name></member>
-    <member refid="classBaseBluetooth_1a7e191af8a19ddb52181c853c27f26eeb" kind="function"><name>ReadCharacteristic</name></member>
-    <member refid="classBaseBluetooth_1a5775d0876c891ce57f7e5da1499be4cd" kind="function"><name>WriteCharacteristic</name></member>
-    <member refid="classBaseBluetooth_1ab93a81eda5ea79f516d548ab7266016c" kind="function"><name>SubscribeCharacteristic</name></member>
-    <member refid="classBaseBluetooth_1a49aadef553ed72baa4d7bc5e96f0c95e" kind="function"><name>GetState</name></member>
-    <member refid="classBaseBluetooth_1a99a5b02e2f3a0bccd554a692340fa64d" kind="function"><name>GetRssi</name></member>
-    <member refid="classBaseBluetooth_1a393db49fdbbb0db872262b0b12ad25ea" kind="function"><name>RegisterEventCallback</name></member>
-    <member refid="classBaseBluetooth_1a799e4cdc54f8256ae0f80cf3a2caf52c" kind="function"><name>UnregisterEventCallback</name></member>
-    <member refid="classBaseBluetooth_1a7d6eb7a09b4185eb9de0ebbaadcddec1" kind="function"><name>RegisterDataCallback</name></member>
-    <member refid="classBaseBluetooth_1ad01c053e5b9d41f8c60f63f2b7d2642c" kind="function"><name>UnregisterDataCallback</name></member>
+    <member refid="classBaseBluetooth_1a8b0363e029dbd3f3dda7065a0712e39a" kind="function"><name>~BaseBluetooth</name></member>
+    <member refid="classBaseBluetooth_1a63ecb221a9578ec16a931664ddcb727a" kind="function"><name>Initialize</name></member>
+    <member refid="classBaseBluetooth_1a7b83a94014337dabe22933cf0f3c6a7e" kind="function"><name>Deinitialize</name></member>
+    <member refid="classBaseBluetooth_1ab2790a83b12faa88d3e3e45c4e87ec07" kind="function"><name>IsInitialized</name></member>
+    <member refid="classBaseBluetooth_1ac00fdcd427c9983e6671fe8876afe0b1" kind="function"><name>Enable</name></member>
+    <member refid="classBaseBluetooth_1a304a301886bf38cfe878b53dcde596ae" kind="function"><name>Disable</name></member>
+    <member refid="classBaseBluetooth_1a4ed2e7e27416c8103aa84a43503e1f96" kind="function"><name>IsEnabled</name></member>
+    <member refid="classBaseBluetooth_1a1da91dd265112b3c25a51f2f086e0389" kind="function"><name>SetMode</name></member>
+    <member refid="classBaseBluetooth_1a9c402552e6d2a17e8ad96cf05c48c5dc" kind="function"><name>GetMode</name></member>
+    <member refid="classBaseBluetooth_1ad9826db41723a9d8a22633ccc3296e63" kind="function"><name>GetLocalAddress</name></member>
+    <member refid="classBaseBluetooth_1a4fb3e215a996b0d5adba08851ef6902b" kind="function"><name>SetDeviceName</name></member>
+    <member refid="classBaseBluetooth_1a0578c85504ad9b33d842d54f25af2f19" kind="function"><name>GetDeviceName</name></member>
+    <member refid="classBaseBluetooth_1a05c3be910231f2f62b907353444b57a3" kind="function"><name>ConfigureClassic</name></member>
+    <member refid="classBaseBluetooth_1af19e222b1e62772e76669918d4ecacb5" kind="function"><name>SetDiscoverable</name></member>
+    <member refid="classBaseBluetooth_1ad7fd4fbee258da62570426885255b2cf" kind="function"><name>IsDiscoverable</name></member>
+    <member refid="classBaseBluetooth_1ac5cb25b01043f0aada11b7073702dd76" kind="function"><name>ConfigureBle</name></member>
+    <member refid="classBaseBluetooth_1a3e3e5cc0fb48993075b7b17345a75e7b" kind="function"><name>StartAdvertising</name></member>
+    <member refid="classBaseBluetooth_1ad325001eb59f7db35f1ac71d4fddfdfc" kind="function"><name>StopAdvertising</name></member>
+    <member refid="classBaseBluetooth_1a493573d82cfe67773aaedd028a9cec4b" kind="function"><name>IsAdvertising</name></member>
+    <member refid="classBaseBluetooth_1a7ed30dacabc311649b462d809b9ba3c9" kind="function"><name>StartScan</name></member>
+    <member refid="classBaseBluetooth_1ad446feb70a30194198dbfecaa383e0f2" kind="function"><name>StopScan</name></member>
+    <member refid="classBaseBluetooth_1af8583dad6a3fb4ff18987bb2f9502a2d" kind="function"><name>IsScanning</name></member>
+    <member refid="classBaseBluetooth_1a6eb10b728e86c6347d78db68d9daca38" kind="function"><name>GetDiscoveredDevices</name></member>
+    <member refid="classBaseBluetooth_1a0c635ad8d4b4b561d9d6f197f85d8cd7" kind="function"><name>ClearDiscoveredDevices</name></member>
+    <member refid="classBaseBluetooth_1a617291c44633b686263c240181ae3cea" kind="function"><name>Connect</name></member>
+    <member refid="classBaseBluetooth_1a7bead8aef6793700b27cbf09f9067056" kind="function"><name>Disconnect</name></member>
+    <member refid="classBaseBluetooth_1aaaa1fe08e98f160ad26c1285fa027ae4" kind="function"><name>IsConnected</name></member>
+    <member refid="classBaseBluetooth_1a60f462a47b67c139f8be15ed632bafb3" kind="function"><name>GetConnectedDevices</name></member>
+    <member refid="classBaseBluetooth_1a50efd732485a32e6accd1f51e9fc58f6" kind="function"><name>Pair</name></member>
+    <member refid="classBaseBluetooth_1ac86df1a77e652a46ff4a05516c53dd90" kind="function"><name>Unpair</name></member>
+    <member refid="classBaseBluetooth_1af2e91ee25f4f133566544895cbe9ccc1" kind="function"><name>IsPaired</name></member>
+    <member refid="classBaseBluetooth_1a89d0044ec124c5ef2d2737462a22df9e" kind="function"><name>GetPairedDevices</name></member>
+    <member refid="classBaseBluetooth_1aeb6a2808eba39d846234d4daa5e7721a" kind="function"><name>SendData</name></member>
+    <member refid="classBaseBluetooth_1a817f50486c8cc2d8fb90e5e02cee730c" kind="function"><name>GetAvailableData</name></member>
+    <member refid="classBaseBluetooth_1aaeda8dabc23f43f7b034d9ea5b710aa3" kind="function"><name>ReadData</name></member>
+    <member refid="classBaseBluetooth_1a1ba1c8b0f8825bb6fca5b157466b263a" kind="function"><name>DiscoverServices</name></member>
+    <member refid="classBaseBluetooth_1a71dbea977b9400ae1be9358df7161a41" kind="function"><name>DiscoverCharacteristics</name></member>
+    <member refid="classBaseBluetooth_1a7a6fcf0460f5d2454fac81851457ea9d" kind="function"><name>ReadCharacteristic</name></member>
+    <member refid="classBaseBluetooth_1a355e1dc5a888deede264cbb0a0cada01" kind="function"><name>WriteCharacteristic</name></member>
+    <member refid="classBaseBluetooth_1a28375008b15506311fae513f01d793a7" kind="function"><name>SubscribeCharacteristic</name></member>
+    <member refid="classBaseBluetooth_1ab333ba8a81a224770998910a56d5c7ba" kind="function"><name>GetState</name></member>
+    <member refid="classBaseBluetooth_1ae2e305a568401408da0c317e4b6a2040" kind="function"><name>GetRssi</name></member>
+    <member refid="classBaseBluetooth_1a575415fe3e0f3f3bba31013d6cfb0e0c" kind="function"><name>RegisterEventCallback</name></member>
+    <member refid="classBaseBluetooth_1af7571a9f90a4829e6c728a53c6a1cab7" kind="function"><name>UnregisterEventCallback</name></member>
+    <member refid="classBaseBluetooth_1ab463a72df3ed5155a22551fd9adf1867" kind="function"><name>RegisterDataCallback</name></member>
+    <member refid="classBaseBluetooth_1a5d7ec79705f083bb1867a403084e5321" kind="function"><name>UnregisterDataCallback</name></member>
     <member refid="group__bluetooth_1gab088db30edcbbd9875e9381f9b8cbe8d" kind="function"><name>GetErrorString</name></member>
     <member refid="classBaseBluetooth_1a0f1d6deaa05381c5643fa5034beca274" kind="function"><name>BaseBluetooth</name></member>
     <member refid="classBaseBluetooth_1a372ad20c5010431efbdc08bfa3222a26" kind="function"><name>BaseBluetooth</name></member>
@@ -141,7 +141,7 @@
     <member refid="classBaseGpio_1a82ac9df6b2e7c01355b72ccbc007b201" kind="variable"><name>diagnostics_</name></member>
     <member refid="classBaseGpio_1a182759a9452aa9b39f6ec0bcfdc1827f" kind="function"><name>BaseGpio</name></member>
     <member refid="classBaseGpio_1a80f934a9f41ef0315bae75ba3883c426" kind="function"><name>operator=</name></member>
-    <member refid="classBaseGpio_1a042ea8f01b96fe5641258e8b662d4d78" kind="function"><name>~BaseGpio</name></member>
+    <member refid="classBaseGpio_1a882c3e3be74c5efb0ee4b3768d864462" kind="function"><name>~BaseGpio</name></member>
     <member refid="classBaseGpio_1a2c654042248121cefac7e79590b35ec6" kind="function"><name>IsInitialized</name></member>
     <member refid="classBaseGpio_1a363769239e2d658315215af324ee5aba" kind="function"><name>EnsureInitialized</name></member>
     <member refid="classBaseGpio_1a33c01186a67211b905c9efd8a64af2b1" kind="function"><name>EnsureDeinitialized</name></member>
@@ -235,7 +235,7 @@
     <member refid="classBaseI2c_1af9b69abc680d2951321217d64e2eaa12" kind="function"><name>BaseI2c</name></member>
   </compound>
   <compound refid="classBaseLogger" kind="class"><name>BaseLogger</name>
-    <member refid="classBaseLogger_1aaf8957e6554581ceb22692563f0925e9" kind="function"><name>~BaseLogger</name></member>
+    <member refid="classBaseLogger_1a5f705b3c7b590a8427e78a77ade3925c" kind="function"><name>~BaseLogger</name></member>
     <member refid="classBaseLogger_1ad0406cdacbade55f2911bf717e35c22c" kind="function"><name>Initialize</name></member>
     <member refid="classBaseLogger_1a5c4e83d89a9039e336dfb9f13d2be9a5" kind="function"><name>Deinitialize</name></member>
     <member refid="classBaseLogger_1a9f14e4754c3840c59106db0670e90fca" kind="function"><name>IsInitialized</name></member>
@@ -447,7 +447,7 @@
     <member refid="classBaseTemperature_1a65964a104b3cb9b9c737819810f0a20b" kind="variable"><name>current_state_</name></member>
     <member refid="classBaseTemperature_1a115e5a44b15a1f507cb7c9163d262a5a" kind="function"><name>BaseTemperature</name></member>
     <member refid="classBaseTemperature_1aadc767ae37c6b15cbdc9571f688ebe97" kind="function"><name>operator=</name></member>
-    <member refid="classBaseTemperature_1a89a1c053462cbf314098834f7045ae74" kind="function"><name>~BaseTemperature</name></member>
+    <member refid="classBaseTemperature_1a21ac791e357874874cf1a8be97ed2291" kind="function"><name>~BaseTemperature</name></member>
     <member refid="classBaseTemperature_1a25b8ade43d75916d0d48464cfdcaa6c2" kind="function"><name>IsInitialized</name></member>
     <member refid="classBaseTemperature_1ac3e2177be073e991acc4f03da8c2b07d" kind="function"><name>EnsureInitialized</name></member>
     <member refid="classBaseTemperature_1a015ca3f4802b9a68140531f0175fd1bf" kind="function"><name>EnsureDeinitialized</name></member>
@@ -523,37 +523,37 @@
     <member refid="classBaseUart_1af78039653dc8c846d3f90dc48f50b33d" kind="function"><name>BaseUart</name></member>
   </compound>
   <compound refid="classBaseWifi" kind="class"><name>BaseWifi</name>
-    <member refid="classBaseWifi_1a564fef8c0ffdd4f1d69b367bb58cbf73" kind="function"><name>~BaseWifi</name></member>
-    <member refid="classBaseWifi_1afb3f364e100cf74087b65c8529bda6da" kind="function"><name>Initialize</name></member>
-    <member refid="classBaseWifi_1afaf483e98b1f98467356bdfed5071069" kind="function"><name>Deinitialize</name></member>
-    <member refid="classBaseWifi_1a0f9a5bb5a9fbee7af3412385286baf59" kind="function"><name>IsInitialized</name></member>
-    <member refid="classBaseWifi_1afd648ddba6ad1f2e10941318dcb0dfab" kind="function"><name>SetMode</name></member>
-    <member refid="classBaseWifi_1a849f44352adf62aab5d07cb9f4666b8e" kind="function"><name>GetMode</name></member>
-    <member refid="classBaseWifi_1aed3ba55f847bb8de043fc794394e85d9" kind="function"><name>ConfigureStation</name></member>
-    <member refid="classBaseWifi_1ada2eadb6792ac79148a0e2c4fccab27d" kind="function"><name>Connect</name></member>
-    <member refid="classBaseWifi_1a116ea68e8e5e29ed87b3a3ab60df164e" kind="function"><name>Disconnect</name></member>
-    <member refid="classBaseWifi_1a7d913dc24e648f770066873000af4d1e" kind="function"><name>IsConnected</name></member>
-    <member refid="classBaseWifi_1a3a314875b45ef4198c7b69ccc0660066" kind="function"><name>GetRssi</name></member>
-    <member refid="classBaseWifi_1a2f92e5e27c043ea1d5cc90ed3d473bec" kind="function"><name>GetIpInfo</name></member>
-    <member refid="classBaseWifi_1ab5e8e2fc7f09be74b034260b4e499d96" kind="function"><name>ConfigureAccessPoint</name></member>
-    <member refid="classBaseWifi_1ab038bcdbce9651c4c3b0305805cbd7f3" kind="function"><name>StartAccessPoint</name></member>
-    <member refid="classBaseWifi_1a8671f5c88289bc48f1dbdbf109d5e4d0" kind="function"><name>StopAccessPoint</name></member>
-    <member refid="classBaseWifi_1ab0b198b02ca774d1ca2fe0ac9b468c61" kind="function"><name>IsAccessPointActive</name></member>
-    <member refid="classBaseWifi_1abf5439db72fa1f93e0d37ac8ccaffef8" kind="function"><name>GetConnectedStationCount</name></member>
-    <member refid="classBaseWifi_1a309f30f05a1b4e26687ca19e55a12667" kind="function"><name>StartScan</name></member>
-    <member refid="classBaseWifi_1a8d71d17477b03d2775f5c8d89aecbf52" kind="function"><name>GetScanResults</name></member>
-    <member refid="classBaseWifi_1a3470b0cf542ca2aed0cf2fa36674edb2" kind="function"><name>IsScanning</name></member>
-    <member refid="classBaseWifi_1add13affb5f6071fc54a24f25545f8098" kind="function"><name>GetState</name></member>
-    <member refid="classBaseWifi_1afcbe903d63da73d424ecd932ca038b08" kind="function"><name>GetConnectedSsid</name></member>
-    <member refid="classBaseWifi_1a02b0af73b308b92b8cc8ad2ce0f27bc8" kind="function"><name>GetConnectedBssid</name></member>
-    <member refid="classBaseWifi_1ab17695fd4b2f50230451d82ac8c746e4" kind="function"><name>SetPowerSave</name></member>
-    <member refid="classBaseWifi_1a0b1b27bfd6843ed21e3d9220ddaad908" kind="function"><name>GetPowerSave</name></member>
-    <member refid="classBaseWifi_1a46ce6ae5f1b9193941c1e3daaf88ae0c" kind="function"><name>RegisterEventCallback</name></member>
-    <member refid="classBaseWifi_1a6b722385f7ca418d40f17c853f1483b4" kind="function"><name>UnregisterEventCallback</name></member>
-    <member refid="classBaseWifi_1a87af382a1139b74961f048b094e60cb5" kind="function"><name>GetMacAddress</name></member>
-    <member refid="classBaseWifi_1aace6973de51aaa1b7157f15cf677f0f2" kind="function"><name>SetMacAddress</name></member>
-    <member refid="classBaseWifi_1a2b10843cc30b6e3aac4f81db0ab03cb0" kind="function"><name>GetChannel</name></member>
-    <member refid="classBaseWifi_1ab8b157a985ffb062418456b66d523f92" kind="function"><name>SetChannel</name></member>
+    <member refid="classBaseWifi_1a3ece5610228558420ddb84fe1045619d" kind="function"><name>~BaseWifi</name></member>
+    <member refid="classBaseWifi_1a7dcbf03e298b35c171d94dd753167603" kind="function"><name>Initialize</name></member>
+    <member refid="classBaseWifi_1aeaab55d675fbf45a1983933978136512" kind="function"><name>Deinitialize</name></member>
+    <member refid="classBaseWifi_1a4964418eea67a60db032ded6def5867e" kind="function"><name>IsInitialized</name></member>
+    <member refid="classBaseWifi_1a5f70dc5650c3ec118b167ff28d796ef2" kind="function"><name>SetMode</name></member>
+    <member refid="classBaseWifi_1a6aca0f4a9d018f2674210115953335e1" kind="function"><name>GetMode</name></member>
+    <member refid="classBaseWifi_1a7edf6961ded18919b607bb271527e617" kind="function"><name>ConfigureStation</name></member>
+    <member refid="classBaseWifi_1aafb382c35a7a955c4817a150eac99abe" kind="function"><name>Connect</name></member>
+    <member refid="classBaseWifi_1a67e69fdc5023cb59fcaf5769443c384a" kind="function"><name>Disconnect</name></member>
+    <member refid="classBaseWifi_1accff1c8c0f300e4d7c5fd9091bb8e68c" kind="function"><name>IsConnected</name></member>
+    <member refid="classBaseWifi_1a4a03d4ae5cae9731abda44ead5b1a740" kind="function"><name>GetRssi</name></member>
+    <member refid="classBaseWifi_1a21bae9b1ecfd52f3f20262eb67b6b8cc" kind="function"><name>GetIpInfo</name></member>
+    <member refid="classBaseWifi_1a6ab63d13615654924cfd13934d6d0c24" kind="function"><name>ConfigureAccessPoint</name></member>
+    <member refid="classBaseWifi_1a991becb698084ea2a2f808dd62608a9e" kind="function"><name>StartAccessPoint</name></member>
+    <member refid="classBaseWifi_1ac23900e794081ad63752108f36943fac" kind="function"><name>StopAccessPoint</name></member>
+    <member refid="classBaseWifi_1a55e73947f3b8b9171b6cc8f9eae32070" kind="function"><name>IsAccessPointActive</name></member>
+    <member refid="classBaseWifi_1ad3660009955722f75aff996acdfa6c03" kind="function"><name>GetConnectedStationCount</name></member>
+    <member refid="classBaseWifi_1a9aa96710ea88c9287acd7aa0135b2615" kind="function"><name>StartScan</name></member>
+    <member refid="classBaseWifi_1a171cdfdb4d87bae65d8c5642559ebcfc" kind="function"><name>GetScanResults</name></member>
+    <member refid="classBaseWifi_1a99c47f0dd5b537b221d09583de9462c5" kind="function"><name>IsScanning</name></member>
+    <member refid="classBaseWifi_1ac86631e9af130d8fb7e016b1650249e0" kind="function"><name>GetState</name></member>
+    <member refid="classBaseWifi_1a0e00e7224b68c1d450b3f359842f5352" kind="function"><name>GetConnectedSsid</name></member>
+    <member refid="classBaseWifi_1a1867093f6857b178292f6107a0799397" kind="function"><name>GetConnectedBssid</name></member>
+    <member refid="classBaseWifi_1a833f86dcbf72369e30120d1f86973086" kind="function"><name>SetPowerSave</name></member>
+    <member refid="classBaseWifi_1a231152b9b0c982d8a03ab4a8fdcbd09b" kind="function"><name>GetPowerSave</name></member>
+    <member refid="classBaseWifi_1a6233e0fedcc7df952c2716782644e1ad" kind="function"><name>RegisterEventCallback</name></member>
+    <member refid="classBaseWifi_1aedb321d904ff91a7b30a6a9fdd481903" kind="function"><name>UnregisterEventCallback</name></member>
+    <member refid="classBaseWifi_1a1bc97f10cc20824db4d2a71f5bd599e6" kind="function"><name>GetMacAddress</name></member>
+    <member refid="classBaseWifi_1a4000a9838ec51affceaea83fb8402c0c" kind="function"><name>SetMacAddress</name></member>
+    <member refid="classBaseWifi_1a3a5fb31b7b32ef15240c7d88b974b334" kind="function"><name>GetChannel</name></member>
+    <member refid="classBaseWifi_1aa79383d99aa5aa88a4802e8bd724dba7" kind="function"><name>SetChannel</name></member>
     <member refid="group__wifi_1gafde1b68efc0648ef58ccb0ee5d3d9644" kind="function"><name>GetErrorString</name></member>
     <member refid="classBaseWifi_1a150dc952c7f2336aa1ba5dbf53fe2f9d" kind="function"><name>BaseWifi</name></member>
     <member refid="classBaseWifi_1a850a025d5f7ddceaf6f8f551cde22cf2" kind="function"><name>BaseWifi</name></member>
@@ -616,7 +616,7 @@
     <member refid="structEspPwm_1_1ChannelState_1a57726643efaa3815f53a50595ada52fd" kind="variable"><name>priority</name></member>
     <member refid="structEspPwm_1_1ChannelState_1a8c101fbd0e7dcca25c6624ae98b12efa" kind="variable"><name>is_critical</name></member>
     <member refid="structEspPwm_1_1ChannelState_1a09ce373d96d3849a879fcfd622953997" kind="variable"><name>description</name></member>
-    <member refid="structEspPwm_1_1ChannelState_1a0159dc9f0dfbf6eef133aa27070a2b3c" kind="variable"><name>fade_callback</name></member>
+    <member refid="structEspPwm_1_1ChannelState_1ab5cc36c9cd4297730d6fd8e381e351b1" kind="variable"><name>fade_callback</name></member>
     <member refid="structEspPwm_1_1ChannelState_1a8607beb52006f48c76dd9c5fc7d532f0" kind="function"><name>ChannelState</name></member>
   </compound>
   <compound refid="structEspPwm_1_1ComplementaryPair" kind="struct"><name>EspPwm::ComplementaryPair</name>
@@ -780,62 +780,57 @@
     <member refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" kind="variable"><name>m_event_callback</name></member>
     <member refid="classEspBluetooth_1a18919e69523d667a5e3f47e992ab9816" kind="variable"><name>m_data_callback</name></member>
     <member refid="classEspBluetooth_1a7143aa7604d8fb3d70d2ce725fb888b9" kind="variable"><name>m_callback_context</name></member>
-    <member refid="classEspBluetooth_1a8b0f66e0b935be4f29c8a4a5aed6d652" kind="function"><name>InitializeBluedroid</name></member>
-    <member refid="classEspBluetooth_1a383a2fc753705da60c13eba177c13af1" kind="function"><name>DeinitializeBluedroid</name></member>
     <member refid="classEspBluetooth_1aba97116a09dbb885c55d3f503fe34433" kind="function"><name>TriggerEvent</name></member>
     <member refid="classEspBluetooth_1aa0686079fd72561fd9110e586c146649" kind="function"><name>ValidateAddress</name></member>
     <member refid="classEspBluetooth_1ac6ca2eab7f75aeb09e6a227dca39195b" kind="function"><name>AddressToString</name></member>
     <member refid="classEspBluetooth_1acb38ae9cbc07b03d365fdd11a9cd1180" kind="function"><name>StringToAddress</name></member>
-    <member refid="classEspBluetooth_1abc89b97fd26c1656561a6bb3b244cd90" kind="function"><name>GapEventHandler</name></member>
-    <member refid="classEspBluetooth_1a92edd646687b8897675cea649f6fcd68" kind="function"><name>GattcEventHandler</name></member>
-    <member refid="classEspBluetooth_1aaf3338ba2f2d3fd8c5d07607cccfc56c" kind="function"><name>GattsEventHandler</name></member>
     <member refid="classEspBluetooth_1a9cd95cb129e38d8f5fa2fe5cbef8f4c2" kind="function"><name>EspBluetooth</name></member>
     <member refid="classEspBluetooth_1ae72bc5e95c2e45a02f85ff8194b36842" kind="function"><name>~EspBluetooth</name></member>
-    <member refid="classEspBluetooth_1ad1b73541ee07d1797eb1ed151eb65799" kind="function"><name>Initialize</name></member>
-    <member refid="classEspBluetooth_1a2c2487161a2d769d6ee8aba326099c26" kind="function"><name>Deinitialize</name></member>
-    <member refid="classEspBluetooth_1a355b62ef036e3212dc888c72fc6ff503" kind="function"><name>IsInitialized</name></member>
-    <member refid="classEspBluetooth_1a1c8e9f1e44d21cc4ad5e789ee5f3dbce" kind="function"><name>Enable</name></member>
-    <member refid="classEspBluetooth_1a8aabdb4cdfcc466168664cecea0b5730" kind="function"><name>Disable</name></member>
-    <member refid="classEspBluetooth_1a39f39ac36e8cb1405d63e7df3f14c813" kind="function"><name>IsEnabled</name></member>
-    <member refid="classEspBluetooth_1a374d6abb835b46146f08fc112b95f3cc" kind="function"><name>SetMode</name></member>
-    <member refid="classEspBluetooth_1a786d4e2567bfcbe2f9df4f61e7a686ff" kind="function"><name>GetMode</name></member>
-    <member refid="classEspBluetooth_1aa0608e60d9a74a7fa7f8c5b49b155981" kind="function"><name>GetLocalAddress</name></member>
-    <member refid="classEspBluetooth_1a6e080c3c051d20db369a9a4947f97a34" kind="function"><name>SetDeviceName</name></member>
-    <member refid="classEspBluetooth_1a52323a4f04d001da2b506db298f651dd" kind="function"><name>GetDeviceName</name></member>
-    <member refid="classEspBluetooth_1aa6a8a49f8ba193ca87faed9686dc45e8" kind="function"><name>StartScan</name></member>
-    <member refid="classEspBluetooth_1a5b00eaad02fa60c18ad8f9553bb4a180" kind="function"><name>StopScan</name></member>
-    <member refid="classEspBluetooth_1aba032c11551997dca218bd8162a44f8b" kind="function"><name>IsScanning</name></member>
-    <member refid="classEspBluetooth_1a4bfb7b848bb93452373e060d5748a436" kind="function"><name>GetDiscoveredDevices</name></member>
-    <member refid="classEspBluetooth_1a8461a03c45119319321f6a391a0a5135" kind="function"><name>ClearDiscoveredDevices</name></member>
-    <member refid="classEspBluetooth_1a2d3ee543b288d47f005555a6297f784e" kind="function"><name>StartAdvertising</name></member>
-    <member refid="classEspBluetooth_1a5599daf444f735cf9d68492d9b4ef765" kind="function"><name>StopAdvertising</name></member>
-    <member refid="classEspBluetooth_1af08b9be8919f12f20a1ec975f69cd8bd" kind="function"><name>IsAdvertising</name></member>
-    <member refid="classEspBluetooth_1a409cc44a82b415ff5abc311aef9ed165" kind="function"><name>Connect</name></member>
-    <member refid="classEspBluetooth_1a1737908361424529d735fdfbe552b6f7" kind="function"><name>Disconnect</name></member>
-    <member refid="classEspBluetooth_1ae96a09bbf25506f65e49b71ef0fb4bbb" kind="function"><name>IsConnected</name></member>
-    <member refid="classEspBluetooth_1a00f5c601bce68d612ecbd8cc0bb3d78b" kind="function"><name>GetConnectedDevices</name></member>
-    <member refid="classEspBluetooth_1aad54e4f2b9434ea7f84cfdfa392d9141" kind="function"><name>Pair</name></member>
-    <member refid="classEspBluetooth_1a73de0eb96a8261c23e7d21862535d4c9" kind="function"><name>Unpair</name></member>
-    <member refid="classEspBluetooth_1a0fb00e110f247ed8a86bd7c7a0885dd9" kind="function"><name>IsPaired</name></member>
-    <member refid="classEspBluetooth_1ab8d945185adbccb25093f59f758cd8f3" kind="function"><name>SendData</name></member>
-    <member refid="classEspBluetooth_1a49346d4f535119cfdf1c7a44592e2ec0" kind="function"><name>GetAvailableData</name></member>
-    <member refid="classEspBluetooth_1a372f9249278b7aa12070aa908c9f224b" kind="function"><name>ReadData</name></member>
-    <member refid="classEspBluetooth_1aeb84527d0adb3262fef210ce29c9a84e" kind="function"><name>DiscoverServices</name></member>
-    <member refid="classEspBluetooth_1a04191edbe3f209b1ec4d20c359e0943d" kind="function"><name>DiscoverCharacteristics</name></member>
-    <member refid="classEspBluetooth_1ad6fd71931ee339bdb4a66e2837dc6983" kind="function"><name>ReadCharacteristic</name></member>
-    <member refid="classEspBluetooth_1a6cd33f01012e6db7e1f340c516f9521f" kind="function"><name>WriteCharacteristic</name></member>
-    <member refid="classEspBluetooth_1acb1256113dabf1b44584bf34c25c7574" kind="function"><name>SubscribeCharacteristic</name></member>
-    <member refid="classEspBluetooth_1a900bdf9f92cd5bc4259d2360171f9cf4" kind="function"><name>GetState</name></member>
-    <member refid="classEspBluetooth_1a9090b878e33958b109e5b53af48308fa" kind="function"><name>GetRssi</name></member>
-    <member refid="classEspBluetooth_1a20201cde03378f0f1bad5ee9c0899ae6" kind="function"><name>RegisterEventCallback</name></member>
-    <member refid="classEspBluetooth_1afe72fcb5f77f9183c803144a480ecdad" kind="function"><name>RegisterDataCallback</name></member>
-    <member refid="classEspBluetooth_1a90f435461e1114cfd01b9091c88ffa47" kind="function"><name>UnregisterEventCallback</name></member>
-    <member refid="classEspBluetooth_1af84094c238583d06251f4fb7c5aee803" kind="function"><name>UnregisterDataCallback</name></member>
-    <member refid="classEspBluetooth_1aa86e9aaf05af6672d9c68408e9039dde" kind="function"><name>ConfigureClassic</name></member>
-    <member refid="classEspBluetooth_1a9b4ed0a4e8fadcc14b2bbd99fd302034" kind="function"><name>SetDiscoverable</name></member>
-    <member refid="classEspBluetooth_1aea05b74fe7af2a8cfc7ebc9b9d23525a" kind="function"><name>IsDiscoverable</name></member>
-    <member refid="classEspBluetooth_1a21f34c8693086a3ff6a522be67e45394" kind="function"><name>ConfigureBle</name></member>
-    <member refid="classEspBluetooth_1a71ed4973e6db54cf9b3a22a96f66f4e8" kind="function"><name>GetPairedDevices</name></member>
+    <member refid="classEspBluetooth_1afd8bea96514732371c58be26a3b44747" kind="function"><name>Initialize</name></member>
+    <member refid="classEspBluetooth_1a4074f5333e5612a4af439a278891e05d" kind="function"><name>Deinitialize</name></member>
+    <member refid="classEspBluetooth_1a3614348f32fdffd9ecafc94609c13c7d" kind="function"><name>IsInitialized</name></member>
+    <member refid="classEspBluetooth_1a98ea9a7262bf49c703156f478b82c122" kind="function"><name>Enable</name></member>
+    <member refid="classEspBluetooth_1a4a38102299b8c7de84b23dc1f84b892b" kind="function"><name>Disable</name></member>
+    <member refid="classEspBluetooth_1a8dbe05f9ae739562f8d79017c6a2613a" kind="function"><name>IsEnabled</name></member>
+    <member refid="classEspBluetooth_1a52735f7b1bbb0b3736c0dcb4c1a6e1a0" kind="function"><name>SetMode</name></member>
+    <member refid="classEspBluetooth_1a6c139c76f416d0ee82b050613521beb8" kind="function"><name>GetMode</name></member>
+    <member refid="classEspBluetooth_1a302917757fb9ec1c7c9499bd672a9859" kind="function"><name>GetLocalAddress</name></member>
+    <member refid="classEspBluetooth_1a4d7f45a579ce77fd3d19ea5bd1b8ac15" kind="function"><name>SetDeviceName</name></member>
+    <member refid="classEspBluetooth_1a62271ef1873ae263b2046a0445d077da" kind="function"><name>GetDeviceName</name></member>
+    <member refid="classEspBluetooth_1a5ae28ad6c3af195ad97eea9cac4096c3" kind="function"><name>StartScan</name></member>
+    <member refid="classEspBluetooth_1a492b094f5ed477aa73f40395771df35d" kind="function"><name>StopScan</name></member>
+    <member refid="classEspBluetooth_1ac5fa0f11be5c7e1e5194ecc12818251b" kind="function"><name>IsScanning</name></member>
+    <member refid="classEspBluetooth_1a8d5405c42ed4af6c74bdaa487f8a238e" kind="function"><name>GetDiscoveredDevices</name></member>
+    <member refid="classEspBluetooth_1a47e325ffa5b21fbc275e7d03e0da391f" kind="function"><name>ClearDiscoveredDevices</name></member>
+    <member refid="classEspBluetooth_1a05a308e2fb973a28ea7e24a62e59dd6c" kind="function"><name>StartAdvertising</name></member>
+    <member refid="classEspBluetooth_1a0b1a24c6ce5b17f1f29de6a2d81dad37" kind="function"><name>StopAdvertising</name></member>
+    <member refid="classEspBluetooth_1acf0cc8ea815792cff6cf2be61c819ed3" kind="function"><name>IsAdvertising</name></member>
+    <member refid="classEspBluetooth_1a95b4099eb2de6b28976c36a3344e85f4" kind="function"><name>Connect</name></member>
+    <member refid="classEspBluetooth_1a348bebc38b00b6c0e47c2b12bf856d60" kind="function"><name>Disconnect</name></member>
+    <member refid="classEspBluetooth_1adbcf453657dd1c372bc45c9e0cca302a" kind="function"><name>IsConnected</name></member>
+    <member refid="classEspBluetooth_1a157e5082fb3aae39dbdcabcae0c0042b" kind="function"><name>GetConnectedDevices</name></member>
+    <member refid="classEspBluetooth_1a1fdeba3ee4d28fce11a530e058fe46c2" kind="function"><name>Pair</name></member>
+    <member refid="classEspBluetooth_1ae61bc8f3f2201767874379c1671adec0" kind="function"><name>Unpair</name></member>
+    <member refid="classEspBluetooth_1acdf4674571e946491fc166e0f6cfeee8" kind="function"><name>IsPaired</name></member>
+    <member refid="classEspBluetooth_1a58b807e84ea7ad6634530fb83f410750" kind="function"><name>SendData</name></member>
+    <member refid="classEspBluetooth_1ad9b72feec623b72121fd7dc903980205" kind="function"><name>GetAvailableData</name></member>
+    <member refid="classEspBluetooth_1a2d606a628a2d01182eb1e268a3d3ec8a" kind="function"><name>ReadData</name></member>
+    <member refid="classEspBluetooth_1a1a20a5079a33372536b771e1689e7cf9" kind="function"><name>DiscoverServices</name></member>
+    <member refid="classEspBluetooth_1a89528b9dbb1a5660e1c607c5ff518f8a" kind="function"><name>DiscoverCharacteristics</name></member>
+    <member refid="classEspBluetooth_1a4d4f13f2b7cf499284a2095b088a9cfd" kind="function"><name>ReadCharacteristic</name></member>
+    <member refid="classEspBluetooth_1afd3cd517a0c8cb03fdeb90343a761eed" kind="function"><name>WriteCharacteristic</name></member>
+    <member refid="classEspBluetooth_1a323dcb58fb5d65901378cdee70e8a2b8" kind="function"><name>SubscribeCharacteristic</name></member>
+    <member refid="classEspBluetooth_1acae7ac63df21a71a53b65de3a3693a29" kind="function"><name>GetState</name></member>
+    <member refid="classEspBluetooth_1ad59ff6490e87be4dfa9f1191e402fd2b" kind="function"><name>GetRssi</name></member>
+    <member refid="classEspBluetooth_1a137a8a03227be55f429a09a8e1da2757" kind="function"><name>RegisterEventCallback</name></member>
+    <member refid="classEspBluetooth_1addfcf15e96b15910af24de8870f0b2cb" kind="function"><name>RegisterDataCallback</name></member>
+    <member refid="classEspBluetooth_1a35e79432888a19309a9cf8329c24b504" kind="function"><name>UnregisterEventCallback</name></member>
+    <member refid="classEspBluetooth_1a91c92be8ddf002f304fe598c2edc7758" kind="function"><name>UnregisterDataCallback</name></member>
+    <member refid="classEspBluetooth_1aff74b61fc7cc7ec7da326cadbc2774d7" kind="function"><name>ConfigureClassic</name></member>
+    <member refid="classEspBluetooth_1ad7672c3765524c2f179cd7b127ab708f" kind="function"><name>SetDiscoverable</name></member>
+    <member refid="classEspBluetooth_1a37a10b193de4105734f148a7d8cd9c26" kind="function"><name>IsDiscoverable</name></member>
+    <member refid="classEspBluetooth_1a29df037a2e0bb46a29bde4a4ed589e89" kind="function"><name>ConfigureBle</name></member>
+    <member refid="classEspBluetooth_1a1964d48b1acd5eccce38da02166e7d90" kind="function"><name>GetPairedDevices</name></member>
     <member refid="classEspBluetooth_1aea62727908de168c5694694596b3bc04" kind="function"><name>GetImplementationInfo</name></member>
     <member refid="classEspBluetooth_1a25a1cdbecb847dbd24b65d83642bd90a" kind="function"><name>GetSupportedFeatures</name></member>
   </compound>
@@ -1105,7 +1100,7 @@
     <member refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kind="variable"><name>config_</name></member>
     <member refid="classEspLogger_1ad943622faa174b6c4f44ced1527e3927" kind="variable"><name>statistics_</name></member>
     <member refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kind="variable"><name>diagnostics_</name></member>
-    <member refid="classEspLogger_1a390db49b839f78cf444e96391a5d1967" kind="variable"><name>tag_levels_</name></member>
+    <member refid="classEspLogger_1ac517102fc069ee19de9157f0fb217fdb" kind="variable"><name>tag_levels_</name></member>
     <member refid="classEspLogger_1a1414db646e36b29340503445ad287296" kind="variable"><name>message_buffer_</name></member>
     <member refid="classEspLogger_1ac775294d58bc741c7a5b4796b2b0d292" kind="variable"><name>last_error_</name></member>
     <member refid="classEspLogger_1a9a4ef83b3e2e9beedeb847a207cb5880" kind="variable"><name>last_error_message_</name></member>
@@ -1346,7 +1341,7 @@
     <member refid="classEspPwm_1a7cf9c46011b383820a588a9f153dfc52" kind="function"><name>GetChannelStatus</name></member>
     <member refid="classEspPwm_1af92695b9e07458d6280489d1ce3d8bdd" kind="function"><name>GetCapabilities</name></member>
     <member refid="classEspPwm_1a1e5a6eaafc83ba4ac56718fcded72d81" kind="function"><name>GetLastError</name></member>
-    <member refid="classEspPwm_1a543f85cebac06d91b5ac4fe7d6f325d6" kind="function"><name>SetChannelFadeCallback</name></member>
+    <member refid="classEspPwm_1a1260137483dff53307d01592d2df624f" kind="function"><name>SetChannelFadeCallback</name></member>
     <member refid="classEspPwm_1a9fb67c853d1d7d042a047fbc22ae67c5" kind="function"><name>SetHardwareFade</name></member>
     <member refid="classEspPwm_1ab3d06a21a6eda6c081f660895d81bbb1" kind="function"><name>StopHardwareFade</name></member>
     <member refid="classEspPwm_1a7006101d1efdbfa70c2b65604ded7b85" kind="function"><name>IsFadeActive</name></member>
@@ -1624,36 +1619,36 @@
     <member refid="classEspWifi_1a54eddd362c8341bba3715f70a68dbd86" kind="variable"><name>m_mesh_active</name></member>
     <member refid="classEspWifi_1aa2ad725cf4b8c9880a6a2649f75ccbd4" kind="function"><name>EspWifi</name></member>
     <member refid="classEspWifi_1ad68fd60e9409c00ca010c613b97885ac" kind="function"><name>~EspWifi</name></member>
-    <member refid="classEspWifi_1aba6a1fd280dbcd23fee9281eaaef7a20" kind="function"><name>Initialize</name></member>
-    <member refid="classEspWifi_1a08a5f89824b7d4f845cecabc4278f356" kind="function"><name>Deinitialize</name></member>
-    <member refid="classEspWifi_1a8ac15d4e7a8156eafa7b2850495c3083" kind="function"><name>IsInitialized</name></member>
-    <member refid="classEspWifi_1ad572aec1ea4575004b5639a386948c04" kind="function"><name>SetMode</name></member>
-    <member refid="classEspWifi_1a916f331fe7258222a58f213dec3e3a0b" kind="function"><name>GetMode</name></member>
-    <member refid="classEspWifi_1af9d85df22e5b2f7f0e4a9f083a68e27b" kind="function"><name>ConfigureStation</name></member>
-    <member refid="classEspWifi_1ac4dc5a2ff0d3699cb5dfc7dabe2e4522" kind="function"><name>Connect</name></member>
-    <member refid="classEspWifi_1af8511154338b1285cb386ba2cde71158" kind="function"><name>Disconnect</name></member>
-    <member refid="classEspWifi_1ae3418e13e9da9cbe0b0b68656233847a" kind="function"><name>IsConnected</name></member>
-    <member refid="classEspWifi_1accc189589995ac17cd27a9ba60d63c9a" kind="function"><name>GetRssi</name></member>
-    <member refid="classEspWifi_1a91b02d2cc3f0a1bc3a93bef5ac1767f0" kind="function"><name>GetIpInfo</name></member>
-    <member refid="classEspWifi_1a2a2b0ecff30d6d953da490565c8ca0b9" kind="function"><name>ConfigureAccessPoint</name></member>
-    <member refid="classEspWifi_1a1f140a31ef650411478818c285aef64b" kind="function"><name>StartAccessPoint</name></member>
-    <member refid="classEspWifi_1aeec25630ed35de561df39b358418e566" kind="function"><name>StopAccessPoint</name></member>
-    <member refid="classEspWifi_1a5a1d456000d644dfd8282673ba4f5009" kind="function"><name>IsAccessPointActive</name></member>
-    <member refid="classEspWifi_1abf1bc4660bcef2ae9d213b5f93f3ca8c" kind="function"><name>GetConnectedStationCount</name></member>
-    <member refid="classEspWifi_1af8eb0906128aeb938eb5822a910d7d63" kind="function"><name>StartScan</name></member>
-    <member refid="classEspWifi_1a5397db2984b1531639511dee9c013a9f" kind="function"><name>GetScanResults</name></member>
-    <member refid="classEspWifi_1a43e97cdf4af2c05b2e68031add87d782" kind="function"><name>IsScanning</name></member>
-    <member refid="classEspWifi_1abaa4ac07b9ef057964dfd07dd2948e47" kind="function"><name>GetState</name></member>
-    <member refid="classEspWifi_1af65c3becf925791207bc7333be78d3ef" kind="function"><name>GetConnectedSsid</name></member>
-    <member refid="classEspWifi_1ac35856636ff6281693e9ce57dc13d162" kind="function"><name>GetConnectedBssid</name></member>
-    <member refid="classEspWifi_1a3d22fc24922e5e4d08531fdeaacfe371" kind="function"><name>SetPowerSave</name></member>
-    <member refid="classEspWifi_1acc350fad8c7d5563b6dcff4fdbc3c8a6" kind="function"><name>GetPowerSave</name></member>
-    <member refid="classEspWifi_1a3fb1805a09d9f9ff00bd15a9af693d88" kind="function"><name>RegisterEventCallback</name></member>
-    <member refid="classEspWifi_1a9cd11cd1acebc5455ca6b7357987daa9" kind="function"><name>UnregisterEventCallback</name></member>
-    <member refid="classEspWifi_1a98c82d71b4bf54dfaa20c305fae750d2" kind="function"><name>GetMacAddress</name></member>
-    <member refid="classEspWifi_1a91ddbfd6b2f471e1ed5329ad32833401" kind="function"><name>SetMacAddress</name></member>
-    <member refid="classEspWifi_1a3807a44527938991f110f33e70ab0caa" kind="function"><name>GetChannel</name></member>
-    <member refid="classEspWifi_1aa24463dc5e86cc6c851044213ce711d3" kind="function"><name>SetChannel</name></member>
+    <member refid="classEspWifi_1a4739eb071f6852d7013458c45494e6ca" kind="function"><name>Initialize</name></member>
+    <member refid="classEspWifi_1ac97375ee76c569f3c121464bcd891462" kind="function"><name>Deinitialize</name></member>
+    <member refid="classEspWifi_1adc3d8d89148cf2eb1814d1170df8769d" kind="function"><name>IsInitialized</name></member>
+    <member refid="classEspWifi_1a661961c515743640072b1e1002438610" kind="function"><name>SetMode</name></member>
+    <member refid="classEspWifi_1a4ed8be700f5167def252ec9c59b48f71" kind="function"><name>GetMode</name></member>
+    <member refid="classEspWifi_1a7e332cf059c274f217c66637c7670e80" kind="function"><name>ConfigureStation</name></member>
+    <member refid="classEspWifi_1a32c2b5e2a1fe51ee264e2b439dc11911" kind="function"><name>Connect</name></member>
+    <member refid="classEspWifi_1a23b7c4332258ddf8e390e28fda9f781c" kind="function"><name>Disconnect</name></member>
+    <member refid="classEspWifi_1a1acc04aee004b91ba8329c43d3ba8f09" kind="function"><name>IsConnected</name></member>
+    <member refid="classEspWifi_1aaa1f6c1334ff7cdfcfe3c42b4610ef4a" kind="function"><name>GetRssi</name></member>
+    <member refid="classEspWifi_1afce7893e0f0b8a91cdc080d03a6394a7" kind="function"><name>GetIpInfo</name></member>
+    <member refid="classEspWifi_1a723c96c78ce26eaf2574569778b02037" kind="function"><name>ConfigureAccessPoint</name></member>
+    <member refid="classEspWifi_1a6675c88804049307415424d9f37f8c9e" kind="function"><name>StartAccessPoint</name></member>
+    <member refid="classEspWifi_1ada59d1e26730024d5aec32ff04c4b351" kind="function"><name>StopAccessPoint</name></member>
+    <member refid="classEspWifi_1a1d267eba2944b8e911c10897ce953e92" kind="function"><name>IsAccessPointActive</name></member>
+    <member refid="classEspWifi_1a937edac1c632616c615df47e88c62efd" kind="function"><name>GetConnectedStationCount</name></member>
+    <member refid="classEspWifi_1a09181f6382ed6d42797b652cacf8be5e" kind="function"><name>StartScan</name></member>
+    <member refid="classEspWifi_1adb271e342e2bb2a6f823b2ed79232c5a" kind="function"><name>GetScanResults</name></member>
+    <member refid="classEspWifi_1a8ef0a3c1147e6de6e06ebead18de288d" kind="function"><name>IsScanning</name></member>
+    <member refid="classEspWifi_1ab6dcbf4805a1091cd0d317f5b7046c25" kind="function"><name>GetState</name></member>
+    <member refid="classEspWifi_1ac55ce93c135b56d2a5ba7826c2563a1d" kind="function"><name>GetConnectedSsid</name></member>
+    <member refid="classEspWifi_1aa3dbcac838731cd2cedee82c5a046bf0" kind="function"><name>GetConnectedBssid</name></member>
+    <member refid="classEspWifi_1abc2b87f78fb769ad1a6cbf653bbb6ff8" kind="function"><name>SetPowerSave</name></member>
+    <member refid="classEspWifi_1ab99c2470f6d2b38a8da263c72a112440" kind="function"><name>GetPowerSave</name></member>
+    <member refid="classEspWifi_1a14161044786f3cc1f58a7c37582a67fa" kind="function"><name>RegisterEventCallback</name></member>
+    <member refid="classEspWifi_1a78c4c8eb576df747e478bb663365b593" kind="function"><name>UnregisterEventCallback</name></member>
+    <member refid="classEspWifi_1a360cec168e895a34b8e0435dbb60097c" kind="function"><name>GetMacAddress</name></member>
+    <member refid="classEspWifi_1a17b9ce5961c9e8cab2eb5057b881ac27" kind="function"><name>SetMacAddress</name></member>
+    <member refid="classEspWifi_1a7cf0530f49174b55d7c5f3180a24e917" kind="function"><name>GetChannel</name></member>
+    <member refid="classEspWifi_1a5b8740b211b5cc982dd341a3a3cf5e5b" kind="function"><name>SetChannel</name></member>
     <member refid="classEspWifi_1a14f566033c19a84722983c1d5888cf4d" kind="function"><name>SetAdvancedConfig</name></member>
     <member refid="classEspWifi_1a74e97d6fb2a28c6af5b73a27977c5789" kind="function"><name>GetAdvancedConfig</name></member>
     <member refid="classEspWifi_1a3358bcb3cae09e022d3343eff09f69b2" kind="function"><name>EnableWpa3Transition</name></member>
@@ -3867,8 +3862,8 @@
     <member refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbac6826689e9756b15d3cad7f54cb66d07" kind="enumvalue"><name>CAN_ERR_NOT_SUPPORTED</name></member>
     <member refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba5cdbb5419c40397c56ccb9d73280e195" kind="enumvalue"><name>CAN_ERR_TIMEOUT_ALT</name></member>
     <member refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbab4eeeb07445d3a8b82156680fb9b1839" kind="enumvalue"><name>CAN_ERR_UNKNOWN</name></member>
-    <member refid="BaseCan_8h_1af02a5addf5896402a59198a9d8295e40" kind="typedef"><name>hf_can_receive_callback_t</name></member>
-    <member refid="BaseCan_8h_1a5cf16e5a5639a262f899cde995da6f45" kind="typedef"><name>hf_can_fd_receive_callback_t</name></member>
+    <member refid="BaseCan_8h_1a3581a1b02d6350ac14ca81b7c60cdc6f" kind="typedef"><name>hf_can_receive_callback_t</name></member>
+    <member refid="BaseCan_8h_1ac243f46599a2b6bfb5fc822017e3e051" kind="typedef"><name>hf_can_fd_receive_callback_t</name></member>
     <member refid="BaseCan_8h_1a1d3c90f8b197e4b5e443d83173e29814" kind="function"><name>HfCanErrToString</name></member>
   </compound>
   <compound refid="BaseGpio_8h" kind="file"><name>BaseGpio.h</name>
@@ -3883,7 +3878,7 @@
     <member refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kind="enum"><name>hf_gpio_output_mode_t</name></member>
     <member refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kind="enum"><name>hf_gpio_pull_mode_t</name></member>
     <member refid="group__gpio_1ga7830c017a6fb46b8478c7ca44940c3c1" kind="enum"><name>hf_gpio_interrupt_trigger_t</name></member>
-    <member refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kind="typedef"><name>InterruptCallback</name></member>
+    <member refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kind="typedef"><name>InterruptCallback</name></member>
     <member refid="group__gpio_1gafc39fe16e57bc415f05e1f8bf7c4e0be" kind="function"><name>HfGpioErrToString</name></member>
   </compound>
   <compound refid="BaseI2c_8h" kind="file"><name>BaseI2c.h</name>
@@ -4034,7 +4029,7 @@
     <member refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa4176a993094d0e534b9ee9f590acb9fb" kind="enumvalue"><name>TIMER_ERR_UNSUPPORTED_OPERATION</name></member>
     <member refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59aa82f7733bd9acc0ee5e6c57d0ef305b43" kind="enumvalue"><name>TIMER_ERR_UNKNOWN</name></member>
     <member refid="BasePeriodicTimer_8h_1aeb396ad1ef3b4a08174b33b0a6290c24" kind="typedef"><name>hf_timestamp_us_t</name></member>
-    <member refid="BasePeriodicTimer_8h_1af39d5f0d35241a03d7589feda9692321" kind="typedef"><name>hf_timer_callback_t</name></member>
+    <member refid="BasePeriodicTimer_8h_1a40c3b2f30d4492b879e2939cd3ac713d" kind="typedef"><name>hf_timer_callback_t</name></member>
     <member refid="BasePeriodicTimer_8h_1a98f3bcaddfb845b86bca4bc52553d1bb" kind="function"><name>HfTimerErrToString</name></member>
   </compound>
   <compound refid="BasePio_8h" kind="file"><name>BasePio.h</name>
@@ -4085,9 +4080,9 @@
     <member refid="BasePio_8h_1a02b6bae442f0d51dc564797653b8c8e1" kind="enum"><name>hf_pio_idle_state_t</name></member>
     <member refid="BasePio_8h_1a02b6bae442f0d51dc564797653b8c8e1a28d0edd045e05cf5af64e35ae0c4c6ef" kind="enumvalue"><name>Low</name></member>
     <member refid="BasePio_8h_1a02b6bae442f0d51dc564797653b8c8e1a655d20c1ca69519ca647684edbb2db35" kind="enumvalue"><name>High</name></member>
-    <member refid="BasePio_8h_1ab8c62aa676888a6756a3ea726b24d64c" kind="typedef"><name>hf_pio_transmit_callback_t</name></member>
-    <member refid="BasePio_8h_1a8e55d16268bbfd30ee876df3ee4561ed" kind="typedef"><name>hf_pio_receive_callback_t</name></member>
-    <member refid="BasePio_8h_1a03aa7b5372a89dbdf0770488fbb6f824" kind="typedef"><name>hf_pio_error_callback_t</name></member>
+    <member refid="BasePio_8h_1afe89b7df6613717bc40b3d9ec87ee89a" kind="typedef"><name>hf_pio_transmit_callback_t</name></member>
+    <member refid="BasePio_8h_1ab3c84107f96800c1d8c45464040a5b0a" kind="typedef"><name>hf_pio_receive_callback_t</name></member>
+    <member refid="BasePio_8h_1ae4f0c3580aa320f9259c2ab55d864e5f" kind="typedef"><name>hf_pio_error_callback_t</name></member>
     <member refid="BasePio_8h_1afa32915af9092629b0ba65ed35e67f52" kind="function"><name>HfPioErrToString</name></member>
   </compound>
   <compound refid="BasePwm_8h" kind="file"><name>BasePwm.h</name>
@@ -4123,8 +4118,8 @@
     <member refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ad048800a3c1f8206c1e122ae9e5818ba" kind="enumvalue"><name>PWM_ERR_UNSUPPORTED_OPERATION</name></member>
     <member refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a756fff9a877d2b55fc46078413b803b7" kind="enumvalue"><name>PWM_ERR_UNKNOWN</name></member>
     <member refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ac55cef30e082b4dffa79a5772b689283" kind="enumvalue"><name>PWM_ERR_COUNT</name></member>
-    <member refid="BasePwm_8h_1a945db454a91740660bc4e6a68e4c4136" kind="typedef"><name>hf_pwm_period_callback_t</name></member>
-    <member refid="BasePwm_8h_1a163caf8da7d3569fee40d394f35d4ffe" kind="typedef"><name>hf_pwm_fault_callback_t</name></member>
+    <member refid="BasePwm_8h_1adb273791d1d4361b7c371e55f6a75aca" kind="typedef"><name>hf_pwm_period_callback_t</name></member>
+    <member refid="BasePwm_8h_1a1626bf1d31d413583a518dba7dd8a663" kind="typedef"><name>hf_pwm_fault_callback_t</name></member>
     <member refid="BasePwm_8h_1ad8292f4a3edf6781ea0e0eccb6ef07d0" kind="function"><name>HfPwmErrToString</name></member>
   </compound>
   <compound refid="BaseSpi_8h" kind="file"><name>BaseSpi.h</name>
@@ -4260,9 +4255,9 @@
     <member refid="BaseTemperature_8h_1a5bfe096967aceddcf8232f8c4458b2cba2f0a8fd350a80bb35886d324e809df76" kind="enumvalue"><name>HF_TEMP_CAP_ALARM_OUTPUT</name></member>
     <member refid="BaseTemperature_8h_1a5bfe096967aceddcf8232f8c4458b2cba3fcf3db4c058bb67cbebd19cf3f06950" kind="enumvalue"><name>HF_TEMP_CAP_HIGH_PRECISION</name></member>
     <member refid="BaseTemperature_8h_1a5bfe096967aceddcf8232f8c4458b2cba729a27c3f5f164d8149107938885e694" kind="enumvalue"><name>HF_TEMP_CAP_FAST_RESPONSE</name></member>
-    <member refid="BaseTemperature_8h_1a2672848972ed3dbd28859299c8862f6b" kind="typedef"><name>hf_temp_threshold_callback_t</name></member>
-    <member refid="BaseTemperature_8h_1ab15b84e22c00839c9e87a3f363efae2d" kind="typedef"><name>hf_temp_reading_callback_t</name></member>
-    <member refid="BaseTemperature_8h_1a41cbc88dcb70288864ccbccba375fce7" kind="typedef"><name>hf_temp_error_callback_t</name></member>
+    <member refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kind="typedef"><name>hf_temp_threshold_callback_t</name></member>
+    <member refid="BaseTemperature_8h_1ad737845bbb5b213ca89ccac3902fd112" kind="typedef"><name>hf_temp_reading_callback_t</name></member>
+    <member refid="BaseTemperature_8h_1a9c5c6d7251a66d58f0768729eab24821" kind="typedef"><name>hf_temp_error_callback_t</name></member>
     <member refid="BaseTemperature_8h_1a5c4c3ef28b07964288c304c042b13671" kind="function"><name>HfTempErrToString</name></member>
     <member refid="BaseTemperature_8h_1a267cc85b0dbf5006670db21b9e4410dc" kind="function"><name>IsTempInRange</name></member>
   </compound>
@@ -4408,13 +4403,14 @@
     <member refid="EspBluetooth_8h_1ae29045ac7c9bbf406e03226dd9c36cbb" kind="define"><name>HAS_NIMBLE_SUPPORT</name></member>
     <member refid="EspBluetooth_8h_1a5e3d4a9ebca2766708769c6f2b857f42" kind="define"><name>HAS_BLUEDROID_SUPPORT</name></member>
     <member refid="EspBluetooth_8h_1a706379c09a6d581a67862ffb30b056f6" kind="define"><name>NIMBLE_HEADERS_AVAILABLE</name></member>
+    <member refid="EspBluetooth_8h_1a00271c60b092271e35031c49445e1cf7" kind="define"><name>BLUEDROID_HEADERS_AVAILABLE</name></member>
     <member refid="EspBluetooth_8h_1a8da2e7c2b2afc10dd6d8efb358926bbb" kind="typedef"><name>EspBluetoothImpl</name></member>
   </compound>
   <compound refid="EspCan_8h" kind="file"><name>EspCan.h</name>
-    <member refid="EspCan_8h_1a0e8e52e37edef4bfc2e4f874a7df1941" kind="typedef"><name>hf_esp_can_receive_callback_t</name></member>
-    <member refid="EspCan_8h_1acbb56c4f56595294590c3be9410d82a0" kind="typedef"><name>hf_esp_can_error_callback_t</name></member>
-    <member refid="EspCan_8h_1ae36d9a7ad18ade3236d00009ecb1e76c" kind="typedef"><name>hf_esp_can_state_callback_t</name></member>
-    <member refid="EspCan_8h_1a07391fe28e5afa137b9a93f038ae2827" kind="typedef"><name>hf_esp_can_tx_callback_t</name></member>
+    <member refid="EspCan_8h_1a837c184d4539ef6fd1a61acdb66f7149" kind="typedef"><name>hf_esp_can_receive_callback_t</name></member>
+    <member refid="EspCan_8h_1a076a16ddd28094881c20009e0617cdaa" kind="typedef"><name>hf_esp_can_error_callback_t</name></member>
+    <member refid="EspCan_8h_1a825b77c282f2132954ab50789a51a98b" kind="typedef"><name>hf_esp_can_state_callback_t</name></member>
+    <member refid="EspCan_8h_1aeb3672dcbe405ded46e6f974338ed765" kind="typedef"><name>hf_esp_can_tx_callback_t</name></member>
   </compound>
   <compound refid="EspGpio_8h" kind="file"><name>EspGpio.h</name>
   </compound>
@@ -4692,8 +4688,8 @@
     <member refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kind="enum"><name>hf_i2c_mode_t</name></member>
     <member refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbba6463b28dbace94d94503d1dd60bf07cf" kind="enumvalue"><name>HF_I2C_MODE_SYNC</name></member>
     <member refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbbae6ff80d90aa0fbb908f1c8284ee704eb" kind="enumvalue"><name>HF_I2C_MODE_ASYNC</name></member>
-    <member refid="EspTypes__I2C_8h_1ab3a6dbdba186b26abd9d9960f42673e7" kind="typedef"><name>hf_i2c_async_callback_t</name></member>
-    <member refid="EspTypes__I2C_8h_1a6b29190914045a542e26b5cd05909dd9" kind="typedef"><name>hf_i2c_event_callback_t</name></member>
+    <member refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kind="typedef"><name>hf_i2c_async_callback_t</name></member>
+    <member refid="EspTypes__I2C_8h_1a85a7ffc558f186fa35e7bc947d005616" kind="typedef"><name>hf_i2c_event_callback_t</name></member>
     <member refid="EspTypes__I2C_8h_1a4e747434972fc730bde1579d45439efb" kind="variable"><name>HF_I2C_MAX_PORTS</name></member>
     <member refid="EspTypes__I2C_8h_1ab4b8385b1568cd0bfe3a3cde6ae5ec8e" kind="variable"><name>HF_I2C_MAX_FREQ_HZ</name></member>
     <member refid="EspTypes__I2C_8h_1a7afb32334d2c435eb6c4291ead122472" kind="variable"><name>HF_I2C_MIN_FREQ_HZ</name></member>
@@ -5273,7 +5269,7 @@
     <member refid="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1a09801f149bee7cb99caad5d5e649abc3" kind="enumvalue"><name>HF_GPIO_INTERRUPT_TRIGGER_BOTH_EDGES</name></member>
     <member refid="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1adea2885dba61754e32fed0ce5e6657c6" kind="enumvalue"><name>HF_GPIO_INTERRUPT_TRIGGER_LOW_LEVEL</name></member>
     <member refid="group__gpio_1gga7830c017a6fb46b8478c7ca44940c3c1a5e5303d5ffc82721bd4158217156dde0" kind="enumvalue"><name>HF_GPIO_INTERRUPT_TRIGGER_HIGH_LEVEL</name></member>
-    <member refid="group__gpio_1ga1327f68d8287dd473a8c6cf0333a989f" kind="typedef"><name>InterruptCallback</name></member>
+    <member refid="group__gpio_1ga9a7aef9fbdf0b553981712baf9a4223a" kind="typedef"><name>InterruptCallback</name></member>
     <member refid="group__gpio_1gafc39fe16e57bc415f05e1f8bf7c4e0be" kind="function"><name>HfGpioErrToString</name></member>
     <member refid="group__gpio_1gacdef61b325fdcc83f9974bc7c3c6d800" kind="define"><name>HF_GPIO_ERR_LIST</name></member>
   </compound>

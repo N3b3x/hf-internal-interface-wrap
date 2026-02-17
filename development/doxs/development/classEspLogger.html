@@ -222,9 +222,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ae9668859f987dd750a3ca89bbffa94d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print both statistics and diagnostics.  <br /></td></tr>
 <tr class="separator:ae9668859f987dd750a3ca89bbffa94d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classBaseLogger"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_classBaseLogger')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classBaseLogger.html">BaseLogger</a></td></tr>
-<tr class="memitem:aaf8957e6554581ceb22692563f0925e9 inherit pub_methods_classBaseLogger" id="r_aaf8957e6554581ceb22692563f0925e9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseLogger.html#aaf8957e6554581ceb22692563f0925e9">~BaseLogger</a> ()=default</td></tr>
-<tr class="memdesc:aaf8957e6554581ceb22692563f0925e9 inherit pub_methods_classBaseLogger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
-<tr class="separator:aaf8957e6554581ceb22692563f0925e9 inherit pub_methods_classBaseLogger"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f705b3c7b590a8427e78a77ade3925c inherit pub_methods_classBaseLogger" id="r_a5f705b3c7b590a8427e78a77ade3925c"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseLogger.html#a5f705b3c7b590a8427e78a77ade3925c">~BaseLogger</a> () noexcept=default</td></tr>
+<tr class="memdesc:a5f705b3c7b590a8427e78a77ade3925c inherit pub_methods_classBaseLogger"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual destructor.  <br /></td></tr>
+<tr class="separator:a5f705b3c7b590a8427e78a77ade3925c inherit pub_methods_classBaseLogger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -294,9 +294,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a7b5294d5699de739d4696a538dd6c71b" id="r_a7b5294d5699de739d4696a538dd6c71b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__logger__diagnostics__t.html">hf_logger_diagnostics_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b5294d5699de739d4696a538dd6c71b">diagnostics_</a></td></tr>
 <tr class="memdesc:a7b5294d5699de739d4696a538dd6c71b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Diagnostics information.  <br /></td></tr>
 <tr class="separator:a7b5294d5699de739d4696a538dd6c71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a390db49b839f78cf444e96391a5d1967" id="r_a390db49b839f78cf444e96391a5d1967"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="group__logger.html#gafcafcc6e9ff6e92894e3de5998a51042">hf_log_level_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a390db49b839f78cf444e96391a5d1967">tag_levels_</a></td></tr>
-<tr class="memdesc:a390db49b839f78cf444e96391a5d1967"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag-specific log levels.  <br /></td></tr>
-<tr class="separator:a390db49b839f78cf444e96391a5d1967"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac517102fc069ee19de9157f0fb217fdb" id="r_ac517102fc069ee19de9157f0fb217fdb"><td class="memItemLeft" align="right" valign="top">std::map&lt; std::string, <a class="el" href="group__logger.html#gafcafcc6e9ff6e92894e3de5998a51042">hf_log_level_t</a>, std::less&lt;&gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac517102fc069ee19de9157f0fb217fdb">tag_levels_</a></td></tr>
+<tr class="memdesc:ac517102fc069ee19de9157f0fb217fdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag-specific log levels.  <br /></td></tr>
+<tr class="separator:ac517102fc069ee19de9157f0fb217fdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1414db646e36b29340503445ad287296" id="r_a1414db646e36b29340503445ad287296"><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1414db646e36b29340503445ad287296">message_buffer_</a></td></tr>
 <tr class="memdesc:a1414db646e36b29340503445ad287296"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message formatting buffer.  <br /></td></tr>
 <tr class="separator:a1414db646e36b29340503445ad287296"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2668,8 +2668,8 @@ Log V2 features are automatically detected and used when CONFIG_LOG_VERSION_2 is
 
 </div>
 </div>
-<a id="a390db49b839f78cf444e96391a5d1967" name="a390db49b839f78cf444e96391a5d1967"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a390db49b839f78cf444e96391a5d1967">&#9670;&#160;</a></span>tag_levels_</h2>
+<a id="ac517102fc069ee19de9157f0fb217fdb" name="ac517102fc069ee19de9157f0fb217fdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac517102fc069ee19de9157f0fb217fdb">&#9670;&#160;</a></span>tag_levels_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2678,7 +2678,7 @@ Log V2 features are automatically detected and used when CONFIG_LOG_VERSION_2 is
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::map&lt;std::string, <a class="el" href="group__logger.html#gafcafcc6e9ff6e92894e3de5998a51042">hf_log_level_t</a>&gt; EspLogger::tag_levels_</td>
+          <td class="memname">std::map&lt;std::string, <a class="el" href="group__logger.html#gafcafcc6e9ff6e92894e3de5998a51042">hf_log_level_t</a>, std::less&lt;&gt; &gt; EspLogger::tag_levels_</td>
         </tr>
       </table>
   </td>

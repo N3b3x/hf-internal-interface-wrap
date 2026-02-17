@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="794" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="794" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="792" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="792" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classBaseTemperature_1a65964a104b3cb9b9c737819810f0a20b" prot="protected" static="no" mutable="no">
         <type><ref refid="BaseTemperature_8h_1aee8dd042d1f1740b2a23650bbe6efe12" kindref="member">hf_temp_state_t</ref></type>
@@ -33,7 +33,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="795" column="19" bodyfile="inc/base/BaseTemperature.h" bodystart="795" bodyend="-1"/>
+        <location file="inc/base/BaseTemperature.h" line="793" column="19" bodyfile="inc/base/BaseTemperature.h" bodystart="793" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -53,7 +53,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="418" column="3"/>
+        <location file="inc/base/BaseTemperature.h" line="416" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1aadc767ae37c6b15cbdc9571f688ebe97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref> &amp;</type>
@@ -71,12 +71,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="423" column="19"/>
+        <location file="inc/base/BaseTemperature.h" line="421" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classBaseTemperature_1a89a1c053462cbf314098834f7045ae74" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classBaseTemperature_1a21ac791e357874874cf1a8be97ed2291" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type></type>
         <definition>virtual BaseTemperature::~BaseTemperature</definition>
-        <argsstring>()=default</argsstring>
+        <argsstring>() noexcept=default</argsstring>
         <name>~BaseTemperature</name>
         <qualifiedname>BaseTemperature::~BaseTemperature</qualifiedname>
         <briefdescription>
@@ -86,7 +86,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="428" column="11"/>
+        <location file="inc/base/BaseTemperature.h" line="426" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a25b8ade43d75916d0d48464cfdcaa6c2" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -104,7 +104,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="438" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="802" bodyend="804"/>
+        <location file="inc/base/BaseTemperature.h" line="436" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="800" bodyend="802"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ac3e2177be073e991acc4f03da8c2b07d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="444" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="806" bodyend="814"/>
+        <location file="inc/base/BaseTemperature.h" line="442" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="804" bodyend="812"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a015ca3f4802b9a68140531f0175fd1bf" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -140,7 +140,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="450" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="816" bodyend="824"/>
+        <location file="inc/base/BaseTemperature.h" line="448" column="8" bodyfile="inc/base/BaseTemperature.h" bodystart="814" bodyend="822"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a000ebd402761b9fd6fbb13f99070eb3a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseTemperature_8h_1aee8dd042d1f1740b2a23650bbe6efe12" kindref="member">hf_temp_state_t</ref></type>
@@ -158,7 +158,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="456" column="20" bodyfile="inc/base/BaseTemperature.h" bodystart="826" bodyend="828"/>
+        <location file="inc/base/BaseTemperature.h" line="454" column="20" bodyfile="inc/base/BaseTemperature.h" bodystart="824" bodyend="826"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a830094219d6b9572248927f6d1f2afd3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -189,7 +189,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="492" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="841" bodyend="857"/>
+        <location file="inc/base/BaseTemperature.h" line="490" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="839" bodyend="855"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a4c7e87e941472fb7ac52f50da519d2ec" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -220,7 +220,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="499" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="859" bodyend="879"/>
+        <location file="inc/base/BaseTemperature.h" line="497" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="857" bodyend="877"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a3e90ebd0d1a693c3ecf23cdc437217b6" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -251,7 +251,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="510" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="881" bodyend="893"/>
+        <location file="inc/base/BaseTemperature.h" line="508" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="879" bodyend="891"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1aeac0184a2d6cafb18917bf3d76c2fa13" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -282,7 +282,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="517" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="895" bodyend="906"/>
+        <location file="inc/base/BaseTemperature.h" line="515" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="893" bodyend="904"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a5c12d4ab74621f885e61c070ab854530" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -325,7 +325,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="525" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="908" bodyend="936"/>
+        <location file="inc/base/BaseTemperature.h" line="523" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="906" bodyend="934"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a8250ed681311b1ae3732919df8d3962a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -357,7 +357,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="536" column="25"/>
+        <location file="inc/base/BaseTemperature.h" line="534" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a765c86c7680b43f7d075b9f392188611" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -376,7 +376,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="542" column="21"/>
+        <location file="inc/base/BaseTemperature.h" line="540" column="21"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ad97ed939d85e2686653d76967c53f790" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -407,7 +407,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="549" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="830" bodyend="832"/>
+        <location file="inc/base/BaseTemperature.h" line="547" column="9" bodyfile="inc/base/BaseTemperature.h" bodystart="828" bodyend="830"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -451,7 +451,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="561" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="561" bodyend="563"/>
+        <location file="inc/base/BaseTemperature.h" line="559" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="559" bodyend="561"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -495,7 +495,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="571" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="571" bodyend="573"/>
+        <location file="inc/base/BaseTemperature.h" line="569" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="569" bodyend="571"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a93d2d276ad511dfa7c405a88c6ea0e01" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -526,7 +526,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="580" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="580" bodyend="582"/>
+        <location file="inc/base/BaseTemperature.h" line="578" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="578" bodyend="580"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a5362eaf0cb2478a4e060d8dfca70f3c8" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -558,7 +558,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="589" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="589" bodyend="591"/>
+        <location file="inc/base/BaseTemperature.h" line="587" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="587" bodyend="589"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a483f6f9ec09ecd6e8cd32c9f61836763" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -602,7 +602,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="599" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="599" bodyend="602"/>
+        <location file="inc/base/BaseTemperature.h" line="597" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="597" bodyend="600"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a692b8120d0ceb3ae699cd2bd0981b993" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -646,7 +646,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="610" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="610" bodyend="613"/>
+        <location file="inc/base/BaseTemperature.h" line="608" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="608" bodyend="611"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a210f2f34d7f356d8ff7f0531031f7856" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -656,7 +656,7 @@
         <qualifiedname>BaseTemperature::EnableThresholdMonitoring</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a1b34d89cb1cc7b03100674bea303ab5a">EnableThresholdMonitoring</reimplementedby>
         <param>
-          <type><ref refid="BaseTemperature_8h_1a2672848972ed3dbd28859299c8862f6b" kindref="member">hf_temp_threshold_callback_t</ref></type>
+          <type><ref refid="BaseTemperature_8h_1aeee4f575e7ed653aeea21a73e9ed893c" kindref="member">hf_temp_threshold_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -690,7 +690,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="621" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="621" bodyend="624"/>
+        <location file="inc/base/BaseTemperature.h" line="619" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="619" bodyend="622"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ad0326eb2b71271b06e2eccffe79561cd" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -709,7 +709,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="630" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="630" bodyend="632"/>
+        <location file="inc/base/BaseTemperature.h" line="628" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="628" bodyend="630"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1afd5288a4ce54793f06fab19960b38253" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -723,7 +723,7 @@
           <declname>sample_rate_hz</declname>
         </param>
         <param>
-          <type><ref refid="BaseTemperature_8h_1ab15b84e22c00839c9e87a3f363efae2d" kindref="member">hf_temp_reading_callback_t</ref></type>
+          <type><ref refid="BaseTemperature_8h_1ad737845bbb5b213ca89ccac3902fd112" kindref="member">hf_temp_reading_callback_t</ref></type>
           <declname>callback</declname>
         </param>
         <param>
@@ -765,7 +765,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="641" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="641" bodyend="645"/>
+        <location file="inc/base/BaseTemperature.h" line="639" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="639" bodyend="643"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a30f3527c16c76f65e2deb4a89412e231" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -784,7 +784,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="651" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="651" bodyend="653"/>
+        <location file="inc/base/BaseTemperature.h" line="649" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="649" bodyend="651"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ab965dfed096914ca4a8e733b17bc978e" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -803,7 +803,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="659" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="659" bodyend="661"/>
+        <location file="inc/base/BaseTemperature.h" line="657" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="657" bodyend="659"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a4d84a21b7f330d3bc80accbd9f26b1c7" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -834,7 +834,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="668" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="668" bodyend="670"/>
+        <location file="inc/base/BaseTemperature.h" line="666" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="666" bodyend="668"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -866,7 +866,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="677" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="677" bodyend="679"/>
+        <location file="inc/base/BaseTemperature.h" line="675" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="675" bodyend="677"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -898,7 +898,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="686" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="686" bodyend="688"/>
+        <location file="inc/base/BaseTemperature.h" line="684" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="684" bodyend="686"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a2be35c2e9f2cd233d77353591bfc3f53" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -917,7 +917,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="694" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="694" bodyend="696"/>
+        <location file="inc/base/BaseTemperature.h" line="692" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="692" bodyend="694"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1abbef25249b2e935e8954a150519b2342" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -936,7 +936,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="702" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="702" bodyend="704"/>
+        <location file="inc/base/BaseTemperature.h" line="700" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="700" bodyend="702"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a52a0318d160c45fdee55b15d7148856c" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -955,7 +955,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="710" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="710" bodyend="712"/>
+        <location file="inc/base/BaseTemperature.h" line="708" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="708" bodyend="710"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a65f6deb4af75c89ae44723015731d195" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -974,7 +974,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="718" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="718" bodyend="720"/>
+        <location file="inc/base/BaseTemperature.h" line="716" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="716" bodyend="718"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a0b23a97aea3d8455e458577c7ff937e3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -993,7 +993,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="726" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="726" bodyend="728"/>
+        <location file="inc/base/BaseTemperature.h" line="724" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="724" bodyend="726"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a201bfff0c78242bec04cadd6363d7b5d" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -1012,7 +1012,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="734" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="734" bodyend="736"/>
+        <location file="inc/base/BaseTemperature.h" line="732" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="732" bodyend="734"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a67fdd88218e46666fb74cc5bf561176f" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -1044,7 +1044,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="743" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="743" bodyend="746"/>
+        <location file="inc/base/BaseTemperature.h" line="741" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="741" bodyend="744"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a2634cc03a24c168a4bd5c8f9d2bd5ef8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -1076,7 +1076,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="753" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="753" bodyend="756"/>
+        <location file="inc/base/BaseTemperature.h" line="751" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="751" bodyend="754"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a149ff046e0cb000bf0172dce28bc17be" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -1095,7 +1095,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="762" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="762" bodyend="764"/>
+        <location file="inc/base/BaseTemperature.h" line="760" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="760" bodyend="762"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a21a976418e428078d9ec76521a6ac17b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -1114,7 +1114,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="770" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="770" bodyend="772"/>
+        <location file="inc/base/BaseTemperature.h" line="768" column="25" bodyfile="inc/base/BaseTemperature.h" bodystart="768" bodyend="770"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -1135,7 +1135,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="467" column="16"/>
+        <location file="inc/base/BaseTemperature.h" line="465" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ac2af8a969cf2c755f52ba302645a4b87" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type>bool</type>
@@ -1154,7 +1154,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="473" column="16"/>
+        <location file="inc/base/BaseTemperature.h" line="471" column="16"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1af171259d6aa00825f0b8743d2331850e" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -1186,7 +1186,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="480" column="25"/>
+        <location file="inc/base/BaseTemperature.h" line="478" column="25"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1a7570da5a5b76362a826c760c10bac847" prot="protected" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type></type>
@@ -1201,7 +1201,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="782" column="3" bodyfile="inc/base/BaseTemperature.h" bodystart="782" bodyend="782"/>
+        <location file="inc/base/BaseTemperature.h" line="780" column="3" bodyfile="inc/base/BaseTemperature.h" bodystart="780" bodyend="780"/>
       </memberdef>
       <memberdef kind="function" id="classBaseTemperature_1ae37d98256e55529d9d78622db0c34019" prot="protected" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
@@ -1219,7 +1219,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseTemperature.h" line="788" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="834" bodyend="839"/>
+        <location file="inc/base/BaseTemperature.h" line="786" column="17" bodyfile="inc/base/BaseTemperature.h" bodystart="832" bodyend="837"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1259,7 +1259,7 @@
         </childnode>
       </node>
     </inheritancegraph>
-    <location file="inc/base/BaseTemperature.h" line="409" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="409" bodyend="796"/>
+    <location file="inc/base/BaseTemperature.h" line="407" column="1" bodyfile="inc/base/BaseTemperature.h" bodystart="407" bodyend="794"/>
     <listofallmembers>
       <member refid="classBaseTemperature_1a115e5a44b15a1f507cb7c9163d262a5a" prot="public" virt="non-virtual"><scope>BaseTemperature</scope><name>BaseTemperature</name></member>
       <member refid="classBaseTemperature_1a7570da5a5b76362a826c760c10bac847" prot="protected" virt="non-virtual"><scope>BaseTemperature</scope><name>BaseTemperature</name></member>
@@ -1306,7 +1306,7 @@
       <member refid="classBaseTemperature_1afd5288a4ce54793f06fab19960b38253" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>StartContinuousMonitoring</name></member>
       <member refid="classBaseTemperature_1a30f3527c16c76f65e2deb4a89412e231" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>StopContinuousMonitoring</name></member>
       <member refid="classBaseTemperature_1ae37d98256e55529d9d78622db0c34019" prot="protected" virt="non-virtual"><scope>BaseTemperature</scope><name>ValidateBasicOperation</name></member>
-      <member refid="classBaseTemperature_1a89a1c053462cbf314098834f7045ae74" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>~BaseTemperature</name></member>
+      <member refid="classBaseTemperature_1a21ac791e357874874cf1a8be97ed2291" prot="public" virt="virtual"><scope>BaseTemperature</scope><name>~BaseTemperature</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

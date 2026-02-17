@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="147" column="16" bodyfile="inc/base/BaseCan.h" bodystart="147" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="146" column="16" bodyfile="inc/base/BaseCan.h" bodystart="146" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__config__t_1a8aefaeb22194b8ca5b8e78f868f1c311" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="148" column="16" bodyfile="inc/base/BaseCan.h" bodystart="148" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="147" column="16" bodyfile="inc/base/BaseCan.h" bodystart="147" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__config__t_1ae60a9a3946365261658f25b2cf88be30" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ae912723679c2a3f1d9d45b80157a1f35" kindref="member">hf_baud_rate_t</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="149" column="18" bodyfile="inc/base/BaseCan.h" bodystart="149" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="148" column="18" bodyfile="inc/base/BaseCan.h" bodystart="148" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__config__t_1adce4f534151270920a93193f1e7dca51" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="150" column="8" bodyfile="inc/base/BaseCan.h" bodystart="150" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="149" column="8" bodyfile="inc/base/BaseCan.h" bodystart="149" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__config__t_1a9b6bece2c40bb4cc7eb2e8025ee45b7a" prot="public" static="no" mutable="no">
         <type>bool</type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="151" column="8" bodyfile="inc/base/BaseCan.h" bodystart="151" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="150" column="8" bodyfile="inc/base/BaseCan.h" bodystart="150" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__config__t_1a0e580ed65a48c3f575e9bdcfb62de184" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="152" column="12" bodyfile="inc/base/BaseCan.h" bodystart="152" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="151" column="12" bodyfile="inc/base/BaseCan.h" bodystart="151" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__can__config__t_1a797a2233ee8936fa74e23a7d4603d0e5" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="153" column="12" bodyfile="inc/base/BaseCan.h" bodystart="153" bodyend="-1"/>
+        <location file="inc/base/BaseCan.h" line="152" column="12" bodyfile="inc/base/BaseCan.h" bodystart="152" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -123,7 +123,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseCan.h" line="155" column="3" bodyfile="inc/base/BaseCan.h" bodystart="155" bodyend="157"/>
+        <location file="inc/base/BaseCan.h" line="154" column="3" bodyfile="inc/base/BaseCan.h" bodystart="154" bodyend="156"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -132,7 +132,7 @@
     <detaileddescription>
 <para>Configuration structure that works across different CAN implementations without exposing MCU-specific types. </para>
     </detaileddescription>
-    <location file="inc/base/BaseCan.h" line="146" column="1" bodyfile="inc/base/BaseCan.h" bodystart="146" bodyend="158"/>
+    <location file="inc/base/BaseCan.h" line="145" column="1" bodyfile="inc/base/BaseCan.h" bodystart="145" bodyend="157"/>
     <listofallmembers>
       <member refid="structhf__can__config__t_1ae60a9a3946365261658f25b2cf88be30" prot="public" virt="non-virtual"><scope>hf_can_config_t</scope><name>baudrate</name></member>
       <member refid="structhf__can__config__t_1ad78879ebabceb4fb8ca96fab342eb6e8" prot="public" virt="non-virtual"><scope>hf_can_config_t</scope><name>hf_can_config_t</name></member>

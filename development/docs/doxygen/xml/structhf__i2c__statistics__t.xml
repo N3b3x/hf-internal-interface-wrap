@@ -17,7 +17,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="113" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="113" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="112" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a765c71bae6b3db626ac8a2841c4863c9" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -32,7 +32,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="114" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="114" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="113" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="113" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a7214bda8ec849670db6adfe55fba5959" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="115" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="115" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="114" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="114" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a771aea8bf99b697af6945629cbe6ce09" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -62,7 +62,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="116" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="116" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="115" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="115" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1ac5ba340b440e342d8986b9b2172c0d17" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -77,7 +77,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="117" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="117" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="116" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="116" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a69548be8fd7406b3751f88d94d30c878" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -92,7 +92,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="118" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="118" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="117" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a4181302ea924b15b0de7666eb2402cb5" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
@@ -107,7 +107,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="119" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="119" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="118" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="118" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1aae643c1a0489e9d08d051823b851c6ec" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -122,7 +122,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="120" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="120" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="119" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a4f3f862b733a4443f78068ff45e26629" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -137,7 +137,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="121" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="121" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="120" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="120" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a9325f9ec3c65bbd02c08d67ba34c0018" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -152,7 +152,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="122" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="122" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="121" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="121" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1ae03f54767ae7bb9141e63e3e9e6351a5" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -167,7 +167,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="123" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="123" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="122" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="122" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1afe3c7c2db56dbc6d373a66b7ff900462" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -182,7 +182,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="124" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="124" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="123" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="123" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1acf86f5671601a48f77c9b3e3ae33d8c9" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -197,7 +197,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="125" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="125" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="124" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="124" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a7a4ddc078da3c641f041b8a1b3833ff3" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -212,7 +212,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="126" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="126" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="125" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="125" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="structhf__i2c__statistics__t_1a28beba46e2fbefc273abe5f951397e8c" prot="public" static="no" mutable="no">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
@@ -227,7 +227,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="127" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="127" bodyend="-1"/>
+        <location file="inc/base/BaseI2c.h" line="126" column="12" bodyfile="inc/base/BaseI2c.h" bodystart="126" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -243,7 +243,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/base/BaseI2c.h" line="129" column="3" bodyfile="inc/base/BaseI2c.h" bodystart="129" bodyend="134"/>
+        <location file="inc/base/BaseI2c.h" line="128" column="3" bodyfile="inc/base/BaseI2c.h" bodystart="128" bodyend="133"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -251,7 +251,7 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="inc/base/BaseI2c.h" line="112" column="1" bodyfile="inc/base/BaseI2c.h" bodystart="112" bodyend="135"/>
+    <location file="inc/base/BaseI2c.h" line="111" column="1" bodyfile="inc/base/BaseI2c.h" bodystart="111" bodyend="134"/>
     <listofallmembers>
       <member refid="structhf__i2c__statistics__t_1afe3c7c2db56dbc6d373a66b7ff900462" prot="public" virt="non-virtual"><scope>hf_i2c_statistics_t</scope><name>arbitration_lost_count</name></member>
       <member refid="structhf__i2c__statistics__t_1ae03f54767ae7bb9141e63e3e9e6351a5" prot="public" virt="non-virtual"><scope>hf_i2c_statistics_t</scope><name>bus_errors</name></member>

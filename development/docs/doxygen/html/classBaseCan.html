@@ -151,7 +151,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a300b5b097246fd7b9575050eb7eb239c" id="r_a300b5b097246fd7b9575050eb7eb239c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a300b5b097246fd7b9575050eb7eb239c">ReceiveMessage</a> (<a class="el" href="structhf__can__message__t.html">hf_can_message_t</a> &amp;message, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> timeout_ms=0) noexcept=0</td></tr>
 <tr class="memdesc:a300b5b097246fd7b9575050eb7eb239c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Receive a CAN message.  <br /></td></tr>
 <tr class="separator:a300b5b097246fd7b9575050eb7eb239c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cef56fa208f09304bbd7129914a51a8" id="r_a9cef56fa208f09304bbd7129914a51a8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cef56fa208f09304bbd7129914a51a8">SetReceiveCallback</a> (<a class="el" href="BaseCan_8h.html#af02a5addf5896402a59198a9d8295e40">hf_can_receive_callback_t</a> callback) noexcept=0</td></tr>
+<tr class="memitem:a9cef56fa208f09304bbd7129914a51a8" id="r_a9cef56fa208f09304bbd7129914a51a8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9cef56fa208f09304bbd7129914a51a8">SetReceiveCallback</a> (<a class="el" href="BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a> callback) noexcept=0</td></tr>
 <tr class="memdesc:a9cef56fa208f09304bbd7129914a51a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set callback for received messages.  <br /></td></tr>
 <tr class="separator:a9cef56fa208f09304bbd7129914a51a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addc8594d5ac480f4aa2ac03b6f08d06c" id="r_addc8594d5ac480f4aa2ac03b6f08d06c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#addc8594d5ac480f4aa2ac03b6f08d06c">SetAcceptanceFilter</a> (<a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> id, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> mask, bool extended=false) noexcept=0</td></tr>
@@ -169,7 +169,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a523000694cee960aa8eee19bbd74c408" id="r_a523000694cee960aa8eee19bbd74c408"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a523000694cee960aa8eee19bbd74c408">ClearAcceptanceFilter</a> () noexcept</td></tr>
 <tr class="memdesc:a523000694cee960aa8eee19bbd74c408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all acceptance filters (accept all messages).  <br /></td></tr>
 <tr class="separator:a523000694cee960aa8eee19bbd74c408"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44753662096232f45e49ad752e8f68e4" id="r_a44753662096232f45e49ad752e8f68e4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44753662096232f45e49ad752e8f68e4">SetReceiveCallbackFD</a> (<a class="el" href="BaseCan_8h.html#a5cf16e5a5639a262f899cde995da6f45">hf_can_fd_receive_callback_t</a> callback) noexcept</td></tr>
+<tr class="memitem:a44753662096232f45e49ad752e8f68e4" id="r_a44753662096232f45e49ad752e8f68e4"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a44753662096232f45e49ad752e8f68e4">SetReceiveCallbackFD</a> (<a class="el" href="BaseCan_8h.html#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a> callback) noexcept</td></tr>
 <tr class="memdesc:a44753662096232f45e49ad752e8f68e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set CAN-FD receive callback with enhanced information.  <br /></td></tr>
 <tr class="separator:a44753662096232f45e49ad752e8f68e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5af808724133b48742ebdcd448e93515" id="r_a5af808724133b48742ebdcd448e93515"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5af808724133b48742ebdcd448e93515">SupportsCanFD</a> () const noexcept</td></tr>
@@ -1147,7 +1147,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> BaseCan::SetReceiveCallback </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="BaseCan_8h.html#af02a5addf5896402a59198a9d8295e40">hf_can_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="BaseCan_8h.html#a3581a1b02d6350ac14ca81b7c60cdc6f">hf_can_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -1183,7 +1183,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">virtual <a class="el" href="BaseCan_8h.html#aa9d5ead384ce9ec0dd791bcdc73589fb">hf_can_err_t</a> BaseCan::SetReceiveCallbackFD </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="BaseCan_8h.html#a5cf16e5a5639a262f899cde995da6f45">hf_can_fd_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="BaseCan_8h.html#ac243f46599a2b6bfb5fc822017e3e051">hf_can_fd_receive_callback_t</a></td>          <td class="paramname"><span class="paramname"><em>callback</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
