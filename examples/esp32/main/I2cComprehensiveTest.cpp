@@ -1236,14 +1236,14 @@ bool test_i2c_async_timeout_handling() noexcept {
   }
 
   // Test timeout when trying to start async operation while another is in progress
-  struct AsyncState {
+  struct TimeoutTestState {
     bool completed = false;
   };
-  AsyncState first_state;
+  TimeoutTestState first_state;
 
   auto first_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {
     vTaskDelay(pdMS_TO_TICKS(TIMEOUT_STANDARD_MS)); // Simulate slow callback
-    AsyncState* state = static_cast<AsyncState*>(user_data);
+    TimeoutTestState* state = static_cast<TimeoutTestState*>(user_data);
     state->completed = true;
   };
 
@@ -1308,15 +1308,15 @@ bool test_i2c_async_multiple_operations() noexcept {
   }
 
   // Test sequential async operations
-  struct AsyncState {
+  struct MultiOperationState {
     int completed_operations = 0;
   };
-  AsyncState async_state;
+  MultiOperationState async_state;
 
   auto completion_callback = [](hf_i2c_err_t result, size_t bytes, void* user_data) {
     (void)result; // Mark as intentionally unused
     (void)bytes;  // Mark as intentionally unused
-    AsyncState* state = static_cast<AsyncState*>(user_data);
+    MultiOperationState* state = static_cast<MultiOperationState*>(user_data);
     state->completed_operations++;
   };
 
