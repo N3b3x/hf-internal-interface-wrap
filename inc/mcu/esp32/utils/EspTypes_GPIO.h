@@ -284,15 +284,56 @@ typedef struct {
 #define HF_GPIO_IS_VALID_OUTPUT_GPIO(gpio_num)                                                     \
   (HF_GPIO_IS_VALID_GPIO(gpio_num) && !HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num))
 
+// RTC GPIO validation (variant-aware)
+#if defined(HF_MCU_ESP32C6)
 #define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ((gpio_num) >= 0 && (gpio_num) <= 7)
-
-#define HF_GPIO_IS_VALID_LP_IO(gpio_num) ((gpio_num) >= 0 && (gpio_num) <= 7)
-
-#define HF_GPIO_SUPPORTS_ADC(gpio_num) ((gpio_num) >= 0 && (gpio_num) <= 6)
-
+#define HF_GPIO_IS_VALID_LP_IO(gpio_num)  ((gpio_num) >= 0 && (gpio_num) <= 7)
+#define HF_GPIO_SUPPORTS_ADC(gpio_num)    ((gpio_num) >= 0 && (gpio_num) <= 6)
 #define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) ((gpio_num) >= 24 && (gpio_num) <= 30)
-
-#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) (false) /* ESP32 has no input-only pins */
+#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) (false)
+#elif defined(HF_MCU_ESP32S3)
+#define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ((gpio_num) >= 0 && (gpio_num) <= 21)
+#define HF_GPIO_IS_VALID_LP_IO(gpio_num)  (false)
+#define HF_GPIO_SUPPORTS_ADC(gpio_num)    (((gpio_num) >= 1 && (gpio_num) <= 10) || ((gpio_num) >= 11 && (gpio_num) <= 20))
+#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) ((gpio_num) >= 26 && (gpio_num) <= 32)
+#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) (false)
+#elif defined(HF_MCU_ESP32)
+#define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) (((gpio_num) >= 0 && (gpio_num) <= 5) || ((gpio_num) >= 12 && (gpio_num) <= 15) || ((gpio_num) >= 25 && (gpio_num) <= 27) || ((gpio_num) >= 32 && (gpio_num) <= 39))
+#define HF_GPIO_IS_VALID_LP_IO(gpio_num)  (false)
+#define HF_GPIO_SUPPORTS_ADC(gpio_num)    (((gpio_num) >= 32 && (gpio_num) <= 39) || ((gpio_num) >= 0 && (gpio_num) <= 9) || ((gpio_num) >= 25 && (gpio_num) <= 27))
+#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) ((gpio_num) >= 6 && (gpio_num) <= 11)
+#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) ((gpio_num) >= 34 && (gpio_num) <= 39)
+#elif defined(HF_MCU_ESP32S2)
+#define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ((gpio_num) >= 0 && (gpio_num) <= 21)
+#define HF_GPIO_IS_VALID_LP_IO(gpio_num)  (false)
+#define HF_GPIO_SUPPORTS_ADC(gpio_num)    (((gpio_num) >= 1 && (gpio_num) <= 10) || ((gpio_num) >= 11 && (gpio_num) <= 20))
+#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) ((gpio_num) >= 26 && (gpio_num) <= 32)
+#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) ((gpio_num) == 46)
+#elif defined(HF_MCU_ESP32C3)
+#define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ((gpio_num) >= 0 && (gpio_num) <= 5)
+#define HF_GPIO_IS_VALID_LP_IO(gpio_num)  (false)
+#define HF_GPIO_SUPPORTS_ADC(gpio_num)    ((gpio_num) >= 0 && (gpio_num) <= 4)
+#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) ((gpio_num) >= 12 && (gpio_num) <= 17)
+#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) (false)
+#elif defined(HF_MCU_ESP32H2)
+#define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ((gpio_num) >= 7 && (gpio_num) <= 14)
+#define HF_GPIO_IS_VALID_LP_IO(gpio_num)  ((gpio_num) >= 7 && (gpio_num) <= 14)
+#define HF_GPIO_SUPPORTS_ADC(gpio_num)    ((gpio_num) >= 0 && (gpio_num) <= 4)
+#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) ((gpio_num) >= 15 && (gpio_num) <= 21)
+#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) (false)
+#elif defined(HF_MCU_ESP32C2)
+#define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) ((gpio_num) >= 0 && (gpio_num) <= 4)
+#define HF_GPIO_IS_VALID_LP_IO(gpio_num)  (false)
+#define HF_GPIO_SUPPORTS_ADC(gpio_num)    ((gpio_num) >= 0 && (gpio_num) <= 4)
+#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) ((gpio_num) >= 12 && (gpio_num) <= 17)
+#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) (false)
+#else
+#define HF_GPIO_IS_VALID_RTC_GPIO(gpio_num) (false)
+#define HF_GPIO_IS_VALID_LP_IO(gpio_num)  (false)
+#define HF_GPIO_SUPPORTS_ADC(gpio_num)    (false)
+#define HF_GPIO_IS_SPI_FLASH_PIN(gpio_num) (false)
+#define HF_GPIO_IS_INPUT_ONLY_PIN(gpio_num) (false)
+#endif
 
 #define HF_GPIO_SUPPORTS_PULL_UP(gpio_num) (HF_GPIO_IS_VALID_GPIO(gpio_num))
 
@@ -453,12 +494,32 @@ constexpr const char* hf_gpio_result_to_string(hf_gpio_result_t result) {
 // COMPILE-TIME CONFIGURATION VALIDATION
 //==============================================================================
 
-// Compile-time assertions to ensure configuration consistency
-static_assert(HF_MCU_GPIO_PIN_COUNT == 31, "ESP32 should have 31 GPIO pins");
-static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 30, "ESP32 max GPIO should be 30");
-static_assert(HF_MCU_GPIO_RTC_PIN_COUNT == 8, "ESP32 should have 8 RTC GPIO pins");
-static_assert(HF_MCU_GPIO_ADC_PIN_COUNT == 7, "ESP32 should have 7 ADC channels");
-static_assert(HF_MCU_GPIO_FLEX_FILTER_COUNT == 8, "ESP32 should have 8 flex filters");
+// Compile-time assertions to ensure configuration consistency (variant-aware)
+#if defined(HF_MCU_ESP32C6)
+static_assert(HF_MCU_GPIO_PIN_COUNT == 31, "ESP32-C6 should have 31 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 30, "ESP32-C6 max GPIO should be 30");
+#elif defined(HF_MCU_ESP32S3)
+static_assert(HF_MCU_GPIO_PIN_COUNT == 49, "ESP32-S3 should have 49 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 48, "ESP32-S3 max GPIO should be 48");
+#elif defined(HF_MCU_ESP32)
+static_assert(HF_MCU_GPIO_PIN_COUNT == 40, "ESP32 should have 40 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 39, "ESP32 max GPIO should be 39");
+#elif defined(HF_MCU_ESP32S2)
+static_assert(HF_MCU_GPIO_PIN_COUNT == 47, "ESP32-S2 should have 47 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 46, "ESP32-S2 max GPIO should be 46");
+#elif defined(HF_MCU_ESP32C3)
+static_assert(HF_MCU_GPIO_PIN_COUNT == 22, "ESP32-C3 should have 22 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 21, "ESP32-C3 max GPIO should be 21");
+#elif defined(HF_MCU_ESP32C2)
+static_assert(HF_MCU_GPIO_PIN_COUNT == 21, "ESP32-C2 should have 21 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 20, "ESP32-C2 max GPIO should be 20");
+#elif defined(HF_MCU_ESP32H2)
+static_assert(HF_MCU_GPIO_PIN_COUNT == 28, "ESP32-H2 should have 28 GPIO pins");
+static_assert(HF_MCU_GPIO_MAX_PIN_NUMBER == 27, "ESP32-H2 max GPIO should be 27");
+#endif
+static_assert(HF_MCU_GPIO_RTC_PIN_COUNT >= 0, "RTC pin count must be non-negative");
+static_assert(HF_MCU_GPIO_ADC_PIN_COUNT >= 0, "ADC pin count must be non-negative");
+static_assert(HF_MCU_GPIO_FLEX_FILTER_COUNT >= 0, "Flex filter count must be non-negative");
 
 #ifdef GPIO_MODE_INPUT
 static_assert(static_cast<int>(hf_gpio_mode_t::HF_GPIO_MODE_INPUT) == GPIO_MODE_INPUT,

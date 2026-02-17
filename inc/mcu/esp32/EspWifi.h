@@ -156,52 +156,52 @@ public:
   // ========== BaseWifi Interface Implementation ==========
 
   // Initialization and Configuration
-  hf_wifi_err_t Initialize(hf_wifi_mode_t mode) override;
-  hf_wifi_err_t Deinitialize() override;
-  bool IsInitialized() const override;
-  hf_wifi_err_t SetMode(hf_wifi_mode_t mode) override;
-  hf_wifi_mode_t GetMode() const override;
+  hf_wifi_err_t Initialize(hf_wifi_mode_t mode) noexcept override;
+  hf_wifi_err_t Deinitialize() noexcept override;
+  bool IsInitialized() const noexcept override;
+  hf_wifi_err_t SetMode(hf_wifi_mode_t mode) noexcept override;
+  hf_wifi_mode_t GetMode() const noexcept override;
 
   // Station Mode Operations
-  hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config) override;
-  hf_wifi_err_t Connect(uint32_t timeout_ms = 0) override;
-  hf_wifi_err_t Disconnect() override;
-  bool IsConnected() const override;
-  int8_t GetRssi() const override;
-  hf_wifi_err_t GetIpInfo(hf_wifi_ip_info_t& ip_info) const override;
+  hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config) noexcept override;
+  hf_wifi_err_t Connect(uint32_t timeout_ms = 0) noexcept override;
+  hf_wifi_err_t Disconnect() noexcept override;
+  bool IsConnected() const noexcept override;
+  int8_t GetRssi() const noexcept override;
+  hf_wifi_err_t GetIpInfo(hf_wifi_ip_info_t& ip_info) const noexcept override;
 
   // Access Point Mode Operations
-  hf_wifi_err_t ConfigureAccessPoint(const hf_wifi_ap_config_t& config) override;
-  hf_wifi_err_t StartAccessPoint() override;
-  hf_wifi_err_t StopAccessPoint() override;
-  bool IsAccessPointActive() const override;
-  int GetConnectedStationCount() const override;
+  hf_wifi_err_t ConfigureAccessPoint(const hf_wifi_ap_config_t& config) noexcept override;
+  hf_wifi_err_t StartAccessPoint() noexcept override;
+  hf_wifi_err_t StopAccessPoint() noexcept override;
+  bool IsAccessPointActive() const noexcept override;
+  int GetConnectedStationCount() const noexcept override;
 
   // Network Scanning
   hf_wifi_err_t StartScan(bool show_hidden = false, bool passive = false,
-                          uint32_t max_scan_time_ms = 0) override;
+                          uint32_t max_scan_time_ms = 0) noexcept override;
   hf_wifi_err_t GetScanResults(std::vector<hf_wifi_network_info_t>& networks,
-                               uint16_t max_networks = 0) override;
-  bool IsScanning() const override;
+                               uint16_t max_networks = 0) noexcept override;
+  bool IsScanning() const noexcept override;
 
   // State and Status
-  hf_wifi_state_t GetState() const override;
-  std::string GetConnectedSsid() const override;
-  hf_wifi_err_t GetConnectedBssid(uint8_t bssid[6]) const override;
+  hf_wifi_state_t GetState() const noexcept override;
+  std::string GetConnectedSsid() const noexcept override;
+  hf_wifi_err_t GetConnectedBssid(uint8_t bssid[6]) const noexcept override;
 
   // Power Management
-  hf_wifi_err_t SetPowerSave(hf_wifi_power_save_t mode) override;
-  hf_wifi_power_save_t GetPowerSave() const override;
+  hf_wifi_err_t SetPowerSave(hf_wifi_power_save_t mode) noexcept override;
+  hf_wifi_power_save_t GetPowerSave() const noexcept override;
 
   // Event Handling
-  hf_wifi_err_t RegisterEventCallback(hf_wifi_event_callback_t callback) override;
-  hf_wifi_err_t UnregisterEventCallback() override;
+  hf_wifi_err_t RegisterEventCallback(hf_wifi_event_callback_t callback) noexcept override;
+  hf_wifi_err_t UnregisterEventCallback() noexcept override;
 
   // Utility Functions
-  hf_wifi_err_t GetMacAddress(uint8_t mac[6], uint8_t interface = 0) const override;
-  hf_wifi_err_t SetMacAddress(const uint8_t mac[6], uint8_t interface = 0) override;
-  uint8_t GetChannel() const override;
-  hf_wifi_err_t SetChannel(uint8_t channel) override;
+  hf_wifi_err_t GetMacAddress(uint8_t mac[6], uint8_t interface = 0) const noexcept override;
+  hf_wifi_err_t SetMacAddress(const uint8_t mac[6], uint8_t interface = 0) noexcept override;
+  uint8_t GetChannel() const noexcept override;
+  hf_wifi_err_t SetChannel(uint8_t channel) noexcept override;
 
   // ========== ESP32-Specific Extensions ==========
 

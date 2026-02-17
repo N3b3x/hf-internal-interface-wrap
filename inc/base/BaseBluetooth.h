@@ -361,7 +361,7 @@ public:
   /**
    * @brief Virtual destructor for proper cleanup of derived classes
    */
-  virtual ~BaseBluetooth() = default;
+  virtual ~BaseBluetooth() noexcept = default;
 
   // ========== Initialization and Configuration ==========
 
@@ -370,50 +370,50 @@ public:
    * @param mode Bluetooth operating mode
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t Initialize(hf_bluetooth_mode_t mode) = 0;
+  virtual hf_bluetooth_err_t Initialize(hf_bluetooth_mode_t mode) noexcept = 0;
 
   /**
    * @brief Deinitialize the Bluetooth subsystem
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t Deinitialize() = 0;
+  virtual hf_bluetooth_err_t Deinitialize() noexcept = 0;
 
   /**
    * @brief Check if Bluetooth is initialized
    * @return true if initialized, false otherwise
    */
-  virtual bool IsInitialized() const = 0;
+  virtual bool IsInitialized() const noexcept = 0;
 
   /**
    * @brief Enable Bluetooth
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t Enable() = 0;
+  virtual hf_bluetooth_err_t Enable() noexcept = 0;
 
   /**
    * @brief Disable Bluetooth
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t Disable() = 0;
+  virtual hf_bluetooth_err_t Disable() noexcept = 0;
 
   /**
    * @brief Check if Bluetooth is enabled
    * @return true if enabled, false otherwise
    */
-  virtual bool IsEnabled() const = 0;
+  virtual bool IsEnabled() const noexcept = 0;
 
   /**
    * @brief Set Bluetooth operating mode
    * @param mode Bluetooth operating mode
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t SetMode(hf_bluetooth_mode_t mode) = 0;
+  virtual hf_bluetooth_err_t SetMode(hf_bluetooth_mode_t mode) noexcept = 0;
 
   /**
    * @brief Get current Bluetooth operating mode
    * @return Current Bluetooth mode
    */
-  virtual hf_bluetooth_mode_t GetMode() const = 0;
+  virtual hf_bluetooth_mode_t GetMode() const noexcept = 0;
 
   // ========== Device Management ==========
 
@@ -422,20 +422,20 @@ public:
    * @param address Reference to store local address
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t GetLocalAddress(hf_bluetooth_address_t& address) const = 0;
+  virtual hf_bluetooth_err_t GetLocalAddress(hf_bluetooth_address_t& address) const noexcept = 0;
 
   /**
    * @brief Set local device name
    * @param name Device name
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t SetDeviceName(const std::string& name) = 0;
+  virtual hf_bluetooth_err_t SetDeviceName(const std::string& name) noexcept = 0;
 
   /**
    * @brief Get local device name
    * @return Device name string
    */
-  virtual std::string GetDeviceName() const = 0;
+  virtual std::string GetDeviceName() const noexcept = 0;
 
   // ========== Classic Bluetooth Operations ==========
 
@@ -444,7 +444,7 @@ public:
    * @param config Classic configuration
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t ConfigureClassic(const hf_bluetooth_classic_config_t& config) = 0;
+  virtual hf_bluetooth_err_t ConfigureClassic(const hf_bluetooth_classic_config_t& config) noexcept = 0;
 
   /**
    * @brief Make device discoverable
@@ -452,13 +452,13 @@ public:
    * @param timeout_ms Discoverable timeout in milliseconds (0 for indefinite)
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t SetDiscoverable(bool discoverable, uint32_t timeout_ms = 0) = 0;
+  virtual hf_bluetooth_err_t SetDiscoverable(bool discoverable, uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Check if device is discoverable
    * @return true if discoverable, false otherwise
    */
-  virtual bool IsDiscoverable() const = 0;
+  virtual bool IsDiscoverable() const noexcept = 0;
 
   // ========== BLE Operations ==========
 
@@ -467,25 +467,25 @@ public:
    * @param config BLE configuration
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t ConfigureBle(const hf_bluetooth_ble_config_t& config) = 0;
+  virtual hf_bluetooth_err_t ConfigureBle(const hf_bluetooth_ble_config_t& config) noexcept = 0;
 
   /**
    * @brief Start BLE advertising
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t StartAdvertising() = 0;
+  virtual hf_bluetooth_err_t StartAdvertising() noexcept = 0;
 
   /**
    * @brief Stop BLE advertising
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t StopAdvertising() = 0;
+  virtual hf_bluetooth_err_t StopAdvertising() noexcept = 0;
 
   /**
    * @brief Check if BLE advertising is active
    * @return true if advertising, false otherwise
    */
-  virtual bool IsAdvertising() const = 0;
+  virtual bool IsAdvertising() const noexcept = 0;
 
   // ========== Device Discovery ==========
 
@@ -497,19 +497,19 @@ public:
    */
   virtual hf_bluetooth_err_t StartScan(
       uint32_t duration_ms = 0,
-      hf_bluetooth_scan_type_t type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) = 0;
+      hf_bluetooth_scan_type_t type = hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) noexcept = 0;
 
   /**
    * @brief Stop device discovery/scanning
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t StopScan() = 0;
+  virtual hf_bluetooth_err_t StopScan() noexcept = 0;
 
   /**
    * @brief Check if scanning is in progress
    * @return true if scanning, false otherwise
    */
-  virtual bool IsScanning() const = 0;
+  virtual bool IsScanning() const noexcept = 0;
 
   /**
    * @brief Get discovered devices
@@ -517,13 +517,13 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   virtual hf_bluetooth_err_t GetDiscoveredDevices(
-      std::vector<hf_bluetooth_device_info_t>& devices) = 0;
+      std::vector<hf_bluetooth_device_info_t>& devices) noexcept = 0;
 
   /**
    * @brief Clear discovered devices list
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t ClearDiscoveredDevices() = 0;
+  virtual hf_bluetooth_err_t ClearDiscoveredDevices() noexcept = 0;
 
   // ========== Connection Management ==========
 
@@ -534,21 +534,21 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   virtual hf_bluetooth_err_t Connect(const hf_bluetooth_address_t& address,
-                                     uint32_t timeout_ms = 0) = 0;
+                                     uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Disconnect from a remote device
    * @param address Remote device address
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t Disconnect(const hf_bluetooth_address_t& address) = 0;
+  virtual hf_bluetooth_err_t Disconnect(const hf_bluetooth_address_t& address) noexcept = 0;
 
   /**
    * @brief Check if connected to a device
    * @param address Remote device address
    * @return true if connected, false otherwise
    */
-  virtual bool IsConnected(const hf_bluetooth_address_t& address) const = 0;
+  virtual bool IsConnected(const hf_bluetooth_address_t& address) const noexcept = 0;
 
   /**
    * @brief Get list of connected devices
@@ -556,7 +556,7 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   virtual hf_bluetooth_err_t GetConnectedDevices(
-      std::vector<hf_bluetooth_device_info_t>& devices) = 0;
+      std::vector<hf_bluetooth_device_info_t>& devices) noexcept = 0;
 
   // ========== Pairing and Bonding ==========
 
@@ -567,28 +567,28 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   virtual hf_bluetooth_err_t Pair(const hf_bluetooth_address_t& address,
-                                  const std::string& pin = "") = 0;
+                                  const std::string& pin = "") noexcept = 0;
 
   /**
    * @brief Unpair from a remote device
    * @param address Remote device address
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t Unpair(const hf_bluetooth_address_t& address) = 0;
+  virtual hf_bluetooth_err_t Unpair(const hf_bluetooth_address_t& address) noexcept = 0;
 
   /**
    * @brief Check if paired with a device
    * @param address Remote device address
    * @return true if paired, false otherwise
    */
-  virtual bool IsPaired(const hf_bluetooth_address_t& address) const = 0;
+  virtual bool IsPaired(const hf_bluetooth_address_t& address) const noexcept = 0;
 
   /**
    * @brief Get list of paired devices
    * @param devices Vector to store paired devices
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t GetPairedDevices(std::vector<hf_bluetooth_device_info_t>& devices) = 0;
+  virtual hf_bluetooth_err_t GetPairedDevices(std::vector<hf_bluetooth_device_info_t>& devices) noexcept = 0;
 
   // ========== Data Transmission ==========
 
@@ -599,14 +599,14 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   virtual hf_bluetooth_err_t SendData(const hf_bluetooth_address_t& address,
-                                      const std::vector<uint8_t>& data) = 0;
+                                      const std::vector<uint8_t>& data) noexcept = 0;
 
   /**
    * @brief Check if data is available to read
    * @param address Remote device address
    * @return Number of bytes available, or -1 on error
    */
-  virtual int GetAvailableData(const hf_bluetooth_address_t& address) const = 0;
+  virtual int GetAvailableData(const hf_bluetooth_address_t& address) const noexcept = 0;
 
   /**
    * @brief Read available data from a connected device
@@ -616,7 +616,7 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   virtual hf_bluetooth_err_t ReadData(const hf_bluetooth_address_t& address,
-                                      std::vector<uint8_t>& data, size_t max_bytes = 0) = 0;
+                                      std::vector<uint8_t>& data, size_t max_bytes = 0) noexcept = 0;
 
   // ========== GATT Operations (BLE) ==========
 
@@ -628,7 +628,7 @@ public:
    */
   virtual hf_bluetooth_err_t DiscoverServices(
       const hf_bluetooth_address_t& address,
-      std::vector<hf_bluetooth_gatt_service_t>& services) = 0;
+      std::vector<hf_bluetooth_gatt_service_t>& services) noexcept = 0;
 
   /**
    * @brief Discover GATT characteristics for a service
@@ -639,7 +639,7 @@ public:
    */
   virtual hf_bluetooth_err_t DiscoverCharacteristics(
       const hf_bluetooth_address_t& address, const std::string& service_uuid,
-      std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) = 0;
+      std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) noexcept = 0;
 
   /**
    * @brief Read GATT characteristic value
@@ -652,7 +652,7 @@ public:
   virtual hf_bluetooth_err_t ReadCharacteristic(const hf_bluetooth_address_t& address,
                                                 const std::string& service_uuid,
                                                 const std::string& characteristic_uuid,
-                                                std::vector<uint8_t>& value) = 0;
+                                                std::vector<uint8_t>& value) noexcept = 0;
 
   /**
    * @brief Write GATT characteristic value
@@ -667,7 +667,7 @@ public:
                                                  const std::string& service_uuid,
                                                  const std::string& characteristic_uuid,
                                                  const std::vector<uint8_t>& value,
-                                                 bool with_response = true) = 0;
+                                                 bool with_response = true) noexcept = 0;
 
   /**
    * @brief Subscribe to GATT characteristic notifications
@@ -680,7 +680,7 @@ public:
   virtual hf_bluetooth_err_t SubscribeCharacteristic(const hf_bluetooth_address_t& address,
                                                      const std::string& service_uuid,
                                                      const std::string& characteristic_uuid,
-                                                     bool enable) = 0;
+                                                     bool enable) noexcept = 0;
 
   // ========== State and Status ==========
 
@@ -688,14 +688,14 @@ public:
    * @brief Get current Bluetooth state
    * @return Current Bluetooth state
    */
-  virtual hf_bluetooth_state_t GetState() const = 0;
+  virtual hf_bluetooth_state_t GetState() const noexcept = 0;
 
   /**
    * @brief Get signal strength for a connected device
    * @param address Remote device address
    * @return Signal strength in dBm, or INT8_MIN on error
    */
-  virtual int8_t GetRssi(const hf_bluetooth_address_t& address) const = 0;
+  virtual int8_t GetRssi(const hf_bluetooth_address_t& address) const noexcept = 0;
 
   // ========== Event Handling ==========
 
@@ -704,26 +704,26 @@ public:
    * @param callback Event callback function
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t RegisterEventCallback(hf_bluetooth_event_callback_t callback) = 0;
+  virtual hf_bluetooth_err_t RegisterEventCallback(hf_bluetooth_event_callback_t callback) noexcept = 0;
 
   /**
    * @brief Unregister event callback
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t UnregisterEventCallback() = 0;
+  virtual hf_bluetooth_err_t UnregisterEventCallback() noexcept = 0;
 
   /**
    * @brief Register data received callback
    * @param callback Data callback function
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t RegisterDataCallback(hf_bluetooth_data_callback_t callback) = 0;
+  virtual hf_bluetooth_err_t RegisterDataCallback(hf_bluetooth_data_callback_t callback) noexcept = 0;
 
   /**
    * @brief Unregister data received callback
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  virtual hf_bluetooth_err_t UnregisterDataCallback() = 0;
+  virtual hf_bluetooth_err_t UnregisterDataCallback() noexcept = 0;
 
   // ========== Utility Functions ==========
 

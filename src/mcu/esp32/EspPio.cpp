@@ -729,12 +729,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       // Configure advanced TX channel for ESP32-C6 compatibility
       rmt_tx_channel_config_t tx_config = {};
       tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-// ESP32-C6 specific clock source configuration
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-      tx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses PLL_F80M (80 MHz)
-#else
-      tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
-#endif
+      tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // APB on ESP32, PLL_F80M on C6 (both 80 MHz)
 
       tx_config.resolution_hz = resolution_hz;
       tx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
@@ -800,12 +795,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
       // Configure advanced RX channel for ESP32-C6 compatibility
       rmt_rx_channel_config_t rx_config = {};
       rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-// ESP32-C6 specific clock source configuration
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-      rx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses PLL_F80M (80 MHz)
-#else
-      rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
-#endif
+      rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // APB on ESP32, PLL_F80M on C6 (both 80 MHz)
       rx_config.resolution_hz = resolution_hz;
       rx_config.mem_block_symbols = static_cast<hf_u32_t>(memory_blocks);
 
@@ -1344,8 +1334,8 @@ inline hf_u32_t EspPio::ResolveClockSourceHz(rmt_clock_source_t clk_src) noexcep
 #if SOC_CLK_TREE_SUPPORTED
   uint32_t freq = 0;
   switch (clk_src) {
-  case RMT_CLK_SRC_APB:
-    // PLL_F80M is fixed 80 MHz
+  case RMT_CLK_SRC_DEFAULT:
+    // APB / PLL_F80M is fixed 80 MHz
     return 80000000UL;
   case RMT_CLK_SRC_XTAL:
     // Query XTAL via clk tree
@@ -1371,7 +1361,7 @@ inline hf_u32_t EspPio::ResolveClockSourceHz(rmt_clock_source_t clk_src) noexcep
 // Legacy alias retained for internal calls
 inline hf_u32_t EspPio::GetClockSourceFrequency(rmt_clock_source_t clk_src) noexcept {
   switch (clk_src) {
-  case RMT_CLK_SRC_APB:
+  case RMT_CLK_SRC_DEFAULT:
     return 80000000UL;
   case RMT_CLK_SRC_XTAL:
     return 40000000UL;
@@ -1597,11 +1587,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
   const auto& config = channel.config;
 
   // Choose clock source: use user-selected if set, otherwise target default
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-  rmt_clock_source_t default_src = RMT_CLK_SRC_APB;
-#else
   rmt_clock_source_t default_src = RMT_CLK_SRC_DEFAULT;
-#endif
   rmt_clock_source_t chosen_src = (channels_[channel_id].selected_clk_src == RMT_CLK_SRC_DEFAULT)
                                       ? default_src
                                       : channels_[channel_id].selected_clk_src;
@@ -1618,12 +1604,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
       config.direction == hf_pio_direction_t::Bidirectional) {
     rmt_tx_channel_config_t tx_config = {};
     tx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-// ESP32-C6 specific clock source configuration
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-    tx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses PLL_F80M (80 MHz)
-#else
-    tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
-#endif
+    tx_config.clk_src = RMT_CLK_SRC_DEFAULT; // APB on ESP32, PLL_F80M on C6 (both 80 MHz)
     tx_config.resolution_hz = resolution_hz;
     // Balanced buffering to allow multi-channel allocations
     tx_config.mem_block_symbols = 64;
@@ -1677,12 +1658,7 @@ hf_pio_err_t EspPio::InitializeChannel(hf_u8_t channel_id) noexcept {
     // Configure advanced RX channel for ESP32-C6 compatibility
     rmt_rx_channel_config_t rx_config = {};
     rx_config.gpio_num = static_cast<gpio_num_t>(config.gpio_pin);
-// ESP32-C6 specific clock source configuration
-#if defined(CONFIG_IDF_TARGET_ESP32C6)
-    rx_config.clk_src = RMT_CLK_SRC_APB; // ESP32-C6 uses PLL_F80M (80 MHz)
-#else
-    rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // Use default clock source on other targets
-#endif
+    rx_config.clk_src = RMT_CLK_SRC_DEFAULT; // APB on ESP32, PLL_F80M on C6 (both 80 MHz)
     rx_config.resolution_hz = resolution_hz;
     rx_config.mem_block_symbols = 64;
 

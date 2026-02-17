@@ -145,6 +145,38 @@ elseif(CONFIG_IDF_TARGET_ESP32S3)
         HF_THREAD_SAFE=1
         ESP32S3=1
     )
+elseif(CONFIG_IDF_TARGET_ESP32S2)
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HF_TARGET_MCU_ESP32S2=1
+        HF_MCU_ESP32S2=1
+        HF_MCU_FAMILY_ESP32=1
+        HF_THREAD_SAFE=1
+        ESP32S2=1
+    )
+elseif(CONFIG_IDF_TARGET_ESP32C3)
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HF_TARGET_MCU_ESP32C3=1
+        HF_MCU_ESP32C3=1
+        HF_MCU_FAMILY_ESP32=1
+        HF_THREAD_SAFE=1
+        ESP32C3=1
+    )
+elseif(CONFIG_IDF_TARGET_ESP32C2)
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HF_TARGET_MCU_ESP32C2=1
+        HF_MCU_ESP32C2=1
+        HF_MCU_FAMILY_ESP32=1
+        HF_THREAD_SAFE=1
+        ESP32C2=1
+    )
+elseif(CONFIG_IDF_TARGET_ESP32H2)
+    target_compile_definitions(${COMPONENT_LIB} PUBLIC
+        HF_TARGET_MCU_ESP32H2=1
+        HF_MCU_ESP32H2=1
+        HF_MCU_FAMILY_ESP32=1
+        HF_THREAD_SAFE=1
+        ESP32H2=1
+    )
 else()
     # Default to ESP32
     target_compile_definitions(${COMPONENT_LIB} PUBLIC

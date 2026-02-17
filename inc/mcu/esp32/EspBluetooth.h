@@ -107,7 +107,7 @@ extern "C" {
 // Conditional includes based on target capabilities
 #if HAS_BLE_SUPPORT
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && defined(CONFIG_BT_ENABLED) && defined(CONFIG_BT_NIMBLE_ENABLED)
 // NimBLE headers for ESP32C6 (ESP-IDF v5.5+)
 #define NIMBLE_HEADERS_AVAILABLE 1
 extern "C" {
@@ -126,7 +126,7 @@ extern "C" {
 #define NIMBLE_HEADERS_AVAILABLE 0
 #endif
 
-#if HAS_BLUEDROID_SUPPORT
+#if HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
 // Bluedroid BLE headers for other targets
 extern "C" {
 #include "esp_bt.h"
@@ -137,9 +137,12 @@ extern "C" {
 #include "esp_gattc_api.h"
 #include "esp_gatts_api.h"
 }
+#define BLUEDROID_HEADERS_AVAILABLE 1
+#else
+#define BLUEDROID_HEADERS_AVAILABLE 0
 #endif
 
-#if HAS_CLASSIC_BLUETOOTH
+#if HAS_CLASSIC_BLUETOOTH && defined(CONFIG_BT_ENABLED)
 // Classic Bluetooth headers (ESP32/ESP32S3 only)
 extern "C" {
 #include "esp_gap_bt_api.h"
@@ -194,7 +197,7 @@ private:
   hf_bluetooth_data_callback_t m_data_callback;
   void* m_callback_context;
 
-#if HAS_NIMBLE_SUPPORT
+#if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   // NimBLE-specific members
   static EspBluetooth* s_instance;
   uint16_t m_conn_handle;
@@ -216,7 +219,7 @@ private:
   static void ConvertHfAddr(const hf_bluetooth_address_t& hf_addr, ble_addr_t* ble_addr);
 #endif
 
-#if HAS_BLUEDROID_SUPPORT
+#if HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   // Bluedroid-specific members and methods
   hf_bluetooth_err_t InitializeBluedroid();
   hf_bluetooth_err_t DeinitializeBluedroid();
@@ -229,7 +232,7 @@ private:
                                 esp_ble_gatts_cb_param_t* param);
 #endif
 
-#if HAS_CLASSIC_BLUETOOTH
+#if HAS_CLASSIC_BLUETOOTH && defined(CONFIG_BT_ENABLED)
   // Classic Bluetooth methods
   hf_bluetooth_err_t InitializeClassic();
   hf_bluetooth_err_t DeinitializeClassic();
@@ -265,50 +268,50 @@ public:
    *
    * @note For ESP32C6, only BLE mode is supported
    */
-  hf_bluetooth_err_t Initialize(hf_bluetooth_mode_t mode) override;
+  hf_bluetooth_err_t Initialize(hf_bluetooth_mode_t mode) noexcept override;
 
   /**
    * @brief Deinitialize the Bluetooth subsystem
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t Deinitialize() override;
+  hf_bluetooth_err_t Deinitialize() noexcept override;
 
   /**
    * @brief Check if Bluetooth is initialized
    * @return true if initialized, false otherwise
    */
-  bool IsInitialized() const override;
+  bool IsInitialized() const noexcept override;
 
   /**
    * @brief Enable Bluetooth
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t Enable() override;
+  hf_bluetooth_err_t Enable() noexcept override;
 
   /**
    * @brief Disable Bluetooth
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t Disable() override;
+  hf_bluetooth_err_t Disable() noexcept override;
 
   /**
    * @brief Check if Bluetooth is enabled
    * @return true if enabled, false otherwise
    */
-  bool IsEnabled() const override;
+  bool IsEnabled() const noexcept override;
 
   /**
    * @brief Set Bluetooth operating mode
    * @param mode Bluetooth operating mode
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t SetMode(hf_bluetooth_mode_t mode) override;
+  hf_bluetooth_err_t SetMode(hf_bluetooth_mode_t mode) noexcept override;
 
   /**
    * @brief Get current Bluetooth operating mode
    * @return Current Bluetooth mode
    */
-  hf_bluetooth_mode_t GetMode() const override;
+  hf_bluetooth_mode_t GetMode() const noexcept override;
 
   // ========== Device Management ==========
 
@@ -317,20 +320,20 @@ public:
    * @param address Reference to store the local address
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t GetLocalAddress(hf_bluetooth_address_t& address) const override;
+  hf_bluetooth_err_t GetLocalAddress(hf_bluetooth_address_t& address) const noexcept override;
 
   /**
    * @brief Set local device name
    * @param name Device name string
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t SetDeviceName(const std::string& name) override;
+  hf_bluetooth_err_t SetDeviceName(const std::string& name) noexcept override;
 
   /**
    * @brief Get local device name
    * @return Device name string
    */
-  std::string GetDeviceName() const override;
+  std::string GetDeviceName() const noexcept override;
 
   // ========== Discovery and Scanning ==========
 
@@ -343,19 +346,19 @@ public:
   hf_bluetooth_err_t StartScan(
       uint32_t duration_ms = 0,
       hf_bluetooth_scan_type_t type =
-          hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) override;
+          hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE) noexcept override;
 
   /**
    * @brief Stop device discovery/scanning
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t StopScan() override;
+  hf_bluetooth_err_t StopScan() noexcept override;
 
   /**
    * @brief Check if currently scanning
    * @return true if scanning, false otherwise
    */
-  bool IsScanning() const override;
+  bool IsScanning() const noexcept override;
 
   /**
    * @brief Get list of discovered devices
@@ -363,13 +366,13 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t GetDiscoveredDevices(
-      std::vector<hf_bluetooth_device_info_t>& devices) override;
+      std::vector<hf_bluetooth_device_info_t>& devices) noexcept override;
 
   /**
    * @brief Clear discovered devices list
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t ClearDiscoveredDevices() override;
+  hf_bluetooth_err_t ClearDiscoveredDevices() noexcept override;
 
   // ========== Advertising (BLE) ==========
 
@@ -377,19 +380,19 @@ public:
    * @brief Start BLE advertising
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t StartAdvertising() override;
+  hf_bluetooth_err_t StartAdvertising() noexcept override;
 
   /**
    * @brief Stop BLE advertising
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t StopAdvertising() override;
+  hf_bluetooth_err_t StopAdvertising() noexcept override;
 
   /**
    * @brief Check if currently advertising
    * @return true if advertising, false otherwise
    */
-  bool IsAdvertising() const override;
+  bool IsAdvertising() const noexcept override;
 
   // ========== Connection Management ==========
 
@@ -400,28 +403,28 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t Connect(const hf_bluetooth_address_t& address,
-                             uint32_t timeout_ms = 0) override;
+                             uint32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Disconnect from a remote device
    * @param address Remote device address
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t Disconnect(const hf_bluetooth_address_t& address) override;
+  hf_bluetooth_err_t Disconnect(const hf_bluetooth_address_t& address) noexcept override;
 
   /**
    * @brief Check if connected to a device
    * @param address Remote device address
    * @return true if connected, false otherwise
    */
-  bool IsConnected(const hf_bluetooth_address_t& address) const override;
+  bool IsConnected(const hf_bluetooth_address_t& address) const noexcept override;
 
   /**
    * @brief Get list of connected devices
    * @param devices Vector to store connected devices
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t GetConnectedDevices(std::vector<hf_bluetooth_device_info_t>& devices) override;
+  hf_bluetooth_err_t GetConnectedDevices(std::vector<hf_bluetooth_device_info_t>& devices) noexcept override;
 
   // ========== Pairing and Bonding ==========
 
@@ -432,21 +435,21 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t Pair(const hf_bluetooth_address_t& address,
-                          const std::string& pin = "") override;
+                          const std::string& pin = "") noexcept override;
 
   /**
    * @brief Unpair from a remote device
    * @param address Remote device address
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t Unpair(const hf_bluetooth_address_t& address) override;
+  hf_bluetooth_err_t Unpair(const hf_bluetooth_address_t& address) noexcept override;
 
   /**
    * @brief Check if paired with a device
    * @param address Remote device address
    * @return true if paired, false otherwise
    */
-  bool IsPaired(const hf_bluetooth_address_t& address) const override;
+  bool IsPaired(const hf_bluetooth_address_t& address) const noexcept override;
 
   // ========== Data Transfer ==========
 
@@ -457,14 +460,14 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t SendData(const hf_bluetooth_address_t& address,
-                              const std::vector<uint8_t>& data) override;
+                              const std::vector<uint8_t>& data) noexcept override;
 
   /**
    * @brief Check if data is available to read
    * @param address Remote device address
    * @return Number of bytes available, or -1 on error
    */
-  int GetAvailableData(const hf_bluetooth_address_t& address) const override;
+  int GetAvailableData(const hf_bluetooth_address_t& address) const noexcept override;
 
   /**
    * @brief Read available data from a connected device
@@ -474,7 +477,7 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t ReadData(const hf_bluetooth_address_t& address, std::vector<uint8_t>& data,
-                              size_t max_bytes = 0) override;
+                              size_t max_bytes = 0) noexcept override;
 
   // ========== GATT Operations (BLE) ==========
 
@@ -485,7 +488,7 @@ public:
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
   hf_bluetooth_err_t DiscoverServices(const hf_bluetooth_address_t& address,
-                                      std::vector<hf_bluetooth_gatt_service_t>& services) override;
+                                      std::vector<hf_bluetooth_gatt_service_t>& services) noexcept override;
 
   /**
    * @brief Discover GATT characteristics for a service
@@ -496,7 +499,7 @@ public:
    */
   hf_bluetooth_err_t DiscoverCharacteristics(
       const hf_bluetooth_address_t& address, const std::string& service_uuid,
-      std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) override;
+      std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) noexcept override;
 
   /**
    * @brief Read GATT characteristic value
@@ -509,7 +512,7 @@ public:
   hf_bluetooth_err_t ReadCharacteristic(const hf_bluetooth_address_t& address,
                                         const std::string& service_uuid,
                                         const std::string& characteristic_uuid,
-                                        std::vector<uint8_t>& value) override;
+                                        std::vector<uint8_t>& value) noexcept override;
 
   /**
    * @brief Write GATT characteristic value
@@ -524,7 +527,7 @@ public:
                                          const std::string& service_uuid,
                                          const std::string& characteristic_uuid,
                                          const std::vector<uint8_t>& value,
-                                         bool with_response = true) override;
+                                         bool with_response = true) noexcept override;
 
   /**
    * @brief Subscribe to GATT characteristic notifications
@@ -537,7 +540,7 @@ public:
   hf_bluetooth_err_t SubscribeCharacteristic(const hf_bluetooth_address_t& address,
                                              const std::string& service_uuid,
                                              const std::string& characteristic_uuid,
-                                             bool enable) override;
+                                             bool enable) noexcept override;
 
   // ========== State and Status ==========
 
@@ -545,14 +548,14 @@ public:
    * @brief Get current Bluetooth state
    * @return Current Bluetooth state
    */
-  hf_bluetooth_state_t GetState() const override;
+  hf_bluetooth_state_t GetState() const noexcept override;
 
   /**
    * @brief Get signal strength for a connected device
    * @param address Remote device address
    * @return Signal strength in dBm, or INT8_MIN on error
    */
-  int8_t GetRssi(const hf_bluetooth_address_t& address) const override;
+  int8_t GetRssi(const hf_bluetooth_address_t& address) const noexcept override;
 
   // ========== Event Handling ==========
 
@@ -561,26 +564,26 @@ public:
    * @param callback Callback function
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t RegisterEventCallback(hf_bluetooth_event_callback_t callback) override;
+  hf_bluetooth_err_t RegisterEventCallback(hf_bluetooth_event_callback_t callback) noexcept override;
 
   /**
    * @brief Register data callback function
    * @param callback Callback function
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t RegisterDataCallback(hf_bluetooth_data_callback_t callback) override;
+  hf_bluetooth_err_t RegisterDataCallback(hf_bluetooth_data_callback_t callback) noexcept override;
 
   /**
    * @brief Unregister event callback function
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t UnregisterEventCallback() override;
+  hf_bluetooth_err_t UnregisterEventCallback() noexcept override;
 
   /**
    * @brief Unregister data callback function
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t UnregisterDataCallback() override;
+  hf_bluetooth_err_t UnregisterDataCallback() noexcept override;
 
   // ========== Classic Bluetooth Operations ==========
 
@@ -589,7 +592,7 @@ public:
    * @param config Classic configuration
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t ConfigureClassic(const hf_bluetooth_classic_config_t& config) override;
+  hf_bluetooth_err_t ConfigureClassic(const hf_bluetooth_classic_config_t& config) noexcept override;
 
   /**
    * @brief Make device discoverable
@@ -597,13 +600,13 @@ public:
    * @param timeout_ms Discoverable timeout in milliseconds (0 for indefinite)
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t SetDiscoverable(bool discoverable, uint32_t timeout_ms = 0) override;
+  hf_bluetooth_err_t SetDiscoverable(bool discoverable, uint32_t timeout_ms = 0) noexcept override;
 
   /**
    * @brief Check if device is discoverable
    * @return true if discoverable, false otherwise
    */
-  bool IsDiscoverable() const override;
+  bool IsDiscoverable() const noexcept override;
 
   // ========== BLE Operations ==========
 
@@ -612,7 +615,7 @@ public:
    * @param config BLE configuration
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t ConfigureBle(const hf_bluetooth_ble_config_t& config) override;
+  hf_bluetooth_err_t ConfigureBle(const hf_bluetooth_ble_config_t& config) noexcept override;
 
   // ========== Pairing and Bonding ==========
 
@@ -621,7 +624,7 @@ public:
    * @param devices Vector to store paired devices
    * @return hf_bluetooth_err_t::BLUETOOTH_SUCCESS on success, error code otherwise
    */
-  hf_bluetooth_err_t GetPairedDevices(std::vector<hf_bluetooth_device_info_t>& devices) override;
+  hf_bluetooth_err_t GetPairedDevices(std::vector<hf_bluetooth_device_info_t>& devices) noexcept override;
 
   // ========== Utility Methods ==========
 
@@ -645,15 +648,15 @@ public:
 class EspBluetoothStub : public BaseBluetooth {
 public:
   // All methods return NOT_SUPPORTED error
-  hf_bluetooth_err_t Initialize(hf_bluetooth_mode_t mode) override {
+  hf_bluetooth_err_t Initialize(hf_bluetooth_mode_t mode) noexcept override {
     return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
   }
 
-  hf_bluetooth_err_t Deinitialize() override {
+  hf_bluetooth_err_t Deinitialize() noexcept override {
     return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
   }
 
-  bool IsInitialized() const override {
+  bool IsInitialized() const noexcept override {
     return false;
   }
 

@@ -93,7 +93,7 @@ EspBluetooth::~EspBluetooth() {
 
 // ========== Initialization and Configuration ==========
 
-hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
+hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) noexcept {
   MutexLockGuard lock(m_state_mutex);
 
   if (m_initialized) {
@@ -126,7 +126,7 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
 
   m_mode = hf_bluetooth_mode_t::HF_BLUETOOTH_MODE_BLE;
 
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   // Other ESP32 variants using Bluedroid
   hf_bluetooth_err_t bluedroid_ret = InitializeBluedroid();
   if (bluedroid_ret != hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
@@ -149,7 +149,7 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) {
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-hf_bluetooth_err_t EspBluetooth::Deinitialize() {
+hf_bluetooth_err_t EspBluetooth::Deinitialize() noexcept {
   MutexLockGuard lock(m_state_mutex);
 
   if (!m_initialized) {
@@ -167,7 +167,7 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() {
     ESP_LOGE(TAG, "Failed to deinitialize NimBLE");
     return ret;
   }
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   hf_bluetooth_err_t ret = DeinitializeBluedroid();
   if (ret != hf_bluetooth_err_t::BLUETOOTH_SUCCESS) {
     ESP_LOGE(TAG, "Failed to deinitialize Bluedroid");
@@ -182,7 +182,7 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() {
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-bool EspBluetooth::IsInitialized() const {
+bool EspBluetooth::IsInitialized() const noexcept {
   MutexLockGuard lock(m_state_mutex);
   return m_initialized;
 }
@@ -197,7 +197,7 @@ static void ble_host_task(void* param) {
 }
 #endif
 
-hf_bluetooth_err_t EspBluetooth::Enable() {
+hf_bluetooth_err_t EspBluetooth::Enable() noexcept {
   MutexLockGuard lock(m_state_mutex);
 
   if (!m_initialized) {
@@ -222,18 +222,18 @@ hf_bluetooth_err_t EspBluetooth::Enable() {
 
   TriggerEvent(hf_bluetooth_event_t::HF_BLUETOOTH_EVENT_ENABLED);
 
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   // Bluedroid enable sequence
   esp_err_t ret = esp_bt_controller_enable(ESP_BT_MODE_BLE);
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable BT controller: %s", esp_err_to_name(ret));
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_HARDWARE_FAILURE;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
   }
 
   ret = esp_bluedroid_enable();
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to enable Bluedroid: %s", esp_err_to_name(ret));
-    return hf_bluetooth_err_t::BLUETOOTH_ERR_HARDWARE_FAILURE;
+    return hf_bluetooth_err_t::BLUETOOTH_ERR_FAILURE;
   }
 
   m_enabled = true;
@@ -246,7 +246,7 @@ hf_bluetooth_err_t EspBluetooth::Enable() {
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-hf_bluetooth_err_t EspBluetooth::Disable() {
+hf_bluetooth_err_t EspBluetooth::Disable() noexcept {
   MutexLockGuard lock(m_state_mutex);
 
   if (!m_enabled) {
@@ -271,7 +271,7 @@ hf_bluetooth_err_t EspBluetooth::Disable() {
     nimble_port_deinit();
   }
 
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   esp_bluedroid_disable();
   esp_bt_controller_disable();
 #endif
@@ -285,12 +285,12 @@ hf_bluetooth_err_t EspBluetooth::Disable() {
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-bool EspBluetooth::IsEnabled() const {
+bool EspBluetooth::IsEnabled() const noexcept {
   MutexLockGuard lock(m_state_mutex);
   return m_enabled;
 }
 
-hf_bluetooth_err_t EspBluetooth::SetMode(hf_bluetooth_mode_t mode) {
+hf_bluetooth_err_t EspBluetooth::SetMode(hf_bluetooth_mode_t mode) noexcept {
   MutexLockGuard lock(m_state_mutex);
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
@@ -308,7 +308,7 @@ hf_bluetooth_err_t EspBluetooth::SetMode(hf_bluetooth_mode_t mode) {
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-hf_bluetooth_mode_t EspBluetooth::GetMode() const {
+hf_bluetooth_mode_t EspBluetooth::GetMode() const noexcept {
   MutexLockGuard lock(m_state_mutex);
   return m_mode;
 }
@@ -510,7 +510,7 @@ void EspBluetooth::ConvertHfAddr(const hf_bluetooth_address_t& hf_addr, ble_addr
 
 #endif // HAS_NIMBLE_SUPPORT
 
-#if HAS_BLUEDROID_SUPPORT
+#if HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
 // ========== Bluedroid Implementation Functions ==========
 
 hf_bluetooth_err_t EspBluetooth::InitializeBluedroid() {
@@ -593,7 +593,7 @@ hf_bluetooth_err_t EspBluetooth::DeinitializeBluedroid() {
 
 // ========== Device Management ==========
 
-hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address) const {
+hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address) const noexcept {
   if (!m_initialized) {
     return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_INITIALIZED;
   }
@@ -609,7 +609,7 @@ hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address
   memcpy(address.addr, addr, 6);
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   esp_bd_addr_t bd_addr;
   esp_err_t ret = esp_bt_dev_get_address(bd_addr);
   if (ret != ESP_OK) {
@@ -625,7 +625,7 @@ hf_bluetooth_err_t EspBluetooth::GetLocalAddress(hf_bluetooth_address_t& address
 #endif
 }
 
-hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
+hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) noexcept {
   if (!m_initialized) {
     return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_INITIALIZED;
   }
@@ -639,7 +639,7 @@ hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
 
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   esp_err_t ret = esp_bt_dev_set_device_name(name.c_str());
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to set device name: %s", esp_err_to_name(ret));
@@ -653,7 +653,7 @@ hf_bluetooth_err_t EspBluetooth::SetDeviceName(const std::string& name) {
 #endif
 }
 
-std::string EspBluetooth::GetDeviceName() const {
+std::string EspBluetooth::GetDeviceName() const noexcept {
   if (!m_initialized) {
     return "";
   }
@@ -667,7 +667,7 @@ std::string EspBluetooth::GetDeviceName() const {
   ESP_LOGE(TAG, "Failed to get device name");
   return "";
 
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   // Bluedroid doesn't have a direct get function, use stored name
   return std::string(reinterpret_cast<const char*>(DEVICE_NAME));
 
@@ -678,7 +678,7 @@ std::string EspBluetooth::GetDeviceName() const {
 
 // ========== Discovery and Scanning ==========
 
-hf_bluetooth_err_t EspBluetooth::StartScan(uint32_t duration_ms, hf_bluetooth_scan_type_t type) {
+hf_bluetooth_err_t EspBluetooth::StartScan(uint32_t duration_ms, hf_bluetooth_scan_type_t type) noexcept {
   if (!m_enabled) {
     return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_ENABLED;
   }
@@ -688,7 +688,7 @@ hf_bluetooth_err_t EspBluetooth::StartScan(uint32_t duration_ms, hf_bluetooth_sc
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   return StartScanning();
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   // Implement Bluedroid scanning
   esp_ble_scan_params_t scan_params = {
       .scan_type = (type == hf_bluetooth_scan_type_t::HF_BLUETOOTH_SCAN_TYPE_ACTIVE)
@@ -723,7 +723,7 @@ hf_bluetooth_err_t EspBluetooth::StartScan(uint32_t duration_ms, hf_bluetooth_sc
 }
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
-hf_bluetooth_err_t EspBluetooth::StartScanning() {
+hf_bluetooth_err_t EspBluetooth::StartScanning() noexcept {
   struct ble_gap_disc_params disc_params = {
       .itvl = BLE_GAP_SCAN_ITVL_MS(100),
       .window = BLE_GAP_SCAN_WIN_MS(100),
@@ -767,14 +767,14 @@ hf_bluetooth_err_t EspBluetooth::StopScanning() {
 }
 #endif
 
-hf_bluetooth_err_t EspBluetooth::StopScan() {
+hf_bluetooth_err_t EspBluetooth::StopScan() noexcept {
   if (m_state != hf_bluetooth_state_t::HF_BLUETOOTH_STATE_SCANNING) {
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
   }
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   return StopScanning();
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   esp_err_t ret = esp_ble_gap_stop_scanning();
   if (ret != ESP_OK) {
     ESP_LOGE(TAG, "Failed to stop scanning: %s", esp_err_to_name(ret));
@@ -790,19 +790,19 @@ hf_bluetooth_err_t EspBluetooth::StopScan() {
 #endif
 }
 
-bool EspBluetooth::IsScanning() const {
+bool EspBluetooth::IsScanning() const noexcept {
   MutexLockGuard lock(m_state_mutex);
   return m_state == hf_bluetooth_state_t::HF_BLUETOOTH_STATE_SCANNING;
 }
 
 hf_bluetooth_err_t EspBluetooth::GetDiscoveredDevices(
-    std::vector<hf_bluetooth_device_info_t>& devices) {
+    std::vector<hf_bluetooth_device_info_t>& devices) noexcept {
   MutexLockGuard lock(m_device_mutex);
   devices = m_discovered_devices;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-hf_bluetooth_err_t EspBluetooth::ClearDiscoveredDevices() {
+hf_bluetooth_err_t EspBluetooth::ClearDiscoveredDevices() noexcept {
   MutexLockGuard lock(m_device_mutex);
   m_discovered_devices.clear();
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
@@ -811,37 +811,37 @@ hf_bluetooth_err_t EspBluetooth::ClearDiscoveredDevices() {
 // ========== Stub implementations for required methods ==========
 // Note: These would be fully implemented based on specific requirements
 
-hf_bluetooth_err_t EspBluetooth::StartAdvertising() {
+hf_bluetooth_err_t EspBluetooth::StartAdvertising() noexcept {
   ESP_LOGW(TAG, "StartAdvertising not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-hf_bluetooth_err_t EspBluetooth::StopAdvertising() {
+hf_bluetooth_err_t EspBluetooth::StopAdvertising() noexcept {
   ESP_LOGW(TAG, "StopAdvertising not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-bool EspBluetooth::IsAdvertising() const {
+bool EspBluetooth::IsAdvertising() const noexcept {
   return false; // Stub implementation
 }
 
 hf_bluetooth_err_t EspBluetooth::Connect(const hf_bluetooth_address_t& address,
-                                         uint32_t timeout_ms) {
+                                         uint32_t timeout_ms) noexcept {
   ESP_LOGW(TAG, "Connect not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-hf_bluetooth_err_t EspBluetooth::Disconnect(const hf_bluetooth_address_t& address) {
+hf_bluetooth_err_t EspBluetooth::Disconnect(const hf_bluetooth_address_t& address) noexcept {
   ESP_LOGW(TAG, "Disconnect not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-bool EspBluetooth::IsConnected(const hf_bluetooth_address_t& address) const {
+bool EspBluetooth::IsConnected(const hf_bluetooth_address_t& address) const noexcept {
   return false; // Stub implementation
 }
 
 hf_bluetooth_err_t EspBluetooth::GetConnectedDevices(
-    std::vector<hf_bluetooth_device_info_t>& devices) {
+    std::vector<hf_bluetooth_device_info_t>& devices) noexcept {
   MutexLockGuard lock(m_device_mutex);
   devices.clear();
   for (const auto& pair : m_connected_devices) {
@@ -851,45 +851,45 @@ hf_bluetooth_err_t EspBluetooth::GetConnectedDevices(
 }
 
 hf_bluetooth_err_t EspBluetooth::Pair(const hf_bluetooth_address_t& address,
-                                      const std::string& pin) {
+                                      const std::string& pin) noexcept {
   ESP_LOGW(TAG, "Pair not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-hf_bluetooth_err_t EspBluetooth::Unpair(const hf_bluetooth_address_t& address) {
+hf_bluetooth_err_t EspBluetooth::Unpair(const hf_bluetooth_address_t& address) noexcept {
   ESP_LOGW(TAG, "Unpair not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-bool EspBluetooth::IsPaired(const hf_bluetooth_address_t& address) const {
+bool EspBluetooth::IsPaired(const hf_bluetooth_address_t& address) const noexcept {
   return false; // Stub implementation
 }
 
 hf_bluetooth_err_t EspBluetooth::SendData(const hf_bluetooth_address_t& address,
-                                          const std::vector<uint8_t>& data) {
+                                          const std::vector<uint8_t>& data) noexcept {
   ESP_LOGW(TAG, "SendData not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-int EspBluetooth::GetAvailableData(const hf_bluetooth_address_t& address) const {
+int EspBluetooth::GetAvailableData(const hf_bluetooth_address_t& address) const noexcept {
   return 0; // Stub implementation
 }
 
 hf_bluetooth_err_t EspBluetooth::ReadData(const hf_bluetooth_address_t& address,
-                                          std::vector<uint8_t>& data, size_t max_bytes) {
+                                          std::vector<uint8_t>& data, size_t max_bytes) noexcept {
   ESP_LOGW(TAG, "ReadData not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::DiscoverServices(
-    const hf_bluetooth_address_t& address, std::vector<hf_bluetooth_gatt_service_t>& services) {
+    const hf_bluetooth_address_t& address, std::vector<hf_bluetooth_gatt_service_t>& services) noexcept {
   ESP_LOGW(TAG, "DiscoverServices not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::DiscoverCharacteristics(
     const hf_bluetooth_address_t& address, const std::string& service_uuid,
-    std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) {
+    std::vector<hf_bluetooth_gatt_characteristic_t>& characteristics) noexcept {
   ESP_LOGW(TAG, "DiscoverCharacteristics not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
@@ -897,7 +897,7 @@ hf_bluetooth_err_t EspBluetooth::DiscoverCharacteristics(
 hf_bluetooth_err_t EspBluetooth::ReadCharacteristic(const hf_bluetooth_address_t& address,
                                                     const std::string& service_uuid,
                                                     const std::string& characteristic_uuid,
-                                                    std::vector<uint8_t>& value) {
+                                                    std::vector<uint8_t>& value) noexcept {
   ESP_LOGW(TAG, "ReadCharacteristic not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
@@ -906,7 +906,7 @@ hf_bluetooth_err_t EspBluetooth::WriteCharacteristic(const hf_bluetooth_address_
                                                      const std::string& service_uuid,
                                                      const std::string& characteristic_uuid,
                                                      const std::vector<uint8_t>& value,
-                                                     bool with_response) {
+                                                     bool with_response) noexcept {
   ESP_LOGW(TAG, "WriteCharacteristic not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
@@ -914,39 +914,39 @@ hf_bluetooth_err_t EspBluetooth::WriteCharacteristic(const hf_bluetooth_address_
 hf_bluetooth_err_t EspBluetooth::SubscribeCharacteristic(const hf_bluetooth_address_t& address,
                                                          const std::string& service_uuid,
                                                          const std::string& characteristic_uuid,
-                                                         bool enable) {
+                                                         bool enable) noexcept {
   ESP_LOGW(TAG, "SubscribeCharacteristic not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-hf_bluetooth_state_t EspBluetooth::GetState() const {
+hf_bluetooth_state_t EspBluetooth::GetState() const noexcept {
   MutexLockGuard lock(m_state_mutex);
   return m_state;
 }
 
-int8_t EspBluetooth::GetRssi(const hf_bluetooth_address_t& address) const {
+int8_t EspBluetooth::GetRssi(const hf_bluetooth_address_t& address) const noexcept {
   return INT8_MIN; // Stub implementation
 }
 
-hf_bluetooth_err_t EspBluetooth::RegisterEventCallback(hf_bluetooth_event_callback_t callback) {
+hf_bluetooth_err_t EspBluetooth::RegisterEventCallback(hf_bluetooth_event_callback_t callback) noexcept {
   MutexLockGuard lock(m_state_mutex);
   m_event_callback = callback;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-hf_bluetooth_err_t EspBluetooth::UnregisterEventCallback() {
+hf_bluetooth_err_t EspBluetooth::UnregisterEventCallback() noexcept {
   MutexLockGuard lock(m_state_mutex);
   m_event_callback = nullptr;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-hf_bluetooth_err_t EspBluetooth::RegisterDataCallback(hf_bluetooth_data_callback_t callback) {
+hf_bluetooth_err_t EspBluetooth::RegisterDataCallback(hf_bluetooth_data_callback_t callback) noexcept {
   MutexLockGuard lock(m_state_mutex);
   m_data_callback = callback;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
-hf_bluetooth_err_t EspBluetooth::UnregisterDataCallback() {
+hf_bluetooth_err_t EspBluetooth::UnregisterDataCallback() noexcept {
   MutexLockGuard lock(m_state_mutex);
   m_data_callback = nullptr;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
@@ -954,27 +954,27 @@ hf_bluetooth_err_t EspBluetooth::UnregisterDataCallback() {
 
 // ========== Classic Bluetooth Methods (stub implementations) ==========
 
-hf_bluetooth_err_t EspBluetooth::ConfigureClassic(const hf_bluetooth_classic_config_t& config) {
+hf_bluetooth_err_t EspBluetooth::ConfigureClassic(const hf_bluetooth_classic_config_t& config) noexcept {
   ESP_LOGW(TAG, "ConfigureClassic not supported on ESP32C6");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-hf_bluetooth_err_t EspBluetooth::SetDiscoverable(bool discoverable, uint32_t timeout_ms) {
+hf_bluetooth_err_t EspBluetooth::SetDiscoverable(bool discoverable, uint32_t timeout_ms) noexcept {
   ESP_LOGW(TAG, "SetDiscoverable not supported on ESP32C6");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
-bool EspBluetooth::IsDiscoverable() const {
+bool EspBluetooth::IsDiscoverable() const noexcept {
   return false; // ESP32C6 doesn't support Classic Bluetooth
 }
 
-hf_bluetooth_err_t EspBluetooth::ConfigureBle(const hf_bluetooth_ble_config_t& config) {
+hf_bluetooth_err_t EspBluetooth::ConfigureBle(const hf_bluetooth_ble_config_t& config) noexcept {
   ESP_LOGW(TAG, "ConfigureBle not fully implemented yet");
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
 }
 
 hf_bluetooth_err_t EspBluetooth::GetPairedDevices(
-    std::vector<hf_bluetooth_device_info_t>& devices) {
+    std::vector<hf_bluetooth_device_info_t>& devices) noexcept {
   ESP_LOGW(TAG, "GetPairedDevices not fully implemented yet");
   devices.clear();
   return hf_bluetooth_err_t::BLUETOOTH_ERR_NOT_SUPPORTED;
@@ -989,7 +989,7 @@ std::string EspBluetooth::GetImplementationInfo() const {
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   info << "Stack: NimBLE (ESP32C6 optimized)\n";
   info << "Features: BLE-only\n";
-#elif HAS_BLUEDROID_SUPPORT
+#elif HAS_BLUEDROID_SUPPORT && defined(CONFIG_BT_ENABLED)
   info << "Stack: Bluedroid\n";
 #if HAS_CLASSIC_BLUETOOTH
   info << "Features: Classic BT + BLE\n";

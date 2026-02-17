@@ -257,7 +257,7 @@ public:
   /**
    * @brief Virtual destructor for proper cleanup of derived classes
    */
-  virtual ~BaseWifi() = default;
+  virtual ~BaseWifi() noexcept = default;
 
   // ========== Initialization and Configuration ==========
 
@@ -266,32 +266,32 @@ public:
    * @param mode WiFi operating mode
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t Initialize(hf_wifi_mode_t mode) = 0;
+  virtual hf_wifi_err_t Initialize(hf_wifi_mode_t mode) noexcept = 0;
 
   /**
    * @brief Deinitialize the WiFi subsystem
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t Deinitialize() = 0;
+  virtual hf_wifi_err_t Deinitialize() noexcept = 0;
 
   /**
    * @brief Check if WiFi is initialized
    * @return true if initialized, false otherwise
    */
-  virtual bool IsInitialized() const = 0;
+  virtual bool IsInitialized() const noexcept = 0;
 
   /**
    * @brief Set WiFi operating mode
    * @param mode WiFi operating mode
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t SetMode(hf_wifi_mode_t mode) = 0;
+  virtual hf_wifi_err_t SetMode(hf_wifi_mode_t mode) noexcept = 0;
 
   /**
    * @brief Get current WiFi operating mode
    * @return Current WiFi mode
    */
-  virtual hf_wifi_mode_t GetMode() const = 0;
+  virtual hf_wifi_mode_t GetMode() const noexcept = 0;
 
   // ========== Station Mode Operations ==========
 
@@ -300,39 +300,39 @@ public:
    * @param config Station configuration
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config) = 0;
+  virtual hf_wifi_err_t ConfigureStation(const hf_wifi_station_config_t& config) noexcept = 0;
 
   /**
    * @brief Connect to a WiFi network (station mode)
    * @param timeout_ms Connection timeout in milliseconds (0 for default)
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t Connect(uint32_t timeout_ms = 0) = 0;
+  virtual hf_wifi_err_t Connect(uint32_t timeout_ms = 0) noexcept = 0;
 
   /**
    * @brief Disconnect from WiFi network
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t Disconnect() = 0;
+  virtual hf_wifi_err_t Disconnect() noexcept = 0;
 
   /**
    * @brief Check if connected to a network
    * @return true if connected, false otherwise
    */
-  virtual bool IsConnected() const = 0;
+  virtual bool IsConnected() const noexcept = 0;
 
   /**
    * @brief Get signal strength (RSSI)
    * @return Signal strength in dBm, or INT8_MIN on error
    */
-  virtual int8_t GetRssi() const = 0;
+  virtual int8_t GetRssi() const noexcept = 0;
 
   /**
    * @brief Get current IP information
    * @param ip_info Reference to store IP information
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t GetIpInfo(hf_wifi_ip_info_t& ip_info) const = 0;
+  virtual hf_wifi_err_t GetIpInfo(hf_wifi_ip_info_t& ip_info) const noexcept = 0;
 
   // ========== Access Point Mode Operations ==========
 
@@ -341,31 +341,31 @@ public:
    * @param config AP configuration
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t ConfigureAccessPoint(const hf_wifi_ap_config_t& config) = 0;
+  virtual hf_wifi_err_t ConfigureAccessPoint(const hf_wifi_ap_config_t& config) noexcept = 0;
 
   /**
    * @brief Start Access Point
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t StartAccessPoint() = 0;
+  virtual hf_wifi_err_t StartAccessPoint() noexcept = 0;
 
   /**
    * @brief Stop Access Point
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t StopAccessPoint() = 0;
+  virtual hf_wifi_err_t StopAccessPoint() noexcept = 0;
 
   /**
    * @brief Check if Access Point is running
    * @return true if AP is active, false otherwise
    */
-  virtual bool IsAccessPointActive() const = 0;
+  virtual bool IsAccessPointActive() const noexcept = 0;
 
   /**
    * @brief Get number of connected stations
    * @return Number of connected stations, or -1 on error
    */
-  virtual int GetConnectedStationCount() const = 0;
+  virtual int GetConnectedStationCount() const noexcept = 0;
 
   // ========== Network Scanning ==========
 
@@ -377,7 +377,7 @@ public:
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
   virtual hf_wifi_err_t StartScan(bool show_hidden = false, bool passive = false,
-                                  uint32_t max_scan_time_ms = 0) = 0;
+                                  uint32_t max_scan_time_ms = 0) noexcept = 0;
 
   /**
    * @brief Get scan results
@@ -386,13 +386,13 @@ public:
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
   virtual hf_wifi_err_t GetScanResults(std::vector<hf_wifi_network_info_t>& networks,
-                                       uint16_t max_networks = 0) = 0;
+                                       uint16_t max_networks = 0) noexcept = 0;
 
   /**
    * @brief Check if scan is in progress
    * @return true if scanning, false otherwise
    */
-  virtual bool IsScanning() const = 0;
+  virtual bool IsScanning() const noexcept = 0;
 
   // ========== State and Status ==========
 
@@ -400,20 +400,20 @@ public:
    * @brief Get current WiFi state
    * @return Current WiFi state
    */
-  virtual hf_wifi_state_t GetState() const = 0;
+  virtual hf_wifi_state_t GetState() const noexcept = 0;
 
   /**
    * @brief Get connected network SSID
    * @return SSID string, empty if not connected
    */
-  virtual std::string GetConnectedSsid() const = 0;
+  virtual std::string GetConnectedSsid() const noexcept = 0;
 
   /**
    * @brief Get connected network BSSID
    * @param bssid Buffer to store BSSID (6 bytes)
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t GetConnectedBssid(uint8_t bssid[6]) const = 0;
+  virtual hf_wifi_err_t GetConnectedBssid(uint8_t bssid[6]) const noexcept = 0;
 
   // ========== Power Management ==========
 
@@ -422,13 +422,13 @@ public:
    * @param mode Power save mode
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t SetPowerSave(hf_wifi_power_save_t mode) = 0;
+  virtual hf_wifi_err_t SetPowerSave(hf_wifi_power_save_t mode) noexcept = 0;
 
   /**
    * @brief Get current power save mode
    * @return Current power save mode
    */
-  virtual hf_wifi_power_save_t GetPowerSave() const = 0;
+  virtual hf_wifi_power_save_t GetPowerSave() const noexcept = 0;
 
   // ========== Event Handling ==========
 
@@ -437,13 +437,13 @@ public:
    * @param callback Event callback function
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t RegisterEventCallback(hf_wifi_event_callback_t callback) = 0;
+  virtual hf_wifi_err_t RegisterEventCallback(hf_wifi_event_callback_t callback) noexcept = 0;
 
   /**
    * @brief Unregister event callback
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t UnregisterEventCallback() = 0;
+  virtual hf_wifi_err_t UnregisterEventCallback() noexcept = 0;
 
   // ========== Utility Functions ==========
 
@@ -453,7 +453,7 @@ public:
    * @param interface WiFi interface (0 for station, 1 for AP)
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t GetMacAddress(uint8_t mac[6], uint8_t interface = 0) const = 0;
+  virtual hf_wifi_err_t GetMacAddress(uint8_t mac[6], uint8_t interface = 0) const noexcept = 0;
 
   /**
    * @brief Set MAC address
@@ -461,20 +461,20 @@ public:
    * @param interface WiFi interface (0 for station, 1 for AP)
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t SetMacAddress(const uint8_t mac[6], uint8_t interface = 0) = 0;
+  virtual hf_wifi_err_t SetMacAddress(const uint8_t mac[6], uint8_t interface = 0) noexcept = 0;
 
   /**
    * @brief Get WiFi channel
    * @return Current channel, or 0 on error
    */
-  virtual uint8_t GetChannel() const = 0;
+  virtual uint8_t GetChannel() const noexcept = 0;
 
   /**
    * @brief Set WiFi channel
    * @param channel Channel number (1-14)
    * @return hf_wifi_err_t::WIFI_SUCCESS on success, error code otherwise
    */
-  virtual hf_wifi_err_t SetChannel(uint8_t channel) = 0;
+  virtual hf_wifi_err_t SetChannel(uint8_t channel) noexcept = 0;
 
   /**
    * @brief Get error description string
