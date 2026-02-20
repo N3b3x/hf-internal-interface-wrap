@@ -11,9 +11,9 @@
 <!-- Node0 -->
 <g id="Node000000" class="node">
 <title>Node0</title>
-<g id="a_Node000000"><a xlink:href="structhf__gpio__diagnostics__t.html" target="_top" xlink:title="GPIO diagnostic information.">
+<g id="a_Node000000"><a xlink:href="structhf__i2c__async__result__t.html" target="_top" xlink:title="Asynchronous operation result structure.">
 <polygon fill="white" stroke="#666666" points="147,-23 0,-23 0,0 147,0 147,-23"/>
-<text text-anchor="middle" x="73.5" y="-7.8" font-family="Arial" font-size="14.00">hf_gpio_diagnostics_t</text>
+<text text-anchor="middle" x="73.5" y="-7.8" font-family="Arial" font-size="14.00">hf_i2c_async_result_t</text>
 </a>
 </g>
 </g>

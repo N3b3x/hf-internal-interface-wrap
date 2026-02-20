@@ -1,0 +1,5 @@
+<map id="inc/mcu/stm32/StmSpi.h" name="inc/mcu/stm32/StmSpi.h">
+<area shape="rect" id="Node000001" title="STM32 SPI stub implementation — placeholder for future STM32 HAL integration." alt="" coords="15,5,234,36"/>
+<area shape="rect" id="Node000002" href="$StmSpi_8cpp.html" title="STM32 SPI stub implementation." alt="" coords="5,84,244,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,50,127,84,122,84,122,50"/>
+</map>

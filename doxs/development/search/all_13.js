@@ -4,7 +4,7 @@ var searchData=
   ['name_1',['name',['../structhf__bluetooth__device__info__t.html#a5d6aca83d72d1ba01f265f33987cf9ae',1,'hf_bluetooth_device_info_t']]],
   ['namespace_5fname_2',['namespace_name',['../structhf__nvs__partition__config__t.html#a956314821f9a7b6cc388863a6ebe4c3b',1,'hf_nvs_partition_config_t::namespace_name'],['../structhf__nvs__iterator__config__t.html#a65f62a32e0cce249d88cf7ae5af478f0',1,'hf_nvs_iterator_config_t::namespace_name']]],
   ['namespace_5fname_5f_3',['namespace_name_',['../classBaseNvs.html#a68e50ee98bc144e5a7c99a27ed5a7314',1,'BaseNvs']]],
-  ['native_5fhandle_4',['native_handle',['../classRtosMutex.html#a3d33ecf3c5ad5a0b064c8b2db34a0c8c',1,'RtosMutex']]],
+  ['native_5fhandle_4',['native_handle',['../classPlatformMutex.html#a0bb274f74486f122d5c20ca164ab19f4',1,'PlatformMutex']]],
   ['needs_5freconfiguration_5',['needs_reconfiguration',['../structEspPwm_1_1ChannelState.html#a9dcd4d475588c89b0812cbd814e0bf7e',1,'EspPwm::ChannelState']]],
   ['netmask_6',['netmask',['../structhf__wifi__ip__info__t.html#a5c28898562af2a8346742562bdf4583e',1,'hf_wifi_ip_info_t']]],
   ['new_20peripherals_20strong_7',['&lt;strong&gt;Adding New Peripherals&lt;/strong&gt;',['../index.html#autotoc_md46',1,'']]],
@@ -50,13 +50,6 @@ var searchData=
   ['nvs_5ferr_5fversion_5fmismatch_47',['NVS_ERR_VERSION_MISMATCH',['../BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4a1d42f1c4be97709b4834368707cad63b',1,'BaseNvs.h']]],
   ['nvs_5ferr_5fwrong_5fencryption_5fscheme_48',['NVS_ERR_WRONG_ENCRYPTION_SCHEME',['../BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4a7c3f052fde4e516843e18e47e4a6950b',1,'BaseNvs.h']]],
   ['nvs_5fhandle_5f_49',['nvs_handle_',['../classEspNvs.html#a6835ce423097a5c27ddaefb1be4e2207',1,'EspNvs']]],
-  ['nvs_5finit_5ftimeout_5fms_50',['NVS_INIT_TIMEOUT_MS',['../EspNvs_8cpp.html#a56134ef9075eaf7b6622e1a2736697ab',1,'EspNvs.cpp']]],
-  ['nvs_5fmax_5fkey_5flength_5fesp32_51',['NVS_MAX_KEY_LENGTH_ESP32',['../EspNvs_8cpp.html#a0d631767574cc8b140716c2ca3868db0',1,'EspNvs.cpp']]],
-  ['nvs_5fmax_5fnamespace_5flength_5fesp32_52',['NVS_MAX_NAMESPACE_LENGTH_ESP32',['../EspNvs_8cpp.html#ad4289f5994cc5fb6d4b3d47c03978363',1,'EspNvs.cpp']]],
-  ['nvs_5fmax_5fretry_5fattempts_53',['NVS_MAX_RETRY_ATTEMPTS',['../EspNvs_8cpp.html#a7fc5e67321118b83c625f7006a9fd270',1,'EspNvs.cpp']]],
-  ['nvs_5fmax_5fvalue_5fsize_5fesp32_54',['NVS_MAX_VALUE_SIZE_ESP32',['../EspNvs_8cpp.html#a831639f895a96f16a4c43cff3296b170',1,'EspNvs.cpp']]],
-  ['nvs_5foperation_5ftimeout_5fms_55',['NVS_OPERATION_TIMEOUT_MS',['../EspNvs_8cpp.html#a5067ec469e1472b8d9dcde905d307fca',1,'EspNvs.cpp']]],
-  ['nvs_5fstats_5fupdate_5finterval_5fms_56',['NVS_STATS_UPDATE_INTERVAL_MS',['../EspNvs_8cpp.html#af382ccbb36a465261a9e4abf140202a3',1,'EspNvs.cpp']]],
-  ['nvs_5fsuccess_57',['NVS_SUCCESS',['../BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296',1,'BaseNvs.h']]],
-  ['nvscomprehensivetest_2ecpp_58',['NvsComprehensiveTest.cpp',['../NvsComprehensiveTest_8cpp.html',1,'']]]
+  ['nvs_5fsuccess_50',['NVS_SUCCESS',['../BaseNvs_8h.html#a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296',1,'BaseNvs.h']]],
+  ['nvscomprehensivetest_2ecpp_51',['NvsComprehensiveTest.cpp',['../NvsComprehensiveTest_8cpp.html',1,'']]]
 ];

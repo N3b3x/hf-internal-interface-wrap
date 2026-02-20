@@ -50,9 +50,9 @@
 <!-- Node3 -->
 <g id="Node000003" class="node">
 <title>Node3</title>
-<g id="a_Node000003"><a xlink:href="classRtosMutex.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="120.5,-271.41 38.5,-271.41 38.5,-248.41 120.5,-248.41 120.5,-271.41"/>
-<text text-anchor="middle" x="79.5" y="-256.21" font-family="Arial" font-size="14.00">RtosMutex</text>
+<g id="a_Node000003"><a xlink:href="classPlatformMutex.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="132,-271.41 27,-271.41 27,-248.41 132,-248.41 132,-271.41"/>
+<text text-anchor="middle" x="79.5" y="-256.21" font-family="Arial" font-size="14.00">PlatformMutex</text>
 </a>
 </g>
 </g>
@@ -60,8 +60,8 @@
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node3&#45;&gt;Node1</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M131.25,-255.47C186.48,-250.16 270.93,-240.52 301,-228.91 324.94,-219.67 348.8,-201.52 362.98,-189.55"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="130.58,-252.02 120.96,-256.44 131.24,-258.98 130.58,-252.02"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M142.23,-254.39C197.11,-248.91 272.86,-239.77 301,-228.91 324.94,-219.67 348.8,-201.52 362.98,-189.55"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="141.86,-250.91 132.25,-255.37 142.54,-257.88 141.86,-250.91"/>
 </a>
 </g>
 <text text-anchor="middle" x="239" y="-268.71" font-family="Arial" font-size="14.00" fill="grey"> mutex_</text>

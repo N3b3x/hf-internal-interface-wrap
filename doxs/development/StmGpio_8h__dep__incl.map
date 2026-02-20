@@ -1,0 +1,5 @@
+<map id="inc/mcu/stm32/StmGpio.h" name="inc/mcu/stm32/StmGpio.h">
+<area shape="rect" id="Node000001" title="STM32 GPIO stub implementation — placeholder for future STM32 HAL integration." alt="" coords="15,5,247,36"/>
+<area shape="rect" id="Node000002" href="$StmGpio_8cpp.html" title="STM32 GPIO stub implementation." alt="" coords="5,84,257,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,50,134,84,129,84,129,50"/>
+</map>

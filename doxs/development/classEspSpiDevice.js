@@ -15,6 +15,6 @@ var classEspSpiDevice =
     [ "config_", "classEspSpiDevice.html#a178c4ca0df69e47b6930c09787d7295b", null ],
     [ "handle_", "classEspSpiDevice.html#a600b28bd83ef66f3645f6ecb56315eb2", null ],
     [ "initialized_", "classEspSpiDevice.html#ad547b708efaac31e0f6dca17d76184e2", null ],
-    [ "mutex_", "classEspSpiDevice.html#aa34f977ac3bb19d6319a4e3c1a12b138", null ],
+    [ "mutex_", "classEspSpiDevice.html#a22fd9577e6aaa1ec056206c12c58efe4", null ],
     [ "parent_bus_", "classEspSpiDevice.html#a79ef01539203d2b3d77a404d962750ff", null ]
 ];

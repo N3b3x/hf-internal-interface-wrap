@@ -24,7 +24,7 @@ var classEspNvs =
     [ "UpdateStatistics", "classEspNvs.html#a9247a33fe05b9a43bf4922bf99e4bdd2", null ],
     [ "diagnostics_", "classEspNvs.html#a28022b4a28a1934cebe2e10d5099fe54", null ],
     [ "last_error_code_", "classEspNvs.html#ab85e421f5801e575ad96ad971bb6fa37", null ],
-    [ "mutex_", "classEspNvs.html#a233a141b6079192b95864431b0df9c60", null ],
+    [ "mutex_", "classEspNvs.html#a557fd9219b05531404ba663b340e8cfa", null ],
     [ "nvs_handle_", "classEspNvs.html#a6835ce423097a5c27ddaefb1be4e2207", null ],
     [ "statistics_", "classEspNvs.html#a4d851eb75d04a90ec7b25e77e1db6de5", null ]
 ];

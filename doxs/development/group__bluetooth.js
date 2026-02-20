@@ -106,14 +106,14 @@ var group__bluetooth =
       [ "m_callback_context", "classEspBluetooth.html#a7143aa7604d8fb3d70d2ce725fb888b9", null ],
       [ "m_connected_devices", "classEspBluetooth.html#adb7ac39e03c55983d3ab3d992d80dd64", null ],
       [ "m_data_callback", "classEspBluetooth.html#a18919e69523d667a5e3f47e992ab9816", null ],
-      [ "m_device_mutex", "classEspBluetooth.html#af0a5dbcfb9a7b51387cc22a655f4475b", null ],
+      [ "m_device_mutex", "classEspBluetooth.html#adb8956d2c364a44f81356624b016b136", null ],
       [ "m_discovered_devices", "classEspBluetooth.html#aaaadf2899fec6782cb774f942aa18c98", null ],
       [ "m_enabled", "classEspBluetooth.html#a887d8aec908d8d0157e78df04b1a1b65", null ],
       [ "m_event_callback", "classEspBluetooth.html#ad4d33070fdef22cd6f12e3e49ebce4b2", null ],
       [ "m_initialized", "classEspBluetooth.html#a4d84bbbb3cb06d234d4e300de6021849", null ],
       [ "m_mode", "classEspBluetooth.html#a581f22e02f93b4db159d360f47e0abef", null ],
       [ "m_state", "classEspBluetooth.html#af693e9b5b58e1a3a68cf9edf39e7bda4", null ],
-      [ "m_state_mutex", "classEspBluetooth.html#a381b0e07f4f75410be9d9affa18b40be", null ]
+      [ "m_state_mutex", "classEspBluetooth.html#a79785c1f5dcc09583bbcf50df257df1a", null ]
     ] ],
     [ "BaseBluetooth", "classBaseBluetooth.html", [
       [ "~BaseBluetooth", "classBaseBluetooth.html#a8b0363e029dbd3f3dda7065a0712e39a", null ],

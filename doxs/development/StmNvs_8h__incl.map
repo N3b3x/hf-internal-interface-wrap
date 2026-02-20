@@ -1,0 +1,14 @@
+<map id="inc/mcu/stm32/StmNvs.h" name="inc/mcu/stm32/StmNvs.h">
+<area shape="rect" id="Node000001" title="STM32 NVS (non&#45;volatile storage) stub — placeholder for flash/EEPROM integration." alt="" coords="36,5,260,36"/>
+<area shape="rect" id="Node000002" href="$BaseNvs_8h.html" title="Abstract base class for Non&#45;Volatile Storage implementations in the HardFOC system." alt="" coords="93,84,203,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,36,151,70,145,70,145,36"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="67,163,229,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,115,151,149,145,149,145,115"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,241,80,272"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="114,117,83,136,57,164,46,196,43,228,38,227,40,194,52,161,80,132,112,113"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="253,163,365,193"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="179,112,268,154,266,159,177,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="130,196,75,235,72,231,127,191"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="116,241,180,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="151,194,151,228,145,228,145,194"/>
+</map>

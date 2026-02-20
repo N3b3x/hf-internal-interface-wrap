@@ -105,12 +105,6 @@ $(function(){initNavTree('EspPwm_8cpp.html',''); initResizable(); });
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &quot;driver/ledc.h&quot;</code><br />
-<code>#include &quot;esp_err.h&quot;</code><br />
-<code>#include &quot;esp_log.h&quot;</code><br />
-<code>#include &quot;esp_timer.h&quot;</code><br />
-<code>#include &quot;hal/ledc_hal.h&quot;</code><br />
-<code>#include &quot;soc/ledc_reg.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for EspPwm.cpp:</div>
 <div class="dyncontent">
@@ -131,7 +125,7 @@ Key Implementation Features:</h2>
 <li><b>Variant-Agnostic Design:</b> Automatic adaptation to ESP32 variant capabilities</li>
 <li><b>LEDC Peripheral Integration:</b> Full utilization of hardware fade, timer sharing, and interrupts</li>
 <li><b>Smart Resource Management:</b> Automatic timer allocation with conflict resolution and eviction policies</li>
-<li><b>Thread-Safe Operations:</b> Complete <a class="el" href="classRtosMutex.html">RtosMutex</a> protection for concurrent access</li>
+<li><b>Thread-Safe Operations:</b> Complete <a class="el" href="classPlatformMutex.html">PlatformMutex</a> protection for concurrent access</li>
 <li><b>Comprehensive Validation:</b> Hardware constraint validation with detailed error reporting</li>
 <li><b>Performance Optimization:</b> Efficient timer sharing and minimal overhead design</li>
 <li><b>Motor Control Features:</b> Complementary outputs, deadtime, and synchronized operations</li>

@@ -161,9 +161,9 @@ var sectionId = 'dynsection-1';
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="classRtosMutex.html" target="_top" xlink:title=" ">
-<polygon fill="white" stroke="#666666" points="391.5,-288 309.5,-288 309.5,-265 391.5,-265 391.5,-288"/>
-<text text-anchor="middle" x="350.5" y="-272.8" font-family="Arial" font-size="14.00">RtosMutex</text>
+<g id="a_Node000006"><a xlink:href="classPlatformMutex.html" target="_top" xlink:title=" ">
+<polygon fill="white" stroke="#666666" points="403,-288 298,-288 298,-265 403,-265 403,-288"/>
+<text text-anchor="middle" x="350.5" y="-272.8" font-family="Arial" font-size="14.00">PlatformMutex</text>
 </a>
 </g>
 </g>
@@ -171,8 +171,8 @@ var sectionId = 'dynsection-1';
 <g id="edge5_Node000001_Node000006" class="edge">
 <title>Node6&#45;&gt;Node1</title>
 <g id="a_edge5_Node000001_Node000006"><a xlink:title=" ">
-<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M401.72,-269.89C447.33,-263.66 516.38,-253.62 576,-242.5 581.8,-241.41 587.95,-240.14 593.88,-238.86"/>
-<polygon fill="#9a32cd" stroke="#9a32cd" points="401.23,-266.43 391.79,-271.24 402.17,-273.36 401.23,-266.43"/>
+<path fill="none" stroke="#9a32cd" stroke-dasharray="5,2" d="M413.33,-268.29C458.53,-262.01 521.24,-252.71 576,-242.5 581.8,-241.41 587.95,-240.14 593.88,-238.86"/>
+<polygon fill="#9a32cd" stroke="#9a32cd" points="412.81,-264.83 403.39,-269.66 413.77,-271.76 412.81,-264.83"/>
 </a>
 </g>
 <text text-anchor="middle" x="518.5" y="-294.3" font-family="Arial" font-size="14.00" fill="grey"> callback_mutex_</text>

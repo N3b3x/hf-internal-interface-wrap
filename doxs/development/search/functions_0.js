@@ -1,7 +1,7 @@
 var searchData=
 [
   ['acquirebus_0',['AcquireBus',['../classEspSpiDevice.html#a71bd19ff10847fcfb6fa5c1eb06e123b',1,'EspSpiDevice']]],
-  ['adcchanneltogpio_1',['AdcChannelToGpio',['../EspTypes__ADC_8h.html#a400e1c3d513932460129ab2d425451ee',1,'AdcChannelToGpio(hf_channel_id_t channel_id) noexcept:&#160;EspTypes_ADC.h'],['../EspAdc_8cpp.html#a77ee8f60a2146f595b45453a5018c0e5',1,'AdcChannelToGpio(adc_unit_t unit_id, adc_channel_t channel, int *gpio_num):&#160;EspAdc.cpp']]],
+  ['adcchanneltogpio_1',['AdcChannelToGpio',['../EspTypes__ADC_8h.html#a400e1c3d513932460129ab2d425451ee',1,'EspTypes_ADC.h']]],
   ['add_5fresult_2',['add_result',['../structTestResults.html#a257eba3a9005a5c19c68ae27774948f7',1,'TestResults']]],
   ['addcustomcharacter_3',['AddCustomCharacter',['../classAsciiArtGenerator.html#a8c964526be3777137b7178e0c5899256',1,'AsciiArtGenerator']]],
   ['addresstostring_4',['AddressToString',['../classEspBluetooth.html#ac6ca2eab7f75aeb09e6a227dca39195b',1,'EspBluetooth']]],

@@ -8,8 +8,8 @@
 <area shape="rect" id="Node000004" href="$structhf__pwm__diagnostics__t.html" title="PWM diagnostics information." alt="" coords="5,97,207,127"/>
 <area shape="poly" id="edge7_Node000001_Node000004" title=" " alt="" coords="221,118,779,160,803,164,802,169,778,165,220,123"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="220,104,336,96,429,87,429,92,336,101,221,109"/>
-<area shape="rect" id="Node000005" href="$classRtosMutex.html" title=" " alt="" coords="427,193,536,223"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="549,200,778,180,802,178,803,183,779,185,550,205"/>
+<area shape="rect" id="Node000005" href="$classPlatformMutex.html" title=" " alt="" coords="411,193,551,223"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="565,199,778,180,802,178,803,183,779,185,565,204"/>
 <area shape="rect" id="Node000006" href="$structhf__pwm__unit__config__t.html" title="ESP32 PWM unit configuration." alt="" coords="382,247,581,278"/>
 <area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="594,256,685,244,732,233,778,219,805,205,828,189,831,194,808,210,780,224,734,238,686,249,595,261"/>
 <area shape="rect" id="Node000007" href="$structhf__pwm__eviction__request__t.html" title="Eviction request information passed to user callback." alt="" coords="360,302,603,333"/>

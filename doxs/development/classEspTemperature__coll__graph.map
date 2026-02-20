@@ -3,8 +3,8 @@
 <area shape="rect" id="Node000002" href="$classBaseTemperature.html" title="Abstract base class for all temperature sensor implementations." alt="" coords="29,39,194,70"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,31,214,15,279,4,313,3,346,7,378,15,408,31,435,53,456,81,473,112,486,144,502,206,508,252,503,252,497,207,481,146,468,114,452,84,431,57,405,35,376,20,345,12,313,8,279,9,216,20,162,37"/>
 <area shape="poly" id="edge8_Node000001_Node000002" title=" " alt="" coords="166,72,242,96,289,102,328,102,365,105,385,112,408,124,442,153,470,188,490,223,503,251,498,253,485,226,465,191,438,157,405,128,383,117,364,110,327,107,289,107,241,101,164,77"/>
-<area shape="rect" id="Node000003" href="$classRtosMutex.html" title=" " alt="" coords="57,143,166,174"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="181,162,306,176,365,186,408,197,454,222,491,250,488,254,451,227,406,202,364,191,306,181,180,167"/>
+<area shape="rect" id="Node000003" href="$classPlatformMutex.html" title=" " alt="" coords="41,143,181,174"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="195,163,315,177,369,187,408,197,454,222,491,250,488,254,451,227,406,202,367,192,314,183,195,168"/>
 <area shape="rect" id="Node000004" href="$structesp__temp__state__t.html" title="ESP32&#45;C6 specific temperature sensor state." alt="" coords="28,198,195,228"/>
 <area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="209,218,305,228,407,242,444,250,443,255,406,248,304,233,208,223"/>
 <area shape="rect" id="Node000005" href="$structesp__temp__config__t.html" title="ESP32&#45;C6 specific temperature sensor configuration." alt="" coords="24,252,199,283"/>

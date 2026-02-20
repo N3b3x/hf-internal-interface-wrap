@@ -272,9 +272,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:af31a98abe753b202bfe5000b6d16240d" id="r_af31a98abe753b202bfe5000b6d16240d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af31a98abe753b202bfe5000b6d16240d">initialized_</a></td></tr>
 <tr class="memdesc:af31a98abe753b202bfe5000b6d16240d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization status.  <br /></td></tr>
 <tr class="separator:af31a98abe753b202bfe5000b6d16240d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a192e73bcd0037b109c4a181e44366612" id="r_a192e73bcd0037b109c4a181e44366612"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRtosMutex.html">RtosMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a192e73bcd0037b109c4a181e44366612">mutex_</a></td></tr>
-<tr class="memdesc:a192e73bcd0037b109c4a181e44366612"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bus mutex for thread safety.  <br /></td></tr>
-<tr class="separator:a192e73bcd0037b109c4a181e44366612"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e10f5c0e517f240a7838f43b914dbe6" id="r_a6e10f5c0e517f240a7838f43b914dbe6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPlatformMutex.html">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6e10f5c0e517f240a7838f43b914dbe6">mutex_</a></td></tr>
+<tr class="memdesc:a6e10f5c0e517f240a7838f43b914dbe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Bus mutex for thread safety.  <br /></td></tr>
+<tr class="separator:a6e10f5c0e517f240a7838f43b914dbe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae50b7ab4785f7b60e6a05fbb87a90094" id="r_ae50b7ab4785f7b60e6a05fbb87a90094"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::unique_ptr&lt; <a class="el" href="classEspI2cDevice.html">EspI2cDevice</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae50b7ab4785f7b60e6a05fbb87a90094">devices_</a></td></tr>
 <tr class="memdesc:ae50b7ab4785f7b60e6a05fbb87a90094"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device instances.  <br /></td></tr>
 <tr class="separator:ae50b7ab4785f7b60e6a05fbb87a90094"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1968,8 +1968,8 @@ Much faster and more reliable than ESP-IDF's broken probe function </dd></dl>
 
 </div>
 </div>
-<a id="a192e73bcd0037b109c4a181e44366612" name="a192e73bcd0037b109c4a181e44366612"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a192e73bcd0037b109c4a181e44366612">&#9670;&#160;</a></span>mutex_</h2>
+<a id="a6e10f5c0e517f240a7838f43b914dbe6" name="a6e10f5c0e517f240a7838f43b914dbe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e10f5c0e517f240a7838f43b914dbe6">&#9670;&#160;</a></span>mutex_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1978,7 +1978,7 @@ Much faster and more reliable than ESP-IDF's broken probe function </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classRtosMutex.html">RtosMutex</a> EspI2cBus::mutex_</td>
+          <td class="memname"><a class="el" href="classPlatformMutex.html">PlatformMutex</a> EspI2cBus::mutex_</td>
         </tr>
       </table>
   </td>

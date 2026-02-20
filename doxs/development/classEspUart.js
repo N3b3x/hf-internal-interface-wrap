@@ -77,7 +77,7 @@ var classEspUart =
     [ "MAX_BUFFER_SIZE", "classEspUart.html#a2cc0ffbcf5d94cc1be9640a0bb394eb6", null ],
     [ "MAX_PORTS", "classEspUart.html#acccf4bd506f073b15720a283fc2ba781", null ],
     [ "MIN_BAUD_RATE", "classEspUart.html#a7e8194c9094761e4ca34160410faaeeb", null ],
-    [ "mutex_", "classEspUart.html#a63d3d9231a553707b6498e40829c0105", null ],
+    [ "mutex_", "classEspUart.html#a23f67c7d005df9d732c27a70cd190eb8", null ],
     [ "operating_mode_", "classEspUart.html#af2370e22ff6ab5da54137adbcd91ad7d", null ],
     [ "port_config_", "classEspUart.html#a00c20e249bbd100eedbf4c0c54c3c42e", null ],
     [ "printf_buffer_", "classEspUart.html#a203c1f13b4888ba1f4ede0d5a5289a2d", null ],
