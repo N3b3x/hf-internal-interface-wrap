@@ -35,7 +35,7 @@ var searchData=
   ['long_5fstring_32',['LONG_STRING',['../NvsComprehensiveTest_8cpp.html#a52c7240eb996dc640b022a0f8e6bb0eb',1,'NvsComprehensiveTest.cpp']]],
   ['loop_5fcount_33',['loop_count',['../structhf__rmt__transmit__config__t.html#abc3397d22ae6dae15c94dbb66c5d3fed',1,'hf_rmt_transmit_config_t']]],
   ['loopback_5fin_34',['LOOPBACK_IN',['../namespaceTestPins.html#a657b9be2e38d85aa02d37cbab63a8555',1,'TestPins']]],
-  ['loopback_5fmode_35',['loopback_mode',['../structhf__can__config__t.html#adce4f534151270920a93193f1e7dca51',1,'hf_can_config_t']]],
+  ['loopback_5fmode_35',['loopback_mode',['../structhf__can__config__t.html#adce4f534151270920a93193f1e7dca51',1,'hf_can_config_t::loopback_mode'],['../structhf__stm32__can__config__t.html#ade571afde69e8c2bb8308f9e45e9aeef',1,'hf_stm32_can_config_t::loopback_mode']]],
   ['loopback_5fout_36',['LOOPBACK_OUT',['../namespaceTestPins.html#af3d3e1f1eafc8d93ad38bd25dbe222b0',1,'TestPins']]],
   ['low_5fthreshold_37',['low_threshold',['../structhf__adc__monitor__config__t.html#ad40f76e5c750037aa6824b29000c8e18',1,'hf_adc_monitor_config_t']]],
   ['low_5fthreshold_5fcelsius_38',['low_threshold_celsius',['../structhf__temp__config__t.html#a10a9aa7cbb60404a5a5de94d9f09789a',1,'hf_temp_config_t::low_threshold_celsius'],['../structesp__temp__config__t.html#a3cc2eee57cb670b909dc1eefa8d7049a',1,'esp_temp_config_t::low_threshold_celsius']]],
