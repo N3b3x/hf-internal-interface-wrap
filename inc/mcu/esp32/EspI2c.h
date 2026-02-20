@@ -110,7 +110,7 @@
 
 #include "BaseI2c.h"
 #include "utils/EspTypes.h"
-#include "utils/RtosMutex.h"
+#include "utils/PlatformMutex.h"
 #include <memory>
 #include <vector>
 
@@ -156,7 +156,7 @@ const char* HfI2COperationToString(hf_i2c_operation_t op) noexcept;
  * configuration and control for a single I2C device, including per-device clock speed,
  * addressing mode, and ESP-IDF v5.5+ features.
  *
- * @note Thread-safe. All operations are protected by RtosMutex.
+ * @note Thread-safe. All operations are protected by PlatformMutex.
  * @note Each device maintains its own handle and configuration.
  * @note Supports both synchronous and asynchronous operations.
  * @warning ESP-IDF v5.5 constraint: Only one device per bus can use async mode
@@ -521,7 +521,7 @@ private:
   bool initialized_;                         ///< Initialization status
   mutable hf_i2c_statistics_t statistics_;   ///< Per-device statistics
   mutable hf_i2c_diagnostics_t diagnostics_; ///< Per-device diagnostics
-  mutable RtosMutex mutex_;                  ///< Device mutex for thread safety
+  mutable PlatformMutex mutex_;                  ///< Device mutex for thread safety
   hf_i2c_mode_t device_mode_;                ///< Device operation mode (inherited from bus)
 
   //==============================================//
@@ -882,7 +882,7 @@ private:
   hf_i2c_master_bus_config_t config_;                  ///< Bus configuration
   i2c_master_bus_handle_t bus_handle_;                 ///< ESP-IDF bus handle
   bool initialized_;                                   ///< Initialization status
-  mutable RtosMutex mutex_;                            ///< Bus mutex for thread safety
+  mutable PlatformMutex mutex_;                            ///< Bus mutex for thread safety
   std::vector<std::unique_ptr<EspI2cDevice>> devices_; ///< Device instances
   hf_i2c_mode_t current_mode_;                         ///< Current operation mode
 

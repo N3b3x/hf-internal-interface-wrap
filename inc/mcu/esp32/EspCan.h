@@ -47,7 +47,7 @@ extern "C" {
 #endif
 
 #include "BaseCan.h"
-#include "RtosMutex.h"
+#include "PlatformMutex.h"
 #include "utils/EspTypes_CAN.h"
 
 #include <atomic>
@@ -513,10 +513,10 @@ private:
   std::atomic<bool> is_enabled_;    ///< Node enabled state
   std::atomic<bool> is_recovering_; ///< Bus recovery state
 
-  // Thread safety (RtosMutex)
-  mutable RtosMutex config_mutex_;   ///< Configuration mutex
-  mutable RtosMutex stats_mutex_;    ///< Statistics mutex
-  mutable RtosMutex callback_mutex_; ///< Callback registry mutex
+  // Thread safety (PlatformMutex)
+  mutable PlatformMutex config_mutex_;   ///< Configuration mutex
+  mutable PlatformMutex stats_mutex_;    ///< Statistics mutex
+  mutable PlatformMutex callback_mutex_; ///< Callback registry mutex
 
   // ESP-IDF v5.5 TWAI node handle
   twai_node_handle_t twai_node_handle_; ///< Native TWAI node handle

@@ -59,7 +59,7 @@ EspUart::EspUart(const hf_uart_config_t& config) noexcept
 }
 
 EspUart::~EspUart() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (initialized_.load()) {
     ESP_LOGI(TAG, "EspUart destructor - cleaning up");
     Deinitialize();
@@ -71,7 +71,7 @@ EspUart::~EspUart() noexcept {
 //==============================================================================
 
 bool EspUart::Initialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (initialized_.load()) {
     ESP_LOGW(TAG, "UART already initialized");
@@ -110,7 +110,7 @@ bool EspUart::Initialize() noexcept {
 }
 
 bool EspUart::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_.load()) {
     return true;
@@ -149,7 +149,7 @@ hf_uart_err_t EspUart::Write(const hf_u8_t* data, hf_u16_t length, hf_u32_t time
     return hf_uart_err_t::UART_SUCCESS;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   hf_u64_t start_time_us = esp_timer_get_time();
   tx_in_progress_ = true;
@@ -202,7 +202,7 @@ hf_uart_err_t EspUart::Read(hf_u8_t* data, hf_u16_t length, hf_u32_t timeout_ms)
     return hf_uart_err_t::UART_SUCCESS;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   hf_u64_t start_time_us = esp_timer_get_time();
   diagnostics_.is_receiving = true;
@@ -231,7 +231,7 @@ bool EspUart::WriteByte(hf_u8_t byte) noexcept {
     return false;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   int result = uart_write_bytes(uart_port_, reinterpret_cast<const char*>(&byte), 1);
   if (result == 1) {
@@ -249,7 +249,7 @@ hf_uart_err_t EspUart::FlushTx() noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   esp_err_t err = uart_flush(uart_port_);
   return (err == ESP_OK) ? hf_uart_err_t::UART_SUCCESS : ConvertPlatformError(err);
@@ -260,7 +260,7 @@ hf_uart_err_t EspUart::FlushRx() noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   esp_err_t err = uart_flush_input(uart_port_);
   return (err == ESP_OK) ? hf_uart_err_t::UART_SUCCESS : ConvertPlatformError(err);
@@ -275,7 +275,7 @@ bool EspUart::WaitTransmitComplete(hf_u32_t timeout_ms) noexcept {
     return false;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   hf_u32_t timeout = GetTimeoutMs(timeout_ms);
   esp_err_t result = uart_wait_tx_done(uart_port_, pdMS_TO_TICKS(timeout));
@@ -300,7 +300,7 @@ hf_u16_t EspUart::BytesAvailable() noexcept {
     return 0;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   size_t buffered_size = 0;
   esp_err_t result = uart_get_buffered_data_len(uart_port_, &buffered_size);
@@ -317,7 +317,7 @@ bool EspUart::IsTxBusy() noexcept {
     return false;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Check if transmission is in progress using internal state
   if (tx_in_progress_) {
@@ -357,7 +357,7 @@ hf_u16_t EspUart::ReadUntil(hf_u8_t* data, hf_u16_t max_length, hf_u8_t terminat
     return 0;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   hf_u16_t bytes_read = 0;
   hf_u64_t start_time = esp_timer_get_time();
@@ -404,7 +404,7 @@ hf_uart_err_t EspUart::SetOperatingMode(hf_uart_operating_mode_t mode) noexcept 
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   operating_mode_ = mode;
   port_config_.operating_mode = mode;
@@ -418,7 +418,7 @@ bool EspUart::SetBaudRate(hf_u32_t baud_rate) noexcept {
     return false;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (baud_rate < MIN_BAUD_RATE || baud_rate > MAX_BAUD_RATE) {
     return false;
@@ -443,7 +443,7 @@ hf_uart_err_t EspUart::SetFlowControl(bool enable) noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   uart_hw_flowcontrol_t flow_ctrl = enable ? UART_HW_FLOWCTRL_CTS_RTS : UART_HW_FLOWCTRL_DISABLE;
   // ESP32-C6 UART FIFO is only 128 bytes, use a reasonable threshold
@@ -469,7 +469,7 @@ hf_uart_err_t EspUart::SetRTS(bool active) noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   esp_err_t result = uart_set_rts(uart_port_, active ? 1 : 0);
   if (result == ESP_OK) {
@@ -491,7 +491,7 @@ hf_uart_err_t EspUart::SendBreak(hf_u32_t duration_ms) noexcept {
     return hf_uart_err_t::UART_ERR_INVALID_PARAMETER;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Try multiple approaches for sending break signal on ESP32-C6
   esp_err_t result = ESP_ERR_NOT_SUPPORTED;
@@ -559,7 +559,7 @@ hf_uart_err_t EspUart::SetLoopback(bool enable) noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   esp_err_t result = uart_set_loop_back(uart_port_, enable);
   if (result == ESP_OK) {
@@ -584,7 +584,7 @@ hf_u16_t EspUart::ReadLine(char* buffer, hf_u16_t max_length, hf_u32_t timeout_m
     return 0;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   hf_u32_t timeout = GetTimeoutMs(timeout_ms);
   hf_u16_t chars_read = 0;
@@ -624,7 +624,7 @@ hf_uart_err_t EspUart::SetCommunicationMode(hf_uart_mode_t mode) noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (communication_mode_ == mode) {
     return hf_uart_err_t::UART_SUCCESS; // Already in requested mode
@@ -665,7 +665,7 @@ hf_uart_err_t EspUart::ConfigureRS485(const hf_uart_rs485_config_t& rs485_config
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Set RS485 mode first
   hf_uart_err_t mode_result = SetCommunicationMode(hf_uart_mode_t::HF_UART_MODE_RS485);
@@ -686,7 +686,7 @@ hf_uart_err_t EspUart::ConfigureIrDA(const hf_uart_irda_config_t& irda_config) n
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Set IrDA mode
   hf_uart_err_t mode_result = SetCommunicationMode(hf_uart_mode_t::HF_UART_MODE_IRDA);
@@ -705,7 +705,7 @@ hf_uart_err_t EspUart::ConfigureSoftwareFlowControl(bool enable, hf_u8_t xon_thr
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (enable) {
     esp_err_t result = uart_set_sw_flow_ctrl(uart_port_, true, xon_threshold, xoff_threshold);
@@ -738,7 +738,7 @@ hf_uart_err_t EspUart::ConfigureWakeup(const hf_uart_wakeup_config_t& wakeup_con
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (wakeup_config.enable_wakeup) {
     // ESP-IDF v5.5 supports wakeup threshold configuration
@@ -775,7 +775,7 @@ hf_uart_err_t EspUart::SetSignalInversion(hf_u32_t inverse_mask) noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   esp_err_t result = uart_set_line_inverse(uart_port_, inverse_mask);
   if (result == ESP_OK) {
@@ -793,12 +793,12 @@ hf_uart_err_t EspUart::SetSignalInversion(hf_u32_t inverse_mask) noexcept {
 //==============================================================================
 
 QueueHandle_t EspUart::GetEventQueue() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return event_queue_;
 }
 
 bool EspUart::IsEventQueueAvailable() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return (event_queue_ != nullptr);
 }
 
@@ -808,7 +808,7 @@ hf_uart_err_t EspUart::ConfigureInterrupts(uint32_t intr_enable_mask, uint8_t rx
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Configure interrupt settings using ESP-IDF v5.5 API
   uart_intr_config_t intr_config = {
@@ -836,7 +836,7 @@ hf_uart_err_t EspUart::ResetEventQueue() noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Reset the FreeRTOS queue to clear all pending events
   xQueueReset(event_queue_);
@@ -854,7 +854,7 @@ hf_uart_err_t EspUart::EnablePatternDetection(char pattern_chr, uint8_t chr_num,
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Enable pattern detection using ESP-IDF v5.5 API
   esp_err_t result = uart_enable_pattern_det_baud_intr(uart_port_, pattern_chr, chr_num, chr_tout,
@@ -876,7 +876,7 @@ hf_uart_err_t EspUart::DisablePatternDetection() noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   esp_err_t result = uart_disable_pattern_det_intr(uart_port_);
   if (result == ESP_OK) {
@@ -895,7 +895,7 @@ hf_uart_err_t EspUart::ResetPatternQueue(int queue_length) noexcept {
     return hf_uart_err_t::UART_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   esp_err_t result = uart_pattern_queue_reset(uart_port_, queue_length);
   if (result == ESP_OK) {
@@ -914,7 +914,7 @@ int EspUart::PopPatternPosition() noexcept {
     return -1;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   int position = uart_pattern_pop_pos(uart_port_);
   if (position >= 0) {
@@ -932,7 +932,7 @@ int EspUart::PeekPatternPosition() noexcept {
     return -1;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   int position = uart_pattern_get_pos(uart_port_);
   if (position >= 0) {
@@ -947,54 +947,54 @@ int EspUart::PeekPatternPosition() noexcept {
 //==============================================================================
 
 hf_uart_err_t EspUart::GetStatistics(hf_uart_statistics_t& statistics) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   statistics = statistics_;
   return hf_uart_err_t::UART_SUCCESS;
 }
 
 hf_uart_err_t EspUart::GetDiagnostics(hf_uart_diagnostics_t& diagnostics) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   diagnostics = diagnostics_;
   return hf_uart_err_t::UART_SUCCESS;
 }
 
 hf_uart_err_t EspUart::GetLastError() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return last_error_;
 }
 
 const hf_uart_config_t& EspUart::GetPortConfig() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return port_config_;
 }
 
 hf_uart_operating_mode_t EspUart::GetOperatingMode() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return operating_mode_;
 }
 
 hf_uart_mode_t EspUart::GetCommunicationMode() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return communication_mode_;
 }
 
 bool EspUart::IsWakeupEnabled() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return wakeup_enabled_;
 }
 
 bool EspUart::IsTransmitting() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return tx_in_progress_;
 }
 
 bool EspUart::IsReceiving() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return diagnostics_.is_receiving;
 }
 
 bool EspUart::IsBreakDetected() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return break_detected_;
 }
 
@@ -1019,7 +1019,7 @@ int EspUart::VPrintf(const char* format, va_list args) noexcept {
     return -1;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return InternalPrintf(format, args);
 }
 

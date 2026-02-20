@@ -12,7 +12,7 @@
  * interrupts
  * - **Smart Resource Management:** Automatic timer allocation with conflict resolution and eviction
  * policies
- * - **Thread-Safe Operations:** Complete RtosMutex protection for concurrent access
+ * - **Thread-Safe Operations:** Complete PlatformMutex protection for concurrent access
  * - **Comprehensive Validation:** Hardware constraint validation with detailed error reporting
  * - **Performance Optimization:** Efficient timer sharing and minimal overhead design
  * - **Motor Control Features:** Complementary outputs, deadtime, and synchronized operations
@@ -83,7 +83,7 @@ EspPwm::~EspPwm() noexcept {
 //==============================================================================
 
 hf_pwm_err_t EspPwm::Initialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (initialized_.load()) {
     ESP_LOGW(TAG, "PWM already initialized");
@@ -209,7 +209,7 @@ hf_pwm_err_t EspPwm::SetMode(hf_pwm_mode_t mode) noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (mode == hf_pwm_mode_t::HF_PWM_MODE_FADE && !fade_functionality_installed_) {
     hf_pwm_err_t result = EnableFade();
@@ -239,7 +239,7 @@ hf_pwm_err_t EspPwm::ConfigureChannel(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -344,7 +344,7 @@ hf_pwm_err_t EspPwm::EnableChannel(hf_channel_id_t channel_id) noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -414,7 +414,7 @@ hf_pwm_err_t EspPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -461,7 +461,7 @@ hf_pwm_err_t EspPwm::DisableChannel(hf_channel_id_t channel_id) noexcept {
 }
 
 bool EspPwm::IsChannelEnabled(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return false;
@@ -478,7 +478,7 @@ hf_pwm_err_t EspPwm::SetDutyCycle(hf_channel_id_t channel_id, float duty_cycle) 
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -534,7 +534,7 @@ hf_pwm_err_t EspPwm::SetDutyCycleRaw(hf_channel_id_t channel_id, hf_u32_t raw_va
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -588,7 +588,7 @@ hf_pwm_err_t EspPwm::SetFrequency(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -774,7 +774,7 @@ hf_pwm_err_t EspPwm::SetPhaseShift(hf_channel_id_t channel_id, float phase_shift
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -798,7 +798,7 @@ hf_pwm_err_t EspPwm::SetFrequencyWithResolution(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -873,7 +873,7 @@ hf_pwm_err_t EspPwm::SetFrequencyWithAutoFallback(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -929,7 +929,7 @@ hf_pwm_err_t EspPwm::EnableAutoFallback() noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   auto_fallback_enabled_ = true;
   ESP_LOGI(TAG, "Auto-fallback mode enabled - will try alternative resolutions automatically");
   return hf_pwm_err_t::PWM_SUCCESS;
@@ -940,14 +940,14 @@ hf_pwm_err_t EspPwm::DisableAutoFallback() noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   auto_fallback_enabled_ = false;
   ESP_LOGI(TAG, "Auto-fallback mode disabled - will fail validation for problematic combinations");
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
 bool EspPwm::IsAutoFallbackEnabled() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return auto_fallback_enabled_;
 }
 
@@ -960,7 +960,7 @@ hf_pwm_err_t EspPwm::SetResolution(hf_channel_id_t channel_id, hf_u8_t resolutio
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -988,7 +988,7 @@ hf_pwm_err_t EspPwm::SetResolution(hf_channel_id_t channel_id, hf_u8_t resolutio
 }
 
 hf_u8_t EspPwm::GetResolution(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return 0;
@@ -1009,7 +1009,7 @@ hf_pwm_err_t EspPwm::SetFrequencyAndResolution(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1122,7 +1122,7 @@ hf_pwm_err_t EspPwm::StartAll() noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   hf_pwm_err_t result = hf_pwm_err_t::PWM_SUCCESS;
 
@@ -1143,7 +1143,7 @@ hf_pwm_err_t EspPwm::StopAll() noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   hf_pwm_err_t result = hf_pwm_err_t::PWM_SUCCESS;
 
@@ -1164,7 +1164,7 @@ hf_pwm_err_t EspPwm::UpdateAll() noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // For ESP32C6, we can update all channels simultaneously
   for (hf_channel_id_t channel_id = 0; channel_id < MAX_CHANNELS; channel_id++) {
@@ -1189,7 +1189,7 @@ hf_pwm_err_t EspPwm::SetComplementaryOutput(hf_channel_id_t primary_channel,
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(primary_channel) || !IsValidChannelId(complementary_channel)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1232,7 +1232,7 @@ hf_pwm_err_t EspPwm::SetComplementaryOutput(hf_channel_id_t primary_channel,
 //==============================================================================
 
 float EspPwm::GetDutyCycle(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return 0.0f;
@@ -1244,7 +1244,7 @@ float EspPwm::GetDutyCycle(hf_channel_id_t channel_id) const noexcept {
 }
 
 hf_frequency_hz_t EspPwm::GetFrequency(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return 0;
@@ -1256,7 +1256,7 @@ hf_frequency_hz_t EspPwm::GetFrequency(hf_channel_id_t channel_id) const noexcep
 
 hf_pwm_err_t EspPwm::GetChannelStatus(hf_channel_id_t channel_id,
                                       hf_pwm_channel_status_t& status) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1302,7 +1302,7 @@ hf_pwm_err_t EspPwm::GetCapabilities(hf_pwm_capabilities_t& capabilities) const 
 }
 
 hf_pwm_err_t EspPwm::GetLastError(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1312,13 +1312,13 @@ hf_pwm_err_t EspPwm::GetLastError(hf_channel_id_t channel_id) const noexcept {
 }
 
 hf_pwm_err_t EspPwm::GetStatistics(hf_pwm_statistics_t& statistics) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   statistics = statistics_;
   return hf_pwm_err_t::PWM_SUCCESS;
 }
 
 hf_pwm_err_t EspPwm::GetDiagnostics(hf_pwm_diagnostics_t& diagnostics) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   diagnostics.hardware_initialized = initialized_.load();
   diagnostics.fade_functionality_ready = fade_functionality_installed_;
@@ -1356,7 +1356,7 @@ hf_pwm_err_t EspPwm::SetChannelFadeCallback(
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1399,7 +1399,7 @@ hf_pwm_err_t EspPwm::SetHardwareFade(hf_channel_id_t channel_id, float target_du
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1464,7 +1464,7 @@ hf_pwm_err_t EspPwm::StopHardwareFade(hf_channel_id_t channel_id) noexcept {
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1492,7 +1492,7 @@ hf_pwm_err_t EspPwm::StopHardwareFade(hf_channel_id_t channel_id) noexcept {
 }
 
 bool EspPwm::IsFadeActive(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return false;
@@ -1506,7 +1506,7 @@ hf_pwm_err_t EspPwm::SetIdleLevel(hf_channel_id_t channel_id, hf_u8_t idle_level
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1535,7 +1535,7 @@ hf_pwm_err_t EspPwm::SetIdleLevel(hf_channel_id_t channel_id, hf_u8_t idle_level
 }
 
 hf_i8_t EspPwm::GetTimerAssignment(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return -1;
@@ -1549,7 +1549,7 @@ hf_pwm_err_t EspPwm::ForceTimerAssignment(hf_channel_id_t channel_id, hf_u8_t ti
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1626,7 +1626,7 @@ hf_pwm_err_t EspPwm::SetEvictionPolicy(hf_pwm_eviction_policy_t policy) noexcept
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   eviction_policy_ = policy;
 
   const char* policy_names[] = {"STRICT_NO_EVICTION", "ALLOW_EVICTION_WITH_CONSENT",
@@ -1637,7 +1637,7 @@ hf_pwm_err_t EspPwm::SetEvictionPolicy(hf_pwm_eviction_policy_t policy) noexcept
 }
 
 hf_pwm_eviction_policy_t EspPwm::GetEvictionPolicy() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return eviction_policy_;
 }
 
@@ -1647,7 +1647,7 @@ hf_pwm_err_t EspPwm::SetEvictionCallback(hf_pwm_eviction_callback_t callback,
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   eviction_callback_ = callback;
   eviction_callback_user_data_ = user_data;
 
@@ -1661,7 +1661,7 @@ hf_pwm_err_t EspPwm::SetChannelPriority(hf_channel_id_t channel_id,
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1683,7 +1683,7 @@ hf_pwm_err_t EspPwm::SetChannelPriority(hf_channel_id_t channel_id,
 }
 
 hf_pwm_channel_priority_t EspPwm::GetChannelPriority(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return hf_pwm_channel_priority_t::PRIORITY_NORMAL;
@@ -1697,7 +1697,7 @@ hf_pwm_err_t EspPwm::SetChannelCritical(hf_channel_id_t channel_id, bool is_crit
     return hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL;
@@ -1724,7 +1724,7 @@ hf_pwm_err_t EspPwm::SetChannelCritical(hf_channel_id_t channel_id, bool is_crit
 }
 
 bool EspPwm::IsChannelCritical(hf_channel_id_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!IsValidChannelId(channel_id) || !channels_[channel_id].configured) {
     return false;
@@ -2784,7 +2784,7 @@ hf_pwm_err_t EspPwm::DeconfigureChannel(hf_channel_id_t channel_id) noexcept {
     return hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Check if channel is actually configured
   if (!channels_[channel_id].configured) {

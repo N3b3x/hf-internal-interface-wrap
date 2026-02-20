@@ -85,7 +85,7 @@ EspCan::~EspCan() noexcept {
 //==============================================//
 
 hf_can_err_t EspCan::Initialize() noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (initialized_) {
     ESP_LOGD(TAG, "TWAI node %u already initialized", static_cast<unsigned>(config_.controller_id));
@@ -166,7 +166,7 @@ hf_can_err_t EspCan::Initialize() noexcept {
 }
 
 hf_can_err_t EspCan::Deinitialize() noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (!initialized_) {
     ESP_LOGD(TAG, "TWAI node %u already deinitialized",
@@ -311,13 +311,13 @@ hf_can_err_t EspCan::SetReceiveCallbackEx(hf_esp_can_receive_callback_t cb,
                                           void* user_data) noexcept {
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
-  MutexLockGuard lock(callback_mutex_);
+  PlatformMutexLockGuard lock(callback_mutex_);
   receive_cb_ = cb;
   receive_ud_ = user_data;
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearReceiveCallbackEx() noexcept {
-  MutexLockGuard lock(callback_mutex_);
+  PlatformMutexLockGuard lock(callback_mutex_);
   receive_cb_ = nullptr;
   receive_ud_ = nullptr;
 }
@@ -325,13 +325,13 @@ void EspCan::ClearReceiveCallbackEx() noexcept {
 hf_can_err_t EspCan::SetErrorCallback(hf_esp_can_error_callback_t cb, void* user_data) noexcept {
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
-  MutexLockGuard lock(callback_mutex_);
+  PlatformMutexLockGuard lock(callback_mutex_);
   error_cb_ = cb;
   error_ud_ = user_data;
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearErrorCallback() noexcept {
-  MutexLockGuard lock(callback_mutex_);
+  PlatformMutexLockGuard lock(callback_mutex_);
   error_cb_ = nullptr;
   error_ud_ = nullptr;
 }
@@ -340,13 +340,13 @@ hf_can_err_t EspCan::SetStateChangeCallback(hf_esp_can_state_callback_t cb,
                                             void* user_data) noexcept {
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
-  MutexLockGuard lock(callback_mutex_);
+  PlatformMutexLockGuard lock(callback_mutex_);
   state_cb_ = cb;
   state_ud_ = user_data;
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearStateChangeCallback() noexcept {
-  MutexLockGuard lock(callback_mutex_);
+  PlatformMutexLockGuard lock(callback_mutex_);
   state_cb_ = nullptr;
   state_ud_ = nullptr;
 }
@@ -354,13 +354,13 @@ void EspCan::ClearStateChangeCallback() noexcept {
 hf_can_err_t EspCan::SetTxCompleteCallback(hf_esp_can_tx_callback_t cb, void* user_data) noexcept {
   if (!cb)
     return hf_can_err_t::CAN_ERR_INVALID_PARAMETER;
-  MutexLockGuard lock(callback_mutex_);
+  PlatformMutexLockGuard lock(callback_mutex_);
   tx_cb_ = cb;
   tx_ud_ = user_data;
   return hf_can_err_t::CAN_SUCCESS;
 }
 void EspCan::ClearTxCompleteCallback() noexcept {
-  MutexLockGuard lock(callback_mutex_);
+  PlatformMutexLockGuard lock(callback_mutex_);
   tx_cb_ = nullptr;
   tx_ud_ = nullptr;
 }
@@ -421,7 +421,7 @@ hf_can_err_t EspCan::Reset() noexcept {
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   ESP_LOGI(TAG, "Resetting TWAI node %u", static_cast<unsigned>(config_.controller_id));
 
@@ -574,7 +574,7 @@ hf_can_err_t EspCan::ConfigureAdvancedTiming(
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   // ESP-IDF v5.5 requires node to be stopped for timing configuration
   bool was_enabled = is_enabled_.load();
@@ -632,7 +632,7 @@ hf_can_err_t EspCan::ConfigureAdvancedFilter(
     return hf_can_err_t::CAN_ERR_NOT_INITIALIZED;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   // ESP-IDF v5.5 requires node to be stopped for filter configuration
   bool was_enabled = is_enabled_.load();

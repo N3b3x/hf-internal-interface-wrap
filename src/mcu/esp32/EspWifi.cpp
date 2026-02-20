@@ -225,7 +225,7 @@ EspWifi::~EspWifi() {
 }
 
 hf_wifi_err_t EspWifi::Initialize(hf_wifi_mode_t mode) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (m_initialized) {
     ESP_LOGW(TAG, "WiFi already initialized");
@@ -358,7 +358,7 @@ hf_wifi_err_t EspWifi::Initialize(hf_wifi_mode_t mode) noexcept {
 }
 
 hf_wifi_err_t EspWifi::Deinitialize() noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_SUCCESS;
@@ -424,13 +424,13 @@ hf_wifi_err_t EspWifi::Deinitialize() noexcept {
 
   // Clear scan results
   {
-    RtosLockGuard<RtosMutex> scan_lock(m_scan_mutex);
+    PlatformLockGuard<PlatformMutex> scan_lock(m_scan_mutex);
     m_scan_results.clear();
   }
 
   // Clear event queue
   {
-    RtosLockGuard<RtosMutex> event_lock(m_event_mutex);
+    PlatformLockGuard<PlatformMutex> event_lock(m_event_mutex);
     while (!m_event_queue.empty()) {
       m_event_queue.pop();
     }
@@ -451,7 +451,7 @@ bool EspWifi::IsInitialized() const noexcept {
 }
 
 hf_wifi_err_t EspWifi::SetMode(hf_wifi_mode_t mode) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -486,7 +486,7 @@ hf_wifi_err_t EspWifi::SetMode(hf_wifi_mode_t mode) noexcept {
 }
 
 hf_wifi_err_t EspWifi::ConfigureStation(const hf_wifi_station_config_t& config) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -518,7 +518,7 @@ hf_wifi_err_t EspWifi::ConfigureStation(const hf_wifi_station_config_t& config) 
 }
 
 hf_wifi_err_t EspWifi::Connect(uint32_t timeout_ms) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -544,7 +544,7 @@ hf_wifi_err_t EspWifi::Connect(uint32_t timeout_ms) noexcept {
 }
 
 hf_wifi_err_t EspWifi::GetIpInfo(hf_wifi_ip_info_t& ip_info) const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -565,7 +565,7 @@ hf_wifi_err_t EspWifi::GetIpInfo(hf_wifi_ip_info_t& ip_info) const noexcept {
 }
 
 hf_wifi_err_t EspWifi::ConfigureAccessPoint(const hf_wifi_ap_config_t& config) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -592,7 +592,7 @@ hf_wifi_err_t EspWifi::ConfigureAccessPoint(const hf_wifi_ap_config_t& config) n
 }
 
 hf_wifi_err_t EspWifi::StartAccessPoint() noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -619,7 +619,7 @@ hf_wifi_err_t EspWifi::StartAccessPoint() noexcept {
 }
 
 hf_wifi_err_t EspWifi::StopAccessPoint() noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -661,12 +661,12 @@ hf_wifi_err_t EspWifi::StopAccessPoint() noexcept {
 }
 
 bool EspWifi::IsAccessPointActive() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
   return m_ap_active;
 }
 
 int EspWifi::GetConnectedStationCount() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized || !m_ap_active) {
     return 0;
@@ -682,7 +682,7 @@ int EspWifi::GetConnectedStationCount() const noexcept {
 }
 
 hf_wifi_err_t EspWifi::StartScan(bool show_hidden, bool passive, uint32_t duration_ms) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -735,7 +735,7 @@ hf_wifi_err_t EspWifi::StartScan(bool show_hidden, bool passive, uint32_t durati
 
 hf_wifi_err_t EspWifi::GetScanResults(std::vector<hf_wifi_network_info_t>& networks,
                                       uint16_t max_count) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -811,17 +811,17 @@ hf_wifi_err_t EspWifi::GetScanResults(std::vector<hf_wifi_network_info_t>& netwo
 }
 
 bool EspWifi::IsScanning() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
   return m_scanning;
 }
 
 hf_wifi_state_t EspWifi::GetState() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
   return m_state;
 }
 
 std::string EspWifi::GetConnectedSsid() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized || !m_connected) {
     return "";
@@ -837,7 +837,7 @@ std::string EspWifi::GetConnectedSsid() const noexcept {
 }
 
 hf_wifi_err_t EspWifi::GetConnectedBssid(uint8_t* bssid) const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized || !m_connected || !bssid) {
     return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
@@ -854,7 +854,7 @@ hf_wifi_err_t EspWifi::GetConnectedBssid(uint8_t* bssid) const noexcept {
 }
 
 hf_wifi_err_t EspWifi::SetPowerSave(hf_wifi_power_save_t mode) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -880,7 +880,7 @@ hf_wifi_err_t EspWifi::SetPowerSave(hf_wifi_power_save_t mode) noexcept {
 }
 
 hf_wifi_power_save_t EspWifi::GetPowerSave() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE;
@@ -905,19 +905,19 @@ hf_wifi_power_save_t EspWifi::GetPowerSave() const noexcept {
 }
 
 hf_wifi_err_t EspWifi::RegisterEventCallback(hf_wifi_event_callback_t callback) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
   m_event_callback = callback;
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::UnregisterEventCallback() noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
   m_event_callback = nullptr;
   return hf_wifi_err_t::WIFI_SUCCESS;
 }
 
 hf_wifi_err_t EspWifi::GetMacAddress(uint8_t mac[6], uint8_t interface) const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized || !mac) {
     return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
@@ -940,7 +940,7 @@ hf_wifi_err_t EspWifi::GetMacAddress(uint8_t mac[6], uint8_t interface) const no
 }
 
 hf_wifi_err_t EspWifi::SetMacAddress(const uint8_t mac[6], uint8_t interface) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized || !mac) {
     return hf_wifi_err_t::WIFI_ERR_INVALID_PARAM;
@@ -963,7 +963,7 @@ hf_wifi_err_t EspWifi::SetMacAddress(const uint8_t mac[6], uint8_t interface) no
 }
 
 uint8_t EspWifi::GetChannel() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return 0;
@@ -979,7 +979,7 @@ uint8_t EspWifi::GetChannel() const noexcept {
 }
 
 hf_wifi_err_t EspWifi::SetChannel(uint8_t channel) noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -990,7 +990,7 @@ hf_wifi_err_t EspWifi::SetChannel(uint8_t channel) noexcept {
 }
 
 hf_wifi_mode_t EspWifi::GetMode() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_mode_t::HF_WIFI_MODE_DISABLED;
@@ -1102,7 +1102,7 @@ hf_wifi_err_t EspWifi::DeinitNetif() {
 //==============================================================================
 
 hf_wifi_err_t EspWifi::Disconnect() noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -1113,12 +1113,12 @@ hf_wifi_err_t EspWifi::Disconnect() noexcept {
 }
 
 bool EspWifi::IsConnected() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
   return m_connected;
 }
 
 int8_t EspWifi::GetRssi() const noexcept {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return 0;
@@ -1317,7 +1317,7 @@ hf_wifi_security_t EspWifi::ConvertFromEspAuthMode(wifi_auth_mode_t auth_mode) c
 //==============================================================================
 
 hf_wifi_err_t EspWifi::GetAdvancedConfig(EspWifiAdvancedConfig& config) const {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -1328,7 +1328,7 @@ hf_wifi_err_t EspWifi::GetAdvancedConfig(EspWifiAdvancedConfig& config) const {
 }
 
 hf_wifi_err_t EspWifi::SetTxPower(uint8_t power) {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -1347,7 +1347,7 @@ hf_wifi_err_t EspWifi::SetTxPower(uint8_t power) {
 }
 
 int8_t EspWifi::GetTxPower() const {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return -1;
@@ -1357,7 +1357,7 @@ int8_t EspWifi::GetTxPower() const {
 }
 
 hf_wifi_err_t EspWifi::SetBandwidth(wifi_bandwidth_t bandwidth) {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED;
@@ -1368,7 +1368,7 @@ hf_wifi_err_t EspWifi::SetBandwidth(wifi_bandwidth_t bandwidth) {
 }
 
 wifi_bandwidth_t EspWifi::GetBandwidth() const {
-  RtosLockGuard<RtosMutex> lock(m_mutex);
+  PlatformLockGuard<PlatformMutex> lock(m_mutex);
 
   if (!m_initialized) {
     return WIFI_BW_HT20;

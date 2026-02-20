@@ -54,7 +54,7 @@ extern "C" {
 // C++ headers
 #include "BaseWifi.h"
 #include "mcu/esp32/utils/EspTypes_Base.h"
-#include "utils/RtosMutex.h"
+#include "utils/PlatformMutex.h"
 #include <atomic>
 #include <memory>
 #include <queue>
@@ -356,7 +356,7 @@ public:
 private:
   // ========== Internal State Management ==========
 
-  mutable RtosMutex m_mutex;            /**< Main synchronization mutex */
+  mutable PlatformMutex m_mutex;            /**< Main synchronization mutex */
   std::atomic<bool> m_initialized;      /**< Initialization state */
   std::atomic<bool> m_enabled;          /**< WiFi enabled state */
   std::atomic<hf_wifi_mode_t> m_mode;   /**< Current WiFi mode */
@@ -380,12 +380,12 @@ private:
   void* m_event_user_data;                                     /**< User data for event callback */
   void* m_scan_user_data;                                      /**< User data for scan callback */
   std::queue<std::pair<hf_wifi_event_t, void*>> m_event_queue; /**< Event queue */
-  mutable RtosMutex m_event_mutex;                             /**< Event queue mutex */
+  mutable PlatformMutex m_event_mutex;                             /**< Event queue mutex */
 
   // Scan results
   std::vector<hf_wifi_network_info_t> m_scan_results; /**< Last scan results */
   std::atomic<bool> m_scanning;                       /**< Scanning state */
-  mutable RtosMutex m_scan_mutex;                     /**< Scan results mutex */
+  mutable PlatformMutex m_scan_mutex;                     /**< Scan results mutex */
 
   // Connection state
   std::atomic<bool> m_connected;  /**< Connection state */

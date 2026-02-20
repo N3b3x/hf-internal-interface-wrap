@@ -30,7 +30,7 @@
 
 #include "BasePio.h"
 #include "EspTypes.h"
-#include "RtosMutex.h"
+#include "PlatformMutex.h"
 #include <array>
 // Include ESP-IDF RMT driver headers for direct type usage
 // ESP-IDF C headers must be wrapped in extern "C" for C++ compatibility
@@ -382,7 +382,7 @@ private:
 #endif
 
   std::array<ChannelState, MAX_CHANNELS> channels_;
-  mutable RtosMutex state_mutex_;
+  mutable PlatformMutex state_mutex_;
 
   // Global statistics and diagnostics
   hf_pio_statistics_t global_statistics_;

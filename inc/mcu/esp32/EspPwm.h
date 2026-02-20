@@ -24,7 +24,7 @@
 #pragma once
 
 #include "BasePwm.h"
-#include "RtosMutex.h"
+#include "PlatformMutex.h"
 #include "utils/EspTypes_PWM.h"
 #include <array>
 #include <atomic>
@@ -85,7 +85,7 @@
  *
  * ## Key Design Features:
  * - **Variant-Aware:** Automatically detects and adapts to ESP32 variant capabilities
- * - **Thread-Safe:** Full RtosMutex protection for concurrent access
+ * - **Thread-Safe:** Full PlatformMutex protection for concurrent access
  * - **Smart Timer Management:** Automatic allocation with conflict resolution
  * - **Hardware Fade Support:** Native LEDC fade functionality
  * - **Error Recovery:** Comprehensive fault detection and recovery mechanisms
@@ -1078,7 +1078,7 @@ private:
   // MEMBER VARIABLES
   //==============================================================================
 
-  mutable RtosMutex mutex_;            ///< Thread safety mutex
+  mutable PlatformMutex mutex_;            ///< Thread safety mutex
   std::atomic<bool> initialized_;      ///< Initialization state (atomic for lazy init)
   hf_u32_t base_clock_hz_;             ///< Base clock frequency
   hf_pwm_clock_source_t clock_source_; ///< Current clock source

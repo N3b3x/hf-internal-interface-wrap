@@ -101,7 +101,7 @@ EspI2cBus::~EspI2cBus() noexcept {
 }
 
 bool EspI2cBus::Initialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (initialized_) {
     ESP_LOGI(TAG, "I2C bus already initialized");
@@ -186,7 +186,7 @@ bool EspI2cBus::Initialize() noexcept {
 }
 
 bool EspI2cBus::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_) {
     return true;
@@ -234,7 +234,7 @@ bool EspI2cBus::Deinitialize() noexcept {
 
 // Mode management methods
 hf_i2c_mode_t EspI2cBus::GetMode() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return current_mode_;
 }
 
@@ -267,7 +267,7 @@ bool EspI2cBus::SwitchMode(hf_i2c_mode_t new_mode, uint8_t queue_depth) noexcept
 }
 
 int EspI2cBus::CreateDevice(const hf_i2c_device_config_t& device_config) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_) {
     ESP_LOGE(TAG, "Cannot create device on uninitialized bus");
@@ -316,7 +316,7 @@ int EspI2cBus::CreateDevice(const hf_i2c_device_config_t& device_config) noexcep
 }
 
 BaseI2c* EspI2cBus::GetDevice(int device_index) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     ESP_LOGW(TAG, "Invalid device index: %d", device_index);
@@ -327,7 +327,7 @@ BaseI2c* EspI2cBus::GetDevice(int device_index) noexcept {
 }
 
 const BaseI2c* EspI2cBus::GetDevice(int device_index) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     return nullptr;
@@ -337,7 +337,7 @@ const BaseI2c* EspI2cBus::GetDevice(int device_index) const noexcept {
 }
 
 EspI2cDevice* EspI2cBus::GetEspDevice(int device_index) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     return nullptr;
@@ -347,7 +347,7 @@ EspI2cDevice* EspI2cBus::GetEspDevice(int device_index) noexcept {
 }
 
 const EspI2cDevice* EspI2cBus::GetEspDevice(int device_index) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     return nullptr;
@@ -357,7 +357,7 @@ const EspI2cDevice* EspI2cBus::GetEspDevice(int device_index) const noexcept {
 }
 
 BaseI2c* EspI2cBus::GetDeviceByAddress(hf_u16_t device_address) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   int index = FindDeviceIndexByAddress(device_address);
   if (index >= 0) {
@@ -368,7 +368,7 @@ BaseI2c* EspI2cBus::GetDeviceByAddress(hf_u16_t device_address) noexcept {
 }
 
 std::size_t EspI2cBus::GetDeviceCount() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return devices_.size();
 }
 
@@ -467,7 +467,7 @@ bool EspI2cBus::CustomFastProbe(hf_u16_t device_addr, hf_u32_t timeout_ms) noexc
 }
 
 bool EspI2cBus::RemoveDevice(int device_index) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     ESP_LOGW(TAG, "Invalid device index for removal: %d", device_index);
@@ -533,7 +533,7 @@ int EspI2cBus::GetPort() const noexcept {
 }
 
 bool EspI2cBus::IsInitialized() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return initialized_;
 }
 
@@ -697,12 +697,12 @@ const EspI2cDevice* EspI2cBus::At(int device_index) const noexcept {
 }
 
 bool EspI2cBus::IsValidIndex(int device_index) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return (device_index >= 0 && device_index < static_cast<int>(devices_.size()));
 }
 
 BaseI2c* EspI2cBus::GetFirstDevice() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (devices_.empty()) {
     return nullptr;
   }
@@ -710,7 +710,7 @@ BaseI2c* EspI2cBus::GetFirstDevice() noexcept {
 }
 
 const BaseI2c* EspI2cBus::GetFirstDevice() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (devices_.empty()) {
     return nullptr;
   }
@@ -718,7 +718,7 @@ const BaseI2c* EspI2cBus::GetFirstDevice() const noexcept {
 }
 
 BaseI2c* EspI2cBus::GetLastDevice() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (devices_.empty()) {
     return nullptr;
   }
@@ -726,7 +726,7 @@ BaseI2c* EspI2cBus::GetLastDevice() noexcept {
 }
 
 const BaseI2c* EspI2cBus::GetLastDevice() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (devices_.empty()) {
     return nullptr;
   }
@@ -734,7 +734,7 @@ const BaseI2c* EspI2cBus::GetLastDevice() const noexcept {
 }
 
 std::vector<BaseI2c*> EspI2cBus::GetAllDevices() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   std::vector<BaseI2c*> result;
   result.reserve(devices_.size());
   for (const auto& device : devices_) {
@@ -744,7 +744,7 @@ std::vector<BaseI2c*> EspI2cBus::GetAllDevices() noexcept {
 }
 
 std::vector<const BaseI2c*> EspI2cBus::GetAllDevices() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   std::vector<const BaseI2c*> result;
   result.reserve(devices_.size());
   for (const auto& device : devices_) {
@@ -754,7 +754,7 @@ std::vector<const BaseI2c*> EspI2cBus::GetAllDevices() const noexcept {
 }
 
 std::vector<EspI2cDevice*> EspI2cBus::GetAllEspDevices() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   std::vector<EspI2cDevice*> result;
   result.reserve(devices_.size());
   for (const auto& device : devices_) {
@@ -764,7 +764,7 @@ std::vector<EspI2cDevice*> EspI2cBus::GetAllEspDevices() noexcept {
 }
 
 std::vector<const EspI2cDevice*> EspI2cBus::GetAllEspDevices() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   std::vector<const EspI2cDevice*> result;
   result.reserve(devices_.size());
   for (const auto& device : devices_) {
@@ -778,7 +778,7 @@ int EspI2cBus::FindDeviceIndex(hf_u16_t device_address) const noexcept {
 }
 
 std::vector<hf_u16_t> EspI2cBus::GetDeviceAddresses() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   std::vector<hf_u16_t> addresses;
   addresses.reserve(devices_.size());
   for (const auto& device : devices_) {
@@ -788,17 +788,17 @@ std::vector<hf_u16_t> EspI2cBus::GetDeviceAddresses() const noexcept {
 }
 
 bool EspI2cBus::HasDevices() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return !devices_.empty();
 }
 
 bool EspI2cBus::IsEmpty() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return devices_.empty();
 }
 
 bool EspI2cBus::ClearAllDevices() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (devices_.empty()) {
     return true;
@@ -908,7 +908,7 @@ EspI2cDevice::~EspI2cDevice() noexcept {
 }
 
 bool EspI2cDevice::Initialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (initialized_) {
     ESP_LOGI(TAG, "EspI2cDevice already initialized for address 0x%02X", config_.device_address);
@@ -992,7 +992,7 @@ bool EspI2cDevice::MarkAsDeinitialized() noexcept {
 }
 
 bool EspI2cDevice::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_) {
     ESP_LOGI(TAG, "EspI2cDevice already deinitialized");
@@ -1441,7 +1441,7 @@ bool EspI2cDevice::IsAsyncOperationInProgress() const noexcept {
     return false;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return async_operation_in_progress_;
 }
 
@@ -1454,7 +1454,7 @@ bool EspI2cDevice::IsSyncOperationInProgress() const noexcept {
     return false;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return sync_operation_in_progress_;
 }
 
@@ -1513,7 +1513,7 @@ hf_i2c_err_t EspI2cDevice::GetStatistics(hf_i2c_statistics_t& statistics) const 
     return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   statistics = statistics_;
   return hf_i2c_err_t::I2C_SUCCESS;
 }
@@ -1527,7 +1527,7 @@ hf_i2c_err_t EspI2cDevice::GetDiagnostics(hf_i2c_diagnostics_t& diagnostics) con
     return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   diagnostics = diagnostics_;
   return hf_i2c_err_t::I2C_SUCCESS;
 }
@@ -1547,7 +1547,7 @@ hf_i2c_err_t EspI2cDevice::ResetStatistics() noexcept {
     return hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   statistics_ = hf_i2c_statistics_t{};
   ESP_LOGI(TAG, "Statistics reset for device at address 0x%02X", config_.device_address);
   return hf_i2c_err_t::I2C_SUCCESS;
@@ -1629,7 +1629,7 @@ bool EspI2cDevice::ValidateOperation(const void* data, hf_u16_t length,
 }
 
 bool EspI2cDevice::SetupSyncOperation(hf_i2c_operation_t operation_type) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_ || !handle_) {
     ESP_LOGE(TAG, "Cannot setup sync operation: device not properly initialized");

@@ -31,7 +31,7 @@
 #pragma once
 
 #include "BaseSpi.h"
-#include "RtosMutex.h"
+#include "PlatformMutex.h"
 #include "utils/EspTypes.h"
 #include <memory>
 #include <vector>
@@ -69,7 +69,7 @@ class EspSpiDevice;
  * configuration and control for a single SPI device, including DMA, queueing,
  * and advanced ESP-IDF v5.5+ features.
  *
- * @note Thread-safe. All operations are protected by RtosMutex.
+ * @note Thread-safe. All operations are protected by PlatformMutex.
  */
 class EspSpiDevice : public BaseSpi {
 public:
@@ -156,7 +156,7 @@ private:
   spi_device_handle_t handle_;    ///< ESP-IDF device handle
   hf_spi_device_config_t config_; ///< Device configuration
   bool initialized_;              ///< Initialization state
-  RtosMutex mutex_;               ///< Thread safety
+  PlatformMutex mutex_;               ///< Thread safety
 };
 
 /**
@@ -258,6 +258,6 @@ public:
 private:
   hf_spi_bus_config_t config_; ///< Bus configuration
   bool initialized_;           ///< Initialization state
-  mutable RtosMutex mutex_;    ///< Thread safety (mutable for const operations)
+  mutable PlatformMutex mutex_;    ///< Thread safety (mutable for const operations)
   std::vector<std::unique_ptr<EspSpiDevice>> devices_; ///< Managed devices on this bus
 };

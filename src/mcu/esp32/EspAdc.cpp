@@ -113,7 +113,7 @@ EspAdc::~EspAdc() noexcept {
 //==============================================//
 
 hf_bool_t EspAdc::Initialize() noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   const hf_u64_t start_time = GetCurrentTimeUs();
   hf_adc_err_t result = hf_adc_err_t::ADC_SUCCESS;
@@ -178,7 +178,7 @@ hf_bool_t EspAdc::Initialize() noexcept {
 }
 
 hf_bool_t EspAdc::Deinitialize() noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   hf_adc_err_t result = hf_adc_err_t::ADC_SUCCESS;
 
@@ -227,7 +227,7 @@ hf_bool_t EspAdc::Deinitialize() noexcept {
 
 hf_adc_err_t EspAdc::ConfigureChannel(hf_channel_id_t channel_id, hf_adc_atten_t attenuation,
                                       hf_adc_bitwidth_t bitwidth) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   const hf_u64_t start_time = GetCurrentTimeUs();
   hf_adc_err_t result = ValidateChannelId(channel_id);
@@ -274,7 +274,7 @@ hf_adc_err_t EspAdc::EnableChannel(hf_channel_id_t channel_id) noexcept {
     return hf_adc_err_t::ADC_ERR_INVALID_CHANNEL;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (!config_.channel_configs[channel_id].enabled) {
     config_.channel_configs[channel_id].enabled = true;
@@ -295,7 +295,7 @@ hf_adc_err_t EspAdc::DisableChannel(hf_channel_id_t channel_id) noexcept {
     return hf_adc_err_t::ADC_ERR_INVALID_CHANNEL;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   config_.channel_configs[channel_id].enabled = false;
   diagnostics_.enabled_channels &= ~(1 << channel_id);
@@ -437,7 +437,7 @@ hf_adc_err_t EspAdc::ReadAveraged(hf_channel_id_t channel_id, hf_u16_t num_sampl
 //==============================================//
 
 hf_adc_err_t EspAdc::SetMode(hf_adc_mode_t mode) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (mode == config_.mode) {
     return hf_adc_err_t::ADC_SUCCESS; // Already in requested mode
@@ -478,7 +478,7 @@ hf_adc_err_t EspAdc::SetMode(hf_adc_mode_t mode) noexcept {
 }
 
 hf_adc_mode_t EspAdc::GetMode() const noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
   return config_.mode;
 }
 
@@ -499,7 +499,7 @@ hf_bool_t EspAdc::IsChannelEnabled(hf_channel_id_t channel_id) const noexcept {
     return false;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
   return config_.channel_configs[channel_id].enabled;
 }
 
@@ -508,7 +508,7 @@ hf_bool_t EspAdc::IsChannelEnabled(hf_channel_id_t channel_id) const noexcept {
 //==============================================//
 
 hf_adc_err_t EspAdc::ConfigureContinuous(const hf_adc_continuous_config_t& config) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (continuous_running_.load()) {
     return hf_adc_err_t::ADC_ERR_BUSY;
@@ -549,7 +549,7 @@ hf_adc_err_t EspAdc::ConfigureContinuous(const hf_adc_continuous_config_t& confi
 
 hf_adc_err_t EspAdc::SetContinuousCallback(hf_adc_continuous_callback_t callback,
                                            void* user_data) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   continuous_callback_ = callback;
   continuous_user_data_ = user_data;
@@ -558,7 +558,7 @@ hf_adc_err_t EspAdc::SetContinuousCallback(hf_adc_continuous_callback_t callback
 }
 
 hf_adc_err_t EspAdc::StartContinuous() noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (continuous_running_.load()) {
     return hf_adc_err_t::ADC_ERR_BUSY;
@@ -584,7 +584,7 @@ hf_adc_err_t EspAdc::StartContinuous() noexcept {
 }
 
 hf_adc_err_t EspAdc::StopContinuous() noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (!continuous_running_.load()) {
     return hf_adc_err_t::ADC_SUCCESS; // Already stopped
@@ -646,7 +646,7 @@ hf_adc_err_t EspAdc::ReadContinuousData(hf_u8_t* buffer, hf_u32_t buffer_size, h
 
 hf_adc_err_t EspAdc::InitializeCalibration(hf_adc_atten_t attenuation,
                                            hf_adc_bitwidth_t bitwidth) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   hf_u8_t atten_idx = static_cast<hf_u8_t>(attenuation);
   if (atten_idx >= 4) {
@@ -688,7 +688,7 @@ hf_bool_t EspAdc::IsCalibrationAvailable(hf_adc_atten_t attenuation) const noexc
     return false;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
   return calibration_handles_[atten_idx] != nullptr;
 }
 
@@ -699,7 +699,7 @@ hf_adc_err_t EspAdc::RawToVoltage(hf_u32_t raw_count, hf_adc_atten_t attenuation
     return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (calibration_handles_[atten_idx] == nullptr) {
     return hf_adc_err_t::ADC_ERR_CALIBRATION;
@@ -724,7 +724,7 @@ hf_adc_err_t EspAdc::RawToVoltage(hf_u32_t raw_count, hf_adc_atten_t attenuation
 //==============================================//
 
 hf_adc_err_t EspAdc::ConfigureFilter(const hf_adc_filter_config_t& filter_config) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (filter_config.filter_id >= HF_ADC_MAX_FILTERS) {
     return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
@@ -762,7 +762,7 @@ hf_adc_err_t EspAdc::ConfigureFilter(const hf_adc_filter_config_t& filter_config
 }
 
 hf_adc_err_t EspAdc::SetFilterEnabled(hf_u8_t filter_id, hf_bool_t enabled) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (filter_id >= HF_ADC_MAX_FILTERS) {
     return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
@@ -793,7 +793,7 @@ hf_adc_err_t EspAdc::SetFilterEnabled(hf_u8_t filter_id, hf_bool_t enabled) noex
 //==============================================//
 
 hf_adc_err_t EspAdc::ConfigureMonitor(const hf_adc_monitor_config_t& monitor_config) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (monitor_config.monitor_id >= HF_ADC_MAX_MONITORS) {
     return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
@@ -862,7 +862,7 @@ hf_adc_err_t EspAdc::SetMonitorCallback(hf_u8_t monitor_id, hf_adc_monitor_callb
     return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
   }
 
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   // Update the callback and user data in the context
   monitor_contexts_[monitor_id].callback = callback;
@@ -876,7 +876,7 @@ hf_adc_err_t EspAdc::SetMonitorCallback(hf_u8_t monitor_id, hf_adc_monitor_callb
 }
 
 hf_adc_err_t EspAdc::SetMonitorEnabled(hf_u8_t monitor_id, hf_bool_t enabled) noexcept {
-  MutexLockGuard lock(config_mutex_);
+  PlatformMutexLockGuard lock(config_mutex_);
 
   if (monitor_id >= HF_ADC_MAX_MONITORS) {
     return hf_adc_err_t::ADC_ERR_INVALID_PARAM;
@@ -907,19 +907,19 @@ hf_adc_err_t EspAdc::SetMonitorEnabled(hf_u8_t monitor_id, hf_bool_t enabled) no
 //==============================================//
 
 hf_adc_err_t EspAdc::GetStatistics(hf_adc_statistics_t& statistics) noexcept {
-  MutexLockGuard lock(stats_mutex_);
+  PlatformMutexLockGuard lock(stats_mutex_);
   statistics = statistics_;
   return hf_adc_err_t::ADC_SUCCESS;
 }
 
 hf_adc_err_t EspAdc::GetDiagnostics(hf_adc_diagnostics_t& diagnostics) noexcept {
-  MutexLockGuard lock(stats_mutex_);
+  PlatformMutexLockGuard lock(stats_mutex_);
   diagnostics = diagnostics_;
   return hf_adc_err_t::ADC_SUCCESS;
 }
 
 hf_adc_err_t EspAdc::ResetStatistics() noexcept {
-  MutexLockGuard lock(stats_mutex_);
+  PlatformMutexLockGuard lock(stats_mutex_);
   statistics_ = hf_adc_statistics_t{};
   return hf_adc_err_t::ADC_SUCCESS;
 }
@@ -1396,7 +1396,7 @@ hf_adc_err_t EspAdc::ValidateConfiguration() const noexcept {
 }
 
 hf_adc_err_t EspAdc::UpdateStatistics(hf_adc_err_t result, hf_u64_t start_time_us) noexcept {
-  MutexLockGuard lock(stats_mutex_);
+  PlatformMutexLockGuard lock(stats_mutex_);
 
   hf_u64_t end_time_us = GetCurrentTimeUs();
   hf_u32_t conversion_time_us = static_cast<hf_u32_t>(end_time_us - start_time_us);
@@ -1435,7 +1435,7 @@ hf_u64_t EspAdc::GetCurrentTimeUs() const noexcept {
 }
 
 void EspAdc::UpdateDiagnostics(hf_adc_err_t error) noexcept {
-  MutexLockGuard lock(stats_mutex_);
+  PlatformMutexLockGuard lock(stats_mutex_);
 
   diagnostics_.lastErrorCode = error;
   diagnostics_.lastErrorTimestamp =

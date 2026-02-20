@@ -32,7 +32,7 @@
 #ifdef HF_MCU_FAMILY_ESP32
 
 #include "BaseAdc.h"
-#include "RtosMutex.h"
+#include "PlatformMutex.h"
 #include "utils/EspTypes.h"
 
 #include <array>
@@ -59,7 +59,7 @@ extern "C" {
 }
 #endif
 
-#include "RtosMutex.h"
+#include "PlatformMutex.h"
 
 //==============================================================================
 // ESP32 VARIANT-SPECIFIC ADC CONFIGURATION
@@ -712,8 +712,8 @@ private:
   std::atomic<hf_adc_err_t> last_error_;      ///< Last error code
 
   // Thread safety
-  mutable RtosMutex config_mutex_; ///< Configuration mutex
-  mutable RtosMutex stats_mutex_;  ///< Statistics mutex
+  mutable PlatformMutex config_mutex_; ///< Configuration mutex
+  mutable PlatformMutex stats_mutex_;  ///< Statistics mutex
 
   // ESP-IDF handles
   adc_oneshot_unit_handle_t oneshot_handle_;  ///< Oneshot mode handle

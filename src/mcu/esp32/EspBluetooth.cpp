@@ -94,7 +94,7 @@ EspBluetooth::~EspBluetooth() {
 // ========== Initialization and Configuration ==========
 
 hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
 
   if (m_initialized) {
     ESP_LOGW(TAG, "Bluetooth already initialized");
@@ -150,7 +150,7 @@ hf_bluetooth_err_t EspBluetooth::Initialize(hf_bluetooth_mode_t mode) noexcept {
 }
 
 hf_bluetooth_err_t EspBluetooth::Deinitialize() noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
 
   if (!m_initialized) {
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
@@ -183,7 +183,7 @@ hf_bluetooth_err_t EspBluetooth::Deinitialize() noexcept {
 }
 
 bool EspBluetooth::IsInitialized() const noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   return m_initialized;
 }
 
@@ -198,7 +198,7 @@ static void ble_host_task(void* param) {
 #endif
 
 hf_bluetooth_err_t EspBluetooth::Enable() noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
 
   if (!m_initialized) {
     ESP_LOGE(TAG, "Bluetooth not initialized");
@@ -247,7 +247,7 @@ hf_bluetooth_err_t EspBluetooth::Enable() noexcept {
 }
 
 hf_bluetooth_err_t EspBluetooth::Disable() noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
 
   if (!m_enabled) {
     return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
@@ -286,12 +286,12 @@ hf_bluetooth_err_t EspBluetooth::Disable() noexcept {
 }
 
 bool EspBluetooth::IsEnabled() const noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   return m_enabled;
 }
 
 hf_bluetooth_err_t EspBluetooth::SetMode(hf_bluetooth_mode_t mode) noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
 
 #if HAS_NIMBLE_SUPPORT && NIMBLE_HEADERS_AVAILABLE
   // ESP32C6 only supports BLE
@@ -309,7 +309,7 @@ hf_bluetooth_err_t EspBluetooth::SetMode(hf_bluetooth_mode_t mode) noexcept {
 }
 
 hf_bluetooth_mode_t EspBluetooth::GetMode() const noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   return m_mode;
 }
 
@@ -387,7 +387,7 @@ int EspBluetooth::GapEventHandler(struct ble_gap_event* event, void* arg) {
         device_info.rssi = 0; // Will be updated later
         device_info.is_connected = true;
 
-        MutexLockGuard lock(s_instance->m_device_mutex);
+        PlatformMutexLockGuard lock(s_instance->m_device_mutex);
         std::string addr_str = s_instance->AddressToString(addr);
         s_instance->m_connected_devices[addr_str] = device_info;
       }
@@ -406,7 +406,7 @@ int EspBluetooth::GapEventHandler(struct ble_gap_event* event, void* arg) {
 
     // Remove from connected devices
     {
-      MutexLockGuard lock(s_instance->m_device_mutex);
+      PlatformMutexLockGuard lock(s_instance->m_device_mutex);
       hf_bluetooth_address_t addr;
       ConvertBleAddr(&event->disconnect.conn.peer_id_addr, addr);
       std::string addr_str = s_instance->AddressToString(addr);
@@ -461,7 +461,7 @@ int EspBluetooth::GapEventHandler(struct ble_gap_event* event, void* arg) {
         device_info.name = std::string(reinterpret_cast<const char*>(name_data), name_len);
       }
 
-      MutexLockGuard lock(s_instance->m_device_mutex);
+      PlatformMutexLockGuard lock(s_instance->m_device_mutex);
 
       // Check if device already exists
       auto it = std::find_if(s_instance->m_discovered_devices.begin(),
@@ -791,19 +791,19 @@ hf_bluetooth_err_t EspBluetooth::StopScan() noexcept {
 }
 
 bool EspBluetooth::IsScanning() const noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   return m_state == hf_bluetooth_state_t::HF_BLUETOOTH_STATE_SCANNING;
 }
 
 hf_bluetooth_err_t EspBluetooth::GetDiscoveredDevices(
     std::vector<hf_bluetooth_device_info_t>& devices) noexcept {
-  MutexLockGuard lock(m_device_mutex);
+  PlatformMutexLockGuard lock(m_device_mutex);
   devices = m_discovered_devices;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
 hf_bluetooth_err_t EspBluetooth::ClearDiscoveredDevices() noexcept {
-  MutexLockGuard lock(m_device_mutex);
+  PlatformMutexLockGuard lock(m_device_mutex);
   m_discovered_devices.clear();
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
@@ -842,7 +842,7 @@ bool EspBluetooth::IsConnected(const hf_bluetooth_address_t& address) const noex
 
 hf_bluetooth_err_t EspBluetooth::GetConnectedDevices(
     std::vector<hf_bluetooth_device_info_t>& devices) noexcept {
-  MutexLockGuard lock(m_device_mutex);
+  PlatformMutexLockGuard lock(m_device_mutex);
   devices.clear();
   for (const auto& pair : m_connected_devices) {
     devices.push_back(pair.second);
@@ -920,7 +920,7 @@ hf_bluetooth_err_t EspBluetooth::SubscribeCharacteristic(const hf_bluetooth_addr
 }
 
 hf_bluetooth_state_t EspBluetooth::GetState() const noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   return m_state;
 }
 
@@ -929,25 +929,25 @@ int8_t EspBluetooth::GetRssi(const hf_bluetooth_address_t& address) const noexce
 }
 
 hf_bluetooth_err_t EspBluetooth::RegisterEventCallback(hf_bluetooth_event_callback_t callback) noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   m_event_callback = callback;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
 hf_bluetooth_err_t EspBluetooth::UnregisterEventCallback() noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   m_event_callback = nullptr;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
 hf_bluetooth_err_t EspBluetooth::RegisterDataCallback(hf_bluetooth_data_callback_t callback) noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   m_data_callback = callback;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }
 
 hf_bluetooth_err_t EspBluetooth::UnregisterDataCallback() noexcept {
-  MutexLockGuard lock(m_state_mutex);
+  PlatformMutexLockGuard lock(m_state_mutex);
   m_data_callback = nullptr;
   return hf_bluetooth_err_t::BLUETOOTH_SUCCESS;
 }

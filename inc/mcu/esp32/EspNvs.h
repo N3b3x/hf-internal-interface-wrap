@@ -44,7 +44,7 @@
 #pragma once
 
 #include "BaseNvs.h"
-#include "RtosMutex.h"          // Thread-safe mutex support if enabled
+#include "PlatformMutex.h"          // Thread-safe mutex support if enabled
 #include "utils/EspTypes_NVS.h" // Centralized ESP32 NVS type definitions
 #include <cstdint>
 
@@ -293,5 +293,5 @@ private:
   mutable hf_nvs_diagnostics_t diagnostics_; ///< Diagnostic information
 
   // Thread safety
-  mutable RtosMutex mutex_; ///< Mutex for thread-safe operations
+  mutable PlatformMutex mutex_; ///< Mutex for thread-safe operations
 };

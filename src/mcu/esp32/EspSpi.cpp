@@ -58,7 +58,7 @@ EspSpiBus::~EspSpiBus() noexcept {
 }
 
 bool EspSpiBus::Initialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (initialized_)
     return true;
 
@@ -98,12 +98,12 @@ bool EspSpiBus::Initialize() noexcept {
 }
 
 bool EspSpiBus::IsInitialized() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return initialized_;
 }
 
 bool EspSpiBus::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (!initialized_) {
     return true;
   }
@@ -131,7 +131,7 @@ bool EspSpiBus::Deinitialize() noexcept {
 }
 
 int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (!initialized_) {
     return -1; // Bus must be initialized first
   }
@@ -149,7 +149,7 @@ int EspSpiBus::CreateDevice(const hf_spi_device_config_t& device_config) noexcep
 }
 
 BaseSpi* EspSpiBus::GetDevice(int device_index) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     return nullptr;
   }
@@ -157,7 +157,7 @@ BaseSpi* EspSpiBus::GetDevice(int device_index) noexcept {
 }
 
 const BaseSpi* EspSpiBus::GetDevice(int device_index) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     return nullptr;
   }
@@ -165,7 +165,7 @@ const BaseSpi* EspSpiBus::GetDevice(int device_index) const noexcept {
 }
 
 EspSpiDevice* EspSpiBus::GetEspDevice(int device_index) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     return nullptr;
   }
@@ -173,7 +173,7 @@ EspSpiDevice* EspSpiBus::GetEspDevice(int device_index) noexcept {
 }
 
 const EspSpiDevice* EspSpiBus::GetEspDevice(int device_index) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     return nullptr;
   }
@@ -181,12 +181,12 @@ const EspSpiDevice* EspSpiBus::GetEspDevice(int device_index) const noexcept {
 }
 
 std::size_t EspSpiBus::GetDeviceCount() const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   return devices_.size();
 }
 
 bool EspSpiBus::RemoveDevice(int device_index) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (device_index < 0 || device_index >= static_cast<int>(devices_.size())) {
     return false;
   }
@@ -220,7 +220,7 @@ EspSpiDevice::~EspSpiDevice() noexcept {
 }
 
 bool EspSpiDevice::Initialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (initialized_) {
     return true;
   }
@@ -297,7 +297,7 @@ bool EspSpiDevice::MarkAsDeinitialized() noexcept {
 }
 
 bool EspSpiDevice::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (!initialized_) {
     return true;
   }
@@ -321,7 +321,7 @@ hf_spi_err_t EspSpiDevice::Transfer(const hf_u8_t* tx_data, hf_u8_t* rx_data, hf
   // uses the queue_size timeout configured during device initialization.
   (void)timeout_ms; // Suppress unused parameter warning for now
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   if (!initialized_)
     return hf_spi_err_t::SPI_ERR_NOT_INITIALIZED;
 

@@ -96,7 +96,7 @@ EspLogger::~EspLogger() noexcept {
 //==============================================================================
 
 hf_logger_err_t EspLogger::Initialize(const hf_logger_config_t& config) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (initialized_.load()) {
     ESP_LOGW(TAG, "Logger already initialized");
@@ -160,7 +160,7 @@ hf_logger_err_t EspLogger::Initialize(const hf_logger_config_t& config) noexcept
 }
 
 hf_logger_err_t EspLogger::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_.load()) {
     return hf_logger_err_t::LOGGER_SUCCESS;
@@ -214,7 +214,7 @@ bool EspLogger::EnsureInitialized() noexcept {
 }
 
 hf_logger_err_t EspLogger::SetLogLevel(const char* tag, hf_log_level_t level) noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_.load()) {
     return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
@@ -236,7 +236,7 @@ hf_logger_err_t EspLogger::SetLogLevel(const char* tag, hf_log_level_t level) no
 }
 
 hf_logger_err_t EspLogger::GetLogLevel(const char* tag, hf_log_level_t& level) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_.load()) {
     return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
@@ -506,7 +506,7 @@ bool EspLogger::IsLevelEnabled(hf_log_level_t level, const char* tag) const noex
 }
 
 hf_logger_err_t EspLogger::GetStatistics(hf_logger_statistics_t& statistics) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_.load()) {
     return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
@@ -517,7 +517,7 @@ hf_logger_err_t EspLogger::GetStatistics(hf_logger_statistics_t& statistics) con
 }
 
 hf_logger_err_t EspLogger::GetDiagnostics(hf_logger_diagnostics_t& diagnostics) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_.load()) {
     return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
@@ -532,7 +532,7 @@ hf_logger_err_t EspLogger::GetDiagnostics(hf_logger_diagnostics_t& diagnostics) 
 }
 
 hf_logger_err_t EspLogger::ResetStatistics() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_.load()) {
     return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
@@ -545,7 +545,7 @@ hf_logger_err_t EspLogger::ResetStatistics() noexcept {
 }
 
 hf_logger_err_t EspLogger::ResetDiagnostics() noexcept {
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!initialized_.load()) {
     return hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED;
@@ -583,7 +583,7 @@ hf_logger_err_t EspLogger::GetLastErrorMessage(char* message, hf_u32_t max_lengt
     return hf_logger_err_t::LOGGER_ERR_NULL_POINTER;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   hf_u32_t copy_length =
       std::min(max_length - 1, static_cast<hf_u32_t>(strlen(last_error_message_)));

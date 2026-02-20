@@ -243,7 +243,7 @@ hf_nvs_err_t EspNvs::SetU32(const char* key, hf_u32_t value) noexcept {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Check for null pointer first
   if (!key) {
@@ -313,7 +313,7 @@ hf_nvs_err_t EspNvs::GetU32(const char* key, hf_u32_t& value) noexcept {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!key) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
@@ -337,7 +337,7 @@ hf_nvs_err_t EspNvs::SetString(const char* key, const char* value) noexcept {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!key || !value) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
@@ -373,7 +373,7 @@ hf_nvs_err_t EspNvs::GetString(const char* key, char* buffer, size_t buffer_size
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Support size query: buffer may be nullptr with buffer_size==0
   if (!key) {
@@ -407,7 +407,7 @@ hf_nvs_err_t EspNvs::SetBlob(const char* key, const void* data, size_t data_size
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!key || !data) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
@@ -436,7 +436,7 @@ hf_nvs_err_t EspNvs::GetBlob(const char* key, void* buffer, size_t buffer_size,
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   // Support size query: buffer may be nullptr with buffer_size==0
   if (!key) {
@@ -470,7 +470,7 @@ hf_nvs_err_t EspNvs::EraseKey(const char* key) noexcept {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!key) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
@@ -498,7 +498,7 @@ hf_nvs_err_t EspNvs::Commit() noexcept {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   nvs_handle_t handle = reinterpret_cast<nvs_handle_t>(nvs_handle_);
   esp_err_t err = nvs_commit(handle);
@@ -516,7 +516,7 @@ bool EspNvs::KeyExists(const char* key) noexcept {
     return false;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!key) {
     return false;
@@ -554,7 +554,7 @@ hf_nvs_err_t EspNvs::GetSize(const char* key, size_t& size) noexcept {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
 
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
 
   if (!key) {
     return hf_nvs_err_t::NVS_ERR_NULL_POINTER;
@@ -608,7 +608,7 @@ hf_nvs_err_t EspNvs::GetStatistics(hf_nvs_statistics_t& statistics) const noexce
   if (!IsInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   statistics = statistics_;
   return hf_nvs_err_t::NVS_SUCCESS;
 }
@@ -617,7 +617,7 @@ hf_nvs_err_t EspNvs::GetDiagnostics(hf_nvs_diagnostics_t& diagnostics) const noe
   if (!IsInitialized()) {
     return hf_nvs_err_t::NVS_ERR_NOT_INITIALIZED;
   }
-  RtosUniqueLock<RtosMutex> lock(mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(mutex_);
   diagnostics = diagnostics_;
   return hf_nvs_err_t::NVS_SUCCESS;
 }

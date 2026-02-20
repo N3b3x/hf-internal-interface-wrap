@@ -56,14 +56,9 @@
   #define HF_TARGET_MCU_ESP32H2
 #endif
 
-// Fallback: default to ESP32-C6 if nothing auto-detected or manually set
-#if !defined(HF_TARGET_MCU_ESP32C6) && !defined(HF_TARGET_MCU_ESP32) && \
-    !defined(HF_TARGET_MCU_ESP32S2) && !defined(HF_TARGET_MCU_ESP32S3) && \
-    !defined(HF_TARGET_MCU_ESP32C3) && !defined(HF_TARGET_MCU_ESP32C2) && \
-    !defined(HF_TARGET_MCU_ESP32H2) && !defined(HF_TARGET_MCU_STM32F4) && \
-    !defined(HF_TARGET_MCU_STM32H7) && !defined(HF_TARGET_MCU_RP2040)
-  #define HF_TARGET_MCU_ESP32C6
-#endif
+// Fallback: if nothing auto-detected and no manual override, leave unset.
+// The "No MCU Selected" section below will handle the NONE case or error.
+// NOTE: For ESP-IDF builds, auto-detection above always succeeds.
 
 // Manual override (uncomment ONE to override auto-detection):
 // #define HF_TARGET_MCU_ESP32C6     // ESP32-C6 RISC-V MCU
@@ -76,6 +71,7 @@
 // #define HF_TARGET_MCU_STM32F4     // STM32F4 series ARM Cortex-M4
 // #define HF_TARGET_MCU_STM32H7     // STM32H7 series ARM Cortex-M7
 // #define HF_TARGET_MCU_RP2040      // Raspberry Pi Pico RP2040
+// #define HF_TARGET_MCU_NONE        // No MCU — software-only / unit-test build
 
 // Optional thread safety support using RTOS-based mutexes
 // Uncomment to enable mutex protection in MCU drivers
@@ -171,33 +167,39 @@
 #define HF_MCU_ARCHITECTURE "RISC-V RV32IMC"
 #define HF_MCU_VARIANT_H2
 
-// STM32F4 Configuration
+// STM32F4 Configuration — stub implementations in inc/mcu/stm32/
 #elif defined(HF_TARGET_MCU_STM32F4)
 #define HF_MCU_STM32F4
 #define HF_MCU_FAMILY_STM32
 #define HF_MCU_NAME "STM32F4"
 #define HF_MCU_ARCHITECTURE "ARM Cortex-M4"
-#error "STM32F4 platform not yet implemented - please implement STM32F4 support"
+#define HF_MCU_VARIANT_F4
 
-// STM32H7 Configuration
+// STM32H7 Configuration — stub implementations in inc/mcu/stm32/
 #elif defined(HF_TARGET_MCU_STM32H7)
 #define HF_MCU_STM32H7
 #define HF_MCU_FAMILY_STM32
 #define HF_MCU_NAME "STM32H7"
 #define HF_MCU_ARCHITECTURE "ARM Cortex-M7"
-#error "STM32H7 platform not yet implemented - please implement STM32H7 support"
+#define HF_MCU_VARIANT_H7
 
-// RP2040 Configuration
+// RP2040 Configuration — stub implementations (future)
 #elif defined(HF_TARGET_MCU_RP2040)
 #define HF_MCU_RP2040
 #define HF_MCU_FAMILY_RP2040
 #define HF_MCU_NAME "RP2040"
 #define HF_MCU_ARCHITECTURE "ARM Cortex-M0+"
-#error "RP2040 platform not yet implemented - please implement RP2040 support"
+
+// NONE Configuration — software-only / unit-test / host build
+#elif defined(HF_TARGET_MCU_NONE)
+#define HF_MCU_NONE
+#define HF_MCU_FAMILY_NONE
+#define HF_MCU_NAME "None (software-only)"
+#define HF_MCU_ARCHITECTURE "Host"
 
 // No MCU Selected - Error
 #else
-#error "No MCU selected! Please uncomment exactly one HF_TARGET_MCU_* define in McuSelect.h"
+#error "No MCU selected! Define HF_TARGET_MCU_* via CMake or uncomment one in McuSelect.h"
 #endif
 
 //==============================================================================
@@ -209,21 +211,24 @@
         defined(HF_TARGET_MCU_ESP32S2) + defined(HF_TARGET_MCU_ESP32S3) +                          \
         defined(HF_TARGET_MCU_ESP32C3) + defined(HF_TARGET_MCU_ESP32C2) +                          \
         defined(HF_TARGET_MCU_ESP32H2) + defined(HF_TARGET_MCU_STM32F4) +                          \
-        defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040) >                           \
+        defined(HF_TARGET_MCU_STM32H7) + defined(HF_TARGET_MCU_RP2040) +                           \
+        defined(HF_TARGET_MCU_NONE) >                                                              \
     1
 #error                                                                                             \
-    "Multiple target MCUs are selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
+    "Multiple target MCUs are selected. Please define exactly ONE HF_TARGET_MCU_* macro."
 #elif !defined(HF_TARGET_MCU_ESP32C6) && !defined(HF_TARGET_MCU_ESP32) &&                          \
     !defined(HF_TARGET_MCU_ESP32S2) && !defined(HF_TARGET_MCU_ESP32S3) &&                          \
     !defined(HF_TARGET_MCU_ESP32C3) && !defined(HF_TARGET_MCU_ESP32C2) &&                          \
     !defined(HF_TARGET_MCU_ESP32H2) && !defined(HF_TARGET_MCU_STM32F4) &&                          \
-    !defined(HF_TARGET_MCU_STM32H7) && !defined(HF_TARGET_MCU_RP2040)
+    !defined(HF_TARGET_MCU_STM32H7) && !defined(HF_TARGET_MCU_RP2040) &&                           \
+    !defined(HF_TARGET_MCU_NONE)
 #error                                                                                             \
-    "No target MCU is selected. Please uncomment exactly ONE HF_TARGET_MCU_* define in McuSelect.h"
+    "No target MCU is selected. Define exactly ONE HF_TARGET_MCU_* macro via CMake -D or McuSelect.h"
 #endif
 
 // Validate that the selected MCU has a corresponding platform family defined
-#if !defined(HF_MCU_FAMILY_ESP32) && !defined(HF_MCU_FAMILY_STM32) && !defined(HF_MCU_FAMILY_RP2040)
+#if !defined(HF_MCU_FAMILY_ESP32) && !defined(HF_MCU_FAMILY_STM32) && \
+    !defined(HF_MCU_FAMILY_RP2040) && !defined(HF_MCU_FAMILY_NONE)
 #error "No MCU family is defined. This indicates an error in McuSelect.h configuration."
 #endif
 

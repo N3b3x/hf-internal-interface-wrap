@@ -1,5 +1,5 @@
 /**
- * @file RtosMutex.h
+ * @file PlatformMutex.h
  * @ingroup utils
  * @brief Cross-platform RTOS mutex and synchronization primitives.
  *
@@ -45,7 +45,7 @@ extern "C" {
 #include "task.h"
 #else
 #error                                                                                             \
-    "RTOS mutex implementation not available for this MCU platform. Please add support in RtosMutex.h"
+    "RTOS mutex implementation not available for this MCU platform. Please add support in PlatformMutex.h"
 #endif
 
 #ifdef __cplusplus
@@ -60,7 +60,7 @@ extern "C" {
 #include <atomic>
 #include <cstdint>
 
-class RtosTime {
+class PlatformTime {
 public:
   static uint64_t GetCurrentTimeUs() noexcept {
     return static_cast<uint64_t>(xTaskGetTickCount()) * 1000 / configTICK_RATE_HZ * 1000;
@@ -75,24 +75,24 @@ public:
   }
 };
 
-class RtosMutex {
+class PlatformMutex {
 public:
-  RtosMutex() noexcept : handle_(xSemaphoreCreateRecursiveMutex()) {}
+  PlatformMutex() noexcept : handle_(xSemaphoreCreateRecursiveMutex()) {}
 
-  ~RtosMutex() noexcept {
+  ~PlatformMutex() noexcept {
     if (handle_) {
       vSemaphoreDelete(handle_);
     }
   }
 
-  RtosMutex(const RtosMutex&) = delete;
-  RtosMutex& operator=(const RtosMutex&) = delete;
+  PlatformMutex(const PlatformMutex&) = delete;
+  PlatformMutex& operator=(const PlatformMutex&) = delete;
 
-  RtosMutex(RtosMutex&& other) noexcept : handle_(other.handle_) {
+  PlatformMutex(PlatformMutex&& other) noexcept : handle_(other.handle_) {
     other.handle_ = nullptr;
   }
 
-  RtosMutex& operator=(RtosMutex&& other) noexcept {
+  PlatformMutex& operator=(PlatformMutex&& other) noexcept {
     if (this != &other) {
       if (handle_) {
         vSemaphoreDelete(handle_);
@@ -118,7 +118,7 @@ public:
   bool try_lock_for(uint32_t timeout_ms) noexcept {
     if (!handle_)
       return false;
-    const TickType_t ticks = RtosTime::MsToTicks(timeout_ms);
+    const TickType_t ticks = PlatformTime::MsToTicks(timeout_ms);
     return xSemaphoreTakeRecursive(handle_, ticks) == pdTRUE;
   }
 
@@ -165,14 +165,14 @@ private:
   SemaphoreHandle_t handle_;
 };
 
-class RtosSharedMutex {
+class PlatformSharedMutex {
 public:
-  RtosSharedMutex() noexcept : readers_(0), writer_active_(false) {
+  PlatformSharedMutex() noexcept : readers_(0), writer_active_(false) {
     writer_mutex_ = xSemaphoreCreateMutex();
     reader_mutex_ = xSemaphoreCreateMutex();
   }
 
-  ~RtosSharedMutex() noexcept {
+  ~PlatformSharedMutex() noexcept {
     if (writer_mutex_ != nullptr) {
       vSemaphoreDelete(writer_mutex_);
     }
@@ -181,10 +181,10 @@ public:
     }
   }
 
-  RtosSharedMutex(const RtosSharedMutex&) = delete;
-  RtosSharedMutex& operator=(const RtosSharedMutex&) = delete;
+  PlatformSharedMutex(const PlatformSharedMutex&) = delete;
+  PlatformSharedMutex& operator=(const PlatformSharedMutex&) = delete;
 
-  RtosSharedMutex(RtosSharedMutex&& other) noexcept
+  PlatformSharedMutex(PlatformSharedMutex&& other) noexcept
       : writer_mutex_(other.writer_mutex_), reader_mutex_(other.reader_mutex_),
         readers_(other.readers_.load()), writer_active_(other.writer_active_.load()) {
     other.writer_mutex_ = nullptr;
@@ -193,7 +193,7 @@ public:
     other.writer_active_.store(false);
   }
 
-  RtosSharedMutex& operator=(RtosSharedMutex&& other) noexcept {
+  PlatformSharedMutex& operator=(PlatformSharedMutex&& other) noexcept {
     if (this != &other) {
       if (writer_mutex_ != nullptr) {
         vSemaphoreDelete(writer_mutex_);
@@ -238,7 +238,7 @@ public:
   }
 
   bool try_lock_for(uint32_t timeout_ms) noexcept {
-    const TickType_t ticks = RtosTime::MsToTicks(timeout_ms);
+    const TickType_t ticks = PlatformTime::MsToTicks(timeout_ms);
     const TickType_t start_time = xTaskGetTickCount();
     if (xSemaphoreTake(writer_mutex_, ticks) != pdTRUE) {
       return false;
@@ -292,7 +292,7 @@ public:
   }
 
   bool try_lock_shared_for(uint32_t timeout_ms) noexcept {
-    const TickType_t ticks = RtosTime::MsToTicks(timeout_ms);
+    const TickType_t ticks = PlatformTime::MsToTicks(timeout_ms);
     const TickType_t start_time = xTaskGetTickCount();
     while (true) {
       const TickType_t elapsed = xTaskGetTickCount() - start_time;
@@ -334,9 +334,9 @@ private:
 };
 
 template <typename Mutex>
-class RtosUniqueLock {
+class PlatformUniqueLock {
 public:
-  explicit RtosUniqueLock(Mutex& mutex, uint32_t timeout_ms = 0) noexcept
+  explicit PlatformUniqueLock(Mutex& mutex, uint32_t timeout_ms = 0) noexcept
       : mutex_(&mutex), locked_(false) {
     if (timeout_ms > 0) {
       locked_ = mutex_->try_lock_for(timeout_ms);
@@ -345,21 +345,21 @@ public:
     }
   }
 
-  ~RtosUniqueLock() noexcept {
+  ~PlatformUniqueLock() noexcept {
     if (locked_ && mutex_) {
       mutex_->unlock();
     }
   }
 
-  RtosUniqueLock(const RtosUniqueLock&) = delete;
-  RtosUniqueLock& operator=(const RtosUniqueLock&) = delete;
+  PlatformUniqueLock(const PlatformUniqueLock&) = delete;
+  PlatformUniqueLock& operator=(const PlatformUniqueLock&) = delete;
 
-  RtosUniqueLock(RtosUniqueLock&& other) noexcept : mutex_(other.mutex_), locked_(other.locked_) {
+  PlatformUniqueLock(PlatformUniqueLock&& other) noexcept : mutex_(other.mutex_), locked_(other.locked_) {
     other.mutex_ = nullptr;
     other.locked_ = false;
   }
 
-  RtosUniqueLock& operator=(RtosUniqueLock&& other) noexcept {
+  PlatformUniqueLock& operator=(PlatformUniqueLock&& other) noexcept {
     if (this != &other) {
       if (locked_ && mutex_) {
         mutex_->unlock();
@@ -389,9 +389,9 @@ private:
 };
 
 template <typename SharedMutex>
-class RtosSharedLock {
+class PlatformSharedLock {
 public:
-  explicit RtosSharedLock(SharedMutex& mutex, uint32_t timeout_ms = 0) noexcept
+  explicit PlatformSharedLock(SharedMutex& mutex, uint32_t timeout_ms = 0) noexcept
       : mutex_(&mutex), locked_(false) {
     if (timeout_ms > 0) {
       locked_ = mutex_->try_lock_shared_for(timeout_ms);
@@ -400,21 +400,21 @@ public:
     }
   }
 
-  ~RtosSharedLock() noexcept {
+  ~PlatformSharedLock() noexcept {
     if (locked_ && mutex_) {
       mutex_->unlock_shared();
     }
   }
 
-  RtosSharedLock(const RtosSharedLock&) = delete;
-  RtosSharedLock& operator=(const RtosSharedLock&) = delete;
+  PlatformSharedLock(const PlatformSharedLock&) = delete;
+  PlatformSharedLock& operator=(const PlatformSharedLock&) = delete;
 
-  RtosSharedLock(RtosSharedLock&& other) noexcept : mutex_(other.mutex_), locked_(other.locked_) {
+  PlatformSharedLock(PlatformSharedLock&& other) noexcept : mutex_(other.mutex_), locked_(other.locked_) {
     other.mutex_ = nullptr;
     other.locked_ = false;
   }
 
-  RtosSharedLock& operator=(RtosSharedLock&& other) noexcept {
+  PlatformSharedLock& operator=(PlatformSharedLock&& other) noexcept {
     if (this != &other) {
       if (locked_ && mutex_) {
         mutex_->unlock_shared();
@@ -449,7 +449,7 @@ private:
 
 /// @brief Convenience alias for unique lock guard
 template <typename Mutex>
-using RtosLockGuard = RtosUniqueLock<Mutex>;
+using PlatformLockGuard = PlatformUniqueLock<Mutex>;
 
-/// @brief Convenience alias for RtosMutex lock guard
-using MutexLockGuard = RtosUniqueLock<RtosMutex>;
+/// @brief Convenience alias for PlatformMutex lock guard
+using PlatformMutexLockGuard = PlatformUniqueLock<PlatformMutex>;

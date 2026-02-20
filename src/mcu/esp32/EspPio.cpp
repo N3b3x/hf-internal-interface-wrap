@@ -57,7 +57,7 @@ EspPio::~EspPio() noexcept {
 //==============================================================================
 
 hf_pio_err_t EspPio::Initialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (initialized_) {
     ESP_LOGW(TAG, "Already initialized");
@@ -75,7 +75,7 @@ hf_pio_err_t EspPio::Initialize() noexcept {
 }
 
 hf_pio_err_t EspPio::Deinitialize() noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
@@ -105,7 +105,7 @@ hf_pio_err_t EspPio::Deinitialize() noexcept {
 
 hf_pio_err_t EspPio::ConfigureChannel(hf_u8_t channel_id,
                                       const hf_pio_channel_config_t& config) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
@@ -153,7 +153,7 @@ hf_pio_err_t EspPio::ConfigureChannel(hf_u8_t channel_id,
 
 hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols,
                               size_t symbol_count, bool wait_completion) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
@@ -274,7 +274,7 @@ hf_pio_err_t EspPio::Transmit(hf_u8_t channel_id, const hf_pio_symbol_t* symbols
 
 hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, size_t buffer_size,
                                   hf_u32_t timeout_us) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
@@ -421,7 +421,7 @@ hf_pio_err_t EspPio::StartReceive(hf_u8_t channel_id, hf_pio_symbol_t* buffer, s
 }
 
 hf_pio_err_t EspPio::StopReceive(hf_u8_t channel_id, size_t& symbols_received) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!initialized_) {
     return hf_pio_err_t::PIO_ERR_NOT_INITIALIZED;
@@ -459,7 +459,7 @@ hf_pio_err_t EspPio::StopReceive(hf_u8_t channel_id, size_t& symbols_received) n
 //==============================================================================
 
 bool EspPio::IsChannelBusy(hf_u8_t channel_id) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return false;
@@ -470,7 +470,7 @@ bool EspPio::IsChannelBusy(hf_u8_t channel_id) const noexcept {
 
 hf_pio_err_t EspPio::GetChannelStatus(hf_u8_t channel_id,
                                       hf_pio_channel_status_t& status) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
@@ -502,7 +502,7 @@ hf_pio_err_t EspPio::GetCapabilities(hf_pio_capabilities_t& capabilities) const 
 
 void EspPio::SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t callback,
                                  void* user_data) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     ESP_LOGE(TAG, "SetTransmitCallback: Invalid channel ID %d", channel_id);
@@ -531,7 +531,7 @@ void EspPio::SetTransmitCallback(hf_u8_t channel_id, hf_pio_transmit_callback_t 
 
 void EspPio::SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t callback,
                                 void* user_data) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     ESP_LOGE(TAG, "SetReceiveCallback: Invalid channel ID %d", channel_id);
@@ -560,7 +560,7 @@ void EspPio::SetReceiveCallback(hf_u8_t channel_id, hf_pio_receive_callback_t ca
 
 void EspPio::SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callback,
                               void* user_data) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     ESP_LOGE(TAG, "SetErrorCallback: Invalid channel ID %d", channel_id);
@@ -583,7 +583,7 @@ void EspPio::SetErrorCallback(hf_u8_t channel_id, hf_pio_error_callback_t callba
 }
 
 void EspPio::ClearChannelCallbacks(hf_u8_t channel_id) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     ESP_LOGE(TAG, "ClearChannelCallbacks: Invalid channel ID %d", channel_id);
@@ -610,7 +610,7 @@ void EspPio::ClearChannelCallbacks(hf_u8_t channel_id) noexcept {
 }
 
 void EspPio::ClearCallbacks() noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   for (hf_u8_t i = 0; i < MAX_CHANNELS; ++i) {
     auto& channel = channels_[i];
@@ -631,7 +631,7 @@ void EspPio::ClearCallbacks() noexcept {
 
 hf_pio_err_t EspPio::ConfigureCarrier(hf_u8_t channel_id, hf_u32_t carrier_freq_hz,
                                       float duty_cycle) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
@@ -668,7 +668,7 @@ hf_pio_err_t EspPio::ConfigureCarrier(hf_u8_t channel_id, hf_u32_t carrier_freq_
 }
 
 hf_pio_err_t EspPio::EnableLoopback(hf_u8_t channel_id, bool enable) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
@@ -700,7 +700,7 @@ hf_pio_err_t EspPio::ConfigureAdvancedRmt(hf_u8_t channel_id, size_t memory_bloc
   ESP_LOGI(TAG, "Configuring advanced RMT: channel=%d, memory_blocks=%lu, dma=%s, queue=%d",
            channel_id, memory_blocks, enable_dma ? "yes" : "no", queue_depth);
 
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
   auto& channel = channels_[channel_id];
 
   // For existing channels, we need to reconfigure them with advanced settings
@@ -990,7 +990,7 @@ hf_pio_err_t EspPio::GetResolutionConstraints(hf_u32_t& min_resolution_ns,
 
 hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_word_t* rmt_symbols,
                                            size_t symbol_count, bool wait_completion) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
@@ -1070,7 +1070,7 @@ hf_pio_err_t EspPio::TransmitRawRmtSymbols(hf_u8_t channel_id, const rmt_symbol_
 hf_pio_err_t EspPio::ReceiveRawRmtSymbols(hf_u8_t channel_id, rmt_symbol_word_t* rmt_buffer,
                                           size_t buffer_size, size_t& symbols_received,
                                           hf_u32_t timeout_us) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
 
   // Lazy initialization - ensure PIO is initialized before operation
   if (!EnsureInitialized()) {
@@ -1298,7 +1298,7 @@ hf_pio_err_t EspPio::ConvertFromRmtSymbols(const rmt_symbol_word_t* rmt_symbols,
 }
 
 hf_pio_err_t EspPio::SetClockSource(hf_u8_t channel_id, rmt_clock_source_t clk_src) noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
@@ -1313,7 +1313,7 @@ hf_pio_err_t EspPio::SetClockSource(hf_u8_t channel_id, rmt_clock_source_t clk_s
 
 hf_pio_err_t EspPio::GetClockSource(hf_u8_t channel_id,
                                     rmt_clock_source_t& clk_src) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }
@@ -1322,7 +1322,7 @@ hf_pio_err_t EspPio::GetClockSource(hf_u8_t channel_id,
 }
 
 hf_pio_err_t EspPio::GetSourceClockHz(hf_u8_t channel_id, hf_u32_t& clock_hz) const noexcept {
-  RtosUniqueLock<RtosMutex> lock(state_mutex_);
+  PlatformUniqueLock<PlatformMutex> lock(state_mutex_);
   if (!IsValidChannelId(channel_id)) {
     return hf_pio_err_t::PIO_ERR_INVALID_CHANNEL;
   }

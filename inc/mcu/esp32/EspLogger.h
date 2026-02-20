@@ -20,7 +20,7 @@
 #pragma once
 
 #include "BaseLogger.h"
-#include "utils/RtosMutex.h"
+#include "utils/PlatformMutex.h"
 
 #include <atomic>
 #include <cstring>
@@ -424,7 +424,7 @@ private:
   // PRIVATE MEMBERS
   //==============================================================================
 
-  mutable RtosMutex mutex_;       ///< Thread safety mutex
+  mutable PlatformMutex mutex_;       ///< Thread safety mutex
   std::atomic<bool> initialized_; ///< Initialization flag
   std::atomic<bool> healthy_;     ///< Health status flag
 

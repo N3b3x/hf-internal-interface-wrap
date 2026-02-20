@@ -22,7 +22,7 @@
 
 #include "BaseUart.h"
 #include "McuSelect.h"
-#include "RtosMutex.h"
+#include "PlatformMutex.h"
 #include "utils/EspTypes.h"
 
 #include <array>
@@ -587,7 +587,7 @@ private:
   // MEMBER VARIABLES
   //==============================================================================
 
-  mutable RtosMutex mutex_;       ///< Thread safety mutex
+  mutable PlatformMutex mutex_;       ///< Thread safety mutex
   hf_uart_config_t port_config_;  ///< Port configuration
   std::atomic<bool> initialized_; ///< Initialization state (atomic for lazy init)
   uart_port_t uart_port_;         ///< Native UART port handle
