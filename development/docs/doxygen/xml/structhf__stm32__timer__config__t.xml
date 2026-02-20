@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__stm32__timer__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_stm32_timer_config_t</compoundname>
+    <includes refid="StmTypes_8h" local="no">StmTypes.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__stm32__timer__config__t_1a69fc4e3068fd5356d1bc56d8b5f9f2a5" prot="public" static="no" mutable="no">
+        <type>TIM_HandleTypeDef *</type>
+        <definition>TIM_HandleTypeDef* hf_stm32_timer_config_t::hal_handle</definition>
+        <argsstring></argsstring>
+        <name>hal_handle</name>
+        <qualifiedname>hf_stm32_timer_config_t::hal_handle</qualifiedname>
+        <briefdescription>
+<para>Pointer to CubeMX-generated TIM handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="480" column="23" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="480" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__timer__config__t_1aab61df643ca1d0de9376844335d85a9a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_timer_config_t::prescaler</definition>
+        <argsstring></argsstring>
+        <name>prescaler</name>
+        <qualifiedname>hf_stm32_timer_config_t::prescaler</qualifiedname>
+        <briefdescription>
+<para>Timer prescaler (0 = auto-compute) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="481" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="481" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__timer__config__t_1ae2f2e876fade1a71ef99dd0efb941a14" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_stm32_timer_config_t::use_interrupt</definition>
+        <argsstring></argsstring>
+        <name>use_interrupt</name>
+        <qualifiedname>hf_stm32_timer_config_t::use_interrupt</qualifiedname>
+        <briefdescription>
+<para>Use timer update interrupt. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="482" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="482" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__stm32__timer__config__t_1ad899c38f4b36f5ff3c24711cbd32b67b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_timer_config_t::hf_stm32_timer_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_stm32_timer_config_t</name>
+        <qualifiedname>hf_stm32_timer_config_t::hf_stm32_timer_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="484" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="484" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__stm32__timer__config__t_1a9e769fb778b1634d13dd09aa4553d56d" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_timer_config_t::hf_stm32_timer_config_t</definition>
+        <argsstring>(TIM_HandleTypeDef *handle) noexcept</argsstring>
+        <name>hf_stm32_timer_config_t</name>
+        <qualifiedname>hf_stm32_timer_config_t::hf_stm32_timer_config_t</qualifiedname>
+        <param>
+          <type>TIM_HandleTypeDef *</type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="487" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="487" bodyend="488"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Periodic timer configuration for STM32. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTypes.h" line="479" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="479" bodyend="489"/>
+    <listofallmembers>
+      <member refid="structhf__stm32__timer__config__t_1a69fc4e3068fd5356d1bc56d8b5f9f2a5" prot="public" virt="non-virtual"><scope>hf_stm32_timer_config_t</scope><name>hal_handle</name></member>
+      <member refid="structhf__stm32__timer__config__t_1ad899c38f4b36f5ff3c24711cbd32b67b" prot="public" virt="non-virtual"><scope>hf_stm32_timer_config_t</scope><name>hf_stm32_timer_config_t</name></member>
+      <member refid="structhf__stm32__timer__config__t_1a9e769fb778b1634d13dd09aa4553d56d" prot="public" virt="non-virtual"><scope>hf_stm32_timer_config_t</scope><name>hf_stm32_timer_config_t</name></member>
+      <member refid="structhf__stm32__timer__config__t_1aab61df643ca1d0de9376844335d85a9a" prot="public" virt="non-virtual"><scope>hf_stm32_timer_config_t</scope><name>prescaler</name></member>
+      <member refid="structhf__stm32__timer__config__t_1ae2f2e876fade1a71ef99dd0efb941a14" prot="public" virt="non-virtual"><scope>hf_stm32_timer_config_t</scope><name>use_interrupt</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

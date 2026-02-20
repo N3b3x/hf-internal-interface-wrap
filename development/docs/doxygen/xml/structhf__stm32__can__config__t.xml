@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__stm32__can__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_stm32_can_config_t</compoundname>
+    <includes refid="StmTypes_8h" local="no">StmTypes.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__stm32__can__config__t_1aef90d58b2166b568b107d9e7f19a3759" prot="public" static="no" mutable="no">
+        <type><ref refid="StmTypes_8h_1a61ed8bb7db7e73841929a940d0a84422" kindref="member">hf_stm32_can_type_t</ref></type>
+        <definition>hf_stm32_can_type_t hf_stm32_can_config_t::can_type</definition>
+        <argsstring></argsstring>
+        <name>can_type</name>
+        <qualifiedname>hf_stm32_can_config_t::can_type</qualifiedname>
+        <briefdescription>
+<para>CAN peripheral type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="376" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="376" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__can__config__t_1ac49d29ee689882b8e33e0cd6722826d3" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* hf_stm32_can_config_t::hal_handle</definition>
+        <argsstring></argsstring>
+        <name>hal_handle</name>
+        <qualifiedname>hf_stm32_can_config_t::hal_handle</qualifiedname>
+        <briefdescription>
+<para>CAN_HandleTypeDef* or FDCAN_HandleTypeDef*. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="377" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="377" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__can__config__t_1a29573d2c97760f721f56f45708628ff4" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_can_config_t::default_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>default_timeout_ms</name>
+        <qualifiedname>hf_stm32_can_config_t::default_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Default timeout (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="378" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="378" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__can__config__t_1ade571afde69e8c2bb8308f9e45e9aeef" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_stm32_can_config_t::loopback_mode</definition>
+        <argsstring></argsstring>
+        <name>loopback_mode</name>
+        <qualifiedname>hf_stm32_can_config_t::loopback_mode</qualifiedname>
+        <briefdescription>
+<para>Enable loopback for testing. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="379" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="379" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__can__config__t_1aa4473274489c9e800216a886b99ecda4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_stm32_can_config_t::silent_mode</definition>
+        <argsstring></argsstring>
+        <name>silent_mode</name>
+        <qualifiedname>hf_stm32_can_config_t::silent_mode</qualifiedname>
+        <briefdescription>
+<para>Enable silent/listen-only mode. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="380" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="380" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__stm32__can__config__t_1a56718e13d36eb9fa691b168d29dd6950" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_can_config_t::hf_stm32_can_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_stm32_can_config_t</name>
+        <qualifiedname>hf_stm32_can_config_t::hf_stm32_can_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="382" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="382" bodyend="384"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>CAN configuration for STM32. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTypes.h" line="375" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="375" bodyend="385"/>
+    <listofallmembers>
+      <member refid="structhf__stm32__can__config__t_1aef90d58b2166b568b107d9e7f19a3759" prot="public" virt="non-virtual"><scope>hf_stm32_can_config_t</scope><name>can_type</name></member>
+      <member refid="structhf__stm32__can__config__t_1a29573d2c97760f721f56f45708628ff4" prot="public" virt="non-virtual"><scope>hf_stm32_can_config_t</scope><name>default_timeout_ms</name></member>
+      <member refid="structhf__stm32__can__config__t_1ac49d29ee689882b8e33e0cd6722826d3" prot="public" virt="non-virtual"><scope>hf_stm32_can_config_t</scope><name>hal_handle</name></member>
+      <member refid="structhf__stm32__can__config__t_1a56718e13d36eb9fa691b168d29dd6950" prot="public" virt="non-virtual"><scope>hf_stm32_can_config_t</scope><name>hf_stm32_can_config_t</name></member>
+      <member refid="structhf__stm32__can__config__t_1ade571afde69e8c2bb8308f9e45e9aeef" prot="public" virt="non-virtual"><scope>hf_stm32_can_config_t</scope><name>loopback_mode</name></member>
+      <member refid="structhf__stm32__can__config__t_1aa4473274489c9e800216a886b99ecda4" prot="public" virt="non-virtual"><scope>hf_stm32_can_config_t</scope><name>silent_mode</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

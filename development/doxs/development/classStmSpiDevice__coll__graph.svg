@@ -86,7 +86,7 @@
 <!-- Node5 -->
 <g id="Node000005" class="node">
 <title>Node5</title>
-<g id="a_Node000005"><a xlink:href="structhf__spi__device__config__t.html" target="_top" xlink:title="Platform&#45;agnostic SPI device configuration structure for ESP32.">
+<g id="a_Node000005"><a xlink:href="structhf__spi__device__config__t.html" target="_top" xlink:title="SPI device configuration for STM32.">
 <polygon fill="white" stroke="#666666" points="341.5,-97 187.5,-97 187.5,-74 341.5,-74 341.5,-97"/>
 <text text-anchor="middle" x="264.5" y="-81.8" font-family="Arial" font-size="14.00">hf_spi_device_config_t</text>
 </a>

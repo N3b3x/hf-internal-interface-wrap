@@ -1,0 +1,5 @@
+<map id="StmI2cBus" name="StmI2cBus">
+<area shape="rect" id="Node000001" title="STM32 I2C bus — stub implementation." alt="" coords="41,104,152,135"/>
+<area shape="rect" id="Node000002" href="$structhf__i2c__bus__config__t.html" title="Platform&#45;agnostic I2C bus configuration for STM32. Users pass their CubeMX&#45;generated I2C_HandleTypeDe..." alt="" coords="5,5,188,36"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,50,99,104,94,104,94,50"/>
+</map>

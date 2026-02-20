@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__stm32__nvs__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_stm32_nvs_config_t</compoundname>
+    <includes refid="StmTypes_8h" local="no">StmTypes.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__stm32__nvs__config__t_1a96cc701681fc626eac80d9f6377051f8" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_nvs_config_t::flash_start_address</definition>
+        <argsstring></argsstring>
+        <name>flash_start_address</name>
+        <qualifiedname>hf_stm32_nvs_config_t::flash_start_address</qualifiedname>
+        <briefdescription>
+<para>Start address of NVS flash region. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="458" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="458" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__nvs__config__t_1a3de871eb070bcfa828cab72034f3c701" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_nvs_config_t::flash_size</definition>
+        <argsstring></argsstring>
+        <name>flash_size</name>
+        <qualifiedname>hf_stm32_nvs_config_t::flash_size</qualifiedname>
+        <briefdescription>
+<para>Total NVS region size (bytes) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="459" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="459" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__nvs__config__t_1a4cf78b03cb28adf43ef05c2ae71bc64a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_nvs_config_t::sector_size</definition>
+        <argsstring></argsstring>
+        <name>sector_size</name>
+        <qualifiedname>hf_stm32_nvs_config_t::sector_size</qualifiedname>
+        <briefdescription>
+<para>Flash sector/page size (bytes) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="460" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="460" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__nvs__config__t_1a551e57e274b83f2157728b3dd1edd7bc" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_stm32_nvs_config_t::num_sectors</definition>
+        <argsstring></argsstring>
+        <name>num_sectors</name>
+        <qualifiedname>hf_stm32_nvs_config_t::num_sectors</qualifiedname>
+        <briefdescription>
+<para>Number of sectors reserved for NVS. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="461" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="461" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__stm32__nvs__config__t_1a3e2d0d0d2a78d9fef8f933406c998367" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_nvs_config_t::hf_stm32_nvs_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_stm32_nvs_config_t</name>
+        <qualifiedname>hf_stm32_nvs_config_t::hf_stm32_nvs_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="463" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="463" bodyend="465"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__stm32__nvs__config__t_1a5b792257e93f9170001efed8d0920fb8" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_nvs_config_t::hf_stm32_nvs_config_t</definition>
+        <argsstring>(hf_u32_t start_addr, hf_u32_t size, hf_u32_t sect_size=hf::stm32::kNvsDefaultSectorSize) noexcept</argsstring>
+        <name>hf_stm32_nvs_config_t</name>
+        <qualifiedname>hf_stm32_nvs_config_t::hf_stm32_nvs_config_t</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>start_addr</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>sect_size</declname>
+          <defval><ref refid="namespacehf_1_1stm32_1a702ee715fcc5e3015199113a863049ef" kindref="member">hf::stm32::kNvsDefaultSectorSize</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="467" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="467" bodyend="471"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Flash-based NVS configuration for STM32. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTypes.h" line="457" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="457" bodyend="472"/>
+    <listofallmembers>
+      <member refid="structhf__stm32__nvs__config__t_1a3de871eb070bcfa828cab72034f3c701" prot="public" virt="non-virtual"><scope>hf_stm32_nvs_config_t</scope><name>flash_size</name></member>
+      <member refid="structhf__stm32__nvs__config__t_1a96cc701681fc626eac80d9f6377051f8" prot="public" virt="non-virtual"><scope>hf_stm32_nvs_config_t</scope><name>flash_start_address</name></member>
+      <member refid="structhf__stm32__nvs__config__t_1a3e2d0d0d2a78d9fef8f933406c998367" prot="public" virt="non-virtual"><scope>hf_stm32_nvs_config_t</scope><name>hf_stm32_nvs_config_t</name></member>
+      <member refid="structhf__stm32__nvs__config__t_1a5b792257e93f9170001efed8d0920fb8" prot="public" virt="non-virtual"><scope>hf_stm32_nvs_config_t</scope><name>hf_stm32_nvs_config_t</name></member>
+      <member refid="structhf__stm32__nvs__config__t_1a551e57e274b83f2157728b3dd1edd7bc" prot="public" virt="non-virtual"><scope>hf_stm32_nvs_config_t</scope><name>num_sectors</name></member>
+      <member refid="structhf__stm32__nvs__config__t_1a4cf78b03cb28adf43ef05c2ae71bc64a" prot="public" virt="non-virtual"><scope>hf_stm32_nvs_config_t</scope><name>sector_size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

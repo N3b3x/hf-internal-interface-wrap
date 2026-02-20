@@ -1879,6 +1879,13 @@
     <member refid="structhf__i2c__async__result__t_1a7c063352d82996d1aa22e341c8d6de7a" kind="variable"><name>completion_time_us</name></member>
     <member refid="structhf__i2c__async__result__t_1a4106738a985a9ac5ed73c09631e49867" kind="variable"><name>transaction_type</name></member>
   </compound>
+  <compound refid="structhf__i2c__bus__config__t" kind="struct"><name>hf_i2c_bus_config_t</name>
+    <member refid="structhf__i2c__bus__config__t_1a628c7ed6c98f5e72c4c5244656fdb8c0" kind="variable"><name>hal_handle</name></member>
+    <member refid="structhf__i2c__bus__config__t_1a6422197f03a7e285716414723c532ed0" kind="variable"><name>default_timeout_ms</name></member>
+    <member refid="structhf__i2c__bus__config__t_1a41fe9fbb1e6f8a652b9c7ea9041f4b3c" kind="variable"><name>use_dma</name></member>
+    <member refid="structhf__i2c__bus__config__t_1aa0fa4fded3659a156e1ce2256aafb6be" kind="function"><name>hf_i2c_bus_config_t</name></member>
+    <member refid="structhf__i2c__bus__config__t_1a3b9027cf3616de743dd8137b326b9883" kind="function"><name>hf_i2c_bus_config_t</name></member>
+  </compound>
   <compound refid="structhf__i2c__custom__command__t" kind="struct"><name>hf_i2c_custom_command_t</name>
     <member refid="structhf__i2c__custom__command__t_1a4698f6963963e23ba7805ab1f4adb6c3" kind="variable"><name>command_type</name></member>
     <member refid="structhf__i2c__custom__command__t_1a6de318c10918bef3986dd18ec0cd7cdb" kind="variable"><name>device_addr</name></member>
@@ -1897,6 +1904,10 @@
     <member refid="structhf__i2c__device__config__t_1ad77fa8ec7a23b21a95cc54b49d9f646c" kind="variable"><name>scl_wait_us</name></member>
     <member refid="structhf__i2c__device__config__t_1a8ab82a6247382e45f57c1bb0ad703c55" kind="variable"><name>disable_ack_check</name></member>
     <member refid="structhf__i2c__device__config__t_1a3809aab8ff35e6b82ae9dc5e4917aa08" kind="variable"><name>flags</name></member>
+    <member refid="structhf__i2c__device__config__t_1af0dd4533b154c2d15317027f93f9ddd8" kind="variable"><name>device_address</name></member>
+    <member refid="structhf__i2c__device__config__t_1a3e60bd358abcd45af6009dd312ee5960" kind="variable"><name>addr_mode</name></member>
+    <member refid="structhf__i2c__device__config__t_1a4ee426df38bc74be5ef7124ad76313c4" kind="variable"><name>scl_speed_hz</name></member>
+    <member refid="structhf__i2c__device__config__t_1ad714da0f23e5e76c16ff462ec4488b48" kind="function"><name>hf_i2c_device_config_t</name></member>
     <member refid="structhf__i2c__device__config__t_1ad714da0f23e5e76c16ff462ec4488b48" kind="function"><name>hf_i2c_device_config_t</name></member>
   </compound>
   <compound refid="structhf__i2c__diagnostics__t" kind="struct"><name>hf_i2c_diagnostics_t</name>
@@ -2289,10 +2300,15 @@
     <member refid="structhf__spi__bus__config__t_1a427b68fc1d80cb6358ddcf2f48505805" kind="variable"><name>dma_channel</name></member>
     <member refid="structhf__spi__bus__config__t_1a1a89b70d19c0f6aa437a27ce9b4dd98b" kind="variable"><name>timeout_ms</name></member>
     <member refid="structhf__spi__bus__config__t_1a30a9804cc4b3799a4207e669243135ab" kind="variable"><name>use_iomux</name></member>
+    <member refid="structhf__spi__bus__config__t_1a4bb24c90eae4bccd36ec92595fe70983" kind="variable"><name>hal_handle</name></member>
+    <member refid="structhf__spi__bus__config__t_1a8a7763fbcd5664393719182461c82e9b" kind="variable"><name>default_timeout_ms</name></member>
+    <member refid="structhf__spi__bus__config__t_1ac41e2834d780abb61584372642693e0e" kind="variable"><name>use_dma</name></member>
     <member refid="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" kind="function"><name>hf_spi_bus_config_t</name></member>
+    <member refid="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" kind="function"><name>hf_spi_bus_config_t</name></member>
+    <member refid="structhf__spi__bus__config__t_1aec822fdfa0d2a4dfc6b2a4632aa3da59" kind="function"><name>hf_spi_bus_config_t</name></member>
   </compound>
   <compound refid="structhf__spi__device__config__t" kind="struct"><name>hf_spi_device_config_t</name>
-    <member refid="structhf__spi__device__config__t_1a0a17d3f8f8475cc819d1ced9262a94f9" kind="variable"><name>clock_speed_hz</name></member>
+    <member refid="structhf__spi__device__config__t_1afd35e62a1f8b8ad3dbbd796119d743cc" kind="variable"><name>clock_speed_hz</name></member>
     <member refid="structhf__spi__device__config__t_1a7f5737b1045c78fc5ed7d8f2b6c9c0cf" kind="variable"><name>mode</name></member>
     <member refid="structhf__spi__device__config__t_1af85f2826210e7f6d834a654b92c32470" kind="variable"><name>cs_pin</name></member>
     <member refid="structhf__spi__device__config__t_1a4e2b6297c1a88eb94af71239c806d1b1" kind="variable"><name>queue_size</name></member>
@@ -2309,6 +2325,11 @@
     <member refid="structhf__spi__device__config__t_1afb8e5f293876b8ebe47ee365ed3ddc31" kind="variable"><name>user_ctx</name></member>
     <member refid="structhf__spi__device__config__t_1aea1017f02ac9424ddaeeb926cb87ed87" kind="variable"><name>clock_source</name></member>
     <member refid="structhf__spi__device__config__t_1aad6fdd431b2279d736a773950b4d62d3" kind="variable"><name>sampling_point</name></member>
+    <member refid="structhf__spi__device__config__t_1aa9392a6919ee46e1e39d5d3606ce8828" kind="variable"><name>mode</name></member>
+    <member refid="structhf__spi__device__config__t_1a74b7447d47d3b9dfb732739e82e05b6c" kind="variable"><name>cs_port</name></member>
+    <member refid="structhf__spi__device__config__t_1a3da8a2c0078a8906e44588b02c5e7da5" kind="variable"><name>cs_pin</name></member>
+    <member refid="structhf__spi__device__config__t_1a49f0df49a1753c32b1a6cf4d1bf2c3d2" kind="variable"><name>cs_active_low</name></member>
+    <member refid="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" kind="function"><name>hf_spi_device_config_t</name></member>
     <member refid="structhf__spi__device__config__t_1ab71e2e6448dd897ca1bb7c26da09de4c" kind="function"><name>hf_spi_device_config_t</name></member>
   </compound>
   <compound refid="structhf__spi__diagnostics__t" kind="struct"><name>hf_spi_diagnostics_t</name>
@@ -2336,6 +2357,61 @@
     <member refid="structhf__spi__statistics__t_1a9bcfa205b38e2f5478f362c17bd347d6" kind="variable"><name>last_activity_timestamp</name></member>
     <member refid="structhf__spi__statistics__t_1a2f999ef964b8982b2fa3006b6e350551" kind="variable"><name>initialization_timestamp</name></member>
     <member refid="structhf__spi__statistics__t_1a2724e8c4fa2e905d4524c9c090dce81b" kind="function"><name>hf_spi_statistics_t</name></member>
+  </compound>
+  <compound refid="structhf__stm32__adc__config__t" kind="struct"><name>hf_stm32_adc_config_t</name>
+    <member refid="structhf__stm32__adc__config__t_1a39e73c5e8ecb001d4cd33b9993569839" kind="variable"><name>hal_handle</name></member>
+    <member refid="structhf__stm32__adc__config__t_1a2f97ce3ba37a917b7af6711362120607" kind="variable"><name>resolution</name></member>
+    <member refid="structhf__stm32__adc__config__t_1aacd86ce8118085387d9f3338d114be72" kind="variable"><name>vref_v</name></member>
+    <member refid="structhf__stm32__adc__config__t_1a4a0ab19bfa783ca349951fca944d85eb" kind="variable"><name>num_channels</name></member>
+    <member refid="structhf__stm32__adc__config__t_1a7c1d88e5b70a0d9c62391ede24c215bc" kind="function"><name>hf_stm32_adc_config_t</name></member>
+    <member refid="structhf__stm32__adc__config__t_1a8474c8aa3de9c844743e8f0414e8c726" kind="function"><name>hf_stm32_adc_config_t</name></member>
+  </compound>
+  <compound refid="structhf__stm32__can__config__t" kind="struct"><name>hf_stm32_can_config_t</name>
+    <member refid="structhf__stm32__can__config__t_1aef90d58b2166b568b107d9e7f19a3759" kind="variable"><name>can_type</name></member>
+    <member refid="structhf__stm32__can__config__t_1ac49d29ee689882b8e33e0cd6722826d3" kind="variable"><name>hal_handle</name></member>
+    <member refid="structhf__stm32__can__config__t_1a29573d2c97760f721f56f45708628ff4" kind="variable"><name>default_timeout_ms</name></member>
+    <member refid="structhf__stm32__can__config__t_1ade571afde69e8c2bb8308f9e45e9aeef" kind="variable"><name>loopback_mode</name></member>
+    <member refid="structhf__stm32__can__config__t_1aa4473274489c9e800216a886b99ecda4" kind="variable"><name>silent_mode</name></member>
+    <member refid="structhf__stm32__can__config__t_1a56718e13d36eb9fa691b168d29dd6950" kind="function"><name>hf_stm32_can_config_t</name></member>
+  </compound>
+  <compound refid="structhf__stm32__gpio__config__t" kind="struct"><name>hf_stm32_gpio_config_t</name>
+    <member refid="structhf__stm32__gpio__config__t_1aa1cbf2b0996df9560baa82011482810c" kind="variable"><name>port</name></member>
+    <member refid="structhf__stm32__gpio__config__t_1af233a9943a3b83a304ccbe615b4184e8" kind="variable"><name>pin_mask</name></member>
+    <member refid="structhf__stm32__gpio__config__t_1a4ab082b616551040144e101b2f1c5c87" kind="function"><name>hf_stm32_gpio_config_t</name></member>
+    <member refid="structhf__stm32__gpio__config__t_1abd38d682536d92553b32dc2605f63859" kind="function"><name>hf_stm32_gpio_config_t</name></member>
+  </compound>
+  <compound refid="structhf__stm32__nvs__config__t" kind="struct"><name>hf_stm32_nvs_config_t</name>
+    <member refid="structhf__stm32__nvs__config__t_1a96cc701681fc626eac80d9f6377051f8" kind="variable"><name>flash_start_address</name></member>
+    <member refid="structhf__stm32__nvs__config__t_1a3de871eb070bcfa828cab72034f3c701" kind="variable"><name>flash_size</name></member>
+    <member refid="structhf__stm32__nvs__config__t_1a4cf78b03cb28adf43ef05c2ae71bc64a" kind="variable"><name>sector_size</name></member>
+    <member refid="structhf__stm32__nvs__config__t_1a551e57e274b83f2157728b3dd1edd7bc" kind="variable"><name>num_sectors</name></member>
+    <member refid="structhf__stm32__nvs__config__t_1a3e2d0d0d2a78d9fef8f933406c998367" kind="function"><name>hf_stm32_nvs_config_t</name></member>
+    <member refid="structhf__stm32__nvs__config__t_1a5b792257e93f9170001efed8d0920fb8" kind="function"><name>hf_stm32_nvs_config_t</name></member>
+  </compound>
+  <compound refid="structhf__stm32__pwm__config__t" kind="struct"><name>hf_stm32_pwm_config_t</name>
+    <member refid="structhf__stm32__pwm__config__t_1ae2bee23de361d9f763bb1341445234de" kind="variable"><name>hal_handle</name></member>
+    <member refid="structhf__stm32__pwm__config__t_1a739c6cc1d27394c092a2cfef3f5f4517" kind="variable"><name>num_channels</name></member>
+    <member refid="structhf__stm32__pwm__config__t_1a88a10bfe0e3ac72a9187bb5bf5d2a838" kind="variable"><name>complementary_output</name></member>
+    <member refid="structhf__stm32__pwm__config__t_1a50c3dc4e999cd1df790e7c4d2266f824" kind="variable"><name>dead_time_ns</name></member>
+    <member refid="structhf__stm32__pwm__config__t_1a38a20327678fa260e4acc0cd4d4d649e" kind="function"><name>hf_stm32_pwm_config_t</name></member>
+    <member refid="structhf__stm32__pwm__config__t_1a4bb508d751e318177c03ae0c94ce0a77" kind="function"><name>hf_stm32_pwm_config_t</name></member>
+  </compound>
+  <compound refid="structhf__stm32__timer__config__t" kind="struct"><name>hf_stm32_timer_config_t</name>
+    <member refid="structhf__stm32__timer__config__t_1a69fc4e3068fd5356d1bc56d8b5f9f2a5" kind="variable"><name>hal_handle</name></member>
+    <member refid="structhf__stm32__timer__config__t_1aab61df643ca1d0de9376844335d85a9a" kind="variable"><name>prescaler</name></member>
+    <member refid="structhf__stm32__timer__config__t_1ae2f2e876fade1a71ef99dd0efb941a14" kind="variable"><name>use_interrupt</name></member>
+    <member refid="structhf__stm32__timer__config__t_1ad899c38f4b36f5ff3c24711cbd32b67b" kind="function"><name>hf_stm32_timer_config_t</name></member>
+    <member refid="structhf__stm32__timer__config__t_1a9e769fb778b1634d13dd09aa4553d56d" kind="function"><name>hf_stm32_timer_config_t</name></member>
+  </compound>
+  <compound refid="structhf__stm32__uart__config__t" kind="struct"><name>hf_stm32_uart_config_t</name>
+    <member refid="structhf__stm32__uart__config__t_1abcf1d5f93b287a31da247e588ea12d9a" kind="variable"><name>hal_handle</name></member>
+    <member refid="structhf__stm32__uart__config__t_1a6e42429ce78a0126bfdf90dccb872c7a" kind="variable"><name>default_timeout_ms</name></member>
+    <member refid="structhf__stm32__uart__config__t_1af7dc1c0fbea2fd381db7aa9a3051dd17" kind="variable"><name>use_dma_tx</name></member>
+    <member refid="structhf__stm32__uart__config__t_1a240d699ad2145374dd66233b2c4c0baf" kind="variable"><name>use_dma_rx</name></member>
+    <member refid="structhf__stm32__uart__config__t_1a5467d3534c61b15e785ad440d146e368" kind="variable"><name>rx_buffer_size</name></member>
+    <member refid="structhf__stm32__uart__config__t_1a255e0bf42d0c7c6c7cd4dcc12d887468" kind="variable"><name>tx_buffer_size</name></member>
+    <member refid="structhf__stm32__uart__config__t_1a8e8fb38957ef10e6f7422879cbba4e54" kind="function"><name>hf_stm32_uart_config_t</name></member>
+    <member refid="structhf__stm32__uart__config__t_1a3d70606f21ad5b70305dd06ec647b1f4" kind="function"><name>hf_stm32_uart_config_t</name></member>
   </compound>
   <compound refid="structhf__temp__config__t" kind="struct"><name>hf_temp_config_t</name>
     <member refid="structhf__temp__config__t_1a8bf079e9e70701467bd094adf28cf0d6" kind="variable"><name>range_min_celsius</name></member>
@@ -2885,6 +2961,120 @@
     <member refid="structEspPwm_1_1ValidationResult_1a48ea061e23889d58c2a5a0978bfaed89" kind="function"><name>ValidationResult</name></member>
   </compound>
   <compound refid="namespacehf" kind="namespace"><name>hf</name>
+  </compound>
+  <compound refid="namespacehf_1_1stm32" kind="namespace"><name>hf::stm32</name>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49" kind="enum"><name>GpioPort</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a7fc56270e7a70fa81a5935b72eacbe29" kind="enumvalue"><name>A</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a9d5ed678fe57bcca610140957afab571" kind="enumvalue"><name>B</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a0d61f8370cad1d412f80b84d143e1257" kind="enumvalue"><name>C</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49af623e75af30e62bbd73d6df5b50bb7b5" kind="enumvalue"><name>D</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a3a3ea00cfc35332cedf6e5e9a32e94da" kind="enumvalue"><name>E</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a800618943025315f869e4e1f09471012" kind="enumvalue"><name>F</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49adfcf28d0734569a6a693bc8194de62bf" kind="enumvalue"><name>G</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49ac1d9f50f86825a1a2302ec2449c17196" kind="enumvalue"><name>H</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49add7536794b63bf90eccfd37f9b147d7f" kind="enumvalue"><name>I</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49aff44570aca8241914870afbc310cdb85" kind="enumvalue"><name>J</name></member>
+    <member refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49aa5f3c6a11b03839d46af9fb43c97c188" kind="enumvalue"><name>K</name></member>
+    <member refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fce" kind="enum"><name>HalStatus</name></member>
+    <member refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fceae0aa021e21dddbd6d8cecec71e9cf564" kind="enumvalue"><name>OK</name></member>
+    <member refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fceabb1ca97ec761fc37101737ba0aa2e7c5" kind="enumvalue"><name>ERROR</name></member>
+    <member refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fcea802706a9238e2928077f97736854bad4" kind="enumvalue"><name>BUSY</name></member>
+    <member refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fcea070a0fb40f6c308ab544b227660aadff" kind="enumvalue"><name>TIMEOUT</name></member>
+    <member refid="namespacehf_1_1stm32_1a936c39d7a3f8021c01db3473385f4ec4" kind="variable"><name>kMaxGpioPorts</name></member>
+    <member refid="namespacehf_1_1stm32_1ab8c97cfad88030ad7366e434c7819b22" kind="variable"><name>kPinsPerPort</name></member>
+    <member refid="namespacehf_1_1stm32_1a0cde792158aa07c54c0d614f7e992bef" kind="variable"><name>kMaxGpioPins</name></member>
+    <member refid="namespacehf_1_1stm32_1a4040cb7003a317cfc4d8b5525eb30497" kind="variable"><name>kAdcMaxChannels</name></member>
+    <member refid="namespacehf_1_1stm32_1aa42bec7ddb30220d88fa0304343691bc" kind="variable"><name>kAdcMaxResolutionBits</name></member>
+    <member refid="namespacehf_1_1stm32_1a265304a91ed4f5408d4ec2807611cf7a" kind="variable"><name>kAdcDefaultResolutionBits</name></member>
+    <member refid="namespacehf_1_1stm32_1a0792eb14ab6261a885c4455ab386a7fc" kind="variable"><name>kAdcDefaultVrefV</name></member>
+    <member refid="namespacehf_1_1stm32_1abffe183b24d396f7ef10aec446f43929" kind="variable"><name>kI2cMaxFreqHz</name></member>
+    <member refid="namespacehf_1_1stm32_1a588459662879d0a82c1762ac94180ca4" kind="variable"><name>kI2cStandardFreqHz</name></member>
+    <member refid="namespacehf_1_1stm32_1a496127795d53e4e61e8e72c8a31d32a4" kind="variable"><name>kI2cFastFreqHz</name></member>
+    <member refid="namespacehf_1_1stm32_1ab7bd26aec9fe6736ebd453ca7b5977ce" kind="variable"><name>kI2cFastPlusFreqHz</name></member>
+    <member refid="namespacehf_1_1stm32_1a3ad4b34fb3d4390853867df00d4e894a" kind="variable"><name>kI2cMaxTransferBytes</name></member>
+    <member refid="namespacehf_1_1stm32_1a6e7e47d4e505dfae17a5d38bb723fc14" kind="variable"><name>kSpiMaxFreqHz</name></member>
+    <member refid="namespacehf_1_1stm32_1aca00f11a5aae6f65be61e78d5513f46f" kind="variable"><name>kSpiDefaultFreqHz</name></member>
+    <member refid="namespacehf_1_1stm32_1a7c81d846d8f6bd541b452327ec982e42" kind="variable"><name>kSpiMaxTransferBytes</name></member>
+    <member refid="namespacehf_1_1stm32_1ae2f3f462177bc078449618515d13d179" kind="variable"><name>kUartMaxBaudRate</name></member>
+    <member refid="namespacehf_1_1stm32_1a801ab2115dad5f9b9c4ee2adad8b885f" kind="variable"><name>kUartDefaultBaudRate</name></member>
+    <member refid="namespacehf_1_1stm32_1ae15338bee1c54512e5a6387627a1a257" kind="variable"><name>kUartDefaultBufferSize</name></member>
+    <member refid="namespacehf_1_1stm32_1abbf3eb95dde97a363eeb7b18aaa140af" kind="variable"><name>kTimerMinPeriodUs</name></member>
+    <member refid="namespacehf_1_1stm32_1acc210413f51441d96a2139a8c364f02e" kind="variable"><name>kTimerMaxPeriodUs</name></member>
+    <member refid="namespacehf_1_1stm32_1aca34be7567845f5a265ea8828e9e0209" kind="variable"><name>kTimerResolutionUs</name></member>
+    <member refid="namespacehf_1_1stm32_1a4b5614e96ae81ced775d3861471e9660" kind="variable"><name>kPwmMaxFreqHz</name></member>
+    <member refid="namespacehf_1_1stm32_1acc1e8c15aa805d66cc43df0d5296c331" kind="variable"><name>kPwmMinFreqHz</name></member>
+    <member refid="namespacehf_1_1stm32_1a884148c9c1481a59ee0d015b16544e10" kind="variable"><name>kPwmMaxResolution</name></member>
+    <member refid="namespacehf_1_1stm32_1ae55f33ff75ca49a8499770cf3d5f00ac" kind="variable"><name>kPwmMaxChannelsPerTimer</name></member>
+    <member refid="namespacehf_1_1stm32_1a37814b961258050f1f5fd87ed3b0b7b4" kind="variable"><name>kCanMaxBaudRate</name></member>
+    <member refid="namespacehf_1_1stm32_1ac7523a05997b547b0504ef4bb1af3758" kind="variable"><name>kCanFdMaxBaudRate</name></member>
+    <member refid="namespacehf_1_1stm32_1a2de26b6fc21ce6445b5880aa07c8dc62" kind="variable"><name>kCanDefaultQueueSize</name></member>
+    <member refid="namespacehf_1_1stm32_1a905b1a4375d157c96659237e3c7d0b6f" kind="variable"><name>kNvsMaxKeyLength</name></member>
+    <member refid="namespacehf_1_1stm32_1af32804f7a4b93277562b58b6a5afb7fe" kind="variable"><name>kNvsMaxValueSize</name></member>
+    <member refid="namespacehf_1_1stm32_1a702ee715fcc5e3015199113a863049ef" kind="variable"><name>kNvsDefaultSectorSize</name></member>
+    <member refid="namespacehf_1_1stm32_1ac20fa1fa4a314c7fae9b20fc8a85b72b" kind="variable"><name>kTempSensorMinC</name></member>
+    <member refid="namespacehf_1_1stm32_1a0824d87087b3e050483f78fa3e623caf" kind="variable"><name>kTempSensorMaxC</name></member>
+    <member refid="namespacehf_1_1stm32_1a8250ae9d7e4e88aed2dee7e2f7a0889e" kind="variable"><name>kTempSensorTypAccuracyC</name></member>
+    <member refid="namespacehf_1_1stm32_1a5e1bc34db84044fc0347de2e79f44000" kind="variable"><name>kLoggerMaxMessageLen</name></member>
+    <member refid="namespacehf_1_1stm32_1a8ed4dda53450f0286fccd4199217a568" kind="variable"><name>kLoggerDefaultBufferSize</name></member>
+    <member refid="namespacehf_1_1stm32_1a745a3dec91a4d6ed4513b0b86276ab5e" kind="function"><name>EncodePin</name></member>
+    <member refid="namespacehf_1_1stm32_1a6d5e0f8265882f9315391a8326dfda78" kind="function"><name>DecodePinPort</name></member>
+    <member refid="namespacehf_1_1stm32_1aa73df5bba78bee3035c30ed33183c612" kind="function"><name>DecodePinIndex</name></member>
+    <member refid="namespacehf_1_1stm32_1ab540277931da12279892e8463c083a16" kind="function"><name>DecodePinMask</name></member>
+    <member refid="namespacehf_1_1stm32_1aa44c1eabd5f8b4f6a76e841873432bc5" kind="function"><name>ToHalStatus</name></member>
+    <member refid="namespacehf_1_1stm32_1a61d8ada18ba35572dbf8fedc4d96501f" kind="function"><name>IsHalOk</name></member>
+  </compound>
+  <compound refid="namespacehf_1_1stm32_1_1pin" kind="namespace"><name>hf::stm32::pin</name>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a824d3548cd5671e4fc5e03cda08980cb" kind="variable"><name>PA0</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a0546fb0b8ffb81f735a6c635f0222014" kind="variable"><name>PA1</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aa5d299c264b2ab5ded07088ec6b8df4b" kind="variable"><name>PA2</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aa67b8a5441d0054ac024ee6d7a191fa4" kind="variable"><name>PA3</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a69abb830d5097258c4d05c928aee91af" kind="variable"><name>PA4</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aac45d7c935347246a3e3d06328aa7242" kind="variable"><name>PA5</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a067756da433da32b52926e3b6ce6d59e" kind="variable"><name>PA6</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1ad61785afa45ed58b896ef8d1b554ba0a" kind="variable"><name>PA7</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a493c2a580ab10df0222606e1076d7f72" kind="variable"><name>PA8</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a80cd0e0db05e52f75007f27525dbb10d" kind="variable"><name>PA9</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1ac6159cce6516bc433f489fe12cba3e98" kind="variable"><name>PA10</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aa89d49ed70a3e281d5a1f360b4587228" kind="variable"><name>PA11</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a9824dd8d6e84b24e9845e83b61823be0" kind="variable"><name>PA12</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1af194159cc98377777aaf2ff84416714e" kind="variable"><name>PA13</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a7225822198144da7a5185777074f68b0" kind="variable"><name>PA14</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1af61d0086b1222e1b2edc4781896342a4" kind="variable"><name>PA15</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a5d450b126574fc2800b737a72c5df930" kind="variable"><name>PB0</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a1de0807c57570d161a7e36ce591bb718" kind="variable"><name>PB1</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aa03fb8d5597c573a53ad46e8eca31b41" kind="variable"><name>PB2</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a030fe66d0c69b35e8a562b4286a7e3c0" kind="variable"><name>PB3</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a0d10449f6b6edd3d43771b7b1b7488e6" kind="variable"><name>PB4</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a3af9f362ae4ebbcc56fa36ff9f7af49e" kind="variable"><name>PB5</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a25b8760d41eafb39326c2fcd45c753eb" kind="variable"><name>PB6</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a5271d39d72ca2d19e9e5230326e23120" kind="variable"><name>PB7</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a02cbccb3e4fc5a2e9cdb1cab42c52fa7" kind="variable"><name>PB8</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a9aeaa08e489dc8927f12a434a0d4b2a9" kind="variable"><name>PB9</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a9f373df4ee0f8a0d8ca5e7d3b77d4312" kind="variable"><name>PB10</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a295da74cbb8683bdeac537cd89151cb4" kind="variable"><name>PB11</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1acc6e27631cf247d8533b940832114bea" kind="variable"><name>PB12</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a9c10d20893e4cff15a19c36d82bfcffe" kind="variable"><name>PB13</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1abe1193e82c79467d0366cb38477e4b47" kind="variable"><name>PB14</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a6c8d6e5aab3fa231edd6592e028bae5a" kind="variable"><name>PB15</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1ade9fcb2802568e547c9a30ba2f4e7e2c" kind="variable"><name>PC0</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a1ae5e1c504a77793bb8eb7ffd4c211ce" kind="variable"><name>PC1</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a347f33630fa92bcabb3c030317e7a8e4" kind="variable"><name>PC2</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aed9ce64a89aad76e3516c480060575bd" kind="variable"><name>PC3</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1af6eb4cfcaac359ce727642ef39375622" kind="variable"><name>PC4</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a0d32fae5a79bf52d094b6e9d2e3a5e0c" kind="variable"><name>PC5</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1afc9cc77e9bb81dc8d19955281a9c1a1c" kind="variable"><name>PC6</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a0fabb87ecd1e86890c474f0ac0751ec6" kind="variable"><name>PC7</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a314953b4ac1493ad5d5f80e1266f5024" kind="variable"><name>PC8</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a0b5f8c702ab2e536869b5fa75cf28bd9" kind="variable"><name>PC9</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aa36f017dcb062a52ecb247a9bb266621" kind="variable"><name>PC10</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a7e0c25621a8ca20ee944c30fe6ba9583" kind="variable"><name>PC11</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a7fee21ff9258cf7f264d04776cfdcf4e" kind="variable"><name>PC12</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aa8d22ce5b38f18e48c8ab7ad4397ab28" kind="variable"><name>PC13</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1ac0e7cd359460b84dad1f5478c0c9313d" kind="variable"><name>PC14</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1aeb967814b9e8764eccdb832e573e289b" kind="variable"><name>PC15</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a205e1056c7da84dd6c6952fd18b48095" kind="variable"><name>PD0</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1af321cb9f00a9f56eb5bb024dc35eb789" kind="variable"><name>PD1</name></member>
+    <member refid="namespacehf_1_1stm32_1_1pin_1a001779730c570e665f054362be9e196f" kind="variable"><name>PD2</name></member>
   </compound>
   <compound refid="namespacehf_1_1utils" kind="namespace"><name>hf::utils</name>
     <member refid="namespacehf_1_1utils_1a8cc6a65bb150aad69866ad9c665487b9" kind="function"><name>make_unique_nothrow</name></member>
@@ -4727,6 +4917,42 @@
   <compound refid="StmSpi_8h" kind="file"><name>StmSpi.h</name>
   </compound>
   <compound refid="StmTemperature_8h" kind="file"><name>StmTemperature.h</name>
+  </compound>
+  <compound refid="StmTypes_8h" kind="file"><name>StmTypes.h</name>
+    <member refid="StmTypes_8h_1abb63264b5f2de7b6d830732e0c336657" kind="enum"><name>hf_stm32_i2c_addr_mode_t</name></member>
+    <member refid="StmTypes_8h_1abb63264b5f2de7b6d830732e0c336657addc51db6e812e4d01dbad122111e2609" kind="enumvalue"><name>ADDR_7BIT</name></member>
+    <member refid="StmTypes_8h_1abb63264b5f2de7b6d830732e0c336657a37a6de32cfa70151c87ede4c8ae1662b" kind="enumvalue"><name>ADDR_10BIT</name></member>
+    <member refid="StmTypes_8h_1af8e3d687e7b582925b62029f026625f9" kind="enum"><name>hf_stm32_spi_mode_t</name></member>
+    <member refid="StmTypes_8h_1af8e3d687e7b582925b62029f026625f9a3a769a916836dccf98801212615595d3" kind="enumvalue"><name>MODE_0</name></member>
+    <member refid="StmTypes_8h_1af8e3d687e7b582925b62029f026625f9af7ede748a6b41c7c91c18ed2d155b33e" kind="enumvalue"><name>MODE_1</name></member>
+    <member refid="StmTypes_8h_1af8e3d687e7b582925b62029f026625f9acac4185dc8a44d8ae07bfb94c2830017" kind="enumvalue"><name>MODE_2</name></member>
+    <member refid="StmTypes_8h_1af8e3d687e7b582925b62029f026625f9ac5b781763a4c930367500c96e64a0166" kind="enumvalue"><name>MODE_3</name></member>
+    <member refid="StmTypes_8h_1ac1c8b759d02ee875b9dd975173a3e84e" kind="enum"><name>hf_stm32_uart_data_bits_t</name></member>
+    <member refid="StmTypes_8h_1ac1c8b759d02ee875b9dd975173a3e84eae271628c62a3f949c9612fd0b3e507c7" kind="enumvalue"><name>DATA_7_BITS</name></member>
+    <member refid="StmTypes_8h_1ac1c8b759d02ee875b9dd975173a3e84ead30fc4e8776e89e194b35a060fb63c37" kind="enumvalue"><name>DATA_8_BITS</name></member>
+    <member refid="StmTypes_8h_1ac1c8b759d02ee875b9dd975173a3e84eaac29357188fb8920eddf068d50a89eff" kind="enumvalue"><name>DATA_9_BITS</name></member>
+    <member refid="StmTypes_8h_1ab00c8615d5ef41d84c588318a74d9495" kind="enum"><name>hf_stm32_uart_parity_t</name></member>
+    <member refid="StmTypes_8h_1ab00c8615d5ef41d84c588318a74d9495ab50339a10e1de285ac99d4c3990b8693" kind="enumvalue"><name>NONE</name></member>
+    <member refid="StmTypes_8h_1ab00c8615d5ef41d84c588318a74d9495a6634c67f28ba9a80efe941b9519aa106" kind="enumvalue"><name>EVEN</name></member>
+    <member refid="StmTypes_8h_1ab00c8615d5ef41d84c588318a74d9495a57a1355d5527355458c7cc08ba70bf94" kind="enumvalue"><name>ODD</name></member>
+    <member refid="StmTypes_8h_1aa8b4cce069a27d9eb825d3ddaa1a2a1a" kind="enum"><name>hf_stm32_uart_stop_bits_t</name></member>
+    <member refid="StmTypes_8h_1aa8b4cce069a27d9eb825d3ddaa1a2a1aa59c261d7c703b9ed285f54bfb950945d" kind="enumvalue"><name>STOP_1</name></member>
+    <member refid="StmTypes_8h_1aa8b4cce069a27d9eb825d3ddaa1a2a1aa18bf1b094b70bf06841b4a65ddb2723d" kind="enumvalue"><name>STOP_2</name></member>
+    <member refid="StmTypes_8h_1a61ed8bb7db7e73841929a940d0a84422" kind="enum"><name>hf_stm32_can_type_t</name></member>
+    <member refid="StmTypes_8h_1a61ed8bb7db7e73841929a940d0a84422af746e1e773f7fe273710538e8a60640f" kind="enumvalue"><name>BXCAN</name></member>
+    <member refid="StmTypes_8h_1a61ed8bb7db7e73841929a940d0a84422a9210a489724bb6c6bb03a8a9d8a62189" kind="enumvalue"><name>FDCAN</name></member>
+    <member refid="StmTypes_8h_1a22c12abf8ba8c94a0c608d43e033f87a" kind="enum"><name>hf_stm32_pwm_channel_t</name></member>
+    <member refid="StmTypes_8h_1a22c12abf8ba8c94a0c608d43e033f87aa66c3541b5e7fcd2c7dfaf1cfae2464f2" kind="enumvalue"><name>CHANNEL_1</name></member>
+    <member refid="StmTypes_8h_1a22c12abf8ba8c94a0c608d43e033f87aa226bc305b0b2edd3c8a6167bbca91db4" kind="enumvalue"><name>CHANNEL_2</name></member>
+    <member refid="StmTypes_8h_1a22c12abf8ba8c94a0c608d43e033f87aa44de960a31b2e939b49ff2cdfb22d6f9" kind="enumvalue"><name>CHANNEL_3</name></member>
+    <member refid="StmTypes_8h_1a22c12abf8ba8c94a0c608d43e033f87aa77d5dde199df8348ed861ec0e9509cad" kind="enumvalue"><name>CHANNEL_4</name></member>
+    <member refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6" kind="enum"><name>hf_stm32_adc_resolution_t</name></member>
+    <member refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6abb2cdb0e9c1b017b6061a4d4c4c63725" kind="enumvalue"><name>BITS_6</name></member>
+    <member refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6a506328a07de044eef05ac29ed6b48a7e" kind="enumvalue"><name>BITS_8</name></member>
+    <member refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6a8812e84b2a81192ab533a506709b0890" kind="enumvalue"><name>BITS_10</name></member>
+    <member refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6a5cdb4593c18074255e55c311cd64bd83" kind="enumvalue"><name>BITS_12</name></member>
+    <member refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6a11911c8afceccafda1b359cb0457d8dc" kind="enumvalue"><name>BITS_14</name></member>
+    <member refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6abb5d31439f5385837df1e6e250880da0" kind="enumvalue"><name>BITS_16</name></member>
   </compound>
   <compound refid="AsciiArtGenerator_8h" kind="file"><name>AsciiArtGenerator.h</name>
   </compound>

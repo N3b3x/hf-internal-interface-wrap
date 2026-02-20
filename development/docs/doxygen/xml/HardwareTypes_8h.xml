@@ -33,6 +33,7 @@
     <includedby refid="EspTypes__SPI_8h" local="yes">inc/mcu/esp32/utils/EspTypes_SPI.h</includedby>
     <includedby refid="EspTypes__Timer_8h" local="yes">inc/mcu/esp32/utils/EspTypes_Timer.h</includedby>
     <includedby refid="EspTypes__UART_8h" local="yes">inc/mcu/esp32/utils/EspTypes_UART.h</includedby>
+    <includedby refid="StmTypes_8h" local="yes">inc/mcu/stm32/StmTypes.h</includedby>
     <includedby refid="DigitalOutputGuard_8h" local="yes">inc/utils/DigitalOutputGuard.h</includedby>
     <incdepgraph>
       <node id="1">
@@ -358,6 +359,8 @@
         </childnode>
         <childnode refid="83" relation="include">
         </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
         <childnode refid="50" relation="include">
         </childnode>
       </node>
@@ -654,6 +657,10 @@
         <link refid="StmTemperature_8h"/>
         <childnode refid="81" relation="include">
         </childnode>
+      </node>
+      <node id="90">
+        <label>inc/mcu/stm32/StmTypes.h</label>
+        <link refid="StmTypes_8h"/>
       </node>
       <node id="50">
         <label>inc/utils/DigitalOutputGuard.h</label>

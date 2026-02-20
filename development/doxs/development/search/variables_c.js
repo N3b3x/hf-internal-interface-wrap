@@ -11,7 +11,8 @@ var searchData=
   ['noise_5ffloor_8',['noise_floor',['../structHfEspWifiStats.html#a74acd38b83fcb08be0fdbf6c416e13e9',1,'HfEspWifiStats']]],
   ['nominal_5fbaudrate_9',['nominal_baudrate',['../structhf__can__status__t.html#a7ee96db43c522c1589825bd66078f3a1',1,'hf_can_status_t']]],
   ['nonexistent_5faddr_10',['NONEXISTENT_ADDR',['../I2cComprehensiveTest_8cpp.html#aea1a58ed6eb8e3331e19a2cb9ed3619b',1,'I2cComprehensiveTest.cpp']]],
-  ['num_5fchannels_11',['num_channels',['../structhf__pwm__capabilities__t.html#a391016f7b9de8439103097b0775a50ea',1,'hf_pwm_capabilities_t']]],
-  ['num_5ftimers_12',['num_timers',['../structhf__pwm__capabilities__t.html#af34217d5f45ed2d62c49fe836a58880b',1,'hf_pwm_capabilities_t']]],
-  ['nvs_5fhandle_5f_13',['nvs_handle_',['../classEspNvs.html#a6835ce423097a5c27ddaefb1be4e2207',1,'EspNvs']]]
+  ['num_5fchannels_11',['num_channels',['../structhf__pwm__capabilities__t.html#a391016f7b9de8439103097b0775a50ea',1,'hf_pwm_capabilities_t::num_channels'],['../structhf__stm32__pwm__config__t.html#a739c6cc1d27394c092a2cfef3f5f4517',1,'hf_stm32_pwm_config_t::num_channels'],['../structhf__stm32__adc__config__t.html#a4a0ab19bfa783ca349951fca944d85eb',1,'hf_stm32_adc_config_t::num_channels']]],
+  ['num_5fsectors_12',['num_sectors',['../structhf__stm32__nvs__config__t.html#a551e57e274b83f2157728b3dd1edd7bc',1,'hf_stm32_nvs_config_t']]],
+  ['num_5ftimers_13',['num_timers',['../structhf__pwm__capabilities__t.html#af34217d5f45ed2d62c49fe836a58880b',1,'hf_pwm_capabilities_t']]],
+  ['nvs_5fhandle_5f_14',['nvs_handle_',['../classEspNvs.html#a6835ce423097a5c27ddaefb1be4e2207',1,'EspNvs']]]
 ];

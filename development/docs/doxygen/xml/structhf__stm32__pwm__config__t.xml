@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__stm32__pwm__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_stm32_pwm_config_t</compoundname>
+    <includes refid="StmTypes_8h" local="no">StmTypes.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__stm32__pwm__config__t_1ae2bee23de361d9f763bb1341445234de" prot="public" static="no" mutable="no">
+        <type>TIM_HandleTypeDef *</type>
+        <definition>TIM_HandleTypeDef* hf_stm32_pwm_config_t::hal_handle</definition>
+        <argsstring></argsstring>
+        <name>hal_handle</name>
+        <qualifiedname>hf_stm32_pwm_config_t::hal_handle</qualifiedname>
+        <briefdescription>
+<para>Pointer to CubeMX-generated TIM handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="401" column="23" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="401" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__pwm__config__t_1a739c6cc1d27394c092a2cfef3f5f4517" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_stm32_pwm_config_t::num_channels</definition>
+        <argsstring></argsstring>
+        <name>num_channels</name>
+        <qualifiedname>hf_stm32_pwm_config_t::num_channels</qualifiedname>
+        <briefdescription>
+<para>Number of active channels (1-4) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="402" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="402" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__pwm__config__t_1a88a10bfe0e3ac72a9187bb5bf5d2a838" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_stm32_pwm_config_t::complementary_output</definition>
+        <argsstring></argsstring>
+        <name>complementary_output</name>
+        <qualifiedname>hf_stm32_pwm_config_t::complementary_output</qualifiedname>
+        <briefdescription>
+<para>Enable complementary outputs (TIMx_CHxN) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="403" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="403" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__pwm__config__t_1a50c3dc4e999cd1df790e7c4d2266f824" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t hf_stm32_pwm_config_t::dead_time_ns</definition>
+        <argsstring></argsstring>
+        <name>dead_time_ns</name>
+        <qualifiedname>hf_stm32_pwm_config_t::dead_time_ns</qualifiedname>
+        <briefdescription>
+<para>Dead-time for complementary pairs (ns) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="404" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="404" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__stm32__pwm__config__t_1a38a20327678fa260e4acc0cd4d4d649e" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_pwm_config_t::hf_stm32_pwm_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_stm32_pwm_config_t</name>
+        <qualifiedname>hf_stm32_pwm_config_t::hf_stm32_pwm_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="406" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="406" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__stm32__pwm__config__t_1a4bb508d751e318177c03ae0c94ce0a77" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_pwm_config_t::hf_stm32_pwm_config_t</definition>
+        <argsstring>(TIM_HandleTypeDef *handle, hf_u8_t channels=1) noexcept</argsstring>
+        <name>hf_stm32_pwm_config_t</name>
+        <qualifiedname>hf_stm32_pwm_config_t::hf_stm32_pwm_config_t</qualifiedname>
+        <param>
+          <type>TIM_HandleTypeDef *</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channels</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="410" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="410" bodyend="413"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM configuration for STM32. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTypes.h" line="400" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="400" bodyend="414"/>
+    <listofallmembers>
+      <member refid="structhf__stm32__pwm__config__t_1a88a10bfe0e3ac72a9187bb5bf5d2a838" prot="public" virt="non-virtual"><scope>hf_stm32_pwm_config_t</scope><name>complementary_output</name></member>
+      <member refid="structhf__stm32__pwm__config__t_1a50c3dc4e999cd1df790e7c4d2266f824" prot="public" virt="non-virtual"><scope>hf_stm32_pwm_config_t</scope><name>dead_time_ns</name></member>
+      <member refid="structhf__stm32__pwm__config__t_1ae2bee23de361d9f763bb1341445234de" prot="public" virt="non-virtual"><scope>hf_stm32_pwm_config_t</scope><name>hal_handle</name></member>
+      <member refid="structhf__stm32__pwm__config__t_1a38a20327678fa260e4acc0cd4d4d649e" prot="public" virt="non-virtual"><scope>hf_stm32_pwm_config_t</scope><name>hf_stm32_pwm_config_t</name></member>
+      <member refid="structhf__stm32__pwm__config__t_1a4bb508d751e318177c03ae0c94ce0a77" prot="public" virt="non-virtual"><scope>hf_stm32_pwm_config_t</scope><name>hf_stm32_pwm_config_t</name></member>
+      <member refid="structhf__stm32__pwm__config__t_1a739c6cc1d27394c092a2cfef3f5f4517" prot="public" virt="non-virtual"><scope>hf_stm32_pwm_config_t</scope><name>num_channels</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

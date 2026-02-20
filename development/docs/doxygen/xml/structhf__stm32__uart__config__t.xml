@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__stm32__uart__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_stm32_uart_config_t</compoundname>
+    <includes refid="StmTypes_8h" local="no">StmTypes.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__stm32__uart__config__t_1abcf1d5f93b287a31da247e588ea12d9a" prot="public" static="no" mutable="no">
+        <type>UART_HandleTypeDef *</type>
+        <definition>UART_HandleTypeDef* hf_stm32_uart_config_t::hal_handle</definition>
+        <argsstring></argsstring>
+        <name>hal_handle</name>
+        <qualifiedname>hf_stm32_uart_config_t::hal_handle</qualifiedname>
+        <briefdescription>
+<para>Pointer to CubeMX-generated UART handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="343" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="343" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a6e42429ce78a0126bfdf90dccb872c7a" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_stm32_uart_config_t::default_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>default_timeout_ms</name>
+        <qualifiedname>hf_stm32_uart_config_t::default_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Default timeout (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="344" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="344" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__uart__config__t_1af7dc1c0fbea2fd381db7aa9a3051dd17" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_stm32_uart_config_t::use_dma_tx</definition>
+        <argsstring></argsstring>
+        <name>use_dma_tx</name>
+        <qualifiedname>hf_stm32_uart_config_t::use_dma_tx</qualifiedname>
+        <briefdescription>
+<para>Use DMA for TX. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="345" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="345" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a240d699ad2145374dd66233b2c4c0baf" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_stm32_uart_config_t::use_dma_rx</definition>
+        <argsstring></argsstring>
+        <name>use_dma_rx</name>
+        <qualifiedname>hf_stm32_uart_config_t::use_dma_rx</qualifiedname>
+        <briefdescription>
+<para>Use DMA for RX. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="346" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="346" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a5467d3534c61b15e785ad440d146e368" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t hf_stm32_uart_config_t::rx_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>rx_buffer_size</name>
+        <qualifiedname>hf_stm32_uart_config_t::rx_buffer_size</qualifiedname>
+        <briefdescription>
+<para>Receive ring buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="347" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="347" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__uart__config__t_1a255e0bf42d0c7c6c7cd4dcc12d887468" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t hf_stm32_uart_config_t::tx_buffer_size</definition>
+        <argsstring></argsstring>
+        <name>tx_buffer_size</name>
+        <qualifiedname>hf_stm32_uart_config_t::tx_buffer_size</qualifiedname>
+        <briefdescription>
+<para>Transmit buffer size. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="348" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="348" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__stm32__uart__config__t_1a8e8fb38957ef10e6f7422879cbba4e54" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_uart_config_t::hf_stm32_uart_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_stm32_uart_config_t</name>
+        <qualifiedname>hf_stm32_uart_config_t::hf_stm32_uart_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="350" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="350" bodyend="354"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__stm32__uart__config__t_1a3d70606f21ad5b70305dd06ec647b1f4" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_uart_config_t::hf_stm32_uart_config_t</definition>
+        <argsstring>(UART_HandleTypeDef *handle, hf_u32_t timeout_ms=1000) noexcept</argsstring>
+        <name>hf_stm32_uart_config_t</name>
+        <qualifiedname>hf_stm32_uart_config_t::hf_stm32_uart_config_t</qualifiedname>
+        <param>
+          <type>UART_HandleTypeDef *</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>1000</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="356" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="356" bodyend="361"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Platform-agnostic UART configuration for STM32. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTypes.h" line="342" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="342" bodyend="362"/>
+    <listofallmembers>
+      <member refid="structhf__stm32__uart__config__t_1a6e42429ce78a0126bfdf90dccb872c7a" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>default_timeout_ms</name></member>
+      <member refid="structhf__stm32__uart__config__t_1abcf1d5f93b287a31da247e588ea12d9a" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>hal_handle</name></member>
+      <member refid="structhf__stm32__uart__config__t_1a8e8fb38957ef10e6f7422879cbba4e54" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>hf_stm32_uart_config_t</name></member>
+      <member refid="structhf__stm32__uart__config__t_1a3d70606f21ad5b70305dd06ec647b1f4" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>hf_stm32_uart_config_t</name></member>
+      <member refid="structhf__stm32__uart__config__t_1a5467d3534c61b15e785ad440d146e368" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>rx_buffer_size</name></member>
+      <member refid="structhf__stm32__uart__config__t_1a255e0bf42d0c7c6c7cd4dcc12d887468" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>tx_buffer_size</name></member>
+      <member refid="structhf__stm32__uart__config__t_1a240d699ad2145374dd66233b2c4c0baf" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>use_dma_rx</name></member>
+      <member refid="structhf__stm32__uart__config__t_1af7dc1c0fbea2fd381db7aa9a3051dd17" prot="public" virt="non-virtual"><scope>hf_stm32_uart_config_t</scope><name>use_dma_tx</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

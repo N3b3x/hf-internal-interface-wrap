@@ -361,6 +361,9 @@
       <node id="5">
         <label>StmI2cBus</label>
         <link refid="classStmI2cBus"/>
+        <childnode refid="6" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
       </node>
       <node id="1">
         <label>StmI2cDevice</label>
@@ -370,11 +373,15 @@
         <childnode refid="5" relation="usage">
           <edgelabel>parent_bus_</edgelabel>
         </childnode>
-        <childnode refid="6" relation="usage">
+        <childnode refid="7" relation="usage">
           <edgelabel>config_</edgelabel>
         </childnode>
       </node>
       <node id="6">
+        <label>hf_i2c_bus_config_t</label>
+        <link refid="structhf__i2c__bus__config__t"/>
+      </node>
+      <node id="7">
         <label>hf_i2c_device_config_t</label>
         <link refid="structhf__i2c__device__config__t"/>
       </node>

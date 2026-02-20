@@ -8,11 +8,11 @@
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="289,50,289,104,283,104,283,50"/>
 <area shape="rect" id="Node000005" href="$classEspSpiBus.html" title="Manages a single SPI bus (host). Handles bus init/deinit and device creation." alt="" coords="497,104,608,135"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="551,148,552,163,556,177,567,190,581,200,578,205,563,194,552,180,546,164,545,148"/>
-<area shape="rect" id="Node000006" href="$structhf__spi__bus__config__t.html" title="Platform&#45;agnostic SPI bus configuration structure for ESP32." alt="" coords="403,5,585,36"/>
+<area shape="rect" id="Node000006" href="$structhf__spi__bus__config__t.html" title="Platform&#45;agnostic SPI bus configuration for STM32." alt="" coords="403,5,585,36"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="494,50,495,65,500,79,511,91,524,102,521,106,507,95,496,81,490,66,488,50"/>
 <area shape="rect" id="Node000007" href="$classPlatformMutex.html" title=" " alt="" coords="609,5,749,36"/>
 <area shape="poly" id="edge8_Node000001_Node000007" title=" " alt="" coords="684,50,682,112,675,147,662,180,640,204,636,201,657,177,670,145,677,111,679,50"/>
 <area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="625,44,596,62,576,83,562,105,558,103,572,80,592,58,622,39"/>
-<area shape="rect" id="Node000008" href="$structhf__spi__device__config__t.html" title="Platform&#45;agnostic SPI device configuration structure for ESP32." alt="" coords="767,104,973,135"/>
+<area shape="rect" id="Node000008" href="$structhf__spi__device__config__t.html" title="SPI device configuration for STM32." alt="" coords="767,104,973,135"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="821,142,654,205,652,200,819,137"/>
 </map>

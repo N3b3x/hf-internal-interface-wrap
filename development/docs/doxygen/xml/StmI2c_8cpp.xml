@@ -115,7 +115,7 @@
 <codeline lineno="39"><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>──<sp/>StmI2cBus<sp/>────────────────────────────────────────────────────────────</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><ref refid="classStmI2cBus_1ac49054609128569d92c431dc8e9596df" kindref="member">StmI2cBus::StmI2cBus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>hf_i2c_bus_config_t&amp;<sp/>config)<sp/>noexcept</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><ref refid="classStmI2cBus_1ac49054609128569d92c431dc8e9596df" kindref="member">StmI2cBus::StmI2cBus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__i2c__bus__config__t" kindref="compound">hf_i2c_bus_config_t</ref>&amp;<sp/>config)<sp/>noexcept</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>config_(config)<sp/>{}</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><ref refid="classStmI2cBus_1a0b0d0e9bfa74bd9d952bb65dad70048a" kindref="member">StmI2cBus::~StmI2cBus</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
@@ -148,7 +148,7 @@
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="73"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
-<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>hf_i2c_bus_config_t&amp;<sp/><ref refid="classStmI2cBus_1aefde57ad70e9a5e3a63dcdec59a31593" kindref="member">StmI2cBus::GetConfig</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmI2cBus_1a0b1e24e2415315eab6f4aa44164e8974" kindref="member">config_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__i2c__bus__config__t" kindref="compound">hf_i2c_bus_config_t</ref>&amp;<sp/><ref refid="classStmI2cBus_1aefde57ad70e9a5e3a63dcdec59a31593" kindref="member">StmI2cBus::GetConfig</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classStmI2cBus_1a0b1e24e2415315eab6f4aa44164e8974" kindref="member">config_</ref>;<sp/>}</highlight></codeline>
     </programlisting>
     <location file="src/mcu/stm32/StmI2c.cpp"/>
   </compounddef>

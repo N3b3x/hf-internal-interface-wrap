@@ -1,0 +1,837 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="namespacehf_1_1stm32" kind="namespace" language="C++">
+    <compoundname>hf::stm32</compoundname>
+    <innernamespace refid="namespacehf_1_1stm32_1_1pin">hf::stm32::pin</innernamespace>
+    <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>GpioPort</name>
+        <qualifiedname>hf::stm32::GpioPort</qualifiedname>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a7fc56270e7a70fa81a5935b72eacbe29" prot="public">
+          <name>A</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a9d5ed678fe57bcca610140957afab571" prot="public">
+          <name>B</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a0d61f8370cad1d412f80b84d143e1257" prot="public">
+          <name>C</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49af623e75af30e62bbd73d6df5b50bb7b5" prot="public">
+          <name>D</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a3a3ea00cfc35332cedf6e5e9a32e94da" prot="public">
+          <name>E</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49a800618943025315f869e4e1f09471012" prot="public">
+          <name>F</name>
+          <initializer>= 5</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49adfcf28d0734569a6a693bc8194de62bf" prot="public">
+          <name>G</name>
+          <initializer>= 6</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49ac1d9f50f86825a1a2302ec2449c17196" prot="public">
+          <name>H</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49add7536794b63bf90eccfd37f9b147d7f" prot="public">
+          <name>I</name>
+          <initializer>= 8</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49aff44570aca8241914870afbc310cdb85" prot="public">
+          <name>J</name>
+          <initializer>= 9</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49aa5f3c6a11b03839d46af9fb43c97c188" prot="public">
+          <name>K</name>
+          <initializer>= 10</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>GPIO port index (A=0, B=1, ... K=10) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="152" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="152" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fce" prot="public" static="no" strong="yes">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <name>HalStatus</name>
+        <qualifiedname>hf::stm32::HalStatus</qualifiedname>
+        <enumvalue id="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fceae0aa021e21dddbd6d8cecec71e9cf564" prot="public">
+          <name>OK</name>
+          <initializer>= 0x00U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fceabb1ca97ec761fc37101737ba0aa2e7c5" prot="public">
+          <name>ERROR</name>
+          <initializer>= 0x01U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fcea802706a9238e2928077f97736854bad4" prot="public">
+          <name>BUSY</name>
+          <initializer>= 0x02U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fcea070a0fb40f6c308ab544b227660aadff" prot="public">
+          <name>TIMEOUT</name>
+          <initializer>= 0x03U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>STM32 HAL status codes (mirrors HAL_StatusTypeDef without HAL include) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="513" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="513" bodyend="518"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a936c39d7a3f8021c01db3473385f4ec4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf::stm32::kMaxGpioPorts</definition>
+        <argsstring></argsstring>
+        <name>kMaxGpioPorts</name>
+        <qualifiedname>hf::stm32::kMaxGpioPorts</qualifiedname>
+        <initializer>= 11</initializer>
+        <briefdescription>
+<para>Maximum GPIO ports (A..K = 11 on largest STM32H7) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="73" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1ab8c97cfad88030ad7366e434c7819b22" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf::stm32::kPinsPerPort</definition>
+        <argsstring></argsstring>
+        <name>kPinsPerPort</name>
+        <qualifiedname>hf::stm32::kPinsPerPort</qualifiedname>
+        <initializer>= 16</initializer>
+        <briefdescription>
+<para>Maximum pins per GPIO port. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="76" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a0cde792158aa07c54c0d614f7e992bef" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t hf::stm32::kMaxGpioPins</definition>
+        <argsstring></argsstring>
+        <name>kMaxGpioPins</name>
+        <qualifiedname>hf::stm32::kMaxGpioPins</qualifiedname>
+        <initializer>= <ref refid="namespacehf_1_1stm32_1a936c39d7a3f8021c01db3473385f4ec4" kindref="member">kMaxGpioPorts</ref> * <ref refid="namespacehf_1_1stm32_1ab8c97cfad88030ad7366e434c7819b22" kindref="member">kPinsPerPort</ref></initializer>
+        <briefdescription>
+<para>Maximum total GPIO pins (ports * pins_per_port) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="79" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a4040cb7003a317cfc4d8b5525eb30497" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf::stm32::kAdcMaxChannels</definition>
+        <argsstring></argsstring>
+        <name>kAdcMaxChannels</name>
+        <qualifiedname>hf::stm32::kAdcMaxChannels</qualifiedname>
+        <initializer>= 20</initializer>
+        <briefdescription>
+<para>ADC maximum channels (typical STM32F4/H7) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="82" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1aa42bec7ddb30220d88fa0304343691bc" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf::stm32::kAdcMaxResolutionBits</definition>
+        <argsstring></argsstring>
+        <name>kAdcMaxResolutionBits</name>
+        <qualifiedname>hf::stm32::kAdcMaxResolutionBits</qualifiedname>
+        <initializer>= 16</initializer>
+        <briefdescription>
+<para>ADC maximum resolution (bits) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="85" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a265304a91ed4f5408d4ec2807611cf7a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf::stm32::kAdcDefaultResolutionBits</definition>
+        <argsstring></argsstring>
+        <name>kAdcDefaultResolutionBits</name>
+        <qualifiedname>hf::stm32::kAdcDefaultResolutionBits</qualifiedname>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="86" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a0792eb14ab6261a885c4455ab386a7fc" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float hf::stm32::kAdcDefaultVrefV</definition>
+        <argsstring></argsstring>
+        <name>kAdcDefaultVrefV</name>
+        <qualifiedname>hf::stm32::kAdcDefaultVrefV</qualifiedname>
+        <initializer>= 3.3f</initializer>
+        <briefdescription>
+<para>ADC reference voltage (V) — most STM32 boards. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="89" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1abffe183b24d396f7ef10aec446f43929" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kI2cMaxFreqHz</definition>
+        <argsstring></argsstring>
+        <name>kI2cMaxFreqHz</name>
+        <qualifiedname>hf::stm32::kI2cMaxFreqHz</qualifiedname>
+        <initializer>= 1000000</initializer>
+        <briefdescription>
+<para>I2C limits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="92" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a588459662879d0a82c1762ac94180ca4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kI2cStandardFreqHz</definition>
+        <argsstring></argsstring>
+        <name>kI2cStandardFreqHz</name>
+        <qualifiedname>hf::stm32::kI2cStandardFreqHz</qualifiedname>
+        <initializer>= 100000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="93" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a496127795d53e4e61e8e72c8a31d32a4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kI2cFastFreqHz</definition>
+        <argsstring></argsstring>
+        <name>kI2cFastFreqHz</name>
+        <qualifiedname>hf::stm32::kI2cFastFreqHz</qualifiedname>
+        <initializer>= 400000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="94" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1ab7bd26aec9fe6736ebd453ca7b5977ce" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kI2cFastPlusFreqHz</definition>
+        <argsstring></argsstring>
+        <name>kI2cFastPlusFreqHz</name>
+        <qualifiedname>hf::stm32::kI2cFastPlusFreqHz</qualifiedname>
+        <initializer>= 1000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="95" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a3ad4b34fb3d4390853867df00d4e894a" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t hf::stm32::kI2cMaxTransferBytes</definition>
+        <argsstring></argsstring>
+        <name>kI2cMaxTransferBytes</name>
+        <qualifiedname>hf::stm32::kI2cMaxTransferBytes</qualifiedname>
+        <initializer>= 65535</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="96" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a6e7e47d4e505dfae17a5d38bb723fc14" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kSpiMaxFreqHz</definition>
+        <argsstring></argsstring>
+        <name>kSpiMaxFreqHz</name>
+        <qualifiedname>hf::stm32::kSpiMaxFreqHz</qualifiedname>
+        <initializer>= 50000000</initializer>
+        <briefdescription>
+<para>SPI limits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="99" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1aca00f11a5aae6f65be61e78d5513f46f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kSpiDefaultFreqHz</definition>
+        <argsstring></argsstring>
+        <name>kSpiDefaultFreqHz</name>
+        <qualifiedname>hf::stm32::kSpiDefaultFreqHz</qualifiedname>
+        <initializer>= 1000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="100" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a7c81d846d8f6bd541b452327ec982e42" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t hf::stm32::kSpiMaxTransferBytes</definition>
+        <argsstring></argsstring>
+        <name>kSpiMaxTransferBytes</name>
+        <qualifiedname>hf::stm32::kSpiMaxTransferBytes</qualifiedname>
+        <initializer>= 65535</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="101" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1ae2f3f462177bc078449618515d13d179" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kUartMaxBaudRate</definition>
+        <argsstring></argsstring>
+        <name>kUartMaxBaudRate</name>
+        <qualifiedname>hf::stm32::kUartMaxBaudRate</qualifiedname>
+        <initializer>= 10000000</initializer>
+        <briefdescription>
+<para>UART limits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="104" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a801ab2115dad5f9b9c4ee2adad8b885f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kUartDefaultBaudRate</definition>
+        <argsstring></argsstring>
+        <name>kUartDefaultBaudRate</name>
+        <qualifiedname>hf::stm32::kUartDefaultBaudRate</qualifiedname>
+        <initializer>= 115200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="105" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1ae15338bee1c54512e5a6387627a1a257" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t hf::stm32::kUartDefaultBufferSize</definition>
+        <argsstring></argsstring>
+        <name>kUartDefaultBufferSize</name>
+        <qualifiedname>hf::stm32::kUartDefaultBufferSize</qualifiedname>
+        <initializer>= 256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="106" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1abbf3eb95dde97a363eeb7b18aaa140af" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>constexpr hf_u64_t hf::stm32::kTimerMinPeriodUs</definition>
+        <argsstring></argsstring>
+        <name>kTimerMinPeriodUs</name>
+        <qualifiedname>hf::stm32::kTimerMinPeriodUs</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+<para>Timer limits (in microseconds) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="109" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1acc210413f51441d96a2139a8c364f02e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>constexpr hf_u64_t hf::stm32::kTimerMaxPeriodUs</definition>
+        <argsstring></argsstring>
+        <name>kTimerMaxPeriodUs</name>
+        <qualifiedname>hf::stm32::kTimerMaxPeriodUs</qualifiedname>
+        <initializer>= 4294967295ULL</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="110" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1aca34be7567845f5a265ea8828e9e0209" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
+        <definition>constexpr hf_u64_t hf::stm32::kTimerResolutionUs</definition>
+        <argsstring></argsstring>
+        <name>kTimerResolutionUs</name>
+        <qualifiedname>hf::stm32::kTimerResolutionUs</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="111" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a4b5614e96ae81ced775d3861471e9660" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kPwmMaxFreqHz</definition>
+        <argsstring></argsstring>
+        <name>kPwmMaxFreqHz</name>
+        <qualifiedname>hf::stm32::kPwmMaxFreqHz</qualifiedname>
+        <initializer>= 1000000</initializer>
+        <briefdescription>
+<para>PWM limits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="114" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1acc1e8c15aa805d66cc43df0d5296c331" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kPwmMinFreqHz</definition>
+        <argsstring></argsstring>
+        <name>kPwmMinFreqHz</name>
+        <qualifiedname>hf::stm32::kPwmMinFreqHz</qualifiedname>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="115" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a884148c9c1481a59ee0d015b16544e10" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t hf::stm32::kPwmMaxResolution</definition>
+        <argsstring></argsstring>
+        <name>kPwmMaxResolution</name>
+        <qualifiedname>hf::stm32::kPwmMaxResolution</qualifiedname>
+        <initializer>= 65535</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="116" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1ae55f33ff75ca49a8499770cf3d5f00ac" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf::stm32::kPwmMaxChannelsPerTimer</definition>
+        <argsstring></argsstring>
+        <name>kPwmMaxChannelsPerTimer</name>
+        <qualifiedname>hf::stm32::kPwmMaxChannelsPerTimer</qualifiedname>
+        <initializer>= 4</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="117" column="26" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a37814b961258050f1f5fd87ed3b0b7b4" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kCanMaxBaudRate</definition>
+        <argsstring></argsstring>
+        <name>kCanMaxBaudRate</name>
+        <qualifiedname>hf::stm32::kCanMaxBaudRate</qualifiedname>
+        <initializer>= 1000000</initializer>
+        <briefdescription>
+<para>CAN limits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="120" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1ac7523a05997b547b0504ef4bb1af3758" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kCanFdMaxBaudRate</definition>
+        <argsstring></argsstring>
+        <name>kCanFdMaxBaudRate</name>
+        <qualifiedname>hf::stm32::kCanFdMaxBaudRate</qualifiedname>
+        <initializer>= 8000000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="121" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a2de26b6fc21ce6445b5880aa07c8dc62" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t hf::stm32::kCanDefaultQueueSize</definition>
+        <argsstring></argsstring>
+        <name>kCanDefaultQueueSize</name>
+        <qualifiedname>hf::stm32::kCanDefaultQueueSize</qualifiedname>
+        <initializer>= 16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="122" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a905b1a4375d157c96659237e3c7d0b6f" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t hf::stm32::kNvsMaxKeyLength</definition>
+        <argsstring></argsstring>
+        <name>kNvsMaxKeyLength</name>
+        <qualifiedname>hf::stm32::kNvsMaxKeyLength</qualifiedname>
+        <initializer>= 64</initializer>
+        <briefdescription>
+<para>Flash/NVS limits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="125" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1af32804f7a4b93277562b58b6a5afb7fe" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t hf::stm32::kNvsMaxValueSize</definition>
+        <argsstring></argsstring>
+        <name>kNvsMaxValueSize</name>
+        <qualifiedname>hf::stm32::kNvsMaxValueSize</qualifiedname>
+        <initializer>= 4096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="126" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a702ee715fcc5e3015199113a863049ef" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr size_t</type>
+        <definition>constexpr size_t hf::stm32::kNvsDefaultSectorSize</definition>
+        <argsstring></argsstring>
+        <name>kNvsDefaultSectorSize</name>
+        <qualifiedname>hf::stm32::kNvsDefaultSectorSize</qualifiedname>
+        <initializer>= 4096</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="127" column="25" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1ac20fa1fa4a314c7fae9b20fc8a85b72b" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float hf::stm32::kTempSensorMinC</definition>
+        <argsstring></argsstring>
+        <name>kTempSensorMinC</name>
+        <qualifiedname>hf::stm32::kTempSensorMinC</qualifiedname>
+        <initializer>= -40.0f</initializer>
+        <briefdescription>
+<para>Temperature sensor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="130" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a0824d87087b3e050483f78fa3e623caf" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float hf::stm32::kTempSensorMaxC</definition>
+        <argsstring></argsstring>
+        <name>kTempSensorMaxC</name>
+        <qualifiedname>hf::stm32::kTempSensorMaxC</qualifiedname>
+        <initializer>= 125.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="131" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a8250ae9d7e4e88aed2dee7e2f7a0889e" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr float</type>
+        <definition>constexpr float hf::stm32::kTempSensorTypAccuracyC</definition>
+        <argsstring></argsstring>
+        <name>kTempSensorTypAccuracyC</name>
+        <qualifiedname>hf::stm32::kTempSensorTypAccuracyC</qualifiedname>
+        <initializer>= 1.5f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="132" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a5e1bc34db84044fc0347de2e79f44000" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kLoggerMaxMessageLen</definition>
+        <argsstring></argsstring>
+        <name>kLoggerMaxMessageLen</name>
+        <qualifiedname>hf::stm32::kLoggerMaxMessageLen</qualifiedname>
+        <initializer>= 256</initializer>
+        <briefdescription>
+<para>Logger. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="135" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacehf_1_1stm32_1a8ed4dda53450f0286fccd4199217a568" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>constexpr hf_u32_t hf::stm32::kLoggerDefaultBufferSize</definition>
+        <argsstring></argsstring>
+        <name>kLoggerDefaultBufferSize</name>
+        <qualifiedname>hf::stm32::kLoggerDefaultBufferSize</qualifiedname>
+        <initializer>= 1024</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="136" column="27" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespacehf_1_1stm32_1a745a3dec91a4d6ed4513b0b86276ab5e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+        <definition>constexpr hf_pin_num_t hf::stm32::EncodePin</definition>
+        <argsstring>(GpioPort port, hf_u8_t pin) noexcept</argsstring>
+        <name>EncodePin</name>
+        <qualifiedname>hf::stm32::EncodePin</qualifiedname>
+        <param>
+          <type><ref refid="namespacehf_1_1stm32_1a81c3784e1ba0af2272a1cef215e5ee49" kindref="member">GpioPort</ref></type>
+          <declname>port</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Encode (port, pin) → hf_pin_num_t. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="158" column="24" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf_1_1stm32_1a6d5e0f8265882f9315391a8326dfda78" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf::stm32::DecodePinPort</definition>
+        <argsstring>(hf_pin_num_t pin) noexcept</argsstring>
+        <name>DecodePinPort</name>
+        <qualifiedname>hf::stm32::DecodePinPort</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Decode hf_pin_num_t → port index. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="163" column="19" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="163" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf_1_1stm32_1aa73df5bba78bee3035c30ed33183c612" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>constexpr hf_u8_t hf::stm32::DecodePinIndex</definition>
+        <argsstring>(hf_pin_num_t pin) noexcept</argsstring>
+        <name>DecodePinIndex</name>
+        <qualifiedname>hf::stm32::DecodePinIndex</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Decode hf_pin_num_t → pin within port (0-15) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="168" column="19" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="168" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf_1_1stm32_1ab540277931da12279892e8463c083a16" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr <ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>constexpr hf_u16_t hf::stm32::DecodePinMask</definition>
+        <argsstring>(hf_pin_num_t pin) noexcept</argsstring>
+        <name>DecodePinMask</name>
+        <qualifiedname>hf::stm32::DecodePinMask</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref></type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Decode hf_pin_num_t → STM32 HAL pin mask (GPIO_PIN_0 .. GPIO_PIN_15) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="173" column="20" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="173" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf_1_1stm32_1aa44c1eabd5f8b4f6a76e841873432bc5" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr <ref refid="namespacehf_1_1stm32_1aae908749bc986cae79f7b0240fa24fce" kindref="member">HalStatus</ref></type>
+        <definition>constexpr HalStatus hf::stm32::ToHalStatus</definition>
+        <argsstring>(hf_u32_t raw_status) noexcept</argsstring>
+        <name>ToHalStatus</name>
+        <qualifiedname>hf::stm32::ToHalStatus</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>raw_status</declname>
+        </param>
+        <briefdescription>
+<para>Convert raw HAL_StatusTypeDef to our enum. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="521" column="21" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="521" bodyend="529"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacehf_1_1stm32_1a61d8ada18ba35572dbf8fedc4d96501f" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>constexpr bool</type>
+        <definition>constexpr bool hf::stm32::IsHalOk</definition>
+        <argsstring>(hf_u32_t raw_status) noexcept</argsstring>
+        <name>IsHalOk</name>
+        <qualifiedname>hf::stm32::IsHalOk</qualifiedname>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>raw_status</declname>
+        </param>
+        <briefdescription>
+<para>Check if a raw HAL status indicates success. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="532" column="16" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="532" bodyend="534"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTypes.h" line="70" column="1"/>
+  </compounddef>
+</doxygen>

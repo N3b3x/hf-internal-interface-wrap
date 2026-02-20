@@ -101,7 +101,7 @@ $(function(){initNavTree('structhf__spi__bus__config__t.html',''); initResizable
 </div><!--header-->
 <div class="contents">
 
-<p>Platform-agnostic SPI bus configuration structure for ESP32.  
+<p>Platform-agnostic SPI bus configuration for STM32.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="EspTypes__SPI_8h_source.html">EspTypes_SPI.h</a>&gt;</code></p>
@@ -110,6 +110,10 @@ $(function(){initNavTree('structhf__spi__bus__config__t.html',''); initResizable
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a04d96acbe1d41f33abb987ebebbc5b51" id="r_a04d96acbe1d41f33abb987ebebbc5b51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04d96acbe1d41f33abb987ebebbc5b51">hf_spi_bus_config_t</a> () noexcept</td></tr>
 <tr class="separator:a04d96acbe1d41f33abb987ebebbc5b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d96acbe1d41f33abb987ebebbc5b51" id="r_a04d96acbe1d41f33abb987ebebbc5b51"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04d96acbe1d41f33abb987ebebbc5b51">hf_spi_bus_config_t</a> () noexcept</td></tr>
+<tr class="separator:a04d96acbe1d41f33abb987ebebbc5b51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec822fdfa0d2a4dfc6b2a4632aa3da59" id="r_aec822fdfa0d2a4dfc6b2a4632aa3da59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec822fdfa0d2a4dfc6b2a4632aa3da59">hf_spi_bus_config_t</a> (SPI_HandleTypeDef *handle, <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> <a class="el" href="#a1a89b70d19c0f6aa437a27ce9b4dd98b">timeout_ms</a>=1000, bool dma=false) noexcept</td></tr>
+<tr class="separator:aec822fdfa0d2a4dfc6b2a4632aa3da59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -137,13 +141,23 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a30a9804cc4b3799a4207e669243135ab" id="r_a30a9804cc4b3799a4207e669243135ab"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30a9804cc4b3799a4207e669243135ab">use_iomux</a></td></tr>
 <tr class="memdesc:a30a9804cc4b3799a4207e669243135ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use IOMUX for better performance.  <br /></td></tr>
 <tr class="separator:a30a9804cc4b3799a4207e669243135ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bb24c90eae4bccd36ec92595fe70983" id="r_a4bb24c90eae4bccd36ec92595fe70983"><td class="memItemLeft" align="right" valign="top">SPI_HandleTypeDef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4bb24c90eae4bccd36ec92595fe70983">hal_handle</a></td></tr>
+<tr class="memdesc:a4bb24c90eae4bccd36ec92595fe70983"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to CubeMX-generated SPI handle.  <br /></td></tr>
+<tr class="separator:a4bb24c90eae4bccd36ec92595fe70983"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a7763fbcd5664393719182461c82e9b" id="r_a8a7763fbcd5664393719182461c82e9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8a7763fbcd5664393719182461c82e9b">default_timeout_ms</a></td></tr>
+<tr class="memdesc:a8a7763fbcd5664393719182461c82e9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default timeout (ms)  <br /></td></tr>
+<tr class="separator:a8a7763fbcd5664393719182461c82e9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac41e2834d780abb61584372642693e0e" id="r_ac41e2834d780abb61584372642693e0e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac41e2834d780abb61584372642693e0e">use_dma</a></td></tr>
+<tr class="memdesc:ac41e2834d780abb61584372642693e0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use DMA transfers when available.  <br /></td></tr>
+<tr class="separator:ac41e2834d780abb61584372642693e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Platform-agnostic SPI bus configuration structure for ESP32. </p>
+<div class="textblock"><p>Platform-agnostic SPI bus configuration for STM32. </p>
+<p>Platform-agnostic SPI bus configuration structure for ESP32.</p>
 <p>This structure provides all configuration options for initializing an SPI bus on ESP32 platforms, including DMA, IOMUX, and advanced timing options. All fields use project types for portability. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a04d96acbe1d41f33abb987ebebbc5b51" name="a04d96acbe1d41f33abb987ebebbc5b51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04d96acbe1d41f33abb987ebebbc5b51">&#9670;&#160;</a></span>hf_spi_bus_config_t()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a04d96acbe1d41f33abb987ebebbc5b51">&#9670;&#160;</a></span>hf_spi_bus_config_t() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -167,6 +181,65 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a04d96acbe1d41f33abb987ebebbc5b51" name="a04d96acbe1d41f33abb987ebebbc5b51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04d96acbe1d41f33abb987ebebbc5b51">&#9670;&#160;</a></span>hf_spi_bus_config_t() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hf_spi_bus_config_t::hf_spi_bus_config_t </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec822fdfa0d2a4dfc6b2a4632aa3da59" name="aec822fdfa0d2a4dfc6b2a4632aa3da59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec822fdfa0d2a4dfc6b2a4632aa3da59">&#9670;&#160;</a></span>hf_spi_bus_config_t() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hf_spi_bus_config_t::hf_spi_bus_config_t </td>
+          <td>(</td>
+          <td class="paramtype">SPI_HandleTypeDef *</td>          <td class="paramname"><span class="paramname"><em>handle</em>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a></td>          <td class="paramname"><span class="paramname"><em>timeout_ms</em><span class="paramdefsep"> = </span><span class="paramdefval">1000</span>, </span></td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>dma</em><span class="paramdefsep"> = </span><span class="paramdefval">false</span></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a id="a6b4b995bf3583a1569714b655a4f46b7" name="a6b4b995bf3583a1569714b655a4f46b7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6b4b995bf3583a1569714b655a4f46b7">&#9670;&#160;</a></span>clock_speed_hz</h2>
@@ -184,6 +257,22 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a8a7763fbcd5664393719182461c82e9b" name="a8a7763fbcd5664393719182461c82e9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a7763fbcd5664393719182461c82e9b">&#9670;&#160;</a></span>default_timeout_ms</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> hf_spi_bus_config_t::default_timeout_ms</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Default timeout (ms) </p>
+
+</div>
+</div>
 <a id="a427b68fc1d80cb6358ddcf2f48505805" name="a427b68fc1d80cb6358ddcf2f48505805"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a427b68fc1d80cb6358ddcf2f48505805">&#9670;&#160;</a></span>dma_channel</h2>
 
@@ -198,6 +287,22 @@ Public Attributes</h2></td></tr>
 
 <p>DMA channel (0=auto, 1/2=specific, 0xFF=disabled) </p>
 <p>DMA channel (0=auto, 1/2=specific, 0xFF=disabled) </p>
+
+</div>
+</div>
+<a id="a4bb24c90eae4bccd36ec92595fe70983" name="a4bb24c90eae4bccd36ec92595fe70983"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4bb24c90eae4bccd36ec92595fe70983">&#9670;&#160;</a></span>hal_handle</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SPI_HandleTypeDef* hf_spi_bus_config_t::hal_handle</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pointer to CubeMX-generated SPI handle. </p>
 
 </div>
 </div>
@@ -286,6 +391,22 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="ac41e2834d780abb61584372642693e0e" name="ac41e2834d780abb61584372642693e0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac41e2834d780abb61584372642693e0e">&#9670;&#160;</a></span>use_dma</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hf_spi_bus_config_t::use_dma</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use DMA transfers when available. </p>
+
+</div>
+</div>
 <a id="a30a9804cc4b3799a4207e669243135ab" name="a30a9804cc4b3799a4207e669243135ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a30a9804cc4b3799a4207e669243135ab">&#9670;&#160;</a></span>use_iomux</h2>
 
@@ -303,8 +424,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>inc/mcu/esp32/utils/<a class="el" href="EspTypes__SPI_8h_source.html">EspTypes_SPI.h</a></li>
+<li>inc/mcu/stm32/<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

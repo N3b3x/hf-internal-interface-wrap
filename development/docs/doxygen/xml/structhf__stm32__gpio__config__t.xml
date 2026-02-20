@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__stm32__gpio__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_stm32_gpio_config_t</compoundname>
+    <includes refid="StmTypes_8h" local="no">StmTypes.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__stm32__gpio__config__t_1aa1cbf2b0996df9560baa82011482810c" prot="public" static="no" mutable="no">
+        <type>GPIO_TypeDef *</type>
+        <definition>GPIO_TypeDef* hf_stm32_gpio_config_t::port</definition>
+        <argsstring></argsstring>
+        <name>port</name>
+        <qualifiedname>hf_stm32_gpio_config_t::port</qualifiedname>
+        <briefdescription>
+<para>GPIO port pointer (GPIOA, GPIOB, etc.) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="497" column="18" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="497" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__gpio__config__t_1af233a9943a3b83a304ccbe615b4184e8" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t hf_stm32_gpio_config_t::pin_mask</definition>
+        <argsstring></argsstring>
+        <name>pin_mask</name>
+        <qualifiedname>hf_stm32_gpio_config_t::pin_mask</qualifiedname>
+        <briefdescription>
+<para>GPIO pin mask (GPIO_PIN_0..GPIO_PIN_15) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="498" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="498" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__stm32__gpio__config__t_1a4ab082b616551040144e101b2f1c5c87" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_gpio_config_t::hf_stm32_gpio_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_stm32_gpio_config_t</name>
+        <qualifiedname>hf_stm32_gpio_config_t::hf_stm32_gpio_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="500" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="500" bodyend="500"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__stm32__gpio__config__t_1abd38d682536d92553b32dc2605f63859" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_gpio_config_t::hf_stm32_gpio_config_t</definition>
+        <argsstring>(GPIO_TypeDef *gpio_port, hf_u16_t pin) noexcept</argsstring>
+        <name>hf_stm32_gpio_config_t</name>
+        <qualifiedname>hf_stm32_gpio_config_t::hf_stm32_gpio_config_t</qualifiedname>
+        <param>
+          <type>GPIO_TypeDef *</type>
+          <declname>gpio_port</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="502" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="502" bodyend="503"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>GPIO configuration for STM32 wrapping CubeMX port/pin. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTypes.h" line="496" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="496" bodyend="504"/>
+    <listofallmembers>
+      <member refid="structhf__stm32__gpio__config__t_1a4ab082b616551040144e101b2f1c5c87" prot="public" virt="non-virtual"><scope>hf_stm32_gpio_config_t</scope><name>hf_stm32_gpio_config_t</name></member>
+      <member refid="structhf__stm32__gpio__config__t_1abd38d682536d92553b32dc2605f63859" prot="public" virt="non-virtual"><scope>hf_stm32_gpio_config_t</scope><name>hf_stm32_gpio_config_t</name></member>
+      <member refid="structhf__stm32__gpio__config__t_1af233a9943a3b83a304ccbe615b4184e8" prot="public" virt="non-virtual"><scope>hf_stm32_gpio_config_t</scope><name>pin_mask</name></member>
+      <member refid="structhf__stm32__gpio__config__t_1aa1cbf2b0996df9560baa82011482810c" prot="public" virt="non-virtual"><scope>hf_stm32_gpio_config_t</scope><name>port</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -5,7 +5,7 @@
     <includes refid="StmI2c_8h" local="no">StmI2c.h</includes>
     <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classStmI2cBus_1a0b1e24e2415315eab6f4aa44164e8974" prot="private" static="no" mutable="no">
-        <type>hf_i2c_bus_config_t</type>
+        <type><ref refid="structhf__i2c__bus__config__t" kindref="compound">hf_i2c_bus_config_t</ref></type>
         <definition>hf_i2c_bus_config_t StmI2cBus::config_</definition>
         <argsstring></argsstring>
         <name>config_</name>
@@ -56,7 +56,7 @@
         <name>StmI2cBus</name>
         <qualifiedname>StmI2cBus::StmI2cBus</qualifiedname>
         <param>
-          <type>const hf_i2c_bus_config_t &amp;</type>
+          <type>const <ref refid="structhf__i2c__bus__config__t" kindref="compound">hf_i2c_bus_config_t</ref> &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -210,7 +210,7 @@
         <location file="inc/mcu/stm32/StmI2c.h" line="57" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="69" bodyend="73"/>
       </memberdef>
       <memberdef kind="function" id="classStmI2cBus_1aefde57ad70e9a5e3a63dcdec59a31593" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type>const hf_i2c_bus_config_t &amp;</type>
+        <type>const <ref refid="structhf__i2c__bus__config__t" kindref="compound">hf_i2c_bus_config_t</ref> &amp;</type>
         <definition>const hf_i2c_bus_config_t &amp; StmI2cBus::GetConfig</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetConfig</name>
@@ -229,6 +229,19 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>StmI2cBus</label>
+        <link refid="classStmI2cBus"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hf_i2c_bus_config_t</label>
+        <link refid="structhf__i2c__bus__config__t"/>
+      </node>
+    </collaborationgraph>
     <location file="inc/mcu/stm32/StmI2c.h" line="45" column="1" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="45" bodyend="64"/>
     <listofallmembers>
       <member refid="classStmI2cBus_1a0b1e24e2415315eab6f4aa44164e8974" prot="private" virt="non-virtual"><scope>StmI2cBus</scope><name>config_</name></member>

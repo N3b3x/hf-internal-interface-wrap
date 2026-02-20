@@ -10,6 +10,7 @@
     <innerfile refid="StmPeriodicTimer_8h">StmPeriodicTimer.h</innerfile>
     <innerfile refid="StmSpi_8h">StmSpi.h</innerfile>
     <innerfile refid="StmTemperature_8h">StmTemperature.h</innerfile>
+    <innerfile refid="StmTypes_8h">StmTypes.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

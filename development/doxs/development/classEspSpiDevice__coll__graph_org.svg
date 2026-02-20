@@ -95,7 +95,7 @@
 <!-- Node6 -->
 <g id="Node000006" class="node">
 <title>Node6</title>
-<g id="a_Node000006"><a xlink:href="structhf__spi__bus__config__t.html" target="_top" xlink:title="Platform&#45;agnostic SPI bus configuration structure for ESP32.">
+<g id="a_Node000006"><a xlink:href="structhf__spi__bus__config__t.html" target="_top" xlink:title="Platform&#45;agnostic SPI bus configuration for STM32.">
 <polygon fill="white" stroke="#666666" points="435,-171 298,-171 298,-148 435,-148 435,-171"/>
 <text text-anchor="middle" x="366.5" y="-155.8" font-family="Arial" font-size="14.00">hf_spi_bus_config_t</text>
 </a>
@@ -143,7 +143,7 @@
 <!-- Node8 -->
 <g id="Node000008" class="node">
 <title>Node8</title>
-<g id="a_Node000008"><a xlink:href="structhf__spi__device__config__t.html" target="_top" xlink:title="Platform&#45;agnostic SPI device configuration structure for ESP32.">
+<g id="a_Node000008"><a xlink:href="structhf__spi__device__config__t.html" target="_top" xlink:title="SPI device configuration for STM32.">
 <polygon fill="white" stroke="#666666" points="725.5,-97 571.5,-97 571.5,-74 725.5,-74 725.5,-97"/>
 <text text-anchor="middle" x="648.5" y="-81.8" font-family="Arial" font-size="14.00">hf_spi_device_config_t</text>
 </a>

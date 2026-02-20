@@ -101,7 +101,7 @@ $(function(){initNavTree('structhf__spi__device__config__t.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 
-<p>Platform-agnostic SPI device configuration structure for ESP32.  
+<p>SPI device configuration for STM32.  
  <a href="#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="EspTypes__SPI_8h_source.html">EspTypes_SPI.h</a>&gt;</code></p>
@@ -110,12 +110,14 @@ $(function(){initNavTree('structhf__spi__device__config__t.html',''); initResiza
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab71e2e6448dd897ca1bb7c26da09de4c" id="r_ab71e2e6448dd897ca1bb7c26da09de4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab71e2e6448dd897ca1bb7c26da09de4c">hf_spi_device_config_t</a> () noexcept</td></tr>
 <tr class="separator:ab71e2e6448dd897ca1bb7c26da09de4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab71e2e6448dd897ca1bb7c26da09de4c" id="r_ab71e2e6448dd897ca1bb7c26da09de4c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab71e2e6448dd897ca1bb7c26da09de4c">hf_spi_device_config_t</a> () noexcept</td></tr>
+<tr class="separator:ab71e2e6448dd897ca1bb7c26da09de4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a0a17d3f8f8475cc819d1ced9262a94f9" id="r_a0a17d3f8f8475cc819d1ced9262a94f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a17d3f8f8475cc819d1ced9262a94f9">clock_speed_hz</a></td></tr>
-<tr class="memdesc:a0a17d3f8f8475cc819d1ced9262a94f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device clock speed (Hz)  <br /></td></tr>
-<tr class="separator:a0a17d3f8f8475cc819d1ced9262a94f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd35e62a1f8b8ad3dbbd796119d743cc" id="r_afd35e62a1f8b8ad3dbbd796119d743cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd35e62a1f8b8ad3dbbd796119d743cc">clock_speed_hz</a></td></tr>
+<tr class="memdesc:afd35e62a1f8b8ad3dbbd796119d743cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device clock speed (Hz)  <br /></td></tr>
+<tr class="separator:afd35e62a1f8b8ad3dbbd796119d743cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f5737b1045c78fc5ed7d8f2b6c9c0cf" id="r_a7f5737b1045c78fc5ed7d8f2b6c9c0cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspTypes__SPI_8h.html#aea114d5b636b95dfd58a30f6ad69b776">hf_spi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f5737b1045c78fc5ed7d8f2b6c9c0cf">mode</a></td></tr>
 <tr class="memdesc:a7f5737b1045c78fc5ed7d8f2b6c9c0cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI mode (0-3)  <br /></td></tr>
 <tr class="separator:a7f5737b1045c78fc5ed7d8f2b6c9c0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,13 +166,51 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aad6fdd431b2279d736a773950b4d62d3" id="r_aad6fdd431b2279d736a773950b4d62d3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspTypes__SPI_8h.html#a19e19f7c27d521de0245cb11fd095c64">hf_spi_sampling_point_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad6fdd431b2279d736a773950b4d62d3">sampling_point</a></td></tr>
 <tr class="memdesc:aad6fdd431b2279d736a773950b4d62d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sampling point for data (ESP32C6 specific)  <br /></td></tr>
 <tr class="separator:aad6fdd431b2279d736a773950b4d62d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9392a6919ee46e1e39d5d3606ce8828" id="r_aa9392a6919ee46e1e39d5d3606ce8828"><td class="memItemLeft" align="right" valign="top"><a class="el" href="StmTypes_8h.html#af8e3d687e7b582925b62029f026625f9">hf_stm32_spi_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9392a6919ee46e1e39d5d3606ce8828">mode</a></td></tr>
+<tr class="memdesc:aa9392a6919ee46e1e39d5d3606ce8828"><td class="mdescLeft">&#160;</td><td class="mdescRight">SPI mode (informational — set in CubeMX)  <br /></td></tr>
+<tr class="separator:aa9392a6919ee46e1e39d5d3606ce8828"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74b7447d47d3b9dfb732739e82e05b6c" id="r_a74b7447d47d3b9dfb732739e82e05b6c"><td class="memItemLeft" align="right" valign="top">GPIO_TypeDef *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74b7447d47d3b9dfb732739e82e05b6c">cs_port</a></td></tr>
+<tr class="memdesc:a74b7447d47d3b9dfb732739e82e05b6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">CS GPIO port (e.g., GPIOA)  <br /></td></tr>
+<tr class="separator:a74b7447d47d3b9dfb732739e82e05b6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da8a2c0078a8906e44588b02c5e7da5" id="r_a3da8a2c0078a8906e44588b02c5e7da5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3da8a2c0078a8906e44588b02c5e7da5">cs_pin</a></td></tr>
+<tr class="memdesc:a3da8a2c0078a8906e44588b02c5e7da5"><td class="mdescLeft">&#160;</td><td class="mdescRight">CS GPIO pin mask (e.g., GPIO_PIN_4)  <br /></td></tr>
+<tr class="separator:a3da8a2c0078a8906e44588b02c5e7da5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49f0df49a1753c32b1a6cf4d1bf2c3d2" id="r_a49f0df49a1753c32b1a6cf4d1bf2c3d2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49f0df49a1753c32b1a6cf4d1bf2c3d2">cs_active_low</a></td></tr>
+<tr class="memdesc:a49f0df49a1753c32b1a6cf4d1bf2c3d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">CS active low (default: true)  <br /></td></tr>
+<tr class="separator:a49f0df49a1753c32b1a6cf4d1bf2c3d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Platform-agnostic SPI device configuration structure for ESP32. </p>
+<div class="textblock"><p>SPI device configuration for STM32. </p>
+<p>Platform-agnostic SPI device configuration structure for ESP32.</p>
 <p>This structure provides all configuration options for registering a device on an SPI bus, including clock, mode, CS, queue, DMA, callbacks, and advanced ESP-IDF v5.5+ features. All fields use project types for portability. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab71e2e6448dd897ca1bb7c26da09de4c" name="ab71e2e6448dd897ca1bb7c26da09de4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab71e2e6448dd897ca1bb7c26da09de4c">&#9670;&#160;</a></span>hf_spi_device_config_t()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab71e2e6448dd897ca1bb7c26da09de4c">&#9670;&#160;</a></span>hf_spi_device_config_t() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hf_spi_device_config_t::hf_spi_device_config_t </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab71e2e6448dd897ca1bb7c26da09de4c" name="ab71e2e6448dd897ca1bb7c26da09de4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab71e2e6448dd897ca1bb7c26da09de4c">&#9670;&#160;</a></span>hf_spi_device_config_t() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,19 +269,20 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a0a17d3f8f8475cc819d1ced9262a94f9" name="a0a17d3f8f8475cc819d1ced9262a94f9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a17d3f8f8475cc819d1ced9262a94f9">&#9670;&#160;</a></span>clock_speed_hz</h2>
+<a id="afd35e62a1f8b8ad3dbbd796119d743cc" name="afd35e62a1f8b8ad3dbbd796119d743cc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd35e62a1f8b8ad3dbbd796119d743cc">&#9670;&#160;</a></span>clock_speed_hz</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">hf_spi_device_config_t::clock_speed_hz</td>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> hf_spi_device_config_t::clock_speed_hz</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Device clock speed (Hz) </p>
+<p>Clock speed (informational — set in CubeMX)</p>
 <p>Device clock speed in Hz </p>
 
 </div>
@@ -260,6 +301,22 @@ Public Attributes</h2></td></tr>
 
 <p>Command phase bits (0-16) </p>
 <p>Command phase bits (0-16) </p>
+
+</div>
+</div>
+<a id="a49f0df49a1753c32b1a6cf4d1bf2c3d2" name="a49f0df49a1753c32b1a6cf4d1bf2c3d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49f0df49a1753c32b1a6cf4d1bf2c3d2">&#9670;&#160;</a></span>cs_active_low</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hf_spi_device_config_t::cs_active_low</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>CS active low (default: true) </p>
 
 </div>
 </div>
@@ -298,7 +355,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="af85f2826210e7f6d834a654b92c32470" name="af85f2826210e7f6d834a654b92c32470"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af85f2826210e7f6d834a654b92c32470">&#9670;&#160;</a></span>cs_pin</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af85f2826210e7f6d834a654b92c32470">&#9670;&#160;</a></span>cs_pin <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,6 +368,38 @@ Public Attributes</h2></td></tr>
 
 <p>CS pin (or -1 for software CS) </p>
 <p>CS pin number (or -1 for software CS) </p>
+
+</div>
+</div>
+<a id="a3da8a2c0078a8906e44588b02c5e7da5" name="a3da8a2c0078a8906e44588b02c5e7da5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3da8a2c0078a8906e44588b02c5e7da5">&#9670;&#160;</a></span>cs_pin <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="HardwareTypes_8h.html#acf5c4ff165be8c4d15943c1d65daa1c0">hf_u16_t</a> hf_spi_device_config_t::cs_pin</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>CS GPIO pin mask (e.g., GPIO_PIN_4) </p>
+
+</div>
+</div>
+<a id="a74b7447d47d3b9dfb732739e82e05b6c" name="a74b7447d47d3b9dfb732739e82e05b6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b7447d47d3b9dfb732739e82e05b6c">&#9670;&#160;</a></span>cs_port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GPIO_TypeDef* hf_spi_device_config_t::cs_port</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>CS GPIO port (e.g., GPIOA) </p>
 
 </div>
 </div>
@@ -383,7 +472,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <a id="a7f5737b1045c78fc5ed7d8f2b6c9c0cf" name="a7f5737b1045c78fc5ed7d8f2b6c9c0cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f5737b1045c78fc5ed7d8f2b6c9c0cf">&#9670;&#160;</a></span>mode</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f5737b1045c78fc5ed7d8f2b6c9c0cf">&#9670;&#160;</a></span>mode <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -396,6 +485,22 @@ Public Attributes</h2></td></tr>
 
 <p>SPI mode (0-3) </p>
 <p>SPI mode (0-3) </p>
+
+</div>
+</div>
+<a id="aa9392a6919ee46e1e39d5d3606ce8828" name="aa9392a6919ee46e1e39d5d3606ce8828"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9392a6919ee46e1e39d5d3606ce8828">&#9670;&#160;</a></span>mode <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="StmTypes_8h.html#af8e3d687e7b582925b62029f026625f9">hf_stm32_spi_mode_t</a> hf_spi_device_config_t::mode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SPI mode (informational — set in CubeMX) </p>
 
 </div>
 </div>
@@ -483,8 +588,9 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>inc/mcu/esp32/utils/<a class="el" href="EspTypes__SPI_8h_source.html">EspTypes_SPI.h</a></li>
+<li>inc/mcu/stm32/<a class="el" href="StmTypes_8h_source.html">StmTypes.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

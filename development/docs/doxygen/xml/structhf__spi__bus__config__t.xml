@@ -131,6 +131,51 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="158" column="8" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="158" bodyend="-1"/>
       </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1a4bb24c90eae4bccd36ec92595fe70983" prot="public" static="no" mutable="no">
+        <type>SPI_HandleTypeDef *</type>
+        <definition>SPI_HandleTypeDef* hf_spi_bus_config_t::hal_handle</definition>
+        <argsstring></argsstring>
+        <name>hal_handle</name>
+        <qualifiedname>hf_spi_bus_config_t::hal_handle</qualifiedname>
+        <briefdescription>
+<para>Pointer to CubeMX-generated SPI handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="291" column="23" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1a8a7763fbcd5664393719182461c82e9b" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t hf_spi_bus_config_t::default_timeout_ms</definition>
+        <argsstring></argsstring>
+        <name>default_timeout_ms</name>
+        <qualifiedname>hf_spi_bus_config_t::default_timeout_ms</qualifiedname>
+        <briefdescription>
+<para>Default timeout (ms) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="292" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="292" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__spi__bus__config__t_1ac41e2834d780abb61584372642693e0e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hf_spi_bus_config_t::use_dma</definition>
+        <argsstring></argsstring>
+        <name>use_dma</name>
+        <qualifiedname>hf_spi_bus_config_t::use_dma</qualifiedname>
+        <briefdescription>
+<para>Use DMA transfers when available. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="293" column="10" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="293" bodyend="-1"/>
+      </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
@@ -147,23 +192,71 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="160" column="3" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="160" bodyend="163"/>
       </memberdef>
+      <memberdef kind="function" id="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_spi_bus_config_t::hf_spi_bus_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_spi_bus_config_t</name>
+        <qualifiedname>hf_spi_bus_config_t::hf_spi_bus_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="295" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="295" bodyend="296"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__spi__bus__config__t_1aec822fdfa0d2a4dfc6b2a4632aa3da59" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_spi_bus_config_t::hf_spi_bus_config_t</definition>
+        <argsstring>(SPI_HandleTypeDef *handle, hf_u32_t timeout_ms=1000, bool dma=false) noexcept</argsstring>
+        <name>hf_spi_bus_config_t</name>
+        <qualifiedname>hf_spi_bus_config_t::hf_spi_bus_config_t</qualifiedname>
+        <param>
+          <type>SPI_HandleTypeDef *</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>1000</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>dma</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="298" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="298" bodyend="301"/>
+      </memberdef>
     </sectiondef>
     <briefdescription>
-<para>Platform-agnostic SPI bus configuration structure for ESP32. </para>
+<para>Platform-agnostic SPI bus configuration for STM32. </para>
     </briefdescription>
     <detaileddescription>
+<para>Platform-agnostic SPI bus configuration structure for ESP32.</para>
 <para>This structure provides all configuration options for initializing an SPI bus on ESP32 platforms, including DMA, IOMUX, and advanced timing options. All fields use project types for portability. </para>
     </detaileddescription>
     <location file="inc/mcu/esp32/utils/EspTypes_SPI.h" line="150" column="1" bodyfile="inc/mcu/esp32/utils/EspTypes_SPI.h" bodystart="150" bodyend="164"/>
     <listofallmembers>
       <member refid="structhf__spi__bus__config__t_1a6b4b995bf3583a1569714b655a4f46b7" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>clock_speed_hz</name></member>
+      <member refid="structhf__spi__bus__config__t_1a8a7763fbcd5664393719182461c82e9b" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>default_timeout_ms</name></member>
       <member refid="structhf__spi__bus__config__t_1a427b68fc1d80cb6358ddcf2f48505805" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>dma_channel</name></member>
+      <member refid="structhf__spi__bus__config__t_1a4bb24c90eae4bccd36ec92595fe70983" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>hal_handle</name></member>
       <member refid="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>hf_spi_bus_config_t</name></member>
+      <member refid="structhf__spi__bus__config__t_1a04d96acbe1d41f33abb987ebebbc5b51" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>hf_spi_bus_config_t</name></member>
+      <member refid="structhf__spi__bus__config__t_1aec822fdfa0d2a4dfc6b2a4632aa3da59" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>hf_spi_bus_config_t</name></member>
       <member refid="structhf__spi__bus__config__t_1ad5ae43f8e8ed48d17667740103caf5cf" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>host</name></member>
       <member refid="structhf__spi__bus__config__t_1aab37725899b984d697d2c4e1b20012a7" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>miso_pin</name></member>
       <member refid="structhf__spi__bus__config__t_1a56f13363406cc28437c24c8745d835ed" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>mosi_pin</name></member>
       <member refid="structhf__spi__bus__config__t_1a2447a1a31cf698aead3d668f59ffe162" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>sclk_pin</name></member>
       <member refid="structhf__spi__bus__config__t_1a1a89b70d19c0f6aa437a27ce9b4dd98b" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>timeout_ms</name></member>
+      <member refid="structhf__spi__bus__config__t_1ac41e2834d780abb61584372642693e0e" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>use_dma</name></member>
       <member refid="structhf__spi__bus__config__t_1a30a9804cc4b3799a4207e669243135ab" prot="public" virt="non-virtual"><scope>hf_spi_bus_config_t</scope><name>use_iomux</name></member>
     </listofallmembers>
   </compounddef>

@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="structhf__stm32__adc__config__t" kind="struct" language="C++" prot="public">
+    <compoundname>hf_stm32_adc_config_t</compoundname>
+    <includes refid="StmTypes_8h" local="no">StmTypes.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structhf__stm32__adc__config__t_1a39e73c5e8ecb001d4cd33b9993569839" prot="public" static="no" mutable="no">
+        <type>ADC_HandleTypeDef *</type>
+        <definition>ADC_HandleTypeDef* hf_stm32_adc_config_t::hal_handle</definition>
+        <argsstring></argsstring>
+        <name>hal_handle</name>
+        <qualifiedname>hf_stm32_adc_config_t::hal_handle</qualifiedname>
+        <briefdescription>
+<para>Pointer to CubeMX-generated ADC handle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="432" column="23" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="432" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__adc__config__t_1a2f97ce3ba37a917b7af6711362120607" prot="public" static="no" mutable="no">
+        <type><ref refid="StmTypes_8h_1a827c04686b48b771092c229dad6ae4c6" kindref="member">hf_stm32_adc_resolution_t</ref></type>
+        <definition>hf_stm32_adc_resolution_t hf_stm32_adc_config_t::resolution</definition>
+        <argsstring></argsstring>
+        <name>resolution</name>
+        <qualifiedname>hf_stm32_adc_config_t::resolution</qualifiedname>
+        <briefdescription>
+<para>ADC resolution. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="433" column="31" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="433" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__adc__config__t_1aacd86ce8118085387d9f3338d114be72" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float hf_stm32_adc_config_t::vref_v</definition>
+        <argsstring></argsstring>
+        <name>vref_v</name>
+        <qualifiedname>hf_stm32_adc_config_t::vref_v</qualifiedname>
+        <briefdescription>
+<para>Reference voltage (V) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="434" column="11" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="434" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structhf__stm32__adc__config__t_1a4a0ab19bfa783ca349951fca944d85eb" prot="public" static="no" mutable="no">
+        <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+        <definition>hf_u8_t hf_stm32_adc_config_t::num_channels</definition>
+        <argsstring></argsstring>
+        <name>num_channels</name>
+        <qualifiedname>hf_stm32_adc_config_t::num_channels</qualifiedname>
+        <briefdescription>
+<para>Number of configured channels. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="435" column="13" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="435" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="structhf__stm32__adc__config__t_1a7c1d88e5b70a0d9c62391ede24c215bc" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_adc_config_t::hf_stm32_adc_config_t</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>hf_stm32_adc_config_t</name>
+        <qualifiedname>hf_stm32_adc_config_t::hf_stm32_adc_config_t</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="437" column="5" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="437" bodyend="441"/>
+      </memberdef>
+      <memberdef kind="function" id="structhf__stm32__adc__config__t_1a8474c8aa3de9c844743e8f0414e8c726" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>hf_stm32_adc_config_t::hf_stm32_adc_config_t</definition>
+        <argsstring>(ADC_HandleTypeDef *handle, hf_u8_t channels=1, float vref=hf::stm32::kAdcDefaultVrefV) noexcept</argsstring>
+        <name>hf_stm32_adc_config_t</name>
+        <qualifiedname>hf_stm32_adc_config_t::hf_stm32_adc_config_t</qualifiedname>
+        <param>
+          <type>ADC_HandleTypeDef *</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
+          <declname>channels</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vref</declname>
+          <defval><ref refid="namespacehf_1_1stm32_1a0792eb14ab6261a885c4455ab386a7fc" kindref="member">hf::stm32::kAdcDefaultVrefV</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTypes.h" line="443" column="14" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="443" bodyend="449"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>ADC configuration for STM32. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/mcu/stm32/StmTypes.h" line="431" column="1" bodyfile="inc/mcu/stm32/StmTypes.h" bodystart="431" bodyend="450"/>
+    <listofallmembers>
+      <member refid="structhf__stm32__adc__config__t_1a39e73c5e8ecb001d4cd33b9993569839" prot="public" virt="non-virtual"><scope>hf_stm32_adc_config_t</scope><name>hal_handle</name></member>
+      <member refid="structhf__stm32__adc__config__t_1a7c1d88e5b70a0d9c62391ede24c215bc" prot="public" virt="non-virtual"><scope>hf_stm32_adc_config_t</scope><name>hf_stm32_adc_config_t</name></member>
+      <member refid="structhf__stm32__adc__config__t_1a8474c8aa3de9c844743e8f0414e8c726" prot="public" virt="non-virtual"><scope>hf_stm32_adc_config_t</scope><name>hf_stm32_adc_config_t</name></member>
+      <member refid="structhf__stm32__adc__config__t_1a4a0ab19bfa783ca349951fca944d85eb" prot="public" virt="non-virtual"><scope>hf_stm32_adc_config_t</scope><name>num_channels</name></member>
+      <member refid="structhf__stm32__adc__config__t_1a2f97ce3ba37a917b7af6711362120607" prot="public" virt="non-virtual"><scope>hf_stm32_adc_config_t</scope><name>resolution</name></member>
+      <member refid="structhf__stm32__adc__config__t_1aacd86ce8118085387d9f3338d114be72" prot="public" virt="non-virtual"><scope>hf_stm32_adc_config_t</scope><name>vref_v</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

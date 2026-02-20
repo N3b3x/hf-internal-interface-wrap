@@ -16,5 +16,6 @@ var searchData=
   ['stmspi_2ecpp_13',['StmSpi.cpp',['../StmSpi_8cpp.html',1,'']]],
   ['stmspi_2eh_14',['StmSpi.h',['../StmSpi_8h.html',1,'']]],
   ['stmtemperature_2ecpp_15',['StmTemperature.cpp',['../StmTemperature_8cpp.html',1,'']]],
-  ['stmtemperature_2eh_16',['StmTemperature.h',['../StmTemperature_8h.html',1,'']]]
+  ['stmtemperature_2eh_16',['StmTemperature.h',['../StmTemperature_8h.html',1,'']]],
+  ['stmtypes_2eh_17',['StmTypes.h',['../StmTypes_8h.html',1,'']]]
 ];

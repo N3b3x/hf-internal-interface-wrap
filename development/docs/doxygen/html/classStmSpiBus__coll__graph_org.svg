@@ -20,7 +20,7 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="structhf__spi__bus__config__t.html" target="_top" xlink:title="Platform&#45;agnostic SPI bus configuration structure for ESP32.">
+<g id="a_Node000002"><a xlink:href="structhf__spi__bus__config__t.html" target="_top" xlink:title="Platform&#45;agnostic SPI bus configuration for STM32.">
 <polygon fill="white" stroke="#666666" points="137,-97 0,-97 0,-74 137,-74 137,-97"/>
 <text text-anchor="middle" x="68.5" y="-81.8" font-family="Arial" font-size="14.00">hf_spi_bus_config_t</text>
 </a>

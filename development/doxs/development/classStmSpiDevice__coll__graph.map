@@ -6,6 +6,6 @@
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="113,44,173,102,170,106,110,47"/>
 <area shape="rect" id="Node000004" href="$structhf__spi__diagnostics__t.html" title="SPI diagnostic information." alt="" coords="193,5,379,36"/>
 <area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="269,49,238,82,209,106,205,102,235,78,265,45"/>
-<area shape="rect" id="Node000005" href="$structhf__spi__device__config__t.html" title="Platform&#45;agnostic SPI device configuration structure for ESP32." alt="" coords="255,104,461,135"/>
+<area shape="rect" id="Node000005" href="$structhf__spi__device__config__t.html" title="SPI device configuration for STM32." alt="" coords="255,104,461,135"/>
 <area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="338,147,286,204,282,201,334,143"/>
 </map>
