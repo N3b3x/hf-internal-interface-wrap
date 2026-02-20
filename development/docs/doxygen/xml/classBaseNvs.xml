@@ -3,6 +3,7 @@
   <compounddef id="classBaseNvs" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BaseNvs</compoundname>
     <derivedcompoundref refid="classEspNvs" prot="public" virt="non-virtual">EspNvs</derivedcompoundref>
+    <derivedcompoundref refid="classStmNvs" prot="public" virt="non-virtual">StmNvs</derivedcompoundref>
     <includes refid="BaseNvs_8h" local="no">BaseNvs.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" prot="protected" static="no" mutable="no">
@@ -179,6 +180,7 @@
         <name>Initialize</name>
         <qualifiedname>BaseNvs::Initialize</qualifiedname>
         <reimplementedby refid="classEspNvs_1a1f1f5efa535235c16318008d08328f76">Initialize</reimplementedby>
+        <reimplementedby refid="classStmNvs_1aaf64aac4ece7c73b0815e28a749a1b0d">Initialize</reimplementedby>
         <briefdescription>
 <para>Initialize the storage system and open the namespace. </para>
         </briefdescription>
@@ -198,6 +200,7 @@
         <name>Deinitialize</name>
         <qualifiedname>BaseNvs::Deinitialize</qualifiedname>
         <reimplementedby refid="classEspNvs_1a685e74c68591ad27fa0280a1f5244702">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmNvs_1aa3c53acfbe0d42730c0b17a218273131">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Deinitialize the storage system and close the namespace. </para>
         </briefdescription>
@@ -217,6 +220,7 @@
         <name>SetU32</name>
         <qualifiedname>BaseNvs::SetU32</qualifiedname>
         <reimplementedby refid="classEspNvs_1a1d18927cd799f168d9fa38bc86438427">SetU32</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a972ac2246d561ede81b3855ea1832122">SetU32</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -261,6 +265,7 @@
         <name>GetU32</name>
         <qualifiedname>BaseNvs::GetU32</qualifiedname>
         <reimplementedby refid="classEspNvs_1a78016e40f65ad0ea03cda37b2cf05dfa">GetU32</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a24f68fe26b2344cbd2bf817095407a45">GetU32</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -305,6 +310,7 @@
         <name>SetString</name>
         <qualifiedname>BaseNvs::SetString</qualifiedname>
         <reimplementedby refid="classEspNvs_1a97988762e90b76b94962a3d1758109c5">SetString</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a0b4bf4ceacb6f2011bc0a0713415fc70">SetString</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -349,6 +355,7 @@
         <name>GetString</name>
         <qualifiedname>BaseNvs::GetString</qualifiedname>
         <reimplementedby refid="classEspNvs_1ac3813f7d3fd39f5493f1a8042fddcf1b">GetString</reimplementedby>
+        <reimplementedby refid="classStmNvs_1ad2f72c91b0926ad9d6390fb1fb9172f9">GetString</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -418,6 +425,7 @@
         <name>SetBlob</name>
         <qualifiedname>BaseNvs::SetBlob</qualifiedname>
         <reimplementedby refid="classEspNvs_1a1aa18744b55b8b15dcc9c35b7867635f">SetBlob</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a4c90c0fadacf110413b37debf4effe0e">SetBlob</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -474,6 +482,7 @@
         <name>GetBlob</name>
         <qualifiedname>BaseNvs::GetBlob</qualifiedname>
         <reimplementedby refid="classEspNvs_1aba531704bb6f31154c298342853b715c">GetBlob</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a7692514b5c591e201d9e84ea7a9900b6">GetBlob</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -543,6 +552,7 @@
         <name>EraseKey</name>
         <qualifiedname>BaseNvs::EraseKey</qualifiedname>
         <reimplementedby refid="classEspNvs_1a980345dc9dc0d96627b6ed26581f7cf8">EraseKey</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a6c3d4484e78bf018fff0062902518e26">EraseKey</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -575,6 +585,7 @@
         <name>Commit</name>
         <qualifiedname>BaseNvs::Commit</qualifiedname>
         <reimplementedby refid="classEspNvs_1a2ac83396eb5f21034a028331c600ad9f">Commit</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a4927951d09db18d392b6b6593809b0ac">Commit</reimplementedby>
         <briefdescription>
 <para>Commit any pending writes to non-volatile storage. </para>
         </briefdescription>
@@ -594,6 +605,7 @@
         <name>KeyExists</name>
         <qualifiedname>BaseNvs::KeyExists</qualifiedname>
         <reimplementedby refid="classEspNvs_1a709425e0f37afdeb516447e43d000974">KeyExists</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a8a8abfb797fa5369d790a1e74501ec26">KeyExists</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -626,6 +638,7 @@
         <name>GetSize</name>
         <qualifiedname>BaseNvs::GetSize</qualifiedname>
         <reimplementedby refid="classEspNvs_1a35a38c5e3ef8287b1122c78b2580cf2b">GetSize</reimplementedby>
+        <reimplementedby refid="classStmNvs_1ac2993ecb7b30a7dda594c510d8f533b1">GetSize</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>key</declname>
@@ -688,6 +701,7 @@
         <name>GetDescription</name>
         <qualifiedname>BaseNvs::GetDescription</qualifiedname>
         <reimplementedby refid="classEspNvs_1acf2acb4e099ddff5b25dd1bde8fecff5">GetDescription</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a8dae94d149b877cb11f42860f3506ada">GetDescription</reimplementedby>
         <briefdescription>
 <para>Get description of this storage implementation. </para>
         </briefdescription>
@@ -707,6 +721,7 @@
         <name>GetMaxKeyLength</name>
         <qualifiedname>BaseNvs::GetMaxKeyLength</qualifiedname>
         <reimplementedby refid="classEspNvs_1ae6cb25d9c1e5e90b6701f49e9a6bd884">GetMaxKeyLength</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a65148f056f3bde8f09e618fd8d2a256e">GetMaxKeyLength</reimplementedby>
         <briefdescription>
 <para>Get maximum key length supported. </para>
         </briefdescription>
@@ -726,6 +741,7 @@
         <name>GetMaxValueSize</name>
         <qualifiedname>BaseNvs::GetMaxValueSize</qualifiedname>
         <reimplementedby refid="classEspNvs_1ab0816ed77b7f1e54f645c45a001b17be">GetMaxValueSize</reimplementedby>
+        <reimplementedby refid="classStmNvs_1a958e824edad543dbb63d1bff36a1c019">GetMaxValueSize</reimplementedby>
         <briefdescription>
 <para>Get maximum value size supported. </para>
         </briefdescription>
@@ -931,6 +947,12 @@
       <node id="2">
         <label>EspNvs</label>
         <link refid="classEspNvs"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>StmNvs</label>
+        <link refid="classStmNvs"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

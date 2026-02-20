@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classStmTemperature" kind="class" language="C++" prot="public">
+    <compoundname>StmTemperature</compoundname>
+    <basecompoundref refid="classBaseTemperature" prot="public" virt="non-virtual">BaseTemperature</basecompoundref>
+    <includes refid="StmTemperature_8h" local="no">StmTemperature.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStmTemperature_1af087266daab79e72cb84e9e13bd1a24a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmTemperature::StmTemperature</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>StmTemperature</name>
+        <qualifiedname>StmTemperature::StmTemperature</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="17" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmTemperature_1a8f5ed0c8568d7c5cd199851ba7da359b" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmTemperature::~StmTemperature</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~StmTemperature</name>
+        <qualifiedname>StmTemperature::~StmTemperature</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="18" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmTemperature_1a6d6f95d8acc8e7ebf80314022f6f2eac" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
+        <definition>hf_temp_err_t StmTemperature::GetSensorInfo</definition>
+        <argsstring>(hf_temp_sensor_info_t *info) const noexcept override</argsstring>
+        <name>GetSensorInfo</name>
+        <qualifiedname>StmTemperature::GetSensorInfo</qualifiedname>
+        <reimplements refid="classBaseTemperature_1a8250ed681311b1ae3732919df8d3962a">GetSensorInfo</reimplements>
+        <param>
+          <type><ref refid="structhf__temp__sensor__info__t" kindref="compound">hf_temp_sensor_info_t</ref> *</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+<para>Get sensor information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store sensor information </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="21" column="19" bodyfile="src/mcu/stm32/StmTemperature.cpp" bodystart="22" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmTemperature_1a00eac441e907fd899ac7df305bd1ead6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+        <definition>hf_u32_t StmTemperature::GetCapabilities</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetCapabilities</name>
+        <qualifiedname>StmTemperature::GetCapabilities</qualifiedname>
+        <reimplements refid="classBaseTemperature_1a765c86c7680b43f7d075b9f392188611">GetCapabilities</reimplements>
+        <briefdescription>
+<para>Get sensor capabilities. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Capabilities flags (hf_temp_capabilities_t) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="22" column="14" bodyfile="src/mcu/stm32/StmTemperature.cpp" bodystart="27" bodyend="27"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool StmTemperature::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>StmTemperature::Initialize</qualifiedname>
+        <reimplements refid="classBaseTemperature_1ad19ade5e58bb71af6ae98e8e34d477be">Initialize</reimplements>
+        <briefdescription>
+<para>Platform-specific implementation for initialization. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if initialization successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="26" column="10" bodyfile="src/mcu/stm32/StmTemperature.cpp" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool StmTemperature::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>StmTemperature::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseTemperature_1ac2af8a969cf2c755f52ba302645a4b87">Deinitialize</reimplements>
+        <briefdescription>
+<para>Platform-specific implementation for deinitialization. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if deinitialization successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="27" column="10" bodyfile="src/mcu/stm32/StmTemperature.cpp" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmTemperature_1aec6918308bc56058d12cd1d5dde7aa03" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref></type>
+        <definition>hf_temp_err_t StmTemperature::ReadTemperatureCelsiusImpl</definition>
+        <argsstring>(float *temperature_celsius) noexcept override</argsstring>
+        <name>ReadTemperatureCelsiusImpl</name>
+        <qualifiedname>StmTemperature::ReadTemperatureCelsiusImpl</qualifiedname>
+        <reimplements refid="classBaseTemperature_1af171259d6aa00825f0b8743d2331850e">ReadTemperatureCelsiusImpl</reimplements>
+        <param>
+          <type>float *</type>
+          <declname>temperature_celsius</declname>
+        </param>
+        <briefdescription>
+<para>Platform-specific implementation for reading temperature in Celsius. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>temperature_celsius</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to store temperature value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code (TEMP_SUCCESS on success) </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmTemperature.h" line="28" column="19" bodyfile="src/mcu/stm32/StmTemperature.cpp" bodystart="17" bodyend="20"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>STM32 Temperature sensor — stub implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseTemperature</label>
+        <link refid="classBaseTemperature"/>
+      </node>
+      <node id="1">
+        <label>StmTemperature</label>
+        <link refid="classStmTemperature"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseTemperature</label>
+        <link refid="classBaseTemperature"/>
+      </node>
+      <node id="1">
+        <label>StmTemperature</label>
+        <link refid="classStmTemperature"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/stm32/StmTemperature.h" line="15" column="1" bodyfile="inc/mcu/stm32/StmTemperature.h" bodystart="15" bodyend="29"/>
+    <listofallmembers>
+      <member refid="classBaseTemperature_1a115e5a44b15a1f507cb7c9163d262a5a" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>BaseTemperature</name></member>
+      <member refid="classBaseTemperature_1a7570da5a5b76362a826c760c10bac847" prot="protected" virt="non-virtual"><scope>StmTemperature</scope><name>BaseTemperature</name></member>
+      <member refid="classBaseTemperature_1a4d84a21b7f330d3bc80accbd9f26b1c7" prot="public" virt="virtual"><scope>StmTemperature</scope><name>Calibrate</name></member>
+      <member refid="classBaseTemperature_1a201bfff0c78242bec04cadd6363d7b5d" prot="public" virt="virtual"><scope>StmTemperature</scope><name>CheckHealth</name></member>
+      <member refid="classBaseTemperature_1a65964a104b3cb9b9c737819810f0a20b" prot="protected" virt="non-virtual"><scope>StmTemperature</scope><name>current_state_</name></member>
+      <member refid="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1" prot="protected" virt="virtual"><scope>StmTemperature</scope><name>Deinitialize</name></member>
+      <member refid="classBaseTemperature_1ad0326eb2b71271b06e2eccffe79561cd" prot="public" virt="virtual"><scope>StmTemperature</scope><name>DisableThresholdMonitoring</name></member>
+      <member refid="classBaseTemperature_1a210f2f34d7f356d8ff7f0531031f7856" prot="public" virt="virtual"><scope>StmTemperature</scope><name>EnableThresholdMonitoring</name></member>
+      <member refid="classBaseTemperature_1a015ca3f4802b9a68140531f0175fd1bf" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseTemperature_1ac3e2177be073e991acc4f03da8c2b07d" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>EnsureInitialized</name></member>
+      <member refid="classBaseTemperature_1abbef25249b2e935e8954a150519b2342" prot="public" virt="virtual"><scope>StmTemperature</scope><name>EnterSleepMode</name></member>
+      <member refid="classBaseTemperature_1a52a0318d160c45fdee55b15d7148856c" prot="public" virt="virtual"><scope>StmTemperature</scope><name>ExitSleepMode</name></member>
+      <member refid="classBaseTemperature_1a55f58d0cccee590dd10e55c2668e7f0b" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetCalibrationOffset</name></member>
+      <member refid="classStmTemperature_1a00eac441e907fd899ac7df305bd1ead6" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetCapabilities</name></member>
+      <member refid="classBaseTemperature_1a2634cc03a24c168a4bd5c8f9d2bd5ef8" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseTemperature_1a21d2b3e6c1855f666d5dc2856e9f8cea" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetRange</name></member>
+      <member refid="classBaseTemperature_1a5362eaf0cb2478a4e060d8dfca70f3c8" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetResolution</name></member>
+      <member refid="classStmTemperature_1a6d6f95d8acc8e7ebf80314022f6f2eac" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetSensorInfo</name></member>
+      <member refid="classBaseTemperature_1a000ebd402761b9fd6fbb13f99070eb3a" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>GetState</name></member>
+      <member refid="classBaseTemperature_1a67fdd88218e46666fb74cc5bf561176f" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetStatistics</name></member>
+      <member refid="classBaseTemperature_1a692b8120d0ceb3ae699cd2bd0981b993" prot="public" virt="virtual"><scope>StmTemperature</scope><name>GetThresholds</name></member>
+      <member refid="classBaseTemperature_1ad97ed939d85e2686653d76967c53f790" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>HasCapability</name></member>
+      <member refid="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa" prot="protected" virt="virtual"><scope>StmTemperature</scope><name>Initialize</name></member>
+      <member refid="classBaseTemperature_1a6657e59b1e8c59d68aabe08f276090fe" prot="protected" virt="non-virtual"><scope>StmTemperature</scope><name>initialized_</name></member>
+      <member refid="classBaseTemperature_1a25b8ade43d75916d0d48464cfdcaa6c2" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>IsInitialized</name></member>
+      <member refid="classBaseTemperature_1ab965dfed096914ca4a8e733b17bc978e" prot="public" virt="virtual"><scope>StmTemperature</scope><name>IsMonitoringActive</name></member>
+      <member refid="classBaseTemperature_1a65f6deb4af75c89ae44723015731d195" prot="public" virt="virtual"><scope>StmTemperature</scope><name>IsSleeping</name></member>
+      <member refid="classBaseTemperature_1aadc767ae37c6b15cbdc9571f688ebe97" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>operator=</name></member>
+      <member refid="classBaseTemperature_1a4c7e87e941472fb7ac52f50da519d2ec" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>ReadTemperature</name></member>
+      <member refid="classBaseTemperature_1a830094219d6b9572248927f6d1f2afd3" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>ReadTemperatureCelsius</name></member>
+      <member refid="classStmTemperature_1aec6918308bc56058d12cd1d5dde7aa03" prot="protected" virt="virtual"><scope>StmTemperature</scope><name>ReadTemperatureCelsiusImpl</name></member>
+      <member refid="classBaseTemperature_1a3e90ebd0d1a693c3ecf23cdc437217b6" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>ReadTemperatureFahrenheit</name></member>
+      <member refid="classBaseTemperature_1aeac0184a2d6cafb18917bf3d76c2fa13" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>ReadTemperatureKelvin</name></member>
+      <member refid="classBaseTemperature_1a5c12d4ab74621f885e61c070ab854530" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>ReadTemperatureUnit</name></member>
+      <member refid="classBaseTemperature_1a2be35c2e9f2cd233d77353591bfc3f53" prot="public" virt="virtual"><scope>StmTemperature</scope><name>ResetCalibration</name></member>
+      <member refid="classBaseTemperature_1a21a976418e428078d9ec76521a6ac17b" prot="public" virt="virtual"><scope>StmTemperature</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseTemperature_1a149ff046e0cb000bf0172dce28bc17be" prot="public" virt="virtual"><scope>StmTemperature</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseTemperature_1a0b23a97aea3d8455e458577c7ff937e3" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SelfTest</name></member>
+      <member refid="classBaseTemperature_1a97cd78cf3f336211747e15a1c25d61ee" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetCalibrationOffset</name></member>
+      <member refid="classBaseTemperature_1a1bfe9f1a1069222166008b4dafe5a282" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetRange</name></member>
+      <member refid="classBaseTemperature_1a93d2d276ad511dfa7c405a88c6ea0e01" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetResolution</name></member>
+      <member refid="classBaseTemperature_1a483f6f9ec09ecd6e8cd32c9f61836763" prot="public" virt="virtual"><scope>StmTemperature</scope><name>SetThresholds</name></member>
+      <member refid="classBaseTemperature_1afd5288a4ce54793f06fab19960b38253" prot="public" virt="virtual"><scope>StmTemperature</scope><name>StartContinuousMonitoring</name></member>
+      <member refid="classStmTemperature_1af087266daab79e72cb84e9e13bd1a24a" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>StmTemperature</name></member>
+      <member refid="classBaseTemperature_1a30f3527c16c76f65e2deb4a89412e231" prot="public" virt="virtual"><scope>StmTemperature</scope><name>StopContinuousMonitoring</name></member>
+      <member refid="classBaseTemperature_1ae37d98256e55529d9d78622db0c34019" prot="protected" virt="non-virtual"><scope>StmTemperature</scope><name>ValidateBasicOperation</name></member>
+      <member refid="classBaseTemperature_1a21ac791e357874874cf1a8be97ed2291" prot="public" virt="virtual"><scope>StmTemperature</scope><name>~BaseTemperature</name></member>
+      <member refid="classStmTemperature_1a8f5ed0c8568d7c5cd199851ba7da359b" prot="public" virt="non-virtual"><scope>StmTemperature</scope><name>~StmTemperature</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

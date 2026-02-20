@@ -106,7 +106,7 @@ var classEspPwm =
     [ "MAX_RESOLUTION", "classEspPwm.html#a5ebf53a209f25236bafcb52fe0564d2a", null ],
     [ "MAX_TIMERS", "classEspPwm.html#a625133f35c2449a53e048f63df138a89", null ],
     [ "MIN_FREQUENCY", "classEspPwm.html#af03e7350d2c885bbca5358ee3a183d10", null ],
-    [ "mutex_", "classEspPwm.html#ae4c8b8e2abef78e240fc60451b6d793e", null ],
+    [ "mutex_", "classEspPwm.html#a44234a30be061859ee7bf6ffa2d9748b", null ],
     [ "statistics_", "classEspPwm.html#aefe4a2dfe1bccd062a299b1febb8aef8", null ],
     [ "timers_", "classEspPwm.html#ad569f2cfbea460323ab5847717019d75", null ],
     [ "unit_config_", "classEspPwm.html#ac2592dd4dbe1e99213a7d1d4c69e67fd", null ]

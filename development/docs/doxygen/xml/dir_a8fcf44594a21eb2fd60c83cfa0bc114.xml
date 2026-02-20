@@ -3,6 +3,7 @@
   <compounddef id="dir_a8fcf44594a21eb2fd60c83cfa0bc114" kind="dir">
     <compoundname>inc/mcu</compoundname>
     <innerdir refid="dir_426f378bcfb40d7530258730abe85710">inc/mcu/esp32</innerdir>
+    <innerdir refid="dir_719075560b1679e2d17be449d4b3b91d">inc/mcu/stm32</innerdir>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

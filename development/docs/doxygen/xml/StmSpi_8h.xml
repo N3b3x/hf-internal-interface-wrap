@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="StmSpi_8h" kind="file" language="C++">
+    <compoundname>StmSpi.h</compoundname>
+    <includes refid="BaseSpi_8h" local="yes">BaseSpi.h</includes>
+    <includes refid="PlatformMutex_8h" local="yes">PlatformMutex.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">memory</includes>
+    <includedby refid="StmSpi_8cpp" local="yes">src/mcu/stm32/StmSpi.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseSpi.h</label>
+        <link refid="BaseSpi_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/stm32/StmSpi.h</label>
+        <link refid="StmSpi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="7">
+        <label>PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>atomic</label>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="11">
+        <label>memory</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+      <node id="10">
+        <label>vector</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/mcu/stm32/StmSpi.h</label>
+        <link refid="StmSpi_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/mcu/stm32/StmSpi.cpp</label>
+        <link refid="StmSpi_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classStmSpiDevice" prot="public">StmSpiDevice</innerclass>
+    <innerclass refid="classStmSpiBus" prot="public">StmSpiBus</innerclass>
+    <briefdescription>
+<para>STM32 SPI stub implementation — placeholder for future STM32 HAL integration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseSpi_8h" kindref="compound">BaseSpi.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PlatformMutex_8h" kindref="compound">PlatformMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classStmSpiDevice" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStmSpiDevice" kindref="compound">StmSpiDevice</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref><sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a0870aa9a0f886f72d91dc45addf758d9" kindref="member">StmSpiDevice</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="24" refid="classStmSpiDevice_1af28e7126cd16773d1e9bade2f0c889eb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmSpiDevice_1af28e7126cd16773d1e9bade2f0c889eb" kindref="member">~StmSpiDevice</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a8321dbe44a6d665d0b43ce71c5747077" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseSpi_8h_1a349a53792ac48c02b7e7f2d8761377df" kindref="member">hf_spi_err_t</ref><sp/><ref refid="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5" kindref="member">Transfer</ref>(const<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>tx_data,<sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref>*<sp/>rx_data,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>length,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>timeout_ms<sp/>=<sp/>0)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" kindref="member">GetDeviceConfig</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="33" refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref><sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classStmSpiBus" refkind="compound"><highlight class="normal">class<sp/><ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classStmSpiBus" kindref="compound">StmSpiBus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="42" refid="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" kindref="member">~StmSpiBus</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a8321dbe44a6d665d0b43ce71c5747077" kindref="member">Initialize</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseSpi_1a5cf6e0c4a2edba09319834e334ff2a8b" kindref="member">IsInitialized</ref>()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" kindref="member">Deinitialize</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>CreateDevice(const<sp/><ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref>&amp;<sp/>device_config)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref>*<sp/>GetDevice(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref>*<sp/>GetDevice(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>GetDeviceCount()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>RemoveDevice(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref>&amp;<sp/>GetConfig()<sp/>const<sp/>noexcept;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="55" refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref><sp/><ref refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kindref="member">config_</ref>;</highlight></codeline>
+<codeline lineno="56" refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" kindref="member">initialized_</ref>{</highlight><highlight class="keyword">false</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="57" refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::unique_ptr&lt;StmSpiDevice&gt;&gt;<sp/><ref refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kindref="member">devices_</ref>;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/stm32/StmSpi.h"/>
+  </compounddef>
+</doxygen>

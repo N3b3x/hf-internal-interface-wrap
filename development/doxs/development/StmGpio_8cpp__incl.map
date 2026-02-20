@@ -1,0 +1,16 @@
+<map id="src/mcu/stm32/StmGpio.cpp" name="src/mcu/stm32/StmGpio.cpp">
+<area shape="rect" id="Node000001" title="STM32 GPIO stub implementation." alt="" coords="22,5,274,36"/>
+<area shape="rect" id="Node000002" href="$StmGpio_8h.html" title="STM32 GPIO stub implementation — placeholder for future STM32 HAL integration." alt="" coords="93,84,203,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,36,151,70,145,70,145,36"/>
+<area shape="rect" id="Node000003" href="$BaseGpio_8h.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="89,163,207,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,115,151,149,145,149,145,115"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="67,241,229,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="151,194,151,228,145,228,145,194"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,320,80,351"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="114,196,83,215,57,243,46,274,43,306,38,306,40,273,52,240,80,211,112,191"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="253,241,365,272"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="179,191,268,233,266,238,177,196"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="130,274,75,314,72,310,127,270"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="116,320,180,351"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="151,272,151,306,145,306,145,272"/>
+</map>

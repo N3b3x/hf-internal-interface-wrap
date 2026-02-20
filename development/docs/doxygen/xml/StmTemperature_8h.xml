@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="StmTemperature_8h" kind="file" language="C++">
+    <compoundname>StmTemperature.h</compoundname>
+    <includes refid="BaseTemperature_8h" local="yes">base/BaseTemperature.h</includes>
+    <includedby refid="StmTemperature_8cpp" local="yes">src/mcu/stm32/StmTemperature.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>base/BaseTemperature.h</label>
+        <link refid="BaseTemperature_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/stm32/StmTemperature.h</label>
+        <link refid="StmTemperature_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/mcu/stm32/StmTemperature.h</label>
+        <link refid="StmTemperature_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/mcu/stm32/StmTemperature.cpp</label>
+        <link refid="StmTemperature_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classStmTemperature" prot="public">StmTemperature</innerclass>
+    <briefdescription>
+<para>STM32 Temperature sensor stub — placeholder for internal temp sensor integration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseTemperature_8h" kindref="compound">base/BaseTemperature.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classStmTemperature" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStmTemperature" kindref="compound">StmTemperature</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseTemperature" kindref="compound">BaseTemperature</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classStmTemperature_1af087266daab79e72cb84e9e13bd1a24a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmTemperature_1af087266daab79e72cb84e9e13bd1a24a" kindref="member">StmTemperature</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="18" refid="classStmTemperature_1a8f5ed0c8568d7c5cd199851ba7da359b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classStmTemperature" kindref="compound">StmTemperature</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>pure<sp/>virtuals</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1a6d6f95d8acc8e7ebf80314022f6f2eac" kindref="member">GetSensorInfo</ref>(<ref refid="structhf__temp__sensor__info__t" kindref="compound">hf_temp_sensor_info_t</ref>*<sp/>info)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classStmTemperature_1a00eac441e907fd899ac7df305bd1ead6" kindref="member">GetCapabilities</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">protected:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Protected<sp/>pure<sp/>virtuals</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseTemperature_8h_1a9107d93f48c1ae86146f7d60e6226a20" kindref="member">hf_temp_err_t</ref><sp/><ref refid="classStmTemperature_1aec6918308bc56058d12cd1d5dde7aa03" kindref="member">ReadTemperatureCelsiusImpl</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>temperature_celsius)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/stm32/StmTemperature.h"/>
+  </compounddef>
+</doxygen>

@@ -65,9 +65,9 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/EspSpi.h" line="158" column="8" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="158" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspSpiDevice_1aa34f977ac3bb19d6319a4e3c1a12b138" prot="private" static="no" mutable="no">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspSpiDevice::mutex_</definition>
+      <memberdef kind="variable" id="classEspSpiDevice_1a22fd9577e6aaa1ec056206c12c58efe4" prot="private" static="no" mutable="no">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspSpiDevice::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
         <qualifiedname>EspSpiDevice::mutex_</qualifiedname>
@@ -78,7 +78,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="159" column="13" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="159" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="159" column="17" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="159" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-func">
@@ -408,7 +408,7 @@
     </briefdescription>
     <detaileddescription>
 <para>Inherits from <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> and delegates transfers to the parent bus. Provides full configuration and control for a single SPI device, including DMA, queueing, and advanced ESP-IDF v5.5+ features.</para>
-<para><simplesect kind="note"><para>Thread-safe. All operations are protected by <ref refid="classRtosMutex" kindref="compound">RtosMutex</ref>. </para>
+<para><simplesect kind="note"><para>Thread-safe. All operations are protected by <ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref>. </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -461,8 +461,8 @@
         </childnode>
       </node>
       <node id="7">
-        <label>RtosMutex</label>
-        <link refid="classRtosMutex"/>
+        <label>PlatformMutex</label>
+        <link refid="classPlatformMutex"/>
       </node>
       <node id="6">
         <label>hf_spi_bus_config_t</label>
@@ -505,7 +505,7 @@
       <member refid="classEspSpiDevice_1ad547b708efaac31e0f6dca17d76184e2" prot="private" virt="non-virtual"><scope>EspSpiDevice</scope><name>initialized_</name></member>
       <member refid="classBaseSpi_1a5cf6e0c4a2edba09319834e334ff2a8b" prot="public" virt="non-virtual"><scope>EspSpiDevice</scope><name>IsInitialized</name></member>
       <member refid="classEspSpiDevice_1a511a9f42ccbfb10d07f839ae907cac3c" prot="public" virt="non-virtual"><scope>EspSpiDevice</scope><name>MarkAsDeinitialized</name></member>
-      <member refid="classEspSpiDevice_1aa34f977ac3bb19d6319a4e3c1a12b138" prot="private" virt="non-virtual"><scope>EspSpiDevice</scope><name>mutex_</name></member>
+      <member refid="classEspSpiDevice_1a22fd9577e6aaa1ec056206c12c58efe4" prot="private" virt="non-virtual"><scope>EspSpiDevice</scope><name>mutex_</name></member>
       <member refid="classBaseSpi_1a00e8995f1ccc7a5ab078e7b4c19ffa95" prot="public" virt="virtual"><scope>EspSpiDevice</scope><name>Open</name></member>
       <member refid="classBaseSpi_1a3c4096c2e9300928a41671fd755d5b30" prot="public" virt="non-virtual"><scope>EspSpiDevice</scope><name>operator=</name></member>
       <member refid="classBaseSpi_1a98b2462a1b60f70c5fd8eaf56b28f2b7" prot="public" virt="non-virtual"><scope>EspSpiDevice</scope><name>operator=</name></member>

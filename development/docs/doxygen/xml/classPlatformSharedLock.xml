@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classPlatformSharedLock" kind="class" language="C++" prot="public">
+    <compoundname>PlatformSharedLock</compoundname>
+    <includes refid="PlatformMutex_8h" local="no">PlatformMutex.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename SharedMutex</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPlatformSharedLock_1a196205586ec7624b45328670e47b6e4c" prot="private" static="no" mutable="no">
+        <type>SharedMutex *</type>
+        <definition>SharedMutex* PlatformSharedLock&lt; SharedMutex &gt;::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>PlatformSharedLock::mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="442" column="15" bodyfile="inc/utils/PlatformMutex.h" bodystart="442" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPlatformSharedLock_1aa1428c7278f03c457be11c411b17a5e8" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PlatformSharedLock&lt; SharedMutex &gt;::locked_</definition>
+        <argsstring></argsstring>
+        <name>locked_</name>
+        <qualifiedname>PlatformSharedLock::locked_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="443" column="8" bodyfile="inc/utils/PlatformMutex.h" bodystart="443" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPlatformSharedLock_1a5d4575da93813bf27eb29766d9a3b5ce" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformSharedLock&lt; SharedMutex &gt;::PlatformSharedLock</definition>
+        <argsstring>(SharedMutex &amp;mutex, uint32_t timeout_ms=0) noexcept</argsstring>
+        <name>PlatformSharedLock</name>
+        <qualifiedname>PlatformSharedLock::PlatformSharedLock</qualifiedname>
+        <param>
+          <type>SharedMutex &amp;</type>
+          <declname>mutex</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="394" column="12" bodyfile="inc/utils/PlatformMutex.h" bodystart="394" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedLock_1a6d5e22650f77fe32f43b110d729be396" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformSharedLock&lt; SharedMutex &gt;::~PlatformSharedLock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~PlatformSharedLock</name>
+        <qualifiedname>PlatformSharedLock::~PlatformSharedLock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="403" column="3" bodyfile="inc/utils/PlatformMutex.h" bodystart="403" bodyend="407"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedLock_1ae8c1eb943ba67bb0b8448d00b721e682" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PlatformSharedLock&lt; SharedMutex &gt;::PlatformSharedLock</definition>
+        <argsstring>(const PlatformSharedLock &amp;)=delete</argsstring>
+        <name>PlatformSharedLock</name>
+        <qualifiedname>PlatformSharedLock::PlatformSharedLock</qualifiedname>
+        <param>
+          <type>const <ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="409" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedLock_1ab0791c81e103fa5b1bc123b4637e61c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
+        <definition>PlatformSharedLock &amp; PlatformSharedLock&lt; SharedMutex &gt;::operator=</definition>
+        <argsstring>(const PlatformSharedLock &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>PlatformSharedLock::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="410" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedLock_1aaf794f171b9d7712d0f77242e96613f5" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformSharedLock&lt; SharedMutex &gt;::PlatformSharedLock</definition>
+        <argsstring>(PlatformSharedLock &amp;&amp;other) noexcept</argsstring>
+        <name>PlatformSharedLock</name>
+        <qualifiedname>PlatformSharedLock::PlatformSharedLock</qualifiedname>
+        <param>
+          <type><ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="412" column="3" bodyfile="inc/utils/PlatformMutex.h" bodystart="412" bodyend="415"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedLock_1aef93d92f524e42b63779e17caf6f904a" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;</type>
+        <definition>PlatformSharedLock &amp; PlatformSharedLock&lt; SharedMutex &gt;::operator=</definition>
+        <argsstring>(PlatformSharedLock &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>PlatformSharedLock::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classPlatformSharedLock" kindref="compound">PlatformSharedLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="417" column="22" bodyfile="inc/utils/PlatformMutex.h" bodystart="417" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedLock_1a1271e1fa2051eb24d536f21c637bee32" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlatformSharedLock&lt; SharedMutex &gt;::IsLocked</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsLocked</name>
+        <qualifiedname>PlatformSharedLock::IsLocked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="430" column="9" bodyfile="inc/utils/PlatformMutex.h" bodystart="430" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformSharedLock_1a7c02b27cf0e7b31a1ccc1b7f987beb80" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlatformSharedLock&lt; SharedMutex &gt;::Unlock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Unlock</name>
+        <qualifiedname>PlatformSharedLock::Unlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="434" column="8" bodyfile="inc/utils/PlatformMutex.h" bodystart="434" bodyend="439"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/utils/PlatformMutex.h" line="392" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="392" bodyend="444"/>
+    <listofallmembers>
+      <member refid="classPlatformSharedLock_1a1271e1fa2051eb24d536f21c637bee32" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>IsLocked</name></member>
+      <member refid="classPlatformSharedLock_1aa1428c7278f03c457be11c411b17a5e8" prot="private" virt="non-virtual"><scope>PlatformSharedLock</scope><name>locked_</name></member>
+      <member refid="classPlatformSharedLock_1a196205586ec7624b45328670e47b6e4c" prot="private" virt="non-virtual"><scope>PlatformSharedLock</scope><name>mutex_</name></member>
+      <member refid="classPlatformSharedLock_1ab0791c81e103fa5b1bc123b4637e61c0" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>operator=</name></member>
+      <member refid="classPlatformSharedLock_1aef93d92f524e42b63779e17caf6f904a" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>operator=</name></member>
+      <member refid="classPlatformSharedLock_1a5d4575da93813bf27eb29766d9a3b5ce" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>PlatformSharedLock</name></member>
+      <member refid="classPlatformSharedLock_1ae8c1eb943ba67bb0b8448d00b721e682" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>PlatformSharedLock</name></member>
+      <member refid="classPlatformSharedLock_1aaf794f171b9d7712d0f77242e96613f5" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>PlatformSharedLock</name></member>
+      <member refid="classPlatformSharedLock_1a7c02b27cf0e7b31a1ccc1b7f987beb80" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>Unlock</name></member>
+      <member refid="classPlatformSharedLock_1a6d5e22650f77fe32f43b110d729be396" prot="public" virt="non-virtual"><scope>PlatformSharedLock</scope><name>~PlatformSharedLock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

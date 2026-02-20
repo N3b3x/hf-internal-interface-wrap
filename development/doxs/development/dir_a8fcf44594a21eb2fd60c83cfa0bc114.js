@@ -1,4 +1,5 @@
 var dir_a8fcf44594a21eb2fd60c83cfa0bc114 =
 [
-    [ "esp32", "dir_426f378bcfb40d7530258730abe85710.html", "dir_426f378bcfb40d7530258730abe85710" ]
+    [ "esp32", "dir_426f378bcfb40d7530258730abe85710.html", "dir_426f378bcfb40d7530258730abe85710" ],
+    [ "stm32", "dir_719075560b1679e2d17be449d4b3b91d.html", "dir_719075560b1679e2d17be449d4b3b91d" ]
 ];

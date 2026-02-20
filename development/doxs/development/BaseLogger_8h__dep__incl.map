@@ -1,10 +1,14 @@
 <map id="inc/base/BaseLogger.h" name="inc/base/BaseLogger.h">
-<area shape="rect" id="Node000001" title="Unified logging base class for all logging implementations." alt="" coords="121,5,327,36"/>
+<area shape="rect" id="Node000001" title="Unified logging base class for all logging implementations." alt="" coords="303,5,508,36"/>
 <area shape="rect" id="Node000002" href="$LoggerComprehensiveTest_8cpp.html" title="Comprehensive Logger testing suite for ESP32&#45;C6 DevKit&#45;M&#45;1 (noexcept)" alt="" coords="5,163,283,213"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,48,172,85,157,125,149,163,144,162,152,124,167,83,196,44"/>
-<area shape="rect" id="Node000003" href="$EspLogger_8h.html" title="ESP32&#45;specific logger implementation for the HardFOC system." alt="" coords="181,84,427,115"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="251,44,291,82,287,86,247,48"/>
-<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="267,124,190,165,188,160,265,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="357,44,314,63,272,86,217,126,171,165,168,161,214,122,269,82,312,58,354,39"/>
+<area shape="rect" id="Node000003" href="$EspLogger_8h.html" title="ESP32&#45;specific logger implementation for the HardFOC system." alt="" coords="283,84,528,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="408,50,408,84,403,84,403,50"/>
+<area shape="rect" id="Node000005" href="$StmLogger_8h.html" title="STM32 Logger stub — printf&#45;based fallback for non&#45;ESP32 platforms." alt="" coords="579,84,827,115"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="474,37,648,81,647,87,473,42"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="351,122,218,165,216,160,349,116"/>
 <area shape="rect" id="Node000004" href="$EspLogger_8cpp.html" title="Implementation of ESP32 logger for the HardFOC system." alt="" coords="307,173,573,203"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="339,120,419,170,416,175,336,124"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="419,126,437,171,432,173,414,128"/>
+<area shape="rect" id="Node000006" href="$StmLogger_8cpp.html" title="STM32 Logger stub implementation." alt="" coords="597,173,865,203"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="714,127,728,171,723,173,709,129"/>
 </map>

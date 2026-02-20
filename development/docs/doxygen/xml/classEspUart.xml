@@ -104,9 +104,9 @@
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classEspUart_1a63d3d9231a553707b6498e40829c0105" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspUart::mutex_</definition>
+      <memberdef kind="variable" id="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspUart::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
         <qualifiedname>EspUart::mutex_</qualifiedname>
@@ -117,7 +117,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspUart.h" line="590" column="21" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="590" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspUart.h" line="590" column="25" bodyfile="inc/mcu/esp32/EspUart.h" bodystart="590" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspUart_1a00c20e249bbd100eedbf4c0c54c3c42e" prot="private" static="no" mutable="no">
         <type><ref refid="structhf__uart__config__t" kindref="compound">hf_uart_config_t</ref></type>
@@ -2252,8 +2252,8 @@
         </childnode>
       </node>
       <node id="5">
-        <label>RtosMutex</label>
-        <link refid="classRtosMutex"/>
+        <label>PlatformMutex</label>
+        <link refid="classPlatformMutex"/>
       </node>
       <node id="6">
         <label>hf_uart_config_t</label>
@@ -2324,7 +2324,7 @@
       <member refid="classEspUart_1a2cc0ffbcf5d94cc1be9640a0bb394eb6" prot="public" virt="non-virtual"><scope>EspUart</scope><name>MAX_BUFFER_SIZE</name></member>
       <member refid="classEspUart_1acccf4bd506f073b15720a283fc2ba781" prot="public" virt="non-virtual"><scope>EspUart</scope><name>MAX_PORTS</name></member>
       <member refid="classEspUart_1a7e8194c9094761e4ca34160410faaeeb" prot="public" virt="non-virtual"><scope>EspUart</scope><name>MIN_BAUD_RATE</name></member>
-      <member refid="classEspUart_1a63d3d9231a553707b6498e40829c0105" prot="private" virt="non-virtual"><scope>EspUart</scope><name>mutex_</name></member>
+      <member refid="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" prot="private" virt="non-virtual"><scope>EspUart</scope><name>mutex_</name></member>
       <member refid="classBaseUart_1a75cbb2ce81d78f722874184878433249" prot="public" virt="virtual"><scope>EspUart</scope><name>Open</name></member>
       <member refid="classEspUart_1af2370e22ff6ab5da54137adbcd91ad7d" prot="private" virt="non-virtual"><scope>EspUart</scope><name>operating_mode_</name></member>
       <member refid="classEspUart_1aa8d8c4af95c460694f765d119d8916c3" prot="public" virt="non-virtual"><scope>EspUart</scope><name>operator=</name></member>

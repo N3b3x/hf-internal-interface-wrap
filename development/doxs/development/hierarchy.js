@@ -3,7 +3,7 @@ var hierarchy =
     [ "adc_queue_message_t", "structadc__queue__message__t.html", null ],
     [ "AsciiArtGenerator", "classAsciiArtGenerator.html", null ],
     [ "BaseAdc", "classBaseAdc.html", [
-      [ "EspAdc", "classEspAdc.html", null ]
+      [ "StmAdc", "classStmAdc.html", null ]
     ] ],
     [ "BaseBluetooth", "classBaseBluetooth.html", [
       [ "EspBluetooth", "classEspBluetooth.html", null ]
@@ -12,19 +12,23 @@ var hierarchy =
       [ "EspCan", "classEspCan.html", null ]
     ] ],
     [ "BaseGpio", "classBaseGpio.html", [
-      [ "EspGpio", "classEspGpio.html", null ]
+      [ "EspGpio", "classEspGpio.html", null ],
+      [ "StmGpio", "classStmGpio.html", null ]
     ] ],
     [ "BaseI2c", "classBaseI2c.html", [
-      [ "EspI2cDevice", "classEspI2cDevice.html", null ]
+      [ "EspI2cDevice", "classEspI2cDevice.html", null ],
+      [ "StmI2cDevice", "classStmI2cDevice.html", null ]
     ] ],
     [ "BaseLogger", "classBaseLogger.html", [
-      [ "EspLogger", "classEspLogger.html", null ]
+      [ "StmLogger", "classStmLogger.html", null ]
     ] ],
     [ "BaseNvs", "classBaseNvs.html", [
-      [ "EspNvs", "classEspNvs.html", null ]
+      [ "EspNvs", "classEspNvs.html", null ],
+      [ "StmNvs", "classStmNvs.html", null ]
     ] ],
     [ "BasePeriodicTimer", "classBasePeriodicTimer.html", [
-      [ "EspPeriodicTimer", "classEspPeriodicTimer.html", null ]
+      [ "EspPeriodicTimer", "classEspPeriodicTimer.html", null ],
+      [ "StmPeriodicTimer", "classStmPeriodicTimer.html", null ]
     ] ],
     [ "BasePio", "classBasePio.html", [
       [ "EspPio", "classEspPio.html", null ]
@@ -33,10 +37,12 @@ var hierarchy =
       [ "EspPwm", "classEspPwm.html", null ]
     ] ],
     [ "BaseSpi", "classBaseSpi.html", [
-      [ "EspSpiDevice", "classEspSpiDevice.html", null ]
+      [ "EspSpiDevice", "classEspSpiDevice.html", null ],
+      [ "StmSpiDevice", "classStmSpiDevice.html", null ]
     ] ],
     [ "BaseTemperature", "classBaseTemperature.html", [
-      [ "EspTemperature", "classEspTemperature.html", null ]
+      [ "EspTemperature", "classEspTemperature.html", null ],
+      [ "StmTemperature", "classStmTemperature.html", null ]
     ] ],
     [ "BaseUart", "classBaseUart.html", [
       [ "EspUart", "classEspUart.html", null ]
@@ -84,16 +90,8 @@ var hierarchy =
     [ "hf_esp_can_state_info_t", "structhf__esp__can__state__info__t.html", null ],
     [ "hf_esp_can_timing_config_t", "structhf__esp__can__timing__config__t.html", null ],
     [ "hf_esp_can_tx_info_t", "structhf__esp__can__tx__info__t.html", null ],
-    [ "hf_gpio_advanced_config_t", "structhf__gpio__advanced__config__t.html", null ],
     [ "hf_gpio_diagnostics_t", "structhf__gpio__diagnostics__t.html", null ],
-    [ "hf_gpio_flex_filter_config_t", "structhf__gpio__flex__filter__config__t.html", null ],
-    [ "hf_gpio_pin_capabilities_t", "structhf__gpio__pin__capabilities__t.html", null ],
-    [ "hf_gpio_pin_filter_config_t", "structhf__gpio__pin__filter__config__t.html", null ],
-    [ "hf_gpio_pin_info_t", "structhf__gpio__pin__info__t.html", null ],
-    [ "hf_gpio_sleep_config_t", "structhf__gpio__sleep__config__t.html", null ],
     [ "hf_gpio_statistics_t", "structhf__gpio__statistics__t.html", null ],
-    [ "hf_gpio_status_info_t", "structhf__gpio__status__info__t.html", null ],
-    [ "hf_gpio_wakeup_config_t", "structhf__gpio__wakeup__config__t.html", null ],
     [ "hf_i2c_async_result_t", "structhf__i2c__async__result__t.html", null ],
     [ "hf_i2c_custom_command_t", "structhf__i2c__custom__command__t.html", null ],
     [ "hf_i2c_device_config_t", "structhf__i2c__device__config__t.html", null ],
@@ -107,7 +105,6 @@ var hierarchy =
     [ "hf_logger_config_t", "structhf__logger__config__t.html", null ],
     [ "hf_logger_diagnostics_t", "structhf__logger__diagnostics__t.html", null ],
     [ "hf_logger_statistics_t", "structhf__logger__statistics__t.html", null ],
-    [ "hf_lp_io_config_t", "structhf__lp__io__config__t.html", null ],
     [ "hf_nvs_capabilities_t", "structhf__nvs__capabilities__t.html", null ],
     [ "hf_nvs_diagnostics_t", "structhf__nvs__diagnostics__t.html", null ],
     [ "hf_nvs_entry_info_t", "structhf__nvs__entry__info__t.html", null ],
@@ -151,7 +148,6 @@ var hierarchy =
     [ "hf_uart_flow_config_t", "structhf__uart__flow__config__t.html", null ],
     [ "hf_uart_irda_config_t", "structhf__uart__irda__config__t.html", null ],
     [ "hf_uart_pattern_config_t", "structhf__uart__pattern__config__t.html", null ],
-    [ "hf_uart_pin_map_esp32c6_t", "structhf__uart__pin__map__esp32c6__t.html", null ],
     [ "hf_uart_power_config_t", "structhf__uart__power__config__t.html", null ],
     [ "hf_uart_rs485_config_t", "structhf__uart__rs485__config__t.html", null ],
     [ "hf_uart_statistics_t", "structhf__uart__statistics__t.html", null ],
@@ -164,12 +160,13 @@ var hierarchy =
     [ "HfEspWifiPerformanceConfig", "structHfEspWifiPerformanceConfig.html", null ],
     [ "HfEspWifiStats", "structHfEspWifiStats.html", null ],
     [ "InterruptStatus", "structInterruptStatus.html", null ],
-    [ "EspAdc::MonitorContext", "structEspAdc_1_1MonitorContext.html", null ],
-    [ "RtosMutex", "classRtosMutex.html", null ],
-    [ "RtosSharedLock< SharedMutex >", "classRtosSharedLock.html", null ],
-    [ "RtosSharedMutex", "classRtosSharedMutex.html", null ],
-    [ "RtosTime", "classRtosTime.html", null ],
-    [ "RtosUniqueLock< Mutex >", "classRtosUniqueLock.html", null ],
+    [ "PlatformMutex", "classPlatformMutex.html", null ],
+    [ "PlatformSharedLock< SharedMutex >", "classPlatformSharedLock.html", null ],
+    [ "PlatformSharedMutex", "classPlatformSharedMutex.html", null ],
+    [ "PlatformTime", "classPlatformTime.html", null ],
+    [ "PlatformUniqueLock< Mutex >", "classPlatformUniqueLock.html", null ],
+    [ "StmI2cBus", "classStmI2cBus.html", null ],
+    [ "StmSpiBus", "classStmSpiBus.html", null ],
     [ "TestResults", "structTestResults.html", null ],
     [ "TestTaskContext", "structTestTaskContext.html", null ],
     [ "EspPwm::TimerState", "structEspPwm_1_1TimerState.html", null ],

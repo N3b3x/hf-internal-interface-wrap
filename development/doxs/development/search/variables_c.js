@@ -13,12 +13,5 @@ var searchData=
   ['nonexistent_5faddr_10',['NONEXISTENT_ADDR',['../I2cComprehensiveTest_8cpp.html#aea1a58ed6eb8e3331e19a2cb9ed3619b',1,'I2cComprehensiveTest.cpp']]],
   ['num_5fchannels_11',['num_channels',['../structhf__pwm__capabilities__t.html#a391016f7b9de8439103097b0775a50ea',1,'hf_pwm_capabilities_t']]],
   ['num_5ftimers_12',['num_timers',['../structhf__pwm__capabilities__t.html#af34217d5f45ed2d62c49fe836a58880b',1,'hf_pwm_capabilities_t']]],
-  ['nvs_5fhandle_5f_13',['nvs_handle_',['../classEspNvs.html#a6835ce423097a5c27ddaefb1be4e2207',1,'EspNvs']]],
-  ['nvs_5finit_5ftimeout_5fms_14',['NVS_INIT_TIMEOUT_MS',['../EspNvs_8cpp.html#a56134ef9075eaf7b6622e1a2736697ab',1,'EspNvs.cpp']]],
-  ['nvs_5fmax_5fkey_5flength_5fesp32_15',['NVS_MAX_KEY_LENGTH_ESP32',['../EspNvs_8cpp.html#a0d631767574cc8b140716c2ca3868db0',1,'EspNvs.cpp']]],
-  ['nvs_5fmax_5fnamespace_5flength_5fesp32_16',['NVS_MAX_NAMESPACE_LENGTH_ESP32',['../EspNvs_8cpp.html#ad4289f5994cc5fb6d4b3d47c03978363',1,'EspNvs.cpp']]],
-  ['nvs_5fmax_5fretry_5fattempts_17',['NVS_MAX_RETRY_ATTEMPTS',['../EspNvs_8cpp.html#a7fc5e67321118b83c625f7006a9fd270',1,'EspNvs.cpp']]],
-  ['nvs_5fmax_5fvalue_5fsize_5fesp32_18',['NVS_MAX_VALUE_SIZE_ESP32',['../EspNvs_8cpp.html#a831639f895a96f16a4c43cff3296b170',1,'EspNvs.cpp']]],
-  ['nvs_5foperation_5ftimeout_5fms_19',['NVS_OPERATION_TIMEOUT_MS',['../EspNvs_8cpp.html#a5067ec469e1472b8d9dcde905d307fca',1,'EspNvs.cpp']]],
-  ['nvs_5fstats_5fupdate_5finterval_5fms_20',['NVS_STATS_UPDATE_INTERVAL_MS',['../EspNvs_8cpp.html#af382ccbb36a465261a9e4abf140202a3',1,'EspNvs.cpp']]]
+  ['nvs_5fhandle_5f_13',['nvs_handle_',['../classEspNvs.html#a6835ce423097a5c27ddaefb1be4e2207',1,'EspNvs']]]
 ];

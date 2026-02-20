@@ -54,7 +54,7 @@ var classEspI2cDevice =
     [ "initialized_", "classEspI2cDevice.html#a770c935f9c67d0d88b9f3d4624812f39", null ],
     [ "last_read_length_", "classEspI2cDevice.html#a29cb76beb00541817d8e3d309e703255", null ],
     [ "last_write_length_", "classEspI2cDevice.html#aba14908906e873f48c67a768eb2a0044", null ],
-    [ "mutex_", "classEspI2cDevice.html#afe243d57519b587b6c9bcbabc00aab00", null ],
+    [ "mutex_", "classEspI2cDevice.html#a7ea3e8c3a34b51996caccceab08253d0", null ],
     [ "parent_bus_", "classEspI2cDevice.html#a5b3271e2c9a17ff4a2b39f7e716a93fc", null ],
     [ "statistics_", "classEspI2cDevice.html#afd4fa9c207eaa593ead720c7579e5bcd", null ],
     [ "sync_operation_in_progress_", "classEspI2cDevice.html#a179d9dd56630947e64204720a1e27bd6", null ]

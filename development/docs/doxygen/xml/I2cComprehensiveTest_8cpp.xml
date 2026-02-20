@@ -20,31 +20,31 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
         <childnode refid="39" relation="include">
+        </childnode>
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="45" relation="include">
         </childnode>
       </node>
-      <node id="43">
+      <node id="40">
         <label>TestFramework.h</label>
         <link refid="TestFramework_8h"/>
-        <childnode refid="41" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="41" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -166,13 +166,13 @@
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -340,22 +340,16 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="35">
-        <label>utils/RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>utils/PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="39">
         <label>algorithm</label>
       </node>
       <node id="13">
@@ -373,7 +367,7 @@
       <node id="22">
         <label>driver/i2c.h</label>
       </node>
-      <node id="40">
+      <node id="37">
         <label>driver/i2c_master.h</label>
       </node>
       <node id="29">
@@ -388,28 +382,28 @@
       <node id="47">
         <label>esp_attr.h</label>
       </node>
-      <node id="41">
+      <node id="38">
         <label>esp_log.h</label>
       </node>
       <node id="31">
         <label>esp_timer.h</label>
       </node>
-      <node id="36">
+      <node id="41">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="44">
+      <node id="42">
         <label>freertos/queue.h</label>
       </node>
-      <node id="37">
+      <node id="43">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="38">
+      <node id="44">
         <label>freertos/task.h</label>
       </node>
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="39">
+      <node id="36">
         <label>memory</label>
       </node>
       <node id="48">
@@ -440,7 +434,7 @@
   bus_config.flags.allow_pd = false;                                                               \
   auto bus_var_name = std::make_unique&lt;<ref refid="classEspI2cBus" kindref="compound">EspI2cBus</ref>&gt;(bus_config);                                     \
   if (!bus_var_name-&gt;Initialize()) {                                                               \
-    ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Failed to initialize I2C bus&quot;);                                                 \
+    ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Failed to initialize I2C bus&quot;);                                                 \
     return false;                                                                                  \
   }</initializer>
         <briefdescription>

@@ -1,0 +1,27 @@
+<map id="src/mcu/stm32/StmI2c.cpp" name="src/mcu/stm32/StmI2c.cpp">
+<area shape="rect" id="Node000001" title="STM32 I2C stub implementation." alt="" coords="417,5,655,36"/>
+<area shape="rect" id="Node000002" href="$StmI2c_8h.html" title="STM32 I2C stub implementation — placeholder for future STM32 HAL integration." alt="" coords="489,84,583,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="539,36,539,70,533,70,533,36"/>
+<area shape="rect" id="Node000003" href="$BaseI2c_8h.html" title="Abstract base class for I2C device implementations in the HardFOC system." alt="" coords="241,163,343,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="491,117,351,161,349,156,490,112"/>
+<area shape="rect" id="Node000008" href="$PlatformMutex_8h.html" title="Cross&#45;platform RTOS mutex and synchronization primitives." alt="" coords="391,163,545,193"/>
+<area shape="poly" id="edge8_Node000002_Node000008" title=" " alt="" coords="525,117,492,154,488,151,521,113"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="570,163,641,193"/>
+<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="551,113,585,151,581,154,547,117"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="665,163,754,193"/>
+<area shape="poly" id="edge13_Node000002_Node000012" title=" " alt="" coords="569,112,666,155,664,160,567,117"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="5,241,168,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="255,196,138,239,136,234,253,191"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="304,320,379,351"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="300,193,319,240,337,305,332,307,313,242,295,194"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="192,241,304,272"/>
+<area shape="poly" id="edge7_Node000003_Node000007" title=" " alt="" coords="286,195,265,231,261,228,281,192"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="135,270,292,316,290,322,133,275"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="55,320,119,351"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="89,272,89,306,84,306,84,272"/>
+<area shape="poly" id="edge11_Node000008_Node000005" title=" " alt="" coords="458,195,364,311,360,308,454,192"/>
+<area shape="rect" id="Node000009" href="$McuSelect_8h.html" title="Centralized MCU platform selection and configuration header." alt="" coords="429,241,552,272"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="475,193,485,227,480,229,470,194"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="577,241,653,272"/>
+<area shape="poly" id="edge10_Node000008_Node000010" title=" " alt="" coords="496,191,577,233,574,237,494,196"/>
+</map>

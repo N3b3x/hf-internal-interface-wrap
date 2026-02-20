@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classStmSpiBus" kind="class" language="C++" prot="public">
+    <compoundname>StmSpiBus</compoundname>
+    <includes refid="StmSpi_8h" local="no">StmSpi.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref></type>
+        <definition>hf_spi_bus_config_t StmSpiBus::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>StmSpiBus::config_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="55" column="25" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool StmSpiBus::initialized_</definition>
+        <argsstring></argsstring>
+        <name>initialized_</name>
+        <qualifiedname>StmSpiBus::initialized_</qualifiedname>
+        <initializer>{false}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="56" column="10" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classStmSpiDevice" kindref="compound">StmSpiDevice</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::unique_ptr&lt;StmSpiDevice&gt; &gt; StmSpiBus::devices_</definition>
+        <argsstring></argsstring>
+        <name>devices_</name>
+        <qualifiedname>StmSpiBus::devices_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="57" column="17" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmSpiBus::StmSpiBus</definition>
+        <argsstring>(const hf_spi_bus_config_t &amp;config) noexcept</argsstring>
+        <name>StmSpiBus</name>
+        <qualifiedname>StmSpiBus::StmSpiBus</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="41" column="14" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="31" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmSpiBus::~StmSpiBus</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~StmSpiBus</name>
+        <qualifiedname>StmSpiBus::~StmSpiBus</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="42" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a949a4e26bc00b79272f4e1929aa06064" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool StmSpiBus::Initialize</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>StmSpiBus::Initialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="44" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool StmSpiBus::IsInitialized</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsInitialized</name>
+        <qualifiedname>StmSpiBus::IsInitialized</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="45" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1ad4cf41108043a7610f902cb45bcbc8e4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool StmSpiBus::Deinitialize</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>StmSpiBus::Deinitialize</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="46" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a781055ef0cd430c2cb5f12601882a683" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int StmSpiBus::CreateDevice</definition>
+        <argsstring>(const hf_spi_device_config_t &amp;device_config) noexcept</argsstring>
+        <name>CreateDevice</name>
+        <qualifiedname>StmSpiBus::CreateDevice</qualifiedname>
+        <param>
+          <type>const <ref refid="structhf__spi__device__config__t" kindref="compound">hf_spi_device_config_t</ref> &amp;</type>
+          <declname>device_config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="47" column="9" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="40" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> *</type>
+        <definition>BaseSpi * StmSpiBus::GetDevice</definition>
+        <argsstring>(int device_index) noexcept</argsstring>
+        <name>GetDevice</name>
+        <qualifiedname>StmSpiBus::GetDevice</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="48" column="13" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a313d95a200920d2f5abc67e94c359fca" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="classBaseSpi" kindref="compound">BaseSpi</ref> *</type>
+        <definition>const BaseSpi * StmSpiBus::GetDevice</definition>
+        <argsstring>(int device_index) const noexcept</argsstring>
+        <name>GetDevice</name>
+        <qualifiedname>StmSpiBus::GetDevice</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="49" column="19" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a81d08ab646705ea372874ca8c663367b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t StmSpiBus::GetDeviceCount</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetDeviceCount</name>
+        <qualifiedname>StmSpiBus::GetDeviceCount</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="50" column="17" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool StmSpiBus::RemoveDevice</definition>
+        <argsstring>(int device_index) noexcept</argsstring>
+        <name>RemoveDevice</name>
+        <qualifiedname>StmSpiBus::RemoveDevice</qualifiedname>
+        <param>
+          <type>int</type>
+          <declname>device_index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="51" column="10" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="58" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type>const <ref refid="structhf__spi__bus__config__t" kindref="compound">hf_spi_bus_config_t</ref> &amp;</type>
+        <definition>const hf_spi_bus_config_t &amp; StmSpiBus::GetConfig</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>GetConfig</name>
+        <qualifiedname>StmSpiBus::GetConfig</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmSpi.h" line="52" column="31" bodyfile="src/mcu/stm32/StmSpi.cpp" bodystart="64" bodyend="64"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>STM32 SPI bus — stub implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>StmSpiBus</label>
+        <link refid="classStmSpiBus"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>hf_spi_bus_config_t</label>
+        <link refid="structhf__spi__bus__config__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/stm32/StmSpi.h" line="39" column="1" bodyfile="inc/mcu/stm32/StmSpi.h" bodystart="39" bodyend="58"/>
+    <listofallmembers>
+      <member refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>config_</name></member>
+      <member refid="classStmSpiBus_1a781055ef0cd430c2cb5f12601882a683" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>CreateDevice</name></member>
+      <member refid="classStmSpiBus_1ad4cf41108043a7610f902cb45bcbc8e4" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>Deinitialize</name></member>
+      <member refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>devices_</name></member>
+      <member refid="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>GetConfig</name></member>
+      <member refid="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>GetDevice</name></member>
+      <member refid="classStmSpiBus_1a313d95a200920d2f5abc67e94c359fca" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>GetDevice</name></member>
+      <member refid="classStmSpiBus_1a81d08ab646705ea372874ca8c663367b" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>GetDeviceCount</name></member>
+      <member refid="classStmSpiBus_1a949a4e26bc00b79272f4e1929aa06064" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>Initialize</name></member>
+      <member refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" prot="private" virt="non-virtual"><scope>StmSpiBus</scope><name>initialized_</name></member>
+      <member refid="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>IsInitialized</name></member>
+      <member refid="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>RemoveDevice</name></member>
+      <member refid="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>StmSpiBus</name></member>
+      <member refid="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" prot="public" virt="non-virtual"><scope>StmSpiBus</scope><name>~StmSpiBus</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

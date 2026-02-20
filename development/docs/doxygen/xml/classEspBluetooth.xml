@@ -103,9 +103,9 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/EspBluetooth.h" line="189" column="29" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="189" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspBluetooth_1af0a5dbcfb9a7b51387cc22a655f4475b" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspBluetooth::m_device_mutex</definition>
+      <memberdef kind="variable" id="classEspBluetooth_1adb8956d2c364a44f81356624b016b136" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspBluetooth::m_device_mutex</definition>
         <argsstring></argsstring>
         <name>m_device_mutex</name>
         <qualifiedname>EspBluetooth::m_device_mutex</qualifiedname>
@@ -115,11 +115,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="192" column="21" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="192" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="192" column="25" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="192" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspBluetooth_1a381b0e07f4f75410be9d9affa18b40be" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspBluetooth::m_state_mutex</definition>
+      <memberdef kind="variable" id="classEspBluetooth_1a79785c1f5dcc09583bbcf50df257df1a" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspBluetooth::m_state_mutex</definition>
         <argsstring></argsstring>
         <name>m_state_mutex</name>
         <qualifiedname>EspBluetooth::m_state_mutex</qualifiedname>
@@ -129,7 +129,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspBluetooth.h" line="193" column="21" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="193" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspBluetooth.h" line="193" column="25" bodyfile="inc/mcu/esp32/EspBluetooth.h" bodystart="193" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" prot="private" static="no" mutable="no">
         <type><ref refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" kindref="member">hf_bluetooth_event_callback_t</ref></type>
@@ -1832,8 +1832,8 @@
         </childnode>
       </node>
       <node id="4">
-        <label>RtosMutex</label>
-        <link refid="classRtosMutex"/>
+        <label>PlatformMutex</label>
+        <link refid="classPlatformMutex"/>
       </node>
       <node id="3">
         <label>hf_bluetooth_ble_config_t</label>
@@ -1880,14 +1880,14 @@
       <member refid="classEspBluetooth_1a7143aa7604d8fb3d70d2ce725fb888b9" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_callback_context</name></member>
       <member refid="classEspBluetooth_1adb7ac39e03c55983d3ab3d992d80dd64" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_connected_devices</name></member>
       <member refid="classEspBluetooth_1a18919e69523d667a5e3f47e992ab9816" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_data_callback</name></member>
-      <member refid="classEspBluetooth_1af0a5dbcfb9a7b51387cc22a655f4475b" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_device_mutex</name></member>
+      <member refid="classEspBluetooth_1adb8956d2c364a44f81356624b016b136" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_device_mutex</name></member>
       <member refid="classEspBluetooth_1aaaadf2899fec6782cb774f942aa18c98" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_discovered_devices</name></member>
       <member refid="classEspBluetooth_1a887d8aec908d8d0157e78df04b1a1b65" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_enabled</name></member>
       <member refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_event_callback</name></member>
       <member refid="classEspBluetooth_1a4d84bbbb3cb06d234d4e300de6021849" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_initialized</name></member>
       <member refid="classEspBluetooth_1a581f22e02f93b4db159d360f47e0abef" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_mode</name></member>
       <member refid="classEspBluetooth_1af693e9b5b58e1a3a68cf9edf39e7bda4" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_state</name></member>
-      <member refid="classEspBluetooth_1a381b0e07f4f75410be9d9affa18b40be" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_state_mutex</name></member>
+      <member refid="classEspBluetooth_1a79785c1f5dcc09583bbcf50df257df1a" prot="private" virt="non-virtual"><scope>EspBluetooth</scope><name>m_state_mutex</name></member>
       <member refid="classBaseBluetooth_1a30639bf1607e6a95e8127a3ec810227f" prot="protected" virt="non-virtual"><scope>EspBluetooth</scope><name>operator=</name></member>
       <member refid="classEspBluetooth_1a1fdeba3ee4d28fce11a530e058fe46c2" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>Pair</name></member>
       <member refid="classEspBluetooth_1a4d4f13f2b7cf499284a2095b088a9cfd" prot="public" virt="virtual"><scope>EspBluetooth</scope><name>ReadCharacteristic</name></member>

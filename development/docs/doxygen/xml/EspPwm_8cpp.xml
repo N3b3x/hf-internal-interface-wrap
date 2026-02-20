@@ -6,14 +6,8 @@
     <includes local="no">algorithm</includes>
     <includes local="no">cstring</includes>
     <includes local="no">vector</includes>
-    <includes local="yes">driver/ledc.h</includes>
-    <includes local="yes">esp_err.h</includes>
-    <includes local="yes">esp_log.h</includes>
-    <includes local="yes">esp_timer.h</includes>
-    <includes local="yes">hal/ledc_hal.h</includes>
-    <includes local="yes">soc/ledc_reg.h</includes>
     <incdepgraph>
-      <node id="17">
+      <node id="14">
         <label>BaseGpio.h</label>
         <link refid="BaseGpio_8h"/>
         <childnode refid="4" relation="include">
@@ -48,42 +42,40 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="12">
         <label>EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="13">
         <label>EspTypes_GPIO.h</label>
         <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="17" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="11">
         <label>utils/EspTypes_PWM.h</label>
         <link refid="EspTypes__PWM_8h"/>
         <childnode refid="3" relation="include">
@@ -92,9 +84,9 @@
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="9">
@@ -102,17 +94,11 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="8">
-        <label>RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -122,77 +108,38 @@
         <link refid="EspPwm_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="28" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="21">
+      <node id="17">
         <label>algorithm</label>
       </node>
-      <node id="18">
+      <node id="15">
         <label>array</label>
       </node>
-      <node id="13">
+      <node id="10">
         <label>atomic</label>
       </node>
       <node id="5">
         <label>cstdint</label>
       </node>
-      <node id="22">
+      <node id="18">
         <label>cstring</label>
-      </node>
-      <node id="20">
-        <label>driver/ledc.h</label>
-      </node>
-      <node id="24">
-        <label>esp_err.h</label>
-      </node>
-      <node id="25">
-        <label>esp_log.h</label>
-      </node>
-      <node id="26">
-        <label>esp_timer.h</label>
-      </node>
-      <node id="10">
-        <label>freertos/FreeRTOS.h</label>
-      </node>
-      <node id="11">
-        <label>freertos/semphr.h</label>
-      </node>
-      <node id="12">
-        <label>freertos/task.h</label>
-      </node>
-      <node id="27">
-        <label>hal/ledc_hal.h</label>
       </node>
       <node id="6">
         <label>limits</label>
       </node>
-      <node id="28">
-        <label>soc/ledc_reg.h</label>
-      </node>
-      <node id="19">
+      <node id="16">
         <label>string</label>
       </node>
       <node id="7">
         <label>string_view</label>
       </node>
-      <node id="23">
+      <node id="19">
         <label>vector</label>
       </node>
     </incdepgraph>
@@ -222,7 +169,7 @@
 <listitem><para><bold>Variant-Agnostic Design:</bold> Automatic adaptation to ESP32 variant capabilities</para>
 </listitem><listitem><para><bold>LEDC Peripheral Integration:</bold> Full utilization of hardware fade, timer sharing, and interrupts</para>
 </listitem><listitem><para><bold>Smart Resource Management:</bold> Automatic timer allocation with conflict resolution and eviction policies</para>
-</listitem><listitem><para><bold>Thread-Safe Operations:</bold> Complete <ref refid="classRtosMutex" kindref="compound">RtosMutex</ref> protection for concurrent access</para>
+</listitem><listitem><para><bold>Thread-Safe Operations:</bold> Complete <ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref> protection for concurrent access</para>
 </listitem><listitem><para><bold>Comprehensive Validation:</bold> Hardware constraint validation with detailed error reporting</para>
 </listitem><listitem><para><bold>Performance Optimization:</bold> Efficient timer sharing and minimal overhead design</para>
 </listitem><listitem><para><bold>Motor Control Features:</bold> Complementary outputs, deadtime, and synchronized operations</para>
@@ -291,7 +238,7 @@
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><ref refid="classEspPwm_1aaac5ce3f95ae8c5fb96312ad9a779ce6" kindref="member">EspPwm::~EspPwm</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPwm_1a62f5455c00a2bf6bee32c4edeb5b90d0" kindref="member">initialized_</ref>.load())<sp/>{</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspPwm<sp/>destructor<sp/>-<sp/>cleaning<sp/>up&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspPwm<sp/>destructor<sp/>-<sp/>cleaning<sp/>up&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1a28c857a39efec61ad79770770fca878c" kindref="member">Deinitialize</ref>();</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="79"><highlight class="normal">}</highlight></codeline>
@@ -301,26 +248,26 @@
 <codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
 <codeline lineno="85"><highlight class="normal"><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1aedb8649c68e856258d6278bf399aab05" kindref="member">EspPwm::Initialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
 <codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPwm_1a62f5455c00a2bf6bee32c4edeb5b90d0" kindref="member">initialized_</ref>.load())<sp/>{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9acb0980fa63fee3ca282d1a98cff45f9e" kindref="member">hf_pwm_err_t::PWM_ERR_ALREADY_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>ESP32C6<sp/>PWM<sp/>system<sp/>with<sp/>unit_id=%d,<sp/>mode=%d,<sp/>base_clock=%lu<sp/>Hz&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>ESP32C6<sp/>PWM<sp/>system<sp/>with<sp/>unit_id=%d,<sp/>mode=%d,<sp/>base_clock=%lu<sp/>Hz&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1ac2592dd4dbe1e99213a7d1d4c69e67fd" kindref="member">unit_config_</ref>.<ref refid="structhf__pwm__unit__config__t_1aee1e74ef4f6da7c224819db84bc9d873" kindref="member">unit_id</ref>,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspPwm_1ac2592dd4dbe1e99213a7d1d4c69e67fd" kindref="member">unit_config_</ref>.<ref refid="structhf__pwm__unit__config__t_1ab6c9882bb8695dbdfd685af69dfdf35a" kindref="member">mode</ref>),<sp/><ref refid="classEspPwm_1adb2698a4d9441132c4f9ba23a4dc4678" kindref="member">base_clock_hz_</ref>);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>timers<sp/>and<sp/>channels<sp/>using<sp/>lifecycle<sp/>helpers</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspPwm_1ae9e920ee5ebeced7fbe9dd8a80622605" kindref="member">InitializeTimers</ref>();</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>timers:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(result));</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>timers:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(result));</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/>result<sp/>=<sp/><ref refid="classEspPwm_1ab8ee8dcae85c2b59b80dbc996522a7b2" kindref="member">InitializeChannels</ref>();</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>channels:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(result));</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>channels:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(result));</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
@@ -328,7 +275,7 @@
 <codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPwm_1ac2592dd4dbe1e99213a7d1d4c69e67fd" kindref="member">unit_config_</ref>.<ref refid="structhf__pwm__unit__config__t_1a37b2e0c51eb2962a80131fefe9d64d58" kindref="member">enable_fade</ref><sp/>&amp;&amp;<sp/>!<ref refid="classEspPwm_1ab200d2d51794d3c3f6c18945132bc7e4" kindref="member">fade_functionality_installed_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="classEspPwm_1a9192ec3aa26d9acac2c0e6ec30c6bed1" kindref="member">EnableFade</ref>();</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>fade<sp/>functionality:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(result));</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>fade<sp/>functionality:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(result));</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Don&apos;t<sp/>fail<sp/>initialization<sp/>if<sp/>fade<sp/>fails</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -339,7 +286,7 @@
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm_1aefe4a2dfe1bccd062a299b1febb8aef8" kindref="member">statistics_</ref>.<ref refid="structhf__pwm__statistics__t_1a5ad7ac0b01d65479a5e3214b5e06705e" kindref="member">initialization_timestamp</ref><sp/>=<sp/>esp_timer_get_time();</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm_1aefe4a2dfe1bccd062a299b1febb8aef8" kindref="member">statistics_</ref>.<ref refid="structhf__pwm__statistics__t_1a86bbb93e18e2e3dfede40f48cc6b7a18" kindref="member">last_activity_timestamp</ref><sp/>=<sp/><ref refid="classEspPwm_1aefe4a2dfe1bccd062a299b1febb8aef8" kindref="member">statistics_</ref>.<ref refid="structhf__pwm__statistics__t_1a5ad7ac0b01d65479a5e3214b5e06705e" kindref="member">initialization_timestamp</ref>;</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6<sp/>PWM<sp/>system<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6<sp/>PWM<sp/>system<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="126"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"></highlight></codeline>
@@ -348,16 +295,16 @@
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>ESP32C6<sp/>PWM<sp/>system&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>ESP32C6<sp/>PWM<sp/>system&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>1.<sp/>Unregister<sp/>all<sp/>fade<sp/>callbacks<sp/>FIRST<sp/>(while<sp/>fade<sp/>service<sp/>is<sp/>still<sp/>installed)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id<sp/>=<sp/>0;<sp/>channel_id<sp/>&lt;<sp/><ref refid="classEspPwm_1a1595caab94f2f77924d128115eab0be2" kindref="member">MAX_CHANNELS</ref>;<sp/>channel_id++)<sp/>{</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPwm_1ab3341c72b5f1d413999dfc44fd8d80d2" kindref="member">channels_</ref>[channel_id].configured<sp/>&amp;&amp;<sp/><ref refid="classEspPwm_1ab3341c72b5f1d413999dfc44fd8d80d2" kindref="member">channels_</ref>[channel_id].fade_callback)<sp/>{</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unregistering<sp/>fade<sp/>callback<sp/>for<sp/>channel<sp/>%d<sp/>during<sp/>deinitialization&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unregistering<sp/>fade<sp/>callback<sp/>for<sp/>channel<sp/>%d<sp/>during<sp/>deinitialization&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channel_id);</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>callback_result<sp/>=<sp/><ref refid="classEspPwm_1a51e0799a5758dd6159e417fcf00c5d31" kindref="member">UnregisterLedcFadeCallback</ref>(channel_id);</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(callback_result<sp/>!=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,</highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>unregister<sp/>fade<sp/>callback<sp/>for<sp/>channel<sp/>%d<sp/>during<sp/>deinitialization:<sp/>%s&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>channel_id,<sp/><ref refid="BasePwm_8h_1ad8292f4a3edf6781ea0e0eccb6ef07d0" kindref="member">HfPwmErrToString</ref>(callback_result));</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>with<sp/>deinitialization<sp/>despite<sp/>callback<sp/>unregister<sp/>failure</highlight><highlight class="normal"></highlight></codeline>
@@ -369,7 +316,7 @@
 <codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>prevents<sp/>fade-out<sp/>behavior<sp/>during<sp/>ledc_stop<sp/>calls</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPwm_1ab200d2d51794d3c3f6c18945132bc7e4" kindref="member">fade_functionality_installed_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>ledc_fade_func_uninstall();</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>functionality<sp/>uninstalled&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>functionality<sp/>uninstalled&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1ab200d2d51794d3c3f6c18945132bc7e4" kindref="member">fade_functionality_installed_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight></codeline>
@@ -380,12 +327,12 @@
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ledc_stop(LEDC_LOW_SPEED_MODE,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">ledc_channel_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(channel_id),<sp/>0);</highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>GPIO<sp/>pin<sp/>to<sp/>default<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio_pin<sp/>=<sp/><ref refid="classEspPwm_1ab3341c72b5f1d413999dfc44fd8d80d2" kindref="member">channels_</ref>[channel_id].config.gpio_pin;</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(gpio_pin))<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio_pin<sp/>=<sp/><ref refid="classEspPwm_1ab3341c72b5f1d413999dfc44fd8d80d2" kindref="member">channels_</ref>[channel_id].config.gpio_pin;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HF_GPIO_IS_VALID_GPIO(gpio_pin))<sp/>{</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Disable<sp/>GPIO<sp/>hold<sp/>and<sp/>reset<sp/>to<sp/>default<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_hold_dis(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(gpio_pin));</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gpio_reset_pin(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(gpio_pin));</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>%d<sp/>reset<sp/>to<sp/>default<sp/>state&quot;</highlight><highlight class="normal">,<sp/>gpio_pin);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;GPIO<sp/>%d<sp/>reset<sp/>to<sp/>default<sp/>state&quot;</highlight><highlight class="normal">,<sp/>gpio_pin);</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>channel<sp/>state</highlight><highlight class="normal"></highlight></codeline>
@@ -398,7 +345,7 @@
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPwm_1ad569f2cfbea460323ab5847717019d75" kindref="member">timers_</ref>[timer_id].in_use)<sp/>{</highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_t<sp/>ret<sp/>=<sp/>ledc_timer_rst(LEDC_LOW_SPEED_MODE,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">ledc_timer_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(timer_id));</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>reset<sp/>timer<sp/>%d<sp/>during<sp/>deinitialization:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>timer_id,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>reset<sp/>timer<sp/>%d<sp/>during<sp/>deinitialization:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>timer_id,</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_to_name(ret));</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
@@ -418,7 +365,7 @@
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm_1ad1b06777e74eedca37e5023ec23fc4ce" kindref="member">last_global_error_</ref><sp/>=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm_1aefe4a2dfe1bccd062a299b1febb8aef8" kindref="member">statistics_</ref>.<ref refid="structhf__pwm__statistics__t_1a86bbb93e18e2e3dfede40f48cc6b7a18" kindref="member">last_activity_timestamp</ref><sp/>=<sp/>esp_timer_get_time();</highlight></codeline>
 <codeline lineno="202"><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6<sp/>PWM<sp/>system<sp/>deinitialized<sp/>with<sp/>comprehensive<sp/>cleanup&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32C6<sp/>PWM<sp/>system<sp/>deinitialized<sp/>with<sp/>comprehensive<sp/>cleanup&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="205"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"></highlight></codeline>
@@ -427,7 +374,7 @@
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"></highlight></codeline>
-<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="213"><highlight class="normal"></highlight></codeline>
 <codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mode<sp/>==<sp/><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3faafcaebf50ed45950d02944973268665f3" kindref="member">hf_pwm_mode_t::HF_PWM_MODE_FADE</ref><sp/>&amp;&amp;<sp/>!fade_functionality_installed_)<sp/>{</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>result<sp/>=<sp/>EnableFade();</highlight></codeline>
@@ -457,14 +404,14 @@
 <codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="241"><highlight class="normal"></highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="243"><highlight class="normal"></highlight></codeline>
 <codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
 <codeline lineno="246"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="247"><highlight class="normal"></highlight></codeline>
 <codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config.gpio_pin<sp/>==<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config.gpio_pin<sp/>==<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">hf_gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>))<sp/>{</highlight></codeline>
 <codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>SetChannelError(channel_id,<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a8c40029a485dd3c141eba9732f61564d" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER</ref>);</highlight></codeline>
 <codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a8c40029a485dd3c141eba9732f61564d" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
 <codeline lineno="252"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -562,7 +509,7 @@
 <codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="345"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="346"><highlight class="normal"></highlight></codeline>
-<codeline lineno="347"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="348"><highlight class="normal"></highlight></codeline>
 <codeline lineno="349"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -632,7 +579,7 @@
 <codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="415"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="416"><highlight class="normal"></highlight></codeline>
-<codeline lineno="417"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="418"><highlight class="normal"></highlight></codeline>
 <codeline lineno="419"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -679,7 +626,7 @@
 <codeline lineno="461"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="462"><highlight class="normal"></highlight></codeline>
 <codeline lineno="463"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspPwm_1a07c737787080435a486d47ad3c6803e9" kindref="member">EspPwm::IsChannelEnabled</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="464"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="465"><highlight class="normal"></highlight></codeline>
 <codeline lineno="466"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id)<sp/>||<sp/>!channels_[channel_id].configured)<sp/>{</highlight></codeline>
 <codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -696,7 +643,7 @@
 <codeline lineno="478"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="479"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="480"><highlight class="normal"></highlight></codeline>
-<codeline lineno="481"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="482"><highlight class="normal"></highlight></codeline>
 <codeline lineno="483"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -752,7 +699,7 @@
 <codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="535"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="536"><highlight class="normal"></highlight></codeline>
-<codeline lineno="537"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="538"><highlight class="normal"></highlight></codeline>
 <codeline lineno="539"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="540"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -806,7 +753,7 @@
 <codeline lineno="588"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="589"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="590"><highlight class="normal"></highlight></codeline>
-<codeline lineno="591"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="591"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="592"><highlight class="normal"></highlight></codeline>
 <codeline lineno="593"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="594"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -992,7 +939,7 @@
 <codeline lineno="774"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="775"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="776"><highlight class="normal"></highlight></codeline>
-<codeline lineno="777"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="777"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="778"><highlight class="normal"></highlight></codeline>
 <codeline lineno="779"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="780"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1016,7 +963,7 @@
 <codeline lineno="798"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="799"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="800"><highlight class="normal"></highlight></codeline>
-<codeline lineno="801"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="801"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="802"><highlight class="normal"></highlight></codeline>
 <codeline lineno="803"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="804"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1091,7 +1038,7 @@
 <codeline lineno="873"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="874"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="875"><highlight class="normal"></highlight></codeline>
-<codeline lineno="876"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="876"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="877"><highlight class="normal"></highlight></codeline>
 <codeline lineno="878"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="879"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1147,9 +1094,9 @@
 <codeline lineno="929"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="930"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="931"><highlight class="normal"></highlight></codeline>
-<codeline lineno="932"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="932"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="933"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm_1a1f3b42702956b65454339f9a61458806" kindref="member">auto_fallback_enabled_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="934"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Auto-fallback<sp/>mode<sp/>enabled<sp/>-<sp/>will<sp/>try<sp/>alternative<sp/>resolutions<sp/>automatically&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="934"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Auto-fallback<sp/>mode<sp/>enabled<sp/>-<sp/>will<sp/>try<sp/>alternative<sp/>resolutions<sp/>automatically&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="935"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="936"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="937"><highlight class="normal"></highlight></codeline>
@@ -1158,14 +1105,14 @@
 <codeline lineno="940"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="941"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="942"><highlight class="normal"></highlight></codeline>
-<codeline lineno="943"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="943"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="944"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm_1a1f3b42702956b65454339f9a61458806" kindref="member">auto_fallback_enabled_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="945"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Auto-fallback<sp/>mode<sp/>disabled<sp/>-<sp/>will<sp/>fail<sp/>validation<sp/>for<sp/>problematic<sp/>combinations&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="945"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Auto-fallback<sp/>mode<sp/>disabled<sp/>-<sp/>will<sp/>fail<sp/>validation<sp/>for<sp/>problematic<sp/>combinations&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="946"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="947"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="948"><highlight class="normal"></highlight></codeline>
 <codeline lineno="949"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspPwm_1adb0842868ea3508b65542b2b3c46b155" kindref="member">EspPwm::IsAutoFallbackEnabled</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="950"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="950"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="951"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspPwm_1a1f3b42702956b65454339f9a61458806" kindref="member">auto_fallback_enabled_</ref>;</highlight></codeline>
 <codeline lineno="952"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="953"><highlight class="normal"></highlight></codeline>
@@ -1178,7 +1125,7 @@
 <codeline lineno="960"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="961"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="962"><highlight class="normal"></highlight></codeline>
-<codeline lineno="963"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="963"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="964"><highlight class="normal"></highlight></codeline>
 <codeline lineno="965"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="966"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1206,7 +1153,7 @@
 <codeline lineno="988"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="989"><highlight class="normal"></highlight></codeline>
 <codeline lineno="990"><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="classEspPwm_1a038775414699ae7a63277c2050ff7545" kindref="member">EspPwm::GetResolution</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="991"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="991"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="992"><highlight class="normal"></highlight></codeline>
 <codeline lineno="993"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id)<sp/>||<sp/>!channels_[channel_id].configured)<sp/>{</highlight></codeline>
 <codeline lineno="994"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -1227,7 +1174,7 @@
 <codeline lineno="1009"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1010"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1011"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1012"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1012"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1013"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1014"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1015"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1340,7 +1287,7 @@
 <codeline lineno="1122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1123"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1125"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="1125"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="1126"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1127"><highlight class="normal"><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>result<sp/>=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="1128"><highlight class="normal"></highlight></codeline>
@@ -1361,7 +1308,7 @@
 <codeline lineno="1143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1144"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1146"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="1146"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="1147"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1148"><highlight class="normal"><sp/><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/>result<sp/>=<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="1149"><highlight class="normal"></highlight></codeline>
@@ -1382,7 +1329,7 @@
 <codeline lineno="1164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1165"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1167"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="1167"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="1168"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1169"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>ESP32C6,<sp/>we<sp/>can<sp/>update<sp/>all<sp/>channels<sp/>simultaneously</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id<sp/>=<sp/>0;<sp/>channel_id<sp/>&lt;<sp/><ref refid="classEspPwm_1a1595caab94f2f77924d128115eab0be2" kindref="member">MAX_CHANNELS</ref>;<sp/>channel_id++)<sp/>{</highlight></codeline>
@@ -1390,7 +1337,7 @@
 <codeline lineno="1172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_t<sp/>ret<sp/>=</highlight></codeline>
 <codeline lineno="1173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ledc_update_duty(LEDC_LOW_SPEED_MODE,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">ledc_channel_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(channel_id));</highlight></codeline>
 <codeline lineno="1174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="1175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ledc_update_duty<sp/>failed<sp/>for<sp/>channel<sp/>%lu:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>channel_id,</highlight></codeline>
+<codeline lineno="1175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ledc_update_duty<sp/>failed<sp/>for<sp/>channel<sp/>%lu:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>channel_id,</highlight></codeline>
 <codeline lineno="1176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_to_name(ret));</highlight></codeline>
 <codeline lineno="1177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1a6b4f2fafd78318e313ced753414f11d2" kindref="member">SetChannelError</ref>(channel_id,<sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a270e092be00c3f71b5cc3059b437b197" kindref="member">hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT</ref>);</highlight></codeline>
 <codeline lineno="1178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a270e092be00c3f71b5cc3059b437b197" kindref="member">hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT</ref>;</highlight></codeline>
@@ -1407,7 +1354,7 @@
 <codeline lineno="1189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1190"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1192"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1192"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1193"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(primary_channel)<sp/>||<sp/>!IsValidChannelId(complementary_channel))<sp/>{</highlight></codeline>
 <codeline lineno="1195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1450,7 +1397,7 @@
 <codeline lineno="1232"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1233"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1234"><highlight class="normal"></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classEspPwm_1aeb3eda73cca25d298a3c7e3cbf133f03" kindref="member">EspPwm::GetDutyCycle</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1235"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1235"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1236"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id)<sp/>||<sp/>!channels_[channel_id].configured)<sp/>{</highlight></codeline>
 <codeline lineno="1238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.0f;</highlight></codeline>
@@ -1462,7 +1409,7 @@
 <codeline lineno="1244"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1245"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1246"><highlight class="normal"><ref refid="HardwareTypes_8h_1ae68c5caacf4873c3a0df851e11657bbc" kindref="member">hf_frequency_hz_t</ref><sp/><ref refid="classEspPwm_1a4687559ad8744ece1ef578796b21eb02" kindref="member">EspPwm::GetFrequency</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1247"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1247"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1248"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id)<sp/>||<sp/>!channels_[channel_id].configured)<sp/>{</highlight></codeline>
 <codeline lineno="1250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -1474,7 +1421,7 @@
 <codeline lineno="1256"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1257"><highlight class="normal"><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1a7cf9c46011b383820a588a9f153dfc52" kindref="member">EspPwm::GetChannelStatus</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id,</highlight></codeline>
 <codeline lineno="1258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pwm__channel__status__t" kindref="compound">hf_pwm_channel_status_t</ref>&amp;<sp/>status)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1259"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1259"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1260"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1261"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1520,7 +1467,7 @@
 <codeline lineno="1302"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1303"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1304"><highlight class="normal"><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1a1e5a6eaafc83ba4ac56718fcded72d81" kindref="member">EspPwm::GetLastError</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1305"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1305"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1306"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1307"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1530,13 +1477,13 @@
 <codeline lineno="1312"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1313"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1314"><highlight class="normal"><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1a9ff4ddc5a06060a4b7194154a7d28617" kindref="member">EspPwm::GetStatistics</ref>(<ref refid="structhf__pwm__statistics__t" kindref="compound">hf_pwm_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1315"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1315"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1316"><highlight class="normal"><sp/><sp/>statistics<sp/>=<sp/>statistics_;</highlight></codeline>
 <codeline lineno="1317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="1318"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1319"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1320"><highlight class="normal"><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1a81bc4616d9447ad43ec6d6c732049b59" kindref="member">EspPwm::GetDiagnostics</ref>(<ref refid="structhf__pwm__diagnostics__t" kindref="compound">hf_pwm_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1321"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1321"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1322"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1323"><highlight class="normal"><sp/><sp/>diagnostics.hardware_initialized<sp/>=<sp/>initialized_.load();</highlight></codeline>
 <codeline lineno="1324"><highlight class="normal"><sp/><sp/>diagnostics.fade_functionality_ready<sp/>=<sp/>fade_functionality_installed_;</highlight></codeline>
@@ -1574,7 +1521,7 @@
 <codeline lineno="1356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1357"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1358"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1359"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1359"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1360"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1361"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1362"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1617,7 +1564,7 @@
 <codeline lineno="1399"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1400"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1401"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1402"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1402"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1403"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1404"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1405"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1682,7 +1629,7 @@
 <codeline lineno="1464"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1465"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1466"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1467"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1467"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1468"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1469"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1470"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1710,7 +1657,7 @@
 <codeline lineno="1492"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1493"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1494"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspPwm_1a7006101d1efdbfa70c2b65604ded7b85" kindref="member">EspPwm::IsFadeActive</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1495"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1495"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1496"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1497"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id)<sp/>||<sp/>!channels_[channel_id].configured)<sp/>{</highlight></codeline>
 <codeline lineno="1498"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1724,7 +1671,7 @@
 <codeline lineno="1506"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1507"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1508"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1509"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1509"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1510"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1511"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1512"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1753,7 +1700,7 @@
 <codeline lineno="1535"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1536"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1537"><highlight class="normal"><ref refid="HardwareTypes_8h_1a88065d24fa2d174cf7b698ce5d498c44" kindref="member">hf_i8_t</ref><sp/><ref refid="classEspPwm_1a4437f86f7dfc052c9abd0cd633c10e71" kindref="member">EspPwm::GetTimerAssignment</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1538"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1538"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1539"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1540"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id)<sp/>||<sp/>!channels_[channel_id].configured)<sp/>{</highlight></codeline>
 <codeline lineno="1541"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
@@ -1767,7 +1714,7 @@
 <codeline lineno="1549"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1550"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1551"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1552"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1552"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1553"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1554"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1555"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1844,7 +1791,7 @@
 <codeline lineno="1626"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1627"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1628"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1629"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1629"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1630"><highlight class="normal"><sp/><sp/>eviction_policy_<sp/>=<sp/>policy;</highlight></codeline>
 <codeline lineno="1631"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1632"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>policy_names[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;STRICT_NO_EVICTION&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;ALLOW_EVICTION_WITH_CONSENT&quot;</highlight><highlight class="normal">,</highlight></codeline>
@@ -1855,7 +1802,7 @@
 <codeline lineno="1637"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1638"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1639"><highlight class="normal"><ref refid="EspTypes__PWM_8h_1ac87a4c9f233c95c6036c956aa21fdf72" kindref="member">hf_pwm_eviction_policy_t</ref><sp/><ref refid="classEspPwm_1a6bf8969af578c46e95a7b16552c3442a" kindref="member">EspPwm::GetEvictionPolicy</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="1640"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="1640"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="1641"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspPwm_1a1f1584998723762eec8692090592650f" kindref="member">eviction_policy_</ref>;</highlight></codeline>
 <codeline lineno="1642"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1643"><highlight class="normal"></highlight></codeline>
@@ -1865,7 +1812,7 @@
 <codeline lineno="1647"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1648"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1649"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1650"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1650"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1651"><highlight class="normal"><sp/><sp/>eviction_callback_<sp/>=<sp/>callback;</highlight></codeline>
 <codeline lineno="1652"><highlight class="normal"><sp/><sp/>eviction_callback_user_data_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="1653"><highlight class="normal"></highlight></codeline>
@@ -1879,7 +1826,7 @@
 <codeline lineno="1661"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1662"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1663"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1664"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1664"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1665"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1666"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1667"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1901,7 +1848,7 @@
 <codeline lineno="1683"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1684"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1685"><highlight class="normal"><ref refid="EspTypes__PWM_8h_1ad8fbde8152ecafefd714f3a7eb8344c1" kindref="member">hf_pwm_channel_priority_t</ref><sp/><ref refid="classEspPwm_1a572bf6e4c5628fb5996353922417c4bc" kindref="member">EspPwm::GetChannelPriority</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1686"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1686"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1687"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1688"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id)<sp/>||<sp/>!channels_[channel_id].configured)<sp/>{</highlight></codeline>
 <codeline lineno="1689"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__PWM_8h_1ad8fbde8152ecafefd714f3a7eb8344c1a860a24d0e7b2fcadbbb258aad2708ad7" kindref="member">hf_pwm_channel_priority_t::PRIORITY_NORMAL</ref>;</highlight></codeline>
@@ -1915,7 +1862,7 @@
 <codeline lineno="1697"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a1cea0bbdd92a53e40042fb3a040b936f" kindref="member">hf_pwm_err_t::PWM_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1698"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1699"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1700"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1700"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1701"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1702"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id))<sp/>{</highlight></codeline>
 <codeline lineno="1703"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a33023a8d5cd34be269a0643793bfa152" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_CHANNEL</ref>;</highlight></codeline>
@@ -1942,7 +1889,7 @@
 <codeline lineno="1724"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1725"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1726"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspPwm_1a85c715fe2272e8c1dc93e47f44ab56ac" kindref="member">EspPwm::IsChannelCritical</ref>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel_id)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1727"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1727"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1728"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1729"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsValidChannelId(channel_id)<sp/>||<sp/>!channels_[channel_id].configured)<sp/>{</highlight></codeline>
 <codeline lineno="1730"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -2174,7 +2121,7 @@
 <codeline lineno="1956"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>timer_id)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="1957"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Proactively<sp/>free<sp/>the<sp/>GPIO<sp/>from<sp/>any<sp/>previous<sp/>owner<sp/>before<sp/>attaching<sp/>LEDC</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1958"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>helps<sp/>avoid:<sp/>&quot;GPIO<sp/>X<sp/>is<sp/>not<sp/>usable,<sp/>maybe<sp/>conflict<sp/>with<sp/>others&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1959"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(config.gpio_pin))<sp/>{</highlight></codeline>
+<codeline lineno="1959"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HF_GPIO_IS_VALID_GPIO(config.gpio_pin))<sp/>{</highlight></codeline>
 <codeline lineno="1960"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_hold_dis(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(config.gpio_pin));</highlight></codeline>
 <codeline lineno="1961"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_reset_pin(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(config.gpio_pin));</highlight></codeline>
 <codeline lineno="1962"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_set_pull_mode(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(config.gpio_pin),<sp/>GPIO_FLOATING);</highlight></codeline>
@@ -2410,15 +2357,15 @@
 <codeline lineno="2192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/>ESP_ERR_INVALID_STATE)<sp/>{</highlight></codeline>
 <codeline lineno="2193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Already<sp/>installed;<sp/>treat<sp/>as<sp/>success</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1ab200d2d51794d3c3f6c18945132bc7e4" kindref="member">fade_functionality_installed_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="2195"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>functionality<sp/>already<sp/>installed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2195"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>functionality<sp/>already<sp/>installed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="2197"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="2198"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>install<sp/>LEDC<sp/>fade<sp/>functionality:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(ret));</highlight></codeline>
+<codeline lineno="2198"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>install<sp/>LEDC<sp/>fade<sp/>functionality:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(ret));</highlight></codeline>
 <codeline lineno="2199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a270e092be00c3f71b5cc3059b437b197" kindref="member">hf_pwm_err_t::PWM_ERR_HARDWARE_FAULT</ref>;</highlight></codeline>
 <codeline lineno="2200"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2201"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2202"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm_1ab200d2d51794d3c3f6c18945132bc7e4" kindref="member">fade_functionality_installed_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="2203"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>functionality<sp/>installed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2203"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>functionality<sp/>installed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="2205"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2206"><highlight class="normal"></highlight></codeline>
@@ -2643,19 +2590,19 @@
 <codeline lineno="2425"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2426"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2427"><highlight class="normal"><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1ae9e920ee5ebeced7fbe9dd8a80622605" kindref="member">EspPwm::InitializeTimers</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="2428"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>PWM<sp/>timers&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2428"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>PWM<sp/>timers&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2429"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2430"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>timer<sp/>states</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2431"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>timer<sp/>:<sp/><ref refid="classEspPwm_1ad569f2cfbea460323ab5847717019d75" kindref="member">timers_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="2432"><highlight class="normal"><sp/><sp/><sp/><sp/>timer<sp/>=<sp/>TimerState{};</highlight></codeline>
 <codeline lineno="2433"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2434"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2435"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>timers<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2435"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>timers<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2436"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="2437"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2438"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2439"><highlight class="normal"><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9" kindref="member">hf_pwm_err_t</ref><sp/><ref refid="classEspPwm_1ab8ee8dcae85c2b59b80dbc996522a7b2" kindref="member">EspPwm::InitializeChannels</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="2440"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>PWM<sp/>channels&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2440"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>PWM<sp/>channels&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2441"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2442"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>channel<sp/>states</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2443"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>channel<sp/>:<sp/><ref refid="classEspPwm_1ab3341c72b5f1d413999dfc44fd8d80d2" kindref="member">channels_</ref>)<sp/>{</highlight></codeline>
@@ -2667,7 +2614,7 @@
 <codeline lineno="2449"><highlight class="normal"><sp/><sp/><sp/><sp/>pair<sp/>=<sp/>ComplementaryPair{};</highlight></codeline>
 <codeline lineno="2450"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2451"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2452"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>channels<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2452"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;PWM<sp/>channels<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2453"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="2454"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2455"><highlight class="normal"></highlight></codeline>
@@ -2676,20 +2623,20 @@
 <codeline lineno="2458"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="2459"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2460"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2461"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Enabling<sp/>LEDC<sp/>fade<sp/>functionality&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2461"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Enabling<sp/>LEDC<sp/>fade<sp/>functionality&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2462"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2463"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>result<sp/>=<sp/>ledc_fade_func_install(0);</highlight></codeline>
 <codeline lineno="2464"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/>ESP_ERR_INVALID_STATE)<sp/>{</highlight></codeline>
 <codeline lineno="2465"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1ab200d2d51794d3c3f6c18945132bc7e4" kindref="member">fade_functionality_installed_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="2466"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>function<sp/>already<sp/>installed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2466"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>function<sp/>already<sp/>installed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2467"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="2468"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="2469"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>install<sp/>LEDC<sp/>fade<sp/>function:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(result));</highlight></codeline>
+<codeline lineno="2469"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>install<sp/>LEDC<sp/>fade<sp/>function:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(result));</highlight></codeline>
 <codeline lineno="2470"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9ac987cd71177bdd4dd90a8453469d6876" kindref="member">hf_pwm_err_t::PWM_ERR_FAILURE</ref>;</highlight></codeline>
 <codeline lineno="2471"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2472"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2473"><highlight class="normal"><sp/><sp/><ref refid="classEspPwm_1ab200d2d51794d3c3f6c18945132bc7e4" kindref="member">fade_functionality_installed_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="2474"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>functionality<sp/>enabled&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2474"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;LEDC<sp/>fade<sp/>functionality<sp/>enabled&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2475"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a94f41578c634bed720c918a30d471d74" kindref="member">hf_pwm_err_t::PWM_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="2476"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="2477"><highlight class="normal"></highlight></codeline>
@@ -2950,7 +2897,7 @@
 <codeline lineno="2732"><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="classEspPwm_1a4836d32ff7c987bf03f403fa3f7ee660" kindref="member">EspPwm::PerformTimerHealthCheck</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="2733"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>cleaned_count<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="2734"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2735"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Performing<sp/>timer<sp/>health<sp/>check&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="2735"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Performing<sp/>timer<sp/>health<sp/>check&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="2736"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2737"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>timer_id<sp/>=<sp/>0;<sp/>timer_id<sp/>&lt;<sp/><ref refid="classEspPwm_1a625133f35c2449a53e048f63df138a89" kindref="member">MAX_TIMERS</ref>;<sp/>timer_id++)<sp/>{</highlight></codeline>
 <codeline lineno="2738"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspPwm_1ad569f2cfbea460323ab5847717019d75" kindref="member">timers_</ref>[timer_id].in_use)<sp/>{</highlight></codeline>
@@ -2967,27 +2914,27 @@
 <codeline lineno="2749"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2750"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fix<sp/>channel<sp/>count<sp/>mismatch</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2751"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPwm_1ad569f2cfbea460323ab5847717019d75" kindref="member">timers_</ref>[timer_id].channel_count<sp/>!=<sp/>actual_channel_count)<sp/>{</highlight></codeline>
-<codeline lineno="2752"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>%d<sp/>channel<sp/>count<sp/>mismatch:<sp/>recorded=%d,<sp/>actual=%d&quot;</highlight><highlight class="normal">,<sp/>timer_id,</highlight></codeline>
+<codeline lineno="2752"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>%d<sp/>channel<sp/>count<sp/>mismatch:<sp/>recorded=%d,<sp/>actual=%d&quot;</highlight><highlight class="normal">,<sp/>timer_id,</highlight></codeline>
 <codeline lineno="2753"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1ad569f2cfbea460323ab5847717019d75" kindref="member">timers_</ref>[timer_id].channel_count,<sp/>actual_channel_count);</highlight></codeline>
 <codeline lineno="2754"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1ad569f2cfbea460323ab5847717019d75" kindref="member">timers_</ref>[timer_id].channel_count<sp/>=<sp/>actual_channel_count;</highlight></codeline>
 <codeline lineno="2755"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2756"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2757"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clean<sp/>up<sp/>unused<sp/>timers</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2758"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(actual_channel_count<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="2759"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Health<sp/>check:<sp/>releasing<sp/>unused<sp/>timer<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>timer_id);</highlight></codeline>
+<codeline lineno="2759"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Health<sp/>check:<sp/>releasing<sp/>unused<sp/>timer<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>timer_id);</highlight></codeline>
 <codeline lineno="2760"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1aecd0e9059cb48af8c52140ff2ac7cf8c" kindref="member">ReleaseTimerIfUnused</ref>(timer_id);</highlight></codeline>
 <codeline lineno="2761"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cleaned_count++;</highlight></codeline>
 <codeline lineno="2762"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2763"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2764"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>conflict<sp/>flags<sp/>for<sp/>timers<sp/>that<sp/>might<sp/>have<sp/>recovered</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2765"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspPwm_1ad569f2cfbea460323ab5847717019d75" kindref="member">timers_</ref>[timer_id].has_hardware_conflicts<sp/>&amp;&amp;<sp/>actual_channel_count<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="2766"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Health<sp/>check:<sp/>resetting<sp/>conflict<sp/>flag<sp/>for<sp/>timer<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>timer_id);</highlight></codeline>
+<codeline lineno="2766"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Health<sp/>check:<sp/>resetting<sp/>conflict<sp/>flag<sp/>for<sp/>timer<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>timer_id);</highlight></codeline>
 <codeline lineno="2767"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspPwm_1ad569f2cfbea460323ab5847717019d75" kindref="member">timers_</ref>[timer_id].has_hardware_conflicts<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="2768"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2769"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2770"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2771"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cleaned_count<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="2772"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>health<sp/>check<sp/>completed:<sp/>cleaned<sp/>%d<sp/>timers&quot;</highlight><highlight class="normal">,<sp/>cleaned_count);</highlight></codeline>
+<codeline lineno="2772"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Timer<sp/>health<sp/>check<sp/>completed:<sp/>cleaned<sp/>%d<sp/>timers&quot;</highlight><highlight class="normal">,<sp/>cleaned_count);</highlight></codeline>
 <codeline lineno="2773"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2774"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2775"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cleaned_count;</highlight></codeline>
@@ -3002,7 +2949,7 @@
 <codeline lineno="2784"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BasePwm_8h_1aba623d248c49dd773e0866ea7c6d7ac9a8c40029a485dd3c141eba9732f61564d" kindref="member">hf_pwm_err_t::PWM_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
 <codeline lineno="2785"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2786"><highlight class="normal"></highlight></codeline>
-<codeline lineno="2787"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="2787"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="2788"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2789"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>channel<sp/>is<sp/>actually<sp/>configured</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2790"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!channels_[channel_id].configured)<sp/>{</highlight></codeline>
@@ -3048,8 +2995,8 @@
 <codeline lineno="2830"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="2831"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2832"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>6.<sp/>Reset<sp/>GPIO<sp/>pin<sp/>to<sp/>default<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="2833"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio_pin<sp/>=<sp/>channels_[channel_id].config.gpio_pin;</highlight></codeline>
-<codeline lineno="2834"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kindref="member">HF_GPIO_IS_VALID_GPIO</ref>(gpio_pin))<sp/>{</highlight></codeline>
+<codeline lineno="2833"><highlight class="normal"><sp/><sp/>hf_gpio_num_t<sp/>gpio_pin<sp/>=<sp/>channels_[channel_id].config.gpio_pin;</highlight></codeline>
+<codeline lineno="2834"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(HF_GPIO_IS_VALID_GPIO(gpio_pin))<sp/>{</highlight></codeline>
 <codeline lineno="2835"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspPwm_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Resetting<sp/>GPIO<sp/>pin<sp/>%d<sp/>to<sp/>default<sp/>state&quot;</highlight><highlight class="normal">,<sp/>gpio_pin);</highlight></codeline>
 <codeline lineno="2836"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_hold_dis(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(gpio_pin));</highlight></codeline>
 <codeline lineno="2837"><highlight class="normal"><sp/><sp/><sp/><sp/>gpio_reset_pin(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(gpio_pin));</highlight></codeline>

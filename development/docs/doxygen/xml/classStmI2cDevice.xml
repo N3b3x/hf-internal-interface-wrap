@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classStmI2cDevice" kind="class" language="C++" prot="public">
+    <compoundname>StmI2cDevice</compoundname>
+    <basecompoundref refid="classBaseI2c" prot="public" virt="non-virtual">BaseI2c</basecompoundref>
+    <includes refid="StmI2c_8h" local="no">StmI2c.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classStmI2cDevice_1aa427f3773fffe66a6e6313e1ed273474" prot="private" static="no" mutable="no">
+        <type><ref refid="classStmI2cBus" kindref="compound">StmI2cBus</ref> *</type>
+        <definition>StmI2cBus* StmI2cDevice::parent_bus_</definition>
+        <argsstring></argsstring>
+        <name>parent_bus_</name>
+        <qualifiedname>StmI2cDevice::parent_bus_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="38" column="15" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classStmI2cDevice_1a30cf0c80323678784650324431024fc0" prot="private" static="no" mutable="no">
+        <type><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref></type>
+        <definition>hf_i2c_device_config_t StmI2cDevice::config_</definition>
+        <argsstring></argsstring>
+        <name>config_</name>
+        <qualifiedname>StmI2cDevice::config_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="39" column="28" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStmI2cDevice_1a500c016c1e38b66087caa52d6e669c99" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StmI2cDevice::StmI2cDevice</definition>
+        <argsstring>(StmI2cBus *parent, const hf_i2c_device_config_t &amp;config)</argsstring>
+        <name>StmI2cDevice</name>
+        <qualifiedname>StmI2cDevice::StmI2cDevice</qualifiedname>
+        <param>
+          <type><ref refid="classStmI2cBus" kindref="compound">StmI2cBus</ref> *</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref> &amp;</type>
+          <declname>config</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="22" column="5" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="12" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1ae7a31f63df015bbc5044861df221fe3d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmI2cDevice::~StmI2cDevice</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~StmI2cDevice</name>
+        <qualifiedname>StmI2cDevice::~StmI2cDevice</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="23" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1a5d069dc6f8e90fe5aaccdd603111a07d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool StmI2cDevice::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>StmI2cDevice::Initialize</qualifiedname>
+        <reimplements refid="classBaseI2c_1adcdc753cf18e47cbc651cc608759bf32">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the I2C bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="25" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="17" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1ab3a261efe8437ab6a349af90829b86c5" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool StmI2cDevice::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>StmI2cDevice::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseI2c_1a2a96e596e8d83320c7f8d943119eef38">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the I2C bus. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="26" column="10" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="18" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1a8a705c4068676dcca9a36054eddfe15c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>hf_i2c_err_t StmI2cDevice::Write</definition>
+        <argsstring>(const hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms=0) noexcept override</argsstring>
+        <name>Write</name>
+        <qualifiedname>StmI2cDevice::Write</qualifiedname>
+        <reimplements refid="classBaseI2c_1abdfc7c1890423f993f1c9ca261e8a15d">Write</reimplements>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write data to the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data buffer to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_i2c_err_t result code </para>
+</simplesect>
+<simplesect kind="note"><para>Device address is configured during device creation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="28" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1a8cd7f86df640e25578aaaabe4ca194ec" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>hf_i2c_err_t StmI2cDevice::Read</definition>
+        <argsstring>(hf_u8_t *data, hf_u16_t length, hf_u32_t timeout_ms=0) noexcept override</argsstring>
+        <name>Read</name>
+        <qualifiedname>StmI2cDevice::Read</qualifiedname>
+        <reimplements refid="classBaseI2c_1ab28b2ede90a847b68eb14c4b7bad6bb0">Read</reimplements>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Read data from the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to buffer to store received data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_i2c_err_t result code </para>
+</simplesect>
+<simplesect kind="note"><para>Device address is configured during device creation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="30" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="25" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref></type>
+        <definition>hf_i2c_err_t StmI2cDevice::WriteRead</definition>
+        <argsstring>(const hf_u8_t *tx_data, hf_u16_t tx_length, hf_u8_t *rx_data, hf_u16_t rx_length, hf_u32_t timeout_ms=0) noexcept override</argsstring>
+        <name>WriteRead</name>
+        <qualifiedname>StmI2cDevice::WriteRead</qualifiedname>
+        <reimplements refid="classBaseI2c_1a58da16ee4e2762bed7b2541491b3147b">WriteRead</reimplements>
+        <param>
+          <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>tx_data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>tx_length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
+          <declname>rx_data</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+          <declname>rx_length</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Write then read data from the I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>tx_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data buffer to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>tx_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to write </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to buffer to store received data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>rx_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of bytes to read </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout_ms</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timeout in milliseconds (0 = use default) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>hf_i2c_err_t result code </para>
+</simplesect>
+<simplesect kind="note"><para>Device address is configured during device creation </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="32" column="18" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="30" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref></type>
+        <definition>hf_u16_t StmI2cDevice::GetDeviceAddress</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetDeviceAddress</name>
+        <qualifiedname>StmI2cDevice::GetDeviceAddress</qualifiedname>
+        <reimplements refid="classBaseI2c_1a99b912de8282d2d24bea723f841756db">GetDeviceAddress</reimplements>
+        <briefdescription>
+<para>Get the device address for this I2C device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The 7-bit I2C device address </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmI2c.h" line="35" column="14" bodyfile="src/mcu/stm32/StmI2c.cpp" bodystart="36" bodyend="38"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>STM32 I2C device — stub implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseI2c</label>
+        <link refid="classBaseI2c"/>
+      </node>
+      <node id="1">
+        <label>StmI2cDevice</label>
+        <link refid="classStmI2cDevice"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseI2c</label>
+        <link refid="classBaseI2c"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>StmI2cBus</label>
+        <link refid="classStmI2cBus"/>
+      </node>
+      <node id="1">
+        <label>StmI2cDevice</label>
+        <link refid="classStmI2cDevice"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="usage">
+          <edgelabel>parent_bus_</edgelabel>
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>config_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6">
+        <label>hf_i2c_device_config_t</label>
+        <link refid="structhf__i2c__device__config__t"/>
+      </node>
+      <node id="4">
+        <label>hf_i2c_diagnostics_t</label>
+        <link refid="structhf__i2c__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_i2c_statistics_t</label>
+        <link refid="structhf__i2c__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/stm32/StmI2c.h" line="20" column="1" bodyfile="inc/mcu/stm32/StmI2c.h" bodystart="20" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classBaseI2c_1a0ef4a4a50952a71b4c7be2f13660282d" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>BaseI2c</name></member>
+      <member refid="classBaseI2c_1a092d769aa9bf48da2c730a6a27a4d93c" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>BaseI2c</name></member>
+      <member refid="classBaseI2c_1af9b69abc680d2951321217d64e2eaa12" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>BaseI2c</name></member>
+      <member refid="classBaseI2c_1a53ffda673e3b0774c31da385b27a7c3f" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Close</name></member>
+      <member refid="classStmI2cDevice_1a30cf0c80323678784650324431024fc0" prot="private" virt="non-virtual"><scope>StmI2cDevice</scope><name>config_</name></member>
+      <member refid="classStmI2cDevice_1ab3a261efe8437ab6a349af90829b86c5" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Deinitialize</name></member>
+      <member refid="classBaseI2c_1ac79fd093442994accf495c0731e40d30" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>diagnostics_</name></member>
+      <member refid="classBaseI2c_1a35f3b7343c0e4ace25937060f39d44be" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseI2c_1ab2ba276139755eda4f52d7f9a523ed4e" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>EnsureInitialized</name></member>
+      <member refid="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>GetDeviceAddress</name></member>
+      <member refid="classBaseI2c_1a6c002a6a3a2ab1d9616fd8dad1f9c8e7" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>GetDiagnostics</name></member>
+      <member refid="classBaseI2c_1a211b5abbe37a9905cf74312799eca5d4" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>GetStatistics</name></member>
+      <member refid="classStmI2cDevice_1a5d069dc6f8e90fe5aaccdd603111a07d" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Initialize</name></member>
+      <member refid="classBaseI2c_1a87bf0b1caa8c82523adc4e1816467232" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>initialized_</name></member>
+      <member refid="classBaseI2c_1a0d8635db15272fc79947121fcec70850" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>IsDevicePresent</name></member>
+      <member refid="classBaseI2c_1aa0015d0aff3de7f30f7444935a50c094" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>IsInitialized</name></member>
+      <member refid="classBaseI2c_1a9decd4d080fd5090a4f98892c2549a0a" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Open</name></member>
+      <member refid="classBaseI2c_1a9296811925c9010e889f85232dc58f58" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>operator=</name></member>
+      <member refid="classBaseI2c_1a9169f7ddc26ca7a620676615364fc283" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>operator=</name></member>
+      <member refid="classStmI2cDevice_1aa427f3773fffe66a6e6313e1ed273474" prot="private" virt="non-virtual"><scope>StmI2cDevice</scope><name>parent_bus_</name></member>
+      <member refid="classBaseI2c_1a1cf1876ffa812b77cbd56d7e714df1e5" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>ProbeDevice</name></member>
+      <member refid="classStmI2cDevice_1a8cd7f86df640e25578aaaabe4ca194ec" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Read</name></member>
+      <member refid="classBaseI2c_1adb55bb052a4ee0d71f09623f88818fb2" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>ReadByte</name></member>
+      <member refid="classBaseI2c_1aec25744c5d3ab1ec6c326950001949a0" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>ReadRegister</name></member>
+      <member refid="classBaseI2c_1abf2a8df2ce9d012dbfa57180228e9789" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>ReadRegisters</name></member>
+      <member refid="classBaseI2c_1af4abdee0440286a09b39680211ed19a5" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseI2c_1a11d9d717f2176de6ceaa57b0f29bd2f9" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>ResetStatistics</name></member>
+      <member refid="classBaseI2c_1a2caa8cbbbdda3f001603da5bc8bc5913" prot="protected" virt="non-virtual"><scope>StmI2cDevice</scope><name>statistics_</name></member>
+      <member refid="classStmI2cDevice_1a500c016c1e38b66087caa52d6e669c99" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>StmI2cDevice</name></member>
+      <member refid="classStmI2cDevice_1a8a705c4068676dcca9a36054eddfe15c" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>Write</name></member>
+      <member refid="classBaseI2c_1afe9cee66898c28c58ac7a146375e3a63" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>WriteByte</name></member>
+      <member refid="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>WriteRead</name></member>
+      <member refid="classBaseI2c_1a68bbbd82d13bbe905659d10648843a5e" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>WriteRegister</name></member>
+      <member refid="classBaseI2c_1a71fa2410d820fb183b835ddea09d444f" prot="public" virt="virtual"><scope>StmI2cDevice</scope><name>~BaseI2c</name></member>
+      <member refid="classStmI2cDevice_1ae7a31f63df015bbc5044861df221fe3d" prot="public" virt="non-virtual"><scope>StmI2cDevice</scope><name>~StmI2cDevice</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

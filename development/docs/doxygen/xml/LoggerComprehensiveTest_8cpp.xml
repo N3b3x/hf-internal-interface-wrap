@@ -107,14 +107,6 @@
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
       </node>
       <node id="18">
         <label>EspTypes_Base.h</label>
@@ -145,15 +137,9 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="27">
-        <label>utils/RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>utils/PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -308,7 +294,7 @@
         <location file="examples/esp32/main/LoggerComprehensiveTest.cpp" line="31" column="19" bodyfile="examples/esp32/main/LoggerComprehensiveTest.cpp" bodystart="31" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="LoggerComprehensiveTest_8cpp_1ace08e46f8c1d3f6e636096857db038a0" prot="public" static="yes" mutable="no">
-        <type>std::unique_ptr&lt; <ref refid="classEspLogger" kindref="compound">EspLogger</ref> &gt;</type>
+        <type>std::unique_ptr&lt; EspLogger &gt;</type>
         <definition>std::unique_ptr&lt;EspLogger&gt; g_logger_instance</definition>
         <argsstring></argsstring>
         <name>g_logger_instance</name>
@@ -596,7 +582,7 @@
         <argsstring>(EspLogger &amp;logger, bool should_be_initialized) noexcept</argsstring>
         <name>verify_logger_state</name>
         <param>
-          <type><ref refid="classEspLogger" kindref="compound">EspLogger</ref> &amp;</type>
+          <type>EspLogger &amp;</type>
           <declname>logger</declname>
         </param>
         <param>
@@ -657,7 +643,7 @@
 <para>Comprehensive Logger testing suite for ESP32-C6 DevKit-M-1 (noexcept) </para>
     </briefdescription>
     <detaileddescription>
-<para>This file contains a dedicated, comprehensive test suite for the <ref refid="classEspLogger" kindref="compound">EspLogger</ref> class targeting ESP32-C6 with ESP-IDF v5.5+. It provides thorough testing of all logging functionalities including basic operations, level management, statistics, diagnostics, buffer logging, and ESP-IDF Log V2 features.</para>
+<para>This file contains a dedicated, comprehensive test suite for the EspLogger class targeting ESP32-C6 with ESP-IDF v5.5+. It provides thorough testing of all logging functionalities including basic operations, level management, statistics, diagnostics, buffer logging, and ESP-IDF Log V2 features.</para>
 <para>All functions are noexcept - no exception handling used.</para>
 <para><simplesect kind="author"><para>Nebiyu Tadesse </para>
 </simplesect>
@@ -720,7 +706,7 @@
 <codeline lineno="65"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Helper<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref><sp/><ref refid="LoggerComprehensiveTest_8cpp_1a7561dcdad310ef1e8b65ded24f9cef36" kindref="member">create_test_config</ref>()<sp/>noexcept;</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="LoggerComprehensiveTest_8cpp_1addf6e30a7ed97b98cb33e593a6a4aafc" kindref="member">verify_logger_state</ref>(<ref refid="classEspLogger" kindref="compound">EspLogger</ref>&amp;<sp/>logger,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>should_be_initialized)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="LoggerComprehensiveTest_8cpp_1addf6e30a7ed97b98cb33e593a6a4aafc" kindref="member">verify_logger_state</ref>(EspLogger&amp;<sp/>logger,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>should_be_initialized)<sp/>noexcept;</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="LoggerComprehensiveTest_8cpp_1aef32605ad54de408fe5fe3422ddf33d3" kindref="member">log_performance_metrics</ref>(const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>test_name,<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>start_time,</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>operations)<sp/>noexcept;</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"></highlight></codeline>
@@ -742,7 +728,7 @@
 <codeline lineno="87"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>config;</highlight></codeline>
 <codeline lineno="88"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
-<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="LoggerComprehensiveTest_8cpp_1addf6e30a7ed97b98cb33e593a6a4aafc" kindref="member">verify_logger_state</ref>(<ref refid="classEspLogger" kindref="compound">EspLogger</ref>&amp;<sp/>logger,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>should_be_initialized)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="LoggerComprehensiveTest_8cpp_1addf6e30a7ed97b98cb33e593a6a4aafc" kindref="member">verify_logger_state</ref>(EspLogger&amp;<sp/>logger,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>should_be_initialized)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(logger.IsInitialized()<sp/>!=<sp/>should_be_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="LoggerComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Logger<sp/>initialization<sp/>state<sp/>mismatch.<sp/>Expected:<sp/>%s,<sp/>Actual:<sp/>%s&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>should_be_initialized<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;initialized&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;not<sp/>initialized&quot;</highlight><highlight class="normal">,</highlight></codeline>

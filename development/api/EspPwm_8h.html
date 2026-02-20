@@ -102,12 +102,11 @@ $(function(){initNavTree('EspPwm_8h.html',''); initResizable(); });
 <p>ESP32C6 LEDC (PWM) controller implementation for the HardFOC system.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BasePwm_8h_source.html">BasePwm.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="RtosMutex_8h_source.html">RtosMutex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="PlatformMutex_8h_source.html">PlatformMutex.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="EspTypes__PWM_8h_source.html">utils/EspTypes_PWM.h</a>&quot;</code><br />
 <code>#include &lt;array&gt;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;string&gt;</code><br />
-<code>#include &quot;driver/ledc.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for EspPwm.h:</div>
 <div class="dyncontent">
@@ -150,7 +149,7 @@ Classes</h2></td></tr>
 <dl class="section copyright"><dt>Copyright</dt><dd>HardFOC</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Features include up to 8 PWM channels using LEDC peripheral, configurable frequency and resolution per channel, support for complementary outputs with deadtime, hardware fade support, interrupt-driven period callbacks, and multiple timer groups for independent frequency control. </dd>
 <dd>
-This implementation follows the lazy initialization pattern established in other ESP32 modules (<a class="el" href="classEspAdc.html" title="ESP32 ADC implementation class.">EspAdc</a>, <a class="el" href="classEspGpio.html" title="Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+ features.">EspGpio</a>, etc.). </dd></dl>
+This implementation follows the lazy initialization pattern established in other ESP32 modules (EspAdc, <a class="el" href="classEspGpio.html" title="Advanced MCU-specific implementation of unified BaseGpio with ESP32C6/ESP-IDF v5.5+ features.">EspGpio</a>, etc.). </dd></dl>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -81,76 +81,64 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="5">
-        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
-        <link refid="AdcComprehensiveTest_8cpp"/>
-      </node>
       <node id="2">
         <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
         <link refid="I2cComprehensiveTest_8cpp"/>
       </node>
-      <node id="13">
+      <node id="10">
         <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
         <link refid="PioComprehensiveTest_8cpp"/>
       </node>
-      <node id="16">
+      <node id="13">
         <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
         <link refid="SpiComprehensiveTest_8cpp"/>
       </node>
-      <node id="10">
+      <node id="7">
         <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
         <link refid="TimerComprehensiveTest_8cpp"/>
       </node>
-      <node id="19">
+      <node id="16">
         <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
         <link refid="UartComprehensiveTest_8cpp"/>
       </node>
       <node id="4">
-        <label>inc/mcu/esp32/EspAdc.h</label>
-        <link refid="EspAdc_8h"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
         <label>inc/mcu/esp32/EspI2c.h</label>
         <link refid="EspI2c_8h"/>
         <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
+        <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="9">
-        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
-        <link refid="EspPeriodicTimer_8h"/>
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="12">
-        <label>inc/mcu/esp32/EspPio.h</label>
-        <link refid="EspPio_8h"/>
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="15">
-        <label>inc/mcu/esp32/EspSpi.h</label>
-        <link refid="EspSpi_8h"/>
+        <label>inc/mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="18">
-        <label>inc/mcu/esp32/EspUart.h</label>
-        <link refid="EspUart_8h"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -158,15 +146,13 @@
         <link refid="EspTypes_8h"/>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -177,27 +163,23 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>src/mcu/esp32/EspAdc.cpp</label>
-        <link refid="EspAdc_8cpp"/>
-      </node>
-      <node id="8">
+      <node id="5">
         <label>src/mcu/esp32/EspI2c.cpp</label>
         <link refid="EspI2c_8cpp"/>
       </node>
-      <node id="11">
+      <node id="8">
         <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
         <link refid="EspPeriodicTimer_8cpp"/>
       </node>
-      <node id="14">
+      <node id="11">
         <label>src/mcu/esp32/EspPio.cpp</label>
         <link refid="EspPio_8cpp"/>
       </node>
-      <node id="17">
+      <node id="14">
         <label>src/mcu/esp32/EspSpi.cpp</label>
         <link refid="EspSpi_8cpp"/>
       </node>
-      <node id="20">
+      <node id="17">
         <label>src/mcu/esp32/EspUart.cpp</label>
         <link refid="EspUart_8cpp"/>
       </node>

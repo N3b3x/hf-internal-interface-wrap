@@ -1,0 +1,14 @@
+<map id="inc/mcu/stm32/StmTemperature.h" name="inc/mcu/stm32/StmTemperature.h">
+<area shape="rect" id="Node000001" title="STM32 Temperature sensor stub — placeholder for internal temp sensor integration." alt="" coords="5,5,300,36"/>
+<area shape="rect" id="Node000002" href="$BaseTemperature_8h.html" title="Abstract base class for temperature sensor implementations in the HardFOC system." alt="" coords="41,84,265,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="155,36,155,70,150,70,150,36"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="71,163,234,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="155,115,155,149,150,149,150,115"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="10,241,85,272"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="119,117,88,136,62,164,50,196,48,228,42,227,45,194,57,161,84,132,116,113"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="258,163,370,193"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="184,112,273,154,271,159,181,117"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="134,196,80,235,76,231,131,191"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="121,241,185,272"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="155,194,155,228,150,228,150,194"/>
+</map>

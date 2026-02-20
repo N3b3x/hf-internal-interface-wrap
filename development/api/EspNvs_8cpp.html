@@ -93,8 +93,6 @@ $(function(){initNavTree('EspNvs_8cpp.html',''); initResizable(); });
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">EspNvs.cpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -103,43 +101,12 @@ $(function(){initNavTree('EspNvs_8cpp.html',''); initResizable(); });
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="EspNvs_8h_source.html">EspNvs.h</a>&quot;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
-<code>#include &quot;esp_err.h&quot;</code><br />
-<code>#include &quot;esp_log.h&quot;</code><br />
-<code>#include &quot;esp_timer.h&quot;</code><br />
-<code>#include &quot;nvs_flash.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for EspNvs.cpp:</div>
 <div class="dyncontent">
 <div class="center"><div class="zoom"><iframe scrolling="no" frameborder="0" src="EspNvs_8cpp__incl.svg" width="100%" height="600"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div></div>
 </div>
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a5a85b9c772bbeb480b209a3e6ea92b4c" id="r_a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = &quot;EspNvs&quot;</td></tr>
-<tr class="separator:a5a85b9c772bbeb480b209a3e6ea92b4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56134ef9075eaf7b6622e1a2736697ab" id="r_a56134ef9075eaf7b6622e1a2736697ab"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a56134ef9075eaf7b6622e1a2736697ab">NVS_INIT_TIMEOUT_MS</a> = 5000</td></tr>
-<tr class="memdesc:a56134ef9075eaf7b6622e1a2736697ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization timeout.  <br /></td></tr>
-<tr class="separator:a56134ef9075eaf7b6622e1a2736697ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5067ec469e1472b8d9dcde905d307fca" id="r_a5067ec469e1472b8d9dcde905d307fca"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5067ec469e1472b8d9dcde905d307fca">NVS_OPERATION_TIMEOUT_MS</a> = 1000</td></tr>
-<tr class="memdesc:a5067ec469e1472b8d9dcde905d307fca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Single operation timeout.  <br /></td></tr>
-<tr class="separator:a5067ec469e1472b8d9dcde905d307fca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7fc5e67321118b83c625f7006a9fd270" id="r_a7fc5e67321118b83c625f7006a9fd270"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7fc5e67321118b83c625f7006a9fd270">NVS_MAX_RETRY_ATTEMPTS</a> = 3</td></tr>
-<tr class="memdesc:a7fc5e67321118b83c625f7006a9fd270"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maximum retry attempts.  <br /></td></tr>
-<tr class="separator:a7fc5e67321118b83c625f7006a9fd270"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af382ccbb36a465261a9e4abf140202a3" id="r_af382ccbb36a465261a9e4abf140202a3"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af382ccbb36a465261a9e4abf140202a3">NVS_STATS_UPDATE_INTERVAL_MS</a> = 30000</td></tr>
-<tr class="memdesc:af382ccbb36a465261a9e4abf140202a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistics update interval.  <br /></td></tr>
-<tr class="separator:af382ccbb36a465261a9e4abf140202a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d631767574cc8b140716c2ca3868db0" id="r_a0d631767574cc8b140716c2ca3868db0"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d631767574cc8b140716c2ca3868db0">NVS_MAX_KEY_LENGTH_ESP32</a> = 15</td></tr>
-<tr class="memdesc:a0d631767574cc8b140716c2ca3868db0"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 NVS key length limit.  <br /></td></tr>
-<tr class="separator:a0d631767574cc8b140716c2ca3868db0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a831639f895a96f16a4c43cff3296b170" id="r_a831639f895a96f16a4c43cff3296b170"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a831639f895a96f16a4c43cff3296b170">NVS_MAX_VALUE_SIZE_ESP32</a></td></tr>
-<tr class="memdesc:a831639f895a96f16a4c43cff3296b170"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 NVS value size limit (conservative)  <br /></td></tr>
-<tr class="separator:a831639f895a96f16a4c43cff3296b170"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4289f5994cc5fb6d4b3d47c03978363" id="r_ad4289f5994cc5fb6d4b3d47c03978363"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4289f5994cc5fb6d4b3d47c03978363">NVS_MAX_NAMESPACE_LENGTH_ESP32</a> = 15</td></tr>
-<tr class="memdesc:ad4289f5994cc5fb6d4b3d47c03978363"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 NVS namespace length limit.  <br /></td></tr>
-<tr class="separator:ad4289f5994cc5fb6d4b3d47c03978363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+</div><a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>World-class ESP32-C6 NVS implementation with ESP-IDF v5.5+ advanced features. </p>
 <p>This file provides a comprehensive, production-ready NVS (Non-Volatile Storage) implementation for the ESP32-C6 microcontroller using modern ESP-IDF v5.5+ APIs. The implementation leverages all advanced features including encryption support, enhanced error handling, statistics tracking, iterator support, and comprehensive security configurations.</p>
 <p>Key Features Implemented:</p><ul>
@@ -180,200 +147,7 @@ Variables</h2></td></tr>
 Requires ESP-IDF v5.5 or later for full feature support. </dd>
 <dd>
 Supports both encrypted and non-encrypted NVS partitions. </dd></dl>
-</div><h2 class="groupheader">Variable Documentation</h2>
-<a id="a56134ef9075eaf7b6622e1a2736697ab" name="a56134ef9075eaf7b6622e1a2736697ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56134ef9075eaf7b6622e1a2736697ab">&#9670;&#160;</a></span>NVS_INIT_TIMEOUT_MS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> NVS_INIT_TIMEOUT_MS = 5000</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Initialization timeout. </p>
-
-</div>
-</div>
-<a id="a0d631767574cc8b140716c2ca3868db0" name="a0d631767574cc8b140716c2ca3868db0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0d631767574cc8b140716c2ca3868db0">&#9670;&#160;</a></span>NVS_MAX_KEY_LENGTH_ESP32</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr size_t NVS_MAX_KEY_LENGTH_ESP32 = 15</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>ESP32 NVS key length limit. </p>
-
-</div>
-</div>
-<a id="ad4289f5994cc5fb6d4b3d47c03978363" name="ad4289f5994cc5fb6d4b3d47c03978363"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad4289f5994cc5fb6d4b3d47c03978363">&#9670;&#160;</a></span>NVS_MAX_NAMESPACE_LENGTH_ESP32</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr size_t NVS_MAX_NAMESPACE_LENGTH_ESP32 = 15</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>ESP32 NVS namespace length limit. </p>
-
-</div>
-</div>
-<a id="a7fc5e67321118b83c625f7006a9fd270" name="a7fc5e67321118b83c625f7006a9fd270"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7fc5e67321118b83c625f7006a9fd270">&#9670;&#160;</a></span>NVS_MAX_RETRY_ATTEMPTS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> NVS_MAX_RETRY_ATTEMPTS = 3</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Maximum retry attempts. </p>
-
-</div>
-</div>
-<a id="a831639f895a96f16a4c43cff3296b170" name="a831639f895a96f16a4c43cff3296b170"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a831639f895a96f16a4c43cff3296b170">&#9670;&#160;</a></span>NVS_MAX_VALUE_SIZE_ESP32</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr size_t NVS_MAX_VALUE_SIZE_ESP32</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">=</div>
-<div class="line">    4000</div>
-</div><!-- fragment -->
-<p>ESP32 NVS value size limit (conservative) </p>
-
-</div>
-</div>
-<a id="a5067ec469e1472b8d9dcde905d307fca" name="a5067ec469e1472b8d9dcde905d307fca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5067ec469e1472b8d9dcde905d307fca">&#9670;&#160;</a></span>NVS_OPERATION_TIMEOUT_MS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> NVS_OPERATION_TIMEOUT_MS = 1000</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Single operation timeout. </p>
-
-</div>
-</div>
-<a id="af382ccbb36a465261a9e4abf140202a3" name="af382ccbb36a465261a9e4abf140202a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af382ccbb36a465261a9e4abf140202a3">&#9670;&#160;</a></span>NVS_STATS_UPDATE_INTERVAL_MS</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr <a class="el" href="HardwareTypes_8h.html#a0a9e8f52f8fc4d5b4c197dd3923c50fd">hf_u32_t</a> NVS_STATS_UPDATE_INTERVAL_MS = 30000</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Statistics update interval. </p>
-
-</div>
-</div>
-<a id="a5a85b9c772bbeb480b209a3e6ea92b4c" name="a5a85b9c772bbeb480b209a3e6ea92b4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a85b9c772bbeb480b209a3e6ea92b4c">&#9670;&#160;</a></span>TAG</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* TAG = &quot;EspNvs&quot;</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

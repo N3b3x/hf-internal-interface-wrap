@@ -3,16 +3,15 @@
   <compounddef id="EspPwm_8h" kind="file" language="C++">
     <compoundname>EspPwm.h</compoundname>
     <includes refid="BasePwm_8h" local="yes">BasePwm.h</includes>
-    <includes refid="RtosMutex_8h" local="yes">RtosMutex.h</includes>
+    <includes refid="PlatformMutex_8h" local="yes">PlatformMutex.h</includes>
     <includes refid="EspTypes__PWM_8h" local="yes">utils/EspTypes_PWM.h</includes>
     <includes local="no">array</includes>
     <includes local="no">atomic</includes>
     <includes local="no">string</includes>
-    <includes local="yes">driver/ledc.h</includes>
     <includedby refid="PwmComprehensiveTest_8cpp" local="yes">examples/esp32/main/PwmComprehensiveTest.cpp</includedby>
     <includedby refid="EspPwm_8cpp" local="yes">src/mcu/esp32/EspPwm.cpp</includedby>
     <incdepgraph>
-      <node id="16">
+      <node id="13">
         <label>BaseGpio.h</label>
         <link refid="BaseGpio_8h"/>
         <childnode refid="3" relation="include">
@@ -47,42 +46,40 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="14">
+      <node id="11">
         <label>EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="15">
+      <node id="12">
         <label>EspTypes_GPIO.h</label>
         <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="16" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="13">
+      <node id="10">
         <label>utils/EspTypes_PWM.h</label>
         <link refid="EspTypes__PWM_8h"/>
         <childnode refid="2" relation="include">
@@ -91,9 +88,9 @@
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -101,46 +98,28 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="7">
-        <label>RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="14">
         <label>array</label>
       </node>
-      <node id="12">
+      <node id="9">
         <label>atomic</label>
       </node>
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="19">
-        <label>driver/ledc.h</label>
-      </node>
-      <node id="9">
-        <label>freertos/FreeRTOS.h</label>
-      </node>
-      <node id="10">
-        <label>freertos/semphr.h</label>
-      </node>
-      <node id="11">
-        <label>freertos/task.h</label>
-      </node>
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="18">
+      <node id="15">
         <label>string</label>
       </node>
       <node id="6">
@@ -184,7 +163,7 @@
 </simplesect>
 <simplesect kind="note"><para>Features include up to 8 PWM channels using LEDC peripheral, configurable frequency and resolution per channel, support for complementary outputs with deadtime, hardware fade support, interrupt-driven period callbacks, and multiple timer groups for independent frequency control. </para>
 </simplesect>
-<simplesect kind="note"><para>This implementation follows the lazy initialization pattern established in other ESP32 modules (<ref refid="classEspAdc" kindref="compound">EspAdc</ref>, <ref refid="classEspGpio" kindref="compound">EspGpio</ref>, etc.). </para>
+<simplesect kind="note"><para>This implementation follows the lazy initialization pattern established in other ESP32 modules (EspAdc, <ref refid="classEspGpio" kindref="compound">EspGpio</ref>, etc.). </para>
 </simplesect>
 </para>
     </detaileddescription>
@@ -193,7 +172,7 @@
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight></codeline>
 <codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BasePwm_8h" kindref="compound">BasePwm.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PlatformMutex_8h" kindref="compound">PlatformMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes__PWM_8h" kindref="compound">utils/EspTypes_PWM.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;array&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;atomic&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -544,7 +523,7 @@
 <codeline lineno="1078"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>MEMBER<sp/>VARIABLES</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1079"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1080"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1081" refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="1081" refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="1082" refid="classEspPwm_1a62f5455c00a2bf6bee32c4edeb5b90d0" refkind="member"><highlight class="normal"><sp/><sp/>std::atomic&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">&gt;<sp/><ref refid="classEspPwm_1a62f5455c00a2bf6bee32c4edeb5b90d0" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="1083" refid="classEspPwm_1adb2698a4d9441132c4f9ba23a4dc4678" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classEspPwm_1adb2698a4d9441132c4f9ba23a4dc4678" kindref="member">base_clock_hz_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="1084" refid="classEspPwm_1ac4da347398a044e97ecfd586a65d4470" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref><sp/><ref refid="classEspPwm_1ac4da347398a044e97ecfd586a65d4470" kindref="member">clock_source_</ref>;<sp/></highlight></codeline>

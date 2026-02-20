@@ -1,5 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBaseI2c.html" title="Abstract base class for I2C device implementations." alt="" coords="5,5,92,36"/>
-<area shape="rect" id="Node000001" href="$classEspI2cDevice.html" title="Represents a single I2C device on a bus." alt="" coords="140,5,272,36"/>
-<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="106,18,140,18,140,23,106,23"/>
+<area shape="rect" id="Node000000" href="$classBaseI2c.html" title="Abstract base class for I2C device implementations." alt="" coords="5,33,92,64"/>
+<area shape="rect" id="Node000001" href="$classEspI2cDevice.html" title="Represents a single I2C device on a bus." alt="" coords="141,5,273,36"/>
+<area shape="poly" id="edge6_Node000000_Node000001" title=" " alt="" coords="105,36,140,30,141,35,106,41"/>
+<area shape="rect" id="Node000002" href="$classStmI2cDevice.html" title="STM32 I2C device — stub implementation." alt="" coords="140,60,275,91"/>
+<area shape="poly" id="edge7_Node000000_Node000002" title=" " alt="" coords="106,56,140,61,139,67,105,61"/>
 </map>

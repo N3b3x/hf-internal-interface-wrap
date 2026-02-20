@@ -34,9 +34,9 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/EspSpi.h" line="260" column="8" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="260" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspSpiBus_1a9c42c64731d332892f30ecb2e262dd2d" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspSpiBus::mutex_</definition>
+      <memberdef kind="variable" id="classEspSpiBus_1a707ea256f7b4a767db203d5855bc6c07" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspSpiBus::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
         <qualifiedname>EspSpiBus::mutex_</qualifiedname>
@@ -47,7 +47,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspSpi.h" line="261" column="21" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="261" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspSpi.h" line="261" column="25" bodyfile="inc/mcu/esp32/EspSpi.h" bodystart="261" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspSpiBus_1a4f89488fce018ca532e6753d6f864280" prot="private" static="no" mutable="no">
         <type>std::vector&lt; std::unique_ptr&lt; <ref refid="classEspSpiDevice" kindref="compound">EspSpiDevice</ref> &gt; &gt;</type>
@@ -423,8 +423,8 @@
         </childnode>
       </node>
       <node id="3">
-        <label>RtosMutex</label>
-        <link refid="classRtosMutex"/>
+        <label>PlatformMutex</label>
+        <link refid="classPlatformMutex"/>
       </node>
       <node id="2">
         <label>hf_spi_bus_config_t</label>
@@ -448,7 +448,7 @@
       <member refid="classEspSpiBus_1a6bfcf437a03ca71293499558973ca750" prot="public" virt="non-virtual"><scope>EspSpiBus</scope><name>Initialize</name></member>
       <member refid="classEspSpiBus_1a697d0f6da659676a7506145ebbec98f5" prot="private" virt="non-virtual"><scope>EspSpiBus</scope><name>initialized_</name></member>
       <member refid="classEspSpiBus_1ac0f954dce3fa54452afc0d48b4542f33" prot="public" virt="non-virtual"><scope>EspSpiBus</scope><name>IsInitialized</name></member>
-      <member refid="classEspSpiBus_1a9c42c64731d332892f30ecb2e262dd2d" prot="private" virt="non-virtual"><scope>EspSpiBus</scope><name>mutex_</name></member>
+      <member refid="classEspSpiBus_1a707ea256f7b4a767db203d5855bc6c07" prot="private" virt="non-virtual"><scope>EspSpiBus</scope><name>mutex_</name></member>
       <member refid="classEspSpiBus_1aa7d4c40e6567f8cf67a280807d6f2095" prot="public" virt="non-virtual"><scope>EspSpiBus</scope><name>RemoveDevice</name></member>
       <member refid="classEspSpiBus_1aa6c27620fbe0b014e6c20ad95d06e5b4" prot="public" virt="non-virtual"><scope>EspSpiBus</scope><name>~EspSpiBus</name></member>
     </listofallmembers>

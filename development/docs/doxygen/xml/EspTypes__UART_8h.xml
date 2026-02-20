@@ -75,22 +75,18 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="5">
-        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
-        <link refid="AdcComprehensiveTest_8cpp"/>
-      </node>
-      <node id="8">
         <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
         <link refid="I2cComprehensiveTest_8cpp"/>
       </node>
-      <node id="14">
+      <node id="11">
         <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
         <link refid="PioComprehensiveTest_8cpp"/>
       </node>
-      <node id="17">
+      <node id="14">
         <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
         <link refid="SpiComprehensiveTest_8cpp"/>
       </node>
-      <node id="11">
+      <node id="8">
         <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
         <link refid="TimerComprehensiveTest_8cpp"/>
       </node>
@@ -99,51 +95,43 @@
         <link refid="UartComprehensiveTest_8cpp"/>
       </node>
       <node id="4">
-        <label>inc/mcu/esp32/EspAdc.h</label>
-        <link refid="EspAdc_8h"/>
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
         <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="7">
-        <label>inc/mcu/esp32/EspI2c.h</label>
-        <link refid="EspI2c_8h"/>
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
       </node>
       <node id="10">
-        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
-        <link refid="EspPeriodicTimer_8h"/>
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
         <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="13">
-        <label>inc/mcu/esp32/EspPio.h</label>
-        <link refid="EspPio_8h"/>
+        <label>inc/mcu/esp32/EspSpi.h</label>
+        <link refid="EspSpi_8h"/>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
       </node>
       <node id="16">
-        <label>inc/mcu/esp32/EspSpi.h</label>
-        <link refid="EspSpi_8h"/>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
         <label>inc/mcu/esp32/EspUart.h</label>
         <link refid="EspUart_8h"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -159,8 +147,6 @@
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>inc/mcu/esp32/utils/EspTypes_UART.h</label>
@@ -171,26 +157,22 @@
         </childnode>
       </node>
       <node id="6">
-        <label>src/mcu/esp32/EspAdc.cpp</label>
-        <link refid="EspAdc_8cpp"/>
-      </node>
-      <node id="9">
         <label>src/mcu/esp32/EspI2c.cpp</label>
         <link refid="EspI2c_8cpp"/>
       </node>
-      <node id="12">
+      <node id="9">
         <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
         <link refid="EspPeriodicTimer_8cpp"/>
       </node>
-      <node id="15">
+      <node id="12">
         <label>src/mcu/esp32/EspPio.cpp</label>
         <link refid="EspPio_8cpp"/>
       </node>
-      <node id="18">
+      <node id="15">
         <label>src/mcu/esp32/EspSpi.cpp</label>
         <link refid="EspSpi_8cpp"/>
       </node>
-      <node id="20">
+      <node id="17">
         <label>src/mcu/esp32/EspUart.cpp</label>
         <link refid="EspUart_8cpp"/>
       </node>
@@ -203,7 +185,6 @@
     <innerclass refid="structhf__uart__irda__config__t" prot="public">hf_uart_irda_config_t</innerclass>
     <innerclass refid="structhf__uart__wakeup__config__t" prot="public">hf_uart_wakeup_config_t</innerclass>
     <innerclass refid="structhf__uart__event__t" prot="public">hf_uart_event_t</innerclass>
-    <innerclass refid="structhf__uart__pin__map__esp32c6__t" prot="public">hf_uart_pin_map_esp32c6_t</innerclass>
     <sectiondef kind="enum">
       <memberdef kind="enum" id="EspTypes__UART_8h_1ad864b8f4e4ef30f9af78d096e00ab0e4" prot="public" static="no" strong="yes">
         <type>uint8_t</type>
@@ -669,7 +650,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="38" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="38" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_UART.h" line="44" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_UART.h" bodystart="44" bodyend="-1"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -711,13 +692,13 @@
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32<sp/>UART<sp/>port<sp/>limits</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38" refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>3<sp/>UART<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>has<sp/>3<sp/>UART<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32)<sp/>||<sp/>defined(HF_MCU_ESP32S2)<sp/>||<sp/>defined(HF_MCU_ESP32S3)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>ESP32<sp/>Classic/S2/S3<sp/>have<sp/>3<sp/>UART<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>defined(HF_MCU_ESP32C3)<sp/>||<sp/>defined(HF_MCU_ESP32C2)<sp/>||<sp/>defined(HF_MCU_ESP32H2)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>2;<sp/></highlight><highlight class="comment">//<sp/>ESP32-C3/C2/H2<sp/>have<sp/>2<sp/>UART<sp/>ports</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>Default<sp/>fallback</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__UART_8h_1aad80247a990a0cdd81fdb0390696763b" kindref="member">HF_ESP32_UART_MAX_PORTS</ref><sp/>=<sp/>3;<sp/></highlight><highlight class="comment">//<sp/>Default<sp/>fallback</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
@@ -908,21 +889,21 @@
 <codeline lineno="289"><highlight class="normal"></highlight></codeline>
 <codeline lineno="290"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP32-C6<sp/>UART<sp/>Pin<sp/>Mappings</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="291"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_ESP32C6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="292" refid="structhf__uart__pin__map__esp32c6__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__uart__pin__map__esp32c6__t" kindref="compound">hf_uart_pin_map_esp32c6_t</ref><sp/>{</highlight></codeline>
-<codeline lineno="293" refid="structhf__uart__pin__map__esp32c6__t_1a1c5d85274a14959188520d9330b085e8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a1c5d85274a14959188520d9330b085e8" kindref="member">UART0_TX_PIN</ref><sp/>=<sp/>21;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO21</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="294" refid="structhf__uart__pin__map__esp32c6__t_1a35acdc03c24201e15fff340dfe7ffcd4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a35acdc03c24201e15fff340dfe7ffcd4" kindref="member">UART0_RX_PIN</ref><sp/>=<sp/>20;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO20</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="295" refid="structhf__uart__pin__map__esp32c6__t_1a2bc9ed7a56b91a0159ea47ab76eb24ab" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a2bc9ed7a56b91a0159ea47ab76eb24ab" kindref="member">UART0_RTS_PIN</ref><sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="296" refid="structhf__uart__pin__map__esp32c6__t_1aeb17f1190f69070ba953bbc975c738c1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1aeb17f1190f69070ba953bbc975c738c1" kindref="member">UART0_CTS_PIN</ref><sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">hf_uart_pin_map_esp32c6_t<sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_TX_PIN<sp/>=<sp/>21;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO21</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RX_PIN<sp/>=<sp/>20;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO20</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_RTS_PIN<sp/>=<sp/>19;<sp/></highlight><highlight class="comment">//<sp/>GPIO19</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART0_CTS_PIN<sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="297"><highlight class="normal"></highlight></codeline>
-<codeline lineno="298" refid="structhf__uart__pin__map__esp32c6__t_1a26e8fd135074b27510536955e18649de" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a26e8fd135074b27510536955e18649de" kindref="member">UART1_TX_PIN</ref><sp/>=<sp/>6;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO6</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="299" refid="structhf__uart__pin__map__esp32c6__t_1a918fa542b710dd5d77edf7a151699c52" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a918fa542b710dd5d77edf7a151699c52" kindref="member">UART1_RX_PIN</ref><sp/>=<sp/>7;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO7</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="300" refid="structhf__uart__pin__map__esp32c6__t_1a85fa8ef047175cbc245b49c594a6ee51" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a85fa8ef047175cbc245b49c594a6ee51" kindref="member">UART1_RTS_PIN</ref><sp/>=<sp/>8;<sp/></highlight><highlight class="comment">//<sp/>GPIO8</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="301" refid="structhf__uart__pin__map__esp32c6__t_1a2965a280eb931771569a8f4739c4cc67" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a2965a280eb931771569a8f4739c4cc67" kindref="member">UART1_CTS_PIN</ref><sp/>=<sp/>9;<sp/></highlight><highlight class="comment">//<sp/>GPIO9</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_TX_PIN<sp/>=<sp/>6;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO6</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RX_PIN<sp/>=<sp/>7;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO7</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_RTS_PIN<sp/>=<sp/>8;<sp/></highlight><highlight class="comment">//<sp/>GPIO8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART1_CTS_PIN<sp/>=<sp/>9;<sp/></highlight><highlight class="comment">//<sp/>GPIO9</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight></codeline>
-<codeline lineno="303" refid="structhf__uart__pin__map__esp32c6__t_1a271061a6ba9b6982d44aca9d84abc5df" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a271061a6ba9b6982d44aca9d84abc5df" kindref="member">UART2_TX_PIN</ref><sp/>=<sp/>16;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO16</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="304" refid="structhf__uart__pin__map__esp32c6__t_1a9eda2c3427bde3099b34255a02639692" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a9eda2c3427bde3099b34255a02639692" kindref="member">UART2_RX_PIN</ref><sp/>=<sp/>17;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO17</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="305" refid="structhf__uart__pin__map__esp32c6__t_1a04f152ae03c0c8456ebf26576571b5bf" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1a04f152ae03c0c8456ebf26576571b5bf" kindref="member">UART2_RTS_PIN</ref><sp/>=<sp/>14;<sp/></highlight><highlight class="comment">//<sp/>GPIO14</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="306" refid="structhf__uart__pin__map__esp32c6__t_1af62c624a1b01cd4ab9714d2bec414233" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/><ref refid="structhf__uart__pin__map__esp32c6__t_1af62c624a1b01cd4ab9714d2bec414233" kindref="member">UART2_CTS_PIN</ref><sp/>=<sp/>15;<sp/></highlight><highlight class="comment">//<sp/>GPIO15</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_TX_PIN<sp/>=<sp/>16;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_RX_PIN<sp/>=<sp/>17;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO17</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_RTS_PIN<sp/>=<sp/>14;<sp/></highlight><highlight class="comment">//<sp/>GPIO14</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>UART2_CTS_PIN<sp/>=<sp/>15;<sp/></highlight><highlight class="comment">//<sp/>GPIO15</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="307"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="309"><highlight class="normal"></highlight></codeline>

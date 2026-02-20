@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="StmPeriodicTimer_8h" kind="file" language="C++">
+    <compoundname>StmPeriodicTimer.h</compoundname>
+    <includes refid="BasePeriodicTimer_8h" local="yes">BasePeriodicTimer.h</includes>
+    <includedby refid="StmPeriodicTimer_8cpp" local="yes">src/mcu/stm32/StmPeriodicTimer.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BasePeriodicTimer.h</label>
+        <link refid="BasePeriodicTimer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/stm32/StmPeriodicTimer.h</label>
+        <link refid="StmPeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/mcu/stm32/StmPeriodicTimer.h</label>
+        <link refid="StmPeriodicTimer_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/mcu/stm32/StmPeriodicTimer.cpp</label>
+        <link refid="StmPeriodicTimer_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classStmPeriodicTimer" prot="public">StmPeriodicTimer</innerclass>
+    <briefdescription>
+<para>STM32 Periodic Timer stub — placeholder for hardware timer integration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BasePeriodicTimer_8h" kindref="compound">BasePeriodicTimer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classStmPeriodicTimer" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBasePeriodicTimer" kindref="compound">BasePeriodicTimer</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" kindref="member">CallbackFunc</ref><sp/>=<sp/>void(*)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classStmPeriodicTimer_1a39f9012601da28f919f61dc0a8025e62" kindref="member">StmPeriodicTimer</ref>(<ref refid="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" kindref="member">CallbackFunc</ref><sp/>callback<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="20" refid="classStmPeriodicTimer_1a9c594ee1baa058201855b84c8e87042d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="classStmPeriodicTimer" kindref="compound">StmPeriodicTimer</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1af61c71d5df2847f8cc432161144cc6b1" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a94d84c46b0fd48fd7ca73b683b178d25" kindref="member">Deinitialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1ada919f62b8ad097323e4a43e4ae5a0cf" kindref="member">Start</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1afd2adf7d275eb82d67bca9b7829a17e6" kindref="member">Stop</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1aed5d65ee70d33c9945653dd1fa1f53ac" kindref="member">SetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>period_us)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a4a38141e12acac87b1b9ae756d67dd52" kindref="member">GetPeriod</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>period_us)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a3531ed08a8ae620f210228e04fbebc81" kindref="member">GetStats</ref>(<ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>callback_count,<sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref>&amp;<sp/>missed_callbacks,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref>&amp;<sp/>last_error)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BasePeriodicTimer_8h_1a1c0d6f452734f65b6537650f26f5e59a" kindref="member">hf_timer_err_t</ref><sp/><ref refid="classStmPeriodicTimer_1a96567e24e967297babb9c717bdd05f32" kindref="member">ResetStats</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classStmPeriodicTimer_1a1a880f8c3c0489b16879200dedc9a0be" kindref="member">GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1a951d0175f287a9c13ba7ae690d80af99" kindref="member">GetMaxPeriod</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1af90c80952828bcc070075d08fcbd512a" kindref="member">GetMinPeriod</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classStmPeriodicTimer_1a6f435522d93af55a09dd660e414db695" kindref="member">GetResolution</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">private:</highlight></codeline>
+<codeline lineno="37" refid="classStmPeriodicTimer_1a546f3acd34871fee8f3dd0c0c3a7f0ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" kindref="member">CallbackFunc</ref><sp/><ref refid="classStmPeriodicTimer_1a546f3acd34871fee8f3dd0c0c3a7f0ba" kindref="member">callback_</ref>;</highlight></codeline>
+<codeline lineno="38" refid="classStmPeriodicTimer_1a626b64b9e1f58e552386c5769c10b819" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="classStmPeriodicTimer_1a626b64b9e1f58e552386c5769c10b819" kindref="member">user_data_</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/stm32/StmPeriodicTimer.h"/>
+  </compounddef>
+</doxygen>

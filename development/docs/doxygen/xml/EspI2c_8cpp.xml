@@ -115,13 +115,13 @@
         </childnode>
         <childnode refid="35" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
       </node>
       <node id="8">
@@ -289,29 +289,23 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="35">
-        <label>utils/RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>utils/PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="42">
+      <node id="39">
         <label>utils/memory_utils.h</label>
         <link refid="memory__utils_8h"/>
-        <childnode refid="39" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -319,28 +313,28 @@
         <link refid="EspI2c_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
-        <childnode refid="45" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="46" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="45" relation="include">
         </childnode>
         <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="46" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="47" relation="include">
         </childnode>
       </node>
-      <node id="45">
+      <node id="42">
         <label>algorithm</label>
       </node>
       <node id="13">
@@ -352,16 +346,16 @@
       <node id="34">
         <label>cstring</label>
       </node>
-      <node id="46">
+      <node id="43">
         <label>driver/gpio.h</label>
       </node>
       <node id="22">
         <label>driver/i2c.h</label>
       </node>
-      <node id="40">
+      <node id="37">
         <label>driver/i2c_master.h</label>
       </node>
-      <node id="47">
+      <node id="44">
         <label>driver/i2c_types.h</label>
       </node>
       <node id="29">
@@ -373,37 +367,34 @@
       <node id="15">
         <label>esp_adc/adc_oneshot.h</label>
       </node>
-      <node id="48">
+      <node id="45">
         <label>esp_err.h</label>
       </node>
-      <node id="41">
+      <node id="38">
         <label>esp_log.h</label>
       </node>
       <node id="31">
         <label>esp_timer.h</label>
       </node>
-      <node id="36">
+      <node id="46">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="37">
-        <label>freertos/semphr.h</label>
-      </node>
-      <node id="38">
+      <node id="47">
         <label>freertos/task.h</label>
       </node>
       <node id="6">
         <label>limits</label>
       </node>
-      <node id="39">
+      <node id="36">
         <label>memory</label>
       </node>
-      <node id="43">
+      <node id="40">
         <label>new</label>
       </node>
       <node id="7">
         <label>string_view</label>
       </node>
-      <node id="44">
+      <node id="41">
         <label>utility</label>
       </node>
       <node id="21">
@@ -573,19 +564,19 @@
 <codeline lineno="96"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><ref refid="classEspI2cBus_1af387e087bc25f527bfede2222e830fed" kindref="member">EspI2cBus::~EspI2cBus</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Destroying<sp/>I2C<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Destroying<sp/>I2C<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus_1a3f9a9142733743906449d119a25c3cf1" kindref="member">Deinitialize</ref>();</highlight></codeline>
 <codeline lineno="101"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a4ac590e55ca816e06b5e6749781ad1de" kindref="member">EspI2cBus::Initialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>I2C<sp/>bus<sp/>on<sp/>port<sp/>%d<sp/>(SDA:GPIO%d,<sp/>SCL:GPIO%d)<sp/>in<sp/>%s<sp/>mode&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>I2C<sp/>bus<sp/>on<sp/>port<sp/>%d<sp/>(SDA:GPIO%d,<sp/>SCL:GPIO%d)<sp/>in<sp/>%s<sp/>mode&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" kindref="member">config_</ref>.<ref refid="structhf__i2c__master__bus__config__t_1a716f6163484b87561aba84f289af450a" kindref="member">i2c_port</ref>,<sp/><ref refid="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" kindref="member">config_</ref>.<ref refid="structhf__i2c__master__bus__config__t_1a49a9dd202058114f460dc717b8628240" kindref="member">sda_io_num</ref>,<sp/><ref refid="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" kindref="member">config_</ref>.<ref refid="structhf__i2c__master__bus__config__t_1a7bb7bf1b37dd8e03233fae19f0ca8dd3" kindref="member">scl_io_num</ref>,</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" kindref="member">current_mode_</ref><sp/>==<sp/><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbbae6ff80d90aa0fbb908f1c8284ee704eb" kindref="member">hf_i2c_mode_t::HF_I2C_MODE_ASYNC</ref>)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;ASYNC&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;SYNC&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight></codeline>
@@ -597,14 +588,14 @@
 <codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" kindref="member">current_mode_</ref><sp/>==<sp/><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbba6463b28dbace94d94503d1dd60bf07cf" kindref="member">hf_i2c_mode_t::HF_I2C_MODE_SYNC</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>SYNC<sp/>mode:<sp/>Must<sp/>have<sp/>trans_queue_depth<sp/>=<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(actual_queue_depth<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Sync<sp/>mode<sp/>requires<sp/>trans_queue_depth=0,<sp/>forcing<sp/>to<sp/>0<sp/>(was<sp/>%d)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Sync<sp/>mode<sp/>requires<sp/>trans_queue_depth=0,<sp/>forcing<sp/>to<sp/>0<sp/>(was<sp/>%d)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actual_queue_depth);</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>actual_queue_depth<sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ASYNC<sp/>mode:<sp/>Must<sp/>have<sp/>trans_queue_depth<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(actual_queue_depth<sp/>==<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Async<sp/>mode<sp/>requires<sp/>trans_queue_depth&gt;0,<sp/>setting<sp/>to<sp/>10<sp/>(was<sp/>0)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Async<sp/>mode<sp/>requires<sp/>trans_queue_depth&gt;0,<sp/>setting<sp/>to<sp/>10<sp/>(was<sp/>0)&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>actual_queue_depth<sp/>=<sp/>32;</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -627,62 +618,62 @@
 <codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>the<sp/>I2C<sp/>master<sp/>bus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>err<sp/>=<sp/>i2c_new_master_bus(&amp;bus_config,<sp/>&amp;<ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>);</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>I2C<sp/>master<sp/>bus:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>I2C<sp/>master<sp/>bus:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>master<sp/>bus<sp/>created<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>master<sp/>bus<sp/>created<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>bus<sp/>to<sp/>be<sp/>fully<sp/>ready<sp/>(ESP32-C6<sp/>requirement)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>ensures<sp/>the<sp/>I2C<sp/>peripheral<sp/>is<sp/>fully<sp/>initialized<sp/>before<sp/>any<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/>err<sp/>=<sp/>i2c_master_bus_wait_all_done(<ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>,<sp/>100);</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>wait<sp/>for<sp/>I2C<sp/>bus<sp/>readiness:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>wait<sp/>for<sp/>I2C<sp/>bus<sp/>readiness:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>i2c_del_master_bus(<ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>);</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>is<sp/>ready<sp/>and<sp/>waiting<sp/>for<sp/>operations&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>is<sp/>ready<sp/>and<sp/>waiting<sp/>for<sp/>operations&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
 <codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Try<sp/>bus<sp/>reset<sp/>to<sp/>ensure<sp/>peripheral<sp/>is<sp/>in<sp/>known<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/>err<sp/>=<sp/>i2c_master_bus_reset(<ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>);</highlight></codeline>
 <codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Bus<sp/>reset<sp/>failed:<sp/>%s<sp/>(this<sp/>is<sp/>normal<sp/>without<sp/>a<sp/>stuck<sp/>bus<sp/>[SDA<sp/>and/or<sp/>SCL<sp/>held<sp/>LOW])&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_to_name(err));</highlight></codeline>
-<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Continuing<sp/>initialization<sp/>without<sp/>bus<sp/>reset<sp/>-<sp/>suitable<sp/>for<sp/>testing&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Continuing<sp/>initialization<sp/>without<sp/>bus<sp/>reset<sp/>-<sp/>suitable<sp/>for<sp/>testing&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bus<sp/>reset<sp/>successful&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bus<sp/>reset<sp/>successful&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"></highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>initialized<sp/>successfully<sp/>in<sp/>%s<sp/>mode<sp/>with<sp/>queue_depth=%d&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>initialized<sp/>successfully<sp/>in<sp/>%s<sp/>mode<sp/>with<sp/>queue_depth=%d&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" kindref="member">current_mode_</ref><sp/>==<sp/><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbbae6ff80d90aa0fbb908f1c8284ee704eb" kindref="member">hf_i2c_mode_t::HF_I2C_MODE_ASYNC</ref>)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;ASYNC&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;SYNC&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>actual_queue_depth);</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="186"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="187"><highlight class="normal"></highlight></codeline>
 <codeline lineno="188"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a3f9a9142733743906449d119a25c3cf1" kindref="member">EspI2cBus::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>I2C<sp/>bus<sp/>in<sp/>%s<sp/>mode&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>I2C<sp/>bus<sp/>in<sp/>%s<sp/>mode&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(<ref refid="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" kindref="member">current_mode_</ref><sp/>==<sp/><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbbae6ff80d90aa0fbb908f1c8284ee704eb" kindref="member">hf_i2c_mode_t::HF_I2C_MODE_ASYNC</ref>)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;ASYNC&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;SYNC&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"></highlight></codeline>
 <codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>all<sp/>devices<sp/>first<sp/>-<sp/>inline<sp/>the<sp/>helper<sp/>since<sp/>it&apos;s<sp/>only<sp/>used<sp/>once</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>device<sp/>:<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device<sp/>&amp;&amp;<sp/>device-&gt;GetHandle())<sp/>{</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Removing<sp/>device<sp/>0x%02X<sp/>from<sp/>ESP-IDF<sp/>bus&quot;</highlight><highlight class="normal">,<sp/>device-&gt;GetDeviceAddress());</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Removing<sp/>device<sp/>0x%02X<sp/>from<sp/>ESP-IDF<sp/>bus&quot;</highlight><highlight class="normal">,<sp/>device-&gt;GetDeviceAddress());</highlight></codeline>
 <codeline lineno="202"><highlight class="normal"></highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_t<sp/>err<sp/>=<sp/>i2c_master_bus_rm_device(device-&gt;GetHandle());</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>remove<sp/>device<sp/>0x%02X:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>device-&gt;GetDeviceAddress(),</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>remove<sp/>device<sp/>0x%02X:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>device-&gt;GetDeviceAddress(),</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_to_name(err));</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Successfully<sp/>removed<sp/>device<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/>device-&gt;GetDeviceAddress());</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Successfully<sp/>removed<sp/>device<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/>device-&gt;GetDeviceAddress());</highlight></codeline>
 <codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"></highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>device-&gt;MarkAsDeinitialized();</highlight></codeline>
@@ -692,26 +683,26 @@
 <codeline lineno="215"><highlight class="normal"></highlight></codeline>
 <codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>the<sp/>master<sp/>bus</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deleting<sp/>I2C<sp/>master<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deleting<sp/>I2C<sp/>master<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>esp_err_t<sp/>err<sp/>=<sp/>i2c_del_master_bus(<ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>);</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>delete<sp/>I2C<sp/>master<sp/>bus:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>delete<sp/>I2C<sp/>master<sp/>bus:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
 <codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(100));</highlight></codeline>
 <codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Successfully<sp/>deleted<sp/>I2C<sp/>master<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Successfully<sp/>deleted<sp/>I2C<sp/>master<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"></highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(200));</highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="233"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="234"><highlight class="normal"></highlight></codeline>
 <codeline lineno="235"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Mode<sp/>management<sp/>methods</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="236"><highlight class="normal"><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref><sp/><ref refid="classEspI2cBus_1a3b9dc4528ba496f4b3b949b2cf18af25" kindref="member">EspI2cBus::GetMode</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" kindref="member">current_mode_</ref>;</highlight></codeline>
 <codeline lineno="239"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"></highlight></codeline>
@@ -744,7 +735,7 @@
 <codeline lineno="267"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"></highlight></codeline>
 <codeline lineno="269"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a578c36e975b01c96fe15a492de148e51" kindref="member">EspI2cBus::CreateDevice</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__i2c__device__config__t" kindref="compound">hf_i2c_device_config_t</ref>&amp;<sp/>device_config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="271"><highlight class="normal"></highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_)<sp/>{</highlight></codeline>
 <codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>create<sp/>device<sp/>on<sp/>uninitialized<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -793,7 +784,7 @@
 <codeline lineno="316"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"></highlight></codeline>
 <codeline lineno="318"><highlight class="normal"><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1a185a28a9e32b8ebb22d72e19318bcd02" kindref="member">EspI2cBus::GetDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="320"><highlight class="normal"></highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/>device_index<sp/>&gt;=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(devices_.size()))<sp/>{</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>device<sp/>index:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>device_index);</highlight></codeline>
@@ -804,7 +795,7 @@
 <codeline lineno="327"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="328"><highlight class="normal"></highlight></codeline>
 <codeline lineno="329"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1a185a28a9e32b8ebb22d72e19318bcd02" kindref="member">EspI2cBus::GetDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="330"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="331"><highlight class="normal"></highlight></codeline>
 <codeline lineno="332"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/>device_index<sp/>&gt;=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(devices_.size()))<sp/>{</highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
@@ -814,7 +805,7 @@
 <codeline lineno="337"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="338"><highlight class="normal"></highlight></codeline>
 <codeline lineno="339"><highlight class="normal"><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>*<sp/><ref refid="classEspI2cBus_1aeaec58a5ab33498346eec68f5caa56a3" kindref="member">EspI2cBus::GetEspDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"></highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/>device_index<sp/>&gt;=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(devices_.size()))<sp/>{</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
@@ -824,7 +815,7 @@
 <codeline lineno="347"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="348"><highlight class="normal"></highlight></codeline>
 <codeline lineno="349"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>*<sp/><ref refid="classEspI2cBus_1aeaec58a5ab33498346eec68f5caa56a3" kindref="member">EspI2cBus::GetEspDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="350"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="351"><highlight class="normal"></highlight></codeline>
 <codeline lineno="352"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/>device_index<sp/>&gt;=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(devices_.size()))<sp/>{</highlight></codeline>
 <codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
@@ -834,7 +825,7 @@
 <codeline lineno="357"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"></highlight></codeline>
 <codeline lineno="359"><highlight class="normal"><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1a007e11c4560179ac0a5d8989a43d4733" kindref="member">EspI2cBus::GetDeviceByAddress</ref>(<ref refid="HardwareTypes_8h_1acf5c4ff165be8c4d15943c1d65daa1c0" kindref="member">hf_u16_t</ref><sp/>device_address)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="360"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="361"><highlight class="normal"></highlight></codeline>
 <codeline lineno="362"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>FindDeviceIndexByAddress(device_address);</highlight></codeline>
 <codeline lineno="363"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&gt;=<sp/>0)<sp/>{</highlight></codeline>
@@ -845,7 +836,7 @@
 <codeline lineno="368"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="369"><highlight class="normal"></highlight></codeline>
 <codeline lineno="370"><highlight class="normal">std::size_t<sp/><ref refid="classEspI2cBus_1ad96d7e4b8693fdad686c134bada1034b" kindref="member">EspI2cBus::GetDeviceCount</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="371"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="372"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.size();</highlight></codeline>
 <codeline lineno="373"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="374"><highlight class="normal"></highlight></codeline>
@@ -936,7 +927,7 @@
 <codeline lineno="467"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="468"><highlight class="normal"></highlight></codeline>
 <codeline lineno="469"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1af6c29fb3e4e40662a32cd9aa3fc0eace" kindref="member">EspI2cBus::RemoveDevice</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="470"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="471"><highlight class="normal"></highlight></codeline>
 <codeline lineno="472"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(device_index<sp/>&lt;<sp/>0<sp/>||<sp/>device_index<sp/>&gt;=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(devices_.size()))<sp/>{</highlight></codeline>
 <codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>device<sp/>index<sp/>for<sp/>removal:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>device_index);</highlight></codeline>
@@ -1002,7 +993,7 @@
 <codeline lineno="533"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="534"><highlight class="normal"></highlight></codeline>
 <codeline lineno="535"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ab5ab97f8ed52a4c33f6ddf248b1b67a2" kindref="member">EspI2cBus::IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="536"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="536"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="537"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" kindref="member">initialized_</ref>;</highlight></codeline>
 <codeline lineno="538"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="539"><highlight class="normal"></highlight></codeline>
@@ -1101,18 +1092,18 @@
 <codeline lineno="632"><highlight class="normal"></highlight></codeline>
 <codeline lineno="633"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ada599f9418ee55133905049270d08163" kindref="member">EspI2cBus::ResetBus</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="634"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="635"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="635"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="636"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="637"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="638"><highlight class="normal"></highlight></codeline>
-<codeline lineno="639"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Attempting<sp/>to<sp/>reset<sp/>I2C<sp/>bus<sp/>to<sp/>recover<sp/>from<sp/>potential<sp/>hanging<sp/>state&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="639"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Attempting<sp/>to<sp/>reset<sp/>I2C<sp/>bus<sp/>to<sp/>recover<sp/>from<sp/>potential<sp/>hanging<sp/>state&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="640"><highlight class="normal"></highlight></codeline>
 <codeline lineno="641"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Try<sp/>the<sp/>standard<sp/>ESP-IDF<sp/>bus<sp/>reset,<sp/>but<sp/>handle<sp/>failures<sp/>gracefully</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="642"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>err<sp/>=<sp/>i2c_master_bus_reset(<ref refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kindref="member">bus_handle_</ref>);</highlight></codeline>
 <codeline lineno="643"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="644"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>reset<sp/>failed:<sp/>%s<sp/>(normal<sp/>without<sp/>physical<sp/>devices<sp/>or<sp/>pull-ups)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="644"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>reset<sp/>failed:<sp/>%s<sp/>(normal<sp/>without<sp/>physical<sp/>devices<sp/>or<sp/>pull-ups)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="645"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>esp_err_to_name(err));</highlight></codeline>
-<codeline lineno="646"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bus<sp/>reset<sp/>not<sp/>required<sp/>for<sp/>testing<sp/>scenarios<sp/>-<sp/>continuing&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="646"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bus<sp/>reset<sp/>not<sp/>required<sp/>for<sp/>testing<sp/>scenarios<sp/>-<sp/>continuing&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="647"><highlight class="normal"></highlight></codeline>
 <codeline lineno="648"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>error<sp/>recovery<sp/>statistics<sp/>for<sp/>all<sp/>devices</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="649"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>device<sp/>:<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
@@ -1124,7 +1115,7 @@
 <codeline lineno="655"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>to<sp/>indicate<sp/>this<sp/>is<sp/>acceptable<sp/>for<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="656"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="657"><highlight class="normal"></highlight></codeline>
-<codeline lineno="658"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>reset<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="658"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;I2C<sp/>bus<sp/>reset<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="659"><highlight class="normal"></highlight></codeline>
 <codeline lineno="660"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>error<sp/>recovery<sp/>statistics<sp/>for<sp/>all<sp/>devices</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="661"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>device<sp/>:<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
@@ -1166,12 +1157,12 @@
 <codeline lineno="697"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="698"><highlight class="normal"></highlight></codeline>
 <codeline lineno="699"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1aa948bf6a1ab715e03dafda66f4335817" kindref="member">EspI2cBus::IsValidIndex</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>device_index)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="700"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="700"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="701"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(device_index<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>device_index<sp/>&lt;<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(devices_.size()));</highlight></codeline>
 <codeline lineno="702"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="703"><highlight class="normal"></highlight></codeline>
 <codeline lineno="704"><highlight class="normal"><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1a052f50385b702e1bdb1d4ccab41123a2" kindref="member">EspI2cBus::GetFirstDevice</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="705"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="705"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="706"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="707"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="708"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1179,7 +1170,7 @@
 <codeline lineno="710"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="711"><highlight class="normal"></highlight></codeline>
 <codeline lineno="712"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1a052f50385b702e1bdb1d4ccab41123a2" kindref="member">EspI2cBus::GetFirstDevice</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="713"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="713"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="714"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="715"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="716"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1187,7 +1178,7 @@
 <codeline lineno="718"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="719"><highlight class="normal"></highlight></codeline>
 <codeline lineno="720"><highlight class="normal"><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1ab96cb9eee00e8192a499fa7e86c24d21" kindref="member">EspI2cBus::GetLastDevice</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="721"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="721"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="722"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="723"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="724"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1195,7 +1186,7 @@
 <codeline lineno="726"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="727"><highlight class="normal"></highlight></codeline>
 <codeline lineno="728"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classBaseI2c" kindref="compound">BaseI2c</ref>*<sp/><ref refid="classEspI2cBus_1ab96cb9eee00e8192a499fa7e86c24d21" kindref="member">EspI2cBus::GetLastDevice</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="729"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="729"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="730"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="731"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="732"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1203,7 +1194,7 @@
 <codeline lineno="734"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="735"><highlight class="normal"></highlight></codeline>
 <codeline lineno="736"><highlight class="normal">std::vector&lt;BaseI2c*&gt;<sp/><ref refid="classEspI2cBus_1ae3d92db5473c43f90534fb2dfebc6036" kindref="member">EspI2cBus::GetAllDevices</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="737"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="737"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="738"><highlight class="normal"><sp/><sp/>std::vector&lt;BaseI2c*&gt;<sp/>result;</highlight></codeline>
 <codeline lineno="739"><highlight class="normal"><sp/><sp/>result.reserve(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.size());</highlight></codeline>
 <codeline lineno="740"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>device<sp/>:<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
@@ -1213,7 +1204,7 @@
 <codeline lineno="744"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="745"><highlight class="normal"></highlight></codeline>
 <codeline lineno="746"><highlight class="normal">std::vector&lt;const<sp/>BaseI2c*&gt;<sp/><ref refid="classEspI2cBus_1ae3d92db5473c43f90534fb2dfebc6036" kindref="member">EspI2cBus::GetAllDevices</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="747"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="747"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="748"><highlight class="normal"><sp/><sp/>std::vector&lt;const<sp/>BaseI2c*&gt;<sp/>result;</highlight></codeline>
 <codeline lineno="749"><highlight class="normal"><sp/><sp/>result.reserve(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.size());</highlight></codeline>
 <codeline lineno="750"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>device<sp/>:<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
@@ -1223,7 +1214,7 @@
 <codeline lineno="754"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="755"><highlight class="normal"></highlight></codeline>
 <codeline lineno="756"><highlight class="normal">std::vector&lt;EspI2cDevice*&gt;<sp/><ref refid="classEspI2cBus_1a3bea9a78bea25be04a153ae4c8403992" kindref="member">EspI2cBus::GetAllEspDevices</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="757"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="757"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="758"><highlight class="normal"><sp/><sp/>std::vector&lt;EspI2cDevice*&gt;<sp/>result;</highlight></codeline>
 <codeline lineno="759"><highlight class="normal"><sp/><sp/>result.reserve(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.size());</highlight></codeline>
 <codeline lineno="760"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>device<sp/>:<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
@@ -1233,7 +1224,7 @@
 <codeline lineno="764"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="765"><highlight class="normal"></highlight></codeline>
 <codeline lineno="766"><highlight class="normal">std::vector&lt;const<sp/>EspI2cDevice*&gt;<sp/><ref refid="classEspI2cBus_1a3bea9a78bea25be04a153ae4c8403992" kindref="member">EspI2cBus::GetAllEspDevices</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="767"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="767"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="768"><highlight class="normal"><sp/><sp/>std::vector&lt;const<sp/>EspI2cDevice*&gt;<sp/>result;</highlight></codeline>
 <codeline lineno="769"><highlight class="normal"><sp/><sp/>result.reserve(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.size());</highlight></codeline>
 <codeline lineno="770"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>device<sp/>:<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
@@ -1247,7 +1238,7 @@
 <codeline lineno="778"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="779"><highlight class="normal"></highlight></codeline>
 <codeline lineno="780"><highlight class="normal">std::vector&lt;hf_u16_t&gt;<sp/><ref refid="classEspI2cBus_1a955deee620e981e723feb2102783fafa" kindref="member">EspI2cBus::GetDeviceAddresses</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="781"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="781"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="782"><highlight class="normal"><sp/><sp/>std::vector&lt;hf_u16_t&gt;<sp/>addresses;</highlight></codeline>
 <codeline lineno="783"><highlight class="normal"><sp/><sp/>addresses.reserve(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.size());</highlight></codeline>
 <codeline lineno="784"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal">&amp;<sp/>device<sp/>:<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>)<sp/>{</highlight></codeline>
@@ -1257,28 +1248,28 @@
 <codeline lineno="788"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="789"><highlight class="normal"></highlight></codeline>
 <codeline lineno="790"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a99765c2acdbe285f42a93254543b0011" kindref="member">EspI2cBus::HasDevices</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="791"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="791"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="792"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.empty();</highlight></codeline>
 <codeline lineno="793"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="794"><highlight class="normal"></highlight></codeline>
 <codeline lineno="795"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1a6f8dd3bc3713e4377f727a658000d334" kindref="member">EspI2cBus::IsEmpty</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="796"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="796"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="797"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.empty();</highlight></codeline>
 <codeline lineno="798"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="799"><highlight class="normal"></highlight></codeline>
 <codeline lineno="800"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cBus_1ace282f4e828034cda3498762fc6fe47f" kindref="member">EspI2cBus::ClearAllDevices</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="801"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="801"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="802"><highlight class="normal"></highlight></codeline>
 <codeline lineno="803"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="804"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="805"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="806"><highlight class="normal"></highlight></codeline>
-<codeline lineno="807"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Clearing<sp/>all<sp/>%zu<sp/>devices<sp/>from<sp/>I2C<sp/>bus&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.size());</highlight></codeline>
+<codeline lineno="807"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Clearing<sp/>all<sp/>%zu<sp/>devices<sp/>from<sp/>I2C<sp/>bus&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.size());</highlight></codeline>
 <codeline lineno="808"><highlight class="normal"></highlight></codeline>
 <codeline lineno="809"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>all<sp/>devices<sp/>(destructors<sp/>will<sp/>handle<sp/>ESP-IDF<sp/>cleanup)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="810"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kindref="member">devices_</ref>.clear();</highlight></codeline>
 <codeline lineno="811"><highlight class="normal"></highlight></codeline>
-<codeline lineno="812"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;All<sp/>devices<sp/>cleared<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="812"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;All<sp/>devices<sp/>cleared<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="813"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="814"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="815"><highlight class="normal"></highlight></codeline>
@@ -1359,11 +1350,11 @@
 <codeline lineno="890"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="891"><highlight class="normal"></highlight></codeline>
 <codeline lineno="892"><highlight class="normal"><ref refid="classEspI2cDevice_1af8a169703da9511e1ee20957ff4062ab" kindref="member">EspI2cDevice::~EspI2cDevice</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="893"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>destructor<sp/>called<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="893"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>destructor<sp/>called<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="894"><highlight class="normal"></highlight></codeline>
 <codeline lineno="895"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Ensure<sp/>device<sp/>is<sp/>properly<sp/>deinitialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="896"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="897"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>was<sp/>still<sp/>initialized<sp/>during<sp/>destruction<sp/>-<sp/>calling<sp/>Deinitialize()&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="897"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>was<sp/>still<sp/>initialized<sp/>during<sp/>destruction<sp/>-<sp/>calling<sp/>Deinitialize()&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="898"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1ac905c8cc4c142563e73380ffb6b679b3" kindref="member">Deinitialize</ref>();</highlight></codeline>
 <codeline lineno="899"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="900"><highlight class="normal"></highlight></codeline>
@@ -1373,23 +1364,23 @@
 <codeline lineno="904"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1ae5d3bffbe307541766e6387b025ea91d" kindref="member">current_callback_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="905"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1ab8f8ebf1900fe0e383b373bd88a46b67" kindref="member">current_user_data_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="906"><highlight class="normal"></highlight></codeline>
-<codeline lineno="907"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>destructor<sp/>completed<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="907"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>destructor<sp/>completed<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="908"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="909"><highlight class="normal"></highlight></codeline>
 <codeline lineno="910"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a6b441d54a4f47e124dd6e5f48a23c7f9" kindref="member">EspI2cDevice::Initialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="911"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="911"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="912"><highlight class="normal"></highlight></codeline>
 <codeline lineno="913"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="914"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>already<sp/>initialized<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="914"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>already<sp/>initialized<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="915"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="916"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="917"><highlight class="normal"></highlight></codeline>
 <codeline lineno="918"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a5b3271e2c9a17ff4a2b39f7e716a93fc" kindref="member">parent_bus_</ref><sp/>||<sp/>!<ref refid="classEspI2cDevice_1a5b3271e2c9a17ff4a2b39f7e716a93fc" kindref="member">parent_bus_</ref>-&gt;<ref refid="classEspI2cBus_1ab5ab97f8ed52a4c33f6ddf248b1b67a2" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="919"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>initialize<sp/>device:<sp/>parent<sp/>bus<sp/>not<sp/>available<sp/>or<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="919"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>initialize<sp/>device:<sp/>parent<sp/>bus<sp/>not<sp/>available<sp/>or<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="920"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="921"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="922"><highlight class="normal"></highlight></codeline>
-<codeline lineno="923"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>EspI2cDevice<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="923"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>EspI2cDevice<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="924"><highlight class="normal"></highlight></codeline>
 <codeline lineno="925"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>ESP-IDF<sp/>device<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="926"><highlight class="normal"><sp/><sp/>i2c_device_config_t<sp/>dev_cfg<sp/>=<sp/>{</highlight></codeline>
@@ -1406,7 +1397,7 @@
 <codeline lineno="937"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>err<sp/>=<sp/>i2c_master_bus_add_device(<ref refid="classEspI2cDevice_1a5b3271e2c9a17ff4a2b39f7e716a93fc" kindref="member">parent_bus_</ref>-&gt;<ref refid="classEspI2cBus_1a39671c0d8d5ae9aa4cf34814cda7fe52" kindref="member">GetHandle</ref>(),<sp/>&amp;dev_cfg,<sp/>&amp;dev_handle);</highlight></codeline>
 <codeline lineno="938"><highlight class="normal"></highlight></codeline>
 <codeline lineno="939"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="940"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>add<sp/>I2C<sp/>device<sp/>to<sp/>ESP-IDF<sp/>bus:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
+<codeline lineno="940"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>add<sp/>I2C<sp/>device<sp/>to<sp/>ESP-IDF<sp/>bus:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
 <codeline lineno="941"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="942"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="943"><highlight class="normal"></highlight></codeline>
@@ -1419,7 +1410,7 @@
 <codeline lineno="950"><highlight class="normal"></highlight></codeline>
 <codeline lineno="951"><highlight class="normal"><sp/><sp/><sp/><sp/>esp_err_t<sp/>callback_err<sp/>=<sp/>i2c_master_register_event_callbacks(<ref refid="classEspI2cDevice_1a4b297354625e4370cbdef30ffc695ae4" kindref="member">handle_</ref>,<sp/>&amp;cbs,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="952"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(callback_err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="953"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>register<sp/>async<sp/>callback<sp/>for<sp/>device<sp/>0x%02X:<sp/>%s&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="953"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>register<sp/>async<sp/>callback<sp/>for<sp/>device<sp/>0x%02X:<sp/>%s&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="954"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>,<sp/>esp_err_to_name(callback_err));</highlight></codeline>
 <codeline lineno="955"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>the<sp/>device<sp/>from<sp/>the<sp/>bus<sp/>since<sp/>callback<sp/>registration<sp/>failed</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="956"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>i2c_master_bus_rm_device(<ref refid="classEspI2cDevice_1a4b297354625e4370cbdef30ffc695ae4" kindref="member">handle_</ref>);</highlight></codeline>
@@ -1427,25 +1418,25 @@
 <codeline lineno="958"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="959"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="960"><highlight class="normal"></highlight></codeline>
-<codeline lineno="961"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Async<sp/>event<sp/>callback<sp/>registered<sp/>successfully<sp/>for<sp/>device<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="961"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Async<sp/>event<sp/>callback<sp/>registered<sp/>successfully<sp/>for<sp/>device<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="962"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="963"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="964"><highlight class="normal"></highlight></codeline>
 <codeline lineno="965"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="966"><highlight class="normal"></highlight></codeline>
-<codeline lineno="967"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>initialized<sp/>successfully<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="967"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>initialized<sp/>successfully<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="968"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="969"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="970"><highlight class="normal"></highlight></codeline>
 <codeline lineno="971"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a073b10cf1253684d9c0d54bc5063aec7" kindref="member">EspI2cDevice::MarkAsDeinitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="972"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="973"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="974"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>at<sp/>address<sp/>0x%02X<sp/>is<sp/>already<sp/>marked<sp/>as<sp/>deinitialized&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="974"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>at<sp/>address<sp/>0x%02X<sp/>is<sp/>already<sp/>marked<sp/>as<sp/>deinitialized&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="975"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="976"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="977"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="978"><highlight class="normal"></highlight></codeline>
-<codeline lineno="979"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Marking<sp/>device<sp/>at<sp/>address<sp/>0x%02X<sp/>as<sp/>deinitialized&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="979"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Marking<sp/>device<sp/>at<sp/>address<sp/>0x%02X<sp/>as<sp/>deinitialized&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="980"><highlight class="normal"></highlight></codeline>
 <codeline lineno="981"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>internal<sp/>state<sp/>without<sp/>ESP-IDF<sp/>cleanup</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="982"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1461,23 +1452,23 @@
 <codeline lineno="992"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="993"><highlight class="normal"></highlight></codeline>
 <codeline lineno="994"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1ac905c8cc4c142563e73380ffb6b679b3" kindref="member">EspI2cDevice::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="995"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="995"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="996"><highlight class="normal"></highlight></codeline>
 <codeline lineno="997"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="998"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>already<sp/>deinitialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="998"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>already<sp/>deinitialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="999"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1000"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1001"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1002"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>for<sp/>any<sp/>pending<sp/>async<sp/>operations<sp/>to<sp/>complete</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1003"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cDevice_1a5a95a7beb1f7b4ba80419d5ac1df9d7c" kindref="member">async_operation_in_progress_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1004"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Waiting<sp/>for<sp/>async<sp/>operation<sp/>to<sp/>complete<sp/>before<sp/>deinitialization&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1004"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Waiting<sp/>for<sp/>async<sp/>operation<sp/>to<sp/>complete<sp/>before<sp/>deinitialization&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1005"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Wait<sp/>up<sp/>to<sp/>1<sp/>second<sp/>for<sp/>async<sp/>operation<sp/>to<sp/>complete</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1006"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>wait_start<sp/>=<sp/>esp_timer_get_time()<sp/>/<sp/>1000;</highlight></codeline>
 <codeline lineno="1007"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cDevice_1a5a95a7beb1f7b4ba80419d5ac1df9d7c" kindref="member">async_operation_in_progress_</ref><sp/>&amp;&amp;<sp/>((esp_timer_get_time()<sp/>/<sp/>1000)<sp/>-<sp/>wait_start<sp/>&lt;<sp/>1000))<sp/>{</highlight></codeline>
 <codeline lineno="1008"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(10));</highlight></codeline>
 <codeline lineno="1009"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1010"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cDevice_1a5a95a7beb1f7b4ba80419d5ac1df9d7c" kindref="member">async_operation_in_progress_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1011"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Async<sp/>operation<sp/>did<sp/>not<sp/>complete<sp/>within<sp/>timeout<sp/>-<sp/>forcing<sp/>deinitialization&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1011"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Async<sp/>operation<sp/>did<sp/>not<sp/>complete<sp/>within<sp/>timeout<sp/>-<sp/>forcing<sp/>deinitialization&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1012"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1013"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1014"><highlight class="normal"></highlight></codeline>
@@ -1485,10 +1476,10 @@
 <codeline lineno="1016"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspI2cDevice_1a4b297354625e4370cbdef30ffc695ae4" kindref="member">handle_</ref><sp/>&amp;&amp;<sp/><ref refid="classEspI2cDevice_1a5b3271e2c9a17ff4a2b39f7e716a93fc" kindref="member">parent_bus_</ref><sp/>&amp;&amp;<sp/><ref refid="classEspI2cDevice_1a5b3271e2c9a17ff4a2b39f7e716a93fc" kindref="member">parent_bus_</ref>-&gt;<ref refid="classEspI2cBus_1a39671c0d8d5ae9aa4cf34814cda7fe52" kindref="member">GetHandle</ref>())<sp/>{</highlight></codeline>
 <codeline lineno="1017"><highlight class="normal"><sp/><sp/><sp/><sp/>esp_err_t<sp/>err<sp/>=<sp/>i2c_master_bus_rm_device(<ref refid="classEspI2cDevice_1a4b297354625e4370cbdef30ffc695ae4" kindref="member">handle_</ref>);</highlight></codeline>
 <codeline lineno="1018"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="1019"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>remove<sp/>I2C<sp/>device<sp/>from<sp/>ESP-IDF<sp/>bus:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
+<codeline lineno="1019"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>remove<sp/>I2C<sp/>device<sp/>from<sp/>ESP-IDF<sp/>bus:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(err));</highlight></codeline>
 <codeline lineno="1020"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Continue<sp/>with<sp/>deinitialization<sp/>even<sp/>if<sp/>removal<sp/>fails</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1021"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1022"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Successfully<sp/>removed<sp/>I2C<sp/>device<sp/>from<sp/>ESP-IDF<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1022"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Successfully<sp/>removed<sp/>I2C<sp/>device<sp/>from<sp/>ESP-IDF<sp/>bus&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1023"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1024"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1025"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>the<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
@@ -1503,7 +1494,7 @@
 <codeline lineno="1034"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1ab8f8ebf1900fe0e383b373bd88a46b67" kindref="member">current_user_data_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1035"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1ac514c3f936ff92c94b8c337ea6eb5e73" kindref="member">async_start_time_</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="1036"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1037"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>deinitialized<sp/>successfully<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1037"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspI2cDevice<sp/>deinitialized<sp/>successfully<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1038"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="1039"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1040"><highlight class="normal">}</highlight></codeline>
@@ -1892,9 +1883,9 @@
 <codeline lineno="1423"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1acb1a17d5c492b23e89b95dc0c8b65805" kindref="member">EspI2cDevice::IsAsyncModeSupported</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1424"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1425"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1426"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>async<sp/>mode<sp/>support<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1426"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>async<sp/>mode<sp/>support<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1427"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1428"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1428"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1429"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1430"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1431"><highlight class="normal"></highlight></codeline>
@@ -1904,26 +1895,26 @@
 <codeline lineno="1435"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a2f955ffd3265a24686a07737e21f6f10" kindref="member">EspI2cDevice::IsAsyncOperationInProgress</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1436"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1437"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1438"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>async<sp/>operation<sp/>status<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1438"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>async<sp/>operation<sp/>status<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1439"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1440"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1440"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1441"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1442"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1443"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1444"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="1444"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="1445"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a5a95a7beb1f7b4ba80419d5ac1df9d7c" kindref="member">async_operation_in_progress_</ref>;</highlight></codeline>
 <codeline lineno="1446"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1447"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1448"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a076db192440e992ad956f082b291d704" kindref="member">EspI2cDevice::IsSyncOperationInProgress</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1449"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1450"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1451"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>sync<sp/>operation<sp/>status<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1451"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>sync<sp/>operation<sp/>status<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1453"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1453"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1454"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1455"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1456"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1457"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="1457"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="1458"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a179d9dd56630947e64204720a1e27bd6" kindref="member">sync_operation_in_progress_</ref>;</highlight></codeline>
 <codeline lineno="1459"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1460"><highlight class="normal"></highlight></codeline>
@@ -1982,7 +1973,7 @@
 <codeline lineno="1513"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9af9b2f153939133c27a5a3faa94a86ce0" kindref="member">hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1514"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1515"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1516"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1516"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1517"><highlight class="normal"><sp/><sp/>statistics<sp/>=<sp/>statistics_;</highlight></codeline>
 <codeline lineno="1518"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="1519"><highlight class="normal">}</highlight></codeline>
@@ -1996,7 +1987,7 @@
 <codeline lineno="1527"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9af9b2f153939133c27a5a3faa94a86ce0" kindref="member">hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1528"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1529"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1530"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1530"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1531"><highlight class="normal"><sp/><sp/>diagnostics<sp/>=<sp/>diagnostics_;</highlight></codeline>
 <codeline lineno="1532"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="1533"><highlight class="normal">}</highlight></codeline>
@@ -2010,24 +2001,24 @@
 <codeline lineno="1541"><highlight class="normal"><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/><ref refid="classEspI2cDevice_1ab73f244d0b2696164597e24247aca689" kindref="member">EspI2cDevice::ResetStatistics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1542"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1543"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1544"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>reset<sp/>statistics<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1544"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>reset<sp/>statistics<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1545"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1546"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1546"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1547"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9af9b2f153939133c27a5a3faa94a86ce0" kindref="member">hf_i2c_err_t::I2C_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="1548"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1549"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1550"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="1550"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" kindref="member">mutex_</ref>);</highlight></codeline>
 <codeline lineno="1551"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1afd4fa9c207eaa593ead720c7579e5bcd" kindref="member">statistics_</ref><sp/>=<sp/><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref>{};</highlight></codeline>
-<codeline lineno="1552"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Statistics<sp/>reset<sp/>for<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="1552"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Statistics<sp/>reset<sp/>for<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="1553"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="1554"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1555"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1556"><highlight class="normal">i2c_master_dev_handle_t<sp/><ref refid="classEspI2cDevice_1ab97f4a636f97a71c3031f56f0614ed5b" kindref="member">EspI2cDevice::GetHandle</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1557"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1558"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1559"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>get<sp/>handle<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1559"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>get<sp/>handle<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1560"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1561"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1561"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1562"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1563"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1564"><highlight class="normal"></highlight></codeline>
@@ -2058,8 +2049,8 @@
 <codeline lineno="1589"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a149a2fc81cf16627fba0c01853dfc0be" kindref="member">EspI2cDevice::ProbeDevice</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1590"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1591"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1592"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>probe<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1593"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1592"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>probe<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="1593"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1594"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1595"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1596"><highlight class="normal"></highlight></codeline>
@@ -2068,10 +2059,10 @@
 <codeline lineno="1599"><highlight class="normal"><sp/><sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9" kindref="member">hf_i2c_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspI2cDevice_1a2943185e69fabba6ed4b25f1671d6877" kindref="member">Read</ref>(&amp;dummy_byte,<sp/>1,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>100ms<sp/>timeout<sp/>for<sp/>probing</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1600"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1601"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>==<sp/><ref refid="BaseI2c_8h_1a24a50f7ee1f8c547cfa287c285fe7fb9ad01e55dfdc0e04d20b9ad332589e9553" kindref="member">hf_i2c_err_t::I2C_SUCCESS</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1602"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>probe<sp/>successful<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
+<codeline lineno="1602"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>probe<sp/>successful<sp/>for<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
 <codeline lineno="1603"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1604"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1605"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>probe<sp/>failed<sp/>for<sp/>address<sp/>0x%02X:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>,</highlight></codeline>
+<codeline lineno="1605"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Device<sp/>probe<sp/>failed<sp/>for<sp/>address<sp/>0x%02X:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>,</highlight></codeline>
 <codeline lineno="1606"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="BaseI2c_8h_1ae4be4e01b5da56ce5ceffa7e4bf98fc9" kindref="member">HfI2CErrToString</ref>(result).data());</highlight></codeline>
 <codeline lineno="1607"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1608"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -2098,7 +2089,7 @@
 <codeline lineno="1629"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1630"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1631"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a595ab2ac6ddd7156b30577a36f7af3c5" kindref="member">EspI2cDevice::SetupSyncOperation</ref>(<ref refid="EspI2c_8h_1a91a9b3d5869f268d78d2e0fd55d9b0b8" kindref="member">hf_i2c_operation_t</ref><sp/>operation_type)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="1632"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="1632"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="1633"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1634"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_<sp/>||<sp/>!handle_)<sp/>{</highlight></codeline>
 <codeline lineno="1635"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspI2c_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>setup<sp/>sync<sp/>operation:<sp/>device<sp/>not<sp/>properly<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -2133,7 +2124,7 @@
 <codeline lineno="1664"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>bus<sp/>lock<sp/>status</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1665"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" kindref="member">diagnostics_</ref>.<ref refid="structhf__i2c__diagnostics__t_1a4d00297031b5331599dbca2631332262" kindref="member">bus_locked</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1666"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1667"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Sync<sp/>operation<sp/>cleanup<sp/>complete&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1667"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Sync<sp/>operation<sp/>cleanup<sp/>complete&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1668"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1669"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1670"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a37d7ea5eb281d4c4cfef058294e34714" kindref="member">EspI2cDevice::SetupAsyncOperation</ref>(<ref refid="EspTypes__I2C_8h_1af2ca4d8b86b7cfd6349f3ffdde0a2855" kindref="member">hf_i2c_async_callback_t</ref><sp/>callback,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data,</highlight></codeline>
@@ -2245,7 +2236,7 @@
 <codeline lineno="1776"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Update<sp/>error<sp/>recovery<sp/>attempt<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1777"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1aae4ad5e8f1bb7e70f0b2fdc4cab2fd72" kindref="member">EspI2cDevice::UpdateErrorRecoveryAttempt</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1778"><highlight class="normal"><sp/><sp/><ref refid="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" kindref="member">diagnostics_</ref>.<ref refid="structhf__i2c__diagnostics__t_1a58da397b3f586748013fb4cb13048c35" kindref="member">error_recovery_attempts</ref>++;</highlight></codeline>
-<codeline lineno="1779"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>recovery<sp/>attempt<sp/>recorded<sp/>for<sp/>device<sp/>0x%02X<sp/>(total:<sp/>%u)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1779"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>recovery<sp/>attempt<sp/>recorded<sp/>for<sp/>device<sp/>0x%02X<sp/>(total:<sp/>%u)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1780"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>,<sp/><ref refid="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" kindref="member">diagnostics_</ref>.<ref refid="structhf__i2c__diagnostics__t_1a58da397b3f586748013fb4cb13048c35" kindref="member">error_recovery_attempts</ref>);</highlight></codeline>
 <codeline lineno="1781"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1782"><highlight class="normal"></highlight></codeline>
@@ -2292,7 +2283,7 @@
 <codeline lineno="1823"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1824"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a9f233650bcc027aa9f4bd43899184fce" kindref="member">EspI2cDevice::UnregisterTemporaryCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1825"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>function<sp/>is<sp/>no<sp/>longer<sp/>used<sp/>-<sp/>cleanup<sp/>is<sp/>handled<sp/>in<sp/>InternalAsyncCallback</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1826"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;UnregisterTemporaryCallback<sp/>called<sp/>but<sp/>is<sp/>deprecated&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1826"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;UnregisterTemporaryCallback<sp/>called<sp/>but<sp/>is<sp/>deprecated&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1827"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1828"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1829"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a8105d0d32799e9697a9b7db8579ad21d" kindref="member">EspI2cDevice::InternalAsyncCallback</ref>(i2c_master_dev_handle_t<sp/>i2c_dev,</highlight></codeline>
@@ -2363,9 +2354,9 @@
 <codeline lineno="1894"><highlight class="normal"><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref><sp/><ref refid="classEspI2cDevice_1ae9baf54704dc71dd71b92ace0574fba8" kindref="member">EspI2cDevice::GetMode</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1895"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1896"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1897"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>get<sp/>mode<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1897"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>get<sp/>mode<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1898"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1899"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1899"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1900"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbba6463b28dbace94d94503d1dd60bf07cf" kindref="member">hf_i2c_mode_t::HF_I2C_MODE_SYNC</ref>;<sp/></highlight><highlight class="comment">//<sp/>Return<sp/>safe<sp/>default</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1901"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1902"><highlight class="normal"></highlight></codeline>
@@ -2375,9 +2366,9 @@
 <codeline lineno="1906"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a7f50af31fcd62980b9f9dfa8b71074b6" kindref="member">EspI2cDevice::IsAsyncMode</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1907"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1908"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1909"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>async<sp/>mode<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1909"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>async<sp/>mode<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1910"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1911"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1911"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1912"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1913"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1914"><highlight class="normal"></highlight></codeline>
@@ -2387,9 +2378,9 @@
 <codeline lineno="1918"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a0bfcc2a37b5ae6fb09ec6e72b4003569" kindref="member">EspI2cDevice::IsSyncMode</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="1919"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>device<sp/>is<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1920"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="1921"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>sync<sp/>mode<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="1921"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>check<sp/>sync<sp/>mode<sp/>for<sp/>uninitialized<sp/>device<sp/>at<sp/>address<sp/>0x%02X&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="1922"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>.<ref refid="structhf__i2c__device__config__t_1a2043147468665929ffd3b65333a27b19" kindref="member">device_address</ref>);</highlight></codeline>
-<codeline lineno="1923"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1923"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Call<sp/>Initialize()<sp/>before<sp/>using<sp/>the<sp/>device&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1924"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1925"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1926"><highlight class="normal"></highlight></codeline>

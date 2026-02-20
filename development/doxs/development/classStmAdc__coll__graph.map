@@ -1,0 +1,9 @@
+<map id="StmAdc" name="StmAdc">
+<area shape="rect" id="Node000001" title="STM32 ADC — stub implementation." alt="" coords="150,184,237,215"/>
+<area shape="rect" id="Node000002" href="$classBaseAdc.html" title="Base class for ADCs." alt="" coords="146,104,241,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="196,148,196,184,191,184,191,148"/>
+<area shape="rect" id="Node000003" href="$structhf__adc__statistics__t.html" title="ADC operation statistics." alt="" coords="5,5,176,36"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="118,44,180,102,176,106,114,47"/>
+<area shape="rect" id="Node000004" href="$structhf__adc__diagnostics__t.html" title="ADC diagnostic information." alt="" coords="201,5,391,36"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="277,49,244,82,215,106,211,102,241,78,273,45"/>
+</map>

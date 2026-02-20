@@ -42,7 +42,8 @@ var NAVTREE =
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
         [ "Functions", "functions_func.html", "functions_func" ],
-        [ "Variables", "functions_vars.html", "functions_vars" ]
+        [ "Variables", "functions_vars.html", "functions_vars" ],
+        [ "Typedefs", "functions_type.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -54,7 +55,7 @@ var NAVTREE =
         [ "Typedefs", "globals_type.html", null ],
         [ "Enumerations", "globals_enum.html", null ],
         [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", "globals_defs" ]
+        [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]
@@ -63,22 +64,21 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "AdcComprehensiveTest_8cpp.html",
-"EspTypes__GPIO_8h.html",
-"PioComprehensiveTest_8cpp.html#ae94920ac9ac5ef7b7e19227a543aa897",
+"EspWifi_8cpp.html#ab8f831b960ae2fd5dcb77cb871abdb79",
+"PwmComprehensiveTest_8cpp.html#a53bd3b7c698049eee1ab5ec7bb6f6dff",
 "WifiComprehensiveTest_8cpp.html#a94ce41073e051577d040ad57caf0081d",
 "classBaseLogger.html#a960f90f79007791d7129bd22be151a57",
 "classBaseUart.html#ab49dfeb03b7a9f8cbf81460ebb711c38",
-"classEspCan.html#a6d8efbb99af9eafcfe99ea736b432edf",
-"classEspLogger.html#a7ec1e202ab853fd2ee1f2b93c4089a08",
-"classEspPwm.html#ae46e009618632e0db573912f71c94f9c",
-"classEspWifi.html#a5d96729fa9dac2b05153578461f1e781",
-"globals_g.html",
-"group__wifi.html#gga0fc5cd83d2820476528dba010f9ccfbbac3be6a4f7f22676a58916eff26cab97f",
-"structTestResults.html#a7eddc258a4288ac5f0a36a1008c9d014",
-"structhf__esp__can__config__t.html",
-"structhf__log__message__t.html#a69e40af6b21ed062ecc9aaf1cef13841",
-"structhf__pwm__unit__config__t.html#a00ac0384b3ff94e53be3f31e95a8e1c4",
-"structhf__uart__rs485__config__t.html#a3601528cb25db0e361bea72eac49d9d6"
+"classEspGpio.html#ab1a2c40c2fc4896c58392592e39e6d06",
+"classEspPio.html#afbb6990ea342a5aa31b341d60ed889ae",
+"classEspUart.html#a4c04605b7e7105b001de8af91bf80880",
+"classStmI2cBus.html#a701b33db5e477c8f5a458b867a4319ea",
+"globals_vars_b.html",
+"group__wifi.html#gga90ab2c8a51fc7cb116b659df115407b9aca3fc28648422633c38422074f7e669b",
+"structesp__temp__range__info__t.html#abc02bc5b700e204c80492068b3d8f658",
+"structhf__esp__can__filter__config__t.html",
+"structhf__pio__channel__config__t.html#addb8f972258db0698b3cd5d8220961f7",
+"structhf__temp__sensor__info__t.html#a0c4fd02170af505ef07488baa106c5b3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

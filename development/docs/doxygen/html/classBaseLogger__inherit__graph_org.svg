@@ -20,9 +20,9 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classEspLogger.html" target="_top" xlink:title="ESP32 logger implementation using ESP&#45;IDF logging system (Log V1/V2).">
-<polygon fill="white" stroke="#666666" points="85.5,-23 3.5,-23 3.5,0 85.5,0 85.5,-23"/>
-<text text-anchor="middle" x="44.5" y="-7.8" font-family="Arial" font-size="14.00">EspLogger</text>
+<g id="a_Node000002"><a xlink:href="classStmLogger.html" target="_top" xlink:title="STM32 Logger — stub implementation.">
+<polygon fill="white" stroke="#666666" points="86,-23 3,-23 3,0 86,0 86,-23"/>
+<text text-anchor="middle" x="44.5" y="-7.8" font-family="Arial" font-size="14.00">StmLogger</text>
 </a>
 </g>
 </g>

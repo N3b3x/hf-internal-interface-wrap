@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="dir_2439258af62f2a0b124d92d73f41c942" kind="dir">
+    <compoundname>src/mcu/stm32</compoundname>
+    <innerfile refid="StmAdc_8cpp">StmAdc.cpp</innerfile>
+    <innerfile refid="StmGpio_8cpp">StmGpio.cpp</innerfile>
+    <innerfile refid="StmI2c_8cpp">StmI2c.cpp</innerfile>
+    <innerfile refid="StmLogger_8cpp">StmLogger.cpp</innerfile>
+    <innerfile refid="StmNvs_8cpp">StmNvs.cpp</innerfile>
+    <innerfile refid="StmPeriodicTimer_8cpp">StmPeriodicTimer.cpp</innerfile>
+    <innerfile refid="StmSpi_8cpp">StmSpi.cpp</innerfile>
+    <innerfile refid="StmTemperature_8cpp">StmTemperature.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/mcu/stm32/"/>
+  </compounddef>
+</doxygen>

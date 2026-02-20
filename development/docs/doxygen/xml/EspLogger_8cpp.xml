@@ -7,10 +7,6 @@
     <includes local="no">cstdarg</includes>
     <includes local="no">cstdio</includes>
     <includes local="no">cstring</includes>
-    <includes local="yes">esp_log.h</includes>
-    <includes local="yes">esp_timer.h</includes>
-    <includes local="yes">freertos/FreeRTOS.h</includes>
-    <includes local="yes">freertos/task.h</includes>
     <incdepgraph>
       <node id="3">
         <label>BaseLogger.h</label>
@@ -43,34 +39,6 @@
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>McuSelect.h</label>
-        <link refid="McuSelect_8h"/>
-      </node>
-      <node id="11">
-        <label>utils/RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
-        <childnode refid="12" relation="include">
-        </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
@@ -78,6 +46,20 @@
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>McuSelect.h</label>
+        <link refid="McuSelect_8h"/>
+      </node>
+      <node id="11">
+        <label>utils/PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -87,27 +69,19 @@
         <link refid="EspLogger_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="24" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="23">
+      <node id="18">
         <label>algorithm</label>
       </node>
-      <node id="16">
+      <node id="13">
         <label>atomic</label>
       </node>
       <node id="7">
@@ -116,26 +90,11 @@
       <node id="5">
         <label>cstdint</label>
       </node>
-      <node id="24">
+      <node id="19">
         <label>cstdio</label>
       </node>
-      <node id="17">
-        <label>cstring</label>
-      </node>
-      <node id="21">
-        <label>esp_log.h</label>
-      </node>
-      <node id="22">
-        <label>esp_timer.h</label>
-      </node>
-      <node id="13">
-        <label>freertos/FreeRTOS.h</label>
-      </node>
       <node id="14">
-        <label>freertos/semphr.h</label>
-      </node>
-      <node id="15">
-        <label>freertos/task.h</label>
+        <label>cstring</label>
       </node>
       <node id="8">
         <label>functional</label>
@@ -143,10 +102,10 @@
       <node id="6">
         <label>limits</label>
       </node>
-      <node id="18">
+      <node id="15">
         <label>map</label>
       </node>
-      <node id="19">
+      <node id="16">
         <label>memory</label>
       </node>
       <node id="9">
@@ -155,124 +114,10 @@
       <node id="10">
         <label>string_view</label>
       </node>
-      <node id="20">
+      <node id="17">
         <label>vector</label>
       </node>
     </incdepgraph>
-    <sectiondef kind="var">
-      <memberdef kind="variable" id="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" prot="public" static="yes" mutable="no">
-        <type>const char *</type>
-        <definition>const char* TAG</definition>
-        <argsstring></argsstring>
-        <name>TAG</name>
-        <initializer>= &quot;EspLogger&quot;</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/esp32/EspLogger.cpp" line="44" column="19" bodyfile="src/mcu/esp32/EspLogger.cpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="EspLogger_8cpp_1a302e0993d54956e10405cedbf45911eb" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-        <definition>constexpr hf_u32_t DEFAULT_MAX_MESSAGE_LENGTH</definition>
-        <argsstring></argsstring>
-        <name>DEFAULT_MAX_MESSAGE_LENGTH</name>
-        <initializer>= 512</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/esp32/EspLogger.cpp" line="50" column="27" bodyfile="src/mcu/esp32/EspLogger.cpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="EspLogger_8cpp_1acb3803b2530ef0b785ee1b3e45b69b4d" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-        <definition>constexpr hf_u32_t DEFAULT_BUFFER_SIZE</definition>
-        <argsstring></argsstring>
-        <name>DEFAULT_BUFFER_SIZE</name>
-        <initializer>= 1024</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/esp32/EspLogger.cpp" line="51" column="27" bodyfile="src/mcu/esp32/EspLogger.cpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="EspLogger_8cpp_1ad9a5ce8e98d93c781c46ccdc1d9df936" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-        <definition>constexpr hf_u32_t DEFAULT_FLUSH_INTERVAL_MS</definition>
-        <argsstring></argsstring>
-        <name>DEFAULT_FLUSH_INTERVAL_MS</name>
-        <initializer>= 100</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/esp32/EspLogger.cpp" line="52" column="27" bodyfile="src/mcu/esp32/EspLogger.cpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="EspLogger_8cpp_1a6d5ab23d94d2296b79fab4c0c9fd1779" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-        <definition>constexpr hf_u32_t MAX_TAG_LENGTH</definition>
-        <argsstring></argsstring>
-        <name>MAX_TAG_LENGTH</name>
-        <initializer>= 32</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/esp32/EspLogger.cpp" line="53" column="27" bodyfile="src/mcu/esp32/EspLogger.cpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="EspLogger_8cpp_1a3f4b2575974d00ff5e96f24579f33ef4" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-        <definition>constexpr hf_u32_t MAX_ERROR_MESSAGE_LENGTH</definition>
-        <argsstring></argsstring>
-        <name>MAX_ERROR_MESSAGE_LENGTH</name>
-        <initializer>= 256</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/esp32/EspLogger.cpp" line="54" column="27" bodyfile="src/mcu/esp32/EspLogger.cpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="EspLogger_8cpp_1aaf2bfdc12b335059fb7380a8f2929858" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
-        <definition>constexpr hf_u64_t HEALTH_CHECK_INTERVAL_US</definition>
-        <argsstring></argsstring>
-        <name>HEALTH_CHECK_INTERVAL_US</name>
-        <initializer>= 30000000</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/esp32/EspLogger.cpp" line="55" column="27" bodyfile="src/mcu/esp32/EspLogger.cpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="EspLogger_8cpp_1afb736dd47230ec6c244e207ab1722a7c" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-        <definition>constexpr hf_u32_t MAX_BUFFER_LOG_SIZE</definition>
-        <argsstring></argsstring>
-        <name>MAX_BUFFER_LOG_SIZE</name>
-        <initializer>= 4096</initializer>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="src/mcu/esp32/EspLogger.cpp" line="56" column="27" bodyfile="src/mcu/esp32/EspLogger.cpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-    </sectiondef>
     <briefdescription>
 <para>Implementation of ESP32 logger for the HardFOC system. </para>
     </briefdescription>
@@ -316,75 +161,75 @@
 <codeline lineno="41"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;EspLogger&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;EspLogger&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"></highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONSTANTS<sp/>AND<sp/>CONSTEXPR</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
-<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="EspLogger_8cpp_1a302e0993d54956e10405cedbf45911eb" kindref="member">DEFAULT_MAX_MESSAGE_LENGTH</ref><sp/>=<sp/>512;</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="EspLogger_8cpp_1acb3803b2530ef0b785ee1b3e45b69b4d" kindref="member">DEFAULT_BUFFER_SIZE</ref><sp/>=<sp/>1024;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="EspLogger_8cpp_1ad9a5ce8e98d93c781c46ccdc1d9df936" kindref="member">DEFAULT_FLUSH_INTERVAL_MS</ref><sp/>=<sp/>100;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="EspLogger_8cpp_1a6d5ab23d94d2296b79fab4c0c9fd1779" kindref="member">MAX_TAG_LENGTH</ref><sp/>=<sp/>32;</highlight></codeline>
-<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="EspLogger_8cpp_1a3f4b2575974d00ff5e96f24579f33ef4" kindref="member">MAX_ERROR_MESSAGE_LENGTH</ref><sp/>=<sp/>256;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="EspLogger_8cpp_1aaf2bfdc12b335059fb7380a8f2929858" kindref="member">HEALTH_CHECK_INTERVAL_US</ref><sp/>=<sp/>30000000;<sp/></highlight><highlight class="comment">//<sp/>30<sp/>seconds</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="EspLogger_8cpp_1afb736dd47230ec6c244e207ab1722a7c" kindref="member">MAX_BUFFER_LOG_SIZE</ref><sp/>=<sp/>4096;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Maximum<sp/>buffer<sp/>size<sp/>for<sp/>logging</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>DEFAULT_MAX_MESSAGE_LENGTH<sp/>=<sp/>512;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>DEFAULT_BUFFER_SIZE<sp/>=<sp/>1024;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>DEFAULT_FLUSH_INTERVAL_MS<sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>MAX_TAG_LENGTH<sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>MAX_ERROR_MESSAGE_LENGTH<sp/>=<sp/>256;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>HEALTH_CHECK_INTERVAL_US<sp/>=<sp/>30000000;<sp/></highlight><highlight class="comment">//<sp/>30<sp/>seconds</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>MAX_BUFFER_LOG_SIZE<sp/>=<sp/>4096;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Maximum<sp/>buffer<sp/>size<sp/>for<sp/>logging</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"></highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CONSTRUCTOR<sp/>AND<sp/>DESTRUCTOR</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal"><ref refid="classEspLogger_1ac7e384fbbb0398729d0f8b65f4268b15" kindref="member">EspLogger::EspLogger</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">EspLogger::EspLogger()<sp/>noexcept</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>mutex_(),<sp/>initialized_(false),<sp/>healthy_(true),<sp/>config_(),<sp/>statistics_(),<sp/>diagnostics_(),</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>tag_levels_(),<sp/>message_buffer_(),<sp/>last_error_(<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref>::<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">LOGGER_SUCCESS</ref>),</highlight></codeline>
 <codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>initialization_time_(0),<sp/>last_health_check_(0),<sp/>log_v2_available_(false),<sp/>log_version_(1)<sp/>{</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>statistics<sp/>and<sp/>diagnostics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="67"><highlight class="normal"><sp/><sp/>std::memset(&amp;<ref refid="classEspLogger_1ad943622faa174b6c4f44ced1527e3927" kindref="member">statistics_</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="classEspLogger_1ad943622faa174b6c4f44ced1527e3927" kindref="member">statistics_</ref>));</highlight></codeline>
-<codeline lineno="68"><highlight class="normal"><sp/><sp/>std::memset(&amp;<ref refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kindref="member">diagnostics_</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kindref="member">diagnostics_</ref>));</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/>std::memset(<ref refid="classEspLogger_1a9a4ef83b3e2e9beedeb847a207cb5880" kindref="member">last_error_message_</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="classEspLogger_1a9a4ef83b3e2e9beedeb847a207cb5880" kindref="member">last_error_message_</ref>));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>std::memset(&amp;statistics_,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(statistics_));</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>std::memset(&amp;diagnostics_,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(diagnostics_));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>std::memset(last_error_message_,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(last_error_message_));</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"></highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>default<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1a0544221f8aeeccea37f4512cec656ebb" kindref="member">default_level</ref><sp/>=<sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">hf_log_level_t::LOG_LEVEL_INFO</ref>;</highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1aea701908932be510a4b1e64e43528909" kindref="member">output_destination</ref><sp/>=<sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca21d7ee388a7b468ff899724685d98277" kindref="member">hf_log_output_t::LOG_OUTPUT_UART</ref>;</highlight></codeline>
-<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1ad15d1c7a0acf2eaea8919823dfa29473" kindref="member">format_options</ref><sp/>=<sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fa34c8ed59d52562dbc736f5c50b4e1d1d" kindref="member">hf_log_format_t::LOG_FORMAT_DEFAULT</ref>;</highlight></codeline>
-<codeline lineno="75"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1ae3fcbecb28d9835d881296d6a934b5cf" kindref="member">max_message_length</ref><sp/>=<sp/><ref refid="EspLogger_8cpp_1a302e0993d54956e10405cedbf45911eb" kindref="member">DEFAULT_MAX_MESSAGE_LENGTH</ref>;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1ad1a6d394808a12f5773a0575c23c3f0a" kindref="member">buffer_size</ref><sp/>=<sp/><ref refid="EspLogger_8cpp_1acb3803b2530ef0b785ee1b3e45b69b4d" kindref="member">DEFAULT_BUFFER_SIZE</ref>;</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1a68ff4dc59cc386debc230a69c2b842e6" kindref="member">flush_interval_ms</ref><sp/>=<sp/><ref refid="EspLogger_8cpp_1ad9a5ce8e98d93c781c46ccdc1d9df936" kindref="member">DEFAULT_FLUSH_INTERVAL_MS</ref>;</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1a37cb39bba078b77ebda93c112f51c446" kindref="member">enable_thread_safety</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1a37b0e76820ae9a9800d3053cde8ecf89" kindref="member">enable_performance_monitoring</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>config_.default_level<sp/>=<sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">hf_log_level_t::LOG_LEVEL_INFO</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>config_.output_destination<sp/>=<sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca21d7ee388a7b468ff899724685d98277" kindref="member">hf_log_output_t::LOG_OUTPUT_UART</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>config_.format_options<sp/>=<sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fa34c8ed59d52562dbc736f5c50b4e1d1d" kindref="member">hf_log_format_t::LOG_FORMAT_DEFAULT</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>config_.max_message_length<sp/>=<sp/>DEFAULT_MAX_MESSAGE_LENGTH;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>config_.buffer_size<sp/>=<sp/>DEFAULT_BUFFER_SIZE;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>config_.flush_interval_ms<sp/>=<sp/>DEFAULT_FLUSH_INTERVAL_MS;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>config_.enable_thread_safety<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>config_.enable_performance_monitoring<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Detect<sp/>Log<sp/>V2<sp/>availability</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a813a28d12d69a4339970f0838461aae8" kindref="member">log_v2_available_</ref><sp/>=<sp/><ref refid="classEspLogger_1a0eb097491fbc1b1348cb8b94c3597737" kindref="member">CheckLogV2Availability</ref>();</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a8f01845a36c1f91fcd933f9d741b4b49" kindref="member">log_version_</ref><sp/>=<sp/><ref refid="classEspLogger_1a813a28d12d69a4339970f0838461aae8" kindref="member">log_v2_available_</ref><sp/>?<sp/>2<sp/>:<sp/>1;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>log_v2_available_<sp/>=<sp/>CheckLogV2Availability();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>log_version_<sp/>=<sp/>log_v2_available_<sp/>?<sp/>2<sp/>:<sp/>1;</highlight></codeline>
 <codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="85"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspLogger<sp/>constructor<sp/>completed<sp/>(Log<sp/>V%d)&quot;</highlight><highlight class="normal">,<sp/><ref refid="classEspLogger_1a8f01845a36c1f91fcd933f9d741b4b49" kindref="member">log_version_</ref>);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspLogger<sp/>constructor<sp/>completed<sp/>(Log<sp/>V%d)&quot;</highlight><highlight class="normal">,<sp/>log_version_);</highlight></codeline>
 <codeline lineno="86"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><ref refid="classEspLogger_1af3689ffc89aa801c754b78989ec306ab" kindref="member">EspLogger::~EspLogger</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspLogger<sp/>destructor<sp/>called&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ad55e13200cd30558a1c6b51cd37bd9de" kindref="member">Deinitialize</ref>();</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspLogger<sp/>destructor<sp/>completed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">EspLogger::~EspLogger()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspLogger<sp/>destructor<sp/>called&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>Deinitialize();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspLogger<sp/>destructor<sp/>completed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="92"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//<sp/>BASELOGGER<sp/>INTERFACE<sp/>IMPLEMENTATION</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a65a25428dd2429380fa5e44ddb31f883" kindref="member">EspLogger::Initialize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Initialize(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(initialized_.load())<sp/>{</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Logger<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Logger<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a812abf6ed9b7268786981c931a1e84b2" kindref="member">hf_logger_err_t::LOGGER_ERR_ALREADY_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>ESP32<sp/>logger<sp/>(Log<sp/>V%d)&quot;</highlight><highlight class="normal">,<sp/>log_version_);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>ESP32<sp/>logger<sp/>(Log<sp/>V%d)&quot;</highlight><highlight class="normal">,<sp/>log_version_);</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Validate<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>validation_result<sp/>=<sp/>ValidateConfiguration(config);</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(validation_result<sp/>!=<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>UpdateDiagnostics(validation_result);</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Configuration<sp/>validation<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>ConvertErrorToString(validation_result));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Configuration<sp/>validation<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>ConvertErrorToString(validation_result));</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>validation_result;</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
@@ -394,14 +239,14 @@
 <codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>message<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!EnsureMessageBuffer(config_.max_message_length))<sp/>{</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>UpdateDiagnostics(<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177ad6bd5dec8544145a9f07b45eadcc0e50" kindref="member">hf_logger_err_t::LOGGER_ERR_OUT_OF_MEMORY</ref>);</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>allocate<sp/>message<sp/>buffer&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>allocate<sp/>message<sp/>buffer&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177ad6bd5dec8544145a9f07b45eadcc0e50" kindref="member">hf_logger_err_t::LOGGER_ERR_OUT_OF_MEMORY</ref>;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"></highlight></codeline>
 <codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>Log<sp/>V2<sp/>if<sp/>available</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(log_v2_available_)<sp/>{</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!InitializeLogV2())<sp/>{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>V2<sp/>initialization<sp/>failed,<sp/>falling<sp/>back<sp/>to<sp/>Log<sp/>V1&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>V2<sp/>initialization<sp/>failed,<sp/>falling<sp/>back<sp/>to<sp/>Log<sp/>V1&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>log_v2_available_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>log_version_<sp/>=<sp/>1;</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -430,47 +275,47 @@
 <codeline lineno="155"><highlight class="normal"><sp/><sp/>healthy_.store(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/>last_error_<sp/>=<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>logger<sp/>initialized<sp/>successfully<sp/>(Log<sp/>V%d)&quot;</highlight><highlight class="normal">,<sp/>log_version_);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>logger<sp/>initialized<sp/>successfully<sp/>(Log<sp/>V%d)&quot;</highlight><highlight class="normal">,<sp/>log_version_);</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="160"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1ad55e13200cd30558a1c6b51cd37bd9de" kindref="member">EspLogger::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspLogger_1aeb9e653897acb963156107a51796c9ea" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Deinitialize()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspLogger_1ad48d65d02351eef623fdfa05dff258a6" kindref="member">initialized_</ref>.load())<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>ESP32<sp/>logger&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>ESP32<sp/>logger&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"></highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Flush<sp/>any<sp/>pending<sp/>output</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ac3fddcbe82a7de191a903a5427dd44e0" kindref="member">Flush</ref>();</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>Flush();</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"></highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>tag<sp/>levels</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ac517102fc069ee19de9157f0fb217fdb" kindref="member">tag_levels_</ref>.clear();</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>tag_levels_.clear();</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
 <codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>message<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a1414db646e36b29340503445ad287296" kindref="member">message_buffer_</ref>.clear();</highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a1414db646e36b29340503445ad287296" kindref="member">message_buffer_</ref>.shrink_to_fit();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>message_buffer_.clear();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>message_buffer_.shrink_to_fit();</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"></highlight></codeline>
 <codeline lineno="181"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>diagnostics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="182"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kindref="member">diagnostics_</ref>.<ref refid="structhf__logger__diagnostics__t_1a50e7c87e64f37a2fbeb55a3bb4b3f9f4" kindref="member">is_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kindref="member">diagnostics_</ref>.<ref refid="structhf__logger__diagnostics__t_1a6592e1cfc972ecb2fe31d399efcba081" kindref="member">is_healthy</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kindref="member">diagnostics_</ref>.<ref refid="structhf__logger__diagnostics__t_1a91eb53511a5f01511f3fca72237ecce1" kindref="member">uptime_seconds</ref><sp/>=<sp/>(<ref refid="classEspLogger_1ac291d84dda6d4ea58218b4ff706d395a" kindref="member">GetCurrentTimestamp</ref>()<sp/>-<sp/><ref refid="classEspLogger_1ac28e33ed2ddb08d48e0f838fc1f1bf17" kindref="member">initialization_time_</ref>)<sp/>/<sp/>1000000;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>diagnostics_.is_initialized<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>diagnostics_.is_healthy<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/>diagnostics_.uptime_seconds<sp/>=<sp/>(GetCurrentTimestamp()<sp/>-<sp/>initialization_time_)<sp/>/<sp/>1000000;</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1ad48d65d02351eef623fdfa05dff258a6" kindref="member">initialized_</ref>.store(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a93e23db81675d5e65de16df73bc468ca" kindref="member">healthy_</ref>.store(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>initialized_.store(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>healthy_.store(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>logger<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>logger<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="191"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="192"><highlight class="normal"></highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1a4d300e5e6ae8f3da60d756686f520495" kindref="member">EspLogger::IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1ad48d65d02351eef623fdfa05dff258a6" kindref="member">initialized_</ref>.load();</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::IsInitialized()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>initialized_.load();</highlight></codeline>
 <codeline lineno="195"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1afd6ed0aa4e042aa0356952ca4cb968da" kindref="member">EspLogger::EnsureInitialized</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspLogger_1a4d300e5e6ae8f3da60d756686f520495" kindref="member">IsInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::EnsureInitialized()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(IsInitialized())<sp/>{</highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="201"><highlight class="normal"></highlight></codeline>
@@ -479,17 +324,17 @@
 <codeline lineno="204"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1a0544221f8aeeccea37f4512cec656ebb" kindref="member">default_level</ref><sp/>=<sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">hf_log_level_t::LOG_LEVEL_INFO</ref>;</highlight></codeline>
 <codeline lineno="205"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1aea701908932be510a4b1e64e43528909" kindref="member">output_destination</ref><sp/>=<sp/><ref refid="group__logger_1gga1e55e86af9be6c9ac8b1c61560ac269ca21d7ee388a7b468ff899724685d98277" kindref="member">hf_log_output_t::LOG_OUTPUT_UART</ref>;</highlight></codeline>
 <codeline lineno="206"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1ad15d1c7a0acf2eaea8919823dfa29473" kindref="member">format_options</ref><sp/>=<sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2fa34c8ed59d52562dbc736f5c50b4e1d1d" kindref="member">hf_log_format_t::LOG_FORMAT_DEFAULT</ref>;</highlight></codeline>
-<codeline lineno="207"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1ae3fcbecb28d9835d881296d6a934b5cf" kindref="member">max_message_length</ref><sp/>=<sp/><ref refid="EspLogger_8cpp_1a302e0993d54956e10405cedbf45911eb" kindref="member">DEFAULT_MAX_MESSAGE_LENGTH</ref>;</highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1ad1a6d394808a12f5773a0575c23c3f0a" kindref="member">buffer_size</ref><sp/>=<sp/><ref refid="EspLogger_8cpp_1acb3803b2530ef0b785ee1b3e45b69b4d" kindref="member">DEFAULT_BUFFER_SIZE</ref>;</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1a68ff4dc59cc386debc230a69c2b842e6" kindref="member">flush_interval_ms</ref><sp/>=<sp/><ref refid="EspLogger_8cpp_1ad9a5ce8e98d93c781c46ccdc1d9df936" kindref="member">DEFAULT_FLUSH_INTERVAL_MS</ref>;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1ae3fcbecb28d9835d881296d6a934b5cf" kindref="member">max_message_length</ref><sp/>=<sp/>DEFAULT_MAX_MESSAGE_LENGTH;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1ad1a6d394808a12f5773a0575c23c3f0a" kindref="member">buffer_size</ref><sp/>=<sp/>DEFAULT_BUFFER_SIZE;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1a68ff4dc59cc386debc230a69c2b842e6" kindref="member">flush_interval_ms</ref><sp/>=<sp/>DEFAULT_FLUSH_INTERVAL_MS;</highlight></codeline>
 <codeline lineno="210"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1a37cb39bba078b77ebda93c112f51c446" kindref="member">enable_thread_safety</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="211"><highlight class="normal"><sp/><sp/>default_config.<ref refid="structhf__logger__config__t_1a37b0e76820ae9a9800d3053cde8ecf89" kindref="member">enable_performance_monitoring</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="212"><highlight class="normal"></highlight></codeline>
-<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1a65a25428dd2429380fa5e44ddb31f883" kindref="member">Initialize</ref>(default_config)<sp/>==<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Initialize(default_config)<sp/>==<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="214"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a2ba313925a91c912e926af982b1f99df" kindref="member">EspLogger::SetLogLevel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::SetLogLevel(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="218"><highlight class="normal"></highlight></codeline>
 <codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -499,19 +344,19 @@
 <codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>default<sp/>level</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>config_.default_level<sp/>=<sp/>level;</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>esp_log_level_set(</highlight><highlight class="stringliteral">&quot;*&quot;</highlight><highlight class="normal">,<sp/>ConvertLogLevel(level));</highlight></codeline>
-<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Default<sp/>log<sp/>level<sp/>set<sp/>to<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="BaseLogger_8h_1accf97c1a21d237bea5365234a70cfad4" kindref="member">HfLogLevelToString</ref>(level));</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Default<sp/>log<sp/>level<sp/>set<sp/>to<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="BaseLogger_8h_1accf97c1a21d237bea5365234a70cfad4" kindref="member">HfLogLevelToString</ref>(level));</highlight></codeline>
 <codeline lineno="228"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>tag-specific<sp/>level</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>tag_levels_[std::string(tag)]<sp/>=<sp/>level;</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>esp_log_level_set(tag,<sp/>ConvertLogLevel(level));</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>level<sp/>for<sp/>tag<sp/>&apos;%s&apos;<sp/>set<sp/>to<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>tag,<sp/><ref refid="BaseLogger_8h_1accf97c1a21d237bea5365234a70cfad4" kindref="member">HfLogLevelToString</ref>(level));</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>level<sp/>for<sp/>tag<sp/>&apos;%s&apos;<sp/>set<sp/>to<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>tag,<sp/><ref refid="BaseLogger_8h_1accf97c1a21d237bea5365234a70cfad4" kindref="member">HfLogLevelToString</ref>(level));</highlight></codeline>
 <codeline lineno="233"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="234"><highlight class="normal"></highlight></codeline>
 <codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="236"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1ad6062eec104b3cdf9532cfa2a9f15bdc" kindref="member">EspLogger::GetLogLevel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>&amp;<sp/>level)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::GetLogLevel(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>&amp;<sp/>level)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"></highlight></codeline>
 <codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -535,56 +380,56 @@
 <codeline lineno="260"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LOGGING<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="261"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="262"><highlight class="normal"></highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a666cd0894691948bf449fb7e325d222f" kindref="member">EspLogger::Error</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Error(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"><sp/><sp/>va_list<sp/>args;</highlight></codeline>
 <codeline lineno="265"><highlight class="normal"><sp/><sp/>va_start(args,<sp/>format);</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e" kindref="member">LogV</ref>(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042abf7b6e7a0366b699e4259a7c5f836114" kindref="member">hf_log_level_t::LOG_LEVEL_ERROR</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/>LogV(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042abf7b6e7a0366b699e4259a7c5f836114" kindref="member">hf_log_level_t::LOG_LEVEL_ERROR</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
 <codeline lineno="267"><highlight class="normal"><sp/><sp/>va_end(args);</highlight></codeline>
 <codeline lineno="268"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="269"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="270"><highlight class="normal"></highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a097cbcffbb54f838cddab0e20abff8ac" kindref="member">EspLogger::Warn</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Warn(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="272"><highlight class="normal"><sp/><sp/>va_list<sp/>args;</highlight></codeline>
 <codeline lineno="273"><highlight class="normal"><sp/><sp/>va_start(args,<sp/>format);</highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e" kindref="member">LogV</ref>(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a726c7b1e8e76343b4e83fe61261fff7e" kindref="member">hf_log_level_t::LOG_LEVEL_WARN</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/>LogV(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a726c7b1e8e76343b4e83fe61261fff7e" kindref="member">hf_log_level_t::LOG_LEVEL_WARN</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
 <codeline lineno="275"><highlight class="normal"><sp/><sp/>va_end(args);</highlight></codeline>
 <codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="277"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="278"><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a3f54f20a15b35aee84a5148b84a846c1" kindref="member">EspLogger::Info</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Info(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="280"><highlight class="normal"><sp/><sp/>va_list<sp/>args;</highlight></codeline>
 <codeline lineno="281"><highlight class="normal"><sp/><sp/>va_start(args,<sp/>format);</highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e" kindref="member">LogV</ref>(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">hf_log_level_t::LOG_LEVEL_INFO</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/>LogV(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042ac0d7296fc0ed349c37a98f139ea74985" kindref="member">hf_log_level_t::LOG_LEVEL_INFO</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
 <codeline lineno="283"><highlight class="normal"><sp/><sp/>va_end(args);</highlight></codeline>
 <codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="285"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="286"><highlight class="normal"></highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a6dff2af97ae0ee413b89aec8cf96f09a" kindref="member">EspLogger::Debug</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Debug(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="288"><highlight class="normal"><sp/><sp/>va_list<sp/>args;</highlight></codeline>
 <codeline lineno="289"><highlight class="normal"><sp/><sp/>va_start(args,<sp/>format);</highlight></codeline>
-<codeline lineno="290"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e" kindref="member">LogV</ref>(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042acf47268b6930f0f296d7b29b93093019" kindref="member">hf_log_level_t::LOG_LEVEL_DEBUG</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/>LogV(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042acf47268b6930f0f296d7b29b93093019" kindref="member">hf_log_level_t::LOG_LEVEL_DEBUG</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"><sp/><sp/>va_end(args);</highlight></codeline>
 <codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="293"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="294"><highlight class="normal"></highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a8b5952680c76fd4d3f7c7e3cce904e41" kindref="member">EspLogger::Verbose</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Verbose(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,<sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="296"><highlight class="normal"><sp/><sp/>va_list<sp/>args;</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/>va_start(args,<sp/>format);</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e" kindref="member">LogV</ref>(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a9faae2c149317da7ee66128d87a88e5f" kindref="member">hf_log_level_t::LOG_LEVEL_VERBOSE</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/>LogV(<ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042a9faae2c149317da7ee66128d87a88e5f" kindref="member">hf_log_level_t::LOG_LEVEL_VERBOSE</ref>,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
 <codeline lineno="299"><highlight class="normal"><sp/><sp/>va_end(args);</highlight></codeline>
 <codeline lineno="300"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="301"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"></highlight></codeline>
-<codeline lineno="303"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a35a264de336e8f2de1b7cd1751eab044" kindref="member">EspLogger::Log</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Log(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
 <codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="305"><highlight class="normal"><sp/><sp/>va_list<sp/>args;</highlight></codeline>
 <codeline lineno="306"><highlight class="normal"><sp/><sp/>va_start(args,<sp/>format);</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e" kindref="member">LogV</ref>(level,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/>LogV(level,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
 <codeline lineno="308"><highlight class="normal"><sp/><sp/>va_end(args);</highlight></codeline>
 <codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="310"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="311"><highlight class="normal"></highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e" kindref="member">EspLogger::LogV</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::LogV(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_list<sp/>args)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!EnsureInitialized())<sp/>{</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -609,10 +454,10 @@
 <codeline lineno="334"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="335"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"></highlight></codeline>
-<codeline lineno="337"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a0622fca14e6fc69b91975cf720af3603" kindref="member">EspLogger::LogWithLocation</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>file,</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::LogWithLocation(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>file,</highlight></codeline>
 <codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>function,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
 <codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>...)<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="340"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspLogger_1afd6ed0aa4e042aa0356952ca4cb968da" kindref="member">EnsureInitialized</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!EnsureInitialized())<sp/>{</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="343"><highlight class="normal"></highlight></codeline>
@@ -621,12 +466,12 @@
 <codeline lineno="346"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="347"><highlight class="normal"></highlight></codeline>
 <codeline lineno="348"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>level<sp/>is<sp/>enabled<sp/>for<sp/>this<sp/>tag</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="349"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspLogger_1a7ec1e202ab853fd2ee1f2b93c4089a08" kindref="member">IsLevelEnabled</ref>(level,<sp/>tag))<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!IsLevelEnabled(level,<sp/>tag))<sp/>{</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;<sp/></highlight><highlight class="comment">//<sp/>Not<sp/>an<sp/>error,<sp/>just<sp/>filtered<sp/>out</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="351"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="352"><highlight class="normal"></highlight></codeline>
 <codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Format<sp/>message<sp/>with<sp/>location<sp/>information<sp/>if<sp/>enabled</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="354"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1ad15d1c7a0acf2eaea8919823dfa29473" kindref="member">format_options</ref><sp/>&amp;<sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2faab5a26a380e6b5e09167a85c966a8a56" kindref="member">hf_log_format_t::LOG_FORMAT_FILE_LINE</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">bool</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(config_.format_options<sp/>&amp;<sp/><ref refid="group__logger_1gga46e0958974ba5c45267d842a54148e2faab5a26a380e6b5e09167a85c966a8a56" kindref="member">hf_log_format_t::LOG_FORMAT_FILE_LINE</ref>))<sp/>{</highlight></codeline>
 <codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>va_list<sp/>args;</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>va_start(args,<sp/>format);</highlight></codeline>
 <codeline lineno="357"><highlight class="normal"></highlight></codeline>
@@ -635,24 +480,24 @@
 <codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(enhanced_format,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(enhanced_format),<sp/></highlight><highlight class="stringliteral">&quot;[%s:%lu]<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>file<sp/>?<sp/>file<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;unknown&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_cast&lt;unsigned<sp/>long&gt;(line),<sp/>format);</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"></highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspLogger_1a79e75fcc3fae3624038e611cc8180437" kindref="member">WriteMessageV</ref>(level,<sp/>tag,<sp/>enhanced_format,<sp/>args);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/>WriteMessageV(level,<sp/>tag,<sp/>enhanced_format,<sp/>args);</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>va_end(args);</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"></highlight></codeline>
 <codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>message_length<sp/>=<sp/>std::strlen(format);<sp/></highlight><highlight class="comment">//<sp/>Approximate<sp/>length</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspLogger_1aa80b1fe39bc3c543fca65744d834e168" kindref="member">UpdateStatistics</ref>(level,<sp/>message_length,<sp/>result<sp/>==<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>UpdateStatistics(level,<sp/>message_length,<sp/>result<sp/>==<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>);</highlight></codeline>
 <codeline lineno="369"><highlight class="normal"></highlight></codeline>
 <codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="371"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>standard<sp/>logging</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/>va_list<sp/>args;</highlight></codeline>
 <codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/>va_start(args,<sp/>format);</highlight></codeline>
-<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/><ref refid="classEspLogger_1a79e75fcc3fae3624038e611cc8180437" kindref="member">WriteMessageV</ref>(level,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>result<sp/>=<sp/>WriteMessageV(level,<sp/>tag,<sp/>format,<sp/>args);</highlight></codeline>
 <codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>va_end(args);</highlight></codeline>
 <codeline lineno="377"><highlight class="normal"></highlight></codeline>
 <codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>statistics</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>message_length<sp/>=<sp/>std::strlen(format);<sp/></highlight><highlight class="comment">//<sp/>Approximate<sp/>length</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspLogger_1aa80b1fe39bc3c543fca65744d834e168" kindref="member">UpdateStatistics</ref>(level,<sp/>message_length,<sp/>result<sp/>==<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>);</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>UpdateStatistics(level,<sp/>message_length,<sp/>result<sp/>==<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>);</highlight></codeline>
 <codeline lineno="381"><highlight class="normal"></highlight></codeline>
 <codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
 <codeline lineno="383"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -662,7 +507,7 @@
 <codeline lineno="387"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>LOG<sp/>V2<sp/>ENHANCED<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="388"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="389"><highlight class="normal"></highlight></codeline>
-<codeline lineno="390"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a0bab0e37c73b2b7f1033d826b7ca36b6" kindref="member">EspLogger::LogBufferHex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::LogBufferHex(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
 <codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="392"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!EnsureInitialized())<sp/>{</highlight></codeline>
 <codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -672,7 +517,7 @@
 <codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a4a6be624b56a33df2c4ff30ab7f2462d" kindref="member">hf_logger_err_t::LOGGER_ERR_NULL_POINTER</ref>;</highlight></codeline>
 <codeline lineno="398"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="399"><highlight class="normal"></highlight></codeline>
-<codeline lineno="400"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(length<sp/>&gt;<sp/><ref refid="EspLogger_8cpp_1afb736dd47230ec6c244e207ab1722a7c" kindref="member">MAX_BUFFER_LOG_SIZE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(length<sp/>&gt;<sp/>MAX_BUFFER_LOG_SIZE)<sp/>{</highlight></codeline>
 <codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177adf0c3d5323f22989d3cf63dc1a9bdeb8" kindref="member">hf_logger_err_t::LOGGER_ERR_BUFFER_OVERFLOW</ref>;</highlight></codeline>
 <codeline lineno="402"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="403"><highlight class="normal"></highlight></codeline>
@@ -692,7 +537,7 @@
 <codeline lineno="417"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="418"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="419"><highlight class="normal"></highlight></codeline>
-<codeline lineno="420"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a8ce33948b3b8c36bd0ad61682ab3c47b" kindref="member">EspLogger::LogBufferChar</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::LogBufferChar(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
 <codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="422"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!EnsureInitialized())<sp/>{</highlight></codeline>
 <codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -702,7 +547,7 @@
 <codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a4a6be624b56a33df2c4ff30ab7f2462d" kindref="member">hf_logger_err_t::LOGGER_ERR_NULL_POINTER</ref>;</highlight></codeline>
 <codeline lineno="428"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="429"><highlight class="normal"></highlight></codeline>
-<codeline lineno="430"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(length<sp/>&gt;<sp/><ref refid="EspLogger_8cpp_1afb736dd47230ec6c244e207ab1722a7c" kindref="member">MAX_BUFFER_LOG_SIZE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(length<sp/>&gt;<sp/>MAX_BUFFER_LOG_SIZE)<sp/>{</highlight></codeline>
 <codeline lineno="431"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177adf0c3d5323f22989d3cf63dc1a9bdeb8" kindref="member">hf_logger_err_t::LOGGER_ERR_BUFFER_OVERFLOW</ref>;</highlight></codeline>
 <codeline lineno="432"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="433"><highlight class="normal"></highlight></codeline>
@@ -722,7 +567,7 @@
 <codeline lineno="447"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="448"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="449"><highlight class="normal"></highlight></codeline>
-<codeline lineno="450"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1af50c94ba33ded85a51415326b793c886" kindref="member">EspLogger::LogBufferHexDump</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::LogBufferHexDump(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
 <codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="452"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!EnsureInitialized())<sp/>{</highlight></codeline>
 <codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -732,7 +577,7 @@
 <codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a4a6be624b56a33df2c4ff30ab7f2462d" kindref="member">hf_logger_err_t::LOGGER_ERR_NULL_POINTER</ref>;</highlight></codeline>
 <codeline lineno="458"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="459"><highlight class="normal"></highlight></codeline>
-<codeline lineno="460"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(length<sp/>&gt;<sp/><ref refid="EspLogger_8cpp_1afb736dd47230ec6c244e207ab1722a7c" kindref="member">MAX_BUFFER_LOG_SIZE</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(length<sp/>&gt;<sp/>MAX_BUFFER_LOG_SIZE)<sp/>{</highlight></codeline>
 <codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177adf0c3d5323f22989d3cf63dc1a9bdeb8" kindref="member">hf_logger_err_t::LOGGER_ERR_BUFFER_OVERFLOW</ref>;</highlight></codeline>
 <codeline lineno="462"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="463"><highlight class="normal"></highlight></codeline>
@@ -752,7 +597,7 @@
 <codeline lineno="477"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="478"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="479"><highlight class="normal"></highlight></codeline>
-<codeline lineno="480"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a0439465731dcba29e5012e5f9e148f98" kindref="member">EspLogger::LogBuffer</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::LogBuffer(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>buffer,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length,</highlight></codeline>
 <codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="482"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Default<sp/>to<sp/>hex<sp/>dump<sp/>for<sp/>generic<sp/>buffer<sp/>logging</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="483"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>LogBufferHexDump(tag,<sp/>buffer,<sp/>length,<sp/>level);</highlight></codeline>
@@ -762,12 +607,12 @@
 <codeline lineno="487"><highlight class="normal"></highlight><highlight class="comment">//<sp/>UTILITY<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="488"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="489"><highlight class="normal"></highlight></codeline>
-<codeline lineno="490"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1ac3fddcbe82a7de191a903a5427dd44e0" kindref="member">EspLogger::Flush</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::Flush()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="491"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>logging<sp/>is<sp/>synchronous,<sp/>so<sp/>no<sp/>flush<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="492"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="493"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="494"><highlight class="normal"></highlight></codeline>
-<codeline lineno="495"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1a7ec1e202ab853fd2ee1f2b93c4089a08" kindref="member">EspLogger::IsLevelEnabled</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="495"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::IsLevelEnabled(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="496"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="497"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="498"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -780,8 +625,8 @@
 <codeline lineno="505"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(level)<sp/>&lt;=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(current_level);</highlight></codeline>
 <codeline lineno="506"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="507"><highlight class="normal"></highlight></codeline>
-<codeline lineno="508"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a9c245d1d50c9665832b75332ba752689" kindref="member">EspLogger::GetStatistics</ref>(<ref refid="structhf__logger__statistics__t" kindref="compound">hf_logger_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="509"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::GetStatistics(<ref refid="structhf__logger__statistics__t" kindref="compound">hf_logger_statistics_t</ref>&amp;<sp/>statistics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="510"><highlight class="normal"></highlight></codeline>
 <codeline lineno="511"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -791,8 +636,8 @@
 <codeline lineno="516"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="517"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="518"><highlight class="normal"></highlight></codeline>
-<codeline lineno="519"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1ac2b2ffa4d116dc2e75c96ccb8f08e61b" kindref="member">EspLogger::GetDiagnostics</ref>(<ref refid="structhf__logger__diagnostics__t" kindref="compound">hf_logger_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="520"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::GetDiagnostics(<ref refid="structhf__logger__diagnostics__t" kindref="compound">hf_logger_diagnostics_t</ref>&amp;<sp/>diagnostics)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="521"><highlight class="normal"></highlight></codeline>
 <codeline lineno="522"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -806,23 +651,23 @@
 <codeline lineno="531"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="532"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="533"><highlight class="normal"></highlight></codeline>
-<codeline lineno="534"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a0c8b15b05c28dc619ebf777c870bd2ec" kindref="member">EspLogger::ResetStatistics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="535"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspLogger_1aeb9e653897acb963156107a51796c9ea" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="534"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::ResetStatistics()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="536"><highlight class="normal"></highlight></codeline>
-<codeline lineno="537"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspLogger_1ad48d65d02351eef623fdfa05dff258a6" kindref="member">initialized_</ref>.load())<sp/>{</highlight></codeline>
+<codeline lineno="537"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="539"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="540"><highlight class="normal"></highlight></codeline>
-<codeline lineno="541"><highlight class="normal"><sp/><sp/>std::memset(&amp;<ref refid="classEspLogger_1ad943622faa174b6c4f44ced1527e3927" kindref="member">statistics_</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="classEspLogger_1ad943622faa174b6c4f44ced1527e3927" kindref="member">statistics_</ref>));</highlight></codeline>
-<codeline lineno="542"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Statistics<sp/>reset&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/>std::memset(&amp;statistics_,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(statistics_));</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Statistics<sp/>reset&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="543"><highlight class="normal"></highlight></codeline>
 <codeline lineno="544"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="545"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="546"><highlight class="normal"></highlight></codeline>
-<codeline lineno="547"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1aefe2fb8f5f9359423c198a4980236ffe" kindref="member">EspLogger::ResetDiagnostics</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="548"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspLogger_1aeb9e653897acb963156107a51796c9ea" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::ResetDiagnostics()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="549"><highlight class="normal"></highlight></codeline>
-<codeline lineno="550"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspLogger_1ad48d65d02351eef623fdfa05dff258a6" kindref="member">initialized_</ref>.load())<sp/>{</highlight></codeline>
+<codeline lineno="550"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="552"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="553"><highlight class="normal"></highlight></codeline>
@@ -831,34 +676,34 @@
 <codeline lineno="556"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a50e7c87e64f37a2fbeb55a3bb4b3f9f4" kindref="member">is_initialized</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>initialized<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="557"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a6592e1cfc972ecb2fe31d399efcba081" kindref="member">is_healthy</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>to<sp/>healthy</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="558"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a05c5d1234a118c2ecfcf0a97d28bbefa" kindref="member">last_error</ref><sp/>=<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
-<codeline lineno="559"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1aa136df42009e1c7afe40fe7de0e9ac3b" kindref="member">last_error_timestamp</ref><sp/>=<sp/><ref refid="classEspLogger_1ac291d84dda6d4ea58218b4ff706d395a" kindref="member">GetCurrentTimestamp</ref>();</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1aa136df42009e1c7afe40fe7de0e9ac3b" kindref="member">last_error_timestamp</ref><sp/>=<sp/>GetCurrentTimestamp();</highlight></codeline>
 <codeline lineno="560"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1aa15ff8088d73ff83e0840bdb251bec0b" kindref="member">consecutive_errors</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="561"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a17536cd32ffdf2888069b9a5e4504838" kindref="member">error_recovery_count</ref><sp/>=<sp/>0;</highlight></codeline>
 <codeline lineno="562"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a91eb53511a5f01511f3fca72237ecce1" kindref="member">uptime_seconds</ref><sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Will<sp/>be<sp/>recalculated<sp/>in<sp/>GetDiagnostics</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="563"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a29db39017ec60f3bbbd5c24249ab8d2c" kindref="member">last_health_check</ref><sp/>=<sp/><ref refid="classEspLogger_1ac291d84dda6d4ea58218b4ff706d395a" kindref="member">GetCurrentTimestamp</ref>();</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"><sp/><sp/>reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a29db39017ec60f3bbbd5c24249ab8d2c" kindref="member">last_health_check</ref><sp/>=<sp/>GetCurrentTimestamp();</highlight></codeline>
 <codeline lineno="564"><highlight class="normal"><sp/><sp/>std::memset(reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a0128d1c2ca591315a3ce99dec9ae647b" kindref="member">last_error_message</ref>,<sp/>0,</highlight></codeline>
 <codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(reset_diagnostics.<ref refid="structhf__logger__diagnostics__t_1a0128d1c2ca591315a3ce99dec9ae647b" kindref="member">last_error_message</ref>));</highlight></codeline>
 <codeline lineno="566"><highlight class="normal"></highlight></codeline>
-<codeline lineno="567"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kindref="member">diagnostics_</ref><sp/>=<sp/>reset_diagnostics;</highlight></codeline>
-<codeline lineno="568"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Diagnostics<sp/>reset&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/>diagnostics_<sp/>=<sp/>reset_diagnostics;</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Diagnostics<sp/>reset&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="569"><highlight class="normal"></highlight></codeline>
 <codeline lineno="570"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="571"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="572"><highlight class="normal"></highlight></codeline>
-<codeline lineno="573"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1ab003664bef163b80f2071efbccfb1fe9" kindref="member">EspLogger::IsHealthy</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="574"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1a93e23db81675d5e65de16df73bc468ca" kindref="member">healthy_</ref>.load();</highlight></codeline>
+<codeline lineno="573"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::IsHealthy()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>healthy_.load();</highlight></codeline>
 <codeline lineno="575"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="576"><highlight class="normal"></highlight></codeline>
-<codeline lineno="577"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a3452b953312f5d8512ecb64b7b8e6624" kindref="member">EspLogger::GetLastError</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="578"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1ac775294d58bc741c7a5b4796b2b0d292" kindref="member">last_error_</ref>;</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::GetLastError()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>last_error_;</highlight></codeline>
 <codeline lineno="579"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="580"><highlight class="normal"></highlight></codeline>
-<codeline lineno="581"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a7dee6257ad605104ffe53822747b82b1" kindref="member">EspLogger::GetLastErrorMessage</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>max_length)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::GetLastErrorMessage(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>max_length)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="582"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!message<sp/>||<sp/>max_length<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a4a6be624b56a33df2c4ff30ab7f2462d" kindref="member">hf_logger_err_t::LOGGER_ERR_NULL_POINTER</ref>;</highlight></codeline>
 <codeline lineno="584"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="585"><highlight class="normal"></highlight></codeline>
-<codeline lineno="586"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosUniqueLock&lt;RtosMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock&lt;PlatformMutex&gt;</ref><sp/>lock(mutex_);</highlight></codeline>
 <codeline lineno="587"><highlight class="normal"></highlight></codeline>
 <codeline lineno="588"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>copy_length<sp/>=</highlight></codeline>
 <codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::min(max_length<sp/>-<sp/>1,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(strlen(last_error_message_)));</highlight></codeline>
@@ -868,19 +713,19 @@
 <codeline lineno="593"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="594"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="595"><highlight class="normal"></highlight></codeline>
-<codeline lineno="596"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1aa17e6a890bd290c0ac639436057f01df" kindref="member">EspLogger::IsLogV2Available</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="597"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1a813a28d12d69a4339970f0838461aae8" kindref="member">log_v2_available_</ref>;</highlight></codeline>
+<codeline lineno="596"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::IsLogV2Available()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="597"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>log_v2_available_;</highlight></codeline>
 <codeline lineno="598"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="599"><highlight class="normal"></highlight></codeline>
-<codeline lineno="600"><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="classEspLogger_1a0f7694bf8f934182ca64eebff6e888a2" kindref="member">EspLogger::GetLogVersion</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="601"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1a8f01845a36c1f91fcd933f9d741b4b49" kindref="member">log_version_</ref>;</highlight></codeline>
+<codeline lineno="600"><highlight class="normal"><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>EspLogger::GetLogVersion()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="601"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>log_version_;</highlight></codeline>
 <codeline lineno="602"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="603"><highlight class="normal"></highlight></codeline>
 <codeline lineno="604"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="605"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DIAGNOSTIC<sp/>PRINTING<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="606"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="607"><highlight class="normal"></highlight></codeline>
-<codeline lineno="608"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a3707bd0b8d05153fce8c306461ad8a5b" kindref="member">EspLogger::PrintStatistics</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="608"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::PrintStatistics(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="609"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="610"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="611"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -922,7 +767,7 @@
 <codeline lineno="647"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="648"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="649"><highlight class="normal"></highlight></codeline>
-<codeline lineno="650"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1af4dd2ff188f30b1a5da6c174361ee2d0" kindref="member">EspLogger::PrintDiagnostics</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="650"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::PrintDiagnostics(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="651"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="652"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a8ef45e986e23827bc7594675556de514" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="653"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -961,7 +806,7 @@
 <codeline lineno="686"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="687"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="688"><highlight class="normal"></highlight></codeline>
-<codeline lineno="689"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1ae9668859f987dd750a3ca89bbffa94d4" kindref="member">EspLogger::PrintStatus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="689"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::PrintStatus(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detailed)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="690"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>print_tag<sp/>=<sp/>tag<sp/>?<sp/>tag<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;LOGGER_STATUS&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="691"><highlight class="normal"></highlight></codeline>
 <codeline lineno="692"><highlight class="normal"><sp/><sp/>ESP_LOGI(print_tag,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Logger<sp/>Complete<sp/>Status<sp/>===&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -986,7 +831,7 @@
 <codeline lineno="711"><highlight class="normal"></highlight><highlight class="comment">//<sp/>PRIVATE<sp/>METHODS</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="712"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="713"><highlight class="normal"></highlight></codeline>
-<codeline lineno="714"><highlight class="normal">esp_log_level_t<sp/><ref refid="classEspLogger_1aecd1c70ab5742e27255a2b17585fd79f" kindref="member">EspLogger::ConvertLogLevel</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="714"><highlight class="normal">esp_log_level_t<sp/>EspLogger::ConvertLogLevel(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="715"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(level)<sp/>{</highlight></codeline>
 <codeline lineno="716"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042af34cbc33c8d3951b72b3faa73a41d6b6" kindref="member">hf_log_level_t::LOG_LEVEL_NONE</ref>:</highlight></codeline>
 <codeline lineno="717"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ESP_LOG_NONE;</highlight></codeline>
@@ -1005,7 +850,7 @@
 <codeline lineno="730"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="731"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="732"><highlight class="normal"></highlight></codeline>
-<codeline lineno="733"><highlight class="normal"><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/><ref refid="classEspLogger_1aecd1c70ab5742e27255a2b17585fd79f" kindref="member">EspLogger::ConvertLogLevel</ref>(esp_log_level_t<sp/>level)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="733"><highlight class="normal"><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>EspLogger::ConvertLogLevel(esp_log_level_t<sp/>level)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="734"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(level)<sp/>{</highlight></codeline>
 <codeline lineno="735"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>ESP_LOG_NONE:</highlight></codeline>
 <codeline lineno="736"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__logger_1ggafcafcc6e9ff6e92894e3de5998a51042af34cbc33c8d3951b72b3faa73a41d6b6" kindref="member">hf_log_level_t::LOG_LEVEL_NONE</ref>;</highlight></codeline>
@@ -1024,7 +869,7 @@
 <codeline lineno="749"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="750"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="751"><highlight class="normal"></highlight></codeline>
-<codeline lineno="752"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a5f1c46a46387f5523921dc03060b7b2a" kindref="member">EspLogger::FormatMessage</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>file,</highlight></codeline>
+<codeline lineno="752"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::FormatMessage(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>file,</highlight></codeline>
 <codeline lineno="753"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>function,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
 <codeline lineno="754"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_list<sp/>args,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>formatted_message,</highlight></codeline>
 <codeline lineno="755"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>max_length)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
@@ -1054,7 +899,7 @@
 <codeline lineno="779"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="780"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="781"><highlight class="normal"></highlight></codeline>
-<codeline lineno="782"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1aa1e94f68b56c5235064f5882b6d4223a" kindref="member">EspLogger::WriteMessage</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message,</highlight></codeline>
+<codeline lineno="782"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::WriteMessage(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message,</highlight></codeline>
 <codeline lineno="783"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>length)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="784"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!message<sp/>||<sp/>length<sp/>==<sp/>0)<sp/>{</highlight></codeline>
 <codeline lineno="785"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a4a6be624b56a33df2c4ff30ab7f2462d" kindref="member">hf_logger_err_t::LOGGER_ERR_NULL_POINTER</ref>;</highlight></codeline>
@@ -1072,7 +917,7 @@
 <codeline lineno="797"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="798"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="799"><highlight class="normal"></highlight></codeline>
-<codeline lineno="800"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a79e75fcc3fae3624038e611cc8180437" kindref="member">EspLogger::WriteMessageV</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
+<codeline lineno="800"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::WriteMessageV(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>tag,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>format,</highlight></codeline>
 <codeline lineno="801"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>va_list<sp/>args)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="802"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!tag<sp/>||<sp/>!format)<sp/>{</highlight></codeline>
 <codeline lineno="803"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a4a6be624b56a33df2c4ff30ab7f2462d" kindref="member">hf_logger_err_t::LOGGER_ERR_NULL_POINTER</ref>;</highlight></codeline>
@@ -1109,7 +954,7 @@
 <codeline lineno="834"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="835"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="836"><highlight class="normal"></highlight></codeline>
-<codeline lineno="837"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1aa80b1fe39bc3c543fca65744d834e168" kindref="member">EspLogger::UpdateStatistics</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>message_length,</highlight></codeline>
+<codeline lineno="837"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>EspLogger::UpdateStatistics(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref><sp/>level,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>message_length,</highlight></codeline>
 <codeline lineno="838"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>success)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="839"><highlight class="normal"><sp/><sp/>statistics_.total_messages++;</highlight></codeline>
 <codeline lineno="840"><highlight class="normal"></highlight></codeline>
@@ -1137,7 +982,7 @@
 <codeline lineno="862"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="863"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="864"><highlight class="normal"></highlight></codeline>
-<codeline lineno="865"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1aff52ecfa69d725c164cbcd01460aa6bb" kindref="member">EspLogger::UpdateDiagnostics</ref>(<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>error)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="865"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>EspLogger::UpdateDiagnostics(<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>error)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="866"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>current_time<sp/>=<sp/>GetCurrentTimestamp();</highlight></codeline>
 <codeline lineno="867"><highlight class="normal"></highlight></codeline>
 <codeline lineno="868"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error<sp/>!=<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>)<sp/>{</highlight></codeline>
@@ -1161,41 +1006,41 @@
 <codeline lineno="886"><highlight class="normal"><sp/><sp/>diagnostics_.last_health_check<sp/>=<sp/>current_time;</highlight></codeline>
 <codeline lineno="887"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="888"><highlight class="normal"></highlight></codeline>
-<codeline lineno="889"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1aa97399671a0a163185c0d28cbb77d6cc" kindref="member">EspLogger::PerformHealthCheck</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="890"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>current_time<sp/>=<sp/><ref refid="classEspLogger_1ac291d84dda6d4ea58218b4ff706d395a" kindref="member">GetCurrentTimestamp</ref>();</highlight></codeline>
+<codeline lineno="889"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::PerformHealthCheck()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="890"><highlight class="normal"><sp/><sp/><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>current_time<sp/>=<sp/>GetCurrentTimestamp();</highlight></codeline>
 <codeline lineno="891"><highlight class="normal"></highlight></codeline>
 <codeline lineno="892"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>health<sp/>check<sp/>is<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="893"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/><ref refid="classEspLogger_1a1bd4cebdf38585c85a6924713014ca5d" kindref="member">last_health_check_</ref><sp/>&lt;<sp/><ref refid="EspLogger_8cpp_1aaf2bfdc12b335059fb7380a8f2929858" kindref="member">HEALTH_CHECK_INTERVAL_US</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="894"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1a93e23db81675d5e65de16df73bc468ca" kindref="member">healthy_</ref>.load();</highlight></codeline>
+<codeline lineno="893"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_time<sp/>-<sp/>last_health_check_<sp/>&lt;<sp/>HEALTH_CHECK_INTERVAL_US)<sp/>{</highlight></codeline>
+<codeline lineno="894"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>healthy_.load();</highlight></codeline>
 <codeline lineno="895"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="896"><highlight class="normal"></highlight></codeline>
-<codeline lineno="897"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a1bd4cebdf38585c85a6924713014ca5d" kindref="member">last_health_check_</ref><sp/>=<sp/>current_time;</highlight></codeline>
+<codeline lineno="897"><highlight class="normal"><sp/><sp/>last_health_check_<sp/>=<sp/>current_time;</highlight></codeline>
 <codeline lineno="898"><highlight class="normal"></highlight></codeline>
 <codeline lineno="899"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Perform<sp/>basic<sp/>health<sp/>checks</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="900"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_healthy<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="901"><highlight class="normal"></highlight></codeline>
 <codeline lineno="902"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>ESP-IDF<sp/>logging<sp/>is<sp/>working</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="903"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspLogger_1ad48d65d02351eef623fdfa05dff258a6" kindref="member">initialized_</ref>.load())<sp/>{</highlight></codeline>
+<codeline lineno="903"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!initialized_.load())<sp/>{</highlight></codeline>
 <codeline lineno="904"><highlight class="normal"><sp/><sp/><sp/><sp/>is_healthy<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="905"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="906"><highlight class="normal"></highlight></codeline>
 <codeline lineno="907"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>for<sp/>excessive<sp/>errors</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="908"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kindref="member">diagnostics_</ref>.<ref refid="structhf__logger__diagnostics__t_1aa15ff8088d73ff83e0840bdb251bec0b" kindref="member">consecutive_errors</ref><sp/>&gt;<sp/>10)<sp/>{</highlight></codeline>
+<codeline lineno="908"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(diagnostics_.consecutive_errors<sp/>&gt;<sp/>10)<sp/>{</highlight></codeline>
 <codeline lineno="909"><highlight class="normal"><sp/><sp/><sp/><sp/>is_healthy<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="910"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="911"><highlight class="normal"></highlight></codeline>
 <codeline lineno="912"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>memory<sp/>usage</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="913"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspLogger_1a1414db646e36b29340503445ad287296" kindref="member">message_buffer_</ref>.size()<sp/>&gt;<sp/><ref refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kindref="member">config_</ref>.<ref refid="structhf__logger__config__t_1ad1a6d394808a12f5773a0575c23c3f0a" kindref="member">buffer_size</ref><sp/>*<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="913"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(message_buffer_.size()<sp/>&gt;<sp/>config_.buffer_size<sp/>*<sp/>2)<sp/>{</highlight></codeline>
 <codeline lineno="914"><highlight class="normal"><sp/><sp/><sp/><sp/>is_healthy<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="915"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="916"><highlight class="normal"></highlight></codeline>
-<codeline lineno="917"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a93e23db81675d5e65de16df73bc468ca" kindref="member">healthy_</ref>.store(is_healthy);</highlight></codeline>
-<codeline lineno="918"><highlight class="normal"><sp/><sp/><ref refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kindref="member">diagnostics_</ref>.<ref refid="structhf__logger__diagnostics__t_1a6592e1cfc972ecb2fe31d399efcba081" kindref="member">is_healthy</ref><sp/>=<sp/>is_healthy;</highlight></codeline>
+<codeline lineno="917"><highlight class="normal"><sp/><sp/>healthy_.store(is_healthy);</highlight></codeline>
+<codeline lineno="918"><highlight class="normal"><sp/><sp/>diagnostics_.is_healthy<sp/>=<sp/>is_healthy;</highlight></codeline>
 <codeline lineno="919"><highlight class="normal"></highlight></codeline>
 <codeline lineno="920"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>is_healthy;</highlight></codeline>
 <codeline lineno="921"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="922"><highlight class="normal"></highlight></codeline>
-<codeline lineno="923"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classEspLogger_1a2740f86e01f57ee1ab99661a011c2d31" kindref="member">EspLogger::ValidateConfiguration</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="923"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>EspLogger::ValidateConfiguration(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="924"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(config.max_message_length<sp/>==<sp/>0<sp/>||<sp/>config.max_message_length<sp/>&gt;<sp/>4096)<sp/>{</highlight></codeline>
 <codeline lineno="925"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a276bf2706f81ef8467d59a5d6911e917" kindref="member">hf_logger_err_t::LOGGER_ERR_INVALID_CONFIGURATION</ref>;</highlight></codeline>
 <codeline lineno="926"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -1211,22 +1056,22 @@
 <codeline lineno="936"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177a1ee0fc1be88d166654cefc503f5219ec" kindref="member">hf_logger_err_t::LOGGER_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="937"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="938"><highlight class="normal"></highlight></codeline>
-<codeline lineno="939"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classEspLogger_1afffbccb35a115bf1af4139523cc23809" kindref="member">EspLogger::ConvertErrorToString</ref>(<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>error)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="939"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>EspLogger::ConvertErrorToString(<ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/>error)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="940"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseLogger_8h_1af6a7ff494bd7bb45f00ec32155d7a479" kindref="member">HfLoggerErrToString</ref>(error).data();</highlight></codeline>
 <codeline lineno="941"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="942"><highlight class="normal"></highlight></codeline>
-<codeline lineno="943"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/><ref refid="classEspLogger_1ac291d84dda6d4ea58218b4ff706d395a" kindref="member">EspLogger::GetCurrentTimestamp</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="943"><highlight class="normal"><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref><sp/>EspLogger::GetCurrentTimestamp()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="944"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>esp_timer_get_time();</highlight></codeline>
 <codeline lineno="945"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="946"><highlight class="normal"></highlight></codeline>
-<codeline lineno="947"><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/><ref refid="classEspLogger_1a6f4e39e7302fddf17ab06bf3dced21da" kindref="member">EspLogger::GetCurrentThreadId</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="947"><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>EspLogger::GetCurrentThreadId()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="948"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(xTaskGetCurrentTaskHandle());</highlight></codeline>
 <codeline lineno="949"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="950"><highlight class="normal"></highlight></codeline>
-<codeline lineno="951"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1abbbf11de08f63b1a7cdc37b36f8dcaeb" kindref="member">EspLogger::EnsureMessageBuffer</ref>(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>required_length)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="951"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::EnsureMessageBuffer(<ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>required_length)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="952"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(message_buffer_.size()<sp/>&lt;<sp/>required_length)<sp/>{</highlight></codeline>
 <codeline lineno="953"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>allocation<sp/>would<sp/>be<sp/>reasonable<sp/>(prevent<sp/>excessive<sp/>memory<sp/>usage)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="954"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(required_length<sp/>&gt;<sp/><ref refid="EspLogger_8cpp_1a302e0993d54956e10405cedbf45911eb" kindref="member">DEFAULT_MAX_MESSAGE_LENGTH</ref><sp/>*<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="954"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(required_length<sp/>&gt;<sp/>DEFAULT_MAX_MESSAGE_LENGTH<sp/>*<sp/>2)<sp/>{</highlight></codeline>
 <codeline lineno="955"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="956"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="957"><highlight class="normal"></highlight></codeline>
@@ -1244,18 +1089,18 @@
 <codeline lineno="969"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="970"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="971"><highlight class="normal"></highlight></codeline>
-<codeline lineno="972"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1ad3e5ce287db5576529f60a37da43c2be" kindref="member">EspLogger::InitializeLogV2</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="972"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::InitializeLogV2()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="973"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>CONFIG_LOG_VERSION_2</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="974"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Log<sp/>V2<sp/>is<sp/>automatically<sp/>initialized<sp/>by<sp/>ESP-IDF</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="975"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>just<sp/>need<sp/>to<sp/>verify<sp/>it&apos;s<sp/>working</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="976"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>V2<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="976"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Log<sp/>V2<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="977"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="978"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="979"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="980"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="981"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="982"><highlight class="normal"></highlight></codeline>
-<codeline lineno="983"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspLogger_1a0eb097491fbc1b1348cb8b94c3597737" kindref="member">EspLogger::CheckLogV2Availability</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="983"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>EspLogger::CheckLogV2Availability()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="984"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>CONFIG_LOG_VERSION_2</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="985"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>Log<sp/>V2<sp/>is<sp/>configured</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="986"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>

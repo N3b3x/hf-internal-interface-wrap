@@ -4,7 +4,7 @@
     <compoundname>EspI2c.h</compoundname>
     <includes refid="BaseI2c_8h" local="yes">BaseI2c.h</includes>
     <includes refid="EspTypes_8h" local="yes">utils/EspTypes.h</includes>
-    <includes refid="RtosMutex_8h" local="yes">utils/RtosMutex.h</includes>
+    <includes refid="PlatformMutex_8h" local="yes">utils/PlatformMutex.h</includes>
     <includes local="no">memory</includes>
     <includes local="no">vector</includes>
     <includes local="yes">driver/i2c_master.h</includes>
@@ -113,13 +113,13 @@
         </childnode>
         <childnode refid="34" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="7">
@@ -287,15 +287,9 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="34">
-        <label>utils/RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>utils/PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
@@ -314,7 +308,7 @@
       <node id="21">
         <label>driver/i2c.h</label>
       </node>
-      <node id="39">
+      <node id="36">
         <label>driver/i2c_master.h</label>
       </node>
       <node id="28">
@@ -326,25 +320,16 @@
       <node id="14">
         <label>esp_adc/adc_oneshot.h</label>
       </node>
-      <node id="40">
+      <node id="37">
         <label>esp_log.h</label>
       </node>
       <node id="30">
         <label>esp_timer.h</label>
       </node>
-      <node id="35">
-        <label>freertos/FreeRTOS.h</label>
-      </node>
-      <node id="36">
-        <label>freertos/semphr.h</label>
-      </node>
-      <node id="37">
-        <label>freertos/task.h</label>
-      </node>
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="38">
+      <node id="35">
         <label>memory</label>
       </node>
       <node id="6">
@@ -589,7 +574,7 @@
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseI2c_8h" kindref="compound">BaseI2c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="EspTypes_8h" kindref="compound">utils/EspTypes.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">utils/RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PlatformMutex_8h" kindref="compound">utils/PlatformMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
@@ -744,7 +729,7 @@
 <codeline lineno="521" refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="522" refid="classEspI2cDevice_1afd4fa9c207eaa593ead720c7579e5bcd" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="structhf__i2c__statistics__t" kindref="compound">hf_i2c_statistics_t</ref><sp/><ref refid="classEspI2cDevice_1afd4fa9c207eaa593ead720c7579e5bcd" kindref="member">statistics_</ref>;<sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="523" refid="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="structhf__i2c__diagnostics__t" kindref="compound">hf_i2c_diagnostics_t</ref><sp/><ref refid="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" kindref="member">diagnostics_</ref>;<sp/></highlight></codeline>
-<codeline lineno="524" refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="524" refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="525" refid="classEspI2cDevice_1aa116b27cfa358a26202cd43c3375f5b4" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref><sp/><ref refid="classEspI2cDevice_1aa116b27cfa358a26202cd43c3375f5b4" kindref="member">device_mode_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="526"><highlight class="normal"></highlight></codeline>
 <codeline lineno="527"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
@@ -879,7 +864,7 @@
 <codeline lineno="882" refid="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__i2c__master__bus__config__t" kindref="compound">hf_i2c_master_bus_config_t</ref><sp/><ref refid="classEspI2cDevice_1a8beb67939673a0494578ee41bc48280a" kindref="member">config_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="883" refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" refkind="member"><highlight class="normal"><sp/><sp/>i2c_master_bus_handle_t<sp/>bus_handle_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="884" refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kindref="member">initialized_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="885" refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="885" refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" refkind="member"><highlight class="normal"><sp/><sp/>mutable<sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" kindref="member">mutex_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="886" refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;std::unique_ptr&lt;<ref refid="classEspI2cDevice" kindref="compound">EspI2cDevice</ref>&gt;&gt;<sp/>devices_;<sp/></highlight></codeline>
 <codeline lineno="887" refid="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__I2C_8h_1acc25f7d1ca11777e327c8512d4137bbb" kindref="member">hf_i2c_mode_t</ref><sp/>current_mode_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="888"><highlight class="normal"></highlight></codeline>

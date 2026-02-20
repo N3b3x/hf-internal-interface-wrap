@@ -3,6 +3,7 @@
   <compounddef id="classBaseSpi" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BaseSpi</compoundname>
     <derivedcompoundref refid="classEspSpiDevice" prot="public" virt="non-virtual">EspSpiDevice</derivedcompoundref>
+    <derivedcompoundref refid="classStmSpiDevice" prot="public" virt="non-virtual">StmSpiDevice</derivedcompoundref>
     <includes refid="BaseSpi_8h" local="no">BaseSpi.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseSpi_1aa74a4ab673ba37d72c3b7f98e963b9dd" prot="protected" static="no" mutable="no">
@@ -196,6 +197,7 @@
         <name>Initialize</name>
         <qualifiedname>BaseSpi::Initialize</qualifiedname>
         <reimplementedby refid="classEspSpiDevice_1ae61fd5adb61b7e68e080aad9173a6708">Initialize</reimplementedby>
+        <reimplementedby refid="classStmSpiDevice_1a8321dbe44a6d665d0b43ce71c5747077">Initialize</reimplementedby>
         <briefdescription>
 <para>Initialize the SPI bus. </para>
         </briefdescription>
@@ -217,6 +219,7 @@
         <name>Deinitialize</name>
         <qualifiedname>BaseSpi::Deinitialize</qualifiedname>
         <reimplementedby refid="classEspSpiDevice_1af45ba6122e82902c728d8c569362b87b">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Deinitialize the SPI bus. </para>
         </briefdescription>
@@ -238,6 +241,7 @@
         <name>Transfer</name>
         <qualifiedname>BaseSpi::Transfer</qualifiedname>
         <reimplementedby refid="classEspSpiDevice_1ac7432fd2630032d20f8d2f8388f6e1a5">Transfer</reimplementedby>
+        <reimplementedby refid="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5">Transfer</reimplementedby>
         <param>
           <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>tx_data</declname>
@@ -311,6 +315,7 @@
         <name>GetDeviceConfig</name>
         <qualifiedname>BaseSpi::GetDeviceConfig</qualifiedname>
         <reimplementedby refid="classEspSpiDevice_1a388f9afb603db8d9ddad17018ce2b547">GetDeviceConfig</reimplementedby>
+        <reimplementedby refid="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e">GetDeviceConfig</reimplementedby>
         <briefdescription>
 <para>Get the device configuration for this SPI device. </para>
         </briefdescription>
@@ -878,6 +883,12 @@
       <node id="2">
         <label>EspSpiDevice</label>
         <link refid="classEspSpiDevice"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>StmSpiDevice</label>
+        <link refid="classStmSpiDevice"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

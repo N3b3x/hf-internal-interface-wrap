@@ -111,7 +111,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="530" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="530" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a2cd94a74eda9b9736e0541f3fa963a3f" prot="private" static="no" mutable="no">
-        <type><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref></type>
+        <type>hf_gpio_drive_cap_t</type>
         <definition>hf_gpio_drive_cap_t EspGpio::drive_capability_</definition>
         <argsstring></argsstring>
         <name>drive_capability_</name>
@@ -126,7 +126,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="533" column="23" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="533" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1aa2af04744c3d0e256359d33b6f9a43c7" prot="private" static="no" mutable="no">
-        <type><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kindref="member">hf_gpio_glitch_filter_type_t</ref></type>
+        <type>hf_gpio_glitch_filter_type_t</type>
         <definition>hf_gpio_glitch_filter_type_t EspGpio::glitch_filter_type_</definition>
         <argsstring></argsstring>
         <name>glitch_filter_type_</name>
@@ -171,7 +171,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="536" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="536" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a7734c5cb7b6df9ccbf079e1d8a45a822" prot="private" static="no" mutable="no">
-        <type><ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref></type>
+        <type>hf_gpio_flex_filter_config_t</type>
         <definition>hf_gpio_flex_filter_config_t EspGpio::flex_filter_config_</definition>
         <argsstring></argsstring>
         <name>flex_filter_config_</name>
@@ -186,7 +186,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="537" column="32" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="537" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a1bb6b5cb2d2217cef56f1b3cf426ed49" prot="private" static="no" mutable="no">
-        <type><ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref></type>
+        <type>hf_gpio_sleep_config_t</type>
         <definition>hf_gpio_sleep_config_t EspGpio::sleep_config_</definition>
         <argsstring></argsstring>
         <name>sleep_config_</name>
@@ -231,7 +231,7 @@
         <location file="inc/mcu/esp32/EspGpio.h" line="540" column="8" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="540" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspGpio_1a5ff67c40d3adaa6183167b4beeda00be" prot="private" static="no" mutable="no">
-        <type><ref refid="structhf__gpio__wakeup__config__t" kindref="compound">hf_gpio_wakeup_config_t</ref></type>
+        <type>hf_gpio_wakeup_config_t</type>
         <definition>hf_gpio_wakeup_config_t EspGpio::wakeup_config_</definition>
         <argsstring></argsstring>
         <name>wakeup_config_</name>
@@ -283,7 +283,6 @@
         <argsstring></argsstring>
         <name>gpio_isr_handler_installed_</name>
         <qualifiedname>EspGpio::gpio_isr_handler_installed_</qualifiedname>
-        <initializer>= false</initializer>
         <briefdescription>
 <para>Track if ISR service is installed. </para>
         </briefdescription>
@@ -326,9 +325,9 @@
           <defval><ref refid="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335ae17c8cfbde2e4323ba15750747758875" kindref="member">hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING</ref></defval>
         </param>
         <param>
-          <type><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref></type>
+          <type>hf_gpio_drive_cap_t</type>
           <declname>drive_capability</declname>
-          <defval><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03faa17918132458975f33a21b703a313b00" kindref="member">hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM</ref></defval>
+          <defval>hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM</defval>
         </param>
         <briefdescription>
 <para>Constructor for <ref refid="classEspGpio" kindref="compound">EspGpio</ref> with full configuration including advanced features. </para>
@@ -387,7 +386,7 @@ Creates an MCU GPIO instance with the specified configuration. <bold>LAZY INITIA
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="83" column="12" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="127" bodyend="185"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="83" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ae0e709e0e5748f81116fb9f15425fd78" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -402,7 +401,7 @@ Creates an MCU GPIO instance with the specified configuration. <bold>LAZY INITIA
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="95" column="3" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="187" bodyend="205"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="95" column="3"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a49e15d19126b54ba23a5c7e928dc0bb3" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -421,7 +420,7 @@ Configures the physical MCU pin according to the current direction, pull mode, a
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="107" column="8" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="211" bodyend="306"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="107" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ac27780ff0bbc266cff0a2052c8146d11" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -440,7 +439,7 @@ Resets the pin to a safe default state and marks it as uninitialized. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="114" column="8" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="308" bodyend="333"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="114" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a5805fe2d581a4ce5cd42edf1b64b2fb9" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>bool</type>
@@ -459,7 +458,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="122" column="8" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="335" bodyend="342"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="122" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a89914a1ecc1201e97df0bae0c13ad556" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref></type>
@@ -478,7 +477,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="128" column="11" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="344" bodyend="350"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="128" column="11"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1aee5346c09c9d81992935c5fd37455ea8" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type>const char *</type>
@@ -497,7 +496,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="134" column="14" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="352" bodyend="363"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="134" column="14"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1af0b68c0d1b3fda915803ba602ddab7fe" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -516,7 +515,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="144" column="18" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="369" bodyend="371"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="144" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a385ff46f95432183be7cd52d4a69fde4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -574,7 +573,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="153" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="377" bodyend="421"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="153" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a378b48a5c96c8c55313a354db5b673ca" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -593,7 +592,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="161" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="423" bodyend="442"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="161" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a08cc5eb9df6036fdc3cf4cac383678d4" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -612,7 +611,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="167" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="444" bodyend="469"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="167" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ae518911cc7720b8ba4f7e854b3018a6f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -645,7 +644,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="174" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="471" bodyend="498"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="174" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ac9c07576f5e322fd9ca80d159f662f65" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -677,7 +676,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="181" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="500" bodyend="506"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="181" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a24c69898357e7d08edd37a8f9674b735" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -696,7 +695,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="187" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="508" bodyend="511"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="187" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a5f0ce0b49b277e718d60f21bcc158827" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -746,7 +745,7 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="212" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1639" bodyend="1642"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="212" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ab95d357d1b206b878cf3d960e06a269b" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -778,10 +777,10 @@ Validates that the pin number is valid and not reserved for special functions li
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="219" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1644" bodyend="1647"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="219" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a39144774b89ee9403b4a75bbd828950f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
-        <type><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref></type>
+        <type>hf_gpio_drive_cap_t</type>
         <definition>hf_gpio_drive_cap_t EspGpio::GetDriveCapability</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetDriveCapability</name>
@@ -805,7 +804,7 @@ Validates that the pin number is valid and not reserved for special functions li
         <name>SetDriveCapability</name>
         <qualifiedname>EspGpio::SetDriveCapability</qualifiedname>
         <param>
-          <type><ref refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kindref="member">hf_gpio_drive_cap_t</ref></type>
+          <type>hf_gpio_drive_cap_t</type>
           <declname>capability</declname>
         </param>
         <briefdescription>
@@ -827,7 +826,7 @@ Controls the output drive strength from ~5mA (Weak) to ~40mA (Strongest). Higher
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="311" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="780" bodyend="816"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="311" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a8a8afa2c6f5cdf99fee057869e33be43" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -845,7 +844,7 @@ Controls the output drive strength from ~5mA (Weak) to ~40mA (Strongest). Higher
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="317" column="9" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="984" bodyend="990"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="317" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a093fe910f55946ecd55ccb6d2139824a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -876,7 +875,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="326" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="992" bodyend="1053"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="326" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a2c71bcffe9a6180b770a22d00af34571" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -885,11 +884,11 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         <name>ConfigureGlitchFilter</name>
         <qualifiedname>EspGpio::ConfigureGlitchFilter</qualifiedname>
         <param>
-          <type><ref refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kindref="member">hf_gpio_glitch_filter_type_t</ref></type>
+          <type>hf_gpio_glitch_filter_type_t</type>
           <declname>filter_type</declname>
         </param>
         <param>
-          <type>const <ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref> *</type>
+          <type>const hf_gpio_flex_filter_config_t *</type>
           <declname>flex_config</declname>
           <defval>nullptr</defval>
         </param>
@@ -920,7 +919,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="334" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="818" bodyend="903"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="334" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a2c79c703fa89be2d6c180e43e8a5be19" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -929,7 +928,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         <name>ConfigureSleepMode</name>
         <qualifiedname>EspGpio::ConfigureSleepMode</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref> &amp;</type>
+          <type>const hf_gpio_sleep_config_t &amp;</type>
           <declname>sleep_config</declname>
         </param>
         <briefdescription>
@@ -951,7 +950,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="343" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="905" bodyend="982"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="343" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a185dff0a8d47139e29b2a11b627aa916" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -960,7 +959,7 @@ Pin glitch filter removes pulses shorter than 2 IO_MUX clock cycles. This is a s
         <name>ConfigureFlexGlitchFilter</name>
         <qualifiedname>EspGpio::ConfigureFlexGlitchFilter</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__gpio__flex__filter__config__t" kindref="compound">hf_gpio_flex_filter_config_t</ref> &amp;</type>
+          <type>const hf_gpio_flex_filter_config_t &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -982,7 +981,7 @@ Flexible glitch filter allows precise control over filtering parameters. Pulses 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="352" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1055" bodyend="1104"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="352" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1abec628007c34fe89d133d56e7714e119" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1000,7 +999,7 @@ Flexible glitch filter allows precise control over filtering parameters. Pulses 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="358" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1106" bodyend="1130"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="358" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1aacd6a871bb388d4b30d148b8206d88d2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1018,7 +1017,7 @@ Flexible glitch filter allows precise control over filtering parameters. Pulses 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="364" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1132" bodyend="1156"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="364" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a278d4f15f4a47c2f602e0b5bc8e92166" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1036,7 +1035,7 @@ Flexible glitch filter allows precise control over filtering parameters. Pulses 
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="370" column="9" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1158" bodyend="1164"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="370" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a029215f672e9b08f0287b187b1c2d4c1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1045,7 +1044,7 @@ Flexible glitch filter allows precise control over filtering parameters. Pulses 
         <name>ConfigureSleep</name>
         <qualifiedname>EspGpio::ConfigureSleep</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__gpio__sleep__config__t" kindref="compound">hf_gpio_sleep_config_t</ref> &amp;</type>
+          <type>const hf_gpio_sleep_config_t &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1067,7 +1066,7 @@ Configures how the GPIO behaves during sleep modes. Essential for power-optimize
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="379" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1166" bodyend="1261"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="379" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a4e9a361804cc545b6667ff62fe3561df" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1098,7 +1097,7 @@ Hold function maintains GPIO state during sleep and reset. Useful for maintainin
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="388" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1263" bodyend="1303"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="388" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1aac40d891a4e5d0ea8095462e9b02bdc9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1107,7 +1106,7 @@ Hold function maintains GPIO state during sleep and reset. Useful for maintainin
         <name>ConfigureWakeUp</name>
         <qualifiedname>EspGpio::ConfigureWakeUp</qualifiedname>
         <param>
-          <type>const <ref refid="structhf__gpio__wakeup__config__t" kindref="compound">hf_gpio_wakeup_config_t</ref> &amp;</type>
+          <type>const hf_gpio_wakeup_config_t &amp;</type>
           <declname>config</declname>
         </param>
         <briefdescription>
@@ -1129,10 +1128,10 @@ Enables GPIO to wake the system from deep sleep. Essential for battery-powered a
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="397" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1305" bodyend="1349"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="397" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a69adebea4532cfd080f9987015722fa6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
-        <type><ref refid="structhf__gpio__status__info__t" kindref="compound">hf_gpio_status_info_t</ref></type>
+        <type>hf_gpio_status_info_t</type>
         <definition>hf_gpio_status_info_t EspGpio::GetConfigurationDump</definition>
         <argsstring>() const noexcept</argsstring>
         <name>GetConfigurationDump</name>
@@ -1147,7 +1146,7 @@ Provides detailed information about current GPIO configuration. Useful for debug
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="405" column="26" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1351" bodyend="1377"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="405" column="26"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a47b05205db6a3d993875a9ab993ee2c6" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1165,7 +1164,7 @@ Provides detailed information about current GPIO configuration. Useful for debug
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="411" column="9" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1379" bodyend="1381"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="411" column="9"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a08bdc6128b25384532662d93d2049ec2" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1174,7 +1173,7 @@ Provides detailed information about current GPIO configuration. Useful for debug
         <name>GetPinCapabilities</name>
         <qualifiedname>EspGpio::GetPinCapabilities</qualifiedname>
         <param>
-          <type><ref refid="structhf__gpio__pin__capabilities__t" kindref="compound">hf_gpio_pin_capabilities_t</ref> &amp;</type>
+          <type>hf_gpio_pin_capabilities_t &amp;</type>
           <declname>capabilities</declname>
         </param>
         <briefdescription>
@@ -1196,7 +1195,7 @@ Provides comprehensive information about pin capabilities including ADC, RTC, to
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="424" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1383" bodyend="1414"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="424" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a28f867ec423d2dcfbcc25cfc0dd658ea" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1205,7 +1204,7 @@ Provides comprehensive information about pin capabilities including ADC, RTC, to
         <name>GetStatusInfo</name>
         <qualifiedname>EspGpio::GetStatusInfo</qualifiedname>
         <param>
-          <type><ref refid="structhf__gpio__status__info__t" kindref="compound">hf_gpio_status_info_t</ref> &amp;</type>
+          <type>hf_gpio_status_info_t &amp;</type>
           <declname>status</declname>
         </param>
         <briefdescription>
@@ -1227,7 +1226,7 @@ Provides comprehensive status information for debugging and monitoring. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="432" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1416" bodyend="1419"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="432" column="17"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="protected-func">
@@ -1261,7 +1260,7 @@ Reconfigures the MCU pin as input or output with appropriate pull resistor and d
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="233" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="517" bodyend="559"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="233" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a9661ef14697ca21f3a580add2f3a4623" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1293,7 +1292,7 @@ Changes the output drive characteristics of the MCU pin. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="241" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="626" bodyend="648"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="241" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a4625ee672d358bf48bff8c3d1f9d8201" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1325,7 +1324,7 @@ Sets the MCU pin to the specified electrical level. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="249" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="692" bodyend="712"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="249" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a5a4c74349b2fb3f93d920f3b902a66ce" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1357,7 +1356,7 @@ Reads the current MCU pin electrical level. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="257" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="714" bodyend="726"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="257" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1aeb44f0d33e47afd3bf0437b24fed0ae9" prot="protected" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1389,7 +1388,7 @@ Configures the MCU&apos;s internal pull resistors. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="265" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="561" bodyend="591"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="265" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a9c4eb71cf5585351a0fb08749fe37b27" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
@@ -1408,7 +1407,7 @@ Queries the current pull resistor configuration from MCU registers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="272" column="23" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="593" bodyend="624"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="272" column="23"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a36373bacde83b2c40b8a9d9ee1240795" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1440,7 +1439,7 @@ Reads the actual direction configuration from ESP32 GPIO registers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="280" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="728" bodyend="753"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="280" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a662b4f3168a5566025c1984b7e903914" prot="protected" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1472,13 +1471,13 @@ Reads the actual output mode configuration from ESP32 GPIO registers. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="288" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="755" bodyend="774"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="288" column="17"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classEspGpio_1a3b2fca526fd91aec5e0867346559afa3" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classEspGpio_1a7021518bbcb19e8619918a9bb25b22f4" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-        <definition>hf_u32_t EspGpio::GetTotalInterruptCount</definition>
+        <definition>static hf_u32_t EspGpio::GetTotalInterruptCount</definition>
         <argsstring>() noexcept</argsstring>
         <name>GetTotalInterruptCount</name>
         <qualifiedname>EspGpio::GetTotalInterruptCount</qualifiedname>
@@ -1492,11 +1491,11 @@ Thread-safe global interrupt counter for system monitoring. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="439" column="19" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1421" bodyend="1427"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="439" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classEspGpio_1aa3ef4dc499aa7693e3a96fa47766de13" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classEspGpio_1af77c568e31601a9c662247945a68b260" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
-        <definition>hf_u32_t EspGpio::GetActiveGpioCount</definition>
+        <definition>static hf_u32_t EspGpio::GetActiveGpioCount</definition>
         <argsstring>() noexcept</argsstring>
         <name>GetActiveGpioCount</name>
         <qualifiedname>EspGpio::GetActiveGpioCount</qualifiedname>
@@ -1510,11 +1509,11 @@ Thread-safe counter for resource monitoring. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="446" column="19" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1429" bodyend="1435"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="446" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classEspGpio_1a987113dad2ac0f206afdcdc124850db5" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classEspGpio_1a04ef5e4758155a4e25630cde69d74d23" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
-        <definition>bool EspGpio::IsValidPin</definition>
+        <definition>static bool EspGpio::IsValidPin</definition>
         <argsstring>(hf_pin_num_t pin_num) noexcept</argsstring>
         <name>IsValidPin</name>
         <qualifiedname>EspGpio::IsValidPin</qualifiedname>
@@ -1541,11 +1540,11 @@ Platform-specific validation using centralized constants. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="454" column="15" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1437" bodyend="1443"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="454" column="15"/>
       </memberdef>
-      <memberdef kind="function" id="classEspGpio_1ae7c78b0135038cfb9302d2c131bdb39d" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classEspGpio_1a9e256695e9e9bcb27e437c7d28b1b757" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
-        <definition>bool EspGpio::IsRtcGpio</definition>
+        <definition>static bool EspGpio::IsRtcGpio</definition>
         <argsstring>(hf_pin_num_t pin_num) noexcept</argsstring>
         <name>IsRtcGpio</name>
         <qualifiedname>EspGpio::IsRtcGpio</qualifiedname>
@@ -1572,11 +1571,11 @@ ESP32C6: GPIO0-7 support RTC functionality. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="462" column="15" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1445" bodyend="1451"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="462" column="15"/>
       </memberdef>
-      <memberdef kind="function" id="classEspGpio_1ae55553a663099f4fafbb65488477640e" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+      <memberdef kind="function" id="classEspGpio_1a00d8ec211baf9751a875e680d8856e95" prot="public" static="yes" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
-        <definition>bool EspGpio::IsStrappingPin</definition>
+        <definition>static bool EspGpio::IsStrappingPin</definition>
         <argsstring>(hf_pin_num_t pin_num) noexcept</argsstring>
         <name>IsStrappingPin</name>
         <qualifiedname>EspGpio::IsStrappingPin</qualifiedname>
@@ -1603,7 +1602,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="470" column="15" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1453" bodyend="1459"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="470" column="15"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-func">
@@ -1636,11 +1635,11 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="482" column="19" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1479" bodyend="1495"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="482" column="19"/>
       </memberdef>
-      <memberdef kind="function" id="classEspGpio_1a786bacf7186807a58fdf2d3a338d918a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classEspGpio_1a7788e246c32127af93db206527458272" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void IRAM_ATTR</type>
-        <definition>void EspGpio::HandleInterrupt</definition>
+        <definition>void IRAM_ATTR EspGpio::HandleInterrupt</definition>
         <argsstring>()</argsstring>
         <name>HandleInterrupt</name>
         <qualifiedname>EspGpio::HandleInterrupt</qualifiedname>
@@ -1651,7 +1650,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="493" column="18" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1504" bodyend="1523"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="493" column="18"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ada64948bf1df413764e02bef340e4062" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>bool</type>
@@ -1669,7 +1668,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="499" column="8" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1525" bodyend="1560"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="499" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a1bc4d9e3208d76bb8a0861c3de21d2e3" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1684,7 +1683,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="504" column="8" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1562" bodyend="1595"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="504" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1adfd48fa3edbbf0a146ae13b6a8622c56" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1699,7 +1698,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="509" column="8" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1597" bodyend="1625"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="509" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a35edac2436920f517f75c958fc265da6" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type>void</type>
@@ -1714,7 +1713,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="514" column="8" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1627" bodyend="1633"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="514" column="8"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1ab1a2c40c2fc4896c58392592e39e6d06" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1732,7 +1731,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="516" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="650" bodyend="674"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="516" column="17"/>
       </memberdef>
       <memberdef kind="function" id="classEspGpio_1a2bba4bb6107fa6a4131223a679cdecac" prot="private" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
         <type><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref></type>
@@ -1750,13 +1749,13 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="517" column="17" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="676" bodyend="690"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="517" column="17"/>
       </memberdef>
     </sectiondef>
     <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classEspGpio_1a04a1fc91cea1032c9db77373a113e433" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classEspGpio_1ab4d46bf3ab5605b703c8a418cf900f3c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void IRAM_ATTR</type>
-        <definition>void IRAM_ATTR EspGpio::StaticInterruptHandler</definition>
+        <definition>static void IRAM_ATTR EspGpio::StaticInterruptHandler</definition>
         <argsstring>(void *arg)</argsstring>
         <name>StaticInterruptHandler</name>
         <qualifiedname>EspGpio::StaticInterruptHandler</qualifiedname>
@@ -1781,7 +1780,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspGpio.h" line="488" column="25" bodyfile="src/mcu/esp32/EspGpio.cpp" bodystart="1497" bodyend="1502"/>
+        <location file="inc/mcu/esp32/EspGpio.h" line="488" column="25"/>
       </memberdef>
     </sectiondef>
     <briefdescription>
@@ -1844,35 +1843,14 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
         <childnode refid="2" relation="usage">
           <edgelabel>interrupt_callback_</edgelabel>
         </childnode>
-        <childnode refid="5" relation="usage">
-          <edgelabel>flex_filter_config_</edgelabel>
-        </childnode>
-        <childnode refid="6" relation="usage">
-          <edgelabel>sleep_config_</edgelabel>
-        </childnode>
-        <childnode refid="7" relation="usage">
-          <edgelabel>wakeup_config_</edgelabel>
-        </childnode>
       </node>
       <node id="4">
         <label>hf_gpio_diagnostics_t</label>
         <link refid="structhf__gpio__diagnostics__t"/>
       </node>
-      <node id="5">
-        <label>hf_gpio_flex_filter_config_t</label>
-        <link refid="structhf__gpio__flex__filter__config__t"/>
-      </node>
-      <node id="6">
-        <label>hf_gpio_sleep_config_t</label>
-        <link refid="structhf__gpio__sleep__config__t"/>
-      </node>
       <node id="3">
         <label>hf_gpio_statistics_t</label>
         <link refid="structhf__gpio__statistics__t"/>
-      </node>
-      <node id="7">
-        <label>hf_gpio_wakeup_config_t</label>
-        <link refid="structhf__gpio__wakeup__config__t"/>
       </node>
     </collaborationgraph>
     <location file="inc/mcu/esp32/EspGpio.h" line="65" column="1" bodyfile="inc/mcu/esp32/EspGpio.h" bodystart="65" bodyend="549"/>
@@ -1906,7 +1884,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
       <member refid="classEspGpio_1a6500c4b82a610d0ec0a1aa95fdccb284" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>EspGpio</name></member>
       <member refid="classEspGpio_1a7734c5cb7b6df9ccbf079e1d8a45a822" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>flex_filter_config_</name></member>
       <member refid="classEspGpio_1af8a683fc6c6e869c4a576cb7be13eb0b" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>flex_glitch_filter_enabled_</name></member>
-      <member refid="classEspGpio_1aa3ef4dc499aa7693e3a96fa47766de13" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>GetActiveGpioCount</name></member>
+      <member refid="classEspGpio_1af77c568e31601a9c662247945a68b260" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>GetActiveGpioCount</name></member>
       <member refid="classBaseGpio_1a3bf8b64e2c0cdc440540f1b81e347952" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>GetActiveState</name></member>
       <member refid="classEspGpio_1a69adebea4532cfd080f9987015722fa6" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>GetConfigurationDump</name></member>
       <member refid="classBaseGpio_1a0a9b9db4afeedbd326fad93037717337" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>GetCurrentState</name></member>
@@ -1926,11 +1904,11 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
       <member refid="classEspGpio_1a9c4eb71cf5585351a0fb08749fe37b27" prot="protected" virt="virtual"><scope>EspGpio</scope><name>GetPullModeImpl</name></member>
       <member refid="classEspGpio_1a13f0f2bb08bdf3201b380bd6ad7aa0ae" prot="public" virt="virtual"><scope>EspGpio</scope><name>GetStatistics</name></member>
       <member refid="classEspGpio_1a28f867ec423d2dcfbcc25cfc0dd658ea" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>GetStatusInfo</name></member>
-      <member refid="classEspGpio_1a3b2fca526fd91aec5e0867346559afa3" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>GetTotalInterruptCount</name></member>
+      <member refid="classEspGpio_1a7021518bbcb19e8619918a9bb25b22f4" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>GetTotalInterruptCount</name></member>
       <member refid="classEspGpio_1ac28a7882cdc9ef28da6c0a130d43b601" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>glitch_filter_handle_</name></member>
       <member refid="classEspGpio_1aa2af04744c3d0e256359d33b6f9a43c7" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>glitch_filter_type_</name></member>
       <member refid="classEspGpio_1a85ed85c826744590f82101f07aacb69e" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>gpio_isr_handler_installed_</name></member>
-      <member refid="classEspGpio_1a786bacf7186807a58fdf2d3a338d918a" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>HandleInterrupt</name></member>
+      <member refid="classEspGpio_1a7788e246c32127af93db206527458272" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>HandleInterrupt</name></member>
       <member refid="classEspGpio_1a06e1241c8517cb66e98d0054590b943a" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>hold_enabled_</name></member>
       <member refid="classEspGpio_1a49e15d19126b54ba23a5c7e928dc0bb3" prot="public" virt="virtual"><scope>EspGpio</scope><name>Initialize</name></member>
       <member refid="classEspGpio_1ada64948bf1df413764e02bef340e4062" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>InitializeAdvancedFeatures</name></member>
@@ -1947,9 +1925,9 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
       <member refid="classBaseGpio_1ae6daa5410a578598b694320cdc1997e0" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>IsOutput</name></member>
       <member refid="classEspGpio_1a5805fe2d581a4ce5cd42edf1b64b2fb9" prot="public" virt="virtual"><scope>EspGpio</scope><name>IsPinAvailable</name></member>
       <member refid="classEspGpio_1a0aaa57aac6b572129338e1124dbd01b7" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>isr_handler_added_</name></member>
-      <member refid="classEspGpio_1ae7c78b0135038cfb9302d2c131bdb39d" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>IsRtcGpio</name></member>
-      <member refid="classEspGpio_1ae55553a663099f4fafbb65488477640e" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>IsStrappingPin</name></member>
-      <member refid="classEspGpio_1a987113dad2ac0f206afdcdc124850db5" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>IsValidPin</name></member>
+      <member refid="classEspGpio_1a9e256695e9e9bcb27e437c7d28b1b757" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>IsRtcGpio</name></member>
+      <member refid="classEspGpio_1a00d8ec211baf9751a875e680d8856e95" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>IsStrappingPin</name></member>
+      <member refid="classEspGpio_1a04ef5e4758155a4e25630cde69d74d23" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>IsValidPin</name></member>
       <member refid="classBaseGpio_1aeaf2282b59e4b9d06c5af433eab74953" prot="protected" virt="non-virtual"><scope>EspGpio</scope><name>LevelToState</name></member>
       <member refid="classEspGpio_1a452475ffffe087b209f7613ca4ae9b35" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>MapInterruptTrigger</name></member>
       <member refid="classBaseGpio_1a80f934a9f41ef0315bae75ba3883c426" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>operator=</name></member>
@@ -1977,7 +1955,7 @@ ESP32C6 strapping pins: GPIO4, GPIO5, GPIO8, GPIO9, GPIO15. </para>
       <member refid="classBaseGpio_1a9d5e847076559bec0fdd3724eb3a6e31" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>SetState</name></member>
       <member refid="classEspGpio_1a1bb6b5cb2d2217cef56f1b3cf426ed49" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>sleep_config_</name></member>
       <member refid="classBaseGpio_1ade6e9755735a8eb9f08db59396dbecc4" prot="protected" virt="non-virtual"><scope>EspGpio</scope><name>StateToLevel</name></member>
-      <member refid="classEspGpio_1a04a1fc91cea1032c9db77373a113e433" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>StaticInterruptHandler</name></member>
+      <member refid="classEspGpio_1ab4d46bf3ab5605b703c8a418cf900f3c" prot="private" virt="non-virtual"><scope>EspGpio</scope><name>StaticInterruptHandler</name></member>
       <member refid="classBaseGpio_1acc7b7575c32b77a766adf3e275bd1973" prot="protected" virt="non-virtual"><scope>EspGpio</scope><name>statistics_</name></member>
       <member refid="classEspGpio_1a8a8afa2c6f5cdf99fee057869e33be43" prot="public" virt="non-virtual"><scope>EspGpio</scope><name>SupportsGlitchFilter</name></member>
       <member refid="classEspGpio_1af0b68c0d1b3fda915803ba602ddab7fe" prot="public" virt="virtual"><scope>EspGpio</scope><name>SupportsInterrupts</name></member>

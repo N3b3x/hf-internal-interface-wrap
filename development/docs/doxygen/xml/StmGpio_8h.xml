@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="StmGpio_8h" kind="file" language="C++">
+    <compoundname>StmGpio.h</compoundname>
+    <includes refid="BaseGpio_8h" local="yes">BaseGpio.h</includes>
+    <includedby refid="StmGpio_8cpp" local="yes">src/mcu/stm32/StmGpio.cpp</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>BaseGpio.h</label>
+        <link refid="BaseGpio_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>inc/mcu/stm32/StmGpio.h</label>
+        <link refid="StmGpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>cstdint</label>
+      </node>
+      <node id="5">
+        <label>limits</label>
+      </node>
+      <node id="6">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>inc/mcu/stm32/StmGpio.h</label>
+        <link refid="StmGpio_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/mcu/stm32/StmGpio.cpp</label>
+        <link refid="StmGpio_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classStmGpio" prot="public">StmGpio</innerclass>
+    <briefdescription>
+<para>STM32 GPIO stub implementation — placeholder for future STM32 HAL integration. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="BaseGpio_8h" kindref="compound">BaseGpio.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classStmGpio" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classStmGpio" kindref="compound">StmGpio</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classBaseGpio" kindref="compound">BaseGpio</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classStmGpio_1a13ec17edceac22e440b175f913e3f8e8" kindref="member">StmGpio</ref>(<ref refid="HardwareTypes_8h_1a60a0d0e5d76ed481be9bf64c307520f9" kindref="member">hf_pin_num_t</ref><sp/>pin_num,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref><sp/>direction<sp/>=<sp/><ref refid="group__gpio_1gga6b3450e1c9d6cba3355cc3567bb0cce3a5090403a0f4f177d6fb813cd9d06bf1e" kindref="member">hf_gpio_direction_t::HF_GPIO_DIRECTION_INPUT</ref>,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1gaf02cdaf150fa829e4a871e58ed772c6d" kindref="member">hf_gpio_active_state_t</ref><sp/>active_state<sp/>=<sp/><ref refid="group__gpio_1ggaf02cdaf150fa829e4a871e58ed772c6dab2e7e26dbb35ac48971828008f86b356" kindref="member">hf_gpio_active_state_t::HF_GPIO_ACTIVE_HIGH</ref>,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref><sp/>output_mode<sp/>=<sp/><ref refid="group__gpio_1gga825412a54660defc9ecbf8ad1ea1cf7ba26b362f67afa6dbc264fb539c0dc304d" kindref="member">hf_gpio_output_mode_t::HF_GPIO_OUTPUT_MODE_PUSH_PULL</ref>,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref><sp/>pull_mode<sp/>=<sp/><ref refid="group__gpio_1gga7d27555a7050f5d9d9006c96b841e335ae17c8cfbde2e4323ba15750747758875" kindref="member">hf_gpio_pull_mode_t::HF_GPIO_PULL_MODE_FLOATING</ref>,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hf_gpio_drive_cap_t<sp/>drive_capability<sp/>=<sp/>hf_gpio_drive_cap_t::HF_GPIO_DRIVE_CAP_MEDIUM)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26" refid="classStmGpio_1aa9c7d16581d45c0ce2741e7054a3a8b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classStmGpio_1aa9c7d16581d45c0ce2741e7054a3a8b5" kindref="member">~StmGpio</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Public<sp/>pure<sp/>virtuals</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmGpio_1ad108587cd354d234cdd7267876da4be8" kindref="member">Initialize</ref>()<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmGpio_1a08972988dbdb87d8449efbcbe544e95b" kindref="member">IsPinAvailable</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/><ref refid="classStmGpio_1ab4019f83455349f50b1a65280c0b282b" kindref="member">GetMaxPins</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classStmGpio_1a7c8c088887133a57c4c68884fe310e4b" kindref="member">GetDescription</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">protected:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Platform<sp/>implementation<sp/>overrides<sp/>(pure<sp/>virtual<sp/>in<sp/>BaseGpio)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classStmGpio_1a5f5f6048eb62227c1bf0948a10e3d57d" kindref="member">SetDirectionImpl</ref>(<ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref><sp/>direction)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classStmGpio_1a351efa2429353dfbe32e0b4df7cfb311" kindref="member">GetDirectionImpl</ref>(<ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref>&amp;<sp/>direction)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classStmGpio_1aff454893b825f08f0e99e015698ba489" kindref="member">SetOutputModeImpl</ref>(<ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref><sp/>mode)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classStmGpio_1a47cd403eff983464ee19daa3a6814cdf" kindref="member">GetOutputModeImpl</ref>(<ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref>&amp;<sp/>mode)<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classStmGpio_1a7676c66a241eabd1d7e15fff38ece2fa" kindref="member">SetPullModeImpl</ref>(<ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref><sp/>mode)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref><sp/><ref refid="classStmGpio_1a34c2b35a33ae2764946619cd80d89e66" kindref="member">GetPullModeImpl</ref>()<sp/>const<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classStmGpio_1a4e5f0c8b9977a69c648b59d6d9ac32e4" kindref="member">SetPinLevelImpl</ref>(<ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref><sp/>level)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="group__gpio_1ga2632aac2351807c35e790ec20bda305d" kindref="member">hf_gpio_err_t</ref><sp/><ref refid="classStmGpio_1a4a2b1e9a2202d89f8ede64702efecf77" kindref="member">GetPinLevelImpl</ref>(<ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref>&amp;<sp/>level)<sp/>noexcept<sp/>override;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+    </programlisting>
+    <location file="inc/mcu/stm32/StmGpio.h"/>
+  </compounddef>
+</doxygen>

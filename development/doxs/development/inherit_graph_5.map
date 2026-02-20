@@ -1,5 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="Node000000" href="$classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="5,5,108,36"/>
-<area shape="rect" id="Node000001" href="$classEspGpio.html" title="Advanced MCU&#45;specific implementation of unified BaseGpio with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="156,5,248,36"/>
-<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="122,18,156,18,156,23,122,23"/>
+<area shape="rect" id="Node000000" href="$classBaseGpio.html" title="Unified GPIO base class for all digital GPIO implementations." alt="" coords="5,33,108,64"/>
+<area shape="rect" id="Node000001" href="$classEspGpio.html" title="Advanced MCU&#45;specific implementation of unified BaseGpio with ESP32C6/ESP&#45;IDF v5.5+ features." alt="" coords="157,5,249,36"/>
+<area shape="poly" id="edge4_Node000000_Node000001" title=" " alt="" coords="121,34,157,27,158,32,122,39"/>
+<area shape="rect" id="Node000002" href="$classStmGpio.html" title="STM32 GPIO — stub implementation." alt="" coords="156,60,251,91"/>
+<area shape="poly" id="edge5_Node000000_Node000002" title=" " alt="" coords="122,58,156,64,155,69,121,63"/>
 </map>

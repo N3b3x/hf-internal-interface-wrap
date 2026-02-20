@@ -331,15 +331,9 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="45">
-        <label>RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -670,7 +664,7 @@
         <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="74" column="27" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="74" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="PioComprehensiveTest_8cpp_1aaa6446c074eec3e267d069cd66fc65d1" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></type>
+        <type>constexpr hf_gpio_num_t</type>
         <definition>constexpr hf_gpio_num_t TEST_GPIO_TX</definition>
         <argsstring></argsstring>
         <name>TEST_GPIO_TX</name>
@@ -684,7 +678,7 @@
         <location file="examples/esp32/main/PioComprehensiveTest.cpp" line="77" column="32" bodyfile="examples/esp32/main/PioComprehensiveTest.cpp" bodystart="77" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="PioComprehensiveTest_8cpp_1ad996d5c44b94fcdf8ea6cf7862c7cdad" prot="public" static="yes" constexpr="yes" mutable="no">
-        <type>constexpr <ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></type>
+        <type>constexpr hf_gpio_num_t</type>
         <definition>constexpr hf_gpio_num_t TEST_GPIO_RX</definition>
         <argsstring></argsstring>
         <name>TEST_GPIO_RX</name>
@@ -840,7 +834,7 @@
         <argsstring>(hf_gpio_num_t gpio_pin, hf_pio_direction_t direction=hf_pio_direction_t::Transmit) noexcept</argsstring>
         <name>create_test_channel_config</name>
         <param>
-          <type><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></type>
+          <type>hf_gpio_num_t</type>
           <declname>gpio_pin</declname>
         </param>
         <param>
@@ -1496,8 +1490,8 @@
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/><ref refid="PioComprehensiveTest_8cpp_1abd9d2ba60a745d0fc53bc62087ab8fea" kindref="member">WS2812_RESET</ref><sp/>=<sp/>50000;<sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>time<sp/>(&gt;50µs)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Test<sp/>GPIO<sp/>pins<sp/>for<sp/>automated<sp/>loopback<sp/>testing</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/><ref refid="PioComprehensiveTest_8cpp_1aaa6446c074eec3e267d069cd66fc65d1" kindref="member">TEST_GPIO_TX</ref><sp/>=<sp/>8;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO8<sp/>for<sp/>built-in<sp/>RGB<sp/>LED<sp/>(WS2812)<sp/>-<sp/>TX</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/><ref refid="PioComprehensiveTest_8cpp_1ad996d5c44b94fcdf8ea6cf7862c7cdad" kindref="member">TEST_GPIO_RX</ref><sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18<sp/>for<sp/>reception<sp/>(RMT<sp/>compatible)<sp/>-<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>hf_gpio_num_t<sp/><ref refid="PioComprehensiveTest_8cpp_1aaa6446c074eec3e267d069cd66fc65d1" kindref="member">TEST_GPIO_TX</ref><sp/>=<sp/>8;<sp/><sp/></highlight><highlight class="comment">//<sp/>GPIO8<sp/>for<sp/>built-in<sp/>RGB<sp/>LED<sp/>(WS2812)<sp/>-<sp/>TX</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>hf_gpio_num_t<sp/><ref refid="PioComprehensiveTest_8cpp_1ad996d5c44b94fcdf8ea6cf7862c7cdad" kindref="member">TEST_GPIO_RX</ref><sp/>=<sp/>18;<sp/></highlight><highlight class="comment">//<sp/>GPIO18<sp/>for<sp/>reception<sp/>(RMT<sp/>compatible)<sp/>-<sp/>RX</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>automated<sp/>testing:<sp/>Connect<sp/>GPIO8<sp/>(TX)<sp/>to<sp/>GPIO18<sp/>(RX)<sp/>with<sp/>a<sp/>jumper<sp/>wire</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>creates<sp/>a<sp/>loopback<sp/>that<sp/>allows<sp/>the<sp/>test<sp/>to<sp/>verify<sp/>transmission/reception</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
@@ -1554,7 +1548,7 @@
 <codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="133"><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal"><ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref><sp/><ref refid="PioComprehensiveTest_8cpp_1a74b31ce83fc3b97d0ee05948979c169d" kindref="member">create_test_channel_config</ref>(</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio_pin,<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655" kindref="member">hf_pio_direction_t</ref><sp/>direction<sp/>=<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655a6c2958de5e2295b8cb67bac908244879" kindref="member">hf_pio_direction_t::Transmit</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio_pin,<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655" kindref="member">hf_pio_direction_t</ref><sp/>direction<sp/>=<sp/><ref refid="BasePio_8h_1a4f686da1410313a12d85e6ae3d7af655a6c2958de5e2295b8cb67bac908244879" kindref="member">hf_pio_direction_t::Transmit</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="structhf__pio__channel__config__t" kindref="compound">hf_pio_channel_config_t</ref><sp/>config<sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/>config.<ref refid="structhf__pio__channel__config__t_1a2e025f966c1f253c2047b1eeee4c9f01" kindref="member">gpio_pin</ref><sp/>=<sp/>gpio_pin;</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/>config.<ref refid="structhf__pio__channel__config__t_1a5034cc2de3ff7608a135fd4a085b5ff6" kindref="member">direction</ref><sp/>=<sp/>direction;</highlight></codeline>

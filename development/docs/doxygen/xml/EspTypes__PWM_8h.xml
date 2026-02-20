@@ -95,14 +95,10 @@
     </incdepgraph>
     <invincdepgraph>
       <node id="7">
-        <label>examples/esp32/main/AdcComprehensiveTest.cpp</label>
-        <link refid="AdcComprehensiveTest_8cpp"/>
-      </node>
-      <node id="10">
         <label>examples/esp32/main/I2cComprehensiveTest.cpp</label>
         <link refid="I2cComprehensiveTest_8cpp"/>
       </node>
-      <node id="16">
+      <node id="13">
         <label>examples/esp32/main/PioComprehensiveTest.cpp</label>
         <link refid="PioComprehensiveTest_8cpp"/>
       </node>
@@ -110,48 +106,40 @@
         <label>examples/esp32/main/PwmComprehensiveTest.cpp</label>
         <link refid="PwmComprehensiveTest_8cpp"/>
       </node>
-      <node id="19">
+      <node id="16">
         <label>examples/esp32/main/SpiComprehensiveTest.cpp</label>
         <link refid="SpiComprehensiveTest_8cpp"/>
       </node>
-      <node id="13">
+      <node id="10">
         <label>examples/esp32/main/TimerComprehensiveTest.cpp</label>
         <link refid="TimerComprehensiveTest_8cpp"/>
       </node>
-      <node id="22">
+      <node id="19">
         <label>examples/esp32/main/UartComprehensiveTest.cpp</label>
         <link refid="UartComprehensiveTest_8cpp"/>
       </node>
       <node id="6">
-        <label>inc/mcu/esp32/EspAdc.h</label>
-        <link refid="EspAdc_8h"/>
+        <label>inc/mcu/esp32/EspI2c.h</label>
+        <link refid="EspI2c_8h"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="9">
-        <label>inc/mcu/esp32/EspI2c.h</label>
-        <link refid="EspI2c_8h"/>
+        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
+        <link refid="EspPeriodicTimer_8h"/>
         <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
       </node>
       <node id="12">
-        <label>inc/mcu/esp32/EspPeriodicTimer.h</label>
-        <link refid="EspPeriodicTimer_8h"/>
+        <label>inc/mcu/esp32/EspPio.h</label>
+        <link refid="EspPio_8h"/>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>inc/mcu/esp32/EspPio.h</label>
-        <link refid="EspPio_8h"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -162,20 +150,20 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="15">
         <label>inc/mcu/esp32/EspSpi.h</label>
         <link refid="EspSpi_8h"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>inc/mcu/esp32/EspUart.h</label>
+        <link refid="EspUart_8h"/>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>inc/mcu/esp32/EspUart.h</label>
-        <link refid="EspUart_8h"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="5">
@@ -191,8 +179,6 @@
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>inc/mcu/esp32/utils/EspTypes_PWM.h</label>
@@ -203,18 +189,14 @@
         </childnode>
       </node>
       <node id="8">
-        <label>src/mcu/esp32/EspAdc.cpp</label>
-        <link refid="EspAdc_8cpp"/>
-      </node>
-      <node id="11">
         <label>src/mcu/esp32/EspI2c.cpp</label>
         <link refid="EspI2c_8cpp"/>
       </node>
-      <node id="14">
+      <node id="11">
         <label>src/mcu/esp32/EspPeriodicTimer.cpp</label>
         <link refid="EspPeriodicTimer_8cpp"/>
       </node>
-      <node id="17">
+      <node id="14">
         <label>src/mcu/esp32/EspPio.cpp</label>
         <link refid="EspPio_8cpp"/>
       </node>
@@ -222,11 +204,11 @@
         <label>src/mcu/esp32/EspPwm.cpp</label>
         <link refid="EspPwm_8cpp"/>
       </node>
-      <node id="20">
+      <node id="17">
         <label>src/mcu/esp32/EspSpi.cpp</label>
         <link refid="EspSpi_8cpp"/>
       </node>
-      <node id="23">
+      <node id="20">
         <label>src/mcu/esp32/EspUart.cpp</label>
         <link refid="EspUart_8cpp"/>
       </node>
@@ -643,14 +625,14 @@
         <definition>constexpr uint8_t HF_PWM_MAX_CHANNELS</definition>
         <argsstring></argsstring>
         <name>HF_PWM_MAX_CHANNELS</name>
-        <initializer>=  6</initializer>
+        <initializer>= 8</initializer>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="53" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="53" bodyend="-1"/>
+        <location file="inc/mcu/esp32/utils/EspTypes_PWM.h" line="55" column="26" bodyfile="inc/mcu/esp32/utils/EspTypes_PWM.h" bodystart="55" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="EspTypes__PWM_8h_1a188b45a8dc354e4753a2d2a3ade6b06e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr uint8_t</type>
@@ -808,9 +790,9 @@
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>LEDC<sp/>channels<sp/>depends<sp/>on<sp/>the<sp/>MCU<sp/>variant.<sp/>For<sp/>ESP32-C6,<sp/>there<sp/>are<sp/>6.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>centralized<sp/>selection<sp/>from<sp/>McuSelect.h<sp/>when<sp/>available.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>HF_MCU_PWM_MAX_CHANNELS</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53" refid="EspTypes__PWM_8h_1a86d24d14ec124f4012f812f9853993f0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PWM_8h_1a86d24d14ec124f4012f812f9853993f0" kindref="member">HF_PWM_MAX_CHANNELS</ref><sp/>=<sp/><ref refid="McuSelect_8h_1a3c6ad889f4396e5207e78752a3472be3" kindref="member">HF_MCU_PWM_MAX_CHANNELS</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PWM_8h_1a86d24d14ec124f4012f812f9853993f0" kindref="member">HF_PWM_MAX_CHANNELS</ref><sp/>=<sp/>HF_MCU_PWM_MAX_CHANNELS;</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PWM_8h_1a86d24d14ec124f4012f812f9853993f0" kindref="member">HF_PWM_MAX_CHANNELS</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="55" refid="EspTypes__PWM_8h_1a86d24d14ec124f4012f812f9853993f0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PWM_8h_1a86d24d14ec124f4012f812f9853993f0" kindref="member">HF_PWM_MAX_CHANNELS</ref><sp/>=<sp/>8;</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="57" refid="EspTypes__PWM_8h_1a188b45a8dc354e4753a2d2a3ade6b06e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PWM_8h_1a188b45a8dc354e4753a2d2a3ade6b06e" kindref="member">HF_PWM_MAX_TIMERS</ref><sp/>=<sp/>4;</highlight></codeline>
 <codeline lineno="58" refid="EspTypes__PWM_8h_1ae635150b452b279b29b65f799961d51f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint8_t<sp/><ref refid="EspTypes__PWM_8h_1ae635150b452b279b29b65f799961d51f" kindref="member">HF_PWM_MAX_RESOLUTION</ref><sp/>=<sp/>14;</highlight></codeline>
@@ -945,7 +927,7 @@
 <codeline lineno="260"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="261"><highlight class="normal"></highlight></codeline>
 <codeline lineno="306" refid="structhf__pwm__channel__config__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>{</highlight></codeline>
-<codeline lineno="307" refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/><ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="307" refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" refkind="member"><highlight class="normal"><sp/><sp/>hf_gpio_num_t<sp/><ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref>;<sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="308" refid="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" kindref="member">channel_id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="309" refid="structhf__pwm__channel__config__t_1a6a2e4e26bb3b33d74a96f73768195b87" refkind="member"><highlight class="normal"><sp/><sp/>uint8_t<sp/><ref refid="structhf__pwm__channel__config__t_1a6a2e4e26bb3b33d74a96f73768195b87" kindref="member">timer_id</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="310" refid="structhf__pwm__channel__config__t_1aa8d425a4003718321869192e7cf61845" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3fa" kindref="member">hf_pwm_mode_t</ref><sp/><ref refid="structhf__pwm__channel__config__t_1aa8d425a4003718321869192e7cf61845" kindref="member">speed_mode</ref>;<sp/></highlight></codeline>
@@ -970,7 +952,7 @@
 <codeline lineno="329" refid="structhf__pwm__channel__config__t_1a527f5098ffbb707a1c337c63d0d22c42" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structhf__pwm__channel__config__t_1a527f5098ffbb707a1c337c63d0d22c42" kindref="member">description</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
 <codeline lineno="330"><highlight class="normal"></highlight></codeline>
 <codeline lineno="331" refid="structhf__pwm__channel__config__t_1ad14b27ad6c2983284c8ff312f85ecea5" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__config__t_1ad14b27ad6c2983284c8ff312f85ecea5" kindref="member">hf_pwm_channel_config_t</ref>()<sp/>noexcept</highlight></codeline>
-<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref>(static_cast&lt;<ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref>&gt;(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>)),<sp/><ref refid="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" kindref="member">channel_id</ref>(0),<sp/><ref refid="structhf__pwm__channel__config__t_1a6a2e4e26bb3b33d74a96f73768195b87" kindref="member">timer_id</ref>(0),</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref>(static_cast&lt;hf_gpio_num_t&gt;(<ref refid="HardwareTypes_8h_1a3d44dce54e55270498aaf5fcf36b58b5" kindref="member">HF_INVALID_PIN</ref>)),<sp/><ref refid="structhf__pwm__channel__config__t_1ae342069b991c2d0834df2342534fb9ca" kindref="member">channel_id</ref>(0),<sp/><ref refid="structhf__pwm__channel__config__t_1a6a2e4e26bb3b33d74a96f73768195b87" kindref="member">timer_id</ref>(0),</highlight></codeline>
 <codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pwm__channel__config__t_1aa8d425a4003718321869192e7cf61845" kindref="member">speed_mode</ref>(<ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3fa" kindref="member">hf_pwm_mode_t</ref>::<ref refid="EspTypes__PWM_8h_1aa74b1b34478ef0fde22cd029366ab3faa1c0cd5d0cf074aff5336fcd076047c66" kindref="member">HF_PWM_MODE_BASIC</ref>),<sp/><ref refid="structhf__pwm__channel__config__t_1ae0d6701420e415a74e1e3c2212dc9b7b" kindref="member">frequency_hz</ref>(<ref refid="EspTypes__PWM_8h_1ae522afd7305f23439344ed06a817091c" kindref="member">HF_PWM_DEFAULT_FREQUENCY</ref>),</highlight></codeline>
 <codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pwm__channel__config__t_1af84dfd13ad00faa211f888d3f7855de9" kindref="member">resolution_bits</ref>(<ref refid="EspTypes__PWM_8h_1a92cb7b8188635483e620a8cf14826a04" kindref="member">HF_PWM_DEFAULT_RESOLUTION</ref>),</highlight></codeline>
 <codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structhf__pwm__channel__config__t_1a2dd704d7a0507d01b0464d176e264d4b" kindref="member">clock_source</ref>(<ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82" kindref="member">hf_pwm_clock_source_t</ref>::<ref refid="EspTypes__PWM_8h_1ad387f5c3904a1913133dc217dacf7a82a2fb4f97b7c1b78586a5f9f8365272822" kindref="member">HF_PWM_CLK_SRC_APB</ref>),<sp/><ref refid="structhf__pwm__channel__config__t_1ad2ddbd9698b451c8a02f9455686947e8" kindref="member">duty_initial</ref>(0),</highlight></codeline>

@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classPlatformUniqueLock" kind="class" language="C++" prot="public">
+    <compoundname>PlatformUniqueLock</compoundname>
+    <includes refid="PlatformMutex_8h" local="no">PlatformMutex.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename Mutex</type>
+      </param>
+    </templateparamlist>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classPlatformUniqueLock_1af63a258e9de4c30039dee48d3aeaac4b" prot="private" static="no" mutable="no">
+        <type>Mutex *</type>
+        <definition>Mutex* PlatformUniqueLock&lt; Mutex &gt;::mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <qualifiedname>PlatformUniqueLock::mutex_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="387" column="9" bodyfile="inc/utils/PlatformMutex.h" bodystart="387" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classPlatformUniqueLock_1a8aab9c90f6600d676f3eae0bb39939ba" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool PlatformUniqueLock&lt; Mutex &gt;::locked_</definition>
+        <argsstring></argsstring>
+        <name>locked_</name>
+        <qualifiedname>PlatformUniqueLock::locked_</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="388" column="8" bodyfile="inc/utils/PlatformMutex.h" bodystart="388" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classPlatformUniqueLock_1a11ce03744ee701363f9a39801bc7d0bb" prot="public" static="no" const="no" explicit="yes" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformUniqueLock&lt; Mutex &gt;::PlatformUniqueLock</definition>
+        <argsstring>(Mutex &amp;mutex, uint32_t timeout_ms=0) noexcept</argsstring>
+        <name>PlatformUniqueLock</name>
+        <qualifiedname>PlatformUniqueLock::PlatformUniqueLock</qualifiedname>
+        <param>
+          <type>Mutex &amp;</type>
+          <declname>mutex</declname>
+        </param>
+        <param>
+          <type>uint32_t</type>
+          <declname>timeout_ms</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="339" column="12" bodyfile="inc/utils/PlatformMutex.h" bodystart="339" bodyend="346"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformUniqueLock_1a1de056bf6d04a2b21ddab9d07af39cf3" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformUniqueLock&lt; Mutex &gt;::~PlatformUniqueLock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>~PlatformUniqueLock</name>
+        <qualifiedname>PlatformUniqueLock::~PlatformUniqueLock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="348" column="3" bodyfile="inc/utils/PlatformMutex.h" bodystart="348" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformUniqueLock_1a4ede2f8053aa987340916a4d6b59ee85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PlatformUniqueLock&lt; Mutex &gt;::PlatformUniqueLock</definition>
+        <argsstring>(const PlatformUniqueLock &amp;)=delete</argsstring>
+        <name>PlatformUniqueLock</name>
+        <qualifiedname>PlatformUniqueLock::PlatformUniqueLock</qualifiedname>
+        <param>
+          <type>const <ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="354" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformUniqueLock_1a69104e36e3a6f19cb0c0d397fcc0e1d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock</ref> &amp;</type>
+        <definition>PlatformUniqueLock &amp; PlatformUniqueLock&lt; Mutex &gt;::operator=</definition>
+        <argsstring>(const PlatformUniqueLock &amp;)=delete</argsstring>
+        <name>operator=</name>
+        <qualifiedname>PlatformUniqueLock::operator=</qualifiedname>
+        <param>
+          <type>const <ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="355" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformUniqueLock_1a1d89086e96e7ba1faa7c66f6470cd232" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlatformUniqueLock&lt; Mutex &gt;::PlatformUniqueLock</definition>
+        <argsstring>(PlatformUniqueLock &amp;&amp;other) noexcept</argsstring>
+        <name>PlatformUniqueLock</name>
+        <qualifiedname>PlatformUniqueLock::PlatformUniqueLock</qualifiedname>
+        <param>
+          <type><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="357" column="3" bodyfile="inc/utils/PlatformMutex.h" bodystart="357" bodyend="360"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformUniqueLock_1a7f8dcd217e9a1aea82ec046a5ec8d313" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock</ref> &amp;</type>
+        <definition>PlatformUniqueLock &amp; PlatformUniqueLock&lt; Mutex &gt;::operator=</definition>
+        <argsstring>(PlatformUniqueLock &amp;&amp;other) noexcept</argsstring>
+        <name>operator=</name>
+        <qualifiedname>PlatformUniqueLock::operator=</qualifiedname>
+        <param>
+          <type><ref refid="classPlatformUniqueLock" kindref="compound">PlatformUniqueLock</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="362" column="22" bodyfile="inc/utils/PlatformMutex.h" bodystart="362" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformUniqueLock_1a871d9440659f9b5c645d61f148fa2f4a" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool PlatformUniqueLock&lt; Mutex &gt;::IsLocked</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>IsLocked</name>
+        <qualifiedname>PlatformUniqueLock::IsLocked</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="375" column="9" bodyfile="inc/utils/PlatformMutex.h" bodystart="375" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="classPlatformUniqueLock_1ab2caf1f955482a39cc775a2460ce225b" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlatformUniqueLock&lt; Mutex &gt;::Unlock</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>Unlock</name>
+        <qualifiedname>PlatformUniqueLock::Unlock</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/utils/PlatformMutex.h" line="379" column="8" bodyfile="inc/utils/PlatformMutex.h" bodystart="379" bodyend="384"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="inc/utils/PlatformMutex.h" line="337" column="1" bodyfile="inc/utils/PlatformMutex.h" bodystart="337" bodyend="389"/>
+    <listofallmembers>
+      <member refid="classPlatformUniqueLock_1a871d9440659f9b5c645d61f148fa2f4a" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>IsLocked</name></member>
+      <member refid="classPlatformUniqueLock_1a8aab9c90f6600d676f3eae0bb39939ba" prot="private" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>locked_</name></member>
+      <member refid="classPlatformUniqueLock_1af63a258e9de4c30039dee48d3aeaac4b" prot="private" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>mutex_</name></member>
+      <member refid="classPlatformUniqueLock_1a69104e36e3a6f19cb0c0d397fcc0e1d3" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>operator=</name></member>
+      <member refid="classPlatformUniqueLock_1a7f8dcd217e9a1aea82ec046a5ec8d313" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>operator=</name></member>
+      <member refid="classPlatformUniqueLock_1a11ce03744ee701363f9a39801bc7d0bb" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>PlatformUniqueLock</name></member>
+      <member refid="classPlatformUniqueLock_1a4ede2f8053aa987340916a4d6b59ee85" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>PlatformUniqueLock</name></member>
+      <member refid="classPlatformUniqueLock_1a1d89086e96e7ba1faa7c66f6470cd232" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>PlatformUniqueLock</name></member>
+      <member refid="classPlatformUniqueLock_1ab2caf1f955482a39cc775a2460ce225b" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>Unlock</name></member>
+      <member refid="classPlatformUniqueLock_1a1de056bf6d04a2b21ddab9d07af39cf3" prot="public" virt="non-virtual"><scope>PlatformUniqueLock</scope><name>~PlatformUniqueLock</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

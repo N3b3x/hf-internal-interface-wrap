@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
   <compounddef id="classBaseAdc" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BaseAdc</compoundname>
-    <derivedcompoundref refid="classEspAdc" prot="public" virt="non-virtual">EspAdc</derivedcompoundref>
+    <derivedcompoundref refid="classStmAdc" prot="public" virt="non-virtual">StmAdc</derivedcompoundref>
     <includes refid="BaseAdc_8h" local="no">BaseAdc.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseAdc_1ad8935a60ec6b85a8916e2ebdfc55ecf2" prot="protected" static="no" mutable="no">
@@ -195,7 +195,7 @@
         <argsstring>() noexcept=0</argsstring>
         <name>Initialize</name>
         <qualifiedname>BaseAdc::Initialize</qualifiedname>
-        <reimplementedby refid="classEspAdc_1a3e0aba56249e205578cbe92541554b08">Initialize</reimplementedby>
+        <reimplementedby refid="classStmAdc_1a1151c9bbc4aa559ded1de1bd4208f5c8">Initialize</reimplementedby>
         <briefdescription>
 <para>Initializes the ADC peripheral (must be implemented by derived classes). </para>
         </briefdescription>
@@ -214,7 +214,7 @@
         <argsstring>() noexcept=0</argsstring>
         <name>Deinitialize</name>
         <qualifiedname>BaseAdc::Deinitialize</qualifiedname>
-        <reimplementedby refid="classEspAdc_1a3763c67c9ca0ecfd8feda1d44b22d1e0">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmAdc_1a1b96f7e2030b803b9dbd1c9d3e66ec61">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Deinitializes the ADC peripheral (must be implemented by derived classes).. </para>
         </briefdescription>
@@ -233,7 +233,7 @@
         <argsstring>() const noexcept=0</argsstring>
         <name>GetMaxChannels</name>
         <qualifiedname>BaseAdc::GetMaxChannels</qualifiedname>
-        <reimplementedby refid="classEspAdc_1ac234759d85da10db28bb2773daeec9e1">GetMaxChannels</reimplementedby>
+        <reimplementedby refid="classStmAdc_1a0eab5dfcaa6aa67e6ca5b472d7b7210b">GetMaxChannels</reimplementedby>
         <briefdescription>
 <para>Get the maximum number of channels supported by this ADC. </para>
         </briefdescription>
@@ -252,7 +252,7 @@
         <argsstring>(hf_channel_id_t channel_id) const noexcept=0</argsstring>
         <name>IsChannelAvailable</name>
         <qualifiedname>BaseAdc::IsChannelAvailable</qualifiedname>
-        <reimplementedby refid="classEspAdc_1a8d37e2e11fac48019803f6260a1b39cc">IsChannelAvailable</reimplementedby>
+        <reimplementedby refid="classStmAdc_1a59285ceb3a921fa3f4f9176192f891b1">IsChannelAvailable</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -284,7 +284,7 @@
         <argsstring>(hf_channel_id_t channel_id, float &amp;channel_reading_v, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept=0</argsstring>
         <name>ReadChannelV</name>
         <qualifiedname>BaseAdc::ReadChannelV</qualifiedname>
-        <reimplementedby refid="classEspAdc_1a41dd2c15efe312397d72b9e803741318">ReadChannelV</reimplementedby>
+        <reimplementedby refid="classStmAdc_1a286ffea7c4ef9dfb1545c3d46b44a941">ReadChannelV</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -354,7 +354,7 @@
         <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;channel_reading_count, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept=0</argsstring>
         <name>ReadChannelCount</name>
         <qualifiedname>BaseAdc::ReadChannelCount</qualifiedname>
-        <reimplementedby refid="classEspAdc_1aee902d7623f92e1a64b6708b41c63b3b">ReadChannelCount</reimplementedby>
+        <reimplementedby refid="classStmAdc_1a521d82bd23bd0e474acbf0fa7552ea84">ReadChannelCount</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -424,7 +424,7 @@
         <argsstring>(hf_channel_id_t channel_id, hf_u32_t &amp;channel_reading_count, float &amp;channel_reading_v, hf_u8_t numOfSamplesToAvg=1, hf_time_t timeBetweenSamples=0) noexcept=0</argsstring>
         <name>ReadChannel</name>
         <qualifiedname>BaseAdc::ReadChannel</qualifiedname>
-        <reimplementedby refid="classEspAdc_1a4a1844e4b8add43b1f83c1bd59c430f8">ReadChannel</reimplementedby>
+        <reimplementedby refid="classStmAdc_1ad29fe9f5de756d6ea75cf7f0f4898a03">ReadChannel</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref></type>
           <declname>channel_id</declname>
@@ -506,7 +506,6 @@
         <argsstring>(const hf_channel_id_t *channel_ids, hf_u8_t num_channels, hf_u32_t *readings, float *voltages) noexcept</argsstring>
         <name>ReadMultipleChannels</name>
         <qualifiedname>BaseAdc::ReadMultipleChannels</qualifiedname>
-        <reimplementedby refid="classEspAdc_1ae78a280905f09634070c9ce624002cb7">ReadMultipleChannels</reimplementedby>
         <param>
           <type>const <ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref> *</type>
           <declname>channel_ids</declname>
@@ -576,7 +575,6 @@
         <argsstring>() noexcept</argsstring>
         <name>ResetStatistics</name>
         <qualifiedname>BaseAdc::ResetStatistics</qualifiedname>
-        <reimplementedby refid="classEspAdc_1addd7719b17eb884fa6f81dc9174b1b91">ResetStatistics</reimplementedby>
         <briefdescription>
 <para>Reset ADC operation statistics. </para>
         </briefdescription>
@@ -617,7 +615,6 @@
         <argsstring>(hf_adc_statistics_t &amp;statistics) noexcept</argsstring>
         <name>GetStatistics</name>
         <qualifiedname>BaseAdc::GetStatistics</qualifiedname>
-        <reimplementedby refid="classEspAdc_1a6dbc06099ca66dc4c577c4a844b0f1cd">GetStatistics</reimplementedby>
         <param>
           <type><ref refid="structhf__adc__statistics__t" kindref="compound">hf_adc_statistics_t</ref> &amp;</type>
           <declname>statistics</declname>
@@ -651,7 +648,6 @@
         <argsstring>(hf_adc_diagnostics_t &amp;diagnostics) noexcept</argsstring>
         <name>GetDiagnostics</name>
         <qualifiedname>BaseAdc::GetDiagnostics</qualifiedname>
-        <reimplementedby refid="classEspAdc_1ac65647338df854681584bc1efc6bb88d">GetDiagnostics</reimplementedby>
         <param>
           <type><ref refid="structhf__adc__diagnostics__t" kindref="compound">hf_adc_diagnostics_t</ref> &amp;</type>
           <declname>diagnostics</declname>
@@ -709,8 +705,8 @@
         <link refid="classBaseAdc"/>
       </node>
       <node id="2">
-        <label>EspAdc</label>
-        <link refid="classEspAdc"/>
+        <label>StmAdc</label>
+        <link refid="classStmAdc"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

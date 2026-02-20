@@ -127,7 +127,7 @@ Functions</h2></td></tr>
 <tr class="separator:a652981c9924b5e6815562eb6c51b49a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae452a44327db8bd5f03be13aba7c60b5" id="r_ae452a44327db8bd5f03be13aba7c60b5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae452a44327db8bd5f03be13aba7c60b5">TestErrorCallback</a> (<a class="el" href="HardwareTypes_8h.html#a3aa2692c73b4cca0adc7139bd18ff613">hf_u8_t</a> channel_id, <a class="el" href="BasePio_8h.html#ade576ec4d2f6bb2cc4e011ee31e1d48e">hf_pio_err_t</a> error, void *user_data)</td></tr>
 <tr class="separator:ae452a44327db8bd5f03be13aba7c60b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74b31ce83fc3b97d0ee05948979c169d" id="r_a74b31ce83fc3b97d0ee05948979c169d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__pio__channel__config__t.html">hf_pio_channel_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74b31ce83fc3b97d0ee05948979c169d">create_test_channel_config</a> (<a class="el" href="EspTypes__GPIO_8h.html#a7c9e2e1aa654eb2d62d13b1c9129eadc">hf_gpio_num_t</a> gpio_pin, <a class="el" href="BasePio_8h.html#a4f686da1410313a12d85e6ae3d7af655">hf_pio_direction_t</a> direction=<a class="el" href="BasePio_8h.html#a4f686da1410313a12d85e6ae3d7af655a6c2958de5e2295b8cb67bac908244879">hf_pio_direction_t::Transmit</a>) noexcept</td></tr>
+<tr class="memitem:a74b31ce83fc3b97d0ee05948979c169d" id="r_a74b31ce83fc3b97d0ee05948979c169d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__pio__channel__config__t.html">hf_pio_channel_config_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a74b31ce83fc3b97d0ee05948979c169d">create_test_channel_config</a> (hf_gpio_num_t gpio_pin, <a class="el" href="BasePio_8h.html#a4f686da1410313a12d85e6ae3d7af655">hf_pio_direction_t</a> direction=<a class="el" href="BasePio_8h.html#a4f686da1410313a12d85e6ae3d7af655a6c2958de5e2295b8cb67bac908244879">hf_pio_direction_t::Transmit</a>) noexcept</td></tr>
 <tr class="memdesc:a74b31ce83fc3b97d0ee05948979c169d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a default PIO channel configuration for testing using resolution_ns ESP32-C6 specific configuration for RMT compatibility with latest improvements.  <br /></td></tr>
 <tr class="separator:a74b31ce83fc3b97d0ee05948979c169d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9241ad808f313742527785d8e8c634e7" id="r_a9241ad808f313742527785d8e8c634e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9241ad808f313742527785d8e8c634e7">create_ws2812_rgb_symbols</a> (uint8_t r, uint8_t g, uint8_t b, <a class="el" href="structhf__pio__symbol__t.html">hf_pio_symbol_t</a> *symbols, uint32_t resolution_ns) noexcept</td></tr>
@@ -241,9 +241,9 @@ Variables</h2></td></tr>
 <tr class="separator:a06c7ca5e8ebce4c41102a215e5939b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd9d2ba60a745d0fc53bc62087ab8fea" id="r_abd9d2ba60a745d0fc53bc62087ab8fea"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abd9d2ba60a745d0fc53bc62087ab8fea">WS2812_RESET</a> = 50000</td></tr>
 <tr class="separator:abd9d2ba60a745d0fc53bc62087ab8fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa6446c074eec3e267d069cd66fc65d1" id="r_aaa6446c074eec3e267d069cd66fc65d1"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="EspTypes__GPIO_8h.html#a7c9e2e1aa654eb2d62d13b1c9129eadc">hf_gpio_num_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa6446c074eec3e267d069cd66fc65d1">TEST_GPIO_TX</a> = 8</td></tr>
+<tr class="memitem:aaa6446c074eec3e267d069cd66fc65d1" id="r_aaa6446c074eec3e267d069cd66fc65d1"><td class="memItemLeft" align="right" valign="top">static constexpr hf_gpio_num_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa6446c074eec3e267d069cd66fc65d1">TEST_GPIO_TX</a> = 8</td></tr>
 <tr class="separator:aaa6446c074eec3e267d069cd66fc65d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad996d5c44b94fcdf8ea6cf7862c7cdad" id="r_ad996d5c44b94fcdf8ea6cf7862c7cdad"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="EspTypes__GPIO_8h.html#a7c9e2e1aa654eb2d62d13b1c9129eadc">hf_gpio_num_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad996d5c44b94fcdf8ea6cf7862c7cdad">TEST_GPIO_RX</a> = 18</td></tr>
+<tr class="memitem:ad996d5c44b94fcdf8ea6cf7862c7cdad" id="r_ad996d5c44b94fcdf8ea6cf7862c7cdad"><td class="memItemLeft" align="right" valign="top">static constexpr hf_gpio_num_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad996d5c44b94fcdf8ea6cf7862c7cdad">TEST_GPIO_RX</a> = 18</td></tr>
 <tr class="separator:ad996d5c44b94fcdf8ea6cf7862c7cdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a120afc7ff898b6825fc473c831b0fcb8" id="r_a120afc7ff898b6825fc473c831b0fcb8"><td class="memItemLeft" align="right" valign="top">static constexpr uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a120afc7ff898b6825fc473c831b0fcb8">TEST_RESOLUTION_WS2812_NS</a> = 125</td></tr>
 <tr class="separator:a120afc7ff898b6825fc473c831b0fcb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -348,7 +348,7 @@ Incorporates latest PIO improvements: channel-specific callbacks, resolution_hz,
         <tr>
           <td class="memname"><a class="el" href="structhf__pio__channel__config__t.html">hf_pio_channel_config_t</a> create_test_channel_config </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="EspTypes__GPIO_8h.html#a7c9e2e1aa654eb2d62d13b1c9129eadc">hf_gpio_num_t</a></td>          <td class="paramname"><span class="paramname"><em>gpio_pin</em>, </span></td>
+          <td class="paramtype">hf_gpio_num_t</td>          <td class="paramname"><span class="paramname"><em>gpio_pin</em>, </span></td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -1621,7 +1621,7 @@ Incorporates latest PIO improvements: channel-specific callbacks, resolution_hz,
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="EspTypes__GPIO_8h.html#a7c9e2e1aa654eb2d62d13b1c9129eadc">hf_gpio_num_t</a> TEST_GPIO_RX = 18</td>
+          <td class="memname">constexpr hf_gpio_num_t TEST_GPIO_RX = 18</td>
         </tr>
       </table>
   </td>
@@ -1643,7 +1643,7 @@ Incorporates latest PIO improvements: channel-specific callbacks, resolution_hz,
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">constexpr <a class="el" href="EspTypes__GPIO_8h.html#a7c9e2e1aa654eb2d62d13b1c9129eadc">hf_gpio_num_t</a> TEST_GPIO_TX = 8</td>
+          <td class="memname">constexpr hf_gpio_num_t TEST_GPIO_TX = 8</td>
         </tr>
       </table>
   </td>

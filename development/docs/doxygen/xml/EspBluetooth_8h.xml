@@ -6,7 +6,7 @@
     <includes refid="HardwareTypes_8h" local="yes">HardwareTypes.h</includes>
     <includes local="yes">esp_log.h</includes>
     <includes local="yes">nvs_flash.h</includes>
-    <includes refid="RtosMutex_8h" local="yes">RtosMutex.h</includes>
+    <includes refid="PlatformMutex_8h" local="yes">PlatformMutex.h</includes>
     <includes local="no">functional</includes>
     <includes local="no">map</includes>
     <includes local="no">vector</includes>
@@ -54,7 +54,7 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -64,22 +64,16 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="13">
-        <label>RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="18">
+      <node id="15">
         <label>atomic</label>
       </node>
       <node id="6">
@@ -91,22 +85,13 @@
       <node id="11">
         <label>esp_log.h</label>
       </node>
-      <node id="15">
-        <label>freertos/FreeRTOS.h</label>
-      </node>
-      <node id="16">
-        <label>freertos/semphr.h</label>
-      </node>
-      <node id="17">
-        <label>freertos/task.h</label>
-      </node>
       <node id="7">
         <label>functional</label>
       </node>
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="19">
+      <node id="16">
         <label>map</label>
       </node>
       <node id="12">
@@ -421,7 +406,7 @@
 <codeline lineno="157"><highlight class="normal"></highlight></codeline>
 <codeline lineno="158"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>HAS_BLE_SUPPORT</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="RtosMutex_8h" kindref="compound">RtosMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="PlatformMutex_8h" kindref="compound">PlatformMutex.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
@@ -442,8 +427,8 @@
 <codeline lineno="189" refid="classEspBluetooth_1a7943a74af6826e0dde0a0a7c40214697" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structhf__bluetooth__ble__config__t" kindref="compound">hf_bluetooth_ble_config_t</ref><sp/><ref refid="classEspBluetooth_1a7943a74af6826e0dde0a0a7c40214697" kindref="member">m_ble_config</ref>;</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight></codeline>
 <codeline lineno="191"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Synchronization</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="192" refid="classEspBluetooth_1af0a5dbcfb9a7b51387cc22a655f4475b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspBluetooth_1af0a5dbcfb9a7b51387cc22a655f4475b" kindref="member">m_device_mutex</ref>;</highlight></codeline>
-<codeline lineno="193" refid="classEspBluetooth_1a381b0e07f4f75410be9d9affa18b40be" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref><sp/><ref refid="classEspBluetooth_1a381b0e07f4f75410be9d9affa18b40be" kindref="member">m_state_mutex</ref>;</highlight></codeline>
+<codeline lineno="192" refid="classEspBluetooth_1adb8956d2c364a44f81356624b016b136" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspBluetooth_1adb8956d2c364a44f81356624b016b136" kindref="member">m_device_mutex</ref>;</highlight></codeline>
+<codeline lineno="193" refid="classEspBluetooth_1a79785c1f5dcc09583bbcf50df257df1a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref><sp/><ref refid="classEspBluetooth_1a79785c1f5dcc09583bbcf50df257df1a" kindref="member">m_state_mutex</ref>;</highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Callback<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="196" refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__bluetooth_1gaeb49a17c65e01fa9236e9ab0b4994f77" kindref="member">hf_bluetooth_event_callback_t</ref><sp/><ref refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" kindref="member">m_event_callback</ref>;</highlight></codeline>

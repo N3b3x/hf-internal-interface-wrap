@@ -93,8 +93,6 @@ $(function(){initNavTree('EspLogger_8h.html',''); initResizable(); });
 </div>
 
 <div class="header">
-  <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle"><div class="title">EspLogger.h File Reference<div class="ingroups"><a class="el" href="group__logger.html">Logger Module</a></div></div></div>
 </div><!--header-->
 <div class="contents">
@@ -102,16 +100,12 @@ $(function(){initNavTree('EspLogger_8h.html',''); initResizable(); });
 <p>ESP32-specific logger implementation for the HardFOC system.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="BaseLogger_8h_source.html">BaseLogger.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="RtosMutex_8h_source.html">utils/RtosMutex.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="PlatformMutex_8h_source.html">utils/PlatformMutex.h</a>&quot;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
 <code>#include &lt;cstring&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
-<code>#include &quot;esp_log.h&quot;</code><br />
-<code>#include &quot;esp_timer.h&quot;</code><br />
-<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
-<code>#include &quot;freertos/task.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for EspLogger.h:</div>
 <div class="dyncontent">
@@ -124,13 +118,6 @@ This graph shows which files directly or indirectly include this file:</div>
 </div>
 </div>
 <p><a href="EspLogger_8h_source.html">Go to the source code of this file.</a></p>
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEspLogger.html">EspLogger</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32 logger implementation using ESP-IDF logging system (Log V1/V2).  <a href="classEspLogger.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ESP32-specific logger implementation for the HardFOC system. </p>
 <p>This file provides the ESP32 implementation of the <a class="el" href="classBaseLogger.html" title="Base logger abstract class.">BaseLogger</a> interface, utilizing ESP-IDF's esp_log system (both Log V1 and Log V2) for efficient and feature-rich logging. It supports all ESP32 variants (C6, Classic, S2, S3, C3, C2, H2) and provides comprehensive logging capabilities with performance monitoring.</p>

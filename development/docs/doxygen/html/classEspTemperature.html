@@ -346,9 +346,9 @@ Static Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a5e2e469501c63d5e4c6f2bf5476effd5" id="r_a5e2e469501c63d5e4c6f2bf5476effd5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRtosMutex.html">RtosMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e2e469501c63d5e4c6f2bf5476effd5">mutex_</a></td></tr>
-<tr class="memdesc:a5e2e469501c63d5e4c6f2bf5476effd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread safety mutex (RTOS-aware)  <br /></td></tr>
-<tr class="separator:a5e2e469501c63d5e4c6f2bf5476effd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ffead68c2dd6cf1d96c59927c625545" id="r_a6ffead68c2dd6cf1d96c59927c625545"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPlatformMutex.html">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ffead68c2dd6cf1d96c59927c625545">mutex_</a></td></tr>
+<tr class="memdesc:a6ffead68c2dd6cf1d96c59927c625545"><td class="mdescLeft">&#160;</td><td class="mdescRight">Thread safety mutex (RTOS-aware)  <br /></td></tr>
+<tr class="separator:a6ffead68c2dd6cf1d96c59927c625545"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae8aab5a3d2118ef3061ec62c63fc0103" id="r_ae8aab5a3d2118ef3061ec62c63fc0103"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structesp__temp__state__t.html">esp_temp_state_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae8aab5a3d2118ef3061ec62c63fc0103">esp_state_</a></td></tr>
 <tr class="memdesc:ae8aab5a3d2118ef3061ec62c63fc0103"><td class="mdescLeft">&#160;</td><td class="mdescRight">ESP32-specific state.  <br /></td></tr>
 <tr class="separator:ae8aab5a3d2118ef3061ec62c63fc0103"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -394,9 +394,9 @@ Static Private Attributes</h2></td></tr>
 <tr class="memitem:aa829f22f1d02247e2da26709702812ae" id="r_aa829f22f1d02247e2da26709702812ae"><td class="memItemLeft" align="right" valign="top">static const <a class="el" href="structesp__temp__range__info__t.html">esp_temp_range_info_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa829f22f1d02247e2da26709702812ae">RANGE_INFO</a> []</td></tr>
 <tr class="memdesc:aa829f22f1d02247e2da26709702812ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Range information table.  <br /></td></tr>
 <tr class="separator:aa829f22f1d02247e2da26709702812ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a627914394ff10df930d340e4beecbb96" id="r_a627914394ff10df930d340e4beecbb96"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classRtosMutex.html">RtosMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a627914394ff10df930d340e4beecbb96">s_shared_mutex_</a></td></tr>
-<tr class="memdesc:a627914394ff10df930d340e4beecbb96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protect shared handle/refcount.  <br /></td></tr>
-<tr class="separator:a627914394ff10df930d340e4beecbb96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50349f2a25b47c680ad6544677e3f693" id="r_a50349f2a25b47c680ad6544677e3f693"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classPlatformMutex.html">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a50349f2a25b47c680ad6544677e3f693">s_shared_mutex_</a></td></tr>
+<tr class="memdesc:a50349f2a25b47c680ad6544677e3f693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Protect shared handle/refcount.  <br /></td></tr>
+<tr class="separator:a50349f2a25b47c680ad6544677e3f693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef85506e203917c06e7d951370f983ad" id="r_aef85506e203917c06e7d951370f983ad"><td class="memItemLeft" align="right" valign="top">static std::atomic&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef85506e203917c06e7d951370f983ad">s_refcount_</a> {0}</td></tr>
 <tr class="memdesc:aef85506e203917c06e7d951370f983ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of active instances.  <br /></td></tr>
 <tr class="separator:aef85506e203917c06e7d951370f983ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2444,8 +2444,8 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 
 </div>
 </div>
-<a id="a5e2e469501c63d5e4c6f2bf5476effd5" name="a5e2e469501c63d5e4c6f2bf5476effd5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e2e469501c63d5e4c6f2bf5476effd5">&#9670;&#160;</a></span>mutex_</h2>
+<a id="a6ffead68c2dd6cf1d96c59927c625545" name="a6ffead68c2dd6cf1d96c59927c625545"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ffead68c2dd6cf1d96c59927c625545">&#9670;&#160;</a></span>mutex_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2454,7 +2454,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classRtosMutex.html">RtosMutex</a> EspTemperature::mutex_</td>
+          <td class="memname"><a class="el" href="classPlatformMutex.html">PlatformMutex</a> EspTemperature::mutex_</td>
         </tr>
       </table>
   </td>
@@ -2553,8 +2553,8 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
 
 </div>
 </div>
-<a id="a627914394ff10df930d340e4beecbb96" name="a627914394ff10df930d340e4beecbb96"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a627914394ff10df930d340e4beecbb96">&#9670;&#160;</a></span>s_shared_mutex_</h2>
+<a id="a50349f2a25b47c680ad6544677e3f693" name="a50349f2a25b47c680ad6544677e3f693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50349f2a25b47c680ad6544677e3f693">&#9670;&#160;</a></span>s_shared_mutex_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2563,7 +2563,7 @@ Different measurement ranges offer different accuracy levels (±1°C to ±3°C) 
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classRtosMutex.html">RtosMutex</a> EspTemperature::s_shared_mutex_</td>
+          <td class="memname"><a class="el" href="classPlatformMutex.html">PlatformMutex</a> EspTemperature::s_shared_mutex_</td>
         </tr>
       </table>
   </td>

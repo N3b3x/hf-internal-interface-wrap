@@ -1,5 +1,7 @@
 <map id="BaseI2c" name="BaseI2c">
-<area shape="rect" id="Node000001" title="Abstract base class for I2C device implementations." alt="" coords="28,5,115,36"/>
+<area shape="rect" id="Node000001" title="Abstract base class for I2C device implementations." alt="" coords="107,5,193,36"/>
 <area shape="rect" id="Node000002" href="$classEspI2cDevice.html" title="Represents a single I2C device on a bus." alt="" coords="5,84,137,115"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="74,50,74,84,69,84,69,50"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,48,88,86,84,82,124,44"/>
+<area shape="rect" id="Node000003" href="$classStmI2cDevice.html" title="STM32 I2C device — stub implementation." alt="" coords="161,84,296,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="176,44,216,82,212,86,173,48"/>
 </map>

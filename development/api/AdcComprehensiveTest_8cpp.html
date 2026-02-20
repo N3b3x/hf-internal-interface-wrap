@@ -157,10 +157,10 @@ Functions</h2></td></tr>
 <tr class="memitem:aae4cbe1277fd36a165e3609ca2f3ac9a" id="r_aae4cbe1277fd36a165e3609ca2f3ac9a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae4cbe1277fd36a165e3609ca2f3ac9a">test_adc_performance</a> () noexcept</td></tr>
 <tr class="memdesc:aae4cbe1277fd36a165e3609ca2f3ac9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test ADC performance characteristics.  <br /></td></tr>
 <tr class="separator:aae4cbe1277fd36a165e3609ca2f3ac9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3fa94760986ec6cdafef563d0abbaa1" id="r_af3fa94760986ec6cdafef563d0abbaa1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3fa94760986ec6cdafef563d0abbaa1">initialize_test_adc</a> (<a class="el" href="classEspAdc.html">EspAdc</a> &amp;adc) noexcept</td></tr>
+<tr class="memitem:af3fa94760986ec6cdafef563d0abbaa1" id="r_af3fa94760986ec6cdafef563d0abbaa1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af3fa94760986ec6cdafef563d0abbaa1">initialize_test_adc</a> (EspAdc &amp;adc) noexcept</td></tr>
 <tr class="memdesc:af3fa94760986ec6cdafef563d0abbaa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize ADC for testing with proper configuration.  <br /></td></tr>
 <tr class="separator:af3fa94760986ec6cdafef563d0abbaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae238e4640b84a01479123d4ce85d627d" id="r_ae238e4640b84a01479123d4ce85d627d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae238e4640b84a01479123d4ce85d627d">configure_test_channels</a> (<a class="el" href="classEspAdc.html">EspAdc</a> &amp;adc) noexcept</td></tr>
+<tr class="memitem:ae238e4640b84a01479123d4ce85d627d" id="r_ae238e4640b84a01479123d4ce85d627d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae238e4640b84a01479123d4ce85d627d">configure_test_channels</a> (EspAdc &amp;adc) noexcept</td></tr>
 <tr class="memdesc:ae238e4640b84a01479123d4ce85d627d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure test channels with appropriate settings.  <br /></td></tr>
 <tr class="separator:ae238e4640b84a01479123d4ce85d627d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49d26ef3a8d18b2b47c3aa81bc20c49e" id="r_a49d26ef3a8d18b2b47c3aa81bc20c49e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a49d26ef3a8d18b2b47c3aa81bc20c49e">validate_voltage_reading</a> (uint32_t voltage_mv, const char *channel_name) noexcept</td></tr>
@@ -251,7 +251,7 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Comprehensive ADC testing suite for ESP32-C6 DevKit-M-1 (noexcept) </p>
-<p>This file contains a dedicated, comprehensive test suite for the <a class="el" href="classEspAdc.html" title="ESP32 ADC implementation class.">EspAdc</a> class targeting ESP32-C6 with ESP-IDF v5.5+. It provides thorough testing of all ADC functionalities including basic operations, calibration, continuous conversion, and hardware-specific capabilities.</p>
+<p>This file contains a dedicated, comprehensive test suite for the EspAdc class targeting ESP32-C6 with ESP-IDF v5.5+. It provides thorough testing of all ADC functionalities including basic operations, calibration, continuous conversion, and hardware-specific capabilities.</p>
 <p>Hardware Configuration (ESP32-C6 DevKit-M-1):</p><ul>
 <li>GPIO3 (ADC1_CH3) - Connect to 3.3V via voltage divider (should read ~1.65V)</li>
 <li>GPIO0 (ADC1_CH0) - Connect to potentiometer center tap (0-3.3V variable for monitor testing)</li>
@@ -294,7 +294,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">bool configure_test_channels </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classEspAdc.html">EspAdc</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
+          <td class="paramtype">EspAdc &amp;</td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -352,7 +352,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">bool initialize_test_adc </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classEspAdc.html">EspAdc</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
+          <td class="paramtype">EspAdc &amp;</td>          <td class="paramname"><span class="paramname"><em>adc</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>

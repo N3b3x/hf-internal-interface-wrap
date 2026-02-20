@@ -46,7 +46,7 @@
   </g>
 </defs>
 <script type="application/ecmascript">
-var viewWidth = 502;
+var viewWidth = 756;
 var viewHeight = 164;
 var sectionId = 'dynsection-1';
 </script>
@@ -58,8 +58,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000001" class="node">
 <title>Node1</title>
 <g id="a_Node000001"><a xlink:title="Abstract base class for temperature sensor implementations in the HardFOC system.">
-<polygon fill="#999999" stroke="#666666" points="284.5,-156 95.5,-156 95.5,-133 284.5,-133 284.5,-156"/>
-<text text-anchor="middle" x="190" y="-140.8" font-family="Arial" font-size="14.00">inc/base/BaseTemperature.h</text>
+<polygon fill="#999999" stroke="#666666" points="441.5,-156 252.5,-156 252.5,-133 441.5,-133 441.5,-156"/>
+<text text-anchor="middle" x="347" y="-140.8" font-family="Arial" font-size="14.00">inc/base/BaseTemperature.h</text>
 </a>
 </g>
 </g>
@@ -77,8 +77,8 @@ var sectionId = 'dynsection-1';
 <g id="edge1_Node000001_Node000002" class="edge">
 <title>Node1&#45;&gt;Node2</title>
 <g id="a_edge1_Node000001_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M167.11,-126.52C157.77,-118.51 147.64,-108.25 141,-97 130.2,-78.68 125.15,-54.54 122.85,-38.21"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="165.03,-129.34 175,-132.94 169.45,-123.91 165.03,-129.34"/>
+<path fill="none" stroke="#63b8ff" d="M303.88,-129.61C280.75,-121.43 252.13,-110.12 228,-97 196.64,-79.94 163.76,-55.08 142.87,-38.26"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="302.83,-132.95 313.43,-132.91 305.12,-126.33 302.83,-132.95"/>
 </a>
 </g>
 </g>
@@ -86,8 +86,8 @@ var sectionId = 'dynsection-1';
 <g id="Node000003" class="node">
 <title>Node3</title>
 <g id="a_Node000003"><a xlink:href="EspTemperature_8h.html" target="_top" xlink:title="ESP32&#45;C6 internal temperature sensor implementation for the HardFOC system.">
-<polygon fill="white" stroke="#666666" points="368.5,-97 149.5,-97 149.5,-74 368.5,-74 368.5,-97"/>
-<text text-anchor="middle" x="259" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspTemperature.h</text>
+<polygon fill="white" stroke="#666666" points="456.5,-97 237.5,-97 237.5,-74 456.5,-74 456.5,-97"/>
+<text text-anchor="middle" x="347" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/esp32/EspTemperature.h</text>
 </a>
 </g>
 </g>
@@ -95,8 +95,26 @@ var sectionId = 'dynsection-1';
 <g id="edge2_Node000001_Node000003" class="edge">
 <title>Node1&#45;&gt;Node3</title>
 <g id="a_edge2_Node000001_Node000003"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M210.81,-126.31C222.29,-116.83 236.17,-105.36 246.08,-97.17"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="208.46,-123.71 202.98,-132.78 212.92,-129.11 208.46,-123.71"/>
+<path fill="none" stroke="#63b8ff" d="M347,-122.63C347,-113.99 347,-104.33 347,-97.17"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="343.5,-122.78 347,-132.78 350.5,-122.78 343.5,-122.78"/>
+</a>
+</g>
+</g>
+<!-- Node5 -->
+<g id="Node000005" class="node">
+<title>Node5</title>
+<g id="a_Node000005"><a xlink:href="StmTemperature_8h.html" target="_top" xlink:title="STM32 Temperature sensor stub — placeholder for internal temp sensor integration.">
+<polygon fill="white" stroke="#666666" points="717.5,-97 496.5,-97 496.5,-74 717.5,-74 717.5,-97"/>
+<text text-anchor="middle" x="607" y="-81.8" font-family="Arial" font-size="14.00">inc/mcu/stm32/StmTemperature.h</text>
+</a>
+</g>
+</g>
+<!-- Node1&#45;&gt;Node5 -->
+<g id="edge5_Node000001_Node000005" class="edge">
+<title>Node1&#45;&gt;Node5</title>
+<g id="a_edge5_Node000001_Node000005"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M404.88,-130.81C451.18,-120.66 515.33,-106.6 558.85,-97.06"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="404.01,-127.42 394.99,-132.98 405.51,-134.26 404.01,-127.42"/>
 </a>
 </g>
 </g>
@@ -104,8 +122,8 @@ var sectionId = 'dynsection-1';
 <g id="edge3_Node000003_Node000002" class="edge">
 <title>Node3&#45;&gt;Node2</title>
 <g id="a_edge3_Node000003_Node000002"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M227.45,-69.76C207.31,-60.34 181.05,-48.07 159.66,-38.07"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="225.98,-72.93 236.52,-73.99 228.94,-66.59 225.98,-72.93"/>
+<path fill="none" stroke="#63b8ff" d="M300.19,-71.14C266.65,-61.57 221.09,-48.57 184.31,-38.07"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="299.61,-74.61 310.19,-73.99 301.53,-67.88 299.61,-74.61"/>
 </a>
 </g>
 </g>
@@ -122,8 +140,26 @@ var sectionId = 'dynsection-1';
 <g id="edge4_Node000003_Node000004" class="edge">
 <title>Node3&#45;&gt;Node4</title>
 <g id="a_edge4_Node000003_Node000004"><a xlink:title=" ">
-<path fill="none" stroke="#63b8ff" d="M287.04,-69.17C308.87,-57.24 338.59,-41 357.79,-30.5"/>
-<polygon fill="#63b8ff" stroke="#63b8ff" points="285.32,-66.13 278.22,-73.99 288.67,-72.27 285.32,-66.13"/>
+<path fill="none" stroke="#63b8ff" d="M356.31,-64.49C361.46,-53.4 367.68,-40.05 371.94,-30.88"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="353,-63.31 351.95,-73.85 359.34,-66.26 353,-63.31"/>
+</a>
+</g>
+</g>
+<!-- Node6 -->
+<g id="Node000006" class="node">
+<title>Node6</title>
+<g id="a_Node000006"><a xlink:href="StmTemperature_8cpp.html" target="_top" xlink:title="STM32 Temperature sensor stub implementation.">
+<polygon fill="white" stroke="#666666" points="748,-30.5 512,-30.5 512,-7.5 748,-7.5 748,-30.5"/>
+<text text-anchor="middle" x="630" y="-15.3" font-family="Arial" font-size="14.00">src/mcu/stm32/StmTemperature.cpp</text>
+</a>
+</g>
+</g>
+<!-- Node5&#45;&gt;Node6 -->
+<g id="edge6_Node000005_Node000006" class="edge">
+<title>Node5&#45;&gt;Node6</title>
+<g id="a_edge6_Node000005_Node000006"><a xlink:title=" ">
+<path fill="none" stroke="#63b8ff" d="M614.26,-64.15C618.19,-53.13 622.88,-39.95 626.12,-30.88"/>
+<polygon fill="#63b8ff" stroke="#63b8ff" points="610.86,-63.25 610.8,-73.85 617.45,-65.61 610.86,-63.25"/>
 </a>
 </g>
 </g>

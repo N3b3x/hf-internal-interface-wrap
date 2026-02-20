@@ -3,6 +3,7 @@
   <compounddef id="classBaseGpio" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BaseGpio</compoundname>
     <derivedcompoundref refid="classEspGpio" prot="public" virt="non-virtual">EspGpio</derivedcompoundref>
+    <derivedcompoundref refid="classStmGpio" prot="public" virt="non-virtual">StmGpio</derivedcompoundref>
     <includes refid="BaseGpio_8h" local="no">BaseGpio.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseGpio_1ae1bd179f793ec92b56b56bf6ea386546" prot="protected" static="no" mutable="no">
@@ -722,6 +723,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <name>IsPinAvailable</name>
         <qualifiedname>BaseGpio::IsPinAvailable</qualifiedname>
         <reimplementedby refid="classEspGpio_1a5805fe2d581a4ce5cd42edf1b64b2fb9">IsPinAvailable</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a08972988dbdb87d8449efbcbe544e95b">IsPinAvailable</reimplementedby>
         <briefdescription>
 <para>Check if the pin is available for GPIO operations. </para>
         </briefdescription>
@@ -741,6 +743,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <name>GetMaxPins</name>
         <qualifiedname>BaseGpio::GetMaxPins</qualifiedname>
         <reimplementedby refid="classEspGpio_1a89914a1ecc1201e97df0bae0c13ad556">GetMaxPins</reimplementedby>
+        <reimplementedby refid="classStmGpio_1ab4019f83455349f50b1a65280c0b282b">GetMaxPins</reimplementedby>
         <briefdescription>
 <para>Get the maximum number of pins supported by this GPIO instance. </para>
         </briefdescription>
@@ -760,6 +763,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <name>GetDescription</name>
         <qualifiedname>BaseGpio::GetDescription</qualifiedname>
         <reimplementedby refid="classEspGpio_1aee5346c09c9d81992935c5fd37455ea8">GetDescription</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a7c8c088887133a57c4c68884fe310e4b">GetDescription</reimplementedby>
         <briefdescription>
 <para>Get human-readable description of this GPIO instance. </para>
         </briefdescription>
@@ -1082,6 +1086,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <name>Initialize</name>
         <qualifiedname>BaseGpio::Initialize</qualifiedname>
         <reimplementedby refid="classEspGpio_1a49e15d19126b54ba23a5c7e928dc0bb3">Initialize</reimplementedby>
+        <reimplementedby refid="classStmGpio_1ad108587cd354d234cdd7267876da4be8">Initialize</reimplementedby>
         <briefdescription>
 <para>Initialize the GPIO pin with current configuration. </para>
         </briefdescription>
@@ -1122,6 +1127,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <name>SetDirectionImpl</name>
         <qualifiedname>BaseGpio::SetDirectionImpl</qualifiedname>
         <reimplementedby refid="classEspGpio_1a8b189d48e93417185a9b7fe7afd3306c">SetDirectionImpl</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a5f5f6048eb62227c1bf0948a10e3d57d">SetDirectionImpl</reimplementedby>
         <param>
           <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref></type>
           <declname>direction</declname>
@@ -1154,6 +1160,7 @@ Verifies that all hardware registers match the expected cached values. Useful fo
         <name>GetDirectionImpl</name>
         <qualifiedname>BaseGpio::GetDirectionImpl</qualifiedname>
         <reimplementedby refid="classEspGpio_1a36373bacde83b2c40b8a9d9ee1240795">GetDirectionImpl</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a351efa2429353dfbe32e0b4df7cfb311">GetDirectionImpl</reimplementedby>
         <param>
           <type><ref refid="group__gpio_1ga6b3450e1c9d6cba3355cc3567bb0cce3" kindref="member">hf_gpio_direction_t</ref> &amp;</type>
           <declname>direction</declname>
@@ -1188,6 +1195,7 @@ Reads the actual direction configuration from hardware registers. Useful for fau
         <name>SetOutputModeImpl</name>
         <qualifiedname>BaseGpio::SetOutputModeImpl</qualifiedname>
         <reimplementedby refid="classEspGpio_1a9661ef14697ca21f3a580add2f3a4623">SetOutputModeImpl</reimplementedby>
+        <reimplementedby refid="classStmGpio_1aff454893b825f08f0e99e015698ba489">SetOutputModeImpl</reimplementedby>
         <param>
           <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref></type>
           <declname>mode</declname>
@@ -1220,6 +1228,7 @@ Reads the actual direction configuration from hardware registers. Useful for fau
         <name>GetOutputModeImpl</name>
         <qualifiedname>BaseGpio::GetOutputModeImpl</qualifiedname>
         <reimplementedby refid="classEspGpio_1a662b4f3168a5566025c1984b7e903914">GetOutputModeImpl</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a47cd403eff983464ee19daa3a6814cdf">GetOutputModeImpl</reimplementedby>
         <param>
           <type><ref refid="group__gpio_1ga825412a54660defc9ecbf8ad1ea1cf7b" kindref="member">hf_gpio_output_mode_t</ref> &amp;</type>
           <declname>mode</declname>
@@ -1254,6 +1263,7 @@ Reads the actual output mode configuration from hardware registers. Useful for f
         <name>SetPullModeImpl</name>
         <qualifiedname>BaseGpio::SetPullModeImpl</qualifiedname>
         <reimplementedby refid="classEspGpio_1aeb44f0d33e47afd3bf0437b24fed0ae9">SetPullModeImpl</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a7676c66a241eabd1d7e15fff38ece2fa">SetPullModeImpl</reimplementedby>
         <param>
           <type><ref refid="group__gpio_1ga7d27555a7050f5d9d9006c96b841e335" kindref="member">hf_gpio_pull_mode_t</ref></type>
           <declname>mode</declname>
@@ -1286,6 +1296,7 @@ Reads the actual output mode configuration from hardware registers. Useful for f
         <name>GetPullModeImpl</name>
         <qualifiedname>BaseGpio::GetPullModeImpl</qualifiedname>
         <reimplementedby refid="classEspGpio_1a9c4eb71cf5585351a0fb08749fe37b27">GetPullModeImpl</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a34c2b35a33ae2764946619cd80d89e66">GetPullModeImpl</reimplementedby>
         <briefdescription>
 <para>Hardware read-back of current pull resistor mode from registers. </para>
         </briefdescription>
@@ -1307,6 +1318,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         <name>SetPinLevelImpl</name>
         <qualifiedname>BaseGpio::SetPinLevelImpl</qualifiedname>
         <reimplementedby refid="classEspGpio_1a4625ee672d358bf48bff8c3d1f9d8201">SetPinLevelImpl</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a4e5f0c8b9977a69c648b59d6d9ac32e4">SetPinLevelImpl</reimplementedby>
         <param>
           <type><ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref></type>
           <declname>level</declname>
@@ -1339,6 +1351,7 @@ Reads the actual pull resistor configuration from hardware registers. Useful for
         <name>GetPinLevelImpl</name>
         <qualifiedname>BaseGpio::GetPinLevelImpl</qualifiedname>
         <reimplementedby refid="classEspGpio_1a5a4c74349b2fb3f93d920f3b902a66ce">GetPinLevelImpl</reimplementedby>
+        <reimplementedby refid="classStmGpio_1a4a2b1e9a2202d89f8ede64702efecf77">GetPinLevelImpl</reimplementedby>
         <param>
           <type><ref refid="group__gpio_1ga04d416163750773ac08d092bd0d4038e" kindref="member">hf_gpio_level_t</ref> &amp;</type>
           <declname>level</declname>
@@ -1683,6 +1696,12 @@ Initializes the GPIO with specified configuration. The pin is not physically con
       <node id="2">
         <label>EspGpio</label>
         <link refid="classEspGpio"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>StmGpio</label>
+        <link refid="classStmGpio"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

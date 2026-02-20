@@ -10,6 +10,7 @@
     <includes local="no">string_view</includes>
     <includedby refid="LoggerComprehensiveTest_8cpp" local="yes">examples/esp32/main/LoggerComprehensiveTest.cpp</includedby>
     <includedby refid="EspLogger_8h" local="yes">inc/mcu/esp32/EspLogger.h</includedby>
+    <includedby refid="StmLogger_8h" local="yes">inc/mcu/stm32/StmLogger.h</includedby>
     <incdepgraph>
       <node id="1">
         <label>inc/base/BaseLogger.h</label>
@@ -66,6 +67,8 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>inc/mcu/esp32/EspLogger.h</label>
@@ -75,9 +78,19 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
+      <node id="5">
+        <label>inc/mcu/stm32/StmLogger.h</label>
+        <link refid="StmLogger_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="4">
         <label>src/mcu/esp32/EspLogger.cpp</label>
         <link refid="EspLogger_8cpp"/>
+      </node>
+      <node id="6">
+        <label>src/mcu/stm32/StmLogger.cpp</label>
+        <link refid="StmLogger_8cpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structhf__logger__config__t" prot="public">hf_logger_config_t</innerclass>

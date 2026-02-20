@@ -1,0 +1,5 @@
+<map id="inc/mcu/stm32/StmI2c.h" name="inc/mcu/stm32/StmI2c.h">
+<area shape="rect" id="Node000001" title="STM32 I2C stub implementation — placeholder for future STM32 HAL integration." alt="" coords="15,5,233,36"/>
+<area shape="rect" id="Node000002" href="$StmI2c_8cpp.html" title="STM32 I2C stub implementation." alt="" coords="5,84,243,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="127,50,127,84,121,84,121,50"/>
+</map>

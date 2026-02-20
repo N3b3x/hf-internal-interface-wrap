@@ -62,9 +62,9 @@
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="25" relation="include">
+        <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -84,15 +84,9 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="21">
-        <label>utils/RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>utils/PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -104,6 +98,12 @@
         <link refid="EspWifi_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
         <childnode refid="27" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
@@ -112,18 +112,12 @@
         </childnode>
         <childnode refid="30" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
         <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
         </childnode>
         <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
       </node>
-      <node id="32">
+      <node id="31">
         <label>algorithm</label>
       </node>
       <node id="20">
@@ -132,16 +126,16 @@
       <node id="13">
         <label>cstdint</label>
       </node>
-      <node id="33">
+      <node id="32">
         <label>cstring</label>
       </node>
       <node id="3">
         <label>esp_event.h</label>
       </node>
-      <node id="27">
+      <node id="24">
         <label>esp_log.h</label>
       </node>
-      <node id="28">
+      <node id="25">
         <label>esp_mac.h</label>
       </node>
       <node id="4">
@@ -153,25 +147,22 @@
       <node id="6">
         <label>esp_smartconfig.h</label>
       </node>
-      <node id="29">
+      <node id="26">
         <label>esp_system.h</label>
       </node>
-      <node id="30">
+      <node id="27">
         <label>esp_timer.h</label>
       </node>
       <node id="7">
         <label>esp_wifi.h</label>
       </node>
-      <node id="22">
+      <node id="28">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="31">
+      <node id="29">
         <label>freertos/event_groups.h</label>
       </node>
-      <node id="23">
-        <label>freertos/semphr.h</label>
-      </node>
-      <node id="24">
+      <node id="30">
         <label>freertos/task.h</label>
       </node>
       <node id="15">
@@ -186,13 +177,13 @@
       <node id="9">
         <label>lwip/sys.h</label>
       </node>
-      <node id="25">
+      <node id="22">
         <label>memory</label>
       </node>
       <node id="10">
         <label>nvs_flash.h</label>
       </node>
-      <node id="26">
+      <node id="23">
         <label>queue</label>
       </node>
       <node id="16">
@@ -658,7 +649,7 @@
 <codeline lineno="225"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="226"><highlight class="normal"></highlight></codeline>
 <codeline lineno="227"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a4739eb071f6852d7013458c45494e6ca" kindref="member">EspWifi::Initialize</ref>(<ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref><sp/>mode)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="229"><highlight class="normal"></highlight></codeline>
 <codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspWifi_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">);</highlight></codeline>
@@ -791,13 +782,13 @@
 <codeline lineno="358"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="359"><highlight class="normal"></highlight></codeline>
 <codeline lineno="360"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1ac97375ee76c569f3c121464bcd891462" kindref="member">EspWifi::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="361"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"></highlight></codeline>
 <codeline lineno="363"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="366"><highlight class="normal"></highlight></codeline>
-<codeline lineno="367"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>ESP32<sp/>WiFi&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>ESP32<sp/>WiFi&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="368"><highlight class="normal"></highlight></codeline>
 <codeline lineno="369"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Stop<sp/>ongoing<sp/>operations</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="370"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classEspWifi_1acf463caaf71fcae20d22a391a0e66250" kindref="member">m_smartconfig_active</ref>)<sp/>{</highlight></codeline>
@@ -857,13 +848,13 @@
 <codeline lineno="424"><highlight class="normal"></highlight></codeline>
 <codeline lineno="425"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>scan<sp/>results</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="426"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>scan_lock(<ref refid="classEspWifi_1a06558cebbce99692087713ec7985ae31" kindref="member">m_scan_mutex</ref>);</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>scan_lock(<ref refid="classEspWifi_1aa2d94a61c6c079af5600de156baf16fa" kindref="member">m_scan_mutex</ref>);</highlight></codeline>
 <codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1a5d96729fa9dac2b05153578461f1e781" kindref="member">m_scan_results</ref>.clear();</highlight></codeline>
 <codeline lineno="429"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="430"><highlight class="normal"></highlight></codeline>
 <codeline lineno="431"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>event<sp/>queue</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="432"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>event_lock(<ref refid="classEspWifi_1a3d42ddd9a7a2790eeeec94c1519c0995" kindref="member">m_event_mutex</ref>);</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>event_lock(<ref refid="classEspWifi_1a6a5f2dc519caa82f9e3c7b3f7511da04" kindref="member">m_event_mutex</ref>);</highlight></codeline>
 <codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1ab362b3836b671682f5789ca2e9fad4d6" kindref="member">m_event_queue</ref>.empty())<sp/>{</highlight></codeline>
 <codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1ab362b3836b671682f5789ca2e9fad4d6" kindref="member">m_event_queue</ref>.pop();</highlight></codeline>
 <codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -875,7 +866,7 @@
 <codeline lineno="442"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Note:<sp/>We<sp/>don&apos;t<sp/>reset<sp/>g_wifi_initialized<sp/>here<sp/>because<sp/>other<sp/>instances</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="443"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>might<sp/>still<sp/>be<sp/>using<sp/>the<sp/>global<sp/>WiFi<sp/>infrastructure</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="444"><highlight class="normal"></highlight></codeline>
-<codeline lineno="445"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>WiFi<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;ESP32<sp/>WiFi<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="446"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="447"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="448"><highlight class="normal"></highlight></codeline>
@@ -884,7 +875,7 @@
 <codeline lineno="451"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="452"><highlight class="normal"></highlight></codeline>
 <codeline lineno="453"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a661961c515743640072b1e1002438610" kindref="member">EspWifi::SetMode</ref>(<ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref><sp/>mode)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="454"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="455"><highlight class="normal"></highlight></codeline>
 <codeline lineno="456"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -919,7 +910,7 @@
 <codeline lineno="486"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="487"><highlight class="normal"></highlight></codeline>
 <codeline lineno="488"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a7e332cf059c274f217c66637c7670e80" kindref="member">EspWifi::ConfigureStation</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__wifi__station__config__t" kindref="compound">hf_wifi_station_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="489"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="490"><highlight class="normal"></highlight></codeline>
 <codeline lineno="491"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -951,7 +942,7 @@
 <codeline lineno="518"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="519"><highlight class="normal"></highlight></codeline>
 <codeline lineno="520"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a32c2b5e2a1fe51ee264e2b439dc11911" kindref="member">EspWifi::Connect</ref>(uint32_t<sp/>timeout_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="521"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="521"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="522"><highlight class="normal"></highlight></codeline>
 <codeline lineno="523"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="524"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -977,7 +968,7 @@
 <codeline lineno="544"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="545"><highlight class="normal"></highlight></codeline>
 <codeline lineno="546"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1afce7893e0f0b8a91cdc080d03a6394a7" kindref="member">EspWifi::GetIpInfo</ref>(<ref refid="structhf__wifi__ip__info__t" kindref="compound">hf_wifi_ip_info_t</ref>&amp;<sp/>ip_info)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="547"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="548"><highlight class="normal"></highlight></codeline>
 <codeline lineno="549"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -998,7 +989,7 @@
 <codeline lineno="565"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="566"><highlight class="normal"></highlight></codeline>
 <codeline lineno="567"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a723c96c78ce26eaf2574569778b02037" kindref="member">EspWifi::ConfigureAccessPoint</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structhf__wifi__ap__config__t" kindref="compound">hf_wifi_ap_config_t</ref>&amp;<sp/>config)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="568"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="569"><highlight class="normal"></highlight></codeline>
 <codeline lineno="570"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="571"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1025,7 +1016,7 @@
 <codeline lineno="592"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="593"><highlight class="normal"></highlight></codeline>
 <codeline lineno="594"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a6675c88804049307415424d9f37f8c9e" kindref="member">EspWifi::StartAccessPoint</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="595"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="595"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="596"><highlight class="normal"></highlight></codeline>
 <codeline lineno="597"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="598"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1039,7 +1030,7 @@
 <codeline lineno="606"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="607"><highlight class="normal"></highlight></codeline>
 <codeline lineno="608"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(current_mode<sp/>!=<sp/>WIFI_MODE_AP<sp/>&amp;&amp;<sp/>current_mode<sp/>!=<sp/>WIFI_MODE_APSTA)<sp/>{</highlight></codeline>
-<codeline lineno="609"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>not<sp/>in<sp/>AP<sp/>mode,<sp/>current<sp/>mode:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>current_mode);</highlight></codeline>
+<codeline lineno="609"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>not<sp/>in<sp/>AP<sp/>mode,<sp/>current<sp/>mode:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>current_mode);</highlight></codeline>
 <codeline lineno="610"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a55cd1f05f28416cdd4a9bb2eadec0e73" kindref="member">hf_wifi_err_t::WIFI_ERR_INVALID_PARAM</ref>;</highlight></codeline>
 <codeline lineno="611"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="612"><highlight class="normal"></highlight></codeline>
@@ -1047,12 +1038,12 @@
 <codeline lineno="614"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Just<sp/>update<sp/>our<sp/>internal<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="615"><highlight class="normal"><sp/><sp/><ref refid="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" kindref="member">m_ap_active</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="616"><highlight class="normal"></highlight></codeline>
-<codeline lineno="617"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Access<sp/>Point<sp/>started<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="617"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Access<sp/>Point<sp/>started<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="618"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="619"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="620"><highlight class="normal"></highlight></codeline>
 <codeline lineno="621"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1ada59d1e26730024d5aec32ff04c4b351" kindref="member">EspWifi::StopAccessPoint</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="622"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="622"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="623"><highlight class="normal"></highlight></codeline>
 <codeline lineno="624"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="625"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1089,17 +1080,17 @@
 <codeline lineno="656"><highlight class="normal"></highlight></codeline>
 <codeline lineno="657"><highlight class="normal"><sp/><sp/><ref refid="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" kindref="member">m_ap_active</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="658"><highlight class="normal"></highlight></codeline>
-<codeline lineno="659"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Access<sp/>Point<sp/>stopped<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="659"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Access<sp/>Point<sp/>stopped<sp/>successfully&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="660"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="661"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="662"><highlight class="normal"></highlight></codeline>
 <codeline lineno="663"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1a1d267eba2944b8e911c10897ce953e92" kindref="member">EspWifi::IsAccessPointActive</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="664"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="664"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="665"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" kindref="member">m_ap_active</ref>;</highlight></codeline>
 <codeline lineno="666"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="667"><highlight class="normal"></highlight></codeline>
 <codeline lineno="668"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1a937edac1c632616c615df47e88c62efd" kindref="member">EspWifi::GetConnectedStationCount</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="669"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="669"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="670"><highlight class="normal"></highlight></codeline>
 <codeline lineno="671"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref><sp/>||<sp/>!<ref refid="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" kindref="member">m_ap_active</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="672"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -1115,7 +1106,7 @@
 <codeline lineno="682"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="683"><highlight class="normal"></highlight></codeline>
 <codeline lineno="684"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a09181f6382ed6d42797b652cacf8be5e" kindref="member">EspWifi::StartScan</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>show_hidden,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>passive,<sp/>uint32_t<sp/>duration_ms)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="685"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="685"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="686"><highlight class="normal"></highlight></codeline>
 <codeline lineno="687"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="688"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1168,7 +1159,7 @@
 <codeline lineno="735"><highlight class="normal"></highlight></codeline>
 <codeline lineno="736"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1adb271e342e2bb2a6f823b2ed79232c5a" kindref="member">EspWifi::GetScanResults</ref>(std::vector&lt;hf_wifi_network_info_t&gt;&amp;<sp/>networks,</highlight></codeline>
 <codeline lineno="737"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>max_count)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="738"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="738"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="739"><highlight class="normal"></highlight></codeline>
 <codeline lineno="740"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="741"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1244,17 +1235,17 @@
 <codeline lineno="811"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="812"><highlight class="normal"></highlight></codeline>
 <codeline lineno="813"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1a8ef0a3c1147e6de6e06ebead18de288d" kindref="member">EspWifi::IsScanning</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="814"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="814"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="815"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1a7035508c06cc3cd794c3c0baec151f30" kindref="member">m_scanning</ref>;</highlight></codeline>
 <codeline lineno="816"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="817"><highlight class="normal"></highlight></codeline>
 <codeline lineno="818"><highlight class="normal"><ref refid="group__wifi_1ga45e751432d70ba4ee36c1369914ee419" kindref="member">hf_wifi_state_t</ref><sp/><ref refid="classEspWifi_1ab6dcbf4805a1091cd0d317f5b7046c25" kindref="member">EspWifi::GetState</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="819"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="819"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="820"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" kindref="member">m_state</ref>;</highlight></codeline>
 <codeline lineno="821"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="822"><highlight class="normal"></highlight></codeline>
 <codeline lineno="823"><highlight class="normal">std::string<sp/><ref refid="classEspWifi_1ac55ce93c135b56d2a5ba7826c2563a1d" kindref="member">EspWifi::GetConnectedSsid</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="824"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="824"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="825"><highlight class="normal"></highlight></codeline>
 <codeline lineno="826"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref><sp/>||<sp/>!<ref refid="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" kindref="member">m_connected</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="827"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
@@ -1270,7 +1261,7 @@
 <codeline lineno="837"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="838"><highlight class="normal"></highlight></codeline>
 <codeline lineno="839"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1aa3dbcac838731cd2cedee82c5a046bf0" kindref="member">EspWifi::GetConnectedBssid</ref>(uint8_t*<sp/>bssid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="840"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="840"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="841"><highlight class="normal"></highlight></codeline>
 <codeline lineno="842"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized<sp/>||<sp/>!m_connected<sp/>||<sp/>!bssid)<sp/>{</highlight></codeline>
 <codeline lineno="843"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a55cd1f05f28416cdd4a9bb2eadec0e73" kindref="member">hf_wifi_err_t::WIFI_ERR_INVALID_PARAM</ref>;</highlight></codeline>
@@ -1287,7 +1278,7 @@
 <codeline lineno="854"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="855"><highlight class="normal"></highlight></codeline>
 <codeline lineno="856"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1abc2b87f78fb769ad1a6cbf653bbb6ff8" kindref="member">EspWifi::SetPowerSave</ref>(<ref refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kindref="member">hf_wifi_power_save_t</ref><sp/>mode)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="857"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="857"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="858"><highlight class="normal"></highlight></codeline>
 <codeline lineno="859"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="860"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1313,7 +1304,7 @@
 <codeline lineno="880"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="881"><highlight class="normal"></highlight></codeline>
 <codeline lineno="882"><highlight class="normal"><ref refid="group__wifi_1gafd37336bb8e3a8528795ddfdbd9d5760" kindref="member">hf_wifi_power_save_t</ref><sp/><ref refid="classEspWifi_1ab99c2470f6d2b38a8da263c72a112440" kindref="member">EspWifi::GetPowerSave</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="883"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="883"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="884"><highlight class="normal"></highlight></codeline>
 <codeline lineno="885"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="886"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ggafd37336bb8e3a8528795ddfdbd9d5760a68443ff772c7fe9941de5f9748a217c3" kindref="member">hf_wifi_power_save_t::HF_WIFI_POWER_SAVE_NONE</ref>;</highlight></codeline>
@@ -1338,19 +1329,19 @@
 <codeline lineno="905"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="906"><highlight class="normal"></highlight></codeline>
 <codeline lineno="907"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a14161044786f3cc1f58a7c37582a67fa" kindref="member">EspWifi::RegisterEventCallback</ref>(<ref refid="group__wifi_1gafc36eb4cdfaf0c2ea45afeaac3ad13c9" kindref="member">hf_wifi_event_callback_t</ref><sp/>callback)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="908"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="908"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="909"><highlight class="normal"><sp/><sp/>m_event_callback<sp/>=<sp/>callback;</highlight></codeline>
 <codeline lineno="910"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="911"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="912"><highlight class="normal"></highlight></codeline>
 <codeline lineno="913"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a78c4c8eb576df747e478bb663365b593" kindref="member">EspWifi::UnregisterEventCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="914"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="914"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="915"><highlight class="normal"><sp/><sp/><ref refid="classEspWifi_1ab1c6e03ad971d611da51fcdf3eed5cf8" kindref="member">m_event_callback</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="916"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a23d810fd453be783ee7acbe5126e5c78" kindref="member">hf_wifi_err_t::WIFI_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="917"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="918"><highlight class="normal"></highlight></codeline>
 <codeline lineno="919"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a360cec168e895a34b8e0435dbb60097c" kindref="member">EspWifi::GetMacAddress</ref>(uint8_t<sp/>mac[6],<sp/>uint8_t<sp/>interface)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="920"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="920"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="921"><highlight class="normal"></highlight></codeline>
 <codeline lineno="922"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized<sp/>||<sp/>!mac)<sp/>{</highlight></codeline>
 <codeline lineno="923"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a55cd1f05f28416cdd4a9bb2eadec0e73" kindref="member">hf_wifi_err_t::WIFI_ERR_INVALID_PARAM</ref>;</highlight></codeline>
@@ -1373,7 +1364,7 @@
 <codeline lineno="940"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="941"><highlight class="normal"></highlight></codeline>
 <codeline lineno="942"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a17b9ce5961c9e8cab2eb5057b881ac27" kindref="member">EspWifi::SetMacAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uint8_t<sp/>mac[6],<sp/>uint8_t<sp/>interface)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="943"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="943"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="944"><highlight class="normal"></highlight></codeline>
 <codeline lineno="945"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized<sp/>||<sp/>!mac)<sp/>{</highlight></codeline>
 <codeline lineno="946"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a55cd1f05f28416cdd4a9bb2eadec0e73" kindref="member">hf_wifi_err_t::WIFI_ERR_INVALID_PARAM</ref>;</highlight></codeline>
@@ -1396,7 +1387,7 @@
 <codeline lineno="963"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="964"><highlight class="normal"></highlight></codeline>
 <codeline lineno="965"><highlight class="normal">uint8_t<sp/><ref refid="classEspWifi_1a7cf0530f49174b55d7c5f3180a24e917" kindref="member">EspWifi::GetChannel</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="966"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="966"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="967"><highlight class="normal"></highlight></codeline>
 <codeline lineno="968"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="969"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -1412,7 +1403,7 @@
 <codeline lineno="979"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="980"><highlight class="normal"></highlight></codeline>
 <codeline lineno="981"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a5b8740b211b5cc982dd341a3a3cf5e5b" kindref="member">EspWifi::SetChannel</ref>(uint8_t<sp/>channel)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="982"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
+<codeline lineno="982"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(m_mutex);</highlight></codeline>
 <codeline lineno="983"><highlight class="normal"></highlight></codeline>
 <codeline lineno="984"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!m_initialized)<sp/>{</highlight></codeline>
 <codeline lineno="985"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1423,7 +1414,7 @@
 <codeline lineno="990"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="991"><highlight class="normal"></highlight></codeline>
 <codeline lineno="992"><highlight class="normal"><ref refid="group__wifi_1ga90ab2c8a51fc7cb116b659df115407b9" kindref="member">hf_wifi_mode_t</ref><sp/><ref refid="classEspWifi_1a4ed8be700f5167def252ec9c59b48f71" kindref="member">EspWifi::GetMode</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="993"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="993"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="994"><highlight class="normal"></highlight></codeline>
 <codeline lineno="995"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="996"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1gga90ab2c8a51fc7cb116b659df115407b9a0a66f56d841febc3a864de6c6c6ee8aa" kindref="member">hf_wifi_mode_t::HF_WIFI_MODE_DISABLED</ref>;</highlight></codeline>
@@ -1535,7 +1526,7 @@
 <codeline lineno="1102"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1104"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a23b7c4332258ddf8e390e28fda9f781c" kindref="member">EspWifi::Disconnect</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="1105"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="1105"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="1106"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1546,12 +1537,12 @@
 <codeline lineno="1113"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1114"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1115"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1a1acc04aee004b91ba8329c43d3ba8f09" kindref="member">EspWifi::IsConnected</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="1116"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="1116"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="1117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" kindref="member">m_connected</ref>;</highlight></codeline>
 <codeline lineno="1118"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1119"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1120"><highlight class="normal">int8_t<sp/><ref refid="classEspWifi_1aaa1f6c1334ff7cdfcfe3c42b4610ef4a" kindref="member">EspWifi::GetRssi</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="1121"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="1121"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="1122"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
@@ -1567,62 +1558,62 @@
 <codeline lineno="1134"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1135"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1136"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1a53e8186fcd0b012235228f62264d616c" kindref="member">EspWifi::handleWifiEvent</ref>(int32_t<sp/>event_id,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>event_data)<sp/>{</highlight></codeline>
-<codeline lineno="1137"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>event<sp/>received:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>event_id);</highlight></codeline>
+<codeline lineno="1137"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>event<sp/>received:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>event_id);</highlight></codeline>
 <codeline lineno="1138"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1139"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(event_id)<sp/>{</highlight></codeline>
 <codeline lineno="1140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_STA_START:</highlight></codeline>
-<codeline lineno="1141"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>station<sp/>started&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1141"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>station<sp/>started&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" kindref="member">m_state</ref><sp/>=<sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a415466d62e7e83707977ee4390e12b6c" kindref="member">hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED</ref>;</highlight></codeline>
 <codeline lineno="1143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1144"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_STA_STOP:</highlight></codeline>
-<codeline lineno="1146"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>station<sp/>stopped&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1146"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>station<sp/>stopped&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" kindref="member">m_state</ref><sp/>=<sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a415466d62e7e83707977ee4390e12b6c" kindref="member">hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED</ref>;</highlight></codeline>
 <codeline lineno="1148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" kindref="member">m_connected</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1150"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_STA_CONNECTED:</highlight></codeline>
-<codeline lineno="1152"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>station<sp/>connected<sp/>to<sp/>AP&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1152"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>station<sp/>connected<sp/>to<sp/>AP&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1153"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" kindref="member">m_state</ref><sp/>=<sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a0f3a9c87fae4616a67afc84a9b1286cc" kindref="member">hf_wifi_state_t::HF_WIFI_STATE_CONNECTED</ref>;</highlight></codeline>
 <codeline lineno="1154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" kindref="member">m_connected</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1156"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_STA_DISCONNECTED:</highlight></codeline>
-<codeline lineno="1158"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>station<sp/>disconnected<sp/>from<sp/>AP&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1158"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>station<sp/>disconnected<sp/>from<sp/>AP&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" kindref="member">m_state</ref><sp/>=<sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a415466d62e7e83707977ee4390e12b6c" kindref="member">hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED</ref>;</highlight></codeline>
 <codeline lineno="1160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" kindref="member">m_connected</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1162"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_AP_START:</highlight></codeline>
-<codeline lineno="1164"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>Access<sp/>Point<sp/>started&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1164"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>Access<sp/>Point<sp/>started&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" kindref="member">m_ap_active</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1167"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_AP_STOP:</highlight></codeline>
-<codeline lineno="1169"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>Access<sp/>Point<sp/>stopped&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1169"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>Access<sp/>Point<sp/>stopped&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" kindref="member">m_ap_active</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1172"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_AP_STACONNECTED:</highlight></codeline>
-<codeline lineno="1174"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Station<sp/>connected<sp/>to<sp/>our<sp/>AP&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1174"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Station<sp/>connected<sp/>to<sp/>our<sp/>AP&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1176"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_AP_STADISCONNECTED:</highlight></codeline>
-<codeline lineno="1178"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Station<sp/>disconnected<sp/>from<sp/>our<sp/>AP&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1178"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Station<sp/>disconnected<sp/>from<sp/>our<sp/>AP&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1180"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1181"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_SCAN_DONE:</highlight></codeline>
-<codeline lineno="1182"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>scan<sp/>completed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1182"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;WiFi<sp/>scan<sp/>completed&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1183"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1a7035508c06cc3cd794c3c0baec151f30" kindref="member">m_scanning</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1185"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1186"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_EVENT_AP_PROBEREQRECVED:</highlight></codeline>
 <codeline lineno="1187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Probe<sp/>request<sp/>received<sp/>-<sp/>this<sp/>is<sp/>normal<sp/>for<sp/>AP<sp/>mode</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="1188"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Probe<sp/>request<sp/>received&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1188"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Probe<sp/>request<sp/>received&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1190"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1191"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="1192"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unhandled<sp/>WiFi<sp/>event:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>event_id);</highlight></codeline>
+<codeline lineno="1192"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unhandled<sp/>WiFi<sp/>event:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>event_id);</highlight></codeline>
 <codeline lineno="1193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1194"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1195"><highlight class="normal"></highlight></codeline>
@@ -1633,23 +1624,23 @@
 <codeline lineno="1200"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1201"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1202"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspWifi_1a080e6d8828cc502fe12217cb8702ceb1" kindref="member">EspWifi::handleIpEvent</ref>(int32_t<sp/>event_id,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>event_data)<sp/>{</highlight></codeline>
-<codeline lineno="1203"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;IP<sp/>event<sp/>received:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>event_id);</highlight></codeline>
+<codeline lineno="1203"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;IP<sp/>event<sp/>received:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>event_id);</highlight></codeline>
 <codeline lineno="1204"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(event_id)<sp/>{</highlight></codeline>
 <codeline lineno="1206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IP_EVENT_STA_GOT_IP:</highlight></codeline>
-<codeline lineno="1207"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Station<sp/>got<sp/>IP<sp/>address&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1207"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Station<sp/>got<sp/>IP<sp/>address&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1208"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" kindref="member">m_state</ref><sp/>=<sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a0f3a9c87fae4616a67afc84a9b1286cc" kindref="member">hf_wifi_state_t::HF_WIFI_STATE_CONNECTED</ref>;</highlight></codeline>
 <codeline lineno="1209"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" kindref="member">m_connected</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1211"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>IP_EVENT_STA_LOST_IP:</highlight></codeline>
-<codeline lineno="1213"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Station<sp/>lost<sp/>IP<sp/>address&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="1213"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Station<sp/>lost<sp/>IP<sp/>address&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="1214"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1aaf955c4a26114ca8ce1b9a436bab2ed5" kindref="member">m_state</ref><sp/>=<sp/><ref refid="group__wifi_1gga45e751432d70ba4ee36c1369914ee419a415466d62e7e83707977ee4390e12b6c" kindref="member">hf_wifi_state_t::HF_WIFI_STATE_DISCONNECTED</ref>;</highlight></codeline>
 <codeline lineno="1215"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" kindref="member">m_connected</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1217"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1218"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="1219"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unhandled<sp/>IP<sp/>event:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>event_id);</highlight></codeline>
+<codeline lineno="1219"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unhandled<sp/>IP<sp/>event:<sp/>%d&quot;</highlight><highlight class="normal">,<sp/>event_id);</highlight></codeline>
 <codeline lineno="1220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="1221"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1222"><highlight class="normal"></highlight></codeline>
@@ -1712,7 +1703,7 @@
 <codeline lineno="1279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7ab076e40f2ed7a08a4c9c292e4bfe443e" kindref="member">hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK</ref>:</highlight></codeline>
 <codeline lineno="1280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>WIFI_AUTH_WAPI_PSK;</highlight></codeline>
 <codeline lineno="1281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="1282"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>security<sp/>type:<sp/>%d,<sp/>defaulting<sp/>to<sp/>OPEN&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(security));</highlight></codeline>
+<codeline lineno="1282"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>security<sp/>type:<sp/>%d,<sp/>defaulting<sp/>to<sp/>OPEN&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(security));</highlight></codeline>
 <codeline lineno="1283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>WIFI_AUTH_OPEN;</highlight></codeline>
 <codeline lineno="1284"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1285"><highlight class="normal">}</highlight></codeline>
@@ -1740,7 +1731,7 @@
 <codeline lineno="1307"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>WIFI_AUTH_WAPI_PSK:</highlight></codeline>
 <codeline lineno="1308"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7ab076e40f2ed7a08a4c9c292e4bfe443e" kindref="member">hf_wifi_security_t::HF_WIFI_SECURITY_WAPI_PSK</ref>;</highlight></codeline>
 <codeline lineno="1309"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="1310"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>auth<sp/>mode:<sp/>%d,<sp/>defaulting<sp/>to<sp/>OPEN&quot;</highlight><highlight class="normal">,<sp/>auth_mode);</highlight></codeline>
+<codeline lineno="1310"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>auth<sp/>mode:<sp/>%d,<sp/>defaulting<sp/>to<sp/>OPEN&quot;</highlight><highlight class="normal">,<sp/>auth_mode);</highlight></codeline>
 <codeline lineno="1311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="group__wifi_1ggaa433fd9116606cbe69d1feeb748f41f7a6c2ac93b7b92dd01285966d81b4c4b25" kindref="member">hf_wifi_security_t::HF_WIFI_SECURITY_OPEN</ref>;</highlight></codeline>
 <codeline lineno="1312"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="1313"><highlight class="normal">}</highlight></codeline>
@@ -1750,7 +1741,7 @@
 <codeline lineno="1317"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="1318"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1319"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a74e97d6fb2a28c6af5b73a27977c5789" kindref="member">EspWifi::GetAdvancedConfig</ref>(<ref refid="structEspWifiAdvancedConfig" kindref="compound">EspWifiAdvancedConfig</ref>&amp;<sp/>config)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1320"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="1320"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="1321"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1322"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1761,7 +1752,7 @@
 <codeline lineno="1328"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1329"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1330"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a5633082de37e5cbec30a83797f1b07b7" kindref="member">EspWifi::SetTxPower</ref>(uint8_t<sp/>power)<sp/>{</highlight></codeline>
-<codeline lineno="1331"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="1331"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="1332"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1333"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1780,7 +1771,7 @@
 <codeline lineno="1347"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1348"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1349"><highlight class="normal">int8_t<sp/><ref refid="classEspWifi_1ae5e01cbadeb8020b87dff80abf89d474" kindref="member">EspWifi::GetTxPower</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1350"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="1350"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="1351"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1352"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
@@ -1790,7 +1781,7 @@
 <codeline lineno="1357"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1358"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1359"><highlight class="normal"><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8" kindref="member">hf_wifi_err_t</ref><sp/><ref refid="classEspWifi_1a8a1834e3fa7ee01a5cab72d28e1ccfa6" kindref="member">EspWifi::SetBandwidth</ref>(wifi_bandwidth_t<sp/>bandwidth)<sp/>{</highlight></codeline>
-<codeline lineno="1360"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="1360"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="1361"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1362"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1363"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseWifi_8h_1a0d4cc4d0f717f7a4e0287c31be9f4da8a89ba9501e6cc89fdec8bb5d4e21b8e16" kindref="member">hf_wifi_err_t::WIFI_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
@@ -1801,7 +1792,7 @@
 <codeline lineno="1368"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="1369"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1370"><highlight class="normal">wifi_bandwidth_t<sp/><ref refid="classEspWifi_1ae11fb0318c3118264269ed8c3f0f0190" kindref="member">EspWifi::GetBandwidth</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
-<codeline lineno="1371"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">RtosLockGuard&lt;RtosMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kindref="member">m_mutex</ref>);</highlight></codeline>
+<codeline lineno="1371"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformLockGuard&lt;PlatformMutex&gt;</ref><sp/>lock(<ref refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kindref="member">m_mutex</ref>);</highlight></codeline>
 <codeline lineno="1372"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1373"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kindref="member">m_initialized</ref>)<sp/>{</highlight></codeline>
 <codeline lineno="1374"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>WIFI_BW_HT20;</highlight></codeline>

@@ -50,9 +50,9 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/EspCan.h" line="514" column="15" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="514" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspCan::config_mutex_</definition>
+      <memberdef kind="variable" id="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspCan::config_mutex_</definition>
         <argsstring></argsstring>
         <name>config_mutex_</name>
         <qualifiedname>EspCan::config_mutex_</qualifiedname>
@@ -63,11 +63,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="517" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="517" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="517" column="25" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="517" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspCan_1a5558e66e04d7289fd79cc6d003ef29b6" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspCan::stats_mutex_</definition>
+      <memberdef kind="variable" id="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspCan::stats_mutex_</definition>
         <argsstring></argsstring>
         <name>stats_mutex_</name>
         <qualifiedname>EspCan::stats_mutex_</qualifiedname>
@@ -78,11 +78,11 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="518" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="518" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="518" column="25" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="518" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspCan::callback_mutex_</definition>
+      <memberdef kind="variable" id="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspCan::callback_mutex_</definition>
         <argsstring></argsstring>
         <name>callback_mutex_</name>
         <qualifiedname>EspCan::callback_mutex_</qualifiedname>
@@ -93,7 +93,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspCan.h" line="519" column="21" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="519" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspCan.h" line="519" column="25" bodyfile="inc/mcu/esp32/EspCan.h" bodystart="519" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" prot="private" static="no" mutable="no">
         <type>twai_node_handle_t</type>
@@ -330,7 +330,7 @@
 </parameterdescription>
 </parameteritem>
 </parameterlist>
-<bold>LAZY INITIALIZATION</bold>: The TWAI node is NOT physically configured until <ref refid="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" kindref="member">Initialize()</ref> is called. This follows the same pattern as <ref refid="classEspAdc" kindref="compound">EspAdc</ref>. </para>
+<bold>LAZY INITIALIZATION</bold>: The TWAI node is NOT physically configured until <ref refid="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" kindref="member">Initialize()</ref> is called. This follows the same pattern as EspAdc. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -1646,8 +1646,8 @@
         </childnode>
       </node>
       <node id="6">
-        <label>RtosMutex</label>
-        <link refid="classRtosMutex"/>
+        <label>PlatformMutex</label>
+        <link refid="classPlatformMutex"/>
       </node>
       <node id="4">
         <label>hf_can_diagnostics_t</label>
@@ -1695,7 +1695,7 @@
       <member refid="classBaseCan_1ad55a7de8ac46821ff5584b73de4c6a5d" prot="public" virt="non-virtual"><scope>EspCan</scope><name>BaseCan</name></member>
       <member refid="classBaseCan_1a530bc9bf147c4e0df1fa0ee38bb22e39" prot="public" virt="non-virtual"><scope>EspCan</scope><name>BaseCan</name></member>
       <member refid="classBaseCan_1a138f75fbc7c937fa12c50fc4466c3407" prot="protected" virt="non-virtual"><scope>EspCan</scope><name>BaseCan</name></member>
-      <member refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" prot="private" virt="non-virtual"><scope>EspCan</scope><name>callback_mutex_</name></member>
+      <member refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" prot="private" virt="non-virtual"><scope>EspCan</scope><name>callback_mutex_</name></member>
       <member refid="classEspCan_1a8afcf00583c55f120bce0bdcd440cd29" prot="public" virt="virtual"><scope>EspCan</scope><name>ClearAcceptanceFilter</name></member>
       <member refid="classEspCan_1a077cc96263ea79483559055841d873d6" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ClearErrorCallback</name></member>
       <member refid="classEspCan_1a6c7eea2a0ccea5125cafb3b26af6c5ff" prot="public" virt="virtual"><scope>EspCan</scope><name>ClearReceiveCallback</name></member>
@@ -1703,7 +1703,7 @@
       <member refid="classEspCan_1a86db68ed58d7c1791683151cb9a49260" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ClearStateChangeCallback</name></member>
       <member refid="classEspCan_1a335b99de3bbf289de667f843ba83d31d" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ClearTxCompleteCallback</name></member>
       <member refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" prot="private" virt="non-virtual"><scope>EspCan</scope><name>config_</name></member>
-      <member refid="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" prot="private" virt="non-virtual"><scope>EspCan</scope><name>config_mutex_</name></member>
+      <member refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" prot="private" virt="non-virtual"><scope>EspCan</scope><name>config_mutex_</name></member>
       <member refid="classEspCan_1a2dceac78571417483299cfc7360e4cda" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ConfigureAdvancedFilter</name></member>
       <member refid="classEspCan_1a2b68a7ae3dfcda3bb81766a9b333c7fd" prot="public" virt="non-virtual"><scope>EspCan</scope><name>ConfigureAdvancedTiming</name></member>
       <member refid="classBaseCan_1a67d60cd1fe9783de6f335948af385158" prot="public" virt="virtual"><scope>EspCan</scope><name>ConfigureCanFDTiming</name></member>
@@ -1760,7 +1760,7 @@
       <member refid="classEspCan_1a0283765650c36540b4a61fee2360d196" prot="private" virt="non-virtual"><scope>EspCan</scope><name>state_cb_</name></member>
       <member refid="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" prot="private" virt="non-virtual"><scope>EspCan</scope><name>state_ud_</name></member>
       <member refid="classEspCan_1a2598cfa17215039375d57ff8a0682873" prot="private" virt="non-virtual"><scope>EspCan</scope><name>statistics_</name></member>
-      <member refid="classEspCan_1a5558e66e04d7289fd79cc6d003ef29b6" prot="private" virt="non-virtual"><scope>EspCan</scope><name>stats_mutex_</name></member>
+      <member refid="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" prot="private" virt="non-virtual"><scope>EspCan</scope><name>stats_mutex_</name></member>
       <member refid="classBaseCan_1a5af808724133b48742ebdcd448e93515" prot="public" virt="virtual"><scope>EspCan</scope><name>SupportsCanFD</name></member>
       <member refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" prot="private" virt="non-virtual"><scope>EspCan</scope><name>twai_node_handle_</name></member>
       <member refid="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" prot="private" virt="non-virtual"><scope>EspCan</scope><name>tx_cb_</name></member>

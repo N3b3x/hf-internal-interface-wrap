@@ -17,5 +17,5 @@ var classEspSpiBus =
     [ "config_", "classEspSpiBus.html#a066b8df253bffacf1e21d729850bf99e", null ],
     [ "devices_", "classEspSpiBus.html#a4f89488fce018ca532e6753d6f864280", null ],
     [ "initialized_", "classEspSpiBus.html#a697d0f6da659676a7506145ebbec98f5", null ],
-    [ "mutex_", "classEspSpiBus.html#a9c42c64731d332892f30ecb2e262dd2d", null ]
+    [ "mutex_", "classEspSpiBus.html#a707ea256f7b4a767db203d5855bc6c07", null ]
 ];

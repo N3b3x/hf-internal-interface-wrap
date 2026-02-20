@@ -55,6 +55,6 @@ var classEspI2cBus =
     [ "devices_", "classEspI2cBus.html#ae50b7ab4785f7b60e6a05fbb87a90094", null ],
     [ "diagnostics_", "classEspI2cBus.html#a2ab6b00eef84d1ae0e97fcf75f20eb24", null ],
     [ "initialized_", "classEspI2cBus.html#af31a98abe753b202bfe5000b6d16240d", null ],
-    [ "mutex_", "classEspI2cBus.html#a192e73bcd0037b109c4a181e44366612", null ],
+    [ "mutex_", "classEspI2cBus.html#a6e10f5c0e517f240a7838f43b914dbe6", null ],
     [ "statistics_", "classEspI2cBus.html#a8206592fe0beaf37815e03efd162527d", null ]
 ];

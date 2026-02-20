@@ -15,31 +15,31 @@
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="47" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
-        <childnode refid="52" relation="include">
+        <childnode refid="27" relation="include">
         </childnode>
       </node>
-      <node id="47">
+      <node id="14">
         <label>TestFramework.h</label>
         <link refid="TestFramework_8h"/>
-        <childnode refid="46" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="16" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="48" relation="include">
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="12" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="49" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -52,76 +52,12 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="20">
-        <label>BaseCan.h</label>
-        <link refid="BaseCan_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
+      <node id="24">
         <label>BaseGpio.h</label>
         <link refid="BaseGpio_8h"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="24">
-        <label>BaseI2c.h</label>
-        <link refid="BaseI2c_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="28">
-        <label>BasePio.h</label>
-        <link refid="BasePio_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="30">
-        <label>../../../base/BasePwm.h</label>
-        <link refid="BasePwm_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="32">
-        <label>BaseSpi.h</label>
-        <link refid="BaseSpi_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="37">
-        <label>BaseUart.h</label>
-        <link refid="BaseUart_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="6" relation="include">
         </childnode>
@@ -139,207 +75,55 @@
         <link refid="EspAdc_8h"/>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="39" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
-        </childnode>
       </node>
-      <node id="49">
+      <node id="21">
         <label>mcu/esp32/EspGpio.h</label>
         <link refid="EspGpio_8h"/>
-        <childnode refid="41" relation="include">
-        </childnode>
-        <childnode refid="50" relation="include">
-        </childnode>
         <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="51" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>utils/EspTypes.h</label>
-        <link refid="EspTypes_8h"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="23" relation="include">
         </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="31" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="36" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>EspTypes_ADC.h</label>
-        <link refid="EspTypes__ADC_8h"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>EspTypes_Base.h</label>
-        <link refid="EspTypes__Base_8h"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>EspTypes_CAN.h</label>
-        <link refid="EspTypes__CAN_8h"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="21">
-        <label>EspTypes_GPIO.h</label>
-        <link refid="EspTypes__GPIO_8h"/>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>EspTypes_I2C.h</label>
-        <link refid="EspTypes__I2C_8h"/>
         <childnode refid="24" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
         <childnode refid="26" relation="include">
         </childnode>
       </node>
-      <node id="27">
-        <label>EspTypes_PIO.h</label>
-        <link refid="EspTypes__PIO_8h"/>
-        <childnode refid="28" relation="include">
+      <node id="9">
+        <label>mcu/esp32/utils/EspTypes_ADC.h</label>
+        <link refid="EspTypes__ADC_8h"/>
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>EspTypes_PWM.h</label>
-        <link refid="EspTypes__PWM_8h"/>
-        <childnode refid="30" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="8" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="21" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="31">
-        <label>EspTypes_SPI.h</label>
-        <link refid="EspTypes__SPI_8h"/>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
+      <node id="10">
+        <label>EspTypes_Base.h</label>
+        <link refid="EspTypes__Base_8h"/>
+        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="34">
-        <label>EspTypes_Timer.h</label>
-        <link refid="EspTypes__Timer_8h"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="36">
-        <label>EspTypes_UART.h</label>
-        <link refid="EspTypes__UART_8h"/>
-        <childnode refid="37" relation="include">
+      <node id="25">
+        <label>EspTypes_GPIO.h</label>
+        <link refid="EspTypes__GPIO_8h"/>
+        <childnode refid="24" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
@@ -350,99 +134,53 @@
         <label>McuSelect.h</label>
         <link refid="McuSelect_8h"/>
       </node>
-      <node id="9">
-        <label>RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="39">
-        <label>array</label>
-      </node>
-      <node id="13">
+      <node id="11">
         <label>atomic</label>
       </node>
       <node id="4">
         <label>cstdint</label>
       </node>
-      <node id="38">
-        <label>cstring</label>
-      </node>
-      <node id="41">
+      <node id="22">
         <label>driver/gpio.h</label>
       </node>
-      <node id="26">
-        <label>driver/i2c.h</label>
-      </node>
-      <node id="33">
-        <label>driver/spi_master.h</label>
-      </node>
-      <node id="42">
-        <label>esp_adc/adc_cali.h</label>
-      </node>
-      <node id="43">
-        <label>esp_adc/adc_cali_scheme.h</label>
-      </node>
-      <node id="17">
+      <node id="12">
         <label>esp_adc/adc_continuous.h</label>
       </node>
-      <node id="44">
-        <label>esp_adc/adc_filter.h</label>
-      </node>
-      <node id="45">
-        <label>esp_adc/adc_monitor.h</label>
-      </node>
-      <node id="18">
+      <node id="13">
         <label>esp_adc/adc_oneshot.h</label>
       </node>
-      <node id="50">
+      <node id="23">
         <label>esp_attr.h</label>
       </node>
-      <node id="46">
+      <node id="15">
         <label>esp_log.h</label>
       </node>
-      <node id="35">
+      <node id="16">
         <label>esp_timer.h</label>
       </node>
-      <node id="10">
+      <node id="17">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="48">
+      <node id="18">
         <label>freertos/queue.h</label>
       </node>
-      <node id="11">
+      <node id="19">
         <label>freertos/semphr.h</label>
       </node>
-      <node id="12">
+      <node id="20">
         <label>freertos/task.h</label>
       </node>
-      <node id="52">
+      <node id="27">
         <label>hal/adc_types.h</label>
       </node>
       <node id="5">
         <label>limits</label>
       </node>
-      <node id="40">
-        <label>memory</label>
-      </node>
-      <node id="51">
+      <node id="26">
         <label>stdio.h</label>
       </node>
       <node id="6">
         <label>string_view</label>
-      </node>
-      <node id="25">
-        <label>vector</label>
       </node>
     </incdepgraph>
     <innerclass refid="structadc__queue__message__t" prot="public">adc_queue_message_t</innerclass>
@@ -1113,7 +851,7 @@
         <argsstring>(EspAdc &amp;adc) noexcept</argsstring>
         <name>initialize_test_adc</name>
         <param>
-          <type><ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;</type>
+          <type>EspAdc &amp;</type>
           <declname>adc</declname>
         </param>
         <briefdescription>
@@ -1131,7 +869,7 @@
         <argsstring>(EspAdc &amp;adc) noexcept</argsstring>
         <name>configure_test_channels</name>
         <param>
-          <type><ref refid="classEspAdc" kindref="compound">EspAdc</ref> &amp;</type>
+          <type>EspAdc &amp;</type>
           <declname>adc</declname>
         </param>
         <briefdescription>
@@ -1253,7 +991,7 @@
 <para>Comprehensive ADC testing suite for ESP32-C6 DevKit-M-1 (noexcept) </para>
     </briefdescription>
     <detaileddescription>
-<para>This file contains a dedicated, comprehensive test suite for the <ref refid="classEspAdc" kindref="compound">EspAdc</ref> class targeting ESP32-C6 with ESP-IDF v5.5+. It provides thorough testing of all ADC functionalities including basic operations, calibration, continuous conversion, and hardware-specific capabilities.</para>
+<para>This file contains a dedicated, comprehensive test suite for the EspAdc class targeting ESP32-C6 with ESP-IDF v5.5+. It provides thorough testing of all ADC functionalities including basic operations, calibration, continuous conversion, and hardware-specific capabilities.</para>
 <para>Hardware Configuration (ESP32-C6 DevKit-M-1):<itemizedlist>
 <listitem><para>GPIO3 (ADC1_CH3) - Connect to 3.3V via voltage divider (should read ~1.65V)</para>
 </listitem><listitem><para>GPIO0 (ADC1_CH0) - Connect to potentiometer center tap (0-3.3V variable for monitor testing)</para>
@@ -1368,8 +1106,8 @@
 <codeline lineno="114"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1aae4cbe1277fd36a165e3609ca2f3ac9a" kindref="member">test_adc_performance</ref>()<sp/>noexcept;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"></highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Helper<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(<ref refid="classEspAdc" kindref="compound">EspAdc</ref>&amp;<sp/>adc)<sp/>noexcept;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1ae238e4640b84a01479123d4ce85d627d" kindref="member">configure_test_channels</ref>(<ref refid="classEspAdc" kindref="compound">EspAdc</ref>&amp;<sp/>adc)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(EspAdc&amp;<sp/>adc)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1ae238e4640b84a01479123d4ce85d627d" kindref="member">configure_test_channels</ref>(EspAdc&amp;<sp/>adc)<sp/>noexcept;</highlight></codeline>
 <codeline lineno="119"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1a49d26ef3a8d18b2b47c3aa81bc20c49e" kindref="member">validate_voltage_reading</ref>(uint32_t<sp/>voltage_mv,<sp/>const<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>channel_name)<sp/>noexcept;</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1a469b9ca631f8e14c4cbb45ee102f514c" kindref="member">continuous_callback</ref>(const<sp/><ref refid="structhf__adc__continuous__data__t" kindref="compound">hf_adc_continuous_data_t</ref>*<sp/>data,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/>noexcept;</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(<ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref>&amp;<sp/>config,</highlight></codeline>
@@ -1398,7 +1136,7 @@
 <codeline lineno="147"><highlight class="normal"><sp/><sp/>config.channel_configs[<ref refid="AdcComprehensiveTest_8cpp_1a1030605b0be67c2ae03ccb1a2ca9cc2b" kindref="member">TEST_CHANNEL_3</ref>].enabled<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="148"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="149"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(<ref refid="classEspAdc" kindref="compound">EspAdc</ref>&amp;<sp/>adc)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(EspAdc&amp;<sp/>adc)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!adc.EnsureInitialized())<sp/>{</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="AdcComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>ADC&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1408,7 +1146,7 @@
 <codeline lineno="160"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="161"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1ae238e4640b84a01479123d4ce85d627d" kindref="member">configure_test_channels</ref>(<ref refid="classEspAdc" kindref="compound">EspAdc</ref>&amp;<sp/>adc)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="AdcComprehensiveTest_8cpp_1ae238e4640b84a01479123d4ce85d627d" kindref="member">configure_test_channels</ref>(EspAdc&amp;<sp/>adc)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>test<sp/>channels<sp/>with<sp/>12dB<sp/>attenuation<sp/>for<sp/>full<sp/>3.3V<sp/>range</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="BaseAdc_8h_1a94bbc20b21e6ef78e95b2cfc5e56b7f0" kindref="member">hf_adc_err_t</ref><sp/>result;</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
@@ -1528,7 +1266,7 @@
 <codeline lineno="296"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="297"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="298"><highlight class="normal"></highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="300"><highlight class="normal"></highlight></codeline>
 <codeline lineno="301"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1600,7 +1338,7 @@
 <codeline lineno="371"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="372"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="373"><highlight class="normal"></highlight></codeline>
-<codeline lineno="374"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="375"><highlight class="normal"></highlight></codeline>
 <codeline lineno="376"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1637,7 +1375,7 @@
 <codeline lineno="411"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="412"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="413"><highlight class="normal"></highlight></codeline>
-<codeline lineno="414"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="415"><highlight class="normal"></highlight></codeline>
 <codeline lineno="416"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1681,7 +1419,7 @@
 <codeline lineno="458"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="459"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="460"><highlight class="normal"></highlight></codeline>
-<codeline lineno="461"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="462"><highlight class="normal"></highlight></codeline>
 <codeline lineno="463"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1748,7 +1486,7 @@
 <codeline lineno="528"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="529"><highlight class="normal"><sp/><sp/>adc_cfg.<ref refid="structhf__adc__unit__config__t_1a0408122facaca850618d55a337663c04" kindref="member">calibration_config</ref>.<ref refid="structhf__adc__calibration__config__t_1a8df0f9715e45be1004ae9952d87bfbb7" kindref="member">enable_calibration</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="530"><highlight class="normal"></highlight></codeline>
-<codeline lineno="531"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="532"><highlight class="normal"></highlight></codeline>
 <codeline lineno="533"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="534"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1789,7 +1527,7 @@
 <codeline lineno="572"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="573"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="574"><highlight class="normal"></highlight></codeline>
-<codeline lineno="575"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="575"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="576"><highlight class="normal"></highlight></codeline>
 <codeline lineno="577"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="578"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1863,7 +1601,7 @@
 <codeline lineno="649"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="650"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="651"><highlight class="normal"></highlight></codeline>
-<codeline lineno="652"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="652"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="653"><highlight class="normal"></highlight></codeline>
 <codeline lineno="654"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="655"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -1926,7 +1664,7 @@
 <codeline lineno="715"><highlight class="normal"><sp/><sp/>adc_cfg.<ref refid="structhf__adc__unit__config__t_1ad81dd7fad6a6dfc7924fbf20f0566837" kindref="member">continuous_config</ref>.<ref refid="structhf__adc__continuous__config__t_1a5887e33011fff3996f506dcbc8a0ab8a" kindref="member">samples_per_frame</ref><sp/>=<sp/><ref refid="AdcComprehensiveTest_8cpp_1a0a33412431ee4b59b74369f43b23e460" kindref="member">CONTINUOUS_SAMPLES_PER_FRAME</ref>;</highlight></codeline>
 <codeline lineno="716"><highlight class="normal"><sp/><sp/>adc_cfg.<ref refid="structhf__adc__unit__config__t_1ad81dd7fad6a6dfc7924fbf20f0566837" kindref="member">continuous_config</ref>.<ref refid="structhf__adc__continuous__config__t_1a3c2cdd0243704479f95ff6daa05ca28d" kindref="member">max_store_frames</ref><sp/>=<sp/><ref refid="AdcComprehensiveTest_8cpp_1a36af6c8c29c7ebb832f729f5fc2c4804" kindref="member">CONTINUOUS_MAX_STORE_FRAMES</ref>;</highlight></codeline>
 <codeline lineno="717"><highlight class="normal"></highlight></codeline>
-<codeline lineno="718"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="718"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="719"><highlight class="normal"></highlight></codeline>
 <codeline lineno="720"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="721"><highlight class="normal"><sp/><sp/><sp/><sp/>vQueueDelete(<ref refid="AdcComprehensiveTest_8cpp_1a02251c6ef152433a2ac243fa5b36b051" kindref="member">adc_data_queue</ref>);</highlight></codeline>
@@ -2054,7 +1792,7 @@
 <codeline lineno="855"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>oneshot_config;</highlight></codeline>
 <codeline lineno="856"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(oneshot_config,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="857"><highlight class="normal"></highlight></codeline>
-<codeline lineno="858"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>oneshot_adc(oneshot_config);</highlight></codeline>
+<codeline lineno="858"><highlight class="normal"><sp/><sp/>EspAdc<sp/>oneshot_adc(oneshot_config);</highlight></codeline>
 <codeline lineno="859"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(oneshot_adc))<sp/>{</highlight></codeline>
 <codeline lineno="860"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="AdcComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>oneshot<sp/>ADC<sp/>for<sp/>baseline<sp/>reading&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="861"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -2168,7 +1906,7 @@
 <codeline lineno="969"><highlight class="normal"><sp/><sp/>continuous_config.<ref refid="structhf__adc__unit__config__t_1a3ccf2392358d6dc82d361024cc932596" kindref="member">channel_configs</ref>[MONITOR_CHANNEL].<ref refid="structhf__adc__channel__config__t_1af05c3060c9fbeed3a182bb766ea8ec1d" kindref="member">bitwidth</ref><sp/>=<sp/><ref refid="EspTypes__ADC_8h_1a52bdc752d8f985c73577206a943efcb9aed8e92f8abd7e450b5e3c2450990395d" kindref="member">hf_adc_bitwidth_t::WIDTH_12BIT</ref>;</highlight></codeline>
 <codeline lineno="970"><highlight class="normal"><sp/><sp/>continuous_config.<ref refid="structhf__adc__unit__config__t_1a3ccf2392358d6dc82d361024cc932596" kindref="member">channel_configs</ref>[MONITOR_CHANNEL].<ref refid="structhf__adc__channel__config__t_1af58b9abc81efce5d07b589bd4c46d8e4" kindref="member">enabled</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="971"><highlight class="normal"></highlight></codeline>
-<codeline lineno="972"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>continuous_adc(continuous_config);</highlight></codeline>
+<codeline lineno="972"><highlight class="normal"><sp/><sp/>EspAdc<sp/>continuous_adc(continuous_config);</highlight></codeline>
 <codeline lineno="973"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(continuous_adc))<sp/>{</highlight></codeline>
 <codeline lineno="974"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="AdcComprehensiveTest_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initialize<sp/>continuous<sp/>ADC<sp/>for<sp/>monitor<sp/>test&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="975"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -2415,7 +2153,7 @@
 <codeline lineno="1219"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="1220"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="1221"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1222"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="1222"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="1223"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1224"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="1225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -2477,7 +2215,7 @@
 <codeline lineno="1284"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="1285"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="1286"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1287"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="1287"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="1288"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1289"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="1290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
@@ -2545,7 +2283,7 @@
 <codeline lineno="1355"><highlight class="normal"><sp/><sp/><ref refid="structhf__adc__unit__config__t" kindref="compound">hf_adc_unit_config_t</ref><sp/>adc_cfg;</highlight></codeline>
 <codeline lineno="1356"><highlight class="normal"><sp/><sp/><ref refid="AdcComprehensiveTest_8cpp_1a7d8a4a97b549e849f892963e6905b611" kindref="member">setup_adc_config</ref>(adc_cfg,<sp/><ref refid="EspTypes__ADC_8h_1a3c300a1a8aadf67bdad120935898f044ae875b67b322212bf81da51e697bc4450" kindref="member">hf_adc_mode_t::ONESHOT</ref>);</highlight></codeline>
 <codeline lineno="1357"><highlight class="normal"></highlight></codeline>
-<codeline lineno="1358"><highlight class="normal"><sp/><sp/><ref refid="classEspAdc" kindref="compound">EspAdc</ref><sp/>test_adc(adc_cfg);</highlight></codeline>
+<codeline lineno="1358"><highlight class="normal"><sp/><sp/>EspAdc<sp/>test_adc(adc_cfg);</highlight></codeline>
 <codeline lineno="1359"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1360"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="AdcComprehensiveTest_8cpp_1af3fa94760986ec6cdafef563d0abbaa1" kindref="member">initialize_test_adc</ref>(test_adc))<sp/>{</highlight></codeline>
 <codeline lineno="1361"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>

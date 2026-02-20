@@ -1,0 +1,14 @@
+<map id="inc/mcu/stm32/StmPeriodicTimer.h" name="inc/mcu/stm32/StmPeriodicTimer.h">
+<area shape="rect" id="Node000001" title="STM32 Periodic Timer stub — placeholder for hardware timer integration." alt="" coords="27,5,269,56"/>
+<area shape="rect" id="Node000002" href="$BasePeriodicTimer_8h.html" title="Abstract base class for periodic timer implementations in the HardFOC system." alt="" coords="53,104,243,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,56,151,90,145,90,145,56"/>
+<area shape="rect" id="Node000003" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="67,183,229,213"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="151,135,151,169,145,169,145,135"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,261,80,292"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="114,137,83,156,57,184,46,216,43,248,38,247,40,214,52,181,80,152,112,133"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="253,183,365,213"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="179,132,268,174,266,179,177,137"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="130,216,75,255,72,251,127,211"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="116,261,180,292"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="151,214,151,248,145,248,145,214"/>
+</map>

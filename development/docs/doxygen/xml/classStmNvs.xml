@@ -1,0 +1,671 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="classStmNvs" kind="class" language="C++" prot="public">
+    <compoundname>StmNvs</compoundname>
+    <basecompoundref refid="classBaseNvs" prot="public" virt="non-virtual">BaseNvs</basecompoundref>
+    <includes refid="StmNvs_8h" local="no">StmNvs.h</includes>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classStmNvs_1a26366d606b8f3e0b153bdabccfffcca8" prot="public" static="no" const="no" explicit="yes" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmNvs::StmNvs</definition>
+        <argsstring>(const char *namespace_name=&quot;default&quot;) noexcept</argsstring>
+        <name>StmNvs</name>
+        <qualifiedname>StmNvs::StmNvs</qualifiedname>
+        <param>
+          <type>const char *</type>
+          <declname>namespace_name</declname>
+          <defval>&quot;default&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="17" column="14" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="10" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1aec7905feea3b210ced450761f89d2862" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>StmNvs::~StmNvs</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>~StmNvs</name>
+        <qualifiedname>StmNvs::~StmNvs</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="18" column="5"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1aaf64aac4ece7c73b0815e28a749a1b0d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::Initialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Initialize</name>
+        <qualifiedname>StmNvs::Initialize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a407959e9e6c10a0e54f26dd9e92024c0">Initialize</reimplements>
+        <briefdescription>
+<para>Initialize the storage system and open the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="20" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1aa3c53acfbe0d42730c0b17a218273131" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::Deinitialize</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Deinitialize</name>
+        <qualifiedname>StmNvs::Deinitialize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a64733cd3edc601a03fb3c31e914eaa9e">Deinitialize</reimplements>
+        <briefdescription>
+<para>Deinitialize the storage system and close the namespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="21" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a972ac2246d561ede81b3855ea1832122" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::SetU32</definition>
+        <argsstring>(const char *key, hf_u32_t value) noexcept override</argsstring>
+        <name>SetU32</name>
+        <qualifiedname>StmNvs::SetU32</qualifiedname>
+        <reimplements refid="classBaseNvs_1a8f2069d78e8f913e752ba4449255a86b">SetU32</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Store a 32-bit unsigned integer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Value to store </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="22" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="16" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a24f68fe26b2344cbd2bf817095407a45" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::GetU32</definition>
+        <argsstring>(const char *key, hf_u32_t &amp;value) noexcept override</argsstring>
+        <name>GetU32</name>
+        <qualifiedname>StmNvs::GetU32</qualifiedname>
+        <reimplements refid="classBaseNvs_1aa789f6917b5be890f288ce2fe470da11">GetU32</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve a 32-bit unsigned integer value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the retrieved value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="23" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="19" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a0b4bf4ceacb6f2011bc0a0713415fc70" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::SetString</definition>
+        <argsstring>(const char *key, const char *value) noexcept override</argsstring>
+        <name>SetString</name>
+        <qualifiedname>StmNvs::SetString</qualifiedname>
+        <reimplements refid="classBaseNvs_1ae954b55a41d477e1190fbbe3ce0cc687">SetString</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Store a string value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String value to store </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="24" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="22" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1ad2f72c91b0926ad9d6390fb1fb9172f9" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::GetString</definition>
+        <argsstring>(const char *key, char *buffer, size_t buffer_size, size_t *actual_size=nullptr) noexcept override</argsstring>
+        <name>GetString</name>
+        <qualifiedname>StmNvs::GetString</qualifiedname>
+        <reimplements refid="classBaseNvs_1a8954da94247836ede0a895ddd245e634">GetString</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>actual_size</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Retrieve a string value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the retrieved string </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual size of the string (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="25" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a4c90c0fadacf110413b37debf4effe0e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::SetBlob</definition>
+        <argsstring>(const char *key, const void *data, size_t data_size) noexcept override</argsstring>
+        <name>SetBlob</name>
+        <qualifiedname>StmNvs::SetBlob</qualifiedname>
+        <reimplements refid="classBaseNvs_1a22431b512d09cb8c0397cf15a8a73b19">SetBlob</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>data_size</declname>
+        </param>
+        <briefdescription>
+<para>Store binary data (blob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to data to store </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>data_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of data in bytes </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="27" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a7692514b5c591e201d9e84ea7a9900b6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::GetBlob</definition>
+        <argsstring>(const char *key, void *buffer, size_t buffer_size, size_t *actual_size=nullptr) noexcept override</argsstring>
+        <name>GetBlob</name>
+        <qualifiedname>StmNvs::GetBlob</qualifiedname>
+        <reimplements refid="classBaseNvs_1ab699cfd03ee2f8c9d05a8d43d636011b">GetBlob</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>buffer_size</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>actual_size</declname>
+          <defval>nullptr</defval>
+        </param>
+        <briefdescription>
+<para>Retrieve binary data (blob). </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key (null-terminated string) </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer to store the retrieved data </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>buffer_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer in bytes </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>actual_size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actual size of the data (optional) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="28" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="31" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a6c3d4484e78bf018fff0062902518e26" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::EraseKey</definition>
+        <argsstring>(const char *key) noexcept override</argsstring>
+        <name>EraseKey</name>
+        <qualifiedname>StmNvs::EraseKey</qualifiedname>
+        <reimplements refid="classBaseNvs_1ac3a2738d1f6a3e488c08edaecf49af9d">EraseKey</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Remove a key from storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key to remove </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="30" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="34" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a4927951d09db18d392b6b6593809b0ac" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::Commit</definition>
+        <argsstring>() noexcept override</argsstring>
+        <name>Commit</name>
+        <qualifiedname>StmNvs::Commit</qualifiedname>
+        <reimplements refid="classBaseNvs_1a0921ba6eb0dda4285a5ea33ec1b80f11">Commit</reimplements>
+        <briefdescription>
+<para>Commit any pending writes to non-volatile storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="31" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="37" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a8a8abfb797fa5369d790a1e74501ec26" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool StmNvs::KeyExists</definition>
+        <argsstring>(const char *key) noexcept override</argsstring>
+        <name>KeyExists</name>
+        <qualifiedname>StmNvs::KeyExists</qualifiedname>
+        <reimplements refid="classBaseNvs_1a911caf95d3c25047f044ca748164df39">KeyExists</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Check if a key exists in storage. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key to check </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if key exists, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="32" column="10" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1ac2993ecb7b30a7dda594c510d8f533b1" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4" kindref="member">hf_nvs_err_t</ref></type>
+        <definition>hf_nvs_err_t StmNvs::GetSize</definition>
+        <argsstring>(const char *key, size_t &amp;size) noexcept override</argsstring>
+        <name>GetSize</name>
+        <qualifiedname>StmNvs::GetSize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a79b44044be6cef3963fa8b9f18abcf30">GetSize</reimplements>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t &amp;</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+<para>Get the size of a stored value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>key</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Storage key </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>size</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Reference to store the size </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="BaseNvs_8h_1a0a4f43b41760df506a65240a5ca415a4abe2d6c6ee0c358e8ec795db88c44e296" kindref="member">hf_nvs_err_t::NVS_SUCCESS</ref> if successful, error code otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="33" column="18" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a8dae94d149b877cb11f42860f3506ada" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * StmNvs::GetDescription</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetDescription</name>
+        <qualifiedname>StmNvs::GetDescription</qualifiedname>
+        <reimplements refid="classBaseNvs_1a66680f0959c3ba928b402f6a9fbb700a">GetDescription</reimplements>
+        <briefdescription>
+<para>Get description of this storage implementation. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Description string </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="34" column="16" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a65148f056f3bde8f09e618fd8d2a256e" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t StmNvs::GetMaxKeyLength</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMaxKeyLength</name>
+        <qualifiedname>StmNvs::GetMaxKeyLength</qualifiedname>
+        <reimplements refid="classBaseNvs_1a63908cbbdadf9134e5350491a87d7652">GetMaxKeyLength</reimplements>
+        <briefdescription>
+<para>Get maximum key length supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum key length in characters </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="35" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classStmNvs_1a958e824edad543dbb63d1bff36a1c019" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>size_t</type>
+        <definition>size_t StmNvs::GetMaxValueSize</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>GetMaxValueSize</name>
+        <qualifiedname>StmNvs::GetMaxValueSize</qualifiedname>
+        <reimplements refid="classBaseNvs_1a00697824bdbb7c20b11a82b2837bc7bc">GetMaxValueSize</reimplements>
+        <briefdescription>
+<para>Get maximum value size supported. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Maximum value size in bytes </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="inc/mcu/stm32/StmNvs.h" line="36" column="12" bodyfile="src/mcu/stm32/StmNvs.cpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>STM32 NVS — stub implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>BaseNvs</label>
+        <link refid="classBaseNvs"/>
+      </node>
+      <node id="1">
+        <label>StmNvs</label>
+        <link refid="classStmNvs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>BaseNvs</label>
+        <link refid="classBaseNvs"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>statistics_</edgelabel>
+        </childnode>
+        <childnode refid="4" relation="usage">
+          <edgelabel>diagnostics_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1">
+        <label>StmNvs</label>
+        <link refid="classStmNvs"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>hf_nvs_diagnostics_t</label>
+        <link refid="structhf__nvs__diagnostics__t"/>
+      </node>
+      <node id="3">
+        <label>hf_nvs_statistics_t</label>
+        <link refid="structhf__nvs__statistics__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="inc/mcu/stm32/StmNvs.h" line="15" column="1" bodyfile="inc/mcu/stm32/StmNvs.h" bodystart="15" bodyend="37"/>
+    <listofallmembers>
+      <member refid="classBaseNvs_1abc92e07335f490e560ea1a1513ea63fc" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>BaseNvs</name></member>
+      <member refid="classBaseNvs_1abfe625b5e099d438f744514728de9674" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>BaseNvs</name></member>
+      <member refid="classStmNvs_1a4927951d09db18d392b6b6593809b0ac" prot="public" virt="virtual"><scope>StmNvs</scope><name>Commit</name></member>
+      <member refid="classStmNvs_1aa3c53acfbe0d42730c0b17a218273131" prot="public" virt="virtual"><scope>StmNvs</scope><name>Deinitialize</name></member>
+      <member refid="classBaseNvs_1a76a4a9aae7deb785a6773843cc08d366" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>diagnostics_</name></member>
+      <member refid="classBaseNvs_1a4d5a23def2dfdee04a1ada50f8c6e067" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>EnsureDeinitialized</name></member>
+      <member refid="classBaseNvs_1a517d0d03678ff0dfdd57eff54dee9da2" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>EnsureInitialized</name></member>
+      <member refid="classStmNvs_1a6c3d4484e78bf018fff0062902518e26" prot="public" virt="virtual"><scope>StmNvs</scope><name>EraseKey</name></member>
+      <member refid="classStmNvs_1a7692514b5c591e201d9e84ea7a9900b6" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetBlob</name></member>
+      <member refid="classStmNvs_1a8dae94d149b877cb11f42860f3506ada" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetDescription</name></member>
+      <member refid="classBaseNvs_1a5fe8b85bd8c8c103d5e8ce9c5060b49c" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetDiagnostics</name></member>
+      <member refid="classStmNvs_1a65148f056f3bde8f09e618fd8d2a256e" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetMaxKeyLength</name></member>
+      <member refid="classStmNvs_1a958e824edad543dbb63d1bff36a1c019" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetMaxValueSize</name></member>
+      <member refid="classBaseNvs_1a6dc238eadbd792da526fcbeea4bf58d5" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>GetNamespace</name></member>
+      <member refid="classStmNvs_1ac2993ecb7b30a7dda594c510d8f533b1" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetSize</name></member>
+      <member refid="classBaseNvs_1a2784f0924a79ef398f6c42227197d87d" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetStatistics</name></member>
+      <member refid="classStmNvs_1ad2f72c91b0926ad9d6390fb1fb9172f9" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetString</name></member>
+      <member refid="classStmNvs_1a24f68fe26b2344cbd2bf817095407a45" prot="public" virt="virtual"><scope>StmNvs</scope><name>GetU32</name></member>
+      <member refid="classStmNvs_1aaf64aac4ece7c73b0815e28a749a1b0d" prot="public" virt="virtual"><scope>StmNvs</scope><name>Initialize</name></member>
+      <member refid="classBaseNvs_1a7a818a3463d3efe8d5eacd8b4d5b87a1" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>initialized_</name></member>
+      <member refid="classBaseNvs_1adaba0a72b0c06873b2b01713f1af3d9b" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>IsInitialized</name></member>
+      <member refid="classStmNvs_1a8a8abfb797fa5369d790a1e74501ec26" prot="public" virt="virtual"><scope>StmNvs</scope><name>KeyExists</name></member>
+      <member refid="classBaseNvs_1a68e50ee98bc144e5a7c99a27ed5a7314" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>namespace_name_</name></member>
+      <member refid="classBaseNvs_1aeda78da1a1db06a952e14e549eb7f07a" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>operator=</name></member>
+      <member refid="classBaseNvs_1a00047694a8eda737718d4ad83c9feb9a" prot="public" virt="virtual"><scope>StmNvs</scope><name>ResetDiagnostics</name></member>
+      <member refid="classBaseNvs_1a76eb147e5be050296e01d8cc80f08d2d" prot="public" virt="virtual"><scope>StmNvs</scope><name>ResetStatistics</name></member>
+      <member refid="classStmNvs_1a4c90c0fadacf110413b37debf4effe0e" prot="public" virt="virtual"><scope>StmNvs</scope><name>SetBlob</name></member>
+      <member refid="classBaseNvs_1a14236adcdcc3d0c2ff9e434bd0d75c5a" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>SetInitialized</name></member>
+      <member refid="classStmNvs_1a0b4bf4ceacb6f2011bc0a0713415fc70" prot="public" virt="virtual"><scope>StmNvs</scope><name>SetString</name></member>
+      <member refid="classStmNvs_1a972ac2246d561ede81b3855ea1832122" prot="public" virt="virtual"><scope>StmNvs</scope><name>SetU32</name></member>
+      <member refid="classBaseNvs_1a124e82b91afcb3785858a4d56bc9f2f2" prot="protected" virt="non-virtual"><scope>StmNvs</scope><name>statistics_</name></member>
+      <member refid="classStmNvs_1a26366d606b8f3e0b153bdabccfffcca8" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>StmNvs</name></member>
+      <member refid="classBaseNvs_1a34a0f5777eaeabb861b0bef15c31a11b" prot="public" virt="virtual"><scope>StmNvs</scope><name>~BaseNvs</name></member>
+      <member refid="classStmNvs_1aec7905feea3b210ced450761f89d2862" prot="public" virt="non-virtual"><scope>StmNvs</scope><name>~StmNvs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

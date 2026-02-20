@@ -1,10 +1,5 @@
 var namespaces_dup =
 [
-    [ "anonymous_namespace{EspGpio.cpp}", "namespaceanonymous__namespace_02EspGpio_8cpp_03.html", [
-      [ "g_active_gpio_count", "namespaceanonymous__namespace_02EspGpio_8cpp_03.html#a5f218373a579dbffd6f2382b20ace916", null ],
-      [ "g_total_gpio_interrupts", "namespaceanonymous__namespace_02EspGpio_8cpp_03.html#a8d92a7c490f5ab71bb40ae9b866c310c", null ],
-      [ "GPIO_PIN_CAPABILITIES", "namespaceanonymous__namespace_02EspGpio_8cpp_03.html#ab863d6b5d30e7134ec2ba98e87dbdf07", null ]
-    ] ],
     [ "hf", "namespacehf.html", "namespacehf" ],
     [ "TestPins", "namespaceTestPins.html", [
       [ "ANALOG_PIN", "namespaceTestPins.html#acd766bf1c5e4fc8112f25080761602a3", null ],

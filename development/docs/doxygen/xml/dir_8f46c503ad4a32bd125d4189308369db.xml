@@ -6,7 +6,7 @@
     <innerfile refid="DigitalOutputGuard_8h">DigitalOutputGuard.h</innerfile>
     <innerfile refid="McuSelect_8h">McuSelect.h</innerfile>
     <innerfile refid="memory__utils_8h">memory_utils.h</innerfile>
-    <innerfile refid="RtosMutex_8h">RtosMutex.h</innerfile>
+    <innerfile refid="PlatformMutex_8h">PlatformMutex.h</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

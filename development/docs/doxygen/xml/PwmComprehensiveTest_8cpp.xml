@@ -99,8 +99,6 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="28" relation="include">
-        </childnode>
       </node>
       <node id="18">
         <label>EspTypes_Base.h</label>
@@ -145,15 +143,9 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="24">
-        <label>RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -171,9 +163,6 @@
       </node>
       <node id="13">
         <label>driver/gpio.h</label>
-      </node>
-      <node id="28">
-        <label>driver/ledc.h</label>
       </node>
       <node id="14">
         <label>esp_attr.h</label>
@@ -453,7 +442,7 @@ Creates a standard test configuration with:<itemizedlist>
         <argsstring>(hf_gpio_num_t gpio_pin, hf_u32_t frequency_hz=HF_PWM_DEFAULT_FREQUENCY, hf_u8_t resolution_bits=HF_PWM_DEFAULT_RESOLUTION) noexcept</argsstring>
         <name>create_test_channel_config</name>
         <param>
-          <type><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></type>
+          <type>hf_gpio_num_t</type>
           <declname>gpio_pin</declname>
         </param>
         <param>
@@ -516,7 +505,7 @@ Creates a standard channel configuration with:<itemizedlist>
         <argsstring>(hf_gpio_num_t gpio_pin, float duty_percentage, hf_u32_t frequency_hz=HF_PWM_DEFAULT_FREQUENCY, hf_u8_t resolution_bits=HF_PWM_DEFAULT_RESOLUTION) noexcept</argsstring>
         <name>create_test_channel_config_with_duty</name>
         <param>
-          <type><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></type>
+          <type>hf_gpio_num_t</type>
           <declname>gpio_pin</declname>
         </param>
         <param>
@@ -1237,7 +1226,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="115"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"></highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/><ref refid="PwmComprehensiveTest_8cpp_1af405691c29e4988fe137763d85b5638e" kindref="member">create_test_channel_config</ref>(</highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio_pin,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency_hz<sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ae522afd7305f23439344ed06a817091c" kindref="member">HF_PWM_DEFAULT_FREQUENCY</ref>,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio_pin,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency_hz<sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ae522afd7305f23439344ed06a817091c" kindref="member">HF_PWM_DEFAULT_FREQUENCY</ref>,</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution_bits<sp/>=<sp/><ref refid="EspTypes__PWM_8h_1a92cb7b8188635483e620a8cf14826a04" kindref="member">HF_PWM_DEFAULT_RESOLUTION</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>config<sp/>=<sp/>{};</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"><sp/><sp/>config.<ref refid="structhf__pwm__channel__config__t_1a79a176f4a93105a6cea52b834202573d" kindref="member">gpio_pin</ref><sp/>=<sp/>gpio_pin;</highlight></codeline>
@@ -1266,7 +1255,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="158"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="159"><highlight class="normal"></highlight></codeline>
 <codeline lineno="163"><highlight class="normal"><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/><ref refid="PwmComprehensiveTest_8cpp_1a2208a634124362f28a999541273e19a7" kindref="member">create_test_channel_config_with_duty</ref>(</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio_pin,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty_percentage,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency_hz<sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ae522afd7305f23439344ed06a817091c" kindref="member">HF_PWM_DEFAULT_FREQUENCY</ref>,</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio_pin,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty_percentage,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency_hz<sp/>=<sp/><ref refid="EspTypes__PWM_8h_1ae522afd7305f23439344ed06a817091c" kindref="member">HF_PWM_DEFAULT_FREQUENCY</ref>,</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution_bits<sp/>=<sp/><ref refid="EspTypes__PWM_8h_1a92cb7b8188635483e620a8cf14826a04" kindref="member">HF_PWM_DEFAULT_RESOLUTION</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="166"><highlight class="normal"><sp/><sp/><ref refid="structhf__pwm__channel__config__t" kindref="compound">hf_pwm_channel_config_t</ref><sp/>config<sp/>=</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="PwmComprehensiveTest_8cpp_1af405691c29e4988fe137763d85b5638e" kindref="member">create_test_channel_config</ref>(gpio_pin,<sp/>frequency_hz,<sp/>resolution_bits);</highlight></codeline>
@@ -1469,7 +1458,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="389"><highlight class="normal"></highlight></codeline>
 <codeline lineno="390"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>different<sp/>channels<sp/>with<sp/>APB<sp/>clock<sp/>source<sp/>-<sp/>frequencies<sp/>designed<sp/>for<sp/>timer<sp/>sharing</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="391"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ClockSourceTest<sp/>{</highlight></codeline>
-<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio_pin{};</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio_pin{};</highlight></codeline>
 <codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/>uint32_t<sp/>frequency{};</highlight></codeline>
 <codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/>uint8_t<sp/>resolution{};</highlight></codeline>
 <codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>description{};</highlight></codeline>
@@ -1537,7 +1526,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="457"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Test<sp/>configuring<sp/>multiple<sp/>channels<sp/>with<sp/>different<sp/>resolutions<sp/>(avoid<sp/>GPIO3<sp/>-&gt;<sp/>use<sp/>GPIO6</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="458"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>instead)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="459"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">ChannelTestConfig<sp/>{</highlight></codeline>
-<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>pin{};</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>pin{};</highlight></codeline>
 <codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency{};</highlight></codeline>
 <codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution{};</highlight></codeline>
 <codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty_percentage{};</highlight></codeline>
@@ -1794,7 +1783,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="729"><highlight class="normal"></highlight></codeline>
 <codeline lineno="730"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>and<sp/>enable<sp/>channels<sp/>(avoid<sp/>GPIO3<sp/>-&gt;<sp/>use<sp/>GPIO6<sp/>instead)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="731"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>ch<sp/>=<sp/>0;<sp/>ch<sp/>&lt;<sp/>3;<sp/>ch++)<sp/>{</highlight></codeline>
-<codeline lineno="732"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>test_pin<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(2<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="732"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>test_pin<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">hf_gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(2<sp/>+<sp/>ch);</highlight></codeline>
 <codeline lineno="733"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test_pin<sp/>==<sp/>3)<sp/>{</highlight></codeline>
 <codeline lineno="734"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>test_pin<sp/>=<sp/>6;</highlight></codeline>
 <codeline lineno="735"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -1856,7 +1845,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="791"><highlight class="normal"></highlight></codeline>
 <codeline lineno="792"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>multiple<sp/>channels<sp/>(avoid<sp/>GPIO3<sp/>-&gt;<sp/>use<sp/>GPIO6<sp/>instead)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="793"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>ch<sp/>=<sp/>0;<sp/>ch<sp/>&lt;<sp/>4;<sp/>ch++)<sp/>{</highlight></codeline>
-<codeline lineno="794"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>test_pin<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(2<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="794"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>test_pin<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">hf_gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(2<sp/>+<sp/>ch);</highlight></codeline>
 <codeline lineno="795"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test_pin<sp/>==<sp/>3)<sp/>{</highlight></codeline>
 <codeline lineno="796"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>test_pin<sp/>=<sp/>6;</highlight></codeline>
 <codeline lineno="797"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
@@ -2080,7 +2069,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="1053"><highlight class="normal"></highlight></codeline>
 <codeline lineno="1054"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">TimerTestConfig<sp/>{</highlight></codeline>
 <codeline lineno="1055"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel{};</highlight></codeline>
-<codeline lineno="1056"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio{};</highlight></codeline>
+<codeline lineno="1056"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio{};</highlight></codeline>
 <codeline lineno="1057"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency{};</highlight></codeline>
 <codeline lineno="1058"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution{};</highlight></codeline>
 <codeline lineno="1059"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>description{};</highlight></codeline>
@@ -3290,7 +3279,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="2316"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">StressConfig<sp/>{</highlight></codeline>
 <codeline lineno="2318"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel{};</highlight></codeline>
-<codeline lineno="2319"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio{};</highlight></codeline>
+<codeline lineno="2319"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio{};</highlight></codeline>
 <codeline lineno="2320"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency{};</highlight></codeline>
 <codeline lineno="2321"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution{};</highlight></codeline>
 <codeline lineno="2322"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>description{};</highlight></codeline>
@@ -3344,7 +3333,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="2370"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2371"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>channels<sp/>with<sp/>varying<sp/>frequencies</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2372"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>ch<sp/>=<sp/>0;<sp/>ch<sp/>&lt;<sp/>4;<sp/>ch++)<sp/>{</highlight></codeline>
-<codeline lineno="2373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>test_pin<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(2<sp/>+<sp/>ch);</highlight></codeline>
+<codeline lineno="2373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>test_pin<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">hf_gpio_num_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(2<sp/>+<sp/>ch);</highlight></codeline>
 <codeline lineno="2374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(test_pin<sp/>==<sp/>3)</highlight></codeline>
 <codeline lineno="2375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>test_pin<sp/>=<sp/>6;</highlight></codeline>
 <codeline lineno="2376"><highlight class="normal"></highlight></codeline>
@@ -3466,7 +3455,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="2495"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2496"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">HealthCheckConfig<sp/>{</highlight></codeline>
 <codeline lineno="2497"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel{};</highlight></codeline>
-<codeline lineno="2498"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio{};</highlight></codeline>
+<codeline lineno="2498"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio{};</highlight></codeline>
 <codeline lineno="2499"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency{};</highlight></codeline>
 <codeline lineno="2500"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution{};</highlight></codeline>
 <codeline lineno="2501"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>description{};</highlight></codeline>
@@ -3517,7 +3506,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="2546"><highlight class="normal"></highlight></codeline>
 <codeline lineno="2547"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">NewAllocationTest<sp/>{</highlight></codeline>
 <codeline lineno="2548"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel{};</highlight></codeline>
-<codeline lineno="2549"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio{};</highlight></codeline>
+<codeline lineno="2549"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio{};</highlight></codeline>
 <codeline lineno="2550"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency{};</highlight></codeline>
 <codeline lineno="2551"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution{};</highlight></codeline>
 <codeline lineno="2552"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>description{};</highlight></codeline>
@@ -3623,7 +3612,7 @@ Comprehensive validation of the LEDC peripheral constraint system:</para>
 <codeline lineno="2655"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Configure<sp/>channels<sp/>to<sp/>fill<sp/>all<sp/>timers</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2656"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">EvictionTestConfig<sp/>{</highlight></codeline>
 <codeline lineno="2657"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1ae0889610252306068bb566d31b5494c7" kindref="member">hf_channel_id_t</ref><sp/>channel{};</highlight></codeline>
-<codeline lineno="2658"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kindref="member">hf_gpio_num_t</ref><sp/>gpio{};</highlight></codeline>
+<codeline lineno="2658"><highlight class="normal"><sp/><sp/><sp/><sp/>hf_gpio_num_t<sp/>gpio{};</highlight></codeline>
 <codeline lineno="2659"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>frequency{};</highlight></codeline>
 <codeline lineno="2660"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref><sp/>resolution{};</highlight></codeline>
 <codeline lineno="2661"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>is_critical{};</highlight></codeline>

@@ -5,9 +5,9 @@
     <basecompoundref refid="classBaseWifi" prot="public" virt="non-virtual">BaseWifi</basecompoundref>
     <includes refid="EspWifi_8h" local="no">EspWifi.h</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspWifi::m_mutex</definition>
+      <memberdef kind="variable" id="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspWifi::m_mutex</definition>
         <argsstring></argsstring>
         <name>m_mutex</name>
         <qualifiedname>EspWifi::m_mutex</qualifiedname>
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="359" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="359" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="359" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="359" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1adb31106309d33af5ce16e90e46906939" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -275,9 +275,9 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/EspWifi.h" line="382" column="14" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="382" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspWifi_1a3d42ddd9a7a2790eeeec94c1519c0995" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspWifi::m_event_mutex</definition>
+      <memberdef kind="variable" id="classEspWifi_1a6a5f2dc519caa82f9e3c7b3f7511da04" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspWifi::m_event_mutex</definition>
         <argsstring></argsstring>
         <name>m_event_mutex</name>
         <qualifiedname>EspWifi::m_event_mutex</qualifiedname>
@@ -288,7 +288,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="383" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="383" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="383" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="383" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1a5d96729fa9dac2b05153578461f1e781" prot="private" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="structhf__wifi__network__info__t" kindref="compound">hf_wifi_network_info_t</ref> &gt;</type>
@@ -320,9 +320,9 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/EspWifi.h" line="387" column="15" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="387" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspWifi_1a06558cebbce99692087713ec7985ae31" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspWifi::m_scan_mutex</definition>
+      <memberdef kind="variable" id="classEspWifi_1aa2d94a61c6c079af5600de156baf16fa" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspWifi::m_scan_mutex</definition>
         <argsstring></argsstring>
         <name>m_scan_mutex</name>
         <qualifiedname>EspWifi::m_scan_mutex</qualifiedname>
@@ -333,7 +333,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspWifi.h" line="388" column="21" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="388" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspWifi.h" line="388" column="25" bodyfile="inc/mcu/esp32/EspWifi.h" bodystart="388" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" prot="private" static="no" mutable="no">
         <type>std::atomic&lt; bool &gt;</type>
@@ -2694,8 +2694,8 @@
         <link refid="structEspWifiAdvancedConfig"/>
       </node>
       <node id="3">
-        <label>RtosMutex</label>
-        <link refid="classRtosMutex"/>
+        <label>PlatformMutex</label>
+        <link refid="classPlatformMutex"/>
       </node>
       <node id="5">
         <label>hf_wifi_ap_config_t</label>
@@ -2764,17 +2764,17 @@
       <member refid="classEspWifi_1a545838e3b8d960377c122e753db8cf47" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_enabled</name></member>
       <member refid="classEspWifi_1ab1c6e03ad971d611da51fcdf3eed5cf8" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_event_callback</name></member>
       <member refid="classEspWifi_1adbfa09b39eb14ed286bd28b04cff7d98" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_event_group</name></member>
-      <member refid="classEspWifi_1a3d42ddd9a7a2790eeeec94c1519c0995" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_event_mutex</name></member>
+      <member refid="classEspWifi_1a6a5f2dc519caa82f9e3c7b3f7511da04" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_event_mutex</name></member>
       <member refid="classEspWifi_1ab362b3836b671682f5789ca2e9fad4d6" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_event_queue</name></member>
       <member refid="classEspWifi_1a3a1a88d567809ce53ce3d5575755b453" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_event_user_data</name></member>
       <member refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_initialized</name></member>
       <member refid="classEspWifi_1ae01a87adacafedea6f333196683bfe27" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_ip_event_handler</name></member>
       <member refid="classEspWifi_1a54eddd362c8341bba3715f70a68dbd86" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_mesh_active</name></member>
       <member refid="classEspWifi_1a0d89e54dd5537c34d49da6bda7c74c4c" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_mode</name></member>
-      <member refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_mutex</name></member>
+      <member refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_mutex</name></member>
       <member refid="classEspWifi_1acf74e0cf81678090bfd6217dbfc5d0ad" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_rssi</name></member>
       <member refid="classEspWifi_1a2c6d455345af43e9d7fbac62b7ccc71c" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_scan_callback</name></member>
-      <member refid="classEspWifi_1a06558cebbce99692087713ec7985ae31" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_scan_mutex</name></member>
+      <member refid="classEspWifi_1aa2d94a61c6c079af5600de156baf16fa" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_scan_mutex</name></member>
       <member refid="classEspWifi_1a5d96729fa9dac2b05153578461f1e781" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_scan_results</name></member>
       <member refid="classEspWifi_1a8667062fa9debd9273cdd2480636259f" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_scan_user_data</name></member>
       <member refid="classEspWifi_1a7035508c06cc3cd794c3c0baec151f30" prot="private" virt="non-virtual"><scope>EspWifi</scope><name>m_scanning</name></member>

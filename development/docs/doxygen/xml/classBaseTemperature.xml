@@ -3,6 +3,7 @@
   <compounddef id="classBaseTemperature" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BaseTemperature</compoundname>
     <derivedcompoundref refid="classEspTemperature" prot="public" virt="non-virtual">EspTemperature</derivedcompoundref>
+    <derivedcompoundref refid="classStmTemperature" prot="public" virt="non-virtual">StmTemperature</derivedcompoundref>
     <includes refid="BaseTemperature_8h" local="no">BaseTemperature.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseTemperature_1a6657e59b1e8c59d68aabe08f276090fe" prot="protected" static="no" mutable="no">
@@ -334,6 +335,7 @@
         <name>GetSensorInfo</name>
         <qualifiedname>BaseTemperature::GetSensorInfo</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a31ccbc056a1b393a230ab8a2614bba2f">GetSensorInfo</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1a6d6f95d8acc8e7ebf80314022f6f2eac">GetSensorInfo</reimplementedby>
         <param>
           <type><ref refid="structhf__temp__sensor__info__t" kindref="compound">hf_temp_sensor_info_t</ref> *</type>
           <declname>info</declname>
@@ -366,6 +368,7 @@
         <name>GetCapabilities</name>
         <qualifiedname>BaseTemperature::GetCapabilities</qualifiedname>
         <reimplementedby refid="classEspTemperature_1af42132c1ba77f8392eb6e7a5b055e7e2">GetCapabilities</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1a00eac441e907fd899ac7df305bd1ead6">GetCapabilities</reimplementedby>
         <briefdescription>
 <para>Get sensor capabilities. </para>
         </briefdescription>
@@ -1125,6 +1128,7 @@
         <name>Initialize</name>
         <qualifiedname>BaseTemperature::Initialize</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a92699d024919bf1f5f40cfc2a05c5465">Initialize</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa">Initialize</reimplementedby>
         <briefdescription>
 <para>Platform-specific implementation for initialization. </para>
         </briefdescription>
@@ -1144,6 +1148,7 @@
         <name>Deinitialize</name>
         <qualifiedname>BaseTemperature::Deinitialize</qualifiedname>
         <reimplementedby refid="classEspTemperature_1acee4cee66dd94a80f8ebd8697718560e">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Platform-specific implementation for deinitialization. </para>
         </briefdescription>
@@ -1163,6 +1168,7 @@
         <name>ReadTemperatureCelsiusImpl</name>
         <qualifiedname>BaseTemperature::ReadTemperatureCelsiusImpl</qualifiedname>
         <reimplementedby refid="classEspTemperature_1a0357ccb31a009ae7b55ca02db5e0c58a">ReadTemperatureCelsiusImpl</reimplementedby>
+        <reimplementedby refid="classStmTemperature_1aec6918308bc56058d12cd1d5dde7aa03">ReadTemperatureCelsiusImpl</reimplementedby>
         <param>
           <type>float *</type>
           <declname>temperature_celsius</declname>
@@ -1255,6 +1261,12 @@
       <node id="2">
         <label>EspTemperature</label>
         <link refid="classEspTemperature"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>StmTemperature</label>
+        <link refid="classStmTemperature"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

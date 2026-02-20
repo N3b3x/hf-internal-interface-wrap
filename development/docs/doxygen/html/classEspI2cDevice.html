@@ -321,9 +321,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a30ea85ba523690eab6a827546f695485" id="r_a30ea85ba523690eab6a827546f695485"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structhf__i2c__diagnostics__t.html">hf_i2c_diagnostics_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30ea85ba523690eab6a827546f695485">diagnostics_</a></td></tr>
 <tr class="memdesc:a30ea85ba523690eab6a827546f695485"><td class="mdescLeft">&#160;</td><td class="mdescRight">Per-device diagnostics.  <br /></td></tr>
 <tr class="separator:a30ea85ba523690eab6a827546f695485"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe243d57519b587b6c9bcbabc00aab00" id="r_afe243d57519b587b6c9bcbabc00aab00"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRtosMutex.html">RtosMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afe243d57519b587b6c9bcbabc00aab00">mutex_</a></td></tr>
-<tr class="memdesc:afe243d57519b587b6c9bcbabc00aab00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device mutex for thread safety.  <br /></td></tr>
-<tr class="separator:afe243d57519b587b6c9bcbabc00aab00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ea3e8c3a34b51996caccceab08253d0" id="r_a7ea3e8c3a34b51996caccceab08253d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPlatformMutex.html">PlatformMutex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ea3e8c3a34b51996caccceab08253d0">mutex_</a></td></tr>
+<tr class="memdesc:a7ea3e8c3a34b51996caccceab08253d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device mutex for thread safety.  <br /></td></tr>
+<tr class="separator:a7ea3e8c3a34b51996caccceab08253d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa116b27cfa358a26202cd43c3375f5b4" id="r_aa116b27cfa358a26202cd43c3375f5b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="EspTypes__I2C_8h.html#acc25f7d1ca11777e327c8512d4137bbb">hf_i2c_mode_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa116b27cfa358a26202cd43c3375f5b4">device_mode_</a></td></tr>
 <tr class="memdesc:aa116b27cfa358a26202cd43c3375f5b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Device operation mode (inherited from bus)  <br /></td></tr>
 <tr class="separator:aa116b27cfa358a26202cd43c3375f5b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -372,7 +372,7 @@ Additional Inherited Members</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a single I2C device on a bus. </p>
 <p>Inherits from <a class="el" href="classBaseI2c.html" title="Abstract base class for I2C device implementations.">BaseI2c</a> and delegates operations to the parent bus. Provides full configuration and control for a single I2C device, including per-device clock speed, addressing mode, and ESP-IDF v5.5+ features.</p>
-<dl class="section note"><dt>Note</dt><dd>Thread-safe. All operations are protected by <a class="el" href="classRtosMutex.html">RtosMutex</a>. </dd>
+<dl class="section note"><dt>Note</dt><dd>Thread-safe. All operations are protected by <a class="el" href="classPlatformMutex.html">PlatformMutex</a>. </dd>
 <dd>
 Each device maintains its own handle and configuration. </dd>
 <dd>
@@ -2170,8 +2170,8 @@ Completion is reported via callback </dd></dl>
 
 </div>
 </div>
-<a id="afe243d57519b587b6c9bcbabc00aab00" name="afe243d57519b587b6c9bcbabc00aab00"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe243d57519b587b6c9bcbabc00aab00">&#9670;&#160;</a></span>mutex_</h2>
+<a id="a7ea3e8c3a34b51996caccceab08253d0" name="a7ea3e8c3a34b51996caccceab08253d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ea3e8c3a34b51996caccceab08253d0">&#9670;&#160;</a></span>mutex_</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2180,7 +2180,7 @@ Completion is reported via callback </dd></dl>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classRtosMutex.html">RtosMutex</a> EspI2cDevice::mutex_</td>
+          <td class="memname"><a class="el" href="classPlatformMutex.html">PlatformMutex</a> EspI2cDevice::mutex_</td>
         </tr>
       </table>
   </td>

@@ -257,7 +257,7 @@
         <param><defname>test_func</defname></param>
         <initializer>  do {                                                                                             \
     <ref refid="TestFramework_8h_1a57a48f91a141d98e45f82937581e1a97" kindref="member">ensure_gpio14_initialized</ref>();                                                                   \
-    ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,                                                                                  \
+    ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,                                                                                  \
              &quot;\n&quot;                                                                                  \
              &quot;╔══════════════════════════════════════════════════════════════════════════════╗\n&quot;  \
              &quot;║ Running: &quot; #test_func &quot;                                                     \n&quot;    \
@@ -268,9 +268,9 @@
     uint64_t execution_time = end_time - start_time;                                               \
     g_test_results.add_result(result, execution_time);                                             \
     if (result) {                                                                                  \
-      ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;[SUCCESS] PASSED: &quot; #test_func &quot; (%.2f ms)&quot;, execution_time / 1000.0);        \
+      ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;[SUCCESS] PASSED: &quot; #test_func &quot; (%.2f ms)&quot;, execution_time / 1000.0);        \
     } else {                                                                                       \
-      ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;[FAILED] FAILED: &quot; #test_func &quot; (%.2f ms)&quot;, execution_time / 1000.0);         \
+      ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;[FAILED] FAILED: &quot; #test_func &quot; (%.2f ms)&quot;, execution_time / 1000.0);         \
     }                                                                                              \
     vTaskDelay(pdMS_TO_TICKS(100));                                                                \
   } while (0)</initializer>
@@ -362,12 +362,12 @@ Requirements:<itemizedlist>
         <initializer>  do {                                                                                             \
     <ref refid="TestFramework_8h_1a57a48f91a141d98e45f82937581e1a97" kindref="member">ensure_gpio14_initialized</ref>();                                                                   \
     if (define_name) {                                                                             \
-      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
+      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
       __VA_ARGS__                                                                                  \
-      <ref refid="TestFramework_8h_1a5fe4d7658c49a1f3999cd09c0db952c0" kindref="member">print_test_section_footer</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
+      <ref refid="TestFramework_8h_1a5fe4d7658c49a1f3999cd09c0db952c0" kindref="member">print_test_section_footer</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
     } else {                                                                                       \
-      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, false);                                         \
-      ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Section disabled by configuration&quot;);                                          \
+      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, false);                                         \
+      ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Section disabled by configuration&quot;);                                          \
     }                                                                                              \
   } while (0)</initializer>
         <briefdescription>
@@ -398,7 +398,7 @@ Requirements:<itemizedlist>
       <ref refid="TestFramework_8h_1a214e38e25939e45e31ae73a073fca47f" kindref="member">RUN_TEST_IN_TASK</ref>(test_name, test_func, stack_size, priority);                                \
       <ref refid="TestFramework_8h_1a7bb80345e5681c19686df292fa897daf" kindref="member">flip_test_progress_indicator</ref>();                                                              \
     } else {                                                                                       \
-      ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Test &apos;%s&apos; disabled by configuration&quot;, test_name);                             \
+      ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Test &apos;%s&apos; disabled by configuration&quot;, test_name);                             \
     }                                                                                              \
   } while (0)</initializer>
         <briefdescription>
@@ -432,14 +432,14 @@ Requirements:<itemizedlist>
         <initializer>  do {                                                                                             \
     <ref refid="TestFramework_8h_1a57a48f91a141d98e45f82937581e1a97" kindref="member">ensure_gpio14_initialized</ref>();                                                                   \
     if (define_name) {                                                                             \
-      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
+      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
       __VA_ARGS__                                                                                  \
       if (progress_func)                                                                           \
         progress_func();                                                                           \
-      <ref refid="TestFramework_8h_1a5fe4d7658c49a1f3999cd09c0db952c0" kindref="member">print_test_section_footer</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
+      <ref refid="TestFramework_8h_1a5fe4d7658c49a1f3999cd09c0db952c0" kindref="member">print_test_section_footer</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
     } else {                                                                                       \
-      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, false);                                         \
-      ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Section disabled by configuration&quot;);                                          \
+      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, false);                                         \
+      ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Section disabled by configuration&quot;);                                          \
     }                                                                                              \
   } while (0)</initializer>
         <briefdescription>
@@ -474,14 +474,14 @@ Requirements:<itemizedlist>
         <initializer>  do {                                                                                             \
     <ref refid="TestFramework_8h_1a57a48f91a141d98e45f82937581e1a97" kindref="member">ensure_gpio14_initialized</ref>();                                                                   \
     if (define_name) {                                                                             \
-      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
+      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
       <ref refid="TestFramework_8h_1a0b263a245b65a247ab95a28992b8cc4c" kindref="member">output_section_indicator</ref>(blink_count); /* Section start indicator */                         \
       __VA_ARGS__                                                                                  \
       <ref refid="TestFramework_8h_1a0b263a245b65a247ab95a28992b8cc4c" kindref="member">output_section_indicator</ref>(blink_count); /* Section end indicator */                           \
-      <ref refid="TestFramework_8h_1a5fe4d7658c49a1f3999cd09c0db952c0" kindref="member">print_test_section_footer</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
+      <ref refid="TestFramework_8h_1a5fe4d7658c49a1f3999cd09c0db952c0" kindref="member">print_test_section_footer</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, true);                                          \
     } else {                                                                                       \
-      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, false);                                         \
-      ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Section disabled by configuration&quot;);                                          \
+      <ref refid="TestFramework_8h_1a5c46ab8dc59b071f0843bc287145d5f1" kindref="member">print_test_section_header</ref>(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, section_name, false);                                         \
+      ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>, &quot;Section disabled by configuration&quot;);                                          \
     }                                                                                              \
   } while (0)</initializer>
         <briefdescription>
@@ -952,8 +952,8 @@ Requirements:<itemizedlist>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="TestFramework_8h_1a3f00c14856161e541459863657902f23" kindref="member">g_test_progress_gpio</ref>-&gt;<ref refid="classBaseGpio_1a3178fb8f082369d79c699453bbb707ee" kindref="member">SetInactive</ref>();<sp/></highlight><highlight class="comment">//<sp/>Set<sp/>LOW</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;TestFramework&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>progression<sp/>indicator:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="TestFramework_8h_1a09ea58b300726075945c5f209f7d1aeb" kindref="member">g_test_progress_state</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;HIGH&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;LOW&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;TestFramework&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Test<sp/>progression<sp/>indicator:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/><ref refid="TestFramework_8h_1a09ea58b300726075945c5f209f7d1aeb" kindref="member">g_test_progress_state</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;HIGH&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;LOW&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Small<sp/>delay<sp/>for<sp/>visual<sp/>effect</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/>vTaskDelay(pdMS_TO_TICKS(50));</highlight></codeline>

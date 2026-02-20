@@ -3,6 +3,7 @@
   <compounddef id="classBaseI2c" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BaseI2c</compoundname>
     <derivedcompoundref refid="classEspI2cDevice" prot="public" virt="non-virtual">EspI2cDevice</derivedcompoundref>
+    <derivedcompoundref refid="classStmI2cDevice" prot="public" virt="non-virtual">StmI2cDevice</derivedcompoundref>
     <includes refid="BaseI2c_8h" local="no">BaseI2c.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBaseI2c_1a87bf0b1caa8c82523adc4e1816467232" prot="protected" static="no" mutable="no">
@@ -196,6 +197,7 @@
         <name>Initialize</name>
         <qualifiedname>BaseI2c::Initialize</qualifiedname>
         <reimplementedby refid="classEspI2cDevice_1a6b441d54a4f47e124dd6e5f48a23c7f9">Initialize</reimplementedby>
+        <reimplementedby refid="classStmI2cDevice_1a5d069dc6f8e90fe5aaccdd603111a07d">Initialize</reimplementedby>
         <briefdescription>
 <para>Initialize the I2C bus. </para>
         </briefdescription>
@@ -215,6 +217,7 @@
         <name>Deinitialize</name>
         <qualifiedname>BaseI2c::Deinitialize</qualifiedname>
         <reimplementedby refid="classEspI2cDevice_1ac905c8cc4c142563e73380ffb6b679b3">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmI2cDevice_1ab3a261efe8437ab6a349af90829b86c5">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Deinitialize the I2C bus. </para>
         </briefdescription>
@@ -234,6 +237,7 @@
         <name>Write</name>
         <qualifiedname>BaseI2c::Write</qualifiedname>
         <reimplementedby refid="classEspI2cDevice_1acc62adb05de7e21b96f5a61df9c4bb65">Write</reimplementedby>
+        <reimplementedby refid="classStmI2cDevice_1a8a705c4068676dcca9a36054eddfe15c">Write</reimplementedby>
         <param>
           <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
@@ -293,6 +297,7 @@
         <name>Read</name>
         <qualifiedname>BaseI2c::Read</qualifiedname>
         <reimplementedby refid="classEspI2cDevice_1a2943185e69fabba6ed4b25f1671d6877">Read</reimplementedby>
+        <reimplementedby refid="classStmI2cDevice_1a8cd7f86df640e25578aaaabe4ca194ec">Read</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>data</declname>
@@ -352,6 +357,7 @@
         <name>WriteRead</name>
         <qualifiedname>BaseI2c::WriteRead</qualifiedname>
         <reimplementedby refid="classEspI2cDevice_1ab0e1da7ee817f2ddfd2c0393b7fb6c99">WriteRead</reimplementedby>
+        <reimplementedby refid="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df">WriteRead</reimplementedby>
         <param>
           <type>const <ref refid="HardwareTypes_8h_1a3aa2692c73b4cca0adc7139bd18ff613" kindref="member">hf_u8_t</ref> *</type>
           <declname>tx_data</declname>
@@ -435,6 +441,7 @@
         <name>GetDeviceAddress</name>
         <qualifiedname>BaseI2c::GetDeviceAddress</qualifiedname>
         <reimplementedby refid="classEspI2cDevice_1aab6bbd8d809f7723174dcbe3d94c660a">GetDeviceAddress</reimplementedby>
+        <reimplementedby refid="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37">GetDeviceAddress</reimplementedby>
         <briefdescription>
 <para>Get the device address for this I2C device. </para>
         </briefdescription>
@@ -883,6 +890,12 @@
       <node id="2">
         <label>EspI2cDevice</label>
         <link refid="classEspI2cDevice"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>StmI2cDevice</label>
+        <link refid="classStmI2cDevice"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

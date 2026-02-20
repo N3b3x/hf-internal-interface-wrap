@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
+  <compounddef id="StmLogger_8cpp" kind="file" language="C++">
+    <compoundname>StmLogger.cpp</compoundname>
+    <includes refid="StmLogger_8h" local="yes">StmLogger.h</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">cstring</includes>
+    <incdepgraph>
+      <node id="3">
+        <label>BaseLogger.h</label>
+        <link refid="BaseLogger_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>HardwareTypes.h</label>
+        <link refid="HardwareTypes_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>StmLogger.h</label>
+        <link refid="StmLogger_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/mcu/stm32/StmLogger.cpp</label>
+        <link refid="StmLogger_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>cstdarg</label>
+      </node>
+      <node id="5">
+        <label>cstdint</label>
+      </node>
+      <node id="11">
+        <label>cstdio</label>
+      </node>
+      <node id="12">
+        <label>cstring</label>
+      </node>
+      <node id="8">
+        <label>functional</label>
+      </node>
+      <node id="6">
+        <label>limits</label>
+      </node>
+      <node id="9">
+        <label>string</label>
+      </node>
+      <node id="10">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <sectiondef kind="var">
+      <memberdef kind="variable" id="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto kNotSupported</definition>
+        <argsstring></argsstring>
+        <name>kNotSupported</name>
+        <initializer>= <ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177adf30db73773323da98f1632e18d5ecf0" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_SUPPORTED</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/mcu/stm32/StmLogger.cpp" line="12" column="23" bodyfile="src/mcu/stm32/StmLogger.cpp" bodystart="12" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>STM32 Logger stub implementation. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Copyright © 2025 HardFOC. Licensed under GPL v3.0 or later. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="StmLogger_8h" kindref="compound">StmLogger.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref><sp/>=<sp/><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177adf30db73773323da98f1632e18d5ecf0" kindref="member">hf_logger_err_t::LOGGER_ERR_NOT_SUPPORTED</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><ref refid="classStmLogger_1ab80d5c81f30a88b8e51aa5791eee041f" kindref="member">StmLogger::StmLogger</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><ref refid="classStmLogger" kindref="compound">StmLogger</ref>::~<ref refid="classStmLogger" kindref="compound">StmLogger</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger" kindref="compound">StmLogger</ref>::Initialize(const<sp/><ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref>&amp;)<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1ab810f2599398f77b28f55c6c84e3fcbe" kindref="member">StmLogger::Deinitialize</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmLogger_1ad63dccfd7f9aba556a3fef83bc2c2ac3" kindref="member">StmLogger::IsInitialized</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmLogger_1a015a61a54d5f3e93af13ad2630b505ed" kindref="member">StmLogger::EnsureInitialized</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1ae2602c3ebe878697f3b6b32b12ac1cf2" kindref="member">StmLogger::SetLogLevel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a12f37e364af6bdf1210ef1903f5f578a" kindref="member">StmLogger::GetLogLevel</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a0175d15ffd5f584219e245ada94523e4" kindref="member">StmLogger::Error</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/>...)<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a335f9c0b5f3b6e5b334eac182fef091f" kindref="member">StmLogger::Warn</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/>...)<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a5d2369d89af47301c9acddacd9069bf1" kindref="member">StmLogger::Info</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/>...)<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a66a47cf67fc5cf81813657d86b40436b" kindref="member">StmLogger::Debug</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/>...)<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a84d53e2a0f13748eba3e7835b58ce7f4" kindref="member">StmLogger::Verbose</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/>...)<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1aae2ab97cb870518bd85bf98c0e5bf4de" kindref="member">StmLogger::Log</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/>...)<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a82f8b9ab036f242be008db739996db1d" kindref="member">StmLogger::LogV</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/>va_list)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a291097b7c1fd5e638c9cd7d5e038a0c5" kindref="member">StmLogger::LogWithLocation</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/>...)<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a023f685044c18bf63081ec48a46dfdfe" kindref="member">StmLogger::Flush</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmLogger_1aed1e8557a3a37a78c169aa921acff3fc" kindref="member">StmLogger::IsLevelEnabled</ref>(<ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1ac6e0e9e8227e73d5a168736fc0feb21f" kindref="member">StmLogger::GetStatistics</ref>(<ref refid="structhf__logger__statistics__t" kindref="compound">hf_logger_statistics_t</ref>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a1b90770ff5573663d9a73419236c2a9c" kindref="member">StmLogger::GetDiagnostics</ref>(<ref refid="structhf__logger__diagnostics__t" kindref="compound">hf_logger_diagnostics_t</ref>&amp;)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1ac41e6fc6c54eb644f690619362f855e3" kindref="member">StmLogger::ResetStatistics</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a6590af32ba64f607d69e57659c60c647" kindref="member">StmLogger::ResetDiagnostics</ref>()<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classStmLogger_1a16a88780953992653e289b1f2b519d4c" kindref="member">StmLogger::IsHealthy</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1a05c26cee0e96ea6eeda411dd5decd4dc" kindref="member">StmLogger::GetLastError</ref>()<sp/>const<sp/>noexcept<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1abc19945e773ba5ff8c8b492e5f1d7d12" kindref="member">StmLogger::GetLastErrorMessage</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>message,<sp/><ref refid="HardwareTypes_8h_1a0a9e8f52f8fc4d5b4c197dd3923c50fd" kindref="member">hf_u32_t</ref><sp/>max_length)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(message<sp/>&amp;&amp;<sp/>max_length<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strncpy(message,<sp/></highlight><highlight class="stringliteral">&quot;STM32<sp/>Logger<sp/>not<sp/>implemented&quot;</highlight><highlight class="normal">,<sp/>max_length<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>message[max_length<sp/>-<sp/>1]<sp/>=<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1ac902564ee04c8e554825184b84a996a9" kindref="member">StmLogger::PrintStatistics</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1acc6e0d3f238a00e169f591787f8bf435" kindref="member">StmLogger::PrintDiagnostics</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><ref refid="BaseLogger_8h_1ac68cbaa2282f1e4e9831a0c6f4801177" kindref="member">hf_logger_err_t</ref><sp/><ref refid="classStmLogger_1af1a868f33898057f7ee700e8fba9bed2" kindref="member">StmLogger::PrintStatus</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kindref="member">kNotSupported</ref>;<sp/>}</highlight></codeline>
+    </programlisting>
+    <location file="src/mcu/stm32/StmLogger.cpp"/>
+  </compounddef>
+</doxygen>

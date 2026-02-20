@@ -2,7 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.10.0" xml:lang="en-US">
   <compounddef id="classBaseLogger" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BaseLogger</compoundname>
-    <derivedcompoundref refid="classEspLogger" prot="public" virt="non-virtual">EspLogger</derivedcompoundref>
+    <derivedcompoundref refid="classStmLogger" prot="public" virt="non-virtual">StmLogger</derivedcompoundref>
     <includes refid="BaseLogger_8h" local="no">BaseLogger.h</includes>
     <sectiondef kind="public-func">
       <memberdef kind="function" id="classBaseLogger_1a5f705b3c7b590a8427e78a77ade3925c" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
@@ -26,7 +26,7 @@
         <argsstring>(const hf_logger_config_t &amp;config) noexcept=0</argsstring>
         <name>Initialize</name>
         <qualifiedname>BaseLogger::Initialize</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a65a25428dd2429380fa5e44ddb31f883">Initialize</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a2db97b3064db0d5be33c1ab082d1803a">Initialize</reimplementedby>
         <param>
           <type>const <ref refid="structhf__logger__config__t" kindref="compound">hf_logger_config_t</ref> &amp;</type>
           <declname>config</declname>
@@ -58,7 +58,7 @@
         <argsstring>() noexcept=0</argsstring>
         <name>Deinitialize</name>
         <qualifiedname>BaseLogger::Deinitialize</qualifiedname>
-        <reimplementedby refid="classEspLogger_1ad55e13200cd30558a1c6b51cd37bd9de">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmLogger_1ab810f2599398f77b28f55c6c84e3fcbe">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Deinitialize the logger. </para>
         </briefdescription>
@@ -77,7 +77,7 @@
         <argsstring>() const noexcept=0</argsstring>
         <name>IsInitialized</name>
         <qualifiedname>BaseLogger::IsInitialized</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a4d300e5e6ae8f3da60d756686f520495">IsInitialized</reimplementedby>
+        <reimplementedby refid="classStmLogger_1ad63dccfd7f9aba556a3fef83bc2c2ac3">IsInitialized</reimplementedby>
         <briefdescription>
 <para>Check if logger is initialized. </para>
         </briefdescription>
@@ -96,7 +96,7 @@
         <argsstring>() noexcept=0</argsstring>
         <name>EnsureInitialized</name>
         <qualifiedname>BaseLogger::EnsureInitialized</qualifiedname>
-        <reimplementedby refid="classEspLogger_1afd6ed0aa4e042aa0356952ca4cb968da">EnsureInitialized</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a015a61a54d5f3e93af13ad2630b505ed">EnsureInitialized</reimplementedby>
         <briefdescription>
 <para>Ensure logger is initialized (lazy initialization) </para>
         </briefdescription>
@@ -115,7 +115,7 @@
         <argsstring>(const char *tag, hf_log_level_t level) noexcept=0</argsstring>
         <name>SetLogLevel</name>
         <qualifiedname>BaseLogger::SetLogLevel</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a2ba313925a91c912e926af982b1f99df">SetLogLevel</reimplementedby>
+        <reimplementedby refid="classStmLogger_1ae2602c3ebe878697f3b6b32b12ac1cf2">SetLogLevel</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -159,7 +159,7 @@
         <argsstring>(const char *tag, hf_log_level_t &amp;level) const noexcept=0</argsstring>
         <name>GetLogLevel</name>
         <qualifiedname>BaseLogger::GetLogLevel</qualifiedname>
-        <reimplementedby refid="classEspLogger_1ad6062eec104b3cdf9532cfa2a9f15bdc">GetLogLevel</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a12f37e364af6bdf1210ef1903f5f578a">GetLogLevel</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -203,7 +203,7 @@
         <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
         <name>Error</name>
         <qualifiedname>BaseLogger::Error</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a666cd0894691948bf449fb7e325d222f">Error</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a0175d15ffd5f584219e245ada94523e4">Error</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -258,7 +258,7 @@
         <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
         <name>Warn</name>
         <qualifiedname>BaseLogger::Warn</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a097cbcffbb54f838cddab0e20abff8ac">Warn</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a335f9c0b5f3b6e5b334eac182fef091f">Warn</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -313,7 +313,7 @@
         <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
         <name>Info</name>
         <qualifiedname>BaseLogger::Info</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a3f54f20a15b35aee84a5148b84a846c1">Info</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a5d2369d89af47301c9acddacd9069bf1">Info</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -368,7 +368,7 @@
         <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
         <name>Debug</name>
         <qualifiedname>BaseLogger::Debug</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a6dff2af97ae0ee413b89aec8cf96f09a">Debug</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a66a47cf67fc5cf81813657d86b40436b">Debug</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -423,7 +423,7 @@
         <argsstring>(const char *tag, const char *format,...) noexcept=0</argsstring>
         <name>Verbose</name>
         <qualifiedname>BaseLogger::Verbose</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a8b5952680c76fd4d3f7c7e3cce904e41">Verbose</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a84d53e2a0f13748eba3e7835b58ce7f4">Verbose</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -478,7 +478,7 @@
         <argsstring>(hf_log_level_t level, const char *tag, const char *format,...) noexcept=0</argsstring>
         <name>Log</name>
         <qualifiedname>BaseLogger::Log</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a35a264de336e8f2de1b7cd1751eab044">Log</reimplementedby>
+        <reimplementedby refid="classStmLogger_1aae2ab97cb870518bd85bf98c0e5bf4de">Log</reimplementedby>
         <param>
           <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
           <declname>level</declname>
@@ -545,7 +545,7 @@
         <argsstring>(hf_log_level_t level, const char *tag, const char *format, va_list args) noexcept=0</argsstring>
         <name>LogV</name>
         <qualifiedname>BaseLogger::LogV</qualifiedname>
-        <reimplementedby refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e">LogV</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a82f8b9ab036f242be008db739996db1d">LogV</reimplementedby>
         <param>
           <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
           <declname>level</declname>
@@ -613,7 +613,7 @@
         <argsstring>(hf_log_level_t level, const char *tag, const char *file, hf_u32_t line, const char *function, const char *format,...) noexcept=0</argsstring>
         <name>LogWithLocation</name>
         <qualifiedname>BaseLogger::LogWithLocation</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a0622fca14e6fc69b91975cf720af3603">LogWithLocation</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a291097b7c1fd5e638c9cd7d5e038a0c5">LogWithLocation</reimplementedby>
         <param>
           <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
           <declname>level</declname>
@@ -716,7 +716,7 @@
         <argsstring>() noexcept=0</argsstring>
         <name>Flush</name>
         <qualifiedname>BaseLogger::Flush</qualifiedname>
-        <reimplementedby refid="classEspLogger_1ac3fddcbe82a7de191a903a5427dd44e0">Flush</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a023f685044c18bf63081ec48a46dfdfe">Flush</reimplementedby>
         <briefdescription>
 <para>Flush any buffered output. </para>
         </briefdescription>
@@ -735,7 +735,7 @@
         <argsstring>(hf_log_level_t level, const char *tag=nullptr) const noexcept=0</argsstring>
         <name>IsLevelEnabled</name>
         <qualifiedname>BaseLogger::IsLevelEnabled</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a7ec1e202ab853fd2ee1f2b93c4089a08">IsLevelEnabled</reimplementedby>
+        <reimplementedby refid="classStmLogger_1aed1e8557a3a37a78c169aa921acff3fc">IsLevelEnabled</reimplementedby>
         <param>
           <type><ref refid="group__logger_1gafcafcc6e9ff6e92894e3de5998a51042" kindref="member">hf_log_level_t</ref></type>
           <declname>level</declname>
@@ -780,7 +780,7 @@
         <argsstring>(hf_logger_statistics_t &amp;statistics) const noexcept=0</argsstring>
         <name>GetStatistics</name>
         <qualifiedname>BaseLogger::GetStatistics</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a9c245d1d50c9665832b75332ba752689">GetStatistics</reimplementedby>
+        <reimplementedby refid="classStmLogger_1ac6e0e9e8227e73d5a168736fc0feb21f">GetStatistics</reimplementedby>
         <param>
           <type><ref refid="structhf__logger__statistics__t" kindref="compound">hf_logger_statistics_t</ref> &amp;</type>
           <declname>statistics</declname>
@@ -812,7 +812,7 @@
         <argsstring>(hf_logger_diagnostics_t &amp;diagnostics) const noexcept=0</argsstring>
         <name>GetDiagnostics</name>
         <qualifiedname>BaseLogger::GetDiagnostics</qualifiedname>
-        <reimplementedby refid="classEspLogger_1ac2b2ffa4d116dc2e75c96ccb8f08e61b">GetDiagnostics</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a1b90770ff5573663d9a73419236c2a9c">GetDiagnostics</reimplementedby>
         <param>
           <type><ref refid="structhf__logger__diagnostics__t" kindref="compound">hf_logger_diagnostics_t</ref> &amp;</type>
           <declname>diagnostics</declname>
@@ -844,7 +844,7 @@
         <argsstring>() noexcept=0</argsstring>
         <name>ResetStatistics</name>
         <qualifiedname>BaseLogger::ResetStatistics</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a0c8b15b05c28dc619ebf777c870bd2ec">ResetStatistics</reimplementedby>
+        <reimplementedby refid="classStmLogger_1ac41e6fc6c54eb644f690619362f855e3">ResetStatistics</reimplementedby>
         <briefdescription>
 <para>Reset statistics. </para>
         </briefdescription>
@@ -863,7 +863,7 @@
         <argsstring>() noexcept=0</argsstring>
         <name>ResetDiagnostics</name>
         <qualifiedname>BaseLogger::ResetDiagnostics</qualifiedname>
-        <reimplementedby refid="classEspLogger_1aefe2fb8f5f9359423c198a4980236ffe">ResetDiagnostics</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a6590af32ba64f607d69e57659c60c647">ResetDiagnostics</reimplementedby>
         <briefdescription>
 <para>Reset diagnostics. </para>
         </briefdescription>
@@ -882,7 +882,7 @@
         <argsstring>() const noexcept=0</argsstring>
         <name>IsHealthy</name>
         <qualifiedname>BaseLogger::IsHealthy</qualifiedname>
-        <reimplementedby refid="classEspLogger_1ab003664bef163b80f2071efbccfb1fe9">IsHealthy</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a16a88780953992653e289b1f2b519d4c">IsHealthy</reimplementedby>
         <briefdescription>
 <para>Check if logger is healthy. </para>
         </briefdescription>
@@ -901,7 +901,7 @@
         <argsstring>() const noexcept=0</argsstring>
         <name>GetLastError</name>
         <qualifiedname>BaseLogger::GetLastError</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a3452b953312f5d8512ecb64b7b8e6624">GetLastError</reimplementedby>
+        <reimplementedby refid="classStmLogger_1a05c26cee0e96ea6eeda411dd5decd4dc">GetLastError</reimplementedby>
         <briefdescription>
 <para>Get last error code. </para>
         </briefdescription>
@@ -920,7 +920,7 @@
         <argsstring>(char *message, hf_u32_t max_length) const noexcept=0</argsstring>
         <name>GetLastErrorMessage</name>
         <qualifiedname>BaseLogger::GetLastErrorMessage</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a7dee6257ad605104ffe53822747b82b1">GetLastErrorMessage</reimplementedby>
+        <reimplementedby refid="classStmLogger_1abc19945e773ba5ff8c8b492e5f1d7d12">GetLastErrorMessage</reimplementedby>
         <param>
           <type>char *</type>
           <declname>message</declname>
@@ -964,7 +964,7 @@
         <argsstring>(const char *tag=nullptr, bool detailed=true) const noexcept=0</argsstring>
         <name>PrintStatistics</name>
         <qualifiedname>BaseLogger::PrintStatistics</qualifiedname>
-        <reimplementedby refid="classEspLogger_1a3707bd0b8d05153fce8c306461ad8a5b">PrintStatistics</reimplementedby>
+        <reimplementedby refid="classStmLogger_1ac902564ee04c8e554825184b84a996a9">PrintStatistics</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -1010,7 +1010,7 @@
         <argsstring>(const char *tag=nullptr, bool detailed=true) const noexcept=0</argsstring>
         <name>PrintDiagnostics</name>
         <qualifiedname>BaseLogger::PrintDiagnostics</qualifiedname>
-        <reimplementedby refid="classEspLogger_1af4dd2ff188f30b1a5da6c174361ee2d0">PrintDiagnostics</reimplementedby>
+        <reimplementedby refid="classStmLogger_1acc6e0d3f238a00e169f591787f8bf435">PrintDiagnostics</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -1056,7 +1056,7 @@
         <argsstring>(const char *tag=nullptr, bool detailed=true) const noexcept=0</argsstring>
         <name>PrintStatus</name>
         <qualifiedname>BaseLogger::PrintStatus</qualifiedname>
-        <reimplementedby refid="classEspLogger_1ae9668859f987dd750a3ca89bbffa94d4">PrintStatus</reimplementedby>
+        <reimplementedby refid="classStmLogger_1af1a868f33898057f7ee700e8fba9bed2">PrintStatus</reimplementedby>
         <param>
           <type>const char *</type>
           <declname>tag</declname>
@@ -1207,8 +1207,8 @@
         <link refid="classBaseLogger"/>
       </node>
       <node id="2">
-        <label>EspLogger</label>
-        <link refid="classEspLogger"/>
+        <label>StmLogger</label>
+        <link refid="classStmLogger"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

@@ -1,0 +1,26 @@
+<map id="src/mcu/stm32/StmLogger.cpp" name="src/mcu/stm32/StmLogger.cpp">
+<area shape="rect" id="Node000001" title="STM32 Logger stub implementation." alt="" coords="339,5,607,36"/>
+<area shape="rect" id="Node000002" href="$StmLogger_8h.html" title="STM32 Logger stub — printf&#45;based fallback for non&#45;ESP32 platforms." alt="" coords="289,84,415,115"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="452,39,388,79,385,74,449,34"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="439,84,508,115"/>
+<area shape="poly" id="edge11_Node000001_Node000011" title=" " alt="" coords="476,36,476,70,471,70,471,36"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="532,84,607,115"/>
+<area shape="poly" id="edge12_Node000001_Node000012" title=" " alt="" coords="493,34,542,73,539,77,490,38"/>
+<area shape="rect" id="Node000003" href="$BaseLogger_8h.html" title="Unified logging base class for all logging implementations." alt="" coords="285,163,419,193"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="355,115,355,149,349,149,349,115"/>
+<area shape="rect" id="Node000004" href="$HardwareTypes_8h.html" title="Platform&#45;agnostic hardware type definitions for the HardFOC system." alt="" coords="67,241,229,272"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="315,196,199,239,197,234,313,191"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,320,80,351"/>
+<area shape="poly" id="edge7_Node000003_Node000005" title=" " alt="" coords="286,187,221,194,153,206,94,222,72,232,57,243,48,257,43,273,41,306,36,306,37,272,43,255,53,240,69,227,92,217,152,201,220,189,285,182"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="254,241,335,272"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="343,195,316,232,311,229,339,192"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="360,241,459,272"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="365,192,393,229,388,232,361,195"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="483,241,549,272"/>
+<area shape="poly" id="edge9_Node000003_Node000009" title=" " alt="" coords="384,191,474,233,472,238,381,196"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="573,241,685,272"/>
+<area shape="poly" id="edge10_Node000003_Node000010" title=" " alt="" coords="404,191,565,235,564,240,403,196"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="130,274,75,314,72,310,127,270"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="116,320,180,351"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="151,272,151,306,145,306,145,272"/>
+</map>

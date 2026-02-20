@@ -675,98 +675,6 @@
     <member refid="structesp__temp__state__t_1a0bd9df15c3eadb5793ecdf9829ad1bab" kind="variable"><name>last_temperature_celsius</name></member>
     <member refid="structesp__temp__state__t_1ae3ff4b7eb1a7c86c3c083bdc7d46ca1c" kind="variable"><name>allow_power_down</name></member>
   </compound>
-  <compound refid="classEspAdc" kind="class"><name>EspAdc</name>
-    <member refid="classEspAdc_1ae7109751b31c9a9b6f6e660300eb1d43" kind="variable"><name>HF_ADC_MAX_UNITS</name></member>
-    <member refid="classEspAdc_1a290c2aea8eabeff58d069c845d00af54" kind="variable"><name>HF_ADC_MAX_CHANNELS</name></member>
-    <member refid="classEspAdc_1aa348b52181cff17770ecc4f30c83a281" kind="variable"><name>HF_ADC_MAX_FILTERS</name></member>
-    <member refid="classEspAdc_1a18d74dcbc12d883064b0cf60add0ca06" kind="variable"><name>HF_ADC_MAX_MONITORS</name></member>
-    <member refid="classEspAdc_1a654a79dd9b9995b5212e3774801af713" kind="variable"><name>HF_ADC_MAX_RAW_VALUE_12BIT</name></member>
-    <member refid="classEspAdc_1aaa5e88282ea20316303cacadcc48e194" kind="variable"><name>HF_ADC_REFERENCE_VOLTAGE_MV</name></member>
-    <member refid="classEspAdc_1af56e5ffd8f329983d4dccd5faed97588" kind="variable"><name>HF_ADC_MAX_SAMPLING_FREQ</name></member>
-    <member refid="classEspAdc_1ae331601ad9c6323ac82674ed3522e2c3" kind="variable"><name>HF_ADC_MIN_SAMPLING_FREQ</name></member>
-    <member refid="classEspAdc_1a751617ee185376fa0d6ab36192d3bd21" kind="variable"><name>HF_ADC_DEFAULT_SAMPLING_FREQ</name></member>
-    <member refid="classEspAdc_1a4681252972a0ff3e5d7a4ad30e8129bc" kind="variable"><name>HF_ADC_DMA_BUFFER_SIZE_MIN</name></member>
-    <member refid="classEspAdc_1a8e86a890fef42cf2df860aab0e7232c9" kind="variable"><name>HF_ADC_DMA_BUFFER_SIZE_MAX</name></member>
-    <member refid="classEspAdc_1a4f3041f636ac945e80c729950dba0c36" kind="variable"><name>HF_ADC_DMA_BUFFER_SIZE_DEFAULT</name></member>
-    <member refid="classEspAdc_1a12abe097f1e7355cdb6b0954a703e1d4" kind="variable"><name>HF_ADC_ONESHOT_CLK_SRC</name></member>
-    <member refid="classEspAdc_1a74a01c81453e5a592a42d9dbf6822ca9" kind="variable"><name>HF_ADC_CONTINUOUS_CLK_SRC</name></member>
-    <member refid="classEspAdc_1ae9c8c79e7e3b4e99a1265c8262c09771" kind="variable"><name>HF_ADC_ULP_MODE</name></member>
-    <member refid="classEspAdc_1a6db623dfa1c5f83a76c8d6f9af42c7c8" kind="variable"><name>config_</name></member>
-    <member refid="classEspAdc_1ae7327d528b6bcd71aa6d4364a9b61a8f" kind="variable"><name>continuous_running_</name></member>
-    <member refid="classEspAdc_1a73204df6c563d802757b27188b644b5e" kind="variable"><name>last_error_</name></member>
-    <member refid="classEspAdc_1a2de8a2dae650ab29adce6821a639e28c" kind="variable"><name>config_mutex_</name></member>
-    <member refid="classEspAdc_1a75d7e5963af45c0a975ac428344b096d" kind="variable"><name>stats_mutex_</name></member>
-    <member refid="classEspAdc_1aee946b33ba3816292c7a7e82babf57ec" kind="variable"><name>oneshot_handle_</name></member>
-    <member refid="classEspAdc_1ab88a971087cd83f541f906af6deda056" kind="variable"><name>continuous_handle_</name></member>
-    <member refid="classEspAdc_1a57582feb18bd008a49768d5539348e57" kind="variable"><name>calibration_handles_</name></member>
-    <member refid="classEspAdc_1a2b24c60b289769e1baff7421ac4a614a" kind="variable"><name>filter_handles_</name></member>
-    <member refid="classEspAdc_1a1c76bfd433fc8685330cc866650c1b4b" kind="variable"><name>monitor_handles_</name></member>
-    <member refid="classEspAdc_1a4a81d64afb4455f9f5ebbffa402c8fe4" kind="variable"><name>continuous_callback_</name></member>
-    <member refid="classEspAdc_1a8223af54ab4b28b80ff73b7e1b42b3ba" kind="variable"><name>continuous_user_data_</name></member>
-    <member refid="classEspAdc_1a1beefdaee72af0353b6bca259d7acc34" kind="variable"><name>monitor_callbacks_</name></member>
-    <member refid="classEspAdc_1ac296b19dfe33ff8b5d7d6eec9dd18df2" kind="variable"><name>monitor_user_data_</name></member>
-    <member refid="classEspAdc_1a67f977b364fddbd45aa4d4abdae9be7b" kind="variable"><name>monitor_contexts_</name></member>
-    <member refid="classEspAdc_1a455883a7cc0f32cd205451d79c444c57" kind="variable"><name>statistics_</name></member>
-    <member refid="classEspAdc_1a91c329fe7f1e0abaf44ede88ed3590c9" kind="variable"><name>diagnostics_</name></member>
-    <member refid="classEspAdc_1a535eda201dc1e424367b0b79094328ca" kind="function"><name>EspAdc</name></member>
-    <member refid="classEspAdc_1a7c57e4e693144146542be1218cd929aa" kind="function"><name>~EspAdc</name></member>
-    <member refid="classEspAdc_1a040a8174fe3df5f7b3eeb79e6e0e4eac" kind="function"><name>EspAdc</name></member>
-    <member refid="classEspAdc_1aa9b02a740c72d5064613a3b9bb6a6249" kind="function"><name>operator=</name></member>
-    <member refid="classEspAdc_1a176689eaf3ffc30a447dc292960922d0" kind="function"><name>EspAdc</name></member>
-    <member refid="classEspAdc_1a1c46e8dce3bb9de8c59ce1b2408ac92c" kind="function"><name>operator=</name></member>
-    <member refid="classEspAdc_1a3e0aba56249e205578cbe92541554b08" kind="function"><name>Initialize</name></member>
-    <member refid="classEspAdc_1a3763c67c9ca0ecfd8feda1d44b22d1e0" kind="function"><name>Deinitialize</name></member>
-    <member refid="classEspAdc_1ac234759d85da10db28bb2773daeec9e1" kind="function"><name>GetMaxChannels</name></member>
-    <member refid="classEspAdc_1a8d37e2e11fac48019803f6260a1b39cc" kind="function"><name>IsChannelAvailable</name></member>
-    <member refid="classEspAdc_1a41dd2c15efe312397d72b9e803741318" kind="function"><name>ReadChannelV</name></member>
-    <member refid="classEspAdc_1aee902d7623f92e1a64b6708b41c63b3b" kind="function"><name>ReadChannelCount</name></member>
-    <member refid="classEspAdc_1a4a1844e4b8add43b1f83c1bd59c430f8" kind="function"><name>ReadChannel</name></member>
-    <member refid="classEspAdc_1ae78a280905f09634070c9ce624002cb7" kind="function"><name>ReadMultipleChannels</name></member>
-    <member refid="classEspAdc_1aa5565e8cc60dc1c8c38ef1416ceb9eee" kind="function"><name>SetMode</name></member>
-    <member refid="classEspAdc_1a90c2d7e6e1f828fbde16b861d82e08c4" kind="function"><name>GetMode</name></member>
-    <member refid="classEspAdc_1a8761809a54d41ff5bbe428a1bf26876b" kind="function"><name>ConfigureChannel</name></member>
-    <member refid="classEspAdc_1a82197660e2697e83a75dcec82715edea" kind="function"><name>SetChannelEnabled</name></member>
-    <member refid="classEspAdc_1aa2dbbca1008b19554050fb3d61d4efbc" kind="function"><name>EnableChannel</name></member>
-    <member refid="classEspAdc_1a8d7f0c758314d5d2335228ae089a411a" kind="function"><name>DisableChannel</name></member>
-    <member refid="classEspAdc_1abc6f77bdd3c2148174e25f6cb4fef6b9" kind="function"><name>ReadSingleRaw</name></member>
-    <member refid="classEspAdc_1aaf1ab6e5fc8f3dd1d98adb58217c7999" kind="function"><name>ReadSingleVoltage</name></member>
-    <member refid="classEspAdc_1a3a4746635880b676e2539a57e03019e5" kind="function"><name>ReadMultipleRaw</name></member>
-    <member refid="classEspAdc_1a9a485efe16e4c4cffd8430e93b50abdc" kind="function"><name>ReadMultipleVoltage</name></member>
-    <member refid="classEspAdc_1a8536b9fb3f4501f0ae3904a69be7d89e" kind="function"><name>ReadAveraged</name></member>
-    <member refid="classEspAdc_1a5fec22227de2002dd6eee83d7a3d71b3" kind="function"><name>IsChannelEnabled</name></member>
-    <member refid="classEspAdc_1a45ad33cf12b52f2f2ef2f49631b79cdf" kind="function"><name>ConfigureContinuous</name></member>
-    <member refid="classEspAdc_1a15e521d7b7f7999350c92f7324163a44" kind="function"><name>SetContinuousCallback</name></member>
-    <member refid="classEspAdc_1a557503781b6750e588f294d5335f38c5" kind="function"><name>StartContinuous</name></member>
-    <member refid="classEspAdc_1a7fc0aa8f5824bbbc5e822cc54376a104" kind="function"><name>StopContinuous</name></member>
-    <member refid="classEspAdc_1a53adaf2491145413c52c99047bd489ee" kind="function"><name>IsContinuousRunning</name></member>
-    <member refid="classEspAdc_1ab01214748f53f27d55d434455882a6bf" kind="function"><name>ReadContinuousData</name></member>
-    <member refid="classEspAdc_1a8ebd0d0a3003612f510c2083115bf6ed" kind="function"><name>InitializeCalibration</name></member>
-    <member refid="classEspAdc_1a4b6578a771f9719df0aba7a483c42797" kind="function"><name>IsCalibrationAvailable</name></member>
-    <member refid="classEspAdc_1a57368d9056bbb8ad629f45b4f4d38380" kind="function"><name>RawToVoltage</name></member>
-    <member refid="classEspAdc_1aa01f372706dc5b9c7c2030c6f519c1e9" kind="function"><name>ConfigureFilter</name></member>
-    <member refid="classEspAdc_1a4cd4f281d8522e923efffa875b0f4ad2" kind="function"><name>SetFilterEnabled</name></member>
-    <member refid="classEspAdc_1a751df10d4361e34b8204bc8758b24e04" kind="function"><name>ConfigureMonitor</name></member>
-    <member refid="classEspAdc_1a5d311547b6f8db4b91b5c43496588e1a" kind="function"><name>SetMonitorCallback</name></member>
-    <member refid="classEspAdc_1adb665aed1dce9777b004839ff2f354a7" kind="function"><name>SetMonitorEnabled</name></member>
-    <member refid="classEspAdc_1a6dbc06099ca66dc4c577c4a844b0f1cd" kind="function"><name>GetStatistics</name></member>
-    <member refid="classEspAdc_1ac65647338df854681584bc1efc6bb88d" kind="function"><name>GetDiagnostics</name></member>
-    <member refid="classEspAdc_1addd7719b17eb884fa6f81dc9174b1b91" kind="function"><name>ResetStatistics</name></member>
-    <member refid="classEspAdc_1a5f62c857a09e625de27e74a83573a0f1" kind="function"><name>GetLastError</name></member>
-    <member refid="classEspAdc_1abf2663c3ab8440f0e2fa307995a6adfb" kind="function"><name>GetUnitConfig</name></member>
-    <member refid="classEspAdc_1af25f7cf3172ad0d92a18e961e2917f8d" kind="function"><name>InitializeOneshot</name></member>
-    <member refid="classEspAdc_1a0333cae3bf2014e1ae13df604b7be2c9" kind="function"><name>InitializeContinuous</name></member>
-    <member refid="classEspAdc_1a2cbcd4128df1547b8a4f09a82234aa77" kind="function"><name>DeinitializeOneshot</name></member>
-    <member refid="classEspAdc_1a9e25cd7222d7331d085e1eebf433f552" kind="function"><name>DeinitializeContinuous</name></member>
-    <member refid="classEspAdc_1aab7320c2f32db76f75e9841d7104f96c" kind="function"><name>ReadOneshotRaw</name></member>
-    <member refid="classEspAdc_1aa291093348a844eaab107b0a71113074" kind="function"><name>ValidateChannelId</name></member>
-    <member refid="classEspAdc_1a363cb73973674e2bc825ded4fd5626d4" kind="function"><name>ValidateConfiguration</name></member>
-    <member refid="classEspAdc_1ae95ea4a7a416b0dc4bad321a2c1ac40b" kind="function"><name>UpdateStatistics</name></member>
-    <member refid="classEspAdc_1a662613228626db068d20291afdd4872d" kind="function"><name>GetCurrentTimeUs</name></member>
-    <member refid="classEspAdc_1a8f3eb3aba7e2e740f50e82653c6193d3" kind="function"><name>UpdateDiagnostics</name></member>
-    <member refid="classEspAdc_1ad189760e43ce4529c4dbcf40c4a5873d" kind="function"><name>ContinuousCallback</name></member>
-    <member refid="classEspAdc_1a2d566599e1f11e2f38bde8235e66177a" kind="function"><name>HighThresholdCallback</name></member>
-    <member refid="classEspAdc_1a25d9e8a2f953312b3b2019a1c3d74c49" kind="function"><name>LowThresholdCallback</name></member>
-  </compound>
   <compound refid="classEspBluetooth" kind="class"><name>EspBluetooth</name>
     <member refid="classEspBluetooth_1a4d84bbbb3cb06d234d4e300de6021849" kind="variable"><name>m_initialized</name></member>
     <member refid="classEspBluetooth_1a887d8aec908d8d0157e78df04b1a1b65" kind="variable"><name>m_enabled</name></member>
@@ -775,8 +683,8 @@
     <member refid="classEspBluetooth_1aaaadf2899fec6782cb774f942aa18c98" kind="variable"><name>m_discovered_devices</name></member>
     <member refid="classEspBluetooth_1adb7ac39e03c55983d3ab3d992d80dd64" kind="variable"><name>m_connected_devices</name></member>
     <member refid="classEspBluetooth_1a7943a74af6826e0dde0a0a7c40214697" kind="variable"><name>m_ble_config</name></member>
-    <member refid="classEspBluetooth_1af0a5dbcfb9a7b51387cc22a655f4475b" kind="variable"><name>m_device_mutex</name></member>
-    <member refid="classEspBluetooth_1a381b0e07f4f75410be9d9affa18b40be" kind="variable"><name>m_state_mutex</name></member>
+    <member refid="classEspBluetooth_1adb8956d2c364a44f81356624b016b136" kind="variable"><name>m_device_mutex</name></member>
+    <member refid="classEspBluetooth_1a79785c1f5dcc09583bbcf50df257df1a" kind="variable"><name>m_state_mutex</name></member>
     <member refid="classEspBluetooth_1ad4d33070fdef22cd6f12e3e49ebce4b2" kind="variable"><name>m_event_callback</name></member>
     <member refid="classEspBluetooth_1a18919e69523d667a5e3f47e992ab9816" kind="variable"><name>m_data_callback</name></member>
     <member refid="classEspBluetooth_1a7143aa7604d8fb3d70d2ce725fb888b9" kind="variable"><name>m_callback_context</name></member>
@@ -838,9 +746,9 @@
     <member refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kind="variable"><name>config_</name></member>
     <member refid="classEspCan_1a8f4ec03bb515d5543808e3c3a076621e" kind="variable"><name>is_enabled_</name></member>
     <member refid="classEspCan_1a9268e3542c090d15173658df7154e683" kind="variable"><name>is_recovering_</name></member>
-    <member refid="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" kind="variable"><name>config_mutex_</name></member>
-    <member refid="classEspCan_1a5558e66e04d7289fd79cc6d003ef29b6" kind="variable"><name>stats_mutex_</name></member>
-    <member refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kind="variable"><name>callback_mutex_</name></member>
+    <member refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" kind="variable"><name>config_mutex_</name></member>
+    <member refid="classEspCan_1aec77a14159f7553e096e1fd9eccd5a9d" kind="variable"><name>stats_mutex_</name></member>
+    <member refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" kind="variable"><name>callback_mutex_</name></member>
     <member refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kind="variable"><name>twai_node_handle_</name></member>
     <member refid="classEspCan_1a033c6357046c20596ec8c70d4315da07" kind="variable"><name>receive_cb_</name></member>
     <member refid="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" kind="variable"><name>receive_ud_</name></member>
@@ -959,26 +867,26 @@
     <member refid="classEspGpio_1a9c4eb71cf5585351a0fb08749fe37b27" kind="function"><name>GetPullModeImpl</name></member>
     <member refid="classEspGpio_1a36373bacde83b2c40b8a9d9ee1240795" kind="function"><name>GetDirectionImpl</name></member>
     <member refid="classEspGpio_1a662b4f3168a5566025c1984b7e903914" kind="function"><name>GetOutputModeImpl</name></member>
-    <member refid="classEspGpio_1a3b2fca526fd91aec5e0867346559afa3" kind="function"><name>GetTotalInterruptCount</name></member>
-    <member refid="classEspGpio_1aa3ef4dc499aa7693e3a96fa47766de13" kind="function"><name>GetActiveGpioCount</name></member>
-    <member refid="classEspGpio_1a987113dad2ac0f206afdcdc124850db5" kind="function"><name>IsValidPin</name></member>
-    <member refid="classEspGpio_1ae7c78b0135038cfb9302d2c131bdb39d" kind="function"><name>IsRtcGpio</name></member>
-    <member refid="classEspGpio_1ae55553a663099f4fafbb65488477640e" kind="function"><name>IsStrappingPin</name></member>
+    <member refid="classEspGpio_1a7021518bbcb19e8619918a9bb25b22f4" kind="function"><name>GetTotalInterruptCount</name></member>
+    <member refid="classEspGpio_1af77c568e31601a9c662247945a68b260" kind="function"><name>GetActiveGpioCount</name></member>
+    <member refid="classEspGpio_1a04ef5e4758155a4e25630cde69d74d23" kind="function"><name>IsValidPin</name></member>
+    <member refid="classEspGpio_1a9e256695e9e9bcb27e437c7d28b1b757" kind="function"><name>IsRtcGpio</name></member>
+    <member refid="classEspGpio_1a00d8ec211baf9751a875e680d8856e95" kind="function"><name>IsStrappingPin</name></member>
     <member refid="classEspGpio_1a452475ffffe087b209f7613ca4ae9b35" kind="function"><name>MapInterruptTrigger</name></member>
-    <member refid="classEspGpio_1a786bacf7186807a58fdf2d3a338d918a" kind="function"><name>HandleInterrupt</name></member>
+    <member refid="classEspGpio_1a7788e246c32127af93db206527458272" kind="function"><name>HandleInterrupt</name></member>
     <member refid="classEspGpio_1ada64948bf1df413764e02bef340e4062" kind="function"><name>InitializeAdvancedFeatures</name></member>
     <member refid="classEspGpio_1a1bc4d9e3208d76bb8a0861c3de21d2e3" kind="function"><name>CleanupAdvancedFeatures</name></member>
     <member refid="classEspGpio_1adfd48fa3edbbf0a146ae13b6a8622c56" kind="function"><name>CleanupGlitchFilters</name></member>
     <member refid="classEspGpio_1a35edac2436920f517f75c958fc265da6" kind="function"><name>CleanupInterruptSemaphore</name></member>
     <member refid="classEspGpio_1ab1a2c40c2fc4896c58392592e39e6d06" kind="function"><name>WriteImpl</name></member>
     <member refid="classEspGpio_1a2bba4bb6107fa6a4131223a679cdecac" kind="function"><name>ReadImpl</name></member>
-    <member refid="classEspGpio_1a04a1fc91cea1032c9db77373a113e433" kind="function"><name>StaticInterruptHandler</name></member>
+    <member refid="classEspGpio_1ab4d46bf3ab5605b703c8a418cf900f3c" kind="function"><name>StaticInterruptHandler</name></member>
   </compound>
   <compound refid="classEspI2cBus" kind="class"><name>EspI2cBus</name>
     <member refid="classEspI2cBus_1af4c723ed3eaa9cc7cc0d661da8a1e38c" kind="variable"><name>config_</name></member>
     <member refid="classEspI2cBus_1a7f7964f5265bac35588a90ab8acb5d43" kind="variable"><name>bus_handle_</name></member>
     <member refid="classEspI2cBus_1af31a98abe753b202bfe5000b6d16240d" kind="variable"><name>initialized_</name></member>
-    <member refid="classEspI2cBus_1a192e73bcd0037b109c4a181e44366612" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspI2cBus_1a6e10f5c0e517f240a7838f43b914dbe6" kind="variable"><name>mutex_</name></member>
     <member refid="classEspI2cBus_1ae50b7ab4785f7b60e6a05fbb87a90094" kind="variable"><name>devices_</name></member>
     <member refid="classEspI2cBus_1abd7bac6b4883964b4ea8986aef30e806" kind="variable"><name>current_mode_</name></member>
     <member refid="classEspI2cBus_1a8206592fe0beaf37815e03efd162527d" kind="variable"><name>statistics_</name></member>
@@ -1040,7 +948,7 @@
     <member refid="classEspI2cDevice_1a770c935f9c67d0d88b9f3d4624812f39" kind="variable"><name>initialized_</name></member>
     <member refid="classEspI2cDevice_1afd4fa9c207eaa593ead720c7579e5bcd" kind="variable"><name>statistics_</name></member>
     <member refid="classEspI2cDevice_1a30ea85ba523690eab6a827546f695485" kind="variable"><name>diagnostics_</name></member>
-    <member refid="classEspI2cDevice_1afe243d57519b587b6c9bcbabc00aab00" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspI2cDevice_1a7ea3e8c3a34b51996caccceab08253d0" kind="variable"><name>mutex_</name></member>
     <member refid="classEspI2cDevice_1aa116b27cfa358a26202cd43c3375f5b4" kind="variable"><name>device_mode_</name></member>
     <member refid="classEspI2cDevice_1a5a95a7beb1f7b4ba80419d5ac1df9d7c" kind="variable"><name>async_operation_in_progress_</name></member>
     <member refid="classEspI2cDevice_1a179d9dd56630947e64204720a1e27bd6" kind="variable"><name>sync_operation_in_progress_</name></member>
@@ -1093,77 +1001,12 @@
     <member refid="classEspI2cDevice_1a4b330a20eb141cb533f0f7b93fc3d4e4" kind="function"><name>CleanupAsyncOperation</name></member>
     <member refid="classEspI2cDevice_1a37d7ea5eb281d4c4cfef058294e34714" kind="function"><name>SetupAsyncOperation</name></member>
   </compound>
-  <compound refid="classEspLogger" kind="class"><name>EspLogger</name>
-    <member refid="classEspLogger_1aeb9e653897acb963156107a51796c9ea" kind="variable"><name>mutex_</name></member>
-    <member refid="classEspLogger_1ad48d65d02351eef623fdfa05dff258a6" kind="variable"><name>initialized_</name></member>
-    <member refid="classEspLogger_1a93e23db81675d5e65de16df73bc468ca" kind="variable"><name>healthy_</name></member>
-    <member refid="classEspLogger_1ade52db9548002c1e5cfd36bfc3d526b4" kind="variable"><name>config_</name></member>
-    <member refid="classEspLogger_1ad943622faa174b6c4f44ced1527e3927" kind="variable"><name>statistics_</name></member>
-    <member refid="classEspLogger_1a7b5294d5699de739d4696a538dd6c71b" kind="variable"><name>diagnostics_</name></member>
-    <member refid="classEspLogger_1ac517102fc069ee19de9157f0fb217fdb" kind="variable"><name>tag_levels_</name></member>
-    <member refid="classEspLogger_1a1414db646e36b29340503445ad287296" kind="variable"><name>message_buffer_</name></member>
-    <member refid="classEspLogger_1ac775294d58bc741c7a5b4796b2b0d292" kind="variable"><name>last_error_</name></member>
-    <member refid="classEspLogger_1a9a4ef83b3e2e9beedeb847a207cb5880" kind="variable"><name>last_error_message_</name></member>
-    <member refid="classEspLogger_1ac28e33ed2ddb08d48e0f838fc1f1bf17" kind="variable"><name>initialization_time_</name></member>
-    <member refid="classEspLogger_1a1bd4cebdf38585c85a6924713014ca5d" kind="variable"><name>last_health_check_</name></member>
-    <member refid="classEspLogger_1a813a28d12d69a4339970f0838461aae8" kind="variable"><name>log_v2_available_</name></member>
-    <member refid="classEspLogger_1a8f01845a36c1f91fcd933f9d741b4b49" kind="variable"><name>log_version_</name></member>
-    <member refid="classEspLogger_1ac7e384fbbb0398729d0f8b65f4268b15" kind="function"><name>EspLogger</name></member>
-    <member refid="classEspLogger_1af3689ffc89aa801c754b78989ec306ab" kind="function"><name>~EspLogger</name></member>
-    <member refid="classEspLogger_1a65a25428dd2429380fa5e44ddb31f883" kind="function"><name>Initialize</name></member>
-    <member refid="classEspLogger_1ad55e13200cd30558a1c6b51cd37bd9de" kind="function"><name>Deinitialize</name></member>
-    <member refid="classEspLogger_1a4d300e5e6ae8f3da60d756686f520495" kind="function"><name>IsInitialized</name></member>
-    <member refid="classEspLogger_1afd6ed0aa4e042aa0356952ca4cb968da" kind="function"><name>EnsureInitialized</name></member>
-    <member refid="classEspLogger_1a2ba313925a91c912e926af982b1f99df" kind="function"><name>SetLogLevel</name></member>
-    <member refid="classEspLogger_1ad6062eec104b3cdf9532cfa2a9f15bdc" kind="function"><name>GetLogLevel</name></member>
-    <member refid="classEspLogger_1a666cd0894691948bf449fb7e325d222f" kind="function"><name>Error</name></member>
-    <member refid="classEspLogger_1a097cbcffbb54f838cddab0e20abff8ac" kind="function"><name>Warn</name></member>
-    <member refid="classEspLogger_1a3f54f20a15b35aee84a5148b84a846c1" kind="function"><name>Info</name></member>
-    <member refid="classEspLogger_1a6dff2af97ae0ee413b89aec8cf96f09a" kind="function"><name>Debug</name></member>
-    <member refid="classEspLogger_1a8b5952680c76fd4d3f7c7e3cce904e41" kind="function"><name>Verbose</name></member>
-    <member refid="classEspLogger_1a35a264de336e8f2de1b7cd1751eab044" kind="function"><name>Log</name></member>
-    <member refid="classEspLogger_1adea4e7abe8c84281369db4e8a7224a8e" kind="function"><name>LogV</name></member>
-    <member refid="classEspLogger_1a0622fca14e6fc69b91975cf720af3603" kind="function"><name>LogWithLocation</name></member>
-    <member refid="classEspLogger_1a0bab0e37c73b2b7f1033d826b7ca36b6" kind="function"><name>LogBufferHex</name></member>
-    <member refid="classEspLogger_1a8ce33948b3b8c36bd0ad61682ab3c47b" kind="function"><name>LogBufferChar</name></member>
-    <member refid="classEspLogger_1af50c94ba33ded85a51415326b793c886" kind="function"><name>LogBufferHexDump</name></member>
-    <member refid="classEspLogger_1a0439465731dcba29e5012e5f9e148f98" kind="function"><name>LogBuffer</name></member>
-    <member refid="classEspLogger_1ac3fddcbe82a7de191a903a5427dd44e0" kind="function"><name>Flush</name></member>
-    <member refid="classEspLogger_1a7ec1e202ab853fd2ee1f2b93c4089a08" kind="function"><name>IsLevelEnabled</name></member>
-    <member refid="classEspLogger_1a9c245d1d50c9665832b75332ba752689" kind="function"><name>GetStatistics</name></member>
-    <member refid="classEspLogger_1ac2b2ffa4d116dc2e75c96ccb8f08e61b" kind="function"><name>GetDiagnostics</name></member>
-    <member refid="classEspLogger_1a0c8b15b05c28dc619ebf777c870bd2ec" kind="function"><name>ResetStatistics</name></member>
-    <member refid="classEspLogger_1aefe2fb8f5f9359423c198a4980236ffe" kind="function"><name>ResetDiagnostics</name></member>
-    <member refid="classEspLogger_1ab003664bef163b80f2071efbccfb1fe9" kind="function"><name>IsHealthy</name></member>
-    <member refid="classEspLogger_1a3452b953312f5d8512ecb64b7b8e6624" kind="function"><name>GetLastError</name></member>
-    <member refid="classEspLogger_1a7dee6257ad605104ffe53822747b82b1" kind="function"><name>GetLastErrorMessage</name></member>
-    <member refid="classEspLogger_1aa17e6a890bd290c0ac639436057f01df" kind="function"><name>IsLogV2Available</name></member>
-    <member refid="classEspLogger_1a0f7694bf8f934182ca64eebff6e888a2" kind="function"><name>GetLogVersion</name></member>
-    <member refid="classEspLogger_1a3707bd0b8d05153fce8c306461ad8a5b" kind="function"><name>PrintStatistics</name></member>
-    <member refid="classEspLogger_1af4dd2ff188f30b1a5da6c174361ee2d0" kind="function"><name>PrintDiagnostics</name></member>
-    <member refid="classEspLogger_1ae9668859f987dd750a3ca89bbffa94d4" kind="function"><name>PrintStatus</name></member>
-    <member refid="classEspLogger_1aecd1c70ab5742e27255a2b17585fd79f" kind="function"><name>ConvertLogLevel</name></member>
-    <member refid="classEspLogger_1aef36cbbb29c093c7f3b5a04f789e8916" kind="function"><name>ConvertLogLevel</name></member>
-    <member refid="classEspLogger_1a5f1c46a46387f5523921dc03060b7b2a" kind="function"><name>FormatMessage</name></member>
-    <member refid="classEspLogger_1aa1e94f68b56c5235064f5882b6d4223a" kind="function"><name>WriteMessage</name></member>
-    <member refid="classEspLogger_1a79e75fcc3fae3624038e611cc8180437" kind="function"><name>WriteMessageV</name></member>
-    <member refid="classEspLogger_1aa80b1fe39bc3c543fca65744d834e168" kind="function"><name>UpdateStatistics</name></member>
-    <member refid="classEspLogger_1aff52ecfa69d725c164cbcd01460aa6bb" kind="function"><name>UpdateDiagnostics</name></member>
-    <member refid="classEspLogger_1aa97399671a0a163185c0d28cbb77d6cc" kind="function"><name>PerformHealthCheck</name></member>
-    <member refid="classEspLogger_1a2740f86e01f57ee1ab99661a011c2d31" kind="function"><name>ValidateConfiguration</name></member>
-    <member refid="classEspLogger_1afffbccb35a115bf1af4139523cc23809" kind="function"><name>ConvertErrorToString</name></member>
-    <member refid="classEspLogger_1ac291d84dda6d4ea58218b4ff706d395a" kind="function"><name>GetCurrentTimestamp</name></member>
-    <member refid="classEspLogger_1a6f4e39e7302fddf17ab06bf3dced21da" kind="function"><name>GetCurrentThreadId</name></member>
-    <member refid="classEspLogger_1abbbf11de08f63b1a7cdc37b36f8dcaeb" kind="function"><name>EnsureMessageBuffer</name></member>
-    <member refid="classEspLogger_1ad3e5ce287db5576529f60a37da43c2be" kind="function"><name>InitializeLogV2</name></member>
-    <member refid="classEspLogger_1a0eb097491fbc1b1348cb8b94c3597737" kind="function"><name>CheckLogV2Availability</name></member>
-  </compound>
   <compound refid="classEspNvs" kind="class"><name>EspNvs</name>
     <member refid="classEspNvs_1a6835ce423097a5c27ddaefb1be4e2207" kind="variable"><name>nvs_handle_</name></member>
     <member refid="classEspNvs_1ab85e421f5801e575ad96ad971bb6fa37" kind="variable"><name>last_error_code_</name></member>
     <member refid="classEspNvs_1a4d851eb75d04a90ec7b25e77e1db6de5" kind="variable"><name>statistics_</name></member>
     <member refid="classEspNvs_1a28022b4a28a1934cebe2e10d5099fe54" kind="variable"><name>diagnostics_</name></member>
-    <member refid="classEspNvs_1a233a141b6079192b95864431b0df9c60" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspNvs_1a557fd9219b05531404ba663b340e8cfa" kind="variable"><name>mutex_</name></member>
     <member refid="classEspNvs_1a3abe92b89d2f9be3be2074ed54fa9f99" kind="function"><name>EspNvs</name></member>
     <member refid="classEspNvs_1a8a408fee8b8edec22adbcebade3bf3e2" kind="function"><name>~EspNvs</name></member>
     <member refid="classEspNvs_1a1f1f5efa535235c16318008d08328f76" kind="function"><name>Initialize</name></member>
@@ -1224,7 +1067,7 @@
     <member refid="classEspPio_1a56edcc56d779c721e32fe3e0deca9c3d" kind="variable"><name>RMT_CLK_SRC_FREQ</name></member>
     <member refid="classEspPio_1a6961547bda9a07105b8a285b884922c1" kind="variable"><name>TAG</name></member>
     <member refid="classEspPio_1a2cfe917257c8f0d1e35914b545690c6b" kind="variable"><name>channels_</name></member>
-    <member refid="classEspPio_1a72c959369a34be8c3d02fc5e91e1ba27" kind="variable"><name>state_mutex_</name></member>
+    <member refid="classEspPio_1a2d085ce577321dca4a9cb824c27d6128" kind="variable"><name>state_mutex_</name></member>
     <member refid="classEspPio_1a83171490adbcc59ea168e231a436cf8d" kind="variable"><name>global_statistics_</name></member>
     <member refid="classEspPio_1affc852df7d0de8a4c89fbbd5f0b3e1ef" kind="variable"><name>global_diagnostics_</name></member>
     <member refid="classEspPio_1a02ffc50131df34a1ac6c1a688a43eaeb" kind="function"><name>EspPio</name></member>
@@ -1271,16 +1114,14 @@
     <member refid="classEspPio_1aebbd89059a4217c14677900a62b6969c" kind="function"><name>DeinitializeChannel</name></member>
     <member refid="classEspPio_1a7052de443a7a277407f2bbe1655354e6" kind="function"><name>ValidateSymbols</name></member>
     <member refid="classEspPio_1a508b7579bd404e0c839f3a698ac6f01a" kind="function"><name>CalculateResolutionHz</name></member>
-    <member refid="classEspPio_1a4db79fdbd7ec5c9123d89689015a24be" kind="function"><name>CalculateClockDivider</name></member>
+    <member refid="classEspPio_1adb7169afd80d8ff319e03a551a73a848" kind="function"><name>CalculateClockDivider</name></member>
     <member refid="classEspPio_1a45cde70f88c3c21f89bffe86998f87c6" kind="function"><name>GetEffectiveClockFrequency</name></member>
     <member refid="classEspPio_1acdbed7a7dadd9633292e9d9cb10a65ea" kind="function"><name>GetResolutionConstraints</name></member>
     <member refid="classEspPio_1ac693c8e37d5b7f84b5ebcd79f01a10d4" kind="function"><name>GetResolutionConstraints</name></member>
     <member refid="classEspPio_1ae5dfb88e6d41e82b2a728a6c18a90d2b" kind="function"><name>ValidateChannelConfiguration</name></member>
     <member refid="classEspPio_1a6e9a1caf693efaa2f0c7f3b71fe2d02c" kind="function"><name>InvokeChannelErrorCallback</name></member>
-    <member refid="classEspPio_1ae55002300a0b32f83807e9cbe49d17fb" kind="function"><name>OnTransmitComplete</name></member>
-    <member refid="classEspPio_1a37d0c4aec852b04b3bb5b290fa06a408" kind="function"><name>OnReceiveComplete</name></member>
-    <member refid="classEspPio_1a6eef1b3a7a795f668318302142e0cef2" kind="function"><name>GetClockSourceFrequency</name></member>
-    <member refid="classEspPio_1a0fe47f2b5447e648470f0f0e68841cf2" kind="function"><name>ResolveClockSourceHz</name></member>
+    <member refid="classEspPio_1a0cf59dbaebce93d7f2d242b14e14142f" kind="function"><name>GetClockSourceFrequency</name></member>
+    <member refid="classEspPio_1a5bcbdec358e7dd707b27aaae55877cea" kind="function"><name>ResolveClockSourceHz</name></member>
   </compound>
   <compound refid="classEspPwm" kind="class"><name>EspPwm</name>
     <member refid="classEspPwm_1a1595caab94f2f77924d128115eab0be2" kind="variable"><name>MAX_CHANNELS</name></member>
@@ -1288,7 +1129,7 @@
     <member refid="classEspPwm_1a5ebf53a209f25236bafcb52fe0564d2a" kind="variable"><name>MAX_RESOLUTION</name></member>
     <member refid="classEspPwm_1af03e7350d2c885bbca5358ee3a183d10" kind="variable"><name>MIN_FREQUENCY</name></member>
     <member refid="classEspPwm_1a9028b609b50b17802ce3b8da3ec39899" kind="variable"><name>MAX_FREQUENCY</name></member>
-    <member refid="classEspPwm_1ae4c8b8e2abef78e240fc60451b6d793e" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspPwm_1a44234a30be061859ee7bf6ffa2d9748b" kind="variable"><name>mutex_</name></member>
     <member refid="classEspPwm_1a62f5455c00a2bf6bee32c4edeb5b90d0" kind="variable"><name>initialized_</name></member>
     <member refid="classEspPwm_1adb2698a4d9441132c4f9ba23a4dc4678" kind="variable"><name>base_clock_hz_</name></member>
     <member refid="classEspPwm_1ac4da347398a044e97ecfd586a65d4470" kind="variable"><name>clock_source_</name></member>
@@ -1392,7 +1233,7 @@
   <compound refid="classEspSpiBus" kind="class"><name>EspSpiBus</name>
     <member refid="classEspSpiBus_1a066b8df253bffacf1e21d729850bf99e" kind="variable"><name>config_</name></member>
     <member refid="classEspSpiBus_1a697d0f6da659676a7506145ebbec98f5" kind="variable"><name>initialized_</name></member>
-    <member refid="classEspSpiBus_1a9c42c64731d332892f30ecb2e262dd2d" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspSpiBus_1a707ea256f7b4a767db203d5855bc6c07" kind="variable"><name>mutex_</name></member>
     <member refid="classEspSpiBus_1a4f89488fce018ca532e6753d6f864280" kind="variable"><name>devices_</name></member>
     <member refid="classEspSpiBus_1afe5fca7a6837b6274ffa885a927edb2f" kind="function"><name>EspSpiBus</name></member>
     <member refid="classEspSpiBus_1aa6c27620fbe0b014e6c20ad95d06e5b4" kind="function"><name>~EspSpiBus</name></member>
@@ -1414,7 +1255,7 @@
     <member refid="classEspSpiDevice_1a600b28bd83ef66f3645f6ecb56315eb2" kind="variable"><name>handle_</name></member>
     <member refid="classEspSpiDevice_1a178c4ca0df69e47b6930c09787d7295b" kind="variable"><name>config_</name></member>
     <member refid="classEspSpiDevice_1ad547b708efaac31e0f6dca17d76184e2" kind="variable"><name>initialized_</name></member>
-    <member refid="classEspSpiDevice_1aa34f977ac3bb19d6319a4e3c1a12b138" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspSpiDevice_1a22fd9577e6aaa1ec056206c12c58efe4" kind="variable"><name>mutex_</name></member>
     <member refid="classEspSpiDevice_1a314ecda5e0dd7eae427ea031edb174d4" kind="function"><name>EspSpiDevice</name></member>
     <member refid="classEspSpiDevice_1a78fbd11aa22825ddcd1f58a43945aee5" kind="function"><name>~EspSpiDevice</name></member>
     <member refid="classEspSpiDevice_1ae61fd5adb61b7e68e080aad9173a6708" kind="function"><name>Initialize</name></member>
@@ -1429,7 +1270,7 @@
     <member refid="classEspSpiDevice_1afe4b0f88a3ae65ec19ea1757d44b6bf0" kind="function"><name>GetActualClockFrequency</name></member>
   </compound>
   <compound refid="classEspTemperature" kind="class"><name>EspTemperature</name>
-    <member refid="classEspTemperature_1a5e2e469501c63d5e4c6f2bf5476effd5" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspTemperature_1a6ffead68c2dd6cf1d96c59927c625545" kind="variable"><name>mutex_</name></member>
     <member refid="classEspTemperature_1ae8aab5a3d2118ef3061ec62c63fc0103" kind="variable"><name>esp_state_</name></member>
     <member refid="classEspTemperature_1a629744fc883c865e06a3f2369b577175" kind="variable"><name>esp_config_</name></member>
     <member refid="classEspTemperature_1a2587c0df6c5c4169bbec7d4fa5611917" kind="variable"><name>base_config_</name></member>
@@ -1444,7 +1285,7 @@
     <member refid="classEspTemperature_1a8fe2e9d176f71696e4fb12afbcd25bc8" kind="variable"><name>monitoring_user_data_</name></member>
     <member refid="classEspTemperature_1a0e3aba6824d5d671a2298f402d2b397c" kind="variable"><name>TAG</name></member>
     <member refid="classEspTemperature_1aa829f22f1d02247e2da26709702812ae" kind="variable"><name>RANGE_INFO</name></member>
-    <member refid="classEspTemperature_1a627914394ff10df930d340e4beecbb96" kind="variable"><name>s_shared_mutex_</name></member>
+    <member refid="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" kind="variable"><name>s_shared_mutex_</name></member>
     <member refid="classEspTemperature_1aef85506e203917c06e7d951370f983ad" kind="variable"><name>s_refcount_</name></member>
     <member refid="classEspTemperature_1acc45986a38969e94e206b1531eedcbac" kind="variable"><name>s_shared_handle_</name></member>
     <member refid="classEspTemperature_1ac40eca554ac9cdc9a732ca543a426526" kind="function"><name>EspTemperature</name></member>
@@ -1508,7 +1349,7 @@
     <member refid="classEspUart_1a5d640d851b6a3ed29abd338d392a395d" kind="variable"><name>DEFAULT_BAUD_RATE</name></member>
     <member refid="classEspUart_1a2cc0ffbcf5d94cc1be9640a0bb394eb6" kind="variable"><name>MAX_BUFFER_SIZE</name></member>
     <member refid="classEspUart_1a23b68168facceed1638156facf258ada" kind="variable"><name>DEFAULT_BUFFER_SIZE</name></member>
-    <member refid="classEspUart_1a63d3d9231a553707b6498e40829c0105" kind="variable"><name>mutex_</name></member>
+    <member refid="classEspUart_1a23f67c7d005df9d732c27a70cd190eb8" kind="variable"><name>mutex_</name></member>
     <member refid="classEspUart_1a00c20e249bbd100eedbf4c0c54c3c42e" kind="variable"><name>port_config_</name></member>
     <member refid="classEspUart_1af13b21c3d90975c02a4f0197ffe2eaf3" kind="variable"><name>initialized_</name></member>
     <member refid="classEspUart_1a758a727337eac39b8d8b0d7b920dffff" kind="variable"><name>uart_port_</name></member>
@@ -1589,7 +1430,7 @@
     <member refid="classEspUart_1a1eacc6fc2880d22e444a29a48de2d628" kind="function"><name>InternalPrintf</name></member>
   </compound>
   <compound refid="classEspWifi" kind="class"><name>EspWifi</name>
-    <member refid="classEspWifi_1aa0a9f8d2216f73029662106ba9112e8b" kind="variable"><name>m_mutex</name></member>
+    <member refid="classEspWifi_1ac51e95ec9ea5a7b9f0e435ae374a9008" kind="variable"><name>m_mutex</name></member>
     <member refid="classEspWifi_1adb31106309d33af5ce16e90e46906939" kind="variable"><name>m_initialized</name></member>
     <member refid="classEspWifi_1a545838e3b8d960377c122e753db8cf47" kind="variable"><name>m_enabled</name></member>
     <member refid="classEspWifi_1a0d89e54dd5537c34d49da6bda7c74c4c" kind="variable"><name>m_mode</name></member>
@@ -1607,10 +1448,10 @@
     <member refid="classEspWifi_1a3a1a88d567809ce53ce3d5575755b453" kind="variable"><name>m_event_user_data</name></member>
     <member refid="classEspWifi_1a8667062fa9debd9273cdd2480636259f" kind="variable"><name>m_scan_user_data</name></member>
     <member refid="classEspWifi_1ab362b3836b671682f5789ca2e9fad4d6" kind="variable"><name>m_event_queue</name></member>
-    <member refid="classEspWifi_1a3d42ddd9a7a2790eeeec94c1519c0995" kind="variable"><name>m_event_mutex</name></member>
+    <member refid="classEspWifi_1a6a5f2dc519caa82f9e3c7b3f7511da04" kind="variable"><name>m_event_mutex</name></member>
     <member refid="classEspWifi_1a5d96729fa9dac2b05153578461f1e781" kind="variable"><name>m_scan_results</name></member>
     <member refid="classEspWifi_1a7035508c06cc3cd794c3c0baec151f30" kind="variable"><name>m_scanning</name></member>
-    <member refid="classEspWifi_1a06558cebbce99692087713ec7985ae31" kind="variable"><name>m_scan_mutex</name></member>
+    <member refid="classEspWifi_1aa2d94a61c6c079af5600de156baf16fa" kind="variable"><name>m_scan_mutex</name></member>
     <member refid="classEspWifi_1af91498a9a25bfbe8819054cc8235a644" kind="variable"><name>m_connected</name></member>
     <member refid="classEspWifi_1aa803cd3263ba9a2ae68fae0ed07e2693" kind="variable"><name>m_ap_active</name></member>
     <member refid="classEspWifi_1acf74e0cf81678090bfd6217dbfc5d0ad" kind="variable"><name>m_rssi</name></member>
@@ -2008,20 +1849,6 @@
     <member refid="structhf__esp__can__tx__info__t_1a8cc21dcb52667cae68c81c781d46a0c2" kind="variable"><name>success</name></member>
     <member refid="structhf__esp__can__tx__info__t_1a3c647fd808e471906496542390b24dbb" kind="variable"><name>timestamp_us</name></member>
   </compound>
-  <compound refid="structhf__gpio__advanced__config__t" kind="struct"><name>hf_gpio_advanced_config_t</name>
-    <member refid="structhf__gpio__advanced__config__t_1ad7d9a0395f4520120d86c889bc77f228" kind="variable"><name>gpio_num</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1a45a28747743de1a4bbd08f278c31f8ae" kind="variable"><name>mode</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1ab61bbfb9af5600546d717dbebf451533" kind="variable"><name>pull_mode</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1a969aa225347dbc8797b9dc1328276d08" kind="variable"><name>intr_type</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1a0010bcef44f2124ffcbb7a1421a81103" kind="variable"><name>drive_strength</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1a8a0be4da7e2c5177796fc4ffe3b97d9a" kind="variable"><name>glitch_filter_type</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1ac4f05c98c185801e39617296a5e0cc65" kind="variable"><name>flex_filter_config</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1a5795ed470af6a3e3f8feee338381a64b" kind="variable"><name>pin_filter_config</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1ad189d1620ce263324d1a500850a1aee7" kind="variable"><name>sleep_config</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1a965d2df4aa102d12bc9f797cc530c8ac" kind="variable"><name>wakeup_config</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1aa7e515455e77197e4b7d2b1a9c86d941" kind="variable"><name>enable_hold_function</name></member>
-    <member refid="structhf__gpio__advanced__config__t_1ae53b72ab0e89c9d6f255e1398ec90c98" kind="variable"><name>enable_rtc_gpio</name></member>
-  </compound>
   <compound refid="structhf__gpio__diagnostics__t" kind="struct"><name>hf_gpio_diagnostics_t</name>
     <member refid="structhf__gpio__diagnostics__t_1a5c298feebbd6638ca9f64268e82d6e67" kind="variable"><name>gpioHealthy</name></member>
     <member refid="structhf__gpio__diagnostics__t_1a31b12ce34753056aac64fedba28b1879" kind="variable"><name>lastErrorCode</name></member>
@@ -2032,49 +1859,6 @@
     <member refid="structhf__gpio__diagnostics__t_1a7c1405d16c54202418b8c391eab941e1" kind="variable"><name>interruptEnabled</name></member>
     <member refid="structhf__gpio__diagnostics__t_1abc79370eecf278758f4b13dc79db293d" kind="variable"><name>currentState</name></member>
     <member refid="structhf__gpio__diagnostics__t_1a5683248a285a9a030ebf19722098fb8d" kind="function"><name>hf_gpio_diagnostics_t</name></member>
-  </compound>
-  <compound refid="structhf__gpio__flex__filter__config__t" kind="struct"><name>hf_gpio_flex_filter_config_t</name>
-    <member refid="structhf__gpio__flex__filter__config__t_1a1d2713b3410534bb131d7d9265c70759" kind="variable"><name>window_width_ns</name></member>
-    <member refid="structhf__gpio__flex__filter__config__t_1a00bc74702cdd052bd2b727ed2d4f5509" kind="variable"><name>window_threshold_ns</name></member>
-    <member refid="structhf__gpio__flex__filter__config__t_1acf6e27a34c318282f92e6a1849ac4e37" kind="variable"><name>clk_src</name></member>
-    <member refid="structhf__gpio__flex__filter__config__t_1a6883d28ceb1b307fe8c079fb81504241" kind="variable"><name>enable_on_init</name></member>
-  </compound>
-  <compound refid="structhf__gpio__pin__capabilities__t" kind="struct"><name>hf_gpio_pin_capabilities_t</name>
-    <member refid="structhf__gpio__pin__capabilities__t_1a1aebbadb0592580dd56acabd768869f4" kind="variable"><name>pin_number</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1a693cf76982fc8759ee5f968ef56ffef0" kind="variable"><name>is_valid_gpio</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1a143a4d6a1eb3556d84fa938bba318e67" kind="variable"><name>supports_input</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1a07262f7a59a1e80307993ad12e9e7251" kind="variable"><name>supports_output</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1aa6a401582464522da163e9e2a8ce2bba" kind="variable"><name>supports_pullup</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1a2f0451bd1217d5dbc0d704e6b002798f" kind="variable"><name>supports_pulldown</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1a9983b022d44d4431d487743cf0e11cd4" kind="variable"><name>supports_adc</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1af965c74aebac83d9a2432ab01527bae4" kind="variable"><name>supports_rtc</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1a9ce0f5f96e212b677e7e72fa5d76c636" kind="variable"><name>is_strapping_pin</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1ab46f741b3bd1130bfe69ea910a996aa9" kind="variable"><name>is_usb_jtag_pin</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1a1454f24b3ac4dbbfe9d1a7db3f79bfcf" kind="variable"><name>is_spi_pin</name></member>
-    <member refid="structhf__gpio__pin__capabilities__t_1ae2ec8d2c6874492d1bd4ab79a858c9a9" kind="variable"><name>supports_glitch_filter</name></member>
-  </compound>
-  <compound refid="structhf__gpio__pin__filter__config__t" kind="struct"><name>hf_gpio_pin_filter_config_t</name>
-    <member refid="structhf__gpio__pin__filter__config__t_1ad65bf352dcaad34e388016c6db349fa7" kind="variable"><name>clk_src</name></member>
-    <member refid="structhf__gpio__pin__filter__config__t_1af31843f3bfd8daea982ed7a19aefd739" kind="variable"><name>enable_on_init</name></member>
-  </compound>
-  <compound refid="structhf__gpio__pin__info__t" kind="struct"><name>hf_gpio_pin_info_t</name>
-    <member refid="structhf__gpio__pin__info__t_1ab1c39cccaa6171ce7aa79ee07b15bb6a" kind="variable"><name>gpio_num</name></member>
-    <member refid="structhf__gpio__pin__info__t_1ad275db128183dff243a91ce707f059ce" kind="variable"><name>pin_name</name></member>
-    <member refid="structhf__gpio__pin__info__t_1a865484ee045c260bb70cc9c0848ca4a0" kind="variable"><name>alt_functions</name></member>
-    <member refid="structhf__gpio__pin__info__t_1ad5b5c91e00bf1dcdeb07c9ac83324032" kind="variable"><name>capabilities</name></member>
-    <member refid="structhf__gpio__pin__info__t_1a1c6197aa3a86633d42663343440f5fe0" kind="variable"><name>usage_notes</name></member>
-  </compound>
-  <compound refid="structhf__gpio__sleep__config__t" kind="struct"><name>hf_gpio_sleep_config_t</name>
-    <member refid="structhf__gpio__sleep__config__t_1a6d40e2b1b0e5fd9327d33966b8eef204" kind="variable"><name>sleep_mode</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1a2493727745a0fabffbb0eee91522742f" kind="variable"><name>sleep_direction</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1ab5b3971c4fbd11f1678185a3e95357a7" kind="variable"><name>sleep_pull_mode</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1af92947d79b576ab39164f13fbe7dd40b" kind="variable"><name>sleep_drive_strength</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1a70b6942b44bcc28c070d4e7e71a450a2" kind="variable"><name>sleep_output_enable</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1a62d59e37b7e30d8f4de645d956ded140" kind="variable"><name>sleep_input_enable</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1a046a30949252068ffe13515a3a2b0bfc" kind="variable"><name>hold_during_sleep</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1a7478371caada488ee07c945f11b0105b" kind="variable"><name>rtc_domain_enable</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1abf925110c8f4fc921621e6bc035c2392" kind="variable"><name>slp_sel_enable</name></member>
-    <member refid="structhf__gpio__sleep__config__t_1aaa0de4668b0af98fbf700c75be4c9aae" kind="variable"><name>enable_sleep_retain</name></member>
   </compound>
   <compound refid="structhf__gpio__statistics__t" kind="struct"><name>hf_gpio_statistics_t</name>
     <member refid="structhf__gpio__statistics__t_1a8e198df2ebf17df724cb68b5c76f64d3" kind="variable"><name>totalOperations</name></member>
@@ -2087,35 +1871,6 @@
     <member refid="structhf__gpio__statistics__t_1a90aa3a431f07be47b98aef4243f67ec2" kind="variable"><name>maxOperationTimeUs</name></member>
     <member refid="structhf__gpio__statistics__t_1a49c0133280e83c317fa1d258b3989b7b" kind="variable"><name>minOperationTimeUs</name></member>
     <member refid="structhf__gpio__statistics__t_1a0b16ce8799372593d132e1f5e05523a9" kind="function"><name>hf_gpio_statistics_t</name></member>
-  </compound>
-  <compound refid="structhf__gpio__status__info__t" kind="struct"><name>hf_gpio_status_info_t</name>
-    <member refid="structhf__gpio__status__info__t_1a7df919681975d84d4c92d22580407500" kind="variable"><name>pin_number</name></member>
-    <member refid="structhf__gpio__status__info__t_1ab1b1d3636da0afeb647dea2ae59b86ac" kind="variable"><name>current_mode</name></member>
-    <member refid="structhf__gpio__status__info__t_1a47509a663ee6fc5877275ba354208234" kind="variable"><name>current_pull_mode</name></member>
-    <member refid="structhf__gpio__status__info__t_1aa220fc53a4c586080e01685b002ebbad" kind="variable"><name>current_drive_cap</name></member>
-    <member refid="structhf__gpio__status__info__t_1a3eeb5e3a5eee2c5e5441470ca3816f08" kind="variable"><name>interrupt_type</name></member>
-    <member refid="structhf__gpio__status__info__t_1a1572c9db50b0a950e06e3e2d80d2db99" kind="variable"><name>input_enabled</name></member>
-    <member refid="structhf__gpio__status__info__t_1a6c0b97dcd2c31b57a9f41c1af84b9212" kind="variable"><name>output_enabled</name></member>
-    <member refid="structhf__gpio__status__info__t_1a4b64191329b4a454cd79d9ea7b528da7" kind="variable"><name>open_drain</name></member>
-    <member refid="structhf__gpio__status__info__t_1a9bac075c3bafe7daa43c4849af624a00" kind="variable"><name>sleep_sel_enabled</name></member>
-    <member refid="structhf__gpio__status__info__t_1ada9c5a18767686774175ed9980f2c9b7" kind="variable"><name>hold_enabled</name></member>
-    <member refid="structhf__gpio__status__info__t_1a86482ca53ef6307e2e66fca220ad3921" kind="variable"><name>rtc_enabled</name></member>
-    <member refid="structhf__gpio__status__info__t_1a97d47f44299688764ecf59d2ae9dc84c" kind="variable"><name>function_select</name></member>
-    <member refid="structhf__gpio__status__info__t_1af982b3b07cde2bd70808214bb389f1d4" kind="variable"><name>filter_type</name></member>
-    <member refid="structhf__gpio__status__info__t_1a743427ccb7f85a59e1d82ac462cdcbe7" kind="variable"><name>glitch_filter_enabled</name></member>
-    <member refid="structhf__gpio__status__info__t_1a681064a21b3309ba8fa02df2a05b81ee" kind="variable"><name>interrupt_count</name></member>
-    <member refid="structhf__gpio__status__info__t_1ac5bd29640d807e44cf1669213f3d0db9" kind="variable"><name>is_wake_source</name></member>
-    <member refid="structhf__gpio__status__info__t_1a24c51cb827bdf177bab18cca55d184ee" kind="variable"><name>sleep_hold_active</name></member>
-    <member refid="structhf__gpio__status__info__t_1ab7d54427a230729db2bd2b04e7a5afa7" kind="variable"><name>last_interrupt_time_us</name></member>
-  </compound>
-  <compound refid="structhf__gpio__wakeup__config__t" kind="struct"><name>hf_gpio_wakeup_config_t</name>
-    <member refid="structhf__gpio__wakeup__config__t_1af95025ba7bbc559c35f23d2eab2b8f72" kind="variable"><name>wake_trigger</name></member>
-    <member refid="structhf__gpio__wakeup__config__t_1aa82b3549af7be9bbdd2319a84fdb44bc" kind="variable"><name>enable_rtc_wake</name></member>
-    <member refid="structhf__gpio__wakeup__config__t_1a16ab90202bd111ad20524d7e65be0c72" kind="variable"><name>enable_ext1_wake</name></member>
-    <member refid="structhf__gpio__wakeup__config__t_1a0ca411b80947b9bcf808b840f8bf9cb3" kind="variable"><name>wake_level</name></member>
-    <member refid="structhf__gpio__wakeup__config__t_1ac4bed175df8779088c0df156964673ea" kind="variable"><name>internal_pullup_enable</name></member>
-    <member refid="structhf__gpio__wakeup__config__t_1af2a5da2f0703a06ad72dee91b0a957dc" kind="variable"><name>internal_pulldown_enable</name></member>
-    <member refid="structhf__gpio__wakeup__config__t_1ab88f5c7e7b327b5c39a4efc6749057c2" kind="variable"><name>iso_en</name></member>
   </compound>
   <compound refid="structhf__i2c__async__result__t" kind="struct"><name>hf_i2c_async_result_t</name>
     <member refid="structhf__i2c__async__result__t_1aa8cc029ff939891c1107d5ce9e8dcaf6" kind="variable"><name>error_code</name></member>
@@ -2267,15 +2022,6 @@
     <member refid="structhf__logger__statistics__t_1a0a0e53d5cf43f4b48e7746885653401f" kind="variable"><name>last_message_timestamp</name></member>
     <member refid="structhf__logger__statistics__t_1a5bc425c32ac091d12f7fc0d18d192ab9" kind="variable"><name>average_message_length</name></member>
     <member refid="structhf__logger__statistics__t_1a55bbd274f7b6705ed635217485370a78" kind="variable"><name>max_message_length_seen</name></member>
-  </compound>
-  <compound refid="structhf__lp__io__config__t" kind="struct"><name>hf_lp_io_config_t</name>
-    <member refid="structhf__lp__io__config__t_1a618272fbcb49300c0a852a9117f6b7db" kind="variable"><name>mode</name></member>
-    <member refid="structhf__lp__io__config__t_1aa4aac5c894c19f3623422aa43a528c7f" kind="variable"><name>pull_mode</name></member>
-    <member refid="structhf__lp__io__config__t_1a8296ad225d266a7ff876e56818b818e5" kind="variable"><name>drive_strength</name></member>
-    <member refid="structhf__lp__io__config__t_1a59745ba821e5a32a940d84931719f58a" kind="variable"><name>input_enable</name></member>
-    <member refid="structhf__lp__io__config__t_1ac7b9092b5faf9183bd134b5dec7125a7" kind="variable"><name>output_enable</name></member>
-    <member refid="structhf__lp__io__config__t_1a7d78f99c8f7a1542c8864d88b6ac248b" kind="variable"><name>hold_enable</name></member>
-    <member refid="structhf__lp__io__config__t_1a45d0386e2cdc6ad8d3eda74ee71060e8" kind="variable"><name>force_hold</name></member>
   </compound>
   <compound refid="structhf__nvs__capabilities__t" kind="struct"><name>hf_nvs_capabilities_t</name>
     <member refid="structhf__nvs__capabilities__t_1a30251edaa0f83ca63430cf61ce4f0ba3" kind="variable"><name>max_namespaces</name></member>
@@ -2751,20 +2497,6 @@
     <member refid="structhf__uart__pattern__config__t_1a089460cd2464ef296b2e81cef0aed6e1" kind="variable"><name>pre_idle</name></member>
     <member refid="structhf__uart__pattern__config__t_1a6dbe59d2d01916e4af80a9d0799afa36" kind="function"><name>hf_uart_pattern_config_t</name></member>
   </compound>
-  <compound refid="structhf__uart__pin__map__esp32c6__t" kind="struct"><name>hf_uart_pin_map_esp32c6_t</name>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a1c5d85274a14959188520d9330b085e8" kind="variable"><name>UART0_TX_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a35acdc03c24201e15fff340dfe7ffcd4" kind="variable"><name>UART0_RX_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a2bc9ed7a56b91a0159ea47ab76eb24ab" kind="variable"><name>UART0_RTS_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1aeb17f1190f69070ba953bbc975c738c1" kind="variable"><name>UART0_CTS_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a26e8fd135074b27510536955e18649de" kind="variable"><name>UART1_TX_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a918fa542b710dd5d77edf7a151699c52" kind="variable"><name>UART1_RX_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a85fa8ef047175cbc245b49c594a6ee51" kind="variable"><name>UART1_RTS_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a2965a280eb931771569a8f4739c4cc67" kind="variable"><name>UART1_CTS_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a271061a6ba9b6982d44aca9d84abc5df" kind="variable"><name>UART2_TX_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a9eda2c3427bde3099b34255a02639692" kind="variable"><name>UART2_RX_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1a04f152ae03c0c8456ebf26576571b5bf" kind="variable"><name>UART2_RTS_PIN</name></member>
-    <member refid="structhf__uart__pin__map__esp32c6__t_1af62c624a1b01cd4ab9714d2bec414233" kind="variable"><name>UART2_CTS_PIN</name></member>
-  </compound>
   <compound refid="structhf__uart__power__config__t" kind="struct"><name>hf_uart_power_config_t</name>
     <member refid="structhf__uart__power__config__t_1a6740faaace817d6ca3c1ff12b5f7c2e0" kind="variable"><name>sleep_retention_enable</name></member>
     <member refid="structhf__uart__power__config__t_1a1329b491b3e5fd6ce964259024732fd9" kind="variable"><name>allow_pd_in_light_sleep</name></member>
@@ -2876,82 +2608,230 @@
     <member refid="structInterruptStatus_1a64629d99731ed513155bebd9fd11a3c1" kind="variable"><name>interrupt_count</name></member>
     <member refid="structInterruptStatus_1a55d2170d02fd159469846fac43c5b15d" kind="variable"><name>has_callback</name></member>
   </compound>
-  <compound refid="structEspAdc_1_1MonitorContext" kind="struct"><name>EspAdc::MonitorContext</name>
-    <member refid="structEspAdc_1_1MonitorContext_1a56353160f81e0a7b7fcec53abe7f3099" kind="variable"><name>monitor_id</name></member>
-    <member refid="structEspAdc_1_1MonitorContext_1aa4d3e8b323a07f757f1bcafba518b616" kind="variable"><name>channel_id</name></member>
-    <member refid="structEspAdc_1_1MonitorContext_1ac7afb5476d460e7d767c264b0511fbae" kind="variable"><name>high_threshold</name></member>
-    <member refid="structEspAdc_1_1MonitorContext_1a8b04fc4d32be98fe44d1c5188aeb4210" kind="variable"><name>low_threshold</name></member>
-    <member refid="structEspAdc_1_1MonitorContext_1ab4711bc4cdb93eefd6395a2c43244a12" kind="variable"><name>callback</name></member>
-    <member refid="structEspAdc_1_1MonitorContext_1a5722733ce224dd0d960c6c40385f5d37" kind="variable"><name>user_data</name></member>
-    <member refid="structEspAdc_1_1MonitorContext_1ad4d97723fe1a096dbe4df8514d59fb9e" kind="variable"><name>adc_instance</name></member>
+  <compound refid="classPlatformMutex" kind="class"><name>PlatformMutex</name>
+    <member refid="classPlatformMutex_1a0ecef2a16d5560f96d8a9764c5811dca" kind="variable"><name>handle_</name></member>
+    <member refid="classPlatformMutex_1a95a553a2b425c4ea7b7f8ec1fa0e623f" kind="function"><name>PlatformMutex</name></member>
+    <member refid="classPlatformMutex_1a048bf6b7ce5fc3e8808a20b5e7f54676" kind="function"><name>~PlatformMutex</name></member>
+    <member refid="classPlatformMutex_1a8305ecc459f3e0334d9647cfb0b75fc9" kind="function"><name>PlatformMutex</name></member>
+    <member refid="classPlatformMutex_1aad16dc73f5cc847981248e710ed5e467" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformMutex_1a35ead53d0d95b9b519629fd1c3ae7756" kind="function"><name>PlatformMutex</name></member>
+    <member refid="classPlatformMutex_1a656280b8f2e8be129c53e3d348c820d0" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformMutex_1a6a23b8dae26a7515f7bbff026cffec7c" kind="function"><name>lock</name></member>
+    <member refid="classPlatformMutex_1a5d7c63169e0c54a0c9f3d250861139bf" kind="function"><name>try_lock</name></member>
+    <member refid="classPlatformMutex_1a71294990b69c8bb08c8d0ca45b753284" kind="function"><name>try_lock_for</name></member>
+    <member refid="classPlatformMutex_1a654e7cdda8e5b56938ec0102b5adf4aa" kind="function"><name>unlock</name></member>
+    <member refid="classPlatformMutex_1a0bb274f74486f122d5c20ca164ab19f4" kind="function"><name>native_handle</name></member>
+    <member refid="classPlatformMutex_1ab80aa6f15a0f87f62502d74f583ce696" kind="function"><name>Take</name></member>
+    <member refid="classPlatformMutex_1a02aa50333a4a54e9215d4016e23a92df" kind="function"><name>Give</name></member>
+    <member refid="classPlatformMutex_1a88fc7442ce670d760b8782659319c03d" kind="function"><name>lock_shared</name></member>
+    <member refid="classPlatformMutex_1a4a2b6f3996cf317162aead04ac286a54" kind="function"><name>try_lock_shared</name></member>
+    <member refid="classPlatformMutex_1aeee6794b3a8daa9e4fb7ec4dc242ec70" kind="function"><name>try_lock_shared_for</name></member>
+    <member refid="classPlatformMutex_1a134d74bc93d2600250ba7c732083ac89" kind="function"><name>unlock_shared</name></member>
   </compound>
-  <compound refid="classRtosMutex" kind="class"><name>RtosMutex</name>
-    <member refid="classRtosMutex_1a2518867073aa7e5a4ba234509c62fe72" kind="variable"><name>handle_</name></member>
-    <member refid="classRtosMutex_1a43df3db03d2b669ad7d8767b28e1d85c" kind="function"><name>RtosMutex</name></member>
-    <member refid="classRtosMutex_1a9aa716386b8c8777135b933877581236" kind="function"><name>~RtosMutex</name></member>
-    <member refid="classRtosMutex_1a266b12306d0f31994692eefa90bea9e6" kind="function"><name>RtosMutex</name></member>
-    <member refid="classRtosMutex_1a6b3293289431e14af4436448826c7db2" kind="function"><name>operator=</name></member>
-    <member refid="classRtosMutex_1a8c8602dfb79d8a1fd7ba4deae96b0fd2" kind="function"><name>RtosMutex</name></member>
-    <member refid="classRtosMutex_1a4e13695b6995ecd5dbac5e2681b07945" kind="function"><name>operator=</name></member>
-    <member refid="classRtosMutex_1ad906e18270e6d663b1a7251cf014fd90" kind="function"><name>lock</name></member>
-    <member refid="classRtosMutex_1a0a923da9285903c8fe090c6d489dc485" kind="function"><name>try_lock</name></member>
-    <member refid="classRtosMutex_1a504eb221268dbd671eeb01ea9e9d322d" kind="function"><name>try_lock_for</name></member>
-    <member refid="classRtosMutex_1aa994fd43b2c205c871c86b4d95ff7c8d" kind="function"><name>unlock</name></member>
-    <member refid="classRtosMutex_1a3d33ecf3c5ad5a0b064c8b2db34a0c8c" kind="function"><name>native_handle</name></member>
-    <member refid="classRtosMutex_1a0fff80075d2a83f10e01ddfb21f5d1d0" kind="function"><name>Take</name></member>
-    <member refid="classRtosMutex_1ae99adb7d809ad8f23c8ba1f4ff57439f" kind="function"><name>Give</name></member>
-    <member refid="classRtosMutex_1a45e2e0ed77e5f60e89a9ac8ade5d84e8" kind="function"><name>lock_shared</name></member>
-    <member refid="classRtosMutex_1aa990ba1748147d20221964edb672a853" kind="function"><name>try_lock_shared</name></member>
-    <member refid="classRtosMutex_1a73bb376a2bb9939ca285e15d3d0b1654" kind="function"><name>try_lock_shared_for</name></member>
-    <member refid="classRtosMutex_1a1d1aa37f2fa497471320d92b96c76905" kind="function"><name>unlock_shared</name></member>
+  <compound refid="classPlatformSharedLock" kind="class"><name>PlatformSharedLock</name>
+    <member refid="classPlatformSharedLock_1a196205586ec7624b45328670e47b6e4c" kind="variable"><name>mutex_</name></member>
+    <member refid="classPlatformSharedLock_1aa1428c7278f03c457be11c411b17a5e8" kind="variable"><name>locked_</name></member>
+    <member refid="classPlatformSharedLock_1a5d4575da93813bf27eb29766d9a3b5ce" kind="function"><name>PlatformSharedLock</name></member>
+    <member refid="classPlatformSharedLock_1a6d5e22650f77fe32f43b110d729be396" kind="function"><name>~PlatformSharedLock</name></member>
+    <member refid="classPlatformSharedLock_1ae8c1eb943ba67bb0b8448d00b721e682" kind="function"><name>PlatformSharedLock</name></member>
+    <member refid="classPlatformSharedLock_1ab0791c81e103fa5b1bc123b4637e61c0" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformSharedLock_1aaf794f171b9d7712d0f77242e96613f5" kind="function"><name>PlatformSharedLock</name></member>
+    <member refid="classPlatformSharedLock_1aef93d92f524e42b63779e17caf6f904a" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformSharedLock_1a1271e1fa2051eb24d536f21c637bee32" kind="function"><name>IsLocked</name></member>
+    <member refid="classPlatformSharedLock_1a7c02b27cf0e7b31a1ccc1b7f987beb80" kind="function"><name>Unlock</name></member>
   </compound>
-  <compound refid="classRtosSharedLock" kind="class"><name>RtosSharedLock</name>
-    <member refid="classRtosSharedLock_1a5ca2c975cfaf0fd94e681c847a86a410" kind="variable"><name>mutex_</name></member>
-    <member refid="classRtosSharedLock_1acc180e528b0a6b5158fbc7fba0a0acc5" kind="variable"><name>locked_</name></member>
-    <member refid="classRtosSharedLock_1a390e5e5ecbebe6c8c68051ddd5c9b015" kind="function"><name>RtosSharedLock</name></member>
-    <member refid="classRtosSharedLock_1ad31862716385d2d71a8f23281e629c93" kind="function"><name>~RtosSharedLock</name></member>
-    <member refid="classRtosSharedLock_1a5a63852868aa8518d2efb8001839c327" kind="function"><name>RtosSharedLock</name></member>
-    <member refid="classRtosSharedLock_1a811dd689ed2e3d32890f52c50ef06a8b" kind="function"><name>operator=</name></member>
-    <member refid="classRtosSharedLock_1a49bee38b554b8225dd7c9765f1ce25d4" kind="function"><name>RtosSharedLock</name></member>
-    <member refid="classRtosSharedLock_1a9ec74266ec258bba6b08b19c900ed607" kind="function"><name>operator=</name></member>
-    <member refid="classRtosSharedLock_1a31f008907ddb7a710b118d834b4cd4bb" kind="function"><name>IsLocked</name></member>
-    <member refid="classRtosSharedLock_1a5b7a636663f8073680e3477629f097c6" kind="function"><name>Unlock</name></member>
+  <compound refid="classPlatformSharedMutex" kind="class"><name>PlatformSharedMutex</name>
+    <member refid="classPlatformSharedMutex_1a068badf177d9e1bdc79d4eaa0501fcd8" kind="variable"><name>writer_mutex_</name></member>
+    <member refid="classPlatformSharedMutex_1aa40b57136a23bee80b87398ace9ba169" kind="variable"><name>reader_mutex_</name></member>
+    <member refid="classPlatformSharedMutex_1a9eb1baa21663574d3549ae3e8a9e6236" kind="variable"><name>readers_</name></member>
+    <member refid="classPlatformSharedMutex_1a556ab68ae31e7c5f6b06c233c6c14c61" kind="variable"><name>writer_active_</name></member>
+    <member refid="classPlatformSharedMutex_1a511b3ce665fbf78a6d653bfaefd9005b" kind="function"><name>PlatformSharedMutex</name></member>
+    <member refid="classPlatformSharedMutex_1a52239b5174912320203c0e80f4cdf380" kind="function"><name>~PlatformSharedMutex</name></member>
+    <member refid="classPlatformSharedMutex_1a912def42b9dbf2d0d99b035d4764db23" kind="function"><name>PlatformSharedMutex</name></member>
+    <member refid="classPlatformSharedMutex_1a028e6aea838949de052f8dc199d2da4a" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformSharedMutex_1a9a830ac1318b056f815bf730794f1655" kind="function"><name>PlatformSharedMutex</name></member>
+    <member refid="classPlatformSharedMutex_1af6fdeb25e49fcecc0e3fe269e7bacb4e" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformSharedMutex_1add5e4f313bd9e1a5543222dadeadd079" kind="function"><name>lock</name></member>
+    <member refid="classPlatformSharedMutex_1a344b2c1db97307baf08618dfce6305bc" kind="function"><name>try_lock</name></member>
+    <member refid="classPlatformSharedMutex_1abe91e65f1609953753a3e1f9badea77f" kind="function"><name>try_lock_for</name></member>
+    <member refid="classPlatformSharedMutex_1a4663a92b507cd53a306a8633477e9b28" kind="function"><name>unlock</name></member>
+    <member refid="classPlatformSharedMutex_1ae2e5f9e2684fd9a9e3a581222cffdc12" kind="function"><name>lock_shared</name></member>
+    <member refid="classPlatformSharedMutex_1af641caab9ce5170f51046a484c42d304" kind="function"><name>try_lock_shared</name></member>
+    <member refid="classPlatformSharedMutex_1a2ae2aafacbc7526877303d231b39396f" kind="function"><name>try_lock_shared_for</name></member>
+    <member refid="classPlatformSharedMutex_1a83d6b6b7badfd4e15444d3a9340d2331" kind="function"><name>unlock_shared</name></member>
   </compound>
-  <compound refid="classRtosSharedMutex" kind="class"><name>RtosSharedMutex</name>
-    <member refid="classRtosSharedMutex_1a6ee2f10bb66fcdec20470c40ea2565cf" kind="variable"><name>writer_mutex_</name></member>
-    <member refid="classRtosSharedMutex_1a67b47d74fbac16a90c9a9a303a6401ed" kind="variable"><name>reader_mutex_</name></member>
-    <member refid="classRtosSharedMutex_1aa99faf6eab2a617aef4727fdc8714a65" kind="variable"><name>readers_</name></member>
-    <member refid="classRtosSharedMutex_1aac8a222ed7968c8959a56af4e2ebda89" kind="variable"><name>writer_active_</name></member>
-    <member refid="classRtosSharedMutex_1a4b21cabd9e68393a9acc55879416d201" kind="function"><name>RtosSharedMutex</name></member>
-    <member refid="classRtosSharedMutex_1a5068b5bb809f11d18a9ea2d12c0bc855" kind="function"><name>~RtosSharedMutex</name></member>
-    <member refid="classRtosSharedMutex_1ae1d3068d9207b5ef477e1ec1ae93c325" kind="function"><name>RtosSharedMutex</name></member>
-    <member refid="classRtosSharedMutex_1ac1f9fad931819cd5a4de91ed2d51dce0" kind="function"><name>operator=</name></member>
-    <member refid="classRtosSharedMutex_1a62024c8bd569a61151065b4e6f0c4b12" kind="function"><name>RtosSharedMutex</name></member>
-    <member refid="classRtosSharedMutex_1a80d49ed02c84fb6018d95354c22ecb51" kind="function"><name>operator=</name></member>
-    <member refid="classRtosSharedMutex_1a31df7dd6f6d49596e5f4ac8d4d081f04" kind="function"><name>lock</name></member>
-    <member refid="classRtosSharedMutex_1a48b8bd787b98e2615a4e173d5b51f831" kind="function"><name>try_lock</name></member>
-    <member refid="classRtosSharedMutex_1a33d777991466c4afe883afdb31b0e0b4" kind="function"><name>try_lock_for</name></member>
-    <member refid="classRtosSharedMutex_1a76f381754fe072ce5ac9cc1599da02dc" kind="function"><name>unlock</name></member>
-    <member refid="classRtosSharedMutex_1a3d87877a917e1b7f0429e5cba22d6528" kind="function"><name>lock_shared</name></member>
-    <member refid="classRtosSharedMutex_1a995aa8c3c0e272a34a2e38ab68a0804d" kind="function"><name>try_lock_shared</name></member>
-    <member refid="classRtosSharedMutex_1a573ff802346877aba7351fe5ad93d2b2" kind="function"><name>try_lock_shared_for</name></member>
-    <member refid="classRtosSharedMutex_1a88ac4404dc318c5775aed5afa43eb6e5" kind="function"><name>unlock_shared</name></member>
+  <compound refid="classPlatformTime" kind="class"><name>PlatformTime</name>
+    <member refid="classPlatformTime_1adfd9d6d2d3429c90ead4430ba565bce9" kind="function"><name>GetCurrentTimeUs</name></member>
+    <member refid="classPlatformTime_1a14b850d58c7deb0bb81c72f06490a4c4" kind="function"><name>MsToTicks</name></member>
   </compound>
-  <compound refid="classRtosTime" kind="class"><name>RtosTime</name>
-    <member refid="classRtosTime_1a9d76a41e42d89424eac5b99cada0269f" kind="function"><name>GetCurrentTimeUs</name></member>
-    <member refid="classRtosTime_1af80ef0a2aa094dea670d7806c9e6e5fc" kind="function"><name>MsToTicks</name></member>
+  <compound refid="classPlatformUniqueLock" kind="class"><name>PlatformUniqueLock</name>
+    <member refid="classPlatformUniqueLock_1af63a258e9de4c30039dee48d3aeaac4b" kind="variable"><name>mutex_</name></member>
+    <member refid="classPlatformUniqueLock_1a8aab9c90f6600d676f3eae0bb39939ba" kind="variable"><name>locked_</name></member>
+    <member refid="classPlatformUniqueLock_1a11ce03744ee701363f9a39801bc7d0bb" kind="function"><name>PlatformUniqueLock</name></member>
+    <member refid="classPlatformUniqueLock_1a1de056bf6d04a2b21ddab9d07af39cf3" kind="function"><name>~PlatformUniqueLock</name></member>
+    <member refid="classPlatformUniqueLock_1a4ede2f8053aa987340916a4d6b59ee85" kind="function"><name>PlatformUniqueLock</name></member>
+    <member refid="classPlatformUniqueLock_1a69104e36e3a6f19cb0c0d397fcc0e1d3" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformUniqueLock_1a1d89086e96e7ba1faa7c66f6470cd232" kind="function"><name>PlatformUniqueLock</name></member>
+    <member refid="classPlatformUniqueLock_1a7f8dcd217e9a1aea82ec046a5ec8d313" kind="function"><name>operator=</name></member>
+    <member refid="classPlatformUniqueLock_1a871d9440659f9b5c645d61f148fa2f4a" kind="function"><name>IsLocked</name></member>
+    <member refid="classPlatformUniqueLock_1ab2caf1f955482a39cc775a2460ce225b" kind="function"><name>Unlock</name></member>
   </compound>
-  <compound refid="classRtosUniqueLock" kind="class"><name>RtosUniqueLock</name>
-    <member refid="classRtosUniqueLock_1a7b11552fac4479324f323c969b31f10b" kind="variable"><name>mutex_</name></member>
-    <member refid="classRtosUniqueLock_1a89ad89a30e33c3e6a43d0bfeac1422de" kind="variable"><name>locked_</name></member>
-    <member refid="classRtosUniqueLock_1a80c4ce4d9f80c22f4538c471cbf67464" kind="function"><name>RtosUniqueLock</name></member>
-    <member refid="classRtosUniqueLock_1a59124b82120bbe0b1b98fa5087a9317f" kind="function"><name>~RtosUniqueLock</name></member>
-    <member refid="classRtosUniqueLock_1a36f86e2cdda6d07844f07244fdf0f4b9" kind="function"><name>RtosUniqueLock</name></member>
-    <member refid="classRtosUniqueLock_1ad5abbbb94f3e8fa10ff48e8ef505e712" kind="function"><name>operator=</name></member>
-    <member refid="classRtosUniqueLock_1aceef150d143e7a1f76e6f4dc4f4fee1d" kind="function"><name>RtosUniqueLock</name></member>
-    <member refid="classRtosUniqueLock_1a8c9bb127ad2d5e4e2a0790c57c0d91de" kind="function"><name>operator=</name></member>
-    <member refid="classRtosUniqueLock_1a5c85f4016f0a1cbdaa3cdb4134774d25" kind="function"><name>IsLocked</name></member>
-    <member refid="classRtosUniqueLock_1a128c64f4cb86d7735dbf4fd0d471d82b" kind="function"><name>Unlock</name></member>
+  <compound refid="classStmAdc" kind="class"><name>StmAdc</name>
+    <member refid="classStmAdc_1a58f7ea6bb92fe69a80af9aba981a6582" kind="function"><name>StmAdc</name></member>
+    <member refid="classStmAdc_1a4203f8df6170b0f2a4dae7189c51e9b4" kind="function"><name>~StmAdc</name></member>
+    <member refid="classStmAdc_1a1151c9bbc4aa559ded1de1bd4208f5c8" kind="function"><name>Initialize</name></member>
+    <member refid="classStmAdc_1a1b96f7e2030b803b9dbd1c9d3e66ec61" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmAdc_1a0eab5dfcaa6aa67e6ca5b472d7b7210b" kind="function"><name>GetMaxChannels</name></member>
+    <member refid="classStmAdc_1a59285ceb3a921fa3f4f9176192f891b1" kind="function"><name>IsChannelAvailable</name></member>
+    <member refid="classStmAdc_1a286ffea7c4ef9dfb1545c3d46b44a941" kind="function"><name>ReadChannelV</name></member>
+    <member refid="classStmAdc_1a521d82bd23bd0e474acbf0fa7552ea84" kind="function"><name>ReadChannelCount</name></member>
+    <member refid="classStmAdc_1ad29fe9f5de756d6ea75cf7f0f4898a03" kind="function"><name>ReadChannel</name></member>
+  </compound>
+  <compound refid="classStmGpio" kind="class"><name>StmGpio</name>
+    <member refid="classStmGpio_1a13ec17edceac22e440b175f913e3f8e8" kind="function"><name>StmGpio</name></member>
+    <member refid="classStmGpio_1aa9c7d16581d45c0ce2741e7054a3a8b5" kind="function"><name>~StmGpio</name></member>
+    <member refid="classStmGpio_1ad108587cd354d234cdd7267876da4be8" kind="function"><name>Initialize</name></member>
+    <member refid="classStmGpio_1a08972988dbdb87d8449efbcbe544e95b" kind="function"><name>IsPinAvailable</name></member>
+    <member refid="classStmGpio_1ab4019f83455349f50b1a65280c0b282b" kind="function"><name>GetMaxPins</name></member>
+    <member refid="classStmGpio_1a7c8c088887133a57c4c68884fe310e4b" kind="function"><name>GetDescription</name></member>
+    <member refid="classStmGpio_1a5f5f6048eb62227c1bf0948a10e3d57d" kind="function"><name>SetDirectionImpl</name></member>
+    <member refid="classStmGpio_1a351efa2429353dfbe32e0b4df7cfb311" kind="function"><name>GetDirectionImpl</name></member>
+    <member refid="classStmGpio_1aff454893b825f08f0e99e015698ba489" kind="function"><name>SetOutputModeImpl</name></member>
+    <member refid="classStmGpio_1a47cd403eff983464ee19daa3a6814cdf" kind="function"><name>GetOutputModeImpl</name></member>
+    <member refid="classStmGpio_1a7676c66a241eabd1d7e15fff38ece2fa" kind="function"><name>SetPullModeImpl</name></member>
+    <member refid="classStmGpio_1a34c2b35a33ae2764946619cd80d89e66" kind="function"><name>GetPullModeImpl</name></member>
+    <member refid="classStmGpio_1a4e5f0c8b9977a69c648b59d6d9ac32e4" kind="function"><name>SetPinLevelImpl</name></member>
+    <member refid="classStmGpio_1a4a2b1e9a2202d89f8ede64702efecf77" kind="function"><name>GetPinLevelImpl</name></member>
+  </compound>
+  <compound refid="classStmI2cBus" kind="class"><name>StmI2cBus</name>
+    <member refid="classStmI2cBus_1a0b1e24e2415315eab6f4aa44164e8974" kind="variable"><name>config_</name></member>
+    <member refid="classStmI2cBus_1ae6ba6015e9db63fe68a8f94d7fba0998" kind="variable"><name>initialized_</name></member>
+    <member refid="classStmI2cBus_1a1925ed83778b2afb19499766b285a5ba" kind="variable"><name>devices_</name></member>
+    <member refid="classStmI2cBus_1ac49054609128569d92c431dc8e9596df" kind="function"><name>StmI2cBus</name></member>
+    <member refid="classStmI2cBus_1a0b0d0e9bfa74bd9d952bb65dad70048a" kind="function"><name>~StmI2cBus</name></member>
+    <member refid="classStmI2cBus_1a14cf7b7efa97c2b32c5cbf2399ef40ad" kind="function"><name>Initialize</name></member>
+    <member refid="classStmI2cBus_1a3fdc2a8da6a2fb983c534ff88bff04b5" kind="function"><name>IsInitialized</name></member>
+    <member refid="classStmI2cBus_1a701b33db5e477c8f5a458b867a4319ea" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmI2cBus_1a8a8333a7f2c46e1c89da0d80b19e1f79" kind="function"><name>CreateDevice</name></member>
+    <member refid="classStmI2cBus_1a7d31764b7f52bfd6eaf6249d70231f5d" kind="function"><name>GetDevice</name></member>
+    <member refid="classStmI2cBus_1abec166880b9c99729a6478c017ad1527" kind="function"><name>GetDevice</name></member>
+    <member refid="classStmI2cBus_1ab3847e97a9d4332255032170e672c57d" kind="function"><name>GetDeviceCount</name></member>
+    <member refid="classStmI2cBus_1a11753ef2415ff9ba31aff20da98b3af9" kind="function"><name>RemoveDevice</name></member>
+    <member refid="classStmI2cBus_1aefde57ad70e9a5e3a63dcdec59a31593" kind="function"><name>GetConfig</name></member>
+  </compound>
+  <compound refid="classStmI2cDevice" kind="class"><name>StmI2cDevice</name>
+    <member refid="classStmI2cDevice_1aa427f3773fffe66a6e6313e1ed273474" kind="variable"><name>parent_bus_</name></member>
+    <member refid="classStmI2cDevice_1a30cf0c80323678784650324431024fc0" kind="variable"><name>config_</name></member>
+    <member refid="classStmI2cDevice_1a500c016c1e38b66087caa52d6e669c99" kind="function"><name>StmI2cDevice</name></member>
+    <member refid="classStmI2cDevice_1ae7a31f63df015bbc5044861df221fe3d" kind="function"><name>~StmI2cDevice</name></member>
+    <member refid="classStmI2cDevice_1a5d069dc6f8e90fe5aaccdd603111a07d" kind="function"><name>Initialize</name></member>
+    <member refid="classStmI2cDevice_1ab3a261efe8437ab6a349af90829b86c5" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmI2cDevice_1a8a705c4068676dcca9a36054eddfe15c" kind="function"><name>Write</name></member>
+    <member refid="classStmI2cDevice_1a8cd7f86df640e25578aaaabe4ca194ec" kind="function"><name>Read</name></member>
+    <member refid="classStmI2cDevice_1a785e780f32c9353a7aa5ad48784352df" kind="function"><name>WriteRead</name></member>
+    <member refid="classStmI2cDevice_1aae434c3a1e5f13290326c0a862cebc37" kind="function"><name>GetDeviceAddress</name></member>
+  </compound>
+  <compound refid="classStmLogger" kind="class"><name>StmLogger</name>
+    <member refid="classStmLogger_1ab80d5c81f30a88b8e51aa5791eee041f" kind="function"><name>StmLogger</name></member>
+    <member refid="classStmLogger_1ad785842bb793da3d60a5489899742002" kind="function"><name>~StmLogger</name></member>
+    <member refid="classStmLogger_1a2db97b3064db0d5be33c1ab082d1803a" kind="function"><name>Initialize</name></member>
+    <member refid="classStmLogger_1ab810f2599398f77b28f55c6c84e3fcbe" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmLogger_1ad63dccfd7f9aba556a3fef83bc2c2ac3" kind="function"><name>IsInitialized</name></member>
+    <member refid="classStmLogger_1a015a61a54d5f3e93af13ad2630b505ed" kind="function"><name>EnsureInitialized</name></member>
+    <member refid="classStmLogger_1ae2602c3ebe878697f3b6b32b12ac1cf2" kind="function"><name>SetLogLevel</name></member>
+    <member refid="classStmLogger_1a12f37e364af6bdf1210ef1903f5f578a" kind="function"><name>GetLogLevel</name></member>
+    <member refid="classStmLogger_1a0175d15ffd5f584219e245ada94523e4" kind="function"><name>Error</name></member>
+    <member refid="classStmLogger_1a335f9c0b5f3b6e5b334eac182fef091f" kind="function"><name>Warn</name></member>
+    <member refid="classStmLogger_1a5d2369d89af47301c9acddacd9069bf1" kind="function"><name>Info</name></member>
+    <member refid="classStmLogger_1a66a47cf67fc5cf81813657d86b40436b" kind="function"><name>Debug</name></member>
+    <member refid="classStmLogger_1a84d53e2a0f13748eba3e7835b58ce7f4" kind="function"><name>Verbose</name></member>
+    <member refid="classStmLogger_1aae2ab97cb870518bd85bf98c0e5bf4de" kind="function"><name>Log</name></member>
+    <member refid="classStmLogger_1a82f8b9ab036f242be008db739996db1d" kind="function"><name>LogV</name></member>
+    <member refid="classStmLogger_1a291097b7c1fd5e638c9cd7d5e038a0c5" kind="function"><name>LogWithLocation</name></member>
+    <member refid="classStmLogger_1a023f685044c18bf63081ec48a46dfdfe" kind="function"><name>Flush</name></member>
+    <member refid="classStmLogger_1aed1e8557a3a37a78c169aa921acff3fc" kind="function"><name>IsLevelEnabled</name></member>
+    <member refid="classStmLogger_1ac6e0e9e8227e73d5a168736fc0feb21f" kind="function"><name>GetStatistics</name></member>
+    <member refid="classStmLogger_1a1b90770ff5573663d9a73419236c2a9c" kind="function"><name>GetDiagnostics</name></member>
+    <member refid="classStmLogger_1ac41e6fc6c54eb644f690619362f855e3" kind="function"><name>ResetStatistics</name></member>
+    <member refid="classStmLogger_1a6590af32ba64f607d69e57659c60c647" kind="function"><name>ResetDiagnostics</name></member>
+    <member refid="classStmLogger_1a16a88780953992653e289b1f2b519d4c" kind="function"><name>IsHealthy</name></member>
+    <member refid="classStmLogger_1a05c26cee0e96ea6eeda411dd5decd4dc" kind="function"><name>GetLastError</name></member>
+    <member refid="classStmLogger_1abc19945e773ba5ff8c8b492e5f1d7d12" kind="function"><name>GetLastErrorMessage</name></member>
+    <member refid="classStmLogger_1ac902564ee04c8e554825184b84a996a9" kind="function"><name>PrintStatistics</name></member>
+    <member refid="classStmLogger_1acc6e0d3f238a00e169f591787f8bf435" kind="function"><name>PrintDiagnostics</name></member>
+    <member refid="classStmLogger_1af1a868f33898057f7ee700e8fba9bed2" kind="function"><name>PrintStatus</name></member>
+  </compound>
+  <compound refid="classStmNvs" kind="class"><name>StmNvs</name>
+    <member refid="classStmNvs_1a26366d606b8f3e0b153bdabccfffcca8" kind="function"><name>StmNvs</name></member>
+    <member refid="classStmNvs_1aec7905feea3b210ced450761f89d2862" kind="function"><name>~StmNvs</name></member>
+    <member refid="classStmNvs_1aaf64aac4ece7c73b0815e28a749a1b0d" kind="function"><name>Initialize</name></member>
+    <member refid="classStmNvs_1aa3c53acfbe0d42730c0b17a218273131" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmNvs_1a972ac2246d561ede81b3855ea1832122" kind="function"><name>SetU32</name></member>
+    <member refid="classStmNvs_1a24f68fe26b2344cbd2bf817095407a45" kind="function"><name>GetU32</name></member>
+    <member refid="classStmNvs_1a0b4bf4ceacb6f2011bc0a0713415fc70" kind="function"><name>SetString</name></member>
+    <member refid="classStmNvs_1ad2f72c91b0926ad9d6390fb1fb9172f9" kind="function"><name>GetString</name></member>
+    <member refid="classStmNvs_1a4c90c0fadacf110413b37debf4effe0e" kind="function"><name>SetBlob</name></member>
+    <member refid="classStmNvs_1a7692514b5c591e201d9e84ea7a9900b6" kind="function"><name>GetBlob</name></member>
+    <member refid="classStmNvs_1a6c3d4484e78bf018fff0062902518e26" kind="function"><name>EraseKey</name></member>
+    <member refid="classStmNvs_1a4927951d09db18d392b6b6593809b0ac" kind="function"><name>Commit</name></member>
+    <member refid="classStmNvs_1a8a8abfb797fa5369d790a1e74501ec26" kind="function"><name>KeyExists</name></member>
+    <member refid="classStmNvs_1ac2993ecb7b30a7dda594c510d8f533b1" kind="function"><name>GetSize</name></member>
+    <member refid="classStmNvs_1a8dae94d149b877cb11f42860f3506ada" kind="function"><name>GetDescription</name></member>
+    <member refid="classStmNvs_1a65148f056f3bde8f09e618fd8d2a256e" kind="function"><name>GetMaxKeyLength</name></member>
+    <member refid="classStmNvs_1a958e824edad543dbb63d1bff36a1c019" kind="function"><name>GetMaxValueSize</name></member>
+  </compound>
+  <compound refid="classStmPeriodicTimer" kind="class"><name>StmPeriodicTimer</name>
+    <member refid="classStmPeriodicTimer_1a72ddca80fa426d7f4e2f5e94756b1056" kind="typedef"><name>CallbackFunc</name></member>
+    <member refid="classStmPeriodicTimer_1a546f3acd34871fee8f3dd0c0c3a7f0ba" kind="variable"><name>callback_</name></member>
+    <member refid="classStmPeriodicTimer_1a626b64b9e1f58e552386c5769c10b819" kind="variable"><name>user_data_</name></member>
+    <member refid="classStmPeriodicTimer_1a39f9012601da28f919f61dc0a8025e62" kind="function"><name>StmPeriodicTimer</name></member>
+    <member refid="classStmPeriodicTimer_1a9c594ee1baa058201855b84c8e87042d" kind="function"><name>~StmPeriodicTimer</name></member>
+    <member refid="classStmPeriodicTimer_1af61c71d5df2847f8cc432161144cc6b1" kind="function"><name>Initialize</name></member>
+    <member refid="classStmPeriodicTimer_1a94d84c46b0fd48fd7ca73b683b178d25" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmPeriodicTimer_1ada919f62b8ad097323e4a43e4ae5a0cf" kind="function"><name>Start</name></member>
+    <member refid="classStmPeriodicTimer_1afd2adf7d275eb82d67bca9b7829a17e6" kind="function"><name>Stop</name></member>
+    <member refid="classStmPeriodicTimer_1aed5d65ee70d33c9945653dd1fa1f53ac" kind="function"><name>SetPeriod</name></member>
+    <member refid="classStmPeriodicTimer_1a4a38141e12acac87b1b9ae756d67dd52" kind="function"><name>GetPeriod</name></member>
+    <member refid="classStmPeriodicTimer_1a3531ed08a8ae620f210228e04fbebc81" kind="function"><name>GetStats</name></member>
+    <member refid="classStmPeriodicTimer_1a96567e24e967297babb9c717bdd05f32" kind="function"><name>ResetStats</name></member>
+    <member refid="classStmPeriodicTimer_1a1a880f8c3c0489b16879200dedc9a0be" kind="function"><name>GetDescription</name></member>
+    <member refid="classStmPeriodicTimer_1a951d0175f287a9c13ba7ae690d80af99" kind="function"><name>GetMaxPeriod</name></member>
+    <member refid="classStmPeriodicTimer_1af90c80952828bcc070075d08fcbd512a" kind="function"><name>GetMinPeriod</name></member>
+    <member refid="classStmPeriodicTimer_1a6f435522d93af55a09dd660e414db695" kind="function"><name>GetResolution</name></member>
+  </compound>
+  <compound refid="classStmSpiBus" kind="class"><name>StmSpiBus</name>
+    <member refid="classStmSpiBus_1ada6d7feb79b067200075f7bb9a486ea9" kind="variable"><name>config_</name></member>
+    <member refid="classStmSpiBus_1a611e37f08b9d7ace431eccb29ddc90d0" kind="variable"><name>initialized_</name></member>
+    <member refid="classStmSpiBus_1a5303b40e97ecdc7f59d91a865cc97d92" kind="variable"><name>devices_</name></member>
+    <member refid="classStmSpiBus_1a69cafaa6911c26bdd2c288fb10df37be" kind="function"><name>StmSpiBus</name></member>
+    <member refid="classStmSpiBus_1a1b4658e1504d0caa95b0d13cc4d41335" kind="function"><name>~StmSpiBus</name></member>
+    <member refid="classStmSpiBus_1a949a4e26bc00b79272f4e1929aa06064" kind="function"><name>Initialize</name></member>
+    <member refid="classStmSpiBus_1a22d15c21b574da4cf292b4574e485293" kind="function"><name>IsInitialized</name></member>
+    <member refid="classStmSpiBus_1ad4cf41108043a7610f902cb45bcbc8e4" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmSpiBus_1a781055ef0cd430c2cb5f12601882a683" kind="function"><name>CreateDevice</name></member>
+    <member refid="classStmSpiBus_1ad1d6e101a95d6af9829a2b6a41a1fc81" kind="function"><name>GetDevice</name></member>
+    <member refid="classStmSpiBus_1a313d95a200920d2f5abc67e94c359fca" kind="function"><name>GetDevice</name></member>
+    <member refid="classStmSpiBus_1a81d08ab646705ea372874ca8c663367b" kind="function"><name>GetDeviceCount</name></member>
+    <member refid="classStmSpiBus_1ad8fc3bd4ef289384acf536b01700aa3c" kind="function"><name>RemoveDevice</name></member>
+    <member refid="classStmSpiBus_1a285df3f22b4b762454e5ca47af1ad31c" kind="function"><name>GetConfig</name></member>
+  </compound>
+  <compound refid="classStmSpiDevice" kind="class"><name>StmSpiDevice</name>
+    <member refid="classStmSpiDevice_1afd55e6d85cfe8e0020665c7039576ebe" kind="variable"><name>config_</name></member>
+    <member refid="classStmSpiDevice_1a0870aa9a0f886f72d91dc45addf758d9" kind="function"><name>StmSpiDevice</name></member>
+    <member refid="classStmSpiDevice_1af28e7126cd16773d1e9bade2f0c889eb" kind="function"><name>~StmSpiDevice</name></member>
+    <member refid="classStmSpiDevice_1a8321dbe44a6d665d0b43ce71c5747077" kind="function"><name>Initialize</name></member>
+    <member refid="classStmSpiDevice_1a71d72c791cff754938477785e843efbb" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmSpiDevice_1aac96933b7c2db6fa0e675ee472e91ec5" kind="function"><name>Transfer</name></member>
+    <member refid="classStmSpiDevice_1a454179a24cf34d9925fb0f72d240280e" kind="function"><name>GetDeviceConfig</name></member>
+  </compound>
+  <compound refid="classStmTemperature" kind="class"><name>StmTemperature</name>
+    <member refid="classStmTemperature_1af087266daab79e72cb84e9e13bd1a24a" kind="function"><name>StmTemperature</name></member>
+    <member refid="classStmTemperature_1a8f5ed0c8568d7c5cd199851ba7da359b" kind="function"><name>~StmTemperature</name></member>
+    <member refid="classStmTemperature_1a6d6f95d8acc8e7ebf80314022f6f2eac" kind="function"><name>GetSensorInfo</name></member>
+    <member refid="classStmTemperature_1a00eac441e907fd899ac7df305bd1ead6" kind="function"><name>GetCapabilities</name></member>
+    <member refid="classStmTemperature_1ac638c0fb9b58e5736ebbd3d750d533fa" kind="function"><name>Initialize</name></member>
+    <member refid="classStmTemperature_1abac4e09afd8ae32e0f2f9196643e47b1" kind="function"><name>Deinitialize</name></member>
+    <member refid="classStmTemperature_1aec6918308bc56058d12cd1d5dde7aa03" kind="function"><name>ReadTemperatureCelsiusImpl</name></member>
   </compound>
   <compound refid="structTestResults" kind="struct"><name>TestResults</name>
     <member refid="structTestResults_1afe20b168a13950ffca7296c0c56d4359" kind="variable"><name>total_tests</name></member>
@@ -3003,11 +2883,6 @@
     <member refid="structEspPwm_1_1ValidationResult_1ab8910eb820419fc2c601d283a3d98a46" kind="variable"><name>required_clock_hz</name></member>
     <member refid="structEspPwm_1_1ValidationResult_1a46a6889b96ddfd7dee0739f92fe5211d" kind="variable"><name>available_clock_hz</name></member>
     <member refid="structEspPwm_1_1ValidationResult_1a48ea061e23889d58c2a5a0978bfaed89" kind="function"><name>ValidationResult</name></member>
-  </compound>
-  <compound refid="namespaceanonymous__namespace_02EspGpio_8cpp_03" kind="namespace"><name>anonymous_namespace{EspGpio.cpp}</name>
-    <member refid="namespaceanonymous__namespace_02EspGpio_8cpp_03_1a8d92a7c490f5ab71bb40ae9b866c310c" kind="variable"><name>g_total_gpio_interrupts</name></member>
-    <member refid="namespaceanonymous__namespace_02EspGpio_8cpp_03_1a5f218373a579dbffd6f2382b20ace916" kind="variable"><name>g_active_gpio_count</name></member>
-    <member refid="namespaceanonymous__namespace_02EspGpio_8cpp_03_1ab863d6b5d30e7134ec2ba98e87dbdf07" kind="variable"><name>GPIO_PIN_CAPABILITIES</name></member>
   </compound>
   <compound refid="namespacehf" kind="namespace"><name>hf</name>
   </compound>
@@ -4378,21 +4253,6 @@
     <member refid="HardwareTypes_8h_1aaa87ba0f6ecdb5eac7552f89d00b69fb" kind="function"><name>IsValidChannel</name></member>
   </compound>
   <compound refid="EspAdc_8h" kind="file"><name>EspAdc.h</name>
-    <member refid="EspAdc_8h_1a4bf5056de8e6888c5fd5b3548bc37a77" kind="define"><name>HF_ESP32_ADC_MAX_UNITS</name></member>
-    <member refid="EspAdc_8h_1a32cfdc50c968299a3a80a47976fd36db" kind="define"><name>HF_ESP32_ADC_MAX_CHANNELS</name></member>
-    <member refid="EspAdc_8h_1ab75805188a7058a5c5742424757145a4" kind="define"><name>HF_ESP32_ADC_MAX_FILTERS</name></member>
-    <member refid="EspAdc_8h_1a376578689a5737cad1c538f84c2b2fcf" kind="define"><name>HF_ESP32_ADC_MAX_MONITORS</name></member>
-    <member refid="EspAdc_8h_1a8175a6e2de1a8fe6d7a598bd90feb97c" kind="define"><name>HF_ESP32_ADC_MAX_RAW_VALUE</name></member>
-    <member refid="EspAdc_8h_1ad5616b4ec09a21b8a7852aa2bcb920b9" kind="define"><name>HF_ESP32_ADC_REFERENCE_VOLTAGE_MV</name></member>
-    <member refid="EspAdc_8h_1ae8636b6eb07caff056994ffa688934ec" kind="define"><name>HF_ESP32_ADC_MAX_SAMPLING_FREQ</name></member>
-    <member refid="EspAdc_8h_1a0862b62e8d49fc3163792349fbdb977c" kind="define"><name>HF_ESP32_ADC_MIN_SAMPLING_FREQ</name></member>
-    <member refid="EspAdc_8h_1a05f4f6c79350cbd8c24218f96eedd733" kind="define"><name>HF_ESP32_ADC_DEFAULT_SAMPLING_FREQ</name></member>
-    <member refid="EspAdc_8h_1a2bd0cef1e3f3605af626db5a70f67c76" kind="define"><name>HF_ESP32_ADC_DMA_BUFFER_SIZE_MIN</name></member>
-    <member refid="EspAdc_8h_1a579d0692d0d4868ba6df2571373bff91" kind="define"><name>HF_ESP32_ADC_DMA_BUFFER_SIZE_MAX</name></member>
-    <member refid="EspAdc_8h_1a90636607bfa6d816d903ac6bccb6320f" kind="define"><name>HF_ESP32_ADC_DMA_BUFFER_SIZE_DEFAULT</name></member>
-    <member refid="EspAdc_8h_1a22377434b77e3414362b24d49a6856b7" kind="define"><name>HF_ESP32_ADC_ONESHOT_CLK_SRC</name></member>
-    <member refid="EspAdc_8h_1a5e6193d77a2bb02f2065498c7b1c23d0" kind="define"><name>HF_ESP32_ADC_CONTINUOUS_CLK_SRC</name></member>
-    <member refid="EspAdc_8h_1a7dca42f353013f3bf20c4c2e73293a97" kind="define"><name>HF_ESP32_ADC_ULP_MODE</name></member>
   </compound>
   <compound refid="EspBluetooth_8h" kind="file"><name>EspBluetooth.h</name>
     <member refid="EspBluetooth_8h_1ab1cd7548f128aefd0cc81f37e9a76696" kind="define"><name>HAS_CLASSIC_BLUETOOTH</name></member>
@@ -4553,95 +4413,6 @@
     <member refid="EspTypes__CAN_8h_1a9a02e65fd1fdb357ad59576c0cf8cf1c" kind="typedef"><name>hf_can_alert_callback_t</name></member>
   </compound>
   <compound refid="EspTypes__GPIO_8h" kind="file"><name>EspTypes_GPIO.h</name>
-    <member refid="EspTypes__GPIO_8h_1ae8020cac40277fa6c3ba8c0761c0f194" kind="define"><name>HF_GPIO_IS_ADC_CAPABLE</name></member>
-    <member refid="EspTypes__GPIO_8h_1ac12cd2a8d9a1657859e5bcfab569f217" kind="define"><name>HF_GPIO_IS_SPI_PIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1ae0f0b8bee595029cdac4395dfe6ab74f" kind="define"><name>HF_GPIO_IS_RTC_GPIO</name></member>
-    <member refid="EspTypes__GPIO_8h_1a82f160ff85b7f87247c8543a3daffcb8" kind="define"><name>HF_GPIO_IS_STRAPPING_PIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1ac1631752989bff41b5c0d820b59315cc" kind="define"><name>HF_GPIO_IS_USB_JTAG_PIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a79089afb0a0f9cf924381db9fa2b13d1" kind="define"><name>HF_GPIO_SUPPORTS_GLITCH_FILTER</name></member>
-    <member refid="EspTypes__GPIO_8h_1a9514ff9811d7e04eaacbb29de5528ec1" kind="define"><name>HF_GPIO_IS_VALID_GPIO</name></member>
-    <member refid="EspTypes__GPIO_8h_1aa0b0367cdde453194c971d02ece05a8f" kind="define"><name>HF_GPIO_IS_VALID_PIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a39248d12550eb4fc2c242577025a93f9" kind="define"><name>HF_GPIO_IS_VALID_OUTPUT_GPIO</name></member>
-    <member refid="EspTypes__GPIO_8h_1a617269d4d523773b3e940e91648f73ef" kind="define"><name>HF_GPIO_IS_VALID_RTC_GPIO</name></member>
-    <member refid="EspTypes__GPIO_8h_1aa983fd945ffe36c9f84ce070ed5612e1" kind="define"><name>HF_GPIO_IS_VALID_LP_IO</name></member>
-    <member refid="EspTypes__GPIO_8h_1a26f0abc113550d1b744d3fb636bbfc69" kind="define"><name>HF_GPIO_SUPPORTS_ADC</name></member>
-    <member refid="EspTypes__GPIO_8h_1a13ac197217e358e44201f0fd76de3fd9" kind="define"><name>HF_GPIO_IS_SPI_FLASH_PIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a935fd1aa93745bca2288c364ecea7148" kind="define"><name>HF_GPIO_IS_INPUT_ONLY_PIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1aab96da9a794a20319296e689d58091b1" kind="define"><name>HF_GPIO_SUPPORTS_PULL_UP</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3c5037a90f78f8b778293e746019a4f4" kind="define"><name>HF_GPIO_SUPPORTS_PULL_DOWN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a866b824dc69be30c4c7b218223333386" kind="define"><name>HF_GPIO_SUPPORTS_OPEN_DRAIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a68bcdc88e8e96c75286a73ece746cc70" kind="define"><name>HF_GPIO_TO_ADC_UNIT</name></member>
-    <member refid="EspTypes__GPIO_8h_1a7895aadc8e2ce529425cdbc0265e796b" kind="define"><name>HF_GPIO_TO_ADC_CHANNEL</name></member>
-    <member refid="EspTypes__GPIO_8h_1a73760cc9f022268e8163eafd181daaf9" kind="define"><name>HF_GPIO_TO_RTC_GPIO</name></member>
-    <member refid="EspTypes__GPIO_8h_1acb890b08d427bc4dbd2d954ba2a45851" kind="define"><name>HF_GPIO_TO_LP_IO</name></member>
-    <member refid="EspTypes__GPIO_8h_1aa919f5e70c5ecca9e011db5991eaed51" kind="define"><name>HF_GPIO_IS_SAFE_FOR_GENERAL_USE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350" kind="enum"><name>hf_gpio_mode_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a47f3b7385f22f7b182a586ed7950382b" kind="enumvalue"><name>HF_GPIO_MODE_DISABLE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a55d5b159d8bdc33d251903173665bbcb" kind="enumvalue"><name>HF_GPIO_MODE_INPUT</name></member>
-    <member refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a485653dd5ea48cf54ea8c5a7c7f20d69" kind="enumvalue"><name>HF_GPIO_MODE_OUTPUT</name></member>
-    <member refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a0cc35af4afbe4485ed9cca7f9b851a51" kind="enumvalue"><name>HF_GPIO_MODE_OUTPUT_OD</name></member>
-    <member refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350a83b514e64acbbf4691f298a8b7deea3f" kind="enumvalue"><name>HF_GPIO_MODE_INPUT_OUTPUT</name></member>
-    <member refid="EspTypes__GPIO_8h_1a1eea32898bff7ac636836ce1c3f91350abab74c13f0904ddf59eac51f79f372b2" kind="enumvalue"><name>HF_GPIO_MODE_INPUT_OUTPUT_OD</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eced" kind="enum"><name>hf_gpio_pull_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda39702e81499461c60cd275fece8819d3" kind="enumvalue"><name>HF_GPIO_PULL_NONE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876ecedab87d55dea1d794e68a534d4f372714b4" kind="enumvalue"><name>HF_GPIO_PULL_UP</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda7a12fb86ce14f509b153610cc759f6c5" kind="enumvalue"><name>HF_GPIO_PULL_DOWN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3b7463d9622ddabf9cd39e325876eceda3a6ed240223938383b82c831a4be1f8b" kind="enumvalue"><name>HF_GPIO_PULL_UP_DOWN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54" kind="enum"><name>hf_gpio_intr_type_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a92a9d795f9789e4c4fc59206116a160c" kind="enumvalue"><name>HF_GPIO_INTR_DISABLE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a3cf08b08260a0d5f960742ff230a6708" kind="enumvalue"><name>HF_GPIO_INTR_POSEDGE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a70bae06350e656bc393c2d57b2251e82" kind="enumvalue"><name>HF_GPIO_INTR_NEGEDGE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a171315f59a861e3f3490a1937f14016a" kind="enumvalue"><name>HF_GPIO_INTR_ANYEDGE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54aed091b2c365dfa1352fcd96f35c3019e" kind="enumvalue"><name>HF_GPIO_INTR_LOW_LEVEL</name></member>
-    <member refid="EspTypes__GPIO_8h_1a17096a52e65ea765c88ef633daf3cc54a03cd4b104c6b96cd86eed00c11546446" kind="enumvalue"><name>HF_GPIO_INTR_HIGH_LEVEL</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03f" kind="enum"><name>hf_gpio_drive_cap_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fa6e8cc0febfa6ac679fde1d9c66d57337" kind="enumvalue"><name>HF_GPIO_DRIVE_CAP_WEAK</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fac5e5b307d8a5361a3d27e2227c825d32" kind="enumvalue"><name>HF_GPIO_DRIVE_CAP_STRONGER</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03faa17918132458975f33a21b703a313b00" kind="enumvalue"><name>HF_GPIO_DRIVE_CAP_MEDIUM</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3bd7aea00f1dc347237b911307eee03fade1fb233e62b1da7a89b6bad3b10f85e" kind="enumvalue"><name>HF_GPIO_DRIVE_CAP_STRONGEST</name></member>
-    <member refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676" kind="enum"><name>hf_rtc_gpio_mode_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a6fd1f4d43da2e112659778d3bdfae1a1" kind="enumvalue"><name>HF_RTC_GPIO_MODE_INPUT_ONLY</name></member>
-    <member refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a235a313d0730fc6d63d204742b5674c2" kind="enumvalue"><name>HF_RTC_GPIO_MODE_OUTPUT_ONLY</name></member>
-    <member refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676aacff1f9583bbb9751a502c8cd1985420" kind="enumvalue"><name>HF_RTC_GPIO_MODE_INPUT_OUTPUT</name></member>
-    <member refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a1229b21ba503e6de502c29cd5d974f72" kind="enumvalue"><name>HF_RTC_GPIO_MODE_DISABLED</name></member>
-    <member refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a080ea898fb69e85fe3dea04a0a90ca1e" kind="enumvalue"><name>HF_RTC_GPIO_MODE_OUTPUT_OD</name></member>
-    <member refid="EspTypes__GPIO_8h_1a69e6f960044c8edfcabcb5e5d7a20676a3c36b6ac79f8baa9c09b4420a4568474" kind="enumvalue"><name>HF_RTC_GPIO_MODE_INPUT_OUTPUT_OD</name></member>
-    <member refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976f" kind="enum"><name>hf_gpio_glitch_filter_type_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fa070f0507f4a589f480cbd945821c29da" kind="enumvalue"><name>HF_GPIO_GLITCH_FILTER_NONE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fabec0d73874806b2b5a086afb5dd47e26" kind="enumvalue"><name>HF_GPIO_GLITCH_FILTER_PIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976faf05db471eceaa0c3bef5a7263626a7e5" kind="enumvalue"><name>HF_GPIO_GLITCH_FILTER_FLEX</name></member>
-    <member refid="EspTypes__GPIO_8h_1a0a21f1072a8d91c27100598234c9976fafeac30eeab152156b1e3a5ea94c25be1" kind="enumvalue"><name>HF_GPIO_GLITCH_FILTER_BOTH</name></member>
-    <member refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607" kind="enum"><name>hf_gpio_glitch_filter_clk_src_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607a4eae1e486a9347b013298017ed222274" kind="enumvalue"><name>HF_GLITCH_FILTER_CLK_SRC_APB</name></member>
-    <member refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607a7773fff21fff76b20e6961b92a67b2aa" kind="enumvalue"><name>HF_GLITCH_FILTER_CLK_SRC_RC_FAST</name></member>
-    <member refid="EspTypes__GPIO_8h_1a5fd0ef497489ed0bd9e99ec743cd2607aea8dcf83abdd4fc5df70f55edce349e5" kind="enumvalue"><name>HF_GLITCH_FILTER_CLK_SRC_XTAL</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41" kind="enum"><name>hf_gpio_config_result_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41ad960d3732ef867ad439549bad7147f51" kind="enumvalue"><name>HF_GPIO_CONFIG_OK</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a87fea1bacce67c8eccf7ce1002ce7121" kind="enumvalue"><name>HF_GPIO_CONFIG_INVALID_PIN</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41ac38c238af83fc34b52dc5a8171a83f9f" kind="enumvalue"><name>HF_GPIO_CONFIG_INVALID_MODE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a3be2d3a8ce84cebfb443c6876d70932c" kind="enumvalue"><name>HF_GPIO_CONFIG_INVALID_PULL</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a0ef51789b78ebbe253491eee4caaecf1" kind="enumvalue"><name>HF_GPIO_CONFIG_INVALID_DRIVE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a443ca9648fedd7213eaf67eccb74ad42" kind="enumvalue"><name>HF_GPIO_CONFIG_STRAPPING_WARNING</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a3742a01f26a1dfcd6cc222cb2b31e0af" kind="enumvalue"><name>HF_GPIO_CONFIG_FLASH_WARNING</name></member>
-    <member refid="EspTypes__GPIO_8h_1a987673bcdac1add3d4ccdbf463db8f41a74094b82166545528e008fb24f9aee7b" kind="enumvalue"><name>HF_GPIO_CONFIG_JTAG_WARNING</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acc" kind="enum"><name>hf_gpio_result_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accadd3c39736c45edebcc198279b328cb47" kind="enumvalue"><name>GPIO_OK</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca88adf359e7e9360c9b7a03ca100ce46b" kind="enumvalue"><name>GPIO_ERR_INVALID_ARG</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accaedd8db4c5482eb9b06a93f7686e7df5a" kind="enumvalue"><name>GPIO_ERR_INVALID_STATE</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accad0dedbb315ad871e12c7da9e293a37dd" kind="enumvalue"><name>GPIO_ERR_NOT_SUPPORTED</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca008147998d4474a9e748f9ef08d80fa9" kind="enumvalue"><name>GPIO_ERR_NO_MEM</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca60701f049c086b44b9b07455b31b32d4" kind="enumvalue"><name>GPIO_ERR_TIMEOUT</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca80fe02fbf4e0c0de3da976dc7681dd20" kind="enumvalue"><name>GPIO_ERR_HW_FAULT</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24accaa79966d7debbf90498f6188f808b55cd" kind="enumvalue"><name>GPIO_ERR_BUSY</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad639f5733d6faf9544a1d36a57b24acca306202d797fdda067252b5f8b976893c" kind="enumvalue"><name>GPIO_ERR_NOT_FOUND</name></member>
-    <member refid="EspTypes__GPIO_8h_1a7c9e2e1aa654eb2d62d13b1c9129eadc" kind="typedef"><name>hf_gpio_num_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1ad7a1ea802f4aa805f52d5781fc39c965" kind="typedef"><name>hf_gpio_isr_callback_t</name></member>
-    <member refid="EspTypes__GPIO_8h_1a4089a013a0f572c4ceb004421c614d74" kind="variable"><name>HF_GPIO_PIN_INFO_TABLE</name></member>
-    <member refid="EspTypes__GPIO_8h_1a045f35d0daef75c1c91c0e1667536f64" kind="function"><name>hf_gpio_get_pin_info</name></member>
-    <member refid="EspTypes__GPIO_8h_1ada82527547536b649ab80a69b54be394" kind="function"><name>hf_gpio_validate_config</name></member>
-    <member refid="EspTypes__GPIO_8h_1a3beb6b04e44df22aa63447a9bf7ffb35" kind="function"><name>hf_gpio_get_optimal_drive_strength</name></member>
-    <member refid="EspTypes__GPIO_8h_1aeed4f3f75e80bf28d3717dcac6550877" kind="function"><name>hf_gpio_calc_glitch_filter_window</name></member>
-    <member refid="EspTypes__GPIO_8h_1aa890e656415dbac8f1a2ebae3c04a4fa" kind="function"><name>hf_gpio_result_to_string</name></member>
   </compound>
   <compound refid="EspTypes__I2C_8h" kind="file"><name>EspTypes_I2C.h</name>
     <member refid="EspTypes__I2C_8h_1ad7608886f1256b486962da79dab16eec" kind="enum"><name>hf_i2c_clock_source_t</name></member>
@@ -4941,107 +4712,38 @@
     <member refid="EspTypes__WiFi_8h_1a6a2bd80e966cf778d2a8fe5f8e12a170" kind="variable"><name>HF_ESP_WIFI_TX_POWER_MIN</name></member>
     <member refid="EspTypes__WiFi_8h_1a3914da8b4bff8743369814d7acc91ce7" kind="variable"><name>HF_ESP_WIFI_TX_POWER_MAX</name></member>
   </compound>
+  <compound refid="StmAdc_8h" kind="file"><name>StmAdc.h</name>
+  </compound>
+  <compound refid="StmGpio_8h" kind="file"><name>StmGpio.h</name>
+  </compound>
+  <compound refid="StmI2c_8h" kind="file"><name>StmI2c.h</name>
+  </compound>
+  <compound refid="StmLogger_8h" kind="file"><name>StmLogger.h</name>
+  </compound>
+  <compound refid="StmNvs_8h" kind="file"><name>StmNvs.h</name>
+  </compound>
+  <compound refid="StmPeriodicTimer_8h" kind="file"><name>StmPeriodicTimer.h</name>
+  </compound>
+  <compound refid="StmSpi_8h" kind="file"><name>StmSpi.h</name>
+  </compound>
+  <compound refid="StmTemperature_8h" kind="file"><name>StmTemperature.h</name>
+  </compound>
   <compound refid="AsciiArtGenerator_8h" kind="file"><name>AsciiArtGenerator.h</name>
   </compound>
   <compound refid="DigitalOutputGuard_8h" kind="file"><name>DigitalOutputGuard.h</name>
   </compound>
   <compound refid="McuSelect_8h" kind="file"><name>McuSelect.h</name>
-    <member refid="McuSelect_8h_1a0ccdea2d0df335e3c7c10a423510f298" kind="define"><name>HF_TARGET_MCU_ESP32C6</name></member>
     <member refid="McuSelect_8h_1ab450ad4ee6d96c0a1f19723992004a41" kind="define"><name>HF_THREAD_SAFE</name></member>
-    <member refid="McuSelect_8h_1ab71328905c36e55e3085ddeda2a0391b" kind="define"><name>HF_MCU_ESP32C6</name></member>
-    <member refid="McuSelect_8h_1af09d5cdf20a6926e03923ad5efc9f774" kind="define"><name>HF_MCU_FAMILY_ESP32</name></member>
-    <member refid="McuSelect_8h_1affcd472dd5e22e4e8aa957d29da0572f" kind="define"><name>HF_MCU_NAME</name></member>
-    <member refid="McuSelect_8h_1a39573867174a649ac525f65a7387fd31" kind="define"><name>HF_MCU_ARCHITECTURE</name></member>
-    <member refid="McuSelect_8h_1a6e87fa9aef714f7c0bd733c68ca9578f" kind="define"><name>HF_MCU_VARIANT_C6</name></member>
-    <member refid="McuSelect_8h_1a04be44d00bd93f9f6501cfde0060d834" kind="define"><name>HF_MCU_HAS_GPIO</name></member>
-    <member refid="McuSelect_8h_1a7b69b1756fcf7fe37598661f3cc69a1a" kind="define"><name>HF_MCU_GPIO_MAX_PINS</name></member>
-    <member refid="McuSelect_8h_1aeb28fc476b0471c9004b383b2713a919" kind="define"><name>HF_MCU_GPIO_HAS_PULLUP</name></member>
-    <member refid="McuSelect_8h_1ad522b821943c4ea6b3f2a7ff9e0f04cf" kind="define"><name>HF_MCU_GPIO_HAS_PULLDOWN</name></member>
-    <member refid="McuSelect_8h_1ad300657fa8f272130040d07283257dc3" kind="define"><name>HF_MCU_GPIO_HAS_INTERRUPTS</name></member>
-    <member refid="McuSelect_8h_1a302eb1ea34953a1037bfbf9d0ebc6a5c" kind="define"><name>HF_MCU_GPIO_PIN_COUNT</name></member>
-    <member refid="McuSelect_8h_1a8b5ad2beab18ca74b6bb74718d512d7d" kind="define"><name>HF_MCU_GPIO_MAX_PIN_NUMBER</name></member>
-    <member refid="McuSelect_8h_1a75a2045e65dd2daef4515640f228f4f3" kind="define"><name>HF_MCU_GPIO_RTC_PIN_COUNT</name></member>
-    <member refid="McuSelect_8h_1aa353a450b143aefcdf0c6dbf6f1eb4bf" kind="define"><name>HF_MCU_GPIO_LP_IO_PIN_COUNT</name></member>
-    <member refid="McuSelect_8h_1a7350f7923aa8bdf8c0705558f13132ff" kind="define"><name>HF_MCU_GPIO_ADC_PIN_COUNT</name></member>
-    <member refid="McuSelect_8h_1a02d97606e500251c389b700b5d15f3a6" kind="define"><name>HF_MCU_GPIO_FLEX_FILTER_COUNT</name></member>
-    <member refid="McuSelect_8h_1a41487709dd21420136cffa73c269ac02" kind="define"><name>HF_MCU_GPIO_TOUCH_PIN_COUNT</name></member>
-    <member refid="McuSelect_8h_1a62c5c456bff1082a381140cc97ba5336" kind="define"><name>HF_MCU_GPIO_DAC_PIN_COUNT</name></member>
-    <member refid="McuSelect_8h_1a7d3a44af8343d25d54a3ab0b6429e246" kind="define"><name>HF_MCU_GPIO_ETM_CHANNEL_COUNT</name></member>
-    <member refid="McuSelect_8h_1aaaff5b50c642d6be50e8037b99c712bc" kind="define"><name>HF_MCU_GPIO_ETM_EVENT_COUNT_MAX</name></member>
-    <member refid="McuSelect_8h_1a1de2ca0a5577ff97fc02d16c0c49e6e5" kind="define"><name>HF_MCU_GPIO_ETM_TASK_COUNT_MAX</name></member>
-    <member refid="McuSelect_8h_1ae2256add6fae8bb97c9cf9534f07927a" kind="define"><name>HF_MCU_GPIO_APB_CLK_FREQ_HZ</name></member>
-    <member refid="McuSelect_8h_1ac15f95ae9cb547018dac6b0187681500" kind="define"><name>HF_MCU_GPIO_RC_FAST_CLK_FREQ_HZ</name></member>
-    <member refid="McuSelect_8h_1a9fdab6797471e3b90e47211f60548f14" kind="define"><name>HF_MCU_GPIO_XTAL_CLK_FREQ_HZ</name></member>
-    <member refid="McuSelect_8h_1a50c0aeece5c75be7579d646b5a9c9bdd" kind="define"><name>HF_MCU_GPIO_MAX_TOGGLE_FREQ_HZ</name></member>
-    <member refid="McuSelect_8h_1a77568d505a858a3ba95af6b7c53ab55d" kind="define"><name>HF_MCU_GPIO_MIN_GLITCH_FILTER_NS</name></member>
-    <member refid="McuSelect_8h_1aa563e215b251a2633ce317370073e43e" kind="define"><name>HF_MCU_GPIO_MAX_GLITCH_FILTER_NS</name></member>
-    <member refid="McuSelect_8h_1aeb41fe85cdc75af96b674ef3640407f1" kind="define"><name>HF_MCU_GPIO_HAS_GLITCH_FILTER</name></member>
-    <member refid="McuSelect_8h_1a51c24f6a0807430f36e7e6acbe42271c" kind="define"><name>HF_MCU_GPIO_HAS_RTC_GPIO</name></member>
-    <member refid="McuSelect_8h_1aef039a18abad72bc06ff30b03bc2eb4c" kind="define"><name>HF_MCU_GPIO_HAS_LP_IO</name></member>
-    <member refid="McuSelect_8h_1a448c3d12d072a5bb0f583f8a58688008" kind="define"><name>HF_MCU_GPIO_HAS_ETM</name></member>
-    <member refid="McuSelect_8h_1a8a1b55079a88a58b2834e9d7fc16ea97" kind="define"><name>HF_MCU_GPIO_HAS_HOLD_FUNCTION</name></member>
-    <member refid="McuSelect_8h_1ac3fd2a737f65ba32bdbdb577665da49b" kind="define"><name>HF_MCU_GPIO_HAS_SLEEP_CONFIG</name></member>
-    <member refid="McuSelect_8h_1a328513ae9e8a7a14e94f67fa491f69ab" kind="define"><name>HF_MCU_GPIO_HAS_WAKEUP_CONFIG</name></member>
-    <member refid="McuSelect_8h_1ab4a5b5909c53948c3eb1ab4ffd53d64e" kind="define"><name>HF_MCU_GPIO_HAS_DRIVE_STRENGTH</name></member>
-    <member refid="McuSelect_8h_1a38805d11cab71d167819477aa45928a4" kind="define"><name>HF_MCU_HAS_ADC</name></member>
-    <member refid="McuSelect_8h_1a7f555b55b55a788dad8c357bd9988778" kind="define"><name>HF_MCU_ADC_MAX_CHANNELS</name></member>
-    <member refid="McuSelect_8h_1a404f6fafd0a07c9ba5bb5e344a941294" kind="define"><name>HF_MCU_ADC_MAX_RESOLUTION</name></member>
-    <member refid="McuSelect_8h_1a9eb514655b6d53b8ad6d7509ddce9dfb" kind="define"><name>HF_MCU_ADC_HAS_ATTENUATION</name></member>
-    <member refid="McuSelect_8h_1acae7337d714b1f1e76e5964adb794971" kind="define"><name>HF_MCU_ADC_NUM_UNITS</name></member>
-    <member refid="McuSelect_8h_1a9a287ef347eda0bfb759064a176851d8" kind="define"><name>HF_MCU_HAS_I2C</name></member>
-    <member refid="McuSelect_8h_1a942587d6cb833b760d2256c49eb5ebaf" kind="define"><name>HF_MCU_I2C_MAX_PORTS</name></member>
-    <member refid="McuSelect_8h_1a7d8622a6f633e1c782d3451ff226ea5a" kind="define"><name>HF_MCU_I2C_MAX_FREQ_HZ</name></member>
-    <member refid="McuSelect_8h_1acb6c5a3eed346ee09ba2d971c7486055" kind="define"><name>HF_MCU_I2C_HAS_SLAVE_MODE</name></member>
-    <member refid="McuSelect_8h_1a98b64efa7f02df1c467827a0e2709ace" kind="define"><name>HF_MCU_HAS_SPI</name></member>
-    <member refid="McuSelect_8h_1a4c1bb49caa954c13d1d0f4e9fe32332c" kind="define"><name>HF_MCU_SPI_MAX_HOSTS</name></member>
-    <member refid="McuSelect_8h_1aeea8ff6c7946c4b6ffbd958dea488903" kind="define"><name>HF_MCU_SPI_MAX_FREQ_HZ</name></member>
-    <member refid="McuSelect_8h_1a3a4f29162086213efd965c3a7f595207" kind="define"><name>HF_MCU_SPI_HAS_DMA</name></member>
-    <member refid="McuSelect_8h_1aa2ee54f0889ea94da4d2de75d5b6c82e" kind="define"><name>HF_MCU_HAS_UART</name></member>
-    <member refid="McuSelect_8h_1a6464f77ee9888413ccd1ed7e17a762c7" kind="define"><name>HF_MCU_UART_MAX_PORTS</name></member>
-    <member refid="McuSelect_8h_1a9c8a1d645d159f0306aad8b5144568a2" kind="define"><name>HF_MCU_UART_MAX_BAUDRATE</name></member>
-    <member refid="McuSelect_8h_1aeb1a92ad672db8f2bcb2edf96678db47" kind="define"><name>HF_MCU_UART_HAS_FLOW_CONTROL</name></member>
-    <member refid="McuSelect_8h_1a650a21c7d1f6d4ae3e6090eb6aba76d4" kind="define"><name>HF_MCU_HAS_CAN</name></member>
-    <member refid="McuSelect_8h_1aa2e30b542b1e685219e40e009964beb0" kind="define"><name>HF_MCU_CAN_MAX_CONTROLLERS</name></member>
-    <member refid="McuSelect_8h_1ae1648a5ce5a0e230b17869d8ee2c96f0" kind="define"><name>HF_MCU_CAN_HAS_LISTEN_ONLY</name></member>
-    <member refid="McuSelect_8h_1aad809895f49ba2b809781455e73cd91c" kind="define"><name>HF_MCU_CAN_HAS_SELF_TEST</name></member>
-    <member refid="McuSelect_8h_1a971e836251baf3977802d400d19b7e7e" kind="define"><name>HF_MCU_CAN_PROTOCOL</name></member>
-    <member refid="McuSelect_8h_1a8fbe8bc73c6556bb9acebfffd136491b" kind="define"><name>HF_MCU_HAS_PWM</name></member>
-    <member refid="McuSelect_8h_1a3c6ad889f4396e5207e78752a3472be3" kind="define"><name>HF_MCU_PWM_MAX_CHANNELS</name></member>
-    <member refid="McuSelect_8h_1ac86fdffbbffc1d662f03640ab6b9da43" kind="define"><name>HF_MCU_PWM_MAX_FREQ_HZ</name></member>
-    <member refid="McuSelect_8h_1a9a0dced621f2f453f83f1de9224dc101" kind="define"><name>HF_MCU_PWM_MAX_RESOLUTION</name></member>
-    <member refid="McuSelect_8h_1abf0f9630145e0d2a6cefdbfa3506c8b1" kind="define"><name>HF_MCU_HAS_PIO</name></member>
-    <member refid="McuSelect_8h_1a5cff026a4dfb35a19f3b7dffe476086b" kind="define"><name>HF_MCU_HAS_RMT</name></member>
-    <member refid="McuSelect_8h_1a8cd97664c45b01b305b3a57396bc2803" kind="define"><name>HF_MCU_RMT_MAX_CHANNELS</name></member>
-    <member refid="McuSelect_8h_1a559f7d3c3eadf7a5d6f693fbe2a71d45" kind="define"><name>HF_MCU_DEFAULT_TIMEOUT_MS</name></member>
-    <member refid="McuSelect_8h_1acaf99aedce51580d034ed33d1c4e67d6" kind="define"><name>HF_MCU_I2C_TIMEOUT_MS</name></member>
-    <member refid="McuSelect_8h_1ab01a04152e46d243d8b6dfe700ab84fa" kind="define"><name>HF_MCU_SPI_TIMEOUT_MS</name></member>
-    <member refid="McuSelect_8h_1ad3d0806d641e947f0bef3f31c7b598c4" kind="define"><name>HF_MCU_UART_TIMEOUT_MS</name></member>
-    <member refid="McuSelect_8h_1ade908c1229fc75559d8425287121013b" kind="define"><name>HF_MCU_CAN_TIMEOUT_MS</name></member>
-    <member refid="McuSelect_8h_1ac69aebb08f757595334e2839bb5f2804" kind="define"><name>HF_MCU_UART_RX_BUFFER_SIZE</name></member>
-    <member refid="McuSelect_8h_1a177f9c2f6901a31c8f692750e351b781" kind="define"><name>HF_MCU_UART_TX_BUFFER_SIZE</name></member>
-    <member refid="McuSelect_8h_1ae498f1d9889e8618e711b91338f80b29" kind="define"><name>HF_MCU_I2C_BUFFER_SIZE</name></member>
-    <member refid="McuSelect_8h_1a39c70445579b9b422bf75213532aae5a" kind="define"><name>HF_MCU_SPI_BUFFER_SIZE</name></member>
-    <member refid="McuSelect_8h_1a59a92cb4f2d7c199ca129855c6f1acc2" kind="define"><name>HF_MCU_CAN_RX_QUEUE_SIZE</name></member>
-    <member refid="McuSelect_8h_1ae0834a57d29022511a427dc93e58c960" kind="define"><name>HF_MCU_CAN_TX_QUEUE_SIZE</name></member>
-    <member refid="McuSelect_8h_1a8e9425fbf5e10201a5b5c085766537a3" kind="define"><name>HF_MCU_TASK_STACK_SIZE</name></member>
-    <member refid="McuSelect_8h_1af255c41afe8127d90843a9cad5cf5153" kind="define"><name>HF_MCU_TASK_PRIORITY</name></member>
-    <member refid="McuSelect_8h_1afb3af08385918b69764ca737d66cbf0a" kind="define"><name>HF_MCU_ADC_DEFAULT_VREF</name></member>
-    <member refid="McuSelect_8h_1a2cdf914ecb9e0662a18b066a698103c3" kind="define"><name>HF_MCU_ADC_MAX_VOLTAGE</name></member>
   </compound>
   <compound refid="memory__utils_8h" kind="file"><name>memory_utils.h</name>
   </compound>
-  <compound refid="RtosMutex_8h" kind="file"><name>RtosMutex.h</name>
-    <member refid="RtosMutex_8h_1a78c3b693325e0a899165cc97f332ddb8" kind="typedef"><name>RtosLockGuard</name></member>
-    <member refid="RtosMutex_8h_1a9852fe87ecd89837ccabec2c340780e9" kind="typedef"><name>MutexLockGuard</name></member>
+  <compound refid="PlatformMutex_8h" kind="file"><name>PlatformMutex.h</name>
+    <member refid="PlatformMutex_8h_1a5b9f484b1baa691901486c8cfd7080d1" kind="typedef"><name>PlatformLockGuard</name></member>
+    <member refid="PlatformMutex_8h_1a9e65865add93ca50ec0af02b8a5a3737" kind="typedef"><name>PlatformMutexLockGuard</name></member>
   </compound>
   <compound refid="README_8md" kind="file"><name>README.md</name>
   </compound>
   <compound refid="EspAdc_8cpp" kind="file"><name>EspAdc.cpp</name>
-    <member refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
-    <member refid="EspAdc_8cpp_1a6f867bc58ef80a935f62b4724d533d0a" kind="variable"><name>ADC_MAX_RAW_VALUE</name></member>
-    <member refid="EspAdc_8cpp_1abf6fc9c8989df537af16d0681798dd88" kind="variable"><name>DEFAULT_TIMEOUT_MS</name></member>
-    <member refid="EspAdc_8cpp_1ab880627fb65669504bc48ca4ca9ba844" kind="function"><name>GpioToAdcChannel</name></member>
-    <member refid="EspAdc_8cpp_1a77ee8f60a2146f595b45453a5018c0e5" kind="function"><name>AdcChannelToGpio</name></member>
   </compound>
   <compound refid="EspBluetooth_8cpp" kind="file"><name>EspBluetooth.cpp</name>
     <member refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
@@ -5050,8 +4752,6 @@
     <member refid="EspCan_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
   </compound>
   <compound refid="EspGpio_8cpp" kind="file"><name>EspGpio.cpp</name>
-    <member refid="EspGpio_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
-    <member refid="EspGpio_8cpp_1aaa46d5ea70be8a9493291ca12fca5eed" kind="function"><name>MapPullModeToHardware</name></member>
   </compound>
   <compound refid="EspI2c_8cpp" kind="file"><name>EspI2c.cpp</name>
     <member refid="EspI2c_8cpp_1a980169556e418c3354f549933f9df3ed" kind="define"><name>USE_CUSTOM_FAST_PROBE</name></member>
@@ -5059,24 +4759,8 @@
     <member refid="EspI2c_8cpp_1a8b1c0ba91ce9ce97629ed2efdd31b781" kind="function"><name>HfI2COperationToString</name></member>
   </compound>
   <compound refid="EspLogger_8cpp" kind="file"><name>EspLogger.cpp</name>
-    <member refid="EspLogger_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
-    <member refid="EspLogger_8cpp_1a302e0993d54956e10405cedbf45911eb" kind="variable"><name>DEFAULT_MAX_MESSAGE_LENGTH</name></member>
-    <member refid="EspLogger_8cpp_1acb3803b2530ef0b785ee1b3e45b69b4d" kind="variable"><name>DEFAULT_BUFFER_SIZE</name></member>
-    <member refid="EspLogger_8cpp_1ad9a5ce8e98d93c781c46ccdc1d9df936" kind="variable"><name>DEFAULT_FLUSH_INTERVAL_MS</name></member>
-    <member refid="EspLogger_8cpp_1a6d5ab23d94d2296b79fab4c0c9fd1779" kind="variable"><name>MAX_TAG_LENGTH</name></member>
-    <member refid="EspLogger_8cpp_1a3f4b2575974d00ff5e96f24579f33ef4" kind="variable"><name>MAX_ERROR_MESSAGE_LENGTH</name></member>
-    <member refid="EspLogger_8cpp_1aaf2bfdc12b335059fb7380a8f2929858" kind="variable"><name>HEALTH_CHECK_INTERVAL_US</name></member>
-    <member refid="EspLogger_8cpp_1afb736dd47230ec6c244e207ab1722a7c" kind="variable"><name>MAX_BUFFER_LOG_SIZE</name></member>
   </compound>
   <compound refid="EspNvs_8cpp" kind="file"><name>EspNvs.cpp</name>
-    <member refid="EspNvs_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
-    <member refid="EspNvs_8cpp_1a56134ef9075eaf7b6622e1a2736697ab" kind="variable"><name>NVS_INIT_TIMEOUT_MS</name></member>
-    <member refid="EspNvs_8cpp_1a5067ec469e1472b8d9dcde905d307fca" kind="variable"><name>NVS_OPERATION_TIMEOUT_MS</name></member>
-    <member refid="EspNvs_8cpp_1a7fc5e67321118b83c625f7006a9fd270" kind="variable"><name>NVS_MAX_RETRY_ATTEMPTS</name></member>
-    <member refid="EspNvs_8cpp_1af382ccbb36a465261a9e4abf140202a3" kind="variable"><name>NVS_STATS_UPDATE_INTERVAL_MS</name></member>
-    <member refid="EspNvs_8cpp_1a0d631767574cc8b140716c2ca3868db0" kind="variable"><name>NVS_MAX_KEY_LENGTH_ESP32</name></member>
-    <member refid="EspNvs_8cpp_1a831639f895a96f16a4c43cff3296b170" kind="variable"><name>NVS_MAX_VALUE_SIZE_ESP32</name></member>
-    <member refid="EspNvs_8cpp_1ad4289f5994cc5fb6d4b3d47c03978363" kind="variable"><name>NVS_MAX_NAMESPACE_LENGTH_ESP32</name></member>
   </compound>
   <compound refid="EspPeriodicTimer_8cpp" kind="file"><name>EspPeriodicTimer.cpp</name>
     <member refid="EspPeriodicTimer_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kind="variable"><name>TAG</name></member>
@@ -5112,6 +4796,24 @@
     <member refid="EspWifi_8cpp_1a47889333d1e26b48be92f67707cf5b80" kind="function"><name>ConvertFromEspMode</name></member>
     <member refid="EspWifi_8cpp_1aa86748e40eb0d5060d78da0f13081811" kind="function"><name>ConvertToEspAuthMode</name></member>
     <member refid="EspWifi_8cpp_1aa8dcdfab319e0f859573f8204e47121a" kind="function"><name>ConvertFromEspAuthMode</name></member>
+  </compound>
+  <compound refid="StmAdc_8cpp" kind="file"><name>StmAdc.cpp</name>
+  </compound>
+  <compound refid="StmGpio_8cpp" kind="file"><name>StmGpio.cpp</name>
+  </compound>
+  <compound refid="StmI2c_8cpp" kind="file"><name>StmI2c.cpp</name>
+  </compound>
+  <compound refid="StmLogger_8cpp" kind="file"><name>StmLogger.cpp</name>
+    <member refid="StmLogger_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kind="variable"><name>kNotSupported</name></member>
+  </compound>
+  <compound refid="StmNvs_8cpp" kind="file"><name>StmNvs.cpp</name>
+  </compound>
+  <compound refid="StmPeriodicTimer_8cpp" kind="file"><name>StmPeriodicTimer.cpp</name>
+    <member refid="StmPeriodicTimer_8cpp_1a0f42db9e07b169a44131a6ed38921dea" kind="variable"><name>kNotSupported</name></member>
+  </compound>
+  <compound refid="StmSpi_8cpp" kind="file"><name>StmSpi.cpp</name>
+  </compound>
+  <compound refid="StmTemperature_8cpp" kind="file"><name>StmTemperature.cpp</name>
   </compound>
   <compound refid="AsciiArtGenerator_8cpp" kind="file"><name>AsciiArtGenerator.cpp</name>
     <member refid="AsciiArtGenerator_8cpp_1a6fe0d932b63d8b3512c852ee1a916c4c" kind="variable"><name>ART_HEIGHT</name></member>
@@ -5401,6 +5103,10 @@
   <compound refid="dir_b24b7e6370455d61c0bb46dddfb27cce" kind="dir"><name>src/mcu</name>
   </compound>
   <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+  <compound refid="dir_719075560b1679e2d17be449d4b3b91d" kind="dir"><name>inc/mcu/stm32</name>
+  </compound>
+  <compound refid="dir_2439258af62f2a0b124d92d73f41c942" kind="dir"><name>src/mcu/stm32</name>
   </compound>
   <compound refid="dir_67bf3475cdd007f9e9d2e9df8d704317" kind="dir"><name>inc/mcu/esp32/utils</name>
   </compound>

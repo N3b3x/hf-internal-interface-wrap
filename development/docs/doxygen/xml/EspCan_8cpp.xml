@@ -43,14 +43,14 @@
         </childnode>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="18" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="17">
+      <node id="14">
         <label>EspTypes_Base.h</label>
         <link refid="EspTypes__Base_8h"/>
         <childnode refid="3" relation="include">
@@ -62,12 +62,12 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="16">
+      <node id="13">
         <label>utils/EspTypes_CAN.h</label>
         <link refid="EspTypes__CAN_8h"/>
         <childnode refid="6" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
@@ -79,15 +79,9 @@
         <link refid="McuSelect_8h"/>
       </node>
       <node id="12">
-        <label>RtosMutex.h</label>
-        <link refid="RtosMutex_8h"/>
+        <label>PlatformMutex.h</label>
+        <link refid="PlatformMutex_8h"/>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
         </childnode>
@@ -99,20 +93,20 @@
         <link refid="EspCan_8cpp"/>
         <childnode refid="2" relation="include">
         </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
       </node>
-      <node id="19">
+      <node id="16">
         <label>algorithm</label>
       </node>
       <node id="10">
@@ -121,13 +115,13 @@
       <node id="8">
         <label>cstdint</label>
       </node>
-      <node id="20">
+      <node id="17">
         <label>cstring</label>
       </node>
-      <node id="21">
+      <node id="18">
         <label>esp_log.h</label>
       </node>
-      <node id="22">
+      <node id="19">
         <label>esp_timer.h</label>
       </node>
       <node id="4">
@@ -136,19 +130,16 @@
       <node id="5">
         <label>esp_twai_onchip.h</label>
       </node>
-      <node id="13">
+      <node id="20">
         <label>freertos/FreeRTOS.h</label>
       </node>
-      <node id="14">
-        <label>freertos/semphr.h</label>
-      </node>
-      <node id="15">
+      <node id="21">
         <label>freertos/task.h</label>
       </node>
       <node id="9">
         <label>limits</label>
       </node>
-      <node id="18">
+      <node id="15">
         <label>memory</label>
       </node>
       <node id="11">
@@ -244,7 +235,7 @@
 <codeline lineno="67"><highlight class="normal"><ref refid="classEspCan_1aa842144f61a6f969b270e6d194d40f5c" kindref="member">EspCan::~EspCan</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Ensure<sp/>proper<sp/>cleanup<sp/>following<sp/>EspAdc<sp/>pattern</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspCan<sp/>destructor<sp/>called<sp/>on<sp/>initialized<sp/>instance<sp/>-<sp/>performing<sp/>cleanup&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspCan<sp/>destructor<sp/>called<sp/>on<sp/>initialized<sp/>instance<sp/>-<sp/>performing<sp/>cleanup&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspCan_1a96ec0a7e2636ba9e99d651f21c4e9153" kindref="member">Deinitialize</ref>();</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"></highlight></codeline>
@@ -254,7 +245,7 @@
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a86db68ed58d7c1791683151cb9a49260" kindref="member">ClearStateChangeCallback</ref>();</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a335b99de3bbf289de667f843ba83d31d" kindref="member">ClearTxCompleteCallback</ref>();</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspCan<sp/>controller<sp/>%d<sp/>destroyed&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;EspCan<sp/>controller<sp/>%d<sp/>destroyed&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="81"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
@@ -262,14 +253,14 @@
 <codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//==============================================//</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="86"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a1c5fa10425f845bf9a0a2bb12db8351e" kindref="member">EspCan::Initialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" kindref="member">config_mutex_</ref>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" kindref="member">config_mutex_</ref>);</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>already<sp/>initialized&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"></highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initializing<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>TWAI<sp/>node<sp/>configuration<sp/>using<sp/>ESP-IDF<sp/>v5.5<sp/>API</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/>twai_onchip_node_config_t<sp/>node_config<sp/>=<sp/>{</highlight></codeline>
@@ -303,7 +294,7 @@
 <codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>TWAI<sp/>node<sp/>using<sp/>ESP-IDF<sp/>v5.5<sp/>API</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>esp_err<sp/>=<sp/>twai_new_node_onchip(&amp;node_config,<sp/>&amp;<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>);</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(esp_err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>TWAI<sp/>node:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>create<sp/>TWAI<sp/>node:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
 <codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" kindref="member">ConvertEspError</ref>(esp_err);</highlight></codeline>
 <codeline lineno="131"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"></highlight></codeline>
@@ -317,7 +308,7 @@
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/>esp_err<sp/>=<sp/>twai_node_register_event_callbacks(<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>,<sp/>&amp;callbacks,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(esp_err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>register<sp/>event<sp/>callbacks:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>register<sp/>event<sp/>callbacks:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>twai_node_delete(<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>);</highlight></codeline>
 <codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" kindref="member">ConvertEspError</ref>(esp_err);</highlight></codeline>
@@ -326,7 +317,7 @@
 <codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Enable<sp/>the<sp/>TWAI<sp/>node</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/>esp_err<sp/>=<sp/>twai_node_enable(<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>);</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(esp_err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>TWAI<sp/>node:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>enable<sp/>TWAI<sp/>node:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>twai_node_delete(<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>);</highlight></codeline>
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" kindref="member">ConvertEspError</ref>(esp_err);</highlight></codeline>
@@ -337,21 +328,21 @@
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a8f4ec03bb515d5543808e3c3a076621e" kindref="member">is_enabled_</ref>.store(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Update<sp/>base<sp/>class<sp/>initialization<sp/>state</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>initialized<sp/>successfully&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="166"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="167"><highlight class="normal"></highlight></codeline>
 <codeline lineno="168"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a96ec0a7e2636ba9e99d651f21c4e9153" kindref="member">EspCan::Deinitialize</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" kindref="member">config_mutex_</ref>);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" kindref="member">config_mutex_</ref>);</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"></highlight></codeline>
 <codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>already<sp/>deinitialized&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>already<sp/>deinitialized&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>ESP_LOGD(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Deinitializing<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
 <codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>callbacks</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="180"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1af0cad1fa0e4c312eebcc5d1b938876df" kindref="member">ClearReceiveCallbackEx</ref>();</highlight></codeline>
@@ -368,14 +359,14 @@
 <codeline lineno="191"><highlight class="normal"></highlight></codeline>
 <codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>esp_err_t<sp/>esp_err<sp/>=<sp/>twai_node_delete(<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>);</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(esp_err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>delete<sp/>TWAI<sp/>node:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>delete<sp/>TWAI<sp/>node:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="197"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="198"><highlight class="normal"></highlight></codeline>
 <codeline lineno="199"><highlight class="normal"><sp/><sp/><ref refid="classBaseCan_1a664e24b04c3fd40328b75b9850fef57f" kindref="member">initialized_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Update<sp/>base<sp/>class<sp/>initialization<sp/>state</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="200"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1acb5ae2ddfce72a30d1bd14b721f1faab" kindref="member">filter_configured_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>deinitialized<sp/>successfully&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="204"><highlight class="normal">}</highlight></codeline>
@@ -476,7 +467,7 @@
 <codeline lineno="299"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="300"><highlight class="normal"></highlight></codeline>
 <codeline lineno="301"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a6c7eea2a0ccea5125cafb3b26af6c5ff" kindref="member">EspCan::ClearReceiveCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,</highlight></codeline>
 <codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ClearReceiveCallback<sp/>(BaseCan)<sp/>is<sp/>deprecated<sp/>-<sp/>use<sp/>ClearReceiveCallbackEx<sp/>instead&quot;</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="304"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="305"><highlight class="normal"></highlight></codeline>
@@ -488,13 +479,13 @@
 <codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cb)</highlight></codeline>
 <codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" kindref="member">hf_can_err_t::CAN_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
 <codeline lineno="315"><highlight class="normal"><sp/><sp/>receive_cb_<sp/>=<sp/>cb;</highlight></codeline>
 <codeline lineno="316"><highlight class="normal"><sp/><sp/>receive_ud_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="317"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="318"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="319"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1af0cad1fa0e4c312eebcc5d1b938876df" kindref="member">EspCan::ClearReceiveCallbackEx</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" kindref="member">callback_mutex_</ref>);</highlight></codeline>
 <codeline lineno="321"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a033c6357046c20596ec8c70d4315da07" kindref="member">receive_cb_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="322"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a2b72b11c02ef567f4e37915ad452dbf2" kindref="member">receive_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="323"><highlight class="normal">}</highlight></codeline>
@@ -502,13 +493,13 @@
 <codeline lineno="325"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1ae49c30b2a556b92b8a8dbb12d1eec148" kindref="member">EspCan::SetErrorCallback</ref>(<ref refid="EspCan_8h_1a076a16ddd28094881c20009e0617cdaa" kindref="member">hf_esp_can_error_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="326"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cb)</highlight></codeline>
 <codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" kindref="member">hf_can_err_t::CAN_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
-<codeline lineno="328"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
 <codeline lineno="329"><highlight class="normal"><sp/><sp/>error_cb_<sp/>=<sp/>cb;</highlight></codeline>
 <codeline lineno="330"><highlight class="normal"><sp/><sp/>error_ud_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="331"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="332"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="333"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a077cc96263ea79483559055841d873d6" kindref="member">EspCan::ClearErrorCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" kindref="member">callback_mutex_</ref>);</highlight></codeline>
 <codeline lineno="335"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1ad310be0cce73339268d83a1c3744a970" kindref="member">error_cb_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="336"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a4df3001f2b8ab4366f0fa38ca3ec47a8" kindref="member">error_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="337"><highlight class="normal">}</highlight></codeline>
@@ -517,13 +508,13 @@
 <codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cb)</highlight></codeline>
 <codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" kindref="member">hf_can_err_t::CAN_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
-<codeline lineno="343"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
 <codeline lineno="344"><highlight class="normal"><sp/><sp/>state_cb_<sp/>=<sp/>cb;</highlight></codeline>
 <codeline lineno="345"><highlight class="normal"><sp/><sp/>state_ud_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="346"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="347"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="348"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a86db68ed58d7c1791683151cb9a49260" kindref="member">EspCan::ClearStateChangeCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="349"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" kindref="member">callback_mutex_</ref>);</highlight></codeline>
 <codeline lineno="350"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a0283765650c36540b4a61fee2360d196" kindref="member">state_cb_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="351"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a5d0e83f62935d29002249184cdcb5d02" kindref="member">state_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="352"><highlight class="normal">}</highlight></codeline>
@@ -531,13 +522,13 @@
 <codeline lineno="354"><highlight class="normal"><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fb" kindref="member">hf_can_err_t</ref><sp/><ref refid="classEspCan_1a774bf708978527bf71ecee26c5075c48" kindref="member">EspCan::SetTxCompleteCallback</ref>(<ref refid="EspCan_8h_1aeb3672dcbe405ded46e6f974338ed765" kindref="member">hf_esp_can_tx_callback_t</ref><sp/>cb,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>user_data)<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="355"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!cb)</highlight></codeline>
 <codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3d942a792e9ec867700d25a3805ae555" kindref="member">hf_can_err_t::CAN_ERR_INVALID_PARAMETER</ref>;</highlight></codeline>
-<codeline lineno="357"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(callback_mutex_);</highlight></codeline>
 <codeline lineno="358"><highlight class="normal"><sp/><sp/>tx_cb_<sp/>=<sp/>cb;</highlight></codeline>
 <codeline lineno="359"><highlight class="normal"><sp/><sp/>tx_ud_<sp/>=<sp/>user_data;</highlight></codeline>
 <codeline lineno="360"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="361"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="362"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1a335b99de3bbf289de667f843ba83d31d" kindref="member">EspCan::ClearTxCompleteCallback</ref>()<sp/>noexcept<sp/>{</highlight></codeline>
-<codeline lineno="363"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5d41d6182179ebd67aad8f5d9f50b5da" kindref="member">callback_mutex_</ref>);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1af4c1631f449f4f29375f50cb3e76e0ca" kindref="member">callback_mutex_</ref>);</highlight></codeline>
 <codeline lineno="364"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1a9b8504de99b6a2c5ef2b9a9311ff17fd" kindref="member">tx_cb_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="365"><highlight class="normal"><sp/><sp/><ref refid="classEspCan_1ab431b6af90e985b67e4cc2d8c5fbd0b4" kindref="member">tx_ud_</ref><sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="366"><highlight class="normal">}</highlight></codeline>
@@ -598,9 +589,9 @@
 <codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3f12a9728c316c44f7de6363cc7957a7" kindref="member">hf_can_err_t::CAN_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="422"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="423"><highlight class="normal"></highlight></codeline>
-<codeline lineno="424"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a6d8efbb99af9eafcfe99ea736b432edf" kindref="member">config_mutex_</ref>);</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(<ref refid="classEspCan_1a5c404a379b240e8bb5b3a32421736fdf" kindref="member">config_mutex_</ref>);</highlight></codeline>
 <codeline lineno="425"><highlight class="normal"></highlight></codeline>
-<codeline lineno="426"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Resetting<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Resetting<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="427"><highlight class="normal"></highlight></codeline>
 <codeline lineno="428"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>statistics<sp/>(atomic<sp/>operations<sp/>-<sp/>no<sp/>mutex<sp/>needed)</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="429"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>all<sp/>atomic<sp/>counters<sp/>to<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
@@ -633,14 +624,14 @@
 <codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Node<sp/>is<sp/>in<sp/>bus-off<sp/>state,<sp/>recovery<sp/>is<sp/>appropriate</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/>esp_err_t<sp/>esp_err<sp/>=<sp/>twai_node_recover(<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>);</highlight></codeline>
 <codeline lineno="458"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(esp_err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>recovery<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>recovery<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
 <codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" kindref="member">ConvertEspError</ref>(esp_err);</highlight></codeline>
 <codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>recovered<sp/>from<sp/>bus-off<sp/>state&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>recovered<sp/>from<sp/>bus-off<sp/>state&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="464"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
 <codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Node<sp/>is<sp/>not<sp/>in<sp/>bus-off<sp/>state,<sp/>just<sp/>reset<sp/>statistics<sp/>and<sp/>continue</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>reset<sp/>(statistics<sp/>cleared,<sp/>node<sp/>operational)&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;TWAI<sp/>node<sp/>%u<sp/>reset<sp/>(statistics<sp/>cleared,<sp/>node<sp/>operational)&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="468"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="469"><highlight class="normal"></highlight></codeline>
@@ -751,7 +742,7 @@
 <codeline lineno="574"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3f12a9728c316c44f7de6363cc7957a7" kindref="member">hf_can_err_t::CAN_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="575"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="576"><highlight class="normal"></highlight></codeline>
-<codeline lineno="577"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(config_mutex_);</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(config_mutex_);</highlight></codeline>
 <codeline lineno="578"><highlight class="normal"></highlight></codeline>
 <codeline lineno="579"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>v5.5<sp/>requires<sp/>node<sp/>to<sp/>be<sp/>stopped<sp/>for<sp/>timing<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="580"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>was_enabled<sp/>=<sp/>is_enabled_.load();</highlight></codeline>
@@ -809,7 +800,7 @@
 <codeline lineno="632"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3f12a9728c316c44f7de6363cc7957a7" kindref="member">hf_can_err_t::CAN_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="633"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="634"><highlight class="normal"></highlight></codeline>
-<codeline lineno="635"><highlight class="normal"><sp/><sp/><ref refid="classRtosUniqueLock" kindref="compound">MutexLockGuard</ref><sp/>lock(config_mutex_);</highlight></codeline>
+<codeline lineno="635"><highlight class="normal"><sp/><sp/><ref refid="classPlatformUniqueLock" kindref="compound">PlatformMutexLockGuard</ref><sp/>lock(config_mutex_);</highlight></codeline>
 <codeline lineno="636"><highlight class="normal"></highlight></codeline>
 <codeline lineno="637"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>ESP-IDF<sp/>v5.5<sp/>requires<sp/>node<sp/>to<sp/>be<sp/>stopped<sp/>for<sp/>filter<sp/>configuration</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="638"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>was_enabled<sp/>=<sp/>is_enabled_.load();</highlight></codeline>
@@ -868,7 +859,7 @@
 <codeline lineno="691"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fba3f12a9728c316c44f7de6363cc7957a7" kindref="member">hf_can_err_t::CAN_ERR_NOT_INITIALIZED</ref>;</highlight></codeline>
 <codeline lineno="692"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="693"><highlight class="normal"></highlight></codeline>
-<codeline lineno="694"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initiating<sp/>bus<sp/>recovery<sp/>for<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="694"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Initiating<sp/>bus<sp/>recovery<sp/>for<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="695"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="696"><highlight class="normal"></highlight></codeline>
 <codeline lineno="697"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>if<sp/>node<sp/>is<sp/>in<sp/>bus-off<sp/>state<sp/>before<sp/>attempting<sp/>recovery</highlight><highlight class="normal"></highlight></codeline>
@@ -877,12 +868,12 @@
 <codeline lineno="700"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>status_err<sp/>=<sp/>twai_node_get_info(<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>,<sp/>&amp;node_status,<sp/>&amp;node_record);</highlight></codeline>
 <codeline lineno="701"><highlight class="normal"></highlight></codeline>
 <codeline lineno="702"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(status_err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
-<codeline lineno="703"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>get<sp/>node<sp/>status<sp/>for<sp/>recovery:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(status_err));</highlight></codeline>
+<codeline lineno="703"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>get<sp/>node<sp/>status<sp/>for<sp/>recovery:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(status_err));</highlight></codeline>
 <codeline lineno="704"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" kindref="member">ConvertEspError</ref>(status_err);</highlight></codeline>
 <codeline lineno="705"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="706"><highlight class="normal"></highlight></codeline>
 <codeline lineno="707"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(node_status.state<sp/>!=<sp/>TWAI_ERROR_BUS_OFF)<sp/>{</highlight></codeline>
-<codeline lineno="708"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Node<sp/>is<sp/>not<sp/>in<sp/>bus-off<sp/>state<sp/>(current:<sp/>%d),<sp/>recovery<sp/>not<sp/>needed&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="708"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGW(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Node<sp/>is<sp/>not<sp/>in<sp/>bus-off<sp/>state<sp/>(current:<sp/>%d),<sp/>recovery<sp/>not<sp/>needed&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="709"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node_status.state);</highlight></codeline>
 <codeline lineno="710"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;<sp/></highlight><highlight class="comment">//<sp/>Not<sp/>an<sp/>error,<sp/>just<sp/>not<sp/>needed</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="711"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
@@ -892,11 +883,11 @@
 <codeline lineno="715"><highlight class="normal"><sp/><sp/>esp_err_t<sp/>esp_err<sp/>=<sp/>twai_node_recover(<ref refid="classEspCan_1a836c7bd0fe611a5d232929a3c21b3995" kindref="member">twai_node_handle_</ref>);</highlight></codeline>
 <codeline lineno="716"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(esp_err<sp/>!=<sp/>ESP_OK)<sp/>{</highlight></codeline>
 <codeline lineno="717"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classEspCan_1a9268e3542c090d15173658df7154e683" kindref="member">is_recovering_</ref>.store(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="718"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initiate<sp/>bus<sp/>recovery:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
+<codeline lineno="718"><highlight class="normal"><sp/><sp/><sp/><sp/>ESP_LOGE(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>initiate<sp/>bus<sp/>recovery:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>esp_err_to_name(esp_err));</highlight></codeline>
 <codeline lineno="719"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classEspCan_1ad3577fad0067aabf4ae9f2e8e338ef46" kindref="member">ConvertEspError</ref>(esp_err);</highlight></codeline>
 <codeline lineno="720"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="721"><highlight class="normal"></highlight></codeline>
-<codeline lineno="722"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspAdc_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bus<sp/>recovery<sp/>initiated<sp/>successfully<sp/>for<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="722"><highlight class="normal"><sp/><sp/>ESP_LOGI(<ref refid="EspBluetooth_8cpp_1a5a85b9c772bbeb480b209a3e6ea92b4c" kindref="member">TAG</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Bus<sp/>recovery<sp/>initiated<sp/>successfully<sp/>for<sp/>TWAI<sp/>node<sp/>%u&quot;</highlight><highlight class="normal">,</highlight></codeline>
 <codeline lineno="723"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classEspCan_1a6de43eb14969d0a0e67e287d5a24fb81" kindref="member">config_</ref>.<ref refid="structhf__esp__can__config__t_1a4ea9cefcad04713b957442a2c93186de" kindref="member">controller_id</ref>));</highlight></codeline>
 <codeline lineno="724"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="BaseCan_8h_1aa9d5ead384ce9ec0dd791bcdc73589fbae831b317d8b789b7b3d679d89c7d045a" kindref="member">hf_can_err_t::CAN_SUCCESS</ref>;</highlight></codeline>
 <codeline lineno="725"><highlight class="normal">}</highlight></codeline>

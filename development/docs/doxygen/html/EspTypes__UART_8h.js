@@ -8,7 +8,6 @@ var EspTypes__UART_8h =
     [ "hf_uart_irda_config_t", "structhf__uart__irda__config__t.html", "structhf__uart__irda__config__t" ],
     [ "hf_uart_wakeup_config_t", "structhf__uart__wakeup__config__t.html", "structhf__uart__wakeup__config__t" ],
     [ "hf_uart_event_t", "structhf__uart__event__t.html", "structhf__uart__event__t" ],
-    [ "hf_uart_pin_map_esp32c6_t", "structhf__uart__pin__map__esp32c6__t.html", "structhf__uart__pin__map__esp32c6__t" ],
     [ "hf_uart_break_callback_t", "EspTypes__UART_8h.html#ad0b52f2579edff296b44b4bd0df5d310", null ],
     [ "hf_uart_event_callback_t", "EspTypes__UART_8h.html#aee73930fd08eb700134cd999d86720c9", null ],
     [ "hf_uart_data_bits_t", "EspTypes__UART_8h.html#abde746b6c6a9bf11878d665ef32b70c8", [

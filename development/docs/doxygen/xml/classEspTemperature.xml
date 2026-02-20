@@ -5,9 +5,9 @@
     <basecompoundref refid="classBaseTemperature" prot="public" virt="non-virtual">BaseTemperature</basecompoundref>
     <includes refid="EspTemperature_8h" local="no">EspTemperature.h</includes>
     <sectiondef kind="private-attrib">
-      <memberdef kind="variable" id="classEspTemperature_1a5e2e469501c63d5e4c6f2bf5476effd5" prot="private" static="no" mutable="yes">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspTemperature::mutex_</definition>
+      <memberdef kind="variable" id="classEspTemperature_1a6ffead68c2dd6cf1d96c59927c625545" prot="private" static="no" mutable="yes">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspTemperature::mutex_</definition>
         <argsstring></argsstring>
         <name>mutex_</name>
         <qualifiedname>EspTemperature::mutex_</qualifiedname>
@@ -18,7 +18,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="501" column="21" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="501" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="501" column="25" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="501" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1ae8aab5a3d2118ef3061ec62c63fc0103" prot="private" static="no" mutable="no">
         <type><ref refid="structesp__temp__state__t" kindref="compound">esp_temp_state_t</ref></type>
@@ -241,9 +241,9 @@
         </inbodydescription>
         <location file="inc/mcu/esp32/EspTemperature.h" line="604" column="38" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="52" bodyend="57"/>
       </memberdef>
-      <memberdef kind="variable" id="classEspTemperature_1a627914394ff10df930d340e4beecbb96" prot="private" static="yes" mutable="no">
-        <type><ref refid="classRtosMutex" kindref="compound">RtosMutex</ref></type>
-        <definition>RtosMutex EspTemperature::s_shared_mutex_</definition>
+      <memberdef kind="variable" id="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" prot="private" static="yes" mutable="no">
+        <type><ref refid="classPlatformMutex" kindref="compound">PlatformMutex</ref></type>
+        <definition>PlatformMutex EspTemperature::s_shared_mutex_</definition>
         <argsstring></argsstring>
         <name>s_shared_mutex_</name>
         <qualifiedname>EspTemperature::s_shared_mutex_</qualifiedname>
@@ -254,7 +254,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="inc/mcu/esp32/EspTemperature.h" line="607" column="20" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="607" bodyend="-1"/>
+        <location file="inc/mcu/esp32/EspTemperature.h" line="607" column="24" bodyfile="inc/mcu/esp32/EspTemperature.h" bodystart="607" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classEspTemperature_1aef85506e203917c06e7d951370f983ad" prot="private" static="yes" mutable="no">
         <type>std::atomic&lt; int &gt;</type>
@@ -1915,8 +1915,8 @@
         </childnode>
       </node>
       <node id="3">
-        <label>RtosMutex</label>
-        <link refid="classRtosMutex"/>
+        <label>PlatformMutex</label>
+        <link refid="classPlatformMutex"/>
       </node>
       <node id="5">
         <label>esp_temp_config_t</label>
@@ -1995,7 +1995,7 @@
       <member refid="classEspTemperature_1af516eb1e27cb63a70b6517752f1323fd" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>monitoring_callback_</name></member>
       <member refid="classEspTemperature_1a8fe2e9d176f71696e4fb12afbcd25bc8" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>monitoring_user_data_</name></member>
       <member refid="classEspTemperature_1abe6ae1ced0d8c565b722b416cb64e9ae" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>MonitoringTimerCallback</name></member>
-      <member refid="classEspTemperature_1a5e2e469501c63d5e4c6f2bf5476effd5" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>mutex_</name></member>
+      <member refid="classEspTemperature_1a6ffead68c2dd6cf1d96c59927c625545" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>mutex_</name></member>
       <member refid="classEspTemperature_1aa99e89ae0cac5fcd19aac843a1bb6dde" prot="public" virt="non-virtual"><scope>EspTemperature</scope><name>operator=</name></member>
       <member refid="classBaseTemperature_1aadc767ae37c6b15cbdc9571f688ebe97" prot="public" virt="non-virtual" ambiguityscope="BaseTemperature::"><scope>EspTemperature</scope><name>operator=</name></member>
       <member refid="classEspTemperature_1aa829f22f1d02247e2da26709702812ae" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>RANGE_INFO</name></member>
@@ -2011,7 +2011,7 @@
       <member refid="classEspTemperature_1ac22266bb32b95ed3587ce5fd6efc6c94" prot="public" virt="virtual"><scope>EspTemperature</scope><name>ResetStatistics</name></member>
       <member refid="classEspTemperature_1aef85506e203917c06e7d951370f983ad" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>s_refcount_</name></member>
       <member refid="classEspTemperature_1acc45986a38969e94e206b1531eedcbac" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>s_shared_handle_</name></member>
-      <member refid="classEspTemperature_1a627914394ff10df930d340e4beecbb96" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>s_shared_mutex_</name></member>
+      <member refid="classEspTemperature_1a50349f2a25b47c680ad6544677e3f693" prot="private" virt="non-virtual"><scope>EspTemperature</scope><name>s_shared_mutex_</name></member>
       <member refid="classEspTemperature_1aed9e41b1f3d2c357d6ecd28728e49aa2" prot="public" virt="virtual"><scope>EspTemperature</scope><name>SelfTest</name></member>
       <member refid="classEspTemperature_1a2665b30cb4301b8fccb577f74e4fa7fc" prot="public" virt="virtual"><scope>EspTemperature</scope><name>SetCalibrationOffset</name></member>
       <member refid="classEspTemperature_1a9b9b794154ed4bde92c25a416e01141d" prot="public" virt="non-virtual"><scope>EspTemperature</scope><name>SetEspMonitoringCallback</name></member>

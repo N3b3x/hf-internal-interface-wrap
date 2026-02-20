@@ -20,9 +20,9 @@
 <!-- Node2 -->
 <g id="Node000002" class="node">
 <title>Node2</title>
-<g id="a_Node000002"><a xlink:href="classEspAdc.html" target="_top" xlink:title="ESP32 ADC implementation class.">
-<polygon fill="white" stroke="#666666" points="67,-23 4,-23 4,0 67,0 67,-23"/>
-<text text-anchor="middle" x="35.5" y="-7.8" font-family="Arial" font-size="14.00">EspAdc</text>
+<g id="a_Node000002"><a xlink:href="classStmAdc.html" target="_top" xlink:title="STM32 ADC — stub implementation.">
+<polygon fill="white" stroke="#666666" points="68,-23 3,-23 3,0 68,0 68,-23"/>
+<text text-anchor="middle" x="35.5" y="-7.8" font-family="Arial" font-size="14.00">StmAdc</text>
 </a>
 </g>
 </g>

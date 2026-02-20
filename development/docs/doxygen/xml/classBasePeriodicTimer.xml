@@ -3,6 +3,7 @@
   <compounddef id="classBasePeriodicTimer" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>BasePeriodicTimer</compoundname>
     <derivedcompoundref refid="classEspPeriodicTimer" prot="public" virt="non-virtual">EspPeriodicTimer</derivedcompoundref>
+    <derivedcompoundref refid="classStmPeriodicTimer" prot="public" virt="non-virtual">StmPeriodicTimer</derivedcompoundref>
     <includes refid="BasePeriodicTimer_8h" local="no">BasePeriodicTimer.h</includes>
     <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classBasePeriodicTimer_1ac3b02fcdf99bedb247463ed7120d29a2" prot="protected" static="no" mutable="no">
@@ -153,6 +154,7 @@
         <name>Initialize</name>
         <qualifiedname>BasePeriodicTimer::Initialize</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a2d71348fe53d45612f586f7a81920adc">Initialize</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1af61c71d5df2847f8cc432161144cc6b1">Initialize</reimplementedby>
         <briefdescription>
 <para>Initialize the timer hardware/resources. </para>
         </briefdescription>
@@ -172,6 +174,7 @@
         <name>Deinitialize</name>
         <qualifiedname>BasePeriodicTimer::Deinitialize</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a7d27449fd8105d996b0d661708a1658a">Deinitialize</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a94d84c46b0fd48fd7ca73b683b178d25">Deinitialize</reimplementedby>
         <briefdescription>
 <para>Deinitialize the timer and free resources. </para>
         </briefdescription>
@@ -191,6 +194,7 @@
         <name>Start</name>
         <qualifiedname>BasePeriodicTimer::Start</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1ac352033e596e27719ede7c11ec860d40">Start</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1ada919f62b8ad097323e4a43e4ae5a0cf">Start</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
           <declname>period_us</declname>
@@ -223,6 +227,7 @@
         <name>Stop</name>
         <qualifiedname>BasePeriodicTimer::Stop</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1ab7916bb8965569cba0e5f2da171b2b5d">Stop</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1afd2adf7d275eb82d67bca9b7829a17e6">Stop</reimplementedby>
         <briefdescription>
 <para>Stop the periodic timer. </para>
         </briefdescription>
@@ -242,6 +247,7 @@
         <name>SetPeriod</name>
         <qualifiedname>BasePeriodicTimer::SetPeriod</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a2feb5be89d39cdaf1813cf82edb281a1">SetPeriod</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1aed5d65ee70d33c9945653dd1fa1f53ac">SetPeriod</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref></type>
           <declname>period_us</declname>
@@ -274,6 +280,7 @@
         <name>GetPeriod</name>
         <qualifiedname>BasePeriodicTimer::GetPeriod</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1ac8255b99f1786bd785effa818c3db876">GetPeriod</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a4a38141e12acac87b1b9ae756d67dd52">GetPeriod</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &amp;</type>
           <declname>period_us</declname>
@@ -306,6 +313,7 @@
         <name>GetStats</name>
         <qualifiedname>BasePeriodicTimer::GetStats</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1af0c1a5e199fa8e75d484d575c02e815c">GetStats</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a3531ed08a8ae620f210228e04fbebc81">GetStats</reimplementedby>
         <param>
           <type><ref refid="HardwareTypes_8h_1ac4515282abcfccf45fc8855452098d0b" kindref="member">hf_u64_t</ref> &amp;</type>
           <declname>callback_count</declname>
@@ -362,6 +370,7 @@
         <name>ResetStats</name>
         <qualifiedname>BasePeriodicTimer::ResetStats</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a074cc62783802fb12d95ca93edaf139e">ResetStats</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a96567e24e967297babb9c717bdd05f32">ResetStats</reimplementedby>
         <briefdescription>
 <para>Reset timer statistics. </para>
         </briefdescription>
@@ -417,6 +426,7 @@
         <name>GetDescription</name>
         <qualifiedname>BasePeriodicTimer::GetDescription</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a1cd74060851211a103f5bfdc380a58a5">GetDescription</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a1a880f8c3c0489b16879200dedc9a0be">GetDescription</reimplementedby>
         <briefdescription>
 <para>Get description of this timer implementation. </para>
         </briefdescription>
@@ -436,6 +446,7 @@
         <name>GetMaxPeriod</name>
         <qualifiedname>BasePeriodicTimer::GetMaxPeriod</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a24851bbc3359b261076ac7ce63175bc4">GetMaxPeriod</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a951d0175f287a9c13ba7ae690d80af99">GetMaxPeriod</reimplementedby>
         <briefdescription>
 <para>Get minimum supported timer period. </para>
         </briefdescription>
@@ -455,6 +466,7 @@
         <name>GetMinPeriod</name>
         <qualifiedname>BasePeriodicTimer::GetMinPeriod</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1a53bf8e1a7fe5da2ef9dfc5bd00aeca63">GetMinPeriod</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1af90c80952828bcc070075d08fcbd512a">GetMinPeriod</reimplementedby>
         <briefdescription>
 <para>Get maximum supported timer period. </para>
         </briefdescription>
@@ -474,6 +486,7 @@
         <name>GetResolution</name>
         <qualifiedname>BasePeriodicTimer::GetResolution</qualifiedname>
         <reimplementedby refid="classEspPeriodicTimer_1afd6d7373e40fae8922117bd9dc7b6428">GetResolution</reimplementedby>
+        <reimplementedby refid="classStmPeriodicTimer_1a6f435522d93af55a09dd660e414db695">GetResolution</reimplementedby>
         <briefdescription>
 <para>Get timer resolution. </para>
         </briefdescription>
@@ -816,6 +829,12 @@
       <node id="2">
         <label>EspPeriodicTimer</label>
         <link refid="classEspPeriodicTimer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>StmPeriodicTimer</label>
+        <link refid="classStmPeriodicTimer"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
